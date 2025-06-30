@@ -1,0 +1,350 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{ 协变导数 }
+
+\section{联络}
+\begin{definition}
+    令 \(  \pi : E\to M  \)是光滑（带边）流形 \(  M  \)上的一个光滑向量丛, \(   \Gamma \left( E \right)   \)是 \(  E  \)的光滑截面空间.
+     \textbf{\(  E  \)上的一个联络}是指,一个映射 \[
+     \nabla : \mathfrak{X}\left( M \right) \times   \Gamma \left( E \right)\to  \Gamma \left( E \right)   
+     \]写作 \(  \left( X,Y \right)\to \nabla _{X}Y   \),满足以下三条 
+     \begin{enumerate}
+        \item \(  \nabla _{X}Y  \)在 \(  X  \)上是 \(  C^{\infty}\left( M \right)   \)线性的： 对于 \(  f_1,f_2\in C^{\infty}\left( M \right)   \),以及 \(  X_1,X_2 \in \mathfrak{X}\left( M \right)   \), \[
+        \nabla _{f_1X_1+ f_2X_2}Y = f_1 \nabla _{X_1}Y+ f_2\nabla _{X_2}Y
+        \]
+        \item \(  \nabla _{X}Y  \)在 \(  Y  \)上是 \(  \mathbb{R}   \)线性的： 对于 \(  a_1,a_2 \in \mathbb{R}   \)和 \(  Y_1,Y_2 \in  \Gamma \left( E \right)   \), \[
+        \nabla _{X}\left( a_1Y_1+ a_2Y_2 \right)=  a_1\nabla _{X}Y_1+ a_2\nabla _{X}Y_2 
+        \]
+        \item \(  \nabla   \)满足以下乘积律：  \(  f \in C^{\infty}\left( M \right)   \), \[
+        \nabla _{X}\left( fY \right)= f\nabla _{X}Y+  \left( Xf \right)Y  
+        \]            
+     \end{enumerate}
+           
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item 称 \(  \nabla _{X}Y  \)为 \(  Y  \)在 \(  X  \)方向上的协变导数.   
+    \end{enumerate}
+    
+\end{remark}
+\subsection{切丛上的联络}
+
+\begin{definition}
+    设 \(  M  \)是光滑（带边）流形.\textbf{\(  M  \)上的一个联络 },通常是指切丛 \(  TM \to M  \)上的一个联络 \[
+     \nabla : \mathfrak{X}\left( M \right)\times \mathfrak{X}\left( M \right)\to \mathfrak{X}\left( M \right)   
+    \]  
+\end{definition}
+
+
+\begin{definition}{联络系数}\label{联络的坐标表示}
+    设 \(  M  \)是光滑（带边）流形, \(   \nabla   \)是 \( T M  \)上的一个联络.设 \(  \left( E_{i} \right)   \)是 \(  TM  \)在开子集 \(  U\subseteq M  \)上的一个光滑局部标价.
+    对于每一组指标 \(  i,j  \), \(   \nabla _{E_{i}}E_{j}  \)都可以按同一组标架展开：  \[
+     \nabla _{E_{i}} E_{j}=  \Gamma _{ij}^{k} E_{k}
+    \]当 \(  i,j,k  \)跑遍 \(  1  \)到 \(  n = \operatorname{dim}\,M  \)时,定义出 \(  n^{3}  \)个光滑函数 \(   \Gamma _{ij}^{k}: U\to \mathbb{R}   \),被称为是\textbf{\(   \nabla   \)关于给定标架的联络系数 } .            
+\end{definition}
+
+\begin{proposition}{坐标表示}
+    设 \(  M  \)是光滑（带边）流形, \(   \nabla   \)是 \(  TM  \)上的一个联络. 设 \(  \left( E_{i} \right)   \)是
+    开子集 \(  U\subseteq M  \)上的一个局部标架, 令 \(  \left\{  \Gamma _{ij}^{k} \right\}  \)是 \(   \nabla   \)关于这组标架的联络系数.
+    对于光滑向量场 \(  X,Y \in \mathfrak{X}\left( U \right)   \),按标架展开为 \(  X = X^{i}E_{i}  \), \(  Y= Y^{j}E_{j}  \)  ,则有 \[
+     \nabla _{X}Y =  \left( X\left( Y^{k} \right)+ X^{i}Y^{j} \Gamma _{ij}^{k}  \right) E_{k} \footnote{记忆时分成两部分来记,一部分是对固定向量场对数量函数求导的部分,这部分比较少；一部分是固定数量函数对向量场求导的部分,这部分要拆的细碎一点,既要拆求导的方向 \(  X ^{i} \),又要拆导出的坐标表示 \(  E_{k}  \)  }
+    \]
+\end{proposition}
+
+\begin{proof}
+    由联络的性质 \[
+    \begin{aligned}
+    \nabla _{X}Y & =  \nabla _{X} \left( Y^{j}E_{j} \right)\\ 
+     & = Y^{j}  \nabla _{X}E_{j}+ X\left( Y^{j} \right)  E_{j}\\ 
+      & =  Y^{j}  \nabla _{\left( X^{i}E_{i} \right) }E_{j}+ X\left( Y^{k} \right)E_{k} \\ 
+       & =  X^{j}Y^{j} \nabla _{E_{i}}E_{j}+ X\left( Y^{k} \right)E_{k}\\ 
+        & =  X^{j}Y^{j} \Gamma _{ij}^{k}E_{k} + X\left( Y^{k} \right)E_{k}\\ 
+         & =  \left( X\left( Y^{k} \right)+  X^{i}Y^{j} \Gamma _{ij}^{k}  \right)E_{k}  
+    \end{aligned}
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+
+\section{沿曲线的向量场和张量场}
+
+\begin{definition}
+    \begin{enumerate}
+        \item 设 \(  M  \)是光滑（带边）流形.给定光滑曲线,\(   \gamma :I\to M  \),\textbf{沿 \(   \gamma   \)的一个向量场 },是指一个连续映射 \(  V: I\to TM  \),
+        使得 \(  V\left( t \right) \in T_{ \gamma \left( t \right) }M    \)对于每个 \(  t \in I  \)成立.
+        \item     沿 \(   \gamma   \)的全体向量场记作 \(  \mathfrak{X}\left(  \gamma  \right)   \).  
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 称 \(  V  \)是沿 \(   \gamma   \)的一个光滑向量场,若它作为从 \(  I  \)到 \(  TM  \)的映射是光滑的.  
+        \item 在逐点加法和数乘下, \(  \mathfrak{X}\left(  \gamma  \right)   \)构成一个 \(  C^{\infty}\left( I \right)   \)-模.    
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{example}
+    \begin{enumerate}
+        \item 光滑曲线 \(   \gamma   \)在每一点 \(  t  \)处的速度 \(   \gamma ^{\prime} \left( t \right) \in T_{ \gamma \left( t \right) }M   \)共同构成一个沿 \(   \gamma   \)的光滑向量场.
+        \item 若 \(   \gamma   \)是 \(  \mathbb{R} ^{2}  \)上的曲线, 令 \(  N\left( t \right) =  R \gamma ^{\prime} \left( t \right)    \),   其中 \(  R  \)是逆时针旋转 \(  \pi /2  \)的映射,则 \(  N\left( t \right)   \)始终与 \(   \gamma ^{\prime} \left( t \right)   \)正交.
+        在标准坐标系, \(  N\left( t \right) =  \left( - \dot{\gamma}^{2}\left( t \right), \dot{\gamma}^{1}\left( t \right)   \right)    \),从而 \(  N  \)是沿 \(   \gamma   \)的一个光滑向量场.       
+    \end{enumerate}
+        
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{proposition}
+    设 \(   \gamma : I\to M  \)是光滑曲线. 沿 \(   \gamma   \)的一个向量场 \(  V\left( t \right)   :I\to TM\)  是可扩张的 \footnote{沿曲线的向量场实际上不是流形上的向量场,由于 \(   \gamma   \)可能把 \(  I  \)上不同的点映到 \(  M  \)上的同一点,我们可能无法直接通过 \(  V  \left( t \right) \)给出 \(  M  \)上的一个向量场. 因此我们在沿曲线的向量场中,需要再特别取出一部分更好的 . },若存在一个光滑向量场 \(  \tilde{V}  \) ,它定义在 \(  M  \)的一个包含了 \(   \gamma   \)的像的开集上,  使得  \(  V =  \tilde{V}\circ  \gamma   \) .
+\end{proposition}
+
+\begin{remark}
+    若 \(   \gamma \left( t_1 \right)=  \gamma \left( t_2 \right)    \),但是 \(   \gamma ^{\prime} \left( t_1 \right)\neq  \gamma ^{\prime} \left( t_2 \right)    \),则 \(   \gamma ^{\prime}   \)不是可扩张的.   
+\end{remark}
+
+\begin{definition}
+    设 \(   \gamma :I\to M  \)是光滑曲线.一个\textbf{沿 \(   \gamma   \)的张量场 },是指一个从 \(  I  \)到某个张量丛 \(  T^{\left( k,l \right) } TM \)的连续映射  \(   \sigma   \),
+    使得 \(   \sigma \left( t \right) \in T^{\left( k,l \right) }\left( T_{ \gamma \left( t \right) }M \right)    \)对每个 \(  t \in I  \)成立.     
+\end{definition}
+\begin{remark}
+   \begin{enumerate}
+    \item  称 \(   \sigma   \)是一个沿 \(   \gamma   \)的光滑张量场,若在此之上它是从 \(  I  \)到 \(  T^{\left( k,l \right) }TM  \)的光滑映射.
+    \item 类似地,称沿 \(   \gamma   \)的一个光滑张量场是可扩张的,若存在定义在 \(   \gamma \left( I \right)   \)   的邻域上的光滑张量场 \(   \tilde{\sigma}   \),使得 \(   \sigma =   \tilde{\sigma} \circ  \gamma   \)  
+   \end{enumerate}
+       
+\end{remark}
+
+
+\subsection{沿曲线的协变导数}
+
+
+\begin{theorem}
+    令 \(  M  \)是光滑（带边）-流形, \(   \nabla   \)是 \(  TM  \)上的一个联络.对于每个光滑曲线,  \(   \gamma : I\to M  \),
+     \(   \nabla   \)决定了唯一的算子 \[
+     D_{t}: \mathfrak{X}\left(  \gamma  \right)\to \mathfrak{X}\left(  \gamma  \right)  
+     \]称为是\textbf{沿 \(   \gamma   \)的斜边导数 },使得它满足以下几条性质
+     \begin{enumerate}
+        \item  \(  \mathbb{R}   \)-线性：  \[
+        D_{t} \left( aV+ bW \right) =  aD_{t} V+  bD_{t} W,\quad a,b \in \mathbb{R}  
+        \]
+        \item Lebniz律： \[
+        D_{t}\left( fV \right) =  f^{\prime} V+ fD_{t}V,\quad f \in C^{\infty}\left( I \right)  
+        \]
+        \item 若 \(  V \in \mathfrak{X}\left(  \gamma  \right)   \)是可扩张的,则对于每个 \(  V  \) 的扩张 \(  \tilde{V}  \), \[
+        D_{t}V\left( t \right)=   \nabla _{ \gamma  ^{\prime} \left( t \right) }\tilde{V}  \footnote{把无交叉的沿曲线向量场的协变导数,拉回到流形上面. }
+        \]   
+     \end{enumerate}
+        
+\end{theorem}
+
+\begin{proposition}{沿曲线协变导数的局部标价表示}
+     \(  M, \nabla , \gamma ,D_{t}  \)同前. 设 \(  V\in \mathfrak{X}\left(  \gamma  \right)   \)是可扩张的,则在局部标架 坐标 \(  \left( x^{i} \right)   \) 下, 设 \[
+     \gamma \left( t \right)= \left(  \gamma ^{1}\left( t \right),\cdots , \gamma ^{n}\left( t \right)   \right)  ,\quad       V\left( t \right)= V^{j}\left( t \right)\left.  \partial _{j} \right|_{ \gamma \left( t \right) }
+     \]则 \[
+     D_{t}V\left( t \right)= \left(  \dot{V}^{k}\left( t \right) +  \dot{\gamma}^{i}\left( t \right)   V^{j}\left( t \right)  \Gamma _{ij}^{k}\left(  \gamma \left( t \right)  \right) \right) E_{k}\left(  \gamma \left( t \right)  \right) 
+     \]
+\end{proposition}
+\begin{proof}
+    由于每个 \(  \partial _{j}  \)都是可扩张的,我们有 \[
+    \begin{aligned}
+    D_{t}V\left( t \right)& =   D_{t}\left( V^{j}\left( t \right)\left. \partial _{j} \right|_{ \gamma \left( t \right) }  \right)   \\ 
+     & =  \dot{V}^{j}\left( t \right)\left. \partial _{j} \right|_{ \gamma \left( t \right) } +   V^{j}\left( t \right) D_{t}\left. \partial _{j} \right|_{ \gamma \left( t \right) }  \\ 
+      & =  \dot{V}^{j}\left( t \right)\left. \partial _{j} \right|_{ \gamma \left( t \right) } +  V^{j}\left( t \right)  \nabla _{ \gamma ^{\prime} \left( t \right) } \left. \partial _{j} \right|_{ \gamma \left( t \right) }\\ 
+       & =  \dot{V}^{k}\left( t \right) \left. \partial _{k} \right|_{ \gamma \left( t \right) } +  V^{j}\left( t \right)\left(  \nabla _{ \dot{\gamma}^{i}\left( t \right)\left. \partial _{i} \right|_{ \gamma \left( t \right) } }\left. \partial _{j} \right|_{ \gamma \left( t \right) } \right)     \\ 
+        & =  \dot{V}^{k}\left( t \right) \left. \partial _{k} \right|_{ \gamma \left( t \right) } +   V^{j}\left( t \right) \left(  \dot{\gamma}^{i}\left( t \right)  \Gamma _{ij}^{k} \left(  \gamma \left( t \right)  \right)\left. \partial _{k} \right|_{ \gamma \left( t \right) }   \right)  \\ 
+         & =  \left( \dot{V}^{k}\left( t \right) +  \dot{\gamma}^{i}\left( t \right)V^{j}\left( t \right)  \Gamma _{ij}^{k} \left(  \gamma \left( t \right)  \right)     \right) \left. \partial _{k} \right|_{ \gamma \left( t \right) } 
+        \footnotemark 
+    \end{aligned}
+    \] 
+
+    \hfill $\square$
+\end{proof}
+
+\subsection{平行移动}
+
+\begin{definition}
+    设 \(  M  \)是光滑流形, \(   \nabla   \)是 \(  TM  \)上的一个联络.
+    称一个沿光滑曲线 \(   \gamma   \)的光滑向量场或张量场 \(  V  \),是沿 \(   \gamma   \)（关于 \(   \nabla   \)） 平行的       ,若 \(  D_{t}V \equiv 0  \). 
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 测地线可以被描述成： 速度向量场沿自身平行的 光滑曲线.
+    \end{enumerate}
+    
+\end{remark}
+\begin{example}
+    令 \(   \gamma :I\to \mathbb{R} ^{n}  \)是一个光滑曲线, \(  V  \)是沿 \(   \gamma   \)的一个光滑向量场.
+    则 \(  V  \)是关于欧式联络沿 \(   \gamma   \)平行的,当且仅当 \(  V  \)的分量函数皆为常数.      
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{proposition}
+    光滑曲线 \(   \gamma   \)的局部坐标表示为 \(   \gamma \left( t \right) =  \left(  \gamma ^{1}\left( t \right),\cdots , \gamma ^{n}\left( t \right)   \right)    \),则
+    由公式\ref{沿曲线的向量场坐标},
+    向量场 \(  V  \)沿 \(   \gamma   \)平行,当且仅当 \[
+    \dot{V}^{k}\left( t \right) =  -V^{j}\left( t \right)  \dot{\gamma}^{i}\left( t \right) \Gamma _{ij}^{k}\left(  \gamma \left( t \right)  \right)    ,\quad  k=  1,\cdots,n 
+    \]     
+\end{proposition}
+
+
+\begin{theorem}{线性ODE的存在唯一性和光滑性}
+    设 \(  I\subseteq \mathbb{R}   \)是开区间,且对于 \(  1\le j,k\le n  \),令 \(  A_{j}^{k}:I\to \mathbb{R}   \)是光滑函数.
+    对于所有的 \(  t_0 \in I  \),和每个初值向量 \(  \left(  c^1,\cdots,c^n  \right)\in \mathbb{R} ^{n}   \)     ,以下线性初值问题 \[
+    \begin{aligned}
+    \dot{V}^{k}\left( t \right)& =  A_{j}^{k}\left( t \right)V^{j}\left( t \right)\\ 
+     V^{k}\left( t_0 \right)& =  c^{k}     
+    \end{aligned}
+    \]有在 \(  I  \)上的唯一光滑解,并且解是依赖于 \(  \left( t,c \right) \in I\times \mathbb{R} ^{n}   \)  光滑的.
+\end{theorem}
+
+
+\begin{theorem}{平行移动的存在唯一性}
+    设 \(  M  \)是（带边）-光滑流形,  \(   \nabla   \)是 \(  TM  \)上的一个联络.给定光滑曲线 \(   \gamma : I\to M  , t_0 \in I\),以及向量 \(  v \in T_{ \gamma \left( t_0 \right) }M  \) 
+    或张量 \(  v \in T^{k\left( k,l \right) }\left( T_{ \gamma \left( t \right) }M \right)   \),存在唯一的沿 \(   \gamma   \)平行的向量场或张量场 \(  V  \),使得 \(  V\left( t_0 \right)= v   \),称为是 \(  v  \)沿 \(   \gamma   \)的平行移动  .        
+\end{theorem}
+
+
+\begin{definition}{平行移动映射}
+    对于每个 \(  t_0 ,t_1 \in I  \),定义映射 \[
+    P_{t_0t_1}^{ \gamma }: T_{ \gamma \left( t_0 \right) }M\to T_{ \gamma \left( t_1 \right) }M
+    \]称为是平行移动映射,为 \(  P_{t_0t_1}^{ \gamma }\left( v \right): =  V\left( t_1 \right), v \in T_{ \gamma \left( t_0 \right) }M    \),其中 \(  V  \)是\(   v  \)沿 \(   \gamma   \)的平行移动.     
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item  由于平行性的方程是线性的ODE,\(  P_{t_0t_1}^{ \gamma }  \) 是线性映射.又 \(  P_{t_1t_0}^{ \gamma }  \)是它的一个逆,因此平行移动映射是同构. 
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{note}
+    流形上不同点 \(  p,q  \)的切空间 \(  T_{p}M  \), \(  T_{q}M  \)本无自然的同构,但是平行移动映射 \(  P^{\gamma }_{p,q}  \)沿从 \(  p  \)到 \(  q  \)  路径 \(   \gamma   \)   
+    提供了人为但比较一致的比较规则.  
+\end{note}
+
+
+
+此外,还可以将研究的曲线放宽为逐段光滑的曲线,相应的有沿逐点光滑曲线的平行移动的存在唯一性.
+
+接下来介绍一个在处理平行移动的问题时非常有用的工具 
+\begin{definition}{平行标架}
+    给定 \(  T_{ \gamma \left( t_0 \right) }M  \)的一组基 \(  \left(  b_1,\cdots,b_n  \right)   \),可以让每个 \(  b_{i}  \)沿着 \(   \gamma   \)做平行移动,得到 \(  n  \)个沿 \(   \gamma   \)平行的向量场 \(  \left(  E_1,\cdots,E_n  \right)   \).由于平行移动映射是是线性同构, 对于每个 \(  t  \), \(  \left( E_{i}\left( t \right)  \right)   \)在 \(   \gamma \left( t \right)   \)处构成 \(  T_{ \gamma \left( t \right) }M  \)的一组基.称这样的沿 \(   \gamma   \)的 \(  n  \)个向量场为\textbf{沿 \(   \gamma   \)的平行标架 }.             
+\end{definition}
+
+\begin{proposition}
+    设 \(  \left( E_{i} \right)   \)是沿 \(   \gamma   \)的平行标架.每个 沿 \(   \gamma   \)的向量场 \(  V\left( t \right)   \)表为 \(  V\left( t \right)= V^{i}\left( t \right)E_{i}\left( t \right)     \).
+    \begin{enumerate}
+        \item \(  V\left( t \right)   \) 沿 \(   \gamma   \)的协变导数表为 \[
+            D_{t}V\left( t \right)= \dot{V}^{i}\left( t \right)E_{i}\left( t \right)   
+            \]      
+        \item \(  V\left( t \right)   \)沿 \(   \gamma   \)平行,当且仅当 \(  V^{i}\left( t \right)   \)均为常数.   
+    \end{enumerate}
+    
+\end{proposition}
+
+
+\begin{proof}
+    由\(  D_{t}  \)满足的Lebniz律,和 \(  E_{i}  \)的平行性： \(  D_{t}E_{i}= 0  \),立即得到.   
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{theorem}{平行移动决定的协变微分}
+    设 \(  M  \)是光滑（带边）流形,  \(   \nabla   \)是 \(  TM  \)上的联络.设 \(   \gamma :I\to M  \)是一个光滑曲线, \(  V  \)是沿 \(   \gamma   \)的光滑向量场,则对于每个 \(  t_0 \in I  \), \[
+    D_{t}V\left( t_0 \right) =  \lim_{t_1\to t_0} \frac{P_{t_1t_0}^{ \gamma }V\left( t_1 \right)-V\left( t_0 \right)   }{t_1-t_0 } 
+    \]       
+\end{theorem}
+
+\begin{proof}
+    设 \(  \left( E_{i} \right)   \)是沿 \(   \gamma   \)的平行标架,记 \(  V\left( t \right)= V^{i}\left( t \right)E_{i}\left( t \right),t\in I     \).一方面我们有 \(  D_{t}\left( V_0 \right)= \dot{V}^{i}\left( t_0 \right)E_{i}\left( t_0 \right)     \),另一方面对于每个固定的 \(  t_1\in I  \), \(  V\left( t_1 \right)   \)沿 \(   \gamma   \)的平行移动是沿 \(   \gamma   \)的 一个常系数的向量场 \(  W\left( t \right)= V^{i}\left( t_1 \right)E_{i}\left( t \right)     \)        ,从而 \(  P_{t_1t_0}^{ \gamma }V\left( t_1 \right)= V^{i}\left( t_1 \right)E_{i}\left( t_0 \right)     \) ,带入后取极限 \(  t_1\to t_0  \),即可得到极限式等于 \(  \dot{V}^{i}\left( t_0 \right)E_{i}\left( t_0 \right)    \).  
+
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}{平行移动决定的联络}
+    设 \(  M  \)是光滑（带边）流形, \(   \nabla   \)是 \(  TM  \)上的一个联络.设 \(  X,Y  \)是沿 \(  M  \)的光滑向量场.对于每个 \(  p \in M  \), \[
+    \left.  \nabla _{X}Y \right|_{p} =  \lim_{h\to 0}\frac{P_{h0}^{ \gamma }Y_{ \gamma \left( h \right) }-Y_{p} }{h } 
+    \]      其中 \(   \gamma :I\to M  \)是任意使得 \(   \gamma \left( 0 \right)= p   \)以及 \(   \gamma ^{\prime} \left( 0 \right)= X_{p}   \)   的光滑曲线.
+\end{corollary}
+
+\subsubsection{Levi-Civita联络}
+
+
+\begin{proposition}
+    设 \(  \left( M,g \right)   \)是（带边）（伪）Riemann流形,令 \(   \nabla   \)是它的Levi-Civita联络.
+    \begin{enumerate}
+        \item 设 \(  X,Y,Z \in \mathfrak{X}\left( M \right)   \),则 \begin{equation}\label{Levi-Civita联络XYZ公式}
+         \begin{aligned}
+            \left< \nabla _{X}Y,Z \right>=  \frac{1}{2} \Big{(}   X\left<Y,Z \right>&+ Y\left<Z,X \right>-Z\left<X,Y \right> \\ &-
+            \left<Y,\left[ X,Z \right]  \right>-\left<Z,\left[ Y,X \right]  \right>+ \left<X,\left[ Z,Y \right]  \right> \Big{)}  
+         \end{aligned}
+        \end{equation} 
+        (\textbf{Koszul's formula})
+        \item 在任意 \(  M  \)的光滑坐标卡下,Levi-Civita联络的联络系数由以下给出 \[
+         \Gamma _{ij}^{k} \footnote{称为Christoffel符号}= \frac{1}{2}g^{kl}\left( \partial _{i}g_{jl}+ \partial _{j}g_{il}-\partial _{l}g_{ij} \right) 
+        \] 
+        \item 设 \(  \left( E_{i} \right)   \)是开子集 \(  U\subseteq M  \)上的一个光滑局部标架,令 \(  c_{ij}^{k}: U\to \mathbb{R}   \)是 按以下方式定义 的 \(  n^{3}  \)个光滑函数： \[
+        \left[ E_{i},E_{j} \right]= c_{ij}^{k}E_{k}      
+        \]则 Levi-Civita联络在这组标架下的联络系数为 \[
+         \Gamma _{ij}^{k}=  \frac{1}{2}g^{kl}\left( E_{i}g_{jl}+ E_{j}g_{il}-E_{l}g_{ij}-g_{jm}c_{il}^{m}-g_{lm}c_{ji}^{m}+ g_{im}c_{lj}^{m} \right) 
+        \]    
+        \item 若 \(  g  \)是Riemann度量, \(  \left( E_{i} \right)   \)是光滑局部正交标架,则 \[
+         \Gamma _{ij}^{k}= \frac{1}{2}\left( c_{ij}^{k}-c_{ik}^{j}-c_{jk}^{i} \right) 
+        \]  
+    \end{enumerate}
+      
+\end{proposition}
+
+\begin{problemsec}
+    
+\end{problemsec}
+
+
+\begin{problem}
+    求沿着球面的赤道,切向量的平行移动.
+\end{problem}
+\begin{proof}
+    考虑半径为 \(  R  \)的球面的 参数化 \[
+    r\left( u,v \right)= R\left( \cos u \cos v,\cos u\sin v,\sin u \right) 
+    \] 则 \[
+    r_{u}= R\left( -\sin u\cos v,-\sin u\sin v,\cos u \right),\quad r_{v}= R\left( -\cos u\sin v,\cos u\cos v,0 \right)  
+    \] \[
+     \gamma \left( t \right)=  r\left( 0,t \right),\quad t\in [0,2\pi ]  
+    \]是赤道的一个单位速度参数表示. \[
+     \gamma ^{\prime} \left( t \right)= r_{v}\left( 0,t \right)  = R\left( - \sin t,\cos t,0 \right) 
+    \]记 \(  E_1= r_{u}  \) , \(  E_2=  r_{v}  \).任取以 \(  r\left( 0,0 \right)   \)为起点, \(  v= v^{i}E_{i}\left( 0 \right)   \)为速度向量的沿着 \(   \gamma   \)的 向量场 \[
+    V\left( t \right)=  V^{i}\left( t \right)E_{i}\left(  \gamma \left( t \right)  \right)  
+    \]其中 \(  V^{1}\left( 0 \right)= v^{1},\quad V^{2}\left( 0 \right)= v^{2}    \).注意到 \[
+    \begin{aligned}
+    D_{t}E_1\left(  \gamma \left( t \right)  \right)&= \left(  \tilde{\nabla} _{ \gamma ^{\prime} \left( t \right) }r_{u}\left( 0,t \right) \right)^{\perp} \\ 
+     &=     \left( \tilde{\nabla} _{R\left( -\sin t  \partial _{1}+ \cos t  \partial _{2} \right) }\left( R \partial _{3} \right) \right)^{\perp} = 0
+    \end{aligned}
+    \] 其中 \(   \nabla ^{\perp}  \)表示 \(  \mathbb{R} 3  \)上的欧式联络.       \(   \left( \partial _{i}   \right) \)表示 \(  \mathbb{R} ^{3}  \)上的  标准坐标向量场.于是 \(  E_1  \)是沿着 \(   \gamma   \)平行的.类似地, \[
+    \begin{aligned}
+    D_{t}E_2\left(  \gamma \left( t \right)  \right)&= \left( \tilde{D_{t}} E_2\left(  \gamma \left( t \right)  \right) \right)^{\perp}
+    \end{aligned} 
+    \]  用欧式空间上的标准坐标标架计算,它们总是沿曲线平行的 \[
+    \tilde{D}_{t}E_2\left(  \gamma \left( t \right)  \right)=R \tilde{D_{t}} \left( -\sin t  \partial _{1}+ \cos t \partial _{2} \right)= R\left( -\cos t,-\sin t,0 \right)  
+    \]与 \(  r_{v}\left( 0,t \right)   \)和 \(  r_{u}\left( 0,t \right)   \)总是正交的,故 \[
+    D_{t}E_2\left(  \gamma \left( t \right)  \right)= 0 
+    \]这表明 \(  E_1,E_2  \)是沿 \(   \gamma \left( t \right)   \)平行的标架,    进而 \[
+    D_{t}V\left( t \right)= \dot{V}^{1}\left( t \right)E_1\left(  \gamma \left( t \right)  \right)+ \dot{V}^{2}\left( t \right)\left(  \gamma \left( t \right)  \right)     
+    \]若 \(  V\left( t \right)   \)沿 \(   \gamma   \)平行,则 \[
+    \dot{V}^{1}\left( t \right)=   \dot{V}^{2}\left( t \right)= 0 
+    \]  从而 \[
+    \begin{aligned}
+    V\left( t \right)= v^{1}E_1\left(  \gamma \left( t \right)  \right)+ v^{2}E_2\left(  \gamma \left( t \right)  \right)&= v^{1}r_{u}\left( 0,t \right)+ v^{2}r_{v}\left( 0,t \right) \\ 
+     &=R \left( -v^{2}\sin t,v^{2}\cos t , v^{1} \right)      
+    \end{aligned}
+    \]为以 \(  \left( 0,t \right)   \)为起点, \(  v^{1}  \),\(  v^{2}  \)的平行移动.  对于以赤道上其它点为起点的情况,总可以通过一个旋转转化为以 \(  r\left( 0,1 \right)   \)为起点的情况.   
+
+    \hfill $\square$
+\end{proof}
+\end{document}

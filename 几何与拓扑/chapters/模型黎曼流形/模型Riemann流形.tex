@@ -1,0 +1,227 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+    
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+\chapter{模型Riemann流形}
+
+\section{Riemann流形的对称性}
+
+\begin{definition}{齐次性}
+    设 \(  \left( M,g \right)   \)是Riemann流形, \(  \operatorname{Iso} \left( M,g \right)   \)  表示全体 \(  M  \)的自等距同构\footnote{在复合下构成群}. 成 \(  \left( M,g \right)   \)是齐次的Riemann流形,若 \(  \operatorname{Iso} \left( M,g \right)   \)传递地作用在 \(  M  \)上.即对于任意一对 \(  p,q \in M  \),存在等距同构 \(   \varphi :M\to M  \),使得 \(   \varphi \left( p \right)=  q   \).      
+\end{definition}
+\begin{note}
+    齐次的流形在每一点处看起来都是一样的.
+\end{note}
+\begin{remark}
+    \begin{enumerate}
+        \item 对于每个 \(   \varphi  \in \operatorname{Iso} \left( M,g \right)   \),全微分 \(  \,\mathrm{d}  \varphi   \)映 \(  TM  \)到自身,且在每一个点 \(  p \in M  \)上的限制是一个线性同构 \(  \,\mathrm{d}  \varphi _{p}:T_{p}M\to T_{ \varphi \left( p \right) }M  \).  
+    \end{enumerate}
+    
+\end{remark}
+\begin{definition}{迷向}
+    \begin{enumerate}
+        \item 给定 \(  p \in M  \),令 \(  \operatorname{Iso} _{p}\left( M,g \right)   \)表示 \(  p  \)处的迷向子群,即 \(  \operatorname{Iso} \left( M,g \right)   \)中由固定了 \(  p  \)的等距同构组成的子群. \footnote{以 \(  p  \)为中心的旋转和反射 }
+        \item 对于每个 \(   \varphi  \in \operatorname{Iso} _{p}\left( M,g \right)   \),线性映射 \(  \,\mathrm{d}  \varphi _{p}  \)将 \(  T_{p}M  \)映到它自己,映射 \(  I _{p}: \operatorname{Iso} _{p}\left( M,g \right)\to \operatorname{GL} \left( T_{p}M \right)    \),\(  I _{p}\left(  \varphi  \right)= \,\mathrm{d}  \varphi _{p}   \)是 \(  \operatorname{Iso} _{p}\left( M,g \right)   \)的一个表示,称为\textbf{迷向表示}. \footnote{等距同构在局部上的等效替代.视 \(  I _{p}  \)为拓扑范畴到模范畴的函子 }
+        \item 称 \(  M  \)是在 \(  p  \)处迷向的,若 \(  \operatorname{Iso} _{p}\left( M,g \right)   \)的迷向表示传递地作用在 \(  T_{p}M  \)              的单位向量场. \footnote{在 \(  p  \)点处看,每个方向看起来都是一样的. }
+        \item 若 \(  M  \)在每一点处都是迷向的,则称 \(  M  \)是迷向的.   
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    领 \(  \mathrm{O}\left( M \right)   \)表示 \(  M  \)的切空间上的全体正交基: \[
+    \mathrm{O}\left( M \right): =  \coprod  _{p \in M}\left\{  T_{p}M  的\text{的正交基}\right\} 
+    \]  存在 \(  \operatorname{Iso} \left( M,g \right)   \)在 \(  \mathrm{O}\left( M \right)   \)上诱导的群作用,通过 用 等距同构 \(   \varphi   \)的微分,将 \(  p  \)处的正交基推出到 \(  \varphi \left( p \right)   \)处的正交基: \[
+     \varphi \cdot \left( b_1,\cdots ,b_{n} \right)= \left( \,\mathrm{d}  \varphi _{p}\left( b_1 \right),\cdots ,\,\mathrm{d}  \varphi _{p}\left( b_{n} \right)   \right)  
+    \]
+    称 \(  \left( M,g \right)   \)是\textbf{标架齐次的},若此诱导作用在 \(  \mathrm{O}\left( M \right)   \)上是传递的.换言之,对于任意的 \(  p,q \in M  \),以及 \(  p  \),\(  q  \)处选定的正交基,存在等距同构,将 \(  p  \)映到 \(  q  \),将选定的 \(  p  \)处的正交基映到 选定的 \(  q  \)处的正交基.              
+\end{definition}
+
+\begin{proposition}
+    设 \(  \left( M,g \right)   \)是Riemann流形.
+    \begin{enumerate}
+        \item 若 \(  M  \)在一点处是迷向的,且它是齐次的,则 \(  M  \)是处处迷向的.
+        \item 若 \(  M  \)是标架齐次的,则是齐次且迷向的.   
+    \end{enumerate}
+     
+\end{proposition}
+
+\begin{proof}
+    在 \(  M  \)处一点 \(  p  \)迷向,是说  \(  \operatorname{Iso} _{p}\left( M,g \right)   \)传递地作用在 \(  T_{p}M  \)的单位向量场上.
+
+齐次的,是说对于任意的 \(  q  \),存在等距同构 \(   \varphi \in \operatorname{Iso} \left( M,g \right)   \),使得 \(   \varphi \left( p \right)= q   \).
+
+考虑 \(  \operatorname{Iso} _{p}\left( M,g \right)   \)和 \(  \operatorname{Iso} _{q}\left( M,g \right)   \)的关系.
+
+ \(  \,\mathrm{d}  \varphi _{p}:T_{p}M\to T_{q}M  \)是等距同构.
+ 
+ 任取 \(  T_{q}M  \)处的单位向量 \(  v,w  \),\(  \,\mathrm{d}  \varphi _{p}^{-1} \left( v \right): =  \tilde{v},\,\mathrm{d}  \varphi _{p}^{-1} \left( w \right)    : =  \tilde{w}\)是 \(  T_{p}M  \)上的单位向量,存在 \(  \psi  \in \operatorname{Iso} _{p}\left( M,g \right)   \),使得 \( \,\mathrm{d}  \psi _{p}\left( \tilde{v} \right)= \tilde{w}   \),  于是 \[
+ \,\mathrm{d}  \varphi _{p}\circ \,\mathrm{d} \psi _{p}\circ \,\mathrm{d}  \varphi _{p}^{-1} \left( v \right)= w 
+ \]     是 \(  \operatorname{Iso} _{q}\left( M,g \right)   \)中映 \(  v  \)为 \(  w  \)的等距同构.故 \(  M  \)在 \(  q  \)处迷向.由于 \(  q  \)任取, \(  M  \)处处迷向.
+
+ 显然标架齐次蕴含齐次性.任取 \(  p \in M  \),以及 \(  T_{p}M  \)上的两个单位向量 \(  v,w  \),他们可以分别扩充为 \(  T_{p}M  \)的一个正交基.  由于标架齐次性,存在这两个正交基的一个等距同构 \(  \,\mathrm{d} \phi _{p}  \) ,\(  \,\mathrm{d}  \varphi _{p}  \)将 \(  v  \)映到 \(  w  \).   
+
+    \hfill $\square$
+\end{proof}       
+
+\begin{note}
+    一个齐次的Riemann流形在任意点上看起来都是一样的,而一个迷向的Riemann流形在每个方向上看起来都是一样的.从而一个迷向的Riemann流形自动是齐次的.然而,存在一点处迷向但不是处处迷向的Riemann流形,也存在齐次但是处处不迷向的Riemann流形,还存在齐次且迷向,但不是标架齐次的Riemann流形.这些断言的证明将在学习测地线和曲率后的理论后得到证明.
+
+    Myers-Steenrod定理给出, \(  \operatorname{Iso} \left( M,g \right)   \)总是光滑作用在 \(  M  \)上的一个李群.  
+\end{note}
+
+\section{欧式空间}
+
+\begin{proposition}{欧式空间}
+    \(  n  \)-维欧式空间在配备了欧式度量 \(  \bar{g}  \)下构成一个Riemann流形 \(  \left( \mathbb{R} ^{n},\bar{g} \right)   \).   
+\end{proposition}
+
+\begin{proposition}{实内积空间}
+    任取 \(  n  \)-维实内积空间 \(  V  \).对于每个 \(  p \in V  \)和 \(  v,w \in T_{p}V\simeq V  \),定义   \(  g\left( v,w \right)= \left<v,w \right>   \)   .
+    选取 \(  V  \)的一组正交基 \(  \left(  b_1,\cdots,b_n  \right)   \),它给出 \(  \mathbb{R} ^{n}  \)到 \(  V  \)的一个基同构 \(  \left( x^{1},\cdots ,x^{n} \right)\mapsto x^{i}b_{i}   \)     .
+    显然是 \(  \left( V,g \right)   \)和 \(  \left( \mathbb{R} ^{n},\bar{g} \right)   \)间的一个等距同构.  故每个 \(  n  \)-维内积空间作为Riemann流形都彼此同构. 
+\end{proposition}
+
+每个正交变换 \(  A:\mathbb{R} ^{n}\to \mathbb{R} ^{n}  \),平移变换 \(  x\mapsto b+ x  \),以及形如 \(  x\mapsto b+ Ax  \)的变换都是等距同构.
+
+我们可以将这些等距同构实现为 \(  \mathbb{R} ^{n}  \)上的光滑李群作用.
+
+\begin{definition}
+    视 \(  \mathbb{R} ^{n}  \)为加法下的李群, \(   \theta :\mathrm{O}\left( n \right)\times \mathbb{R} ^{n}\to \mathbb{R} ^{n}   \)为 \(  \mathrm{O}\left( n \right)   \)在 \(  \mathbb{R} ^{n}  \)上自然的作用.定义 \textbf{欧式群} \(  \mathrm{E}\left( n \right)   \)为 积流形 \(  \mathbb{R} ^{n}\times  \mathrm{O}\left( n \right)   \)在乘法 \(  \left( b,A \right)\left( b^{\prime} ,A^{\prime}  \right): =  \left( b+ Ab^{\prime}  ,AA^{\prime} \right)     \)下的半直积 李群 \(  \mathbb{R} ^{n}  \rtimes _{ \theta } \mathrm{O}\left( n \right) \)    .通过映射 \(  \rho : E\left( n \right)\to \operatorname{GL} \left( n+ 1,\mathbb{R}  \right)    \), \[
+    \rho \left( b,A \right) = \begin{pmatrix} 
+        A&b\\ 
+         0&1 
+    \end{pmatrix}  
+    \]它有忠实的表示.  
+    
+    欧式群在 \(  \mathbb{R} ^{n}  \)上的作用表示为 \[
+    \left( b,A \right)\cdot x =  b+ Ax 
+    \] 
+\end{definition}
+
+\begin{remark}
+   \begin{enumerate}
+    \item  半直积的构造使得此作用满足结合律.
+    \item  当 \(  \mathbb{R} ^{n}  \)配备了欧式度量时,此作用是一个等距同构,且他在 \(  \mathrm{O}\left( \mathbb{R} ^{n} \right)   \)上的诱导作用是传递的.因此每个欧式空间都是标架齐次的.  
+   \end{enumerate}
+   
+\end{remark}
+
+\section{球面}
+
+\begin{definition}
+    给定 \(  R> 0  \),令 \(  \mathbb{S}^{n}\left( R \right)   \)表示 \(  \mathbb{R} ^{n+ 1}  \)   中以原点为中心, \(  R  \)为半径的球面,且配备了欧式度量诱导的度量 \(  \overset{\scriptstyle\circ}{g}_{R}  \),称为半径为 \(  R  \)的圆度量.   
+\end{definition}
+
+
+\begin{proposition}
+    正交群 \(  \mathrm{O}\left( n+ 1 \right)   \)传递地作用在 \(  O\left( \mathbb{S}^{n}\left( R \right)  \right)   \)上,从而每个球面都是标架齐次的.  
+\end{proposition}
+
+
+\begin{proof}
+    只需要证明对于任意的 \(  p \in \mathbb{S}^{n}\left( R \right)   \),以及任意 \(  T_{p}\mathbb{S}^{n}\left( R \right)   \)的正交基 \(  \left( b_{i} \right)   \),都存在正交变换,将北极点 \(  N= \left( 0,\cdots ,0,R \right)   \)映到 \(  p  \),将 \(  T_{N}\mathbb{S}^{n}\left( R \right)   \)的基  \(  \left(  \partial_1,\cdots,\partial_n   \right)   \)      映到 \(  \left( b_{i} \right)   \).
+    
+    视 \(  p  \)为长度为 \(  R  \)的 \(  \mathbb{R}^{n+ 1}  \)上的向量,令 \(  \hat{p}=  \frac{p }{R }   \).由于 \(  \left( b_{i} \right)   \)相切与球面,故 \(  \left( b_{i} \right)   \)与 \(  \hat{p}  \)正交,故 \(  \left(  b_1,\cdots,b_n ,\hat{p} \right)   \)构成 \(  \mathbb{R} ^{n+ 1}  \)的一个标准正交基.令 \(  \alpha   \)表示列向量为这一组正交基的矩阵,则 \(  \alpha  \in O\left( n+ 1 \right)   \),他将 \(  \mathbb{R} ^{n}  \)的标准正交基 \(  \left(  \partial_1,\cdots,\partial_{n+ 1} \right)   \)映到 \(  \mathbb{R} ^{n+ 1}  \)的正交基 \(  \left(  b_1,\cdots,b_n ,\hat{p} \right)   \)     \footnote{这里滥用了一下记号}  .立即得到 \(   \alpha \left( N \right)= p   \).又 \(   \alpha   \)在 \(  \mathbb{R} ^{n+ 1}  \)上线性地作用,他的微分 \(  \,\mathrm{d} \alpha _{N}: T_{N}\mathbb{R} ^{n+ 1}\to T_{p}\mathbb{R} ^{n+ 1}  \)  的表示矩阵与 \(   \alpha   \)的坐标表示相同,故 \(  \,\mathrm{d} \alpha _{N}\left(  \partial _{i} \right)= b_{i},\forall i=  1,\cdots,n    \).  
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{共形}
+   \begin{enumerate}
+    \item  设 \(  g_1,g_2  \)是 \(  M  \)上的两个度量,称它们是彼此共形相关的,若存在正的函数 \(  f \in C^{\infty}\left( M \right)   \),使得 \(  g_2= fg_1  \).
+    \item 给定两个Riemann流形 \(  \left( M,g \right)   \)和 \(  \left( \tilde{M},\tilde{g} \right)   \),称微分同胚 \(   \varphi :M\to \tilde{M}  \)是一个\textbf{共形微分同胚}(或\textbf{共形变换}),若它将 \(  \tilde{g}  \)拉回到一个与 \(  g  \)共形的度量: \[
+     \varphi ^{*}\tilde{g}= fg \text{对于某个正函数} f\in C^{\infty}\left( M \right)\text{成立} 
+    \]     
+    \item 称两个Riemann流形是共形等价的,若存在他们之间的共形微分同胚.
+    \item 称Riemann流形\( \left( M,g \right)   \)是\textbf{局部共形平摊的},若 \(  M  \)上的每一个点都有共形等价于 \(  \left( \mathbb{R} ^{n},\bar{g} \right)   \)上一开集的邻域.   
+   \end{enumerate}
+       
+\end{definition}
+
+\subsection{球极投影}
+
+考虑 \(  \mathbb{R} ^{n}  \)和 \(  \mathbb{S}^{n}\left( R \right) \setminus \left\{ N \right\}  \),其中 \(  N  \)是    \(  \mathbb{S}^{n} \left( R \right)  \)的北极点,以及映射 \(   \sigma : \mathbb{S}^{n}\left( R \right)\setminus \left\{ N \right\}\to\mathbb{R} ^{n}   \),它将球面上除北极点以外的点 \(  P =   \left(  \xi^1,\cdots,\xi^n ,\tau  \right)  \) ,送到  \(  P  \)与 \(  N = \left( 0,\cdots ,0,R \right)  \)的连线在 \(  \mathbb{R} ^{n}\times \left\{ 0  \right\} \subseteq \mathbb{R} ^{n+ 1}  \)上的交点 \(  U= \left(  u^1,\cdots,u^n ,0 \right)   \)的自然投影 \(  u= \left(  u^1,\cdots,u^n  \right)   \)上.  存在 \(   \lambda   \),使得 \[
+\left( N-U\right)=  \lambda \left( N-P \right)  
+\]     从而有方程 组\[
+\begin{aligned}
+    R& =  \lambda \left( R-\tau  \right) \\ 
+   u & = \lambda  \xi   
+\end{aligned}
+\]给定 \(   \xi   ,\tau \),解出 \(  \tau   \)带入方程,可得 \(   \sigma   \)的坐标表示 \[
+ \sigma \left(  \xi ,\tau  \right)= u =   \frac{R \xi  }{R-\tau  }  
+\] 反过来,给定 \(  u  \),   解得 \[
+\begin{aligned}
+ \xi &=  \frac{u }{ \lambda  } \\ 
+  \tau  & =  R \frac{ \lambda -1 }{ \lambda  } 
+\end{aligned}
+\] \(  P  \)点由这两个方程以及他在球面上刻画,带入 \(  \left|  \xi  \right|^{2}+ \left| \tau  \right|^{2}= \mathbb{R} ^{2}    \),得到 \[
+\frac{\left| u \right|^{2}  }{  \lambda ^{2}}+  R^{2}\frac{\left(  \lambda -1 \right)^{2}  }{ \lambda ^{2} }= R^{2}  
+\]  解得  \[
+ \lambda  =  \frac{\left| u \right|^{2}+ R^{2}  }{ 2R^{2}} 
+\]带入 方程,得到 \[
+  \sigma ^{-1} \left( u \right)= \left(  \frac{2uR^{2} }{\left| u \right|^{2}+ R^{2}  },  R \frac{\left| u \right|^{2}-R^{2}  }{\left| u \right|^{2}+ R^{2}  }   \right) 
+\]为 \(   \sigma   \)的逆映射. 从而给出了 \(  \mathbb{R} ^{n}  \)到 \(  \mathbb{S}^{n}\left( R \right)\setminus \left\{ N \right\}   \)的微分同胚.
+
+\begin{definition}{球极投影}
+    上面构造的映射 \(   \sigma : \mathbb{S}^{n}\left( R \right)\setminus \left\{ N \right\}\to \mathbb{R} ^{n}   \)被称为是球极投影. 
+\end{definition}
+
+\begin{proposition}
+    球极投影是 \(  \mathbb{S}^{n}\left( R \right)\setminus \left\{ N \right\}   \)和 \(  \mathbb{R} ^{n}  \)之间的共形微分同胚.  
+\end{proposition}
+
+\begin{proof}
+    \(   \sigma ^{-1}  \)本身是 \(  \mathbb{S}^{n}\left( R \right)\setminus \left\{ N \right\}   \)  的一个光滑参数化,我们可以直接用它来计算拉回度量.
+     \[
+      \left( \sigma ^{-1} \right)^{*}  \overset{\scriptstyle\circ}{g}_{R}= \left(  \sigma ^{-1}  \right)^{*}\bar{g}=  \sum _{j}\left( \,\mathrm{d}  \left( \frac{2u^{j}R^{2} }{ \left| u \right|^{2}+ R^{2} }  \right) ^{2} \right)+  \,\mathrm{d} \left( R\frac{\left| u \right|^{2}-R^{2}  }{ \left| u \right|^{2}+ R^{2} }  \right)  ^{2}
+     \]其中 \[
+     \begin{aligned}
+     \,\mathrm{d} \frac{2u^{j}R^{2} }{ \left| u \right|^{2}+ R^{2} }  & = 2R^{2} \,\mathrm{d} \frac{u^{j} }{\left| u \right|^{2}+ R^{2}  } 
+     \end{aligned}
+     \] \[
+    \frac{\partial }{\partial u^{j}} \left( \frac{u^{j} }{\left| u \right|^{2}+ R^{2}  }  \right) = \frac{\left( \left| u \right|^{2}+ R^{2}  \right)-u^{j} \left( 2u^{j} \right)  }{ \left( \left| u \right|^{2}+ R^{2}  \right) ^{2}} 
+     \] \[
+     \begin{aligned}
+     \frac{\partial }{\partial u^{k}}  \left( \frac{u^{j} }{\left| u \right|^{2}+ R^{2}  }  \right)= \frac{-2u^{j}u^{k} }{\left( \left| u \right|^{2}  + R^{2}\right)^{2}  }  ,\quad k\neq j
+     \end{aligned}
+     \]故 \[
+     \,\mathrm{d} \frac{2u^{j}R^{2} }{\left| u \right|^{2}+ R^{2}  }=  \frac{2R^{2}}{\left| u \right|^{2}+ R^{2} }\,\mathrm{d} u^{j}-4R^{2}u^{j}\frac{u^{k} }{\left( \left| u \right|^{2}+ R^{2}  \right) ^{2} }\,\mathrm{d} u^{k} 
+     \] 此外 \[
+     \begin{aligned}
+     \,\mathrm{d} \left( R \frac{\left| u \right|^{2}-R^{2}  }{\left| u \right|^{2}+ R^{2}  }  \right)& =-2 R^{3} \,\mathrm{d} \left(\frac{1 }{\left| u \right|^{2}+ R^{2}  }  \right)
+     \end{aligned}
+     \] \[
+     \frac{\partial }{\partial u^{j}} \left( \frac{1 }{\left| u \right|^{2}+ R^{2}  }  \right)= - \frac{2u^{j} }{\left( \left| u \right|^{2}+ R^{2}  \right)^{2}  }  
+     \]故 \[
+     \,\mathrm{d} \left( R \frac{\left| u \right|^{2}-R^{2}  }{ \left| u \right|^{2}+ R^{2} }  \right)=  4R^{3}\frac{u^{k} }{\left( \left| u \right|^{2}+ R^{2} \right)^{2}   }\,\mathrm{d} u^{k}  
+     \]于是 \[
+     \begin{aligned}
+     \left(  \sigma ^{-1}  \right)^{*}\bar{g}& =\sum _{j} \frac{4R^{4} }{\left( \left| u \right|^{2}+ R^{2}  \right)^{2}  }\left( \,\mathrm{d} u^{j} \right)^{2}-\sum _{j}16R^{4}\frac{u^{j}u^{k} }{\left( \left| u \right|^{2}+ R^{2}  \right)^{3}  }   \,\mathrm{d} u^{k}\,\mathrm{d} u^{j}+ \sum _{j}16R^{4} \frac{\left( u^{j} \right)^{2} \left( u^{k}\,\mathrm{d} u^{k} \right)^{2}   }{ \left( \left| u \right|^{2}+ R^{2}  \right)^{4} } \\ 
+      & + 16R^{6} \frac{\left( u^{k}\,\mathrm{d} u^{k} \right)^{2}   }{ \left( \left| u \right|^{2}+ R^{2}  \right)^{4} }\\ 
+       & =   \sum _{j}\frac{4R^{4} }{\left( \left| u \right|^{2}+ R^{2}  \right)^{2}  }\left( \,\mathrm{d} u^{j} \right)^{2} -16R^{4} \frac{\left( \sum _{j}u^{j}\,\mathrm{d} u^{j} \right)^{2}  }{\left( \left| u \right|^{2}+ R^{2}  \right)^{3}  }  + 16R^{4} \frac{\left| u \right|^{2}\left( u^{k}\,\mathrm{d} u^{k} \right)^{2}   }{\left( \left| u \right|^{2}+ R^{2}  \right)^{4}  }\\ 
+        & + 16R^{6} \frac{\left( u^{k}\,\mathrm{d} u^{k} \right)^{2}  }{\left( \left| u \right|^{2}+ R^{2}  \right)^{4}  }  \\ 
+         & = \sum _{j} \frac{4R^{4} }{\left( \left| u \right|^{2}+ R^{2}  \right)^{2}  }\left( \,\mathrm{d} u^{j} \right)^{2}\\ 
+          & =  \frac{4R^{4} }{\left( \left| u \right|^{2}+ R^{2}  \right)^{2}  } \bar{g} 
+     \end{aligned}
+     \]
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}
+    每个带圆度量的前面都是局部共形平坦的.
+\end{corollary}
+
+\begin{proof}
+    球极投影给出去北极点球面与欧式空间的一个共形微分同胚,类似的给出南极点的球极投影,可以得到去南极点球面与欧式空间的共形微分同胚.
+
+    \hfill $\square$
+\end{proof}
+
+\end{document}

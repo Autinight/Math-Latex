@@ -1,0 +1,778 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+    
+\chapter{Riemann度量}
+
+\section{Riemann流形}
+\begin{definition}{Riemann度量和Riemann流形}
+设 $ M $是一个光滑（带边）流形,$ M $上的一个Riemann度量是指,在每一点处正定的 $ M $上的一个光滑对称共变 $ 2 $-张量.\\ 
+ 一个（带边）Riemann流形是指一对 $ \left( M,\mathrm{g} \right)  $,其中 $ M $是光滑（带边）流形,$  \mathrm{g} $是 $ M $上的一个Riemann度量.\\ 
+        
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item Riemann度量不是度量.后续的“度量”都指Riemann度量,作为代替,我们用“距离函数”来称一个真正的度量.
+        \item 设 $ \mathrm{g} $是 $ M $上的一个Riemann度量,则 $ \mathrm{g}_{p} $是 $ T_{p}M $上的一个内积.因此经常用 $ \left<v,w \right>_{p} $表示 $ \mathrm{g}_{p}\left( v,w \right)  $,其中 $ v,w\in T_{p}M $.
+        \item 在每个光滑坐标 $ \left( x^{i} \right)  $上,Riemann度量有基表示 $$
+        \mathrm{g}   = \mathrm{g}_{ij}\,\mathrm{d} x^{i}\otimes \,\mathrm{d} x^{j} 
+        $$ 由对称性,也可写作对称积的形式 $$
+        \mathrm{g}=\mathrm{g}_{ij}\,\mathrm{d} x^{i}\,\mathrm{d} x^{j}
+        $$  
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{example}{(欧式度量)}.
+        Riemann度量最常见的一个例子是 $ \mathbb{R} ^{n} $上的欧式度量 $ \overline{\mathrm{g}} $, $$
+        \overline{g}: = \delta_{ij} \,\mathrm{d} x^{i} \,\mathrm{d} x^{j}
+        $$其中 $ \delta_{ij} $是Kronecker积.通常将张量 $ \alpha $与自身的对称积写作 $ \alpha^{2} $,那么欧式度量也可以写作 $$
+        \overline{g} = \left( \,\mathrm{d} x^{1} \right)^{2}+ \cdots + \left( \,\mathrm{d} x^{n} \right)^{2}  
+        $$  将它作用到向量 $ v,w \in T_{p}\mathbb{R} ^{n} $上,得到 $$
+        \overline{g}_{p}\left( v,w \right)= \delta_{ij}v^{i}w^{j}= \sum_{i=1 }^{n } v^{i}w^{i}= v\cdot w 
+        $$ 换言之,欧式度量在每一点处的值就是欧式内积.
+\end{example}
+\begin{example}{(乘积度量)}.
+    若 $ \left( M,g \right)  $和 $ \left( \tilde{M}, \tilde{g} \right)  $是Riemann流形,可以定义积流形 $ M\times  \tilde{M} $上的度量 $ \hat{g}: =  g\oplus \tilde{g} $,称为是乘积度量：  $$
+    \hat{g}\left( \left( v,\tilde{v} \right),\left( w,\tilde{w} \right)   \right) : = g\left( v,w \right)+  \tilde{g}\left( \tilde{v},\tilde{w} \right)   
+    $$    其中 $ \left( v, \tilde{v} \right)  $,$ \left( w,\tilde{w} \right)   \in  T_{p} M \oplus  T_{q} \tilde{M}\simeq  T_{\left( p,q \right) } \left( M\times  \tilde{M} \right) $.给定任意 $ M $的局部坐标 $ \left( x^{1},\cdots ,x^{n} \right)  $和 $ \tilde{M} $的局部坐标 $ \left( y^{1},\cdots ,y^{m} \right)  $,得到
+    $ M\times \tilde{M} $的局部坐标 $ \left( x^{1},\cdots ,x^{n},y^{1},\cdots ,y^{m} \right)  $,乘积度量的（作为二次型）局部表示可以写成对角矩阵 $$
+    \left( \hat{g}_{ij} \right)=\begin{pmatrix} 
+        g_{ij}  & 0\\ 
+         0& \tilde{g}_{ij} 
+    \end{pmatrix}  
+    $$      
+    
+\end{example}
+
+\begin{proposition}{Riemann度量的存在性}
+    每个光滑（带边）流形都容许一个Riemann度量.
+\end{proposition}
+
+\begin{note}
+    对流形按坐标单位分解,取每个局部上欧式度量通过坐标映射的拉回度量,它们共同拼成了流形上的一个整体的度量.
+\end{note}
+
+\begin{proof}
+    设 $ M $是光滑（带边）流形,取 $ M $的一个坐标开覆盖 $ \left( U_{\alpha},\varphi_{\alpha} \right)  $   .在每个坐标开集上,存在Reimann度量 $g_{\alpha}: = \varphi_{\alpha} ^{*} \overline{g} $,  它有坐标表示 $
+    \delta_{ij} \,\mathrm{d} x^{i}\,\mathrm{d} x^{j}
+    $,其中 \(  \overline{g}  \)是  \(  \varphi _{\alpha }\left( U_{\alpha } \right)   \)上的欧式度量,.取从属于 $ \left\{ U_{\alpha} \right\} $ 的 $ M $的一个单位分解 $ \left\{ \psi_{\alpha} \right\} $,定义 $$
+    g: = \sum_{\alpha} \psi_{\alpha} g_{\alpha}
+    $$  则 $ g $是 $ M $上的光滑 $ 2 $-张量场,又显然 $ g $是对称的,故只需要说明正定性.任取非零的 $ v \in T_{p}M $,则 $$
+    g_{p}\left( v,v \right) = \sum_{\alpha} \psi_{\alpha}g_{\alpha}|_{p}\left( v,v \right)  
+    $$    是一个有限和,又每个有定义的 $ g_{\alpha}|_{p}\left( v,v \right)  $  均为正,因此 $ g\left( v,v \right)>0  $ ,又显然 $ g_{p} $非负,故而正定. 
+\end{proof}
+
+\begin{definition}{Riemann流形上的几何}
+    \begin{itemize} 
+      \item 切向量 $ v \in T_{p}M $的长度或模长被定义为 $$
+      \left| v \right|_{g}: = \left<v,w \right>_{g}^{\frac{1}{2}} = g_{p}\left( v,v \right)^{\frac{1}{2}} 
+      $$
+      \item 两个切向量 $ v,w \in T_{p}M $之间的角度被定义为唯一的 $ \theta \in [0,\pi] $,满足 $$
+      \cos \theta = \frac{\left<v,w \right>_{g} }{\left| v \right|_{g}\left| w \right|_{g}   } 
+      $$
+      \item 称切向量 $ v,w \in T_{p}M $是正交的,若 $ \left<v,w \right>_{g} = 0 $.       
+    \end{itemize}   
+\end{definition}
+
+
+\subsection{度量的局部表示}
+
+\begin{proposition}{坐标表示}
+    设 \(  \left( M,g \right)   \)是（带边）-Riemann流形.若 \(  \left(  x^1,\cdots,x^n  \right)   \)是一个开集 \(  U\subseteq M  \)上的任意
+    光滑坐标卡,则 \(  g  \)可以在 \(  U  \)上被局部地写作 \[
+    g =  g_{ij} \,\mathrm{d} x^{i}\otimes \,\mathrm{d} x^{j} =  g_{ij} \,\mathrm{d} x^{i}\,\mathrm{d} x^{j}  
+    \]     其中 \(  g_{ij},i,j=  1,\cdots,n   \)是 \(  n^{2}  \)个光滑函数,由 \(  g_{ij}\left( p \right)= \left< \left. \partial _{i} \right|_{p}, \left. \partial _{j} \right|_{p} \right> \)给出.
+    
+    以上张量场的分量函数构成一个非奇异的对称矩阵函数 \(  \left( g_{ij} \right)   \) .
+\end{proposition}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 由于坐标张量场 \(  \left\{ \,\mathrm{d} x^{i}\otimes \,\mathrm{d} x^{j} \right\} _{i,j} \)构成  2-反变张量空间\(  T^{2}\left( U \right)   \) 的一组基,因此存在光滑函数 \(  g_{ij},i,j=  1,\cdots,n   \),使得 \(  g =  g_{ij} \,\mathrm{d} x^{i}\otimes \,\mathrm{d} x^{j}  \)  
+     对 \(  g =  g_{ij} \,\mathrm{d} x^{i}\otimes  \,\mathrm{d} x^{j}  \) 两边作用在 \(  \left< \partial _{i},\partial _{j} \right>  \)上,得到 \[
+    \left<\partial _{i} ,\partial _{j} \right> =  g_{ij}
+     \]由 \(  g  \)的对称性, \[
+     g_{ij} =  \left<\partial _{i},\partial _{j} \right> = \left<\partial _{j},\partial _{i} \right>=  g_{ji}
+     \]  于是 \(  g  \)可以写成对称积 的形式 \[
+     \begin{aligned}
+     g& =  g_{ij}\,\mathrm{d} x^{i}\otimes \,\mathrm{d} x^{j}\\ 
+      & =  \frac{1}{2}\left( g_{ij}\,\mathrm{d} x^{i}\otimes \,\mathrm{d} x^{j}+  g_{ji}\,\mathrm{d} x^{i}\otimes \,\mathrm{d} x^{j} \right)  \\ 
+       & =  \frac{1}{2}\left( g_{ij} \,\mathrm{d} x^{i}\otimes \,\mathrm{d} x^{j}+ g_{ij} \,\mathrm{d} x^{j}\otimes \,\mathrm{d} x^{i} \right) \\ 
+        &=  g_{ij} \,\mathrm{d} x^{i}\,\mathrm{d} x^{j}
+     \end{aligned}
+     \] 
+     \item 上面 \(  g_{ij}=  g_{ji}  \)已经表明了 \(  \left( g_{ij} \right)   \)是一个对称矩阵函数.为了看出非奇异性,
+     考虑 \(  v =  v^{i} \partial _{i}|_{p}  \)是 \(  T_{p}M  \)上的一个向量,使得 \(  g_{ij}\left( p \right)v^{j}= 0   \)   ,
+     则 \(  \left<v,v \right> = g_{ij}\left( p \right)v^{i}v^{j} =  0   \),表明 \(  v = 0  \).因此 \[
+     \left( g_{ij} \right) \left(  v_1,\cdots,v_n  \right)^{\mathsf{T}}= 0 \iff   \left(  v_1,\cdots,v_n  \right)= 0   
+     \]   \(  \left( g_{ij} \right)   \)是非奇异的.  
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{proposition}{标架表示}
+    设 \(  \left( M,g \right)   \) 是（带边）Riemann流形, \(   E_1,\cdots,E_n   \) 是 开集 \(  U\subseteq M  \)上的 \(  TM  \)的一个局部光滑标架,
+     \(  \left(  \varepsilon^1,\cdots,\varepsilon^n    \right)   \)  是相应的对偶余标架,则 \(  g  \)在 \(  U  \)上可以局部表示为 \[
+     g =  g_{ij} \varepsilon ^{i} \varepsilon ^{j}
+     \] 其中 \(  g_{ij}\left( p \right)= \left<\left. E_{i} \right|_{p},\left. E_{j} \right|_{p} \right>   \),且矩阵值函数 \(  \left( g_{ij} \right)   \)是对称且光滑的.  
+\end{proposition}
+
+\begin{proof}
+    类似上一个命题的证明,不加赘述.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    设 \(  g  \)是 \(  M  \)上的一个Riemann度量,\(  X,Y \in  \mathfrak{X}\left( M \right)   \)是光滑向量场.则 \(  g  \)在 \(  X,Y  \)上的作用给出一个光滑函数 \(  \left<X,Y \right>  \), \[
+    \left<X,Y \right> \left( p \right) =  \left<X_{p},Y_{p} \right>_{g} 
+    \]  设在某个局部标架和对偶余标架下, \(  g =  g_{ij} \varepsilon ^{i} \varepsilon ^{j}  \), \(  X =  X^{i} E_{i},Y =  Y^{j}E_{j}  \),则函数\(  \left<X,Y \right>  \) 局部表示为 \[
+    \left<X,Y \right> =  g_{ij}X^{i}Y^{j}
+    \]从而是光滑的.
+    
+    特别地,我们有一个非负实值函数 \[
+    \left| X \right| : =  \left<X,X \right>^{\frac{1}{2}} 
+    \]它是处处连续,且在 \(  X  \neq 0\)的开集上是光滑的. 
+\end{proposition}
+
+\begin{proof}
+    我们有 \[
+    \begin{aligned}
+    \left<X,Y \right> & =  g_{kl} \varepsilon ^{k} \varepsilon ^{l} \left( X^{i}E_{i} , Y^{j}E_{j}\right)\\ 
+     & =    g_{kl}X^{i}Y^{j}  \varepsilon ^{k}\left( E_{i} \right) \varepsilon ^{l}\left( E_{j} \right)  \\ 
+      & =  g_{ij} X^{i}Y^{j}
+    \end{aligned}
+    \]
+     \[
+     \left( \left<X,X \right>^{\frac{1}{2}}  \right)^{\prime}  =  \frac{g_{ij}^{\prime} X^{i}X^{j}+  g_{ij}\left( X^{i} \right)^{\prime} X^{j}+ g_{ij}X^{i}\left( X^{j} \right)^{\prime}   }{2\sqrt{\left<X,X \right>}} 
+     \]当 \(  X \neq 0  \)时, \( \left<X,X \right>>0 \),此时可以继续求导,任意阶的分子分母均光滑,且当 \(  \left<X,X \right>\neq 0  \)时,分母也非零.   
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{正交标价}
+    设 $ \left( M,g \right)  $是 $ n $-维（带边）Riemann流形.称 $ M $的定义在开子集 $ U\subseteq M $上的 一个局部标价 $ \left( E_1,E_2,\cdots,E_n \right)  $  是一个正交标价,若对于每个 $ p \in U $,$ \left( E_1|_{p},\cdots ,E_{n}|_{p} \right)  $  构成 $ T_{p}M $的一个正交基,或等价地说 $ \left<E_{i},E_{j} \right>_{g} = \delta_{ij} $  .
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item 此时度量 \(  g  \)有局部坐标表示 \[
+        g =  \left(  \varepsilon ^{1} \right)^{2}+ \cdots + \left(  \varepsilon ^{n} \right)^{2}  
+        \] 其中 \(  \left(  \varepsilon ^{i} \right)^{2}   \)表示对称积 \(   \varepsilon ^{i} \varepsilon ^{i} =   \varepsilon ^{i}\otimes  \varepsilon ^{i}  \)  
+    \end{enumerate}
+    
+\end{remark}
+\begin{proposition}{正交化}
+    设 $ \left( M,g \right)  $是（带边）Riemann流形,$ \left( X_{j} \right)  $  是 $ M $的定义在开子集 $ U\subseteq M $上的一个光滑局部标价.那么存在 $ U $上的光滑正交标价 $ \left( E_{j} \right)  $,使得 $$
+    \mathrm{span}\left( E_1|_{p},\cdots ,E_{j}|_{p} \right) = \mathrm{span}\left( X_{1}|_{p},\cdots ,X_{j}|_{p} \right)  ,\quad j= 1,2,\cdots,n,\quad p \in U
+    $$    
+\end{proposition}
+\begin{proof}
+    对于每一点$p \in U$,对$\left( X_{j}|_{p} \right)$应用Gram-Schimidt正交化,可以通过 $$ E_{j}: = \frac{{X_{j}-\sum _{i=1}^{j-1}\left< X_{j}, E_{i} \right>_{g}E_{i}}}{\left| X_{j}-\sum _{i=1}^{j-1}\left< X_{j},E_{i} \right>_{g} E_{i} \right| _{g}} $$归纳地得到粗张量场的$n$元组$\left( E_{1},{\cdots},E_{n} \right)$.对于每个$j=1,{\cdots},n$和$p \in U$,由于$X_{j}|_{p}\not\in \operatorname{span}\left( E_{1}|_{p},{\cdots},E_{j-1}|_{p} \right)$,故分母在$U$上无处退化,因此$\left( E_{j} \right)$是光滑的正交标架.
+
+\end{proof}
+
+\begin{corollary}{局部正交标价的存在性}
+    设 $ \left( M,g \right)  $ 是 Riemann流形,则对于每个 $ p \in M $,存在 $ p $附近的光滑局部正交标架. 
+\end{corollary}
+
+
+
+\begin{definition}{单位切丛}
+    对于（带边）Riemann流形 \(  \left( M,g \right)   \),定义 它的\textbf{单位切丛},
+    为由以下单位向量组成的子集 \(  UTM\subseteq TM  \) ： \[
+    UTM: =  \left\{ \left( p,v \right) \in TM: \left| v \right|_{g}= 1   \right\}
+    \]  
+\end{definition}
+
+\begin{proposition}
+    设 \(  \left( M,g \right)   \)是（带边）Riemann流形,则它的单位 切丛 \(  UTM  \)是一个光滑的,真嵌入到 \(  TM  \)的余维数为\(  1  \)的带边子流形,
+    使得 \(  \partial \left( UTM \right)= \pi ^{-1} \left( \partial M \right)    \)（其中 \(  \pi : UTM\to M  \)是典范投影）.
+    单位是连通的,当且仅当 \(  M  \)是连通的（当 \(  n>1  \)）；并且 单位切丛是紧的,当且仅当 \(  M  \)是紧的.        
+\end{proposition}
+
+
+
+
+
+
+
+\subsection{拉回度量}
+
+\begin{definition}
+    设 $ M,N $ 是光滑（带边）流形,$ g $是 $ N $上的一个Riemann度量,$ F:M\to N $是光滑映射.则拉回 $ F^{*}g $是 $ M $上的一个光滑 $ 2 $-张量场.此外若它是正定的,则为 $ M $上的一个度量,称为是由 $ F $决定的拉回度量.       
+\end{definition}
+
+\begin{proposition}{拉回度量判据}
+    设 $ F:M\to N $是一个光滑映射, $ g $是 $ N $上的一个Riemann度量.那么 $ F^{*}g $是 $ M $上的一个Riemann度量当且仅当 $ F $是一个光滑浸入.      
+\end{proposition}
+\begin{proof}
+    只需要考察正定性.任取 $ v \in T_{p }M $, $ \left( F^{*}g \right)_{p} \left( v,v \right)=0  $当且仅当 $ g_{F\left( p \right) }\left( F_{*,p}v,F_{*,p}v \right)  =0$,当且仅当 $ F_{*,p}v=0 $, 因此 \(  F^{*}g  \)正定当且仅当 \(  F_{*,p}  \)是单射对于每一点 \(  p \in M  \)成立,即 \(  F  \)是 \(  M  \)上的光滑浸入.      
+\end{proof}
+
+\begin{example}
+    考虑光滑映射 $ F: \mathbb{R} ^{2}\to \mathbb{R} ^{3} $, $$
+    F\left( u,v \right)= \left( u\cos v,u\sin v,v \right)  
+    $$是一个常态、单的光滑浸入,因此是一个嵌入.它的像被称为是螺旋面.拉回度量为 $$\begin{aligned}F^{*}\overline{g}&=d(u\cos v)^2+d(u\sin v)^2+d(v)^2\\&=(\cos vdu-u\sin vdv)^2+(\sin vdu+u\cos vdv)^2+dv^2\\&=\cos^2vdu^2-2u\sin v\cos vdudv+u^2\sin^2vdv^2\\&+\sin^2vdu^2+2u\sin v\cos vdudv+u^2\cos^2vdv^2+dv^2\\&=du^2+(u^2+1)dv^2.\end{aligned}$$ 
+\end{example}
+\begin{remark}
+    当 $ u $为是实值函数时,约定记号 $ \,\mathrm{d} u^{2} $表示对称积 $ \,\mathrm{d} u\,\mathrm{d} u $.   
+\end{remark}
+
+\begin{definition}{等距浸入、嵌入}
+    设 \(  \left( M,g \right)   \)  和\(  \left( \tilde{M},> ld \right)   \)是两个（带边）Riemann流形.
+     一个满足   \(  F^{*} \tilde{g} =  g  \)的 光滑浸入或嵌入 \(  F:M\to  \tilde{M}  \),分别被称为是一个  
+     \textbf{等距浸入}或 \textbf{等距嵌入}.
+\end{definition}
+
+
+\begin{definition}{等距同构}
+  \begin{itemize}
+    \item  设 $ \left( M,g \right)  $和 $ \left( \tilde{M},\tilde{g} \right)  $  是Riemann流形.称光滑映射 $ F:M\to N $是一个等距同构,若它是一个微分同胚,并且满足 $ F^{*}\tilde{g}=g $.
+    \item 更一般地,称 $ F $是一个局部等距同构,若对于每个 $ p \in M $,都存在 $ p $的邻域 $ U $ ,使得 $ F|_{U} $  是 $ U $到 $ \tilde{M} $上一个开集的等距同构；等价地说,$ F $是满足 $ F^{*} \tilde{g}=g $的局部微分同胚.    
+    \item 称 $ \left( M,g \right)  $和 $ \left( \tilde{M},\tilde{g} \right)  $  是等距同构的,若存在Riemann流形之间的等距同构.
+    \item 称 $ \left( M,g \right)  $局部等距同构于 $ \left( \tilde{M},\tilde{g} \right)  $,若 $ M $的每一点上都有等距同构于 $ \left( \tilde{M},\tilde{g} \right)  $上一个开集的邻域.    
+  \end{itemize}
+  
+\end{definition}
+
+\begin{definition}{平坦性}
+    称Riemann $ n $-流形 $ \left( M,g \right)  $是平坦的,且 $ g $是平坦度量,若 $ \left( M,g \right)  $局部等距同构于 $ \left( \mathbb{R} ^{n}, \overline{g} \right)  $     
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 设 $ \left( M,g \right)  $和 $ \left( \tilde{M},\tilde{g} \right)  $是等距同构的Riemann流形,那么 $ g $是平坦的当且仅当 $ \tilde{g} $亦然.    
+        \begin{proof}
+            由对称性,只需证明一边.任取 $ q \in  \tilde{M} $,设 $ F $是 $ \left( M,g \right)  $到 $ \left( \tilde{M},\tilde{g} \right)  $的等距同构,那么存在 $ p \in M $使得 $ F\left( p \right)  = q$.
+            若 $ \left( M,g \right)  $是平坦的,那么存在 $ p $的邻域 $ U $,和等距同构 $ \varphi $,使得 $ \varphi: \left( U, g|_{U} \right)\simeq  \left( \mathbb{R} ^{n}, \overline{g} \right)   $  .又注意到 $ F^{-1} |_{F\left( U \right) }: \left( F\left( U \right), \tilde{g}|_{F\left( U \right) }  \right)\simeq  \left( U, g|_{U} \right)    $ ,
+            因此 $\varphi\circ F^{-1} |_{F\left( U \right) }: \left( F\left( U \right), \tilde{g}|_{F\left( U \right) }  \right)  \simeq  \left( \mathbb{R} ^{n},\overline{g} \right) $ .其中 $ F\left( U \right)  $是 $ p $的开邻域,因此 $ \left( \tilde{M},\tilde{g} \right)  $是平坦的.   
+        \end{proof}
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{definition}
+    对于Riemann流形 $ \left( M,g \right)  $,以下等价
+    \begin{enumerate}
+        \item $ g $是平坦的；
+        \item $ M $上的每一点都含于某个坐标开集上,在其上 $ g $有坐标表示 $ g = \delta_{ij}\,\mathrm{d} x^{i}\,\mathrm{d} x^{j} $    ；
+        \item $ M $上的每一点都含于某个坐标开集上,使得其上的坐标标架是正交的;
+    \end{enumerate}
+     
+\end{definition}
+
+\subsection{法丛}
+
+\begin{definition}
+    设 $ \left( M,g \right)  $是 $ n $  -维（带边）Riemann流形,$ S\subseteq M $是 $ k  $-维Riemann子流形.
+    \begin{itemize}
+        \item 对于每个 $ p \in S $,称 $ v \in T_{p}M $是 $ S $的一个法向,若 $ v $通过内积 $ \left<\cdot ,\cdot  \right>_{g} $与 $ T_{p}S $中的每个向量垂直.
+        \item $ S $在 $ p $处的法空间,是指由全体 $ p $的法向向量组成的子空间 $ N_{p}S\subseteq T_{p}M $          .
+        \item $ S $的法丛是指 $ S $在所有点的法空间的无交并 $ NS\subseteq TM $ . 
+        \item 投影映射 $ \pi_{NS}: NS\hookrightarrow S $被定义为 $ \pi:TM\to M $在 $ NS $上的限制.    
+    \end{itemize}
+    
+\end{definition}
+
+\begin{proposition}{子流形的法丛}
+    令 $ \left( M,g \right)  $是（带边）Riemann $ n $-流形.对于任意 $ k $-维浸入子流形 $ S\subseteq M $,法丛 $ NS $是 $ TM|_{S} $的光滑rank-$ \left( n-k \right)  $子流形.      
+    对于每个 $ p \in S $,存在 $ p $的邻域上的 $ NS $的关于 $ g $的 正交标架.  
+\end{proposition}
+
+
+\section{Riemann距离函数}
+\begin{definition}{曲线长度}
+    设 $ \left( M,g \right)  $ 是（带边）Riemann流形.若 $ \gamma:[a,b]\to M $是逐段光滑曲线,则
+$ \gamma $的长度为 $$
+L_{g}\left( \gamma \right) = \int_{a}^{b} \left| \gamma^{\prime} \left( t \right)  \right|_{g}  
+\,\mathrm{d} t$$  
+\end{definition}
+
+\begin{proposition}{等距同构不变性}
+    曲线的长度在Riemann流形的等距同构下不变.更确切地说,设 $ \left(M,g \right)  $和 $ \left( \tilde{M},\tilde{g} \right)  $是两个Riemann(带边)流形,$F:M\to \tilde{M} $   是局部等距同构.
+    则 $ L_{\tilde{g}}\left( F\circ \gamma \right)   = L_{g}\left( \gamma \right) $对每个 $ M $上的逐段光滑曲线 $ \gamma $ 成立 . 
+\end{proposition}
+\begin{proof}
+ 由 $ [a,b] $的紧性,它可以分为有限个充分小的区间,使得曲线的在区间上的像包含在某个等距同构的开邻域上,于是 
+    $$
+    \begin{aligned}
+    L_{ \tilde{g}} \left( F\circ \gamma \right) & = \int_{a}^{b} \left(  \left< F_{*} \gamma^{\prime} \left( t \right), F_{*} \gamma^{\prime} \left( t \right)   \right>_{ \tilde{g}} \right)^{\frac{1}{2}}   \,\mathrm{d} t\\ 
+     & = \int_{a}^{b}\left( \left<\gamma^{\prime} \left( t \right),\gamma^{\prime} \left( t \right)   \right>_{F^{*} \tilde{g} } \right)^{\frac{1}{2}}  \,\mathrm{d} t\\ 
+      & = \int_{a}^{b} \left( \left<\gamma^{\prime} \left( t \right),\gamma^{\prime} \left( t \right)   \right>_{ g} \right)^{ \frac{1}{2}} \,\mathrm{d} t\\ 
+       & = L_{g}\left( \gamma \right) 
+    \end{aligned}
+    $$
+\end{proof}
+
+\begin{proposition}{长度的参数无关性}
+    设 $ \left( M,g \right)  $是（带边）Riemann流形,$ \gamma:[a,b]\to M $是逐段光滑曲线.
+    若 $ \tilde{\gamma} $是 $ \gamma $的重参数化,那么 $ L_{g}\left( \tilde{\gamma} \right)=L_{g}\left( \gamma \right)   $.     
+\end{proposition}
+\begin{proof}
+    \begin{enumerate}
+        \item 首先设 $ \gamma $光滑,$ \varphi:[c,d]\to [a,b] $是微分同胚使得 $ \tilde{\gamma}=\gamma\circ \varphi $,并且 $ \varphi^{\prime} >0 $.我们有 $$
+        \begin{aligned}
+        L_{g}\left( \tilde{\gamma} \right)  & = \int_{c}^{d}\left| \tilde{\gamma}^{\prime} \left( t \right)  \right|_{g} \,\mathrm{d} t=  \int_{c}^{d}\left| \frac{\,\mathrm{d}  }{\,\mathrm{d} t }  \left( \gamma\circ \varphi \right)\left( t \right)  \right|_{g}\,\mathrm{d} t\\ 
+         & = \int_{c}^{d} \left| \varphi^{\prime} \left( t \right)\gamma^{\prime} \left( \varphi\left( t \right)  \right)   \right|_{g}  \,\mathrm{d} t = \int_{c}^{d} \left| \gamma^{\prime} \left( \varphi\left( t \right)  \right)  \right|_{t} \varphi^{\prime} \left( t \right)\,\mathrm{d} t\\ 
+          & = \int_{a}^{b}  \left| \gamma^{\prime} \left( s \right)  \right| _{g}\,\mathrm{d} s\\ 
+           & = L_{g}\left( \gamma \right) 
+        \end{aligned}
+        $$     
+        \item 当 $ \varphi^{\prime} <0 $时,积分方向调换的符号改变和 $ \varphi^{\prime} \left( t \right)  $移出绝对值的符号改变相抵消,结果不变.
+        \item 若 $ \gamma $逐段光滑,只需在每一段上重复上述过程后相加即可. 
+    \end{enumerate}
+    
+\end{proof}
+
+以下设 $ \partial M = \varnothing $ 
+
+\begin{definition}{Riemann距离}
+    设 $ \left( M,g \right)  $是连通的Riemann流形.对于每个 $ p,q\in M $,定义 $ p $到 $ q $的（Riemann）距离为全体 $ L_{g}\left( \gamma \right)  $的下确界,其中 $ \gamma $是 $ p $到 $ q $的逐段光滑曲线.
+    记 $ p $到 $ q $的距离为 $ d _{g}\left( p,q \right)  $.           
+\end{definition}
+
+\begin{proposition}{等距同构不变}
+    设 $ \left( M,g \right)  $和 $ \left( \tilde{M},\tilde{g} \right)  $  是两个连通的Riemann流形, $ F: M\to  \tilde{M} $是Riemann等距同构.
+    则对于所有的 $ p,q \in M $, $ d _{\tilde{g}}\left( F\left( p \right),F\left( q \right)   \right) =  d _{g}\left( p,q \right)   $   
+\end{proposition}
+\begin{proof}
+    注意到每个连接 $ p,q $的逐段光滑曲线都给出长度相同的连接 $ F\left( p \right)  $与 $ F\left( q \right)  $的逐段光滑曲线,因此由定义 $$
+     d _{\tilde{g}}\left( F\left( p \right),F\left( q \right)   \right) \le  d _{g}\left( p,q \right) 
+    $$相同的讨论应用与 $ F^{-1} :\tilde{M}\to M $,得到另一个方向的不等式.   
+\end{proof}
+
+\begin{lemma}\label{metric-compare}
+    设 $ g $是开子集 $ U\subseteq \mathbb{R} ^{n} $上的一个Riemann度量.给定紧子集 $ K\subseteq U $,存在正常数 $ c,C $,使得对于所有的 $ x \in K $和 $ v \in T_{x}\mathbb{R} ^{n} $, $$
+    c\left| v \right|_{\overline{g}} \le \left| v \right|_{g}\le C\left| v \right|_{\overline{g}} 
+    $$      
+\end{lemma}
+\begin{note}
+    范数的齐次性保证了,范数可以被一个包含原点的简单闭合曲面所决定.据此,考察 $ \left| v \right|_{\overline{g}}  = 1$ 的点构成的闭合曲面,它在里面可以装下一个以原点为中心的小球,从外面被一个以原点为中心的大球包住.
+\end{note}
+\begin{proof}
+    令 $ L\subseteq  T \mathbb{R} ^{n} $为 $$
+    L : = \left\{ \left( x,v \right)\in  T R^{n}: x\in K  ,\left| v \right|_{\tilde{g}} =1\right\}
+    $$将 $ T \mathbb{R} ^{n} $与 $ \mathbb{R} ^{n}\times \mathbb{R} ^{n} $等同,$ L $无非是 $ K\times \mathbb{S}^{n-1} $,从而是紧集.因为
+    模长 $ \left| v \right|_{g}  $是 $ L $上正定的连续函数,因此存在 $ c,C $,使得 $ c \le \left| v \right|_{g}\le C  $  对于任意 $ \left( x,v \right)\in L  $      成立.
+    若 $ x \in K $,且 $ v $是非零向量,那么令 $ \lambda = \left| v \right|_{\overline{g}}  $, 则$ \left( x, \lambda^{-1} v \right)\in L  $   ,由范数的齐次性 $$
+    \left| v \right|_{g} = \lambda \left|  \lambda ^{-1} v\right|_{g} \le \lambda C= C\left| v \right|_{ \overline{g}}   
+    $$类似地有  $ \left| v \right|_{g}\ge c\left| v \right|_{\overline{g}}   $.当 $ v =0 $时不等式显然成立.综上命题得证.  
+\end{proof}
+
+\begin{theorem}{Riemann流形作为度量空间}\label{RM-as-metricspace}
+    设 $ \left( M,g \right)  $是连通的Riemann流形.在Riemann距离函数下,$ M $是一个度量空间,且它的度量拓扑与原本的拓扑相同.  
+\end{theorem}
+
+\begin{remark}
+    由此,可以在连通Riemann流形上谈论一切度量空间的性质.
+\end{remark}
+\begin{note}
+    \begin{itemize}
+        \item 非负性和三角不等式不难说明,对于正定性,利用引理\ref{metric-compare}在正则坐标球上将连接 $ p,q $的曲线的Riemann距离与坐标欧氏距离相比较,给出下界,由此说明： $ p,q $因为隔了一段欧氏距离,所以隔了一段Riemann距离, 从而说明正定性.
+        \item 说明度量拓扑开集的每一点都含于某个坐标球里：在 $ p $附近的坐标球里,利用度量开集的性质取度量半径充分小的度量球,利用\ref{metric-compare},取欧式直线段（长度是Riemann距离的上界）说明它包在坐标球里.
+        \item 坐标开球中的点都含于某个Riemann距离球：坐标球的中心点与坐标球外的点隔了一段固定的Riemann距离,因此Riemann意义下与中心点近的点,一定在坐标开球里.
+    \end{itemize}
+    
+\end{note}
+
+\begin{corollary}{可度量性}
+    每个光滑（带边）流形都是可度量的.
+\end{corollary}
+\begin{note}
+    \begin{itemize}
+        \item 连通的流形可度量\ref{RM-as-metricspace}.对于不连通的流形,在两两连通分支之间建立长度为1的“桥”,这样就得到了整体的度量.
+        \item 若要考察拓扑,只需要在每一点附近取（充分小的）连通的（度量或坐标）开球.
+    \end{itemize}
+ 
+\end{note}
+\section{切-余切同构}
+\begin{definition}{度量诱导的丛同构}
+    设 $ \left( M,g \right)  $是（带边）Riemann流形.按以下方式定义 $ \hat{g}: TM\to  T^{*}M $ :\\ 
+    对于每个 $ p \in M $和 $ v \in T_{p}M $,令 $ \hat{g}\left( v \right) \in  T_{p}^{*}M  $   $$
+    \hat{g}\left( v \right)\left( w \right)= g_{p}\left( v,w \right),\quad w \in T_{p}M \footnote{通过度量配对的方式,将向量视为余向量}  
+    $$则 $ \hat{g} $是一个丛同构. 
+\end{definition}
+\begin{note}
+    由于我们拿到手的就是一个逐点的定义,因此利用 $ C^{\infty}\left( M \right)  $-线性的刻画引理来说明是最方便的.
+\end{note}
+\begin{proof}
+    考虑 $ \hat{g} $在向量场上的作用: $$
+    \hat{g}\left( X \right)\left( Y \right) = g\left( X,Y \right),\quad X,Y \in  \mathfrak{X}   \left( M \right) 
+    $$ 因为对于每个 $ X \in \mathfrak{X}\left( M \right)  $,关于 $ Y $的函数 $ \hat{g}\left( X \right)\left( \cdot  \right)   $是 $ C^{\infty}\left( M \right)  $-线性的,由张量场的刻画引理（\ref{tensor-char-lemma}）, $ \hat{g}\left( X \right)  $是
+    光滑的余向量场.又 $ \hat{g}\left( X \right)  $视为 $ X $的函数是 $ C^{\infty}\left( M \right)  $-线性的,故由丛同态的刻画引理,$ \hat{g} $定义出光滑的丛同态.
+    
+    若 $ \hat{g}\left( v \right)=0  $对某个 $ v \in T_{p}M $成立,则 $$
+    0 = \hat{g}\left( v,v \right)= \left<v,v \right>_{g} 
+    $$ 正定性立即给出 $ v = 0 $ ,这表明 $ g $在每一点出都给出线性空间的单射,维数关系又表明这是一个双射,进而给出丛同构. 
+\end{proof}
+\begin{proposition}{矩阵表示}
+    在任意光滑坐标 $ \left( x^{i} \right)  $上,设 $ g = g_{ij} \,\mathrm{d} x^{i} \,\mathrm{d} x^{j} $.若 $ X,Y $是光滑向量场,我们有 $$
+    \hat{g}\left( X,Y  \right) = g_{ij}X^{i}Y^{j} 
+    $$这表明余向量场$ \hat{g}\left( X \right)  $    有坐标表示 $$
+    \hat{g}\left( X \right) = g_{ij}X^{i}\,\mathrm{d} x^{j} 
+    $$换言之, $ \hat{g} $作为丛同态的关于 $ TM $和 $ T^{*}M $坐标标架的矩阵表示,与 $ g $本身的矩阵相同\footnote{将 \(  X = X^{i} \frac{\partial }{\partial x^{i}}\)写成行向量 \(  \left( X^{1},\cdots ,X^{n}\right) \),则右指标列标固定, \(  \hat{g}\left( X \right)= \left( X^{1},\cdots ,X^{n} \right) \left( g_{ij} \right)    \) 的第 \(  j  \)列就是 \(  g_{ij}X^{i}  \)    }.    
+\end{proposition}
+\begin{proof}
+    利用 \[
+    Y^{j}=  \,\mathrm{d} x^{j}\left( Y \right) 
+    \]
+
+    \hfill $\square$
+\end{proof}
+\begin{definition}
+    通常记向量场 $ \hat{g}\left( X \right)  $的分量,按 $$
+    \hat{g}\left( X \right)= X_{j}\,\mathrm{d} x^{j},\quad X_{j}：= g_{ij}X^{i} 
+    \footnote{对于欧式度量, \(  X_{j}= X^{j}  \),相应的降低指标无非就是把列向量写成行向量 }$$ 可以说 $ \hat{g}\left( X \right)  $是通过 $ X $降低指标得到的.经常记 $ \hat{g}\left( X \right)  $为 $ X^{\flat} $    .
+\end{definition}
+\begin{remark}
+    $ \flat $在音乐中表示降调. 
+\end{remark}
+
+\begin{definition}
+    $ \hat{g}^{-1} : T_{p}^{*}M\to T_{p}M $的矩阵是矩阵 $ \left( g_{ij} \right)  $的逆,记作 $ \left( g^{ij} \right)  $,也是对称矩阵.
+    
+    对于余向量场 $ \omega \in \mathfrak{X}^{*}\left( M \right)  $,向量场 $ \hat{g}^{-1} \left( \omega \right)  $有坐标表示 $$
+    \hat{g}^{-1} \left( \omega \right)= \omega^{i} \frac{\partial }{\partial x^{i}},\quad \omega^{i}= g^{ij}\omega_{j} 
+   \footnote{把 \(   \omega   \)写成列向量 \(  \left(  \omega _{1},\cdots , \omega _{n} \right)   \) ,则左指标行标固定, \(  \hat{g}^{-1} \left(  \omega  \right)= \left( g^{ij} \right)\left(  \omega_1,\cdots,\omega_n  \right)     \) 的第 \(  i  \)行就是 \(   \omega ^{i}=  g^{ij} \omega _j   \)  } $$  可以说 $ \hat{g}^{-1} \left( \omega \right)  $是通过 $ \omega $提升指标得到的,经常记 $ \hat{g}^{-1} \left( \omega \right)  $ 为 $ \omega^{\sharp} $ 
+\end{definition}
+\begin{remark}
+    符号 $ \flat $和 $ \sharp $是一对互逆同构,称为是音乐同构.  
+\end{remark}
+
+\begin{definition}{梯度}
+    对于Reimann流形 $ \left( M,g \right)  $上的光滑函数 $ f $,定义 $ f $的梯度为一个向量场 $$
+    \mathrm{grad}\,f: = \left( \,\mathrm{d} f \right)^{\sharp} = \hat{g}^{-1} \left( \,\mathrm{d} f \right)  
+    $$   
+\end{definition}
+
+\begin{remark}
+    \begin{itemize}
+        \item 对于每个 $ X \in \mathfrak{X}\left( M \right)  $,     $$
+        \left<\mathrm{grad}f,X \right>_{g} = \hat{g}\left( \mathrm{grad}f \right)\left( X \right)= \,\mathrm{d} f\left( X \right)   =Xf
+        $$ 即 $$
+        \left<\mathrm{grad}f,\cdot  \right>_{g} = \,\mathrm{d} f
+        $$
+        \item $ \mathrm{grad} f$有坐标表示 $$
+        \mathrm{grad} f = g^{ij} \frac{\partial f}{\partial x^{i}} \frac{\partial }{\partial x^{j}}
+        $$ 特别地,在欧式度量下 $$
+        \mathrm{grad}f=  \sum_{i=1}^{n} \frac{\partial f}{\partial x^{i}} \frac{\partial }{\partial x^{i}}
+        $$
+    \end{itemize}
+    
+\end{remark}
+\section{张量的内积}
+
+\begin{definition}{余向量的内积}
+    设 \(  g  \)是 \(  M  \)上的Riemann度量, \(  x \in M  \),定义\(  T_{X}^{*}M  \)上的内积为 \[
+    \left< \omega ,\eta  \right>_{g}: =  \left< \omega ^{\sharp },\eta ^{\sharp } \right>_{g}
+    \]    
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 利用 \(  g_{kl}g^{ki}= g_{lk}g^{ki}=  \delta  _{l}^{i}  \), 得到 \[
+        \begin{aligned}
+        \left< \omega ,\eta  \right>& = g_{kl}\left( g^{ki} \omega _{i} \right)\left( g^{lj}n\eta _{j} \right)   \\ 
+         & =  \delta  _{l}^{i}g^{lj} \omega _{i}\eta _{j}\\ 
+           & =  g^{ij} \omega _{i}\eta _{j} \footnote{形式上是逆度量的二次型表示}
+        \end{aligned}
+        \] 
+        \item 利用升降指标的记号,可以写成 \[
+        \left< \omega ,\eta  \right>=  \omega _{i}\eta ^{i}=  \omega ^{j}\eta _{j}
+        \]
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{proposition}
+    设 \(  \left( M,g \right)   \)是(带边)(伪)Riemann流形,令 \(  \left( E_{i} \right)   \)是 \(  M  \)的一个局部标架, \(  \left(  \varepsilon ^{i} \right)   \)是对偶的余标架,则以下等价
+    \begin{enumerate}
+        \item \(  \left( E_{i} \right)   \)正交.
+        \item  \(  \left(  \varepsilon ^{i} \right)   \)正交.
+        \item \(  \left(  \varepsilon ^{i} \right)^{\sharp }   = E_{i},\forall i\).   
+    \end{enumerate}
+        
+\end{proposition}
+
+\begin{proof}
+    \[
+    \begin{aligned}
+    \left< \varepsilon ^{i}, \varepsilon ^{j} \right>& = \left<\left(  \varepsilon ^{i} \right)^{\sharp },\left(  \varepsilon ^{j} \right)^{\sharp }   \right> \\ 
+     & = g^{ij}
+    \end{aligned}
+    \] 而 \(  \left( E_{i} \right)   \)正交,当且仅当 \(  g_{ij}=  \delta  _{i}^{j}  \),当且仅当 \(  g^{ij}=  \delta  _{j}^{i}  \),当且仅当 \(  \left(  \varepsilon ^{i} \right)   \)    正交. \[
+    \left(  \varepsilon ^{i} \right)^{\sharp }= g^{kj} \omega _{j}E_{k}= g^{ki}E_{i}
+    \]故 \[
+    \left(  \varepsilon ^{i} \right)^{\sharp }= E_{i} ,\forall i \iff g^{ki}=   \delta  _{k}^{i},\forall k,i \iff \left( E_{i} \right)\text{正交} 
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{光滑纤维度量}
+    设 \(  E\to M  \)是一个光滑向量丛. \textbf{\(  E  \)上的一个光滑纤维度量 }, 是指在每个纤维 \(  E_{p}  \)上的内积,且是光滑变化地,即使得对于任意的 \(  E  \)的(局部)光滑向量场 \(   \sigma ,\tau   \),\(  \left< \sigma ,\tau  \right>  \)是光滑函数.    
+\end{definition}
+
+\begin{proposition}{张量的内积}
+    设 \(  \left( M,g \right)   \)是 \(  n  \)维(带边)Riemann流形.则存在唯一的定义在每个张量丛 \(  T^{\left( k,l \right) }TM  \)的光滑纤维度量,使得若 \(   \alpha _1 ,\cdots , \alpha _{k+ l}  \)和 \(  \beta _1 ,\cdots ,\beta _{k+ l}  \)是合适的向量场或余向量场,都有 \[
+    \left< \alpha _1 \otimes \cdots \otimes  \alpha _{k+ l},\beta _1 \otimes \cdots \otimes \beta _{k+ l} \right>= \left< \alpha _1 ,\beta _1  \right>\cdot \cdots \cdot \left< \alpha _{k+ l},\beta _{k+ l} \right>
+    \]在此内积下,若 \(  \left(  E_1,\cdots,E_n  \right)   \)是 \(  TM  \)的一个局部正交标架, \(  \left(  \varepsilon^1,\cdots,\varepsilon^n \right)   \)是对应的对偶余标架,则形如 \(  E_{i_1}\otimes \cdots \otimes E_{i_{k}}\otimes  \varepsilon ^{j_1}\otimes \cdots \otimes  \varepsilon ^{j_{l}}  \)         构成 \(  T^{\left( k,l \right) }\left( T_{p}M \right)   \)的一个正交标架.并且在任意一组标架(不必正交)下,纤维度量满足 \[
+    \left<F,G \right> =  g_{i_1r_1}\cdots g_{i_{k}r_{k}}g^{j_1s_1}\cdots g^{j_{l}s_{l}}F_{ j_1,\cdots,j_l }^{ i_1,\cdots,i_k }G_{ s_1,\cdots,s_l }^{ r_1,\cdots,r_k }
+    \] 若 \(  F,G  \)均为协变张量,则写作 \[
+    \left<F,G \right>= F_{ j_1,\cdots,j_l }G^{ j_1,\cdots,j_l }
+    \]  \(  G^{ j^1,\cdots,j^l }  \)表为提升指标 : \[
+    G^{ j_1,\cdots,j_l }= g^{j_1s_1}\cdots g^{j_{l}s_{l}}G_{ s_1,\cdots,s_l }
+    \]  
+\end{proposition}
+
+\section{构造Riemann流形的方法}
+
+
+\subsection{Riemann子流形}\label{sse-Riemann子流形}
+
+\begin{definition}{诱导度量}
+    设 $ \left( M,g \right)  $是一个Riemann流形,每个子流形 $ S\subseteq M $(带边、浸入、嵌入)上都继承了自然的拉回度量 $ \iota^{*}g $,其中 $ \iota: S \hookrightarrow M $是含入映射.
+    此拉回度量也称为是 $ S $上的诱导度量.具体地,对于 $ v,w \in T_{p}S $ $$
+    \left( \iota^{*}g \right)\left( v,w \right)= g\left( \,\mathrm{d} \iota_{p}\left( v \right),d \iota_{p}\left( w \right)   \right)   =g\left( v,w \right) 
+    $$      
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 将 \(  T_{p}S  \)与它 在 \(  \,\mathrm{d} \iota _{p}   \),位于 \(  T_{p}M  \)中的像等同,则   \(   \left( \iota ^{*}g \right) \left( v,w \right) =  g\left( v,w \right) , v,w \in T_{p}S    \) ,因此 \(  \left( \iota ^{*}g \right)   \)
+        无非就是 \(  g  \)  与 \(  S  \)相切的向量上的限制. 
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{definition}{Riemann子流形}
+    $ \left( M,g \right),S  $同前.称 $ \left( S,\iota^{*}g \right)  $为 $ M $的Riemann(带边)子流形.   
+\end{definition}
+
+\begin{example}
+    $ \mathbb{S}^{n} $上的诱导度量 $ \mathring{g}: = \iota^{*} \overline{g} $被称为是球上的圆度量,其中 $ \iota : \mathbb{S}\hookrightarrow \mathbb{R} ^{n+ 1} $   
+\end{example}
+
+
+\begin{example}(图像坐标系上的诱导度量).
+
+    设 $ U\subseteq \mathbb{R} ^{n} $是开集,$ S\subseteq \mathbb{R} ^{n+ 1} $是光滑函数 $ f:U\to \mathbb{R}  $的图像.
+    映射 $ X:U\to \mathbb{R} ^{n+ 1} $,$ X\left( u^{1},\cdots ,u^{n} \right)  =\left( u^{1},\cdots ,u^{n},f\left( u \right)  \right) $是 $ S $的光滑全局参数表示.
+    $ X $上的诱导度量由以下给出 $$
+    X^{*}\overline{g}= X^{*}\left( \left( \,\mathrm{d} x^{1} \right)^{2}+ \cdots + \left( \,\mathrm{d} x^{n+ 1} \right)^{2}   \right) = \left( \,\mathrm{d} u^{1} \right)^{2}+ \cdots + \left( \,\mathrm{d} u^{n} \right)^{2}+ \,\mathrm{d} f^{2}   
+    $$       
+\end{example}
+
+
+\begin{example}(旋转曲面上的诱导度量).
+
+    设 $ C $是半平面 $ \left\{ \left( r,z \right): r >0  \right\} $的 $ 1 $-维嵌入子流形,$ S_{C} $是由 $ C $生成的旋转曲面.为了计算 $ S_{C} $上的诱导度量,
+    选择 $ C $的光滑局部参数表示 $ \gamma\left( t \right)=\left( a\left( t \right),b\left( t \right)   \right)   $    .映射 $ X\left( t,\theta \right): = \left( a\left( t \right)\cos \theta,a\left( t \right)\sin \theta,b\left( t \right)    \right)   $ 
+    给出 $ S_{C} $的光滑局部参数表示,设 $ \left( t,\theta \right)  $限制在平面的充分小的开集上.可以计算 $$
+    \begin{aligned}
+    X^{*} \overline{g}&= \,\mathrm{d} \left( a\left( t \right)\cos \theta  \right)  ^{2}+ \,\mathrm{d} \left( a\left( t \right)\sin \theta  \right) ^{2}+ \,\mathrm{d} \left( b\left( t \right)  \right)^{2}\\ 
+     & = \left( a^{\prime} \left( t \right)\cos \theta \,\mathrm{d} t-a\left( t \right)\sin \theta \,\mathrm{d} t   \right) ^{2}\\ 
+     & +  \left( a^{\prime} \left( t \right)\sin \theta \,\mathrm{d} t+  a\left( t \right)\cos \theta \,\mathrm{d} t   \right)^{2}+  \left( b^{\prime} \left( t \right)  \,\mathrm{d} t\right)^{2} \\ 
+     & = \left( a^{\prime} \left( t \right)^{2}+ b^{\prime} \left( t \right) ^{2}  \right) \,\mathrm{d} t^{2}+  a\left( t \right)^{2} \,\mathrm{d} \theta^{2}
+    \end{aligned}
+    $$  
+
+    特别地,若 $ \gamma $是单位速度曲线（以时间为参数的速度为1的曲线的）,即 $ \left| \gamma^{\prime} \left( t \right)  \right|^{2}= a^{\prime} \left( t \right)^{2}+ b^{\prime} \left( t \right)   ^{2}=1 $,则有最简单的形式 $ \,\mathrm{d} t^{2}+ a\left( t \right)^{2}\,\mathrm{d} \theta^{2}  $   
+\end{example}
+
+\begin{definition}
+    设 \(  \left( \tilde{M}, \tilde{g}  \right)   \)是  \(  m  \)-维光滑Riemann（带边）流形, \(  M\subseteq  \tilde{M}  \)  是 \(  n  \)-为光滑（带边）子流形 , 
+     \(  \tilde{M}  \)的在一个开子集 \(  \tilde{U} \subseteq  \tilde{M}  \)  上的一个局部标架 \(  \left(  E_1,\cdots,E_n  \right)   \)被称为是与 \(  M  \)适配的,若前 \(  n  \)个向量场 \(  \left(  E_1,\cdots,E_n  \right)   \)与 \(  M  \)相切.     
+\end{definition}
+
+
+\begin{proposition}\label{寻找适配的正交标架}
+    令 \(  \left( \tilde{M},\tilde{g}  \right)   \)是一个Riemann流形（无边）, \(  M\subseteq \tilde{M}   \)  是（带边）嵌入子流形 \footnote{这里要求嵌入子流形,主要是为了利用切片判据,将切空间做“光滑的分离”,以确保正交化的施行不会让向量跑到空间外面去.由于标架的适配性是标架在局部上的行为,对于 \(  M  \)的开子集 \(  U  \), \(  U  \)上与 \(  M  \)适配和与 \(  U  \)适配是一回事.因此利用浸入子流形的局部嵌入性,可以将条件放宽为浸入子流形.     }.给定 \(  p \in M  \),存在 \(  p  \)在 \(  \tilde{M}  \)   上的邻域 \(  \tilde{U}  \) ,
+    和一个 \(  \tilde{M}  \)在 \(  \tilde{U}  \)上的光滑正交标架,与 \(  M  \)适配.   
+\end{proposition}
+
+\begin{proof}
+    由 \(  M  \)是嵌入子流形,任给 \(  p \in M  \),存在\(  p  \)在 \(  \tilde{M}  \)上的坐标卡 \(  \left( U,\left(  x^1,\cdots,x^n  \right)  \right)   \) ,使得 \(  U\cap M  \)是 \(  U  \)的一个 \(  k  \)-切片,通过坐标的平移,可以设 \(  U  \cap M\)上点的坐标为 \[
+    \left( x^{1},\cdots ,x^{k},0,\cdots ,0 \right) 
+    \] \(  U  \)上的前 \(  k  \)个坐标向量场 \(   x^1,\cdots,x^k   \)与 \(  M  \)相切,对   \(   x^1,\cdots,x^n   \)施行Schmidt正交化,得到 \(  \left( \tilde{x}^{1},\cdots ,\tilde{x}^{n} \right)   \),则 \(  \tilde{x}^{1},\cdots ,\tilde{x}^{k}  \)仍与  \(  M  \)相切,因此 \(  \left( \tilde{x}^{1},\cdots ,\tilde{x}^{n} \right)   \)构成一个 \(  \tilde{M}  \)在 \(  U  \)上的与 \(  M  \)适配的光滑正交标架.       
+ 
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{法空间}
+    设 \(  \left( \tilde{M}, \tilde{g}  \right)   \)是一个黎曼流形, \(  M\subseteq \tilde{M}  \)是 \(  \tilde{M}  \)的光滑（带边）子流形.
+    给定 \(  p \in M  \)和向量 \(  v \in T_{p} \tilde{M}  \).  
+
+    \begin{enumerate}
+        \item 称 \(  v  \)与 \(  M  \)是正交的,若 \(  \left<v,w \right>= 0  \)对于所有的 \(  w \in T_{p}M  \)成立.
+        \item 全体 在 \(  p  \)处与 \(  M  \)正交的向量构成  \(  T_{p} \tilde{M}  \)       的一个子空间,被称为是 \(  p  \)处的法空间,记作 \(  N_{p}M= \left( T_{p}M \right)^{\perp}   \)  .
+        \item  正有交分解 \(  T_{p}\tilde{M}= T_{p}M\oplus N_{p}M  \)；
+        \item 称 \(  T \tilde{M}|_{M}  \)的一个截面为沿 \(  M  \)的法向量场,若 \( N_{p}\in N_{p}M  \)对于任意的 \(  p \in M  \)成立；
+        \item 称集合 \[
+        NM : =  \prod_{\pi  \in  M}N_{p}M 
+        \]为 \(  M  \)的法丛.      
+    \end{enumerate}
+    
+\end{definition}
+
+\begin{proposition}
+    设 \(  \tilde{M}  \)是Riemann \(  m  \)-流形, \(  M\subseteq \tilde{M}  \)是\(  n  \)-维 浸入或嵌入（带边）子流形    ,则 \(  NM  \)是 \(  T \tilde{M}|_{M}  \)的 光滑  rank- \(  \left( m-n \right)   \)子丛.存在光滑丛同态 \[
+    \pi ^{\top}: T \tilde{M}|_{m} \to TM,\quad \pi ^{\perp}:T \tilde{M}|_{M}\to NM
+    \] 称为是切投影和法投影,对于每一点 \(  p \in M  \),它们在 \(  T_{p}\tilde{M}  \)的限制分别表现为到 \(  T_{p}M  \)和 \(  N_{p}M  \)的正交投影.     
+\end{proposition}
+
+\begin{proof}
+    任给 \(  p \in M  \),由浸入子流形的局部嵌入性,存在 \(  p  \)在 \(  M  \)中的邻域 \(  U  \),使得\(  U  \)可以被嵌入到 \(  \tilde{M} \)中.       
+    由命题\ref{寻找适配的正交标架},存在 \(  p  \)在 \(  \tilde{M}  \)上的邻域   \(  \tilde{U}  \),使得 \(  \tilde{U}  \)上存在适配于 \(  M  \)（实际上是适配于\(  U  \),只不过这两者是一样的）的正交标架 \(  \left(  E^1,\cdots,E^m  \right)   \).
+        对于每个 \(  q \in \tilde{U}  \), \(  E_{q}^{1},\cdots ,E_{q}^{n}  \)构成 \(  T_{q}M  \)的一个基, \(  E_{q}^{n+ 1},\cdots ,E_{q}^{m}  \)    构成 \(  N_{q}M  \)的一组基.由子丛的局部标架判据, \(  NM  \)构成 \(  \tilde{TM}|_{M}  \)的一个光滑rank-\(  \left( m-n \right)   \)的子丛.
+        
+        按要求逐点地定义 \(  \pi ^{\top}  \)和 \(  \pi ^{\perp}  \)为局部的正交投影,那么它们可以分别表示为  \[
+       \begin{aligned}
+        \pi ^{\top}\left(  X^{1}E_1+ \cdots + X^{m}E_{m} \right)&: =  X^{1}E_1+ \cdots + X^{n}E_{n}\\ 
+         \pi ^{\perp}\left( X^{1}E_1+ \cdots+  X^{m}E_{m} \right)&: =  X^{n+ 1}E_{n+ 1}+ \cdots + X^{m}E_{m} 
+       \end{aligned}  
+        \]这表明 \(  \pi ^{\top}  \)和 \(  \pi ^{\perp}  \)是光滑的.  
+    \hfill $\square$
+\end{proof}
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+
+子流形 \(  M\subseteq \tilde{M}  \) 上的计算通常由 \textbf{光滑局部参数化的形式给出}: 即一个光滑映射 \(  X: U\to \tilde{M}  \),其中 \(  U  \)是 \(  \mathbb{R} ^{n}  \)上的一个开集(当 \(  M  \)有边时,或为 \(  \mathbb{R} ^{n}_{+ }  \)上的  ),使得 \(  X\left( U \right)   \)是 \(  M  \)上的一个开集,且 \(  X  \)视作 \(  U  \)到 \(  M  \)上的映射时,成为映到像集的微分同胚.  用 \(  X  \)同时表示它视为映到 \(  M  \)和映到 \(  \tilde{M}  \)的映射. 
+
+若令 \(  V= X\left( U \right)\subseteq M   \), \(   \varphi = X ^{-1} :V\to U  \),则 \(  \left( V, \varphi  \right)   \)是 \(  M  \)上的一个光滑坐标卡.
+
+设 \(  \left( M,g \right)   \)是 \(  \left( \tilde{M} \right),\tilde{g}   \)的Riemann子流形, \(  X:U\to \tilde{M}  \)是 \(  M  \)的一个光滑局部参数化.则 \(  g  \)的坐标表示由以下 \(  U  \)上的 \(  2  \)-张量场给出: \[
+\left(  \varphi ^{-1}  \right)^{*}g =  X^{*}g =  X^{*}\iota ^{*}\tilde{g}= \left( \iota \circ X \right)^{*} \tilde{g}  
+\]       由于 \(  \iota \circ X  \)无非就是\(  X  \)子集(视作到 \(  \tilde{M}  \)的映射 ),于是上面的拉回度量就是 \(  X^{*}\tilde{g}  \).
+
+一旦 \(  \tilde{g}  \)的坐标表示给出,可以轻松地计算得到拉回张量场.例如,若 \(  M  \)是 \(  \mathbb{R} ^{m}  \)的 \(  n  \)-Riemann浸入子流形, \(  X:U\to \mathbb{R} ^{m}  \)是 \(  M  \)的一个光滑局部参数化, \(  U  \)上的诱导度量就是 \[
+g =  X^{*}\bar{g}=  \sum _{i= 1}^{m} \left( \,\mathrm{d} X^{i} \right)^{2} =  \sum _{i= 1}^{m} \left( \sum _{j= 1}^{n} \frac{\partial X^{j}}{\partial u^{j}}\,\mathrm{d} u^{j} \right)^{2} =  \sum _{i= 1}^{m} \sum _{j,k= 1}^{n} \frac{\partial X^{i}}{\partial u^{j}} \frac{\partial X^{i}}{\partial u^{k}} \,\mathrm{d} u^{j}\,\mathrm{d} u^{k} 
+\]       
+
+
+\begin{example} [图像坐标系上的诱导度量]
+    设 \(  U\subseteq \mathbb{R} ^{n}  \)是一个开集, \(  f:U\to \mathbb{R}   \)是光滑函数,则 \textbf{\(  f  \)的图像 }是子集 \(   \Gamma \left( f \right)= \left\{ \left( x,f\left( x \right)  \right):x\in U  \right\}\subseteq \mathbb{R} ^{n+ 1}   \)是一个 \(  n  \)维嵌入子流形.他有全局参数化 \(  X:U\to \mathbb{R} ^{n+ 1}  \),称为是\textbf{图像参数化},由 \(  X\left( u \right)= \left( u,f\left( u \right)  \right)    \)给出.相应的 \(  M  \)上的坐标 \(   u^1,\cdots,u^n   \)称为是图像坐标.在图像坐标下, \(   \Gamma \left( f \right)   \)的诱导度量是 \[
+        X^{*} \bar{g}= X^{*}\left( \left( \,\mathrm{d} x^{1} \right)^{2}+ \cdots + \left( \,\mathrm{d} x^{n+ 1} \right)^{2}   \right) =  \left( \,\mathrm{d} u^{1} \right)^{2}+ \cdots + \left( \,\mathrm{d} u^{n} \right)^{2}+ \left( \,\mathrm{d} f \right)^{2}   
+        \]      应用到 \(  \mathbb{S}^{2}  \)的上半平面上,在参数化 \(  X:\mathbb{B}^{2}\to \mathbb{R} ^{3}  \) \[
+        X\left( u,v \right)= \left( u,v,\sqrt{1-u^{2}-v^{2}} \right)  
+        \]下,可以看到 \(  \mathbb{S}^{2}  \)上的圆度量可以局部地写作 \[
+       \begin{aligned}
+        \overset{\scriptstyle\circ}{g}&= X^{*}\bar{g}= \,\mathrm{d} u^{2}+ \,\mathrm{d} v^{2}+  \left( \frac{u\,\mathrm{d} u+ v\,\mathrm{d} v }{\sqrt{1-u^{2}-v^{2}} }  \right)^{2}\\ 
+         &=  \frac{\left( 1-v^{2} \right)\,\mathrm{d} u^{2}+  \left( 1-u^{2} \right)\,\mathrm{d} v^{2}+ 2uv\,\mathrm{d} u\,\mathrm{d} v   }{1-u^{2}-v^{2} } 
+       \end{aligned} 
+        \]      
+    
+\end{example}
+
+\hspace*{\fill} 
+
+
+\begin{example}[旋转曲面]
+    设 \(  H  \)是半平面 \(  \left\{ \left( r,z \right): r> 0  \right\}  \), \(  C\subseteq H  \)是1-维嵌入子流形.由 \(  C  \)决定的 \textbf{旋转曲面},是指子集 \(  S_{C}\subseteq \mathbb{R} ^{3}  \), \[
+    S_{C} =  \left\{ \left( x,y,z \right): \left( \sqrt{x^{2}+ y^{2}},z \right) \in C   \right\}
+    \]     称 \(  C  \)为它的\textbf{生成曲线}.每个 \(  C  \)的光滑局部参数化 \(   \gamma \left( t \right)= \left( a\left( t \right),b\left( t \right)   \right)    \),都给出 \(  S_{C}  \)的一个光滑局部参数化 \[
+    X\left( t, \theta  \right)= \left( a\left( t \right)\cos  \theta ,a\left( t \right)\sin  \theta ,b\left( t \right)    \right)  
+    \]    
+
+    设 \(  \left( t, \theta  \right)   \)限制在坐标平面上充分小的坐标开集上.则 \(  t  \)-坐标曲线 \(  t\mapsto X\left( t, \theta _0  \right)   \)被称为是 \textbf{子午线}. \(   \theta   \)-坐标曲线 \(   \theta \mapsto X\left( t_0, \theta  \right)   \)被称为是\textbf{纬圆}.
+    
+    \(  S_{C}  \)上的诱导度量是  \[
+    \begin{aligned}
+    X^{*}\bar{g}&= \,\mathrm{d} \left( a\left( t \right)\cos  \theta   \right)^{2} + \,\mathrm{d} \left( a\left( t \right)\sin  \theta   \right)   ^{2}+ \,\mathrm{d} \left( b\left( t \right)  \right)^{2}\\ 
+     &=  \left( a^{\prime} \left( t \right)\cos  \theta \,\mathrm{d} t-a\left( t \right)\sin  \theta \,\mathrm{d}  \theta    \right)^{2}\\ 
+      & +  \left( a^{\prime} \left( t \right)\sin  \theta \,\mathrm{d} t+ a\left( t \right)\cos  \theta \,\mathrm{d}  \theta    \right)^{2}\\ 
+       & + \left( b^{\prime} \left( t \right)\,\mathrm{d} t  \right)   ^{2}\\ 
+        &=  \left( a^{\prime} \left( t \right)^{2}+ b^{\prime} \left( t \right)^{2}   \right)\,\mathrm{d} t^{2}+ a\left( t \right)^{2}\,\mathrm{d}  \theta ^{2}  
+    \end{aligned}
+    \]
+
+
+    特别地,若\(  \gamma   \)是单位速度曲线,( \(  \left|  \gamma ^{\prime} \left( t \right)  \right|^{2}= a^{\prime} \left( t \right)^{2}+ b^{\prime} \left( t \right)^{2}\equiv 1     \) ) ,则上述化为 \(  \,\mathrm{d} t^{2}+ a\left( t \right)^{2}\,\mathrm{d}  \theta ^{2}   \) 
+\end{example}
+
+\hspace*{\fill} 
+
+\subsection{乘积}
+
+\begin{definition}{warped积}
+    设 \(  \left( M_1,g_1 \right)   \)和 \(  \left( M_2,g_2 \right)   \)是两个Riemann流形,  \(  f: M_1\to \mathbb{R} ^{+ }  \) 是严格正的光滑函数,定义\textbf{warped积} \(  M_1\times _{f}M_2  \)为配备了度量 \(  g =  g_1\oplus f^{2}g_2  \)的积流形 \(  M_1\times M_2  \),其中 \(  g  \)被定义为 \[
+    g_{\left( p_1,p_2 \right) }\left( \left( v_1,v_2 \right),\left( w_1,w_2 \right)   \right)= \left. g_1 \right|_{p_1}\left( v_1,w_1 \right)+ f\left( p_1 \right)^{2}\left. g_2 \right|_{p_2}\left( v_2,w_2 \right)    
+    \]    
+\end{definition}
+
+\begin{example}
+    \begin{enumerate}
+        \item 设 \(  H  \)是半平面 \(  \left\{ \left( r,z \right):r> 0  \right\}  \),\(  C\subseteq H  \)是1-嵌入子流形,令 \(  S_{C}\subseteq \mathbb{R} ^{3}  \)    是对应的旋转曲面.令 \(  C  \)配备在 \(  H  \)上诱导的度量, \(  \mathbb{S}^{1}  \)配备标准度量 \(  f: C\to \mathbb{R}   \)是到 \(  z  \)-轴的距离函数: \(  f\left( r,z \right)= r   \),则 \(  S_{c}  \)等距同构于 warped积 \(  C \times  _{f}\mathbb{S}^{1}  \)        
+        \item 令 \(  \rho   \)表示 \(  \mathbb{R} ^{+ }\subseteq \mathbb{R}   \)上的标准坐标函数,则映射 \(  \Phi \left( \rho , \omega  \right)= \rho  \omega    \)   给出warped积 \(  \mathbb{R} ^{+ }\times  _{\rho }\mathbb{S}^{n-1}  \)到 \(  \mathbb{R} ^{n}\setminus \left\{ 0 \right\}  \)的等距同构,其中后者配备了欧式度量.  
+    \end{enumerate}
+    
+\end{example}
+\begin{proof}
+  \begin{enumerate}
+    \item   设 \(  C  \)有一个单位速度参数化 \(   \gamma :I\to H, \gamma \left( t \right)= \left( a\left( t \right),b\left( t \right)   \right)    \).  则旋转的一个参数化为 \[
+        \left(  \theta ,t \right)\mapsto \left( a\left( t \right)\cos  \theta ,a\left( t \right)\sin  \theta ,b\left( t \right)    \right)  
+        \]因此在 \(  \left( a\left( t \right)\cos  \theta ,a\left( t \right)\sin  \theta ,b\left( t \right)    \right)   \)处,有  \[
+        \tilde{g}= a^{2}\left( t \right)\,\mathrm{d}  \theta ^{2}+   \,\mathrm{d} t^{2}
+        \]
+        另一方面,考虑 \(  \mathbb{S}^{1}  \)的参数化 \[
+         \theta \mapsto \left( \cos  \theta ,\sin  \theta  \right) 
+        \]以及 \(  C  \)的参数化 \(   \gamma   \), \(  C\times \mathbb{S}^{1}  \)有参数化 \[
+        \left( t, \theta  \right)\mapsto \left( \left( a\left( t \right),b\left( t \right)   \right),\left( \cos  \theta ,\sin  \theta  \right)   \right)  
+        \] 在 \( \left( \left( a\left( t \right),b\left( t \right),\left( \cos  \theta ,\sin  \theta  \right)    \right)  \right)    \)处,  \[
+        g_1= \left( \,\mathrm{d} a\left( t \right)  \right)^{2}+ \left( \,\mathrm{d} b\left( t \right)  \right)^{2}= \,\mathrm{d} t^{2}  
+        \] \[
+        g_2= \left( \,\mathrm{d} \cos  \theta  \right)^{2}+ \left( \,\mathrm{d} \sin  \theta  \right)^{2}=   \,\mathrm{d}  \theta ^{2}
+        \]于是此处 \[
+        g =  \,\mathrm{d} t^{2}+ f\left( \left( a\left( t \right),b\left( t \right)   \right)  \right)\,\mathrm{d}  \theta ^{2}= \,\mathrm{d} t^{2}+ a\left( t \right)\,\mathrm{d}  \theta ^{2}  
+        \]则考虑映射 \[
+        \varphi : \left( a\left( t \right)\cos  \theta ,a\left( t \right)\sin  \theta ,b\left( t \right)    \right)\mapsto \left( \left( a\left( t \right),b\left( t \right)   \right),\left( \cos  \theta ,\sin  \theta  \right)   \right)  
+        \]则 \[
+         \varphi ^{*}g = \tilde{g}
+        \]这表明 \(   \varphi   \)是等距同构. 
+        \item 设 \(  V_{\rho } =  \partial _{\rho } \) 是 \(  \mathbb{R} ^{+ }  \)的坐标向量场, \(  V_{ \omega }\in T_{p}\mathbb{S}^{n-1}  \).则 \[
+        \left( \Phi ^{*} \bar{g} \right) \left( V_{p},V_{ \omega } \right) = \bar{g}\left( \left( \,\mathrm{d} \Phi  \right)V_{\rho },\left( \,\mathrm{d} \Phi  \right)V_{ \omega }   \right) 
+        \]  通过将嵌入到 \(  \mathbb{R} ^{n+ 1}  \)上,可以计算得到 \[
+        \,\mathrm{d} \Phi \left(  \partial _{\rho } \right)=  \omega \in T_{\rho  \omega } \mathbb{R} ^{n}
+        \] \[
+        \,\mathrm{d} \Phi \left( V_{ \omega } \right)= \rho V_{ \omega } \in T_{\rho  \omega }\mathbb{R} ^{n}
+        \]于是 \[
+        \begin{aligned}
+            \left( \Phi ^{*} \bar{g} \right)\left( V_{\rho },V_{\rho } \right)= \bar{g}\left(  \omega , \omega  \right)   = \left|  \omega  \right|^{2}= 1 
+        \end{aligned} 
+        \] \[
+        \left( \Phi ^{*}\bar{g} \right)\left( V_{ \omega },V_{ \omega } \right)= \bar{g}\left( \rho V_{ \omega },\rho V_{ \omega } \right)= \rho ^{2}\bar{g}\left( V_{ \omega },V_{ \omega } \right)    
+        \] \[
+        \left( \Phi ^{*}\bar{g} \right)\left( V_{\rho },V_{ \omega } \right)= \bar{g}\left(  \omega ,\rho V_{ \omega } \right)= \rho  \bar{g}\left(  \omega ,V_{ \omega } \right)= 0    
+        \]另一方面 \[
+        g\left(  V_{\rho },V_{ \omega } \right)=  0
+        \]\[
+        g\left( V_{\rho },V_{\rho } \right)= \bar{g}\left( V_{\rho },V_{\rho } \right)  
+        \]\[
+        g\left( V_{ \omega },V_{ \omega } \right)= \rho ^{2} \bar{g}\left( V_{ \omega },V_{ \omega } \right)  
+        \]这结合对称正定2-张量由对角元所决定,足以说明 \(  g =  \left( \Phi ^{*} \bar{g}  \right)   \) 
+  \end{enumerate}
+  
+    \hfill $\square$
+\end{proof}
+
+\hspace*{\fill} 
+
+
+\end{document}

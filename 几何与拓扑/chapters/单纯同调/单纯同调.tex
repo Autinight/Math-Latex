@@ -1,0 +1,238 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+    
+\chapter{单纯同调}
+
+\section{单纯复形的定向}
+    \begin{definition}{单形的定向}
+        若在 \(   v_0,\cdots,v_{n}   \)上规定一个顺序,使得 \(  v_0< v_1<\cdots <v_{n}  \).称以  \(   v_0,\cdots,v_{n}   \)为顶点的单形是正定向的,记作 \(  +  \sigma ^{n}  \) ,若存在 \(  0,\cdots ,n  \)的一个偶置换 \(  \tau   \),使得  \[
+        +  \sigma ^{n}  =  \left< v_{\tau \left( 0 \right) },v_{\tau \left( 1 \right) },\cdots , v_{\tau \left( n \right) } \right>
+        \]     类似地可以定义负定向的单形 \(  - \sigma ^{n}  \). 
+    \end{definition}
+
+    \begin{definition}{单纯复形的定向}
+        称单纯复形 \(  K  \)是定向的,若它的每个单形都被规定了一种定向. 
+    \end{definition}
+
+    \begin{remark}
+        \begin{enumerate}
+            \item 这里不看单形的定向和它的面的定向的关系,仅仅是把每个单形单独拿出来考虑定向.
+        \end{enumerate}
+        
+    \end{remark}
+
+
+
+    \begin{definition}{关联数}
+        设 \(  K  \)是定向的单纯复形, \(   \sigma ^{p}  \)和 \(   \sigma ^{p+ 1}  \)是 \(  K  \)的两个维数相差 \(  1  \)的单形.
+        对于每对这样的 \(  \left(  \sigma ^{p+ 1}, \sigma ^{p} \right)   \),定义它们的关联数,记作 \(  [ \sigma ^{p+ 1}, \sigma ^{p}]  \)      ,按以下方式：
+        若 \(   \sigma ^{p}  \)不是 \(   \sigma ^{p+ 1}  \)的一个面,则令\(  [ \sigma ^{p+ 1}, \sigma ^{p}]  = 0\).若 \(   \sigma ^{p}  \)是 \(   \sigma ^{p+ 1}  \)的一个面,我们标记 \(   \sigma ^{p}  \)的顶点,使得
+         \(  +  \sigma ^{p} = \left< v_0,v_1,\cdots,v_{p}  \right>  \).令 \(  v  \)是 \(   \sigma ^{p+ 1}  \)         额外的顶点,则定义 \[
+         [ \sigma ^{p+ 1}, \sigma ^{p}]: =  \begin{cases} 1,& \left<v, v_0,v_1,\cdots,v_{p}  \right>= +  \sigma ^{p+ 1}\\ 
+          -1,\left<v, v_0,v_1,\cdots,v_{p}  \right>= -  \sigma ^{p+ 1} \end{cases} 
+         \]
+    \end{definition}
+
+    \begin{theorem}\label{thm:p-(p-1)-incidence}
+        令 \(  K  \)是定向的单纯复形.若 \(   \sigma ^{p-2}  \)是 \(  K  \)的单形 \(   \sigma ^{p}  \)    的一个 \(  \left( p-2 \right)   \)-面,则 \[
+        \sum [ \sigma ^{p}, \sigma ^{p-1}][ \sigma ^{p-1}, \sigma ^{p}] =  0
+        \]  其中和式为对所有 \(  K  \)的 \(  \left( p-1 \right)   \)-单形  \(   \sigma ^{p-1}  \)的求和.   
+    \end{theorem}
+
+    \begin{proof}
+    
+        令 \(   v_0,v_1,\cdots,v_{p-2}   \) 是 \(   \sigma ^{p-2}  \)的顶点,使得 \(  +  \sigma ^{p-2}=  \left< v_0,v_1,\cdots,v_{p-2}  \right>  \),令 \(  a,b  \)是 \(   \sigma ^{p}  \)的另外两个顶点.不妨设 \(  +  \sigma ^{p} =  \left<a,b,  v_0,v_1,\cdots,v_{p-2}  \right>  \).
+        则使得上述和式的项非零的 \(  \left( p-1 \right)   \)单形只有两个,分别是 \[
+         \sigma _1 ^{\left( p-1 \right) } =  \left<a, v_0,v_1,\cdots,v_{p-2}  \right>,\quad   \sigma _2 ^{\left( p-1 \right) } =  \left<b,  v_0,v_1,\cdots,v_{p-2}  \right>
+        \]这两个 \(  \left( p-1 \right)   \)单形都可能各自带有正、负的定向,一共四种情况,通过枚举可以验证定理成立.       
+    
+        \hfill $\square$
+    \end{proof}
+
+
+\section{单纯复形和同调}
+
+想象我们是一个任意 \(  q  \) 维数的生物,在一个单纯复形 \(  K  \) 上 来回乱窜,每次都“通过” \(  K  \)上的一个 \(  q  \)-单形. 
+为每个单形规定一个方向,则沿着单形的方向通过,我们就记作 \(  + 1  \),沿相反方向通过,就记作 \(  -1  \).在一系列乱窜之后, \(  K  \)的每个 \(  q  \)- 单形
+都被标记了一个整数,这就是我们按特定方向通过的“次数”（相反方向的通过可以被抵消）,这样一个一系列通过的行为就可以看成是一个 \(  q  \)- 链.  
+
+这样的乱窜行为是可以相加的,并且我们还能原路返回（逆元）,此外由于我们只关心通过的次数,加法也是可以交换的,于是全体的 \(  q  \)-链就构成了一个阿贝尔群 \(  C_{q}\left( K \right)   \) . 
+
+当然,我们可以把“通过的次数”换是别的什么阿贝尔群 \(  G  \). 我们的一个 \(  q  \)-链的行为,可以看成是在每个 \(  q  \)-单形的某个 \(  G  \)的行为,它们组合在一起,得到了 \(  K  \)上的一个一堆 \(  G  \)的行为,这就是说 \(  C_{q}\left( K \right)   \)同构于 \(  K  \)的 \(  q  \)-单形份的 \(  G  \)的直和    .     
+
+总结一下就是说,对于单纯复形 \(  K  \),可以有一个函子 \(  C_{q}  \) ,把 \(  K  \)的每个 \(  q  \)-单形打到一个群 \(  G  \),函子就把 \( K   \)打到 若干份 \(  G  \)的直和 \(  C_{q}\left( K \right)   \)上去.       
+
+到这里可以发现,虽然我们规定了定向,但是最后的群结构 \(  C_{q}\left( K \right)   \) 本质上跟定向没什么关系,无非是某些  \(  G  \)差个了 “-”,但这不影响群的结构. 
+那么我们上一节研究了半天的定向还有意义吗？通过一个单形时,也可以认为顺便按特定方向通过了它的边界,我们在 \(  K  \)上乱窜的行为也在边界上留下了记号,而这个记号是跟方向有关的.
+当连续地通过若干 \(  q  \)-单形并回到原位时,一路上顺带通过的 \(  \left( q-1 \right)   \)-边界正好正负抵消归零,或者说通过边界的指标和是否归零,判定了我们是否走过了一个“循环”,这样就得到了 \(  q  \)-循环的定义 ,放在一起构成群 \(  Z_{q}\left( K \right)   \) . 
+
+沿着 \(  q  \)-单形的边界走,我们会走出一个 \(  \left( q-1 \right)   \)-循环,但是一个 \(  \left( q-1 \right)   \)-循环可能往往无法做成某个一些 \(  q  \)-单形的边界,
+一个循环离成为边界远的程度,就是同调群 \(  H_{q}\left( K \right)   \) 所描述的对象,     后续可以看到它是拓扑不变的,是我们这里研究的最重要的对象,提供了探测拓扑空间的“洞”的一种手段.
+
+\begin{introduction}
+    \item q-链,链群,系数群
+    \item 边界映射
+    \item \(  q  \)-循环群和 \(  q  \)-边界群
+    \item 同调群
+    \item 同调群的定向无关性  
+\end{introduction}
+
+
+\begin{definition}
+    设 \(  K  \)是一个单纯复形,它的顶点都规定了顺序.令 \(  \tilde{S}_{q}  \)表示 \(  K  \)的全体定向的 \(  q  \)-单形.  
+    对于 \(  q\ge 1  \), 由于每个\(  q  \)- 单形有两种定向, \(  \tilde{S}_{q}  \)的元素个数就是 \(  K  \)的 \(  q  \)-单形数的两倍.
+    
+    另外,记 \(  S_{q}  \)为 \(  K  \)的全体正定向的 \(  q  \)-单形.  
+\end{definition}
+
+\begin{definition}{q-链}
+    设 \(  K  \)是单纯复形 ,令 \(  0\le q\le \operatorname{dim}\,K  \), \(  \mathbb{Z}   \)是整数加群.
+    对于 \(  q\ge 1  \),  \(  K  \)的一个 \(  q  \)-链是指,一个映射 \(  f: \tilde{S}_{q}\to \mathbb{Z}   \),使得 \(  f\left( - \sigma ^{q} \right)= - f\left(  \sigma ^{q} \right)   \).
+     \(  q= 0  \)时,  \(  0  \)-链无非是把每个 \(  K  \)的顶点映到一个整数.        
+\end{definition}
+
+\begin{definition}{链群}
+    沿用上述记号,易见 \(  K  \)的全体 \(  q  \)-链构成的集合,记作 \(  C_{q}\left( K \right)   \),构成一个阿贝尔群,称为是 \(  K  \)的 \(  q  \)-维链群.
+         对于 \(  q<0  \)或 \(  q> \operatorname{dim}\,K  \),定义 \(  C_{q}\left( K \right)= 0   \)   .
+\end{definition}
+
+
+\begin{definition}
+    对于 \(  K  \)中正定向的 \(  q  \)-单形 \(   \sigma ^{q}  \),定义 \(  q  \)-链 \(   \bar{\sigma}^{q}  \) \[
+     \bar{\sigma}^{q}\left( \tau ^{q} \right) =  \begin{cases} + 1,& \tau ^{q}=  \sigma ^{q}\\ 
+      -1,& \tau ^{q}= - \sigma ^{q}\\ 
+       0, & \text{otherwise} \end{cases}  
+    \]     称为是 \(  K  \)的一个基础 \(  q  \)-链.  
+\end{definition}
+
+\begin{proposition}
+    对于每个 \(  q \ge 0  \), \(  C_{q}\left( K  \right) = \bigoplus \mathbb{Z} \cdot  \bar{\sigma}^{q}, \sigma ^{q} \in S_{q}   \)  
+\end{proposition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 可以把 \(   \bar{\sigma}^{q}  \)视同 \(   \sigma ^{p}=  1_{\mathbb{Z} }\cdot  \sigma ^{p}  \)  ,认为 \(  C_{q}\left( K \right)\simeq  \bigoplus_{ \sigma ^{q} \in  S_{q}} \mathbb{Z} \cdot   \sigma ^{q}   \) 
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{definition}
+    上述一切定义和命题,都可以将 \(  \mathbb{Z}   \)替换成任意阿贝尔群 \(  G  \),得到 \(  G  \)-系数 \(  q  \)-链的概念.
+    相应的链群就记作 \(  C_{q}\left( K;G \right)   \), \(  G  \)称为是系数群.我们有同构 \(  C_{q}\left( K;G \right)\simeq  \bigoplus _{ \sigma ^{q}\in S_{q}}G \cdot  \sigma ^{q}   \)        
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 一开始的\(  C_{q}\left( K \right)   \)就相当于是 \(  C_{q}\left( K;\mathbb{Z}  \right)   \).  
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{definition}{边界同态}
+    对于每个 \(  q  \), \(  0\le q\le \operatorname{dim}\,K  \),定义同态 \(  \partial _{q}: C_{q}\left( K \right)\to C_{q-1} \left( K \right)    \),称为是边界同态,按以下方式定义 ：
+    
+    先对于 \(  C_{q}\left( K \right)   \)的生成元 \(   \sigma ^{q}  \),定义 \[
+    \partial _{q}\left(  \sigma ^{q} \right): =  \sum _{i= 0}^{q} [ \sigma ^{q}, \sigma _{i}^{q-1}]  \sigma _{i}^{q-1} 
+    \]其中 \(   \sigma _{i}^{q-1}  \)跑遍 \(   \sigma ^{q}  \)的 \(  \left( q-1 \right)   \)个面,然后我们将 \(  \partial _{q}  \)      线性扩张到 \(  C_{q}\left( K \right)   \)上,即定义 \[
+    \partial _{q}\left( \sum n_{q} \sigma ^{q} \right): =  \sum n_{q} \partial _{q}\left(  \sigma ^{q} \right)  
+    \]对于 \(  q\le 0  \)以及 \(  q>\operatorname{dim}\,K  \),定义 \(  \partial _{q}  \)为零同态（唯一可能存在的映射）.    
+    
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 由于当 \(   \sigma _{i}^{q-1}  \)不是 \(   \sigma ^{q}  \)  的边界时, \(  [ \sigma ^{q}, \sigma _{i}^{q-1}  ]= 0\),因此我们也可以在定义 \(  \partial _{q}\left(  \sigma ^{q} \right)   \)时让 \(   \sigma _{i}^{q-1}  \)   跑遍 \(  K  \)的所有 \(  \left( q-1 \right)   \)-单形,
+        得到的结果没有区别.  
+        \item 可以让 \(  C_{q}\left( K \right)   \)表示任意的 \(  C_{q}\left( K;G \right)   \),其中 \(  G  \)是系数群.   
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{proposition}
+    若 \(   \sigma ^{q}= \left<v_0,v_1,\cdots ,v_{q} \right>  \),且 \(  v_0<v_1<\cdots <v_{q}  \)  ,则 \[
+    \partial _{q}\left<v_0,v_1,\cdots ,v_{q} \right>= \sum _{i= 0}^{q} \left( -1 \right)^{i} \left< v_0,v_1,\cdots, \hat{v_{i}},\cdots v_{q}    \right> 
+    \]
+\end{proposition}
+
+
+\begin{remark}
+    \begin{enumerate}
+        \item 可以避免引入关联数,直接用上面的式子作为边界算子的定义,只需要检查良定义性,即上式是否在一个偶置换下不变.
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{lemma}
+    对于每个 \(  q  \),复合同态 \(  \partial _{q-1}  \circ \partial _{q}: C_{q}\left( K \right)\to C_{q-2}\left( K \right)  \)是零映射.  
+\end{lemma}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 可以看出 \(  \mathrm{Im}\left( \partial _{q} \right) \subseteq  \operatorname{ker}\,\left( \partial _{q-1} \right)    \) .
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{note}
+
+    按定义展开,利用定理\ref{thm:p-(p-1)-incidence}计算关联数即可.
+
+\end{note}
+
+
+\begin{definition}
+    设 \(  K  \)是定向的复形.
+    \begin{enumerate}
+        \item 称一个 \(  q  \)-链 \(  z_{q} \in C_{q}\left( K \right)   \)是 \(  K  \)的一个 \(  q  \)-循环,若 \(  \partial _{q}\left( z_{q} \right)= 0   \).      
+        记\(  Z_{q}\left( K \right)   \)为 \(  K  \)的全体 \(  q  \)-循环,它就是 \(  \operatorname{ker}\,\partial _{q}  \).  
+        \item 称一个 \(  q  \)-链 \(  b_{q} \in C_{q}\left( K \right)   \)是 \(  K  \)的 一个 \(  q  \)-边界,   若存在 \(  c^{\prime} \in C_{q+ 1}\left( K \right)   \),使得 \(  \partial _{q+ 1}\left( c^{\prime}  \right)  =  b_{q} \).
+        全体  \(  K  \)的 \(  q  \)-边界记作\(  B_{q}\left( K \right)   \)  ,它就是 \(  \operatorname{Im}\,\partial _{q+ 1}  \)   
+    \end{enumerate}
+      
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item 易见 \(  B_{q}\left( K \right)\subseteq  Z_{q-1}\left( K \right)    \) 
+        \item 可以类似地定义 \(  Z_{q}\left( K;G \right)   \)和 \(  B_{q}\left( K;G \right)   \),\(  G  \)为系数群.   
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{definition}
+    若 \(  \operatorname{dim}\,K= n  \),则存在自由阿尔贝群列 \[
+        \begin{aligned}C(K)&:\quad\ldots0\to C_n(K)\overset{\partial_n}{\operatorname*{\to}}\ldots\to C_{q+1}(K)\overset{\partial_{q+1}}{\operatorname*{\to}}C_q(K)\overset{\partial_q}{\operatorname*{\to}}C_{q-1}(K)\\&\to\ldots\to C_0(K)\to0\to\ldots\end{aligned}
+    \]成为 \(  K  \)的定向单纯链复形. 
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 可以类似地定义 \(  C\left( K;G \right)   \) 
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{definition}
+    设 \(  K  \)是定向单纯复形.定义 \(  K  \)的 \(  q  \)-维同调群为 \(  H_{q}\left( K \right)   \) \[
+    H_{q}\left( K \right): =  Z_{q}\left( K \right) / B_{q}\left( K \right)   
+    \]    
+
+    若考虑链复形 \(  C_{^{*}}\left( K;G \right)   \),则可以定义 \[
+    H_{q}\left( K;G \right): =  Z_{q}\left( K;G \right) / B_{q}\left( K;G \right)   
+    \]成为 \(  K  \)的 \(  G  \)系数同调群.   
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 称 \(  H_{q}\left( K \right)   \)中的一个元素为一个同调类. 
+        \item 若 两个 \(  q  \)-链 \(  z_{q}  \)和 \(  z_{q}^{\prime}   \)  商去 \(  B_{q}\left( K \right)   \)相等,则称 \(  z_{q}  \)和 \(  z_{q}^{\prime}   \)    是同源的.
+        \item 一个 \(  q  \)-循环是一个 \(  q  \)-边界,当且仅当它与 \(  0  \)同源.   
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{theorem}
+    令 \(  K_1  \)和 \(  K_2  \)是 \(  K  \)通过配备两个定向得到的的单纯复形.则 \(  H_{q}\left( K_1 \right)\simeq H_{q}\left( K_2 \right)    ,\forall  q\ge 0\).    
+\end{theorem}
+
+\end{document}

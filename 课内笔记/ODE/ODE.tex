@@ -1,0 +1,2370 @@
+\documentclass[lang=cn,12pt,color=green,fontset=none]{elegantbook}
+
+\title{标题}
+
+\author{Autin}
+
+\setmainfont{Aa顺風顺水顺财神}
+\setCJKmainfont{Aa顺風顺水顺财神}
+\setCJKsansfont{Aa顺風顺水顺财神}
+\setCJKmonofont{Aa顺風顺水顺财神}
+
+%\extrainfo{不要以为抹消过去,重新来过,即可发生什么改变.—— 比企谷八幡}
+
+\setcounter{tocdepth}{3}
+
+
+\cover{image.png}
+\usepackage{CJKutf8}
+% 本文档命令
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+
+% 修改标题页的橙色带
+% \definecolor{customcolor}{RGB}{32,178,170}
+% \colorlet{coverlinecolor}{customcolor}
+
+\begin{document}
+
+\maketitle
+\frontmatter
+
+\tableofcontents
+
+\mainmatter
+
+\chapter{高阶线性微分方程}
+
+\section{一般理论}
+
+\subsection{齐次方程与Wronsky}
+
+\begin{definition}{Wronsky}
+    设 \(   u_1,\cdots,u_n   \)都是区间 \(  I  \)上的  \(  n-1  \)次可微函数.称行列式 \[
+    W\left(  u_1,\cdots,u_n  \right)\left( x \right): = \begin{vmatrix}u_1(x)&\ldots&u_n(x)\\u_1^{\prime}(x)&\ldots&u_n^{\prime}(x)\\\vdots&\vdots\\u_1^{(n-1)}(x)&\ldots &u_n^{(n-1)}(x)\end{vmatrix}  
+    \]为 \(   u_1,\cdots,u_n   \)的Wronsky函数. 
+\end{definition}
+
+
+考虑齐次方程,其中 \(   p_0,\cdots,p_{n-1}   \)在 \(  I  \)上连续.  
+\begin{equation}\label{eq:nth order homo eq}
+    y^{\left( n \right) }+ p_{n-1}\left( x \right)y^{\left( n-1 \right) }+ \cdots + p_1\left( x \right)y^{\prime} + p_0\left( x \right)y=0
+\end{equation}   
+再此之上,若对于给定的\(   a_1,\cdots,a_n   \),要求上述方程满足初值
+\begin{equation}\label{initial condition}
+y\left( x_0 \right)=a_1,\quad y^{\prime} \left( x_0 \right)=a_2,\quad y^{\left( n-1 \right) }\left( x_0 \right)   =a_{n}
+\end{equation}
+则称以上为一个初值问题.
+
+
+\begin{proposition}
+    设 \(   p_0,\cdots,p_{n-1}   \)是 \(  I  \)上的连续函数. \(   1,\cdots,u n  \)是方程\ref{eq:nth order homo eq}在区间 \(  I  \)上 的 \(  n  \)个解,  令 \(  x_0\in I  \).
+    则 \(   u_1,\cdots,u_n   \)构成方程\ref{eq:nth order homo eq}的解空间 \(  E  \),当且仅当 \(  W\left(  u_1,\cdots,u_n  \right)\left( x_0 \right)\neq 0    \)    
+\end{proposition}
+
+\begin{proof}
+    定义一个映射 \(  \kappa :E\to \mathbb{R} ^{n}  \),将方程的每个解映到它对应的初值问题的初值向量,则 \(  \kappa: E\simeq \mathbb{R} ^{n}  \),
+    \(   u_1,\cdots,u_n   \)构成 \(  \mathbb{R} ^{n}  \)的一组基,当且仅当 \(  \kappa\left( u_1 \right),\cdots ,\kappa\left( u_{n} \right)    \)    构成 \(  \mathbb{R} ^{n}  \)的一组基.
+    注意到 \(  W\left(  u_1,\cdots,u_n  \right)\left( x_0 \right)    \)就是 \(  \kappa\left( u_1 \right),\cdots ,\kappa\left( u_{n} \right)    \)的行列式即可. 
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    设系数函数 \(   p_0,\cdots,p_{n-1}   \)在 \(  I  \)是连续,\(   u_1,\cdots,u_n   \)是齐次方程 \ref{eq:nth order homo eq}在 \(  I  \)上 的 \(  n  \)个解.
+    则要么 \(  W\left(  u_1,\cdots,u_n  \right)\left( x \right)    \)在 \(  x \in I  \)上每一点非零,  要么 \(  W\left(  u_1,\cdots,u_n  \right)\left( x \right)    \)在 \(  I  \)上每一点处处为0.  
+\end{proposition}
+
+\begin{proof}
+    对于每一点 \(  x  \),建立解空间 \(  E  \)与 \(  x  \)点处初值的双射 \(  \kappa_{x}: E\to \mathbb{R} ^{n}  \) 即可.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    设系数函数 \(   p_0,\cdots,p_{n-1}   \) 在开区间 \(  I  \)上连续. \(  x_0\in I  \).设 \(   u_1,\cdots,u_n   \)是齐次方程 \ref{eq:nth order homo eq}在 \(  I  \)上的 \(  n  \)个解,则 \[
+    W\left(  u_1,\cdots,u_n  \right)\left( x \right)=W\left(  u_1,\cdots,u_n  \right)\left( x_0 \right)e^{-\int_{x_0}^{x}p_{n-1}\left( t \right)\,\mathrm{d} t },\quad x \in I    
+    \]     
+\end{proposition}
+\begin{proof}
+    只需证明 \(  W\left( x \right): = W\left(  u_1,\cdots,u_n  \right)\left( x \right)     \)满足一阶齐次方程 \[
+    W^{\prime} =-p_{n-1}\left( x \right)W 
+    \]即可.
+    \[
+    \begin{aligned}
+    W^{\prime} \left( x \right) & = \sum _{k=1}^{n-1} \det \begin{bmatrix} 
+         u_1\left( x \right)&\cdots & u_{n}\left( x \right)\\ 
+          \vdots& & \vdots\\ 
+        u_1^{\left( k \right) }\left( x \right) &\cdots & u_{n}^{\left( k \right) }\left( x \right) \\ 
+         u_1^{\left( k \right) }\left( x \right) &\cdots & u_{n}^{\left( k \right) }\left( x \right) \\ 
+         \vdots&\cdots &\vdots\\ 
+          u_1^{\left( n-1 \right) }\left( x \right)& \cdots  & u_{n}^{\left( n-1 \right) }\left( x \right) 
+    \end{bmatrix}   \\ 
+     & +  \det \begin{bmatrix} 
+         u_1\left( x \right)&\cdots &u_{n}\left( x \right)\\ 
+          \vdots&&\vdots\\ 
+           u_1^{\left( n-2 \right) }\left( x \right)&\cdots &u_{n}^{\left( n-2 \right) }\left( x \right)     \\ 
+            u_{1}^{\left( n \right) }\left( x \right)&\cdots &u_{n}^{\left( n \right) }\left( x \right)  
+     \end{bmatrix} \\ 
+      & = \det \begin{bmatrix} 
+          u_1\left( x \right)&\cdots &u_{n}\left( x \right)\\ 
+           \vdots& &\vdots\\ 
+            u_1^{\left( n-2 \right) }\left( x \right)&\cdots & u_{n}^{\left( n-2 \right) }\left( x \right) \\ 
+           - \sum _{k=0}^{n-1} p_{k}\left( x \right)u_1^{\left( k \right) }\left( x \right)  &\cdots & - \sum _{k=0}^{n-1} p_{k}\left( x \right)u_n^{\left( k \right) }\left( x \right) 
+      \end{bmatrix} \\ 
+       & = -p_{n-1} W\left( x \right) 
+    \end{aligned}
+    \] 
+
+    \hfill $\square$
+\end{proof}
+
+\subsection{非齐次方程}
+
+\begin{definition}{线性非齐次方程}
+    一个\(  n  \)-阶线性非齐次微分方程是指
+    \begin{equation}
+        y^{\left( n \right) }+ p_{n-1}\left( x \right)y^{\left( n-1 \right) }+ \cdots + p_1\left( x \right)y^{\prime} + p_0\left( x \right)y=g\left( x \right)    
+    \end{equation} 
+    其中 \(   p_0,\cdots,p_{n-1} ,g  \)是开区间 \(  I  \)上的连续函数.  
+\end{definition}
+
+\begin{proposition}
+    设 \(   u_1,\cdots,u_n   \)是齐次方程的一个解,\(  v\left( x \right)   \)是非齐次方程的一个解, 则非齐次方程的通解可以写成 \[
+    y\left( x \right)=c_1u_1\left( x \right)+ \cdots + c_{n}u_{n}\left( x \right)+ v\left( x \right)    
+    \] 其中 \(   c_1,\cdots,c_n   \)是任意常数. 
+\end{proposition}
+
+\begin{proof}
+    带入方程立即得到形如上的 \(  y\left( x \right)   \)是非齐次方程的一个解.
+    
+    任取非齐次方程的解 \(  z\left( x \right)   \),则 \(  z\left( x \right)-v\left( x \right)    \)是齐次方程的解,从而存在 \(   c_1,\cdots,c_n   \)   ,使得 \(  z\left( x \right)-v\left( x \right)=c_1u_1\left( x \right)+ \cdots + c_{n}u_{n}\left( x \right)      \) .
+
+    \hfill $\square$
+\end{proof}
+
+\noindent\begin{large}
+    常数变易法：
+\end{large}
+\begin{proposition}
+    设 \(   p_0,\cdots,p_{n-1} ,g  \)是开区间 \(  I  \)上的连续函数.设 \(   u_1,\cdots,u_n   \)是齐次方程的一组基解.考虑线性组合 \[
+    v\left( x \right)=c_1\left( x \right)u_1\left( x \right)+ \cdots + c_{n}\left( x \right)u_{n}\left( x \right)     
+    \]   \(  v\left( x \right)   \)称为非齐次方程解的一个充分条件是 \(  c_1\left( x \right),\cdots ,c_{n}\left( x \right)    \)满足以下矩阵方程：\[
+        \begin{bmatrix}u_1(x)&\ldots&u_n(x)\\u_1^{\prime}(x)&\ldots&u_n^{\prime}(x)\\\vdots&\vdots\\u_1^{(n-1)}(x)&\ldots&u_n^{(n-1)}(x)\end{bmatrix}\begin{bmatrix}c_1^{\prime}(x)\\c_2^{\prime}(x)\\\vdots\\c_n^{\prime}(x)\end{bmatrix}=\begin{bmatrix}0\\0\\\vdots\\g(x)\end{bmatrix}
+    \]  
+\end{proposition}
+\begin{proof}
+    逐次数求导,并利用上述矩阵方程,得到
+    \[
+    \begin{aligned}
+    v\left( x \right)& = c_1\left( x \right)u_1\left( x \right)+ \cdots + c_{n}\left( x \right)u_{n}\left( x \right)+ 0\\ 
+     v^{\prime} \left( x \right)&=c_1\left( x \right)u_1^{\prime} \left( x \right)+ \cdots + c_{n}\left( x \right)u_{n}^{\prime} \left( x \right)+ 0       \\ 
+      \vdots\\ 
+       v^{\left( n-1 \right) } \left( x \right)  & = c_1\left( x \right)u_1^{\left( n-1 \right) }\left( x \right)+ \cdots + c_{n}u_{n}^{\left( n-1 \right) }\left( x \right)+ 0\\ 
+        v^{\left( n \right) }\left( x \right)& =     c_1\left( x \right)u_1^{\left( n \right) }\left( x \right)+ \cdots + c_{n}u_{n}^{n}\left( x \right)+ g\left( x \right)      
+    \end{aligned}
+    \]
+    现在,对第一行乘以 \(  p_0 \left( x \right)  \),第二行乘以 \(  p_1\left( x \right)   \)  ,依次类推,直到对最后一行乘以一,之后将每一行相加,由于 \(   u_1,\cdots,u_n   \)满足非齐次方程,我们得到 \[
+    v^{\left( n \right) }\left( x \right)+  p_{n-1}\left( x \right)v^{\left( n-1 \right) }\left( x \right)+ \cdots + p_1\left( x \right)v^{\prime} \left( x \right)+ p_0\left( x \right)v\left( x \right)=g\left( x \right)        
+    \] 
+    \hfill $\square$
+\end{proof}   
+
+\begin{example}特别地,对于二次的情况 \[
+y^{\prime \prime} + p_1\left( x \right)y^{\prime} + p_0\left( x \right)y=g\left( x \right)   
+\]导出问题   \[
+\begin{bmatrix} 
+    u_1\left( x \right)&u_2\left( x \right)\\ 
+     u_1^{\prime} \left( x \right)&u_2^{\prime} \left( x \right)     
+\end{bmatrix} \begin{bmatrix} 
+    c_1^{\prime} \left( x \right)\\ 
+     c_2^{\prime} \left( x \right)   
+\end{bmatrix} = \begin{bmatrix} 
+    0\\ 
+     g\left( x \right)  
+\end{bmatrix}   
+\] 由Cramer法则得到 \[
+c_1^{\prime} \left( x \right)=-W\left( x \right)^{-1} u_2\left( x \right)g\left( x \right),\quad  c_2^{\prime} \left( x \right) = W\left( x \right)^{-1} u_1\left( x \right)g\left( x \right)        
+\]给出一个特解 \[
+v\left( x \right)=-u_1\left( x \right)\int W\left( x \right)^{-1} u_2\left( x \right)g\left( x \right)\,\mathrm{d} x+ u_2\left( x \right) \int W\left( x \right)^{-1} u_1\left( x \right)g\left( x \right)\,\mathrm{d} x         
+\]
+
+同时,我们可以配合 \[
+W\left( x \right)= W\left( x_0 \right)e^{\int_{x_0}^{x}-p_{n-1}\left( s \right)\,\mathrm{d} s }  
+\]来计算
+\end{example}
+\begin{proposition}
+    初值问题 \[
+    \begin{aligned}
+    y^{\left( n \right) }+ p_{n-1}\left( x \right)y^{\left( n-1 \right) }+ \cdots + p_1\left( x \right)y^{\prime} + p_0\left( x \right)y=g\left( x \right)\\ 
+     y\left( x_0 \right)=a_1,\quad \cdots ,\quad y^{\left( n-1 \right) }\left( x_0 \right)       =a_0
+    \end{aligned}
+    \]在 \(  I  \)上有唯一解. 
+\end{proposition}
+
+\begin{proof}
+    非齐次方程有通解 \[
+    y\left( x \right)=c_1u_1\left( x \right)+ \cdots + c_{n}u_{n}\left( x \right)+ v\left( x \right)    
+    \].带入初值,得到系数 \(  c_{k}  \)必须满足 \[
+    \begin{aligned}
+    c_1u_1\left( x_0 \right)+ \cdots + c_{n}u_{n}\left( x_0 \right)&=a_1-v\left( x_0 \right)\\ 
+    c_1u_1^{\prime} \left( x_0 \right)+ \cdots + c_{n}u_{n}^{\prime} \left( x_0 \right)& =a_2-v^{\prime} \left( x_0 \right)\\ 
+     \vdots\\ 
+      c_1u_1^{\left( n-1 \right) }\left( x_0 \right)+ \cdots + c_{n}u_{n}^{\left( n-1 \right) }\left( x_0 \right)& = a_{n}-v^{\left( n-1 \right) }\left( x_0 \right)      
+    \end{aligned}
+    \] 这是一个系数矩阵为可逆矩阵（ \(   u_1,\cdots,u_n   \) 的Wronsky）的线性方程组,解 \(   c_1,\cdots,c_k   \)唯一. 
+
+    \hfill $\square$
+\end{proof}
+
+\section{常系数齐次线性方程}
+
+
+本节讨论方程 \begin{equation}\label{eq:cons-coffi-homo}
+    p_{n}y^{\left( n \right) }+ p_{n-1}y^{\left( n-1 \right) }+ \cdots + p_1y^{\prime} + p_0y=0
+\end{equation}
+
+\begin{definition}{特征方程}
+    微分方程对应到特征多项式 \[
+    P\left( x \right): = p_{n}X^{n}+ p_{n-1}X^{n-1}+ \cdots + p_1X+ p_0 
+    \]方程 \[
+    P\left( X \right)=0 
+    \]被称为是特征方程.
+\end{definition}
+
+\begin{proposition}
+    \begin{enumerate}
+        \item 函数 \(  e^{\lambda x}  \) 是方程\ref{eq:cons-coffi-homo}的解,当且仅当\(  \lambda  \)是特征方程的一个根. 
+        \item 若特征方程有 \(  n  \)个不同的(复)根 \(   \lambda_1,\cdots,\lambda_n   \),  则 \[
+        e^{\lambda_1x},\cdots ,e^{\lambda_nx}       
+        \]构成一组基解.
+    \end{enumerate}
+    
+\end{proposition}
+\begin{proof}
+    \begin{enumerate}
+        \item 若 \(  e^{\lambda x}  \)是方程的解,当且仅当\[
+        p_{n}\lambda^{n}e^{\lambda x}+ p_{n-1}\lambda^{n-1}e^{\lambda x}+ \cdots + p_1 \lambda e^{\lambda x}+ p_0e^{\lambda x } = 0,\quad \forall x \in I
+        \] 又 \(  e^{\lambda x}>0 ,\forall x \in I \),故上式当且仅当 \[
+        p_{n}\lambda^{n}+ \cdots + p_0=0
+        \] 即 \(  P\left( \lambda \right)=0   \). 
+        \item 由1,它们构成一组解,又\(   x= 0  \)处的 Wronsky行列式为 \[
+       \det \begin{bmatrix} 
+            1 &\cdots & 1\\ 
+             \lambda_1&\cdots &\lambda_{n}\\ 
+              \vdots & &\vdots\\ 
+               \lambda_1^{n-1}&\cdots &\lambda_{n}^{n-1} 
+        \end{bmatrix} 
+        \]大于零,故为基解.
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    若特征方程有复根\(  \lambda=\alpha+ i\beta  \) ,则得到复解 \[
+    e^{\lambda x} = e^{\alpha x}\left( \cos \beta x+  i\sin \beta x \right) 
+    \]若方程的系数都是实数,则特征根共轭地出现,得到另一个解 \[
+    e^{\overline{\lambda}x}= e^{ \alpha x}\left( \cos \beta x- i\sin  \beta x \right) 
+    \]
+    它们共同张成了一个方程的复值解的二维空间.实值函数解 \[
+e^{\alpha x}\cos \beta x,\quad e^{ \alpha x}\sin  \beta x
+\]在 \(  \mathbb{C}  \)上张成了相同的解空间,进而张成了方程的实值解空间的一个二维子空间.
+\end{proposition}
+
+\begin{example}
+    寻求 \(  y^{\left( 4 \right) }-y=0  \)的一组基解. 
+\end{example}
+
+\begin{solution}
+    特征方程 \(   \lambda ^{4}-1=0  \)有根 \(  1,-1,i,-i  \),以下是三组基解的例子 \[
+  \begin{aligned}
+    e^{x},e^{-x},e^{ix},e^{-ix}\\ 
+     e^{x},e^{-x},\cos x,\sin x\\ 
+      \cosh x,\sinh x,\cos x,\sin x 
+  \end{aligned}
+    \]  
+\end{solution}
+
+\subsection{处理重根}
+
+\begin{definition}{微分算子环}
+    设 \(  D  \)是微分算子,递归地定义\(  D^{k}: = D\circ D^{k-1}, k \in \mathbb{N} ^{+ }   \).对于给定的多项式 \[
+    P\left( x \right)=p_{n}X^{n} + p_{n-1}X^{n-1}+ \cdots + p_1X+ p_0
+    \]  可以自然地定义算子 \[
+    P\left( D \right)= p_{n}D^{n}+ p_{n-1}D^{n-1}+ \cdots + p_1D+ p_0 
+    \]规定它在 函数 \(  y\left( x \right)   \)上的作用为 \[
+    P\left( D \right)y\left( x \right): = p_{n}y^{\left( n \right) }\left( x \right)+ p_{n-1}y^{\left( n-1 \right) }\left( x \right)+ \cdots + p_1y^{\prime} \left( x \right)+ p_0y\left( x \right)      
+    \] 
+\end{definition}
+
+\begin{remark}
+    将 \(  X  \)的多项式 \(  P\left( X \right)   \)与微分算子 \(  P\left( D \right)   \)一一对应,得到一个微分算子的环.   
+\end{remark}
+
+\begin{proposition}
+    \[
+    P\left( D \right)e^{ \lambda x}=P\left(  \lambda  \right)e^{ \lambda x}  
+    \]
+    
+\end{proposition}
+\begin{proof}
+    注意到 \(  D^{k}e^{ \lambda x}=  \lambda ^{k}e^{ \lambda x}  \),再由对加法的相容性即可.
+    \hfill $\square$
+\end{proof}
+
+之前讨论过的一个事实可以转述为 
+\begin{proposition}
+    \(  e^{\lambda x}  \)是微分方程\(  P\left( D \right)  y=0 \)的一个解, 当且仅当 \(  \lambda  \)是特征方程 \(  P\left( X \right)=0   \)的一个根.    
+\end{proposition}
+
+式 \[
+P\left( D \right)e^{\lambda x} = P\left( \lambda \right)e^{\lambda x}  
+\]对 \(  \lambda  \)求导,由对 \(  x  \)微分和对 \(  \lambda  \)微分的交换性  得到 \[
+P\left( D \right)xe^{\lambda x} = P\left( \lambda \right) xe^{\lambda x}+ P^{\prime} \left( x \right)e^{ \lambda x}   
+\] 因此,一旦 \(  P\left( \lambda_1 \right)=P^{\prime} \left( \lambda_1 \right)=0    \) ,即 \(  \lambda_1  \) 是 \(  P\left( X \right)=0   \) 的至少二重的根,就有 \(  xe^{\lambda_1 x}  \)是微分方程的一个解. 
+
+
+由对式 \[
+P\left( D \right)e^{\lambda x}=P\left( \lambda \right)e^{\lambda x}  
+\]关于 \(  \lambda  \)做\(  k  \)次求导的Leibniz律,得到 \[
+P\left( D \right)\left( x^{k}e^{\lambda x} \right)= \sum _{j=0}^{k} \frac{k! }{j!\left( k-j \right)!  } P^{\left( j \right) }\left( \lambda \right)x^{k-j}e^{\lambda x}    
+\]  
+因此若 \(  \lambda_1  \)是特征方程的至少 \(  k+ 1  \)  重根, 则由 \(  P\left( \lambda_1 \right)   ,P^{\prime} \left( \lambda_1 \right),\cdots ,P^{\left( k \right) }\left( \lambda_1 \right)  \)全为0,可得 \(  x^{k}e^{\lambda x}  \)  是方程的一个解.
+
+\begin{theorem}
+    考虑方程 \(  P\left( D \right)y=0   \).由代数学基本定理,存在唯一的分解 \[
+    P\left( X \right)=p_{n}\left( X-\lambda_1 \right)^{r_1}\left( X-\lambda_2 \right)^{r_2}\cdots \left( X-\lambda_{m} \right)^{r_{m}}    
+    \] 其中 \(  \lambda_{i}  \)是 \(  P\left( X \right)   \)的 \(  r_{k}  \)重根, \(  k= 1,\cdots,m   \).
+    则微分方程的解由下表给出 \[
+    \begin{aligned}
+    & \mathrm{Root} &&\quad  \mathrm{Solutions} &&& \mathrm{Number}\\ 
+    & \lambda_1  && e^{\lambda_1x},xe^{\lambda_1x},\cdots ,x^{r_1-1}e^{\lambda_1x} &&& r_1\\ 
+     &\vdots     && \vdots &&& \vdots\\ 
+      & \lambda_{m} && e^{\lambda_mx},xe^{\lambda_mx},\cdots ,x^{r_{m}-1}e^{\lambda_{m}x}&&& r_{m}
+    \end{aligned}
+    \]    
+\end{theorem}
+
+\begin{proposition}
+    上面这些解线性无关
+\end{proposition}
+
+\begin{proof}
+    设上面这些解的给出一个零线性组合,整理得到 \[
+    f_1\left( x \right)e^{\lambda_1x}+ \cdots + f_{m}\left( x \right)e^{\lambda_{m}x}=0  
+    \]其中 \(   f_1,\cdots,f_m   \)是多项式.
+    我们希望通过对 \(  m  \)归纳,说明对于两两不同的 \(   \lambda_1,\cdots,\lambda_m   \), \(   f_1,\cdots,f_m   \)全为零.
+
+    当 \(   m=1  \)时显然成立, 若 \(  m  \)时成立,考虑 \[
+    f_1\left( x \right)e^{\lambda_1x}+ \cdots + f_{m}\left( x \right)e^{\lambda_{m}x}+ f_{m+ 1}\left( x \right)e^{\lambda_{m+ 1}x}=0   
+    \] 乘以 \(  e^{-\lambda_{m+ 1}x}  \),得到 \[
+    f_1\left( x \right)e^{u_1\left( x \right) }+ \cdots + f_{m}\left( x \right)e^{u_{m}x}+ f_{m+ 1}\left( x \right)=0   
+    \] 其中 \(  u_{k}= \lambda_{k}-\lambda_{m+ 1}  \)\(  \left( k= 1,\cdots,m  \right)   \)  .则 \(   \mu_1,\cdots,\mu_m   \)两两不同且均不为零.现在重复对上式求导,直到 \(  f_{m+ 1}\left( x \right)=0   \),得到 \[
+    g_1\left( x \right)e^{\mu_1x}+ \cdots + g_{m}\left( x \right)e^{\mu_{m}x}=0  
+    \]  对于某些多项式 \(   g_1,\cdots,g_m   \)成立,由归纳假设 \(  g_1=\cdots =g_{m}=0  \).不难发现,由于 \(  \mu_{k} \neq 0  \),\(  f_{k}  \)与 \(  g_{k}  \)的次数相同,因此 \(  f_{k}=0  \),紧接着也有 \(  f_{m+ 1}=0  \)       .
+
+    \hfill $\square$
+\end{proof}
+
+
+\section{常系数非齐次方程}
+
+我们已经看到,齐次常系数方程 \[
+p_{n}y^{\left( n \right) }+ p_{n-1}y^{\left( n-1 \right) }+ \cdots + p_1y^{\prime} + p_0y=0
+\]
+的解形如 \[
+y\left( x \right)=f_1\left( x \right)e^{\lambda_1x}+ \cdots + f_{m}\left( x \right)e^{\lambda_{m}x}   
+\]其中 \(   f_1,\cdots,f_m   \)是复系数多项式,\(   \lambda_1,\cdots,\lambda_m   \)是两两不同的复特征值.
+
+\begin{definition}
+    形如 \(  f_1\left( x \right)e^{\lambda_1x}+ \cdots + f_{m}\left( x \right)e^{\lambda_{m}x}    \)的函数被称为是一个指数多项式,其中 \(  f_1,\cdots,f_m   \)是复系数多项式, \(   \lambda_1,\cdots,\lambda_m   \)是两两不同的复数.   
+\end{definition}
+\begin{remark}
+    \begin{itemize}
+        \item 设 \(  f  \)是 \(  p  \)次复系数多项式, 则称 \(  f\left( x \right)e^{\lambda x}   \)为一个指数为 \(  \lambda  \)的 \(  p  \)次纯指数多项式.
+        \item   小于 \(  p  \)次的指数为 \(  \lambda  \)的全体纯指数多项式构成 \(  \mathbb{C}   \)上的一个线性空间,记作 \(  V_{m}^{\lambda}  \)    .定义 \(  m\le 0  \)时,\(  V_{m}^{\lambda}  \)为零向量空间.
+        \item  \[
+        e^{\lambda x},\quad  \frac{x }{1! }e^{\lambda x},\cdots ,  \frac{x^{m-1} }{\left( m-1 \right)!  }e^{ \lambda x}  
+        \]构成 \(  V_{m}^{\lambda}  \)的一组常用的基.
+        \item 若 \(  y \in V_{m}^{\lambda}  \),则 \(  Dy  \)亦然,由此对于每个 \(  m,\lambda  \),我们都有线性算子 \(  D:V_{m}^{\lambda}\to  V_{m}^{\lambda}  \)       
+    \end{itemize}
+    
+\end{remark}
+
+\begin{proposition}
+    线性算子 \(  D:V_{m}^{\lambda}\to V_{m}^{\lambda}  \)在上述Remark中提到的基下有矩阵表示 \[
+        \begin{bmatrix}\lambda&1&0&\ldots&0\\0&\lambda&1&\ldots&0\\\vdots&\vdots&\vdots&\ddots&\vdots\\0&0&0&\ldots&\lambda\end{bmatrix}
+    \] 
+\end{proposition}
+
+\begin{proof}
+    注意到 \[
+    D\left( \frac{x^{k} }{ k!  }e^{\lambda x}  \right) = \frac{x^{k-1} }{\left( k-1 \right)!  }e^{\lambda x}+  \lambda \frac{x^{k} }{k! e^{\lambda x}}   ,\quad  k=1,\cdots ,n-1
+    \]以及 \[
+    D e^{\lambda x} = \lambda e^{ \lambda x}
+    \]即可.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    若 \(  \lambda\neq 0  \),则 \(  D: V_{m}^{\lambda}\to V_{m}^{\lambda}  \)是线性的双射.而当 \(  \lambda=0  \)时, \(  DV_{m}^{0}= V_{m-1}^{0}  \)  
+\end{proposition}
+\begin{proof}
+    第一个结论只需注意到当 \(  \lambda \neq 0  \)时, \(  D  \)是可逆矩阵.
+    对于第二个结论,注意到当 \(  \lambda=0  \)时, \(  D  \)将通常基的前一个映到相邻的后一个,最后一个映为0.    
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}\label{pro:not-root-diff-ope}
+    设 \(  P\left( X \right)   \)是多项式,使得 \(  P\left( \lambda \right) \neq 0   \).则 \(  P\left( D \right): V_{m}^{\lambda}   \to V_{m}^{\lambda}\)   是线性双射.
+\end{proposition}
+\begin{proof}
+    考虑 \(  P\left( D \right)   \)的矩阵表示,由于 \(  D  \)只有特征值 \(  \lambda  \),故 \(  P\left( D \right)   \)的特征值只有 \(  P\left( \lambda \right)   \).
+    又 \(  P\left( \lambda \right)\neq 0   \),我们有 \(  P\left( D \right)   \)的矩阵表示是可逆的,进而 \(  P\left( D \right)   \)是双射.         
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}{转移律}
+    设 \(  f  \)是 \(  C^{\infty}  \)函数,\(  P\left( X \right)   \)是多项式,则 \[
+    P\left( D \right)\left( e^{\lambda x}f\left( x \right)  \right) = e^{\lambda x} P\left( D+ \lambda \right)f\left( x \right)    
+    \]   
+\end{proposition}
+\begin{proof}
+    当 \(  P\left( X \right)=1   \)时显然,当 \(  P\left( X \right)=X   \)时由Lebniz律立即得到.
+    若对于 \(  k  \)  \[
+    D^{k}\left( e^{\lambda x}f\left( x \right)  \right) = e^{\lambda x}\left( D+  \lambda \right)^{k}f\left( x \right)  
+    \]则 \[
+  \begin{aligned}
+    D^{k+ 1}\left( e^{\lambda x} f\left( x \right)  \right) & = D \left( e^{\lambda x}\left( D+ \lambda  \right)^{k}f\left( x \right)   \right)\\ 
+     & = \lambda e^{\lambda x} \left( D+ \lambda \right)^{k}+  e^{\lambda x} D\left( D+ \lambda \right)^{k}f\left( x \right)   \\ 
+      & = e^{\lambda x} \left( D+ \lambda \right)^{k+ 1}f\left( x \right)  
+  \end{aligned}  
+    \]于是归纳地得到 \(  P\left( X \right)=X^{k}   \)的情况,再通过取线性组合,得到一般多项式的情况. 
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    设 \(  \lambda  \)  是 \(  P\left( X \right)=0   \)的根,重数为 \(  r  \),则 \[
+    P\left( D \right)V_{m}^{\lambda}=V_{m-r}^{\lambda} 
+    \]   
+\end{proposition}
+\begin{proof}
+    设 \(  P\left( X \right)=Q\left( X \right)  \left( X-\lambda \right)^{\lambda}     \),其中 \(  Q\left( x \right)   \)是多项式,使得 \(  Q\left( \lambda \right)\neq 0   \)   .
+    令 \(  e^{\lambda x}f\left( x \right)   \)是 \(  V_{m}^{\lambda}  \)中的元素,即 \(  f\left( x \right)   \)是次数小于 \(  m  \)的多项式.则 \[
+    P\left( D \right)\left( e^{\lambda x}f\left( x \right)  \right)= Q\left( D \right)\left( D-r \right)^{r} \left( e^{\lambda x}f\left( x \right)  \right) = Q\left( D \right)\left( e^{\lambda x}D^{r}f\left( x \right)  \right)       
+    \]  注意到 \(  D^{r}V_{m}^{0}=V_{m-r}^{0}  \)  以及\(  Q\left( D \right)V_{m-1}^{\lambda}= V_{m-r}^{\lambda}   \), \(  e^{\lambda x}V_{m-r}^{0}= V_{m-r}^{\lambda}  \) 故让 \(  f\left( x \right)   \)取遍 \(  V_{m}^{0}  \),得到    \[
+    P\left( D \right)V_{m}^{r} = Q\left( D \right)\left( e^{\lambda x} V_{m-r}^{0} \right)=Q\left( D \right)V_{m-1}^{\lambda} =V_{m-r}^{\lambda}    
+    \]
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    设 \(  \lambda  \)是 \(  P\left( X \right)=0   \)的根,重数为 \(  r  \),若 \(  g \in V_{m}^{\lambda}  \),则方程 \(  P\left( D \right)y=g\left( x \right)    \)在 \(  V_{m+ r}^{\lambda}  \)中有解,但是不唯一.      
+\end{proposition}
+\begin{remark}
+    \begin{itemize}
+        \item 解在忽略形如 \(  ax^{j}e^{\lambda x}  ,j<r\) 的项,即商去 \(  V_{r}^{\lambda}  \)的意义下唯一.这是因为两个特解的差是齐次方程的解,且是指数为 \(  \lambda  \)的纯指数多项式,故只能在 \(  V_{r}^{\lambda}  \)中.   
+    \end{itemize}
+    
+\end{remark}
+\begin{proof}
+    有上面的命题, \[
+    P\left( D \right)V_{m+ r}^{\lambda} = V_{m}^{\lambda} \ni g\left( x \right)  
+    \]故存在 \(  f\left( x \right) \in V_{m+ r}^{\lambda}   \),使得 \(  P\left( D \right)f\left( x \right) = g\left( x \right)     \)  .
+
+    不唯一是因为\(  V_{r}^{\lambda}  \)是齐次方程解空间的一个子空间,其上的任意元素加上方程的一个特解,都能得到方程的一个新的解. 
+    \hfill $\square$
+\end{proof}
+
+
+
+\begin{proposition}
+    若 \(  g\left( x \right)   \)是指数多项式,则 常系数方程 \[
+    p_{n}y^{\left( n \right) }+ p_{n-1}y^{\left( n-1 \right) }+ \cdots + p_1y^{\prime} + p_0y=g\left( x \right) 
+    \]的所有解都是指数多项式.
+\end{proposition}
+
+\subsection{计算特解}
+
+将介绍两种纯代数的方法,来找出方程 \[
+P\left( D \right)y : = p_{n}y^{\left( n \right) }+ p_{n-1}y^{\left( n-1 \right) }+ \cdots + p_1y^{\prime} + p_0y=g\left( x \right)  
+\]的特解,其中 \(  g\left( x \right)   \)是一个指数多项式. 
+
+首先处理\(   g  \)是纯指数多项式的情况,例如 \(  g \in V_{m}^{\lambda}  \)  .
+我们视微分方程为向量空间 \(  V_{m}^{\lambda}  \)上的线性问题,并用一组基来求解,最常用的一组基是 \[
+e^{\lambda x},\quad xe^{\lambda x},\quad \cdots , \quad x^{m-1}e^{\lambda x}
+\] 
+
+下面给出求解的第一种方法
+
+
+
+设 \(  g \in V_{m}^{\lambda}  \),问题分为两种情况：
+\begin{itemize}
+    \item 若 \(  \lambda  \)不是 \(  P\left( X \right)   \)的根.则由命题\ref{pro:not-root-diff-ope} \(  V_{m}^{\lambda}  \)中存在唯一的解. 此时可以待定系数 \[
+    y\left( x \right) = \left( a_{m-1}x^{m-1}+ a_{m-2}x^{m-2}+ \cdots + a_0 \right)e^{\lambda x}  
+    \]之后通过解一个线性方程来确定.
+    \item 若 \(  \lambda  \)是 \(  P\left( X \right)   \)重数为 \(  r  \)的根.存在 \(  V_{m+ r}^{\lambda}  \)中的一个特解,在丢掉所有次数小于 \(  r  \)的项后唯一.因此可以待定系数 \[
+    y\left( x \right)=x^{r}\left( a_{m-1}x^{m-1}+ a_{m-2}x^{m-2}+ \cdots + a_0 \right)e^{\lambda x}  
+    \]  之后通过解一个线性方程求解.
+\end{itemize}
+
+
+\hspace*{\fill}
+
+第二种方法往往更为快速,不需要解线性方程,但是需要一些篇幅来解释.这种方法基于 \(  \left( D \right)   \)作为 \(  V_{m}^{\lambda}  \)  上线性算子的矩阵的特殊性质.
+
+设 \(  \lambda  \)是 \(  P\left( X \right)   \)的 \(  r  \)重根,\(  f\left( x \right)   \)是一个次数小于 \(  m  \)的多项式.则方程 \(  P\left( D \right)y = e^{\lambda x}f\left( x \right)    \)已知有形如 \(  e^{\lambda x}g\left( x \right)   \)的特解,其中 \(  g  \)是此时小于
+ \(  m+ r  \)的多项式.通过允许 \(  r=0  \)来囊括 \(  \lambda  \)不是根的情况.由转移律 \[
+ P\left( D \right)e^{\lambda x}g\left( x \right) =  e^{\lambda x} P\left( D+ \lambda \right)g\left( x \right)    
+ \]   因此我们需要找到满足 \[
+ P\left( D+ \lambda \right)g\left( x \right)= f\left( x \right)   
+ \]的次数小于 \(  m+ r  \)的多项式 \(  g\left( x \right)   \) .   记 \[
+ P\left( X \right) = Q\left( X \right)\left( X-\lambda \right)^{r}   
+ \]其中 \(  Q  \)是多项式,使得 \(  Q\left( \lambda \right)\neq 0   \).因此 \(  g\left( x \right)   \)满足 \[
+  Q\left( D+ \lambda \right)D^{r} g\left( x \right) =f\left( x \right)   
+ \]   现在令 \(  R\left( X \right) =Q\left( X+ \lambda \right)    \).因为 \(  R\left( 0 \right)\neq 0   \),于是存在唯一的次数小于 \(  m  \)的 多项式 \(  h\left( x \right)   \)   ,使得 \(  R\left( D \right)h\left( x \right)=f\left( x \right)     \).
+ 可以通过对 \(  h\left( x \right)   \)积分 \(  r  \)次得到 \(  g\left( x \right)   \).
+ 接下来的问题是：如何找到 \(  h\left( x \right)   \)？换言之,我们需要给出算子 \(  R\left( D \right):V_{m}^{0}\to V_{m}^{0}   \)的逆.      
+
+\begin{proposition}
+    设 \(  R\left( X \right)   \)是多项式,使得 \(  R\left( 0 \right)\neq 0   \).将 \(  \frac{1}{R\left( X \right) }  \)展开为幂级数 \[
+        \frac{1}{R\left( X \right) } = \sum _{k=0}^{\infty}a_{k}X^{k}
+        \]   则 \(  R\left( D \right)   \)的逆就是算子 \(  \sum _{k=0}^{m-1}a_{k}D^{k}  \)  
+\end{proposition}
+\begin{remark}
+    通常,利用级数 \(  \left( 1+ X \right)   ^{-1} = 1-X+ X^{2}-X^{3}+ \cdots \)就足够了. 
+\end{remark}
+\begin{proof}
+    我们有 \[
+    \frac{1}{R\left( x \right)  } = \sum _{k=0}^{\infty}a_{k}X^{k}= \sum _{k=0}^{m-1}a_{k}X^{k}+ \left( \sum _{k=0}^{\infty}a_{k+ m}X^{k} \right)X^{m} 
+    \]其中级数在某个圆盘 \(  \left| X \right|<\rho   \)上收敛.得到 \[
+    1= R\left( X \right)\sum _{k=0}^{m-1}a_{k}X^{k}+ X^{m}S\left( X \right)  
+    \] 其中 \[
+    S\left( X \right) = \sum _{k=0}^{\infty}a_{k+ m}X^{k} 
+    \]由于 \(  R\left( X \right)   \)是多项式,上面一串关系表明 \(  S\left( X \right)   \)也是一个多项式.于是 \(  S\left( D \right)   \)可以看成是一个线性算子.
+    将\(  X  \)带入 \(  D  \),得到 \[
+    I = R\left( D \right)\left( \sum _{k=0}^{m-1}a_{k}D^{k} \right)+ D^{m}S\left( D \right) =R\left( D \right)    \left( \sum _{k=0}^{m-1}a_{k}D^{k} \right) 
+    \]    最后一个等号是因为 \(  D^{m}=0  \)  在 \(  V_{m}^{0}  \)上成立. 
+
+    \hfill $\square$
+\end{proof}
+
+\begin{conclusion}
+    对于寻找等式右侧为指数多项式的特解,归为先求纯多项式 \(  e^{\lambda x}f\left( x \right)   \) 的特解,再相加,其中求纯指数多项式分为以下几个步骤：
+    \begin{itemize}
+        \item 将 \(  P\left( X \right)   \)写成 \(  P\left( X \right)=Q\left( X \right)\left( X-\lambda \right)^{r}     \),令 \(  R\left( X \right)=Q\left( X+ \lambda \right)    \)  . 
+        \item 设等式右侧是小于 \(  m  \)次的指数多项式,将 \(  \frac{1}{R\left( X \right) }  \)按幂级数展开到 \(  m-1  \)次,代入得到 \(  R\left( D \right)   \)的逆 \(  \sum _{k=0}^{m-1} a_{k}D^{k}  \) .
+        \item 令 \(  h\left( x \right)   = \left( R\left( D \right)  \right)^{-1}  f\left( x \right)   \),并对 \(  h  \)积分 \(  r  \)次,得到 \(  g\left( x \right)   \).
+        \item  \(  e^{\lambda x}g\left( x \right)   \)是一个特解.     
+    \end{itemize}    
+\end{conclusion}
+\begin{example}
+    找到 \[
+    y ^{\prime \prime} -y^{\prime} -y= x^{3}e^{-x}
+    \]的一个特解.
+\end{example}
+\begin{solution}
+    设 \(  D  \)是微分算子,则 \(  D  \)可视为多项式空间和指数多项式空间上的线性算子.  
+   若方程有形如 \(  e^{-x}g\left( x \right)   \)的解,其中 \(  g  \)为多项式,则  
+    \[
+    \begin{aligned}
+   & \left( D^{2}-D-E \right)e^{-x}g\left( x \right)   = x^{3}e^{-x} \\ 
+& \implies e^{-x} \left( \left( D-E \right)^{2}-\left( D-E \right)-E   \right)g\left( x \right) = x^{3}e^{-x}\\ 
+ &\implies \left( D^{2}-3D+ E \right)g\left( x \right) = x^{3}\\ 
+  & \implies g\left( x \right) = \left( D^{2}-3D+ E \right)^{-1}    x^{3}
+    \end{aligned}
+    \]其中 \[
+    \begin{aligned}
+        \left( D^{2}-3D+ E \right)^{-1}& = \sum _{k=0}^{\infty} \left( -1 \right)^{k} \left( D^{2}-3D \right)^{k}\\ 
+         & =  E -\left( D^{2}-3D \right)+ \left( D^{2}-3D \right)^{2}-\left( D^{2}-3D \right)^{3}   ,\quad (D^{k}= 0,\quad k \ge 4)\\ 
+          & = 21D^{3}+ 8D^{2}+ 3D+ E
+    \end{aligned}   
+    \]因此 \[
+    g\left( x \right) = x^{3}+  9x^{2}+ 48x+ 126 
+    \]于是 \[
+    y= e^{-x}\left( x^{3}+ 9x^{2}+ 48x+ 126 \right) 
+    \]是一个特解.
+\end{solution}
+
+
+\subsection{处理正弦和余弦}
+
+由于 \(  \sin  \omega x = \frac{1 }{2i } e^{i  \omega x}- \frac{1 }{2i } e^{- i  \omega x}    \),且 \(  \cos   \omega x  = \frac{1}{2}e^{i \omega x} +  \frac{1}{2} e^{-i \omega x} \),故方程 \[
+P\left( D \right)y= A\cos  \omega x+ B\sin  \omega x 
+\]可以用指数多项式的方法去做.不过对这样的方程,我们有更特殊的技巧去处理.
+
+\noindent 我们设：
+\begin{itemize}
+    \item \(  P\left( X \right)   \)是实系数的；
+    \item \(  i \omega   \)不是 \(  P\left( X \right)   \)的根,  且 \(   \omega \neq 0  \)    
+\end{itemize}
+
+
+考虑由 \(  e^{i \omega x}  \)和 \(  e^{-i \omega x}  \)在 \(  \mathbb{C}   \)上张成的二维向量空间 \(  T_{ \omega }  \),它的另一组基是 \(  \cos  \omega x,\sin  \omega x  \)     .
+
+此时 \(  D  \)映\(  T_{ \omega }  \)到它自身.事实上 \(  D  \)可以视作 \(  T_{ \omega }  \) 上满足以下关系的线性算子 \[
+D^{2}=- \omega ^{2}E
+\]
+现在设 \(  g \in T_{ \omega }  \),考虑问题 \[
+P\left( D \right)y=g 
+\] 视为 \(  2  \)维空间 \(  T_{ \omega }  \)上的线性问题.可以将 \(  P\left( D \right)   \)中所有的 \(  D^{2}  \)    替换为 \(  - \omega ^{2}  \),由此得到形如以下的问题 \[
+\left( aD+ b \right)y=g 
+\] 
+
+\begin{remark}
+    由于 \(  i \omega   \)不是 \(  P\left( X \right)   \)的根,  故 \(  P\left( D \right)   \)视作 \(  T_{ \omega }  \)上的线性算子不为零,因此 \(  a,b  \)不全为零.   
+\end{remark}
+
+\begin{example}\label{ex:deal-sin-cos}
+    化简求以下方程的特解\[
+    y^{\left( 10 \right) }-y^{\left( 7 \right) }+ y^{\left( 4 \right) }-y=\cos 2x
+    \]为一个2维的\(  \mathbb{C}   \)- 线性问题
+\end{example}
+
+\begin{solution}
+    在 \(  T_{2}  \)上寻找 \(  y  \),令     \(  D:T_{2}\to T_{2}  \)是微分算子,则 \[
+        \begin{aligned}
+           & y^{\left( 10 \right) }-y^{\left( 7 \right) }+ y^{\left( 4 \right) }-y = \cos 2x ,\quad  y \in T_{2}\\ 
+           \iff & \left( D^{10}-D^{7}+ D^{4}-E \right)y=\cos 2x,\quad y\in T_{2}\\ 
+            \iff &  \left( 64D -1009E  \right)y=\cos 2x ,\quad y \in T_{2}\\ 
+             \iff & 64y^{\prime} -1009y=\cos 2x,\quad y \in T_{2}
+        \end{aligned}
+        \]   
+    
+\end{solution}
+
+当然可以通过解一阶线性方程得到特解,不过这里还可以利用以下命题计算 
+
+\begin{proposition}
+        设 \(  a,b  \)是不全为零的实数,令 \(   \omega \neq 0  \).则算子 \[
+        aD+ b:T_{ \omega }\to T_{ \omega }
+        \]可逆.它的逆是算子 \[
+        - \frac{a }{a^{2} \omega ^{2}+ b^{2} }D+  \frac{b }{ \omega ^{2}a^{2}+ b^{2} }  
+        \]  
+\end{proposition}
+
+\begin{example}
+    继续上面的Example \ref{ex:deal-sin-cos},设 \(  a=64 , b= -1009  \),\(   \omega = 2  \) 则 一个特解是 \[
+  \begin{aligned}
+    y& =   - \frac{a}{a^{2} \omega ^{2}+ b^{2}}D \cos 2x+  \frac{b}{ a^{2}\omega ^{2}+ b^{2}} \cos 2x\\ 
+      & =  \frac{1}{\left( 128 \right)^{2}+ \left( 1009 \right)^{2}  } \left(128\sin x -1009 \cos 2x \right) 
+  \end{aligned}
+    \]
+\end{example}
+
+\hspace*{\fill}
+
+另一种方法是当 \(  P\left( X \right)   \)为是系数时,我们将方程 \[
+P\left( D \right)y= A\cos  \omega x 
+\] 改为解 \[
+P\left( D \right)y =  A^{i \omega } 
+\]再取实部即可.另一边类似.
+
+\begin{problemset}
+    \item 
+\end{problemset}
+
+\chapter{线性微分方程组}
+
+
+\section{一般理论}
+
+\begin{definition}
+    考虑标准形式的 $ n $阶线性方程组 
+    \begin{equation}\label{linear}
+        \frac{\,\mathrm{d} y^{i} }{\,\mathrm{d} x } =  \sum_{j=1}^{n}a_{ij}\left( x \right)y^{j}+  f_{i}\left( x \right),\quad i = 1,2,\cdots ,n   
+    \end{equation}
+ 其中系数函数 $ a_{ij}\left( x \right)  $和 $ f_{i}\left( x \right)  $在区间 $ a<x<b $   上连续.\\ 
+     可以写作矩阵形式 \begin{equation}
+        \frac{\,\mathrm{d} \mathbf{y} }{ \,\mathrm{d} x} = \mathbf{A}\left( x \right)\mathbf{y}  
+     \end{equation}\label{homo-linear}
+     当 $ \mathbf{f}\left( x \right) \equiv 0  $时,方程 \begin{equation}
+        \frac{\,\mathrm{d} \mathbf{y} }{\,\mathrm{d} x } = \mathbf{A}\left( x \right) \mathbf{y}
+     \end{equation}被称为是齐次线性方程组 
+\end{definition}
+\begin{theorem}{存在唯一性}
+    线性微分方程组 \eqref{linear}满足初值条件 \begin{equation}
+        \mathbf{y}\left( x_0 \right)= \mathbf{y}_{0} 
+    \end{equation}的解 $ \mathbf{y}=\mathbf{y}\left( x \right)  $在区间 $ a<x<b $  上是存在且唯一的,其中初值 $ x_0\in \left( a,b \right)  $ 和 $ \mathbf{y}_{0} \in \mathbb{R} ^{n} $是任意给定的. 
+\end{theorem}
+
+
+
+
+
+\subsection{齐次线性微分方程组}
+
+\begin{lemma}
+    设 $ \mathbf{y}= \mathbf{y}_{1}\left( x \right)  $和 $ \mathbf{y}=\mathbf{y}_{2}\left( x \right)  $  是齐次微分方程组\eqref{homo-linear}的解,则它们的线性组合 
+    \begin{equation}\label{solution}
+          y= C_1 \mathbf{y}_{1}\left( x \right)+ C_2 \mathbf{y}_{2}\left( x \right)  
+    \end{equation}也是方程\eqref{homo-linear}的解.
+\end{lemma}
+\begin{remark}
+    齐次方程组\eqref{homo-linear}的解空间是线性空间.
+\end{remark}
+\begin{lemma}
+    齐次线性微分方程组\eqref{homo-linear}的解空间 $ S $是 $ n $-维的（$ n $是微分方程的阶数）.   
+\end{lemma}
+\begin{remark}
+    解与 $ \mathbb{R} ^{n} $上的点（初值）一一对应 .
+\end{remark}
+\begin{proof}
+    任取 $ x_0 \in \left( a,b \right)  $,那么对于每个 $ \mathbf{y}_{0} \in  \mathbb{R} ^{n} $,齐次方程\eqref{homo-linear}的初值问题 $ \mathbf{y}\left( x_0 \right)=\mathbf{y}_{0}  $存在唯一的解 $ \mathbf{y}\left( x \right)  $.
+    由此得到映射 $$
+    \begin{aligned}
+    H: \mathbb{R} ^{n} & \to  S
+      \\ 
+        \mathbf{y}_{0} &\mapsto \text{齐次方程的解}\mathbf{y}\left( x \right),\text{使得} \mathbf{y}\left( x \right)= \mathbf{y}_{0}  
+    \end{aligned}
+    $$  显然对于固定的 $ x_0 $ ,不同的初值问题的解不相同,故 $ H $是单射.
+    又对于任意的齐次方程组\eqref{homo-linear}的解 $ \mathbf{y}\left( x \right)  $, $ \mathbf{y}\left( x_0 \right) \in \mathbb{R} ^{n}  $ ,从而由单射$ H\left( \mathbf{y}\left( x_0 \right)  \right)= \mathbf{y}\left( x_0 \right)   $,因此 $ H $也是满的.
+    因此 $ H $是 $ \mathbb{R} ^{n} $到 $ S $的线性同构, $ \operatorname{dim}S=n     $.    
+\end{proof}
+
+\begin{theorem}\label{thm:lin-eq-gen-sol}
+    齐次线性微分方程\eqref{homo-linear}在区间 $ a<x<b $上有 $ n $个线性无关的解 \begin{equation}\label{independent-solution}
+        \varphi_1\left( x \right) ,\cdots ,\varphi_{n}\left( x \right) 
+    \end{equation} 且它的通解为 \begin{equation}\label{general-solution}
+        y = C_1\varphi_{1}\left( x \right)+ \cdots + C_{n}\varphi_{n}\left( x \right)  
+    \end{equation}
+   
+    
+\end{theorem}
+
+\begin{proof}
+    由线性空间的性质.
+\end{proof}
+\begin{proposition}\label{pro:lin-indep-sol}
+    设 $
+    \mathbf{y}_{1}\left( x \right),\cdots ,\mathbf{y}_{n}\left( x \right)  
+    $是齐次线性方程的 $ n $个解,则对于任意的 $ x_0 \in \left( a,b \right)  $, $ \left\{ \mathbf{y}_{k}\left( x \right)  \right\}_{k=1}^{n} $在 $ S $中线性无关,当且仅当 $ \left\{ \mathbf{y}_{k}\left( x_0 \right)  \right\}_{k=1 }^{n} $在 $ \mathbb{R} ^{n} $中线性无关.    
+\end{proposition}
+\begin{proof}
+    由 $ \mathbb{R} ^{n} \simeq S $立即得到. 
+
+    \hfill $\square$
+\end{proof}
+\begin{definition}{Wronsky}
+    设 $ \mathbf{y}_{1}\left( x \right),\cdots ,\mathbf{y}_{n}\left( x \right)   $是齐次微分方程的 $ n $个解,设它们的分量形式 $$
+    \mathbf{y}_{1}\left( x \right) = \left( y_{1}^{k}\left( x \right)  \right)^{\mathsf{T}},\cdots ,\mathbf{y}_{n}\left( x \right) = \left( y_{n}^{k}\left( x \right)  \right)^{\mathsf{T}}    
+    $$  定义它们的Wronsky行列式为 $$
+    W\left( x \right) = \left.W(x)=\left|\begin{array}{cccc}y_1^1(x)&y_2^1(x)&\cdots&y_n^1(x)\\y_1^2(x)&y_2^2(x)&\cdots&y_n^2(x)\\\vdots&\vdots&&\vdots\\y_1^n(x)&y_2^n(x)&\cdots&y_n^n(x)\end{array}\right.\right| 
+    $$
+\end{definition}
+
+\begin{lemma}{刘维尔公式}\label{liu-formu}
+     $$
+     W\left( x \right) = W\left( x_0 \right) e^{\int_{x_0}^{x}\mathrm{tr}[A\left( x \right) ]\,\mathrm{d} x} ,\quad  a<x<b
+     $$
+\end{lemma}
+
+\begin{remark}
+    由此见对每个 $ x_0 \in \left( a,b \right)  $ , $ W\left( x \right)  =0 ,\forall x \in \left( a,b \right) \iff W\left( x_0 \right) = 0 $ ,因此 $ W\left( x \right)  $恒为零或恒不为零. 
+\end{remark}
+
+\begin{proof}
+    $$
+    \frac{\,\mathrm{d}  }{\,\mathrm{d} x } W\left( x \right) = \sum _{i=1}^{n} \det \begin{pmatrix} 
+        y_1^{1}\left( x \right) &\cdots & y_{n}^{1}\left( x \right)\\ 
+       &  \ldots  & \\ 
+         \dot{y}_{1}^{i} \left( x \right) & \cdots  & \dot{y}_n^{i}\left( x \right) \\ 
+       \vdots &  \ldots & \vdots\\ 
+         y_{1}^{n}\left( x \right) & \cdots  & y_{n}^{n}\left( x \right)  
+             
+    \end{pmatrix}   
+    $$又 $$
+    \dot{y}^{i}_{k}\left( x \right) = \sum _{j=1}^{n} a_{ij}\left( x \right) y_{k}^{j}\left( x \right)   ,\quad  k=1,2,\cdots,n
+    $$故 $$
+     \begin{aligned}
+        \frac{\,\mathrm{d}  }{\,\mathrm{d} x }W\left( x \right)&  = \sum _{i=1}^{n}\sum _{j=1}^{n} a_{ij}\left( x \right) \det  \begin{pmatrix}y_1^1\left(x\right) & \cdots & y_{n}^1\left(x\right)\\  & \cdots & \\ {y}_1^{j}\left(x\right) & \cdots & {y}_{n}^{j}\left(x\right)\\ \vdots & \cdots & \vdots\\ y_1^{n}\left(x\right) & \cdots & y_{n}^{n}\left(x\right)\end{pmatrix}
+        ,\quad y_{k}^{j}\left( x \right)\text{位于第i行}\\ 
+         & =   \sum _{i=1}^{n}a_{ii} W\left( x \right) \\ 
+          & = \operatorname{tr}\,[A\left( x \right) ]W\left( x \right) 
+     \end{aligned}
+    $$ 
+     解一阶线性微分方程,得 $$
+     W\left( x \right) = W\left( x_0 \right) e^{\int_{x_0}^{x} \operatorname{tr}\,[A\left( x \right) ]\,\mathrm{d} x}  
+     $$
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}\label{thm:wronsky-inde}
+    设 $ \mathbf{y}_{1}\left( x \right),\cdots ,\mathbf{y}_{n}\left( x \right)   $是 $ n $阶齐次线性微分方程的一组解,$ W\left( x \right)  $是它们的Wronsky行列式 则以下几条等价：
+    \begin{enumerate}
+        \item $ \left( \mathbf{y}_{k}\left( x \right)  \right)_{k=1}^{n} \in S^{n} $ 线性无关；
+        \item  $ \forall x\in \left( a,b \right),W\left( x \right)\neq 0   $;
+        \item $ \exists x_0 \in \left( a,b \right),W\left( x_0 \right)\neq 0   $  .
+    \end{enumerate}
+       
+\end{theorem}
+
+\begin{proof}
+    由命题\ref{pro:lin-indep-sol},第一条和第三条等价.由引理\ref{liu-formu},第二条和第三条等价.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}
+    设 $ n $阶齐次线性微分方程的一个解组为 $ \left\{ \mathbf{y}_{j}: j=1,2,\cdots,n \right\} $,则令 $$
+    \mathbf{Y}\left( x \right): = \left( y_{j}^{i}\left( x \right)  \right)_{n\times n}  
+    $$是一个矩阵,定义 $ \frac{\,\mathrm{d} \mathbf{Y}\left( x \right)  }{\,\mathrm{d} x }  $为分量各自求导.则 $$
+    \frac{\,\mathrm{d} \mathbf{Y}\left( x \right)  }{ \,\mathrm{d} x}  = \mathbf{A}\left( x \right)\mathbf{Y} \left( x \right) 
+    $$   
+\end{definition}
+
+\begin{remark}\label{sol-matrix-def}
+    \begin{itemize}
+        \item 若结论成立,则 $ \dot{\mathbf{y}}_{i} = \mathbf{A}\mathbf{y}_{i},i=1,2,\cdots,n $,因此解矩阵与解组一一对应. 
+        \item 当解组 $ \left\{ \mathbf{y}_{j}: j=1,2,\cdots,n \right\} $是一个基本解组时,称相应的 $ \mathbf{Y}\left( x \right)  $为一个基解矩阵.
+        \item 若 $ \Phi \left( x \right)  $是 $ n $阶齐次线性方程的一个基解矩阵,则通解为 $ \mathbf{y}=\Phi \left( x \right) \mathbf{c}  $   ,其中 $ \mathbf{c} $为任意 $ n $维常值列向量.    
+    \end{itemize}
+    
+\end{remark}
+
+\begin{proof}
+     $ \mathbf{Y} $写作 $ \mathbf{Y}=\left( \mathbf{y}_{1},\cdots ,\mathbf{y}_{n} \right)  $, $ \frac{\,\mathrm{d} \mathbf{Y}\left( x \right)  }{\,\mathrm{d} x }  $   写作 $ \left(  \dot{\mathbf{y}}_{1},\cdots ,\dot{\mathbf{y}}_{n} \right)  $,则 $$
+    \begin{aligned}
+        \dot{\mathbf{Y}}& = \left( \dot{\mathbf{y}}_{1},\cdots ,\dot{\mathbf{y}}_{n} \right)  \\ 
+         & = \left( \mathbf{A}\mathbf{y}_{1},\cdots ,\mathbf{A}\mathbf{y}_{n} \right) \\ 
+          & = \mathbf{A} \mathbf{Y}
+    \end{aligned} 
+     $$ 
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    设 $ \Phi \left( x \right)  $是齐次线性方程组的一个基解矩阵,则对于任意非奇异的常数矩阵 $ \mathbf{C} $,矩阵 $$
+    \Psi \left( x \right): = \Phi \left( x \right) \mathbf{C}  
+    $$ 也是一个基解矩阵.
+\end{proposition}
+
+\begin{proof}
+    由分量求导的线性, $$
+    \frac{\,\mathrm{d} \Psi  }{\,\mathrm{d} x } = \frac{\,\mathrm{d} \Phi  }{\,\mathrm{d} x } \mathbf{C}= \mathbf{A}\Phi\, \mathbf{C}= \mathbf{A}\Psi   
+    $$因此 $ \Psi  $是一个解矩阵.此外 $ W_{\Psi }\left( x \right)= W_{\Phi }\left( x \right) \det C \neq  0   $ ,因此 $ \Psi  $是一个基解矩阵. 
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}\label{homo-EE-trans}
+    设 $ \Phi \left( x \right)  $和 $ \Psi \left( x \right)  $均为齐次线性方程的基解矩阵,则存在非奇异的 $ n $阶常值矩阵 $ \mathbf{C} $,使得 $ \Psi = \Phi \mathbf{C} $     
+\end{proposition}
+\begin{proof}
+   取定 $ x_0 \in \left( a,b \right)  $  ,令$ C: = \Phi \left( x_0 \right)^{-1} \Psi \left( x_0 \right)   $, 则由上面的命题, $ \Phi \left( x \right)C  $也是一个基解矩阵,又 $ \Psi \left( x_0 \right)= \Phi \left( x_0 \right)C   $ ,故 $ \Psi  $和 $ \Phi C $  是同一初值问题的解,由齐次线性方程方程初值问题解的唯一性, $ \Psi =\Phi C $. 
+
+    \hfill $\square$
+\end{proof}
+\subsection{非齐次线性微分方程组}
+
+\begin{introduction}[约定]
+    \item “方程”均指线性方程.
+\end{introduction}
+
+\begin{lemma}{特解与通解}\label{rel-sp-gen-so}
+    设 $ \Phi \left( x \right)  $是非齐次方程所对应的齐次方程的一个基解矩阵,$ \varphi ^{*}\left( x \right)  $是非齐次方程的一个特解,则非齐次方程的任意解 $ \varphi \left( x \right)  $可以表示为 $$
+    \varphi \left( x \right)=\Phi \left( x \right)\mathbf{c}+ \varphi ^{*}\left( x \right)   
+    $$   其中 $ \mathbf{c} $是由 $ \varphi \left( x \right)  $决定的常值列向量.  
+\end{lemma}
+\begin{proof}
+    易见 $ \varphi \left( x \right)-\varphi ^{*}\left( x \right)   $是齐次方程的一个解,由Remark\ref{sol-matrix-def},存在常值列向量 $ \mathbf{c} $,使得 $$
+    \varphi \left( x \right)-\varphi ^{*}\left( x \right)=\Phi \left( x \right) \mathbf{c}  
+    $$ 
+
+    \hfill $\square$
+\end{proof}
+
+\begin{lemma}{一个特解}\label{a-sp-sol}
+    设 $ \Phi \left( x \right)  $是齐次方程的一个基解矩阵,则非齐次方程 $$
+    \frac{\,\mathrm{d} \mathbf{Y}\left( x \right)  }{\,\mathrm{d} x }  = \mathbf{A}\left( x \right)\mathbf{y}\left( x \right)+ \mathbf{f}\left( x \right)   
+    $$  的一个特解是 $$
+    \varphi ^{*}\left( x \right) =\Phi \left( x \right)\int_{x_0}^{x}\Phi ^{-1} \left( s \right) \mathbf{f}\left( s \right)\,\mathrm{d} s    
+    $$其中 $ x_0 $可以从 $ \left( a,b \right)  $中任取   .
+\end{lemma}
+\begin{note}
+    常数变易法
+\end{note}
+\begin{proof}
+    假设特解有形式 $$
+    \varphi ^{*}\left( x \right)= \Phi \left( x \right) \mathbf{c}\left( x \right)   
+    $$带入非齐次方程,得到 $$
+    \Phi ^{\prime} \left( x \right)\mathbf{c}\left( x \right)+ \Phi \left( x \right) \mathbf{c}^{\prime} \left( x \right)   = \mathbf{A}\left( x \right)\Phi \left( x \right)\mathbf{c}\left( x \right)+ \mathbf{f}\left( x \right)     
+    $$又 $ \Phi ^{\prime} \left( x \right)= \mathbf{A}\left( x \right)\Phi \left( x \right)    $,于是 $$
+    \Phi \left( x \right) \mathbf{c}^{\prime} \left( x \right)=\mathbf{f}\left( x \right)   
+    $$注意到 $ \Phi \left( x \right)  $是基解矩阵蕴含Wronsky行列式 $\det [\Phi \left( x \right) ]\neq 0 $,进而 $ \Phi \left( x \right)  $在每一点处的取值可逆,于是可以定义$ \Phi ^{-1} \left( x \right)  $ ,让其左作用在等式两侧,得到 $$
+    \mathbf{c}^{\prime} \left( x \right)= \Phi ^{-1} \mathbf{f}\left( x \right)  
+    $$   积分得到 $$
+    \mathbf{c}\left( x \right)= \int_{x_0}^{x}\Phi ^{-1} \left( s \right)\mathbf{f}\left( s \right)\,\mathrm{d} s   ,\quad x_0\in \left( a,b \right) 
+    $$代回原方程知, $$
+    \varphi ^{*}\left( x \right) =\Phi \left( x \right)\int_{x_0}^{x}\Phi ^{-1} \left( s \right)\mathbf{f}\left( s \right)\,\mathrm{d} s 
+    $$是非齐次方程的一个特解.
+\end{proof}
+\begin{theorem}{通解}
+    设 $ \Phi \left( x \right)  $是齐次方程的一个基解矩阵,则非齐次方程在 $ a<x<b $上的通解可以表示为 $$
+    \mathbf{y}=\Phi \left( x \right)\left( \mathbf{c}+  \int_{x_0}^{x} \Phi ^{-1} \left( s \right)\mathbf{f}\left( s \right)\,\mathrm{d} s   \right)  
+    $$其中 $ \mathbf{c} $为任意 $ n $维常值列向量.
+    
+    此外,非齐次方程满足初值条件 $ \mathbf{y}\left( x_0 \right)=\mathbf{y}_{0}  $的解为 $$
+    \mathbf{y}= \Phi \left( x \right) \Phi ^{-1} \left( x_0 \right)\mathbf{y}_{0} + \Phi \left( x \right)\int_{x_0}^{x} \Phi ^{-1} \left( s \right)\mathbf{f}\left( s \right)\,\mathrm{d} s     
+    $$ 
+\end{theorem}
+
+\begin{proof}
+    由引理\ref{a-sp-sol}和引理\ref{rel-sp-gen-so}可得第一个结论.
+    对于第二个结论,取 $ \mathbf{c}= \Phi ^{-1} \left( x_0 \right)\mathbf{y}_{0}  $即可. 
+\end{proof}
+
+\begin{example}
+    求齐次方程的通解： $$
+    \frac{\,\mathrm{d} \mathbf{y} }{ \,\mathrm{d} t}= \begin{pmatrix} 
+        0& 0& 1\\ 
+         
+        0& 1& 0\\ 
+         
+        1& 0& 0
+
+    \end{pmatrix}  \mathbf{y}
+    $$
+\end{example}
+
+\begin{proof}
+    解 $ \frac{\,\mathrm{d} y^{2} }{\,\mathrm{d} t }  =y^{2}$,得到 $$
+    y^{2}= c_1e^{t}
+    $$ 由 $ \frac{\,\mathrm{d} y^{1} }{\,\mathrm{d} t }=y^{3}, \frac{\,\mathrm{d} y^{3} }{\,\mathrm{d} t }  =y^{1} $,得到 $$
+    \frac{\,\mathrm{d} ^{2}y^{1} }{\,\mathrm{d} t^{2} }=y^{1},\quad  \frac{\,\mathrm{d} ^{2}y^{3} }{\,\mathrm{d} t^{2} }  =y^{3}
+    $$ 从而 $$
+    y^{1}=c_2e^{t}+ c_3e^{-t},\quad  y^{3}=c_2e^{t}-c_3e^{-t}
+    $$于是 $$
+    \begin{pmatrix} 
+        y^{1}\\ 
+         y^{2}\\ 
+          y^{3} 
+    \end{pmatrix} = \begin{pmatrix} 
+         e^{t}& 0& e^{-t}\\ 
+          0& e^{t}& 0\\ 
+           e^{t}& 0& -e^{-t} 
+    \end{pmatrix} \begin{pmatrix} 
+        c_2\\ 
+         c_1\\ 
+          c_3 
+    \end{pmatrix}   
+    $$
+\end{proof}
+
+\section{常系数线性微分方程组}
+
+\subsection{矩阵指数函数}   
+
+\begin{definition}{矩阵的模}
+    设 $ \mathcal{M} $表示全体 $ n $阶（复）矩阵的集合,则 $ \mathcal{M} $构成一个复线性空间.对于每个 $ A=\left( a_{ij} \right)_{n\times n} \in \mathcal{M}  $  ,定义它的模为 $$
+    \left\| A \right\| : = \sum _{i,j=1}^{n}\left| a_{ij} \right| 
+    $$
+\end{definition}
+\begin{remark}
+  \begin{enumerate}
+    \item $ \left\| \cdot  \right\| $是一个范数.
+    \item   $ \left( \mathcal{M}, \left\| \cdot  \right\| \right)  $是完备的赋范线性空间.  
+  \end{enumerate}
+  
+\end{remark}
+
+\begin{lemma}
+    任取 $ A,B \in \mathcal{M} $,$ AB \in \mathcal{M} $,且 $$
+    \left\| AB \right\| \le \left\| A \right\|\left\| B \right\|
+    $$  
+\end{lemma}
+
+\begin{remark}
+    \begin{itemize}
+        \item 由此立即有 $$
+        \left\| A^{k} \right\|\le \left\| A \right\|^{k},\quad k\ge 1
+        $$
+    \end{itemize}
+    
+\end{remark}
+\begin{proof}
+     设 $ A =\left( a_{ij} \right) _{1\le i,j\le n} $, $ B = \left( b_{ij} \right) _{1\le i,j\le n}$  ,则 $ AB = \left( \sum _{k}a_{ik}b_{kj} \right)_{1\le i,j\le n} $,于是 $$
+     \begin{aligned}
+     \left\| AB \right\|& = \sum _{i,j} \left| \sum _{k}a_{ik}b_{kj} \right|  \\ 
+      & \le  \sum _{i,j} \sum _{k} \left| a_{ik} \right|\left| b_{kj} \right|  
+     \end{aligned}
+     $$另一方面 $$
+    \begin{aligned}
+        \left\| A \right\|\left\| B \right\| = \left( \sum _{i,j}\left| a_{ij} \right|  \right)\left( \sum _{i,j} \left| b_{ij} \right| \right)  &= \sum _{i,k}\sum _{l,j} \left| a_{ik} \right|\left| b_{lj} \right| \\ 
+         & \ge \sum _{i,k}\sum _{j} \left| a_{ik} \right|\left| b_{kj} \right|  =\sum _{i,j}\sum _{k}\left| a_{ik} \right|\left| b_{kj} \right|  \ge  \left\| AB \right\| 
+    \end{aligned}
+     $$
+\end{proof}
+\begin{definition}
+    对于每个 $ A \in \mathcal{M} $ ,定义 $$
+    e^{A}: = \sum _{k=0}^{\infty} \frac{A^{k} }{k! } 
+    $$
+\end{definition}
+
+\begin{remark}
+    \begin{itemize}
+        \item 由上面引理的Remark,易见 $ \sum _{k=0}^{\infty} \frac{\left\| A \right\|^{k} }{k! }  $绝对收敛,故 $ \left( \sum _{k=0}^{n}\frac{A^{k} }{k! }  \right)_{n \in \mathbb{N} }  $ 是Cauchy列,又由 $ \mathcal{M} $的完备性, $ e^{A} $收敛于 $ \mathcal{M} $. 
+    \end{itemize}
+    
+\end{remark}
+\begin{proposition}{矩阵指数的运算性质}
+    任取 $ A,B \in \mathcal{M} $ 
+    \begin{enumerate}
+        \item 若 $ AB =BA$,则 $$
+        e^{A+ B}=e^{A}e^{B}
+        $$ 
+        \item  $ e^{A} $总可逆,且  $$
+        \left( e^{A} \right)^{-1} =e^{-A} 
+        $$ 
+        \item 若 $ P $是非奇异的 $ n $阶矩阵,则 $$
+        e^{PAP ^{-1} } = P e^{A}P ^{-1} 
+        $$  
+    \end{enumerate}
+    
+\end{proposition}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 由  $$
+        \frac{\left( A+ B \right)^{n}  }{n! }= \sum _{k=0}^{n} \frac{A^{k}B^{n-k} }{k!\left( n-k \right)!  }  
+        $$ 可得$$
+       \left( \sum _{k=0} ^{\frac{[n] }{2 } } \frac{A^{k} }{k! } \right)  \left( \sum _{k=0} ^{\frac{[n] }{2 } } \frac{B^{k} }{k! } \right)  \le \sum _{ n = 0}^{m} \frac{\left( A+ B \right)^{n}  }{n! } = \sum _{n = 0}^{m} \sum _{i+ j = n}  \frac{ A^{i}B^{j} }{i!j! }  \le  \left( \sum _{k=0}^{m} \frac{A^{k} }{k! }  \right) \left( \sum _{k=0}^{m} \frac{B^{k} }{k! }  \right) 
+        $$令 $ n\to  \infty $即可. 
+        \item 注意到 $ A\left( -A \right)=\left( -A \right)A   $,由1,立即得到. 
+        \item 由定义 $$
+        e^{PAP ^{-1} } = \sum _{k=0}^{\infty} \frac{\left( PAP ^{-1}  \right)^{k}  }{k! }  = \sum _{k=0}^{\infty}  P \frac{A^{k} }{k! } P ^{-1} = P\left( \sum _{k=0}^{\infty} \frac{A^{k} }{k! } \right)P ^{-1} = Pe^{A}P ^{-1}    
+        $$
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{corollary}\label{cor:nonhomo-linear-eq-gen-sol}
+    非齐次方程
+    \begin{equation}
+        \frac{\,\mathrm{d} \mathbf{y} }{ \,\mathrm{d} x} = A \mathbf{y}\left( x \right)+  \mathbf{f}\left( x \right)   
+    \end{equation}
+    在区间 $ \left( a,b \right)  $上的一个通解为 
+    \begin{equation}
+        \mathbf{y} = e^{xA}\mathbf{c}+ \int_{x_0}^{x}e^{\left( x-s \right)A} \mathbf{f}\left( s \right)\,\mathrm{d} s
+    \end{equation}其中 $ \mathbf{c} $为任意常列向量.此外,非齐次方程满足初值条件 $ y\left( x_0 \right)=y_0  $  的解为 
+    \begin{equation}
+        \mathbf{y}= e^{\left( x-x_0 \right) A}\mathbf{y}_{0}+  \int_{x_0}^{x}e^{\left( x-s \right)A }\mathbf{f}\left( s \right)\,\mathrm{d} s 
+    \end{equation}
+\end{corollary}
+
+\subsection{基解矩阵与Jordan标准型}
+ \begin{lemma}
+    设 $ A $是 $ n $阶矩阵,$ J = \operatorname{diag}\left( J_1,\cdots ,J_{m} \right)  $是 $ A $的 Jordan标准型, $ P $是可逆矩阵,使得 $ A = PJP ^{-1}  $  则 $$
+    e^{xA} = P \operatorname{diag}\left( e^{x J_{1}},\cdots ,e^{x J_{m}}\right)P ^{-1}  
+    $$    
+ \end{lemma}
+ \begin{remark}
+    \begin{itemize}
+        \item   若 $ e^{xA} $齐次方程的一个基解矩阵,则 $ e^{xA}P $亦然.
+        \begin{proof}
+            只需注意到 $ \frac{\,\mathrm{d}  }{\,\mathrm{d} x } [e^{xA}P]= A e^{xA}P  $ 
+        
+            \hfill $\square$
+        \end{proof}
+    \end{itemize}
+    
+ \end{remark}
+ \begin{proof}
+    $$
+    \begin{aligned}
+    e^{xA} &= \sum _{k=0}^{\infty} \frac{x^{k} }{k! } A^{k}  \\ 
+     & = \sum _{k=0}^{\infty} \frac{x^{k} }{k! } P J^{k} P ^{-1} \\ 
+      & = P \left( \sum _{k=0}^{\infty} \frac{x^{k} }{ k!}J^{k}  \right)P ^{-1} \\ 
+       & = P\left( \sum _{k=0}^{\infty} \frac{x^{k} }{k! } \operatorname{diag}\left( J_1^{k},\cdots ,J_{m}^{k} \right)   \right)    P ^{-1} \\ 
+        & =P \operatorname{diag}\left(  \sum _{k=0}^{\infty} \frac{x^{k} }{k!}J_{1}^{k},\cdots , \sum _{k=0}^{\infty}\frac{x^{k} }{k! } J_{m}^{k}    \right) P ^{-1} \\ 
+         & = P \operatorname{diag}\left( e^{xJ_1},\cdots ,e^{xJ_{m}} \right) P ^{-1} 
+    \end{aligned}
+    $$
+ 
+    \hfill $\square$
+ \end{proof}
+
+ \begin{proposition}
+    设 $ A $有特征值 $  \lambda _{1},\cdots , \lambda _{s} $,重数分别为 $  n_1,\cdots,n_s  $, $ A $的 Jordan标准型为 $$
+    J = \operatorname{diag}\left( J_1,\cdots ,J_{s}\right) 
+    $$ 其中 $$
+    J_{i} = \operatorname{diag}\left( J_{i,1},\cdots ,J_{i,l_{j}} \right)  ,\quad  i=1,\cdots ,s
+    $$ $ J_{i,k} : =  \lambda_{i}E_{p_{i,k}}+ Z_{p_{i,k}}$ 表示 $  \lambda _{i} $的第 $ k $个 Jordan块（$ p_{i,k} $是阶数） , $ k=1,\cdots ,l_{j} $ .设 $ P = \left( \mathbf{p}_{1},\cdots , \mathbf{p}_{n} \right)  $是过渡矩阵,使得 $ P ^{-1}  AP=J $  ,则一个基解矩阵是 $$
+    \begin{aligned}
+    e^{xA}P & = Pe^{xJ} = P \operatorname{diag}\left(  e^{x \left(   \lambda _{i}E_{p_{i,k}}+ Z_{p_{i,k}}\right) }\right) = P \operatorname{diag}\left( e^{ \lambda _{i}x} e^{x Z_{p_{i,k}}} \right) \\ 
+     & = \operatorname{diag}\left( e^{ \lambda _{i}x}\left( \mathbf{r}_{0}+ x \mathbf{r}_{1}+  \frac{1}{2!}x^{2} \mathbf{r}_{2}+ \cdots +  \frac{1}{\left( p-1 \right)! }x^{p-1}\mathbf{r}_{p-1} \right)  \right) 
+    \end{aligned}
+    $$最后的形式中括号里的是Jordan块对应分块的某一列, $ \mathbf{r}_{i} $取对应到的 $ \mathbf{p} _{j}$的倒序  .
+ \end{proposition}
+
+ \begin{remark}
+    作为动机了解即可.
+ \end{remark}
+ \begin{proof}
+    $$
+    \begin{aligned}
+    e^{x Z_{p}} = \sum _{k=1}^{p-1} \frac{x^{k} }{k! } Z^{k}  =\begin{pmatrix} 
+        1 \\ 
+         x & 1\\ 
+          \frac{1}{2!}x^{2} & x & 1\\ 
+           \cdots & \cdots \\ 
+            \frac{1 }{ \left( p-1 \right)!  }x^{p-1} & \cdots & & x & 1 
+    \end{pmatrix} 
+    \end{aligned}
+    $$因此 $$
+   \left( \mathbf{p}_{1},\cdots ,\mathbf{p}_{p} \right)e^{xZ_{p}} =  \left( \sum _{k=1}^{p} \frac{1 }{k! }x^{k} \mathbf{p}_{k}  ,\cdots , \sum _{k=p}^{p} \frac{1}{k!}x^{k}\mathbf{p}_{k}\right)
+    $$
+ 
+    \hfill $\square$
+ \end{proof}
+\subsection{通过待定特征向量寻求基解矩阵}
+ \begin{lemma}\label{lem:sol-egen}
+    微分方程 $ \frac{\,\mathrm{d} \mathbf{y} }{\,\mathrm{d} x } = A \mathbf{y}  $有非零解 $ \mathbf{y}= e^{\lambda x} \mathbf{r} $,当且仅当 $ \lambda  $是矩阵 $ A $的特征值,且 $ \mathbf{r} $是属于 $ \lambda  $的特征向量.      
+ \end{lemma}
+ \begin{proof}
+    $ \mathbf{y}= e^{\lambda x} \mathbf{r} $是该齐次方程的解,当且仅当 $$
+    \lambda e^{\lambda x} \mathbf{r}= A e^{\lambda x} \mathbf{r}
+    $$ 由于 $ \mathbf{y} $是非零解,故 $ e^{\lambda x} \neq  0 $且 $ \mathbf{r} \neq  0 $ ,上述等式等价于 $$
+    \lambda \mathbf{r}  = A \mathbf{r}
+    $$  即 $ \lambda  $为特征值且 $ \mathbf{r} $为属于 $ \lambda  $的特征向量.  
+ 
+    \hfill $\square$
+ \end{proof}
+
+ \begin{theorem}{特征向量给出的复基解矩阵}
+    设 $ A $有 $ n $个互不相同的特征值 $  \lambda _{1},\cdots , \lambda _{n} $,和对应的特征向量 $ \mathbf{r}_{1},\cdots ,\mathbf{r}_{n} $,则 $$
+    \Phi \left( x \right) = \left( e^{ \lambda _{1}x} \mathbf{r}_{1},\cdots , e^{ \lambda _{n}x}\mathbf{r}_{n} \right)  
+    $$是 $ \frac{\,\mathrm{d} \mathbf{y} }{ \,\mathrm{d} x} = A \mathbf{y}  $的一个基解矩阵.     
+ \end{theorem}
+
+ \begin{proof}
+    由引理\ref{lem:sol-egen}, $ \Phi \left( x \right)  $是该齐次方程的一个解矩阵,又 $ \det [\Phi  \left( 0 \right) ] = \det \left( \mathbf{r}_{1},\cdots ,\mathbf{r}_{n} \right)  \neq 0$,故由定理\ref{wronsky-cri-solu}, $ \Phi \left( x \right)  $是基解矩阵.   
+ 
+    \hfill $\square$
+ \end{proof}
+
+ 
+ \begin{lemma}\label{lem:gen-egv-sol}
+    设 $  \lambda _{i} $是矩阵 $ A $的 $ n_{i} $重特征值,则齐次方程有形如
+    \begin{equation}\label{gen-egv-sol}
+        e^{ \lambda _{i}x}\left( \mathbf{r}_{0}+ x \mathbf{r}_{1}+  \frac{1}{2!} x^{2} \mathbf{r}_{2}+ \cdots +  \frac{1}{\left( n_{i}-1 \right)! } x^{n_{i}-1}\mathbf{r}_{n_{i}-1} \right) 
+    \end{equation}
+    的非零解,当且仅当它是 $$
+    \left( A- \lambda _{i}E \right)^{n_{i}} \mathbf{r}=0
+    $$的一个非零解,且 
+    \begin{equation}
+        \mathbf{r}_{1},\cdots ,\mathbf{r}_{n_{i}-1} 
+    \end{equation} 
+    按以下方式确定
+    \begin{equation}
+        \mathbf{r}_{k}=\left( A- \lambda _{i}E \right)\mathbf{r}_{k-1},\quad  k=1,\cdots ,n_{i}-1 
+    \end{equation}
+ \end{lemma}
+
+ \begin{remark}
+     $ \mathbf{r}_{0},\cdots , \mathbf{r}_{k} $中后几项可能为0,事实上,只有 $  \lambda _{i} $的 Jordan块只有一个时,才会有 $ r_{n_{i}-1} \neq  0 $,其余情况下, $ x $的最高次数为 $  \lambda _{i} $的最大 Jordan块的阶数减一（即它的rank）.     
+ \end{remark}
+\begin{proof}
+    \ref{gen-egv-sol}为齐次方程 $ \frac{\,\mathrm{d}  \mathbf{y} }{\,\mathrm{d} x } = A \mathbf{y}  $的解,当且仅当 $$
+    \begin{aligned}
+    \frac{ \,\mathrm{d}  \mathbf{y} }{\,\mathrm{d} x } & =    \lambda _{i}e^{ \lambda _{i}x}\left(  \sum _{k=0}^{n_{i}-1} \frac{1 }{k! } x^{k}\mathbf{r}_{k}  \right) + e^{ \lambda _{i}x} \left( \sum _{k=1}^{n_{i}-1} \frac{1}{\left( k-1 \right)! }x^{k-1}\mathbf{r}_{k} \right) \\ 
+     & = A e^{ \lambda _{i}x}\left( \sum _{k=0}^{n_{i}-1} \frac{1}{k!}x^{k}\mathbf{r}_{k} \right) 
+    \end{aligned}
+    $$ 即 $$
+  \begin{aligned}
+    & \left( A- \lambda _{i}E \right)\left( \mathbf{r}_{0}+  x \mathbf{r}_{1}+ \cdots + \frac{1}{\left( n_{i}-1 \right)! }x^{n_{i}-1} \mathbf{r}_{n_{i}-1} \right)  \\ 
+     & =  \mathbf{r}_{1}+ x \mathbf{r}_{2}+ \cdots +  \frac{1}{\left( n_{i}-2 \right)! } x^{n_{i}-2} \mathbf{r}_{n_{i}-1}
+  \end{aligned}
+    $$考察各项系数知,上式成立当且仅当 $$
+    \left( A- \lambda _{i}E \right) \mathbf{r}_{j} = \mathbf{r}_{ j + 1},\quad  j= 0,\cdots , n_{i}-2;\quad  \left( A-  \lambda _{i}E \right)\mathbf{r}_{n_{i}-1} =0  
+    $$即 $$
+    \mathbf{r}_{j + 1} = \left( A- \lambda _{i}E \right) \mathbf{r}_{j},\quad j =0,\cdots ,n_{i}-2;\quad  \left( A- \lambda _{i}E \right)^{n_{i}} \mathbf{r}_{0}=0  
+    $$
+    \hfill $\square$
+\end{proof}
+\begin{lemma}
+    设 $ A $的互不相同的特征值为 $  \lambda _{1},\cdots , \lambda _{s} $,重数分别为 $  n_1,\cdots,n_s  $.记 $ n $维常数列向量组成的
+    （复）线性空间为 $ V $,则
+    \begin{itemize}
+        \item  $$
+        V_{i}: = \left\{ \mathbf{r}\in V : \left( A- \lambda _{i}E \right)^{n_{i}} \mathbf{r} =0 \right\}
+        $$是矩阵 $ A $的 $ n_{i} $维不变子空间.
+        \item $ V $有直和分解 $$
+        V_1\oplus V_2 \oplus \cdots \oplus V_{s}
+        $$   
+    \end{itemize}
+         
+    
+\end{lemma}
+
+\begin{theorem}
+    设 $ A $的互不相同的特征值为 $  \lambda _{1},\cdots , \lambda _{s} $,重数分别为 $ n_1,\cdots ,n_{s} $   ,则齐次方程有基解矩阵 $$
+    \left( e^{ \lambda _{1}x}P_{1}^{\left( 1 \right) }\left( x \right),\cdots , e^{ \lambda _{1}x}P_{n}^{\left( 1 \right) }\left( x \right);\cdots ;e^{ \lambda _{s}x}P_{1}^{\left( s \right) }\left( x \right),\cdots , e^{ \lambda _{s}x}P _{n_{s}}^{\left( s \right)  }   \left( x \right) \right) 
+    $$其中 $$
+    P_{j}^{\left( i \right) } = \mathbf{r}_{j_0}^{\left( i \right) }+ x \mathbf{r}_{j1}^{\left( i \right) }+ \cdots +  \frac{x^{n_{i}-1} }{\left( n_{i}-1 \right)!  } \mathbf{r}_{j n_{i}-1}^{\left( i \right) }, \quad   i =  1,\cdots,s ,j= 1,\cdots,n _{i}  
+    $$  $ \mathbf{r}_{10}^{\left( i \right) },\cdots , \mathbf{r}_{n_{i}0}^{\left( i \right) } $是 $ \left( A- \lambda _{i}E \right)  ^{n_{i}} \mathbf{r}=0$的 $ n_{i} $个线性无关解,使得 $ \mathbf{r}_{jk}^{\left( i \right) } = \left( A- \lambda _{i}E \right)^{k} \mathbf{r}_{j_{0}}^{\left( i \right) }  $    
+\end{theorem}
+
+\begin{note}
+    只需要在每个根子空间上求广义特征根系,每一系的“母向量” $ \mathbf{r}_{j_0} $给出一个 Jordan链,链中的元素塞进指数函数幂级数给出方程的一个解. 
+\end{note}
+\begin{proof}
+    令 $ \Phi \left( x \right)  $是形如题中的矩阵. 由引理\ref{lem:gen-egv-sol},矩阵的每一列都是一个解.注意到 $$
+    \Phi \left( 0 \right) = \left( \mathbf{r}_{10}^{\left( 1 \right) },\cdots , \mathbf{r}_{n_1 0}^{\left( 1 \right) };\cdots ; \mathbf{r}_{10}^{\left( s \right) },\cdots ,\mathbf{r}_{n_{s}0}^{\left( s \right) } \right)  
+    $$选取每个根子空间 $ V_{i} $中的 $ n_{i} $个线性无关的广义特征向量,作为 $ \mathbf{r}_{j 0}^{\left( i \right) } $,且不同根子空间中的广义特征根线性无关,故此时的 $ \Phi \left( 0 \right)  $的列向量两两线性无关,
+    我们有 $ \det [\Phi \left( 0 \right) ]\neq 0 $,因此由定理\ref{homo-EE-trans}, $ \Phi \left( x \right)  $是基解矩阵.      
+
+    \hfill $\square$
+\end{proof}
+
+至此,说明了如何找到基解矩阵,但寻求的基解矩阵可能是复矩阵,因此还需要进一步标准化.
+
+\begin{theorem}{实-标准化}
+    设 $ \Phi \left( x \right)  $是齐次方程的基解矩阵,则 $$
+    \Phi \left( x \right)\Phi ^{-1} \left( 0 \right)  
+    $$是（实的）标准基解矩阵. 
+ \end{theorem}
+ \begin{proof}
+    由命题\ref{homo-EE-trans},存在常值可逆矩阵 $ \mathbf{C} $,使得 $$
+    e^{Ax} = \Phi \left( x \right) \mathbf{C} 
+    $$ 带入 $ x = 0 $,得到 $ \mathbf{C}= \Phi ^{-1} \left( 0 \right)  $  
+    而 $ e^{Ax} $是齐次方程的（实的）标准基解矩阵.
+    \hfill $\square$
+ \end{proof}
+
+ \begin{theorem}
+    设 $ \Phi \left( x \right) = B\left( x \right)+ i C\left( x \right)    $是如上基解矩阵. $ B\left( x \right)  $和 $ C\left( x \right)  $也是解矩阵,    且 $$
+    \operatorname{rank}\left( B\left( x \right),C\left( x \right)   \right) = \operatorname{rank}\left( \Phi \left( x \right)  \right) = n  
+    $$,进而存在 $ B\left( x \right),C\left( x \right)   $中的 $ n $列,构成齐次方程的一个（实）基解矩阵.  
+ \end{theorem}
+ \begin{proof}
+    注意到 $$
+    \frac{\,\mathrm{d}  }{\,\mathrm{d} x }\Phi \left( x \right) = \frac{\,\mathrm{d}  }{\,\mathrm{d} x }B\left( x \right)+  i \frac{\,\mathrm{d}  }{\,\mathrm{d} x }C\left( x \right)      
+    $$并带入 $ \Phi \left( x \right)  $满足的齐次方程即可得到 $ B\left( x \right)  $, $ C\left( x \right)  $均为解矩阵.秩关系由 $$
+    \operatorname{rank}\left( B\left( x \right),C\left( x \right)   \right)\ge \operatorname{rank}\left( \Phi \left( x \right)  \right)  
+    $$ 立即得到.最后一个结论是显然的.
+ 
+    \hfill $\square$
+ \end{proof}
+ \begin{example}
+    求解微分方程 $$
+    \frac{\,\mathrm{d} \mathbf{y} }{ \,\mathrm{d} x} = \begin{pmatrix} 
+        1& 1\\ 
+         -1& -1 
+    \end{pmatrix} \mathbf{y}  
+    $$
+ \end{example}
+
+ \begin{solution}
+    $ \det \left(  \lambda E-A \right) = \begin{pmatrix} 
+         \lambda -1& -1\\ 
+          1&  \lambda -1 
+    \end{pmatrix}  =   \left(  \lambda -1 \right)^{2}+ 1  $  ,得到特征根 $  \lambda _{1} = 1+ i $, $  \lambda _{2}= 1-i $  .
+    由 $$
+    \begin{pmatrix} 
+        i& -1\\ 
+         1 & i 
+    \end{pmatrix} \to  
+        \begin{pmatrix} 
+            1 & i\\ 
+             0 & 0 
+        \end{pmatrix} ,\quad  \begin{pmatrix} 
+            -i & -1\\ 
+             1 & -i
+        \end{pmatrix}   \to  \begin{pmatrix} 
+            1&-i\\ 
+             0&0 
+        \end{pmatrix} 
+    $$得 $ \mathbf{r}_{1}:= \left( 1,i\right)^{\mathsf{T}}  $ , $ \mathbf{r}_{2} : = \left( 1,-i \right) ^{\mathsf{T}} $ 是一组分别对应于 $  \lambda _{1}, \lambda _{2} $ 特征向量.因此得到基解矩阵 $$
+    \begin{aligned}
+        \Phi \left( x \right) :&  = \left( e^{ \lambda _{1}x }\mathbf{r}_{1} ,e^{ \lambda _{2}x  } \mathbf{r}_{2}\right)   \\ 
+          & = \begin{pmatrix} 
+                e^{\left( 1+ i \right)x }& e^{\left( 1-i \right)x }\\ 
+                 i e^{\left( 1+ i \right)x }& -i e^{\left( 1-i \right)x }
+          \end{pmatrix} =e^{x} \begin{pmatrix} 
+              e^{ix}& e^{-ix}\\ 
+             ie^{ix}& -ie^{-ix} 
+          \end{pmatrix} 
+    \end{aligned}
+    $$又 $$
+    \Phi \left( 0 \right) = \begin{pmatrix} 
+        1 & 1\\ 
+         i & -i 
+    \end{pmatrix}  ,\quad  \Phi ^{-1} \left( 0 \right) = \frac{1}{2} \begin{pmatrix} 
+        1& -i\\ 
+          1& i 
+    \end{pmatrix}  
+    $$ 于是 标准基解矩阵为 $$
+    e^{xA}= \Phi \left( x \right)\Phi ^{-1} \left( 0 \right) = e^{x}\begin{pmatrix} 
+        e^{ix}& e^{-ix}\\ 
+         i e^{ix}& -ie^{-ix} 
+    \end{pmatrix} \frac{1}{2} \begin{pmatrix} 
+         1& -i\\ 
+          1& i 
+    \end{pmatrix} = e^{x} \begin{pmatrix} 
+       \cos x& \sin x\\ 
+        -\sin x & \cos x   
+    \end{pmatrix}     
+    $$得到通解 $$
+    \mathbf{y}=C_1 e^{x}\left( \cos x,-\sin x \right)^{\mathsf{T}}+ C_2 e^{x}\left( \sin x,\cos x \right)^{\mathsf{T}}  
+    $$  或者由 $$
+    \Phi \left( x \right) =  e^{x } \begin{pmatrix} 
+        \cos x + i\sin x& \cos x-i\sin x\\ 
+         -\sin x+ i\cos x& -\sin x-i\cos x 
+    \end{pmatrix} = e^{x}\begin{pmatrix} 
+        \cos x& \cos x\\ 
+         -\sin x &-\sin x
+    \end{pmatrix} + ie^{x}\begin{pmatrix} 
+        \sin x&-\sin x\\ 
+         \cos x& -\cos x 
+    \end{pmatrix}  
+    $$选取线性无关的列向量,得到基解矩阵 $$
+    e^{x}\begin{pmatrix} 
+        \cos x& \sin x\\ 
+         -\sin x&\cos x 
+    \end{pmatrix} 
+    $$事实上,仅 $ e^{ \lambda _{1}x}\mathbf{r}_{1} $,它的实部和虚部就分别提供了两个线性无关的解. 
+ \end{solution}
+\begin{example}
+    求解 $$
+    \frac{\,\mathrm{d} \mathbf{y} }{\,\mathrm{d} x }= A \mathbf{y}= \begin{pmatrix} 
+        2& 2& 0\\ 
+         0& -1& 1\\ 
+          0& 0& 2 
+    \end{pmatrix} \mathbf{y}  
+    $$
+\end{example}
+\begin{solution}
+    由 $ \det \left(  \lambda E-A \right)  =0$,得一重特征根 $  \lambda _{1} = -1 $,和二重特征根 $  \lambda _{2} = 2 $.
+     $$
+      \lambda _{1}E-A = \begin{pmatrix} 
+            -3 &-2& 0\\ 
+             & 0& -1\\ 
+              & & -3
+      \end{pmatrix} \to \begin{pmatrix} 
+            3 & 2 & \\ 
+             & & 1\\ 
+              & & 
+      \end{pmatrix} 
+     $$  得 $  \lambda _{1} $的一个特征向量 $ \mathbf{r}_{10}^{\left( 1 \right) } = \left( 2,-3,0 \right)  $ ,对应的解为 $ e^{-x}\left( 2,-3,0 \right)^{\mathsf{T}}  $  $$
+     \left( A- \lambda _{2}E \right) = \begin{pmatrix} 
+         0 & 2 & 0\\ 
+          0& -3 & 1\\ 
+           0& 0& 0
+     \end{pmatrix}  ,\quad  \left( A- \lambda _{2}E \right)^{2} = \begin{pmatrix} 
+         0 & -6& 2\\ 
+          0& 9& -3\\ 
+           0& 0& 0& 
+     \end{pmatrix}  \to  \begin{pmatrix} 
+         0& -3 & 1\\ 
+          0& 0& 0\\ 
+           0& 0& 0 
+     \end{pmatrix} 
+     $$ 得 $ \left( A-2E \right)^{2}  $的两个线性无关的解 $$
+     \mathbf{r}_{10}^{\left( 2 \right) } =\left( 1,0,0 \right)^{\mathsf{T}},\quad  \mathbf{r}_{20}^{\left( 2 \right) } = \left( 0,1,3 \right)^{\mathsf{T}}  
+     $$ 从而 $$
+     \mathbf{r}_{11}^{\left( 2 \right) }=\left( 0,0,0 \right)^{T}, \quad  \mathbf{r}_{21}^{\left( 2 \right) } = \left( 2,0,0 \right)^{\mathsf{T}},\quad  \mathbf{r}_{22}^{\left( 2 \right) } = \left( 0,0,0 \right)^{T}   
+     $$,得到两个解 $$
+     e^{2x}\left( 1,0,0 \right)^{\mathsf{T}},\quad  e^{2x} \left( 2x,1,3 \right) ^{\mathsf{T}}
+     $$于是基解矩阵为 $$
+     \Phi \left( x \right) = \begin{pmatrix} 
+           2e^{-x} & e^{2x}& 2xe^{2x}\\ 
+            -3e^{-x}& 0 & e^{2x}\\ 
+             0 & 0 & 3e^{2x}
+     \end{pmatrix}  
+     $$
+\end{solution}
+
+\section{高阶线性微分方程}
+
+考虑关于未知函数 $ y = y\left( x \right)  $的 $ n$阶线性微分方程组 
+\begin{equation}\label{eq:high-dim-eq}
+    y^{\left( n \right) }+ a_1\left( x \right)y^{\left( n-1 \right) }+ \cdots + a_{n-1}\left( x \right)y^{\prime} + a_{n}\left( x \right)y=f\left( x \right)
+\end{equation}方程
+\begin{equation}
+    y^{\left( n \right) }+ a_1\left( x \right)y^{\left( n-1 \right) }+ \cdots + a_{n-1}\left( x \right)y^{\prime} + a_{n}\left( x \right)y =0
+\end{equation}称为方程对应的齐次线性方程.
+
+\begin{theorem}
+    方程 \ref{eq:high-dim-eq}等价于
+    \begin{equation}
+        \frac{\,\mathrm{d} \mathbf{y} }{ \,\mathrm{d} x} = A\left( x \right) \mathbf{y}+  \mathbf{f}\left( x \right)   
+    \end{equation}其中 $$
+    \mathbf{y}=\left( y_1,y_2,\cdots ,y_{n-1},y_{n} \right)^{\mathsf{T}}: = \left( y,y^{\prime} ,\cdots ,y^{\left( n-1 \right) } \right)^{\mathsf{T}},\quad  \mathbf{f}\left( x \right)=\left( 0,\cdots ,0,f\left( x \right)  \right)^{\mathsf{T}}    
+    $$ $$
+    A\left( x \right) = \begin{pmatrix} 
+        0& 1& 0& \cdots & 0\\ 
+         0& 0& 1& \cdots & 0\\ 
+          \vdots & \vdots & \vdots & &\vdots \\ 
+           0& 0& \cdots & 0& 1\\ 
+            -a_{n}\left( x \right)& -a_{n-1}\left( x \right)   & -a_{n-2}\left( x \right) & \cdots & -a_1\left( x \right) 
+    \end{pmatrix}  
+    $$
+\end{theorem}
+
+\begin{proof}
+    引入新变量后,方程化为 $$
+    \begin{cases} y_1^{\prime} =y_2\\ 
+     y_2^{\prime} =y_3\\ 
+      \vdots \\ 
+       y_{n-1}^{\prime} =y_{n}\\ 
+        y_{n}^{\prime} = -a_{n}\left( x \right)y_1-a_{n-1}\left( x \right)y_2-\cdots -a_{1}\left( x \right)y_{n}    \end{cases} 
+    $$
+\end{proof}
+
+\begin{corollary}
+    微分方程\ref{eq:high-dim-eq}满足初值条件 $$
+    y\left( x_0 \right)=y_0,\quad  y^{\prime} \left( x_0 \right)=y_0^{\prime} ,\cdots ,y^{\left( n-1 \right) }\left( x_0 \right)=y_0^{\left( n-1 \right) }   
+    $$的解在区间 $ a<x<b $上存在且唯一. 
+\end{corollary}
+\begin{proof}
+    令 $ \mathbf{y}_{0}: = \left( y_0,y_0^{\prime},\cdots ,y_0^{\left( n-1 \right) } \right)  $,做替换 $\mathbf{y}: =  \left( y_1,y_2,\cdots ,y_{n-1},y_{n} \right)^{\mathsf{T}}: = \left( y,y^{\prime} ,\cdots ,y^{\left( n-1 \right) } \right)^{\mathsf{T}}   $, $ \mathbf{f}\left( x \right): = \left( 0,\cdots ,0,f\left( x \right)  \right)   $ ,由方程 $$
+    \frac{\,\mathrm{d}  \mathbf{y} }{ \,\mathrm{d} x} = A\left( x \right) \mathbf{y}  +  \mathbf{f}\left( x \right) 
+    $$满足初值条件 $ \mathbf{y} \left( x_0 \right) = \mathbf{y}_{0} $的解存在且唯一, 可得命题成立.  
+\end{proof}
+
+\subsection{高阶线性微分方程的一般理论}
+
+\begin{introduction}[约定]
+    \item “高阶方程”指 $ n $阶线性微分方程 
+    \item “多元方程”指 $ n $元线性微分方程  
+\end{introduction}
+
+\begin{proposition}{解的对应关系}
+    设标量值函数组
+    \begin{equation}\label{eq:high-dim-sol}
+        \varphi_{1}\left( x \right),\cdots ,\varphi _{m}\left( x \right)  
+    \end{equation}
+    是高阶齐次方程的 $ m $个解,则 
+    \begin{equation}\label{eq:multy-var-sol}
+        \begin{pmatrix} 
+            \varphi_{1}\left( x \right)\\ 
+             \varphi _{1}^{\prime} \left( x \right)\\ 
+              \vdots \\ 
+               \varphi _{1}^{\left( n-1 \right) }\left( x \right)    
+        \end{pmatrix} ,\cdots ,\begin{pmatrix} 
+            \varphi_{m}\left( x \right)\\ 
+             \varphi _{m}^{\prime} \left( x \right)\\ 
+              \vdots \\ 
+               \varphi _{m}^{\left( n-1 \right) }\left( x \right)    
+        \end{pmatrix}
+    \end{equation} 是高阶齐次方程对应的多元齐次方程的 $ m $个解.反之,若它高阶齐次方程对应的多元齐次方程的有形如上的 $ m $个 解,每个解的第一个分量给出高阶方程的 $ m $个 解.   
+\end{proposition}
+
+\begin{remark}
+    \begin{itemize}
+        \item 高阶方程的解组\ref{eq:high-dim-sol}线性无关,当且仅当对应的多元方程的解组\ref{eq:multy-var-sol}线性无关.
+        \begin{proof}
+            由导数的线性,形如\ref{eq:multy-var-sol}的向量组线性无关,当且仅当它们的第一个分量组线性无关.
+        \end{proof}
+    \end{itemize}
+    
+\end{remark}
+
+\begin{definition}{Wronsky}
+    定义 
+    \begin{equation}
+        \varphi _{1}\left( x \right),\cdots ,\varphi _{n}\left( x \right)  
+    \end{equation}的 Wronsky行列式,为
+    \begin{equation}
+        \begin{pmatrix} 
+            \varphi_{1}\left( x \right)\\ 
+             \varphi _{1}^{\prime} \left( x \right)\\ 
+              \vdots \\ 
+               \varphi _{1}^{\left( n-1 \right) }\left( x \right)    
+        \end{pmatrix} ,\cdots ,\begin{pmatrix} 
+            \varphi_{n}\left( x \right)\\ 
+             \varphi _{n}^{\prime} \left( x \right)\\ 
+              \vdots \\ 
+               \varphi _{n}^{\left( n-1 \right) }\left( x \right)    
+        \end{pmatrix}
+    \end{equation}的 Wronsky行列式.
+\end{definition}
+
+\begin{theorem}
+    设 $ \varphi _{1}\left( x \right),\cdots ,\varphi _{n}\left( x \right)   $ 是高阶方程在 $ a<x<b $上的 的 $ n $个解,$ W\left( x \right)  $是它们的Wronsky行列式 则以下几条等价
+    \begin{enumerate}
+        \item  $ \varphi _{1}\left( x \right),\cdots ,\varphi _{n}\left( x \right)   $线性无关；
+        \item  $ \exists x_0 \in \left( a,b \right)  $ , $ W\left( x_0 \right)  \neq  0  $;
+        \item $ \forall x \in \left( a,b \right), W\left( x \right)\neq  0   $ . 
+    \end{enumerate}
+     此外,若以上其一成立,则 $$
+     y=C_1\varphi _{1}\left( x \right)+ \cdots + C_{n}\varphi _{n}\left( x \right)  
+     $$是高阶齐次方程的一个通解,$ C_1,\cdots ,C_{n} $为任意常数. 
+\end{theorem}
+\begin{proof}
+    由定理\ref{thm:wronsky-inde}和解的对应关系立即得到三条的等价性,通解由\ref{thm:lin-eq-gen-sol}给出.
+    
+    $\hfill\square$
+\end{proof}
+
+利用高阶方程对应的多元方程的特殊形式,可以给出一个特解的形式.
+\begin{theorem}\label{thm:high-eq-sol}
+    设 $ \varphi _{1}\left( x \right),\cdots ,\varphi _{n}\left( x \right)   $是高阶齐次方程的一个基本解组.高阶非齐次方程有一个特解 $ \varphi ^{*}\left( x \right)  $ 
+    \begin{equation}
+        \varphi ^{*}\left( x \right) = \sum _{k=1}^{n}\varphi _{k}\left( x \right) \int_{x_0}^{x} \frac{W_{k}\left( s \right)  }{W\left( s \right)  }   f\left( s \right)\,\mathrm{d} s
+    \end{equation}其中 $ W_{k}\left( x \right)  $是 (最后一行的)代数余子式 $ W_{nk} $ 进而高阶非齐次方程的一个通解是
+    \begin{equation}
+        y=C_1\varphi _{1}\left( x \right)+ \cdots + C_{n}\varphi _{n}\left( x \right)+  \varphi ^{*}\left( x \right)   
+    \end{equation}
+\end{theorem}
+
+\begin{proof}
+    只需验证 $ \varphi ^{*}\left( x \right)  $是如下向量值函数的第一个分量 
+    注意到 $ \Phi ^{-1} \left( s \right) = \frac{1}{W\left( s \right) } \Phi ^{*}\left( s \right)   $ 
+    $\hfill\square$其中 $ \Phi ^{*}\left( s \right)  $表示伴随,它的每一个分量都是 $ \Phi \left( s \right) ^{\mathsf{T}} $对应分量代数余子式.于是 $$
+    \begin{aligned}
+    & \int_{x_0}^{x} \Phi \left( x \right)\Phi ^{-1} \left( s \right) \mathbf{f}\left( s \right) \,\mathrm{d} s\\ 
+     & = \int_{x_0}^{x} \frac{\Phi \left( x \right)  }{W\left( s \right)  } \begin{pmatrix} 
+         * & W_1\left( s \right)\\ 
+          \vdots   & \vdots \\ 
+           ^{*}& W_{n}\left( s \right) 
+     \end{pmatrix} \begin{pmatrix} 
+         0 \\ 
+          \vdots  \\ 
+           f\left( s \right)  
+     \end{pmatrix} \,\mathrm{d} s 
+     \\ 
+      & =\int_{x_0}^{x} \frac{f\left( s \right)  }{ W\left( s \right) } \Phi \left( x \right)  \begin{pmatrix} 
+        W_1\left( s \right)\\ 
+         \vdots \\ 
+          W_{n}\left( s \right)   
+    \end{pmatrix} \,\mathrm{d} s        
+    \end{aligned}
+    $$  上述向量的第一个行为 $$ \sum _{i=1}^{n} \varphi _{k}\left( x \right) \int_{x_0}^{x} \ \frac{W_{k}\left( s \right)  }{W\left( s \right)  }f\left( s \right) \,\mathrm{d} s  
+    $$
+\end{proof}
+
+\begin{proposition}{二阶方程}
+    考虑二阶非齐次线性方程
+    \begin{equation}\label{eq:rank-2-lin-eq}
+         y^{\prime \prime } + p\left( x \right)y^{\prime} + q\left( x \right)y = f\left( x \right)   
+    \end{equation}其中 $ p,q,f \in C\left( a,b \right)  $.若对应的齐次方程有两个线性无关的解 $ y = \varphi _{1}\left( x \right),\varphi _{2}\left( x \right)   $,则非齐次方程的一个通解是 $$
+    y = C_1\varphi_{1}\left( x \right)+ C_{2}\varphi _{2}\left( x \right) +  \int_{x_0}^{x} \frac{-\varphi _{1}\left( x \right)\varphi _{2}\left( s \right)+  \varphi _{2}\left( x \right)\varphi _{1}\left( s \right)     }{ \varphi _{1}\left( s \right)\varphi _{2}^{\prime} \left( s \right)-\varphi _{2}\left( s \right)\varphi _{1}^{\prime} \left( s \right)    }  f\left( s \right)\,\mathrm{d} s  
+    $$  
+\end{proposition}
+
+此外,上面的一般性讨论给出了特解的形式,我们可以待定系数 $ \varphi ^{*}\left( x \right)= \sum _{i=1}^{n}C_{k}\left( x \right)\varphi _{k}\left( x \right)    $利用常数变易法给出特解.仍然用二阶方程举例.
+\begin{proposition}{常数变易法}
+    由定理\ref{thm:high-eq-sol}方程\ref{eq:rank-2-lin-eq}有形如下的特解 $$
+    y = C_1\left( x \right)\varphi _{1}\left( x \right)+  C_2\left( x \right)\varphi _{2}\left( x \right)    
+    $$,其中 $ \varphi _{1},\varphi _{2} $是对应齐次方程的线性无关的解. 
+    由非齐次方程的第一个分量, $$
+    y^{\prime}  = [ A \Phi \left( x \right)C\left( x \right)  ]^{\left( 1 \right) }+ 0= C_1\left( x \right)\varphi _{1}^{\prime} \left( x \right)+ C_2\left( x \right)\varphi _{2}^{\prime} \left( x \right)     
+    $$这要求 $$
+    C_1^{\prime} \left( x \right)\varphi _{1}\left( x \right)+  C_2^{\prime} \left( x \right)\varphi _{2}\left( x  \right) =0    
+    $$对 $$
+    y^{\prime} =C_1\varphi _{1}^{\prime} + C_2 \varphi _{2}^{\prime} 
+    $$得到 $$
+    y^{\prime \prime } =C_1 \varphi _{1}^{\prime \prime } + C_2\varphi _{2}^{\prime \prime } +  C_1^{\prime} \varphi _{1}^{\prime} + C_2^{\prime} \varphi _{2}^{\prime} 
+    $$又 $ y^{\prime \prime } + py^{\prime} + qy=f,\quad \varphi _{i}^{\prime \prime } +  p\varphi _{i}^{\prime} + \varphi _{i}  =0,i=1,2 $ ,故 $ y^{\prime \prime } -f=C_1\varphi _{1}^{\prime \prime } + C_2\varphi _{2}^{\prime \prime }  $  ,可得 $$
+    C_1^{\prime} \varphi _{1}^{\prime} + C_2^{\prime} \varphi _{2}^{\prime} =f\left( x \right) 
+    $$ 再由之前的式子,解得 $$
+    C_1^{\prime} \left( x \right) = - \frac{\varphi _{2}\left( x \right)f\left( x \right)   }{ W\left( x \right) }  ,C_2^{\prime} \left( x \right)= \frac{\varphi _{1}\left( x \right)f\left( x \right)   }{W\left( x \right)  }  
+    $$
+\end{proposition}
+
+\subsection{常系数高阶线性微分方程}
+
+本小节讨论 $ n $阶常系数线性微分方程
+\begin{equation}\label{eq:const-coffi-nonhomo-eq}
+    y^{\left( n \right) }+ a_1y^{\left( n-1 \right) }+ \cdots + a_{n-1}y^{\prime} + a_{n}y=f\left( x \right) 
+\end{equation} 
+和相应的齐次方程 \begin{equation}\label{eq:const-coffi-homo-eq}
+    y^{\left( n \right) }+ a_1y^{\left( n-1 \right) }+ \cdots + a_{n-1}y^{\prime} + a_{n}=0
+\end{equation}其中 $  a_1,\cdots,a_n  $是常数, $ f\left( x \right)  $是区间 $ a<x<b $上的实值连续函数.   
+
+\begin{definition}
+    考虑与常系数线性微分方程\ref{eq:const-coffi-nonhomo-eq}对应的多元方程 $$
+    \frac{\,\mathrm{d} \mathbf{y}\left( x \right)  }{ \,\mathrm{d} x} = A  \mathbf{y}\left( x \right)+ \mathbf{f}\left( x \right)  
+    $$则矩阵 $ A $的特征方程为 \begin{equation}
+        \det [ \lambda E-A] =  \lambda ^{n}+ a_1 \lambda ^{n-1}+ \cdots + a_{n-1} \lambda + a_{n} =0
+    \end{equation}恰为高阶方程将 $ y^{\left( k \right) } $替换为 $  \lambda ^{k} $($ k=0,\cdots ,n $ )   的结果.所以也成上述特征方程为高阶方程\ref{eq:const-coffi-nonhomo-eq}的特征方程.
+\end{definition}
+
+\begin{theorem}
+    设齐次方程\ref{eq:const-coffi-homo-eq}的特征方程在复数域中共有 $ s $个互不相同的根 $  \lambda _{1},\cdots , \lambda _{s} $  ,重数分别为 $ n_1,\cdots n_{s} $,则函数组 
+    \begin{equation}
+        \begin{cases} e^{ \lambda _{1}x}, xe^{ \lambda _{1}x},\cdots ,x^{n_1-1}e^{ \lambda _{1}x};\\ 
+         \cdots \\ 
+          e^{ \lambda _{s}x},xe^{ \lambda _{s}x},\cdots ,x^{n_{s}-1}e^{ \lambda _{s}x} \end{cases} 
+    \end{equation}是微分方程的一个基本解组. 
+\end{theorem}
+
+\begin{example}
+    求解微分方程 $$
+    y^{\prime \prime\prime}- y^{\prime \prime} -2y^{\prime} =0 
+    $$
+\end{example}
+\begin{solution}
+    特征方程为 $$
+     \lambda ^{3}- \lambda ^{2}-2 \lambda =0
+    $$解得特征根 $  \lambda _{1}=0, \lambda _{2}=-1, \lambda _{3}=2 $,得到一个基本解组 $$
+    1,e^{-x},e^{2x}
+    $$ 方程的通解为 $$
+    y= C_1+ C_2e^{-x}+ C_3e^{2x}
+    $$
+\end{solution}
+
+\begin{example}
+    求解微分方程 $$
+    y^{\left( 5 \right) }-3y^{\left( 4 \right) }+ 4 y^{\left( 3 \right) }-4y^{\left( 2 \right) }+ 3y^{\left( 1 \right) }-y=0
+    $$
+    \begin{solution}
+        特征方程为 $$
+     \lambda ^{5}-3 \lambda ^{4}+ 4 \lambda ^{3}-4 \lambda ^{2}+ 3 \lambda -1=0
+    $$容易看出有特征根 $  \lambda _{1}=1 $,特征方程化为 $$
+   \left(  \lambda -1 \right)^{3} \left(  \lambda ^{2}+ 1 \right)  
+    $$ 故 $  \lambda _{1} $是三重特征根, $  \lambda _{2}= i $和 $  \lambda _{3}=-i $是单根,得到一个基本解组 $$
+    e^{x},e^{ix},e^{-ix}
+    $$   即 $$
+    e^{x},xe^{x},x^{2}e^{x},\cos x+ i\sin x, \cos x -i\sin x
+    $$取复解的实部和虚部,得到通解 $$
+    y=C_1e^{x}+ C_2xe^{x}+ C_3x^{2}e^{x}+ C_4\cos x+ C_5\sin x
+    $$
+    \end{solution}
+\end{example}
+
+\chapter{矩阵指数补充与线性方程组的算法}
+
+
+
+本节讨论常系数齐次线性方程 \begin{equation}\label{eq:homo-lin-eq}
+    y^{\prime} =Ay,\quad y\left( x_0 \right)=\eta 
+\end{equation}
+\begin{lemma}{齐次线性方程的Picard迭代}\label{lem:齐次线性的Picard迭代}
+    设列 \(  \left( \phi_{m} \right)_{m=0}^{\infty}   \)是初值问题\ref{eq:homo-lin-eq} 的Picard逼近,则 \[
+    \phi_{m}\left( x \right)=\left( \sum _{k=0}^{m} \frac{\left( x-x_0 \right)^{k}  }{k! }A^{k}  \right)\eta  ,\quad \forall m \in \mathbb{N} 
+    \]其中 \(  A_0  \)表示单位矩阵. 
+\end{lemma}
+
+\begin{proof}
+     \(  m=0  \)时显然成立,若等式对于给定 \(  m  \)成立, 
+    \[
+    \begin{aligned}
+    \phi_{m+ 1}\left( x \right)& = \eta+ \int_{x_0}^{x} A\phi_{m}\left( t \right)\,\mathrm{d} t\\ 
+     & =    \eta+ \int_{x_0}^{x} A\left( \sum _{k=0}^{m} \frac{\left( t-x_0 \right)^{k}  }{k! }A^{k}  \right)\eta \,\mathrm{d} t\\ 
+      & = \eta+ \int_{x_0}^{x} \left( \sum _{k=0}^{m}  \frac{\left( t-x_0 \right)^{k}  }{k! }A^{k+ 1} \right)\eta \,\mathrm{d} t\\ 
+       & =  \eta+  \sum _{k=0}^{m} \frac{\left( x-x_0 \right)^{k+ 1}  }{\left( k+ 1 \right)!  }A^{k+ 1}\eta\\ 
+        & =\sum _{k=0}^{m+ 1} \frac{\left( x-x_0 \right)^{k}  }{k! }A^{k}\eta  
+    \end{aligned}
+    \]
+
+    \hfill $\square$
+\end{proof}
+线性映射 \(  A:\mathbb{R} ^{n}\to \mathbb{R} ^{n}  \)诱导出线性映射 \(  A:\mathbb{R} ^{n^{2}}\to \mathbb{R} ^{n^{2}}  \),   
+通过定义 \(  AX : = \left( AX_1,\cdots ,AX_{n} \right)  \),其中 \(  X =\left( X_1,\cdots ,X_{n} \right)\in \mathbb{R} ^{n^{2}}   \).因此可以考虑
+矩阵微分方程 \begin{equation}\label{eq:standard-matrix-eq}
+    \frac{\,\mathrm{d} T }{\,\mathrm{d} x }=AT,\quad T\left( 0 \right)=E_{n}  
+\end{equation}  
+\begin{definition}
+    定义矩阵 \(  A  \)的指数  \(  \exp \left( A \right)   \)为初值问题\ref{eq:standard-matrix-eq}的（唯一）解在 \(  x=1  \)处的取值. 
+\end{definition}
+
+\begin{proposition}
+    初值问题\ref{eq:standard-matrix-eq}的解为 \(  e^{xA}  \). 
+\end{proposition}
+
+\begin{proof}
+    暂记\ref{eq:standard-matrix-eq}的解为 \(  \Phi\left( x,A \right)   \).对于给定的 \(  x_0  \),由链式法则 \[
+    \frac{\,\mathrm{d}  }{\,\mathrm{d} x }\Phi\left( x_0x,A \right) =  x_0 A\Phi\left( x_0x,A \right) 
+    \]  当 \(  x=0  \)时,\(  \Phi\left( x_0x ,A\right)   \)化为 \(  E_{n}  \),从而 \[
+    \frac{\,\mathrm{d}  }{\,\mathrm{d} x }\Phi\left( x_0x,A \right)\left( 0 \right) = x_0A = \frac{\,\mathrm{d}  }{\,\mathrm{d} x }\Phi\left( x,x_0A \right)\left( 0 \right)      
+    \]  于是 \(  \Phi\left( x_0x,A \right)   \)和 \(  \Phi\left( x,x_0A \right)   \)是 \(  x  \)的至多相差一常数的函数,又 \(  x=0  \)时,二者相等等于 \(  E_{n}  \)     ,故 \(  \Phi\left( x_0x ,A\right)=\Phi\left( x,x_0A \right)    \).
+    令 \(  x=1  \),得到 \(  \Phi\left( x_0,A \right)=\Phi\left( 1,x_0A \right)    =e^{x_0A}\) .  
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    设 \(  A  \)是 \(  n\times n  \)-矩阵,则 
+    \begin{itemize}
+        \item 指数函数满足 \[
+        e^{xA}=\sum _{k=0}^{\infty} \frac{x^{k} }{k! }A^{k}, 
+        \]
+        \item 初值问题\begin{equation}
+            y^{\prime} =Ay,\quad y\left( x_0 \right)=\eta 
+        \end{equation}的解为 \[
+        y\left( x \right)=e^{\left( x-x_0 \right)A }\eta 
+        \]
+    \end{itemize}
+      
+\end{proposition}
+
+\begin{proof}
+   \begin{itemize}
+    \item  任意固定 \(  x_0  \),初值问题 \[
+        \frac{\,\mathrm{d} T }{\,\mathrm{d} x }=x_0AT,\quad T\left( 0 \right)=E_{n}  
+        \] 的解存在且唯一,由引理\ref{lem:齐次线性的Picard迭代},它的Picard迭代序列为 \[
+        \left\{ \sum _{k=0}^{m} \frac{x^{k} }{k! } \left( x_0A \right)^{k}  \right\}_{m=1}^{\infty}
+        \]按定义带入 \(  x=1  \),得到 \[
+        e^{x_0A}= \sum _{k=0}^{\infty} \frac{x_0^{k} }{k! }A^{k} 
+        \] 
+    \item 由引理\ref{lem:齐次线性的Picard迭代},初值问题的解为 \[
+    y\left( x \right)= \left( \sum _{k=0}^{m} \frac{\left( x-x_0 \right)^{k}  }{k! }A^{k}  \right)\eta= e^{\left( x-x_0 \right)A }\eta  
+    \]
+   \end{itemize}
+   
+    \hfill $\square$
+\end{proof}
+
+\section{矩阵指数的计算}
+
+对于 \(  A  \)有复特征值的情况,我们需要考虑 形式与\ref{eq:homo-lin-eq}相同的,但取值在复向量空间上的初值问题.
+
+将 \(  \mathbb{C}^{n}  \)视作\(  \mathbb{R} ^{n}  \)的复化,即看作直和 \(  \mathbb{R} ^{n}\oplus i\mathbb{R} ^{n}  \).对于复向量 \(  u+ iv  \)  ,令 \(  A\left( u+ iv \right): = Au+ iAv   \) ,\(  e^{xA}\left( u+ iv \right)=e^{xA}u+ ie^{xA}v   \) 
+
+
+\subsection{特征值向量法}
+
+一个基本的观察是,若\(  M\left( x \right)   \)是满足 \(  M^{\prime} \left( x \right)=AM\left( x \right)    \)的矩阵函数,且 \(  M\left( 0 \right)   \)可逆,则 \(  e^{xA}=M\left( x \right)M\left( 0 \right)^{-1}     \)    （只需注意到\(  M\left( x \right)M\left( 0 \right)^{-1}     \) 是标准初值问题\ref{eq:standard-matrix-eq}的解）.
+
+方程 \(  M^{\prime} \left( x \right)=AM\left( x \right)    \) 无非是说它的列向量函数 \(  y  \)都满足 \(  y^{\prime} =Ay  \) . \(  M\left( 0 \right)   \)可逆无非是说由列向量构成的 \(  n  \)个解是线性无关的.
+
+于是,若我们有 \(  \mathbb{R} ^{n}  \)的一组基 \(  \left\{ v_1,\cdots ,v_{n} \right\}  \),则 \(  n  \)个初值问题的解 \[
+\frac{\,\mathrm{d} y }{\,\mathrm{d} x }=Ay,\quad y\left( 0 \right)=v_{k},\quad \left( k=1,2,\cdots,n \right)   
+\]可以按列向量排成一个矩阵,\(  M\left( x \right)   \),使得 \(  M^{\prime} \left( x \right)=AM\left( x \right)    \),由此可以通过计算 \(  M\left( x \right)   M^{-1} \left( 0 \right) \)得到 \(  e^{xA}  \).       
+
+初值 \(  v_{k}  \)对应的解为 \(  e^{xA}v_{k}  \),这似乎需要借助 \(  e^{xA}  \)的信息,但是我们完全可以选择适当的 \(  v_{k}  \),使得 \(  e^{xA}v_{k}  \)有简单的形式.  
+ 
+ \hspace*{\fill} 
+ \hrule
+ \hspace*{\fill}
+ 
+
+\noindent
+\begin{large}       
+    一些线性代数事实：
+\end{large}    
+
+对于 \(  A  \)的每个特征值 \(   \lambda _{k}  \), \[
+W_{k}^{m}: = \operatorname{ker}\,\left(  \lambda _{k}E_{n}-A \right)^{m},\quad m=0,1,2,\cdots  
+\]是一列递增的线性空间,且存在最小的正整数 \(  s _{k}  \),使得 \(  W_{k}^{s_{k}}=W_{k}^{s_{k}+ 1}  \) .
+
+\(  \mathbb{C}^{n}  \)可以分解为直和 \[
+\mathbb{C}^{n} = W_1^{s_1}\oplus \cdots \oplus W_{p}^{s_{p}}
+\] 
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+\begin{proposition}{广义特征根为初值的解}
+    若 \(  v\in W_{k}^{s_{k}}  \),则 \[
+    e^{xA}v=e^{ \lambda _{k}x}\sum _{j=1}^{s_{k}-1} \frac{1}{j!} x^{j}\left( A- \lambda _{k}E_{n} \right)^{j}v 
+    \] 
+\end{proposition}
+
+\begin{proof}
+    \[
+    e^{xA}=e^{ \lambda _{k}x}e^{x\left( A- \lambda _{k}E_{n} \right) }
+    \]又当 \(  j \ge s_{k}  \)时, \(  \left( A- \lambda _{k}E_{n} \right)^{j}v=0   \)  
+    带入即可.
+    \hfill $\square$
+\end{proof}
+
+\begin{example}计算\(  e^{xA}  \),其中 \[
+A=\begin{bmatrix} 
+    3&-1&1\\ 
+     2&0&1\\ 
+      1&-1&2 
+\end{bmatrix} 
+\] 
+
+\end{example}
+\begin{solution}
+    矩阵的特征多项式为 \[
+    \det \left(  \lambda E-A \right)= \left(  \lambda -1 \right)\left(  \lambda -2 \right)^{2}   
+    \]它有单根 \(   \lambda _{1}=1  \) 和二重特征根 \(   \lambda _{2}=2  \) .计算得 \[
+    v_1= \begin{bmatrix} 
+        0&1&1 
+    \end{bmatrix}^{\mathsf{T}} 
+    \]是属于 \(   \lambda _{1}  \)的一个特征向量,它张成了 \(  W_{1}^{1}  \).此外,存在线性无关意义下唯一的属于 \(   \lambda _{2}  \)的特征向量,取其一为 \[
+    v_2=\begin{bmatrix} 
+        1&1&0 
+    \end{bmatrix} ^{\mathsf{T}}
+    \]   继续寻找满足 \[
+    \left( A- \lambda_{2}E \right)v_3=v_2 
+    \] 得一解 \[
+    v_3=\begin{bmatrix} 
+        0&0&1 
+    \end{bmatrix}^{\mathsf{T}} 
+    \]向量 \(  v_2,v_3  \) 构成 \(  W_{2}^{2}  \) 的一组基,于是 \(  v_1,v_2,v_3  \)给出 \(  \mathbb{R} ^{3}  \)的一组基.此时 \[
+    \begin{aligned}
+    e^{xA}v_1=e^{x}v_1,\quad e^{xA}v_2=e^{2x}v_2,\\ 
+     e^{xA}v_3=e^{2x}\left( I+ x\left( A-2I \right)  \right)v_3=e^{2x}\left( v_3+ xv_{2} \right)   
+    \end{aligned}
+    \]  因此 \[
+    M\left( x \right)=\begin{bmatrix} 
+        0&e^{2x}& xe^{2x}\\ 
+         e^{x}&e^{2x}&xe^{2x}\\ 
+          e^{x}&0&e^{2x} 
+    \end{bmatrix}  
+    \]最后 \[
+        e^{xA}=M(x)M(0)^{-1}=\begin{bmatrix}(1+x)e^{2x}&-xe^{2x}&xe^{2x}\\-e^x+(1+x)e^{2x}&e^x-xe^{2x}&xe^{2x}\\-e^x+e^{2x}&e^x-e^{2x}&e^{2x}\end{bmatrix}
+    \]
+    
+\end{solution}
+
+\subsection{Cayley-Hamilton和Putzer算法}
+由Cayley-Hamilton,若 \(  P\left( X \right)   \)是 \(  A  \)的特征多项式,则 \(  P\left( A \right)=0   \).对于每个 \(  k\ge n  \), \(  A^{k}  \)表为不高于 \(  n-1  \)次的 \(  A  \)的多项式.
+因此 \[
+e^{xA}=\sum _{k=0}^{\infty} \frac{1}{k!} x^{k}A^{k}=\sum _{k=0}^{n-1}Q_{k}\left( x \right)A^{k} 
+\]对于某些函数 \(  Q_{k}\left( x \right)   \),(\(  k=0,1,\cdots ,n-1  \) )成立,这些函数仅通过\(  A  \)的特征多项式确定,进而仅通过 \(  A  \)的特征值和重数确定  .   
+
+计算 \(  e^{xA}  \)简化为计算 \(  Q_{k}\left( x \right)   \),进而只需要关注特征向量和它们的重数.此外,通过一个多项式空间的基变换可以简化这个问题.
+
+\begin{proposition}{简化问题的一个基变换}
+    将特征值记重数地排成一列 \(  \left(  \lambda_1,\cdots,\lambda_n  \right)   \),将次数小于 \(  n  \)的多项式空间的基 \(   X^1,\cdots,X^{n-1}  \) 替换为 \(  M_{k}\left( X \right)   \), \(  \left( k=0,1,\cdots ,n-1 \right)   \)可以给出一组新的基,其中 \[
+    M_0\left( X \right)=1,\quad M_{k}\left( X \right)=M_{k-1}\left( X \right)\left( X- \lambda _{k} \right),\quad \left( k= 1,\cdots,n -1 \right)     
+    \]  进而\(  e^{xA}  \) 表为 \[
+    e^{xA}=\sum _{k=0}^{n-1}p_{k}\left( x \right)M_{k}\left( A \right) 
+    \]
+\end{proposition}
+
+接下来给出寻求 \(  p_{k}\left( x \right)   \)的一个算法.
+
+\begin{proposition}{Putzer算法}
+    设函数 \( \left(  p_1\left( x \right),\cdots ,p_{k}\left( x \right)  \right)^{\mathsf{T}}    \)满足初值问题 \[
+    \begin{aligned}
+    p_0^{\prime} \left( x \right)-\lambda_1p_0\left( x \right)=0,\quad p_0\left( 0 \right)=1\\ 
+    p_k^{\prime}\left( x \right)-\lambda_{k+ 1}p_k\left( x \right)=p_{k-1}\left( x \right),\quad p_k\left( 0 \right)=0,\quad k= 1,\cdots,n -1    
+    \end{aligned}
+    \]则 \[
+    e^{xA}=\sum _{k=0}^{n-1}p_k\left( x \right)M_k\left( A \right)  
+    \]
+\end{proposition}
+
+\begin{remark}
+    由此,求 \(  e^{xA}  \)的问题化为依次解 \(  n  \)个一阶线性微分方程的问题.  
+\end{remark}
+\begin{proof}
+    令 \(  T\left( x \right)=\sum _{k=0}^{n-1}p_k\left( x \right)M_k\left( A \right)      \) ,其中 \(  p_{k}\left( x \right)   \)满足上述初值问题.我们有 \[
+    \begin{aligned}
+   & T^{\prime} \left( x \right)= \lambda_1p_0\left( x \right)+ \sum _{k=1}^{n-1}\left( p_{k-1}\left( x \right)+ \lambda_{k+ 1}p_k\left( x \right)   \right)M_k\left( A \right)     \\ 
+    &  = \lambda_1p_0\left( x \right)+  \sum _{k=1}^{n-1}\lambda_{k+ 1}p_k\left( x \right)M_k\left( A \right)+ \sum _{k=1}^{n-1}p_{k-1}\left( x \right)M_{k-1}\left( A \right)\left( A-\lambda_{k} \right)\\ 
+  &  = \lambda_1p_0\left( x \right)+ \sum _{k=1}^{n-1}\left( \lambda_{k+ 1}p_k\left( x \right)M_k\left( A \right)-\lambda_kp_{k-1}\left( x \right)M_{k-1}\left( A \right)     \right)+ \sum _{k=1}^{n-1}p_{k-1}\left( x \right)M_{k-1}\left( A \right)\\ 
+   &  =  \lambda_1p_0\left( x \right)+ \lambda_{n}p_{n-1}\left( x \right)M_k\left( A \right)-\lambda_1p_0\left( x \right)+ \sum _{k=1}^{n-1}p_{k-1}\left( x \right)M_{k-1}\left( A \right)\\ 
+    & = AT\left( x \right)       
+    \end{aligned}
+    \] 此外,带入 \(  x=0  \),得到 \(  T\left( 0 \right)= \sum _{k=0}^{n-1}p_{k}\left( 0 \right)M_{k}\left( A \right)=M_0\left( A \right)=E_{n}      \)  .
+
+    由此得到 \(  T\left( x \right)=e^{xA}   \). 
+    
+    \hfill $\square$
+\end{proof}
+
+\begin{example}
+    计算 \(  e^{xA}  \),其中 \[
+    A= \begin{bmatrix} 
+        3&-1&1\\ 
+         2&0&1\\ 
+          1&-1&2 
+    \end{bmatrix} 
+    \] 
+\end{example}
+\begin{solution}
+    计算得特征多项式为 \(  \left(  \lambda -1 \right)\left( \lambda-2 \right)^{2}    \) .设 \[
+    \lambda_1=1,\quad \lambda_2=2,\quad \lambda_3=2
+    \]解Putzer算法中的方程,得 \[
+    p_0\left( x \right)=e^{x},\quad p_1\left( x \right)=e^{2x}-e^{x},\quad p_2\left( x \right)= \left( x-1 \right)e^{2x}+ e^{x}  
+    \]于是 \[
+    \begin{aligned}
+        e^{xA}& = p_0\left( x \right)M_0\left( x \right)+ P_1\left( x \right)M_1\left( x \right)+ p_2\left( x \right)M_2\left( x \right)    \\ 
+         & =  e^{x}E+  \left( e^{2x}-e^{x} \right)\left(  A-E\right)+ \left( \left( x-1 \right)e^{2x}+ e^{x}  \right)\left( A-2E \right)  \left( A-E \right)   \\ 
+          & = e^{x}E+  \left( e^{2x} -e^{x}\right)\begin{bmatrix} 
+              2&-1&1\\ 
+               2&-1&1\\ 
+                1&-1&1 
+          \end{bmatrix}+ 
+          \left( \left( x-1 \right)e^{2x}+ e^{x}  \right)\begin{bmatrix} 
+              1&-1&1\\ 
+               1&-1&1\\ 
+                0&0&0 
+          \end{bmatrix}    \\ 
+           & = e^{x} \begin{bmatrix} 
+                0&0& 0\\ 
+                 -1&1&0\\ 
+                  -1&1&0
+           \end{bmatrix}+  e^{2x} \begin{bmatrix} 
+               1&0&0\\ 
+                1&0&0\\ 
+                 1&-1&1 
+           \end{bmatrix}+ xe^{2x} \begin{bmatrix} 
+               1&-1&1\\ 
+                1&-1&1\\ 
+                 0&0&0 
+           \end{bmatrix}\\ 
+            & = \begin{bmatrix} 
+                \left( x+ 1 \right)e^{2x}&-xe^{2x}&xe^{2x}\\ 
+                 -e^{x}+ \left( x+ 1 \right)e^{2x}   &e^{x}-xe^{2x}& xe^{2x}\\ 
+                 - e^{x}+ e^{2x}&e^{x}-e^{2x}& e^{2x}
+            \end{bmatrix}    
+    \end{aligned}  
+    \]
+\end{solution}
+
+\subsection{插值公式}
+
+\chapter{稳定性理论初步}
+
+\begin{definition}{Lyapunov稳定性}
+    令 $ F \in C\left( [t_0,\infty]\times \mathbb{R} ^{n} \right)  $且关于 $ X $满足局部Lipschitz条件,对于微分方程组
+    \begin{equation}\label{eq:gen-eq}
+        \frac{\,\mathrm{d} X }{\,\mathrm{d} t }= F\left( t,X \right)  
+    \end{equation}  
+    设 $ \varphi \left( t \right)  $是它的满足初值 $ \varphi \left( t_0 \right)=X_0  $ 一个右行整体解.
+    
+    若任取 $  \varepsilon >0 $ ,存在 $  \delta >0 $,使得只要 $  \left\| X_0-\varphi \left( t_0 \right)  \right\| \le  \delta $,就有方程组的解 $ X=X\left( t;t_0,X_0 \right)  $整体存在,且 $$
+    \left\| X\left( t;t_0,X_0 \right)-\varphi \left( t \right)   \right\|\le  \varepsilon , \forall t\in [t_0,\infty)
+    $$   或者说对于 $ t_0\le t<\infty $,一致地有 $$
+    \lim_{X_0 \to \varphi \left( t_0 \right) } \sup _{t\in [t_0,\infty  )} \left\| X\left( t;t_0,X_0 \right)-\varphi \left( t \right)   \right\|=0
+    $$ 则称解 $ X=\varphi \left( t \right)  $是 Lyapnov稳定的. 
+\end{definition}
+
+\begin{definition}{渐进稳定}
+    沿用上述记号,若 $ X=\varphi \left( t \right)  $ 是Lyapunov稳定的,且存在正常数 $  \delta _{0} $,使得一切满足 $ \left\| X_0-\varphi \left( t_0 \right)  \right\|\le  \delta _{0} $  的解 $ X\left( t;t_0,X_0 \right)  $还满足 $$
+    \lim_{t \to \infty}\left\| X\left( t;t_0,X_0 \right)-\varphi \left( t \right)   \right\|=0
+    $$则称解 $ X=\varphi \left( t \right)  $是渐进稳定的.  
+\end{definition}
+
+\begin{proposition}{归约}
+    令 $ Y = X-\varphi \left( t \right)  $ , $ G\left( t,Y \right): = F\left( t,Y+ \varphi  \right)-F\left( t,\varphi  \right)    $,则 $$
+    \frac{\,\mathrm{d} X }{\,\mathrm{d} t } =F\left( t,X \right),\quad  X\left( t_0 \right)=X_0  
+    $$ 等价于 $$
+    \frac{\,\mathrm{d} Y }{\,\mathrm{d} t } = G\left( t,Y \right),\quad  Y\left( t_0 \right)=0   
+    $$其中 $ G\left( t,0 \right)=0  $.  并且此时 $ \varphi \left( t \right)  $稳定,当且仅当上述关于 $ Y $的方程的零解稳定.
+    此外,做变量替换 $ Z=\left( t,Y \right)  $, 则 $$
+    \frac{\,\mathrm{d} Z }{\,\mathrm{d} t } = \left( 1, \frac{\,\mathrm{d} Y }{\,\mathrm{d} t }  \right)   
+    $$ 关于 $ Y $的方程又等价于 $$
+    \frac{\,\mathrm{d} Z }{\,\mathrm{d} t } = \left( 1,G\left( Z \right)  \right): = H\left( Z \right),\quad Z\left( t_0 \right)= \left( t_0,0 \right)    
+    $$ 
+\end{proposition}
+
+\begin{remark}
+    因此,只需要研究自治方程常值解的稳定性.
+\end{remark}
+
+
+
+
+
+\section{平衡点的稳定性}
+
+设 $ D $是 $ \mathbb{R} ^{n} $上的连通开集,考虑定义在 $ I\times D $上的方程 $$
+\frac{\,\mathrm{d} x }{\,\mathrm{d} t } = F\left( t,x \right)  
+$$   其中 $ I $是包含了 $ [0,\infty ) $的区间,且函数 $ F: I\times D\to \mathbb{R} ^{n} $是 $ C^{1} $  .
+
+\begin{definition}{平衡点}
+    称 $ c $是一个平衡点或常值解,若 $ F\left( t,c \right)=0  $对于所有的 $ t \in I $成立.   
+\end{definition}
+
+\begin{definition}{稳定性}
+    称平衡点 $ c $是稳定的,若以下条件成立：
+    
+    对于 $ c $的任一邻域 $ U $,都存在 $ c $的邻域 $ V $,使得对于所有的 $ \eta  \in V $,满足 $ x\left( 0 \right)=\eta   $  的解在$ t \ge 0 $上存在,并且对于所有这样的 $ t $, 都有$ x\left( t  \right)\in U  $   
+\end{definition}
+\begin{note}
+    也就是说,只要对初值的扰动足够小,满足初值的解都广泛存在,且在未来都不会超出限定区域.
+\end{note}
+
+\begin{definition}{渐进稳定}
+    常值解 $ c $被称为是渐进稳定的,若它是稳定的,并且以下条件成立：
+    
+    存在 $ c $的邻域 $ U $,使得对于所有的 $ \eta  \in U $,满足 $ x\left( 0 \right)=\eta   $ 的解都在 $ t \ge 0 $上存在,并且 $ \lim_{t \to \infty}x\left( t \right)=c  $ . 
+\end{definition}
+\begin{remark}
+    稳定性也是渐进稳定的条件之一,它排除了解从外面溜一圈再返回来的情况.
+\end{remark}
+
+\begin{example}
+    设 $ F: \mathbb{R} \to \mathbb{R}  $是 $ C^{1} $函数, $ c $是 $ F $的孤立零点.设 $ c $是区间 $ \left( c-h,c+ h \right)  $上唯一的零点.
+    \begin{enumerate}
+        \item 若 $ F $在 $ \left( c-h,c \right)  $上为正, $ \left( c,c+ h \right)  $上为负,则 $ c $是渐进稳定的平衡点；
+        \item 若 $ F $造 $ \left( c-h,c \right)  $上为负, $ \left( c,c+ h \right)  $上为正,则 $ c $是不稳定的平衡点.        
+    \end{enumerate}
+    
+\end{example}
+
+\begin{note}
+    1.的情况为负反馈,2.的情况为正反馈.
+\end{note}
+
+
+\begin{lemma}\label{lem:nega-Re-lemma}
+    若矩阵 $ A $的特征值都有负的实部,则存在 $ C>0 $,和 $ m>0 $,使得 $$
+    \left| e^{tA}\eta  \right|\le  Ce^{-mt} \left| \eta  \right|,\quad t>0  
+    $$   对于所有的 $ \eta \in \mathbb{R} ^{n} $成立. 
+\end{lemma}
+\begin{note}
+     $ e $脑袋上的数的实部代表了整体的模,虚部代表了角度. 
+\end{note}
+\begin{note}
+    How to Proof :将任意 $ \eta \in \mathbb{C}^{n} $按广义根子空间分解,利用投影映射的线性建立 $ \eta  $与根子分量 $ v_{k} $的羁绊.
+    
+    $ e^{tA}v $的模由两部分乘在一起决定,一部分是 $ e^{ \lambda _{k}} $的模,它由 $  \lambda _{k} $的实部决定,另一部分是 $ e^{\left( A- \lambda _{k}I \right) t} v$,它在高次下消失.     
+\end{note}
+
+\begin{proof}
+    任取 $ \eta  \in \mathbb{C}^{n} $,考虑 $ \eta  $的广义根子分解 $ \eta  =v_1+ \cdots + v_{p} $,其中 $ v_{k} \in W_{k}^{s_{k}} $ 是属于特征向量 $  \lambda _{k} $ ,$ k= 1,\cdots,s  $ 的广义特征根.
+    令 $ \sigma  : =- \max \left\{  \lambda _{k} \right\} $,则由条件 $ -\sigma <0 $.取定 $ 0<m<\sigma  $   .
+    
+    
+    任取 $ v \in W_{k}^{s_{k}} $, 我们有 $$
+   e^{tA}v= e^{ \lambda _{k}x} e^{\left( A -  \lambda _{k}I \right) t}v
+    $$因为 $ \left( A- \lambda _{k}I \right)^{s_{k}}v =0  $,所以上式中的 $$
+    e^{\left( A- \lambda _{k}I \right)t }v = \sum _{n =0}^{\infty} \frac{1}{n!}  \left( A- \lambda _{k}I \right)^{n}t ^{ n}v=\sum _{n = 0}^{s_{k}-1} \frac{1}{n!} \left( A- \lambda _{k}I \right)^{n}v  
+    $$ 于是 $$
+    \left| e^{tA}v \right| \le  \left| e^{ \lambda _{k}x} \right|  \sum _{n =0}^{s_{k}-1} \frac{1}{n!}\left\| A- \lambda _{k}I \right\| \left| t \right|^{n}\left| v \right|\le e^{\operatorname{Re}\left(  \lambda _{k} \right)x } \left| P_{k}\left( t \right)  \right|\left| v \right|    \le  e^{-\sigma x}\left| P_{k}\left( t \right)  \right|\left| v \right|  
+    $$其中 $ P_{k}\left( t \right)  $是 $ s_{k}-1 $次多项式,它由 $  \lambda _{k} $决定 .  于是存在 $ C_{k}>0  $,使得 $$
+    \left| e^{tA}v \right| \le  C _{k}e^{-mx}\left| v \right|,\quad  v \in W_{k}^{s_{k}}  
+    $$ 
+    最后,由投影映射的线性,对每个 $ k= 1,\cdots,p  $,存在与 $ \eta , k $均无关的数 $ L $,使得 $$
+    \left| v _{k}\right| \le  L\left| \eta  \right|  
+    $$  令 $ C: = L \max \left\{ C_{k} \right\} $,我们就有 $$
+    \left| e^{tA} \eta  \right|\le  \sum _{k=1}^{p} \left| e^{tA}v_{k} \right|\le \sum _{k=1}^{p}C_{k}e^{-mx}\left| v_{k} \right|\le Ce^{-mx}\left| \eta  \right|    
+    $$ 
+
+    \hfill $\square$
+\end{proof}
+\begin{lemma}
+    设函数$f\left( x \right),g\left( x \right)$在区间$[a,b]$上连续,$g\left( x \right)\geqslant 0$,$c$是一个常数.如果 $$ f\left( x \right) \leqslant  c+ \int _{a}^{x}g\left( s  \right) f\left( s \right) ds $$则 $$ f\left( x \right) \leqslant  ce^{ \int _{a}^{x}g\left( s \right) ds} $$
+\end{lemma}
+\begin{proposition}{渐近稳定性判据}
+    设 $ F: D\to \mathbb{R} ^{n} $是 $ C^{1} $的, $ c \in D $使得 $ F\left( c \right)=0  $   ,令 $ A $是矩阵 $ DF\left( c \right)  $.若 $ A $ 的特征值都有负的实部,则平衡解 $ x\left( t \right)=c  $是渐进稳定的.    
+\end{proposition}
+\begin{note}
+    How to Proof 
+    利用余项高阶于 $ \left| x \right|  $无穷小的性质,将 $ g\left( x \right)  $代替为 “小数 $ \times  $ $ \left| x \right|  $  ",这几乎就将 $ F\left( x \right)  $化作线性方程,可以使用Gronwall不等式（它几乎就是线性方程解的不等号版本）的结果 .
+
+    这给出一个条件与结果相互影响的不等式：在使得$ \left| x\left( t \right)  \right|  $能被 $ \beta  $控制住的点 $ t $上才成立,而不等式的结果又能提供 $ \left| x\left( t \right)  \right|  $的更小的上界,进而提供更多的使得不等式成立的点 $ t $,经验告诉我们不等式应该是广泛成立的,故用反证法说明.  
+\end{note}
+\begin{proof}
+    通过一个平移变换,不妨设 $ c=0 $. 
+    记 $$
+    F\left( x \right) = Ax+  g\left( x \right)  
+    $$其中 $ A: = DF \left( 0 \right)  $, $ g\left( x \right)  $是余项,使得 $$
+    \lim_{x \to 0} \frac{g\left( x \right)  }{\left| x \right|  }=0 
+    $$  对于给定的 $ \eta  \in D $,设 $ x\left( t \right)  $是满足 $ x\left( 0 \right)=\eta   $的方程的解,将它延拓到 $ t>0 $时的最大存在区间上.我们有 $$
+    \frac{\,\mathrm{d} x\left( t \right)  }{\,\mathrm{d} t }= A x\left( t \right)+  g\left( x\left( t \right)  \right)   
+    $$  由非齐次常系数线性方程的解的形式\ref{cor:nonhomo-linear-eq-gen-sol}, $$
+    x\left( t \right)=  e^{A t }\eta +  \int_{0}^{t} e^{\left( t-s \right)A } g\left( x\left( s \right)  \right)\,\mathrm{d} s 
+    $$设 $ A $的特征值都有负的实部,于是由引理\ref{lem:nega-Re-lemma},存在与 $ \eta  $无关的  $ C\ge 1 $和 $ m>0 $ ,使得 $$
+    \left| e^{At}\eta  \right| \le Ce^{-mt} \left| \eta  \right|  ,\quad \forall  0<t<\tau 
+    $$  于是 $$
+    \left| x\left( t \right)  \right| \le  Ce^{-mt}\left| \eta  \right|+  C\int_{0}^{t}  e^{-m\left( t-s \right) } \left| g\left( x\left( s \right)  \right)  \right| \,\mathrm{d} s 
+    $$取 $ 0<\alpha \le \frac{m}{2C} $.    存在 $ \beta >0 $,使得当 $ \left| x \right|\le \beta   $时, $ \left| g\left( x \right)  \right|\le  \alpha \left| x \right|   $    .
+    任取$  \tau >0 $,使得解可以延拓到 $ t= \tau  $上,并且 $ \left| x\left( t \right)  \right|\le \beta   $   对于 $ t \in [0,\tau ] $ 成立 $$,则
+   e^{mt} \left| x\left( t \right)  \right| \le  C\left| \eta  \right|+  C \alpha   \int_{0}^{t}e^{ms}\left| x\left( s \right)  \right|\,\mathrm{d} s ,\quad  0<x<\tau 
+    $$由Gronwall不等式,此时 $$
+    e^{mt}\left| x\left( t \right)  \right| \le  C\left| \eta  \right|  e^{C\alpha t },\quad  0<t<\tau 
+    $$从而 $$
+    \left| x\left( t \right)  \right| \le   C\left| \eta  \right| e^{\left( C\alpha -m \right) t}\le C\left| \eta  \right| e^{-\frac{1}{2}mt},0<t<\tau 
+    $$
+    
+    设 $ \delta = \frac{\beta}{2C} $,断言当 $ \left| \eta  \right|< \delta   $时,右行解整体存在.
+    事实上,若设 $ x\left( t \right)  $的右行最大区间为 $ [0,T_{*}) $  ,则由 $ \eta  $的模的大小和 $ x\left( t \right) $的连续性,可以取到最大的 $ T \in (0,T_{*}]  $,使得   $$
+     \left| x\left( t \right)  \right| \le \beta  ,\forall t\in [0,T) 
+    $$上面的讨论告诉我们,在该区间上,$$
+    \left| x\left( t \right)  \right| \le  C\left| \eta  \right|e^{-\frac{1}{2}mt}\le  \frac{\beta}{2}< \beta  
+    $$于是一定有 $ T = T_{*} $.进一步地,因为在右行最大存在区间 $ [0,T_{*}) $上, $$
+    \left| x\left( t \right)  \right| <\beta 
+    $$  于是由延拓定理,一定有 $ T_{*}=\infty $. 
+    
+    若取 $ \left| \eta  \right|< \delta   $,则 $ \lim_{t \to \infty}x\left( t \right)=0  $.此外,任取 $ \varepsilon >0 $,只要 $ \left| \eta  \right|< \min \left( \delta , \frac{\varepsilon}{C} \right)   $,就有 $$
+    \left| x\left( t \right)  \right|   \le C\left| \eta  \right| <\varepsilon   
+    $$    对于所有的 $ t>0 $成立,这就说明了渐近稳定性. 
+    \hfill $\square$
+\end{proof}
+
+\section{Lyapunov函数}
+
+Lyapunov函数没有确切的定义,对于不同的问题我们引入不同的Lyapunov函数.总的来说,它是沿任意相曲线具有一定单调性的“赋值”连续函数,利用这种函数研究相曲线在长久地运动之后的最终的行为.
+
+
+考虑相空间 $ D\subseteq \mathbb{R} ^{n} $（ $ x $的取值范围） 上的自治方程（右侧与时间 $ t $无关）   $$
+ \frac{\,\mathrm{d} x }{ \,\mathrm{d} t} =F\left( x \right)  
+$$在 $ D $上, $ F $是 $ C^{1} $映射.
+\begin{note}
+    通常将这样一个问题视为物体在空间中的运动,它的速度遵循上述方程,只由空间的性质决定而与时间无关,因此只要掌握了空间上每一点赋予物体的速度 $ F\left( x \right)  $ ,以及物体一开始出现的位置（初值条件）,就能预判物体的一切运动.
+   
+    
+\end{note}
+
+\begin{definition}
+    记 $ \phi ^{t}\left( \eta  \right)  $为初值问题 $$
+    \frac{\,\mathrm{d} x }{\,\mathrm{d} t } = F\left( x \right),\quad  x\left( 0 \right)   = \eta 
+    $$ 的饱和解.
+\end{definition}
+
+
+\begin{note}
+    \begin{enumerate}
+        \item $ \phi ^{t}\left( \eta  \right)  $若视为一个点,可以看成是从 $ \eta  $点开始,沿着初值问题的解曲线走了 $ t $时间后的位置. 
+    \end{enumerate}
+    
+    
+\end{note}
+\begin{remark}
+    \begin{itemize}
+        \item 对于固定的 $ t $, $ \phi \left( t \right)\left( \cdot  \right) :D\to D  $是相空间 $ D $上的微分同胚,它让相空间上的点依 $ \frac{\,\mathrm{d} x }{ \,\mathrm{d} t}=F\left( x \right)   $运动时间 $ t $.  
+        \item  $ \phi ^{\left( t-t_0 \right) }\left( \eta  \right)  $是初值问题 $$
+        \frac{\,\mathrm{d} x }{\,\mathrm{d} t } = F\left( x \right),\quad  x\left( t_0 \right) =\eta    
+        $$ 的解.
+        \item 满足某种群的性质$$
+        \phi ^{t_1+ t_2}\left( \eta  \right)=\phi ^{t_1}\left( \phi ^{t_2}\left( \eta  \right)  \right)  
+        $$
+    \end{itemize}
+    
+    
+\end{remark}
+
+\begin{definition}{相曲线与解曲线}
+    给定 $ \eta  \in D $,通过 $ \eta  $的相曲线是指参数曲线 $ x = \phi ^{t}\left( \eta  \right)  $ ,视为 $ D $上以 $ t $为参数的曲线.解曲线是指图像 $ \left\{ \left( t,x \right): x = \phi ^{t}\left( \eta  \right)   \right\} $,视为 $ \mathbb{R} \times D $上的曲线.  
+\end{definition}  
+
+
+
+\begin{definition}{正定}
+    设 $ W\subseteq \mathbb{R} ^{n} $, $ 0 \in W $, $ V:W\to R $.称函数 $ V $是正定的,若 $ V\left( x \right)>0  $对于所有 $ x \in W\setminus \left\{ 0 \right\} $成立,且 $ V\left( 0 \right)  =0$.      
+\end{definition}
+
+\begin{definition}{邻域基}
+    设 $ X $是拓扑空间, $ x \in X $, $ \mathcal{U} $是 $ x $的一族邻域,若对于 $ x $的任一邻域 $ V $,存在 $ U \in \mathcal{U} $使得 $ U\subseteq V $,则称 $ \mathcal{U} $为 $ x $的一个邻域基.       
+\end{definition}  
+\begin{remark}
+    可以将邻域 $ V $修改成开邻域,得到等价的定义. 
+\end{remark}
+
+\begin{theorem}\label{thm:Lyapnov-func-cri-stab}
+    设 $ F:D\to \mathbb{R} ^{n} $是 $ C^{1} $的, $ c \in D $是 $ F $的一个零点. $ W $是 $ c $的紧邻域,令 $ V:W\to \mathbb{R}  $是满足以下两条的连续函数 
+    \begin{itemize}
+        \item $ V $沿任一相曲线（ $ t \mapsto V\left( \phi ^{t}\left( \eta  \right)  \right)  $ ）单调递减;
+        \item 函数 $ v\mapsto V\left( c+ x \right)  $ 是平移集合$ W-c $上的正定函数.
+    \end{itemize}
+        则 $ c $是稳定的平衡点. 
+\end{theorem}
+\begin{proof}
+    考虑水平下集族 $$
+    H_{r}: = \left\{ x \in W:V\left( x \right)<r  \right\},\quad r>0
+    $$则 $ \left\{ H_{r} \right\} $构成 $ c $在 $ \mathbb{R} ^{n} $中的一个邻域基.$ V|_{\partial W} $是紧集上的连续函数,故存在最小值 $ m $,由正定性 $ m>0 $,取 $ r $使得 $ 0<r<m $ .任取 $ \eta  \in H_{r} $,则相曲线 $ \phi ^{t}\left( \eta  \right)  $不能延伸至 $ W $的边界,否则存在 $ t_0 \in \partial W $,使得  $ V \left( \phi ^{t_0}\left( \eta  \right)  \right) \ge m> r $,矛盾.   
+    因此 $ \phi ^{t}\left( \eta  \right)  $在 $ t>0 $时广泛存在.又由单调性可知 $ \phi ^{t}\left( \eta  \right)  $始终含于 $ H_{r} $.
+
+    这表明对于任意的 $ c $的邻域 $ U $,都能找到某个 $ H_{r}\subseteq  U\cap W $,使得对于任意的 $ \eta  \in H_{r} $, $ \phi ^{t}\left( \eta  \right)  $当 $ t>0 $时广泛存在且不溢出 $ H_{r} $,这就说明了稳定性.      
+
+    \hfill $\square$
+\end{proof}
+
+
+接下来加强一些条件,得到渐近稳定性版本的定理,定理的证明需要引入一些动力系统中的概念.
+
+\begin{definition}{ $  \omega  $-极限 }
+    设以 $ \eta  $为起点的解能延拓到 $ t>0 $.定义上 $ \eta  $的 $  \omega  $-极限集,记作 $  \omega \left( \eta  \right)  $, 由具有以下性质的点 $ x \in D $组成：
+    
+    存在递增的列 $ \left( t_{k} \right)_{k=1}^{\infty}  $,使得 $ t_{k}\to \infty $且 $ \phi ^{t_{k}} \left( \eta  \right)\to x $   
+\end{definition}
+\begin{lemma}\label{lem:ome-lim-non-empty}
+    设 $ \eta  $是落在 $ D $的紧子集上的正向相曲线（$ t>0 $）,则 $  \omega \left( \eta  \right)  $非空.   
+\end{lemma}
+\begin{proof}
+    取无穷大的递增列 $ \left( t_{k} \right)_{k=1}^{\infty}  $,则 $ \left\{ \phi ^{t_{k}} \left( \eta  \right) \right\} $是紧子集 $ K $上的（有界）点列,从而存在收敛的子列 $ \phi ^{s_{k}} \left( \eta  \right) $  ,  由 $ K $的列紧性, $ \lim_{k \to \infty}\phi ^{s_{k}} \left( \eta  \right)\in K  $,为 $ \eta  $的一个 $  \omega  $-极限.因此 $  \omega \left( \eta  \right)  $非空.     
+
+    \hfill $\square$
+\end{proof}
+\begin{lemma}
+    若 $  \xi  \in  \omega \left( \eta  \right)  $,则过 $  \xi  $的正向相曲线和逆向相曲线都落在 $  \omega \left( \eta  \right)  $上. 
+\end{lemma}
+
+\begin{proof}
+    由 $  \xi \in  \omega \left( \eta  \right)  $,知存在 $ \left\{ t_{k} \right\}_{k=1}^{\infty}, t_{k}\to \infty $,使得 $ \lim_{k \to \infty}\phi ^{t_{k}}\left( \eta  \right) = \phi^{0} \left(  \xi  \right)   $ .由 $ \phi  $ 连续性和群性质,我们有 $$
+    \phi ^{t}\left(  \xi  \right)=\phi ^{t}\left( \phi ^{0}\left(  \xi  \right)  \right)= \phi ^{t} \lim_{k \to \infty}\phi ^{t_{k}}  \left( \eta  \right) = \lim_{k \to \infty} \phi ^{t}\left( \phi ^{t_{k}}\left( \eta  \right)  \right) = \lim_{k \to \infty}\phi ^{t+ t_{k}}\left( \eta  \right) \in  \omega \left( \eta  \right)  
+    $$   对于任意的 $ t \in \mathbb{R}  $成立. 
+    \hfill $\square$
+\end{proof}
+
+\begin{lemma}
+    设 $ \eta  $的正向相曲线落在 $ D $的紧子集上.若 $  \omega \left( \eta  \right)  $   是单点集 $ \left\{ p \right\} $,则 $ \lim_{t \to \infty}\phi ^{t}\left( \eta  \right)=p  $.  
+\end{lemma}
+
+接下来就可以证明渐进稳定性的Lyapunov函数的判定.
+\begin{corollary}\label{cor:lyapunov-func-asym-stab-cri}
+    设 $ F:D\to \mathbb{R} ^{n} $是 $ C^{1} $的, $ c \in D $是 $ F $的孤立零点. $ W $是 $ c $的紧邻域,使得 $ c $是 $ W $上的唯一零点.令 $ V:W\to \mathbb{R}  $是连续函数,满足以下两条
+    \begin{itemize}
+        \item  $ V $沿任意非常值相曲线严格递减；
+        \item  $ x\mapsto V\left( c+ x \right)  $是平移集合 $ W-c $上的   正定函数.
+    \end{itemize}
+              则 $ c $是渐进稳定的平衡点. 
+\end{corollary}
+
+\begin{note}
+    第一条限定了：平衡点附近的相曲线最后的运动一定趋于一个极限点,只需要说明该极限点就是平衡点即可.过极限点的相曲线落在极限点集上, $ V $ 严格单调性给出该曲线只能平衡点,再由平衡点的唯一性（孤立性）即可.
+\end{note}
+\begin{proof}
+    首先由定理\ref{thm:Lyapnov-func-cri-stab},平衡点 $ c $是稳定的.选取 $ r>0 $,使得 $ V $的 下水平集  $ H_{r} $不能到达 $ W $的边界.
+    令 $  \xi  \in H_{r} $,则相曲线 $ \phi ^{t}\left(  \xi  \right)  $延拓到所有 $ t>0 $上,并且始终落在 $ H_{r}  $上.由引理\ref{lem:ome-lim-non-empty}, $  \omega \left(  \xi  \right)  $非空.
+    此外,由第一个条件,极限 $  \lambda : = \lim_{t \to \infty}V\left( \phi ^{t}\left(  \xi  \right)  \right)  $  存在,且 $  \lambda \ge 0 $.令 $ p \in  \omega \left(  \xi  \right)  $,$ \left\{ t_{k} \right\} _{k=1}^{\infty}$,使得 $ \lim_{k \to \infty} \phi ^{t_{k}}\left(  \xi  \right) =p$,则 $ V\left( p \right)=\lambda   $  .这立即给出 $ V $在集合 $  \omega \left(  \xi  \right)  $上取常值 $ \lambda  $ .
+    又有以 $  \omega \left(  \xi  \right)  $为起点的相曲线始终落在 $  \omega \left(  \xi  \right)  $上,  故而 $ V $沿着这条相曲线也始终取常值,那么由条件1,此相曲线只能是常值曲线.由假设,$ W $上的平衡点只有 $ c $,而 $  \omega \left(  \xi  \right)\subseteq W  $    ,因此 $  \omega \left(  \xi  \right)=\left\{ c \right\}  $ ,由上面的引理, $ \phi ^{t}\left(  \xi  \right)\to c  $. 
+
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}{不稳定性判据}
+    设 $ F:D\to \mathbb{R} ^{n} $是 $ C^{1} $的, $ c \in D $是 $ F $的孤立零点.设 $ W $是 $ c $的邻域,使得 $ W $上不存在 $ c $以外的其他零点.令 $ V:W\to \mathbb{R}  $是满足以下两条的连续函数
+    \begin{itemize}
+        \item $ V\left( c \right)=0  $且沿非常值相曲线严格递增；
+        \item $ c $的每个邻域上都有使得 $ V $大于零的点.   
+    \end{itemize}
+    设 $ c $是不稳定的平衡点. 
+\end{theorem}
+
+\begin{note}
+    如果相曲线徘徊于 $ B $,则它由 $ V $的性质一定是常值曲线,进而是（唯一的）平衡点.但是 $ V $的递增性给出,对于正赋值点为起点的相曲线,它随时间增加, $ V $给它的赋值越来越大,最终的赋值（极限）一定大于0.    
+\end{note}
+\begin{proof}
+    设 $ B $是以 $ c $为中心的闭球,使得 $ B $中没有 $ c $以外的零点,且 $ B\subseteq W $.令 $  \xi \in B $使得 $ V\left(  \xi  \right)>0  $. 断言正向相曲线 $ \phi ^{t}\left(  \xi  \right)  $逃出 $ B $.为此,设如果 $ \phi ^{t}\left(  \xi  \right)  $始终落在 $ B $中,则相曲线延拓到所有 $ t>0 $上,且由引理\ref{lem:ome-lim-non-empty} $  \omega \left(  \xi  \right)  $非空,且 $  \omega \left(  \xi  \right)\subseteq B  $（闭集）. 类似上面的证明,$ V $在 $  \omega \left(  \xi  \right)  $上取常值 $ \lambda  $,使得 $ \lambda >0 $.由条件1,$  \omega \left(  \xi  \right)  $只能由平衡点组成.因此 $  \omega \left(  \xi  \right)=c  $    ,这与 $ V\left( c \right)=0  $ 矛盾.
+
+    \hfill $\square$
+\end{proof}
+
+\section{实践}
+
+通常取 $ V $是 $ C^{1} $函数, $ V $沿相曲线的增减可以通过计算微分来研究： $$
+\frac{\,\mathrm{d}  }{\,\mathrm{d} t } V\left( \phi ^{t}\left( \eta  \right)  \right) = \nabla V\left( \phi ^{t}\left( \eta  \right)  \right)\cdot F^{\prime} \left( \Phi ^{t}\left( \eta  \right)  \right)    
+$$   以下三种情况是非常好用的：
+\begin{enumerate}
+    \item 若 $ \nabla V\left( x \right)\cdot F\left( x \right)<0   $对于除使得 $ F\left( x \right) = 0  $外的 $ x $都成立,则 $ V $沿着非常值相曲线严格递减；
+    \item 若 $ \nabla V\left( x \right)\cdot F\left( k \right)\le 0   $对于所有 $ x $成立,则 $ V $沿着相曲线递减；
+    \item 若 $ \nabla V\left( x \right)\cdot F\left( x \right)>0   $对于除 $ F\left( x \right)=0  $外的所有 $ x $成立,则 $ V $沿非常值相曲线严格递增.           
+\end{enumerate}
+
+\begin{example}
+    考虑平面系统,坐标 $ x,y $满足 $$
+    \frac{\,\mathrm{d} x }{\,\mathrm{d} t } = -x+ f\left( x,y \right),\quad \frac{\,\mathrm{d} y }{\,\mathrm{d} t }=-y+  g\left( x,y \right)    
+    $$其中 $ f $, $ g $是 $ C^{1} $函数,使得 $ f,g, \frac{\partial f}{\partial x},\frac{\partial f}{\partial y},\frac{\partial g}{\partial x},\frac{\partial g}{\partial y} $当 $ x=y=0 $时均取0.
+      
+\end{example}
+\begin{solution}
+    取 $ V\left( x,y \right)=x^{2}+ y^{2}  $,则 $ V $显然是正定的,此外,考虑极坐标,我们有 $$
+    \begin{aligned}
+  &   \nabla V\left( x,y \right)\cdot \left( -x+ f\left( x,y \right),-y+ g\left( x,y \right)   \right)   \\ 
+     & = -2x^{2}+ 2xf\left( x,y \right)-2y^{2}+ 2yg\left( x,y \right)  \\ 
+      & = -2r^{2} + 2r\cos \theta f\left( r\cos \theta ,r\sin \theta  \right)+ 2r\sin \theta g\left( r\cos \theta ,r\sin \theta  \right)\\ 
+       & = -2r^{2}\left( 1-r^{-1} \cos \theta f\left( r\cos \theta ,r\sin \theta  \right)  -r^{-1} \sin \theta g\left( r\cos \theta ,r\sin \theta  \right) \right)   \\ 
+    \end{aligned}
+    $$  由于 $ f,g $的偏导数均在 $ x=y=0 $处取0,故存在 $ \alpha >0 $,使得当 $ 0<r<\alpha  $时, 右侧括号内的值大于 $ \frac{1}{2} $.于是存在以 $ 0 $为原点的闭球,使得 $ V $在其上沿任意相曲线严格递减.由反函数定理, $ 0 $是孤立的平衡点,可以通过缩小 $ \alpha  $不妨设 $ 0<r<\alpha  $内没有平衡点. 由\ref{cor:lyapunov-func-asym-stab-cri}, $ \left( 0,0 \right)  $是渐进稳定的平衡点. 
+\end{solution}
+
+\begin{example}
+    考虑平面系统 $$
+    \frac{\,\mathrm{d} x }{\,\mathrm{d} t }=-x+ f\left( x,y \right),\quad \frac{\,\mathrm{d} y }{\,\mathrm{d} t } = y+ g\left( x,y \right)    
+    $$ $ f,g $是同上的 $ C^{1} $函数.  
+\end{example}
+
+\begin{solution}
+    令 $ V\left( x,y \right)=-x^{2}+ y^{2}  $,类似地计算得到 $ V\left( x,y \right)  $在某范围内的任意非常值相曲线上严格递增. 得到 $ \left( 0,0 \right)  $是不稳定的平衡点. 
+\end{solution}
+
+\section{构造Lyapunov函数}
+
+
+\begin{large}
+    \noindent Case 1:当 $ A $的所有特征值有负实部时 ：
+
+
+\end{large}
+
+我们为方程 $ \frac{\,\mathrm{d} x }{\,\mathrm{d} t }= Ax  $ 构造正定的二次型,使得 $$
+\nabla Q\left( x \right)\cdot Ax \le -\sigma Q\left( x \right),\quad  x \in \mathbb{R} ^{n} 
+$$对某个正常数 $ \sigma  $成立. 
+
+我们将看到 $ Q\left( x \right)  $由以下给出 $$
+Q\left( x \right)=\sum _{k=1}^{n}z_{k} \overline{z}_{k} 
+$$其中 $ z_1,\cdots ,z_{n} $是 $ x = \left( x_1,\cdots ,x_{n} \right)   \in \mathbb{R} ^{n}$   在选取某个 $ \mathbb{R} ^{n} $的复向量基 $ w^{\left( 1 \right) },\cdots ,w^{\left( n \right) } $下的坐标.
+
+设 $ T $是（复）过渡矩阵 ,使得向量 $ x = \left( x_1,\cdots ,x_{n} \right)  $ 在基 $ w^{\left( 1 \right) },\cdots ,w^{\left( n \right) } $ 下的表示为 $ \left( z_1,\cdots ,z_{n} \right)  :=\zeta := T^{-1} x$ .
+对于实向量 $ x $,我们有 $$
+Q\left( x \right) = \left|  \xi ^{2} \right| = T^{-1} x\cdot \overline{T}^{-1} x  
+$$ 从而 $$
+\begin{aligned}
+    \nabla Q\left( x \right)\cdot Ax & = T^{-1} Ax \overline{T}^{-1} x+  T^{-1} x\cdot  T^{-1} Ax \\ 
+     & = \left( T^{-1} AT \right) \zeta \cdot \overline{\zeta }+  \zeta \cdot \left( \overline{T^{-1} AT}  \right) \overline{\zeta }\\ 
+      & = 2 \mathrm{Re}\left( \left( T^{-1} AT \right)\zeta \cdot \overline{\zeta }  \right)   
+\end{aligned} 
+$$
+
+当  $ A $可对角化时,设它的特征值为 $  \lambda _{1},\cdots , \lambda _{n} $（可重复）,可以选择过渡矩阵 $ T $,使得 $ T^{-1} AT $有以下对角型 $$
+\operatorname{diag}\left(  \lambda _{1},\cdots , \lambda _{n} \right) = \begin{bmatrix} 
+     \lambda _{1} & 0& \cdots & 0\\ 
+      0 &  \lambda _{2} & \cdots  & 0\\ 
+       \vdots& \vdots & \ddots & \vdots\\ 
+        0& 0& \cdots &  \lambda _{n} 
+\end{bmatrix}  
+$$    此时有 $$
+\nabla Q\left( x \right)\cdot Ax = 2\sum _{i=1}^{n} \mathrm{Re}\left(  \lambda _{k} \right)\left| z_{k} \right|^{2}   
+$$ 因此可以选择 $ \sigma >0 $,使得对于所有的特征值, $ \operatorname{Re}\, \lambda _{k}< - \frac{1}{2}\sigma <0 $,此时 $$
+\nabla Q\left( x \right)\cdot Ax\le  -\sigma  \sum _{k=1}^{n} \left| z_{k} \right|^{2} = -\sigma  Q\left( x \right)   
+$$  
+
+对于一般的 $ A $,我们将说明,对于给定的 $  \varepsilon >0 $,可以选择过渡矩阵 $ T $,使得 $$
+\begin{aligned}&T^{-1}AT=\begin{bmatrix}\lambda_1&\mu_1&0&\cdots&\cdots&0\\0&\lambda_2&\mu_2&\cdots&\cdots&0\\\vdots&\vdots&\vdots&\ddots&\vdots&\vdots\\0&0&0&\cdots&\lambda_{n-1}&\mu_{n-1}\\0&0&0&\cdots&0&\lambda_n\end{bmatrix}\end{aligned}
+$$  其中每个 $ u_{k} $要么是 $  \varepsilon  $,要么是 $ 0 $.此时就容易看到 $$
+\nabla Q\left( x \right)\cdot Ax \le  2 \sum _{k=1}^{n} \mathrm{Re}\left(  \lambda _{k} \right)\left| z_{k} \right|^{2}+  2\left( n-1 \right) \varepsilon  \left| \zeta \right|^{2}     
+$$   若 $  \varepsilon  $一开始就选取的充分小,就能找到 $ \sigma >0 $,使得 $$
+2 \max _{1\le k\le n} \mathrm{Re} \lambda _{k}+  2\left( n-1 \right)  \varepsilon <-\sigma <0
+$$  此时就有 $$
+\nabla Q\left( x \right)\cdot Ax \le  -\sigma  Q\left( x \right)  
+$$
+为了构造这与的“几乎对角化”的形式,从 $ A $的Jordan标准型开始,设 $ T_1 $是过渡矩阵,使得 $$
+T_1^{-1} AT_1= \begin{bmatrix} 
+    [J_1]& & & \\ 
+     
+    & [J_{2}]& &\\ 
+     & &  \ddots & \\ 
+      
+    & & & [J_{p}] 
+\end{bmatrix} 
+$$  然后,考虑一个对角矩阵 $$
+T_2: = \operatorname{diag}\left(  \varepsilon , \varepsilon ^{2},\cdots , \varepsilon ^{n} \right) 
+$$计算 $ T_2^{-1} \left( T_1^{-1} AT_1 \right)T_2  $ ,单独取一个Jordan考虑,不妨考虑 $$
+\operatorname{diag}\left(  \varepsilon ^{-1} , \varepsilon ^{-2},\cdots , \varepsilon ^{-k} \right) \begin{bmatrix}\lambda&1&0&\cdots&0\\0&\lambda&1&\cdots&0\\\vdots&\vdots&\ddots&\ddots&\vdots\\0&0&0&\cdots&1\\0&0&0&\cdots&\lambda\end{bmatrix}
+\operatorname{diag}\left(  \varepsilon ^{1},\cdots , \varepsilon ^{k} \right) 
+$$它等于 $$ 
+    \begin{bmatrix}\lambda & \varepsilon & 0 & \cdots & 0\\ 0 & \lambda & \varepsilon & \cdots & 0\\ \vdots & \vdots & \ddots & \ddots & \vdots\\ 0 & 0 & 0 & \cdots & \varepsilon\\ 0 & 0 & 0 & \cdots & \lambda\end{bmatrix} 
+$$      这样就得到了所需的形式.
+
+非常美妙的是 $ Q\left( x \right)  $也是非线性方程 $$
+x^{\prime} =Ax+ g\left( x \right) 
+$$的一个Lyapunov函数,其中 $ g $是 $ C^{1} $函数使得 $ g\left( x \right)/\left| x \right|\to 0 (x\to 0 )  $    .对此,我们有 $$
+\nabla Q\left( x \right)\cdot \left( Ax+ g\left( x \right)  \right) \le  -\sigma Q\left( x \right)+  \nabla Q\left( x \right)\cdot g\left( x \right)     
+$$任意给定 $ \alpha >0 $,当 $ \left| x \right|  $充分小时,就有  $$
+\left| \nabla Q\left( x \right)\cdot g\left( x \right)   \right| \le  \left| \nabla Q\left( x \right)  \right|\left| g\left( x \right)  \right| \le  \alpha \left| x \right|^{2}    
+$$ 这给出 $$
+\nabla Q\left( x \right)\cdot \left( Ax+  g\left( x \right)  \right) \le  -\sigma Q\left( x \right)+ \alpha \left| x \right|^{2}    
+$$所以只要选取 $ \alpha  $使得以下成立就可以了 $$
+Q\left( x \right)> \frac{\alpha}{2\sigma }\left| x \right|^{2}  ,\quad  x \neq  0
+$$ 由于 $ Q\left( x \right)  $是正定二次型,这样的 $ \alpha  $是可以取到的.  现在,$ \alpha  $决定了一个以 $ 0 $为中心的球,在其上 $ Q\left( x \right)  $正定且沿非常值相曲线严格递增,给出了渐进稳定性判据的另一个证明.   
+
+
+\begin{large}
+    \noindent Case 2： $ A $有一个正实部的特征值. 
+\end{large}
+
+设 $  \lambda _{1},\cdots , \lambda _{m} $有正的实部,$  \lambda _{m+ 1},\cdots , \lambda _{n} $有负的或零实部.  
+设 $$
+Q_1\left( x \right) =\sum _{k=1}^{m} \left| z_{k} \right|^{2},\quad Q_2\left( x \right)=\sum _{k=m+ 1}^{n}\left| z_{k} \right|^{2}   
+$$其中 $ \left( z_1,\cdots ,z_{n} \right): =\zeta : = T^{-1} x  $ 是经一个坐标变换后的坐标.我们希望给出形如下的Lyapunov函数： $$
+Q\left( x \right): = Q_1\left( x \right)-Q_2\left( x \right)   
+$$
+
+
+
+
+\end{document}

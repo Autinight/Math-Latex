@@ -1,0 +1,58 @@
+\documentclass[lang=cn,12pt,color=blue,fontset=none,pad]{elegantbook}
+%fontset=none,
+\title{PDE}
+% \subtitle{课内复习版}
+
+\usepackage{subfiles}
+\author{Autin}
+
+\usepackage{quiver} 
+
+
+\setmainfont{Aa顺風顺水顺财神}[BoldFont=Shanggu Round-Bold]
+\setCJKmainfont{Aa顺風顺水顺财神}[BoldFont=Shanggu Round-Bold]
+\setCJKsansfont{Aa顺風顺水顺财神}[BoldFont=Shanggu Round-Bold]
+\setCJKmonofont{Aa顺風顺水顺财神}[BoldFont=Shanggu Round-Bold]
+
+\extrainfo{}
+
+\setcounter{tocdepth}{3}
+
+% \logo{xmu-logo.pdf}
+\cover{room_早.jpg}
+\usepackage{CJKutf8}
+% 本文档命令
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+
+
+% 修改标题页的橙色带
+% \definecolor{customcolor}{RGB}{32,178,170}
+% \colorlet{coverlinecolor}{customcolor}
+
+\begin{document}
+
+\maketitle
+
+
+\frontmatter
+
+
+\tableofcontents
+
+\mainmatter
+
+\subfile{chapters/绪论/绪论.tex}
+
+\subfile{chapters/基本概念/基本概念.tex}
+
+\subfile{chapters/波动方程的Cauchy问题/波动方程的Cauchy问题.tex}
+
+\subfile{chapters/分离变量/分离变量.tex}
+
+\subfile{chapters/Fourier变换/Fourier变换.tex}
+
+\end{document}
+ 
+
+ 

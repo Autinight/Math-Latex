@@ -1,0 +1,114 @@
+\documentclass[../../古典微分几何.tex]{subfiles}
+
+\begin{document}
+    
+\chapter{预备知识}
+
+\begin{definition}
+    设 \(  T: \mathbb{R} ^{n}\to \mathbb{R} ^{n}  \)是双射,若 \(  T  \)
+    保持欧氏距离,即对于任意的 \(  P,Q \in \mathbb{R} ^{n}  \),都有 
+    \(  d\left( TP,TQ \right)= d\left( P,Q \right)    \),则 \(  T  \)为一个等距同构（isometry）.     
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 若 \(  \det A =  1  \)（没有反射,保定向的）,则称 \(  T  \)为刚体运动（Rigid motion）.  
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{theorem}
+    设 \(  T  \)是 \(  E^{n}  \)上的等距同构,那么存在 \(  n\times n  \)的正交矩阵 \(  A  \),以及向量 \(  v  \),使得 \[
+        T\left( P \right)=  PA + v,\quad \forall  P = \left(  x_1,\cdots,x_n  \right) \in \mathbb{R} ^{n} 
+        \]    
+\end{theorem}
+
+\begin{note}
+
+    等距同构 \(  =   \)旋转、反射加平移. 
+
+\end{note}
+
+\begin{proof}
+    练习
+
+    \hfill $\square$
+\end{proof}
+
+\begin{exercise}
+    设 \(  \mathbf{x}\left( t \right)   \)和 \(  \mathbf{y}\left( t \right)   \)是 \(  n  \)维向量值函数,且可微,则
+    \begin{enumerate}
+        \item  \(  \left<\mathbf{x}\left( t \right),\mathbf{y}\left( t \right)   \right>^{\prime} =  \left<\mathbf{x}^{\prime} \left( t \right),\mathbf{y}\left( t \right)   \right>+  \left<\mathbf{x}\left( t \right),\mathbf{y}^{\prime} \left( t \right)   \right>   \)
+        \item 若 \(  \left| \mathbf{x}\left( t \right)  \right|   \)是常值函数,则对于 \(  \mathbf{x}^{\prime} \left( t \right)\in \mathfrak{X}\left( \mathbb{R} ^{n} \right)   \)和 \(  \mathbf{x}\left( t \right) \in C^{1}\left( \mathbb{R} ^{n} \right)   \),它们的典范配对 \[
+        \left<\mathbf{x}^{\prime} \left( t \right),\mathbf{x}\left( t \right)   \right>= 0
+        \]    
+    \end{enumerate}
+       
+\end{exercise}
+
+\hspace*{\fill} 
+
+
+\begin{example}[不光滑的光滑曲面极限]
+    锥面在顶点不光滑,但是可以用光滑的曲面逼近.
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{definition}{切空间}
+    设 \(  p \in \mathbb{R} ^{n}  \),则 \[
+    T_{p}\mathbb{R} ^{n} =  \left\{ \text{以}p\text{为起点的}\mathbb{R} ^{n}\text{中的向量} \right\}
+    \] 称为 \(  \mathbb{R} ^{n}  \)在 \(  p  \)点处的切空间.  
+\end{definition}
+
+\begin{definition}{微分映射}
+
+    设 \(  F: \mathbb{R} ^{n}\to \mathbb{R} ^{m}  \)是光滑函数,定义它的微分 \(  dF|_{p}: T_{p}\mathbb{R} ^{n}\to T_{F\left( p \right) } \mathbb{R} ^{m} \)  ,按照 \[
+    \,\mathrm{d} F|_{p} \left( v \right): =   \left. \frac{\,\mathrm{d}  }{\,\mathrm{d} t }  \right|_{t= 0}F\left( p+ t v \right)  
+    \]
+    
+\end{definition}
+
+\begin{remark}
+   \begin{enumerate}
+    \item  \(  \left. \,\mathrm{d} F \right|_{p}  \)是 \(  T_{p}\mathbb{R} ^{n}  \)到 \(  T_{F\left( p \right) }\mathbb{R} ^{m}  \)  的线性映射 ：证明留作练习
+   \end{enumerate}
+   
+\end{remark}
+
+
+\begin{definition}{微分同胚}
+    设 \(  U,V  \)是 \(  \mathbb{R} ^{n}  \)的开集, \(  F: U\to V  \)是可微的双射,且 \(  F  \)的逆映射也可微,
+    则称 \(  F  \)为 \(  U\to V  \)的微分同胚.      
+\end{definition}
+
+\begin{example}
+    \begin{enumerate}
+        \item  \(  D =  \left\{ \left( x,y \right): x^{2}+ y^{2}\le 1  \right\}  \)微分同胚于 \(  \mathbb{R} ^{2}  \)  
+    \end{enumerate}
+    
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{theorem}{反函数定理}
+    设 \(  F: U\to \mathbb{R} ^{n}  \)是 \(  C^{1}  \)映射 , \(  0 \in U \subseteq \mathbb{R} ^{n}  \)是开集,满足
+    \begin{enumerate}
+        \item  \(  F\left( 0 \right)= 0   \)
+        \item \(  \left. \,\mathrm{d} F \right|_{0}  \)是线性同构  
+    \end{enumerate}
+      那么存在 \(  V\subseteq U  \),使得 \(  0 \in V  \), 且\(  f|_{V}  \)是  \(  V  \)到 \(  f\left( V \right)   \)的微分同胚.     
+\end{theorem}
+
+\begin{theorem}{隐函数定理}
+    设 \(  0 \in U \subseteq \mathbb{R} ^{n}  \)是开集, \(  F: U\to \mathbb{R} ^{n}  \)是  \(  C^{1}  \)   映射,满足 
+    \begin{enumerate}
+        \item \(  F\left( 0 \right)= 0   \);
+        \item \(  \,\mathrm{d} F|_{p}  \)是单射.  
+    \end{enumerate}
+     那么存在 \(  0  \)的邻域 \(  W\subseteq \mathbb{R} ^{m}  \),以及微分同胚 \(  \phi : W\to \phi \left( W \right)   \),使得 \[
+     \phi \circ F\left(  x_1,\cdots,x_n  \right)= \left(  x_1,\cdots,x_n ,0,\cdots ,0 \right)  
+     \]   
+\end{theorem}
+
+\end{document}

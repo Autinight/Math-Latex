@@ -1,0 +1,373 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+ 
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+\chapter{测地线和距离}
+
+\begin{definition}{极小曲线}
+    令 \(  \left( M,g \right)   \)是Riemann流形,称一个 \(  M  \)上的容许曲线 \(   \gamma   \)   是\textbf{极小的},若 \(  L_{g}\left(  \gamma  \right)\le L_{g}\left(  \tilde{\gamma}  \right)    \) 对于所有有着相同端点的容许曲线 \(   \tilde{\gamma}   \)成立. 
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 当 \(  M  \)连通时, \(   \gamma   \)极小当且仅当 \(  L_{g}\left(  \gamma  \right)  \)等于两端点的距离.   
+    \end{enumerate}
+    
+\end{remark}
+
+\section{曲线族}
+
+\begin{definition}{单参数曲线族}
+    设 \(  \left( M,g \right)   \)是Riemann流形.
+    
+    给定区间 \(  I,J\subseteq \mathbb{R}   \),称一个连续映射 \(   \Gamma :J\times I\to M  \)为一个\textbf{单参数曲线族}.这样一个曲线族给出 \(  M  \)上的两类曲线：
+    \begin{enumerate}
+        \item 对于固定的 \(  s  \), 定义在 \(  t \in I  \)上的\textbf{主曲线}： \(   \Gamma _{s}\left( t \right)=  \Gamma \left( s,t \right)    \) ；
+        \item 对于固定的 \(  t  \),定义在 \(  s \in J  \)上的\textbf{横截曲线}： \(   \Gamma ^{\left( t \right) }\left( s \right)=  \Gamma \left( s,t \right)    \)；
+    \end{enumerate}
+       
+\end{definition}
+
+\begin{definition}{沿曲线族的向量场}
+    对于单参数曲线族 \(   \Gamma :J\times I\to M  \),定义\textbf{沿 \(   \Gamma   \)的向量场}为一个连续映射 \(  V: J\times I\to TM  \),使得 \(  V\left( s,t \right)\in T_{ \Gamma \left( s,t \right) }M,\forall \left( s,t \right)    \).   
+\end{definition}
+
+\begin{definition}{速度向量}
+    若单参数曲线族 \(   \Gamma :J\times I\to M  \)是光滑的（或至少是连续可微的）,我们记主曲线和横街曲线的速度向量分别为 \[
+    \partial _{t} \Gamma \left( s,t \right) = \left(  \Gamma _{s} \right)^{\prime} \left( t \right)\in T_{ \Gamma \left( s,t \right) }M;\quad  \partial _{s} \Gamma \left( s,t \right)=  \Gamma ^{\left( t \right)\prime }  \left( s \right) \in T_{ \Gamma \left( s,t \right) }M 
+    \] 
+\end{definition}
+
+\begin{definition}{容许曲线族}
+    称单参数曲线族 \(   \Gamma   \)为一个\textbf{容许曲线族},若
+    \begin{enumerate}
+        \item \(   \Gamma   \)的定义域形如 \(  J\times \left[ a,b \right]   \),其中 \(  J  \)是开集；
+        \item 存在 \(  \left[ a,b \right]   \)的分划 \(  \left(  a_0,\cdots,a_{k}    \right)   \),使得 \(   \Gamma   \)在每个 \(  J\times \left[ a_{i-1},a_{i} \right]   \)上光滑；
+        \item 对于每个 \(  s \in J  \),  \(   \Gamma _{s}\left( t \right)=  \Gamma \left( s,t \right)    \)    是一个容许曲线.    
+    \end{enumerate}
+    此时称这样的一个分划为\textbf{曲线族的容许分划}.
+\end{definition} 
+
+\begin{remark}
+    \(  \partial _{s} \Gamma   \)和 \(  \partial _{t} \Gamma   \)在每个 \(  J\times \left[ a_{i-1},a_{i} \right]   \)上是光滑的,但是在一般来说在整个定义域上不是.   
+\end{remark}
+
+\begin{definition}{变分}
+    给定容许曲线 \(   \gamma :\left[ a,b \right]\to M   \),
+    \begin{enumerate}
+        \item \textbf{\(   \gamma   \)的一个变分}是指一个容许曲线族 \(   \Gamma: J\times \left[ a,b \right]\to M   \),使得 \(  J  \)是包含了 \(  0  \)的一个开区间,且 \(   \Gamma _{0}=  \gamma   \)；
+        \item 若在此之上, \(   \Gamma _{s}\left( a \right)=  \gamma \left( a \right)    \)和 \(   \Gamma _{s}\left( b \right)=  \gamma \left( b \right)    \)对于所有的 \(  s \in J  \)成立\footnote{即有相同的起点和终点},  则称 \(   \Gamma   \)为 \(   \gamma   \)的一个\textbf{真变分}.   
+    \end{enumerate}
+     
+\end{definition}
+
+
+\begin{definition}{沿曲线族的分段光滑向量场}
+    设 \(   \Gamma   \)是容许曲线族,\textbf{沿 \(   \gamma   \)的一个分段光滑向量场 },是指一个（连续的）沿 \(   \Gamma   \)的向量场,使得对于某个 \(   \Gamma   \)的容许分划 \(  \left(  a_0,\cdots,a_{k}    \right)   \),有向量场在每个矩形 \(  J\times \left[ a_{i-1},a_{i} \right]   \)上的限制是光滑的.
+\end{definition}
+
+\begin{remark}
+    若 \(  V  \)是沿 \(   \Gamma   \)的一个分段光滑的向量场,我们可以分别计算 \(  V  \)沿主曲线和 耿介曲线的协变导数；得到的 沿 \(   \Gamma   \)的向量场分别记作 \(  D_{t}V  \)和\(  D_{s}V  \).   
+\end{remark}
+
+\begin{proposition}
+    设 \(   \Gamma   \)是一个容许曲线族,它可以定义出 \(  \partial _{s} \Gamma   \)是沿\(   \Gamma   \)分段光滑的向量场.    
+\end{proposition}
+\begin{proof}
+    由 \(   \Gamma   \)的光滑性, 在每一个矩形上都可以分别定义光滑的 \(  \partial _{s} \Gamma   \) , \(  \partial _{s} \Gamma   \)沿集合 \(  J\times \left\{ a_{i} \right\}  \)的取值仅依赖于 \(   \Gamma   \)在 \(  J\times \left\{ a_{i} \right\}  \)上的取值,故分别定义在在 \(  J\times \left[ a_{i-1},a_{i} \right]   \)和 \(  J\times \left[ a_{i},a_{i+ 1} \right]   \)的 \(  \partial _{s} \Gamma   \)在交集上一致.最后由粘合引理可知 \(  \partial _{s} \Gamma   \)    在 \(  J\times \left[ a,b \right]   \)是连续的. 
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{变分场}
+    设 \(   \Gamma   \)是 \(   \gamma   \)的变分,\(   \Gamma   \)的变分场是指沿 \(   \gamma   \)分段光滑的向量场 \(  V\left( t  \right)= \partial _{s} \Gamma \left( 0,t \right)    \)    \footnote{在 \(   \gamma   \)的变换行为 \(   \Gamma   \)下, \(   \gamma   \)在开始时的变化趋势.   } .
+\end{definition}
+
+\begin{definition}
+    称沿 \(   \gamma   \)的向量场 \(  V  \)为一个真向量场,若 \(  V\left( a \right)= 0   \)且 \(  V\left( b \right)= 0   \).    
+\end{definition}
+
+
+\begin{lemma}
+    若 \(   \gamma   \)是容许曲线, \(  V  \)是沿 \(   \gamma   \)逐段光滑的向量场,则 \(  V  \)是某个 \(   \gamma   \)的变分的变分场.若 \(  V  \)是真向量场,则变分也可以被取成真变分.      
+\end{lemma}
+
+\begin{proof}
+    设 \(   \gamma   \)和 \(  V  \)满足条件,对于 使得 \(  \exp _{ \gamma \left( t \right) }\left( sV\left( t \right)  \right)   \)有定义的 \(  s,t  \),我们令 \(   \Gamma \left( s,t \right)=  \exp _{ \gamma \left( t \right) }\left( sV\left( t \right)  \right)    \).由 \(  \left[ a,b \right]   \)的紧性,存在 \(   \varepsilon >0  \),使得 \(   \Gamma   \)在 \(  \left( - \varepsilon , \varepsilon  \right)\times \left[ a,b \right]    \)上有定义.通过复合映射, 在每个使得 \(  V  \)光滑的 \(  \left[ a_{i-1},a_{i} \right]   \)上, \(   \Gamma   \)在 \(  \left( - \varepsilon , \varepsilon  \right)\times \left[ a_{i-1},a_{i} \right]    \)上光滑.  由指数映射的性质, \[
+     \Gamma _{s}\left( 0,t \right)= \partial_{s} \left( \exp _{ \gamma \left( t \right) } \left( sV\left( t \right)  \right) \right)=   \partial _{s}  \left( \sigma _{V\left( t \right) }\left( s \right) \right)  =  \sigma ^{\prime} _{V\left( t \right) }\left( 0 \right)= V\left( t \right)  
+    \] 其中 \(   \sigma _{V\left( t \right) }  \)表示以  \(  V\left( t \right)   \)为初速度的测地线.        故 \(   \Gamma   \)的变分场是 \(  V  \).此外,若 \(  V\left( a \right)= 0   \)且 \(  V\left( b \right)= 0   \),则上述定义给出 \(   \Gamma \left( s,a \right)\equiv  \gamma \left( a \right)    \), \(   \Gamma \left( s,b \right)\equiv  \gamma \left( b \right)    \),故 \(   \Gamma   \)是真变分.       
+
+    \hfill $\square$
+\end{proof}
+
+\begin{lemma}{对称引理}\label{曲线族的对称引理}
+    设 \(   \Gamma :J\times \left[ a,b \right]\to M   \)是一个容许曲线族.在使得 \(   \Gamma   \)光滑的矩形 \(  J\times \left[ a_{i-1},a_{i} \right]   \)上  ,有 \[
+    D_{s}\partial _{t} \Gamma = D_{t}\partial _{s} \Gamma 
+    \]
+\end{lemma}
+
+\begin{proof}
+    命题是局部的,我们在 \(   \Gamma \left( s_0,t_0 \right)   \)周围的一个局部坐标 \(  \left( x^{i} \right)   \)上考虑.设 \(   \Gamma   \)在其上写作 \(   \Gamma \left( s,t \right)= \left( x^{1}\left( s,t \right),\cdots ,x^{n}\left( s,t \right)   \right)    \),则 \[
+    \partial _{t} \Gamma = \frac{\partial x^{k}}{\partial t}\partial _{k};\quad \partial _{s} \Gamma = \frac{\partial x^{k}}{\partial s}\partial _{k}
+    \]    由测地线的坐标公式 \[
+    \begin{aligned}
+    D_{s}\partial _{t} \Gamma & = \left( \frac{\partial ^{2}x^{k}}{\partial s \partial t}+  \frac{\partial x^{i}}{\partial s} \frac{\partial x^{j}}{\partial t} \Gamma _{ij}^{k} \right)\partial _{k}  \\ 
+     D_{t}\partial _{s} \Gamma &= \left( \frac{\partial ^{2}x^{k}}{\partial t \partial s} + \frac{\partial x^{i}}{\partial t}\frac{\partial x^{j}}{\partial s}  \Gamma _{ij}^{k}\right)\partial _{k}  
+    \end{aligned}
+    \]交换第二行 \(  i,j  \)的次序,并由联络的对称性\(   \Gamma _{ij}^{k}=  \Gamma _{ji}^{k}  \)可得二者相等.  
+
+    \hfill $\square$
+\end{proof}
+
+\section{极小曲线是测地线}
+
+\begin{theorem}{第一变分公式}
+    设 \(  \left( M,g \right)   \) 是Riemann流形,设\(   \gamma :\left[ a,b \right]\to M   \)是单位速度容许曲线, \(   \Gamma : J\times \left[ a,b \right]\to M   \)是 \(   \gamma   \)的一个变分,\(  V  \)是它的变分场,则\(  L_{g}\left(  \Gamma _{s} \right)   \)是 \(  s  \) 的一个光滑函数,并且 \begin{equation}
+           \begin{aligned}
+            \left. \frac{\,\mathrm{d}  }{\,\mathrm{d} s }  \right|_{s= 0} L_{g}\left(  \Gamma _{s} \right)=  - \int_{a}^{b}\left<V,D_{t} \gamma ^{\prime}  \right>\,\mathrm{d} t \footnotemark - \sum _{i= 1}^{k-1}\left<V\left( a_{i} \right),  \Delta _{i} \gamma ^{\prime}   \right> \\ 
+            + \left<V\left( b \right), \gamma ^{\prime} \left( b \right)   \right>-\left<V\left( a \right), \gamma ^{\prime} \left( a \right)   \right>   
+           \end{aligned} \footnotemark 
+    \end{equation}
+    其中 \(  \left(  a_0,\cdots,a_{k}    \right)   \)是 \(  V  \)的一个容许分划,对于每个 \(  i=  1,\cdots,k -1  \), \(   \Delta _{i} \gamma ^{\prime} : =   \gamma ^{\prime} \left( a_{i}^{+ } \right)- \gamma ^{\prime} \left( a_{i}^{-} \right)    \)是速度向量场 \(   \gamma ^{\prime}   \)在 \(  a_{i}  \)处的跳跃.特别地,若 \(   \Gamma   \)是真变分,则
+    \begin{equation}\label{eq-1}
+        \left. \frac{\,\mathrm{d}  }{\,\mathrm{d} s }  \right|_{s= 0} L_{g}\left(  \Gamma _{s} \right)= - \int_{a}^{b}\left<V,D_{t} \gamma ^{\prime}  \right>\,\mathrm{d} t-\sum _{i= 1}^{k-1}\left<V\left( a_{i} \right), \Delta _{i} \gamma ^{\prime}   \right> 
+    \end{equation} \footnotetext{内部弯曲成本：平均速度变化的横向弯曲趋势的总和}     \footnotetext{能量（长度）变化的贡献= 端点的推动作用-内部的弯曲成本-连接点的折角成本}
+\end{theorem}
+\begin{proof}
+    在每个使得 \(   \Gamma   \)光滑的矩形 \(  J\times \left[ a_{i-1},a_{i} \right]   \)上,由于 \(  L_{g}\left(  \Gamma _{s} \right)   \)的被积函数是定义在紧集上的光滑函数,故可以做任意次积分下求导,由于 \(  L_{g}\left(  \Gamma _{s} \right)   \)是这些积分的总和,故 它是\(  s  \)的光滑函数.
+    
+    方便起见,引入记号 \[
+    T\left( s,t \right)= \partial _{t} \Gamma \left( s,t \right),\quad S\left( s,t \right)= \partial _{s} \Gamma \left( s,t \right)    
+    \]在 区间 \(  \left[ a_{i-1},a_{i} \right]   \)上积分,得到  \[
+    \begin{aligned}
+    \frac{\,\mathrm{d}  }{\,\mathrm{d} s }L_{g}\left( \left.  \Gamma _{s} \right|_{\left[ a_{i-1},a_{i} \right] } \right)& = \int_{a_{i-1}}   ^{a_{i}}\frac{\partial }{\partial s}\left<T,T \right>^{\frac{1}{2}}\,\mathrm{d} t\\ 
+     & = \int_{a_{i-1}}^{a_{i}}\frac{1}{2}\left<T,T \right>^{-\frac{1}{2}} 2\left<D_{s}T,T \right>\,\mathrm{d} t \footnotemark \\ 
+      & = \int_{a_{i-1}}^{a_{i}} \frac{1}{\left| T \right| }\left<D_{t}S,T \right>\,\mathrm{d} t \footnotemark 
+    \end{aligned}
+    \]
+    \footnotetext[3]{Levi-Civita联络的度量性}
+\footnotetext{\ref{曲线族的对称引理}}
+在 \(  s= 0  \)处取值,由于 \(  S\left( 0,t \right)= V\left( t \right),T\left( 0,t \right)=  \gamma ^{\prime} \left( t \right)      \)（长度为1）.我们有 \[
+\begin{aligned}
+\left. \frac{\,\mathrm{d}  }{\,\mathrm{d} s }  \right|_{s= 0} L_{g}\left(  \Gamma _{s}|_{\left[ a_{i-1},a_{i} \right] } \right)& =  \int_{a_{i-1}}^{a_{i}}\left<D_{t}V, \gamma ^{\prime} \left( t \right)  \right>\,\mathrm{d} t\\ 
+ & = \int_{a_{i-1}}^{a_{i}} \frac{\,\mathrm{d}  }{\,\mathrm{d} t } \left<V, \gamma ^{\prime} \left( t \right)  \right>-\left<V, D_{t} \gamma ^{\prime} \left( t \right)  \right>\,\mathrm{d} t\\ 
+  & =  -\int_{a_{i-1}}   ^{a_{i}}\left<V,D_{t} \gamma ^{\prime} \left( t \right)  \right>\,\mathrm{d} t+ \left<V, \gamma ^{\prime} \left( a_{i}^{-} \right)  \right>-\left<V, \gamma ^{\prime} \left( a_{i-1}^{+ } \right)  \right>
+\end{aligned}
+\]  对 \(  i  \)求和即得所需公式. 
+\hfill $\square$
+\end{proof}
+\begin{theorem}{弧长参数化极小曲线的测地性}
+    Riemann流形上的极小曲线若有单位速度参数化,则为一个测地线.
+\end{theorem}
+\begin{note}
+    根据变分公式,在弯折不存在的情况下,因为没有改变长度的趋势,故无非产生依赖于速度变化的真弯曲,而速度变化在通过bump函数削弱端点影响后本身给出一种真弯曲,故速度变化无法产生.此时进一步地,无法产生依赖于弯折的真弯曲,而定点的弯折也可以被逐段光滑的真弯曲实现,故弯折也是无法产生的.
+\end{note}
+
+\begin{proof}
+    设 \(   \gamma :\left[ a,b \right]\to M   \)是单位速度的极小曲线, \(  \left(  a_0,\cdots,a_{k}    \right)   \)是\(   \gamma   \)的一个容许分划.任取 \(   \gamma   \)的真变分 \(   \Gamma   \),则\(  L_{g}\left(  \Gamma _{s} \right)   \)是关于 \(  s  \)的光滑函数,使得它在 \(  s= 0  \)处达到极小值,故 \(  \,\mathrm{d} \left( L_{g}\left(  \Gamma _{s} \right)  \right)/ \,\mathrm{d} s   \)在 \(  s= 0  \)处成立.由于每个沿 \(   \gamma   \)的真向量场都是某个真变分的变分场,故方程\ref{eq-1} 的右侧对于任意这样的 \(  V  \)退化.
+    
+    首先说明 \(  D_{t} \gamma ^{\prime} = 0  \)在每个区间 \(  \left[ a_{i-1},a_{i} \right]   \)上成立.对于给定的这样的区间,令 \(   \varphi \in C^{\infty}\left( M \right)   \)是在 \(  \left( a_{i-1},a_{i} \right)   \)上大于零,其他点等于零的bump函数.将真向量场 \(  V =   \varphi D_{t} \gamma ^{\prime}   \) 带入\ref{eq-1}右侧,得到 \[
+    0=  -\int_{a_{i-1}}^{a_{i}} \varphi \left| D_{t} \gamma ^{\prime}  \right|^{2}\,\mathrm{d} t 
+    \]    故 \(  D_{t} \gamma ^{\prime} = 0  \)在每个子区间上成立. 
+
+
+    接下来说明 \(   \Delta _{i} \gamma ^{\prime} = 0  \)对于每个 \(  0  \)和 \(  k  \)之间的 \(  i  \)成立.   对于每个这样的 \(  i  \),通过坐标卡上的光滑bump函数,构造一个沿 \(   \gamma   \)的逐段光滑的向量场 \(  V  \),使得 \(  V\left( a_{i} \right)=  \Delta _{i} \gamma ^{\prime}    \),对于 \(  j\neq i  \),  \(  V\left( a_{j} \right)= 0  \)     \footnote{利用bump函数提取一些点}.则 \ref{eq-1}化为 \(  -\left|  \Delta _{i} \gamma ^{\prime}  \right|^{2}= 0   \),故 \(   \Delta _{i} \gamma ^{\prime} = 0  \)对于每个 \(  i  \)成立.   
+
+    最后,每个单侧速度向量在 \(  a_{i}  \)处相接,  \(  a_{i}  \)处以 \(   \gamma ^{\prime} \left( a_{i}^{+ } \right)=  \gamma ^{\prime} \left( a_{i}^{-} \right)    \)为初速度的局部测地线的存在唯一性  给出\(   \gamma |_{\left[ a_{i},a_{i+ 1} \right] }  \)和 \(   \gamma |_{\left[ a_{i-1},a_{i} \right] }  \)落在同一个极大测地线上,因此 \(   \gamma   \)是光滑的.   
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}
+    单位速度容许曲线 \(   \gamma   \)是 \(  L_{g}  \)的一个临界点,当且仅当它是一个测地线.  
+\end{corollary}
+\begin{proof}
+    若 \(   \gamma   \)是一个临界点,则上面定理的证明可以不加修饰地用来说明 \(   \gamma   \)是一个测地线.反之,若 \(   \gamma   \)是一个测地线,则方程 \ref{eq-1}右侧的第一项由测地线方程可知是退化的,第二项由 \(   \gamma ^{\prime}   \)无间断可知是退化的.    
+
+    \hfill $\square$
+\end{proof}
+
+
+\section{测地线的局部极小性}
+
+\begin{definition}{局部极小}
+    令 \(  \left( M,g \right)   \)是Riemann流形,称一个正则（或分段正则）曲线 \(   \gamma :I\to M  \)是\textbf{局部极小的},若每个 \(  t_0 \in I  \)都有邻域 \(  I_0\subseteq I  \),使得任取 \(  a,b \in I_0  \)满足 \(  a<b  \),都有 \(   \gamma   \)在 \(  \left[ a,b \right]   \)上的限制是极小的.      
+\end{definition}
+
+\begin{remark}
+    每个极小的容许曲线段都是局部极小的.
+\end{remark}
+
+\begin{definition}{开测地球}
+    若 \(   \varepsilon > 0  \)使得 \(  \exp _{p}  \)是球 \(  B_{ \varepsilon }\left( 0 \right)\subseteq T_{p}M   \)   （在 \(  g_{p}  \)定义的范数下） 到像集的微分同胚,则像集 \(  \exp _{p}\left( B_{ \varepsilon }\left( 0 \right)  \right)   \)是 \(  p  \)的一个法邻域,称为是  \textbf{\(  M  \)上的一个（开）测地球 }.  
+\end{definition}
+
+\begin{definition}{闭测地球}
+    若闭球 \(  \overline{B}_{ \varepsilon }\left( 0 \right)   \)含于一个开集 \(  V\subseteq T_{p}M  \),使得 \(  \exp _{p}  \)是 \(  V  \)到其像集的微分同胚,则称 \(  \exp _{p}\left( \overline{B}_{ \varepsilon }\left( 0 \right)  \right)   \)为一个\textbf{闭测地球},并称 \(  \exp _{p}\left( \partial B_{ \varepsilon }\left( 0 \right)  \right)   \)为一个\textbf{测地球面} .     
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item 在 \(  T_{p}M  \)上,紧集\(  \overline{B}_{ \varepsilon }\left( 0 \right)   \) 和闭集 \(  V^{c}  \) 之间有正的距离, 故存在 \(   \varepsilon ^{\prime} >  \varepsilon   \),使得 \(  B_{ \varepsilon ^{\prime} }\left( 0 \right)\subseteq V   \),故每个闭测地球都含于一个更大的开测地球.
+        \item 在以 \(  p  \)为中心的Riemann法坐标下,以 \(  p  \)为中心的开闭测地球和测地球面,无非就是以 \(  p  \)为中心的坐标球和坐标球面.   
+    \end{enumerate}
+      
+\end{remark}
+
+\begin{definition}
+    设 \(  U  \)是 \(  p \in M  \)的一个法邻域.给定 \(  U  \)上以 \(  p  \)为中心的法坐标 \(  \left( x^{i} \right)   \),定义\textbf{径向距离函数}\(  r:U\to \mathbb{R}   \), \[
+    r\left( x \right)= \sqrt{\left( x^{1} \right)^{2}+ \cdots + \left( x^{n} \right)^{2}  } 
+    \]    并定义 \(  U\setminus \left\{ p \right\}  \)上的径向向量场 \(  \partial _{r}  \) \[
+    \partial _{r} =  \frac{x^{i} }{r\left( x \right)  } \frac{\partial }{\partial x^{i}}
+    \]    
+\end{definition}
+
+\begin{lemma}
+    在每个 \(  p \in M  \)的法邻域 \(  U  \)上,径向距离函数和径向向量场是良定义的,无关于法坐标的选取.
+     \(  r,\partial _{r}  \)均在 \(  U\setminus \left\{ p \right\}  \)上光滑, \(  r^{2}  \)在 \(  U  \)上光滑.      
+\end{lemma}
+
+\begin{proof}
+    由\ref{法坐标的唯一性},没两个法坐标之间相差一个正交矩阵 \(  \left( A_{j}^{i} \right)   \),设两个法坐标的径向距离函数
+    分别是 \(  r,\tilde{r}  \),径向向量场分别是 \(  \partial _{r},\tilde{\partial} _{r}  \),则 \[
+    \begin{aligned}
+        \tilde{r}\left( x \right)& = \sqrt{\left( \tilde{x}^{1} \right)^{2}+ \cdots + \left( \tilde{x}^{n} \right)^{2}  }  \\ 
+         & = \sqrt{\left( A_{i}^{1}x^{i} \right)^{2}+ \cdots + \left( A_{i}^{n} x^{i}\right)^{2}  }\\ 
+          & = \sqrt{\sum _{i}\sum _{k= 1}^{n}\left( A_{i}^{k} \right)^{2}\left( x^{i} \right)^{2}   }\\ 
+           & =  \sqrt{\sum _{i} \left( x^{i} \right)^{2} }= r\left( x \right) 
+    \end{aligned}
+    \]   以及 \[
+   \begin{aligned}
+    \partial _{\tilde{r}}& = \frac{\tilde{x}^{i} }{\tilde{r}\left( x \right)  } \frac{\partial }{\partial \tilde{x}^{i}}\\ 
+     & =   \frac{\tilde{x}^{i} }{r\left( x \right)  } \frac{\partial {x}^{j}}{\partial \tilde{x}^{i}} \frac{\partial }{\partial x^{j}} \\ 
+      & =  \frac{A_{j}^{i}x^{j} }{{r}\left( x \right)  } \frac{\partial \left( A_{j}^{k}\left( x^{k} \right)  \right) }{\partial \tilde{x}^{i}} \frac{\partial }{\partial x^{j}}\\ 
+       & = \frac{A_{j}^{i}x^{j} }{{r}\left( x \right)  } A_{j}^{i} \frac{\partial }{\partial x^{j}}  \\ 
+        & = \frac{x^{j} }{r\left( x \right)  }\frac{\partial }{\partial x^{j}}= \partial _{r} 
+   \end{aligned}
+    \]光滑性由分量表示可以见得.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}{Gauss引理}
+    设 \(  \left( M,g \right)   \) 是Riemann流形, \(  U  \)是以 \(  p \in M  \)中心的测地球, \(  \partial _{r}  \)   表示 \(  U\setminus \left\{ p \right\}  \)上的径向向量场.则 \(  \partial _{r}  \) 是 \(  U\setminus \left\{ p \right\}  \)上的正交于测地球面\footnote{即与交点处的切空间正交}的单位向量场.   
+\end{theorem}
+
+\begin{note}
+     \(  \partial _{r}  \)由法坐标给出,利用法坐标的性质计算模长.过程中利用到以下重要事实：
+     \begin{enumerate}
+        \item 径向向量场形式上于点坐标整体相差一个 \(  r\left( x \right)   \),速度与点从形式上整体相差一个倍数的曲线是坐标直线,法坐标上的坐标直线就是测地线.   
+        \item 测地线是速度不变的.
+        \item 法坐标下的度量分量与欧式度量相同.
+        \item 法坐标下的曲线速度就是对各分量求导\footnote{因为Christoffel符号退化}
+     \end{enumerate}
+      于是我们将一点 \(  q  \)处的径向向量场 \(  \partial _{r}|_{q}  \)刻画为单位速度测地线在某点处的速度,给出 \(  \partial _{r}  \)的模长.   
+\end{note}
+
+\begin{note}
+    将切向量用曲线 \(   \sigma   \) 表示,考虑将\(   \sigma   \)沿径向单位速度地变换到原点得到一个曲线族.证明中会看到,由于径向变换是沿测地线的变换,且变换是均匀的,并且横向曲线在球面上,与原点距离恒等,故 \(  S,T  \)的正交性不随时间变化.  这样原点的正交性就可以给出所需点的正交性.
+\end{note}
+
+\begin{proof}
+    设 \(  \left( x^{i} \right)   \)是 \(  U  \)上以  \(  p  \)为中心的法坐标.
+    任取 \(  q \in U\setminus \left\{ p \right\}  \),设 \(  q  \) 的坐标表示为 \(  q= \left( q^{1},\cdots ,q^{n} \right)   \),并记 \(  b: =  r\left( q \right)= \sqrt{\left( q^{1}\right)^{2}+ \cdots + \left( q^{n} \right)^{2}  }   \)       ,我们有 \(  \partial _{r}|_{q}= \frac{q^{i} }{b }\frac{\partial }{\partial x^{i}}|_{q}   \) .
+    
+    令 \(  v = v^{i}\frac{\partial }{\partial x^{i}}|_{p} \in T_{p}M  \)是 \(  p  \)处的一个切向量,  分量 \(  v^{i}= \frac{q^{i} }{b }   \),考虑以 \(  p  \)为起点, \(  v  \)为初速度的测地线\footnote{径向测地线},在它在法坐标下的坐标表示为 \[
+     \gamma _{v}\left( t \right)= \left( tv^{1},\cdots ,tv^{n} \right)  
+    \]我们有 \[
+    \left|  \gamma _{v}^{\prime} \left( 0 \right)  \right|_{g}= \left| v \right|_{g}= \sqrt{\left( v^{1} \right)^{2}+ \cdots + \left( v^{n} \right)^{2}  }= \frac{1}{b}\sqrt{\left( q^{1} \right)^{2}+ \cdots + \left( q^{n} \right)^{2}  }= 1  
+    \]故 \(   \gamma _{v}  \)是单位速度测地线,又 \(   \gamma _{v}\left( b \right)= \left( q^{1},\cdots ,q^{n} \right)= q    \), \(   \gamma _{v}^{\prime} \left( b \right)=  v^{i}\frac{\partial }{\partial x^{i}}|_{q} = \partial _{r}|_{q} \)      ,
+    这表明 \(  \partial _{r}|_{q}  \)是单位向量. 
+
+    接下来说明正交性,取 \(  q,b,v  \)如上,令 \(   \Sigma _{b}= \exp _{p}\left( \partial B_{b}\left( 0 \right)  \right)   \)是包含了 \(  q  \)的测地球面.令 \(  w \in T_{q}M  \)在  \(  q  \)点处与 \(  \sum _{n}  \)相切,希望证明 \(  \left<w, \left. \partial _{r} \right|_{q} \right>_{g} = 0 \).
+    
+    选取 \(   \Sigma_b \)上的光滑 曲线 \(   \sigma :\left( - \varepsilon , \varepsilon  \right)\to  \Sigma   _{b} \),使得 \(   \sigma \left( 0 \right)=  q, \sigma ^{\prime} \left( 0 \right)= w    \).  设 \(   \sigma   \)在 \(  \left( x^{i} \right)   \)下的坐标表示为 \(   \sigma \left( s \right)= \left(  \sigma ^{1}\left( s \right),\cdots , \sigma ^{n}\left( s \right)   \right)    \)   .定义曲线族  \(   \Gamma : \left( - \varepsilon , \varepsilon  \right)\times \left[ 0,b \right]\to U    \) \[
+     \Gamma \left( s,t \right) : =  \left( \frac{t }{b }  \sigma ^{1}\left( s \right),\cdots ,\frac{t }{b }  \sigma ^{n}\left( s \right)     \right) 
+    \] 同样的记 \(  S =  \Gamma _{s},T =   \Gamma _{t}  \),则 \[
+    \begin{aligned}
+    S\left( 0,0 \right)& = \left. \frac{\,\mathrm{d}  }{\,\mathrm{d} s }  \right|_{s= 0} \Gamma _{s}\left( 0 \right)= 0\\ 
+     T\left( 0,0 \right)& =  \left. \frac{\,\mathrm{d}  }{\,\mathrm{d} t }  \right|_{t= 0} \Gamma _{t}\left( 0 \right)= \left. \frac{\,\mathrm{d}  }{\,\mathrm{d} t }  \right|_{t= 0} \gamma _{v}\left( t \right)= v\\ 
+      S\left( 0,b \right)&= \left. \frac{\,\mathrm{d}  }{\,\mathrm{d} s }  \right|_{s= 0} \sigma \left( s \right)= w\\ 
+             T\left( 0,b \right)& =  \left. \frac{\,\mathrm{d}  }{\,\mathrm{d} t }  \right|_{t= b} \gamma _{v}\left( t \right)=  \gamma _{v}^{\prime} \left( b \right)= \left. \partial _{r} \right|_{q}     
+    \end{aligned}
+    \] 因此当 \(  \left( s,t \right)= \left( 0,0 \right)    \) 时, \(  \left<S,T \right>= \left<0,v \right>= 0  \),此外当\(  \left(s,t \right)= \left( 0,b \right)    \)时, \(  \left<S,T \right>= \left<w, \left. \partial _{r} \right|_{q} \right>  \).接下来只需要说明 \(  \left<S,T \right>  \)与 \(  t  \)无关,计算 \[
+    \begin{aligned}
+    \frac{\partial }{\partial t}\left<S,T \right>& = \left<D_{t}S,T \right>+ \left<S,D_{t}T \right>\quad (\text{联络的度量性}) \\ 
+     & = \left<D_{s}T,T \right>+ \left<S,D_{t}T \right> \quad (\text{对称引理})\\ 
+      & = \left<D_{s}T,T \right> \quad \quad ( \Gamma _{s}\left( t \right) \text{是测地线})\\ 
+    & = \frac{1}{2} \frac{\partial }{\partial s}\left| T \right|^{2}\equiv 0 ,\quad (\left| T \right|= \left|  \Gamma ^{\prime} _{s} \right|\equiv 1  ) 
+    \end{aligned}
+    \]     这就证明了定理.
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}
+    令 \(  U  \)是以 \(  p \in M  \)为中心的测地球, \(  r,\partial _{r}  \)分别是径向距离和径向向量场.则 \(  \operatorname{grad}\,r= \partial _{r}  \)在 \(  U\setminus \left\{ p \right\}  \)上成立.     
+\end{corollary}
+
+\begin{remark}
+    有事实：设\(  f\in C^{\infty}\left( M \right),X \in \mathfrak{X}\left( M \right)    \)无处退化.则 \(  X = \operatorname{grad}  \),当且仅当 \(  Xf\equiv \left| X \right|_{g}sr   \)   ,且 \(  X  \)与 \(  f  \)在所有正则点处的水平集正交.  
+\end{remark}
+
+\begin{proof}
+    只需证明 \(  \partial _{r}  \)与 \(  r  \)的水平集正交,且 \(  \partial _{r}\left( r \right)\equiv \left| \partial _{r} \right|_{g}^{2}    \).由于 \(  r  \)的水平集就是测地球面,故第一个断言由Gauss引理直接得到.对于第二个断言,可以直接计算得到 \(  \partial _{r}\left( r \right)= 1   \)   ,并由Gauss引理知 \(  \left| \partial _{r} \right|_{g}\equiv 1   \)得到命题. 
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    设 \(  \left( M,g \right)   \)是Riemann流形.令 \(  p \in M  \),\(  q  \)是含于某个以 \(  p  \)为中心的测地球.则从 \(  p  \)到 \(  q  \)的  径向测地线是唯一的（不计重参数化）的从 \(  p  \)到 \(  q  \)的  \(  M  \)上的极小曲线      
+\end{proposition}
+
+\begin{proof}
+    取 \(   \varepsilon >0  \),使得 \(  \exp _{p}\left( B_{ \varepsilon }\left( 0 \right)  \right)   \)是包含了 \(  q  \)的一个测地球.令 \(   \gamma :\left[ 0,c \right]\to M   \)是\(  p  \)到 \(  q  \)的弧长参数化的径向测地线.则 \(   \gamma \left( t \right)= \exp _{p}\left( tv \right)    \)对某个单位向量\(  v \in T_{p}M  \)成立.此时 \(  L_{g}\left(  \gamma  \right)=    c\).
+    
+    为了说明 \(   \gamma   \)极小,任取 \(  p  \)到 \(  q  \)的容许曲线 \(   \sigma :\left[ 0,b \right]\to M   \),不妨设它也是弧长参数化的.设 \(  a_0\in \left[ 0,b \right]   \)是最后一次使得\(   \sigma \left( t \right)= p   \)的点\footnote{为了让曲线在区间内不经过原点（奇点}, \(  b_0 \in \left[ 0,b \right]   \)  是 \(  a_0  \)之后 第一次使得 \(   \sigma \left( t \right)   \)到达 \(  p  \)为中心 \(  c  \)为半径的测地球 \(   \Sigma _{c}  \)的点 \footnote{为了让它不跑出测地球径向距离函数的定义域}    .则 \(  r\circ  \sigma   \)在 \(  \left[ a_0,b_0 \right]   \)上连续, \(  \left( a_0,b_0 \right)   \)上分段光滑,由微积分基本定理 \begin{equation}\label{eq-2}
+        \begin{aligned}
+            r\left(  \sigma \left( b_0 \right)  \right)-r\left(  \sigma \left( a_0 \right)  \right)& =  \int_{a_0}^{b_0}\frac{\,\mathrm{d}  }{\,\mathrm{d} t }r\left(  \sigma \left( t \right)  \right)\,\mathrm{d} t\\ 
+             & = \int_{a_0}^{b_0}\,\mathrm{d} r\left(  \sigma ^{\prime} \left( t \right)  \right) \,\mathrm{d} t\\ 
+              & = \int_{a_0}^{b_0} \left<\operatorname{grad}\,r, \sigma ^{\prime} \left( t \right)  \right>_{g}\,\mathrm{d} t\\ 
+               & \le \int_{a_0}^{b_0}\left| \operatorname{grad}\,r \right|\left|  \sigma ^{\prime} \left( t \right)  \right|\,\mathrm{d} t\\ 
+                & =   \int_{a_0}^{b_0}\left|  \sigma ^{\prime} \left( t \right)  \right|\,\mathrm{d} t\\ 
+                 & =  L_{g}\left(  \sigma |_{\left[ a_0,b_0 \right] } \right)\le L_{g}\left(  \sigma  \right) 
+            \end{aligned}
+    \end{equation}因此 \(  L_{g}\left(  \sigma  \right)\ge r\left(  \sigma \left( b_0 \right)  \right)-r\left(  \sigma \left( a_0 \right)  \right)= c     \),故 \(   \gamma   \)是极小的.  
+
+    现在设 \(  L_{g}\left(  \sigma  \right)= c   \),则方程 \ref{eq-2}中的不等号都化为等号.不妨设 \(   \sigma   \)是单位速度曲线,则第二个不等号给出 \(  a_0= 0,b_0= b= c  \).第一个不等号给出非负项  \(  \left| \operatorname{grad}\,r_{ \sigma \left( t \right) } \right|\left|  \sigma ^{\prime} \left( t \right)  \right|-\left<\operatorname{grad}\,r, \sigma ^{\prime} \left( t \right)  \right>_{g}    \)恒为零.这当且仅当 \(   \sigma ^{\prime} \left( t \right)   \)与\(  \operatorname{grad}\,r  \)相差一个正的系数,又 \(   \sigma   \)是单位速度的, \(   \sigma ^{\prime} \left( t \right)= \operatorname{grad}\,r|_{ \sigma \left( t \right) }= \partial _{r}|_{ \sigma \left( t \right) }   \).因此 \(   \sigma   \)和 \(   \gamma   \)都是 \(  \partial _{r}  \)在 \(  t= c  \)时过 \(  q  \)的积分曲线故 \(   \sigma =  \gamma   \).             
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}
+    设 \(  \left( M,g \right)   \)是连通的Riemann流形, \(  p \in M  \).在每个以 \(  p  \)为中心的开或闭的测地球上,径向距离函数 \(  r\left( x \right)   \)与 \(  M  \)中 \(  p  \)到 \(  x  \)的Riemann距离相等.       
+\end{corollary}
+
+\begin{proof}
+    闭的径向测地球含于更大的开的测地球,我们只证明开的情况即可.设 \(  x  \)在开测地球 \(  \exp _{p}\left( B_{c}\left( 0 \right)  \right)   \)上,则又上面的命题, \(  p  \)到 \(  x  \)的径向测地线 \(   \gamma   \)是极小的.它的速度向量等于 \(  \partial _{r}  \),同时是 \(  g-  \)范数下的单位向量和法坐标的欧式范数\footnote{在坐标空间 \(  \mathbb{R} ^{n}  \)上看 }下的单位向量,给出 \(   \gamma   \)的 \(  g  \)-长度等于欧式长度,后者又等于 \(  r\left( x \right)   \).   
+
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}
+    在连通的Riemann流形上,每个开或闭的测地球也是有着相同半径的开或闭的度量球,每个测地球面也是有着相同半径的度量球面.
+\end{corollary}
+
+\begin{proof}
+    设 \(  \left( M,g \right)   \)是Riemann流形,任取 \(  p \in M  \),令 \(  V = \exp _{p}\left( \bar{B}_{c}\left( 0 \right)  \right)\subseteq M   \)是半径为 \(  c>0  \)的绕 \(  p  \)的 闭测地球.任取 \(  M  \)上一点 \(  q  \),若 \(  q \in V  \),则上面的推论给出 \(  q  \)在 以 \(  p  \)为中心 ,\(  c  \)为半径的度量球中.反之,若 \(  q\not \in V  \),则考虑从 \(  p  \)到 \(  q  \)的容许曲线 \(   \gamma   \).设 \(  S  \)是以 \(  p  \)为中心, \(  c  \)为半径的测地球面.则 \(  S^{c}=\exp _{p}\left( B_{c}\left( 0 \right)  \right)\cup \left( M\setminus \exp _{p}\left( B_{c}\left( 0 \right)  \right)  \right)    \) 是不连通的.故存在 \(  t_0 \in \left( a,b \right)   \),使得 \(   \gamma \left( t_0 \right) \in S   \).由于 \(  q\not \in V \), \(  q \)和 \(   \gamma \left( t_0 \right)   \)之间存在正的距离,   故\(  L_{g}\left(  \gamma  \right)> L_{g}\left(  \gamma |_{[a,t_0]} \right)\ge c    \) ,这表明 \(  d _{g}\left( p,q \right)>c   \), \(  q  \)不在绕 \(  p  \)的半径为 \(  c  \)的闭度量球中.
+    
+    现在设 \(  W =  \exp _{p}\left( B_{c}\left( 0 \right)  \right)   \)是以 \(  c  \)为半径的开的测地球,则 \(  W  \)可以写成一些闭测地球的并,这些闭测地球也同时是一些闭的度量球,这些闭的度量球并成绕 \(  p  \)的半径为 \(  c  \)的度量球.故开的测地球也是相同半径的度量球.
+    
+    最后关于球面的结论可通过闭球划去开球得到.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}
+    对于度量球、球面 的记号 \(  B_{c}\left( p \right),\bar{B_{c}}\left( p \right),S_{c}\left( p \right)     \),也可以用来表示测地球. 
+\end{definition}
+
+
+\end{document}

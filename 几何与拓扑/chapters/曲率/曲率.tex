@@ -1,0 +1,634 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+    
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+\chapter{曲率}
+
+\begin{definition}{平坦性}
+    称Riemann流形 \(  \left( M,g \right)   \)是平坦的，若它局部等距同构于欧式空间\footnote{任一点有等距同构于 \(  \mathbb{R} ^{n}  \)上一开集的邻域 }。 
+\end{definition}  
+
+\begin{proposition}
+    设 \(  \left( M,g \right)   \)是平坦的Riemann流形，  \(   \nabla   \)是其上的Levi-Civita联络，则 对于任意的 \(  X,Y,Z \in \mathfrak{X}\left( M \right)   \)，  \[
+     \nabla _{X} \nabla _{Y}Z- \nabla _{Y} \nabla _{X}Z=   \nabla _{\left[ X,Y \right] }Z
+    \]
+\end{proposition}
+\begin{proof}
+    由联络的局部性，等式由向量场在局部上的限制决定，又 \(  \left( M,g \right)   \)是平坦的，从而是保度量的，又Levi-Civita联络由度量唯一决定，从而只需要在 \(  \mathbb{R} ^{n}  \)上一开集\(  U  \)  的关于\(  \overline{ \nabla }  \)的上述等式。
+    
+    任取 \(  X,Y,Z \in  \mathfrak{X}\left( U \right)  \)，则 \[
+    \overline{ \nabla }_{X}  \overline{ \nabla } _{Y} Z= \overline{ \nabla }_{X}\left( Y\left( Z^{k} \right)\partial _{k}  \right) = XY\left( Z^{k} \right)\partial _{k} 
+    \] 类似地 \[
+    \overline{ \nabla }_{Y}  \overline{ \nabla }_{X}Z= YX\left( Z^{k} \right)\partial _{k} 
+    \]故 \[
+    \overline{ \nabla }_{X}  \overline{ \nabla }_{Y}Z - \overline{ \nabla }_{Y}  \overline{ \nabla }_{X} Z =  \left( XY-YX \right) \left( Z^{k} \right)\partial _{k}=  \overline{ \nabla }_{\left[ X,Y \right] }  Z
+    \]故命题成立。
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{平坦性条件}
+    称光滑流形 \(  M  \)上的联络满足 \textbf{平坦性条件}，若对于 \(  M  \)上任意开集 \(  U  \)，定义在 \(  U  \)  上的光滑向量场 \(  X,Y,Z  \)都满足  \[
+     \nabla _{X}  \nabla _{Y}Z -  \nabla _{Y}  \nabla _{X}Z =   \nabla _{\left[ X,Y \right] }Z
+    \]  
+\end{definition}
+
+\begin{corollary}
+    若 \(  \left( M,g \right)   \)上一个平坦的（伪）Riemann流形，则它的Levi-Civita联络满足平坦性条件。 
+\end{corollary}
+
+\section{曲率张量}
+
+
+\begin{definition}
+    设 \(  \left( M,g \right)   \)是（伪）Riemann流形，定义映射 \(  R: \mathfrak{X}\left( M \right)\times \mathfrak{X}\left( M \right)\times \mathfrak{X}\left( M \right)\to \mathfrak{X}\left( M \right)      \) \[
+    R\left( X,Y \right)Z =   \nabla _{X}  \nabla _{Y} Z - \nabla _{Y}  \nabla _{X} Z - \nabla _{\left[ X,Y \right] }Z 
+    \]  其中 \(   \nabla   \)为 \(  \left( M,g \right)   \)的Levi-Civita联络。  
+\end{definition}
+
+\begin{proposition}
+    上面定义的 映射 \(  R  \)是多 \(  C^{\infty}\left( M \right)   \)-线性的，从而定义出   \(  M  \)上的一个 \(  \left( 1,3 \right)   \)-张量场。  
+\end{proposition}
+
+\begin{proof}
+    显然映射 \(  R  \)上 \(  \mathbb{R}   \)-线性的。任取 \(  f \in C^{\infty}\left( M \right)   \) \[
+    \begin{aligned}
+    R\left( X,fY,Z \right)& =   \nabla _{X}  \nabla _{fY}Z - \nabla _{fY}  \nabla _{X}Z - \nabla _{\left[ X,fY \right] }Z\\ 
+     & =  \nabla _{X}\left( f  \nabla _{Y}Z \right)-  f  \nabla _{Y}  \nabla _{X}Z - \nabla _{f\left[ X,Y \right]+ \left(Xf  \right)Y  }Z\\ 
+      & =  \left( Xf \right)  \nabla _{Y}Z+  f  \nabla _{X}  \nabla _{Y}Z -f  \nabla _{Y}  \nabla _{X}Z - f  \nabla _{\left[ X,Y \right] }Z - \left( Xf \right) \nabla _{Y}Z\\ 
+       & =  f \nabla _{X} \nabla _{Y}Z-f \nabla _{Y} \nabla _{X}Z-f \nabla _{\left[ X,Y \right] }Z\\ 
+       &= fR\left( X,Y,Z \right)    
+    \end{aligned}
+    \]   
+    这表明 \(  R  \)关于 \(  Y  \)上 \(  C^{\infty}\left( M \right)   \)-线性的，又 \(  R\left( X,Y \right)Z =  -R\left( Y,X \right)Z    \)，故\(  R  \)关于 \(  X  \)也是\( C^{\infty}\left( M \right)   \)-线性的。   
+    计算 \[
+    \begin{aligned}
+    R\left( X,Y,fZ \right)& =  \nabla _{X}  \nabla _{Y} \left( fZ \right)- \nabla _{Y} \nabla _{X}\left( fZ \right)- \nabla _{\left[ X,Y \right] }\left( fZ \right)\\ 
+     & =  \nabla _{X}\left( f  \nabla _{Y}Z+ Y\left( f \right)Z  \right)      -  \nabla _{Y}\left( f  \nabla _{X}Z+ X\left( f \right)Z  \right)\\ 
+      &- f  \nabla _{\left[ X,Y \right] }Z - \left[ X,Y \right]\left( f \right)Z    
+    \end{aligned}
+    \]其中 \[
+    \begin{aligned}
+     \nabla _{X}\left( f \nabla _{Y}Z+ Y\left( f \right)Z  \right)& = f  \nabla _{X} \nabla _{Y}Z + \left( Xf \right) \nabla _{Y}Z+Y\left( f \right) \nabla _{X}Z +  XY\left( f \right)Z    
+    \end{aligned}
+    \] \[
+     \nabla _{Y}\left( f \nabla _{X}Z+ X\left( f \right)Z  \right)= f \nabla _{Y} \nabla _{X}Z+  \left( Yf \right)  \nabla _{X}Z+ X\left( f \right) \nabla _{Y}Z+   YX\left( f \right)Z   
+    \]二者相减，得到 \[
+    \begin{aligned}
+    & \nabla _{X}\left( f \nabla _{Y}Z+ \left( Yf \right) Z  \right)  - \nabla _{Y}\left( f \nabla _{X}Z+\left( Xf \right) Z  \right) \\ 
+     & = f\left(  \nabla _{X} \nabla _{Y}Z- \nabla _{Y} \nabla _{X}Z \right) -\left( \left[ X,Y \right]f  \right)Z 
+    \end{aligned}
+    \]结合以上，得到 \[
+    R\left( X,Y,fZ \right) =  fR\left( X,Y,Z \right)  
+    \]
+    
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}
+    对于一对光滑向量场 \(  X,Y   \in \mathfrak{X}\left( M \right) \)，由 \(  Z\mapsto R\left( X,Y \right)Z   \)给出的映射 \(  R\left( X,Y \right):\mathfrak{X}\left( M \right)\to \mathfrak{X}\left( M \right)     \)可以视作 \(  TM  \)上的光滑丛自同态\footnote{\(  C^{\infty}\left( M \right)   \)-线性给出\(  R\left( X,Y \right)   \)在每个纤维的限制不依赖于邻域的选取。  }，称为\textbf{由 \(  X  \)和 \(  Y  \)决定的曲率自同态  }。
+    
+    称张量 \(  R  \)为 \textbf{(Riemann)曲率自同态}或 \textbf{\(  \left( 1,3 \right)   \)-曲率张量 }。
+\end{definition}
+
+\begin{proposition}
+    曲率自同态 \(  R  \)在 \(  \left( x^{i} \right)   \)上写作 \[
+    R =  R_{ijk}^{l} \,\mathrm{d} x^{i}\otimes \,\mathrm{d} x^{j}\otimes \,\mathrm{d} x^{k}\otimes \partial _{l}
+    \]其中 \(  R_{ijk}^{l}  \)满足 \[
+    R\left( \partial _{i},\partial _{j} \right)\partial _{k}= R_{ijk}^{l}\partial _{l} 
+    \]   
+\end{proposition}
+\begin{proof}
+    由张量场的坐标表示，\(  \left\{ \,\mathrm{d} x^{i}\otimes \,\mathrm{d} x^{j}\otimes \,\mathrm{d} x^{k}\otimes \partial _{l} \right\}  \)是\(  \left( 1,3 \right)   \)-张量场空间的一组基，故\(  R  \)可以写作以上坐标表示。通过两边作用 \(  \left( \partial _{i},\partial _{j} \right)\partial _{k}   \)，可以计算得到 \(  R_{ijk}^{l}\partial _{l}  \)。     
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    设 \(  \left( M,g \right)   \)是（伪）Riemann流形，则在任意光滑局部坐标下， \(  \left( 1,3 \right)   \)-曲率张量场的分量函数由以下给出 : \[
+    R_{ijk}^{l}= \partial _{i} \Gamma _{jk}^{l}- \partial _{j} \Gamma _{ik}^{l}+  \Gamma _{jk}^{m} \Gamma _{im}^{l}- \Gamma _{ik}^{m} \Gamma _{im}^{l}
+    \]  
+\end{proposition}
+
+\begin{note}
+    记忆:展开 \(   \nabla _{ \partial _{i}} \nabla _{ \partial _{j}} \partial _{k}  \)关于两个求导分量的对称差. 
+\end{note}
+
+\begin{proof}
+    \[
+   \begin{aligned}
+    R\left( \partial _{i},\partial _{j} \right)\partial _{k}& =   \nabla _{\partial _{i}} \nabla _{\partial _{j}}\partial _{k}- \nabla _{\partial _{j}} \nabla _{\partial _{i}}\partial _{k}- \nabla _{\left[ \partial _{i},\partial _{j}  \right] }\partial _{k} 
+   \end{aligned} 
+    \]
+    其中 \[
+    \begin{aligned}
+     \nabla _{\partial _{i}} \nabla _{\partial _{j}} \partial _{k}& =  \nabla _{\partial _{i}}\left(  \Gamma _{jk}^{l} \partial _{l}\right)=\left(  \partial _{i} \Gamma _{jk}^{l} \right)  \partial _{l}+  \Gamma _{jk}^{l}  \nabla _{\partial _{i}}\partial _{l}\\ 
+      & = \left( \partial _{i} \Gamma _{jk}^{l} \right)\partial _{l}+  \left( \Gamma _{jk}^{m} \Gamma _{im} ^{l} \right) \partial _{l}\\ 
+       & =  \left( \partial _{i} \Gamma _{jk}^{l}+  \Gamma _{jk}^{m} \Gamma _{im}^{l} \right)\partial _{l} 
+    \end{aligned}
+    \]类似地 \[
+     \nabla _{\partial _{j}} \nabla _{}\partial _{i}\partial _{k}=  \left( \partial _{j} \Gamma _{ik}^{l}+  \Gamma _{ik}^{m} \Gamma _{jm}^{l} \right)\partial _{l} 
+    \]最后，由于 \(  \left[ \partial _{i},\partial _{j} \right]= 0   \)，故 \(   \nabla _{\left[ \partial _{i},\partial _{j} \right] }\partial _{k}= 0  \)，上两式相减即可得命题成立。  
+
+    \hfill $\square$
+\end{proof}
+\begin{proposition}\label{pro:3.29-1}
+    设 \(  \left( M,g \right)   \)是光滑（伪）Riemann流形， \(   \Gamma :J\times I\to M  \)是 \(  M  \)上的一个光滑单参数曲线族，则
+       对于任意沿\(   \Gamma   \)的光滑向量场 \(  V  \)，都有 \[
+       D_{s}D_{t}V-D_{t}D_{s}V= R\left( \partial _{s} \Gamma ,\partial _{t} \Gamma  \right)V 
+       \]  
+\end{proposition}
+
+\begin{proof}
+    命题是局部的，对于每个 \(  \left( s,t  \right) \in J\times I   \)，我们选取附近的一个局部坐标 \(  \left( x^{i} \right)   \)，并记 \[
+     \Gamma \left( s,t \right)= \left(  \gamma ^{1}\left( s,t \right),\cdots , \gamma ^{n}\left( s,t \right)   \right)  ,\quad V\left( s,t \right)= V^{j}\left( s,t \right) \partial _{j}|_{ \Gamma \left( s,t \right)  }  
+    \]  我们有 \[
+    \begin{aligned}
+    D_{t}V& =  \frac{\partial V^{i}}{\partial t}\partial _{i}+ V^{i}D_{t}\partial _{i}
+    \end{aligned}
+    \]再作用 \(  D_{s}  \)，得到 \[
+    \begin{aligned}
+    D_{s} D_{t}V=  \frac{\partial ^{2}V^{i}}{\partial s \partial t}\partial _{i}+ \frac{\partial V^{i}}{\partial t} D_{s}\partial _{i}+  \frac{\partial V^{i}}{\partial s}D_{t}\partial _{i}+ V^{i}D_{s}D_{t}\partial _{i} 
+    \end{aligned}
+    \] 由对称性对 \(  D_{t}D_{s}V  \)也有类似的结论，两式相减，得到 \[
+    D_{s}D_{t}V-D_{t}D_{s}V= V^{i}\left( D_{s}D_{t}\partial _{i} -D_{t}D_{s}\partial _{i}  \right)
+    \] 记 \(  S =  \partial _{s} \Gamma ,T=  \partial _{t} \Gamma   \)，则 \[
+    S =  \frac{\partial  \gamma ^{k}}{\partial s}\partial _{k},\quad  T =  \frac{\partial  \gamma ^{j}}{\partial t}\partial _{j}
+    \] 由于 \(  \partial _{i}  \)是可扩张的， \[
+    \begin{aligned}
+    D_{s}D_{t}\partial _{i}& = D_{s}\left(  \nabla _{\frac{\partial  \gamma ^{j}}{\partial t}\partial _{j}}\partial _{i} \right)\\ 
+      & =D_{s}\left( \frac{\partial  \gamma ^{j}}{\partial t} \nabla _{\partial _{j}}\partial _{i} \right)\\ 
+       & =  \frac{\partial ^{2} \gamma ^{j}}{\partial s \partial t}  \nabla _{\partial _{j}}\partial _{i}+ \frac{\partial  \gamma ^{j}}{\partial t}D_{s} \nabla _{\partial _{j}}\partial _{i}\\     
+    \end{aligned}
+    \] 其中 \[
+    \begin{aligned}
+    D_{s} \nabla _{\partial _{j}}\partial _{i}& =   \nabla _{\frac{\partial  \gamma ^{k}}{\partial s}\partial _{k}} \nabla _{\partial _{j}}\partial _{i}\\ 
+     & = \frac{\partial  \gamma ^{k}}{\partial s}  \nabla _{\partial _{k}} \nabla _{\partial _{j}}\partial _{i} 
+    \end{aligned}
+    \]故 \[
+    D_{s}D_{t}\partial _{i}=  \frac{\partial ^{2} \gamma ^{j}}{\partial s \partial t} \nabla _{\partial _{j}}\partial _{i}+ \frac{\partial  \gamma ^{j}}{\partial t} \frac{\partial  \gamma ^{k}}{\partial s} \nabla _{\partial _{k}} \nabla _{\partial _{j}}\partial _{i}
+    \]类似地 \[
+    D_{t}D_{s}\partial _{i}= \frac{\partial ^{2} \gamma ^{j}}{\partial t  \partial s} \nabla _{\partial _{j}}\partial _{i}+  \frac{\partial  \gamma ^{j}}{\partial s}\frac{\partial  \gamma ^{k}}{\partial t} \nabla _{\partial _{k}} \nabla _{\partial _{j}} \partial _{i}
+    \] \[
+  \begin{aligned}
+    D_{s}D_{t}\partial _{i}-D_{t}D_{s}\partial _{i}&= \frac{\partial  \gamma ^{j}}{\partial t}\frac{\partial  \gamma ^{k}}{\partial s} \left(  \nabla _{\partial _{k}} \nabla _{\partial _{j}}\partial _{i}- \nabla _{\partial _{j}} \nabla _{\partial _{k}}\partial _{i}  \right) \\ 
+     & = \frac{\partial  \gamma ^{j}}{\partial t} \frac{\partial  \gamma ^{k}}{\partial s} R\left( \partial _{k},\partial _{j} \right)\partial _{i} = R\left( S,T \right)\partial _{i} 
+  \end{aligned}
+    \]于是 \[
+    D_{s}D_{t}V-D_{t}D_{s}V= V^{i}R\left( S,T \right)\partial _{i}= R\left( S,T \right)V  
+    \] 
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{definition}
+    定义\textbf{（Riemann）曲率张量}为 \(  \left( 0,4 \right)   \)-张量场 \(  Rm= R^{\flat }  \)，即 \[
+    Rm\left( X,Y,Z,W \right)= \left<R\left( X,Y \right)Z,W  \right>_{g} 
+    \]  
+\end{definition}
+
+\begin{proposition}{坐标表示}
+    在任意一组光滑坐标卡下， \[
+    Rm= R_{ijkl}\,\mathrm{d} x^{i}\otimes \,\mathrm{d} x^{j}\otimes \,\mathrm{d} x^{k}\otimes \,\mathrm{d} x^{l}
+    \]其中 \(  R_{ijkl}= g_{lm}R_{ijk}^{m}  \)，进而 \[
+    R_{ijkl}= g_{lm}\left( \partial _{i} \Gamma _{jk}^{m}-\partial _{j} \Gamma _{ik}^{m}+  \Gamma _{jk}^{p} \Gamma _{ip}^{m}- \Gamma _{ik}^{p} \Gamma _{jp}^{m} \right) 
+    \] 
+\end{proposition}
+
+\begin{note}
+    记忆:对 \(  R_{ijk}^{l}  \)降低指标\(  g_{lm}R_{ijk}^{m}  \),计算 \(   \nabla _{ \partial _{i}} \nabla _{ \partial _{j}} \partial _{k}  \)关于求导分量的对称差.   
+\end{note}
+\begin{proof}
+     将 \(  Rm  \)按张量场空间的坐标基展开，计算 \[
+     \begin{aligned}
+        Rm\left( \partial _{i},\partial _{j},\partial _{k},\partial _{l} \right)&= \left<R\left( \partial _{i},\partial _{j} \right)\partial _{k},\partial _{l}  \right>_{g} \\ 
+         & =  \left<R_{ijk}^{m}\partial _{m},\partial _{l} \right>_{g}\\ 
+          & =g_{ml} R_{ijk}^{m}
+     \end{aligned}
+     \]并带入 \(  R_{ijk}^{m}  \)的计算公式 \[
+     R_{ijk}^{m}= \left( \partial _{i} \Gamma _{jk}^{m}-\partial _{j} \Gamma _{ik}^{m}+  \Gamma _{jk}^{p} \Gamma _{ip}^{m}- \Gamma _{ik}^{p} \Gamma _{jp}^{m} \right) 
+     \] 即可
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    Levi-Civita联络的曲率张量是局部等距同构不变的：若 \(  \left( M,g \right)   \)和 \(  \left( \tilde{M},\tilde{g}  \right)   \)是（伪）Riemann流形， \(   \varphi :M\to \tilde{M}  \)是一个局部等距同构，则 \(   \varphi ^{*} \widetilde{Rm}= Rm  \)   ,其中 \(  \widetilde{Rm}  \)和 \(  Rm  \)均由Levi-Civita联络定义   
+\end{proposition}
+\begin{proof}
+    由于局部等距同构保持Levi-Civita联络，故曲率自同态张量 \(   \varphi ^{*}\tilde{R}= R  \)，进而 \(  \varphi ^{*} \tilde{R}_{ijk}^{m}= R_{ijk}  \)，又 \(   \varphi ^{*}\tilde{g} _{lm}= g_{lm}  \)，故 \( \varphi ^{*}  \tilde{R}_{ijkl}= R_{ijkl}  \)，从而     \(   \varphi ^{*} \widetilde{Rm}= Rm  \) 
+
+    \hfill $\square$
+\end{proof}
+
+
+\section{平坦流形}
+
+\begin{lemma}
+    设 \(  M  \)是光滑流形， \(   \nabla   \)是 \(  M  \)上满足平坦性条件的任意联络。
+    给定 \(  p \in M  \)以及 \(  v \in T_{p}M  \)，则存在一个在 \(  p  \)的某个邻域上平行的向量场 \(  V  \)，使得 \(  V_{p}= v  \)。        
+\end{lemma}
+
+\begin{proof}*
+    
+    令 \(  p \in M  \)， \(  v\in T_{p}M  \)，设 \(  \left(  x^1,\cdots,x^n  \right)   \)是以 \(  p  \)为中心的一个光滑坐标。通过缩小坐标的像，不妨设坐标映射的像是一个开立方体 \(  C_{ \varepsilon }= \left\{ x: \left| x^{i} \right|<  \varepsilon ,i=  1,\cdots,n   \right\}  \)     ，利用坐标映射将坐标的定义域与 \(  C_{ \varepsilon }  \)等同。
+    
+    
+    按以下方式构造一个向量场 \(  V  \)，先将 \(  v  \)沿着 \(  x^{1}  \)-坐标轴做平行移动，则我们在 \(  x^{1}  \)-轴上的每一个点确定了一个切向量；在令 \(  x^{1}  \)-轴上的每一个点沿着 \(  x^{2}  \)-曲线做平行移动， 则我们在 \(  \left( x^{1},x^{2} \right)   \)-平面上的每一个点确定了切向量，以此类推，知道我们再 \(  \left( x^{1},\cdots ,x^{n} \right)   \)-平面上的每一个点都确定了切向量。我们再 \(  C_{ \varepsilon }  \)上定义了一个向量场 \(  V  \)，通过流的一些知识，可以证明 \(  V  \)是一个光滑向量场\footnote{现在还不会证}。
+    
+    接下来证明 \(   \nabla _{X}V= 0,\forall X \in \mathfrak{X}\left( C_{ \varepsilon } \right)   \)。由于 \(   \nabla _{X}V  \)是关于 \(  X  \) 具有 \( C^{\infty}\left( M \right)   \)-线性的，只需要证明 \(   \nabla _{\partial _{i}}  V= 0\)对于所有的 \(  i=  1,\cdots,n   \)成立。根据构造， \(   \nabla _{\partial _{1}}V  \)在 \(  x^{1}  \)-轴上成立， \(   \nabla _{\partial _{2}}  V\)在 \(  \left( x^{1},x^{2} \right)   \)-平面上成立，一般地， \(   \nabla _{\partial _{k}}V= 0  \)在 \(  M_{k}\subseteq C_{ \varepsilon }  \)成立，其中 \(  M_{k}= \left\{ x^{k+ 1} = \cdots = x^{n}= 0\right\}  \)。  接下来，我们对 \(  k  \)归纳地证明 \[
+     \nabla _{\partial _{1}}V= \cdots =  \nabla _{\partial _{k}}V= 0,\quad \text{在}M_{k}\text{上成立}
+    \]       当 \(  k= 1  \)由 \(  V  \)的构造已经成立，当 \(  k= n  \)时就是我们所需要的。假设上式对于某个 \(  k  \)成立， 则 \(   \nabla _{\partial _{k+ 1}}V  \)在整个 \(  M_{k+ 1}  \)上成立；而对于 \(  i\le k  \)， \(   \nabla _{\partial _{i}}V  \)在 \(  M_{k}\subseteq C_{ \varepsilon }  \)上成立。
+    
+    由于 \(  \left[ \partial _{k+ 1},\partial _{i} \right]   \)成立，由平坦性条件，我们有 \[
+     \nabla _{\partial _{k+ 1}}\left(  \nabla _{\partial _{i}}V \right)=   \nabla _{\partial _{i}}\left(  \nabla _{\partial _{k+ 1}}V \right)=  0
+    \]在 \(  M_{k+ 1}  \)上成立。  这表明 \(   \nabla _{\partial _{i}}V  \)在 \(  M_{k}  \)上的任意一点都沿着 \(  x^{k+ 1}  \)-曲线平行。而 \(   \nabla _{\partial _{i}}V  \)在 \(  M_{k}  \)上任一点都为零，向量场在该点沿 \(  x^{k+ 1}  \)     -曲线的平行移动唯一，就是零向量场。而 \(  M_{k+ 1}  \)的每一个点都落在这样一个 \(  x^{k+ 1}  \)-曲线上，   故 \(   \nabla _{\partial _{i}}  V\)在 \(  M_{k+ 1}  \)上为零。  
+
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}
+    一个（伪）-Riemann流形是平坦的，当且仅当它（关于Levi-Civita联络）的曲率张量恒为零。
+\end{theorem}
+
+\begin{theorem}
+    令 \(  \left( M,g \right)   \)是（伪）-Riemann流形； \(  I  \)是包含了 \(  0  \)的开区间；令 \(   \Gamma :I\times I\to M  \)是光滑的单参数曲线族；令 \(  p=  \Gamma \left( 0,0 \right),x =  \partial _{s} \Gamma \left( 0,0 \right)    \)， \(  y= \partial _{t} \Gamma \left( 0,0 \right)   \)。对于任意的 \(  s_1,s_2,t_1,t_2\in I  \)，令 \(  P_{s_1,t_1}^{s_1,t_2}: T_{ \Gamma \left( s_1,t_1 \right) }M\to T_{ \Gamma \left( s_1,t_2 \right) }M  \)是沿曲线 \(  t\mapsto  \Gamma \left( s_1,t \right)   \)从时间 \(  t_1  \)到 \(  t_2  \)的平行移动，令 \(  P_{s_1,t_1}^{s_2,t_2}:T_{ \Gamma \left( s_1,t_1 \right) }M\to T_{ \Gamma \left( s_2,t_1 \right) }M  \)表示沿曲线 \(  s\mapsto  \Gamma \left( s,t_1 \right)   \)的从时间 \(  s_1  \)到 \(  s_2  \)的平行移动。则对于所有的 \(  z \in T_{p}M  \)， \[
+    R\left( x,y \right)z =  \lim_{ \delta  , \varepsilon  \to 0} \frac{P_{ \delta  ,0}^{0,0}\circ P_{ \delta  , \varepsilon }^{ \delta  ,0}\circ P_{0, \varepsilon }^{ \delta  , \varepsilon }\circ P_{0,0}^{0, \varepsilon }\left( z \right)-z  }{  \delta   \varepsilon }  
+    \]                
+\end{theorem}
+
+\section{曲率张量的对称性}
+
+\begin{proposition}{曲率张量的对称性}
+    设 \(  \left( M,g \right)   \)是（伪）Riemann流形。则 \(  g  \)的 \(  \left( 0,4 \right)   \)-曲率张量对于所有的向量场 \(  W,X,Y,Z  \)   有一下成立
+    \begin{enumerate}
+        \item \(  Rm\left( W,X,Y,Z \right)= -Rm\left( X,W,Y,Z \right)   \footnote{交换求导次序的反称} \)
+        \item \(  Rm\left( W,X,Y,Z \right)= -Rm\left( W,X,Z,Y \right) \footnote{交换回路差呈现方式的反称}   \)
+        \item \(  Rm\left( W,X,Y,Z \right)= Rm\left( Y,Z,W,X \right)  \footnote{交换回路差的产生和呈现的对称}  \)   
+        \item 代数Biachi恒等式： \[
+        Rm\left( W,X,Y,Z \right)+ Rm\left( X,Y,W,Z \right)+ Rm\left( Y,W,X,Z \right)= 0   \footnote{前三个的轮换对称,来自联络的对称性}
+        \]
+    \end{enumerate}
+    在任意一组坐标下，有对应分量表示的形式
+   \begin{enumerate}[\color{structurecolor}1\(  ^{\prime}   \). ]
+    \item \(  R_{ijkl}= -R_{jikl}  \) .
+    \item \(  R_{ijkl}= -R_{ijlk}  \).
+    \item \(  R_{ijkl}=  R_{klij}  \).
+    \item \(  R_{ijkl} + R_{jkil}+  R_{kijl}= 0  \).   
+   \end{enumerate}
+   
+    
+\end{proposition}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 由定义显然;
+        \item 只需要证明 \(  Rm\left( W,X,Y,Y \right)   \)对于所有的 \(  Y  \)成立,然后就可以通过展开 \(  Rm\left( W,X,Y+ Z,Y+ Z \right)   \)得到.
+           因此我们需要证明 \[
+           \left< \nabla _{W} \nabla _{X}Y,Y \right>+ \left< \nabla _{X} \nabla _{W},Y \right>-\left< \nabla _{\left[ W,X \right] }Y,Y \right>
+           \]证明的秘诀是利用度量性,把外面的导数求到里面去,考虑 \[
+           \begin{aligned}
+           WX\left<Y,Y \right>& = 2W\left< \nabla _{X}Y,Y \right>= 2\left< \nabla _{W} \nabla _{X}Y,Y \right>+ 2\left< \nabla _{X}Y, \nabla _{W}Y \right>\\ 
+            XW\left<Y,Y \right>& =  2X\left< \nabla _{W}Y,Y \right>= 2\left< \nabla _{X} \nabla _{W}Y,Y \right>+ 2\left< \nabla _{W}Y, \nabla _{X}Y \right> \\ 
+             \left[ W,X \right]\left<Y,Y \right>& = 2\left< \nabla _{\left[ W,X \right] }Y,Y \right> 
+           \end{aligned}
+           \]前两式相加减去后一个,得到 \[
+           \begin{aligned}
+           0& =  2\left< \nabla _{W} \nabla _{X}Y,Y \right>+ 2\left< \nabla _{X} \nabla _{W}Y,Y \right>-2\left< \nabla _{\left[ W,X \right] }Y,Y \right> \\ 
+            & =  2Rm\left( W,X,Y,Y \right) 
+           \end{aligned}
+           \]
+           \item 先证明第四个,由\(  Rm  \) 的定义,只需要证明 \[
+           R\left( W,X \right)Y+ R\left( X,Y \right)W+ R\left( Y,W \right)X= 0   
+           \]按定义直接展开,利用对称性,得到 \[
+           \begin{aligned}
+           & \left(  \nabla _{W} \nabla _{X}Y- \nabla _{X} \nabla _{W}Y- \nabla _{\left[ W,X \right] }Y \right)\\ 
+            & + \left(  \nabla _{X} \nabla _{Y}W- \nabla _{Y} \nabla _{X}W- \nabla _{\left[ X,Y \right] }W \right)\\ 
+             & + \left(  \nabla _{Y} \nabla _{W}X- \nabla _{W} \nabla _{Y}X- \nabla _{\left[ Y,W \right] }X \right)\\ 
+              & =  \nabla _{W}\left(  \nabla _{X}Y- \nabla _{Y}X \right)+  \nabla _{X}\left(  \nabla _{Y}W- \nabla _{W}Y \right)+  \nabla _{Y}\left(  \nabla _{W}X- \nabla _{X}W \right)       \\ 
+    & - \nabla _{\left[ W,X \right]}Y - \nabla _{\left[ X,Y \right] }W- \nabla _{\left[ Y,W \right] }X\\ 
+     & =  \nabla _{W}\left[ X,Y \right]+  \nabla _{X}\left[ Y,W \right]+  \nabla _{Y}\left[ W,X \right]\\ 
+      &- \nabla _{\left[ W,X \right] }Y- \nabla _{\left[ X,Y \right] }W- \nabla _{\left[ Y,W \right] }X  \\ 
+       & = \left[ W,\left[ X,Y \right]  \right]+ \left[ X,\left[ Y,W \right]  \right]+ \left[ Y,\left[ W,X \right]  \right]    
+           \end{aligned}
+           \]由Jacobi恒等式得证.
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}{微分Bianchi恒等式}
+    曲率张量的全协变导数满足一下恒等式 \begin{equation}
+       \nabla Rm\left( X,Y,Z,V,W \right)+  \nabla Rm\left( X,Y,V,W,Z \right)+ Rm\left( X,Y,W,Z,V \right)= 0   \footnote{后三个轮换}
+    \end{equation}
+    它的分量形式为 \[
+    R_{ijkl;m}+ R_{ijlm;k}+ R_{ijmk;l}
+    \]
+\end{proposition}
+
+\section{Ricci恒等式}
+
+\begin{definition}{曲率同态的对偶}
+    令 \(  R\left( X,Y \right)^{*}:T^{*}M\to T^{*}M   \)为 \(  R\left( X,Y \right)   \)的对偶映射,按以下方式定义 \[
+    \left( R\left( X,Y \right)^{*}\eta   \right)\left( Z \right)= \eta \left( R\left( X,Y \right)Z  \right)   
+    \]  
+\end{definition}
+
+
+\begin{theorem}{Ricci恒等式}
+    在(伪)Riemann流形 \(  M  \)上,二阶全协变导数对于向量场和张量场满足一下恒等式.若 \(  Z  \)是一个光滑向量场,则 \begin{equation}
+       \nabla ^{2}_{X,Y}Z - \nabla ^{2}_{Y,X}Z=  R\left( X,Y \right)Z 
+    \end{equation}
+    若 \(  \beta   \)是一个 光滑 \(  1  \)-形式,则 \begin{equation}
+        \nabla ^{2}_{X,Y}\beta - \nabla ^{2}_{Y,X}\beta =- R\left( X,Y \right)^{*}\beta  
+    \end{equation}    设 \(  B  \)是任意 \(  \left( k,l \right)   \)  -张量, 则 \begin{equation}
+        \begin{aligned}
+            & \left(  \nabla ^{2}_{X,Y}B- \nabla ^{2}_{Y,X}B \right)\left(  \omega^1,\cdots,\omega^k , W_1,\cdots,W_l  \right)   \\ 
+             & = B\left( R\left( X,Y \right)^{*} \omega ^{1} ,\cdots , \omega ^{k}, W_1,\cdots,W_l   \right) + B\left(  \omega ^{1},\cdots ,R\left( X,Y \right)^{*} \omega ^{k}, W_1,\cdots,W_l   \right) \\ 
+              &-B\left(  \omega^1,\cdots,\omega^k ,R\left( X,Y \right)W_1,\cdots ,W_{l}  \right)-B\left(  \omega^1,\cdots,\omega^k ,W_1,\cdots ,R\left( X,Y \right)W_{l}  \right)  
+              \end{aligned}
+    \end{equation} 在光滑局部标价下,这些结论有分量形式 \[
+  \begin{aligned}
+    Z_{;pq}^{i}-Z_{;qp}^{i}&=-R_{pqm}^{i}Z^{m}\\ 
+     \beta _{;pq}^{i}-\beta _{;pq}^{i}&= R_{pqi}^{m}\beta _{m}\\ 
+      B_{ j_1,\cdots,j_l ;pq}^{ i_1,\cdots,i_k }& = -R_{pqm}^{i_1}B^{mi_2\cdots i_{k}}_{j_1\cdots j_{l}}-\cdots -R_{pqm}^{i_{k}}B_{ j_1,\cdots,j_l }^{i_1\cdots i_{k-1}m}\\ 
+       & + R_{pq j_1}^{m}B_{mj_2\cdots j_{l}}^{ i_1,\cdots,i_k }+ \cdots + R_{pqj_{l}}^{m}B_{j_1\cdots j_{l-1}m}^{ i_1,\cdots,i_k }
+  \end{aligned}
+    \]
+\end{theorem}
+
+\begin{proof}
+
+    对于任意的张量场 \(  B  \),我们有 \[
+    \begin{aligned}
+        \nabla ^{2}_{X,Y}B- \nabla ^{2}_{Y,X}B&=  \nabla _{X} \nabla _{Y}B- \nabla _{ \nabla _{X}Y}B- \nabla _{Y} \nabla _{X}B+  \nabla _{ \nabla _{Y}X}F \\ 
+         & =  \nabla _{X} \nabla _{Y}B- \nabla _{Y} \nabla _{X}B- \nabla _{\left[ X,Y \right] }B
+    \end{aligned}
+    \] 
+    首先考虑向量场的结论,我们 \[
+    \begin{aligned}
+     \nabla ^{2}_{X,Y}Z- \nabla ^{2}_{Y,X}Z
+      & =  \nabla _{X} \nabla _{Y}Z- \nabla _{Y} \nabla _{X}Z- \nabla _{\left[ X,Y \right] }Z  \\ 
+       & = R\left( X,Y \right)Z 
+    \end{aligned}
+    \]对于1-形式的情况,我们反复利用 \(   \nabla   \)与自然配对的相容性 \[
+     \nabla _{X}\left(  \omega \left( Y \right)  \right)= \left(  \nabla _{X} \omega  \right)Y+  \omega \left(  \nabla _{X}Y \right),   
+    \] 计算 \[
+  \begin{aligned}
+   \left(  \nabla _{X} \left( \nabla _{Y} \beta  \right) \right)\left( Z \right)    &=  \nabla _{X}\left( \left(  \nabla _{Y}\beta  \right)Z  \right)- \left(  \nabla _{Y}\beta  \right)\left(  \nabla _{X}Z \right)\\ 
+    & =  \nabla _{X}\left(  \nabla _{Y}\left( \beta \left( Z \right)-\beta \left(  \nabla _{Y}Z \right)   \right)  \right)-\left(  \nabla _{Y}\beta  \right)\left(  \nabla _{X}Z \right)\\ 
+     & =  \nabla _{X}\left(  \nabla _{Y}\left( \beta \left( Z \right)  \right)  \right)- \nabla _{X}\left( \beta \left(  \nabla _{Y}Z \right)  \right)-\left(  \nabla _{Y}\beta  \right)\left(  \nabla _{X}Z \right)          \\ 
+      & = XY\left( \beta \left( Z \right)  \right)-X\left( \beta \left(  \nabla _{Y}Z \right)  \right)-Y\left( \beta \left(  \nabla _{X}Z \right)  \right)   + \beta \left(  \nabla _{Y} \nabla _{X}Z \right) 
+  \end{aligned}
+    \]类似的 \[
+    \begin{aligned}
+    \left(  \nabla _{Y}\left(  \nabla _{X}\beta  \right)  \right)\left( Z \right)& = YX\left( \beta \left( Z \right)  \right)-Y\left( \beta \left(  \nabla _{X}Z \right)  \right)-X\left( \beta \left(  \nabla _{Y}Z \right)  \right)       + \beta \left(  \nabla _{X} \nabla _{Y}Z \right) 
+    \end{aligned}
+    \]以及 \[
+     \nabla _{\left[ X,Y \right] }\beta \left( Z \right) = \left[ X,Y \right]\beta \left( Z \right)- \beta \left(  \nabla _{\left[ X,Y \right] }Z \right)   
+    \]于是 \[
+    \begin{aligned}
+     \nabla ^{2}_{X,Y}\beta \left( Z \right) - \nabla ^{2}_{Y,X}\beta \left( Z \right)& =  \nabla _{X} \nabla _{Y}\beta\left( Z \right)  - \nabla _{Y} \nabla _{X}\beta \left( Z \right) - \nabla _{\left[ X,Y \right] }\beta \left( Z \right)  \\ 
+      & = \beta \left(  \nabla _{Y} \nabla _{X}Z \right)-\beta \left(  \nabla _{X} \nabla _{Y}Z \right)+   \beta \left(  \nabla _{\left[ X,Y \right] }Z \right)\\ 
+       & = -\beta \left( R\left( X,Y \right)Z  \right)  \\ 
+        & = -R\left( X,Y \right)^{*}\beta \left( Z \right)  
+    \end{aligned}
+    \]故1-形式的情况得证.现在考虑任意张量场 \(  F,G  \),则 \[
+    \begin{aligned}
+    & \nabla ^{2}_{X,Y}\left( F\otimes G \right)- \nabla _{Y,X}^{2}\left( F\otimes G \right)   \\ 
+     & =  \nabla _{X} \nabla _{Y}\left( F\otimes G \right)- \nabla _{Y} \nabla _{X}\left( F\otimes G \right)- \nabla _{\left[ X,Y \right] }\left( F\otimes G \right)\\ 
+     & =    \left(  \nabla _{X} \nabla _{Y}F \right)\otimes G+ \left(  \nabla _{X}F \right)\otimes \left(  \nabla _{Y} G\right)+ \left(  \nabla _{Y}F \right)\otimes \left(  \nabla _{X}G \right)+ F\otimes \left(  \nabla _{X} \nabla _{Y}G \right)\\ 
+      &-\left(  \nabla _{Y} \nabla _{X}F \right)\otimes G+ \left(  \nabla _{Y}F \right)\otimes \left(  \nabla _{X}G \right)-\left(  \nabla _{X}F \right)\otimes \left(  \nabla _{Y}G \right)+ F\otimes \left(  \nabla _{Y} \nabla _{X}G \right)\\ 
+       &-\left(  \nabla _{\left[ X,Y \right] }F \right)\otimes G-F\otimes \left(  \nabla _{\left[ X,Y \right] }G \right)\\ 
+        & =  \left(  \nabla _{X,Y}^{2}F \right) \otimes G+  F\otimes \left(  \nabla ^{2}_{X,Y}G \right)              
+    \end{aligned}
+    \] 考虑  \(  V_{1}\otimes \cdots \otimes V_{k}\otimes \eta ^{1}\otimes \cdots \otimes \eta ^{l}  \) ,则 \[
+    \begin{aligned}
+   & \left(  \nabla ^{2}_{X,Y}- \nabla _{Y,X}^{2} \right)\left( V_1\otimes \cdots \otimes V_{k}\otimes \eta ^{1}\otimes \cdots \otimes \eta ^{l} \right)\\ 
+     & = \left( R\left( X,Y \right)V_1  \right)\otimes V_2\otimes \cdots \otimes V_{k}\otimes \eta ^{1}\otimes \cdots \otimes \eta ^{l}+ V_1\otimes \cdots \otimes \left( R\left( X,Y \right)V_{k}  \right)\otimes \eta ^{1}\otimes \cdots \otimes \eta ^{l}\\ 
+      & -V_1\otimes \cdots \otimes V_{k}\otimes \left( R\left( X,Y \right)^{*}\eta ^{1}  \right)\otimes \cdots \otimes \eta ^{l}-V_1\otimes \cdots \otimes V_{k}\otimes \eta ^{1}\otimes \cdots \otimes \left( R\left( X,Y \right)^{*}\eta ^{l}  \right)  
+    \end{aligned}
+    \]记 \(  B= V_1\otimes \cdots \otimes V_{k}\otimes \eta ^{1}\otimes \cdots \otimes \eta ^{l}  \),则 \[
+    \begin{aligned}
+   &  \left(  \nabla _{X,Y}^{2}- \nabla _{Y,X}^{2} \right)B\left(  \omega^1,\cdots,\omega^k , W_1,\cdots,W_l  \right)   \\ 
+     & = B\left( R\left( X,Y \right)^{*} \omega ^{1},\cdots , \omega ^{k}, W_1,\cdots,W_l   \right)+ \cdots + B\left(  \omega ^{1},\cdots ,R\left( X,Y \right)^{*} \omega ^{k}, W_1,\cdots,W_l   \right)\\ 
+      & -B\left(  \omega^1,\cdots,\omega^k ,R\left( X,Y \right)W_1,\cdots,W _{l}  \right)   -B\left(  \omega^1,\cdots,\omega^k ,W_1,\cdots ,R\left( X,Y \right)W_{l}  \right) 
+    \end{aligned}
+    \] 最后,对于分量形式的刻画,我们利用 \[
+    R\left( E_{q},E_{p} \right)E_{j}= R_{qpj}^{m}E_{m}= -R_{pqj}^{m}E_{m} 
+    \]和 \[
+    R\left( E_{q},E_{p} \right)^{*} \varepsilon ^{i} = -R_{qpm}^{i} \varepsilon ^{m} =  R_{pqm}^{i} \varepsilon ^{m}
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+
+\section{Ricci曲率和标量曲率}
+
+\begin{definition}
+    设 \(  \left( M,g \right)   \)是 \(  n  \)-维(伪)Riemann流形
+    \begin{enumerate}
+        \item 定义Ricci曲率为 一个 \(  2  \)-张量场,记作 \(  Rc  \),通过缩并曲率自同态的第一个指标和最后一个指标,即 \[
+        Rc\left( X,Y \right): =  \operatorname{tr}\,\left( Z\mapsto R\left( Z,X \right)Y  \right) \footnote{由于曲率自同态本身是 \(  \left( 1,3 \right)   \) -张量,斜变指标只有一个选择,体现在映射的结果 \(  R\left( Z,X \right)Y   \)上;固定了\(  X,Y  \),选择 构造以 \(  Z  \)为自变量嵌入到张量的映射,  体现了我们选择缩并的逆变指标是第一个,\(  X,Y  \)对应的指标不缩并 . }
+        \]  则 在一组光滑标架下,\[
+        Rc= R_{ij} \varepsilon ^{i}\otimes  \varepsilon ^{j}
+        \]其中 \(  R_{ij}= Rc\left( E_{i},E_{j} \right)   \) 
+        \item 定义标量曲率为函数 \(  S  \),通过取Ricci张量的迹 \[
+        S =  \operatorname{tr}_{g}Rc \footnote{对Rc取内积 \(  g  \)下的 迹需要将 \(  Rc  \)转换成\(  TM\to TM  \)的映射,这里将 \(  Rc  \)自然同构于 \(  \left( 1-1 \right)   \)张量 \(  TM\to TM^{*}  \),再将作用的结果通过 \(  \tilde{g}^{-1}   \)提升指标.      }
+        \] 
+    \end{enumerate}
+      
+\end{definition}
+
+\begin{proposition}
+    \begin{enumerate}
+        \item  \[
+        R_{ij}= R_{kij}^{k}= g^{km}R_{kijm}
+        \]
+        
+        \item \[
+        S = \mathrm{tr}_{g}Rc= R_{i}^{i}= g^{ij}R_{ij}
+        \]
+    \end{enumerate}
+    
+\end{proposition}
+
+\begin{proof}
+   
+    \begin{enumerate}
+        \item \(  R_{ij}= Rc\left( E_{i},E_{j} \right)   = \mathrm{tr}\left( Z\mapsto R\left( Z,E_{i} \right)E_{j}  \right) = R_{kij}^{k}\) 
+        又 \[
+        R_{kijm}= \left<R_{kij}^{l}E_{l},E_{m} \right>= g_{lm}R_{kij}^{l}
+        \]故 \[
+        g^{lm}R_{kijm}= R_{kij}^{l}
+        \]从而 \[
+        R_{kij}^{k}= g^{km}R_{kijm}
+        \]
+      
+        \item  \(  \tilde{Rc}: TM\to TM^{*}  \), \(  \tilde{Rc}\left( X \right)\left( Y \right): =  Rc\left( X,Y \right)     \) 
+        .\(  \tilde{g}^{-1} : T^{*}M\to TM  \)降低指标. \[
+        \tilde{Rc}\left( E_{i} \right)\left( E_{j} \right)= Rc\left( E_{i},E_{j} \right)= R_{ij}   \implies \tilde{Rc}\left( E_{i} \right)= R_{ij} \varepsilon ^{j} 
+        \]   \[
+       Rc^{\prime} :=  \tilde{g}^{-1} \circ \tilde{Rc}:TM\to TM
+        \]  \[
+        Rc^{\prime} \left( E_{i} \right)\left(  \varepsilon ^{j} \right)= \tilde{g}^{-1} \left( \tilde{Rc}\left( E_{i} \right)  \right)\left(  \varepsilon ^{j} \right)    = \tilde{g}^{-1} \left( R_{im} \varepsilon ^{m} \right)\left(  \varepsilon ^{j} \right)  
+        \] \[
+        \tilde{g}^{-1} \left(  \varepsilon ^{m} \right)= g^{ml}E_{l} 
+        \]因此 \[
+        Rc^{\prime} \left( E_{i} \right)\left(  \varepsilon ^{j} \right)= R_{im}g^{ml}E_{l} \varepsilon ^{j}= R_{im}g^{mj}  
+        \]这表明 \[
+        R_{i}^{j}= g^{jm}R_{im}
+        \]故 \[
+        \operatorname{tr}\,_{g}Rc= \operatorname{tr}\,Rc^{\prime} = R_{i}^{i}= g^{ij}R_{ij}
+        \] 
+    \end{enumerate}
+    
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{无迹Ricci张量}
+    定义 \textbf{\(  g  \)的无迹 Ricci张量 }为以下对称2-张量: \[
+    \overset{\scriptstyle\circ}{Rc} =  Rc -\frac{1 }{n }Sg 
+    \]  
+\end{definition}
+
+\begin{proposition}
+    设 \(  \left( M,g \right)   \)是 \(  n  \)- (伪)Riemann 流形,则 \(  \mathrm{tr}_{g}\overset{\scriptstyle\circ}{Rc}\equiv 0  \),则Ricci张量正交分解为 \[
+  Rc =  \overset{\scriptstyle\circ}{Rc} +  \frac{1 }{n }Sg 
+    \]因此,当\(  g  \)是Riemann度量时, \[
+    \left| Rc \right|_{g}^{2} =  \left| \overset{\scriptstyle\circ}{Rc}  \right|_{g}^{2}+  \frac{1 }{n }S^{2} 
+    \] 
+\end{proposition}
+
+\begin{proof}
+     \[
+     \mathrm{tr}_{g}g = g^{ij}g_{ji}=  \delta  _{i}^{i}= n
+     \]于是 \[
+     \mathrm{tr}_{g}\left( \overset{\scriptstyle\circ}{Rc} \right)= \mathrm{tr}_{g}\left( Rc \right)- \frac{1}{n}S \mathrm{tr}_{g}\left( g \right)    = S- \frac{1}{n}S n= 0
+     \]任取 \(  2  \)-张量 \(  h  \),则 \[
+     \left<h,g \right>_{g}= h^{kl}g_{kl}=  g^{ki}g^{lj}h_{ij}g_{kl}= g^{ki} \delta  _{k}^{j}h_{ij}= g^{ij}h_{ij}= \mathrm{tr}_{g}\left( h \right) 
+     \]  \[
+     \left<\overset{\scriptstyle\circ}{Rc},g \right>_{g}= \mathrm{tr}_{g}\left( \overset{\scriptstyle\circ}{Rc} \right)= 0 
+     \]故两者正交.最后,范数的等式依据 \(  g  \)的双线性展开,由 正交性,以及 \[
+     \left<g,g \right>_{g}= n
+     \]得到.
+    \hfill $\square$
+\end{proof}
+
+
+\begin{definition}{外协变导数}
+    若 \(  T  \)是(伪)Riemann流形上的光滑2-张量,定义\textbf{\(  T  \)的外协变导数 }为一个 \(  3  \)-张量\(  DT  \) \[
+    \left( DT \right)\left( X,Y,Z \right)= - \left(  \nabla T \right)\left( X,Y,Z \right)+ \left(  \nabla T \right)\left( X,Z,Y \right)      
+    \] 它的分量表示为 \[
+    \left( DT \right)_{ijk}= -T_{ij;k}+ T_{ik;j} 
+    \]  
+\end{definition}
+
+\begin{remark}
+    这是1-形式的外微分的一个推广, \[
+    \left( \,\mathrm{d} \eta  \right)\left( Y,Z \right)= \left( - \nabla \eta  \right)\left( Y,Z \right)+ \left(  \nabla \eta  \right)\left( Z,Y \right)      
+    \]
+\end{remark}
+
+
+\section{Weyl张量}
+
+\begin{definition}{代数曲率张量}
+    设 \(  V  \)是 \(  n  \)维实线性空间. 令 \(  \mathcal{R}\left( V^{*} \right)\subseteq T^{4}\left( V^{*} \right)    \)表示 \(  V  \)上全体具有以下 \(  \left( 0,4 \right)   \)-Riemann曲率张量对称性的协变4-张量\(  T  \) 构成的线性空间: 
+    \begin{enumerate}
+        \item \( T\left( w,x,y,z \right)= -T\left( x,w,y,z \right)     \)
+        \item \(  T\left( w,x,y,z \right)= -T\left( w,x,z,y \right)    \)
+        \item \(  T\left( w,x,y,z \right)= T\left( y,z,w,x \right)    \)
+        \item \(  T\left( w,x,y,z \right)+ T\left( x,y,w,z \right)+ T\left( y,w,x,z \right)= 0     \)    
+    \end{enumerate}
+        \(  \mathcal{R}\left( V^{*} \right)   \)上的一个元素称为一个\textbf{代数曲率张量}. 
+\end{definition}
+\begin{remark}
+    与Riemann曲率张量的情况一样,事实上第3条可以其它对称性推出,这里方便起见仍把它写进定义.
+\end{remark}
+
+\begin{proposition}
+    设 \(  V  \)是 \(  n  \)维实线性空间,则 \[
+    \operatorname{dim}\,\mathcal{R}\left( V^{*} \right)= \frac{n^{2}\left( n^{2}-1 \right)  }{12 }  
+    \]  
+\end{proposition}
+\begin{proof}
+    用 \(  \mathcal{B}\left( V^{*} \right)   \)表示满足对称性1.-3.的全体4-张量. 定义映射 \(  \Phi : \Sigma ^{2}\left( \bigwedge ^{2}\left( V \right)^{*}  \right)  \to  \mathcal{B}\left( V^{*} \right)  \)  \[
+    \Phi \left( B \right) \left( w,x,y,z \right)=  B\left( w\wedge x,y\wedge z \right) 
+    \]其中 \(   \Sigma ^{2}\left( \bigwedge ^{2}\left( V \right)^{*}  \right)   \)表示全体定义在逆变交错2-张量空间上的双线性映射.易见 \(  \Phi \left( B \right)   \)满足对称性1.-3. 事实上, \(  \Phi   \)是线性同构: 取 \(  V  \)的一组基 \(   b_1,\cdots,b_n   \),则  \(  \left\{ b_{i}\wedge b_{j}:i< j \right\}  \)构成 \(  \bigwedge ^{2}V  \)的一组基.对以下做线性扩张 \[
+\Psi \left( T \right)\left( b_{i}\wedge b_{j},b_{k}\wedge b_{l} \right) =  T\left(b_{i},b_{j},b_{k},b_{l} \right)   
+    \]       简单计算发现 \(  \Psi   \)是 \(  \Phi   \)的逆.于是我们得到 \[
+    \operatorname{dim}\,\mathcal{B}\left( V^{*} \right) = \frac{\binom{n}{2}\left( \binom{n}{2}+ 1 \right)  }{2 } = \frac{n\left( n-1 \right)\left( n^{2}-n+ 2 \right)   }{8 } 
+    \]  这里用到了 \(  \operatorname{dim}\,\bigwedge ^{2}V= \binom{n}{2} = \frac{n\left( n-1 \right)  }{2 }  \) ,以及 \(  m  \)维线性空间上的双线性映射空间的维数为 \(  \frac{m\left( m+ 1 \right)  }{2 }   \)的事实.  
+
+    接下来,定义映射 \(  \pi : \mathcal{B}\left( V^{*} \right)\to T^{4}\left( V^{*} \right)    \)  \[
+    \pi \left( T \right)\left( w,x,y,z \right)=  \frac{1 }{3 }\left( T\left( w,x,y,z \right)+T\left( x,y,w,z \right)+ T\left( y,w,x,z \right)    \right)    
+    \]事实上, \(  \pi   \)是交错算子 \(  \mathrm{Alt}  \)在 \(  \mathcal{B}\left( V^{*} \right)   \)上的限制映射,因此 \(  \mathrm{Alt} \left( T\right)   \)的 \(  24  \)项,由于 \(  T  \)满足的 1.-3.对称性,每八项相同,合为一项.故 \(  \operatorname{Im}\,\pi \subseteq \bigwedge ^{4}\left( V^{*} \right)  \).事实上, \(  \operatorname{Im}\,\pi =  \bigwedge ^{4}\left( V^{*} \right)   \),    这是因为每个交错4-张量满足对称性1.-3.从而本身就在 \(  \mathcal{B}\left( V^{*} \right)   \)中,并且它在 \(  \pi   \)      下的像就是它自己. 最终,由维数公式 \[
+    \operatorname{dim}\,\mathcal{R}\left( V^{*} \right)=  \operatorname{dim}\,\mathcal{B}\left( V^{*} \right) -\operatorname{dim}\,\bigwedge ^{4}\left( V^{*} \right)  = \frac{n\left( n-1 \right)\left( n^{2}-n+ 2 \right)   }{8 }- \binom{n}{4} 
+    \]化简得到 \(  \mathcal{R}\left( V^{*} \right)   \)的维数.
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{Kulkarni-Nomizu积}
+    设 \(  V  \)是 \(  n  \)维线性空间,  给定 \(  h,k \in  \Sigma ^{2}\left( V^{*} \right)   \) ,按以下方式定义一个协变4-张量 \(  h\owedge k  \),称为 \(  h  \)和 \(  k  \)的 Kulkarni-Nomizu积, \[
+    \begin{aligned}
+    h\owedge k\left( w,x,y,z \right)= h\left( w,z \right)k\left( x,y \right)+& h\left( x,y \right)k\left( w,z \right) \\ 
+     &-h\left( w,y \right)k\left( x,z \right)-h\left( x,z \right)k\left( w,y \right)         
+    \end{aligned}
+    \]   在任意一组基下,分量形式为 \[
+    \left( h\owedge k \right)_{ijlm}= h_{im}k_{jl}+ h_{jl}k_{im}-h_{il}k_{jm}-h_{jm}k_{il} 
+    \]
+\end{definition}
+\begin{remark}
+    当定义的曲率张量跟我们取反号时,对应的 Kulkarni-Nomizu积也得定义成符号相反的.
+\end{remark}
+
+\begin{lemma}{Kulkarni-Nomizu积的性质}
+    令 \(  V  \)是配备了标量乘法 \(  g  \)的 \(  n  \)维向量空间. \(  h,k  \)是 \(  V  \)上的对称 \(  2  \)-张量, \(  T  \)是 \(  V  \)上的代数曲率张量, \(  \mathrm{tr}_{g}  \)表示对第一个和最后一个指标的缩并.
+    \begin{enumerate}
+        \item  \(  h\owedge k  \)是一个代数曲率张量.
+        \item \(  h\owedge k= k\owedge h  \).
+        \item \(  \mathrm{tr}_{g}\left( h\owedge g \right)= \left( n-2 \right)h+ \left( \mathrm{tr}_{g}h \right)g     \).
+        \item \(  \mathrm{tr}_{g}\left( g\owedge g \right)= 2\left( n-1 \right)g    \).
+        \item \(  \left<T,h\owedge g \right>_{g}=  4\left<\mathrm{tr}_{g}T,h \right>_{g}  \).
+        \item 若 \(  g  \)正定,则 \(  \left| g\owedge h \right|^{2}_{g}= 4\left( n-2 \right)\left| h \right|_{g}^{2}+ 4\left( \mathrm{tr}_{g}h \right)^{2}      \)       
+    \end{enumerate}
+             
+\end{lemma}
+\begin{proof}[*]
+
+    
+    1.只需要证明代数Bianchi恒等式.任取 \(  w,x,y,z \in V  \), \[
+    \begin{aligned}
+   & h\owedge k\left( w,x,y,z \right)+  h\owedge  k\left( x,y,w,z \right)+ h\owedge k \left( y,w,x,z \right)\\ 
+     &=    h\left( w,z \right)k\left( x,y \right)+ h\left( x,y \right)k\left( w,z \right)- h\left( w,y \right)k\left( x,z\right)-h\left( x,z \right)k\left( w,y \right)          \\ 
+      &+ h\left( x,z \right)k\left( w,y\right)+ h\left( w,y \right)   k\left( x,z \right)- h\left( w,x \right)k\left( y,z \right)-h\left( y,z \right)k\left( w,x \right)\\ 
+       &+   h\left( y,z \right)k\left( w,x \right)+ h\left( w,x \right)k\left( y,z \right)-h\left( x,y \right)k\left( w,z \right)-h\left( w,z \right)h\left( x,y \right)   \\ 
+        &= 0             
+    \end{aligned}
+    \] 
+    2.由定义立即得到.是
+
+    3.在一组基下计算, \[
+    \begin{aligned}
+    \mathrm{tr}_{g}\left( h\owedge g \right)_{jl}&=  \left( h\owedge g \right)_{i jl}^{i}    \\ 
+     &= g^{im}\left( h\owedge g \right)_{ijlm}\\ 
+      &=  g^{im}\left( h_{im}g_{jl}+ h_{jl}g_{im}-h_{il}g_{jm}-h_{jm}g_{il} \right)\\ 
+       &= h_{i}^{i}g_{jl}+ nh_{jl}- h_{jl}-h_{jl}\\ 
+        &= \left( n-2 \right)h_{jl}+ \left( \mathrm{tr}_{g}h \right)g_{jl}  
+    \end{aligned}
+    \]由于3.的证明不需要 \(  h  \)的对称性,故 4.由 \( \mathrm{tr}_{g}g =  n \)  立即得到.
+    \hfill $\square$
+\end{proof}
+
+\end{document}

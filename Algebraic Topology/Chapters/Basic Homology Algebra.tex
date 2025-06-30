@@ -1,0 +1,358 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{ Basic Homology Algebra }
+
+\section{Basic definition}
+
+\begin{definition}{}{}
+    Consider a direct sum \[
+    C_{.}: =  C_{*}: =  \oplus _{n\in \mathbb{Z} }C_{n}
+    \] of \(  R  \)-modules\footnote{is also a \(  R  \)-module }. Often we call \(  C_{*}  \) a \dfntxt{graded-module} with its \(  n^{\mathrm{th}}  \) \dfntxt{graded component} \(  C_{n}  \). Members of \(  C_{n}  \) are also called \dfntxt{homogeneous elements} of \(  C_{*}  \) of degree \(  n  \).
+    \begin{enumerate}
+        \item A \dfntxt{\(  \mathbf{R}  \)-module homomorphism} \(  f:C_{*}\to C_{*}^{\prime}   \)  is called a graded homomorphism if there exists \(  d  \) such that \(  f\left( C_{r} \right)\subseteq C_{r+ d} ^{\prime}   \) for all \(  r  \).    We then call \(  d  \) the degree of \(  f  \).   We shall denote \(  f|_{C_{r}}  \)  by \(  f_{r}  \), and often we may simply write \(  f  \)  itself for \(  f_{r}  \) provided that there is no confusion. 
+        \item By a \dfntxt{chain complex} \(  \left( C_{*}, \partial  \right)   \) of \(  R  \) -modules, we mean a graded \(  R  \)-module \(  C_{*}  \), together with an endomorphism \(   \partial : =   \partial _{*} : C_{*}\to C_{*}  \) of degree \(  -1  \) with the property \(   \partial \circ  \partial = 0  \).    The endomorphism \(   \partial   \) is called the \dfntxt{differential} or the \dfntxt{boundry map} of the chain complex.   Often we shall not mention the \(   \partial   \) at all and merely say \(  C_{*}  \) is a chain complex.
+        \item If \(  C  \) and \(  C_{*}  \) are two chain complexes then by a \dfntxt{chain map} \(  f= f_{*} : C_{*}\to C_{*}^{\prime}   \) we mean a graded module homomorphism of degree \(  0  \) that commutes with the corresponding differentials.      
+    \end{enumerate}
+           
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item The direct sum \(  C_{*}  \) is also an \(  R  \)-module.
+        \item Observe that \(   \partial   \) consists of a sequence \(  \left\{  \partial _{n}: C_{n}\to C_{n-1} \right\}  \) of \(  R  \)-module homomorphisms such that \(   \partial _{n}\circ  \partial _{n-1}= 0  \) for all \(  n  \).       
+        \item \(  f  \) consists of a sequence \(  \left\{ f_{n}:C_{n}\to C^{\prime} _{n} \right\}  \) of \(  R  \)-module homomorphisms such that  \(   \partial _{n}^{\prime} \circ f_{n}= f_{n-1}\circ  \partial _{n}   \) for all \(  n  \).   Expressed with an diagram,that is \[\begin{tikzcd}
+	{C_n} & {C_{n-1}} \\
+	{C_n^{\prime}} & {C_{n-1}^{\prime}}
+	\arrow["{  \partial _{n}   }", from=1-1, to=1-2]
+	\arrow["{f_n}", from=1-1, to=2-1]
+	\arrow["{f_{n-1}}", from=1-2, to=2-2]
+	\arrow["{\partial _{n}^{\prime}}", from=2-1, to=2-2]
+\end{tikzcd}\]
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{proposition}{}{}
+    There is a category of chain complexes of \(  R  \)-modules and chain maps. We shall denote this category by \(  \mathbf{Ch_{R}}  \) . 
+\end{proposition}
+\begin{proof}
+    The objects are chain complexes. The morphisms are chain maps.For composition of morphisms,consider two chain maps \(  f:C_{*}\to C_{*}^{\prime} ,  g: C_{*}^{\prime} \to C_{*}^{\prime \prime}   \)  . Only need to show that the following diagram commutes
+ 
+   \[\begin{tikzcd}
+	{C_n} & {C_{n-1}} \\
+	{C_n^{\prime}} & {C_{n-1}^{\prime}} \\
+	{C_{n}^{\prime \prime} } & {C_{n-1}^{\prime \prime} }
+	\arrow["{  \partial _{n}   }", from=1-1, to=1-2]
+	\arrow["{f_n}", from=1-1, to=2-1]
+	\arrow["{f_{n-1}}", from=1-2, to=2-2]
+	\arrow["{\partial _{n}^{\prime}}", from=2-1, to=2-2]
+	\arrow["{f_n^{\prime}}", from=2-1, to=3-1]
+	\arrow["{f_{n-1}^{\prime}}", from=2-2, to=3-2]
+	\arrow["{\partial _{n}^{\prime \prime} }", from=3-1, to=3-2]
+\end{tikzcd}\] which is obvious. Finally , the existence of the identity map is also obvious.
+
+\end{proof}
+
+\begin{definition}{Direct Sum of Chain Complexes}{}
+    Definthe the direct sum of a family of chain complexes \(  \left\{ \left( C^{\alpha }, \partial ^{\alpha } \right)  \right\}_{\alpha \in  \Lambda }  \) as the chain complexes \( \left( C, \partial  \right):=   \left( \oplus _{\alpha }C^{\alpha },\oplus _{\alpha } \partial ^{\alpha } \right)   \), where the \(  n^{\mathrm{th}}  \) graded component   of \(  C  \) is \[
+    C_{n}= \left( C_{n}^{\alpha } \right)_{\alpha \in  \Lambda } , 
+    \] \(   \partial   \) is defined as \[
+     \partial \left( \left( c^{\alpha } \right)_{\alpha \in  \Lambda }  \right):= \left(  \partial ^{\alpha }\left( c^{\alpha } \right)  \right)_{\alpha \in  \Lambda }  
+    \] 
+\end{definition}
+
+\section{Exact Sequence}
+\begin{definition}{Exact Sequence}{}
+    \begin{enumerate}
+        \item A sequence of \(  R  \)-modules \begin{center}
+\begin{tikzcd}
+M' \arrow{r}{\alpha} & M \arrow{r}{\beta} & M''
+\end{tikzcd}
+\end{center} is said to be \dfntxt{exact} at \(  M  \) if  \(  \operatorname{ker}\beta = \operatorname{Im}\alpha   \).  
+\item A sequence \begin{center}
+\begin{tikzcd}
+\cdots \arrow{r} & M_{n-1} \arrow{r} & M_n \arrow{r} & M_{n+1} \arrow{r} & \cdots
+\end{tikzcd}
+\end{center}
+ is said to be exact if it is exact at each \(  M_{n}  \). 
+ \item By a short exact sequence we mean an exact sequence of the form \begin{center}
+\begin{tikzcd}
+0 \arrow[r] & M' \arrow[r] & M \arrow[r] & M'' \arrow[r] & 0
+\end{tikzcd}
+\end{center} 
+    \end{enumerate}
+    
+\end{definition}
+
+\begin{definition}{Exact Sequence of Chain Complexes}{}
+    A sequence of chain complexes and chain maps \begin{center}
+\begin{tikzcd}
+0 \arrow[r] & C'. \arrow[r, "f."] & C. \arrow[r, "g."] & C''. \arrow[r] & 0
+\end{tikzcd}
+\end{center} is said to be exact if for each \(  n  \) the corresponding sequence of modules \begin{center}
+\begin{tikzcd}
+0 \arrow[r] & C'_n \arrow[r, "f_n"] & C_n \arrow[r, "g_n"] & C''_n \arrow[r] & 0
+\end{tikzcd}
+\end{center} is exact. 
+\end{definition}
+
+\begin{lemma}{Snake lemma}{}
+Given a commutative diagram of $R$-module homomorphisms: where the two horizontal sequences are exact, there exists a $R$-module homomorphism
+
+\[\begin{tikzcd}
+	& {M'} & M & {M''} & 0 \\
+	0 & {N'} & N & {N''}
+	\arrow["\alpha", from=1-2, to=1-3]
+	\arrow["{f'}", from=1-2, to=2-2]
+	\arrow["\beta", from=1-3, to=1-4]
+	\arrow["f", from=1-3, to=2-3]
+	\arrow[from=1-4, to=1-5]
+	\arrow["{f''}", from=1-4, to=2-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow["{\alpha'}", from=2-2, to=2-3]
+	\arrow["{\beta'}", from=2-3, to=2-4]
+\end{tikzcd}\]
+
+
+$\delta : \text{Ker } f'' \longrightarrow \text{Coker } f'$, called the \emph{connecting homomorphism} such that the sequence
+$$
+\text{Ker } f' \xrightarrow{\bar{\alpha}} \text{Ker } f \xrightarrow{\bar{\beta}} \text{Ker } f'' \xrightarrow{\delta} \text{Coker } f' \xrightarrow{\bar{\alpha'}} \text{Coker } f\xrightarrow{\bar{\beta'}} \text{Coker } f''
+$$
+is exact. Moreover, the \dfntxt{connecting homomorphism} $\delta$ has the naturality properties, so that the above assignment of a ‘snake’ to the corresponding ‘six-term’ exact sequence of modules defines a covariant functor.
+\end{lemma}
+
+\begin{note}
+	最关键的信息是 \dfntxt{connetcting homomorphism} \(   \delta   \).  构造的过程就是借助 \(  \beta   \)的是surjective, \(  \alpha ^{\prime}   \) 是 injectinve, 来调整使得 \(  \beta   \)和 \(  \alpha ^{\prime}   \)对应的箭头是可以反转的. 事实上在应用时, 这个connetcting homomorphism的具体构造往往比它的存在性更重要.    
+\end{note}
+
+\begin{proof}\dfntxt{to be finished}
+	We need to show
+	\begin{enumerate}
+		\item \(  \bar{\alpha},\bar{\beta}  \) are well defined, where \(  \bar{\alpha}:=  \alpha |_{\operatorname{ker}f^{\prime} }, \bar{\beta}: = \beta |_{\operatorname{ker}f}  \) 
+		\item \(  \operatorname{Im}\bar{\alpha}= \operatorname{ker}\bar{\beta}  \) .
+		\item \(  \bar{\alpha}^{\prime} , \bar{\beta}^{\prime}   \) are well defined, where \(  \bar{\alpha}^{\prime} \left( [x] \right):= [\alpha ^{\prime} \left( x \right) ]   \) , \(  \bar{\beta}^{\prime} \left( [y] \right):= [\beta ^{\prime} \left( y \right) ]   \)   
+		\item \(  \operatorname{Im} \bar{\alpha}^{\prime} =\operatorname{ker}\bar{\beta}^{\prime}   \) 
+		\item Construct a  \(   \delta   \).  
+		\item \(  \operatorname{Im}\bar{\beta}  = \operatorname{ker} \delta \)
+		\item \(  \operatorname{Im} \delta = \operatorname{ker}\bar{\alpha}^{\prime}   \)  
+	\end{enumerate}
+	We  prove the above points below.
+	\begin{enumerate}
+		\item   By commutative, \(  f\circ \alpha \left( \operatorname{ker}f^{\prime}  \right)=  \alpha ^{\prime} \circ f^{\prime} \left( \operatorname{ker}f^{\prime}  \right)= 0    \), which shows that  \(  \alpha \left( \operatorname{ker}f^{\prime}  \right)\subseteq \operatorname{ker}f   \). Thus \(  \bar{\alpha}  \) is well defined. \(  \bar{\beta}  \)'s is similar.
+		\item    \[
+		\operatorname{Im}\bar{\alpha}= \alpha \left( \operatorname{ker}f^{\prime}  \right)\subseteq \operatorname{Im}\alpha = \operatorname{ker}\beta \implies  \beta \left( \operatorname{Im}\bar{\alpha} \right)= 0 \implies \operatorname{Im}\bar{\alpha}\subseteq \operatorname{ker}\bar{\beta}  
+		\] The other side, \[
+		\operatorname{ker}\bar{\beta}= \operatorname{ker}\beta \cap \operatorname{ker}f= \operatorname{Im}\alpha \cap \operatorname{ker}f
+		\] Take \(  y \in \operatorname{ker}\bar{\beta}  \), there exists \(  x \in M^{\prime}   \) such that \(  y= \alpha \left( x \right)   \) and  \(  f\left( y \right)= f\left( \alpha \left( x \right)  \right)= 0    \). Since \(  f\circ \alpha = \alpha ^{\prime} \circ f^{\prime}   \), \(  \alpha ^{\prime} \circ f^{\prime} \left( x \right)= 0   \). Since \(  \alpha ^{\prime}   \) is injective, \(  x \in \operatorname{ker}f^{\prime}   \). Thus \(  y \in \operatorname{Im}\bar{\alpha}  \).          
+		\item For \(  \bar{\alpha}^{\prime}   \) , we need to show that for \(  x_1,x_2 \in N^{\prime}  \) such that \(  x_1-x_2 \in \operatorname{Im}f^{\prime}   \), \(  \alpha ^{\prime} \left( x_1 \right)-\alpha ^{\prime} \left( x_2 \right)\in \operatorname{Im}f    \)   . It is true by commutative \[
+		  \alpha ^{\prime} \left( x_1 \right)-\alpha ^{\prime} \left( x_2 \right)= \alpha ^{\prime} \left( x_1-x_2 \right) \in \operatorname{Im}\left( \alpha ^{\prime} \circ f^{\prime}  \right)= \operatorname{Im}\left( f\circ \alpha  \right)   \subseteq \operatorname{Im}f    
+		\] \(  \bar{\beta}^{\prime}   \)'s is similar.
+		\item  Take \(  [y]_{\sim \operatorname{Im}f } \in \operatorname{Im}\bar{\alpha}^{\prime}   \), then  there exists \(  [x]_{\sim \operatorname{Im}f^{\prime}  } \in \operatorname{Coker}f^{\prime}   \), such that \(  \alpha ^{\prime} \left( [x] _{\sim \operatorname{Im}f^{\prime} }\right)= [y]  _{\sim \operatorname{Im}f} \). Then \(  \alpha ^{\prime} \left( x \right)-y \in \operatorname{Im}f   \), there exists \(  z \in M  \), such that  \[
+		\alpha ^{\prime} \left( x \right)-y= f\left( z \right)  
+		\]  By commutative and exactness: \(  \operatorname{ker}\beta ^{\prime} = \operatorname{Im}\alpha ^{\prime}   \),   \[
+		\beta ^{\prime} \left( y \right)= \beta ^{\prime} \left( \alpha ^{\prime} \left( x \right)-f\left( z \right)   \right)=0- \beta ^{\prime} \circ f\left( z \right)       =- f^{\prime \prime} \circ \beta \left( z \right) \in \operatorname{Im}f^{\prime \prime}  
+		\], which shows that  \(  \bar{\beta}^{\prime} \left( [y]_{\sim \operatorname{Im}f} \right)   = [0]_{\sim \operatorname{Im}f^{\prime \prime} }\), \(  \operatorname{Im}\bar{\alpha}^{\prime}   \subseteq \operatorname{ker}\bar{\beta}^{\prime} \). 
+		
+		Then, take \(  [y]_{\sim \operatorname{Im}f}\in \operatorname{ker} \bar{\beta}^{\prime}   \). Then \(  y\in \operatorname{ker}\beta ^{\prime} = \operatorname{Im}\alpha ^{\prime}   \). There exists \(  x \in N^{\prime}   \) such that   \(  y= \alpha ^{\prime} \left( x \right)   \).  Then \(  [y]_{\sim \operatorname{Im}f}= \alpha ^{\bar{\prime}}\left( [x]_{\sim \operatorname{Im}f^{\prime} } \right)   \), \(  [y]_{\sim \operatorname{Im}f}\in \operatorname{Im} \bar{\alpha}^{\prime}   \), \(  \operatorname{ker}\bar{\beta}^{\prime} \subseteq \operatorname{Im} \bar{\alpha}^{\prime}  \).   
+		\item Take \(  z \in \operatorname{ker}f^{\prime \prime}   \). Since \(  \beta   \) is surjective, there exists \(  y \in M  \) such that \(  \beta \left( y \right)= z   \). Once we show that  \(   f\left( y  \right)\in \operatorname{Im}\alpha ^{\prime}    \)       , we can define\[
+	 \delta \left( z \right)= [\left({\alpha}^{\prime}  \right)^{-1} \left( f\left( y\right)  \right)  ]_{\sim \operatorname{Im}f^{\prime} }
+	\] provided that this definition is well defined. By commutative \[
+	\beta ^{\prime} \left( f\left( y \right)  \right)= f^{\prime \prime} \left( \beta \left( y \right)  \right)= f^{\prime \prime} \left( z \right)= 0 .  
+	\] Hence \(   f\left( y \right) \in \operatorname{ker}\beta ^{\prime} = \operatorname{Im} \alpha ^{\prime}   \). Finally, to show that it is well defined, we take \(  z_1,z_2\in \operatorname{ker}f^{\prime \prime}   \) such that  \(  \beta \left( y_1 \right)= \beta \left( y_2 \right)= z    \). We need to show that \( \left( \alpha ^{\prime}  \right)^{-1} \left( f\left( y_1-y_2 \right)    \right)\in \operatorname{Im}f^{\prime}      \).  Since \(  \beta \left( y_1 \right)-\beta \left( y_2 \right)= 0    \), \(  \beta \left( y_1-y_2 \right)= 0   \), \(  y_1-y_2\in \operatorname{ker}\beta = \operatorname{Im}\alpha   \). Suppose \(  \alpha \left( x \right)= y_1-y_2   \). Then \[
+	\left( \alpha ^{\prime}  \right)^{-1} \left( f\left( y_1-y_2 \right)  \right)= \left( \alpha ^{\prime}  \right)^{-1} \left( f\alpha \left( x \right)  \right)= \left( \alpha ^{\prime}  \right)^{-1} \left( \alpha ^{\prime} \circ f^{\prime}  \right)\left( x \right)= f^{\prime} \left( x \right) \in \operatorname{Im}f^{\prime}         
+	\]    , which completes the proof.
+	\end{enumerate}
+	
+	
+\end{proof}
+
+\begin{corollary}{}{}
+Consider the following commutative diagram of $R$-modules and $R$-linear maps in which the two rows are exact. If $f_1$ and $f_3$ are isomorphisms then so is $f_2$.
+
+\centering
+\begin{tikzcd}
+0 \arrow[r] & M_1 \arrow[r, "\alpha_1"] \arrow[d, "f_1"] & M_2 \arrow[r, "\alpha_2"] \arrow[d, "f_2"] & M_3 \arrow[r] \arrow[d, "f_3"] & 0 \\
+0 \arrow[r] & N_1 \arrow[r, "\beta_1"] & N_2 \arrow[r, "\beta_2"] & N_3 \arrow[r] & 0
+\end{tikzcd}
+\end{corollary}
+\begin{proof}
+	By snake lemma, we have \[
+	0\xrightarrow{\alpha _1 } \operatorname{ker}f_2\xrightarrow{\alpha _2 }0\xrightarrow{ \delta }0\xrightarrow{\beta _1 }\operatorname{Coker}f_2\xrightarrow{\beta _2 }0
+	\]is exact. Then we have \[
+	\begin{aligned}
+	0&=  \operatorname{ker}\alpha _2 = \operatorname{Im}\alpha _1 = 0\\ 
+	 &=  \operatorname{ker}f_2
+	\end{aligned}
+	\] which shows that \(  \operatorname{ker}f_2= 0  \). Similarly, \(  \operatorname{Coker} f_2  = 0\). The above shows that \(  f_2  \) is an isomorphisim.  
+\end{proof}
+\begin{corollary}{Four lemma}{}
+Consider the following commutative diagram of $R$ modules and $R$-linear maps in which the two rows are exact. Suppose that $f_1$ is surjective and $f_4$ is injective. Then
+\begin{enumerate}
+    \item[(i)] $f_2$ is injective $\implies f_3$ is injective.
+    \item[(ii)] $f_3$ is surjective $\implies f_2$ is surjective.
+\end{enumerate}
+\begin{center}
+\begin{tikzcd}
+M_1 \arrow[r, "\alpha_1"] \arrow[d, "f_1"] & M_2 \arrow[r, "\alpha_2"] \arrow[d, "f_2"] & M_3 \arrow[r, "\alpha_3"] \arrow[d, "f_3"] & M_4 \arrow[d, "f_4"] \\
+N_1 \arrow[r, "\beta_1"] & N_2 \arrow[r, "\beta_2"] & N_3 \arrow[r, "\beta_3"] & N_4
+\end{tikzcd}
+\end{center}
+
+\end{corollary}
+
+\begin{proofsketch}
+	如果 \(  f_3  \)被两个单射 \(  f_2,f_4  \)夹在中间,得益于 \(  f_1  \)是满射, 可以将右三列保持单射性地调整为一条snake, 从而导出 \(  f_3  \)是单射.
+	
+	类似地,如果 \(  f_2  \)被两个满射 \(  f_1,f_3  \)夹在中间, 得益于 \(  f_4  \)是单射, 左三列可以保持满射性地调整为一条snake, 导出 \(  f_2  \)是满射.  
+\end{proofsketch}
+
+\begin{proof}
+\begin{enumerate}
+	\item 
+We can construct a snake \[\begin{tikzcd}
+	& {M_2/\operatorname{ker}\alpha _2 } & {M_3} & {\operatorname{Im}\alpha _3} & 0 \\
+	0 & {N_2/ \ker{\beta_2}} & {N_3} & {N_4}
+	\arrow["{{\alpha_2}}", from=1-2, to=1-3]
+	\arrow["{{\bar{f_2}}}", from=1-2, to=2-2]
+	\arrow["{{\alpha_3}}", from=1-3, to=1-4]
+	\arrow["{{f_3}}", from=1-3, to=2-3]
+	\arrow[from=1-4, to=1-5]
+	\arrow["{{ f_4|_{\operatorname{Im}\alpha _3 }  }}", from=1-4, to=2-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow["{{\beta_2}}", from=2-2, to=2-3]
+	\arrow["{{\beta_3}}", from=2-3, to=2-4]
+\end{tikzcd}\] By snake lemma, the following sequence is exact \[
+  \operatorname{ker}\bar{f}_{2}\to \operatorname{ker}f_3\to \operatorname{ker}f_4|_{\operatorname{Im}\alpha _3 }
+\] Since \(  f_4  \) is injective,  \(  f_4|_{\operatorname{Im}_{\alpha _3 }}  \) is as well. Furthermore, by applying the snake lemma to the following diagram \[\begin{tikzcd}
+	& {M_1} & {M_2} & {M_2/\ker \alpha_2} & 0 \\
+	0 & {N_1/\ker{\beta_1}} & {N_2} & {N_2/\ker{\beta_2}}
+	\arrow["{{{\alpha_1}}}", from=1-2, to=1-3]
+	\arrow["{{{\bar{f_1}}}}"', from=1-2, to=2-2]
+	\arrow["p", from=1-3, to=1-4]
+	\arrow["{{{f_2}}}", from=1-3, to=2-3]
+	\arrow[from=1-4, to=1-5]
+	\arrow["{{{\bar{f_2}}}}", from=1-4, to=2-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow["{{{\bar{\beta_1}}}}"', from=2-2, to=2-3]
+	\arrow["p"', from=2-3, to=2-4]
+\end{tikzcd}\] We get \[
+0= \operatorname{ker}f_2\to \operatorname{ker}\bar{f_2}\xrightarrow{ \delta } \operatorname{Coker}\bar{f_1}
+\]is a exact suquence,where \(  \operatorname{Coker}\bar{f_1}= 0  \) since \(  f_1  \) is surjective and \(  \bar{f_1}  \) is as well.   It shows that \(  \operatorname{ker} \bar{f}_{2}= 0  \) . Finally, we have the following sequence is exact \[
+0= \operatorname{ker}\bar{f}_{2} \to \operatorname{ker}f_3 \to \operatorname{ker}f_4|_{\operatorname{Im}\alpha _3 }= 0
+\]It follows that \(  \operatorname{ker}f_3= 0  \), \(  f_3  \) is injective.   
+\item Another snake we can construct is \[\begin{tikzcd}
+	& {M_1} & {M_2} & {\operatorname{Im}\alpha _2= \operatorname{ker}\alpha _3  } & 0 \\
+	0 & {N_1/\ker{\beta_1}} & {N_2} & {\operatorname{Im}\beta _2 = \operatorname{ker}\beta_3  }
+	\arrow["{\alpha_1}", from=1-2, to=1-3]
+	\arrow["{\bar{f_1}}", from=1-2, to=2-2]
+	\arrow["{\alpha_2}", from=1-3, to=1-4]
+	\arrow["{f_2}", from=1-3, to=2-3]
+	\arrow[from=1-4, to=1-5]
+	\arrow["{f_3|_{\operatorname{Im}\alpha _2 } }", from=1-4, to=2-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow["{\bar{\beta_1}}", from=2-2, to=2-3]
+	\arrow["{\beta_2}", from=2-3, to=2-4]
+\end{tikzcd}\]Then by snake lemma ,the following sequence is exact \[
+\operatorname{ker}\bar{f_1}\to \operatorname{ker}f_2\to \operatorname{ker}f_3|_{\operatorname{Im}\alpha _2 }\to \operatorname{Coker}\bar{f_1}\to \operatorname{Coker}f_2\to \operatorname{Coker}f_3|_{\operatorname{Im}\alpha _2 }
+\] Furthermore, by applying the snake lemma to the following diagram 
+\[
+\begin{tikzcd}[column sep=large, row sep=large]
+	0 \arrow[r] & \operatorname{Ker}\alpha_3 \arrow[r, "\iota_M"] \arrow[d, "f_3|_{\operatorname{Im}\alpha_2}"] & M_3 \arrow[r, "\alpha_3"] \arrow[d, "f_3"] & \operatorname{Im}\alpha_3 \arrow[r] \arrow[d, "{f_4|_{\operatorname{Im}\alpha_3}}"] & 0 \\
+	0 \arrow[r] & \operatorname{Ker}\beta_3 \arrow[r, "\iota_N"] & N_3 \arrow[r, "\beta_3"] & \operatorname{Im}\beta_3 \arrow[r] & 0
+\end{tikzcd}
+\] We get \[
+0= \operatorname{ker}f_4|_{\operatorname{Im}\alpha _3 }\xrightarrow{ \delta }\operatorname{Coker}\left( f_3|_{\operatorname{Im}\alpha _2 } \right)\to \operatorname{Coker}f_3= 0 
+\]which shows that \(  \operatorname{Coker}\left( f_3|_{\operatorname{Im}\alpha _2 } \right)   \). Finally, we have the following sequence exact \[
+0= \operatorname{Coker}\bar{f_1}\to \operatorname{Coker}f_2\to \operatorname{Coker}f_3|_{\operatorname{Im}\alpha _2 }= 0
+\] Thus \(  \operatorname{Coker}f_2= 0  \), \(  f_2   \) is surjective.  
+\end{enumerate}
+   
+\end{proof}
+
+
+\begin{corollary}{Five lemma}{}
+In the following diagram of $R$-modules, the two rows are given to be exact. If $f_1, f_2, f_4$ and $f_5$ are isomorphisms then $f_3$ is also an isomorphism.
+
+\centering
+\begin{tikzcd}
+M_1 \arrow[r] \arrow[d, "f_1"] & M_2 \arrow[r] \arrow[d, "f_2"] & M_3 \arrow[r] \arrow[d, "f_3"] & M_4 \arrow[r] \arrow[d, "f_4"] & M_5 \arrow[d, "f_5"] \\
+M_1' \arrow[r] & M_2' \arrow[r] & M_3' \arrow[r] & M_4' \arrow[r] & M_5'
+\end{tikzcd}
+\end{corollary}
+
+
+\begin{proof}
+	By applying the Four lemma to the left four columns, we get \(  f_3  \) is injective. And by applying the Four lemma to the right four columns , we get \(  f_3  \) is surjective .  
+
+\end{proof}
+
+\section{Homology}
+
+\begin{definition}{}{}
+Given a chain complex $C_*$, define the \dfntxt{homology group} of $C_*$ to be the graded $R$-module
+\[
+H_*(C_*) := \bigoplus_{n \in \mathbb{Z}} H_n(C_*)
+\]
+by taking
+\[
+H_n(C_*) := \text{Ker } \partial_n / \text{Im } \partial_{n+1}, \quad \forall n \in \mathbb{Z}.
+\]
+\end{definition}
+
+\begin{proposition}{}{}
+ If \(  f: C_{*}\to C_{*}^{\prime}   \) is a  chain map then \(  f   \) induces a graded homomorphism \[
+ H_{*}\left( f \right):H_{*}\left( C_{*} \right)\to  H_{*}\left( C_{*}^{\prime}  \right)   
+ \]  In addition, this has the natruality property,\(  \mathrm{viz}  . \), 
+ \begin{enumerate}
+	\item \(  H_{*}\left( \operatorname{Id} \right)= \operatorname{Id}   \) 
+	\item If \(  g  \) is another chain map such that \(  f\circ g  \) is defined, then \[
+	H_{*}\left( f\circ g \right)= H_{*}\left( f \right)\circ H_{*}\left( g \right)   
+	\]  
+ \end{enumerate}
+  Thus, \(  H_{*}  \) is a \dfntxt{covariant functor} from the category of chain complexe to the category of graded modules. 
+\end{proposition}
+\begin{theorem}{}{}
+The homology of a direct sum of chain complexes is isomorphic to the direct sum of the homology of chain complexes.
+\end{theorem}
+
+\begin{proof}
+	 \[
+	 H_{n}\left( \oplus _{\alpha }C_{*}^{\alpha } \right) =  \operatorname{ker} \left( \oplus _{\alpha } \partial _{n}^{\alpha } \right)/ \operatorname{Im} \left( \oplus _{\alpha } \partial _{n+ 1}^{\alpha } \right)  
+	 \] \[
+	 \bigoplus _{\alpha }H_{n}\left( C_{*}^{\alpha } \right)= \bigoplus _{\alpha } \left( \operatorname{ker} \partial _{n}^{\alpha } / \operatorname{Im} \partial _{n+ 1}^{\alpha } \right)  
+	 \]There are obvious isomorphics : \[
+	 \operatorname{ker}\left( \oplus _{\alpha } \partial _{n}^{\alpha } \right)\simeq \oplus _{\alpha } \operatorname{ker} \partial _{n}^{\alpha },\quad \operatorname{Im}\left( \oplus _{\alpha } \partial _{n+ 1}^{\alpha } \right) \simeq \oplus _{\alpha } \operatorname{Im} \partial _{n+ 1}^{\alpha }  
+	 \]A standard result in algebra is that if $K_\alpha$ is a submodule of $M_\alpha$, then $$\frac{\bigoplus_\alpha M_\alpha}{\bigoplus_\alpha K_\alpha} \cong \bigoplus_\alpha \frac{M_\alpha}{K_\alpha}$$. Hence , we have \[
+	 \oplus _{\alpha }\operatorname{ker} \partial _{n}^{\alpha }/ \oplus _{\alpha }\operatorname{Im} \partial _{n+ 1}^{\alpha }\simeq \bigoplus _{\alpha } \left( \operatorname{ker} \partial _{n}^{\alpha }/ \operatorname{Im}_{n+ 1}^{\alpha } \right) 
+	 \]
+\end{proof}
+\begin{theorem}{}{}
+Given a short exact sequence of chain complexes
+\[
+0 \to C'_* \xrightarrow{\alpha} C_* \xrightarrow{\beta} C''_* \to 0
+\]
+there is a functorial long exact sequence of homology groups
+\[
+\to H_n(C'_*) \xrightarrow{H_n(\alpha)} H_n(C_*) \xrightarrow{H_n(\beta)} H_n(C''_*) \xrightarrow{\delta_n} H_{n-1}(C'_*) \xrightarrow{H_{n-1}(\alpha)} H_{n-1}(C_*) \to
+\]
+\end{theorem}
+\begin{proofsketch}
+	Consider the diagram 
+
+% https://q.uiver.app/#q=WzAsOCxbMSwwLCJDJ19uL1xcbWF0aHJte0ltfSBcXHBhcnRpYWwnX3tuKzF9Il0sWzIsMCwiQ19uL1xcbWF0aHJte0ltfSBcXHBhcnRpYWxfe24rMX0iXSxbMywwLCJDJydfbi9cXG1hdGhybXtJbX0gXFxwYXJ0aWFsJydfe24rMX0iXSxbNCwwLCIwIl0sWzAsMSwiMCJdLFsxLDEsIlxcbWF0aHJte0tlcn0gXFxwYXJ0aWFsJ197bi0xfSJdLFsyLDEsIlxcbWF0aHJte0tlcn0gXFxwYXJ0aWFsX3tuLTF9Il0sWzMsMSwiXFxtYXRocm17S2VyfSBcXHBhcnRpYWwnJ197bi0xfSJdLFswLDEsIlxcYmFye1xcYWxwaGF9X24iXSxbMCw1LCJcXHBhcnRpYWwnX24iXSxbMSwyLCJcXGJhcntcXGJldGF9X24iXSxbMSw2LCJcXHBhcnRpYWxfbiJdLFsyLDNdLFsyLDcsIlxccGFydGlhbCcnX3tuKzF9Il0sWzQsNV0sWzUsNiwiXFxhbHBoYSdfe24tMX0iXSxbNiw3LCJcXGJldGEnX3tuLTF9Il1d
+\[\begin{tikzcd}
+	& {C'_n/\mathrm{Im} \partial'_{n+1}} & {C_n/\mathrm{Im} \partial_{n+1}} & {C''_n/\mathrm{Im} \partial''_{n+1}} & 0 \\
+	0 & {\mathrm{Ker} \partial'_{n-1}} & {\mathrm{Ker} \partial_{n-1}} & {\mathrm{Ker} \partial''_{n-1}}
+	\arrow["{\bar{\alpha}_n}", from=1-2, to=1-3]
+	\arrow["{\partial'_n}", from=1-2, to=2-2]
+	\arrow["{\bar{\beta}_n}", from=1-3, to=1-4]
+	\arrow["{\partial_n}", from=1-3, to=2-3]
+	\arrow[from=1-4, to=1-5]
+	\arrow["{\partial''_{n+1}}", from=1-4, to=2-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow["{\alpha'_{n-1}}", from=2-2, to=2-3]
+	\arrow["{\beta'_{n-1}}", from=2-3, to=2-4]
+\end{tikzcd}\]
+\end{proofsketch}
+\end{document}

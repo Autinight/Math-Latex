@@ -1,0 +1,343 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+    
+\chapter{奇异同调}
+
+\section{奇异同调群}
+
+
+\begin{definition}{单形、链、链群}
+    设 \(  X  \)是任意拓扑空间, \(  n\ge 0  \)是整数；
+    \begin{enumerate}
+        \item  \(  X  \)上的一个奇异 \(  n  \)-单形,是指一个连续映射 \(   \sigma : \left|  \Delta _{n} \right|\to X   \).
+        \item \(  X  \)上的一个奇异 \(  n  \)-链,是指一个有限和 \(  \sum _{i} n_{i} \sigma _i   \),其中 \(  n_{i}\in \mathbb{Z}  \),\(   \sigma _i   \)是 \(  X  \)上的奇异\(  n  \)-单形.
+        \item \(  X  \)的全体奇异 \(  n  \)-链上可以定义出自然的加法,\(  X  \)的 全体奇异 \(  n  \)-单形 作为一组基,生成出一个自由阿贝尔群,记作 \(  S_{n}\left( X \right)   \).
+        \item 对于 \(  n<0  \)定义 \(  S_{n}\left( X \right)= 0   \),则  全体 \(  n  \)-链群的直和 \(  \bigoplus _{ n \in \mathbb{Z}}S_{n}\left( X \right)   \)构成一个分次阿贝尔群, 记作 \(  S_{\cdot }\left( X \right)  \).                
+    \end{enumerate}
+      
+\end{definition}
+
+
+
+\begin{corollary}
+    设 \(  f:X\to Y  \)是拓扑空间的映射, 则 \(   \sigma \mapsto f\circ  \sigma   \)扩张出分次群同态 \(  f_{\cdot }: S_{\cdot }\left( X \right)\to S_{\cdot }\left( Y \right)    \). 
+    此外, \(  {}_{\cdot }  \)满足函子性,从而 可以定义出一个函子 \(  X \rightsquigarrow  S_{\cdot }\left( X \right)   \)  .
+\end{corollary}
+
+\begin{definition}
+    若 \(  A  \)是 \(  X  \)的子空间,且 \(   \sigma   \)是 \(  A  \)上的一个奇异单形,则通过含入映射 \(  A \hookrightarrow X  \), \(   \sigma   \)可视为 \(  X  \)上的一个单形.
+    此时 \(  S_{n}\left( A \right)   \)可看做 \(  S_{n}\left( X \right)   \)的一个子群.记商群 \(  S_{n}\left( X \right)/ S_{n}\left( A \right)    \)为 \(  S_{n}\left( X,A \right)   \).
+    \(  X  \)上全体不含于 \(  A  \)的 奇异 \(  n  \)-单形作为一组基生成出自由阿贝尔群 \(  S_{n}\left( X,A \right)   \).  可以类似地定义 \(  S\cdot \left( X,A \right)   \).               
+\end{definition}
+
+\begin{remark}
+    当 \(  A =  \varnothing  \)时, \(  S_{n}\left( X,A \right)=  S_{n}\left( X \right)    \),因此对 \(  S_{n}\left( X,A \right)   \)的研究适用于 \(  S_{n}\left( X \right)   \)    .
+\end{remark}
+
+
+\begin{definition}{面算子}
+    对于每个整数 \(  r\ge 0  \),定义面算子 \(  F^{r}:\mathbb{R} ^{\infty}\to \mathbb{R} ^{\infty}  \) 按\[
+    F^{r}\left( \mathbf{e}_{s}  \right): =  \begin{cases} \mathbf{e}_{s},& s< r\\ 
+     \mathbf{e}_{s+ 1},& s\ge r \end{cases}  
+    \] 并做线性扩张. 
+\end{definition}
+
+\begin{lemma}
+    \(  F^{r} \circ F^{s}=  F^{s-1}\circ F^{r},r<s  \). 
+\end{lemma}
+
+\begin{definition}{边缘算子}
+    对于 \(  n\ge 1  \),以及 \(  X  \)的任意 奇异 \(  n  \)-单形 \(   \sigma   \),定义 \[
+    \partial _{n}\left(  \sigma  \right)= \sum _{r= 0}^{n} \left( -1 \right)^{r} \sigma \circ F^{r}  
+    \]    并做线性扩张,得到同态 \(  \partial _{n}: S_{n}\left( X,A \right)\to S_{n-1}\left( X,A \right)    \).对于 \(  n\le 0  \)定义 \(  \partial _{n}: =  0  \).   
+\end{definition}
+
+\begin{proposition}
+    \(  \left( S_\cdot \left( X,A \right),\partial _{\cdot }  \right): =  \left\{ S_{n}\left( X,A \right),\partial _{n}  \right\}   \) 构成一个链复形,且存在函子 \(  \left( X,A \right) \rightsquigarrow  \left( S_\cdot \left( X,A \right),\partial   \right)    \) 
+\end{proposition}
+
+\begin{proof}
+    首先说明 \(  \partial \circ \partial \left(  \sigma  \right)= 0   \)对于任意的 奇异 \(  n  \)-单形（ \(  n\ge 2  \) ）成立.   
+    \[
+    \begin{aligned}
+     \partial \circ \partial \left(  \sigma  \right) & =  \partial \left( \sum _{r= 0}^{n}\left( -1 \right)^{r} \sigma \circ F^{r}  \right)\\ 
+      & =  \sum _{r= 0}^{n}\sum _{s= 0}^{n-1} \left( -1 \right)^{r+ s}  \sigma \circ F^{r}\circ F^{s}\\ 
+       & =   \sum _{r< s} \left( -1 \right)^{r+ s} \sigma \circ F^{r}\circ F^{s}+ \sum _{ s \le  r}\left( -1 \right)^{r+ s} \sigma \circ F^{r}\circ F^{s}   \\ 
+        & =  \sum _{r\le s-1} \left( -1 \right)^{r+ s} \sigma \circ F^{s-1}\circ F^{r}+ \sum _{s\le  r}\left( -1 \right)^{r+ s} \sigma \circ F^{r}\circ F^{s}\\ 
+         & =    -\sum _{i\le j} \left( -1 \right)^{i+ j} \sigma \circ F^{i}\circ F^{j}+\sum _{s\le r}\left( -1 \right)^{r+ s} \sigma \circ F^{r}\circ F^{s}\\
+          & =  0 
+    \end{aligned}
+    \]
+    给定映射 \( f: \left( X,A \right)  \to \left( Y,B \right)  \),可以定义 \(  f_{\cdot }\left(  \sigma  \right): = f\circ  \sigma : S_{n}\left( X,A \right)\to S_{n}\left( Y,B \right)       \) .
+    我们有 \[
+    \begin{aligned}
+    f_{\cdot }\circ \partial \left(  \sigma  \right) &=  f_{\cdot }\left( \sum _{r= 0}^{n}\left( -1 \right)^{r} \sigma \circ F^{r}  \right)   \\ 
+     & =  \sum _{r= 0}^{n} \left( -1 \right)^{r}f_{\cdot }\circ  \sigma \circ F^{r}\\ 
+      & = \sum _{r= 0}^{n} \left( -1 \right)^{r} \left( f\circ  \sigma  \right)\circ F^{r}\\ 
+       & =  \partial \left( f\circ  \sigma  \right)\\ 
+        & =  \partial \circ f_{\cdot }\left(  \sigma  \right)    
+    \end{aligned}
+    \]于是 \(  f_{\cdot }  \)给出 \(  S_{n}\left( X,A \right)\to S_{n}\left( Y,B \right)    \)的链映射.此外,若 \(  g: \left( Y,B \right)\to \left( Z,C \right)    \),则 \[
+    \left( g\circ f\right)_{\cdot }\left(  \sigma  \right) =  \left( g\circ f \right)   \circ  \sigma  =  g\circ \left( f\circ  \sigma  \right)=  g_{\cdot }\left( f\circ  \sigma  \right)= \left( g_{\cdot }\circ f_{\cdot } \right) \left(  \sigma  \right)   
+    \]  这就说明了函子性.综上,我们给出了  \(  \left( X,A \right)   \)到 链复形\(  \left( S_{\cdot }\left( X,A \right),\partial   \right)   \)的函子  .
+   
+    \hfill $\square$
+\end{proof}
+
+
+\begin{definition}{相对同调}
+     \(  \left( X,A \right)   \)是一对拓扑空间,使得 \(  A\subseteq X  \). 称 \(  H_{*}\left( X,A \right): =  H_{*}\left( S_{\cdot }\left( X,A \right)  \right)    \)为 \(  \left( X,A \right)   \)的相对同调群.
+     取 \(  A =  \varnothing  \),得到同调群 \(  H_{*}\left( X \right)   \)    .
+\end{definition}
+
+\begin{proposition}
+    存在函子 \(  X \rightsquigarrow  S_{\cdot }\left( X,A \right)   \),以及函子 \(  S_{\cdot }\left( X,A \right) \rightsquigarrow  H_{*}\left( X,A \right)    \),进而存在函子 \(  X \rightsquigarrow  H_{*}\left( X,A \right)   \).   
+ \end{proposition}
+ \begin{proof}
+    对于满足 \(  f\left( A \right)\subseteq B   \)的映射 \(  f:X\to Y  \),或者说映射 \(  f:\left( X,A \right)\to \left( Y,B \right)    \).由于 \(  f_{\sharp }:C_{n}\left( X \right)\to C_{n}\left( Y \right)    \)将 \(  C_{n}\left( A \right)   \)中的元素映到 \(  C_{n}\left( B \right)   \),商关系诱导出良定义的 \(  f_{\sharp }:C_{n}\left( X,A \right)\to C_{n}\left( Y,B \right)    \).并且 由于\(  f_{\sharp } \partial =  \partial f_{\sharp }  \)  对绝对链是成立的,它对相对链也是成立的.      
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{R-系数同调}
+    对于给定的交换环 \(  R  \),我们可以完全类似地构造 \(  X  \)的 \(  R  \)-系数奇异 \(  n  \)-链的自由模 \(  S_{n}\left( X;R \right)   \).
+    同之前一样,可以得到 链复形 \(  S_{\cdot }\left( X;R \right)   \),子链复形 \(  S_{\cdot }\left( A;R \right)   \),以及商复形 \(  S_{\cdot }\left( X,A ;R\right)   \).
+    对应的同调群 \(  H_{*}\left( X;R \right)   \)称为 \(  X  \)的 \(  R  \)-系数同调群,显然是一个分次 \(  R  \)-模 . \(  R= \mathbb{Z}   \)时通常略去记号 \(  R  \)为 \(  H_{*}\left( X \right)   \) .             
+\end{definition}
+
+\section{同伦不变性}
+\begin{definition}
+    称 \(  P  \)是 链映射 \(  f_{\sharp }  \)和  \(  g_{\sharp }  \) 的一个\textbf{链同伦},若 \[
+     \partial P+ P \partial = g_{\sharp }-f_{\sharp }
+    \]
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 若 \(  \alpha   \)是循环\(  P  \)是链同伦 ,则 \(  \left( g_{\sharp }-f_{\sharp } \right)  \left( \alpha  \right)=  \partial P\left( \alpha  \right)   \)是一个边界,这表明 \(  g_{*}= f_{*}  \).   
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{theorem}
+    若 \(  f,g:X\to Y  \)同伦,则 \(  f_{\sharp }  \)和 \(  g_{\sharp }  \)是链同伦的,进而 在 \(  H_{*}\left( X \right)   \)上, \(  f_{*}= g_{*}  \)     
+\end{theorem}
+\begin{proof}
+    将同伦的时间变化,用prism operator表现为分解为若干单形的棱柱.构造prism operator P,使得它称为 \(  f_{\sharp }  \)和 \(  g_{\sharp }  \)之间的链同伦.  
+
+    \hfill $\square$
+\end{proof}
+\begin{theorem}
+    若 \(  f,g: \left( X,A \right)\to \left( Y,B \right)    \)彼此同伦,则在 \(  H_{*}\left( X,A \right)   \)上  \(  f_{*}= g_{*}  \)  .
+\end{theorem}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 即同伦的映射诱导出链同伦的链映射.
+        \item 在reduced homology上上的诱导同态也相等.
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{proof}
+    prism operator  \(  P  \) 将 \(  C_{n}\left( A \right)   \)映到 \(  C_{n+ 1}\left( B \right)   \),从而诱导出良定义的relative prism operator \(  P: S_{n}\left( X,A \right)\to S_{n+ 1}\left( Y,B \right)    \),满足 \(   \partial P+ P \partial = g_{\sharp }-f_{\sharp }  \),即相对链同伦也是成立的.    
+
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}
+    同伦等价的拓扑空间有同构的同调群；特别地,可缩空间有点空间的同调群.
+\end{corollary}
+\begin{proof}
+    由同伦不变性立即得到.
+
+    \hfill $\square$
+\end{proof}
+
+\section{奇异同调的其它性质和例子}
+
+
+
+
+\begin{proposition}{点空间的同调群}
+    设 \(  X  \)是一个点,则 \(  H_{n}\left( X \right)= 0,\forall n> 0   \), \(  H_0\left( X \right)\simeq \mathbb{Z}    \)   
+\end{proposition}
+\begin{proof}
+    对于每个 \(  n  \),奇异 \(  n  \)-单形有且仅有一个 \(   \sigma _{n}: \Delta ^{n}\to X  \).   边缘算子的像 \(   \partial \left(  \sigma _{n} \right)= \sum _{i}\left( -1 \right)^{i} \sigma _{n-1}    \),当 \(  n  \)奇数时为 \(   \sigma _{n-1}  \),偶数时为0.相邻两个边缘算子,一个是0,一个是同构,从而 \(    \operatorname{ker}\,\)和 \(  \operatorname{Im}\,  \),要么前者是0,要么后者全空间.正数阶的同调群总是平凡的.     
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}{道路分支的同调}
+    设 \(  \left\{ X_{j}: j \in J \right\}  \)是 \(  X  \)的连通分支,使得 \(  X =  \sqcup _{j \in J} X_{j}  \)   .
+    由于 \(  \left|  \delta _n  \right|   \)道路连通,因此每个 奇异 \(  n  \)-单形都完整地落在某一个道路分支 \(  X_{j}  \)上.
+    这表明 \(  S_{\cdot }\left( X \right)   \)可以分解为 \(  S_{\cdot }\left( X_{j} \right)   \)的直和.    
+    进而 \(  H_{*}\left( X \right)   \)也分解为 \(  H_{*}\left( X_{j} \right)   \)   的直和.
+\end{proposition}
+
+\begin{remark}
+    因此,总可以只处理道路连通空间.
+\end{remark}
+
+
+\begin{proposition}
+    若 \(  X  \)非空且道路连通,则 \(  H_0\left( X \right)\simeq \mathbb{Z}    \).  
+\end{proposition}
+\begin{proof}
+    \(  H_0\left( X \right)= C_0\left( X \right) / \operatorname{Im}\, \partial _{1}    \).断言,一些0-单形是边缘,当且仅当符号和为0.  首先,奇异1-单形的边缘一正一负,符号和为0,是普遍成立的.关键在于,道路可以视为其一1-单形,道路连通空间上,一些点的符号和若为0,每个点的用一个 符号相反\(   \sigma _0   \)配对,使得 它们称为连接两点道路的边缘,这样我们用来配对的 \(   \sigma _0   \)一共有0个,这样就把它们写成了奇异1-链的边缘. 
+
+    \hfill $\square$
+\end{proof}
+\begin{example}[(reduced homology)]
+    定义 \(   \varepsilon   \)为将0-链映为系数和的同态. 称同态 \(  \varepsilon   \)为增广同态,可以按以下方式扩张出链复形 \(  \tilde{S}\left( X \right)    \)           \[
+         \tilde{S}_n(X)=\left\{\begin{array}{ll}S_n(X),&\mathrm{~if~}n\geq0,\\\mathbb{Z},&\mathrm{~if~}n=-1,\\(0),&\mathrm{~if~}n<-1;\end{array}\right.\quad\mathrm{~and~}\quad\tilde{\partial}_n=\left\{\begin{array}{ll}\partial_n,&n\geq1,\\\varepsilon,&n=0,\\0,&n<0.\end{array}\right.
+     \]相应的同调群记作 \(  \tilde{H}_{*}\left( X \right)   \),称为约化同调群.显然 \(  \tilde{H}_{i}\left( X \right)= \left( 0 \right),i<0;\tilde{H_{i}}\left( X \right)\simeq H_{i}\left( X \right), i>1; \tilde{H_0}\left( X \right) \oplus \mathbb{Z} \simeq H_0\left( X \right)        \)  .特别地,对于道路连通空间 \(  X  \), \(  \tilde{H_0}\left( X \right)= 0   \).  
+ \end{example}
+ 
+ \begin{remark}
+     \begin{enumerate}
+         \item 约化同调的引入使得点空间的同调得以完全消失.
+         \item 对于非空的 \(  A\subseteq X  \),我们有 \(   \tilde{H}_{*}\left( X,A \right)= H_{*}\left( X,A \right)   \),   并且命题\ref{pair-top-homo-long-exact}对于 \(  \tilde{H}  \)有完全相同的形式. 
+     \end{enumerate}
+     
+ \end{remark}
+ 
+ \hspace*{\fill} 
+ 
+
+
+\begin{proposition}{\(  \left( X,A \right)   \) 的同调长正合列} \label{pair-top-homo-long-exact}
+    由 \(  S\left( X,A \right)   \)的定义,我们有正合列 \[
+        0\to S_.(A)\to S_.(X)\to S_.(X,A)\to0 \footnote{只是把定义用正合列的说法写一遍}
+    \] 由定理\ref{thm:short-exact-to-homo-long-exact},可以得到长正合列 \[
+        \left.\begin{array}{l}\cdots\to H_i(A)\to H_i(X)\to H_i(X,A)\xrightarrow{\delta}H_{i-1}(A)\to\cdots\\\cdots\to H_1(X,A)\xrightarrow{\delta}H_0(A)\to H_0(X)\to H_0(X,A),\end{array}\right\}
+    \]并且对应关系满足函子性.
+\end{proposition}
+
+
+\begin{note}
+    \(  x \in H_{n}\left( X,A \right)   \)上的一个元素是 被 \(  X  \)上的一个链 \(  \alpha   \)代表,它满足 \(   \partial \alpha \in S_{n-1}\left( A \right)   \)   
+\end{note}
+\begin{remark}
+    \begin{enumerate}
+        \item 同样的正合列适用于reduced homology \(  \tilde{H}  \). 
+        \item 连接同态 \(   \delta    \) 几乎就是边缘同态\(   \partial   \)\footnote{故用 \(   \partial   \)代替它的记号 } , \(   \partial [\alpha ]  \)被映到 \(   \partial \alpha   \)在 \(  H_{n-1}\left( A \right)   \)上的等价类.   
+        \item \(  H_{n}\left( X,A \right)   \)被用来衡量 \(  H_{n}\left( X \right)   \)和 \(  H_{n}\left( A \right)   \)之间的差距. \(  H_{n}\left( X,A \right)= 0   \)当且仅当 \(  H_{n}\left( A \right)\simeq H_{n}\left( X \right)    \)     .
+        \item 对于 \(  \left( X,A \right)   \),\(  A\neq \varnothing  \)的reduced homology : 相同非负维数的链复形的短正合列  ,拼上一个\(  -1  \)维的短正合列 \(  0\to \mathbb{Z} \to \mathbb{Z} \to 0\to 0  \),得到完全相同的长正合列.特别地,对于任意的 \(  n  \),  \(  \tilde{H}_{n}\left( X,A \right)   \)和 \(  H_{n}\left( X,A \right)   \)在 \(  A\neq \varnothing  \)时一样.   \footnote{0阶处的差异,因为做商的原因,被抵消掉了}
+    \end{enumerate}
+    
+\end{remark}
+
+
+\begin{example}
+    \begin{enumerate}
+        \item 截取自同调长正合列的 \[
+        H_{i}\left( D^{n}, \partial D^{n} \right)\to \tilde{H}_{i-1}\left( S^{n-1} \right)  
+        \]对于所有的 \(  i  \)都是一个同构.从而 \[
+        H_{i}\left( D^{n}, \partial D^{n} \right)\simeq \begin{cases} \mathbb{Z} ,&i= n\\ 
+         0,& \text{otherwise} \end{cases}  
+        \]
+        \item 对于 \(  x_0 \in X  \), \(  \left( X,x_0 \right)   \)  给出同构 \(  H_{n}\left( X,x_0 \right)\simeq \tilde{H}_{n}\left( X \right) ,\forall n    \). 
+    \end{enumerate}
+    
+\end{example}
+
+\hspace*{\fill} 
+
+
+\subsection{同调切除}
+
+\begin{theorem}
+    给定子空间 \(  Z\subseteq A\subseteq X  \),使得 \(  \overline{Z}\subseteq A^{\circ}  \),则含入映射  \(  \left( X-Z,A-Z \right)\hookrightarrow \left( X,A \right)    \),对于所有 \(  n  \),诱导出同构 \(  H_{n}\left( X-Z,A-Z \right)\to H_{n}\left( X,A \right)    \).等价地说,对于所有的子空间 \(  A,B\subseteq X   \),使得它们的内部覆盖了 \(  X  \),含入映射 \(  \left( B,A\cap B \right)\hookrightarrow \left( X,A \right)    \)对于所有的 \(  n  \)诱导出群同构 \(  H_{n}\left( B, A\cap B \right)\to H_{n}\left( X,A \right)    \).      
+\end{theorem}
+
+\begin{lemma}
+    给定拓扑空间 \(  X  \),和它的两个子空间 \(  X_1,X_2  \).记 \(  X_{i}  \)到 \(  X  \)的含入映射为 \(  \eta _i , i= 1,2  \),并记它们在
+    链复形上的诱导也为 \(  \eta _i : S_{.} \left( X _{i} \right)\to S_{.}\left( X \right)     , i= 1,2\).考虑链映射 \[
+    \left( \eta _1 ,-\eta _2  \right): S_{.}\left( X_1 \right) \oplus S_{.}\left( X_2 \right)\to S_{.}\left( X \right).    
+    \]      此映射连同 嵌入 \(  i:S_{.}\left( X_1\cap X_2 \right)\to  S_{.}\left( X_1 \right)\oplus S_{.}\left( X_2 \right), i\left( a \right): =  \left( a,a \right),a \in X_1\cap X_2       \) 给出一个链复形的短正合列
+    \[
+        0\to S_.(X_1\cap X_2)\to S_.(X_1)\oplus S_.(X_2)\to S_.(X_1)+S_.(X_2)\to0
+    \]
+\end{lemma}
+
+\begin{proof}
+    对于 \(  \left( a,b \right) \in S_{.}\left( X_1 \right)\oplus S_{.}\left( X_2 \right)     \), \[
+    \left( \eta _1 ,-\eta _2  \right)\left( a,b \right)= 0 \iff  \eta _1 \left( a \right)= \eta _2 \left( b \right)\iff a= b \in S_{.}\left( X_1\cap X_2 \right)    
+    \]这表明 \[
+    \operatorname{ker}\,\left( \eta _1 ,-\eta _2  \right)= \operatorname{Im}\,i 
+    \]又易见 \(  i  \)单, \(  \left( \eta _1 ,-\eta _2  \right)   \)满,因此 短正合列存在.  
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{lemma}
+    令 \(  X =  A\cup B  \),则以下表述等价
+    \begin{enumerate}
+        \item \(  S_{.}\left( A \right)+ S_{.}\left( B \right)\to S_{.}\left( X \right)     \)诱导出同调群的同构；
+        \item  \(  [S_{.}\left( A \right)+ S_{.}\left( B \right)  ]/S_{.}\left( B \right)\to S_{.}\left( X \right)    / S_{.}\left( B \right) \)  诱导出同调群的同构；
+        \item \(  S_{.}\left( A \right)   /S_{.}\left( A\cap B \right) \to S_{.}\left( X \right) / S_{.}\left( B \right)  \)诱导出同调群上的同构. 
+    \end{enumerate}
+     
+\end{lemma}
+
+
+\begin{proof}
+    对于前两条的等价性,考虑以下短正合列间的态射在定理\ref{thm:short-exact-to-homo-long-exact}中函子下的作用 
+    \[\begin{tikzcd}
+	0 && {S_.(B)} && {S.(A)+S_.(B)} && {[S.(A)+S_.(B)]/S_.(B)} && 0 \\
+	\\
+	0 && {S_.(B)} && {S_.(X)} && {S_.(X)/S_.(B)} && 0
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-3, to=1-5]
+	\arrow[from=1-3, to=3-3]
+	\arrow[from=1-5, to=1-7]
+	\arrow[from=1-5, to=3-5]
+	\arrow[from=1-7, to=1-9]
+	\arrow[from=1-7, to=3-7]
+	\arrow[from=3-1, to=3-3]
+	\arrow[from=3-3, to=3-5]
+	\arrow[from=3-5, to=3-7]
+	\arrow[from=3-7, to=3-9]
+\end{tikzcd}\]作用的结果是同调群间的梯形长正合列,等价性由五引理\ref{five-lemma}立即得到.
+   
+后两条的等价性由同构定理 \(  [S.(A)+ S_{.}\left( B \right) ] /S_{.}\left( B \right)\simeq  S_{.}\left( A \right) /S_{.}\left( A\cap B \right)     \)立即得到. 
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{切除对}
+    令 \(  X  \)是拓扑空间, \(  A,B  \)是 \(  X  \)的两个子空间,使得 \(  X =  A\cup B  \).则称含入映射 \(  \left( A,A\cap B \right) \hookrightarrow \left( X,B \right)    \)是一个切除映射.
+    在此之上,称子空间对 \(  \left\{ A,B \right\}  \)是 \(  X  \)的奇异同调的一个切除对,若含入映射 \[
+    S_{.}\left( A \right)+ S_{.}\left( B \right) \hookrightarrow S_{.}\left( A\cup B \right)   
+    \]诱导出同调群的同构.       
+\end{definition}
+
+\begin{remark}
+    上方的引理给出切除对的若干等价条件.
+\end{remark}
+
+\begin{theorem}{同调切除}
+    设 \(  \left\{ A,B \right\}  \)是 \(  X  \)的一个切除对,则含入映射 \(  \left( A,A\cap B \right)\hookrightarrow \left( A\cup B ,B\right)    \)诱导出
+    同调群的同构 \(  H_{*}\left( A,A\cap B \right)\simeq H_{*}\left( A\cup B,B \right)    \).   
+\end{theorem}
+
+\begin{remark}
+    由上面的引理立即得到.
+\end{remark}
+
+\begin{theorem}
+    若 \(  X =  X_1\cup X_2= \mathrm{int}_{X}\left( X_1 \right)\cup \mathrm{int}_{X}\left( X_2 \right)    \) ,则 \(  \left\{ X_1,X_2 \right\}  \)是 \(  X  \)的奇异同调的一个切除对.  
+\end{theorem}
+
+\begin{definition}{Mayer-Vietoris}
+    设 \(  \left\{ X_1,X_2 \right\}  \)是一个切除对,考虑短正合列\[
+        0\to S_.(X_1\cap X_2)\xrightarrow{i} S_.(X_1)\oplus S_.(X_2)\xrightarrow{j} S_.(X_1)+S_.(X_2)\to0
+    \]通过定理 \ref{thm:short-exact-to-homo-long-exact}诱导出的同调长正合列,其中 \(  i \left( z \right)= \left(i_1z,-i_2z \right)   \), \(  j\left(  z_1,z_2\right)= \left( j_1z_1,j_2z_2 \right)    \) ,\(  i_1,i_2,j_1,j_2  \)均为含入映射 .由于 \(  H_{*}\left( S_{.}\left( X_1 \right)+ S_{.}\left( X_2 \right)   \right)   \) 与
+     \(  H_{*}\left( X_1\cup X_2 \right)   \)同构, 可以将前者用后者替换,得到长正合列 \[
+        \begin{aligned}&\cdots\to H_{i+1}(X_1\cup X_2)\overset{\partial}{\operatorname*{\to}}H_i(X_1\cap X_2)\overset{i_*}{\operatorname*{\to}}H_i(X_1)\oplus H_i(X_2)\overset{j_*}{\operatorname*{\to}}H_i(X_1\cup X_2)\to\cdots\\&\cdots\to H_1(X_1\cup X_2)\overset{\partial}{\operatorname*{\to}}H_0(X_1\cap X_2)\to H_0(X_1)\oplus H_0(X_2)\to H_0(X_1\cup X_2)\end{aligned}
+     \]称为 \textbf{Mayer-Vietoris}列. 
+\end{definition}
+
+\end{document}

@@ -1,0 +1,26 @@
+\documentclass[math]{amznotes}
+%You can add "fastcompile" to the "\documentclass[]" to make compiling faster.
+\usepackage{lipsum}     % filler text
+%\usepackage{tikz-cd}
+\usepackage{quiver}
+\usepackage{subfiles}
+
+\usepackage{comment} % 加载 comment 宏包
+
+% 使用下面这行来隐藏所有 proof 环境
+% 这会让 LaTeX 在处理时完全跳过 proof 环境及其中的所有内容
+%\excludecomment{proof}
+% 如果想显示 proof 环境，只需注释掉上面那一行即可。
+
+
+\begin{document}
+
+    
+\tableofcontents
+
+\subfile{Chapters/Introduction.tex}
+
+\subfile{Chapters/Abstract Integration.tex}
+
+\amzindex
+\end{document}

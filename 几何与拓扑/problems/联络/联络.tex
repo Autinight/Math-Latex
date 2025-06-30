@@ -1,0 +1,68 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+    
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+\begin{problemsec}
+    
+\end{problemsec}
+
+\begin{problem}
+    设 \(  M  \)是光滑 \(  n  \)-流形, \(   \nabla   \)是   \(  TM  \)上的一个联络, \(  \left( E_{i} \right)   \)是某个开子集 \(  U\subseteq M  \)上的局部标架, \(  \left(  \varepsilon ^{i} \right)   \)是对偶的余标架.
+    \begin{enumerate}
+        \item 说明存在唯一的  \(  U  \)上光滑1-形式的 \(  n\times n  \)矩阵 \(  \left( { \omega _{i}}^{j} \right)   \)   ,称为这组标架的\textbf{联络1-形式},使得 \[
+         \nabla _{X}E_{i}=  \omega _{i}^{j}\left( X \right)E_{j} 
+        \]对于所有的 \(  X \in \mathfrak{X}\left( U \right)   \)成立. 
+        \item CARTAN第一结构方程: 证明这些微分形式满足以下方程 \[
+        \,\mathrm{d}  \varepsilon ^{j}=  \varepsilon ^{i}\wedge  \omega _{i}^{j}+ \tau ^{j}
+        \]其中 \(   \tau^1,\cdots,\tau^n \in  \Omega ^{2}\left( M \right)   \)是\textbf{挠2-形式},通过以下挠张量 \(  \tau   \)和局部标架\(  \left( E_{i} \right)   \)定义 \[
+        \tau \left( X,Y \right)=  \tau ^{j}\left( X,Y \right)E_{j}  
+        \]   
+
+    \end{enumerate}
+        
+\end{problem}
+\begin{proof}
+    若存在这样的 \(  1  \)-形式 \(   \omega   \),则 \[
+   \Gamma _{ij}^{k}E_{k}=    \nabla _{E_{i}}E_{j}=  \omega _{j}^{k}\left( E_{i} \right)E_{k} 
+    \]  得到 \(   \omega _{j}^{k}\left( E_{i} \right)=  \Gamma _{ij}^{k},\forall i,j,k   \) .于是我们定义 \[
+     \omega _{i}^{j}\left( X \right)=X^{k} \Gamma _{ki}^{j},\quad \forall X = X^{k}E_{k} \in \mathfrak{X}\left( U \right) 
+    \]则由 \(   \Gamma _{ki}^{j}  \)的光滑性, \(   \omega _{i}^{j}  \)是光滑的余标架.对于任意的 \(  X =  X^{k}E_{k} \in \mathfrak{X}\left( U \right)   \), \[
+     \nabla _{X}E_{i}= X^{k} \nabla _{E_{k}}E_{i}= X^{k} \Gamma _{ki}^{l}E_{l}=  \omega _{i}^{l}\left( X \right)E_{l}=  \omega _{i}^{j}\left( X \right) E_{j} 
+    \]   
+
+    接下来证明CARTAN第一结构方程, 一方面 \[
+    \begin{aligned}
+    \,\mathrm{d}  \varepsilon ^{j}\left( E_{k},E_{l} \right)&=   E_{k}\left(  \varepsilon ^{j}\left( E_{l} \right)  \right)- E_{l}\left(  \varepsilon ^{j}\left( E_{k} \right)  \right) - \varepsilon ^{j}\left( \left[ E_{k},E_{l} \right]  \right) = - \varepsilon ^{j}\left( \left[ E_{k},E_{l} \right]  \right) 
+    \end{aligned}
+    \]另一方面 \[
+    \begin{aligned}
+ \left(     \varepsilon ^{i}\wedge  \omega _{i}^{j}+ \tau ^{j} \right)\left( E_{k},E_{l} \right)&=    \varepsilon ^{i}\left( E_{k} \right) \omega _{i}^{j}\left( E_{l} \right)-  \varepsilon  ^{i}\left( E_{l} \right)\wedge  \omega _{i}^{j}\left( E_{k} \right)+ \tau ^{j}\left( E_{k},E_{l} \right)\\ 
+  &=  \omega _{k}^{j}\left( E_{l} \right)- \omega _{l}^{j}  \left( E_{k} \right)      +  \varepsilon ^{j}\left( \tau \left( E_{k},E_{l} \right)  \right) 
+    \end{aligned}
+    \]其中 \[
+     \omega _{k}^{j}\left( E_{l} \right)=  \varepsilon ^{j}\left(  \nabla _{E_{l}}E_{k} \right)=  \Gamma _{lk}^{j},\quad  \omega _{l}^{j}\left( E_{k} \right)=  \varepsilon ^{j}\left(  \nabla _{E_{k}}E_{l} \right)=  \Gamma _{kl}^{j}    
+    \] \[
+ \begin{aligned}
+    \varepsilon ^{j}\left( \tau \left( E_{l},E_{l}\right)  \right)&=  \varepsilon ^{j}\left(  \nabla _{E_{k}}E_{l}- \nabla _{E_{l}}E_{k}-\left[ E_{k},E_{l} \right]  \right)  \\ 
+     &=   \Gamma _{kl}^{j}- \Gamma _{lk}^{j}- \varepsilon ^{j}\left( \left[ E_{k} ,E_{l}\right]  \right) 
+ \end{aligned}
+    \]
+于是 \[
+\left(  \varepsilon ^{j}\wedge  \omega _{i}^{j}+ \tau ^{j} \right)\left( E_{k},E_{l} \right)= - \varepsilon ^{j}\left( \left[ E_{k},E_{l} \right]  \right)= \,\mathrm{d}  \varepsilon ^{j}\left( E_{k},E_{l} \right)    
+\]因此 \[
+\,\mathrm{d}  \varepsilon ^{j}=  \varepsilon ^{i} \wedge \omega _{i}^{j}+ \tau ^{j}
+\]
+    \hfill $\square$
+\end{proof}
+\hspace*{\fill} 
+
+
+\end{document}

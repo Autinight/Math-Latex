@@ -1,0 +1,557 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+ 
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+\chapter{Levi-Civita联络}
+
+\section{切联络}
+\begin{definition}
+    设 \(  M\subseteq \mathbb{R} ^{n}  \)是嵌入子流形, \(   \gamma :I\to M  \)是光滑曲线, \(  V  \)是沿 \(   \gamma   \)的 在\(  TM  \)中取值的向量场   ,则 \(  V  \)既可以视作 \(  M  \)的关于切向联络的沿 \(   \gamma   \)的向量场,又可以视作 \(  \mathbb{R} ^{n}  \)的关于欧式联络的沿 \(   \gamma   \)的向量场     .令 \(  \overline{D}_{t}V  \)表示 \(  V  \)关于欧式联络\(  \overline{ \nabla }  \) 的协变导数,     \(  D_{t}^{\top}V  \)表示 \(  V  \)关于切向联络   \(   \nabla ^{\top}  \)的协变导数. 
+\end{definition}
+
+\begin{proposition}
+    设 \(  M\subseteq \mathbb{R} ^{n}  \)是嵌入子流形, \(   \gamma :I\to M  \)是 \(  M  \)上的光滑曲线, \(  V  \)是取值在 \(  TM  \)的沿 \(   \gamma   \)的光滑向量场.则对于每个 \(  t \in I  \), \[
+    D_{t}^{\top}V\left( t \right)= \pi ^{\top}\left( \overline{D}_{t} V\left( t \right)  \right)  
+    \]       
+\end{proposition}
+
+\begin{note}
+    能直接使用的是两种联络的关系,建立两种曲线协变导数的联系需要通过曲线导数与联络的关系,间接使用两种联络间的关系.曲线协变导数与联络的关系是通过坐标表示实现的,而两者联络的关系是通过正交投影实现的,因此我们需要找到与正交投影相容的坐标表示,即我们需要适配于 \(  M  \)的 正交标架. \(  M  \)的嵌入性给出了这样的正交标架（命题\ref{寻找适配的正交标架}）. 
+\end{note}
+
+\begin{proof}
+    任取 \(  t_0 \in I  \), 存在 \(   \gamma \left( t_0 \right)   \)在 \(  \mathbb{R} ^{n}  \)上的邻域 \(  U  \),使得 \(  U  \)上存在\(  \mathbb{R} ^{n}  \)的适配于 \(  TM  \)的正交标架 \(  \left(  E_1,\cdots,E_n  \right)   \),这组标架的前 \(  k  \)个\(  \left(  E_1,\cdots,E_k  \right)   \)在 \(  M\cap U  \)上的限制构成 \(  TM  \)的一个正交标架,其中 \(  k =  \operatorname{dim}\,M  \)  .取充分小的 \(   \varepsilon >0  \),使得 \(   \gamma \left( \left( t_0- \varepsilon ,t_0+  \varepsilon  \right)  \right)\subseteq U   \),则 \(  V  \)在 \(  \left( t_0- \varepsilon ,t_0+  \varepsilon  \right)   \)可以被分解为 \[
+   V\left( t \right)= V^{1}\left( t \right) \left. E_{1} \right|_{ \gamma \left( t \right) }  + \cdots + V^{k}\left( t \right) \left. E_{k} \right|_{ \gamma \left( t \right) }
+    \]此时有 \[
+    \begin{aligned}
+    \pi ^{\top}\left( \overline{D}_{t}V\left( t \right)  \right)& = \pi ^{\top}\left( \sum _{i= 1}^{k}\left( \dot{V}^{i}\left( t \right) \left. E_{i} \right|_{ \gamma \left( t \right) }+ V^{i}\left( t \right)  \overline{ \nabla }_{ \gamma ^{\prime} \left( t \right) } \left. E_{i} \right|_{ \gamma \left( t \right) }   \right)  \right) \\ 
+     & =  \sum _{i= 1}^{k}\left( \dot{V}^{i}\left( t \right) \left. E_{i} \right|_{ \gamma \left( t \right) }+ V^{i}\left( t \right) \pi ^{\top} \left( \overline{ \nabla }_{ \gamma ^{\prime} \left( t \right) }\left. E_{i} \right|_{ \gamma \left( t \right) } \right)    \right)\\ 
+      & = \sum _{i= 1}^{k}\left( \dot{V}^{i}\left( t \right)\left. E_{i} \right|_{ \gamma \left( t \right) }+ V^{i}\left( t \right)  \nabla ^{\top}_{ \gamma ^{\prime} \left( t \right) }\left. E_{i} \right|_{ \gamma \left( t \right) }   \right)\\ 
+       & =  D_{t}^{\top}V\left( t \right)   
+    \end{aligned}
+    \]          
+
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}
+    设 \(  M\subseteq \mathbb{R} ^{n}  \)是嵌入子流形.一个光滑曲线 \(   \gamma : I\to M  \)是关于 \(  M  \)上切联络的测地线,当且仅当 对于所有的 \(  t \in I  \) 它的加速度 \(   \gamma ^{\prime \prime} \left( t \right)   \)与 \(  T_{ \gamma \left( t \right) }M  \)正交.     
+\end{corollary}
+\begin{proof}
+    由于\(  \mathbb{R} ^{n}  \)上的欧式联络的联络系数均为0,于是\(   \gamma ^{\prime}   \)沿 \(   \gamma   \)的欧式协变导数就是加速度： \(  \overline{D}_{t} \gamma ^{\prime} \left( t \right)=  \gamma ^{\prime \prime} \left( t \right)    \)    .故 \(   \gamma   \)是测地线,当且仅当 \(  \bar{D}_{t} \gamma ^{\prime} \left( t \right)=  \gamma ^{\prime \prime} \left( t \right)\equiv 0    \),当且仅当 \(  \pi ^{\top}  \left(  \gamma ^{\prime \prime} \left( t \right)  \right)\equiv 0 \),即 \(   \gamma ^{\prime \prime} \left( t \right)   \)与 \(  T_{ \gamma \left( t \right) }M  \)正交对于所有的 \(  t\in I  \)成立.    
+
+    \hfill $\square$
+\end{proof}
+
+\section{抽象Riemann流形上的联络}
+
+\subsection{度量联络}
+
+\begin{definition}
+    设 \(  g  \)是光滑（带边）流形 \(  M  \)上的联络或伪联络.称 \(  TM  \)上的联络 \(   \nabla   \)是\textbf{与 \(  g  \)相容}的,或为一个\textbf{度量联络},若它对于所有的 \(  X,Y,Z \in \mathfrak{X}\left( M \right)   \)满足以下乘积律： \[
+     \nabla _{X}\left<Y,Z \right> =  \left< \nabla _{X}Y,Z \right>+ \left<Y, \nabla _{X}Z \right>
+    \]      
+\end{definition}
+
+\begin{proposition}{度量联络的等价刻画}\label{度量联络的等价刻画}
+    令 \(  \left( M,g \right)   \)是（带边）Riemann流形或伪-Riemann流形, \(   \nabla   \)是 \(  TM  \)上的一个联络,则以下几条等价：
+    \begin{enumerate}
+        \item  \(   \nabla   \)与 \(  g  \)相容： \(  \nabla _{X}\left<Y,Z \right>= \left< \nabla _{X}Y,Z \right>+ \left<Y, \nabla _{X}Z \right>   \).
+        \item \(  g  \)关于 \(   \nabla   \)平行： \(   \nabla g \equiv 0  \)   \footnote{ \(   \nabla g  \) 可以看成是平行移动偏离刚性的程度}.
+        \item  在任意光滑局部标架 \(  \left( E_{i} \right)   \)下, \(   \nabla   \)的联络系数满足 \[
+         \Gamma _{ki}^{l}g_{lj}+  \Gamma _{kj}^{l}g_{il} =  E_{k}\left( g_{ij} \right). \footnote{\(   \Gamma   \)的左下指标是作用在 \(  g_{ij}  \)的标架,\(   \Gamma   \)的右下指标表示 \(  g_{ij}  \)中跑动的指标,指标随着 \(  \Gamma  \)的上标跑动.     } 
+        \]  
+        \item 若 \(  V,W  \) 是沿任意光滑曲线 \(   \gamma   \)的光滑向量场,则 \[
+        \frac{\,\mathrm{d}  }{\,\mathrm{d} t } \left<V,W \right>=  \left<D_{t}V,W \right>+ \left<V,D_{t}W \right> 
+        \] 
+        \item 若 \(  V,W  \)是沿 \(  M  \)上的光滑曲线 \(   \gamma   \)平行的向量场,则 \(  \left<V,W \right>  \)沿 \(   \gamma   \)是常值的.
+        \item 任给 \(  M  \)上的光滑曲线 \(   \gamma   \),每个沿 \(   \gamma   \)的平行移动都是线性的等距同构.        
+        \item 给定 \(  M  \)上的任意光滑曲线 \(   \gamma   \),每个在 \(   \gamma   \)一点处的正交基,都可以延拓成沿 \(   \gamma   \)平行的正交标架.    
+    \end{enumerate}
+       
+\end{proposition}
+
+\begin{proof}
+    首先证明 \(  1. \iff 2.  \) ,由命题\ref{张量场上的协变导数},对称 \(  2  \)-张量 \(  g  \)的全协变导数由以下给出 \[
+    \left(  \nabla g \right)\left( Y,Z,X \right)= \left(  \nabla _{X}g \right)\left( Y,Z \right)=  X \left( g\left( Y,Z \right)  \right)-g\left(  \nabla _{X}Y,Z \right)-g\left( Y, \nabla _{X}Z \right)       
+    \]  其中 \(  X\left( g\left( Y,Z \right)  \right)=  \nabla _{X}\left<Y,Z \right>   \). 
+
+    为了说明 \(  2.\iff 3.  \),考虑 \(   \nabla _{g}  \)  在光滑局部标架 \( \left( E_{i} \right)   \)下的分量 \[
+    g_{ij;k}= E_{k}\left( g_{ij} \right)- g_{lj} \Gamma ^{l}_{ki} - g_{il} \Gamma ^{l}_{kj} 
+    \] \(   \nabla g \equiv 0  \)当且仅当 这些分量全为零.
+    
+    现在来说明 \(  1.\iff 4.  \).设 \(  V,W  \)是沿 光滑曲线 \(   \gamma :I\to M  \)的光滑向量场.给定 \(  t_0 \in I  \),在 \(   \gamma \left( t_0 \right)   \)的一个邻域上选择坐标系 \(  \left( x^{i} \right)   \),并设 \(  V =  V^{i}\partial _{i},W =  W^{j}\partial _{j}  \),对于某些光滑函数 \(  V^{i},W^{j}: \left( t_0- \varepsilon ,t_0+  \varepsilon  \right)\to \mathbb{R}    \)成立 .由 \(  \partial _{i},\partial _{j}  \)的可扩张性,我们得到 \[
+    \begin{aligned}
+    \frac{\,\mathrm{d}  }{\,\mathrm{d} t }\left<V,W \right>& =  \frac{\,\mathrm{d}  }{\,\mathrm{d} t }\left(V^{i}W^{j}\left<\partial _{i},\partial _{j} \right> \right)\\ 
+     & = \left( \dot{V}^{i}W^{j}+  V^{i} \dot{W}^{j} \right)\left<\partial _{i},\partial _{j} \right>+     V^{i}W^{j}  \nabla _{  \gamma ^{\prime} \left( t \right) }\left<\partial _{i},\partial _{j} \right> 
+    \end{aligned}
+    \]      若 \(  1.  \)成立,则 \[
+    \begin{aligned}
+    \frac{\,\mathrm{d}  }{\,\mathrm{d} t }\left<V,W \right>&=  \left[ \left( \dot{V}^{i}W^{j}\left<\partial _{i},\partial _{j} \right>+ V^{i}W^{j}\left< \nabla _{ \gamma ^{\prime} \left( t \right)}\partial _{i},\partial _{j} \right> \right)  \right]   +  \left[ \left( V^{i}\dot{W}^{j}\left<\partial _{i},\partial _{j} \right> \right)+  V^{i}W^{j}\left<\partial _{i}, \nabla _{ \gamma ^{\prime} \left( t \right) }\partial _{j} \right>  \right]\\ 
+     & =  \left<D_{t}V,W \right>+ \left<V,D_{t}W \right>
+    \end{aligned}
+    \]   在 \(  t_0  \)附近成立.  反之,若4.成立,则对于任意的 \(  X  \),选取 \(   \gamma :\left( -1,1 \right)\to M   \),使得 \(  \left(  \gamma \left( 0 \right), \gamma ^{\prime} \left( 0 \right)   \right)= \left( p,X_{p} \right)     \)   ,则 \[
+    \begin{aligned}
+    \nabla _{X_{p}}\left<Y_{p},Z_{p} \right>& =   \frac{\,\mathrm{d}  }{\,\mathrm{d} t }\left<Y\left(  \gamma \left( t \right)  \right),Z\left(  \gamma \left( t \right)  \right)   \right>\\ 
+     &=  \left<D_{t}Y\left(  \gamma \left( t \right)  \right) ,Z\left(  \gamma \left( t \right)  \right)  \right>+ \left<Y\left(  \gamma \left( t \right)  \right) ,D_{t}Z\left(  \gamma \left( t \right)  \right)  \right>  \\ 
+      & =  \left< \nabla _{X_{p}}Y_{p},Z_{p} \right>+ \left<Y_{p}, \nabla _{X_{p}}Z_{p} \right> 
+    \end{aligned}
+    \]故 \[
+     \nabla _{X}\left<Y,Z \right>= \left< \nabla _{X}Y,Z \right>+ \left<Y, \nabla _{X}Z \right>
+    \]在 \(  p  \)附近成立. 
+
+    现在来说明 \(  4.\implies 5. \implies 6. \implies 7.\implies  4.  \) .
+    
+    若4.成立,设 \(  V,W  \)是沿 \(   \gamma   \)平行的,有 \(  D_{t}V,D_{t}W= 0  \),
+    从而 \(  \frac{\,\mathrm{d}  }{\,\mathrm{d} t }\left<V,W \right>= 0   \),故 \(  \left<V,W \right>  \)     是常值的.
+
+    若5.成立,任取 \(  T_{ \gamma \left( t_0 \right) }M  \)上的两个向量 \(  v_0,w_0  \),设 \(  V,W  \)是它们沿 \(   \gamma   \)平行的向量场,使得 \(  V\left( t_0 \right)= v_0,W\left( t_0 \right)= w_0    \),\(  P_{t_0t_1}^{ \gamma }= V\left( t_1 \right),P_{t_0t_1}^{ \gamma }= W\left( t_1 \right)    \)  .    因为 \(  \left<V,W \right>  \)是沿 \(   \gamma   \)常值的,立即有 \(  \left<P_{t_0t_1}^{ \gamma }v_0,P_{t_0t_1}^{ \gamma }w_0 \right>= \left<V\left( t_1 \right),W\left( t_1 \right)   \right>= \left<V\left( t_0 \right),W\left( t_0 \right)   \right>=  \left<v_0,w_0 \right>  \),个 \(  P_{t_0t_1}^{ \gamma }  \)是一个线性的等距同构.    
+
+    若6.成立,设 \(   \gamma :I\to M  \)是光滑曲线, \(  \left( b_{i} \right)   \)是 \(  T_{ \gamma \left( t_0 \right) }M  \)的一个正交基, \(  t_0 \in I  \) .可以将每个 \(  b_{i}  \)通过平行移动扩展为沿 \(   \gamma   \)平行的 一个光滑向量场 \(  E_{i}  \),由于对于任意的 \(  t_1\in I  \) ,\(  P_{t_0t_1}^{ \gamma }  \)是线性同构,故 \(  \left( E_{i} \right)   \)  在 \(   \gamma   \)的每个点是都是标准正交基. 
+
+    若7.成立,设 \(  V,W  \)是沿光滑曲线 \(   \gamma   \)的光滑向量场,则存在沿 \(   \gamma   \)平行的正交标架 \(  \left( E_{i} \right)   \).我们设 \(  V= V^{i}E_{i},W =  W^{j}E_{j}  \)     ,则正交性意味着 \(  g_{ij} = \left<E_{i},E_{j} \right>  \) ,沿 \(   \gamma   \)取常值（ \(  \pm 1  \)或 \(  0  \)）.   平行性给出 \(   D_{t}V= D_{t}\left( V^{i}E_{i} \right)=  \dot{V}^{i}E_{i}+ V^{i}D_{t}E_{i}= \dot{V}^{i}E_{i}   \),类似地 \(  D_{t}W= \dot{W}^{i}E_{i}  \),于是 \[
+    \begin{aligned}
+        \frac{\,\mathrm{d}  }{\,\mathrm{d} t }\left<V,W \right>&=   \frac{\,\mathrm{d}  }{\,\mathrm{d} t }\left( \sum _{i}V^{i}W^{i} \right)\\ 
+         &= \sum _{i}\left( \dot{V}^{i}W^{i}+  \dot{W}^{i}V^{i}  \right) \\ 
+          & = \dot{V}^{i}W^{j}\left<E_{i},E_{j} \right> + V^{i}\dot{W}^{j}\left<E_{i},E_{j} \right> \\ 
+           & = \left<D_{t}V,W \right>+ \left<V,D_{t}W \right>
+    \end{aligned}
+    \]  
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}
+    设 \(  \left( M,g \right)   \)是（带边） Riemann-流形或伪-Riemann流形,  \(   \nabla   \)是 \(  M  \)上的度量联络, \(   \gamma :I\to M  \)是一个光滑曲线.
+    \begin{enumerate}
+        \item  \(  \left|  \gamma ^{\prime} \left( t \right)  \right|  \)是常值,当且仅当对于任意的 \(  t \in I  \) ,都有\(  D_{t} \gamma ^{\prime} \left( t \right)   \)与 \(   \gamma ^{\prime} \left( t \right)   \)正交    ；
+        \item 若 \(   \gamma   \)是测地线,则 \(  \left|  \gamma ^{\prime} \left( t \right)  \right|   \)是常值.  
+    \end{enumerate}
+       
+\end{corollary}
+
+\begin{proof}
+   \begin{enumerate}
+    \item  \[
+        \frac{\,\mathrm{d}  }{\,\mathrm{d} t }\left< \gamma ^{\prime} \left( t \right), \gamma ^{\prime} \left( t \right)   \right>= 2\left<D_{t} \gamma ^{\prime} \left( t \right), \gamma ^{\prime} \left( t \right)   \right> 
+        \]故 \(  \left|  \gamma ^{\prime} \left( t \right)  \right|   \)是常值,当且仅当 \(  \frac{\,\mathrm{d}  }{\,\mathrm{d} t } \left< \gamma ^{\prime} \left( t \right), \gamma ^{\prime} \left( t \right)   \right>\equiv 0   \),当且仅当 \(  \left<D_{t} \gamma ^{\prime} \left( t \right), \gamma ^{\prime} \left( t \right)   \right>\equiv 0  \),即 \(  D_{t} \gamma ^{\prime} \left( t \right)   \)恒与 \(   \gamma ^{\prime} \left( t \right)   \)正交.
+        \item 若 \(   \gamma   \)是测地线,则  \(   \gamma ^{\prime} \left( t \right)   \)沿 \(   \gamma \left( t \right)   \)平行,即 \(  D_{t} \gamma ^{\prime} \left( t \right)= 0   \),故 \(  \left<D_{t} \gamma ^{\prime} \left( t \right), \gamma ^{\prime} \left( t \right)   \right>= 0  \), \(  D_{t} \gamma ^{\prime} \left( t \right)   \)      与 \(   \gamma ^{\prime} \left( t \right)   \)正交,由1.可知 \(  \left|  \gamma ^{\prime} \left( t \right)  \right|   \)是常值.   
+   \end{enumerate}
+        
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}\label{切联络的度量性}
+   u设  \(  \mathbb{R} ^{n}  \)或 \(  \mathbb{R} ^{r,s}  \)的嵌入Riemann子流形或伪Riemann子流形   ,则 \(  M  \)上的切联络与诱导度量或伪度量相容. 
+\end{proposition}
+
+\begin{proof}
+    设 \(  X,Y,Z \in \mathfrak{X}\left( M \right)   \), \(  \tilde{X},\tilde{Y},\tilde{Z}  \)是它们在 \(  \mathbb{R} ^{n}  \)或 \(  \mathbb{R} ^{r,s}  \)上的一个开子集的光滑延拓.对于 \(  M  \)上的点,我们有 \[
+    \begin{aligned}
+     \nabla ^{\top}_{X}\left( Y,Z \right)& =  X\left<Y,Z \right> =  \tilde{X}\left<\tilde{Y},\tilde{Z} \right>\\ 
+      & =  \overline{ \nabla} _{\tilde{X}}\left<\tilde{Y},\tilde{Z} \right>\\ 
+       & =    \left<\overline{ \nabla }_{\tilde{X}}\tilde{Y},\tilde{Z} \right>+  \left<\tilde{Y}, \overline{ \nabla }_{\tilde{X}}\tilde{Z} \right> \\ 
+        & = \left<\pi ^{\top}\left( \overline{ \nabla }_{\tilde{X}}\tilde{Y},\tilde{Z} \right)  \right>+ \left<\tilde{Y},\pi ^{\top}\left( \overline{ \nabla }_{\tilde{X}} \tilde{Z} \right)  \right>\footnotemark \\ 
+         & =  \left< \nabla _{X}^{\top} ,Z\right>+  \left<Y,  \nabla _{X}^{\top}Z \right>
+    \end{aligned}
+    \]     
+\footnotetext{因为 \(  \tilde{Z},\tilde{Y}  \)都与 \(  M  \)相切 }
+    \hfill $\square$
+\end{proof}
+
+
+\section{对称联络}  
+
+\begin{definition}{对称联络}
+    称光滑流形 \(  M  \)的切丛上的一个联络 \(   \nabla   \)是对称的,若 \[
+     \nabla _{X}Y- \nabla _{Y}X \equiv \left[ X,Y \right],\quad \forall X,Y \in \mathfrak{X}\left( M \right)  
+    \] 
+\end{definition}
+
+\begin{definition}{联络的挠张量}
+    设 \(  M  \)是光滑流形, \(   \nabla   \)是 \(  M  \)的切丛上的联络,定义联络的挠张量为一个  \(  \left( 1,2 \right)   \)-张量场 \(  \tau : \mathfrak{X}\left( M \right)\times \mathfrak{X}\left( M \right)\to \mathfrak{X}\left( M \right)     \) \[
+    \tau \left( X,Y \right)=   \nabla _{X}Y- \nabla _{Y}X-\left[ X,Y \right]  
+    \]     
+\end{definition}
+\begin{proof}
+   由于\(   \nabla _{X}Y  \)和 \(   \nabla _{Y}X  \)分别不具有关于 \( Y \)的\(  C^{\infty}\left( M \right)   \)-线性和关于 \(  X  \)  的 \(  C^{\infty}\left( M \right)   \)-线性,因此需要说明 \(  \tau   \)关于这两个分量的 \(  C^{\infty}\left( M \right)   \)-线性,从而      得到 \(  \tau   \)确实给出一个 \(  \left( 1,2 \right)   \)-张量场,  
+    \[
+        \nabla _{X}Y=  \left( X\left( Y_{k} \right)+ X^{i}Y^{j} \Gamma _{ij}^{k}  \right)E_{k} 
+       \] \[
+        \nabla _{Y}X =  \left( Y\left( X_{k} \right)+ Y^{i}X^{j} \Gamma _{ij}^{k}  \right)E_{k} 
+       \]  \[
+       \begin{aligned}
+     \tau \left( X,Y \right)=     \nabla _{X}Y- \nabla _{Y}X-\left[ X,Y \right]& = \left( X^{i}Y^{j} \right)\left(  \Gamma _{ij}^{k}- \Gamma _{ji}^{k} \right)E_{k}  \\ 
+       \end{aligned} 
+       \]任取 \(  f \in C^{\infty}\left( M \right)   \),我们有 \[
+       \tau \left( fX,Y \right) =  \left( \left( fX \right)^{i}Y^{j}  \right)\left(  \Gamma _{ij}^{k}- \Gamma _{ji}^{k} \right)E_{k}    =  f\left( X^{i}Y^{j} \right)\left(  \Gamma _{ij}^{k}- \Gamma _{ji}^{k} \right)E_{k}  
+       \] 故 \(  \tau   \)关于 \(  X  \)是 \(  C^{\infty}\left( M \right)   \)-线性的,由对称性可知关于 \(  Y  \)的 \(  C^{\infty}\left( M \right)   \)-线性.   
+
+    \hfill $\square$
+\end{proof}
+由上面的论证过程,可以立即得到以下对称联络的等价刻画：
+\begin{proposition}
+    设 \(  M  \)是光滑流形,\(   \nabla   \)是其切丛上的一个联络,则  以下几条等价
+    \begin{enumerate}
+        \item \(   \nabla   \)是对称的；
+        \item  \(   \nabla   \)的挠张量 \(  \tau\equiv 0   \)；
+        \item 在任意一组局部坐标标架下, \(   \Gamma _{ij}^{k}=  \Gamma _{ji}^{k},\forall i,j,k  \) .
+    \end{enumerate}
+    
+
+\end{proposition}
+
+
+\begin{proposition}\label{切联络的对称性}
+    设 \(  M  \)（伪）欧氏空间的一个嵌入（伪）Riemann子流形,则 \(  M  \)的切联络是对称的.  
+\end{proposition}
+\begin{proof}
+    设 \(  M  \)是 \(  \mathbb{R} ^{n}  \) 的嵌入Riemann子流形或 伪-Riemann子流形,其中 \(  \mathbb{R} ^{n}  \)配备了欧式度量或伪欧式度量 \(  \bar{q}^{\left( r,s \right) },r+ s= n  \).
+    令 \(  X,Y  \in \mathfrak{X}\left( M \right) \),令 \(  \tilde{X},\tilde{Y}  \)是 \(  X,Y  \)在分为空间上的一个开子集的扩张. \(  \iota :M \hookrightarrow \mathbb{R} ^{n}  \)是含入映射.
+    立即有 \(  X,Y  \)是 \( \iota   \)-相关于 \(  \left[ \tilde{X},\tilde{Y} \right]   \)的,由李括号的自然性, \(  \left[ X,Y \right]   \)是 \(  \iota   \)-相关于 \(  \left[ \tilde{X},\tilde{Y} \right]   \)的.特别地, \(  \left[ \tilde{X},\tilde{Y} \right]   \)与 \(  M  \)相切,且在 \(  M  \)上的限制等于 \(  \left[ X,Y \right]   \).因此 \[
+    \begin{aligned}
+     \nabla _{X}^{\top}Y- \nabla _{Y}^{\top}X& =   \pi ^{\top}\left( \overline{ \nabla }_{\tilde{X}}\tilde{Y}|_{M}- \overline{ \nabla }_{\tilde{Y}}\tilde{X}|_{M} \right)\\ 
+      & =  \pi ^{\top} \left( \left[ \tilde{X},\tilde{Y} \right]|_{M}  \right)\\ 
+       & =  \left[ \tilde{X},\tilde{Y} \right]|_{M}\\ 
+        & =  \left[ X,Y \right]   
+    \end{aligned}
+    \]                  
+
+    \hfill $\square$
+\end{proof}
+\begin{theorem}{Riemann几何基本定理}
+    设 \(  \left( M,g \right)   \)是（带边）（伪）Riemann流形.则存在唯一的 \(  TM  \)上的联络 \(   \nabla   \),使得 \(   \nabla   \)与 \(  g  \)相容且是对称的.此联络称为是\(  g  \)的\textbf{Levi-Civita 联络}（若 \(  g  \)正定,则也称为Riemann联络）.      
+\end{theorem}
+
+\begin{note}
+    证明唯一性的想法以联络的度量性为基础考察 \(  \left< \nabla _{X}Y,Z \right>  \),说明它是无关于联络选取的.为此,利用对称性,将 形式 \(  \left< \nabla _{X}Y,Z \right>  \)的项适当填上与 \(   \nabla   \)无关的项写成统一的一个.
+
+    对于存在性,由于唯一性的证明给出了联络和向量场度量的公式,借由此公式以及度量,给出局部上的一个坐标表示,唯一性允许我们将每个局部上的联络拼成总体上的联络.
+\end{note}
+\begin{proof}
+    通过给 \(   \nabla   \)一个无关于联络选取的公式来给出唯一性.设 \(   \nabla   \)是满足性质的联络, \(  X,Y,Z \in \mathfrak{X}\left( M \right)   \).由联络对度量的相容性 \[
+    \begin{aligned}
+    X\left<Y,Z \right> &=  \left< \nabla _{X}Y,Z \right>+ \left<Y, \nabla _{X}Z \right> \\ 
+     Y\left<Z,X \right>& =  \left< \nabla _{Y}Z,X \right>+ \left<Z, \nabla _{Y}X \right>\\ 
+      Z\left<X,Y \right>& =  \left< \nabla _{Z}X,Y \right>+ \left<X, \nabla _{Z}Y \right>  
+    \end{aligned}
+    \]   利用对称性替换每个式子的最后一项,得到 \[
+    \begin{aligned}
+    X\left<Y,Z \right>&= \left< \nabla _{X}Y,Z \right>+ \left<Y, \nabla _{Z}X \right>+ \left<X,[X,Z] \right>\\ 
+     Y\left<Z,X \right>& =\left< \nabla _{Y}Z,X \right>+ \left<Z, \nabla _{X}Y \right>+ \left<Z,\left[ Y,X \right]  \right>\\ 
+          Z\left<X,Y \right>& =  \left< \nabla _{Z}X,Y \right>+ \left<X, \nabla _{Y}Z \right> + \left<X,\left[ Z,Y \right]  \right>
+    \end{aligned}
+    \]前两项相加减去后一项,得到 \[
+    \begin{aligned}
+    X\left<Y,Z \right>+ Y\left<Z,X \right>-Z\left<X,Y \right>& = 2\left< \nabla _{X}Y,Z \right> + \left<X,\left[ Y,Z \right]  \right>+ \left<Z,\left[ Y,X \right]  \right>-\left<X,\left[ Z,Y \right]  \right>
+    \end{aligned}
+    \]解出 \(  \left< \nabla _{X}Y,Z \right>  \)得到 \[
+    \left< \nabla _{X}Y,Z \right>= \frac{1}{2}\left( X\left<Y,Z \right>+ Y\left<Z,X \right>-Z\left<X,Y \right>-\left<X,\left[ Y,Z \right]  \right> -\left<Z,\left[ Y,X \right]\right>+ \left<X,\left[ Z,Y \right]  \right>  \right) 
+    \] 现在设 \(   \nabla ^{1}  \)和 \(   \nabla ^{2}  \)是 \(  TM  \)上的两个与 \(  g  \)相容的对称联络.由于右侧不依赖于联络的选取,因此 \(  \left< \nabla _{X}^{1}Y- \nabla _{X}^{2}Y,Z \right>= 0  \)对于所有的 \(  X,Y,Z  \)成立.从而 \(   \nabla _{X}^{1}Y=  \nabla _{X}^{2}Y  \)对于所有的 \(  X,Y  \)成立, \(   \nabla ^{1}=  \nabla ^{2}  \).         
+
+
+    接下来说明存在性,设 \(  \left( U,\left( x^{i} \right)  \right)   \)是任意一个局部光滑坐标卡.按上面的公式定义 \(  \left< \nabla _{\partial _{i}}\partial _{j},\partial _{l} \right>  \),其中每个李括号都是零,我们得到 
+    \begin{equation}
+        \left< \nabla _{\partial _{i}}\partial _{j},\partial _{l} \right>= \frac{1}{2}\left( \partial _{i}\left<\partial _{j},\partial _{l} \right>+ \partial _{j}\left<\partial _{l},\partial _i \right>-\partial _{l}\left<\partial _{i},\partial _{j} \right> \right) 
+    \end{equation}利用以下记号 \[
+    g_{ij}= \left<\partial _{i},\partial _{j} \right>,\quad  \nabla _{\partial _{j}}\partial _{j}=  \Gamma _{ij}^{m}\partial _{m}
+    \]得到 \[
+     \Gamma _{ij}^{m}g_{ml}= \frac{1 }{2 }\left( \partial _{i}g_{jl}+\partial _{j} g_{li}-\partial _{l} g_{ij} \right)  
+    \]设 \(  g^{kl}  \)是逆度量,按 \(  l  \)与上式加权求和,并利用 \(  g_{ml}g^{kl}=  \delta  _{m}^{k}  \),得到 
+    \begin{equation}
+        \Gamma _{ij}^{k}=   \Gamma _{ij}^{m} \delta  _{m}^{k}= \Gamma _{ij}^{m}g_{ml}g^{kl}= \frac{1}{2}g^{kl}\left( \partial _{i}g_{jl}+ \partial _{j}g_{li}-\partial _{l}g_{ij} \right) 
+    \end{equation}由此足够定义出局部上的联络 \(   \nabla   \),按照 \[
+     \nabla _{X}Y= \left( X\left( Y^{k} \right)+ X^{i}Y^{j} \Gamma _{ij}^{k}  \right)\partial _{k} 
+    \] 注意到公式 \begin{equation}
+       \Gamma _{ij}^{k}=  \frac{1}{2}g^{kl}\left( \partial _{i}g_{jl}+ \partial _{j}g_{li}-\partial _{l}g_{ij} \right) 
+    \end{equation}右侧关于 \(  i,j  \)对称.因此 \(   \Gamma _{ij}^{k}=  \Gamma _{ji}^{k}  \),这表明我们在局部上定义出的联络是对称的. 计算 \[
+    \begin{aligned}
+        \Gamma _{ki}^{l}g_{lj}+  \Gamma _{kj}^{l}g_{il} &=  \frac{1}{2}\left( \partial _{k}g_{ij}+ \partial _{i}g_{kj}-\partial _{j}g_{ki} \right)+ \frac{1}{2}\left( \partial _{k}g_{ji}+ \partial _{j}g_{ki}-\partial _{i}g_{kj} \right)\\ 
+         & =  \partial _{k}g_{ij}
+    \end{aligned}  
+    \] 由度量联络的第三条等价刻画(\ref{度量联络的等价刻画}), \(   \nabla   \)与 \(  g  \)  相容.
+    \hfill $\square$
+\end{proof}
+
+该证明的过程给出了计算Levi-Civita联络的一些公式
+
+\begin{proposition}
+    设 \(  \left( M,g \right)   \)是（带边）（伪）Riemann流形,令 \(   \nabla   \)是它的Levi-Civita联络.
+    \begin{enumerate}
+        \item 设 \(  X,Y,Z \in \mathfrak{X}\left( M \right)   \),则 \begin{equation}\label{Levi-Civita联络XYZ公式}
+         \begin{aligned}
+            \left< \nabla _{X}Y,Z \right>=  \frac{1}{2} \Big{(}   X\left<Y,Z \right>&+ Y\left<Z,X \right>-Z\left<X,Y \right> \\ &-
+            \left<Y,\left[ X,Z \right]  \right>-\left<Z,\left[ Y,X \right]  \right>+ \left<X,\left[ Z,Y \right]  \right> \Big{)}  
+         \end{aligned}
+        \end{equation} 
+        (\textbf{Koszul's formula})
+        \item 在任意 \(  M  \)的光滑坐标卡下,Levi-Civita联络的联络系数由以下给出 \[
+         \Gamma _{ij}^{k} \footnote{称为Christoffel符号}= \frac{1}{2}g^{kl}\left( \partial _{i}g_{jl}+ \partial _{j}g_{il}-\partial _{l}g_{ij} \right) 
+        \] 
+        \item 设 \(  \left( E_{i} \right)   \)是开子集 \(  U\subseteq M  \)上的一个光滑局部标架,令 \(  c_{ij}^{k}: U\to \mathbb{R}   \)是 按以下方式定义 的 \(  n^{3}  \)个光滑函数： \[
+        \left[ E_{i},E_{j} \right]= c_{ij}^{k}E_{k}      
+        \]则 Levi-Civita联络在这组标架下的联络系数为 \[
+         \Gamma _{ij}^{k}=  \frac{1}{2}g^{kl}\left( E_{i}g_{jl}+ E_{j}g_{il}-E_{l}g_{ij}-g_{jm}c_{il}^{m}-g_{lm}c_{ji}^{m}+ g_{im}c_{lj}^{m} \right) 
+        \]    
+        \item 若 \(  g  \)是Riemann度量, \(  \left( E_{i} \right)   \)是光滑局部正交标架,则 \[
+         \Gamma _{ij}^{k}= \frac{1}{2}\left( c_{ij}^{k}-c_{ik}^{j}-c_{jk}^{i} \right) 
+        \]  
+    \end{enumerate}
+      
+\end{proposition}
+\begin{proof}
+    前两条在上面的定理中的证明过程中已经给出了.将 \(  E_{i},E_{j},E_{l}  \)带入方程 \ref{Levi-Civita联络XYZ公式}中,得到 \[
+    \begin{aligned}
+     \Gamma _{ij}^{q}g_{ql}& = \left< \nabla _{E_{i}}E_{j},E_{l} \right> \\ 
+      & =  \frac{1}{2}\left( E_{i}g_{jl}+ E_{j}g_{il}-E_{l}g_{ij}-\left<E_{j},c_{il}^{m}E_{m}\right>  -\left< E_{l},c_{ji}^{m}E_{m}\right>+ \left<E_{i},c_{lj}^{m}E_{m} \right>\right)\\ 
+       & =  \frac{1}{2}\left( E_{i}g_{jl}+ E_{j}g_{il}-E_{l}g_{ij} -g_{jm}c_{il}^{m}- g_{lm}c_{ji}^{m}+ g_{im}c_{lj}^{m}\right)  
+    \end{aligned}
+    \] 两边作用一个逆度量 \(  g^{kl}  \) ,得到 \[
+     \Gamma _{ij}^{k}= \frac{1}{2}g^{kl}\left( E_{i}g_{jl}+ E_{j}g_{il}-E_{l}g_{ij}-g_{jm}c_{il}^{m}-g_{lm}c_{ji}^{m}+ g_{im}c_{lj}^{m} \right) 
+    \]若 \(  \left( E_{i} \right)   \)正交,我们有 \(  g^{ij}= g_{ij}=  \delta  _{ij}  \),得到 \[
+    \begin{aligned}
+        \Gamma _{ij}^{k}&= \frac{1}{2}\left( E_{i} \delta  _{jk}+ E_{j} \delta  _{ik}-E_{k} \delta  _{ij}-c_{ik}^{j}-c_{ji}^{k}+ c_{kj}^{i} \right) \\ 
+         & =  \frac{1}{2}\left( c_{ij}^{k}-c_{ik}^{j}-c_{jk}^{i} \right),\quad (i,j,k \text{两两不同}) 
+    \end{aligned}
+    \]  
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    \begin{enumerate}
+        \item （伪）-欧氏空间上的Levi-Civita联络就是欧式联络；
+        \item 若 \(  M  \)是（伪）欧氏空间上的嵌入（伪）黎曼子流形,则\(  M  \)上的Levi-联络就是切联络 \(   \nabla ^{\top}  \)   
+    \end{enumerate}
+    
+\end{proposition}
+\begin{proof}
+    欧式联络是度量的且是对称的,Levi-Civita联络的唯一性表明Levi-Civita联络就是欧式联络.第二条由命题\ref{切联络的对称性},和 命题 \ref{切联络的度量性}给出.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}{联络的自然性}
+    设 \(  \left( M,g \right)   \)和 \(  \left( \tilde{M},\tilde{g} \right)   \)是（带边）（伪）Riemann流形  , \(   \nabla   \)是 \(  g  \)的Levi-Civita联络,\(   \tilde{\nabla}   \)是 \(  \tilde{g}   \)的Levi-Civita联络.若 \(   \varphi :M\to \tilde{M}  \)是等距同构,则 \(   \varphi ^{*} \tilde{\nabla} =  \nabla   \).
+
+    
+\end{proposition}
+\begin{proof}
+    由Levi-Civita联络的唯一性,只需要证明拉回联络 \(   \varphi ^{*}  \tilde{\nabla}   \)是对称且与 \(  g  \)相容的.对于任意的 \(  X,Y \in \mathfrak{X}\left( M \right)   \)和 \(  p \in M  \),我们有 \[
+    \left<Y_{p},Z_{p} \right>= \left<\,\mathrm{d}  \varphi _{p}\left( Y_{p} \right),\,\mathrm{d}  \varphi _{p} \left( Z_{p} \right)   \right>= \left<\left(  \varphi _{*}Y \right)_{ \varphi \left( p \right) },\left(  \varphi _{*}Z \right)_{ \varphi \left( p \right) }   \right>
+    \]    换言之, \[
+    \left<Y,Z \right>= \left< \varphi _{*}Y, \varphi _{*}Z \right>\circ  \varphi 
+    \]因此 \[
+    \begin{aligned}
+    X\left<Y,Z \right>& =  X\left( \left< \varphi _{*}Y, \varphi _{*}Z \right>\circ  \varphi  \right)  \\ 
+     & =  \left( \left(  \varphi _{*}X \right) \left< \varphi _{*}Y, \varphi _{*}Z \right> \right)\circ  \varphi \\ 
+      & =  \left(\left< \tilde{\nabla} _{ \varphi _{*}X}\left(  \varphi _{*}Y \right), \varphi _{*}Z \right>+ \left< \varphi _{*}Y,  \tilde{\nabla} _{ \varphi _{*}X}\left(  \varphi _{*}Z \right)  \right>  \right)\circ  \varphi \\ 
+       & =    \left<\left(  \varphi ^{-1}  \right)_{*}  \tilde{\nabla} _{ \varphi _{*}X}\left(  \varphi _{*}Y \right),Z   \right>+ \left<Y, \left(  \varphi ^{-1}  \right)_{*}  \tilde{\nabla} _{ \varphi _{*}X}\left(  \varphi _{*}Z \right)   \right>\\ 
+        & =  \left< \left(  \varphi ^{*}  \tilde{\nabla}  \right)_{X}Y,Z \right>+ \left<Y, \left(  \varphi ^{*}  \tilde{\nabla}  \right)_{X}Z  \right>
+    \end{aligned}
+    \]这表明拉回联络与 \(  g  \)相容.接下来考虑对称性,我们有 \[
+    \begin{aligned}
+\left(  \varphi ^{*}  \tilde{\nabla}  \right)_{X}Y - \left(  \varphi ^{*}  \tilde{\nabla}  \right)_{Y}X& =  \left(  \varphi ^{-1}  \right)_{*}\left(  \tilde{\nabla} _{ \varphi _{*}X}\left(  \varphi _{*}Y \right) -   \tilde{\nabla} _{ \varphi _{*}Y}\left(  \varphi _{*}X \right)   \right)\\ 
+ & = \left(  \varphi ^{-1}  \right)_{*}\left( \left[   \varphi _{*}X, \varphi _{*}Y \right]  \right)       \footnotemark\\ 
+  & =  \left[ X,Y \right]  
+    \end{aligned}
+    \] \footnotetext{因为 \(   \tilde{\nabla}   \)是无挠的 }
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}{测地线的自然性}
+    设 \(  \left( M,g \right)   \)和 \(  \left( \tilde{M},\tilde{g}  \right)   \)是（带边）（伪）Riemann流形,\(   \varphi : M\to \tilde{M}  \)是局部等距同构.若 \(   \gamma   \)是 \(  M  \)上的测地线,则 \(   \varphi \circ  \gamma   \)是 \(  M  \)上的测地线.       
+\end{corollary}
+
+\begin{proof}
+    测地线是局部的,并且在微分同胚的拉回下是保持的\footnote{相对于同一个微分同胚拉回的联络}.
+
+    \hfill $\square$
+\end{proof}
+
+\section{指数映射}
+在本节中,我们假设 \(  \left( M,g \right)   \)是（伪）黎曼 \(  n  \)-流形,且配备Levi-Civita联络.对于每一点 \(  p \in M  \)和 \(  v \in T_{p}M  \),它们决定了唯一的一个极大测地线,记作 \(   \gamma _{v}  \).       
+
+
+\begin{lemma}{尺度变换引理}
+    对于每个 \(  p \in M,v \in T_{p}M  \),\(  c,t\in \mathbb{R}   \), \[
+     \gamma _{cv}\left( t \right)=  \gamma _{v}\left( ct \right)  
+    \footnote{速度越大,参数集越小}\]只要上面两边其一有定义.  
+\end{lemma}
+\begin{proof}
+    若 \(  c   = 0\),则对于所有的 \(  t \in \mathbb{R}   \),两边等于 \(  p  \),故不妨设 \(  c \neq 0  \).
+    此时只需要证明若 \(   \gamma _{v}\left( ct \right)   \)存在,则 \(   \gamma _{cv}\left( t \right)   \)也存在且二者相等（通过乘以 \(  \frac{1}{c}  \)） .
+    
+    设 \(   \gamma _v   \)的最大区间是 \(  I\subseteq \mathbb{R}   \),方便起见,记 \(   \gamma =  \gamma _v   \),定义新的曲线 \(   \tilde{\gamma} : c^{-1} I: \to M,  \tilde{\gamma} \left( v \right)=  \gamma \left( ct \right)    \)    .
+
+    接下来说明 \(   \tilde{\gamma}   \)是以 \(  p  \)为起点, \(  cv  \)为初速度的测地线.由定义易见 \(   \tilde{\gamma} \left( 0 \right)=  \gamma \left( 0 \right)= p    \),又 \(    \dot{\tilde{\gamma}}^{i}\left( t \right)=  \frac{\,\mathrm{d}  }{\,\mathrm{d} t } \gamma ^{i}\left( ct \right)= c   \dot{\gamma}^{i}\left( ct \right)    \),故 \(   \tilde{\gamma} ^{\prime} \left( 0 \right)= c \gamma ^{\prime} \left( 0 \right)= cv    \),      故\(   \tilde{\gamma}   \)以 \(  p  \)为起点, \(  cv  \)为初速度.现在设 \(  D_{t}  \)和 \(  \tilde{D_{t}}  \)分别是沿 \(   \gamma   \)和 \(   \tilde{\gamma}   \)的协变导数,则 \[
+    \begin{aligned}
+    \tilde{D}_{t}  \tilde{\gamma} ^{\prime} \left( t \right)& = \left( \frac{\,\mathrm{d}  }{\,\mathrm{d} t } \dot{\tilde{\gamma}}^{k}\left( t \right)+  \dot{\tilde{\gamma}}^{i}\left( t \right) \dot{\tilde{\gamma}}^{j}\left( t \right) \Gamma _{ij}^{k}\left(  \tilde{\gamma} \left( t \right)  \right)      \right)\partial _{k}\\ 
+     &=    \left( c ^{2}  \ddot{\gamma}^{i}\left( ct \right)+   c^{2}  \ddot{\gamma}^{i}\left( ct \right) \ddot{\gamma}^{j}\left( ct \right)   \Gamma _{ij}^{k}\left(  \gamma \left( ct \right)  \right)  \right)\partial _{k}\\ 
+      & =  c^{2}D_{t} \gamma ^{\prime} \left( ct \right)= 0  
+    \end{aligned}
+    \]       因此 \(   \tilde{\gamma}   \)是测地线.最后,若 \(   \tilde{\gamma}   \)不是极大的,则容易得到覆盖了 \(   \gamma\)的测地线,与它的极大性矛盾,故 \(   \tilde{\gamma}   \)是极大的.    
+
+    综上可得 \(   \gamma _{cv}\left( t \right)=  \gamma _{v}\left( ct\right)    \) 
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{definition}{指数映射}
+     \begin{enumerate}
+        \item  定义一个子集 \(  \mathscr{E}  \subseteq TM\),称为\textbf{指数映射域} \[
+            \mathscr{E}=  \left\{ v \in TM:  \gamma _{v}\text{定义在包含了}\left[ 0,1 \right]\text{的一个区间上}  \right\} \footnote{初速度不能太大,需要允许物体可以自然地跑动单位时间}
+            \]
+        \item 在 \( \mathscr{E}  \)上定义指数映射 \(  \exp : \mathscr{E}\to M  \) \[
+            \exp \left( v \right)=   \gamma _{v}\left( 1 \right)  
+          \footnote{以 \(  p  \)为起点, 初速度为\(  v  \),自然地跑动单位时间后,在 \(  M  \)上所处的位置.  }  \] 
+        \item 对于每个 \(  p \in M  \),指数映射在 \(  p  \)上的限制,记作 \(  \exp _{p}  \),为 \(  \exp   \)在 \(  \mathscr{E}_{p}: =  \mathscr{E}\cap T_{p}M  \)上的限制.   
+    \end{enumerate}
+       
+\end{definition}
+
+\begin{proposition}{指数映射的性质}
+    令 \(  \left( M,g \right)   \)是（伪）-Riemann流形,  \(  \exp :\mathscr{E}\to M  \)是它的指数映射,则
+    \begin{enumerate}
+        \item \(  \mathscr{E}  \)是 \(  TM  \)上包含了零截面的一个开集,并且每个 \(\mathscr{E}_{p}  \mathscr{p}\subseteq T_{p}M  \)都是关于 \(  0  \)呈星形的\footnote{对于任意的 \(  y \in \mathscr{E}_{p} \)从 \(  0  \)到 \(  y  \) 的线段落在 \(  \mathscr{E}_{p}  \)上   }.    
+        \item 对于每个 \(  v \in TM  \),测地线 \(   \gamma _{v}  \)由以下给出 \[
+         \gamma _v\left( t \right)= \exp \left( tv \right)  
+        \]  若 \(  t  \)使得两边中的一个有定义.  
+        \item 指数映射是光滑的.
+        \item 对于每个 \(  p \in M  \),微分 \(  \,\mathrm{d} \left( \exp _{p} \right)_{0}: T_0\left( T_{p}M \right)\simeq T_{p}M\to T_{p}M    \)在 \(  T_0\left( T_{p}M \right)   \)和\(  T_{p}M  \)的通常同构下  是 \(  T_{p}M  \)上的单位映射,   
+    \end{enumerate}
+\end{proposition}
+\begin{proof}\footnote{未完成}
+    对于2.,由尺度变换引理, \[
+    \exp \left( tv \right)=  \gamma _{tv}\left( 1 \right)=  \gamma _{v}\left( t \right)   
+    \]若 \(  t  \)使得上述其中一个有定义.
+    
+    任取 \(  v \in   \mathscr{E}_{p}\),则 \(   \gamma _{v}  \)至少在 \(  \left[ 0,1 \right]   \)上有定义.因此对于任意的 \(  t \in \left[ 0,1 \right]   \),尺度变换引理给出 \[
+    \exp _{p}\left( tv \right)=  \gamma _{tv}\left( 1 \right)  =  \gamma _{v}\left( t \right) 
+    \]    是有定义的,从而 \(  tv \in \mathscr{E}_{p}  \), \(  \mathscr{E}_{p}  \)关于 \(  0  \)是星形集.   
+
+    为了计算 \(  \,\mathrm{d} \left( \exp _{p} \right)_{0}\left( v \right)    \), \(  v \in T_{p}M  \),选择 \(  T_{p}M  \)上以 \(  0  \)为起点, \(  v  \)为初速度的曲线 \(  \tau   \),并计算 \(  \exp _{p}\circ \tau   \)的初速度即可.这里我们取 \(  \tau \left( t \right)= tv   \),则 \[
+    \,\mathrm{d} \left( \exp _{p} \right)_{0}\left( v \right)= \left. \frac{\,\mathrm{d}  }{\,\mathrm{d} t }  \right|_{t= 0}\left( \exp _{p}\circ \tau  \right)\left( t \right)=\left. \frac{\,\mathrm{d}  }{\,\mathrm{d} t }  \right|_{t= 0}\exp _{p}\left( tv \right)= \left. \frac{\,\mathrm{d}  }{\,\mathrm{d} t }  \right|_{t= 0} \gamma _{v}\left( t \right)= v       
+    \]        
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}{指数映射的自然性}   
+    设 \(  \left( M,g \right)   \)和 \(  \left( \tilde{M},\tilde{g}  \right)   \)是（伪）-Riemann流形, \(   \varphi : M\to M  \)是局部等距同构.则对于每个 \(  p \in M  \),下图交换： \[\begin{tikzcd}
+	{ \mathscr{E}_{p}} && { \tilde{\mathscr{E}}_{ \varphi \left( p \right) } } \\
+	\\
+	M && {\tilde{M}}
+	\arrow["{\mathrm{d}  \varphi _{p} }", from=1-1, to=1-3]
+	\arrow["{\exp _{p}}"', from=1-1, to=3-1]
+	\arrow["{  \exp _{ \varphi \left( p \right) } }", from=1-3, to=3-3]
+	\arrow["\varphi"', from=3-1, to=3-3]
+\end{tikzcd}\]  
+\end{proposition}
+\begin{proof}
+    任取 \(  v \in \mathscr{E}_{p}  \),则 \(  M  \)在 的以 \(  p  \)为起点, \(  v  \)为初速度的极大测地线 \(   \gamma _{v}  \)至少在 \(  \left[ 0,1 \right]   \)上有定义.由于 \(   \varphi   \)是局部的等距同构, \(   \varphi \circ  \gamma _{v}  \)也是一个极大测地线,它的起点为 \(   \varphi \circ  \gamma _{v}\left( 0 \right)=  \varphi \left( p \right)    \),初速度为 \(  \frac{\,\mathrm{d}  }{\,\mathrm{d} t }\left(  \varphi \circ  \gamma _{v} \right)\left( 0 \right)= \,\mathrm{d}  \varphi _{p}  \gamma _{v}^{\prime} \left( 0 \right)= \,\mathrm{d}  \varphi _{p}\left( v \right)       \),  我们有 \(   \varphi \circ  \gamma _{v}=  \gamma _{ \,\mathrm{d}  \varphi _{p}\left( v \right)}   \)        \[
+     \varphi \left( \exp _{p}\left( v \right)  \right)=  \varphi \left(  \gamma _{v}\left( 1 \right)  \right)=  \gamma _{\,\mathrm{d} \phi _{p}\left( v \right) }\left( 1 \right)= \exp _{ \varphi \left( p \right) }\circ \left( \,\mathrm{d}  \varphi _{p} \right)\left( v \right)   
+    \]这就说明了图表的交换性.
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    设 \(  \left( M,g \right)   \)和 \(  \left( \tilde{M},\tilde{g}  \right)   \)是（伪）-Riemann流形, \(  M  \)是连通的.设 \(   \varphi ,\psi :M\to  \tilde{M}  \)是局部等距同构,使得对于某个 \(  p \in M  \), \(   \varphi \left( p \right)= \psi \left( p \right)    \),且 \(  \,\mathrm{d}  \varphi _{p}= \,\mathrm{d} \psi _{p}  \),则 \(   \varphi \equiv \psi   \).        
+\end{proposition}
+\begin{proof}
+    令\[
+    S =  \left\{ q \in M:  \varphi \left( q \right)= \psi \left( q \right),\,\mathrm{d}  \varphi _{q}= \,\mathrm{d} \psi _{q}   \right\}
+    \]任取 \(  p \in S  \),由自然性, \[
+     \varphi \circ \exp _{p}= \exp _{ \varphi \left( p \right) }\circ \,\mathrm{d}  \varphi _{p}=  \exp _{\psi \left( p \right) }\circ \,\mathrm{d} \psi _{p}= \psi \circ \exp _{p}
+    \] 由于 \(  \,\mathrm{d} \left( \exp _{p} \right)_{0}   \)是单位映射,存在包含了原点的开邻域 \(  U_0\subseteq T_{p}M  \),和包含了 \(  p  \)的开邻域 \(  V\subseteq M  \),使得 \(  \exp _{p}  \)成为它们之间的微分同胚,故 \(   \varphi   \)和 \(  \psi   \)在 \(  p  \)的一个邻域上相等,    微分的局部性又给出 在其上 \(  \,\mathrm{d} \phi = \,\mathrm{d} \psi   \),故 \(  S  \)是一个开集.  
+
+    此外,任取 \(  q \in S^{c}  \),若 \(   \varphi \left( q \right)\neq \psi \left( q \right)    \),由 \(   \varphi -\psi   \)的连续性,存在 \(  q  \)使得 \(   \varphi \neq \psi   \)在其上成立；若 \(   \varphi \left( q \right)= \psi \left( q \right)    \)但 \(  \,\mathrm{d}  \varphi  _{q}\neq \,\mathrm{d} \psi _{q}  \) ,     由 \(  \,\mathrm{d} \phi -\,\mathrm{d} \psi   \)的连续性,  存在 \(  q  \)的邻域使得 \(  \,\mathrm{d}  \varphi \neq \,\mathrm{d} \psi   \)在其上成立,故 \(  S^{c}  \)是开集, \(  S  \)是闭集.
+    
+    最后,连通性要求 \(  S= M  \). 
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}
+    称（伪）Riemann流形 \(  \left( M,g \right)   \)是测地完备的,若每个极大测地线对于所有的 \(  t \in \mathbb{R}   \)有定义,或者等价地说指数映射的定义域是整个 \(  TM  \) .  
+\end{definition}
+
+\section{法邻域和法坐标}
+
+\begin{definition}
+    设 \(  \left( M,g \right)   \)是（伪）Riemann流形, \(  p \in M  \) .若 \(  p  \)的邻域 \(  U  \)  是 \(  0 \in T_{p}M  \)的某个星形邻域在 \(  \exp _{p}  \)下的微分同胚像,   则称 \(  U  \)为 \textbf{ \(  p  \)的一个法邻域 }.
+\end{definition}
+
+\begin{proof}
+\textbf{ 法邻域的存在性}：指数映射 \(  \exp _{p}  \)将开集 \(  \mathscr{E}_{p}\subseteq T_{p}M  \)光滑地映到 \(  M  \)上,由于 \(  \,\mathrm{d} \left( \exp _{p} \right)_{0}   \)可逆,知存在 \(  0 \in T_{p}M  \)的一个邻域 \(  V  \),以及 \(  p \in M  \)的一个邻域 \(  U  \),使得 \(  \exp _{p}  \)成为 \(  V  \)到 \(  U  \)的一个微分同胚.           
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{法坐标}
+    对于每个 \(  T_{p}M  \)的正交基 \(  \left( b_{i} \right)   \),它决定了 一个基同构 \(  B: \mathbb{R} ^{n}\to T_{p}M  \), \(  B\left(  x^1,\cdots,x^n  \right)= x^{i}b_{i}   \).若 \(  U =  \exp _{p}\left( V \right)   \)是 \(  p  \)的法邻域,可以将指数映射与同构复合,得到光滑坐标映射 \(   \varphi =  B^{-1} \circ \left( \exp _{p}|_{V} \right)^{-1} :U\to \mathbb{R} ^{n}   \): 
+    \[\begin{tikzcd}
+     { T_{p}M  } && {\mathbb{R} ^{n}} \\
+     \\
+     U
+     \arrow["{ B^{-1} }", from=1-1, to=1-3]
+     \arrow["{ \left( \left. \exp _{p} \right|_{V} \right)^{-1}  }", from=3-1, to=1-1]
+     \arrow["{\varphi }"', from=3-1, to=1-3]
+ \end{tikzcd}\]  称这样的坐标为以 \(  p  \)为中心的法坐标\footnote{将邻域按指数映射的对应线性化为切空间,切空间上可以轻松地找到正交坐标,给出了 \(  U  \)上的正交坐标（下个命题中证明）. }.    
+\end{definition}
+
+\begin{proposition}{法坐标的唯一性}\label{法坐标的唯一性}
+    设 \(  \left( M,g \right)   \)是（伪）Riemann \(  n  \)- 流形 , \(  \pi \in M  \), \(  U  \)是以 \(  p  \)为中心的一个法邻域.对于每个以 \(  p  \)中心的 \(  U  \)上的法坐标卡,坐标基在 \(  p  \)点处正交；并且对于每个 \(  T_{p}M  \)的正交基 \(  \left( b_{i} \right)   \),存在唯一的 \(  U  \)上的法坐标 \(  \left( x^{i} \right)   \),使得 \(  \left. \partial _{i} \right|_{p}= b_{i},i=  1,\cdots,n   \).当 \(  g  \)正定时,对于任意两个法坐标卡 \(  \left( x^{i} \right)   \)和 \(  \left( \tilde{x}^{j} \right)   \)都有 \[
+    \tilde{x}^{j}= A_{i}^{j}x^{i}
+    \]           对于某个（常值）正交矩阵 \(  \left( A_{i}^{j} \right)\in O\left( n \right)    \)成立.    
+\end{proposition}
+
+\begin{proof}
+    设 \(   \varphi   \)是 \(  U  \)上以 \(  p  \)为中心的法坐标,坐标函数为 \(  \left( x^{i} \right)   \).则由定义有 \(   \varphi  =  B^{-1} \circ \exp _{p}^{-1}   \),其中 \(  B:\mathbb{R} ^{n}\to T_{p}M  \)是由 \(  T_{p}M  \)的一组正交基 \(  \left( b_{i} \right)   \)决定的.      由于 \(  \,\mathrm{d} \left( \exp _{p} \right)_{0}   \)是单位映射且 \(  B  \)是线性的,故  \( \partial _{i}|_{p}=  \left( \,\mathrm{d}  \varphi _{p} \right)^{-1} \left( \partial _{i}|_{0} \right)= B\left( \partial _{i}|_{0} \right)= b_{i}     \),  
+    故坐标基就是它的定义依赖的坐标基,故在 \(  p  \)点处正交.
+    
+    对于每个 \(  T_{p}M  \)的正交基 \(  \left( b_{i} \right)   \),上面的计算表明它给出的法坐标就是满足条件的法坐标,故存在性得证.  
+    
+    若 \(   \tilde{\varphi} = \tilde{B}^{-1} \circ \exp _{p}^{-1}   \) 是另一个法坐标,则 \[
+     \tilde{\varphi} \circ  \varphi ^{-1} = \tilde{B}^{-1} \circ \exp _{v}^{-1} \circ \exp _{v}\circ B =  \tilde{B}^{-1} \circ B= :A
+    \]是 \(  \mathbb{R} ^{n}  \)上两个正交基的变换.若 \(   \tilde{\varphi}   \)的坐标向量场与 \(  b_{i}  \)相同,则它是被 \(  \left( b_{i} \right)   \)所决定的坐标,我们有 \(  \tilde{B}= B  \) ,从而 \(   \tilde{\varphi} =  \varphi   \),这就说明了唯一性.    
+    
+    最后,若 \(  g  \)正定,则 \(  A  \)是正交矩阵,最后一个断言成立.  
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}{法坐标的性质}
+    设 \(  \left( M,g \right)   \) 是（伪）Riemann流形, \(  \left( U,\left( x^{i} \right)  \right)   \)是任意以 \(  p \in M  \)为中心的法坐标,则
+    \begin{enumerate}
+        \item  \(  p  \)的坐标是 \(  \left( 0,\cdots ,0 \right)   \)；
+        \item  若 \(  g  \)是Riemann度量,则  \(  p  \)处的度量分量为 \(  g_{ij}=  \delta  _{ij}  \)  ,否则为 \(  g_{ij}= \pm  \delta  _{ij}  \).
+        \item 对于每个\(  v = v^{i}\partial _{i}|_{p}\in T_{p}M  \),以 \(  p  \)为起点, \(  v  \)为初速度的测地线 \(   \gamma _{v}  \)在法坐标下表示为线 \[
+         \gamma _{v}\left( t \right)= \left( tv_1,\cdots ,tv^{n} \right)  
+        \]     只要 \(  t  \)落在某个包含了 \(  0  \)且满足\(   \gamma _{v}\left( I \right)\subseteq U   \) 的区间 \(  I  \)上
+        \item 在这组坐标下的Christoffel符号在 \(  p  \)点处退化； 
+        \item  \(  g_{ij}  \)在这组坐标下的所有一阶偏导数在 \(  p  \)点处退化.  
+    \end{enumerate}
+      
+\end{proposition}
+
+\begin{proof}
+    1.由法坐标的定义直接得到,2.由法坐标的正交性得到.3.由 \[
+     \gamma _{v}\left( t \right)= \exp _{p}\left( vt \right)= B^{-1} \left( vt \right)= \left( tv^{1},\cdots ,tv^{n} \right)    
+    \]
+    任取 \(  v = v^{i}\partial _{i}|_{p}\in T_{p}M  \), \(   \gamma _{v}\left( t \right)= \left( tv^{1},\cdots ,tv^{n} \right)    \), \(   \dot{\gamma}_{v} \left( t \right)= \left( v^{1},\cdots ,v^{n} \right)    \),    \(   \ddot{\gamma}_{v}\left( t \right)= 0   \),测地线方程化为 \[
+    v^{i}v^{j} \Gamma _{ij}^{k}\left( tv \right) = 0
+    \] 取 \(  t= 0  \),得到 \(   \Gamma _{ij}^{k}\left( 0 \right)v^{i}v^{j}= 0   \)对于所有的 \( k,v  \)成立.特别地,对于固定的 \(  a  \)取 \(  v = \partial _{a}  \)     ,得到 \(   \Gamma _{aa}^{k}= 0  \).分别做替换 \(  v = \partial _{a}+ \partial _{b}  \)和 \(  v =  \partial _{b}-\partial _{a}  \)并相减后得到 \(   \Gamma _{ab}^{k}= 0  \),在 \(  p  \)处对于所有的 \(  a,b,k  \)成立.故4.得证. 最后5.由命题\ref{度量联络的等价刻画}的 3.将 \(  E_{k}  \)替换为 \(  \partial _{k}  \)并结合本命题的4.可以得到,    
+
+    \hfill $\square$
+\end{proof}
+
+\end{document}

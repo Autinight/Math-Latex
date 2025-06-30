@@ -1,0 +1,65 @@
+\documentclass[lang=cn,11pt,color=blue,fontset=none,pad]{elegantbook}
+%fontset=none,
+\title{复变函数}
+% \subtitle{课内复习版}
+
+\author{Autin}
+
+\usepackage{quiver} 
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usepackage{subfiles}
+
+\setmainfont{Aa顺風顺水顺财神}[BoldFont=Shanggu Round-Bold]
+\setCJKmainfont{Aa顺風顺水顺财神}[BoldFont=Shanggu Round-Bold]
+\setCJKsansfont{Aa顺風顺水顺财神}[BoldFont=Shanggu Round-Bold]
+\setCJKmonofont{Aa顺風顺水顺财神}[BoldFont=Shanggu Round-Bold]
+ 
+\extrainfo{}
+
+\setcounter{tocdepth}{3}
+
+% \logo{xmu-logo.pdf}
+\cover{room_早.jpg}
+\usepackage{CJKutf8}
+% 本文档命令
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+
+
+% 修改标题页的橙色带
+% \definecolor{customcolor}{RGB}{32,178,170}
+% \colorlet{coverlinecolor}{customcolor}
+
+\begin{document}
+
+\maketitle
+
+
+\frontmatter
+
+
+\tableofcontents
+
+\mainmatter
+
+\subfile{chapters/绪论/绪论.tex}
+
+
+\subfile{chapters/复平面的拓扑/复平面的拓扑.tex}
+
+\subfile{chapters/解析函数/解析函数.tex}
+
+\subfile{chapters/积分/积分.tex}
+
+\subfile{chapters/级数/级数.tex}
+
+\subfile{chapters/Laurent展开/Laurent展开.tex}
+
+\subfile{chapters/共形映射/共形映射.tex}
+
+\subfile{chapters/Final/Final.tex}
+\end{document}
+ 
+
+ 

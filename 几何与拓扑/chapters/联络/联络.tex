@@ -1,0 +1,836 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+    
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+\chapter{联络}
+
+\section{Introduction}
+
+我们希望在流形上定义曲线的加速度.在欧氏空间中,我们直接对每个分量再求导就可以实现,这是因为 \(  \mathbb{R} ^{n}  \)上的每个点的切空间是等距同构的,切向量都可以“活在”同一个 \(  \mathbb{R} ^{3}  \)空间中  
+,可以自然地做减法定义出极限.但在流形 \(  M  \)上, \(  T_{p}M  \)和 \(  T_{q}M  \)对于不同的 \(  p,q  \)是不同的向量空间,我们需要在 \(  M  \)上附加一种几何结构（联络）,使得不同切空间的向量可以通过某种认为的方式比较（平移）,来定义出 曲线的“加速度"（速度向量场的协变导数）.   
+\section{联络}
+\begin{definition}
+    令 \(  \pi : E\to M  \)是光滑（带边）流形 \(  M  \)上的一个光滑向量丛, \(   \Gamma \left( E \right)   \)是 \(  E  \)的光滑截面空间.
+     \textbf{\(  E  \)上的一个联络}是指,一个映射 \[
+     \nabla : \mathfrak{X}\left( M \right) \times   \Gamma \left( E \right)\to  \Gamma \left( E \right)   
+     \]写作 \(  \left( X,Y \right)\to \nabla _{X}Y   \),满足以下三条 
+     \begin{enumerate}
+        \item \(  \nabla _{X}Y  \)在 \(  X  \)上是 \(  C^{\infty}\left( M \right)   \)线性的： 对于 \(  f_1,f_2\in C^{\infty}\left( M \right)   \),以及 \(  X_1,X_2 \in \mathfrak{X}\left( M \right)   \), \[
+        \nabla _{f_1X_1+ f_2X_2}Y = f_1 \nabla _{X_1}Y+ f_2\nabla _{X_2}Y
+        \]
+        \item \(  \nabla _{X}Y  \)在 \(  Y  \)上是 \(  \mathbb{R}   \)线性的： 对于 \(  a_1,a_2 \in \mathbb{R}   \)和 \(  Y_1,Y_2 \in  \Gamma \left( E \right)   \), \[
+        \nabla _{X}\left( a_1Y_1+ a_2Y_2 \right)=  a_1\nabla _{X}Y_1+ a_2\nabla _{X}Y_2 
+        \]
+        \item \(  \nabla   \)满足以下乘积律：  \(  f \in C^{\infty}\left( M \right)   \), \[
+        \nabla _{X}\left( fY \right)= f\nabla _{X}Y+  \left( Xf \right)Y  
+        \]            
+     \end{enumerate}
+           
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item 称 \(  \nabla _{X}Y  \)为 \(  Y  \)在 \(  X  \)方向上的协变导数.   
+    \end{enumerate}
+    
+\end{remark}
+
+
+\begin{lemma}{局部性}
+    设 \(  \nabla   \)是光滑向量丛 \(  E\to M  \)上的联络, \(  X,\tilde{X}\in \mathfrak{X}\left( M \right)   \),\(  Y,\tilde{Y} \in  \Gamma \left( E \right)   \), \(  p \in M  \) .
+    若存在 \(  p  \)的某个邻域 \(  U  \),使得 \(  X|_{U} =  \tilde{X}|_{U}, Y|_{U} =  \tilde{Y}|_{U}    \),则 \(  \nabla _{X} Y|_{p}=  \nabla _{\tilde{X}}\tilde{Y}|_{p}  \)         
+\end{lemma}
+\begin{proof}
+    如果能分别证明  \(  X  \)和 \(  Y  \)上的局部性,由公共邻域上的一致性,就可以得到 \[
+    \nabla _{X} Y|_{p} =  \nabla _{X} \tilde{Y}|_{p} =  \nabla _{\tilde{X}} \tilde{Y}|_{p}
+    \]  所以接下来依次说明.
+
+    先考虑 \(  Y  \),由 \(  \nabla   \)在 \(  Y  \)上的 \(  \mathbb{R}   \)-线性,只需要说明若 \(  Y  \)在 \(  p  \)的局部上退化,则 \(  \nabla _{X} Y  \)在 \(  p  \)处退化.
+    设 \(  U  \)是 \(  p  \)的邻域,使得 \(  Y|_{U} \equiv 0  \),取 \(  M  \)的支撑在\(  U  \)上的光滑 bump函数 \(   \varphi  \in C^{\infty}\left( M \right)   \),则 \(  \operatorname{supp}\, \varphi \subseteq  U  \) .
+    于是 \(   \varphi Y \equiv 0  \)在 \(  M  \)上成立.由 \(  \nabla   \)在 \(  Y  \)上的 \(  \mathbb{R}   \)-线性, \(  \nabla _{X}\left(  \varphi Y \right)= 0   \)；再由乘积律 \[
+    0 =  \nabla _{X} \left(  \varphi Y \right) =  \varphi  \nabla _{X}Y+ \left( X \varphi  \right)Y   
+    \]  在 \(  p  \)处取值,得到 \[
+     \nabla _{X}Y|_{p} =  0
+    \] 
+
+    接下来考虑 \(  X  \),由 \(  \nabla   \)在 \(  X  \)上的线性,也只需要说明 若 \(  X  \)在 \(  p  \)的局部上退化, \(  \nabla _{X}Y  \)在 \(  p  \)处退化.
+    我们做类似的构造得到 \(   \varphi X \equiv 0  \)在 \(  M  \)上成立,由 \(  \nabla   \)在 \(  X  \)上的线性,得到 \[
+    0 =  \nabla _{ \varphi X}Y =   \varphi  \nabla _{X}Y
+    \]在 \(  p  \)处取值得到 \[
+    \nabla _{X} Y|_{p}= 0
+    \]
+    
+    
+    综上可得命题成立.
+    \hfill $\square$
+\end{proof}
+\begin{proposition}{联络的限制}
+    设 \(  \nabla   \)是光滑向量丛 \(  E \to M  \)上的一个联络.则对于每个开集 \(  U\subseteq M  \),存在限制丛 \(  E|_{U}  \)上唯一的联络 \(  \nabla ^{U}    \) ,使得对于任意的 \(  X \in \mathfrak{X}\left( M \right)   \)和 \(  Y \in  \Gamma \left( E \right)   \), \[
+     \nabla  ^{U}_{\left( X|_{U} \right) }\left( Y|_{U} \right) =  \left. \left(  \nabla  _{X}Y \right)  \right|_{U}
+    \]      
+    
+\end{proposition}
+\begin{proof}
+    先证明唯一性.设 \(   \nabla  ^{U}  \)和 \(   \tilde{\nabla} ^{U}  \)是满足条件的两个联络.任取
+    任意的 \(  X \in \mathfrak{X}\left( U \right)   \)和 \(  Y \in  \Gamma \left( E|_{U} \right)   \),
+    对于给定的 \(  p \in U  \),都可以利用bump函数构造出光滑向量场 \(  \tilde{X}\in \mathfrak{X}\left( M \right)   \)和光滑截面 \(  \tilde{Y} \in  \Gamma \left( E \right)   \),使得 \(  \tilde{X}|_{U}  \)    和 \(  \tilde{Y}|_{U}  \)分别在 \(  U  \)上与 \(  X,Y  \) 一致.
+    则由局部性和题设条件 \[
+     \nabla _{X}^{U}Y|_{p} =   \nabla ^{U}_{\left( \tilde{X}|_{U} \right) }\left. \left( \tilde{Y}|_{U} \right)  \right|_{ p } =   \left. \left(  \nabla _{\tilde{X}} \tilde{Y}\right)  \right|_{p} =   \tilde{\nabla} ^{U}_{\left( \tilde{X}|_{U} \right) } \left. \left( \tilde{Y} |_{U}\right)  \right|_{p} =   \tilde{\nabla} _{X}^{U}Y|_{p}
+    \]这就说明了唯一性.
+
+    为了说明存在性,对于 \(  X \in \mathfrak{X}\left( U \right)   \) 和 \(  Y \in  \Gamma \left( \left. E \right|_{U} \right)   \),对于每个 \(  p \in U  \),
+    就按上述方式构造 \(  \tilde{X}  \)和 \(  \tilde{Y}  \),并定义 \[
+     \nabla _{X}^{U}Y|_{p} : =  \left. \left(  \nabla _{\tilde{X}}\tilde{Y} \right)  \right|_{p}
+    \]    由局部性可知此定义无关 \(  \tilde{X}  \)和 \(  \tilde{Y}  \)的选取,我们给出了映射 \(   \nabla ^{U}: \mathfrak{X}\left( U \right)\times  \Gamma \left( E|_{U} \right)\to  \Gamma \left( E|_{U} \right)     \)   .
+    最后,对于联络定义的三条性质的验证,只需要在每一点的局部上做延拓,应用 \(   \nabla   \)所满足的对应的性质,再利用良定义性将 \( \sim   \)去掉即可.   
+    \hfill $\square$
+\end{proof}
+
+
+\begin{proposition}
+    设 \(   \nabla   \)是光滑向量丛 \(  E\to M  \)上的一个联络.对于任意的 \(  X,\tilde{X}\in \mathfrak{X}\left( M \right)   \)和 \(  Y,\tilde{Y} \in  \Gamma \left( E \right)   \),以及 \(  p \in M  \),若
+     \(  X|_{p} = \left. \tilde{X} \right|_{p}  \),且 \(  Y =  \tilde{Y}  \)在 \(  p  \)的某个邻域上成立,则 \(  \left.  \nabla _{X} Y \right|_{p} =  \left.  \nabla _{\tilde{X}}\tilde{Y} \right|_{p}  \)         
+\end{proposition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 换言之, \(   \nabla   \)对 \(  Y  \)有局部性,对 \(  X  \)有逐点性.   
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{proof}
+    对于 \(  Y  \)的局部性已经在之前的引理中处理过.另外由 \(   \nabla   \)对 \(  X  \)的线性,只需要说明若 \(  X  \)在 \(  p  \)处退化,则 \(   \nabla _{X}Y|_{p}= 0  \).
+    由 \(   \nabla   \)的局部性,我们可以只在 \(  p  \)的一个坐标邻域 \(  \left( U,x^{i} \right)   \)上考虑,设 \(  X  \)在其上表为 \(  X =  X^{i} \partial _{i}  \),则 \(  X^{i}\left( p \right)= 0   \).   
+    由 \(   \nabla   \)的线性和乘积律,在 \(  U  \)上有  \[
+     \nabla _{X}Y =   \nabla _{X^{i}\partial _{i}}Y =  X^{i}  \nabla _{\partial _{i}}Y
+    \] 上式在 \(  p  \)处取值,可得 \(   \nabla _{X}Y|_{p}= 0  \).  
+    \hfill $\square$
+\end{proof}
+
+\subsection{切丛上的联络}
+
+\begin{definition}
+    设 \(  M  \)是光滑（带边）流形.\textbf{\(  M  \)上的一个联络 },通常是指切丛 \(  TM \to M  \)上的一个联络 \[
+     \nabla : \mathfrak{X}\left( M \right)\times \mathfrak{X}\left( M \right)\to \mathfrak{X}\left( M \right)   
+    \]  
+\end{definition}
+
+
+\begin{definition}{联络系数}\label{联络的坐标表示}
+    设 \(  M  \)是光滑（带边）流形, \(   \nabla   \)是 \( T M  \)上的一个联络.设 \(  \left( E_{i} \right)   \)是 \(  TM  \)在开子集 \(  U\subseteq M  \)上的一个光滑局部标价.
+    对于每一组指标 \(  i,j  \), \(   \nabla _{E_{i}}E_{j}  \)都可以按同一组标架展开：  \[
+     \nabla _{E_{i}} E_{j}=  \Gamma _{ij}^{k} E_{k}
+    \]当 \(  i,j,k  \)跑遍 \(  1  \)到 \(  n = \operatorname{dim}\,M  \)时,定义出 \(  n^{3}  \)个光滑函数 \(   \Gamma _{ij}^{k}: U\to \mathbb{R}   \),被称为是\textbf{\(   \nabla   \)关于给定标架的联络系数 } .            
+\end{definition}
+
+\begin{proposition}{坐标表示}
+    设 \(  M  \)是光滑（带边）流形, \(   \nabla   \)是 \(  TM  \)上的一个联络. 设 \(  \left( E_{i} \right)   \)是
+    开子集 \(  U\subseteq M  \)上的一个局部标架, 令 \(  \left\{  \Gamma _{ij}^{k} \right\}  \)是 \(   \nabla   \)关于这组标架的联络系数.
+    对于光滑向量场 \(  X,Y \in \mathfrak{X}\left( U \right)   \),按标架展开为 \(  X = X^{i}E_{i}  \), \(  Y= Y^{j}E_{j}  \)  ,则有 \[
+     \nabla _{X}Y =  \left( X\left( Y^{k} \right)+ X^{i}Y^{j} \Gamma _{ij}^{k}  \right) E_{k} \footnote{记忆时分成两部分来记,一部分是对固定向量场对数量函数求导的部分,这部分比较少；一部分是固定数量函数对向量场求导的部分,这部分要拆的细碎一点,既要拆求导的方向 \(  X ^{i} \),又要拆导出的坐标表示 \(  E_{k}  \)  }
+    \]
+\end{proposition}
+
+\begin{proof}
+    由联络的性质 \[
+    \begin{aligned}
+    \nabla _{X}Y & =  \nabla _{X} \left( Y^{j}E_{j} \right)\\ 
+     & = Y^{j}  \nabla _{X}E_{j}+ X\left( Y^{j} \right)  E_{j}\\ 
+      & =  Y^{j}  \nabla _{\left( X^{i}E_{i} \right) }E_{j}+ X\left( Y^{k} \right)E_{k} \\ 
+       & =  X^{j}Y^{j} \nabla _{E_{i}}E_{j}+ X\left( Y^{k} \right)E_{k}\\ 
+        & =  X^{j}Y^{j} \Gamma _{ij}^{k}E_{k} + X\left( Y^{k} \right)E_{k}\\ 
+         & =  \left( X\left( Y^{k} \right)+  X^{i}Y^{j} \Gamma _{ij}^{k}  \right)E_{k}  
+    \end{aligned}
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}{联络系数的变换法则}
+    令 \(  M  \)是光滑（带边）流形, \(   \nabla   \)是 \(  TM  \)上的一个联络.给定 \(  TM  \)在开子集 \(  U\subseteq M  \)上的两个局部标架
+     \(  \left( E_{j} \right)   \)和 \(  \left( \tilde{E}_{j} \right)   \), \(   \Gamma _{ij}^{k}  \)和 \(   \tilde{\Gamma} _{ij}^{k}  \)表示 \(   \nabla   \)在两个标架上的联络系数.若 \(  \tilde{E}_{i} =  A_{i}^{j}E_{j}\)对某个函数矩阵 \(  \left( A_{i}^{j} \right)   \)成立.则 \[
+      \tilde{\Gamma} _{ij}^{k} =  \left( A^{-1}  \right)_{p}^{k}A_{i}^{q}A_{j}^{r} \Gamma _{qr}^{p}+ \left( A^{-1}  \right)_{p}^{k} A_{i}^{q} E_{q}\left( A_{j}^{p} \right)  
+     \]      
+\end{proposition}
+
+\subsection{联络的存在性}
+
+局部上的联络可以通过一组特定的标架的坐标来决定,包含了  \(  n^{3}  \)个光滑函数的信息,一个 \(  n  \)个坐标,每个坐标都分别对应了 \(  X  \)、\(  Y  \)  的 \(  n  \)个信息   . 
+
+每个局部坐标上都可以构造出局部的联络,通过单位分解可以整合出一个整体的联络.
+
+一般情况下,联络不具有对第二个分量的 \(  C^{\infty}\left( M \right)   \)线性,因而无法成为一个 \(  \left( 1,2 \right)   \)- 张量场,作为代替的,它满足对第二个分量的
+Lebniz律,它比\(  C^{\infty}\left( M \right)   \)-线性多了一个 \(  \left( Xf \right)Y   \),通过对两个联络做差,可以抵消此项,定义出
+一个关于 \(  Y  \)满足 \(  C^{\infty}\left( M \right)   \)-线性的映射,从而定义出一个 \(  \left( 1,2 \right)   \)-张量场.     
+
+每两个联络都相差一个 \(  \left( 1,2 \right)   \)-张量场,并且每个联络加上一个 \(  \left( 1,2 \right)   \)-张量场还是一个联络,由此可见,联络的多少和 \(  \left( 1,2 \right)   \)-张量场的多少是一样的,
+联络的空间就是一个\(  \left( 1,2 \right)   \)- 张量场的仿射空间.   
+
+接下来我们依次严格说明以上这些事实.
+
+\begin{introduction}
+    \item 联络的坐标对应
+    \item 联络的存在性
+    \item 联络的差张量
+    \item 联络空间的大小
+\end{introduction}
+
+
+\begin{example}{欧式联络}
+    在 \(  T \mathbb{R} ^{n}  \)上,定义欧式联络 \(  \overline{ \nabla }  \),按照 \[
+    \overline{ \nabla }_{X}Y = X\left( Y^{1} \right) \frac{\partial }{\partial x^{1}}+ \cdots + X\left( Y^{n} \right)\frac{\partial }{\partial x^{n}}  
+    \]  容易验证它满足联络公理的三条性质.
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{example}[   \(  \mathbb{R} ^{n}  \)子流形上的切联络 ]
+    令 \(  M\subseteq \mathbb{R} ^{n}  \)是一个嵌入子流形.定义 \(  TM  \)上的 \textbf{切联络} \(   \nabla^{\top}   \)为 \[
+     \nabla _{X}^{\top}Y =  \pi ^{\top}\left( \overline{ \nabla }_{\tilde{X}}\tilde{Y} |_{M}\right) \footnote{切联络就是把子流形的曲线放到父空间中去,求完导数后再正交地投影到子流形切空间上.由于在父流形中求导时并不会产生沿子流形法相的什么信息,因此在投影时也没有舍弃信息.}
+    \]其中 \(  \pi ^{\top}  \)是到 \(  TM  \)的正交投影, \(  \overline{ \nabla }  \)是 \(  \mathbb{R} ^{n}  \)上的欧式联络, \(  \tilde{X},\tilde{Y}  \)分别是 \(  X,Y  \)的光滑延拓.  
+\end{example}
+
+\hspace*{\fill} 
+
+
+\begin{lemma}
+    设 \(  M  \)是一个光滑（带边） \(  n  \)-流形, \(  M  \)容许一个全局标架 \(  \left( E_{i} \right)   \),则公式 \[
+     \nabla _{X}Y =  \left( X\left( Y^{k} \right)+ X^{i}Y^{j} \Gamma _{ij}^{k}  \right)E_{k} 
+    \]给出    \(  TM  \)上的联络与 \(  M  \)上的 \(  n^{3}  \)份光滑实函数 \(  \left\{  \Gamma _{ij}^{k} \right\}  \)空间的一个一一对应.     
+\end{lemma}
+
+\begin{proof}
+    根据命题\ref{联络的坐标表示},每个联络都按照题设
+    公式给出了 \(  n^{3}  \)个\( M  \)上的光滑实函数.  
+    另一方面,给定 \(  \left\{  \Gamma _{ij}^{k} \right\}  \),按题设公式定义 \(   \nabla _{X}^{Y}  \), 
+    易见 \(  X  \)和 \(  Y  \)均是光滑的,且对 \(  Y  \)具有 \(  R  \)-线性,对 \(  X  \)具有 \(  C^{\infty}\left( M \right)   \)-线性.       
+    最后来检查Lebniz律,设 \(  \tilde{Y}=  fY  \), \(  f \in C^{\infty}\left( M \right)   \),则 \(  \tilde{Y}^{k}= f Y^{k}  \)   ,
+    于是对于我们定义的 \(   \nabla   \),有 \[
+     \begin{aligned}
+        \nabla _{X}\tilde{Y}&=  \left( X\left( \tilde{Y}^{k} \right) + X^{i}\tilde{Y}^{j} \Gamma _{ij}^{k}  \right)E_{k}  \\ 
+        & =   \left( X\left( fY^{k} \right)+  X^{i}fY^{k}  \Gamma _{ij}^{k}  \right)E_{k}\\ 
+         & =  \left( fX\left( Y^{k} \right)+ \left( Xf \right)\left( Y^{k} \right)+  f X^{i}Y^{j} \Gamma _{ij}^{k}    \right)E_{k}\\ 
+          & =  f\left( X\left( Y^{k} \right)+ X^{i}Y^{j} \Gamma _{ij}^{k}  \right)E_{k}+  \left( Xf \right)\left( Y^{k}E_{k} \right)     \\ 
+           & =  f \nabla _{X}Y+  \left( Xf \right)Y 
+     \end{aligned}
+    \] 这就说明了 Lebniz律,综上命题成立.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    每个光滑（带边）流形的切丛上都容许一个联络.
+\end{proposition}
+
+\begin{proof}
+    令 \(  M  \)是一个光滑（带边）流形,\(  \left\{ U_{\alpha } \right\}  \)是覆盖了\(  M  \)的一个坐标卡.
+    则上述引理给出了每个 \(  U_{\alpha }  \)上的联络 \(   \nabla ^{\alpha }  \)的存在性.取 从属于 \(  \left\{ U_{\alpha } \right\}  \)的 \(  M  \)的单位分解 \(  \left\{  \varphi _{\alpha } \right\}  \)        ,定义 \[
+     \nabla _{X}Y: =  \sum _{\alpha } \varphi _{\alpha } \nabla _{X}^{\alpha }Y
+    \]由局部有限性,易见每一对 \(  X,Y \in \mathfrak{X}\left( M \right)   \)都给出了\(  M  \)上的一个光滑向量场.
+    接下来只需要依次验证联络的三条公里, 两条线性均由局部联络 \(   \nabla ^{\alpha }  \)的线性容易看出,不加赘述,主要验证以下Lebniz律.
+    为此,直接计算 \[
+    \begin{aligned}
+     \nabla _{X}\left( fY \right)& =  \sum _{ \alpha }  \varphi _{\alpha }\nabla _{X}^{\alpha }\left( fY \right)\\ 
+      & =  \sum _{\alpha } \varphi _{\alpha }\left( \left( Xf \right)Y+ f \nabla _{X}^{\alpha }Y  \right)    \\ 
+       & =  \left( Xf \right)\sum _{\alpha } \varphi _{\alpha }Y+  f\sum _{\alpha } \varphi _{\alpha } \nabla _{X}^{\alpha }Y\\ 
+        & =  \left( Xf \right)Y+  f \nabla _{X}Y  
+    \end{aligned}
+    \]   
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    设 \(  M  \)是光滑（带边）-流形.任取 \(  TM  \)上的两个联络 \(   \nabla ^{0}  \)和 \(   \nabla ^{1}  \),定义映射
+     \(  D: \mathfrak{X}\left( M \right)\times \mathfrak{X}\left( M \right)\to \mathfrak{X}\left( M \right)     \),按 \[
+     D\left( X,Y \right): =   \nabla _{X}^{1}Y-  \nabla _{X}^{0}Y 
+     \]则 \(  D  \)由 \(  C^{\infty}\left( M \right)   \)上的双线性,从而定义出一个 \(  \left( 1,2 \right)   \)-张量场,称为\textbf{ \(   \nabla ^{0}  \)和 \(   \nabla ^{1}  \)之间的差张量场}.          
+\end{proposition}
+
+\begin{proof}
+    两条线性是明显的,Lebniz律只需要看到两者相减抵消了 \(  \left( Xf \right)Y   \),得到 \(  f\left(  \nabla _{X}^{1}Y- \nabla _{X}^{0}Y \right)   \)即可.  
+
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}
+    令 \(  M  \)是光滑（带边）-流形, \(   \nabla ^{0}  \)是 \(  TM  \)上的任意联络.
+    则\(  TM  \)上的全体联络的集合 \(  \mathscr{A}\left( TM \right)   \)     等于以下仿射空间 \[
+    \mathscr{A}\left( TM \right)  =  \left\{  \nabla ^{0}+ D: D \in  \Gamma \left( T^{\left( 1,2 \right)TM } \right)  \right\}
+    \]其中 \(   \nabla ^{0}+ D: \mathfrak{X}\left( M \right)\times \mathfrak{X}\left( M \right)\to \mathfrak{X}\left( M \right)     \)被定义为 \[
+    \left(  \nabla ^{0}+ D \right) _{X}Y =   \nabla _{X}^{0}Y+ D\left( X,Y \right) 
+    \] 
+\end{theorem}
+\begin{proof}
+    任取 \(   \nabla ^{1} \in \mathscr{A}\left( TM \right)   \),\(   \nabla ^{1} =  \nabla ^{0}+  \left(  \nabla ^{1}- \nabla ^{0} \right)   \in \left\{  \nabla ^{0}+ D \right\}\)  .
+    反之,任取形如 \(   \nabla ^{0}+ D  \) 的函数,容易看出他满足联络的两条线性公里,对于Lebniz律, \[
+    \begin{aligned}
+    \left(  \nabla ^{0}+ D \right)_{X}\left( fY \right)& =    \nabla _{X}^{0}\left( fY \right)+ D\left( X,fY \right)\\ 
+     & = f\left(  \nabla _{X}^{0}Y+ D\left( X,Y \right)  \right)+  \left( Xf \right)Y\\ 
+      & = f\left(  \nabla ^{0}+ D \right)_{X}\left( Y \right)+ \left( Xf \right)Y         
+    \end{aligned}
+    \]故Lebniz律成立.
+
+    \hfill $\square$
+\end{proof}
+
+\section{张量场上的协变导数}
+
+切丛上的联络可以扩展到任意混合张量丛上.
+
+\begin{proposition}{命题}\label{张量场上的协变导数}
+    设 \(  M  \)是光滑（带边）-流形, \(   \nabla   \)是 \(  TM  \)上的一个联络.则 \(   \nabla   \)唯一地决定出任意 张量丛\(  T^{\left( k,l \right) }TM  \)上的一个联络     ,也记作 \(   \nabla   \),使得它满足以下性质：
+    \begin{enumerate}
+        \item 在 \(  T^{\left( 1,0 \right) }TM =  TM  \)上, \(   \nabla   \)与给定的联络一致；
+        \item 在 \(  T^{\left( 0,0 \right) }TM =  M\times \mathbb{R}   \)上, \(   \nabla   \)由函数的微分给出： \[
+         \nabla _{X}f =  Xf
+        \]    
+        \item \(   \nabla   \)满足张量积的Lebniz律 ：  \[
+         \nabla _{X} \left( F\otimes G \right) =  \left(  \nabla _{X}F \right)\otimes G+ F\otimes \left(  \nabla _{X}G \right)   
+        \]
+        \item \(   \nabla   \)与所有的缩并交换：若 \(  \operatorname{tr}\,  \)表示在任意一对合适的指标上的迹,则 \[
+         \nabla _{X} \left( \operatorname{tr}\,F \right) =  \operatorname{tr}\,\left(  \nabla _{X}F \right)  
+        \]并且此联络还额外满足以下性质：
+        \begin{enumerate}
+            \item  \(   \nabla   \)对于余向量场 \(   \omega   \)和向量场 \(  Y  \)之间的自然配对满足Lebniz律: \[
+             \nabla _{X} \left< \omega ,Y \right> =  \left< \nabla _{X} \omega ,Y \right> +  \left< \omega , \nabla _{X}Y \right>
+            \]   
+            \item 对于所有的 \(  F \in  \Gamma \left( T^{\left( k,l \right)} TM \right)   \),光滑 \(  1  \)-形式 \(   \omega^1,\cdots,\omega^k   \), 以及光滑向量场 \(   Y_1,\cdots,Y_l   \),成立 \[
+            \begin{aligned}
+            \left(  \nabla _{X}F \right)\left(  \omega^1,\cdots,\omega^k , Y_1,\cdots,Y_l  \right)& =  X \left( F\left(  \omega^1,\cdots,\omega^k , Y_1,\cdots,Y_l  \right)  \right)\\ 
+             &- \sum _{i= 1}^{k} F\left(  \omega ^{1},\cdots , \nabla _{X} \omega ^{i},\cdots  \omega ^{k}, Y_1,\cdots,Y_l  \right)     \\ 
+              & - \sum _{j= 1}^{l} F\left(  \omega^1,\cdots,\omega^k , Y_1,\cdots , \nabla _{X}Y_{j},\cdots ,Y_{l} \right) 
+            \end{aligned}
+            \]   
+        \end{enumerate}
+           
+    \end{enumerate}
+     
+\end{proposition}
+
+\begin{proof}
+    我们首先说明满足1.-4.的每一族作用在所有从上的联络,也都满足 a和b.设 \(   \nabla   \)是这样的一族联络.
+    为了说明 \(  \left( a \right)   \),注意到 \(  \left< \omega ,Y \right>= \operatorname{tr}\,\left(  \omega \otimes Y \right)   \), 1.-4.给出
+    \begin{equation}
+        \begin{aligned}
+            \nabla _{X} \left< \omega ,Y \right>& =  \operatorname{tr}\,\left(  \nabla _{X} \left(  \omega \otimes Y \right)  \right)\\ 
+            & =  \left(  \nabla _{X}  \omega  \right)\otimes Y +   \omega \otimes \left(  \nabla _{X}Y \right)    \\ 
+             & =  \operatorname{tr}\,\left( \left(  \nabla _{X} \omega  \right)\otimes Y  \right) +  \operatorname{tr}\,\left(  \omega \otimes \left(  \nabla _{X}Y \right)  \right)\\ 
+              & =  \left< \nabla _{X} \omega ,Y \right> + \left< \omega ,  \nabla _{X}Y \right>    
+        \end{aligned}
+    \end{equation} 对于 \(  \left( b \right)   \),我们利用 \[
+    F\left(  \omega^1,\cdots,\omega^k , Y_1,\cdots,Y_l  \right)=  \underbrace{\mathrm{tr}\circ \cdots \circ \mathrm{tr}}_{k+ l} \left( F\otimes  \omega ^{1}\otimes \cdots \otimes  \omega ^{k}\otimes Y_1\otimes \cdots \otimes Y_{l} \right) 
+    \]其中每个缩并算子都作用在 \(  F  \)的一个上指标和对应的1-形式的下指标,或者 \(  F  \)的一个下指标和对应的向量场的一个上指标上.   
+    类似 \(  \left( a \right)   \)的证明,我们有 \[
+    \begin{aligned}
+  &  X \left( F\left(  \omega^1,\cdots,\omega^k , Y_1,\cdots,Y_l  \right)  \right) \\ 
+     & =     \underbrace{\mathrm{tr}\circ \cdots \circ \mathrm{tr}}_{k+ l}\left(  \nabla _{X} \left( F\otimes  \omega ^{1}\otimes \cdots \otimes  \omega ^{k}\otimes Y_1\otimes \cdots \otimes Y_{l} \right)  \right)\\ 
+      & =   \underbrace{\mathrm{tr}\circ \cdots \circ \mathrm{tr}}_{k+ l} \left( \left(  \nabla _{X}F \right)\otimes  \left(  \omega ^{1}\otimes \cdots \otimes  \omega ^{k}\otimes Y_1\otimes \cdots \otimes Y_{l} \right) +  F\otimes \left(  \nabla _{X}\left(  \omega ^{1}\otimes \cdots \otimes  \omega ^{k}\otimes Y_1\otimes \cdots \otimes Y_{l} \right)  \right)    \right) \\ 
+       & =  \underbrace{\mathrm{tr}\circ \cdots \circ \mathrm{tr}}_{k+ 1}\left( \left(  \nabla _{X}F\otimes  \omega ^{1}\otimes \cdots \otimes  \omega ^{k}\otimes Y_1\otimes \cdots \otimes Y_{l} \right)  \right) \\ 
+        & =  \underbrace{\mathrm{tr}\circ \cdots \circ \mathrm{tr}}_{k+ 1} \left( \left(  \nabla _{X}F \right)\otimes  \omega ^{1}\otimes \cdots \otimes  \omega ^{k}\otimes Y_1\otimes \cdots \otimes Y_{l}  \right) \\ 
+        & + \underbrace{\mathrm{tr}\circ \cdots \circ \mathrm{tr}}_{k+ 1} \left(  \sum _{i= 1}^{k}F\otimes  \omega ^{1}\otimes \cdots \otimes  \nabla _{X} \omega ^{i}\otimes \cdots \otimes  \omega ^{k}\otimes Y_1\otimes \cdots \otimes Y_{l}  \right) \\ 
+         & + \underbrace{\mathrm{tr}\circ \cdots \circ \mathrm{tr}}_{k+ 1}\left( \sum _{j= 1}^{l}F\otimes  \omega ^{1}\otimes \cdots \otimes  \omega ^{k} \otimes Y_1\otimes \cdots \otimes  \nabla _{X}Y_{j}\otimes \cdots \otimes Y_{l} \right) 
+    \end{aligned}
+    \] 将迹并移项得到性质 \(  \left( b \right)   \).
+    
+    现在来证明唯一性.设 \(   \nabla   \)是满足上述1.-4.的联络,则 \(  \left( a \right)   \)和 \(  \left( b \right)   \)也满足.注意到 \(  2.  \)和 \(  \left( a \right)   \)给出每个 \(  1-  \)形式\(   \omega   \)的协变导数可以按
+    以下方式计算 \begin{equation}\label{限制在余向量场上的协变导数}
+        \left(  \nabla _{X} \omega  \right)\left( Y \right) =  X\left(  \omega \left( Y \right)  \right)-  \omega \left(  \nabla _{X}Y \right)    
+    \end{equation}     1-形式上的联络由原来 \(  TM  \)上的联络所确定, \(  \left( b \right)   \)给出了计算任意张量场的协变导数的公式,因此联络是唯一确定的.
+    
+    现在来说明票再行,我们按上述相同的方式定义 \(  1  \)-形式的斜边导数,并用性质 \(  \left( b \right)   \)定义 \(   \nabla   \)在所有张量丛上的斜边导数.
+    
+    首先需要说明的 是定义的结果对于每个 \(   \omega ^{i}  \)和 \(  Y_{j}  \)  都在\(  C^{\infty}\left( M \right)   \)上是线性的,从而定义的结果可以称为一个光滑张量场.
+    将 \(  f \omega ^{i}  \)代替 \(   \omega ^{i}  \),或将 \(  fY_{j}  \)    代替 \(  Y_{j}  \).以  \(  f \omega ^{i}  \)为例,
+    容易看出 \(  X\left( F\left(  \omega ^{1},\cdots ,f \omega ^{i},\cdots , \omega ^{k},  Y_1,\cdots,Y_l  \right)  \right)   \)及 \(  F\left(  \omega ^{1},\cdots ,f \omega ^{i},\cdots , \omega ^{k}, Y_1,\cdots,Y_l  \right)   \)以外的项的 \(  C^{\infty}\left( M \right)   \)-线性.
+    对于余下的两项,注意到 \[
+  \begin{aligned}
+   & X\left( F\left(  \omega ^{1},\cdots ,f  \omega ^{i},\cdots , \omega ^{k},  Y_1,\cdots,Y_l  \right)  \right) \\ 
+     =  & X\left( f F \left(  \omega^1,\cdots,\omega^k , Y_1,\cdots,Y_l  \right)  \right)\\ 
+      = & fX\left( F\left(  \omega^1,\cdots,\omega^k , Y_1,\cdots,Y_l  \right)  \right)+   F\left(  \omega^1,\cdots,\omega^k , Y_1,\cdots,Y_l  \right)\left( Xf \right)    
+  \end{aligned} 
+    \]  以及 \[
+    \begin{aligned}
+    & F\left(  \omega ^{1},\cdots , \nabla _{X}\left( f  \omega ^{i} \right) ,\cdots , \omega ^{k}, Y_1,\cdots,Y_l  \right)  \\ 
+     =  & f F \left(  \omega ^{1},\cdots ,  \nabla _{X} \omega ^{i},\cdots , \omega ^{k}, Y_1,\cdots,Y_l  \right)+ F\left(   \omega^1,\cdots,\omega^k , Y_1,\cdots,Y_l  \right)\left( Xf \right)   
+    \end{aligned}
+    \] 余项抵消,因此 按此方法定义的 \(   \nabla   \)具有 \(  C^{\infty}\left( M \right)   \)-线性.
+      \(   \nabla   \)在 \(  X  \)上的 \(  C^{\infty}\left( M \right)   \)线性和 \(  F  \)上的 \(  \mathbb{R}   \)线性由性质 \(  \left( b \right)   \)和 \ref{限制在余向量场上的协变导数}给出.
+      Lebniz律由 2.和3.看出.       
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}{局部坐标表示}
+    设 \(  M  \)是光滑（带边）流形, \(   \nabla   \)是 \(  TM  \)上的联络.设 \(  \left( E_{i} \right)   \)是 \(  M  \)上的一个局部标架 \(  \left( \varepsilon ^{j} \right)   \)是对应的对偶标架,
+     \(  \left\{  \Gamma _{ij}^{k} \right\}  \)是 \(   \nabla   \)关于此标架的联络系数.设 \(  X  \)是光滑向量场 \(  X^{i}E_{i}  \)          是在
+      此标架下的局部表示,则
+      \begin{enumerate}
+        \item  一个 \(  1  \)-形式 \(   \omega =   \omega _i \varepsilon ^{i}  \)  的协变导数由以下给出 \[
+         \nabla _{X}\left(  \omega  \right)= \left( X\left(  \omega _k  \right)-X^{j} \omega _i    \Gamma _{jk}^{i}\right)\varepsilon ^{k}  
+        \]
+        \item 若 \(  F \in  \Gamma \left( T^{\left( k,l \right)TM } \right)   \)是一个任意阶的光滑混合张量场,局部表示为 \[
+        F =  F^{ i_1,\cdots,i_k }_{ j_1,\cdots,j_l } E_{i_1}\otimes \cdots \otimes E_{i_{k}} \otimes \varepsilon ^{j_1}\otimes \cdots \otimes \varepsilon ^{j_{l}}
+        \] 则 \(  F  \) 的协变导数在局部上由下式给出 \[
+         \begin{aligned}
+            \nabla _{X}F =  \left( X\left( F^{ i_1\cdots i_k }_{ j_1\cdots j_l } \right)+  \sum _{s= 1}^{k}X^{m} F^{i_1\cdots p\cdots i_{k}}_{j_1\cdots j_{l}}  \Gamma _{mp}^{i_{s}}- \sum _{s= 1}^{l} X^{m}F^{i_1\cdots i_{k}}_{j_1\cdots p\cdots j_{l}} \Gamma _{mj_{s}}^{p}   \right)\footnote{记忆公式只需要按合适的顺序分类,来厘清对 \(  E_{i_1}\otimes \cdots \otimes E_{i_{k}}\otimes  \varepsilon ^{j_1}\otimes \cdots \otimes  \varepsilon ^{j_{l}}  \)这一组的贡献.产生贡献的项是指标至多相差一个的那些 . \(  s  \)表示 \(   \nabla _{X}  \)出现在 \(  s  \)位置的项的贡献 ,  在其下的\(  p  \)表示  \(   \nabla _{X}  \)在第 \(  s  \)个位置作用在 \(  E_{p}  \)  上的贡献  , 贡献为  \(  F^{i_1\cdots p\cdots i_{k}}_{j_1\cdots j_{l}}  \)多个 \(  X\left( E_{p} \right)   \)在 \(  E_{i_{s}}  \)下的分量   \(   X^{m} \Gamma _{mp}^{i_{s}}  \)  }\times \\ 
+             E_{i_1}\otimes \cdots \otimes E_{i_{k}}\otimes  \varepsilon ^{j_1}\otimes \cdots \otimes \varepsilon ^{j_{l}} 
+         \end{aligned} 
+        \] 
+      \end{enumerate}
+      
+
+\end{proposition}
+\begin{proof}
+    对于1.
+
+    \[
+    \begin{aligned}
+     \nabla _{X}\left(  \omega  \right)&=   \nabla _{X} \left(  \omega _i \varepsilon ^{i} \right)   \\ 
+      & = \left( X \omega _i  \right)\varepsilon ^{i} +   \omega _i \left(  \nabla _{X}\varepsilon ^{i} \right)  \\ 
+       & =  \left( X\left(  \omega _k  \right)  \right)\varepsilon ^{k}+   \omega _i  \left(  \nabla _{X^{j}E_{j}}\varepsilon ^{i} \right)\\ 
+        & =  \left( X\left(  \omega _k  \right)  \right)\varepsilon ^{k} +   X^{j}\omega _i \left(  \nabla _{E_{j}}\varepsilon ^{i} \right)   
+    \end{aligned}
+    \]其中 \[
+    \begin{aligned}
+     \nabla _{E_{j}}\varepsilon ^{i} \left( Y \right) & =  E_{j}\left( \varepsilon ^{i}\left( Y \right)  \right) -\varepsilon ^{i}\left(  \nabla _{E_{j}}Y \right)    \\ 
+      & =  E_{j}\left( \varepsilon ^{i}\left( Y^{k}E_{k} \right)  \right)-\varepsilon ^{i}\left(  \nabla _{E_{j}} \left( Y^{k}E_{k} \right)  \right)\\ 
+       & =    E_{j}Y^{i}-\varepsilon ^{i} \left( \left( E_{j}Y^{k} \right)E_{k}+ Y^{k}  \nabla _{E_{j}}E_{k}  \right)\\ 
+        & = E_{j}Y^{i}- \varepsilon ^{i} \left( \left( E_{j}Y^{k} \right) E_{k} \right) - \varepsilon ^{i} \left( Y^{k}  \Gamma _{jk}^{l}E_{l} \right)   \\ 
+         & =  E_{j}Y^{i}-E_{j}Y^{i}- Y^{k} \varepsilon ^{i} \left(  \Gamma _{jk}^{l}E_{l} \right)  \\ 
+          & =  - \Gamma _{jk}^{i}\varepsilon ^{k} \left( Y \right) 
+    \end{aligned}
+    \]因此 \[
+    \begin{aligned}
+        \nabla _{X}\left(  \omega  \right)& =  \left( X\left(  \omega _k  \right)  \right)\varepsilon ^{k} - X^{j} \omega _i    \Gamma _{jk}^{i} \varepsilon ^{k}\\ 
+      & =   \left( X\left(  \omega _k  \right)-X^{j} \omega _i    \Gamma _{jk}^{i}\right)\varepsilon ^{k} 
+    \end{aligned}
+    \]
+
+    对于2.考虑 \[
+     \begin{aligned}
+        &\nabla _{X} \left( F^{i_1\cdots i_{k}} _{j_1\cdots j_{l}} E_{i_1}\otimes \cdots \otimes E_{i_{k}}\otimes \varepsilon ^{j_1}\otimes \cdots \otimes \varepsilon ^{j_{l}}\right)\\ 
+        & =   X\left( F^{i_1\cdots i_{k}}_{j_1\cdots j_{l}} \right) E_{i_1}\otimes \cdots \otimes E_{i_{k}} \otimes \varepsilon ^{j_1}\otimes \cdots \otimes \varepsilon ^{j_{l}} \\ 
+         &+ \sum _{s= 1}^{k} F^{i_1\cdots i_{k}}_{j_1\cdots j_{l}} E_{i_1}\otimes \cdots \otimes  \nabla _{X}E_{i_{s}}\otimes \cdots \otimes  E_{i_k}\otimes \varepsilon ^{j_1}\otimes \cdots \otimes \varepsilon ^{j_{l}} \\ 
+          & +  \sum _{r= 1}^{l} F^{i_1\cdots i_{k}}_{j_1\cdots j_{l}} E_{i_1}\otimes \cdots \otimes E_{i_{k}} \otimes \varepsilon ^{j_1}\otimes \cdots \otimes  \nabla _{X} \varepsilon ^{j_{r}} \otimes \cdots \otimes \varepsilon ^{j_{l}}
+     \end{aligned} 
+    \]其中 \[
+    X\left( E_{i_{s}} \right)= \left(   X^{m} \Gamma _{m i_{s}}^{p} \right)E_{p} , \quad  \nabla _{X} \varepsilon ^{j_{r}}  = -\left( X^{m} \Gamma _{mp}^{j_{r}} \right) \varepsilon ^{p}
+    \]于是 \[
+    \begin{aligned}
+    &\sum _{s= 1}^{k} F^{i_1\cdots i_{k}}_{j_1\cdots j_{l}} E_{i_1}\otimes \cdots \otimes   \nabla _{X}E_{i_{s}} \otimes \cdots \otimes E_{i_{k}}\otimes \varepsilon ^{j_1}\otimes \cdots \otimes \varepsilon ^{j_{l}} \\ 
+     & = \sum _{s= 1}^{k}  \left( X^{m} \Gamma ^{p}_{m i_{s}} \right)F^{i_1\cdots i_{k}}_{j_1\cdots j_{l}} E_{i_1}\otimes \cdots \otimes E_{p}\otimes \cdots \otimes E_{i_{k}}\otimes \varepsilon ^{j_1}\otimes \cdots \otimes \varepsilon ^{j_{l}}
+    \end{aligned}
+    \]交换 \(  i_{s}  \)和 \(  p  \)的求和次序,得到 \[
+    \sum _{s= 1}^{k}\left( X^{m} \Gamma ^{i_{s}}_{mp}\right)  F^{i_1\cdots p\cdots i_{k}}_{j_1\cdots j_{l}} E_{i_1}\otimes \cdots \otimes E_{i_{s}}\otimes \cdots \otimes E_{i_{k}}\otimes  \varepsilon ^{j_1}\otimes \cdots \otimes  \varepsilon ^{j_{l}}
+    \]对于余标架的部分,有类似地结论.求和得到 \(   \nabla _{X}F  \) 的局部表示.
+\end{proof}
+
+\begin{proposition}{全协变导数}
+    设 \(  M  \)是光滑（带边）-流形, \(   \nabla   \)是 \(  TM  \)上的联络.对每个 \(  F \in  \Gamma \left( T^{\left( k,l \right) }TM \right)   \),映射 \[
+     \nabla F: \underbrace{ \Omega ^{1}\left( M \right)\otimes \cdots \otimes  \Omega ^{1}\left( M \right)  }_{k \text{个}} \otimes  \underbrace{\mathfrak{X}\left( M \right)\otimes \cdots \otimes \mathfrak{X}\left( M \right)  }_{ l+ 1 \text{个}}\to  C^{\infty}\left( M \right) 
+    \] \[
+    \left(  \nabla F \right)\left(  \omega^1,\cdots,\omega^k ,  Y_1,\cdots,Y_l ,X \right) =  \left(  \nabla _{X}F \right) \left(  \omega^1,\cdots,\omega^k , Y_1,\cdots,Y_l  \right)    
+    \]    定义出 \(  M  \)上的一个光滑 \(  \left( k,l+ 1 \right)   \)-张量场,称为 \(  F  \)的全协变导数.   
+\end{proposition}
+
+
+\begin{proof}
+    由 \(   \nabla _{X}  \)对 \(  X  \)的 \(  C^{\infty}\left( M \right)   \)-线性, \(   \nabla F  \)在第 \(  k+ l+ 1  \)个分量上具有 \(  C^{\infty}\left( M \right)   \)线性；由 \(  F  \)是 \(  k+ l  \)-张量场, \(   \nabla F  \)在前 \(  k+ l  \)个分量上都具有 \(  C^{\infty}\left( M \right)   \)线性.
+    从而 \(   \nabla F  \)对所有分量都具有 \(  C^{\infty}\left( M \right)   \)-线性.由张量场的刻画引理, \(   \nabla F  \)是一个 \( \left( k,l+ 1 \right)   \)-张量场.               
+    \hfill $\square$
+\end{proof}
+
+    用一个分号来区分由微分导致的指标：例如,对于向量场 \(  Y =  Y^{i}E_{i}  \) ,  \(  \left( 1,1 \right)   \)-张量场 \(   \nabla Y  \)的微分记作 \(  Y^{i}_{;j}  \),从而 \[
+     \nabla Y =  Y^{i}_{;j} E_{i}\otimes \varepsilon ^{j}
+    \]   其中 \[
+    Y^{i}_{;j} = E_{j}Y^{i} + Y^{k} \Gamma _{jk}^{i} 
+    \]对于 \(  1  \)-形式 \(   \omega   \),类似地有 \[
+     \nabla  \omega =  \omega _{i;j} \varepsilon ^{i}\otimes \varepsilon ^{j} ,\quad   \omega _{i;j}= E_{j} \omega _i-  \omega _k   \Gamma _{ji}^{k}
+    \]  
+更一般地,我们有以下命题
+
+\begin{proposition}\label{张量场协变导数的局部坐标}
+    设 \(  M  \)是光滑（带边）-向量场, \(   \nabla   \)是 \(  TM  \)上的一个联络；令\(  \left( E_{i} \right)   \)是 \(  TM  \)的一个光滑局部标架 \(  \left\{  \Gamma _{ij}^{k} \right\}  \)是
+    相应的联络系数.则 \(  \left( k,l \right)   \)-张量场 \(  F  \)的全协变导数的关于这组标架的表示由以下给出 \[
+    F^{i_1\cdots i_{k}}_{j_1\cdots j_{l};m} =  E_{m}\left( F^{i_1\cdots i_{k}}_{j_1\cdots j_{l}} \right)  + \sum _{s= 1}^{k}F^{i_1\cdots p\cdots i_{k}}_{j_1\cdots j_{l}} \Gamma _{mp}^{i_{s}}-\sum _{s= 1}^{l}F^{i_1\cdots i_{k}}_{j_1\cdots p\cdots j_{l}} \Gamma _{m j_{s}}^{p} \footnote{ \(   \nabla _{X}F  \)与 \(   \nabla F\left( \cdot ,\cdots ,\cdot ,X \right)   \)相比,就是直接 提前用一堆 \(   \varepsilon ^{m}  \) 把\(  X  \)吃进去变成一堆数 \(  X^{m}  \)了, 把 \(  X^{m}  \)还回去不直接写出来就是这个公式    }
+    \]      
+\end{proposition}
+
+\begin{proof}
+   \(   \nabla _{X}F  \)在 \(  E_{i_1}\otimes \cdots \otimes E_{i_{k}}\otimes \varepsilon ^{j_1}\otimes \cdots \otimes \varepsilon ^{j_{l}}  \)  下的系数为 \[
+   X\left( F^{i_1\cdots i_{k}}_{j_1\cdots j_{l}} \right)+ \sum _{s= 1}^{k}X^{m} F^{i_1\cdots p\cdots i_{k}}_{j_1\cdots j_{l}}  \Gamma _{mp}^{i_{s}}  -\sum _{s= 1}^{l} X^{m} F^{i_1\cdots i_{k}}_{j_1\cdots p\cdots j_{l}} \Gamma _{m j_{s}}^{p}
+   \]后两项将 \(  X^{m}  \)写作 \(  \varepsilon ^{m}\left( X \right)   \),就给出了它们为 \(  F^{i_1\cdots i_{k}}_{j_1\cdots j_{l};m}  \)的贡献.对于第一项, \[
+   X\left( F^{i_1\cdots i_{k}}_{j_1\cdots j_{l}} \right)=  \left( X^{m}E_{m} \right)\left( F^{i_1\cdots i_{k}} _{j_1\cdots j_{l}}\right)   =  E_{m}\left( F^{i_1\cdots i_{k}}_{j_1\cdots j_{l}} \right) \varepsilon ^{m}\left( X \right)  
+   \]  综合以上可得所需公式.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    设 \(  F  \)是一个光滑 \(  \left( k,l \right)   \)-张量场, \(  G  \)是一个光滑 \(  \left( r,s \right)   \)-张量场,则 \(  F\otimes G  \)     的全协变导数
+    的分量由以下给出 \[
+    \left(  \nabla \left( F\otimes  G\right)  \right) ^{i_1\cdots i_{k}p_1\cdots p_{r}}_{j_1\cdots j_{l}q_1\cdots q_{s};m} =  F^{i_1\cdots i_{k}}_{j_1\cdots j_{l};m} G^{p_1\cdots p_{r}}_{q_1\cdots q_{s}}+ F^{i_1\cdots i_{k}}_{j_1\cdots j_{l}}G^{p_1\cdots p_{r}}_{q_1\cdots q_{s};m} 
+    \]
+\end{proposition}
+
+\subsection{第二协变导数}
+
+
+\begin{definition}
+    对于给定的切从上的联络 \(   \nabla   \),将它扩展到任意阶张量丛上.  \(  \left( k,l \right)   \)-张量 \(  F  \),  我们可以对\(  F  \)的全协变导数再取一次
+    协变导数,得到一个 \(  \left( k,l+ 2 \right)   \)-张量场 \(   \nabla ^{2}F  : =   \nabla \left(  \nabla F \right) \)   .
+
+    对于给定的 \(  X,Y \in \mathfrak{X}\left( M \right)   \),定义一个 \(  \left( k,l \right)   \)-张量场 \(   \nabla _{X,Y}^{2}F  \)为 \[
+     \nabla _{X,Y}^{2}F\left( \cdots  \right): =   \nabla ^{2}F\left( \cdots ,Y,X \right)  
+    \]   
+
+\end{definition}
+
+\begin{remark}
+     \(   \nabla _{X,Y}^{2}F  \)与 \(   \nabla _{X}\left(  \nabla _{Y}F \right)   \)不同,前者具有对 \(  Y  \)有 \(  C^{\infty}\left( M \right)   \)-线性,而后者不然.事实上,二者的关系由以下命题给出：    
+\end{remark}
+\begin{proposition}
+    令 \(  M  \)是光滑（带边）-流形, \(   \nabla   \)是 \(  TM  \)上的联络.则对于每个光滑向量场或张量场 \(  F  \), \[
+     \nabla _{X,Y}^{2}F =   \nabla _{X} \left(  \nabla _{Y}F \right)- \nabla _{\left(  \nabla _{X}Y \right) } F
+    \]    
+\end{proposition}
+
+\begin{proof}
+        注意到 \[
+         \nabla _{Y}F =  \operatorname{tr}\,\left(  \nabla F\otimes Y \right) 
+        \]类似地 \[
+         \nabla _{X,Y}^{2}F =  \operatorname{tr}\,\left( \operatorname{tr}\,\left(  \nabla ^{2}F\otimes X \right)  \right)\otimes Y 
+        \]由 \(   \nabla _{X}  \)与缩并的交换性 \[
+        \begin{aligned}
+         \nabla _{X}\left(  \nabla _{Y}F \right) & =    \nabla _{X} \left( \operatorname{tr}\,\left(  \nabla F\otimes Y \right)  \right)   \\ 
+          & =  \operatorname{tr}\,\left(  \nabla _{X}\left(  \nabla F\otimes Y \right)  \right)\\ 
+           & =  \operatorname{tr}\,\left(  \nabla _{X}\left(  \nabla F \right)\otimes Y +   \nabla F\otimes  \nabla _{X}Y  \right)  \\ 
+            & =  \operatorname{tr}\,\left( \operatorname{tr}\,\left(  \nabla ^{2}F \otimes Y\right)  \right)+ \operatorname{tr}\,\left(  \nabla F\otimes  \nabla _{X}Y \right)  \\ 
+             & =   \nabla _{X,Y}^{2}F +  \nabla _{\left(  \nabla _{X}Y \right) }F
+        \end{aligned}
+        \] 
+
+    \hfill $\square$
+\end{proof}
+
+\begin{example}[协变Hessian]
+    设 \(  u  \)是 \(  M  \)上的光滑函数.则 \(   \nabla u \in  \Gamma \left( T^{\left( 0,1 \right) }TM \right)=   \Omega ^{1}\left( M \right)    \)就是 \(  1  \)-形式 \(  \,\mathrm{d} u  \)：  \(   \nabla _{u}\left( X \right)=  \nabla _{X}u=  Xu= \,\mathrm{d} u\left( X \right)    \).
+     \(  2  \)-张量 \(   \nabla ^{2}u=   \nabla \left( \,\mathrm{d} u \right)   \)称为 \(  u  \)的协变 Hessian.上面的命题表明 它在光滑向量场 \(  X,Y  \)上的作用由以下给出 \[
+      \nabla ^{2}u\left( Y,X \right) =   \nabla _{X,Y}^{2}u=   \nabla _{X}\left(  \nabla _{Y}u \right)  - \nabla _{\left(  \nabla _{X}Y \right) }u =  X\left( Yu \right) -\left(  \nabla _{X}Y \right)u 
+     \]      在任意局部坐标上, \[
+      \nabla ^{2}u= u_{;ij}\,\mathrm{d} x^{i}\otimes \,\mathrm{d} x^{j},\quad  u_{;ij}= \partial _{j}\partial _{i}u - \Gamma _{ij}^{k}\partial _{k}u
+     \]    
+\end{example}
+
+\hspace*{\fill} 
+
+\section{沿曲线的向量场和张量场}
+
+\begin{definition}
+    \begin{enumerate}
+        \item 设 \(  M  \)是光滑（带边）流形.给定光滑曲线,\(   \gamma :I\to M  \),\textbf{沿 \(   \gamma   \)的一个向量场 },是指一个连续映射 \(  V: I\to TM  \),
+        使得 \(  V\left( t \right) \in T_{ \gamma \left( t \right) }M    \)对于每个 \(  t \in I  \)成立.
+        \item     沿 \(   \gamma   \)的全体向量场记作 \(  \mathfrak{X}\left(  \gamma  \right)   \).  
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 称 \(  V  \)是沿 \(   \gamma   \)的一个光滑向量场,若它作为从 \(  I  \)到 \(  TM  \)的映射是光滑的.  
+        \item 在逐点加法和数乘下, \(  \mathfrak{X}\left(  \gamma  \right)   \)构成一个 \(  C^{\infty}\left( I \right)   \)-模.    
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{example}
+    \begin{enumerate}
+        \item 光滑曲线 \(   \gamma   \)在每一点 \(  t  \)处的速度 \(   \gamma ^{\prime} \left( t \right) \in T_{ \gamma \left( t \right) }M   \)共同构成一个沿 \(   \gamma   \)的光滑向量场.
+        \item 若 \(   \gamma   \)是 \(  \mathbb{R} ^{2}  \)上的曲线, 令 \(  N\left( t \right) =  R \gamma ^{\prime} \left( t \right)    \),   其中 \(  R  \)是逆时针旋转 \(  \pi /2  \)的映射,则 \(  N\left( t \right)   \)始终与 \(   \gamma ^{\prime} \left( t \right)   \)正交.
+        在标准坐标系, \(  N\left( t \right) =  \left( - \dot{\gamma}^{2}\left( t \right), \dot{\gamma}^{1}\left( t \right)   \right)    \),从而 \(  N  \)是沿 \(   \gamma   \)的一个光滑向量场.       
+    \end{enumerate}
+        
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{proposition}
+    设 \(   \gamma : I\to M  \)是光滑曲线. 沿 \(   \gamma   \)的一个向量场 \(  V\left( t \right)   :I\to TM\)  是可扩张的 \footnote{沿曲线的向量场实际上不是流形上的向量场,由于 \(   \gamma   \)可能把 \(  I  \)上不同的点映到 \(  M  \)上的同一点,我们可能无法直接通过 \(  V  \left( t \right) \)给出 \(  M  \)上的一个向量场. 因此我们在沿曲线的向量场中,需要再特别取出一部分更好的 . },若存在一个光滑向量场 \(  \tilde{V}  \) ,它定义在 \(  M  \)的一个包含了 \(   \gamma   \)的像的开集上,  使得  \(  V =  \tilde{V}\circ  \gamma   \) .
+\end{proposition}
+
+\begin{remark}
+    若 \(   \gamma \left( t_1 \right)=  \gamma \left( t_2 \right)    \),但是 \(   \gamma ^{\prime} \left( t_1 \right)\neq  \gamma ^{\prime} \left( t_2 \right)    \),则 \(   \gamma ^{\prime}   \)不是可扩张的.   
+\end{remark}
+
+\begin{definition}
+    设 \(   \gamma :I\to M  \)是光滑曲线.一个\textbf{沿 \(   \gamma   \)的张量场 },是指一个从 \(  I  \)到某个张量丛 \(  T^{\left( k,l \right) } TM \)的连续映射  \(   \sigma   \),
+    使得 \(   \sigma \left( t \right) \in T^{\left( k,l \right) }\left( T_{ \gamma \left( t \right) }M \right)    \)对每个 \(  t \in I  \)成立.     
+\end{definition}
+\begin{remark}
+   \begin{enumerate}
+    \item  称 \(   \sigma   \)是一个沿 \(   \gamma   \)的光滑张量场,若在此之上它是从 \(  I  \)到 \(  T^{\left( k,l \right) }TM  \)的光滑映射.
+    \item 类似地,称沿 \(   \gamma   \)的一个光滑张量场是可扩张的,若存在定义在 \(   \gamma \left( I \right)   \)   的邻域上的光滑张量场 \(   \tilde{\sigma}   \),使得 \(   \sigma =   \tilde{\sigma} \circ  \gamma   \)  
+   \end{enumerate}
+       
+\end{remark}
+
+\subsection{沿曲线的协变导数}
+
+
+\begin{theorem}
+    令 \(  M  \)是光滑（带边）-流形, \(   \nabla   \)是 \(  TM  \)上的一个联络.对于每个光滑曲线,  \(   \gamma : I\to M  \),
+     \(   \nabla   \)决定了唯一的算子 \[
+     D_{t}: \mathfrak{X}\left(  \gamma  \right)\to \mathfrak{X}\left(  \gamma  \right)  
+     \]称为是\textbf{沿 \(   \gamma   \)的斜边导数 },使得它满足以下几条性质
+     \begin{enumerate}
+        \item  \(  \mathbb{R}   \)-线性：  \[
+        D_{t} \left( aV+ bW \right) =  aD_{t} V+  bD_{t} W,\quad a,b \in \mathbb{R}  
+        \]
+        \item Lebniz律： \[
+        D_{t}\left( fV \right) =  f^{\prime} V+ fD_{t}V,\quad f \in C^{\infty}\left( I \right)  
+        \]
+        \item 若 \(  V \in \mathfrak{X}\left(  \gamma  \right)   \)是可扩张的,则对于每个 \(  V  \) 的扩张 \(  \tilde{V}  \), \[
+        D_{t}V\left( t \right)=   \nabla _{ \gamma  ^{\prime} \left( t \right) }\tilde{V}  \footnote{把无交叉的沿曲线向量场的协变导数,拉回到流形上面. }
+        \]   
+     \end{enumerate}
+        
+\end{theorem}
+
+\begin{remark}
+    对于沿 \(   \gamma   \)的任意阶张量场空间,存在类似地结论. 
+\end{remark}
+
+\begin{proof}
+    首先说明唯一性.设\(  D_{t}  \)是满足以上三条的算子,任取 \(  t_0 \in I  \),接下来说明 \(  D_{t}V  \)在 \(  t_0  \)处的取值
+    由 \(  V  \)在任意包含了 \(  t_0  \)的区间 \(  \left( t_0-\varepsilon ,t_0+ \varepsilon  \right)   \)上所决定（若 \(  t_0  \)是 \(  I  \)的端点,则将 \(   \gamma   \)的坐标表示延拓到稍大一些的区间上,在其上证明唯一性再限制回 \(  I  \)上）    .
+    由 \(  \mathbb{R}   \)-线性,只需证明若 \(  V_1  \)是在  \(  t_0  \)的某个邻域 \(  U  \)上退化的向量场,则 \(  D_{t}V_1\left( t_0 \right)= 0   \) .为此,取 \(  t_0  \)的支撑在 \(  U  \)上的光滑 bump函数 \(   \varphi \in C^{\infty}\left( I \right)   \),则 \[
+  0 =    D_{t}\left(  \varphi V_1 \right) =  \varphi ^{\prime} V_1+   \varphi D_{t}V_1 
+    \]      在 \(  t_0  \)处取值,得到 \[
+  D_{t}V_1\left( t_0 \right)= 0      
+    \]     故 \(  D_{t}  \)具有关于 \(  V  \)的局部性.取 \(  M  \)的在 \(   \gamma \left( t_0 \right)   \)附近的一个光滑坐标 \(  \left( x^{i} \right)   \),设 \[
+    V\left( t \right) =  V^{j}\left( t \right)\left. \partial _{j} \right|_{ \gamma \left( t \right) }  \footnote{虽然对于一般的曲线,我们无法直接将像集上的协变导数作为它的定义,但是由于协变导数是被希望具有线性的,因此只需要在局部上将不好的沿曲线的向量场线性分解成一些容易定义出协变导数的好的向量场,就可以先给出局部上的定义.}
+    \]由于每个 \(  \partial _{j}  \)都是可扩张的,我们有 \[
+    \begin{aligned}
+    D_{t}V\left( t \right)& =   D_{t}\left( V^{j}\left( t \right)\left. \partial _{j} \right|_{ \gamma \left( t \right) }  \right)   \\ 
+     & =  \dot{V}^{j}\left( t \right)\left. \partial _{j} \right|_{ \gamma \left( t \right) } +   V^{j}\left( t \right) D_{t}\left. \partial _{j} \right|_{ \gamma \left( t \right) }  \\ 
+      & =  \dot{V}^{j}\left( t \right)\left. \partial _{j} \right|_{ \gamma \left( t \right) } +  V^{j}\left( t \right)  \nabla _{ \gamma ^{\prime} \left( t \right) } \left. \partial _{j} \right|_{ \gamma \left( t \right) }\\ 
+       & =  \dot{V}^{k}\left( t \right) \left. \partial _{k} \right|_{ \gamma \left( t \right) } +  V^{j}\left( t \right)\left(  \nabla _{ \dot{\gamma}^{i}\left( t \right)\left. \partial _{i} \right|_{ \gamma \left( t \right) } }\left. \partial _{j} \right|_{ \gamma \left( t \right) } \right)     \\ 
+        & =  \dot{V}^{k}\left( t \right) \left. \partial _{k} \right|_{ \gamma \left( t \right) } +   V^{j}\left( t \right) \left(  \dot{\gamma}^{i}\left( t \right)  \Gamma _{ij}^{k} \left(  \gamma \left( t \right)  \right)\left. \partial _{k} \right|_{ \gamma \left( t \right) }   \right)  \\ 
+         & =  \left( \dot{V}^{k}\left( t \right) +  \dot{\gamma}^{i}\left( t \right)V^{j}\left( t \right)  \Gamma _{ij}^{k} \left(  \gamma \left( t \right)  \right)     \right) \left. \partial _{k} \right|_{ \gamma \left( t \right) } 
+        \footnotemark 
+    \end{aligned}
+    \] \footnotetext{比对一般的斜边导数来看,就是把沿 \(  X  \)的协变导数取成是沿曲线切向 \(   \gamma ^{\prime}   \) , \(  X\left( Y^{k} \right)  \) 表现出来就是直接对分量函数求导 \(  \frac{\partial }{\partial t} \left( V^{k} \right) =  \dot{V}^{k}   \) , \(  X^{i}Y^{j}  \) 表现出来就是 \(   \dot{\gamma}^{i}V^{j}  \), \(  X^{i}  \)对应的是曲线切向的分量 \(   \dot{\gamma}^{i}  \),   \(  Y^{j}  \)对应是求导对象向量场的分量 \(  V^{j}  \)    }    这表明若这样的算子 \(  D_{t}  \)   存在,则他是被唯一决定的.
+
+    对于存在性,若 \(   \gamma \left( I \right)   \)包含在单个坐标卡里,我们可以直接用 \begin{equation}
+        D_{t}V\left( t \right) =  \left( \dot{V}^{k}\left( t \right)+  \dot{\gamma}^{i}\left( t \right)V^{j}\left( t \right) \Gamma _{ij}^{k}\left(  \gamma \left( t \right)  \right)     \right)\left. \partial _{k} \right|_{ \gamma \left( t \right) }  
+    \end{equation} \label{沿曲线的向量场坐标}来定义 \(  D_{t}V  \).  
+    易见 \(  D_{t}  \)具有 \(  \mathbb{R}   \)线性.对于Lebniz律,计算 \[
+    \begin{aligned}
+        D_{t} \left( fV \right) & =   \left( \dot{fV}^{k}\left( t \right)+   \dot{\gamma}^{i}\left( t \right)f\left( t \right)V^{j}\left( t \right) \Gamma _{ij}^{k}\left(  \gamma \left( t \right)  \right)       \right)\left. \partial _{k} \right|_{ \gamma \left( t \right) }\\ 
+         & =   \left( f^{\prime} \left( t \right)V^{k}\left( t \right)+  f\left( t \right)\dot{V}^{k}\left( t \right) +  \dot{\gamma}\left( t \right)f\left( t \right)V^{j}\left( t \right) \Gamma _{ij}^{k} \left(  \gamma \left( t \right)  \right)         \right)\left. \partial _{k} \right|_{  \gamma \left( t \right) } \\ 
+          & =  f\left( t \right) D_{t}V\left( t \right)  + f^{\prime} \left( t \right) V\left( t \right)  
+    \end{aligned}  
+    \]  第三条由 \(  D_{t}V  \)的定义,以及 \(   \nabla _{ \gamma ^{\prime} \left( t \right) }\left( \cdot  \right)   \)  的局部性可以看出.
+
+    对于一般的情况,我们用一组坐标卡覆盖 \(   \gamma \left( I \right)   \),并在每一个局部坐标上按上述方式定义 \(  D_{t}V  \),局部性给出图册在相交处的一致性,故存在性得证. 
+    \hfill $\square$
+\end{proof}
+
+
+\begin{proposition}\label{pro:3.16-1}
+    设 \(  M  \)是光滑（带边）流形,令 \(   \nabla   \)是 \(  TM  \)上的一个联络, 令 \(  p \in M  \), \(  v \in T_{p}M  \).设 \(  Y  \)和 \(  \tilde{Y}  \)两个光滑向量场,光滑曲线 \(   \gamma : I\to M  \),使得 \(   \gamma \left( t_0 \right)= p,  \gamma ^{\prime} \left( t_0 \right)= v    \),且 \(  Y  \)和 \(  \tilde{Y}  \)在 \(   \gamma \left( I \right)   \)上一致,则 \(   \nabla _{v}Y =   \nabla _{v}\tilde{Y}  \)      
+\end{proposition}
+\begin{remark}
+    于是我们得到了联络关于 \(  Y  \)的更强的局部性,它不仅仅是由邻域所决定的,还是由沿着求导方向的附近的曲线像所决定的. 
+\end{remark}
+\begin{proof}
+    定义沿 \(   \gamma   \)的光滑向量场 \(  Z   \), \(  Z\left( t \right) =  Y_{ \gamma \left( t \right) }= \tilde{Y}_{ \gamma \left( t \right) }   \),则 \(  Y  \)和 \(  \tilde{Y}  \)都是 \(  Z  \)的扩张,由沿光滑向量场的协变导数的性质3, \(   \nabla _{v}Y =   \nabla _{v}\tilde{Y} =  D_{t}Z\left( t_0 \right)   \)       
+
+    \hfill $\square$
+\end{proof}
+
+\subsection{测地线}
+
+\begin{definition}{加速度和测地线}
+    设 \(  M  \)是光滑（带边）流形,  \(   \nabla   \)是 \(  TM  \)上的一个联络.
+  \begin{itemize}
+    \item   对于每个光滑曲线 \(   \gamma : I\to M  \),定义 \(   \gamma   \)的加速度,为沿 \(   \gamma   \)的向量场 \(  D_{t} \gamma ^{\prime}   \).
+    \item 称光滑曲线 \(   \gamma   \)为一个（关于 \(   \nabla   \)）的测地线\footnote{物体不受外力的最自然的运动轨迹}  ,若它的加速度为零： \(  D_{t} \gamma ^{\prime} \equiv 0  \).
+     设在光滑坐标 \(  \left( x^{i} \right)   \)下, \(   \gamma \left( t \right) =  \left( x^{1}\left( t \right),\cdots ,x^{n}\left( t \right)   \right)    \),则  由（\ref{沿曲线的向量场坐标}）,
+      \(   \gamma   \)是测地线当且仅当它的分量函数满足以下\textbf{测地线方程}： \[
+    \ddot{x}^{k}\left( t \right)+ \dot{x}^{i}\left( t \right)\dot{x}^{j}\left( t \right) \Gamma _{ij}^{k}\left( x\left( t \right)  \right)   = 0
+      \] 
+  \end{itemize}
+  
+\end{definition}
+
+
+\begin{theorem}{测地线的局部存在唯一性}
+    设 \(  M  \)是光滑流形, \(   \nabla   \)是 \(  TM  \)上的一个联络.对于每个 \(  p \in M  \), \(  w \in T_{p}M  \)以及 \(  t_0 \in \mathbb{R}   \).
+    存在包含了 \(  t_0  \)的一个开区间 \(  I\subseteq \mathbb{R}   \),以及一个测地线 \(   \gamma :I\to M  \),使得 \(   \gamma \left( t_0 \right)= p   \), \(   \gamma ^{\prime} \left( t_0 \right)= w   \).
+    并且任意两个这样的测地线在定义域的公共部分一致.           
+\end{theorem}
+
+
+\begin{definition}
+    \begin{enumerate}
+        \item 称测地线 \(   \gamma :T\to M  \)是极大的,若它不能被延拓到更大的区间上,即：不存在定义在一个严格包含了 \(  I  \)的区间 \(  \tilde{I}  \)上的测地线 \(   \tilde{\gamma} : \tilde{I}\to M  \),使得
+         \(   \tilde{\gamma} |_{I} =   \gamma   \).
+         \item 一个测地线段是指定义域为紧区间的测地线.     
+    \end{enumerate}
+    
+\end{definition}
+
+\begin{proof}
+    主要用到ODE的解的存在唯一性,之后写.
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{corollary}{极大测地线的存在唯一性}
+    设 \(  M  \)是光滑流形, \(   \nabla   \)是 \(  TM  \)上的联络.对于每个 \(  p \in M  \),和 \(  v \in T_{p}M  \),存在唯一地极大的测地线 \(   \gamma : I \to M  \),使得 \(   \gamma \left( 0 \right)= p   \), \(   \gamma ^{\prime} \left( 0 \right) =  v   \),其中 \(  I  \)是包含了 \(  0  \)的一个开区间  .        
+\end{corollary}
+
+\begin{proof}
+    给定 \(  p \in M  \)和 \(   v \in T_{p}M  \).令 \(  I  \)是全体可以定义出测地线的包含了 \(  0  \)的开区间的并.由
+    测地线的存在唯一性,所有满足条件的测地线在相交处一致,因此它们共同定义出一个测地线 \(   \gamma : I\to M  \),显然是满足给定条件的唯一的极大测地线.     
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{example}
+    \(  \mathbb{R} ^{n}  \)上关于欧式联络的极大测地线就是常值曲线和具有常值速度的直线. 
+\end{example}
+
+\hspace*{\fill} 
+
+
+\begin{definition}
+    满足 \(   \gamma \left( 0 \right)= p   \)和 \(  \gamma ^{\prime} \left( 0 \right)= v   \)的唯一的极大测地线 \(   \gamma   \),通常被称为是 
+    以 \(  p  \)为起点 , \(  v  \)为初速度的测地线,记作 \(   \gamma _{v}  \).      
+\end{definition}
+
+
+\subsection{平行移动}
+
+\begin{definition}
+    设 \(  M  \)是光滑流形, \(   \nabla   \)是 \(  TM  \)上的一个联络.
+    称一个沿光滑曲线 \(   \gamma   \)的光滑向量场或张量场 \(  V  \),是沿 \(   \gamma   \)（关于 \(   \nabla   \)） 平行的       ,若 \(  D_{t}V \equiv 0  \). 
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 测地线可以被描述成： 速度向量场沿自身平行的 光滑曲线.
+    \end{enumerate}
+    
+\end{remark}
+\begin{example}
+    令 \(   \gamma :I\to \mathbb{R} ^{n}  \)是一个光滑曲线, \(  V  \)是沿 \(   \gamma   \)的一个光滑向量场.
+    则 \(  V  \)是关于欧式联络沿 \(   \gamma   \)平行的,当且仅当 \(  V  \)的分量函数皆为常数.      
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{proposition}
+    光滑曲线 \(   \gamma   \)的局部坐标表示为 \(   \gamma \left( t \right) =  \left(  \gamma ^{1}\left( t \right),\cdots , \gamma ^{n}\left( t \right)   \right)    \),则
+    由公式\ref{沿曲线的向量场坐标},
+    向量场 \(  V  \)沿 \(   \gamma   \)平行,当且仅当 \[
+    \dot{V}^{k}\left( t \right) =  -V^{j}\left( t \right)  \dot{\gamma}^{i}\left( t \right) \Gamma _{ij}^{k}\left(  \gamma \left( t \right)  \right)    ,\quad  k=  1,\cdots,n 
+    \]     
+\end{proposition}
+
+\begin{remark}
+    对于光滑张量场,可以依据\ref{张量场协变导数的局部坐标}得到类似地结论.
+\end{remark}
+
+\begin{theorem}{线性ODE的存在唯一性和光滑性}
+    设 \(  I\subseteq \mathbb{R}   \)是开区间,且对于 \(  1\le j,k\le n  \),令 \(  A_{j}^{k}:I\to \mathbb{R}   \)是光滑函数.
+    对于所有的 \(  t_0 \in I  \),和每个初值向量 \(  \left(  c^1,\cdots,c^n  \right)\in \mathbb{R} ^{n}   \)     ,以下线性初值问题 \[
+    \begin{aligned}
+    \dot{V}^{k}\left( t \right)& =  A_{j}^{k}\left( t \right)V^{j}\left( t \right)\\ 
+     V^{k}\left( t_0 \right)& =  c^{k}     
+    \end{aligned}
+    \]有在 \(  I  \)上的唯一光滑解,并且解是依赖于 \(  \left( t,c \right) \in I\times \mathbb{R} ^{n}   \)  光滑的.
+\end{theorem}
+
+
+\begin{theorem}{平行移动的存在唯一性}
+    设 \(  M  \)是（带边）-光滑流形,  \(   \nabla   \)是 \(  TM  \)上的一个联络.给定光滑曲线 \(   \gamma : I\to M  , t_0 \in I\),以及向量 \(  v \in T_{ \gamma \left( t_0 \right) }M  \) 
+    或张量 \(  v \in T^{k\left( k,l \right) }\left( T_{ \gamma \left( t \right) }M \right)   \),存在唯一的沿 \(   \gamma   \)平行的向量场或张量场 \(  V  \),使得 \(  V\left( t_0 \right)= v   \),称为是 \(  v  \)沿 \(   \gamma   \)的平行移动  .        
+\end{theorem}
+
+
+\begin{definition}{平行移动映射}
+    对于每个 \(  t_0 ,t_1 \in I  \),定义映射 \[
+    P_{t_0t_1}^{ \gamma }: T_{ \gamma \left( t_0 \right) }M\to T_{ \gamma \left( t_1 \right) }M
+    \]称为是平行移动映射,为 \(  P_{t_0t_1}^{ \gamma }\left( v \right): =  V\left( t_1 \right), v \in T_{ \gamma \left( t_0 \right) }M    \),其中 \(  V  \)是\(   v  \)沿 \(   \gamma   \)的平行移动.     
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item  由于平行性的方程是线性的ODE,\(  P_{t_0t_1}^{ \gamma }  \) 是线性映射.又 \(  P_{t_1t_0}^{ \gamma }  \)是它的一个逆,因此平行移动映射是同构. 
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{note}
+    流形上不同点 \(  p,q  \)的切空间 \(  T_{p}M  \), \(  T_{q}M  \)本无自然的同构,但是平行移动映射 \(  P^{\gamma }_{p,q}  \)沿从 \(  p  \)到 \(  q  \)  路径 \(   \gamma   \)   
+    提供了人为但比较一致的比较规则.  
+\end{note}
+
+
+
+此外,还可以将研究的曲线放宽为逐段光滑的曲线,相应的有沿逐点光滑曲线的平行移动的存在唯一性.
+
+接下来介绍一个在处理平行移动的问题时非常有用的工具 
+\begin{definition}{平行标架}
+    给定 \(  T_{ \gamma \left( t_0 \right) }M  \)的一组基 \(  \left(  b_1,\cdots,b_n  \right)   \),可以让每个 \(  b_{i}  \)沿着 \(   \gamma   \)做平行移动,得到 \(  n  \)个沿 \(   \gamma   \)平行的向量场 \(  \left(  E_1,\cdots,E_n  \right)   \).由于平行移动映射是是线性同构, 对于每个 \(  t  \), \(  \left( E_{i}\left( t \right)  \right)   \)在 \(   \gamma \left( t \right)   \)处构成 \(  T_{ \gamma \left( t \right) }M  \)的一组基.称这样的沿 \(   \gamma   \)的 \(  n  \)个向量场为\textbf{沿 \(   \gamma   \)的平行标架 }.             
+\end{definition}
+
+\begin{proposition}
+    设 \(  \left( E_{i} \right)   \)是沿 \(   \gamma   \)的平行标架.每个 沿 \(   \gamma   \)的向量场 \(  V\left( t \right)   \)表为 \(  V\left( t \right)= V^{i}\left( t \right)E_{i}\left( t \right)     \).
+    \begin{enumerate}
+        \item \(  V\left( t \right)   \) 沿 \(   \gamma   \)的协变导数表为 \[
+            D_{t}V\left( t \right)= \dot{V}^{i}\left( t \right)E_{i}\left( t \right)   
+            \]      
+        \item \(  V\left( t \right)   \)沿 \(   \gamma   \)平行,当且仅当 \(  V^{i}\left( t \right)   \)均为常数.   
+    \end{enumerate}
+    
+\end{proposition}
+
+
+\begin{proof}
+    由\(  D_{t}  \)满足的Lebniz律,和 \(  E_{i}  \)的平行性： \(  D_{t}E_{i}= 0  \),立即得到.   
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{theorem}{平行移动决定的协变微分}
+    设 \(  M  \)是光滑（带边）流形,  \(   \nabla   \)是 \(  TM  \)上的联络.设 \(   \gamma :I\to M  \)是一个光滑曲线, \(  V  \)是沿 \(   \gamma   \)的光滑向量场,则对于每个 \(  t_0 \in I  \), \[
+    D_{t}V\left( t_0 \right) =  \lim_{t_1\to t_0} \frac{P_{t_1t_0}^{ \gamma }V\left( t_1 \right)-V\left( t_0 \right)   }{t_1-t_0 } 
+    \]       
+\end{theorem}
+
+\begin{proof}
+    设 \(  \left( E_{i} \right)   \)是沿 \(   \gamma   \)的平行标架,记 \(  V\left( t \right)= V^{i}\left( t \right)E_{i}\left( t \right),t\in I     \).一方面我们有 \(  D_{t}\left( V_0 \right)= \dot{V}^{i}\left( t_0 \right)E_{i}\left( t_0 \right)     \),另一方面对于每个固定的 \(  t_1\in I  \), \(  V\left( t_1 \right)   \)沿 \(   \gamma   \)的平行移动是沿 \(   \gamma   \)的 一个常系数的向量场 \(  W\left( t \right)= V^{i}\left( t_1 \right)E_{i}\left( t \right)     \)        ,从而 \(  P_{t_1t_0}^{ \gamma }V\left( t_1 \right)= V^{i}\left( t_1 \right)E_{i}\left( t_0 \right)     \) ,带入后取极限 \(  t_1\to t_0  \),即可得到极限式等于 \(  \dot{V}^{i}\left( t_0 \right)E_{i}\left( t_0 \right)    \).  
+
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}{平行移动决定的联络}
+    设 \(  M  \)是光滑（带边）流形, \(   \nabla   \)是 \(  TM  \)上的一个联络.设 \(  X,Y  \)是沿 \(  M  \)的光滑向量场.对于每个 \(  p \in M  \), \[
+    \left.  \nabla _{X}Y \right|_{p} =  \lim_{h\to 0}\frac{P_{h0}^{ \gamma }Y_{ \gamma \left( h \right) }-Y_{p} }{h } 
+    \]      其中 \(   \gamma :I\to M  \)是任意使得 \(   \gamma \left( 0 \right)= p   \)以及 \(   \gamma ^{\prime} \left( 0 \right)= X_{p}   \)   的光滑曲线.
+\end{corollary}
+
+\end{document}

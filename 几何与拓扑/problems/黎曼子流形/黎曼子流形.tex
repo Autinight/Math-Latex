@@ -1,0 +1,305 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+    
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+\begin{problemsec}
+
+\end{problemsec}
+
+\begin{problem}
+    设 \(  U  \)是 \(  \mathbb{R} ^{n}  \)上的一个开集, \(  f:U\to \mathbb{R}   \)是光滑函数.
+    令 \(  M =  \left\{ \left( x,f\left( x \right)  \right): x \in U  \right\}  \subseteq \mathbb{R} ^{n+ 1}\)    是 \(  f  \)的图像,配备了诱导Riemann度量和向上的单位法向量场.
+    \begin{enumerate}
+        \item 计算图像坐标下形状算子的分量,用 \(  f  \)及其偏导数表示.
+        \item 令 \(  M\subseteq \mathbb{R} ^{n+ 1}  \)是 \(  f\left( x \right)= \left| x \right|^{2}    \)定义的抛物面.计算 \(  M  \)的主曲率.    
+    \end{enumerate}
+     
+\end{problem}
+\begin{solution}
+    \begin{enumerate}
+        \item 设 \(  M  \)由 \(  X  \)参数化 \[
+        X\left(  u^1,\cdots,u^n \right)=\left(  u^1,\cdots,u^n ,f\left( u \right)  \right)   
+        \]度量 \[
+        g =  X^{*} \bar{g}=  \sum _{i= 1}^{n} \left( 1+ f_{i}^{2} \right) \left( \,\mathrm{d} u^{i} \right)^{2} + 2 \sum _{i\neq j} f_{i}f_{j} \,\mathrm{d} u^{i}\,\mathrm{d} u^{j} 
+        \]则 \[
+        X_{i}\left(  u^1,\cdots,u^n  \right)= \left( 0,\cdots ,1,\cdots ,0, f_{i} \right)  ,\quad i=  1,\cdots,n 
+        \]一个法向量 \(  N_1   \)为 \[
+        N\left( u^{1},\cdots ,u^{n} \right)= \left(- f_1,\cdots ,-f_{n},1 \right)  
+        \] 一个单位法向量为 \[
+        N =  \frac{1 }{\sqrt{\left|  \nabla f \right|^{2}+ 1 } }\left( -f_1,\cdots ,-f_{n},1 \right)  
+        \] \[
+        h_{ij}=  \left<s\left( X_{i} \right),X_{j}  \right>= \left<\frac{\partial ^{2}X}{\partial u^{i}u^{j}},N \right>= \frac{f_{ij} }{\sqrt{\left|  \nabla f \right|^{2}+ 1 } } 
+        \] 这是参数坐标下的坐标表示.
+        
+        
+        接下来计算欧式坐标上的坐标表示.在坐标下 \[
+        N\left( x^{1},\cdots ,x^{n+ 1} \right)= \frac{1 }{\sqrt{\left|  \nabla f \right|^{2}+ 1 } }  \left( -f_1,\cdots ,-f_{n},1 \right) 
+        \]其中右侧在 \(  \left(  x^1,\cdots,x^n  \right)   \)上取值. \[
+        s\left(  \partial _{i} \right)=- \overline{ \nabla } _{ \partial _{i}}N= \sum _{j= 1}^{n}  \partial _{i}\left( \frac{1 }{\sqrt{\left|  \nabla f \right|^{2}+ 1}  }  f_{j}\right) \partial _{j}  -   \partial _{i} \left( \frac{1 }{\sqrt{\left|  \nabla f \right|^{2}+ 1 } }  \right) \partial _{n+ 1} 
+        \] 当 \(  i=  1,\cdots,n   \)时, 其中 \[
+         \partial _{i} \frac{1 }{\sqrt{\left|  \nabla f \right|^{2}+ 1 } }= - \frac{\sum _{k= 1}^{n}f_{k}f_{ki} }{\left( \left|  \nabla f \right|^{2}+ 1  \right)^{\frac{3}{2}}  } = -\frac{ \nabla f\cdot  \nabla f_{i} }{\left( \left|  \nabla f \right|^{2}+ 1  \right)^{\frac{3}{2}}  }    ,\quad   \partial _{i}f_{j}= f_{ji}
+        \]于是 \[
+      \begin{aligned}
+      s\left(  \partial _{i} \right)= \sum _{j= 1}^{n} \left( - \frac{f_{j} \nabla f\cdot  \nabla f_{i} }{\left( \left|  \nabla f \right|^{2}+ 1  \right)^{\frac{3}{2}}  }+  \frac{f_{ji} }{ \sqrt{\left|  \nabla f \right|^{2}+ 1 } }   \right) \partial _{j}+  \frac{ \nabla f\cdot  \nabla f_{i} }{\left( \left|  \nabla f \right|^{2}+ 1  \right)^{\frac{3}{2}}  } \partial _{n+ 1}   
+      \end{aligned}  
+        \]或者写成 \[
+       s_{i}^{j}= \left<s\left(  \partial _{i} \right), \partial _{j}  \right>= -\frac{f_{j} \nabla f\cdot  \nabla f_{i} }{\left( \left|  \nabla f \right|^{2}+ 1  \right)^{\frac{3}{2}}  } +  \frac{f_{ji} }{\sqrt{\left|  \nabla f \right|^{2}+ 1 } } ,\quad i,j=  1,\cdots,n  
+        \]此外 \[
+        s\left(  \partial _{n+ 1} \right)= 0 
+        \]
+        由于 \(  X^{*}\left(  \partial _{i} \right)= \frac{\partial }{\partial u^{i}}   ,i=  1,\cdots,n \). 在图像坐标的坐标表示下,\(  s  \)的形式与欧式坐标下的相同. 
+
+        \item \[
+        f_{ij}= 2 \delta  _{i}^{j},\quad  \left|  \nabla f \right|^{2}\left( u \right) = 4\left| u\right|^{2}  
+        \] \[
+         \nabla f= 2 x^{k} \partial _{k},\quad   \nabla f_{i}= 2 \partial _{i }
+        \]于是 \[
+        s_{i}^{j}=  -\frac{8 u^{j}u^{i}  }{\left( 4\left| u \right|^{2}+ 1  \right)^{\frac{3}{2}}  } +  \frac{2 \delta  _{i}^{j} }{\sqrt{4\left| u \right|^{2} + 1} } 
+        \] 由于抛物面是旋转曲面,任一点出的主曲率与它旋转到第一个坐标平面上的主曲率相同.只需要计算 \(  x= \left( a,0,\cdots ,0 \right)   \)处的主曲率.此时 \[
+        s_{1}^{1}= \frac{2 }{\left( 4a^{2}+ 1 \right)^{\frac{3}{2}}  } ,\quad s_{i}^{i}= \frac{2 }{\sqrt{4\left| u \right|^{2}+ 1 } }\left(  i\neq 1 \right), \quad s_{ij}= 0 \left( i\neq j \right).   
+        \] 主曲率为 \[
+         \kappa _1 = \frac{2 }{\left( 4\left| u \right|^{2}+ 1  \right)^{\frac{3}{2}}  },\quad  \kappa _2 = \cdots =  \kappa _{n}= \frac{2 }{\sqrt{4\left| u \right|^{2}+ 1 } }  
+        \]
+    \end{enumerate}
+    
+\end{solution}
+
+\hspace*{\fill} 
+
+\hspace*{\fill} 
+
+\begin{problem}
+    令 \(  \left( M,g \right)   \)是Riemann流形 \(  \left( \tilde{M},\tilde{g} \right)   \)的嵌入Riemann超曲面,  \(  F  \)是 \(  M  \)的一个局部定义函数,令 \(  N =  \operatorname{grad}\,F / \left| \operatorname{grad}\,F \right|   \)
+    \begin{enumerate}
+        \item 说明 \(  M  \)关于单位法向量 \(  N  \)的标量第二基本形式由以下给出 \[
+        h\left( X,Y \right)=  - \frac{ \tilde{\nabla} ^{2}F\left( X,Y \right)  }{\left| \operatorname{grad}\,F \right|  }  
+        \]对于所有的 \(  X,Y \in \mathfrak{X}\left( M \right)   \)  . 
+        \item 说明 \(  M  \)的平均曲率由以下给出 \[
+        H =  -\frac{1 }{n } \operatorname{div}\,_{\tilde{g}}\left( \frac{\operatorname{grad}\,F }{\left| \operatorname{grad}\,F \right|  }  \right)  
+        \]其中 \(  n =  \operatorname{dim}\,M  \), \(  \operatorname{div}\,_{\tilde{g}}  \)是 \(  \tilde{g}  \)的散度算子.    
+    \end{enumerate}
+         
+\end{problem}
+\begin{proof}
+    \begin{enumerate}
+        \item  \[
+       \begin{aligned}
+        \tilde{\nabla}^{2} F\left( X,Y \right)&= X\left( Y F \right)  - \left(  \tilde{\nabla} _{X}Y \right)  F
+       \end{aligned}
+        \]其中 \[
+        Y F =  \left<\operatorname{grad}\,F,Y \right>= 0
+        \]此外, \[
+        \begin{aligned}
+            0 &=  \tilde{\nabla} _{X}\left<\operatorname{grad}\,F,Y \right> \\ 
+             &=  \left<  \tilde{\nabla} _{X}  \operatorname{grad}\,F, Y\right>+ \left<\operatorname{grad}\,F,  \tilde{\nabla} _{X}Y \right> \\ 
+              &= \left| \operatorname{grad}\,F \right| \left< \tilde{\nabla} _{X}N,Y \right>+  \left(  \tilde{\nabla} _{X}Y \right)F  \\ 
+               &=  - \left| \operatorname{grad}\,F \right|   h\left( X,Y \right) -  \tilde{\nabla} ^{2}F\left( X,Y \right)  
+        \end{aligned} 
+        \]
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+\hspace*{\fill} 
+
+
+\begin{problem}
+    设 \(  C  \)是半平面 \(  H =  \left\{ \left( r,z \right): r> 0  \right\}  \)上的嵌入光滑曲线.\(  S_{c}\subseteq \mathbb{R} ^{3}  \)是 \(  C  \)生成的旋转曲面. \(   \gamma \left( t \right)= \left( a\left( t \right),b\left( t \right)   \right)    \)是 \(  C  \)的一个单位速度参数化.  \(  X  \)是对应的 \(  S_{C}  \)的局部参数表示.
+    \begin{enumerate}
+        \item 计算 \(  S_{C}  \)的形状算子和主曲率,用 \(  a,b  \)表示,并说明每一点的主方向都与 子午线和纬圆相切.
+        \item 说明 \(  S_{C}  \)在 \(  X\left( t, \theta  \right)   \)处的Gauss曲率 等于 \(  -a^{\prime \prime} \left( t \right) / a\left( t \right)    \).     
+    \end{enumerate}
+            
+\end{problem}
+
+\begin{proof}
+    \begin{itemize}
+        \item  \[
+            X\left( t, \theta  \right)= \left( a\left( t \right)\cos  \theta , a\left( t \right)\sin  \theta ,b\left( t \right)   \right)  
+            \]
+            \item \[
+            X_1= \left( a^{\prime} \left( t \right)\cos  \theta ,a^{\prime} \left( t \right)\sin  \theta ,b^{\prime} \left( t \right)    \right) 
+            \]
+            \item \[
+            X_2= \left( -a\left( t \right)\sin  \theta , a\left( t \right)\cos  \theta , 0   \right)  
+            \] 
+            \item  \(  X_1\times X_2= \begin{pmatrix} 
+                i&j&k\\ 
+                 a^{\prime} \cos  \theta &a^{\prime} \sin  \theta &b^{\prime} \\ 
+                  -a\sin  \theta &a\cos  \theta &0 
+            \end{pmatrix}=  \left( -ab^{\prime} \cos  \theta ,-ab^{\prime} \sin  \theta ,aa^{\prime}  \right)    \) 
+            \item \(  \left| X_1\times X_2 \right|=  \sqrt{a^{2}\left( b^{\prime}  \right)^{2} + a^{2}\left( a^{\prime}  \right)^{2}  }   = a\)
+            \item 一个法向量为 \(  N =  \left( -b^{\prime} \cos  \theta ,-b^{\prime} \sin  \theta ,a^{\prime}  \right)   \)  
+            \item \(  X_{11}= \left( a^{\prime \prime} \cos  \theta ,a^{\prime \prime} \sin  \theta ,b^{\prime \prime}  \right)   \) , \(  h_{11}= \left<X_{11},N \right> =-a ^{\prime \prime} b^{\prime} + a^{\prime} b^{\prime \prime}   \)
+            \item \(  X_{12}= \left( -a^{\prime} \sin  \theta , a^{\prime} \cos  \theta ,0 \right), h_{12}= \left<X_{12},N \right>= 0   \)
+            \item \(  X_{22}= \left( -a\cos  \theta ,-a\sin  \theta ,0 \right)   \), \(  h_{22}= \left<X_{22},N \right>=  ab^{\prime}   \)   
+            \item  \[
+            s \mathbf{x}= \mathbf{x} \begin{pmatrix} 
+                -a^{\prime \prime} b^{\prime} + a^{\prime} b^{\prime \prime} & 0\\ 
+                 0& ab^{\prime}  
+            \end{pmatrix} 
+            \]  
+            \item   \(  \left( t, \theta  \right)   \)处子午线的切向就是 \(  X_1  \),  纬圆的切向就是 \(  X_2  \).
+            \item  \(  \det h= -a a^{\prime \prime} \left( b^{\prime}  \right)^{2} + a a^{\prime} b^{\prime}  b^{\prime \prime}     \)     
+            \item 对 \(  \left( a^{\prime}  \right)^{2}+ \left( b^{\prime}  \right)^{2}+ 1    \)求导,得到  \[
+            2a^{\prime}  a^{\prime \prime} + 2b^{\prime} b^{\prime \prime} = 0\implies  b^{\prime} b^{\prime \prime} = -a^{\prime} a^{\prime \prime} 
+            \]于是 \[
+            \det h= -a a^{\prime \prime} \left( b^{\prime}  \right)^{2}-a a^{\prime \prime} \left( a^{\prime}  \right)^{2} =  -a a^{\prime \prime}    
+            \] 
+            
+            \item \[
+         \begin{aligned}
+            g &=  X^{*} \bar{g}= \,\mathrm{d} \left( a\cos  \theta  \right)^{2}+ \,\mathrm{d} \left( a\sin  \theta  \right)^{2}+ \,\mathrm{d} \left( b \right)^{2}   \\ 
+             &=  \left( a^{\prime} \cos  \theta \,\mathrm{d} t-a\sin  \theta \,\mathrm{d}  \theta  \right)^{2}+  \left( a^{\prime} \sin  \theta \,\mathrm{d} t+ a\cos  \theta \,\mathrm{d}  \theta  \right)^{2}\\ 
+              &+ \left( b^{\prime} \,\mathrm{d} t \right)^{2}\\ 
+               &= \,\mathrm{d} t^{2}+ a^{2}\,\mathrm{d}  \theta    
+         \end{aligned}
+            \]
+            \item \(  \det g =  a^{2}  \)
+            \item \(  K=  \left( \det g \right)^{-1} \det h= - \frac{a^{\prime \prime}  }{a }    \)  
+ \item \(   \kappa _2 = \frac{b^{\prime}  }{a }   \), \(   \kappa _1 =  \frac{K}{ \kappa _2 }= - \frac{a^{\prime \prime}  }{b^{\prime}  }   \)  
+    \end{itemize}
+    
+
+    \hfill $\square$
+\end{proof}
+
+\hspace*{\fill} 
+
+\begin{problem}
+    说明存在 \(  \mathbb{R} ^{3}  \)上的旋转曲面,具有恒等于 \(  1  \)的Gauss曲率,而主曲率不是常值的.  
+\end{problem}
+\begin{remark}
+    事实上,这个曲面局部等距同构于 \(  \mathbb{S}^{2}  \).它给出了两个 \(  \mathbb{R} ^{3}  \)上局部等距同构但有不同主曲率的非平坦曲面 . 
+    \end{remark}
+\begin{proof}
+    上题给出了旋转曲面的Gauss曲率为 \(  -a^{\prime \prime} \left( t \right) /a\left( t \right)    \), 解ODE,得到 \(  a\left( t \right)= \cos t   \)满足 \(  -a^{\prime \prime} \left( t \right) /a\left( t \right)= 1    \).取 \(  b\left( t \right)= t   \),考虑 \(   \gamma \left( t \right)= \left( \cos t,t \right)    \)是定义在合适区间上的光滑曲线,它生成的旋转曲面,的Gauss曲率为 \(  1  \),主曲率为 \(   \kappa _1 = -\frac{a^{\prime \prime}  }{b^{\prime}  }=  \cos t,  \kappa _2 =  \frac{b^{\prime}  }{a }=  \csc t    \)  .
+
+    \hfill $\square$
+\end{proof}
+
+
+\hspace*{\fill} 
+
+
+\begin{problem}
+    令 \(  S\subseteq \mathbb{R} ^{3}  \) 是 \(  z =  x^{2}+ y^{2}  \)给出的抛物面,配备了诱导度量.证明 \(  S  \)只在一点是迷向的.  
+\end{problem}
+\begin{proof}
+    考虑参数化 \[
+   X: \left( u_1,u_2 \right)\mapsto \left( u_1,u_2,u_1^{2}+ u_2^{2} \right)  
+    \]则 \[
+     \kappa _1 = \frac{2 }{\left( 4\left| u \right|^{2}+ 1  \right)^{\frac{3}{2}}  } ,\quad   \kappa _2 =  \frac{2 }{\sqrt{4\left| u \right|^{2}+ 1 } }  
+    \]设对应的特征向量分别为 \(  v_1,v_2  \). 
+    若 \(  S  \)在一点处迷向,则存在  保持 \(  p  \)点的等距同构 \(   \varphi   \),使得 \(  \left( \,\mathrm{d}  \varphi  \right)_{p}v_1= v_2   \)   .则  \[
+    \kappa _2 v_2=  sv_2=  s\left( \left( \,\mathrm{d}  \varphi  \right)_{p}v_1  \right)=  \pm \left( \,\mathrm{d}  \varphi  \right)_{p}\left( sv_1 \right)  = \pm \left( d\varphi  \right)_{p}\left(  \kappa _1 v_1 \right)=   \pm  \kappa _1 v_2
+    \]由于 \(   \kappa _1 , \kappa _2 >0  \),只能有 \(   \kappa _1 =  \kappa _2   \).因此 \(  S  \)在非原点处均不是迷香的.而在原点处, \(  s_{i}^{j}= 2 \delta  _{i}^{j}  \)    ,特征向量正交.通过一个旋转相互转化.故 \(  S  \)只在原点处是迷向的. 
+    
+    \hfill $\square$
+\end{proof}
+\hspace*{\fill} 
+
+\begin{problem}
+    设 \(  \left( M,g \right)   \)是Riemann流形, \(   \gamma :I\to M  \)是 \(  M  \)上的 一个正则(不一定是单位速度的)  曲线.说明 \(   \gamma   \)在 \(  t \in I  \)处的测地曲率是 \[
+     \kappa \left( t \right)= \frac{\left|  \gamma ^{\prime} \left( t \right)\wedge D_{t} \gamma ^{\prime} \left( t \right)   \right|  }{\left|  \gamma ^{\prime} \left( t \right)  \right|^{3}  }  
+    \]其中分子的范数被定义为 \[
+    \left|  \gamma ^{\prime} \left( t \right)\wedge D_{t} \gamma ^{\prime} \left( t \right)   \right|: =  \sqrt{\left|  \gamma ^{\prime} \left( t \right)  \right|^{2}\left| D_{t} \gamma ^{\prime} \left( t \right)  \right|^{2}- \left< \gamma ^{\prime} \left( t \right),D_{t} \gamma ^{\prime} \left( t \right)   \right>_{g}^{2} } 
+    \]  并说明 在配备了欧式度量 \(  \mathbb{R} ^{3}  \)上,公式写作 \[
+     \kappa \left( t \right)= \frac{\left|  \gamma ^{\prime} \left( t \right)\times  \gamma ^{\prime \prime} \left( t \right)   \right|  }{\left|  \gamma ^{\prime} \left( t \right)  \right|^{3}  }  
+    \] 
+\end{problem}
+\begin{proof}
+    弧长函数为 \[
+    s\left( t \right)=  \int_{0}^{t}\left|  \gamma ^{\prime} \left( \tau  \right)  \right|\,\mathrm{d} \tau   
+    \] \[
+     \kappa \left( t\left( s \right)  \right)= \left| D_{s}\left(  \gamma \left( t\left( s \right)  \right)  \right)^{\prime}   \right|  
+    \] \[
+     \gamma \left( t\left( s \right)  \right)^{\prime} =   \gamma ^{\prime} \left( t\left( s \right)  \right) t^{\prime} \left( s \right)   = \frac{ \gamma ^{\prime} \left( t\left( s \right)  \right)  }{\left|  \gamma ^{\prime} \left( t\left( s \right)  \right)  \right|  } 
+    \] 从而 \[
+    \begin{aligned}
+    D_{s} \left(  \gamma \left( t\left( s \right)  \right)^{\prime}   \right)=  \frac{D_{s}\left(  \gamma ^{\prime} \left( t\left( s \right)  \right)  \right)  }{\left|  \gamma ^{\prime} \left( t\left( s \right)  \right)  \right|  }+ D_{s}\left( \frac{1 }{\left|  \gamma ^{\prime} \left( t\left( s \right)  \right)  \right|  }  \right)     \gamma ^{\prime} \left( t\left( s \right)  \right) 
+    \end{aligned}
+    \]其中 \[
+    D_{s}\left(  \gamma ^{\prime} \left( t\left( s \right)  \right)  \right)=  \nabla _{ \left(  \gamma \left( t\left( s \right)  \right)  \right)^{\prime}   } \gamma ^{\prime} \left( t\left( s \right)  \right)=  \nabla _{ \frac{\gamma ^{\prime} \left( t \right) }{\left|  \gamma ^{\prime} \left( t \right)  \right|  }  }  \gamma ^{\prime} \left( t \right)= \frac{D_{t} \gamma ^{\prime} \left( t \right)  }{\left|  \gamma ^{\prime} \left( t \right)  \right|  } 
+    \] \[
+    \begin{aligned}
+        D_{s}\frac{1 }{\left|  \gamma ^{\prime} \left( t\left( s \right)  \right)  \right|  }&= \frac{\mathrm{d}}{\mathrm{d}s} \frac{1 }{\left|  \gamma ^{\prime} \left( t\left( s \right)  \right)  \right|  }\\ 
+         &=  -\frac{1 }{\left|  \gamma ^{\prime} \left( t\left( s \right)  \right)  \right|^{2}  }  D_{s}\left|  \gamma ^{\prime} \left( t\left( s \right)  \right)  \right| 
+    \end{aligned}  
+    \]
+    由度量性,  \[
+    D_{s}\left< \gamma ^{\prime} \left( t\left( s \right)  \right), \gamma ^{\prime} \left( t\left( s \right)  \right)   \right>= 2 \left< \gamma ^{\prime} \left( t\left( s \right),D_{s} \gamma ^{\prime} \left( t\left( s \right)  \right)   \right)  \right>= 2\frac{\left< \gamma ^{\prime} \left( t \right),D_{t} \gamma ^{\prime} \left( t \right)   \right> }{\left|  \gamma ^{\prime} \left( t \right)  \right|  } 
+    \]\[
+    D_{s}\left< \gamma ^{\prime} \left( t\left( s \right)  \right), \gamma ^{\prime} \left( t\left( s \right)  \right)   \right>^{\frac{1}{2}}= \frac{1 }{2\left|  \gamma ^{\prime} \left( t\left( s \right)  \right)  \right|  } \left( D_{s}\left< \gamma ^{\prime} \left( t\left( s \right)  \right), \gamma ^{\prime} \left( t\left( s \right)  \right)   \right> \right)  
+    \]于是 \[
+    D_{s}\left|  \gamma ^{\prime} \left( t\left( s \right)  \right)  \right|=  \frac{\left< \gamma ^{\prime} \left( t \right),D_{t} \gamma ^{\prime} \left( t \right)   \right> }{\left|  \gamma ^{\prime} \left( t \right)  \right|^{2}  }  
+    \]于是 \[
+    D_{s}\left(  \gamma \left( t\left( s \right)  \right)^{\prime}   \right)= \frac{D_{t} \gamma ^{\prime} \left( t \right)  }{\left|  \gamma ^{\prime} \left( t \right)  \right| ^{2} }- \gamma ^{\prime} \left( t \right)   \frac{\left< \gamma ^{\prime} \left( t \right)  ,D_{t} \gamma ^{\prime} \left( t \right) \right> }{ \left|  \gamma ^{\prime} \left( t \right)  \right|^{4} } 
+    \] 模长的平方为 \[
+    \begin{aligned}
+    &\left<D_{s}\left(  \gamma \left( t\left( s \right)  \right)^{\prime}   \right),D_{s}\left(  \gamma \left( t\left( s \right)  \right)^{\prime}   \right)   \right>\\ 
+     &=  \frac{\left| D_{r} \gamma ^{\prime} \left( t \right)  \right|^{2}  }{ \left|  \gamma ^{\prime} \left( t \right)  \right|^{4} }+ \frac{\left< \gamma ^{\prime} \left( t \right),D_{t} \gamma ^{\prime} \left( t \right)   \right>^{2} }{\left|  \gamma ^{\prime} \left( t \right)  \right|^{6}  }- 2 \frac{\left< \gamma ^{\prime} \left( t \right),D_{t} \gamma ^{\prime} \left( t \right)   \right> }{\left|  \gamma ^{\prime} \left( t \right)  \right|^{6}  }\left< \gamma ^{\prime} \left( t \right),D_{t} \gamma ^{\prime} \left( t \right)   \right>   \\ 
+      &=  \frac{\left| D_{t} \gamma ^{\prime} \left( t \right)  \right|^{2}  }{\left|  \gamma ^{\prime} \left( t \right)  \right|^{4}  }- \frac{\left< \gamma ^{\prime} \left( t \right),D_{t} \gamma ^{\prime} \left( t \right)   \right>^{2} }{\left|  \gamma ^{\prime} \left( t \right)  \right|^{6}  }\\ 
+       &=  \frac{\left|  \gamma ^{\prime} \left( t \right)\wedge D_{t} \gamma ^{\prime} \left( t \right)   \right|^{2}  }{\left|  \gamma ^{\prime} \left( t \right)  \right|^{6}  }   
+    \end{aligned}
+    \]最终 \[
+     \kappa \left( t \right)=  \kappa \left( t\left( s \right)  \right)= \left| D_{s}\left(  \gamma \left( t\left( s \right)  \right)  \right)  \right|=  \frac{\left|  \gamma ^{\prime} \left( t \right)\wedge D_{t} \gamma ^{\prime} \left( t \right)   \right|  }{\left|  \gamma ^{\prime} \left( t \right)  \right|^{3}  }    
+    \]在欧式空间上, \(   \gamma ^{\prime} \left( t \right)\wedge D_{t} \gamma ^{\prime} \left( t \right)    \) 和 \(   \gamma ^{\prime} \left( t \right)\times  \gamma ^{\prime \prime} \left( t \right)    \)通过Hodge星算子对应,它们具有相同的范数. 
+    
+    \hfill $\square$
+\end{proof}
+\hspace*{\fill} 
+
+\begin{problem}
+    对于 \(  w> 0  \),令 \(  M_{w}\subseteq \mathbb{R} ^{3}  \)  是由 \(   \gamma \left( t \right)= \left( w\cosh \left( \frac{t}{w} \right),t  \right)    \)绕 \(  z  \)轴 生成的旋转曲面, 成为\textbf{悬链面}.说明 \(  M_{w}  \)对于每个 \(  w  \)都是极小曲面.  
+\end{problem}
+\begin{proof}
+    参数化为 \[
+    X\left( t, \theta  \right)= \left( a\left( t \right) \cos  \theta ,a\left( t \right) \sin  \theta ,t \right)  
+    \] 其中 \(  a\left( t \right)= w \cosh\left( \frac{t }{w }  \right)    \) 
+    \begin{itemize}
+        \item \[
+        \begin{aligned}
+            g &=  \,\mathrm{d} \left( a\left( t \right)\cos  \theta   \right)^{2}+ \,\mathrm{d} \left( a\left( t \right)\sin  \theta   \right)^{2}+ \,\mathrm{d} t^{2}\\ 
+             &=  \left( a^{\prime} \cos  \theta \,\mathrm{d} t-a\sin  \theta \,\mathrm{d}  \theta  \right)^{2}+  \left( a^{\prime} \sin  \theta \,\mathrm{d} t+ a\cos  \theta \,\mathrm{d}  \theta  \right)^{2}+ \,\mathrm{d} t^{2}\\ 
+              &= \left( \left( a^{\prime}  \right)^{2}+ 1 \right) \,\mathrm{d} t^{2}+ a^{2}\,\mathrm{d}  \theta    ^{2}\\ 
+               &= \cosh ^{2}\left( \frac{t }{w }  \right)\,\mathrm{d} t^{2}+ a^{2} \,\mathrm{d}  \theta ^{2} 
+        \end{aligned}
+        \]
+        \item \(  a^{\prime} \left( t \right)= \sinh  \left( \frac{t }{w }  \right)     \) 
+        \item \(  a^{\prime \prime} \left( t \right)=  \frac{1 }{w }\cosh \left( \frac{t }{w }  \right)     \) 
+        \item \(  X_1= \left( a^{\prime} \cos  \theta ,a^{\prime} \sin  \theta ,1 \right)= \left( \sinh  \left( \frac{t }{w }  \right)\cos  \theta , \sinh  \left( \frac{t }{w }  \right)\sin  \theta ,1   \right)    \) 
+        \item \(  X_2= \left( -a\sin ,a\cos ,0 \right)= \left( -w \cosh \left( \frac{t }{w }  \right)\sin  \theta , w \cosh \left( \frac{t }{w }  \right)\cos  \theta ,0   \right)    \) 
+        \item \(  X_1\times X_2= \begin{pmatrix} 
+            i&j&k\\ 
+             a^{\prime} \cos &a^{\prime} \sin &1\\ 
+              -a\sin &a\cos &0 
+        \end{pmatrix}= \left( -a\cos ,-a\sin ,aa^{\prime}  \right)    =  a \left( -\cos ,\sin ,a^{\prime}  \right) \) 
+        \item \(N =  \left( -\cos  \theta ,-\sin  \theta , \sinh \left( \frac{t }{w }  \right)  \right)\frac{1 }{\cosh \left( \frac{t }{w }  \right)  }   \) 
+        \item  \(  X_{11}= \left( a^{\prime \prime} \cos  \theta ,a^{\prime \prime} \sin  \theta ,0 \right) ,X_{22}= \left( -a\cos  \theta ,-a\sin  \theta ,0 \right)    \) 
+        \item \(  s_{1}^{1}= \frac{1}{\cosh }\left( -a^{\prime \prime} \right)\frac{1 }{\cosh ^{2} }= -\frac{1}{w\cosh ^{2}\left( \frac{t }{w }  \right) }  ,\quad s_{2}^{2}= \frac{a}{\cosh }\frac{1 }{a^{2} }= \frac{1 }{w\cosh ^{2}\left( \frac{t }{w }  \right)  }   \) 故平均曲率 \[
+        H =  \frac{1 }{2 } \left( s_{1}^{1}+ s_{2}^{2} \right)= 0  
+        \]
+    \end{itemize}
+    
+
+    \hfill $\square$
+\end{proof}
+\hspace*{\fill} 
+
+\begin{problem}
+    设 \(  M\subseteq \mathbb{R} ^{n+ 1}  \) 是一个Riemann超曲面, \(  N  \)是沿 \(  M  \)的光滑单位法向量场.在每个 \(  p \in M  \), \(  N_{p} \in T_{p}\mathbb{R} ^{n+ 1}  \)可以看做是 \(  \mathbb{R} ^{n+ 1}  \)上的单位向量,从而视为 \(  \mathbb{S}^{n}  \)上面的一个点.因此,每个单位法向量场都给出一个车光滑映射 \(  \nu :M\to \mathbb{S}^{n}  \),称为是 \(  M  \)的Gauss映射.说明 \(  \nu ^{*} \,\mathrm{d} V_{\overset{\scriptstyle\circ}{g}}= \left( -1 \right)^{K}\,\mathrm{d} V_{g}   \),其中 \(  K  \)是 \(  M  \)的Gauss曲率.           
+\end{problem}
+
+\hspace*{\fill} 
+
+\end{document}

@@ -1,0 +1,120 @@
+\documentclass[lang=cn,12pt,color=green,fontset=none]{elegantbook}
+
+\title{数学分析}
+\subtitle{詹伟城}
+
+\author{Autin}
+
+\setmainfont{Aa顺風顺水顺财神}
+\setCJKmainfont{Aa顺風顺水顺财神}
+\setCJKsansfont{Aa顺風顺水顺财神}
+\setCJKmonofont{Aa顺風顺水顺财神}
+
+%\extrainfo{不要以为抹消过去,重新来过,即可发生什么改变.—— 比企谷八幡}
+
+\setcounter{tocdepth}{3}
+
+
+\cover{image.png}
+\usepackage{CJKutf8}
+% 本文档命令
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+
+% 修改标题页的橙色带
+% \definecolor{customcolor}{RGB}{32,178,170}
+% \colorlet{coverlinecolor}{customcolor}
+
+\begin{document}
+
+\maketitle
+\frontmatter
+
+\tableofcontents
+
+\mainmatter
+
+\chapter{多元积分}
+
+
+\section{Green公式}
+
+\begin{theorem}{面积公式}
+     $$
+     \sigma\left( D \right) = -\oint_{\partial D    } y \,\mathrm{d}x = \oint_{ \partial D} x \,\mathrm{d}y = \frac{1}{2} \oint_{\partial D} \left( -y \right)\,\mathrm{d}x +  x \,\mathrm{d}y 
+     $$
+\end{theorem}
+
+\begin{proposition}{第二型曲线积分与第一型曲线积分的关系}
+    $$
+    \iint_{D}\left( - \frac{\partial P}{\partial y} +  \frac{\partial Q}{\partial x}  \,\mathrm{d}x \mathrm{d}y \right) = \oint_{\partial D} P \,\mathrm{d}x+  Q \,\mathrm{d}y= \int_{\partial D} \left( -P \vec{n_{y}} +  Q \vec{n_{x}}\right)\,\mathrm{d}s  
+    $$其中 $  \vec{n}= \left(  \vec{n_{x}},\vec{n_{y}} \right)  $是 $ \partial D $的单位外法向量  
+\end{proposition} 
+
+\begin{corollary}
+    
+    设 $  D $同上, $ \vec{n} =\left( \vec{n_{x}  },\vec{n_{y}} \right)  $为 $ \partial D $   的单位外法向量, $  P,Q \in  C^{1}\left(  \overline{D} \right)  $则 $$
+    \iint_{D} \left(  \frac{\partial P}{\partial x}+  \frac{\partial Q}{\partial y} \right) \,\mathrm{d}x \mathrm{d} y= \int_{ \partial D} \left(  P \vec{n }_{x} +  Q \vec{n}_{y} \right)  
+    $$ 
+\end{corollary}
+
+\begin{corollary}{二维分部积分公式}
+     $$
+      \iint_{D} \frac{\partial P}{\partial x} \cdot Q \,\mathrm{d}x \mathrm{d}y = - \iint_{D} P \cdot  \frac{\partial Q}{\partial x} \,\mathrm{d}x \mathrm{d}y +  \int_{ \partial D} PQ \vec{n  }_{x} ds
+     $$ $$
+     \iint_{D} \frac{\partial P}{\partial y}\cdot Q \,\mathrm{d}x \mathrm{d} y = - \iint_{D} P \cdot \frac{\partial Q}{\partial y} \,\mathrm{d}x  \mathrm{d}y +  \int_{\partial D} PQ \vec{n}_{y} \,\mathrm{d}s
+     $$
+\end{corollary}
+
+\begin{proof}
+    以第一个式子为例 $$
+    \begin{aligned}
+       & \frac{\partial \left( PQ \right) }{\partial x} = \frac{\partial P}{\partial x} \cdot  Q+  P \frac{\partial Q}{\partial x} \\ 
+         & \implies \iint_{D} \frac{\partial PQ}{\partial x} \,\mathrm{d}x \mathrm{d} y = \iint_{D} \frac{\partial P}{\partial x}Q \,\mathrm{d}x \,\mathrm{d}y +  \iint_{D} P \frac{\partial Q}{\partial x} \,\mathrm{d}x   \,\mathrm{d}y 
+    \end{aligned}
+    $$
+    其中 $$
+     \iint_{D} \frac{\partial PQ}{\partial x} \,\mathrm{d}x \mathrm{d} y = \int_{ \partial D        } PQ \vec{n_{x }} \,\mathrm{d}s
+    $$ 
+\end{proof}
+
+
+\chapter{含参积分}
+
+\section{Bochner-Lebesgue含参积分}
+
+\begin{theorem}{连续性}
+    设 $ M $是度量空间,$ f:X\times M\to E $满足 
+    \begin{enumerate}
+        \item $ f\left( \cdot ,m \right)\in \mathcal{L}_{1}\left( X,\mu ,E \right)   $对于每个 $ m \in M $成立；
+        \item  $ f\left( x,\cdot  \right)\in C\left( M,E \right)   $对于 $ \mu  $-几乎所有 $ x \in X $成立；
+        \item 存在 $ g \in \mathcal{L}_{1}\left( X,\mu ,E \right)  $,使得 $ \left| f\left( x,m \right)  \right|\le g\left( x \right)   $对于 $ \left( x,m \right)\in X\times M  $   成立.
+    \end{enumerate}
+    则 $$
+    F:M\to E,\quad  m\mapsto \int_{X}f\left( x,m \right)\mu \left( \,\mathrm{d} x \right)  
+    $$是良定义且连续的.
+\end{theorem}
+\begin{proof}
+    良定义性由1.立即得到.设 $ m \in M $,令 $ \left( m_{j} \right)  $是在 $ M $中收敛到 $ m $的列.令 $ f_{j}: = f\left( \cdot ,m_{j} \right)  $, $ j \in \mathbb{N}  $,则由2., $ f_{j}\to f $ $ \mu  $-a.e.且由1, $ f_{j} \in \mathcal{L}_{1}\left( X,\mu ,E \right), j \in \mathbb{N}   $ ,由3. $ \left| f_{j} \right| \le  \left| g \right|  $   ,因此由控制收敛定理 $$
+    \lim_{j \to \infty} F\left( m_{j} \right) = \lim_{j \to \infty}\int_{X}f_{j}=    \int_{X}\lim_{j \to \infty}f_{j} = \int_{X} f\left( x,m \right)\mu \left( \,\mathrm{d} x\right) = F\left( m \right)   
+    $$这表明 $ F $是连续的. 
+
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}{可微性}
+    设 $ U $是 $ \mathbb{R} ^{n} $中的开集,设 $ f: X\times U\to E $满足 
+    \begin{enumerate}
+        \item $ f\left( \cdot ,y \right)\in \mathcal{L}_{1}\left( X,\mu ,E \right)   $对所有 $  y\in U $成立；
+        \item  $ f\left( x,\cdot  \right) \in C^{1}\left( U,E \right)   $对于 $ \mu  $-几乎所有 $ x \in X $成立；
+        \item 存在 $ g \in  \mathcal{L}_{1}\left( X,\mu,\mathbb{R}  \right)  $,使得 $$
+        \left| \frac{\partial }{\partial y^{j}} f\left( x,Y \right) \right| \le g\left( x \right),\quad \left( x,y \right)\in X\times U,\quad 1\le j\le n  
+        $$      
+    \end{enumerate}
+       则 $$
+       F:U\to E,\quad y\mapsto \int_{X}f\left( x,y \right) \mu \left( \,\mathrm{d} x \right)  
+       $$是连续可微的,并且 $$
+       \partial _{j}F\left( y \right)= \int_{X} \frac{\partial }{\partial y^{j}} f\left( x,y \right) \mu \left( \,\mathrm{d} x \right),\quad  y \in U,\quad  1\le j\le n  
+       $$
+\end{theorem}
+\end{document}

@@ -1,0 +1,596 @@
+
+\documentclass[../../复变函数.tex]{subfiles}
+
+\begin{document}
+
+
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+    \setcounter{chapter}{4}
+}{}
+
+\chapter{Laurent}
+
+\section{Laurent级数}
+\begin{theorem}
+    若Laurent级数的收敛域为圆环 \(  D= \left\{ z:r< \left| z-z_0 \right|< R  \right\}  \),则
+    \begin{enumerate}
+        \item Laurent级数在 \(  D  \)中绝对收敛且紧一致收敛.  
+        \item Laurent级数的和函数在 \(  D  \)中全纯. 
+    \end{enumerate}
+    
+\end{theorem}
+
+\begin{theorem}
+    设 \(  D= \left\{ z:r< \left| z-z_0 \right|< R  \right\}  \),若 \(  f \in \mathcal{H}\left( D \right)   \)  ,则 \(  f  \)在 \(  D  \)上展开为 Laurent级数 \[
+    f\left( z \right)= \sum _{n \in \mathbb{Z} }a_{n}\left( z-z_0 \right)^{n},z\in D  
+    \]  其中 \[
+    a_{n}= \frac{1 }{2\pi i } \frac{f\left( \zeta  \right)  }{ \left( \zeta -z_0 \right)^{n+ 1} }\,\mathrm{d} \zeta   ,\quad  \gamma _{\rho }= \left\{ \zeta :\left| \zeta -z_0 \right|= \rho   \right\}\left( rr< \rho < R \right) 
+    \]并且展开是唯一的.
+\end{theorem}
+\begin{proof}
+    考虑 \[
+    r< r_1< \left| z-z_0 \right|< r_2< R 
+    \] \[
+    f\left( z \right)= \frac{1 }{2\pi i } \int_{ \gamma _2 }\frac{f\left( \zeta  \right)  }{\zeta -z }\,\mathrm{d} \zeta -\frac{1 }{2\pi i } \int_{ \gamma _1 }\frac{f\left( \zeta  \right)  }{ \zeta -z}\,\mathrm{d} \zeta      
+    \]将 \(  \frac{1 }{\zeta -z }   \)按照 \(\frac{\zeta -z_0 }{z-z_0 }     \)的幂次展开 得到 \(  \frac{f\left( \zeta  \right)  }{\zeta -z }   \)写成关于 \(  \left( z-z_0 \right)^{-1}   \)的幂级数,研究收敛性,逐项积分,处理负幂级数的部分.
+
+    再将 \(  \frac{1 }{\zeta -z }   \)按照 \(  \frac{z-z_0 }{\zeta -z_0 }   \)的幂次展开,将 \(  \frac{f\left( \zeta  \right)  }{\zeta -z }   \)写成关于 \(  \left( z-z_0 \right)   \)的幂级数,研究收敛性,逐项积分,处理正幂级数的部分.    
+
+    \hfill $\square$
+\end{proof}
+
+\section{孤立奇点}
+
+\begin{definition}{奇点}
+     如果一个函数 $f(z)$ 在点 $z_0$ 的任何邻域内(包括 \(  z_0  \)本身) 都有点使其不解析，则称 $z_0$ 就是 $f(z)$ 的一个奇点。
+\end{definition}
+
+\begin{definition}{孤立奇点}
+    若 \(  z_0  \)是一个奇点,且  存在以 \(  z_0  \)为中心的去心圆盘 \(  D  \),使得 \(  f  \)在 \(  D  \)上全纯,则称 \(  z_0  \)是 \(  f  \)的孤立奇点.      此时,
+    \begin{enumerate}
+        \item 若 \(  \lim_{z\to z_0}f\left( z \right)= a   \)有限,则称 \(  z_0  \)是 \(  f  \)的可去奇点.
+        \item 若 \(  \lim_{z\to z_0}f\left( z \right)= \infty   \),则称 \(  z_0  \)是 \(  f  \)的极点.
+        \item 若 \(  \lim_{z\to z_0}f\left( z \right)   \)不存在,则称 \(  z_0  \)是 \(  f  \)的本性起点.         
+    \end{enumerate}
+    
+\end{definition}
+\begin{remark}
+    等价地说,孤立奇点是奇点集中的孤立点.
+\end{remark}
+\begin{theorem}{Riemann}
+    设 \(  z_0  \)是 \(  f  \)的一个孤立奇点.则  \(  z_0  \)是 \(  f  \)的可去奇点,当且仅当 \(  f  \)在 \(  z_0  \)附近有界.    
+\end{theorem}
+\begin{proof}
+    可去奇点附近显然有界. 若有界,借由Cauchy不等式, 复幂次的系数 \(  a_{-n}  \)由 半径的正幂次控制,可趋于零.洛朗级数化为幂级数. 
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    \(  z_0  \)是 \(  f  \)的极点当且仅当 \(  z_0  \)为 \(  \frac{1 }{f }   \)的零点.    
+\end{proposition}
+\begin{proof}
+    不难证明
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}  
+    若 \(  z_0  \)是 \(  \frac{1 }{f }   \)的 \(  m  \)阶零点,则称 \(  z_0  \)是 \(  f  \)的 \(  m  \)阶极点.      
+\end{definition}
+
+
+  \begin{theorem}
+    \(  z_0  \)为 \(  f  \)的 \(  m  \)阶极点,当且仅当 \(  f  \)在 \(  z_0  \)的某个去心邻域内表为 \[
+    f\left( z \right)= \frac{1 }{\left( z-z_0 \right)^{m} } g\left( z \right)   
+    \]其中 \(  g  \)在 \(  z_0  \)处全纯,且 \(  g\left( z_0 \right)\neq 0   \)        
+\end{theorem}
+\begin{proof}
+    \(  z_0  \)为 \(  f  \)的 \(  m  \)阶极点,当且仅当 \(  z_0  \)是 \(  \frac{1 }{f }   \)的 \(  m  \)阶零点,当且仅当存在全纯函数 \(  h  \),且 \(  h\left( z_0 \right)\neq 0   \),使得 \[
+    \frac{1 }{f }= \left( z-z_0 \right)^{m}h  
+    \]   在 \(  z_0  \)的一个使得 \(  h  \)恒非零的邻域内,令 \(  g = \frac{1 }{h }   \),则 \(  g  \)在 \(  z_0  \)出全纯,且 \(  g\left( z_0 \right)\neq 0   \),并且 \[
+    \frac{1 }{f }= \left( z-z_0 \right)^{m}\frac{1 }{g }   
+    \]即 \[
+    f= \frac{1 }{\left( z-z_0 \right)^{m}  }g 
+    \]       
+
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}
+     设函数 $f(z)$ 在 $z_0$ 处有一个阶数为 $m$ 的极点.设函数 $g(z)$ 在 $z_0$ 处全纯且 $g(z_0) \ne 0$.则函数 $F(z) = f(z)g(z)$ 在 $z_0$ 处仍有一个阶数为 $m$ 的极点.
+\end{corollary}
+\begin{proof}
+    存在 \(  z_0  \)处全纯且非零的  \(  h  \),使得 \[
+    f= \frac{1 }{\left( z-z_0 \right)^{m}  }h 
+    \]  于是 \[
+    F=  \frac{1 }{\left( z-z_0 \right)^{m}  } \left( gh \right)  
+    \]其中 \(  gh  \)是在 \(  z_0  \)处全纯切非零的函数.故 \(  F  \)在 \(  z_0  \)处有一个 \(  m  \)阶极点.     
+
+    \hfill $\square$
+\end{proof}
+\begin{theorem}
+    若 \(  z_0  \)是 \(  f  \)的 \(  m  \)阶极点,当且仅当 \(  f  \)在 \(  z_0  \)附近的洛朗展开中,有非零系数的最低次幂为 \(  -m  \)次 . 
+\end{theorem}
+
+\begin{proof}
+    借由 \(  m  \)阶零点的分解 \(  \frac{1 }{f }= \left( z-z_0 \right)^{m}g  \) .将 \(  \frac{1 }{g }   \)泰勒展开,研究系数的关系即可. 
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{theorem}
+    若 \(  z_0  \)是 \(  f  \)的本性奇点,则 \(  f  \)的值域在 \(  \mathbb{C} _{\infty}  \)中稠密.    
+\end{theorem}
+
+\begin{proof}
+    只讨论 \(  A\neq \infty  \)的情况, 利用可去奇点和附近有界的等价性,将问题化简为讨论 \[
+    \frac{1 }{f\left( z \right)-A  } 
+    \]是否无界.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}{Picard}
+    全纯函数在本性奇点的邻域内无穷多次地取到每个有限复值,至多只有一个例外点.
+\end{theorem}
+\begin{remark}
+    难证.
+\end{remark}
+
+\begin{definition}
+    作变换 \(  z= \frac{1 }{\zeta  }   \),讨论无穷原点的奇点和极点. 
+\end{definition}
+
+\section{整函数和亚纯函数}
+
+\begin{definition}\label{6.18-1}
+    若 \(  f  \)在整个复平面上除去极点外没有其他奇点,就称 \(  f  \)是一个亚纯函数.  
+\end{definition}
+
+
+\begin{theorem}
+    如果无穷远点是整函数 \(  f  \)的一个极点,那么 \(  f  \)是一个 \(  m  \)次多项式.特别地,无穷远点出全纯的整函数一定是常数.   
+\end{theorem}
+
+\begin{proof}
+
+    \(  f  \)在 \(  \mathbb{C}   \)上展开为 \[
+    f\left( z \right)= \sum _{n\ge 0}a_{n}z^{n} 
+    \]  进而在 \(  \mathbb{C}   \)上, \[
+    f\left( \frac{1 }{z }  \right)=  \sum _{n\ge 0}a_{n}z^{-n} 
+    \] 
+    若无穷远点是 \(  f  \)的一个 \(  m  \)阶极点,则 \(  0  \)是 \(  \sum _{n\ge 0}a_{n}z^{-n}  \)的 \(  m  \)阶极点,我们有 \(  a_{k}= 0,k> m ,a_{m}\neq 0  \)    .于是 \[
+    f\left( z \right)= a_0+ a_1z+ \cdots + a_{m}z^{m} 
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}{零点孤立}
+    亚纯函数的零点是孤立的.
+\end{proposition}
+\begin{proof}
+    亚纯函数在除去一个孤立奇点集外全纯.零点附近存在一个邻域,没有孤立奇点(否则孤立奇点有聚点,由连续性,该聚点无界,从而也是奇点,进而是一个非孤立奇点,矛盾).由全纯函数零点的孤立性,该零点也是孤立的.
+
+    \hfill $\square$
+\end{proof}
+\begin{theorem}
+    若 $z=\infty$ 是亚纯函数 $f$ 的可去奇点或极点, 则 $f$ 一定是有理函数.
+\end{theorem}
+\begin{proof}
+    因 $z=\infty$ 是 $f$ 的可去奇点或极点, 故必存在 $R>0$, 使得 $f$ 在 $R<|z|<\infty$ 中全纯.断言在 $|z|\le R$ 中, $f$ 最多只能有有限个极点:这是因为若极点集合为无限集 \(  Z  \),则其在紧集 \(  \left\{ \left| z \right|\le R  \right\}  \)上必然存在一个聚点\(  a  \) ,而 \(  a  \)是一个非孤立奇点,与函数的亚纯性质矛盾.  现在设 \(  Z= \left\{ z_1,\cdots ,z_{n} \right\}  \) , 它们的阶分别为 $m_1,\dots,m_n$. $f$ 在 $z_j (j=1,\dots,n)$ 附近的 Laurent 展开的主要部分为
+\begin{equation*}
+h_j(z) = \frac{c_{-1}^{(j)}}{z-z_j} + \frac{c_{-2}^{(j)}}{(z-z_j)^2} + \dots + \frac{c_{-m_j}^{(j)}}{(z-z_j)^{m_j}}.
+\end{equation*}
+设 $f$ 在 $\infty$ 的邻域内的 Laurent 展开的主要部分为 $g$, 当 $z=\infty$ 是 $f$ 的极点时, $g$ 是一个多项式; 当 $z=\infty$ 是 $f$ 的可去奇点时, $g \equiv 0$. 令
+\begin{equation*}
+F(z) = f(z) - h_1(z) - \dots - h_n(z) - g(z).
+\end{equation*}
+显然, $F$ 在 $\mathbb{C}_\infty$ 中除 $Z$ 和 $\infty$ 外是全纯的, 而在 $Z$ 和 $\infty$ 上, $f$ 的主要部分都已经消去, 因而也是全纯的. 所以, $F$ 是 $\mathbb{C}_\infty$ 上的全纯函数, 进而由定理 \ref{6.18-1}, $F$ 是一个常数 $c$. 于是
+\begin{equation*}
+f(z) = c + g(z) + \sum_{j=1}^n h_j(z).
+\end{equation*}
+    \hfill $\square$
+\end{proof}所以 $f$ 是有理函数.
+
+\section{留数定理}
+
+
+\begin{definition}
+    设 \(  a  \)是 \(  f  \)的一个孤立奇点, \(  f  \)在 \(  a  \)的邻域 \(  B\left( a,r \right)   \)中的Laurent展开为 \(  f\left( z \right)= \sum _{n\in \mathbb{Z} }c_{n}\left( z-a \right)^{n}    \),则称 \(  c_{-1}  \)为 \(  f  \)在 \(  a  \)点的留数,记作 \[
+    \operatorname{Res}\,\left( f,a \right)= c_{-1} 
+    \]         
+\end{definition}
+
+\begin{theorem}
+    设 \(  a  \)是 \(  f  \)的一个孤立奇点, \(  f  \)在 \(  a  \)的邻域 \(  B\left( a,r \right)   \)中的Laurent展开为 \(  f\left( z \right)= \sum _{n\in \mathbb{Z} }c_{n}\left( z-a \right)^{n}    \),设 \(   \gamma   \)是 \(  B\left( a,r \right)   \)中环绕 \(  a  \)的一个Jordan闭合曲线,   则 \[
+    \int_{ \gamma }f\left( z \right)\,\mathrm{d} z= 2\pi i\operatorname{Res}\,\left( f,a \right)  
+    \]
+\end{theorem}
+\begin{proof}
+    Laurent展开的系数表示为 \[
+    c_{n}= \frac{1 }{2\pi i } \int_{ \gamma }\frac{f\left( \zeta  \right)  }{\left( \zeta -a \right)^{n+ 1}  }\,\mathrm{d} \zeta ,\quad \neq \in \mathbb{Z}   
+    \]特别地,当  \(  n = -1  \)时, \[
+    \operatorname{Res}\,\left( f,a \right)= c_{-1}=  \frac{1 }{2\pi i } \int_{ \gamma }f\left( \zeta  \right)\,\mathrm{d} \zeta    
+    \] 
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{definition}
+    若 \(  z= \infty  \)是 \(  f  \)的孤立奇点,定义 \[
+    \operatorname{Res}\,\left( f,\infty \right)= -\frac{1 }{2\pi i } \int_{ \gamma }f\left( z \right)\,\mathrm{d} z   
+    \] 其中 \(   \gamma   \)是 \(  \infty  \)的解析邻域内绕 \(  \infty  \)的Jordan闭合曲线.   
+\end{definition}
+
+\begin{note}
+    从黎曼球面上看,如果将 \(  0  \) 留数看成是函数绕南极点积一圈的效应,那么从 \(  \infty  \)的留数恰好是道路绕北极点,也就是逆向积一圈的效应.
+\end{note}
+
+\begin{theorem}
+    若  \(  a  \)是 \(  f  \)的 \(  m  \)阶极点,则 \[
+    \operatorname{Res}\,\left( f,a \right)= \frac{1 }{\left( m-1 \right)!  }\lim_{z\to a} \frac{\mathrm{d}^{m-1}}{\mathrm{d}z^{m-1}}  \left( \left( z-a \right)^{m}f\left( z \right)   \right) 
+    \]   
+\end{theorem}
+\begin{proof}
+    若 \(  a  \)是 \(  f  \)的 \(  m  \)阶极点,则在 \(  a  \)的邻域内 \[
+    f\left( z \right)= \frac{1 }{\left( z-a \right)^{m}  }g\left( z \right)   
+    \]   其中 \(  g  \)在 \(  a  \)点全纯且非零.故 \[
+    f\left( z \right)= \frac{1 }{\left( z-a \right)^{m}  }\sum _{n = 0}^{\infty} \frac{g^{\left( n \right) }\left( z \right)  }{n! }\left( z-a \right)^{n}= \sum _{n = 0}^{\infty} \frac{g^{\left( n \right) }\left( z \right)  }{n! }\left( z-a \right)^{n-m}      
+    \]   是一个Laurent展开, \(  \left( z-a \right)^{-1}   \)的系数为 \(  \frac{g^{\left( m-1 \right)\left( a \right)  } }{\left( m-1 \right)!  }   \)  
+    于是 \[
+    \operatorname{Res}\,\left( f,a \right)= \frac{g^{\left( m-1 \right) }\left( a \right)  }{\left( m-1 \right)!  }  = \frac{1 }{\left( m-1 \right)!  }\lim_{z\to a}\frac{\mathrm{d}^{m-1}}{\mathrm{d}z^{m-1}}\left( \left( z-a \right)^{m}f\left( z \right)   \right)  
+    \]
+    \hfill $\square$
+\end{proof}
+\begin{corollary}
+    若 \(  a  \)是 \(  f  \)的1阶极点,则 \[
+    \operatorname{Res}\,\left( f,a \right)= \lim_{z\to a}\left( z-a \right)f\left( z \right)   
+    \]  
+\end{corollary}
+
+
+\begin{theorem}{留数定理}
+    设 $D$ 是复平面上的一个有界区域，它的边界 $\gamma$ 由一条或若干条简单闭曲线组成。如果 $f$ 在 $D$ 中除去孤立奇点 $z_1, \dots, z_n$ 外是全纯的，在闭域 $\bar{D}$ 上除去 $z_1, \dots, z_n$ 外是连续的，那么
+$$
+\int_\gamma f(z) \mathrm{d} z = 2\pi \mathrm{i} \sum_{k=1}^n \mathrm{Res}(f, z_k). \quad (5.4.5)
+$$
+\end{theorem}
+
+\section{实积分的留数方法}
+
+\begin{lemma}{大圆弧}
+    若 设 \(  f  \)是一个在某个包含了圆弧 \(  C_{R}  \)的区域内连续的函数.其中 \[
+    C_{R}= \left\{ z: \left| z \right|= R,  \theta _1 \le \operatorname{arg}\,z\le  \theta _2   \right\},\quad \left( 0\le  \theta _2 - \theta _1 \le 2\pi  \right) 
+    \] 若 \[
+    \lim_{R\to \infty}\left( R\cdot \max _{z\in C_{R}}\left| f\left( z \right)  \right|  \right)=  0
+    \]则 \[
+    \lim_{R\to \infty}\int_{C_{R}}f\left( z \right)\,\mathrm{d} z= 0 
+    \]
+\end{lemma}
+\begin{remark}
+    特别地,以下几种情况满足引理条件:
+    \begin{enumerate}
+        \item  \(  \lim_{z\to \infty}zf\left( z \right)= 0   \) 
+        \item \(  f= \frac{P }{Q }   \),其中 \(  P,Q  \)是既约多项式,且 \(  \operatorname{deg}\,Q-\operatorname{deg}\,P\ge 2  \).   
+    \end{enumerate}
+    
+\end{remark}
+\begin{proof}
+    由 不等式 \[
+    \int_{C_{R}}f\left( z \right)\,\mathrm{d} z\le L\left( C_{R} \right) \max _{z\in C_{R}}\left| f\left( z \right)  \right|=    \left(  \theta _2 - \theta _1  \right)R \max _{z\in C_{R}}\left| f\left( z \right)  \right|\to 0  ,\quad \left( R\to \infty \right) 
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+\begin{lemma}{Jordan}
+    设 \(  f  \)在 \(  \left\{ z: R_0\le \left| z \right|< \infty, \operatorname{Im}\,z\ge 0  \right\}  \)上连续,且 \(  \lim_{z\to \infty , \operatorname{Im}\,z\ge 0}f\left( z \right)= 0   \),则对于任意的 \(  \alpha > 0  \),都有 \[
+    \lim_{R\to \infty}\int_{ \gamma _{R}}e^{i\alpha z}f\left( z \right)\,\mathrm{d} z= 0 
+    \]    其中 \(   \gamma _{R}= \left\{ z:z= R e^{i \theta },0\le  \theta \le \pi ,R\ge R_0 \right\}  \) 
+\end{lemma}
+\begin{proof}
+    记 \(  M\left( R \right)   = \max _{z \in \gamma _{R}}\left| f\left( z \right)  \right| \),则 \(  \lim_{R\to \infty}M\left( R \right)= 0   \). \[
+    \begin{aligned}
+    \int_{ \gamma _{R}}e^{i\alpha z}f\left( z \right)\,\mathrm{d} z&= \int_{0}^{\pi }e^{i\alpha R \cos  \theta }e^{-\alpha  R\sin  \theta }f\left(R e^{i \theta } \right)Ri  e^{i \theta }\,\mathrm{d}  \theta    
+    \end{aligned}
+    \]  其中 \[
+    \begin{aligned}
+\left|  e^{i\alpha R \cos  \theta }e^{-\alpha  R\sin  \theta }f\left(R e^{i \theta } \right)Ri  e^{i \theta } \right| \le R  e^{-\alpha R\sin  \theta }M\left( R \right)   
+    \end{aligned}
+    \]于是 \[
+    \begin{aligned}
+    \left| \int_{ \gamma _{R}}e^{i\alpha z}f\left( z \right)  \right|& \le RM\left( R \right)   \int_{0}^{\pi }    e^{-\alpha R\sin  \theta }\,\mathrm{d}  \theta \\ 
+     &= 2RM\left( R \right) \int_{0}^{\frac{\pi}{2}}e^{-\alpha R\sin  \theta }\,\mathrm{d}  \theta \\ 
+      &\le 2RM\left( R \right)  \int_{0}^{\frac{\pi  }{2 } }e^{-\alpha R \frac{2 }{\pi  } \theta  }\,\mathrm{d}  \theta \\ 
+       &= 2RM\left( R \right) \frac{\pi  }{2 }\frac{1 }{\alpha R } \left( 1-e^{-\alpha R} \right)  \\ 
+        &\le  \frac{\pi M\left( R \right)  }{\alpha  }\to 0 ,\quad \left( R\to \infty \right)   
+    \end{aligned}
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+\begin{lemma}{小圆弧I}
+    若 设 \(  f  \)是一个在某个包含了圆弧 \(  C_{ \varepsilon }  \)的区域内连续的函数.其中 \[
+    C_{ \varepsilon }= \left\{ z: \left| z \right|= \varepsilon ,  \theta _1 \le \operatorname{arg}\,z\le  \theta _2   \right\},\quad \left( 0\le  \theta _2 - \theta _1 \le 2\pi  \right) 
+    \] 若 \[
+    \lim_{ \varepsilon \to 0^{+ }}\left(  \varepsilon \cdot \max _{z\in C_{ \varepsilon }}\left| f\left( z \right)  \right|  \right)=  0
+    \]则 \[
+    \lim_{ \varepsilon \to 0^{+ }}\int_{C_{ \varepsilon }}f\left( z \right)\,\mathrm{d} z= 0 
+    \]
+\end{lemma}
+\begin{proof}
+    由不等式 \[
+    \int_{C_{ \varepsilon }}f\left( z \right)\,\mathrm{d} z\le L\left( C_{ \varepsilon } \right)\max _{z \in C_{ \varepsilon }}\left| f\left( z \right)  \right|= \left(  \theta _2 - \theta _1  \right) \varepsilon \max _{z\in C_{ \varepsilon }}\left| f\left( z \right)  \right|\to 0\left(  \varepsilon \to 0 \right)      
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{lemma}{小圆弧II}
+    设函数 $f(z)$ 在点 $z_0$ 处有一个单极点，并且在 $z_0$ 的某个去心邻域内解析。
+设 $C_\epsilon$ 是以 $z_0$ 为圆心、半径为 $\epsilon$ 的圆弧，其角度范围为 $\theta_1 \le \arg(z-z_0) \le \theta_2$。
+那么，沿着圆弧 $C_\epsilon$ 的积分在 $\epsilon \to 0$ 时的极限为：
+$$\lim_{\epsilon \to 0} \int_{C_\epsilon} f(z) dz = i (\theta_2 - \theta_1) \operatorname{Res}\,(f, z_0)$$
+\end{lemma}
+
+\begin{note}
+    用于处理边界上出现奇点的情况.可以看成是将留数定理推广到直线边界上.其上奇点的贡献权重为\(  \frac{1}{2}  \). 
+\end{note}
+\begin{proof}
+    由于 $z_0$ 是 $f(z)$ 的一个简单极点，我们可以将 $f(z)$ 在 $z_0$ 的去心邻域内进行洛朗级数展开：
+$$f(z) = \frac{b_1}{z-z_0} + g(z)$$
+其中 $b_1 = \operatorname{Res}\,(f, z_0)$，且 $g(z)$ 在 $z_0$ 处解析（因此在 $z_0$ 附近有界）。
+我们将积分分解为两部分：
+$$\int_{C_\epsilon} f(z) dz = \int_{C_\epsilon} \frac{b_1}{z-z_0} dz + \int_{C_\epsilon} g(z) dz$$
+
+
+
+\begin{enumerate}
+    \item 由于 $g(z)$ 在 $z_0$ 处解析，它在 $z_0$ 附近有界，即存在 $M > 0$ 使得 $|g(z)| \le M$ 对于所有 $z \in C_\epsilon$。
+根据ML-不等式：
+$$\left| \int_{C_\epsilon} g(z) dz \right| \le L_\epsilon \cdot \max_{z \in C_\epsilon} |g(z)| \le (\theta_2 - \theta_1)\epsilon \cdot M$$
+当 $\epsilon \to 0$ 时，$(\theta_2 - \theta_1)\epsilon \cdot M \to 0$。因此，$$\lim_{\epsilon \to 0} \int_{C_\epsilon} g(z) dz = 0$$
+\item 令 $z - z_0 = \epsilon e^{i\theta}$，则 $dz = i\epsilon e^{i\theta} d\theta$。
+$$\int_{C_\epsilon} \frac{b_1}{z-z_0} dz = \int_{\theta_1}^{\theta_2} \frac{b_1}{\epsilon e^{i\theta}} (i\epsilon e^{i\theta} d\theta) = \int_{\theta_1}^{\theta_2} i b_1 d\theta = i b_1 (\theta_2 - \theta_1)$$
+将 $b_1 = \text{Res}(f, z_0)$ 代入，得到 $i (\theta_2 - \theta_1) \text{Res}(f, z_0)$。
+\end{enumerate}
+
+
+    \hfill $\square$
+\end{proof}
+
+\begin{method}
+    计算 \[
+    \int_{-\infty}^{\infty} \cos \left( ax \right)  f\left( x \right)\,\mathrm{d} x ,\quad (a> 0)
+    \]\[
+    \int_{-\infty}^{\infty}\sin \left( ax \right)f\left( x \right)\,\mathrm{d} x,\quad \left( a> 0 \right)   
+    \]其中 \(  \lim_{z\to \infty,\operatorname{Im}\,z\ge 0}f\left( z \right)= 0   \) 
+\end{method}
+\begin{proof}
+    
+    考虑 \(  e^{i\alpha z}f\left( z \right)   \)在 \(   \partial D_{R}^{+ } \)上的积分,并令 \(  R\to \infty  \).   圆弧上的积分区域零,剩下的部分为 \(  \int_{-\infty}^{\infty}e^{i\alpha x}f\left( x \right)\,\mathrm{d} x   \).对结果取实部或虚部即可. 
+
+    对于 \(  f  \)在边界上有极点的, 通过小圆弧引理挖去即可.最终结果相当于对计算结果 加上 
+    
+    \(  \pi i\operatorname{Res}\,\left( e^{ia z}f,\cdot  \right)   \) .
+
+    \hfill $\square$
+\end{proof}
+
+\begin{method}
+    \[
+    \int_{0}^{\infty}f\left( x \right)x^{p-1}\,\mathrm{d} x,\quad \left( 0< p< 1 \right)  
+    \]
+\end{method}
+\begin{proof}
+    借助对数函数 \[
+    z^{p-1}= e^{\left( p-1 \right)\operatorname{Log}\,z }
+    \]以及锁孔形环路\[
+    [ \varepsilon ,R ]_{\text{上沿}}+ C_{R}- [ \varepsilon ,R]_{\text{下沿}}-C_{ \varepsilon }
+    \] 取主值分支.上沿上, \[
+    e^{\left( p-1 \right)\log z }= x^{p-1}
+    \]下沿上, \[
+    e^{\left( p-1 \right)\log z }= x^{p-1} e^{2p \pi i}
+    \]利用这个结果防止函数在一个回路上积分时,正实轴上下沿部分的贡献抵消.
+
+    \hfill $\square$
+\end{proof}
+\begin{method}
+  计算  \[
+    \int_{0}^{\infty} f\left( x \right) \ln x \,\mathrm{d} x 
+    \]
+\end{method}
+\begin{solution}
+    考虑 \[
+    g\left( z \right)= f\left( z \right) \left( \ln z \right)^{2}   
+    \]设 \(  C_{ \varepsilon }  \),\(  C_{R}  \)分别是以 \(  0  \)为中心, \(   \varepsilon ,R  \)为半径的圆周.考虑以下积分区域 \[
+    [ \varepsilon ,R ]_{\text{上沿}}+ C_{R}- [ \varepsilon ,R]_{\text{下沿}}-C_{ \varepsilon }
+    \]   \(  g  \)在 \(  [ \varepsilon ,R]  \)上沿与下沿的积分差为 \[
+    \int_{ \varepsilon }^{R}f\left( z \right)\left( \ln z \right)^{2}\,\mathrm{d} z- \int_{ \varepsilon }^{R}f\left( z \right)\left( \ln z+ 2\pi i \right)^{2}\,\mathrm{d} z= -4\pi i \int_{ \varepsilon }^{R}f\left( z \right)\ln z\,\mathrm{d} z -4\pi i \int_{ \varepsilon }^{R}f\left( x \right)\,\mathrm{d} x      
+    \]  计算出 \(  g  \)在 \(  C_{R}  \),\(  C_{ \varepsilon }  \)上积分的极限(通常由大小圆弧引理有比较简单的形式).   并计算出 \(  \int_{0}^{\infty} f\,\mathrm{d} x \),全部带入即可算出 \(  \int_{0}^{\infty}f\left( x \right)\ln x\,\mathrm{d} x   \)  
+\end{solution}
+
+\hspace*{\fill} 
+
+\begin{method}
+    \[
+    \int_{0}^{2\pi }R\left( \sin  \theta ,\cos  \theta  \right)\,\mathrm{d}  \theta  
+    \]
+\end{method}
+\begin{proof}
+    令 \(  t= \tan \frac{ \theta  }{2 }   \),则 \[
+    \sin  \theta = \frac{2t }{1+ t^{2} },\quad \cos  \theta = \frac{1-t^{2} }{1+ t^{2} },\quad \,\mathrm{d}  \theta = \frac{2\,\mathrm{d} t }{1+ t^{2} }   
+    \],则 \[
+    \int_{0}^{2\pi }R\left( \sin  \theta ,\cos  \theta  \right)= 2\int_{-\infty}^{\infty}R\left( \frac{2t }{1+ t^{2} },\frac{1-t^{2} }{1+ t^{2} }   \right)\frac{1 }{1+ t^{2} }\,\mathrm{d} t   
+    \] 
+
+    另一种方法上 化为复数, \[
+    \int_{0}^{2\pi }R\left( \sin  \theta ,\cos  \theta  \right)\,\mathrm{d}  \theta = \int_{\left| z \right|= 1 } R\left( \frac{1 }{2i }\left( z-\frac{1 }{z }  \right),\frac{1 }{2 }\left( z+ \frac{1 }{z }  \right)     \right)  \frac{1 }{iz }\,\mathrm{d} z 
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{theorem}
+    设 $f$ 在 $\mathbb{C}$ 中除去 $a_1, \dots, a_n$ 外是全纯的, $a_1, \dots, a_n$ 都不在区间 $[a, b]$ 上; 设 $-1 < r, s < 1, s \neq 0$, 且 $r+s$ 是整数. 如果
+$$ \lim_{z\to\infty} z^{r+s+1} f(z) = A \neq \infty, $$
+那么
+$$ \int_a^b (x-a)^r (b-x)^s f(x) \,\mathrm{d}x = \frac{\pi  }{\sin s\pi  }\left( -A+ e^{s\pi i} \sum _{k= 1}^{n}\operatorname{Res}\,\left(F,a_{k}  \right) \right)  $$
+这里, $F(z) = (z-a)^r (b-z)^s f(z)$.
+\end{theorem}
+\begin{remark}
+    正 \(  x  \)相关的次数 \(  r  \)的贡献仅体现在 \(  A  \)上.   
+\end{remark}
+
+
+
+
+
+\begin{proposition}
+    计算 \[
+    \int_{0}^{\infty}\cos x^{2}\,\mathrm{d} x,\quad \int_{0}^{\infty}\sin x^{2}\,\mathrm{d} x
+    \]
+\end{proposition}
+\begin{proof}
+    令 \(  f\left( z \right)e^{iz^{2}}   \). 
+    考虑它在 \(  \frac{\pi  }{4 }   \)的扇形上的积分. 大弧线上的积分趋于零.下面那条直边上的积分为 \[
+    \int_{0}^{\infty}e^{-ix^{2}}\,\mathrm{d} r= \frac{\sqrt{\pi } }{2 } 
+    \] 上面那条直边上的积分为 \[
+    \int_{0}^{\infty}e^{-i \left( re^{i\frac{\pi  }{4 } } \right)^{2} }= \int_{0}^{\infty}e^{-r^{2}}\,\mathrm{d} \left( re^{\frac{\pi i }{4 } } \right)= e^{\frac{\pi i }{4 } }\int_{0}^{\infty}e^{-r^{2}}\,\mathrm{d} r= \frac{\sqrt{\pi } }{2 }e^{\frac{\pi i }{4 } }  
+    \]带入计算出 \[
+    \int_{0}^{\infty}e^{ix^{2}}\,\mathrm{d} x= \frac{\sqrt{\pi } }{2 }e^{\frac{\pi i }{4 } } 
+    \]分别取实部和虚部,两个积分均等于 \(  \frac{1 }{2 }\sqrt{\frac{\pi  }{2 } }   \) 
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    Poisson积分 \[
+    \int_{0}^{\infty}e^{-ax^{2}}\cos bx\,\mathrm{d} x
+    \]考虑以 \(  -R,R,R+ \frac{b }{2a }i, -R+ \frac{b }{2a }i    \)为顶点的举行上, \(  e^{-ax^{2}}  \)的积分.当 \(  R\to \infty  \)时, 两个短边上的积分值为趋于零.  位于实轴的边的积分根据概率积分 \[
+    \int_{-\infty}^{\infty}e^{-ax^{2}}\,\mathrm{d} x= \sqrt{\frac{\pi  }{a } }
+    \]得到.上面的长边的积分就是  \(  e^{-ax^{2}}\cos bx  \)的积分配上一个系数.最终计算得到 \[
+    \int_{0}^{\infty}e^{-ax^{2}}\cos bx\,\mathrm{d} x= \frac{1 }{2 }\sqrt{\frac{\pi  }{a } }e^{-\frac{b^{2} }{4a } } 
+    \] 
+\end{proposition}
+
+\section{辐角原理和Rouche定理}
+
+
+\begin{lemma}
+    设 \(  f  \)是域 \(  D  \)上不恒为零的亚纯函数, \(   \gamma   \)是 \(  D  \)上一可求长的简单闭曲线,则 \(  f  \)在 \(   \gamma   \)内部只能有有限个零点/极点.      
+\end{lemma}
+\begin{proof}
+    只证明零点的表述,极点的情况完全类似.
+
+    令 \(   \Omega   \)是 \(   \gamma   \)围成的有界开集,令 \(  K=  \bar{\Omega}=  \Omega \cup  \gamma   \).则 \(  K  \)是一个有界闭集,进而是一个紧集.   若有无穷多个零点,设零点集为 \(  Z  \subseteq  \Omega \).则 \(  Z  \)至少有一个聚点,记作 \(  z_0  \),由于 \(  K  \)是闭的,\(  z_0 \in K  \)  . 由\(  f  \)的 连续性, \(  z_0  \)也是一个零点. 这表明 \(  z_0  \)是 \(  f  \)在 \(  K  \)上的一个非孤立奇点,   
+
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}
+    设 \(  D\subseteq \mathbb{C}   \)是有界区域 \(   \gamma =  \partial D  \)由有限条分段光滑Jordan闭合曲线组成. \(  f \in \mathcal{M}\left( D \right)   \), \(  f  \)在\(   \gamma   \)上每一点解析,且在 \(   \gamma   \)上无零点.若 \(   \alpha_1,\cdots,\alpha_n   \)是 \(  f  \)在 \(  D  \)  上的所有零点, \(   \beta_1,\cdots,\beta_n   \)是 \(  f  \)在 \(  D  \)上所有极点,阶数分别为 \(   k_1,\cdots,k_m   \),\(   l_1,\cdots,l_n   \),\(   \varphi \in \mathcal{H}\left( \bar{D} \right)   \),则 \[
+    \frac{1 }{2\pi i } \int_{ \gamma } \varphi \left( z \right)\frac{f^{\prime} \left( z \right)  }{f\left( z \right)  }\,\mathrm{d} z=  \sum _{t= 1}^{m} k_{t} \varphi \left( \alpha _{t} \right)-\sum _{j= 1}^{n} l_{j} \varphi \left( \beta _{j} \right)     
+    \]             
+\end{theorem}
+\begin{note}
+    \begin{enumerate}
+        \item \(  f^{\prime} /f  \)会把极点和零点降成1阶,讲阶的相对系数就是原极点或零点的阶数, 
+    \end{enumerate}
+    
+\end{note}
+\begin{proof}
+    零 \(  F  \left( z \right)=  \varphi \left( z \right) \frac{f^{\prime} \left( z \right)  }{f\left( z \right)  }   \),则 \(  F  \)在 \(  \bar{D}\setminus \left\{  \alpha_1,\cdots,\alpha_m , \beta_1,\cdots,\beta_n  \right\}  \)解析,由留数定理 \[
+    \frac{1 }{2\pi i } \int_{ \gamma } \varphi \left( z \right)\frac{f^{\prime} \left( z \right)  }{f\left( z \right)  }\,\mathrm{d} z= \sum _{t= 1}^{m}\operatorname{Res}\,\left( F,\alpha _{t} \right)+ \sum _{j= 1}^{n} \operatorname{Res}\,\left( F,\beta _{j} \right)     
+    \]对 \(  \alpha _{t}  \),取 \(   \delta  _{t}> 0  \)     ,使得 \(  U\left( \alpha _{t},2 \delta  _{t} \right)\subseteq D   \) ,且 \[
+    f\left( z \right)= \left( z-\alpha _{t} \right)^{k_{t}} g\left( z \right),\quad g\left( \alpha _{t} \right)\neq 0    
+    \]不妨设在 \(  \bar{U}\left( \alpha _{t}, \delta  _{t} \right)   \)上, \(  g\left( z \right)\neq 0   \)  , \[
+    f^{\prime} \left( z \right)= k_{t}\left( z-\alpha _{t} \right)^{k_{t}-1}g\left( t \right)   + \left( z-\alpha _{t} \right)^{k_{t}} g^{\prime} \left( z \right) 
+    \]在 \(  \bar{U}\left( \alpha _{t} , \delta  _{t}\right)\setminus \left\{ \alpha _{t} \right\}   \)上, 有 \[
+    \frac{f^{\prime} \left( z \right)  }{f\left( z \right)  }=  \frac{k_{t} }{z-\alpha _{t} }+ \frac{g^{\prime} \left( z \right)  }{g\left( z \right)  }   
+    \] 故 \(  \frac{f^{\prime}  }{ f}   \)在 \(  \alpha _{t}  \)处有单极点,留数为 \(  k_{t}  \)   .
+
+    在 \(  \bar{U}\left(  \alpha _{t}, \delta  _{t} \right)   \)上, \[
+    \begin{aligned}
+     \varphi \left( z \right)&=  \varphi \left( \alpha _{t} \right)+  \varphi ^{\prime} \left(  \alpha _{t} \right)\left( z-\alpha _{t} \right)+ \frac{1 }{2! } \varphi ^{\prime \prime} \left( t \right)\left( z-\alpha _{t} \right)^{2}+ \cdots \\ 
+      &=  \varphi \left( \alpha _{t} \right)+ \left( z-\alpha _{t} \right) \varphi _1 \left( z \right)           
+    \end{aligned}
+    \] \(   \varphi _1  \in \mathcal{H}\left( \bar{U}\left( \alpha _{t}, \delta  _{t} \right)  \right)   \)于是 \[
+   \begin{aligned}
+    F\left( z \right)&= \frac{k_{t} \varphi \left( \alpha _{t} \right)  }{z-\alpha _{t} }+  \varphi \left( \alpha _{t} \right)\frac{g^{\prime} \left( z \right)  }{g\left( z \right)  }+  \left( z-\alpha _{t} \right) \varphi _1 \left( z \right) \frac{k_{t} }{z-\alpha _{t} }+  \left( z-\alpha _1  \right) \varphi _1 \left( z \right)\frac{g^{\prime} \left( z \right)  }{g\left( z \right)  }     \\ 
+     &= \frac{k_{t} \varphi \left( \alpha _{t} \right)  }{z-\alpha _{t} }+     \varphi _1 \left( z \right)k_{t}+  \varphi \left( \alpha _{t} \right)\frac{g^{\prime} \left( z \right)  }{g\left( z \right)  }+ \left( z-\alpha _1  \right) \varphi _1 \left( z \right)\frac{g^{\prime} \left( z \right)  }{ g\left( z \right) }       
+   \end{aligned}   
+    \] 故 \[
+    \operatorname{Res}\,\left( F,\alpha _{t} \right)= k_{t} \varphi \left( \alpha _{t} \right)  
+    \] 
+    \(  \forall j,  \)取 \(   \delta  _{j}> 0  \),使得 \(  U\left( \beta _{j},2 \delta  _{j} \right)\subseteq D   \),且 \[
+    f\left( z \right)= \frac{h\left( z \right)  }{\left( z-\beta _{j} \right)^{l_{j}}  }  
+    \]其中 \[
+    f\left( z \right)= \frac{h\left( z \right)  }{\left( z-\beta _{j} \right)^{l_{j}}  }  
+    \]其中 \[
+    h \in \mathcal{H}\left( U\left( \beta _{j},2 \delta  j \right)  \right), h\left( \beta _{j} \right)\neq 0  
+    \]不妨设 \(  h\left( z \right)\neq 0   \)在 \(  \bar{U}\left( \beta _{j}, \delta  _{j} \right)   \)上成立.则 \[
+    f^{\prime} \left( z \right)=  \frac{-h_{j}h\left( z \right)  }{ \left( z-\beta _{j} \right)^{l_{j}+ 1} } +  \frac{h^{\prime} \left( z \right)  }{\left( z-\beta _{j} \right)^{l_{j}}  }   
+    \]从而 在 \(  \bar{U}\left( \beta _{j},l_{j} \right)\setminus \left\{ \beta _{j} \right\}   \)上, \[
+    \frac{f^{\prime} \left( z \right)  }{f\left( z \right)  }=  -\frac{l_{j} }{z-\beta _{j} }+  \frac{h^{\prime} \left( z \right)  }{h\left( z \right)  }   
+    \]故 \(  f^{\prime} /f  \)在 \(  \beta _{j}  \)        处有单极点,并且 \[
+    \operatorname{Res}\, \left( \frac{f^{\prime}  }{f },\beta _{j}  \right)= -l_{j} 
+    \]
+    在 \(  \bar{U}\left( \beta j ,l_{j}\right)   \)上, 类似地\[
+     \varphi \left( z \right)=  \varphi \left( \beta _{j} \right)+ \left( z-\beta _{j} \right) \varphi _2 \left( z \right),\quad  \varphi _2 \in \mathcal{H}\left( \bar{U}\left( \beta _{j} , \delta  _{j}\right)  \right)     
+    \] 故 \[
+    F\left( z \right)= -\frac{l_{j} }{z-\beta _{j} } \varphi \left( \beta _{j} \right)+ \mu \left( z \right),\quad \mu \in \mathcal{H}\left( \bar{U}\left( \beta _{j}, \delta  _{j} \right)  \right)     
+    \]
+    \hfill $\square$
+\end{proof}
+
+
+
+\begin{theorem}{Rouche定理}
+    设 \(  f,g\in \mathcal{H}\left( D \right)   \),\(   \gamma   \)是 \(  D  \)中可求长的简单闭曲线, \(   \gamma   \)的内部落在 \(  D  \)中.若 \[
+    \left| f\left( z \right)-g\left( z \right)   \right|< \left| f\left( z \right)  \right|,\quad \forall z \in  \gamma   
+    \]则 \(  f,g  \)在 \(   \gamma   \)的内部零点个数相同.       
+\end{theorem}
+
+\begin{note}
+    若对函数的扰动在边界上小于 初始函数或结果函数,都会导致初始函数和结果函数有相同的零点个数.
+\end{note}
+\begin{proof}
+    由辐角原理, \(  f,g  \)在 \(   \gamma   \)的内部的零点个数等于 \(  f\circ  \gamma   \)和 \(  g\circ  \gamma   \)  对 \(  0  \)的环绕数,是同伦不变的.考虑映射 \[
+    F\left( z,t \right)= f\left( z \right)+ t\left( g\left( z \right)-f\left( z \right)   \right) , \quad z\in D,t \in \left[ 0,1 \right]    
+    \] 不等式 \[
+    \left| f\left( z \right)-g\left( z \right)   \right|< \left| f\left( z \right)  \right|,\quad \forall z \in  \gamma   
+    \]给出 \[
+    F\left( z,t \right)\neq 0,\quad z \in  \gamma ,t \in \left[ 0,1 \right]  
+    \]故 \(  f  \)和 \(  g  \)在 \(  \mathbb{C} \setminus \left\{ 0 \right\}  \)上同伦,进而 \(  f\circ  \gamma   \)和 \(  g\circ  \gamma   \)在 \(  \mathbb{C} \setminus \left\{ 0 \right\}  \)上同伦, \(  f\circ  \gamma   \)和 \(  g\circ  \gamma   \)绕0有相同的环绕数.        
+
+
+    \hfill $\square$
+\end{proof}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

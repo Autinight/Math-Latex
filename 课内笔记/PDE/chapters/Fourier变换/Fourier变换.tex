@@ -1,0 +1,184 @@
+\documentclass[../../PDE.tex]{subfiles}
+
+\begin{document}
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+\chapter{Fourier变换}
+\section{Fourier变换}
+\begin{definition}{内积}
+    \begin{enumerate}
+        \item 定义 \(  \left[ -L,L \right]   \)上分段连续的两个复函数 \(  f\left( x \right)   \)和  \(  g\left( x \right)   \)  的内积为 \[
+\left<f,g \right>\equiv  \int_{-L}^{L} f\left( x \right) \overline{g\left( x \right) }\,\mathrm{d} x 
+\]
+\item 定义 \(  f  \) 的范数 \(  \left\| f \right\|  \)为 \[
+\left\| f \right\|= \sqrt{\left<f,f \right>}
+\] 
+    \end{enumerate}
+    
+\end{definition}
+\begin{remark}
+     \[
+     \left<f,g \right>=   \int_{-L}^{L}\left[ f_1\left( x \right)g_1\left( x \right)+ f_2\left( x \right)g_2\left( x \right)     \right]\,\mathrm{d} x + i \int_{-L}^{L}\left[ f_2\left( x \right)g_1\left( x \right)-f_1\left( x \right)g_2\left( x \right)     \right]\,\mathrm{d} x 
+     \]
+\end{remark}
+
+\begin{theorem}
+    记 \(  e_{m}\left( x \right)= e^{im \pi x/L}   \) ,则 \[
+  \begin{aligned}
+  \left<e_{m},e_{n} \right>&=  \int_{-L}^{L}e^{im\pi  x /{L}} \overline{e^{in\pi x /L}} \,\mathrm{d} x = \int_{-L}^{L}e^{i\left( m-n \right) \pi  x/L }\,\mathrm{d} x\\ 
+   &=  \int_{-L}^{L} \left( \cos \frac{\left( m-n \right)\pi x  }{ L} + i \sin \frac{\left( m-n \right)\pi x  }{L }  \right)\,\mathrm{d} x= \begin{cases} 0,&m\neq n\\ 
+    2L,&m= n \end{cases}  
+  \end{aligned}
+    \]
+
+\end{theorem}
+
+\begin{proposition}
+    若 \(  f  \)连续,分段 \(  C^{1}  \)并且 \(  f\left( -L \right)= f\left( L \right)    \)   ,则 \[
+    c_{m}= \frac{1 }{2L } \left<f, e_{m} \right> 
+    \] \[
+    f\left( x \right)= \sum _{m\in \mathbb{Z} }c_{m} e^{im \pi x /L}=  \sum _{m \in \mathbb{Z} }  \left<f,\frac{e_{m} }{\sqrt{2L} }  \right> \frac{e_{m} }{\sqrt{2L} } 
+    \]
+\end{proposition}
+
+\begin{theorem}{Parseval}
+     \[
+     \begin{aligned}
+     \left\| f \right\|^{2}= \int_{-L}^{L}\left| f\left( x \right)  \right|^{2}\,\mathrm{d} x&=  \sum _{m \in \mathbb{Z} }   \left| \left<f, \frac{1 }{\sqrt{2L} }e_{m}  \right> \right|^{2}\\ 
+      &=  2L \sum _{m \in \mathbb{Z} } \left| \frac{1 }{2L } \left<f, e_{m} \right>  \right|^{2}=  2L\sum _{m \in \mathbb{Z} }\left| c_{m} \right|^{2}  
+     \end{aligned}
+     \]
+\end{theorem}
+
+
+\begin{definition}{Fourier变换}
+    设 \(  f\left( x \right)   \)是实变量的实值或复值函数.定义 \(  f\left( x \right)   \)的 \textbf{Fourier}变换为 \(   \xi \in \left( -\infty,\infty \right)   \)的函数 \(  \hat{f}\left( x \right)   \) \[
+    \hat{f}\left(  \xi  \right)\equiv  \frac{1 }{\sqrt{2\pi } }\int_{-\infty}^{\infty}f\left( x \right)e^{-i \xi x}\,\mathrm{d} x  \equiv  \lim_{R\to \infty} \int_{-R}^{R}f\left( x \right)e^{-i  \xi x}\,\mathrm{d} ^{\prime} x,  
+    \]若极限存在.其中 \[
+    \,\mathrm{d} ^{\prime} x= \frac{1 }{\sqrt{2\pi } } \,\mathrm{d} x 
+    \]   
+\end{definition}
+
+\begin{definition}
+    设 \(  m,n  \)是非负整数,称 定义在 \(  \mathbb{R}   \)上的函数 \(  f\left( x \right)   \)有衰减阶 \(  \left( m,n \right)   \),若 \(  f\left( x \right)   \)是 \(  C^{m}  \)的,且存在 \(  K> 0  \),使得对于所有的 \(  \left| x \right|\ge 1   \) \[
+    \left| f\left( x \right)  \right|+ \left| f^{\prime} \left( x \right)  \right|+ \cdots + \left| f^{\left( m \right) }\left( x \right)  \right|\le \frac{K }{\left| x \right|^{n}  }    
+    \]        
+\end{definition}
+\begin{proposition}{求导后变换}
+    若 \(  f  \)具有衰减阶 \(  \left( 1,2 \right)   \),则对于所有的 \(   \xi   \), \[
+    \left( \frac{\,\mathrm{d} f }{\,\mathrm{d} x }  \right)^{\wedge } \left(  \xi  \right)= i  \xi  \hat{f}\left(  \xi  \right)   
+    \]   
+\end{proposition}
+
+\begin{proof}
+    若先只考虑足够好的函数(光滑且急速衰减),由分部积分可以得到等式 \[
+   \begin{aligned}
+    \hat{f}^{\prime} \left(  \xi  \right)&= \int_{-\infty}^{\infty}f^{\prime} \left( x \right)e^{-i  \xi x}\,\mathrm{d} ^{\prime} x\\ 
+     &=  \int_{-\infty}^{\infty} e^{-i  \xi x} \,\mathrm{d} ^{\prime} f\left( x \right)\\ 
+      &= \left. \frac{1 }{\sqrt{2\pi } }f\left( x \right)e^{-i  \xi x}  \right|_{-\infty}^{\infty}- \int_{-\infty}^{\infty}f\left( x \right) \left( -i \xi  \right)e^{-i \xi x}    \,\mathrm{d} ^{\prime} x\\ 
+       &=  i \xi  \hat{f}\left(  \xi  \right) 
+    \end{aligned}   
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}
+  若 \(  f  \)有衰减阶 \(  \left( m,2 \right)   \),则对于所有的 \(   \xi  \in \mathbb{R}   \) \[
+  \left| f^{\left( m \right) }\left( x \right)  \right|^{\wedge }\left(  \xi  \right)= i^{m}  \xi ^{m}\hat{f}\left(  \xi  \right)   
+  \]     
+\end{corollary}
+\begin{proof}
+    反复利用上面的命题.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}{变换后求导}
+    若 \(  f  \)有衰减阶 \(  \left( 0,3 \right)   \),则对于所有的 \(   \xi  \in \mathbb{R}   \) \[
+    i \frac{\,\mathrm{d} \hat{f} }{ \,\mathrm{d}  \xi }\left(  \xi  \right)= \left[ xf\left( x \right)  \right]^{\wedge }\left(  \xi  \right)    
+    \]   
+\end{proposition}
+
+\begin{proof}
+    对于足够好的函数,积分下求导 \[
+    \begin{aligned}
+    i \frac{\mathrm{d}\hat{f}}{\mathrm{d} \xi }\left(  \xi  \right)&= i \frac{\mathrm{d}}{\mathrm{d} \xi } \int_{-\infty}^{\infty} f\left( x \right) e^{-i \xi x}\,\mathrm{d} ^{\prime} x  \\ 
+     &= i \int_{-\infty}^{\infty} \left( -ix \right) f\left( x \right)e^{-i \xi x}\,\mathrm{d} ^{\prime} x\\ 
+      &= \left[ xf\left( x \right)  \right]^{\wedge }\left(  \xi  \right)    
+    \end{aligned} 
+    \]
+
+    \hfill $\square$
+\end{proof}
+\begin{corollary}
+    若 \(  f  \)具有衰减阶 \(  \left( 0,n+ 2 \right)   \)  ,则对于所有的 \(   \xi \in \mathbb{R}   \) \[
+    i^{n}\frac{\mathrm{d}^{n } \hat{f}}{\mathrm{d} \xi ^{n}}\left(  \xi  \right)= \left[ x^{n}f\left( x \right)  \right]  ^{\wedge }\left(  \xi  \right) 
+    \] 
+\end{corollary}
+\begin{proof}
+    反复利用上面的命题
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{卷积}
+    定义 \(  f  \)和 \(  g  \)的卷积 \(  f*g  \)为 \[
+    \left( f*g \right)\left( x \right)  = \int_{-\infty}^{\infty}f\left( x-y \right)g\left( y \right)\,\mathrm{d} y  
+    \]若每个积分存在.   
+\end{definition}
+\begin{note}
+    从\(  x  \) 扩散 按平移量\(  -y  \) 反向加权 \(  g\left( y \right)   \) 
+\end{note}
+\begin{theorem}{卷积定理}
+    设 \(  f,g  \)分段连续,且对于 \(  \left| x \right|\ge 1   \),有 \(  \left| f\left( x \right)  \right|\le \frac{K }{\left| x \right|^{2}  }    \)和 \(  \left| g\left( x \right)  \right|\le \frac{K }{\left| x \right|^{2}  }    \)    ,则 \[
+    \hat{f}\left(  \xi  \right)\hat{g}\left(  \xi  \right)= \frac{1 }{\sqrt{2\pi } } \left( f*g \right)^{\wedge }\left(  \xi  \right)     
+    \]
+\end{theorem}
+\begin{proof}
+    \[
+    \begin{aligned}
+    \hat{f}\left(  \xi  \right)\hat{g}\left(  \xi  \right)&= \int_{-\infty}^{\infty} f\left( x \right)    e^{-i \xi x}\,\mathrm{d} ^{\prime} x \int_{-\infty}g\left( y \right)e^{-i \xi y}\,\mathrm{d} ^{\prime} y\\ 
+     &= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f\left( x \right)g\left( y \right)e^{-i \xi \left( x+ y \right) }\,\mathrm{d} ^{\prime} x\,\mathrm{d} ^{\prime} y   \\ 
+      &= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f\left( x-y \right)g\left( y \right)e^{-i \xi x}\,\mathrm{d} ^{\prime} x\,\mathrm{d} ^{\prime} y\\ 
+       &= \int_{-\infty}^{\infty}e^{-i \xi x}\,\mathrm{d} ^{\prime} x \int_{-\infty}^{\infty}f\left( x-y \right)g\left( y \right)\,\mathrm{d} ^{\prime} y  \\ 
+        &= \frac{1 }{\sqrt{2\pi } } \int_{-\infty}^{\infty}\left( f*g \right)\left(  x  \right)e^{-i \xi x}\,\mathrm{d} ^{\prime} x \\ 
+         &= \frac{1 }{\sqrt{2\pi }  } \left( f*g \right)    ^{\wedge }\left( x \right) 
+    \end{aligned}
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+\section{Fourier逆变换}
+
+\begin{theorem}{反演定理}
+    设 \(  f  \)是分段\(  C^{1}  \)且 \(  L^{1}  \),则对于每个 \(  x \in \mathbb{R}   \) \[
+    \frac{f\left( x^{+ } \right)+ f\left( x^{-} \right)   }{2 }= \frac{1 }{\sqrt{2\pi } }\int_{-\infty}^{\infty}\hat{f}\left(  \xi  \right)e^{i \xi x}\,\mathrm{d}  \xi    
+    \]     
+\end{theorem}
+
+\begin{definition}{Fourier逆变换}
+    定义 \(  g\left(  \xi  \right)   \)的Fourier逆 \( \check{g}\left( x \right)    \)  为 \[
+    \check{g}\left( x \right)= \int_{-\infty}^{\infty}g\left(  \xi  \right)e^{i \xi x}\,\mathrm{d} ^{\prime}  \xi = \lim_{R\to \infty}\int_{-R}^{R}g\left(  \xi  \right)e^{i \xi x}\,\mathrm{d} ^{\prime}  \xi    
+    \]若极限存在.其中 \(  \,\mathrm{d} ^{\prime}  \xi   = \frac{1 }{\sqrt{2\pi } }\,\mathrm{d}  \xi  \) 
+\end{definition}
+
+
+\begin{theorem}{Parseval}
+    若 \(  f,\hat{f},g  \)绝对可积,且 \(  f  \)分段 \(  C^{1}  \),则    \[
+    \int_{-\infty}^{\infty}f\left( x \right) \overline{g\left( x \right) }\,\mathrm{d} x =  \int_{-\infty}^{\infty} \hat{f}\left(  \xi  \right)  \overline{\hat{g}\left(  \xi  \right) }\,\mathrm{d}  \xi  
+    \]
+\end{theorem}
+\begin{proof}
+    由于两个函数逆变换后的权重通过共轭抵消,通过不断交换次序可以得到恒等式.
+
+    \hfill $\square$
+\end{proof}
+\end{document}

@@ -1,0 +1,120 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+    
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+\begin{problemsec}
+
+\end{problemsec}
+
+\begin{problem}
+    设 \(  M  \)是一个(伪)Rimeann流形,令 \(  \left( x^{i} \right)   \)是以 \(  p \in M  \)为中心的法坐标.证明以下在 \(  p  \)处成立: \[
+    R_{ijkl}= \frac{1 }{2 } \left( \partial _{j}\partial _{l}g_{ik}+ \partial _{i}\partial _{k}g_{jl}-\partial _{i}\partial _{l}g_{jk}-\partial _{j}\partial _{k}g_{il} \right)  
+    \]    
+\end{problem}
+
+\hspace*{\fill} 
+
+\begin{proof}
+
+    利用曲率张量的对称性,以及法坐标的Christoffel在原点处退化来说明.
+
+
+    法坐标的Christoffel符号在 \(  p  \)  点处退化,故在 \(  p  \)点处, 
+    \[
+    \begin{aligned}
+      \nabla _{\partial _{i}} \nabla _{\partial _{j}}\partial _{k}& =    \nabla _{\partial _{i}} \left(  \Gamma _{jk}^{m} \partial _{m}\right) \\ 
+       & = \left(  \partial _{i} \Gamma _{jk}^{m} \right)\partial _{m} 
+    \end{aligned}
+    \]类似地 \[
+     \nabla _{\partial _{j}} \nabla _{\partial _{i}} \partial _{k}=  \left( \partial _{j} \Gamma _{ik}^{m} \right)\partial _{m} 
+    \]于是
+    \[
+  \begin{aligned}
+    R\left( \partial _{i},\partial _{j} \right)\partial _{k}& =  \nabla _{\partial _{i}}  \nabla _{\partial _{j}}\partial _{k}- \nabla _{\partial _{j}} \nabla _{\partial _{i}}\partial _{k}-\left[ \partial _{i},\partial _{j} \right]\partial _{k} \\ 
+     & =  \left( \partial _{i} \Gamma _{jk}^{m}-\partial _{j} \Gamma _{ik}^{m} \right)\partial _{m} 
+  \end{aligned}
+    \]从而 \[
+        \begin{aligned}
+        \left<R\left( \partial _{i},\partial _{j} \right)\partial _{k},\partial _{l}  \right>& = \left<\partial _{i} \Gamma _{jk}^{m}\partial _{m},\partial _{l} \right>-\left<\partial _{j} \Gamma _{ik}^{m}\partial _{m},\partial _{l} \right>\\ 
+         & =  g_{ml}\partial _{i} \Gamma _{jk}^{m}- g_{ml}\partial _{j} \Gamma _{ik}^{m}
+        \end{aligned}
+        \]
+  \[
+ \begin{aligned}
+    \partial _{j}\partial _{l}g_{ik}& =  \partial _{j}\partial _{l}\left<\partial _{i},\partial _{k} \right>\\ 
+     & = \partial _{j} \left< \nabla _{\partial _{l}}\partial _{i},\partial _{k} \right>+ \partial _{j}\left<\partial _{i}, \nabla _{\partial _{l}}\partial _{k} \right>\\ 
+      & =  \partial _{j}\left< \Gamma _{li}^{m}\partial _{m},\partial _{k} \right>+ \partial _{j}\left<\partial _{i}, \Gamma _{lk}^{m}\partial _{m} \right>\\ 
+       & = \partial _{j}\left(  \Gamma _{li}^{m}g_{m k} \right)+  \partial _{j} \left(  \Gamma _{lk}^{m} g_{im} \right)\\ 
+        & = g_{m k} \partial _{j} \Gamma _{li}^{m}+  g_{ im }\partial _{j} \Gamma _{lk}^{m}   
+ \end{aligned}
+  \]类似地 \[
+  \partial _{i}\partial _{k}g_{jl}= g_{ml} \partial _{i}  \Gamma _{kj}^{m}+ g_{jm}\partial _{i} \Gamma _{kl}^{m}
+  \] \[
+  \partial _{i}\partial _{l}g_{jk}= g_{mk} \partial _{i} \Gamma _{lj}^{m}+ g_{jm}\partial _{i} \Gamma _{lk}^{m}
+  \]
+  \[
+  \partial _{j}\partial _{k}g_{il}= g_{ml}\partial _{j} \Gamma _{ki}^{m}+ g_{im}\partial _{j} \Gamma _{lk}^{m}
+  \]前两式减后两式除以二,得到 右式等于 \[
+  \frac{1}{2}\left( g_{m k}\partial _{j} \Gamma _{li}^{m}+ g_{ml}\partial _{i} \Gamma _{kj}^{m} -g _{m k}\partial _{i} \Gamma _{lj}^{m}-g_{ml}\partial _{j} \Gamma _{ki}^{m}\right)=  \frac{1}{2}\left( -R_{ijlk}+ R_{ijkl} \right) = R_{ijkl} 
+  \]
+    \hfill $\square$
+\end{proof}
+
+
+\begin{problem}
+  设 \(   \nabla   \)是(伪)Riemann流形 \(  \left( M,g \right)   \)上的Levi-Civita联络, \(   { \omega _{i}} ^{j}\)是   与局部标架 \(  \left( E_{i} \right)   \)对应的联络 \(  1  \)-形式矩阵.定义一个2-形式的矩阵 \(   \Omega _{i}^{j}  \),称为 \textbf{曲率2-形式},为 \[
+  { \Omega _{i}}^{j}= \frac{1 }{2 }{R_{kli}} ^{j}  \varepsilon ^{k}\wedge  \varepsilon ^{l}
+  \]   其中 \(  \left(  \varepsilon ^{i} \right)   \)是对偶余 \(  \left( E_{i} \right)   \)的余标架.证明以下\textbf{Cartan第二结构方程}成立: \[
+   \Omega _{i}^{j}= \,\mathrm{d} { \omega _{i}}^{j} - \omega _{i}^{k}\wedge  \omega _{k}^{j}
+  \]  
+\end{problem}
+\begin{proof}
+  \[
+   \nabla _{X}E_{i}=  \omega _{i}^{j}\left( X \right)E_{j} 
+  \]  \[
+   \Gamma _{ki}^{j}E_{j}=  \nabla _{E_{k}}E_{i}=  \omega _{i}^{j}\left( E_{k} \right)E_{j} 
+  \]故 \[
+   \omega _{i}^{j}\left( E_{k} \right)=  \Gamma _{ki}^{j} 
+  \] \[
+ \begin{aligned}
+ \,\mathrm{d}  \omega _{i}^{j}\left( E_{k},E_{l} \right)&=  E_{k}\left(  \omega _{i}^{j}\left( E_{l} \right)  \right)-E_{l}\left(  \omega _{i}^{j}\left( E_{k} \right)  \right)- \omega _{i}^{j}\left( \left[ E_{k},E_{l} \right]  \right)   
+ \end{aligned}
+  \]\[
+   \omega _{i}^{k}\wedge  \omega _{k}^{j}\left( E_{k},E_{l} \right)= \omega _{i}^{m}\left( E_{k} \right) \omega _{m}^{j}\left( E_{l} \right)   - \omega _{i}^{m}\left( E_{l} \right)  \omega _{m}^{j}\left( E_{k} \right) 
+  \]\[
+  \begin{aligned}
+  R_{kli}&=  \nabla _{E_{k}}  \nabla _{E_{l}}E_{i}- \nabla _{E_{l}} \nabla _{E_{k}}E_{i}- \nabla _{\left[ E_{k},E_{l} \right] }E_{i}\\ 
+   &=  \nabla _{E_{k}}\left(  \omega _{i}^{j}\left( E_{l} \right)E_{j}  \right) - \nabla _{E_{l}}\left(  \omega _{i}^{j}\left( E_{k} \right)E_{j}  \right)-  \omega _{i}^{j}\left( \left[  E_{k},E_{l}\right]  \right)E_{j}  \\ 
+    &=  \omega _{i}^{j}\left( E_{l} \right) \nabla _{E_{k}}E_{j} + E_{k}\left(  \omega _{i}^{j}\left( E_{l} \right)  \right)E_{j} -  \omega _{i}^{j}\left( E_{k} \right) \nabla _{E_{l}} E_{j}- E_{l}\left(  \omega _{i}^{j}\left( E_{k} \right)  \right)E_{j}\\ 
+     &- \omega _{i}^{j}\left( \left[ E_{k},E_{l} \right]  \right)E_{j}  \\ 
+      &=  \omega _{i}^{j}\left( E_{l} \right) \omega _{j}^{m}\left( E_{k} \right)E_{m} + E_{k}  \left(  \omega _{i}^{j}\left( E_{l} \right)  \right)E_{j}-  \omega _{i}^{j}\left( E_{k} \right) \omega _{j}^{m}\left( E_{l} \right)E_{m}-E_{l}\left(  \omega _{i}^{j}\left( E_{k} \right)  \right)E_{j}\\ 
+       &- \omega _{i}^{j}\left( \left[ E_{k},E_{l} \right]  \right)E_{j}     \\ 
+        &=   \omega _{i}^{m}\left( E_{l} \right) \omega _{m}^{j}\left( E_{k} \right)E_{j}+ E_{k}\left(  \omega _{i}^{j}\left( E_{l} \right)  \right)E_{j}- \omega _{i}^{m}\left( E_{k} \right) \omega _{m}^{j}\left( E_{l} \right)E_{j} -E_{l}\left(  \omega _{i}^{j}\left( E_{k} \right)  \right)E_{j}\\ 
+         &- \omega _{i}^{j}\left( \left[  E_{k},E_{l} \right]  \right)E_{j}       
+  \end{aligned}
+  \]于是 \[
+  \begin{aligned}
+  R_{kli}^{j}&=  \omega _{i}^{m}\left( E_{l} \right) \omega _{m}^{j}\left( E_{k} \right)+ E_{k}\left(  \omega _{i}^{j}\left( E_{l} \right)  \right)- \omega _{i}^{m}\left( E_{k} \right) \omega _{m}^{j}\left( E_{l} \right)-E_{l}\left(  \omega _{i}^{j}\left( E_{k} \right)  \right)\\ 
+   &- \omega _{i}^{j}\left( \left[ E_{k},E_{l} \right]  \right)
+  \end{aligned}
+  \] 
+\[
+ \Omega _{i}^{j}= \frac{1}{2}R_{kli}^{j}\left(  \varepsilon ^{k}\otimes  \varepsilon ^{l}- \varepsilon ^{l}\otimes  \varepsilon ^{k} \right) = \sum _{k<l}R_{kli}^{j} \varepsilon ^{k}\otimes  \varepsilon ^{l}
+\]于是 \[
+ \Omega _{i}^{j}\left( E_{k},E_{l} \right)= R_{kli}^{j} = \,\mathrm{d}  \omega _{i}^{j}\left( E_{k},E_{l} \right)-  \omega _{i}^{k}\wedge  \omega _{k}^{j}\left( E_{k},E_{l} \right)  
+\]
+
+  \hfill $\square$
+\end{proof}
+\hspace*{\fill} 
+
+
+\end{document}

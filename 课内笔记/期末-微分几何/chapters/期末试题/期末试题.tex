@@ -1,0 +1,421 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{期末试题}
+
+\section{2024}
+\begin{problem}
+
+求曲面 $r(u, v) = (u \cos v, u \sin v, v)$ 的第一基本形式、第二基本形式, 并证明它是极小曲面.
+\end{problem}
+\begin{proof}
+    坐标切向量场为\[
+     \partial _{u}=  \left( \cos v,\sin v,0 \right),\quad  \partial _{v}= \left( -u\sin v,u\cos v,1 \right)  
+    \] 
+    \begin{itemize}
+        \item \(  \partial_u\cdot \partial_u  = 1\), 
+        \item \(  \partial_u\cdot \partial_v= 0  \)
+        \item \(  \partial_v\cdot \partial_v= u^{2}+ 1  \)   
+    \end{itemize}
+    于是 \[
+    I= \,\mathrm{d} u^{2}+ \left( u^{2}+ 1 \right)\,\mathrm{d} v^{2} 
+    \]
+    或者,考虑欧式度量在 \(  r  \)下的拉回 \[
+   \begin{aligned}
+   g =  r^{*}\bar{g} &= r^{*}\left( \,\mathrm{d} x^{2}+ \,\mathrm{d} y^{2}+ \,\mathrm{d} z^{2} \right) \\ 
+     &= \,\mathrm{d} \left( u\cos v \right)^{2}+ \,\mathrm{d} \left( u\sin v \right)^{2}+ \,\mathrm{d} \left( v \right)^{2}\\ 
+      &= \left( \cos v\,\mathrm{d} u-u\sin v\,\mathrm{d} v \right)^{2}+ \left( \sin v\,\mathrm{d} u+ u\cos v\,\mathrm{d} v \right)^{2}+ \,\mathrm{d} v^{2}\\ 
+       &= \,\mathrm{d} u^{2}+ \left( u^{2}+ 1 \right)\,\mathrm{d} v^{2}      
+   \end{aligned} 
+    \] 一个法向量为 \[
+    n^{\prime}  = \partial_u\times  \partial_v= \begin{pmatrix} 
+        i&j&k\\ 
+         \cos v&\sin v&0\\ 
+          -u\sin v&u\cos v&1 
+    \end{pmatrix}=\left( \sin v,-\cos v,u \right)  
+    \] 单位法向量为 \[
+    n = \frac{1 }{\sqrt{1+ u^{2}} }n^{\prime} = \frac{1 }{\sqrt{1+ u^{2}} }\left( \sin v,-\cos v,u \right)   
+    \]\[
+    h\left( X,Y \right)= \left< {II} \left( X,Y \right),n\right> \operatorname=  \left< \bar{\nabla}_{X}Y,n \right>
+    \] \[
+    h\left( \partial_u,\partial_u \right)= \left< \bar{\nabla}_{\partial_u}\partial_u ,n\right>= 0
+    \]
+    类似地, \[
+    h\left(  \partial _{u}, \partial _{v} \right)= \frac{1 }{\sqrt{1+ u^{2}} } \left<\left( -\sin v,\cos v,0 \right), \left<\sin v,-\cos v,u \right>  \right>= -\frac{1 }{\sqrt{1+ u^{2}} }  
+    \] \[
+    h\left(  \partial _{v}, \partial _{v} \right)= \frac{1 }{\sqrt{1+ u^{2}} }\left<\left( -u\cos v,-u\sin v,0 \right)\cdot \left( \sin v,-\cos v,u \right)   \right>= 0  
+    \]于是 \[
+    h= h\left(  \partial _{u}, \partial _{u} \right)\left( \,\mathrm{d} u \right)^{2}+2 h\left(  \partial _{u}, \partial _{v} \right)\,\mathrm{d} u\otimes \,\mathrm{d} v   + h\left(  \partial _{v}, \partial _{v} \right) \left( \,\mathrm{d} v \right)^{2}= -\frac{2 }{\sqrt{1+ u^{2}} }\,\mathrm{d} u\otimes \,\mathrm{d} v   
+    \] 由于黎曼度量没有交叉项, 由表示矩阵的关系 \(  S= G^{-1} B  \),其中 \(  S,G,B  \)分别为Weigarten映射,黎曼度量和第二基本形式的表示矩阵,可得  \[
+    H= \frac{1 }{2 }\left( \frac{h\left(  \partial _{u}, \partial _{u} \right)  }{1 }+ \frac{h\left(  \partial _{v}, \partial _{v} \right)  }{u^{2}+ 1 }   \right)= \frac{1}{2}\left( 0+ 0 \right)= 0   
+    \]故它是极小曲面.
+
+    \hfill $\square$
+\end{proof}
+\begin{problem}
+设一个旋转曲面有参数化 $r(u, v) = (u \cos v, u \sin v, e^u)$, 计算
+\begin{enumerate}
+\item 自然标架 $r_u, r_v, n$;
+\item 纬线 $u=1$ 的测地曲率;
+\item $r_v$ 沿 $u$-线的协变导数.
+\end{enumerate}
+\end{problem}
+
+
+\begin{proof}
+    \begin{enumerate}
+        \item 自然坐标标架为 \[
+         \partial _{u}= \left( \cos v,\sin v,e^{u} \right),\quad  \partial _{v}= \left( -u\sin v,u\cos v,0 \right)  
+        \]单位法向量场为 \[
+        \begin{aligned}
+        n&= \frac{ \partial_{u}\times  \partial _{v} }{\left|  \partial _{u}\times   \partial _{v} \right|  }  = \frac{1}{\left| \cdot  \right| }\begin{pmatrix} 
+            i&j&k\\ 
+             \cos v&\sin v&e^{u}\\ 
+              -u\sin v&u\cos v&0 
+        \end{pmatrix}\\ 
+         &= \frac{1 }{\left| \cdot  \right|  }\left( -ue^{u}\cos v,-ue^{u}\sin v,u \right)\\ 
+          &=    \frac{1 }{\sqrt{e^{2u}+ 1} }  \left( -e^{u}\cos v,-e^{u}\sin v,1 \right) 
+        \end{aligned}
+        \]
+        \item 纬线 \(  u= 1  \)的一个参数表示为 \[
+         \tilde{\gamma}\left( v \right)= r\left( 1,v \right)  = \left( \cos v,\sin v,e \right) 
+        \] 速度向量场的大小为 \[
+        \left|  \tilde{\gamma} ^{\prime} \left( v \right)  \right|= \left| \left( -\sin v,\cos v,0 \right)  \right|= 1  
+        \]故 \(   \tilde{\gamma}   \left( v \right) \)也是一个单位速度参数化.那么测地曲率为\[
+        \left| D_{v} \gamma ^{\prime} \left( v \right)  \right|= \left| \tilde{D}_{v} \gamma ^{\prime} -\operatorname{II} \left(  \gamma ^{\prime} , \gamma ^{\prime}  \right)  \right| 
+        \]由右侧两项的正交性,得到 \[
+        \left| D_{v} \gamma ^{\prime} \left( v \right)  \right|^{2}= \left| \tilde{D}_{v} \gamma ^{\prime}  \right|^{2}- \left| \operatorname{II} \left(  \gamma ^{\prime} , \gamma ^{\prime}  \right)  \right|^{2}   
+        \]其中 \(  D \delta _{t}  \)表示欧式联络决定的沿\(   \gamma   \)的协变导数. \[
+       \left| \tilde{D}_{v} \gamma ^{\prime}  \right|= \left| \left( -\cos v,-\sin v,0 \right)  \right|= 1  
+        \]  另一边, \[
+        \tilde{D}_{v} \gamma ^{\prime} = D_{t} \gamma ^{\prime} + \operatorname{II} \left(  \gamma ^{\prime} , \gamma ^{\prime}  \right) 
+        \]两边作用在 \(  n  \)上,得到 \[
+        \left<\tilde{D}_{v} \gamma ^{\prime} ,n \right>= \left<\operatorname{II} \left(  \gamma ^{\prime} , \gamma ^{\prime}  \right),n  \right>= h\left(  \gamma ^{\prime} , \gamma ^{\prime}  \right) 
+        \] 计算得到 \(  \left| \operatorname{II} \left(  \gamma ^{\prime} , \gamma ^{\prime}  \right)  \right|= \frac{1 }{\sqrt{e^{2u}+ 1} }e^{u}    \) 于是 \[
+        k_{g}= \left| D_{v} \gamma ^{\prime} \left( v \right)  \right|= \sqrt{1- \frac{e^{2u} }{e^{2u}+ 1 } }= \frac{1 }{\sqrt{e^{2u}+ 1} }  
+        \]
+        \item 令  \(  v_0  \)坐标的 \(  u  \)-线为 \[
+         \gamma _{v_0}\left( u \right)= r\left( u,v_0 \right)  
+        \]  则 \[
+        D_{u} \partial _{v}=  \nabla _{ \partial _{u}} \partial _{v}=   \Gamma _{12}^{1} \partial _{u}+  \Gamma _{12}^{2} \partial _{v}
+        \]其中 \[
+         \Gamma _{12}^{1}= \frac{1}{2}g^{1l}\left(  \partial _{1}g_{2l}+  \partial _{2}g_{1l}- \partial _{l}g_{12} \right)
+        \]   \[
+        g_{12}= g_{21}= 0,\quad g_{11}= 1+ e^{2u},\quad  g^{11}= \frac{1 }{1+ e^{2u} } ,\quad g_{22}=  u^{2}, \quad g^{22}= \frac{1 }{u^{2} } 
+        \]从而 \[
+         \Gamma _{12}^{l}= 0
+        \]此外, \[
+         \Gamma _{12}^{2}=\frac{1}{2} g^{2l}\left(  \partial _{2}g_{1l}+  \partial _{1}g_{2l}- \partial _{l}g_{12} \right)= \frac{1 }{u^{2} }\left( 1u \right)= \frac{1 }{u }    
+        \]于是 \[
+        D_{u} \partial _{v}= \frac{1 }{u } \partial _{v}= \left( -\sin v,\cos v,0 \right)  
+        \]
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+
+\begin{problem}
+ 已知曲面的第一基本形式, 求 Gauss 曲率:
+\begin{enumerate}
+\item $ds^2 = du^2 + u^2 dv^2$;
+\item $ds^2 = \cos^2 v du^2 + dv^2$;
+\item $ds^2 = u^2 du^2 + \sin^2 u dv^2$;
+\item $ds^2 = \frac{dx^2 + dy^2}{(1-x^2-y^2)^2}$, $x^2+y^2 < 1$.
+\end{enumerate}
+\end{problem}
+\begin{proof}
+    \begin{enumerate}
+        \item 令 \[
+     \varepsilon ^{1}= \,\mathrm{d} u,\quad  \varepsilon ^{2}= u\,\mathrm{d} v
+    \]则 \(   \varepsilon ^{1}, \varepsilon ^{2}  \)构成曲面的一组正交的余标架.由Cartan第一结构方程,以及联络1-形式的反对称性 \[
+    0= \,\mathrm{d}  \varepsilon ^{1}=  \varepsilon ^{j}\wedge  \omega _{j}^{1}=  \varepsilon ^{2}\wedge  \omega _{2}^{1}
+    \] \[
+    \,\mathrm{d} u\wedge \,\mathrm{d} v= \,\mathrm{d}  \varepsilon ^{2}=  \varepsilon ^{j}\wedge  \omega _{j}^{2}=  \varepsilon ^{1}\wedge  \omega _{1}^{2}= - \varepsilon ^{1}\wedge  \omega _{2}^{1}
+    \]得到 \[
+     \omega _{2}^{1}= -\,\mathrm{d} v
+    \]于是由Cartan第二结构方程 \[
+   K \varepsilon ^{1}\wedge  \varepsilon ^{2}=   \Omega _{2}^{1}= \,\mathrm{d}  \omega _{2}^{1}= 0
+    \]得到Gauss曲率 \(  K= 0  \)
+    \item 类似地,这次令 \[
+     \varepsilon ^{1}= \cos v\,\mathrm{d} u,\quad  \varepsilon ^{2}= \,\mathrm{d} v
+    \]  \[
+    \sin v\,\mathrm{d} u\wedge \,\mathrm{d} v= \,\mathrm{d}  \varepsilon ^{1}=  \varepsilon ^{2}\wedge  \omega _{2}^{1},\quad 0= \,\mathrm{d}  \varepsilon ^{2}=  - \varepsilon ^{1}\wedge  \omega _{2}^{1}
+    \]得到  \[
+     \omega _{2}^{1}= -\sin v\,\mathrm{d} u
+    \]Gauss曲率为 \[
+K= \frac{\,\mathrm{d}  \omega _{2}^{1} }{ \varepsilon ^{1}\wedge  \varepsilon ^{2} }= \frac{\cos v\,\mathrm{d} u\wedge \,\mathrm{d} v }{\cos v\,\mathrm{d} u\wedge \,\mathrm{d} v }= 1  
+    \]
+    \item \[
+     \varepsilon ^{1}= u\,\mathrm{d} u,\quad  \varepsilon ^{2}= \sin u\,\mathrm{d} v
+    \] \[
+    0= \,\mathrm{d}  \varepsilon ^{1}=  \varepsilon ^{2}\wedge  \omega _{2}^{1}\quad \cos u\,\mathrm{d} u\wedge \,\mathrm{d} v= \,\mathrm{d}  \varepsilon ^{2}= - \varepsilon ^{1}\wedge  \omega _{2}^{1}
+    \]于是 \[
+     \omega _{2}^{1}= -\frac{\cos u }{u }\,\mathrm{d} v 
+    \]从而 \[
+    \,\mathrm{d}  \omega _{2}^{1}= \left( \frac{u\sin u+ \cos u }{u^{2} }  \right)\,\mathrm{d} u\wedge \,\mathrm{d} v= \frac{u\sin u+ \cos u }{u^{2} }\frac{1 }{u\sin u } \varepsilon ^{1}\wedge  \varepsilon ^{2}   
+    \]于是\[
+    K= \frac{u\sin u+ \cos u }{u^{3}\sin u } 
+    \]
+    \item 令 \[
+     \varepsilon ^{1}= \frac{\,\mathrm{d} x }{1-x^{2}-y^{2} },\quad  \varepsilon ^{2}= \frac{\,\mathrm{d} y }{1-x^{2}-y^{2} }  
+    \]则 \[
+    \frac{-2y }{\left( 1-x^{2}-y^{2} \right)^{2}  } \,\mathrm{d} x\wedge \,\mathrm{d} y= \,\mathrm{d}  \varepsilon ^{1}=  \varepsilon ^{2}\wedge  \omega _{2}^{1}
+    \] \[
+    \frac{2x }{\left( 1-x^{2}-y^{2} \right)^{2} }\,\mathrm{d} x\wedge \,\mathrm{d} y= \,\mathrm{d}  \varepsilon ^{2}= - \varepsilon ^{1}\wedge  \omega _{2}^{1} 
+    \]从而 \[
+     \omega _{2}^{1}= \frac{2y }{1-x^{2}-y^{2} } \,\mathrm{d} x-\frac{2x }{1-x^{2}-y^{2} } \,\mathrm{d} y
+    \] \[
+    \,\mathrm{d}  \omega _{2}^{1}= -\frac{2-2x^{2}+ 2y^{2} }{ \left( 1-x^{2}-y^{2} \right)^{2} } \,\mathrm{d} x\wedge \,\mathrm{d} y -\frac{2+ 2x^{2}-2y^{2} }{\left( 1-x^{2}-y^{2} \right)^{2}  }\,\mathrm{d} x\wedge \,\mathrm{d} y= -\frac{4 }{\left( 1-x^{2}-y^{2} \right)^{2}  }  = -4 \varepsilon ^{1}\wedge  \varepsilon ^{2}
+    \]于是 \[
+    K= -4
+    \]
+    \end{enumerate}
+     
+
+    \hfill $\square$
+\end{proof}
+\begin{problem}
+ 在测地极坐标系下求 Gauss 曲率为正常数 $K>0$ 的曲面的第一基本形式.
+\end{problem}
+
+\begin{proof}
+    设测地极坐标的度量为 \[
+    g = \,\mathrm{d} r^{2}+ G\left( r, \theta  \right)\,\mathrm{d}  \theta ^{2} 
+    \]令 \[
+     \varepsilon ^{1}= \,\mathrm{d} r,\quad  \varepsilon ^{2}= \sqrt{G\left( r, \theta  \right) }\,\mathrm{d}  \theta 
+    \]则 \(   \varepsilon ^{1}, \varepsilon ^{2}  \)构成曲面的一个正交余标架.由Cartan第一结构方程,以及联络1-形式的反对称性, \[
+0= \,\mathrm{d}  \varepsilon ^{1}= \varepsilon ^{j} \wedge \omega _{j}^{1}=  \varepsilon ^{2}\wedge  \omega _{2}^{1}
+    \] 以及 \[
+     \partial _{r}\sqrt{G\left( r, \theta  \right) }\,\mathrm{d} r\wedge \,\mathrm{d}  \theta =  \varepsilon ^{1}\wedge  \omega _{1}^{2}= - \varepsilon ^{1}\wedge  \omega _{2}^{1}
+    \]于是 \[
+     \omega _{2}^{1}=- \partial _{r}\sqrt{G\left( r, \theta  \right) }\,\mathrm{d}  \theta 
+    \]  \[
+    \,\mathrm{d}  \omega _{2}^{1}= - \partial _{r}^{2}\sqrt{G\left( r, \theta  \right) }\,\mathrm{d} r\wedge \,\mathrm{d}  \theta 
+    \]从而\[
+    K= -\frac{ \partial _{r}^{2}\sqrt{G\left( r, \theta  \right) } }{\sqrt{G\left( r, \theta  \right) } } 
+    \]令 \(  f= \sqrt{G}  \),则 \[
+     \partial _{r}^{2}f+ Kf= 0
+    \] 解ODE,得到  \[
+    f\left( r, \theta  \right)= C_1\left(  \theta  \right)  \cos \left( \sqrt{K} r \right)+ C_2\left(  \theta  \right)\sin   \left( \sqrt{K}r \right)   
+    \]令 \(  r\to 0  \),利用 \(  f= \sqrt{G}\to 0  \),得到 \[
+    C_1\left(  \theta  \right)= 0 
+    \]  于是 \[
+    f\left( r, \theta  \right)= C_2\left(  \theta  \right)\sin \left( \sqrt{K}r \right)   
+    \]利用 \[
+    f= \sqrt{G}= r-\frac{K }{6 }r^{3}+ O\left( r^{4} \right)  ,\quad \left( r\to 0 \right) 
+    \]而 \[
+    \sin \left( \sqrt{K}r \right)\sim \sqrt{K}r-\frac{1 }{6 } K\sqrt{K}r^{3}+ O\left( r^{4} \right)   ,\quad \left( r\to 0 \right) 
+    \]得到 \(  C_2\left(  \theta  \right)\equiv \frac{1 }{\sqrt{K} }    \).最终,得到 \(  \sqrt{G\left( r, \theta  \right) }= \frac{1}{\sqrt{K}}\sin \left( \sqrt{K}r \right)   \)  第一基本形式为 \[
+    g = \,\mathrm{d} r^{2}+  \frac{1 }{K } \sin ^{2}\left( \sqrt{K}r \right)  \,\mathrm{d}  \theta ^{2}
+    \]
+
+    \hfill $\square$
+\end{proof}
+\begin{problem}
+ 设 $C$ 是平面严格凸曲线, 证明: $C$ 的 Gauss 映射 $n: C \to S^1$ 是微分同胚.
+\end{problem}
+\begin{proof}
+    设 \(   \gamma :I= [0,l]\to C  \)是它的单位速度参数和,则 \[
+    n\left( t \right)=  \gamma ^{\prime} \left( t \right)  
+    \]由于 \(  C  \)是严格凸的, \[
+    0<  \kappa \left( t \right)= \left| n^{\prime} \left( t \right)  \right|  
+    \]   这表明\[
+    n^{\prime} \left( t \right)\neq 0 
+    \]对于所有的 \(  t\in I  \)成立.由于 \(  n  \)本身是光滑映射,由反函数定理, \(  n  \)在任一点附近是局部的微分同胚.说明 \(  n  \)是整体的微分同胚,只需要说明 \(  n  \)还是双射.
+    \begin{enumerate}
+        \item   设 \(   \theta   \)是一个切角函数,使得 \[
+    n\left( t \right)= \left( \cos  \theta \left( t \right),\sin  \theta \left( t \right)   \right)  
+    \] 则  \[
+   \kappa \left( t \right)\left( -\sin  \theta \left( t \right),\cos  \theta \left( t \right)   \right)=     n^{\prime} \left( t \right)=  \theta ^{\prime} \left( t \right) \left( -\sin  \theta \left( t \right),\cos  \theta \left( t \right)   \right)  
+    \]这表明 \(   \theta ^{\prime} \left( t \right)=  \kappa \left( t \right)> 0    \) 从而切角函数 \(   \theta   \)是严格单增的,进而 \(  n  \)只能是单射.
+    \item 最后,由旋转指标定理 \[
+     \theta \left( l \right)- \theta \left( 0 \right)= 2\pi   
+    \]  由于 \(   \theta   \)是连续函数,介值定理表面 \(   \theta   \)在 \(  \left[ 0,l \right]   \)上的取值遍历 \(  \left[ 0,2\pi  \right]   \),从而 \(  n\left( t \right)   \)的取值遍历 \(  S^{1}  \),表面 \(  n  \)是一个满射.       
+    \end{enumerate}
+    综上, \(  n  \)是微分同胚 
+    
+    \hfill $\square$
+\end{proof}
+\begin{problem}
+ 设 $S$ 是 $\mathbb{R}^3$ 中亏格 $g \ge 1$ 的可定向闭曲面, 证明: 不存在 $S$ 上的分段光滑测地线, 将 $S$ 划分成两个互不相交的单连通区域 (注: 在亏格为 $0$ 的闭曲面上这是可以的, 例如赤道将球面分为两个半球面).
+\end{problem}
+\begin{proof}
+    若存在这样的划分,设 \(  C  \)是这条测地线,则分别在这两个单连通区域\(  D_1,D_2  \) 上应用Gauss-Bonnet定理,得到\[
+    \int_{D_1}K\,\mathrm{d} S= 2\pi ,\quad \int_{D_2}K\,\mathrm{d} S= 2\pi 
+    \]在\(  S  \)上应用Gauss-Bonnet定理,得到 \[
+    \int_{S}K\,\mathrm{d} S= 2\pi \chi \left( S \right)= 4\pi \left( 1-g \right)  
+    \] 但是 \[
+    \int_{S}K\,\mathrm{d} S= \int_{D_1}K\,\mathrm{d} S+ \int_{D_2}K\,\mathrm{d} S= 4\pi 
+    \]而 \[
+    4\pi \left( 1-g \right)\neq 4\pi  
+    \]矛盾,因此不存在这样的分段光滑的测地线.
+
+    \hfill $\square$
+\end{proof}
+\begin{problem}
+设 $C$ 是曲面 $S$ 上的一条渐近线 (即切向的法曲率为 $0$), 证明:
+\begin{enumerate}
+\item $C$ 上每一点都有 $K \le 0$, 其中 $K$ 是 $S$ 的 Gauss 曲率.
+\item 如果 $C$ 不是直线, 那么 $C$ 的挠率 $\tau$ 在 $C$ 上每一点都会满足 $\tau^2 = -K$.
+\end{enumerate}
+
+\end{problem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 由黎曼超曲面子流形的Gauss方程 \[
+    \tilde{Rm}\left( W,X,Y,Z \right)= Rm\left( W,X,Y,Z \right)-\left<\operatorname{II} \left( W,Z \right),\operatorname{II} \left( X,Y \right)   \right>+ \left<\operatorname{II} \left( W,Y \right),\operatorname{II} \left( X,Z \right)   \right>  
+    \]这里, \(  Rm  \)采用如下的约定 \[
+    Rm\left( W,X,Y,Z \right):= \left< \nabla _{W} \nabla _{X}Y- \nabla _{X} \nabla _{W}Y,Z \right> 
+    \] 对于曲面 \(  S\subseteq \mathbb{R} ^{3}  \),氛围流形的曲率张量 \(  \tilde{Rm}= 0  \).任取 \(  C  \)上一点,设 \(   \gamma   \)是该点附近的 \(  C  \)的一个局部单位速度参数表示.  \(  N  \)是单位法向量场,令 \(  w=  \gamma ^{\prime} \times N  \).带入 \(  W= Z=  \gamma ^{\prime}   \),\(  X= Y= w  \),得到 \[
+    Rm\left(  \gamma ^{\prime} ,w,w, \gamma ^{\prime}  \right)= \left<\operatorname{II} \left(  \gamma ^{\prime} , \gamma ^{\prime}  \right),\operatorname{II} \left( w,w \right)   \right>-\left<\operatorname{II} \left(  \gamma ^{\prime} ,w \right),\operatorname{II} \left(  \gamma ^{\prime} ,w \right)   \right>= -\left| \operatorname{II} \left(  \gamma ^{\prime} ,w \right)  \right|_{g}^{2}\le 0  
+    \]    由于 \(   \gamma ^{\prime} ,w  \)在每一点处都是切空间的一组单位正交基,由Gauss绝妙定理可知Gauss曲率\(  K  \)为 \[
+    K= Rm\left(  \gamma ^{\prime} ,w,w, \gamma ^{\prime}  \right) \le 0
+    \]   
+    
+    \item 若 \(  C  \)不是直线,上面的论述中,已经说明了 \[
+    \left| \operatorname{II} \left(  \gamma ^{\prime} ,w \right)  \right|_{g}^{2}= -K 
+    \] 对于渐近线的速度向量场 \(   \gamma ^{\prime}   \),应用曲线的Gauss方程,得到 \[
+    \tilde{D}_{t} \gamma ^{\prime} = D_{t} \gamma ^{\prime} + \operatorname{II} \left(  \gamma ^{\prime} , \gamma ^{\prime}  \right) 
+    \] 其中 \(  \tilde{D}_{t},D _{t} \)分别是在 \(  \mathbb{R} ^{3}  \)上和 \(  S  \)上沿 \(   \gamma   \)的协变导数,前者无非就是欧式空间上的方向导数.带入 \(  \operatorname{II} \left(  \gamma ^{\prime} , \gamma ^{\prime}  \right)= 0   \),得到 \[
+    \tilde{D}_{t} \gamma ^{\prime} = D_{t} \gamma ^{\prime} 
+    \]     这表明 \(   \gamma ^{\prime}   \)的主法向量\(  \mathbf{n}  \) 完全落在 切平面上,不妨设 \(  \mathbf{n}= w  \) .进而副法向量 \(  \mathbf{b} \)与 \(  S  \)的一个单位法向量场在 \(  C  \)上重合.  对 \(  w  \)应用沿曲线的Gauss方程,得到\[
+    \tilde{D}_{t}w= D_{t}w+ \operatorname{II} \left(  \gamma ^{\prime} ,w \right) 
+    \] 带入 \(  w= n  \),得到 \[
+    \tilde{D}_{t}\mathbf{n}= D_{t}\mathbf{n}+ \operatorname{II} \left(  \gamma ^{\prime} ,w \right) 
+    \] 其中 \[
+    \tilde{D}_{t}\mathbf{n}= - \kappa  \gamma ^{\prime} + \tau \mathbf{b}= - \kappa  \gamma ^{\prime} + \tau N
+    \] \[
+    D_{t}\mathbf{n}= \left<\tilde{D_{t}} \mathbf{n}, \gamma ^{\prime}  \right> \gamma ^{\prime} + \left<\tilde{D}_{t} \mathbf{n},w\right>w= - \kappa  \gamma ^{\prime} 
+    \]带入方程,得到 \[
+    \operatorname{II} \left(  \gamma ^{\prime} ,w \right)= \tau N 
+    \]因此 \[
+    -K= \left| \operatorname{II} \left(  \gamma ^{\prime} ,w \right)  \right|_{g}^{2}= \left| \tau N \right|_{g}^{2}= \tau ^{2}  
+    \]
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+
+\section{2023}
+\begin{problem}
+曲线 $c(t) = (\cos t, \sin t, t)$ 的弧长参数化、Frenet 标架、曲率和挠率.
+\end{problem}
+
+\begin{proof}
+    \[
+    c^{\prime} \left( t \right)= \left( -\sin t,\cos t,1 \right)  ,\quad \left| c^{\prime} \left( t \right)  \right|= \sqrt{2} 
+    \]  \[
+    s\left( t \right)= \int_{0}^{t}\left| c^{\prime} \left( \tau  \right)  \right| \,\mathrm{d} \tau =  \sqrt{2}t 
+    \]弧长函数的反函数为 \[
+    t\left( s \right)= \frac{s }{\sqrt{2} }  
+    \]于是一个弧长参数化为 \[
+     \gamma \left( s \right):= c\left( t\left( s \right)  \right)  = \left( \cos \frac{s }{\sqrt{2} },\sin \frac{s }{\sqrt{2} },\frac{s }{\sqrt{2} }    \right) 
+    \]切向量场为 \[
+    T=  \gamma ^{\prime} \left( s \right)= \frac{1 }{\sqrt{2} }\left( -\sin \frac{s }{\sqrt{2} }, \cos \frac{s }{\sqrt{2} },\frac{1 }{\sqrt{2} }    \right)   
+    \]计算\[
+   T^{\prime} = \frac{1}{2}\left( -\cos \frac{s }{\sqrt{2} }, -\sin \frac{s }{\sqrt{2} },0   \right) 
+    \]于是曲率为 \[
+     \kappa = \left| T^{\prime}  \right|\equiv \frac{1}{2} 
+    \]主法向量场为 \[
+    N= \frac{T^{\prime}  }{\left| T^{\prime}  \right|  }  = \left( -\cos \frac{s }{\sqrt{2} },-\sin \frac{s }{\sqrt{2} },0   \right) 
+    \]副法向量场为 \[
+    \begin{aligned}
+    B= T\times N &= \begin{pmatrix} 
+        i&j&k\\ 
+        - \frac{1 }{\sqrt{2} }  \sin \frac{s }{\sqrt{2} }& \frac{1 }{\sqrt{2} }\cos \frac{s }{\sqrt{2} }&\frac{1 }{\sqrt{2} }\\ 
+         -\cos \frac{s }{\sqrt{2} }&-\sin \frac{s }{\sqrt{2} }&0      
+    \end{pmatrix}\\ 
+     &= \left( \frac{1 }{\sqrt{2} }\sin \frac{s }{\sqrt{2} },-\frac{1 }{\sqrt{2} }\cos \frac{s }{\sqrt{2} },\frac{1 }{\sqrt{2} }      \right)  
+    \end{aligned}
+    \]挠率为 \[
+    \tau = -B^{\prime} \cdot N= \frac{1}{2}\left( \cos \frac{s }{\sqrt{2} },\sin \frac{s }{\sqrt{2} },0   \right)\cdot \left( -\cos \frac{s }{\sqrt{2} },-\sin \frac{s }{\sqrt{2} },0   \right)= \frac{1}{2}  
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+\begin{problem}
+球面有参数化 $r(u, v) = (\cos u \sin v, \cos u \cos v, \sin u)$, 计算
+\begin{enumerate}
+    \item 自然标架 $r_u, r_v, n$;
+    \item 纬线 $u = \frac{\pi}{4}$ 的测地曲率;
+    \item $r_v$ 沿 $u$-线的协变导数.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+设曲面有参数化
+\[ r(u, v) = (\ln(\cosh u) \cos v, \ln(\cosh u) \sin v, \arctan(\sinh u)) \]
+求它的第一基本形式和 Gauss 曲率.
+\end{problem}
+\begin{problem}
+设 $c(s)$ 是曲面 $S$ 上的曲线, $X(s)$ 是沿 $c(s)$ 的向量场, 满足 $\frac{\nabla X(s)}{ds} = X(s)$. 求沿 $c(s)$ 的平行向量场 $Y(s)$, 使得 $Y(0) = X(s)$ 且 $Y(s)$ 与 $X(s)$ 方向相同.
+\end{problem}
+\begin{problem}
+设曲面包含一条直线, 求证:
+\begin{enumerate}
+    \item 该直线一定是测地线;
+    \item 在该直线上的每个点, 曲面的 Gauss 曲率 $K \le 0$.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+设 $P$ 是曲面上的一个点, 记以 $P$ 为中心、以 $r$ 为半径的测地圆盘的面积为 $A(r)$. 已知 $A(r)$ 当 $r$ 足够小的时候是光滑函数, 试证明
+\[ A(r) = \pi r^2 - \frac{\pi}{12} K(P) r^4 + o(r^4) \]
+其中 $K(P)$ 是 $P$ 点处的 Gauss 曲率.
+\end{problem}
+\begin{problem}
+设 $S$ 是凸曲面, 且 $S$ 上任意点处的 Gauss 曲率 $K > 1$.
+\begin{enumerate}
+    \item 证明: $S$ 的面积小于单位球面的面积.
+    \item 设 $D(r)$ 是 $S$ 上以 $P$ 为中心、$r$ 为半径的测地圆盘, $0 < r < \pi$, 且 $D(r)$ 包含于以 $P$ 为中心的测地极坐标系中, 证明: $D(r)$ 的面积小于单位球面上以 $r$ 为半径的测地圆盘的面积.
+\end{enumerate}
+\end{problem}
+
+\section{2022}
+\begin{problem}
+给定一个圆螺面的参数表示
+$$r(u, v) = (u \cos v, u \sin v, v), \quad u, v \in \mathbb{R}$$
+请计算:
+\begin{itemize}
+    \item (a) $r$ 的第一基本形式和第二基本形式;
+    \item (b) $r$ 在 $(u, v)$ 点处的主曲率、平均曲率和 Gauss 曲率;
+    \item (c) 坐标 $v$-曲线的测地曲率.
+\end{itemize}
+\end{problem}
+\begin{problem}
+设曲面的第一基本形式为
+$$ds^2 = du^2 + G(u, v)dv^2$$
+\begin{itemize}
+    \item (1) 求曲面的联络系数 (即 Christoffel 符号) $\Gamma_{ij}^k$, 并证明 Gauss 曲率 $K$ 的表达式为
+    $$K = -\frac{\partial^2 \sqrt{G}}{\partial u^2} \frac{1}{\sqrt{G}}$$
+    \item (2) 利用 (1) 的结果, 求出 Gauss 曲率 $K$ 恒为常数的曲面的第一基本形式;
+    \item (3) 设 $G = e^{2u}$, 求曲面上的测地线.
+\end{itemize}
+\end{problem}
+\begin{problem}
+证明: 若 $(u, v)$ 是曲面上的参数系, 使得参数曲面网是正交的曲线网 (坐标 $u$-曲线是主曲率 $k_1$ 的曲率线、坐标 $v$-曲线是主曲率 $k_2$ 的曲率线), 则主曲率 $k_1, k_2$ 满足下列方程:
+$$\frac{\partial k_1}{\partial v} = \frac{1}{2} \frac{E_v}{E} (k_2 - k_1)$$
+$$\frac{\partial k_2}{\partial u} = \frac{1}{2} \frac{G_u}{G} (k_1 - k_2)$$
+\end{problem}
+\begin{problem}
+设 $ds^2 = g_{ij}du^i du^j$ 为曲面 $r = r(u^1, u^2)$ 的第一基本形式, $V^i = V^i(u^1, u^2)$ 是偏微分方程组
+$$\frac{\partial V^i}{\partial u^k} = -\Gamma_{kl}^i V^l$$
+的非零解, 其中 $\Gamma_{kl}^i$ 是关于曲面 $r$ 的自然标架场 $\{r_{u^1}, r_{u^2}\}$ 的联络系数. 证明:
+\begin{itemize}
+    \item (1) $||V||^2 = g_{ij}V^iV^j$ 是一个非零常数;
+    \item (2) $V = V^i r_{u^i}$ 是曲面上的切向量场, 它沿曲面上的任意一条曲线都是平行的.
+\end{itemize}
+\end{problem}
+
+\begin{problem}
+\begin{itemize}
+    \item (1) 设 $D$ 是曲面 $S$ 上的一个四边形闭区域, $P_i$ 是顶点, $\alpha_i$ 是相应的内角, $i=1,2,3,4$. 证明:
+    $$\iint_D KdA + \oint_{\partial D} k_g ds = \alpha_1 + \alpha_2 + \alpha_3 + \alpha_4 - 2\pi$$
+    \item (2) 证明一曲面若在每一点的邻域内均存在两族相交成定角的测地线, 则其 Gauss 曲率恒为零. (提示: 利用 (1), 选取 $D$ 的边界是由测地线构成的四边形区域)
+\end{itemize}
+\end{problem}
+
+\end{document}

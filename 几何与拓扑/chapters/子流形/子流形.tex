@@ -1,0 +1,94 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+\chapter{子流形}
+
+\section{嵌入子流形}
+
+\begin{definition}{嵌入子流形}
+    设 \(  M  \)是光滑（带边）流形.
+    称 \(  M  \)的子集 \(  S\subseteq M  \)是一个嵌入子流形,若 \(  S  \)在配备了子空间拓扑,和使得含入映射 \(  S\hookrightarrow M  \)成为光滑嵌入的光滑结构下,成为一个光滑（带边）流形.     
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 嵌入子流形也被称为是正则子流形.
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{proposition}
+    设 \(  M  \)是一个光滑流形,则 \(  M  \)的余维数为0的嵌入子流形与 \(  M  \)的开子流形等价.   
+\end{proposition}
+
+\begin{proposition}{嵌入像作为子流形}
+    设 \(  M  \)是一个光滑（带边）流形, \(  N  \)是一个光滑流形,令 \(  F: N\to M  \)是光滑嵌入.
+    \(  S =  F\left( N \right)   \).
+    那么在子空间拓扑下, \(  S  \)是一个拓扑流形,并且其上存在唯一的光滑结构,使得 \(  S  \)成为 \(  M  \)的嵌入子流形,且 \(  F  \)是从 \(  N  \)到 \(  F\left( N \right)   \)的微分同胚.           
+\end{proposition}
+
+\begin{note}
+    之所以要求 \(  N  \)是不带边的,是因为我们需要找到非边界的中间坐标卡 \(  \left( U, \varphi  \right)   \)  ,避免 \(  F^{-1} \left( p \right)   \)落在边界上. 
+\end{note}
+\begin{proof}
+    \begin{enumerate}
+        \item 唯一性： 若有两个光滑结构 \(  \left( S, \mathcal{A}_1  \right),\left( S,\mathcal{A}_2 \right)    \)满足条件, 分别取一坐标卡  \(  \left( V_1,\psi _1  \right)   \), \(  \left( V_2,\psi _2  \right)   \)  
+        ,需要说明 \(  \psi_2 \circ \psi _1 ^{-1}   \)在 \(\psi _1 \left( V_1\cap V_2 \right)   \)上 光滑,只需要说明在其上每一点 \( \psi  _1 \left( p \right) \in \psi  _1 \left( V_1\cap V_2 \right)    \) 附近光滑.  \(  F^{-1} \left( V_1\cap V_2 \right)= F^{-1} \left( V_1 \right)\cap F^{-1} \left( V_2 \right)     \)是开集 ,
+        点  \(  F^{-1} \left( p \right) \)附近存在 \(  N  \)的光滑坐标卡 \(  \left( U, \varphi  \right)   \), \(  F  \)的光滑性要求 \(  \psi _1 \circ F\circ  \varphi  ^{-1}  \)光滑,  \(  F  \)是微分同胚,故 \(   \varphi \circ F^{-1} \circ \psi  _1^{-1}   \)  也是光滑映射,对于 \(  \psi _2   \) 有类似地结论.
+         
+         于是在 \(  \psi _1 \left( p \right)   \)附近,有 \[
+         \psi _2  \circ \psi _1 ^{-1} =  \psi _2 \circ F\circ  \varphi ^{-1} \circ  \varphi \circ  F^{-1} \circ \psi _1 ^{-1} 
+         \] 是 光滑的.
+         
+         \item 存在性： \(  F  \)要是微分同胚,那么 \(  F\left( U \right)   \)就得是开集, \(   \varphi \circ F^{-1}   \)亦然是双射,可以直截了当的取 \(  \left\{ \left( F\left( U \right), \varphi \circ F^{-1}   \right)  \right\}  \)作为图册,其中 
+         \(  \left( U, \varphi  \right)   \)是 \(  N  \)的任意光滑图册.相容性是容易得到的.      
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+
+
+\subsection{嵌入子流形的切片图}
+
+注意本小节的概念和结论都是对开集和光滑流形谈的,先不考虑带边的流形.
+
+\begin{definition}{欧式开集的切片}  
+    设 \(  U  \)是 \(  \mathbb{R} ^{n}  \)的一个开子集,  \(  k \in \left\{ 0,\cdots ,n \right\}  \),  \(  U  \)的一个 \(  k  \)-维切片 \footnotemark 是指
+    一个形如下的子集 \[
+    S = \left\{ \left(  x^1,\cdots,x^k ,x^{k+ 1},\cdots ,x^{n} \right) \in U: x^{k+ 1}= c^{k+ 1},\cdots ,x^{n}= c^{n}  \right\}
+    \]其中  \(  c^{k+ 1},\cdots ,c^{n}  \)是常数.      
+    
+\end{definition}
+
+\footnotetext{固定后面的分量,看成是开集\(  U  \)的“截面” }
+
+\begin{definition}{坐标开集\footnotemark 的 \(  k  \)-切片 }
+    设 \(  M  \)是 光滑 \(  n  \)-流形, \(  \left( U, \varphi  \right)   \)是 \(  M  \)上的一个光滑坐标卡.
+    若 \(  S  \)是 \(  U  \)的一个子集,使得 \(   \varphi \left( S \right)   \)称为 \(   \varphi \left( U \right)   \)的一个 \(  k  \)-切片,则称 \(  S  \)是 \(  U  \)的一个 \(  k  \)-切片.            
+\end{definition}
+\footnotetext{在流形上谈论切片时,只对坐标开集考虑}
+
+\begin{definition}{k-切片条件}
+    设 \(  M  \)是光滑 \(  n  \)-流形.给定子集 \(  S\subseteq M  \)和非整数 \(  k  \).我们说 \(  S  \)是满足\textbf{局部 \(  k  \)-切片条件 }\footnote{满足 切片条件的子流形,就是局部上,在某组坐标下,能被看成是父流形的截面的东西.}的,若 \(  S  \)上的每一点都含于
+     \(  M  \)的某个光滑坐标卡 \(  \left( U, \varphi  \right)   \),使得 \(  S\cap U  \)是 \(  U  \)上的一个 \(  k  \)-切片.         每个这样的坐标卡都被称为是 \(  S  \)在 \(  M  \)中的一个切片图,   
+     相应的坐标 \(  \left(  x^1,\cdots,x^n  \right)   \)被称为切片坐标\footnote{切片坐标就是 使得 \(  S  \)能被看成是截面的 那些坐标.}.  
+\end{definition}
+
+
+
+\begin{theorem}{嵌入子流形的局部切片判据}
+    设 \(  M  \)是一个光滑 \(  n  \)-流形.若 \(  S\subseteq M  \)是一个嵌入 \(  k  \)-维子流形,则 \(  S  \)满足局部 \(  k  \)-切条件.
+    反之,若 \(  S\subseteq M  \)是满足局部 \(  k  \)-切片条件的子集,则在 \(  S  \)的子空间拓扑下, \(  S  \)是 \(  k  \)-拓扑流形,并且存在使得 它成为 \(  M  \)的 \(  k  \)-维嵌入子流形的光滑结构.       
+\end{theorem} 
+
+\end{document}

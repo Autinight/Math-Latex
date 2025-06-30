@@ -1,0 +1,154 @@
+
+\documentclass[../../复变函数.tex]{subfiles}
+
+\begin{document}
+\chapter{复平面的拓扑}
+    
+
+\begin{definition}  
+    对于任意的 \(  \alpha  \in \mathbb{C}   \),以及 \(  r \in \mathbb{R} _{>0}  \),定义 \[
+    U\left(  \alpha ,r \right): =  \left\{ z \in \mathbb{C} : \left| z-\alpha  \right|<r  \right\} 
+    \]  称为一个 \(  r  \)-开圆盘,或 \(   \alpha   \)的 \(  r  \)-邻域.
+    
+    定义 \[
+    \overline{U} \left( \alpha ,r \right): =  \left\{ z \in \mathbb{C} : \left| z-r \right|\le r  \right\} 
+    \]称为一个 \(  r  \)-闭圆盘. 
+\end{definition}
+
+\begin{definition}
+    对于给定的 \(  E\subseteq \mathbb{C}   \), \(  \alpha  \in \mathbb{C}   \)  
+    \begin{enumerate}
+        \item 若对于任意的 \(  r>0  \),
+       都有 \(  \sharp (U\left( \alpha ,r \right) )\cap E\ge 2  \),则称 \(  \alpha   \)为 \(  E  \)的一个聚点或极限点. 
+        \item 若存在 \(  r>0  \),使得 \(  U\left( \alpha ,r \right)\subseteq E   \),则称 \(  \alpha   \)为 \(  E  \)的一个内点,记 \(  E  \)的全体内点集为 \(  \operatorname{Int}\,E  \),称为 \(  E  \)的内部.   
+        \item 若存在 \(  r>0  \),使得 \(  U\left( \alpha ,r \right)\subseteq E^{c}=  C\setminus E   \),则称 \(  \alpha   \)为 \(  E  \)的一个外点.记\(  E  \)的所有外点构成的集合为 \(  \operatorname{Ext}\,E  \),称为 \(  E  \)的外部.
+        \item 若  \(  \alpha  \in \left( \operatorname{Int}\,E \cup \operatorname{Ext}\,E \right)^{c}   \),换言之,对于任意的 \(  r>0  \), \(  U\left( \alpha ,r \right)\cap  E \neq \varnothing   \)且 \(  U\left( \alpha ,r \right)\cap E^{c} \neq  \varnothing   \)   ,则称 \(  \alpha   \)为 \(  E  \)的一个边界点. \(  E  \)的全体边界点记作 \(  \partial E  \),称为 \(  E  \)的边界.   
+        \item 若存在 \(  r>0  \),使得 \(  U\left( \alpha ,r \right)\cap E =  \left\{ \alpha  \right\}   \),此时称 \(  \alpha   \)为 \(  E  \)上的一个孤立点.                 
+    \end{enumerate}
+        
+\end{definition}
+
+\begin{remark}
+   \begin{enumerate}
+    \item  将\(   \sharp (U\left( \alpha ,r \right) )\cap E\ge 2  \)改为 \(   \sharp (U\left( \alpha ,r \right) )\cap E= \infty  \)给出等价的定义.其中 \(  \sharp   \)表示点的个数.   
+    \item 聚点不一定是边界点,边界点不一定是聚点：
+    \begin{enumerate}
+        \item 考虑 \(  E =  \left\{ x+ iy: x,y \in \mathbb{Z}  \right\}  \),则 \(  \partial E =  \varnothing  \),但是 \(  \operatorname{Int}\,E =  \varnothing  \), \(  E  \)无极限点,事实上, \(  E  \)上的每一个点都是一个孤立点.    
+    \end{enumerate}
+    \item 孤立点是边界点,但不是聚点.
+   \end{enumerate}
+   
+\end{remark}
+
+
+\begin{definition}
+    对于 \(  E \subseteq \mathbb{C}   \), 
+    \begin{enumerate}
+        \item 若  \(  \operatorname{Int}\,E= E  \),则称 \(  E  \)是一个开集.
+        \item 若 \(  \mathbb{C} \setminus E  \)是一个开集,则称 \(  E  \)为一个闭集. 
+        \item 约定 \(  \varnothing  \)是既开又闭的.  
+        \item 定义 \(  E  \)的闭包为 \(  \bar{E}: = E \cup \partial E  \).  
+        \item 称 \(  E  \)是一个紧集,若 \(  E  \)的任意开覆盖都存在有限的子覆盖.    
+    \end{enumerate}
+    
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item \(  \overline{E}  \)是包含了 \(  E  \)的最小的闭集,即 对于任意的闭集 \(  y\subseteq \mathbb{C}   \),若\(  y\supseteq  E  \),则 \(  y \supseteq \bar{E} \)     
+        \item  \(  E  \)是紧的,当且仅当它是有界闭集. 
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{definition}
+    对于任意的 \(  r   \),定义 \[
+    \left\{ z \in \mathbb{C} : \left| z \right|>0  \right\}\cup \infty
+    \] 为 \(  \infty  \)的一个 \(  r  \)-邻域.  
+\end{definition}
+
+\begin{exercise}
+    给出 \(  E\subseteq \mathbb{C} _{\infty}  \)的聚点、内点、外点、边界点、孤立点的定义. 
+\end{exercise}
+
+\hspace*{\fill} 
+
+
+\begin{definition}
+    对于 \(  z_0,z_1 \in \mathbb{C}   \),定义线段 \(  \left[ z_0,z_1 \right]   \) \[
+    \left[ z_0,z_1 \right]: =  \left\{ z_0+ \lambda \left( z_1-z_0 \right): \lambda \in \left[ 0,1 \right]   \right\} 
+    \]  
+\end{definition}
+
+\begin{definition}
+    称 \(  D\subseteq \mathbb{C}   \)是道路连通的,若对于任意的 \(  \alpha ,\beta  \in D  \),  存在 \(  A_1,A_2,\cdots ,A_{n} \in D  \),使得 
+    线段 \(  [\alpha ,A_1],[A_1,A_2],\cdots ,[A_{n-1},A_{n}],[A_{n},\beta ]  \)均包含于 \(  D  \).   
+\end{definition}
+
+\begin{example}[(拓扑学家的正弦曲线)]
+    令 \(   \Gamma _1 \subseteq \mathbb{R} ^{2}  \simeq \mathbb{C} \)为 \(  y=  \sin \frac{1}{x}  ,x\in [0,1]\)  的图像, \(   \Gamma _2 : =  \left\{ \left( 0,y \right): -1\le y\le 1  \right\}  \)
+    .则 \(   \Gamma _1 \cup  \Gamma _2   \)是连通但不是道路连通的.  
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{definition}
+   \begin{enumerate}
+    \item  称 \(  D \subseteq \mathbb{C}   \)是一个区域,若 \(  D  \)是道路  连通的开集.
+    \item 称 \(  D^{\prime} \subseteq \mathbb{C} _{\infty}  \)是一个区域,若 存在 \(  \mathbb{C}   \)上的区域 \(  D_1  \),以及 \(  \infty  \)的一个邻域 \(  U  \),使得 \(  D^{\prime}  =  D_1\cup U  \),且 \(  D_1\cap U \neq \varnothing  \).       
+   \end{enumerate}
+   
+\end{definition}
+
+
+\begin{definition}{曲线}
+    若映射 \(  z:[a,b]\to \mathbb{C}   \), \(  z =  x\left( t \right)+ i y\left( t \right)    \),  满足 \(  x\left( t \right),y\left( t \right)    \)均连续.
+    则称 \[
+    C : =  \left\{ z\left( t \right): t \in [a,b]  \right\}
+    \] 为一条连续的曲线.
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 若对于任意不全属于 \(  \left\{ a,b \right\}  \) 的\(    t_1,t_2 \in [a,b]  \)都有 \(  z\left( t_1 \right)\neq z\left( t_2 \right)    \),则称 \(  \mathbb{C}   \)为一个简单连续曲线或Jordan曲线.
+        \item 若简单连续曲线 \(  C  \)的映射 \(  z:[a,b]\to C  \)满足 \(  z\left( a \right)= z\left( b \right)    \),则称 \(  C  \)为一个简单连续闭合曲线.    
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{theorem}{Jordan}
+    若 \(  C\subseteq \mathbb{C}   \)为一个Jordan闭合曲线,存在 \(  \mathbb{C}   \)中的区域  \(  D_1,D_2  \),使得 \(  \mathbb{C} \setminus C= D_1\cup D_2  \), \(  D_1\cap D_2 =  \varnothing  \), \(  \partial D_1= \partial D_2= C  \),并且 \(  D_1  \),\(  D_2  \)中恰有一个为有界区域,称为是 \(  C  \)的内区域,以及一个无界区域,称为是 \(  C  \)的外区域 .    .     
+\end{theorem}
+
+\begin{definition}
+    对于 \(  [a,b]\to \mathbb{C}   \)的映射 \(  z\left( t \right)= x\left( t \right)+ i y\left( t \right)     \),若 \(  x\left( t \right),y\left( t \right) \in C^{1}[a,b]    \)   ,并且 \(  \forall  t \in [a,b],   z^{\prime} \left( t \right)\neq 0      \) ,则称 \(  z  \)所决定的曲线 \(  C  \)为一个光滑曲线.  
+\end{definition}
+\begin{remark}
+    由有限段光滑曲线衔接成的曲线称为分段光滑曲线.即存在 \(  [a,b]  \)的一个分割 \(  a=  t_0<t_1<\cdots < t_{n-1}< t_{n}= b  \),使得 \(  z\left( t \right)   \)在 \(  [t_{i},t_{i+ 1}]  , i = 0,\cdots ,n-1\)是光滑的.  
+\end{remark}
+\begin{exercise}
+    令 \(  x \left( t \right)= t^{2}   \), \(  y\left( t \right)= t^{3}   \), 说明 \(  z \left( t \right)= x\left( t \right)+ i y\left( t \right)     \)在 \(  t= 0  \)处在直观上是不光滑的.    
+\end{exercise}
+
+\hspace*{\fill} 
+
+\begin{definition}
+    设 \(  D\subseteq \mathbb{C}   \)是一个区域,若对于任意的Jordan闭合曲线 \(  C\subseteq D  \),存在连续映射 \(  F: I \times D\to D  \),其中 \(  I =  [0,1]  \),使得 \[
+    F\left( t,0 \right)= z\left( t \right),\quad F\left( t,1 \right)= \text{常值函数}   
+    \]  其中 \(  z\left( t \right)   \)是决定了 \(  C  \)的映射,    则称 \(  D  \)是一个单连通的区域. 
+\end{definition}
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+读 P9-P13,预习P17-P22,作业：第一章 14,15,16,17.
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+
+\end{document}

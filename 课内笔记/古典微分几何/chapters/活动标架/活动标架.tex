@@ -1,0 +1,129 @@
+\documentclass[../../古典微分几何.tex]{subfiles}
+\usepackage{subfiles}
+\begin{document}
+\chapter{活动标架}
+
+\section{活动标架的运动方程}
+
+设 \(  r_{ij}=  \Gamma _{ij}^{k}r_{k}+ c_{ij}n  \) 
+
+则 \[
+\left<r_{ij},r_{m} \right>=  \Gamma _{ij}^{k}g_{km}
+\]两边乘以 \(  g^{ml}  \),得到 \[
+\left<r_{ij},r_{m} \right>g^{kl}=  \Gamma _{ij}^{k}g_{km}g^{ml}=  \Gamma _{ij}^{k} \delta  _{k}^{l}=  \Gamma _{ij}^{l}
+\]  \[
+c_{ij}= \left<r_{ij},n \right>= b_{ij}
+\]
+
+设 \[
+n_{i}= c_{i}^{j}r_{j}
+\]则 \[
+\left<n_{i},r_{k} \right>= c_{i}^{j}g_{jk}
+\] \[
+\left<n_{i},r_{k} \right>g^{kl}= c_{i}^{j}g_{jk}g^{kl}= c_{i}^{j} \delta  _{j}^{l}= c_{i}^{l}
+\]其中 \[
+\left<n_{i},r_{k} \right>g^{kl}= -b_{ik}g^{kl}
+\]是\(  W  \)中的 \(  \left( i,l \right)   \)-元.记 \(  b_{i}^{l}= b_{ik}g^{kl}  \)   则运动方程为 \[
+\begin{cases} \frac{\partial r}{\partial u^{i}}= r_{i}\\ 
+ r_{ij}=  \Gamma _{ij}^{k}r_{k}+ b_{ij}n\\ 
+  n_{i}= -b_{i}^{l}r_{l} \end{cases} 
+\]
+\begin{example}
+    考虑球面 \[
+    r\left( u^{1},u^{2} \right)= \left( \cos u^{1}\cos u^{2},\cos u^{1}\sin u^{2},\sin u^{1} \right)  
+    \] \begin{itemize}
+        \item \(  r_1= \left( -\sin u^{1}\cos u^{2},-\sin u^{1}\sin u^{2},\cos u^{1} \right)   \)
+        \item \(  r_2= \left( -\cos u^{1}\sin u^{2},\sin u^{1}\cos u^{2},0 \right)   \)
+        \item \(  n = -r  \)  
+        \item \(  r_{11}=  \left( -\cos u^{1}\cos u^{2},-\sin u^{1}\sin u^{2},0 \right)  \)
+        \item \(  r_{12}= \left( \sin u^{1}\sin u^{2},-\sin u^{1}\sin u^{2},0 \right)   \)
+        \item \(  g_{11}= 1,g_{12}= 0,g_{22}= \cos ^{2}u^{1}  \)
+        \item \(  g^{11}= 1,g^{12}= 0,g^{22}= \sec u^{2}u^{1}  \)
+        \item \(   \Gamma _{11}^{1}= \left<r_{11},r_{m} \right>g^{m_1}= \left<r_{11},r_1 \right>g^{11}= 0  \)
+        \item \(   \Gamma _{11}^{2}= \left<r_{11},r_m \right>g^{m2}  = \left<r_{11},r_{2} \right>g^{22}= 0\)
+        \item \(   \Gamma _{12}^{2}= \left<r_{12},r_2 \right>g^{22}= -\cos u^{1}\sin u^{1}\cdot \sec ^{2}u^{1}= -\tan u^{1}=  \Gamma _{21}^{2}  \)
+        \item \(   \Gamma _{22}^{1}= \left<r_{22},r_1 \right>g^{11}= \cos u^{1}\sin u^{1}  \)
+        \item \(   \Gamma _{22}^{2}= \left<r_{22},r_2 \right>g^{22}= 0  \)          
+    \end{itemize}
+    
+\end{example}
+
+\hspace*{\fill} 
+
+
+记 \(  g_{ij,k}=  \partial _{k}g_{ij}  \),则 \[
+\begin{aligned}
+g_{ij,k}&=  \partial _{k}\left<r_{i},r_{j} \right> \\ 
+ & = \left<r_{ik},r_{}j \right>+ \left<r_{i},r_{jk} \right>\\ 
+  & =  \Gamma _{ik}^{l}g_{lj}+  \Gamma _{jk}^{l}g_{li}
+\end{aligned}
+\] 由对称性 \[
+ g_{jk,i}=  \Gamma _{ji}^{l}g_{lk}+  \Gamma _{ki}^{l}g_{lj}
+\]\[
+g_{ki,j}=  \Gamma _{kj}^{l}g_{li}+  \Gamma _{ij}^{l}g_{lk}
+\] 前两式减后一式,得到 \[
+g_{ij,k}+ g_{ki,j}-g_{jk,i}= 2 \Gamma _{ik}^{l}g_{lj}
+\]得到 
+\begin{proposition}
+    \[
+ \Gamma _{ij}^{k}= \frac{1}{2}g^{kl}\left(  \partial _{i}g_{lj}+  \partial _{i}g_{il}- \partial _{l}g_{ij} \right) 
+\]
+\end{proposition}
+
+\begin{definition}
+    由第一基本形式决定的量或性质为内蕴的.
+\end{definition}
+
+
+对 \[
+r_{ij}=  \Gamma _{ij}^{l}r_{l}+ b_{ij}n
+\]求导,有 \[
+\begin{aligned}
+r_{ijk}& =  \partial _{k} \Gamma _{ij}^{l}r_{l}+  \Gamma _{ij}^{l}r_{lk}+  \partial _{k}b_{ij}n+ b_{ij}n_{k}\\ 
+ & =  \partial _{k} \Gamma _{ij}^{l}r_{l}+  \Gamma _{ij}^{l}\left(  \Gamma _{k}^{m}r_{m}+ b_{lk}n \right)\\ 
+  &+  \partial _{k}b_{ij}n+ b_{ij}\left( -b_{k}^{l}r_{l} \right) \\ 
+   & = \left(  \partial _{k} \Gamma _{ij}^{m}+  \Gamma _{ij}^{l} \Gamma _{lk}^{m}-b_{ij}b_{k}^{m} \right)r_{m}+ \left(  \Gamma _{ij}^{l}b_{lk}+  \partial _{k}b_{ij} \right)n    
+\end{aligned}
+\]交换求导次序, \[
+r_{ikj}= \left(  \partial _{j} \Gamma _{ik}^{m}+  \Gamma _{ik}^{l} \Gamma _{lj}^{m}-b_{ik}b_{j}^{m} \right)r_{m}+ \left(  \Gamma _{ik}^{l}b_{lj}+  \partial_{j}b_{ik}\right)n  
+\]光滑性要求上两式右侧相等,从而 
+\begin{proposition}
+    \begin{enumerate}
+        \item \[
+ \partial _{k} \Gamma _{ij}^{m}- \partial _{j} \Gamma _{ik}^{m}+  \Gamma _{ij}^{l} \Gamma _{lk}^{m}- \Gamma _{ik}^{l} \Gamma _{lj}^{m}-b_{ij}b_{k}^{m}+ b_{ik}b_{j}^{m}= 0
+\]
+\item \(   \Gamma _{ij}^{l}b_{lk}+  \partial _{k}b_{ij}- \Gamma _{ik}^{l}b_{lj}- \partial _{j}b_{ik}= 0  \) 
+    \end{enumerate}
+    称为曲面的结构方程.
+    
+\end{proposition}
+
+\begin{definition}{定义}
+    \begin{enumerate}
+        \item \[
+    R_{ijk}^{l}=  \partial _{k} \Gamma _{ij}^{l}- \partial _{j} \Gamma _{ik}^{l}+  \Gamma _{ij}^{m} \Gamma _{mk}^{l}- \Gamma _{ik}^{m} \Gamma _{mj}^{l}
+    \]
+    \item \(  R_{iljk}= g_{lm}R_{ijk}^{m}  \) 
+    \end{enumerate}
+    称为Riemann曲率张量.
+\end{definition}
+
+
+
+
+\section{正交标价}
+
+
+\begin{definition}
+    设 \(  V  \)是 \(  n  \)维线性空间, \(   e_1,\cdots,e_n   \)是它的一组基,定义它的对偶空间 \(  V^{*}  \) \[
+    V^{*}= \left\{ f: f\text{是 V上的线性函数} \right\}
+    \]  则对于任意的 \(  f \in V ^{*} \), \[
+    f\left( k_{i}e_{i} \right)= \sum k_{i}l\left( e_{i} \right)  
+    \]   \(  V^{*}  \)也是一个线性空间. 令 \(  l_{i}\left( e_{j} \right)=  \delta  _{i}^{j}   \),称为 \(   e_1,\cdots,e_n   \)的对偶基.  则 \(  l =  \sum _{i= 1}^{n}l\left( e_{i} \right)l_{i}   \) .
+\end{definition}
+
+\begin{definition}{余切空间}
+    定义 \(  T_{p}^{*}S  \)为且空间 \(  T_{p}S  \)的余切空间.  
+\end{definition}
+
+\end{document}

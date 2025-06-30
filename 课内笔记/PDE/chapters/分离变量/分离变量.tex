@@ -1,0 +1,70 @@
+\documentclass[../../PDE.tex]{subfiles}
+
+\begin{document}
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+\chapter{分离变量}
+
+\begin{example}
+    \[
+    u_{tt}= a^{2}u_{x x },\;u\left( x,0 \right)=  \sin \frac{3\pi x }{l },\; u_{t}\left( x,0 \right)= x\left( l-x \right),\; u\left( 0,t \right)= u\left( l,t \right)= 0      
+    \]
+\end{example}
+\begin{solution}
+    令 \(  u= X\left( x \right)T\left( t \right)    \),则 \[
+    X^{\prime \prime} +  \lambda X= 0,\quad T^{\prime \prime} + a^{2} \lambda T= 0
+    \] \[
+    X\left( 0 \right)T\left( t \right)= X\left( l \right)T\left( t \right)= 0    
+    \]故 \[
+    X\left( 0 \right)= X\left( l \right)= 0  
+    \]
+
+    若方程有界,则 \(   \lambda > 0  \),设 \(   \lambda = k^{2}  \),则 \[
+    X\left( x \right)= C_1\cos kx+ C_2\sin kx 
+    \] 则 \(  C_1= 0  \),取 \(  C_2= 1  \),则 \[
+    \sin kl= 0\implies k=  \frac{n\pi  }{l }, n = 1,2,\cdots   
+    \]    令 \[
+    X_{n}\left( x \right)=  \sin  \frac{n\pi  }{l }x  
+    \] \[
+    T_{n}\left( t \right)= A_{n}\cos \frac{n\pi a }{l }t+ B_{n}\sin \frac{n\pi a }{l }t   
+    \]则 \[
+    u =  \sum _{n = 1}^{\infty} \left( A_{n}\cos \frac{n\pi a }{l }t+ B_{n}\sin \frac{n\pi a }{l }t   \right)\sin \frac{n\pi  }{l }x  
+    \]带入 初值,得到 \[
+    \sin \frac{3\pi x }{l }= \sum _{n = 1}^{\infty} A_{n}\sin \frac{n \pi }{l }x  
+    \]恰好是它的正弦展开,于是 \[
+    A_{n}= \frac{2 }{l } \int_{0}^{l}\sin \frac{3\pi x }{l } \sin \frac{n\pi  }{l }x\,\mathrm{d} x  = \begin{cases} 0&,n \neq 3\\ 
+     2,& n = 3 \end{cases} 
+    \]此外 \[
+    x\left( l-x \right)= \sum _{n = 1}^{\infty}\frac{n\pi a  }{l }B_{n}\sin \frac{n\pi a }{l }x     
+    \]于是 \[
+    \frac{n\pi a  }{l }B_{n}= \frac{2 }{l }\int_{0}^{l}x\left( l-x \right)\sin \frac{n\pi  }{l }x\,\mathrm{d} x    
+    \] \[
+    \begin{aligned}
+    \frac{2 }{l } \int_{0}^{l}x\left( l-x \right)\sin \frac{n\pi  }{l }x\,\mathrm{d} x&=  - \frac{l }{n\pi  }\frac{2 }{l } \int_{0}^{l}x\left( l-x \right)\,\mathrm{d}  \cos \frac{n\pi  }{l }x\\ 
+     &= \frac{2 }{n\pi  }       \int_{0}^{l} \cos \frac{n\pi x }{l } \left( l-2x \right)\,\mathrm{d} x  \\ 
+      &= \frac{2 }{n\pi  } \int_{0}^{l }\left( -2x \right)\cos \frac{n\pi x }{l }\,\mathrm{d} x\\ 
+       &=   \frac{-4l }{n^{2}\pi ^{2} } \int_{0}^{l}x\,\mathrm{d}  \sin \frac{n\pi x }{l }\\ 
+        &=  \frac{4l }{n^{2}\pi ^{2} } \int_{0}^{l} \sin \frac{n\pi x }{l }\,\mathrm{d} x \\ 
+         &= \frac{4l }{n^{2}\pi ^{2} } \frac{l }{n\pi  }  \left( -\cos \frac{n\pi x }{l }  \right)|_{x= 0}^{x= l}   \\ 
+          &= \frac{4l^{2} }{n^{3\pi ^{3}} }  \left( 1-\left( -1 \right)^{n}  \right)  
+    \end{aligned}
+    \]于是 \[
+    B_{n}=  \frac{l }{n\pi  } \frac{4l^{2} }{ n^{3}\pi ^{3} }\left[ 1-\left( -1 \right)^{n}  \right]= \frac{4l^{3} }{ n^{4}\pi ^{4} a} \left[ 1-\left( -1 \right)^{n}  \right]     
+    \]于是 \[
+    \begin{aligned}
+    u\left( x,t \right)= \sum _{n = 1}^{\infty} \frac{4l^{3} }{n^{4}\pi ^{4}a }\left[ 1-\left( -1 \right)^{n}  \right]\sin \frac{n\pi a }{l }t\sin \frac{n\pi  }{l }x+ \left( 2\cos \frac{2\pi a }{l }t+ \frac{4l^{3} }{2^{4}\pi ^{4}a }\cdot 2   \right) \sin \frac{3\pi  }{l }x        
+    \end{aligned}
+    \]
+\end{solution}
+
+\hspace*{\fill} 
+
+\hspace*{\fill} 
+
+\end{document}

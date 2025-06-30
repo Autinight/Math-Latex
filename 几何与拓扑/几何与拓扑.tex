@@ -1,0 +1,112 @@
+\documentclass[lang=cn,12pt,color=blue,pad,fontset=none]{elegantbook}
+%fontset=none,
+\title{几何与拓扑}
+% \subtitle{课内复习版}
+
+\author{Autin}
+\usepackage{stmaryrd}
+
+\usepackage{quiver} 
+
+\setmainfont{Aa顺風顺水顺财神}[BoldFont=Shanggu Round-Bold]
+\setCJKmainfont{Aa顺風顺水顺财神}[BoldFont=Shanggu Round-Bold]
+\setCJKsansfont{Aa顺風顺水顺财神}[BoldFont=Shanggu Round-Bold]
+\setCJKmonofont{Aa顺風顺水顺财神}[BoldFont=Shanggu Round-Bold]
+ 
+\usepackage{subfiles}
+\extrainfo{} 
+
+\setcounter{tocdepth}{3}
+
+% \logo{xmu-logo.pdf}
+\cover{image.png}
+\usepackage{CJKutf8}
+% 本文档命令
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+ 
+% 修改标题页的橙色带
+% \definecolor{customcolor}{RGB}{32,178,170}
+% \colorlet{coverlinecolor}{customcolor}
+
+\begin{document}
+
+\maketitle
+
+\frontmatter
+
+\tableofcontents
+
+\mainmatter
+
+\part{点集拓扑}
+
+\subfile{chapters/拓扑空间/拓扑空间.tex}
+
+\part{微分流形}
+
+\subfile{chapters/光滑流形/光滑流形.tex}
+
+\subfile{chapters/子流形/子流形.tex}
+
+\subfile{chapters/李群/李群.tex}
+
+\subfile{chapters/向量场/向量场.tex}
+
+\subfile{chapters/张量/张量.tex}
+
+\subfile{chapters/微分形式/微分形式.tex}
+
+\subfile{chapters/de Rham上同调/de Rham上同调.tex}
+
+\part{黎曼流形}
+
+\subfile{chapters/黎曼度量/黎曼度量.tex}
+
+\subfile{chapters/模型黎曼流形/模型Riemann流形.tex}
+
+\subfile{chapters/联络/联络.tex}
+
+\subfile{problems/联络/联络.tex}
+
+\subfile{chapters/Levi-Civita联络/Levi-Civita联络.tex}
+
+\subfile{chapters/测地线和距离/测地线和距离.tex}
+
+\subfile{chapters/曲率/曲率.tex}
+
+\subfile{problems/曲率/曲率.tex}
+
+\subfile{chapters/黎曼子流形/黎曼子流形.tex}
+
+\subfile{problems/黎曼子流形/黎曼子流形.tex}
+                                    
+\subfile{chapters/Gauss-Bonnet定理/Gauss-Bonnet定理.tex}
+
+\subfile{chapters/Jacobi场/Jacobi场.tex}
+
+\part{代数拓扑}
+
+\subfile{chapters/范畴论基础/范畴论基础.tex}
+
+\subfile{chapters/胞腔复形/胞腔复形.tex}
+
+\subfile{chapters/基本群/基本群.tex}
+
+\subfile{chapters/基础同调代数/基础同调代数.tex}
+
+\subfile{chapters/奇异同调/奇异同调.tex}
+
+\subfile{problems/奇异同调/奇异同调.tex}
+
+\subfile{chapters/覆叠空间/覆叠空间.tex}
+
+\subfile{chapters/单纯复形/单纯复形.tex}
+
+\subfile{chapters/单纯同调/单纯同调.tex}
+
+\subfile{chapters/知识点总结/知识点总结.tex}
+\end{document}
+ 
+
+ 

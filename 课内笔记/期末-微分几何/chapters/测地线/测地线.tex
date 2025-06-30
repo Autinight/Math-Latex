@@ -1,0 +1,148 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{ 测地线 }
+
+\section{测地线}
+\begin{example}[圆柱]
+    考虑 \[
+    C =  \left\{ \left( x,y,z \right)\in \mathbb{R} ^{3}:x^{2}+ y^{2}= 1  \right\}
+    \]它的外向向量场为 \(  N\left( x,y,z \right)=  \left( x,y,0 \right)  \).考虑曲线 \(   \gamma \left( t \right)= \left( \cos t,\sin t,ct \right)    \),则 \(   \gamma ^{\prime \prime} \left( t \right)= -N\left(  \gamma \left( t \right)  \right)    \),故 \(   \gamma \left( t \right)   \)是圆柱的测地线. 
+    
+    它的起点为 \(  p =   \gamma \left( 0 \right)= \left( 1,0,0 \right)    \),初速度为 \(   \gamma ^{\prime} \left( 0 \right)= \left( 0,1,c \right)    \),通过调整 \(  c  \)或让 \(   \gamma \left( t \right)   \)转向,可以使得 \(   \gamma   \)以 \(  T_{p}C  \)中任意除了 \(  \left( 0,0,\pm 1 \right)   \)以外的单位向量为初速度.     
+\end{example}
+
+\begin{theorem}{Clairaut}
+    设 \(  S  \)是旋转曲面. \(  \beta :I\to S  \)是 \(  S  \)上的单位速度曲线.对于每个 \(  s \in I  \),\(  \rho \left( s \right)   \)表示 \( \beta \left( s \right)   \)到旋转轴的距离, \(  \psi \left( s \right) \in \left[ 0,\pi  \right]    \)表示 \(  \beta ^{\prime} \left( s \right)   \)与过 \(  \beta \left( s \right)   \)的经线的夹角,则
+    \begin{enumerate}
+        \item 若 \(  \beta   \)是测地线,则 \(  \rho \left( s \right)\sin \left( \psi \left( s \right)  \right)    \)在 \(  I  \)上取常值.
+        \item 若 \(  \rho \left( s \right)\sin \left( \psi \left( s \right)  \right)    \)在 \(  I  \)上取常值,且 \(  \beta   \)的任何子段不与任何纬线子段重合, 则 \(  \beta   \)是一个测地线.      
+    \end{enumerate}
+             
+\end{theorem}
+
+\begin{proof}
+    考虑旋转曲面的参数表示 \[
+     \sigma \left(  \theta ,t \right)= \left( x\left( t \right)\cos  \theta ,x\left( t \right)\sin  \theta ,z\left( t \right)    \right)  
+    \]则\(   \sigma _{ \theta }  \)是纬线的方向,\(   \sigma _{t}  \)是经线的方向.第一基本形式为 \[
+    \left(x^{\prime} \left( t \right)^{2}+ z^{\prime} \left( t \right)^{2}  \right)\,\mathrm{d} t^{2}+ x\left( t \right)^{2}\,\mathrm{d}  \theta ^{2}  
+    \]并且 \(   \sigma _{ \theta }  \)与 \(   \sigma _{t}  \), \(   \sigma _{ \theta  \theta }  \), \(   \sigma _{ t t}  \)均正交.      存在 函数 \(   \theta \left( s \right),t\left( s \right)    \),使得 \[
+    \beta \left( s \right)=  \sigma \left(  \theta \left( s \right),t\left( s \right)   \right)  
+    \] 用 \(  ^{\prime}   \)表示关于 \(  s  \)的导数,则 \[
+    \beta ^{\prime} =  \sigma _{ \theta } \theta ^{\prime} +  \sigma _{t}t^{\prime} ,\quad \beta ^{\prime \prime} =  \left(  \sigma _{ \theta  \theta } \theta ^{\prime} +  \sigma _{ \theta t}t^{\prime}  \right) \theta ^{\prime} +  \sigma _{ \theta } \theta ^{\prime \prime} + \left(  \sigma _{tt}t^{\prime} +  \sigma _{ \theta t} \theta ^{\prime}  \right)t^{\prime} +  \sigma _{t}t^{\prime \prime}   
+    \]  由于 \(  \beta   \)是测地线, \[
+    0= \left<\beta ^{\prime \prime} , \sigma _{ \theta } \right>=  \theta ^{\prime \prime} \left< \sigma _{ \theta }, \sigma _{ \theta } \right>+ 2 \theta ^{\prime} t^{\prime} \left< \sigma _{ \theta }, \sigma _{ \theta t} \right>
+    \] 其中,由于 \[
+    G^{\prime} =  \theta ^{\prime} G_{ \theta }+ t^{\prime} G_{t}= t^{\prime} G_{t}= 2t^{\prime} \left< \sigma _{ \theta }, \sigma _{ \theta t} \right>
+    \]所以 \[
+    0=  \theta ^{\prime \prime} \left< \sigma _{ \theta }, \sigma _{ \theta } \right>+ 2 \theta ^{\prime} t^{\prime} \left< \sigma _{ \theta }, \sigma _{ \theta t} \right>=  \theta ^{\prime \prime} G+  \theta ^{\prime} G^{\prime} = \left(  \theta ^{\prime} G \right)^{\prime}  
+    \]由于 \(  \rho \left( s \right)^{2}= x\left( t\left( s \right)  \right) ^{2}= G   \),我们有 \[
+     \theta ^{\prime} \left( s \right)\rho \left( s \right)  ^{2}
+    \]是一个常数. 注意到 \[
+    \sin \left( \psi \left( s \right)  \right)= \left<\beta ^{\prime} , \sigma _{ \theta } \right>= \rho  \theta ^{\prime}  
+    \]因此 \[
+    \rho \left( s \right)\sin \left( \psi \left( s \right)  \right)=  \theta ^{\prime} \left( s \right)\rho \left( s \right)^{2}    
+    \]是一个常数.这就说明了第一个断言.
+
+    反之,若 \(  \rho \left( s \right)\sin \left( \psi \left( s \right)  \right)    \)取常值. 上面的论证过程表明 \[
+    \left<\beta ^{\prime \prime} , \sigma _{ \theta } \right>= 0
+    \]只需要证明 第二个测地线方程\[
+    \left<\beta ^{\prime \prime} , \sigma _{t} \right>= \left(  \theta ^{\prime}  \right)^{2}\left< \sigma _{ \theta  \theta }, \sigma _{t} \right>+ \left( t^{\prime}  \right)^{2}\left< \sigma _{tt}, \sigma _{t} \right>+ t^{\prime \prime} \left< \sigma _{t}, \sigma _{t} \right>= 0  
+    \]即 \[
+    \left(  \theta ^{\prime}  \right)^{2}\left( -x^{\prime} x \right)  + \left( t^{\prime}  \right)^{2}\left( x^{\prime \prime} x^{\prime} + z^{\prime \prime} z^{\prime}  \right)+ t^{\prime \prime} \left( x^{\prime} x^{\prime} + z^{\prime} z^{\prime}  \right)= 0   
+    \]设 \[
+    \left(  \theta ^{\prime} G \right)=  \theta ^{\prime} x^{2}= C 
+    \] 注意到\[
+    E_{t}= 2x^{\prime} x^{\prime \prime} + 2z^{\prime} z^{\prime \prime} 
+    \]原测地线方程化为 \[
+    \left(  \theta ^{\prime}  \right)^{2}\left( -x^{\prime} x\right)+\frac{1}{2} \left( t^{\prime}  \right)^{2}   E_{t}+ t^{\prime \prime} E= 0
+    \] 又 \[
+    \left(\left( t^{\prime}  \right)^{2}  E \right)^{\prime}= 2t^{\prime} t^{\prime \prime} E+ \left( t^{\prime}  \right)^{2}   E_{t}t^{\prime} 
+    \]如果 \(  t^{\prime} \neq 0  \), 方程化为  \[
+    \left(  \theta ^{\prime}  \right)^{2}\left( -x^{\prime} x \right)+ \frac{1}{2}\frac{1 }{t^{\prime}  } \left( \left( t^{\prime}  \right)^{2}E  \right)^{\prime} = 0   
+    \]而考虑单位速度方程 \[
+    \left( \left(  \theta ^{\prime}  \right)^{2}G+ \left( t^{\prime}  \right)^{2}E   \right)= 1 
+    \]求导,得到 \[
+    \left( \left( t^{\prime}  \right)^{2}E  \right)^{\prime} = -\left( \left(  \theta ^{\prime}  \right)^{2}G  \right)^{\prime}   
+    \]方程化为 \[
+   \left(  \theta ^{\prime}  \right)^{2}\left( -x^{\prime} x \right)+ \frac{1}{2}\frac{1 }{t^{\prime}  }  \left( \left(  \theta ^{\prime}  \right)^{2}G  \right)^{\prime} = 0   
+    \]由于 \[
+    G_{t}= 2x^{\prime} x
+    \]方程进一步化为 \[
+   - \left(  \theta ^{\prime}  \right)^{2}G_{t} + \frac{1 }{t^{\prime}  }  \left( \left(  \theta ^{\prime}  \right)^{2}G  \right)^{\prime} = 0 
+    \]其中 \[
+    \left( \left(  \theta ^{\prime}  \right)^{2}G  \right)^{\prime} = \left(  \theta ^{\prime} C \right)^{\prime} = C \theta ^{\prime \prime}   
+    \]方程进一步化为 \[
+    \left( - \theta ^{\prime}  \right)^{2}G_{t}+\frac{1 }{t^{\prime}  }  C \theta ^{\prime \prime} = 0 
+    \]即 \[
+     C\theta ^{\prime \prime} - t^{\prime} \left(  \theta ^{\prime}  \right)^{2}G_{t}= 0 
+    \]我们只需要证明 \(  t^{\prime} \neq 0  \)和这个方程都成立即可. 由于 \[
+    \left(  \theta ^{\prime} G \right)^{\prime} =  \theta ^{\prime \prime}G+  \theta ^{\prime} t^{\prime} G_{t}= 0 
+    \] 两边乘以 \(   \theta ^{\prime}   \),结合 \(   \theta ^{\prime} G= C  \),  带入即得所需方程成立.
+
+    最后,只需要说明 \(  t^{\prime} \neq 0  \) 只在孤立点成立,这由 \(  \beta   \)的子段不是纬线段所保证.  
+    \hfill $\square$
+\end{proof}
+\section{曲线的测地曲率}
+
+
+\begin{definition}{测地曲率}
+    设 \(  \left( M,g \right)   \)是(伪)Riemann子流形, \(   \gamma :I\to M  \)是 \(  M  \)上的光滑单位速度曲线.定义 \(   \gamma   \)的(测地)曲率为加速度场的模长,即函数 \(   \kappa :I\to \mathbb{R}   \) \[
+     \kappa \left( t \right): =  \left| D_{t} \gamma ^{\prime} \left( t \right)  \right|.  \footnote{描述了曲线偏离测地线的程度.}
+    \]    
+    
+
+    对于一般的参数曲线,对 \(  M  \)分情况定义: 
+    \begin{enumerate}
+        \item  \(  M  \)是黎曼流形, 则任取 \(   \gamma   \)是 \(  M  \)上的任意正则曲线,可以找到 它的单位速度重参数化 \(   \tilde{\gamma} =  \gamma \circ  \varphi   \),我们定义 \(   \gamma   \)在 \(  t  \)处的(测地)曲率为 \(   \tilde{\gamma}   \)在 \(   \varphi ^{-1} \left( t \right)   \)处的(测地)曲率.       
+        \item 若 \(  M  \)是伪黎曼流形,需要限制 \(   \gamma   \)为使得 \(  \left|  \gamma ^{\prime} \left( t \right)  \right|   \)处处非零的曲线,做类似地定义.   
+    
+    \end{enumerate}
+    
+\end{definition}
+
+\begin{proposition}
+    单位速度曲线有退化的(测地)曲率,当且仅当它是测地线.
+\end{proposition}
+
+
+\begin{definition}
+    设 \(  \left( \tilde{M}, \tilde{g}  \right)   \)是(伪)Riemann流形, \(  \left( M,g \right)   \)是它的Riemann子流形.每个 \(   \gamma :I\to M  \)都有两种测地曲率.
+    \begin{enumerate}
+        \item \(   \gamma   \)视为 \(  M  \)上的光滑曲线时,它的测地曲率 \(   \kappa   \)称为\textbf{内蕴曲率};
+        \item \(   \gamma   \)视为 \(  \tilde{M}  \)上的光滑曲线时,它的测地曲率 \(   \tilde{\kappa}   \)称为\textbf{外蕴曲率}.      
+    \end{enumerate}
+       
+\end{definition}
+\begin{lemma}{超曲面曲线的Gauss公式}
+    若 \(   \gamma :I\to M  \)是一个光滑曲线, \(  X:I\to TM  \)是沿 \(   \gamma   \)的光滑向量场,则 \[
+        \tilde{D}_{t}X= D_{t}X+ h\left(  \gamma ^{\prime} ,X \right)N 
+        \]
+\end{lemma}
+
+\begin{proposition}{\(  \operatorname{II}  \)的几何解释}
+    设 \(  \left( M,g \right)   \)是(伪)Riemann流形 \(  \left( \tilde{M},\tilde{g}  \right)   \)的嵌入 Riemann子流形, \(  p \in M  \),\(  v\in T_{p}M  \).    
+    \begin{enumerate}
+        \item \(  \operatorname{II}\left( v,v \right)   \)是 \(  g  \)-测地线 \(   \gamma _v   \)在 \(  p  \)处的 \(  \tilde{g}   \)-加速度.
+        \item 若 \(  v  \)是单位向量,则 \(  \left| \operatorname{II}\left( v,v \right)  \right|   \)是 \(   \gamma _v   \)在\(  p  \)处的 \(  \tilde{g}  \)-曲率.          
+    \end{enumerate}
+    
+\end{proposition}
+\begin{proof}
+    设 \(   \gamma :\left( - \varepsilon , \varepsilon  \right)   \to M\)是使得 \(   \gamma \left( 0 \right)= p   \),\(   \gamma ^{\prime} \left( 0 \right)= v   \)的正则曲线.   对 \(   \gamma ^{\prime}   \)应用沿 \(   \gamma   \)的Gauss公式,得到 \[
+    \tilde{D}_{t}  \gamma ^{\prime} = D_{t} \gamma ^{\prime} + \operatorname{II}\left(  \gamma ^{\prime} , \gamma ^{\prime}  \right) 
+    \]若 \(   \gamma   \)是 \(  M  \)上的 \(  g  \)-测地线,则 上述公式化为 \[
+    \tilde{D}_{t} \gamma ^{\prime} = \operatorname{II}\left(  \gamma ^{\prime} , \gamma ^{\prime}  \right) 
+    \]在零处取值得到所需的两个结论.     
+
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}{Liouvill}
+    设 $(u, v)$ 是曲面 $S$ 的正交参数, $I = E\,du^2 + G\,dv^2$; $C: u = u(s), v = v(s)$ 是曲面上一条弧长参数曲线. 设 $C$ 与 $u$ 线的夹角为 $\theta$, 则 $C$ 的测地曲率为
+$$
+k_g = \frac{d\theta}{ds} - \frac{1}{2\sqrt{G}} \frac{\partial \ln E}{\partial v} \cos\theta + \frac{1}{2\sqrt{E}} \frac{\partial \ln G}{\partial u} \sin\theta.
+$$
+\end{theorem}
+\end{document}

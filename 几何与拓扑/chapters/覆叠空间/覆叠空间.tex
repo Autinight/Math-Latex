@@ -1,0 +1,67 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+    
+\chapter{覆叠空间}
+
+\section{基本定义}
+
+\begin{definition}
+    令 \(  p: \overline{X}\to X  \)是满射.称 \(  X  \)的一个开子集 \(  V  \)是由 \(  p  \)均匀覆叠的,若 \(  \pi  ^{-1} \left( V \right) \)写作 \(  \overline{X}  \)开子集的无交并: \[
+    p ^{-1} \left( V \right)=\coprod  _{i}U_{i}
+    \]      其中 \(  U_{i}  \)在 \(  p  \)下同胚地映到 \(  V  \).此时,称每个 \(  U_{i}  \)为 \(  p  \)在 \(  V  \)上的一个层.  若 \(  X  \)  被由 \(  p  \)均匀覆叠的开子集所覆盖,则称 \(  p  \)为一个覆叠投影, \(  \overline{X}  \)为 \(  X  \)的覆叠空间. 
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 简称 \(  \overline{X}  \)是 \(  X  \)的复叠空间.称 \(  \overline{X}  \)  覆叠投影\(  p  \)的全空间, \(  X  \)是 \(  p  \)基空间.  
+        \item 每个复叠投影都是局部同胚映射.因此 \(  \overline{X}  \)和 \(  X  \)有相同的局部拓扑性质.   
+        \item 每个局部同胚都是开映射,故 复叠投影亦然.
+        \item 一般而言,给定映射 \(  f:X\to Y  \)和 \(  y \in Y  \),称 \(  f^{-1} \left( y \right)   \)为 \(  f  \)在 \(  y  \)上的纤维,若 \(  f  \)是局部同胚,则 \(  f  \)的每个纤维都是离散的.特别的,复叠投影的每个纤维也都是离散的.
+        \item   当 \(  x  \)在一个被均匀复叠的开集上移动时, \(  p ^{-1} \left( x \right)   \)的基数不变.若 \(  X  \)是连通的,则任意两个被均匀复叠的开集相交,从而 \(  p ^{-1} \left( x \right)   \)的基数与  \(  x\in X  \)的选取无关,成为 \textbf{\(  p  \)的层数 }.若 \(  p  \)的层数有限,则称 \(  p  \)是一个\textbf{有限复叠}.      例如 \(  z \mapsto z^{n}  \)是 \(  S^{1}  \)到 \(  S^{1}  \)的有限复叠.   
+    \end{enumerate}
+\end{remark}
+
+\begin{example}[  覆叠空间]\label{exp:3.17-1}
+    \begin{enumerate}
+        \item 每个同胚都是一个覆叠投影;
+        \item  考虑\(  \exp :\mathbb{R} \to \mathbb{S}^{1}  \) ,任意固定 \(   \theta : 0\le  \theta <2\pi   \),考虑\(  U= \mathbb{S}^{1}\setminus \left\{ e^{i \theta } \right\}  \), \(  \left( \exp  \right)^{-1} \left( U \right)    \)是一些区间 \(   \theta + 2n\pi <t< \theta + \left( 2n+ 2 \right)\pi    \) 的无交并.每个区间都在 \(  \exp   \)下与 \( U  \)同胚.
+        \item 映射 \(  z\mapsto z^{n}  \)给出 \(  \mathbb{C} ^{*}  \)到自身的一个覆叠投影,其中 \(  n  \)是正整数, \(  \mathbb{C} ^{*}  \)是非零复数集.映射在 \(  \mathbb{S}^{1}  \)上的限制给出 \(  \mathbb{S}^{1}  \)到自身的覆叠投影. 
+        \item 设 \(  Y  \)是 \(  X  \)的子空间, \(  p  \)是  \(  X  \)的覆叠投影,则 \(  p  \)在\(  p ^{-1} \left( Y \right)   \)上的限制给出 到 \(  Y  \)的覆叠投影.
+        \item 容易构造不是覆叠投影的局部同胚:对于覆叠投影 \(  \overline{X}\to X  \),和 \(  \overline{X}  \)上的开集 \(  U  \),限制映射仍是局部同胚,但是若取 \(  U = \overline{X}\setminus  \bar{x}  \),则 限制映射不再是一个覆叠投影.                     
+    \end{enumerate}
+    
+\end{example}
+
+\hspace*{\fill} 
+
+
+\begin{theorem}
+    令 \(  p: \overline{X}\to X  \)是连续映射,其中 \(  X  \)是局部道路连通的.
+    \begin{enumerate}
+        \item 映射 \(  p  \)是覆叠投影,当且仅当对于每个  \(  X  \)的分支\footnote{局部道路连通空间中,道路分支和连通分支等价,故我们统称分支} \(  C  \),限制映射 \(  p: p ^{-1} \left( C \right)\to C   \)是覆叠投影.\footnote{局部道路连通性给出道路的分拆形成的对 \(  \overline{X}  \)的分拆也是合适的. }
+        \item 若 \(  p  \)是一个覆叠投影,则对于每个 \(  \overline{X}  \)的分支 \(  \overline{C}  \),映射 \(  p: \overline{C}\to p\left( \overline{C} \right)   \)是一个覆叠投影\footnote{主要是因为对 \(  \overline{X}  \)的连通分拆不会破坏层的完整性 .由此,我们可以单独考虑一个分支上的层.} ,且 \(  p\left( \overline{C} \right)   \)是 \(  X  \)的一个分支. 
+    \end{enumerate}
+      
+\end{theorem}
+\begin{remark}
+    \begin{enumerate}
+        \item 定理指出,我们可以一次性只研究全空间的一个分支上的覆叠投影.进而可以合理地做以下约定:\textbf{若无特别指出,我们以下总不妨设基空间和全空间都是局部道路连通且连通的}
+    \end{enumerate}
+    
+\end{remark}
+\begin{proof}
+    \begin{enumerate}
+        \item \ref{exp:3.17-1}已经指出 \(  p  ^{-1} \left( C \right)\to C   \)是覆叠投影;
+        对于反方向, 最关键的点在于局部道路连通性给出 每个 \(  C  \)也是开集.因此,对于任意的 \(  x \in X  \),考虑包含了 \(  x  \)的道路分支 \(  C  \), \(  p|_{p ^{-1}  \left( C \right) }  \)的均匀覆叠性给出  \(  x  \)的被 \(  p: p ^{-1} \left( C \right)\to C   \)       均匀覆盖了的开邻域 \(  U \subseteq C  \).从而 \(  U  \)也是 \(  x  \)在 \(  X  \)中的被 \(  p: \overline{X}\to C  \)均匀覆盖了的开邻域.     
+        \item 首先 \(  p\left( \overline{C} \right) =  :C   \)是开集.给定 \(  x \in C  \),令 \(  V  \)是被 \(  p  \)均匀覆叠的连通开邻域.令 \(  p ^{-1} \left( V \right)=  \coprod  U_{i}   \),则由于覆叠的性质,每个 \(  U_{i}  \)也是连通的.于是要么 \(  U_{i}\bar{\subseteq}C  \)       ,要么 \(  U_{i}\cap  \overline{C}= \varnothing  \).由此可知 \(  V  \)是被 \(  p|_{\overline{C}}  \)   均匀覆叠的.
+        
+        最后说明 \(  C  \)是分支, 令 \(  x  \)是 \(  C  \)的闭包上的一点, \(  V  \)是同上面一样的 \(  x  \)的开邻域.则至少其中一个 \(  U_{i}  \)与 \(  \overline{C}  \)相交,进而完全地落在 \(  \overline{C}  \)上    ,因此 \(  V\subseteq C  \), \(  x \in C  \).这表明 \(  C  \)是既开又闭的.   
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+
+
+\end{document}

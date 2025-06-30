@@ -1,0 +1,36 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+    
+\chapter{光滑流形}
+
+\section{一些例子}
+
+\begin{example}[矩阵空间]
+    令 \(  M\left( m\times n,\mathbb{R}  \right)   \)表示全体 \(  m\times n  \)的实矩阵,则 \(  M\left( m\times n,\mathbb{R}  \right)   \)可以等同于 \(  \mathbb{R} ^{mn}  \)构作一个\(  \mathbb{R}   \)上的 \(  mn  \)维  光滑流形.
+    类似地,复矩阵空间 \(  M\left( mm\times n,\mathbb{C} \right)   \) 可以构作 \(  \mathbb{R}   \)上的 \(  2mn  \)维光滑流形.  
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{example}[开子流形]\label{开子流形}
+    令 \(  U  \)表示 \(  \mathbb{R} ^{n}  \)的任意开子集. \(  U  \)构成一个拓扑 \(  n  \)-流形,单个图 \(  \left( U,\operatorname{Id}_{U} \right)   \)可以定义出 \(  U  \)上的一个光滑结构.
+    
+    更一般地,若 \(  M  \)是光滑 \(  n  \)-流形,令 \(  U\subseteq M  \)是任意开子集.可以定义 \(  U  \)上的图册 \[
+    \mathcal{A}_{U}: =  \left\{     M  \text{的光滑图} \left( V,\varphi  \right) : V\subseteq U \right\}
+    \]    对于每个 \(  p \in U  \), \(  p  \)都含与 \(  M  \)的某个光滑坐标卡 \(  \left( W, \varphi  \right)   \)；若
+    令 \(  V =  W\cap U  \),则 \(  \left( V, \varphi |_{V} \right)   \)      是 \(  \mathcal{A}_{U}  \)中包含了 \(  p  \)的一个图.
+    因此 \(  U  \)被 \(  \mathcal{A}_{U}  \)中的一些图覆盖,容易证明这构成 \(  U  \)的一个光滑图册.因此 \(  M  \)的任意开子集上都可以定义出自然的光滑 \(  n  \)-流形结构.配备了
+    此结构下的开子集被称为是 \(  M  \)的一个 \textbf{开子流形}.        
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{example}[一般线性群]\label{一般线性群}
+    \textbf{一般线性群} \(  \mathrm{GL}\left( n,\mathbb{R}  \right)   \)是指全体 \(  n\times n  \)可逆实矩阵构成的集合.由于它是 \(  M\left( ,n_{R} \right)   \)的一个开子集,因此
+     \(  \mathrm{GL}\left( n,\mathbb{R}  \right)   \)可以构作一个光滑流形.    
+\end{example}
+
+\hspace*{\fill} 
+
+\end{document}

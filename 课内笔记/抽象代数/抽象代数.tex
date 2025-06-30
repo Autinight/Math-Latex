@@ -1,0 +1,1520 @@
+\documentclass[lang=cn,12pt,color=green,fontset=none,pad]{elegantbook}
+
+\title{抽象代数}
+% \subtitle{课内复习版}
+
+\author{Autin}
+
+\usepackage{quiver} 
+
+
+\setmainfont{Aa顺風顺水顺财神}[BoldFont=Shanggu Round]
+\setCJKmainfont{Aa顺風顺水顺财神}[BoldFont=Shanggu Round]
+\setCJKsansfont{Aa顺風顺水顺财神}
+\setCJKmonofont{Aa顺風顺水顺财神}
+
+\extrainfo{}
+
+\setcounter{tocdepth}{3}
+
+% \logo{xmu-logo.pdf}
+\cover{image.png}
+\usepackage{CJKutf8}
+% 本文档命令
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+
+% 修改标题页的橙色带
+% \definecolor{customcolor}{RGB}{32,178,170}
+% \colorlet{coverlinecolor}{customcolor}
+
+\begin{document}
+
+\maketitle
+
+
+\frontmatter
+
+
+\tableofcontents
+
+\mainmatter
+
+\part{环论}
+
+\chapter{环}
+
+\section{定义和例子}
+\begin{definition}{环}
+    （含幺）环是一组资料 \(  \left( R,+ ,\cdot  \right)   \),其中 \begin{enumerate}
+        \item \(  \left( R,+  \right)   \)是交换群.
+        \item 乘法运算 \(  \cdot : R\times R \to R  \)简记为 \(  a\cdot b= ab  \),满足下述性质：对于所有的 \(  a,b,c\in R  \) 
+        \begin{itemize}
+            \item \(  a\left( b+ c \right)= ab+ ac,\quad \left( b+ c \right)a =  ba+ ca    \) ,  (分配率,或曰双线性),
+            \item \(  a\left( bc \right)= \left( ab \right)c    \)  (乘法结合律)；    
+        \end{itemize}
+        \item 存在元素 \(  1\in R  \),使得对于所有的 \(  a \in R  \),皆有 \(  a\cdot 1= a=  1\cdot a  \),称为 \(  R  \)的幺元. 
+            
+    \end{enumerate}
+     
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 除去和幺元相关的性质,得到 \(  \left( R,+ ,\cdot  \right)   \)称作无幺环.
+        \item 定义蕴含了 \(  R,\cdot   \)构成幺半群,故幺元 \(  1  \)唯一.  
+        \item 练习\ref{ex:Gauss domain}
+    \end{enumerate}
+     
+\end{remark}
+
+
+\section{一些特殊的环}
+
+\begin{definition}{交换环}
+    称环 \(  R  \)是交换的,若 \[
+    \forall a,b \in \mathbb{R} ,\quad  ab= ba
+    \] 
+\end{definition}
+
+\begin{remark}
+    类似地可以定义交换的无幺环.
+\end{remark}
+
+\begin{definition}{零因子}
+    设 \(  R  \)是环（或无幺环）.称 \(  a \in R  \)是一个零因子,若存在非零元 \(  b \in R  \),使得 \(  ab= 0  \)或 \(  ba= 0  \).
+\end{definition}
+
+\begin{remark}
+    \(  0  \)总是非平凡环中的零因子（ \(  0\cdot 1= 0,1\neq 0  \)）.  
+\end{remark}
+
+\begin{definition}{整环}
+    无非零零因子的非平凡交换环被称为是一个整环. 
+\end{definition}
+
+\begin{proposition}{消去律}
+    若 \(  R  \)是环,\(   a \in R  \).若 \(  a  \)不是零因子,则乘法消去律对 \(  a  \)成立,即 \[
+    \forall b,c \in R\quad,\quad   ab= ac\implies b=  c \text{且} ba= ca \implies b= c
+    \]    特别地,若 \(  R  \)是整环,则消去律对于 \(  R  \)中任一非零元成立.  
+\end{proposition}
+
+\begin{proof}
+    当 \(  a  \)不是零因子, 
+    \[
+    ab= ac\implies a\left( b-c \right)= 0 \implies b= c 
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{definition}{可逆元（单位）}
+    设 \(  R  \)是环,\(  a,b \in R  \).称 \(  b  \)是 \(  a  \)的一个乘法逆,若 \(  ab= ba= 1_{R}  \).
+    
+    若 \(  a \in R  \)是（在 \(  R  \)中）是 乘法可逆的 ,则称 \(  a  \)是一个可逆元（或单位）. \(  R  \)中单位的全体记作 \(  R^{*}  \).   
+\end{definition}
+
+\begin{definition}{除环和域}
+    若非零环 \(  R  \)中的每个元素皆可逆,则称 \(  R  \)为除环.交换除环称为域.  
+\end{definition}
+
+\begin{proposition}\label{pro:finite-int-domain-to-filde}
+    若 \(  R  \)是一个有限整环,则 \(  R  \)是一个域.  
+\end{proposition}
+
+\begin{proof}
+    设 \(  R  \)是有限整环, \(  a \in R  \)是非零元（由整环的定义存在）. 
+    为了说明 \(  a  \)是可逆元,令 \[
+     r_1,\cdots,r_m 
+    \]是 \(  R  \)的所有元素,且无充分.断言 \[
+    ar_1,\cdots ,ar_{m}
+    \] 也无重复地组成 \(  R  \)的全体元素.事实上,由于 \(  a  \)不是零因子,故 \(  ar_i= ar_{j}  \)蕴含 \(  r_{i}= r_{j}  \). 这表明上列元素无重复.又 \(  R  \)最多只有 \(  m  \)个元素
+    ,因此 \(  ar_1,\cdots ,ar_{m}  \)就是 \(  R  \)的所有元素.立即有 \(  ar_{i}= 1  \)对某个 \(  r_{i}  \)成立,\(  R  \)的交换性立即给出 \(  r_{i}a =  1  \),于是 \(  a  \)是可逆元.         
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{remark}
+    \begin{itemize}
+        \item 若 \(  R  \)是域,则 \(  R^{*}=  R\setminus \left\{ 0 \right\}  \)  
+    \end{itemize}
+    
+\end{remark}
+
+\begin{problemset}
+    \item \label{ex:Gauss domain}设\(  \mathbb{Z} [i]=  \left\{ a+ bi:a,b \in \mathbb{Z}  \right\}  \),其中 \(  i^{2}= -1  \)  .证明集合 \(  \mathbb{Z} [i]  \)在复数加法和乘法下构成一个无幺环.（Gauss整环） 
+    \begin{proof}
+        \begin{enumerate}
+            \item 加法子群：
+            
+            任取 \(  a+ bi,c+  d i\in \mathbb{Z} [i]  \),其中 \(  a,b,c,d \in \mathbb{Z}   \),我们有 \[
+            \left( a+ bi \right)-\left( c+  d i \right) =  \left( a-c \right)+ \left( b-d \right) i \in \mathbb{Z} [i]    
+            \]因此 \(  \left( \mathbb{Z} [i],+  \right)   \)是 \(  \mathbb{C}   \)的一个加法子群.  
+            \item 乘法封闭：
+            
+             \[
+             \left( a+ bi \right)\left( c+ d i  \right) =  \left( ac-bd \right)+ \left( ad+ bc \right)i \in \mathbb{Z} [i]    
+             \]故对复数乘法封闭.
+
+             \item 双线性、结合律：
+             
+             继承自 \(  \mathbb{C}   \) 
+        \end{enumerate}
+        综上 \(  \mathbb{Z} [i]  \)是一个无幺环. 
+    
+        \hfill $\square$
+    \end{proof}
+    \item 设 \(  R  \)是无幺环,若对于任意的 \(  a,b,c \in R  \),\(  a\neq 0,ab= ca  \)蕴含 \(  b= c  \).则 \(  R  \)是交换的.
+    \begin{proof}
+        任取 \(  a,b \in R  \), 注意到 \[
+         a\left( ba \right)= \left( ab \right)a  
+         \]由条件 \(  ab= ba  \) 
+        
+        \hfill $\square$
+    \end{proof}     
+
+    \item 设 \(  R  \)是非平凡的有限无幺环,若 \(  R  \)无非零零因子  ,则 \(  R  \)是除环.  
+    \begin{proof}
+       
+        \begin{enumerate}
+            \item  任取 \(  0 \neq  a \in R  \),由 \(  a  \)不是零因子, \(  ax= ay \implies x =  y  \),因此左乘 \(  a  \)是 \(  R  \)上的单同态,又 \(  R  \)有限,故 \(  aR = R  \),同理 \(  Ra = a  \).
+            故存在 \(  r_1,r_2  \),使得  \[
+            ar_1= a= r_2a
+            \] 我们有 \[
+            a\left( r_1-r_2 \right)a =  ar_1a - ar_2a =  a \cdot a-a\cdot a =  0 
+            \] 于是再一次由 \(  a  \)不是零因子 \[
+            a\left( r_1-r_2 \right)= 0 ,
+            \]进而 \(  r_1= r_2 =: r \).
+            \item 再任取 \(  b \in R  \),由上面的讨论,存在 \(  r^{\prime}   \),使得 \[
+                br^{\prime} = b=  r^{\prime} b
+                \].再由 \(  aR =  R  \)知,  存在 \(  c  \),使得 \(  ac =  b  \)   .于是 \[
+                 r^{\prime} b =  b =  ac =  rac =  rb 
+                \]由 \(  b  \)不是零因子 \(  r =  r\pi   \).这表明 \(  r  \)是 \(  R  \)中的幺元,记作 \(  1  \) .   
+
+            \item 最后,根据 \(  aR= R= Ra  \),可得存在 \(  d,d^{\prime}  \in R  \),使得 \[
+            ad =  1 =  d^{\prime} a
+            \]  由 \[
+            a\left( d-d^{\prime}  \right)a =  ada -ad^{\prime} a = a-a =  0 
+            \]可得 \(  d =  d^{\prime}   \),因此 \(  ad =  da  = 1 \),这表明 \(  a  \)是可逆元.   
+        \end{enumerate}
+    \end{proof}
+
+    \item 设 \(  R  \)是（含幺）环, \(  a,b  \)是 \(  R  \)中的元素 .证明 \(  1-ab  \)可逆当且仅当 \(  1-ba  \)可逆.    
+    \begin{proof}
+         有对称性,只证一边即可,设 \(  1-ab  \)可逆,则 \[
+         \begin{aligned}
+         \left( 1-ba \right)\left( b\left( 1-ab \right)^{-1} a  \right)& =  b\left( 1-ab \right)^{-1} a- bab \left( 1-ab \right)^{-1} a\\ 
+          & =  b \left( 1-ab \right)\left( 1-ab \right)^{-1} a\\ 
+           & =  ba\\ 
+            & = 1-\left( 1-ba \right)        
+         \end{aligned}
+         \] 因此 \[
+         \left( 1-ba \right)\left( 1+ b\left( 1-ab \right)^{-1} a  \right)= 1  
+         \]这表明 \(  1-ba  \)可逆. 
+    
+        \hfill $\square$
+    \end{proof}
+\end{problemset}
+
+
+
+\chapter{环范畴}
+
+
+\section{子环}
+\begin{definition}{子环}
+    设 $ R $是环,$ S $是 $ R $的子集.设 $ 0_{R} \in S $, $ 1_{R}\in S $,并且 $ S $在 $ R $中的运算 $ +  $和运算 $ \cdot  $下封闭.称 $ S $是 $ R $ 一个子环,若 $ S $满足所有环公理,并且 $ 0_{S}=0_{R},1_{S}= 1_{R} $.            
+\end{definition}
+\begin{remark}
+  \begin{itemize}
+    \item   对于无幺环,则无需 $ 1_{R}\in S $以及 $ 1_{S}= 1_{R} $ .
+  \end{itemize}
+  
+\end{remark}
+
+\begin{proposition}{子环判据}\label{subring-cri}
+    设 $ R $是一个环, $ S\subseteq R $是包含了 $ 0_{R} $和 $ 1_{R} $的子集.则 $ S $是 $ R $的子环,当且仅当它在 $ +  $和 $ \cdot  $下封闭,并且包含 $ S $的加法逆.      
+\end{proposition}
+
+\begin{remark}
+    对于无幺环,不需要 \(  1_{R} \in S  \). 
+\end{remark}
+
+\begin{problemset}
+    \item 设 \(  R= \left\{  \overline{0},\overline{2},\overline{4},\overline{6},\overline{8} \right\}  \)是环 \(  \mathbb{Z} _{10}  \)的子无幺环.问 \(  R  \)是否有幺元？   
+    
+    \begin{remark}
+        \(  R  \)在（含幺）环范畴下不是 \(  \mathbb{Z} _{10}  \)的子环；在无幺环范畴下是 \(  \mathbb{Z} _{10}  \)的子无幺环.
+    \end{remark}
+
+    \begin{proof}
+        注意到 \[
+        \overline{6}\cdot \overline{2}= \overline{12}= \overline{2},\quad \overline{6}\cdot \overline{4}= \overline{24}= \overline{4},\quad \overline{6}\cdot \overline{6}= \overline{36}= \overline{6},\quad \overline{6}\cdot \overline{8}= \overline{48}= \overline{8}
+        \]因此 \(  R  \)有单位元 \(  \overline{6}  \).  
+    
+        \hfill $\square$
+    \end{proof}
+\end{problemset}
+
+\chapter{标准分解,商环,同构定理}
+
+
+
+\section{像与核}
+\begin{proposition}
+    设 $ f:R\to S    $是环同态.则像 $ S^{\prime} = \operatorname{im}\,f: = f\left( R \right)  $是 $ S $的子环.  
+\end{proposition}
+
+\begin{remark}
+    \begin{itemize}
+        \item 使用与下面相似的讨论可得：当 $ R^{\prime}  $是 $ R $的子环时, $ f\left( R^{\prime}  \right)  $是 $ S $的一个子环.    
+    \end{itemize}
+    
+\end{remark}
+\begin{proof}
+
+
+    因为环同态映 $ 1 $为 $ 1 $,映 $ 0 $为 $ 0 $,所以$ f \left( R \right)  $同时包含0和1.
+    
+
+    为了说明 $ f\left( R \right)  $在运算下封闭,令 $ s_1,s_2\in f\left( R \right)  $；则 $ \exists r_1,r_2\in R $,使得 $ s_1=f\left( r_1 \right),s_2=f\left( r_2 \right)   $.由于 $ f $保持运算,我们有  $$
+    s_1+ s_2=f\left( r_1 \right)+ f\left( r_2 \right)=f\left( r_1+ r_2 \right),\quad s_1\cdot s_2=f\left( r_1  \right)\cdot f\left( r_2 \right)= f\left( r_1\cdot r_2 \right)      
+    $$    因此 $ s_1+ s_2 $和 $ s_1\cdot s_2 $位于 $ f\left( R \right)  $中.
+    
+
+    最后,为了说明 $ f\left( R \right)  $包含加法逆,令 $ s \in f\left( R \right)  $,则 $ \exists r \in R $   ,使得 $ s = f\left( r \right)  $,并且 $$
+    -s= -f\left( r \right)= f\left( -r \right)  
+    $$因此 $ -s \in f\left( R \right)  $  .
+
+
+    由命题\ref{subring-cri}即得.
+
+
+    \hfill $\square$
+\end{proof} 
+
+
+\begin{definition}{理想}
+    称环(或无幺环) $ R $的一个子集 $ I $是一个理想,若 $ \left( I,+  \right)  $是 $ R $的（正规）子群,且满足以下被称为是“吸收性”的性质 $$
+    \left( \forall a \in I \right) \left( \forall r\in R \right),\quad ar \in I \text{且} ra \in I  
+    $$
+\end{definition}
+
+\begin{remark}
+    \begin{itemize}
+        \item 上面的定义也称 $ I $是一个双边理想；若只满足 $ ar \in I $则称为右理想,左理想同理.  
+    \end{itemize}
+    
+\end{remark}
+
+\begin{proposition}\label{pro:ideal-cri}
+     环$ R $的非空子集 $ I $是一个理想,当且仅当它在加法下封闭且满足吸收性.
+\end{proposition}
+\begin{remark}
+    对于无幺环,无法利用下面的 \(  -a = \left( -1 \right)\cdot a \in I   \) 
+\end{remark}
+\begin{proof} 只需说明充分性.
+
+    由 $ I $非空,它至少存在一个元 $ a \in I $,  由吸收性 $ 0 = 0\cdot a \in I$. 
+    
+    此外,对于任意的 $ a \in I $,由吸收性 $ -a = \left( -1 \right)\cdot a \in  I  $.
+
+    以下表明 $ I $是 $ R $的一个加法子群,又它满足吸收性,故 $ I $是 $ R $的一个理想.    
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    设 $ f:R\to S $是一个环同态.则 $ \left( \ker f \right)  $是 $ R $的一个理想. 
+\end{proposition}
+\begin{proof}
+    首先 $ f\left( 0 \right) = 0,0 \in \operatorname{ker}\,f  $ ,故 $ \operatorname{ker}\,f $非空.
+    
+    任取 $ a, b \in \operatorname{ker}\,f $, $$
+    f\left( a+ b \right) = f\left( a \right)+ f\left( b \right) = 0+ 0 = 0   
+    $$因此 $ a+ b \in \operatorname{ker}\,f $, $ \operatorname{ker}\,f $对加法封闭.
+    
+    再任取 $ r \in R $, $$
+    f\left( ra \right) = f\left( r \right)f\left( a \right) = f\left( r \right)\cdot 0 = 0 = 0 \cdot  f\left( r \right) = f\left( ar \right)      
+    $$ 因此 $ ra,ar \in  \operatorname{ker}\,f $,这表明 $ \operatorname{ker}\,f $  具有吸收性,故由命题\ref{pro:ideal-cri}, $ \operatorname{ker}\,f $是 $ R $的一个理想.  
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    若 $ R $是交换环(或无幺环), $ a \in R $,则子集 $$
+    \left( a \right):  \left\{ ra: r \in R \right\} 
+    $$是 $ R $的一个理想.   
+\end{proposition}
+
+\begin{remark}
+    \begin{itemize}
+        \item 类似地有 $ \left(  a_1,\cdots,a_n  \right)  $是 $ R $的一个理想.  
+    \end{itemize}
+    
+\end{remark}
+\begin{proof}
+    $ a \in \left( a \right)  $,故 $ \left( a \right)  $非空.取 $ r_1,r_2\in R $,则 $$
+    r_1a- r_2a=\left(r_1- r_2 \right)a \in  \left( a \right)  
+    $$ 故 $ \left( a \right)  $是加法子群.
+    
+    此外,任取 $ b = ca $,其中 $ c \in R $, 我们有 $$
+    rb = r\left( ca \right)= \left( rc \right)a  \in \left( a \right)   
+    $$ 这表明 $ R $有左吸收性.此外右 $ R $交换,$ R $也有右吸收性.
+    
+    由命题\ref{pro:ideal-cri}, $ \left( a \right)  $是 $ R $的一个理想.  
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}
+    设 $ R $是交换环,$ a \in R $.则 $ \left( a \right)  $被称为是由 $ a $生成的主理想.此外,对于 $  a_1,\cdots,a_n \in R $,理想 $ \left(  a_1,\cdots,a_n  \right)  $被称为是由 $  a_1,\cdots,a_n  $生成的理想.       
+\end{definition}
+\section{商环}  
+
+\begin{lemma}
+    设 $ I $是环 $ R $的理想,$ a,a^{\prime} ,b,b^{\prime}  \in R $,若 $ a^{\prime} -a \in I,b^{\prime} -b \in I $ 则 $$
+    a^{\prime} \cdot b^{\prime} -a\cdot b \in I
+    $$   
+\end{lemma}
+
+\begin{proof}
+    设 $ a^{\prime} -a=i,b^{\prime} -b=j $,则 $$
+    \begin{aligned}
+        a^{\prime} \cdot b^{\prime} -a\cdot b & = \left( a+ i \right)  \left( b+ i \right)-ab\\ 
+         & = ai+ ib+ i^{2} \in  I 
+    \end{aligned}
+    $$ 
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}
+    设 $ I $是环 $ R $的理想,$ a+ I, b+ I $是 $ R/I $中的元素,定义 $$
+    \left( a+ I \right)\cdot \left( b+ I \right): = \left( a\cdot b \right)+ I   
+    $$    
+\end{definition}
+\begin{remark}
+    该定义由上述引理是良定义的.
+\end{remark}
+
+\begin{theorem}
+    设 $ I $是环 $ R $的理想, $ \left( R/I,+ ,\cdot  \right)  $是一个环,使得 $ 0_{R/I} = 0+ I = I, 1_{R / I}= 1+ I $    
+\end{theorem}
+\begin{proof}
+    trivial的验证,只取一项举例：
+
+    任取陪集 $ a + I   $,考虑 $ \left( -a \right)+ I  $, $$
+    \left( a+ I \right)+ \left( \left( -a \right)+ I  \right)= \left( a-a \right)+ I = 0+ I,\quad  \left( \left( -a \right)+ I  \right)+ \left( a+ I \right) = \left( -a+ a \right)+ I = 0+ I      
+    $$  故加法逆存在.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{example}
+    设 $ R = \mathbb{Z} [x] $是整系数多项式环.考察 $ \mathbb{Z} [x]/\left( x \right)  $.
+    
+    每个 $ \mathbb{Z} [x] $中的元素写作 $ f\left( x \right)   = a_0+ a_1x+ \cdots + a_{n}x^{n}$.注意到 $ a_0 = f\left( 0 \right)  $,且 $$
+    \left( a_0+ a_1x+ \cdots + a_{n}x^{n} \right)-a_0= \left( a_1+ a_2x+ \cdots + a_{n}x^{n-1} \right)\cdot x \in \left( x \right)   
+    $$ 因此 $ f\left( x \right)-f\left( 0 \right) \in \left( x \right)    $,有陪集的等式 $$
+    f\left( x \right)+ \left( x \right) = f\left( 0 \right)+ \left( x \right)    
+    $$ 商环 $ \mathbb{Z} [x]/\left( x \right)  $中任意的元素都有形式 $ a+ \left( x \right)  $,其中 $ a $是一个整数.
+    
+    另外,定义 $$
+   \begin{aligned}
+    \varphi :\mathbb{Z} &\to \mathbb{Z} [x]/\left( x \right) \\ 
+     a& \mapsto a+ \left( x \right)  
+   \end{aligned}
+    $$上面的讨论告诉我们 $ \varphi  $是满射.另一方面,若 $ \varphi \left( a \right)=\varphi \left( b \right)   $,其中 $ a,b \in \mathbb{Z}  $,则 $$
+    b+ \left( x \right)=a+ \left( x \right)  
+    $$  这表明 $ b-a $写作 $ x $与某个元的乘积,但是 $ b-a $是整数,只能有 $ b-a =0 $   ,故$ \varphi  $是单射.   
+    此外 $ \varphi  $是环同态,首先 $ \varphi \left( 1 \right)=1+ \left( x \right)   $是单位元,且 $$
+    \varphi \left( a+ b \right)=\left( a+ b \right)+ \left( x \right)= [a+ \left( x \right) ]+ [b+ \left( x \right) ]    =\varphi \left( a \right)+ \varphi \left( b \right)  
+    $$  也可以直接证明对乘法的保持.
+
+    因此 $ \mathbb{Z} [x]/\left( x \right) \simeq \mathbb{Z}   $.
+    
+    上面的讨论没有用到 $ \mathbb{Z}  $的特殊性质,相同的讨论完全可以得到 $$
+    R[x]/ \left( x \right)\simeq R 
+    $$对任意的环\footnote{由于 $ x $与 $ \mathbb{R} [x] $中任意元素交换,因此甚至无需假设 $ R $是交换的 , $ \left( x \right): = \left\{ rx:r \in R \right\}  $自动就是一个理想.   } $ R $成立.  
+\end{example}
+
+\begin{example}
+    设 $ R $是交换环, $ r \in R $,考虑 $ R[x] $的理想 $ \left( x-r \right)  $   ,考虑 $ R[x]/\left( x-r \right)  $.
+    
+    令 $ x = t+ r $,则  $ g\left( t \right): = f\left( t+ r \right)   $是 $ t $的多项式 ,则上面的例子告诉我们 $  g\left( t \right)-g\left( 0 \right)  $是 $ t $的乘积.   于是 $$
+    f\left( x \right)-f\left( r \right) \in \left( x-r \right)   
+    $$给出陪集的等式 $$
+    f\left( x \right)+ \left( x-r \right)= f\left( r \right)+ \left( x-r \right)    
+    $$我们知道 $ R[x]/\left( x-r \right)  $中任意元素都写作 $ a+ \left( x-r \right)  ,a \in R$.类似地,定义 $ \varphi : R\to R[x]/\left( x-r \right)  $   ,可以类似地验证 $ \varphi  $是环同构. 
+
+    因此我们有结论 $ R[x] /\left( x-r \right)\simeq R  $都与任意的交换环 $ R $和 $ r \in R $成立.   
+\end{example}
+
+\begin{example}考虑 $ \mathbb{R} [x]/\left( x^{2}+ 1 \right)  $,证明 $ \mathbb{C}\simeq  \mathbb{R} [x]/\left( x^{2}+ 1 \right)  $  .
+
+    使用与上面两个例子类似的技巧,可以得到 $ \mathbb{R} [x]/\left( x^{2}+ 1 \right)  $中的每个元素唯一地写作 $$
+    a+ bx+ \left( x^{2}+ 1 \right) 
+    $$进而由一对实数 $ \left( a,b \right)  $决定.我们规定实数对有着与 $ \mathbb{R} [x]/\left( x^{2}+ 1 \right)  $   上相同的加法和乘法,那么 $$
+  \begin{aligned}
+    \left( a_1,b_1 \right)+ \left( a_2,b_2 \right)& \sim  \left( a_1+ b_1x+ \left( x^{2}+ 1 \right)  \right)+ \left( a_2+ b_2x+ \left( x^{2}+ 1 \right)  \right)  \\ 
+     & =  \left( a_1+ a_2 \right)+ \left( b_1+ b_2 \right)x+  \left( x^{2}+ 1 \right)\\ 
+      & \sim  \left( a_1+ a_2,b_1+ b_2 \right) 
+  \end{aligned}  
+    $$对于乘法 $$
+  \begin{aligned}
+    \left( a_1,b_1 \right)\cdot \left( a_2,b_2 \right)  & \sim  \left( a_1+ b_1x+ \left( x^{2}+ 1 \right)  \right)\cdot \left( a_2+ b_2x+ \left( x^{2}+ 1 \right)  \right)\\ 
+     & = \left( a_1+ b_1x \right)\cdot \left( a_2+ b_2x \right)+ \left( x^{2}+ 1 \right)\\ 
+      & = a_1a_2+ \left( a_1b_2+ a_2b_1 \right)x+ b_1b_2x^{2}+ \left( x^{2}+ 1 \right)\\ 
+       & = \left( a_1a_{2}-b_1b_2 \right)+ \left( a_1b_2+ a_2b_1 \right)x+ \left( x^{2}+ 1 \right)           \\ 
+        &\sim \left(  a_1a_2-b_1b_2,a_1b_2+ a_2b_1\right) 
+  \end{aligned}
+    $$定义 $ a+ bi\mapsto a+ bx+ \left( x^{2}+ 1 \right)  $,得到 $ \mathbb{C}\simeq  \mathbb{R} [x]/\left( x^{2}+ 1 \right)  $  
+    
+\end{example}
+
+\begin{problemset}
+    \item 设 \(  U  \)是环（或无幺环）\(  R  \)的理想,令 \(  r\left( U \right) =  \left\{  x \in R: \forall u \in U,xu= 0 \right\}   \)   .证明： \(  r\left( U \right)   \)也是 \(  R  \)的理想.
+        \begin{proof}
+            \begin{enumerate}
+                \item 显然 \(  0 \in r\left( U \right)   \),故 \(  r\left( U \right)   \)非空.任取 \(  x,y \in r\left( U \right)   \), \[
+                    \left( x-y \right)u =  xu-y_0 =  0 
+                    \]故 \(  x-y \in r\left( U \right)   \),这表明 \(  r\left( U \right)   \)是加法子群.
+                \item 任取 \(  x \in r\left( U \right),a \in R   \).由 \(  U  \)是理想,对于每个 \(  u \in U  \), \(  au \in U  \),于是  \[
+                \left( ax \right)u  = a\left( xu \right)=  0,\quad  \left( xa \right)u =  x\left( au \right) =  0   
+                \] 这表明 \(  ax,xa \in r\left( U \right)   \),故 \(  r\left( U \right)   \)满足吸收性.  
+            \end{enumerate}
+            综上可得 \(  r\left( U \right)   \)是 \(  R  \)的一个理想.  
+        
+            \hfill $\square$
+        \end{proof}  
+
+
+    \item 设 \(  R  \)是环（或无幺环）,\(  I,J  \)是 \(  R  \)的理想.令 \(  I J=  \left\{ \sum _{k= 1}^{n}a_{i}b_{i}: a_{i}\in I,b_{i}\in J,n \in \mathbb{N}  \right\}  \)
+    \begin{itemize}
+        \item 证明 \(  I J  \)也是环 \(  R  \)的理想,且 \(  I J\subseteq I\cap J  \)；
+        \item 给出\(  I  \),\(  J  \),使得 \(  I J \neq  I \cap J  \)      
+    \end{itemize}
+
+        \begin{proof}
+            
+            
+            任取 \(  \sum _{i= 1}^{n}a_{i}b_{i} ,\sum _{i= 1}^{m}c_{i}d _{i} \in  I J  \),则 \[
+            \sum _{i= 1}^{n}a_{i}b_{i} -\sum _{i= 1}^{m}c _{i} d _{i} =  \sum _{i= 1}^{n}a_{i}b_{i}+ \sum _{i= 1}^{m}\left( -c_{i} \right)d _{i} \in I J 
+            \] 故 \(   I J  \)是 \(  R  \)的加法子群.
+            
+            任取 \(  r \in R  \), \[
+            r\left( \sum _{i= 1}^{n}a_{i}b_{i} \right)  =  \sum _{i= 1}^{n} \left( ra_{i} \right)b_{i} \in I J,\quad  \left( \sum _{i= 1}^{n}a_{i}b_{i} \right)\cdot  r =  \sum _{i= 1}^{n} a_{i}\left( b_{i} r  \right) \in I J    
+            \]
+           
+            因此 \(  I J  \)是 \(  R  \)的理想.
+
+            由\(  I ,J \)是 \(  R  \)的理想   \(  I J  \subseteq  I\),\(  J I\subseteq J  \) 由,因此 \(  I J\subseteq  I \cap  J  \)  .这就证明了第一个结论.
+
+
+            对于第二个结论,考虑 \(  R =  \mathbb{Z}   \),  \(  I =  \left( 2 \right)   \), \(  J = \left(  4 \right)   \)  ,则 \(  I J=  \left( 8 \right)   \), \(  I \cap J= \left( 4 \right)    \).  
+        
+            \hfill $\square$
+        \end{proof}
+
+
+        \item 设 \(  R  \)是交换环, \(  I,J  \)是 \(  R  \)的理想.若 \(  I+ J = R  \),证明 \(  I J =  I \cap J  \).
+        \begin{proof}
+
+            由上面的练习 \(  I J \subseteq I \cap J  \) .
+            由 \(  I + J=  R  \),存在 \(  i \in  I,j \in J  \),使得 \(  i+ j =  1_{R}  \).于是任取 \(  x \in  I\cap J  \), \[
+            x =  x\left( i+ j \right) =  xi +  xj   =  ix + xj \in  I J
+            \]    因此, \(  I \cap J \subseteq I J \). 
+        
+            \hfill $\square$
+        \end{proof}     
+\end{problemset}
+
+
+
+\chapter{整环}
+
+
+\section{素理想和极大理想}
+
+\begin{definition}{素理想和极大理想}
+    \begin{enumerate}
+        \item 设$R$是交换环,令$I$是$R$的理想.若商环$R/I$是整环,则称$I$是素理想.
+        \item 设$R$是交换环,令$I$是$R$的理想.若商环$R/I$是一个域,则称$I$是极大理想.
+    \end{enumerate}
+    
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item 极大理想是素理想.
+        \begin{proof}
+            域是整环.
+        \end{proof}
+    \end{enumerate}
+    
+\end{remark}
+
+
+\begin{theorem}{素理想的一个等价刻画}
+    设$R$是交换环,令$I$是$R$的素理想.那么$I$是素理想当且仅当$I \neq \left( 1 \right)$,且以下成立： $$ \forall a,b\in R\quad ab\in I\iff \left( a\in I \right)\vee \left( b\in I \right)   $$
+
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item 设$I$是素理想,则$R/I$是整环,特别地在$R/I$中$0 \neq 1$.进而$R/I$是非平凡的环,从而$I \neq \left( 1 \right)$.设$a,b \in R$使得$ab \in I$,那么$ab+I= 0$.又$ab+I=\left( a+I \right)\left( b+I \right)$,根据整环的定义,$a+I=0$,或$b+I=0$.这表明$a \in I$或$b \in I$.
+        \item 若上述条件对$I$成立.由$R$交换可得$R/I$交换.又$I \neq \left( 1 \right)$,故$R/I$非平凡,因此在其中$0 \neq 1$.设$\left( a+I \right),\left( b+I \right)$是$R/I$中的元素,使得$\left( a+I \right)\left( b+I \right)=0$,这表明$ab+I=0$,即$ab \in I$.有条件知$a\in I$或$b \in I$,即$a+I=0$或$b+I=0$,这说明$R/I$无非零的零因子,即$R/I$是整环.
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{theorem}{极大理想的一个等价刻画}
+    设$R$是交换环,$I$是$R$的理想.那么$I$是极大理想当且仅当$I \neq \left( 1 \right)$并且不存在理想$J$,使得$I \subsetneq J\subsetneq R$.
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item  设$I$是极大理想,那么$R/I$是一个域,特别地$R/I$是非平凡的环,从而$I \neq \left( 1 \right)$.反证：若存在理想$J$,使得$I \subsetneq J \subsetneq R$,那么$J/I$是$R/I$的理想,并且$\left( 0 \right)\subsetneq J/I \subsetneq \left( 1 \right)$在$R/I$中成立.但是域中的理想只有$\left( 0 \right)$和$\left( 1 \right)$（域$F$的非零理想包含可逆元,进而包含单位元,故为$\left( 1 \right)$）,故$J/I$不是一个域.
+        \item 反之,若条件成立.首先由于$I \neq \left( 1 \right)$,$R/I$不是平凡环,进而$0 \neq 1$在$R/I$中成立.若$R/I$不是一个域,那么存在非平凡的理想$\bar{J}$（若不然,任意$a \in \bar{J}$成立$1 \in \left( a \right)$,进而$a$可逆,$R/I$为域）,由对应定理,$\bar{J}$对应到（真）包含了$I$的$R$的（真）理想,故矛盾.
+    \end{enumerate}
+    
+\end{proof}
+
+\section{素元和不可约元}
+
+\begin{definition}{整除和最大公因子}
+    \begin{enumerate}
+        \item 设$R$是交换环,令$a,b \in R$.称$b$整除$a$,记作$b|a$,若$a \in \left( b \right)$,即存在$c\in R$,使得$a=bc$.
+        \item 设$R$是整环,$a,b \in R$.称$d \in R$是$a$和$b$的一个最大公因子（gcd）,若$\left( d \right)$是包含了$a$和$b$的最小的$R$的主理想.
+    \end{enumerate}
+    
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item  最大公因子不一定存在.最大公因子为$1$时,$1$也不一定写成$a,b$的线性组合.
+
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{definition}{不可约元}
+    设$R$是整环,$q \in R$.称$q$是不可约元,若$q$不是可逆元,并且 $$ \forall a,b \in R\quad q=ab \implies a\text{ 是可逆元或}b\text{ 是可逆元}. $$
+    
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item $ q \neq  0 $. 
+        \item 等价刻画：条件等价于$\forall a,b \in R,\quad q=ab\implies \left( q \right)=\left( a \right)\text{ or }\left( q \right)=\left( b \right)$.
+        \begin{proof}
+            若$a$是可逆元,则存在$d \in R$,使得$b=dq$,故$\left( q \right)=\left( b \right)$.反之,若$\left( q \right)=\left( b \right)$,则存在$d \in R$,使得$b= dq$,故$q=adq\implies ad=1$,从而$a$是可逆元.这表明当$q=ab$时,$a$可逆当且仅当$\left( q \right)=\left( b \right)$.
+        \end{proof}
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{theorem}{不可约元的一个等价刻画}
+    设$R$是整环,$q \in R,q \neq 0$,且$q$不是可逆元.那么$q$是不可约的,当且仅当理想$\left( q \right)$在所有$R$的真主理想中是极大的：即$\left( q \right)\subset \left( a \right)$蕴含$\left( a \right)=\left( 1 \right)$或$\left( a \right)=\left( q \right)$.
+\end{theorem}
+
+\begin{proof}
+    若$q$不可约,令$a \in R$,$\left( q \right)\subset \left( a \right)$.那么$q=ab$对某个$b \in R$成立.又$q$不可约,故$a$是可逆元或$b$是可逆元,对于前者$\left( a \right)=1$,对于后者$\left( a \right)=\left( ab \right)=\left( q \right)$.这表明$\left( q \right)$确实在真主理想中极大.
+
+反之,若$q \neq 0$,$q$不是可逆元,并且具有上面的极大性条件.是$q=ab$,那么$\left( q \right)\subset \left( a \right)$,要么$\left( a \right)=\left( 1 \right)$,要么$\left( a \right)=\left( q \right)$,对于前者$a$是可逆元.对于后者我们有$a= qu$对某个可逆元$u$成立,故$q= q u b$,得到$u b=1$,从而$bu$是可逆元.
+\end{proof}
+
+\begin{proposition}{非零素元不可约}
+    设$R$是整环,$p \in R$是非零素元.那么$p$不可约.
+\end{proposition}
+\begin{proof}
+    设$p \in R$是非零素元,设$\left( p \right)\subset \left( a \right)$.我们说明$\left( a \right)=1$或$\left( a \right)=\left( p \right)$,进而$p$不可约.
+由$\left( p \right)\subset \left( a \right)$,存在$b \in R$,使得$p=ab$.由于$p$是素元,故$a \in \left( p \right)$或$b \in \left( p \right)$.对于前者,$\left( a \right)\subset \left( p \right)$,我们有$\left( a \right)=\left( p \right)$.对于后者,存在$c \in R$使得$b = cp$,于是$p = acp$,得到$ac=1$.故$a$是可逆元,从而$\left( a \right)=\left( 1 \right)$.
+\end{proof}
+
+
+\section{欧氏整环、PIDs}
+
+\begin{definition}{欧氏整环}\label{def:Euclidean domain}
+    设$R$是整环.称$R$是一个欧氏整环,若存在函数$\nu:R\backslash \{ 0 \}\to \mathbb{Z}^{\geqslant 0}$,具有如下性质：对于所有$a \in R$和所有非零的$b \in R$,存在$q,r \in R$使得 $$ a = bq+r $$其中要么$r=0$,要么$\nu \left( r \right)< \nu \left( q \right)$,函数$\nu$称为欧式赋值.
+\end{definition}
+
+\begin{definition}{PID}
+    设$R$是整环.称$R$是一个主理想环（PID）,若$R$的每个理想都是主理想,即对于$R$的每个理想$I$,存在$a \in R$,使得$I=\left( a \right)$.
+\end{definition}
+
+\begin{theorem}{欧氏整环 $ \implies $ PIDs }\label{thm:E.D is a PID}
+    欧氏整环都是PID.
+\end{theorem}
+\begin{note}
+    理想皆由赋值最小的元素生成,具体地$I$中元素对赋值最小元$b$的余数为$0$（最小性）,故为$b$整除,即$I\subset \left( b \right)$.
+\end{note}
+
+\begin{proof}
+    设$R$是欧式整环,$I$是$R$的理想.不妨$I \neq \left( 0 \right)$,那么令 $$ S : = \{  \nu\left( s \right) \in \mathbb{Z}^{\geqslant  0}: s  \in I,s \neq 0\} $$于是$S$有最小元$\nu \left( b \right)$.首先,显然有$\left( b \right)\subset I$,接下来说明另一边.
+任取$a \in I$,存在$q,r \in R$,使得$a=bq+r$,使得$r=0$或$\nu \left( r \right)< \nu \left( b \right)$,我们有 $$ r=a-bq \in I $$若$\nu \left( r \right)< \nu \left( b \right)$,则与$\nu \left( b \right)$的最小性矛盾,故$r=0$.这表明$a \in \left( b \right)$,$a$选取的任意性给出$I\subset \left( b \right)$.
+综上$I=\left( b \right)$是主理想.
+
+\end{proof}
+
+\begin{proposition}{PID和最大公因子}
+    若$R$是PID,$a,b \in R$.
+> 理想$\left( a,b \right)=\left( d \right)$对某个$d \in R$成立,因此$\left( a,b \right)$本身就是包含了$a$和$b$的最小的主理想,即$a,b$的最大公因子.
+> 此外,$d$是$a$和$b$的线性组合,因为$d \in \left( a,b \right)$,而$\left( a,b \right)$就是$a,b$线性组合的全体.
+\end{proposition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 特别地,$a,b$互素（即最大公因子为1）,当且仅当$\left( a,b \right)=\left( 1 \right)$.这是PID中的特殊性质.
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{proposition}{PID中非零素理想的极大性}\label{pro:PID-prime-to-maximal}
+    设$R$是一个PID,$I$是非零素理想.那么$I$是极大理想.    
+\end{proposition}
+\begin{proof}
+    设$I$是$R$的非零素理想.由于$R$是PID,故$I=\left( p \right)$对某个$p \in R,p \neq 0$成立.$I$是素理想,那么$p$是不可约的,进而$\left( p \right)$在$R$的所有真主理想中极大,而$R$的任意真理想都是主理想,故$\left( p \right)$在$R$的真理想中极大,即$I$是$R$的极大理想.
+
+\end{proof}
+
+\begin{theorem}{PID的升链条件}
+    设$R$是PID,那么$R$的任意理想升链皆稳定.即若 $$ I_{1}\subset I_{2}\subset{\cdots} $$是$R$的一个理想升链,则存在$m$,使得$I_{m}=I_{m+1}={\cdots}$.
+\end{theorem}
+\begin{proof}
+    令$I_{1}\subset I_{2}\subset {\cdots}$是一个理想升链,那么 $$ I: = \bigcup _{j\geqslant  1}I_{j}= \{ r \in R: \exists j,r \in I_{j} \} $$是$R$的一个理想.由$R$是PID知,存在$r \in R$,使得$I= \left( r \right)$.根据$I$的定义,存在$m$,使得$r \in I_{m}$,于是$\left( r \right)\subset I_{m}$,这就有 $$ I=\left( r \right) \subset I_{m}\subset I_{m+1}\subset{\cdots}\subset I $$于是$I_{m}=I_{m+1}={\cdots}= I$.
+\end{proof}
+
+\section{PIDs、UFDs}
+
+\begin{proposition}\label{pro:nonzero-ire-prime-in-PID}
+    设$R$是PID,$q \in R$是不可约元.那么$\left( q \right)$是极大理想,特别地$q$是素元.
+\end{proposition}
+
+\begin{proof}
+    $\left( q \right)$在所有真主理想中极大,而PID上任意理想皆为主理想,故$\left( q \right)$是极大理想.立即有$\left( q \right)$是素理想,即$q$是素元.
+\end{proof}
+
+\begin{theorem}{PID上的算数学基本定理}\label{thm:PID's FTA}
+    设$R$是PID,$a \in R$；设$a \neq0$,且$a$不是可逆元.那么存在有限多个不可约元$q_{1},{\cdots},q_{r}$,使得 $$ a= q_{1}{\cdots}q_{r} $$此外,分解在相伴的意义下唯一,即若 $$ a= q_{1}{\cdots}q_{r}= p_{1}{\cdots}p_{s} $$是两个不可约分解,那么$s=r$,且在一个指标重排后,$\left( p_{1} \right)=\left( q_{1} \right),{\cdots},\left( p_{r} \right)=\left( q_{r} \right)$.
+    
+\end{theorem}
+
+\begin{remark}
+    $ \mathrm{PID} \implies \mathrm{UFD}  $ 
+    
+\end{remark}
+
+\begin{note}
+    \begin{enumerate}[]
+        \item 利用PID上的升链条件,将分解翻译成主理想的包含关系.在不可约分解不存在的前提下,构造无穷严格升链.
+        \item 若存在元素分解不唯一,那么可以找到具有最少因子个数 $ r $ 的非唯一分解元,其中 $ r \ge 2 $ ,由此造出有 $ r- 1$个不可约因子的元,导出矛盾. 主要利用PID上不可约元的素性.
+    \end{enumerate}
+    
+
+\end{note}
+
+\begin{proof}
+    \begin{enumerate}
+        \item  存在性：设存在$a \in R$,$a \neq 0$,$a$不可逆,且不存在不可约分解.那么特别地,$a$本身是可约元.从而由定义,存在不可逆元$a_{1},b_{1} \in R$使得$a=a_{1}b_{1}$.注意到$\left( a \right)\subsetneq \left( a_{1} \right)$且$\left( a \right)\subsetneq\left( b_{1} \right)$.断言$a_{1},b_{1}$中存在可约元,否则$a$有不可约分解,矛盾,不妨设$a_{1}$是不可约的.对$a_{1}$重复上述讨论,依次类推,我们得到无穷升链 $$ \left( a \right) \subsetneq\left( a_{1} \right) \subsetneq\left( a_{2} \right)  \subsetneq{\cdots}$$与PID的升链条件矛盾.
+        \item 唯一性：若分解不唯一,存在最小的 $ r \in  \mathbb{N}^{+ } $,使得存在不可约因子, $ q_1,q_2,\cdots,q_r  ,p_1,p_2,\cdots,p_s $,使得 $$
+        a : = q_1 q_2 \cdots q_r= p_1 p_2 \cdots p_s
+        $$  是两个不同的不可约分解.断言 $ r> 1  $,若不然 $ q_1= p_1 p_2 \cdots p_s $,$ q_1    $不可约迫使 $  s = 1    $,与 分解的不唯一性矛盾.接下来假设 $ r \ge  2 $ ,我们有 $$
+        q_1 q_2 \cdots q_r \in  \left( p_1 \right) 
+        $$而由 $ \left( p_1  \right)  $是素理想,存在某个 $ q_i $,通过一个重排不妨设 $ i= 1 $,使得 $ \left( q_1 \right)\subseteq \left( p_1 \right)   $,    
+        由 $ \left( q_1 \right)  $的极大性,我们得到 $ \left( q_1    \right)= \left( p_1 \right)   $,因此不妨设 $ p_1= q_1 $(通过乘以一个可逆元).
+        于是此时 $$
+       q_1 q_2 \cdots q_r=q_1 p_2\cdots p_{s}
+        $$又 $ R $是整环,由消去律可得 $$
+        q_2 \cdots q_{r}= p_2 \cdots p_{s}
+        $$由对 $ r  $的假设知,只能有 $ s= r   $,  $$
+        \left( q_2   \right)= \left( p_2 \right),\cdots , \left( q_{r} \right)= \left(  p_{r} \right)    
+        $$      从而 $ a $的分解是唯一的,矛盾. 
+    \end{enumerate}
+    
+  
+\end{proof}
+
+\begin{definition}
+    称整环 $ R $ 是一个“唯一分解整环”(UFD),若定理 \ref{thm:PID's FTA} 中的结论对 $ R $ 成立.即每个非零、非单位元都有在相伴意义下唯一的不可约分解
+\end{definition}
+
+\section{整环的分式域}
+
+先来看分式域概念提出的一个原型
+
+\begin{proposition}
+    可以笼统地说 $ \mathbb{Q} $ 是包含了 $ \mathbb{Z} $ 的最小的域.意思是若 $ k $ 是包含了 $ \mathbb{Z} $的一个域,那么 $ k $ 中存在唯一的包含了 $ \mathbb{Z} $的 $ \mathbb{Q} $的同构复制.可以用以下交换图表述： 
+\[\begin{tikzcd}
+	{\mathbb{Z}} && k \\
+	& {\mathbb{Q}}
+	\arrow["i", hook, from=1-1, to=1-3]
+	\arrow["\iota"', hook, from=1-1, to=2-2]
+	\arrow["{\exists !}"', hook, from=2-2, to=1-3]
+\end{tikzcd}\]
+
+\end{proposition}
+\begin{proof}
+    给定含入同态 $ \iota:\mathbb{Z} \hookrightarrow   \mathbb{Q} $,和 $ i: \mathbb{Z} \to k $  ,
+    任取 $ \frac{p}{q} \in  \mathbb{Q}  $,其中 $ q,p \in \mathbb{Z}  $.
+    现在考虑 $ \mathbb{Q} \to  k$的同态 $ \varphi $,要是交换图成立,必然有 $ \varphi\left( p \right)  =  i\left( p \right) $, $ \varphi\left( q \right)= i\left( q \right)   $,且 $ \varphi\left( \frac{1}{q} \right)= \left( \varphi\left( q \right)  \right)^{-1} = \left( i\left( q \right)  \right)^{-1}     $ .那么 $ \varphi\left( \frac{p}{q} \right)= \varphi\left( p \right) \varphi\left( \frac{1}{q} \right)= i\left( p \right) \left( i\left( q \right)  \right)^{-1}     $        由 $ p,q $唯一确定.此外,容易验证 $ \varphi $  是单同态,从而 $ \varphi\left( \mathbb{Q}  \right) \simeq \mathbb{Q}   $ .
+\end{proof}
+
+\subsection{分式域的泛性质}
+仿照上例,对一般的整环刻画它的分式域
+\begin{definition}{分式域的泛性质}\label{def:uni of frac F}
+    设 $ R $是整环, $ k $ 是包含了 $ R $的一个域,若 $ F $ 使得下图成立,则称 $ F $ 为 $ R $的一个分式域. 
+\[\begin{tikzcd}
+	R && k \\
+	& F
+	\arrow["i", hook, from=1-1, to=1-3]
+	\arrow["\iota"', hook, from=1-1, to=2-2]
+	\arrow["{\exists !}"', hook, from=2-2, to=1-3]
+\end{tikzcd}\]
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 唯一性：上述 $ F $若存在,则在同构意义下唯一. 
+        \begin{proof}
+            设 $ F^{\prime}  $是另一个满足条件的域,置 $ k= F^{\prime}  $,得到 $ F \subseteq F^{\prime}  $,互换位置得到 $ F^{\prime} \subseteq F $.又存在 $ F\to F^{\prime}  $的单同态,上述讨论表明 此同态为同构.     
+        \end{proof}
+    \end{enumerate}
+    
+\end{remark}
+
+\subsection{分式域的具体构造}
+
+$ \mathbb{Q} $ 的构造无非就是 $\mathbb{Z} \times \mathbb{Z}\setminus \{ 0 \}  $上模去一个等价关系 $$\left( r_1,s_1 \right) \sim  \left( r_2,s_2 \right) : \iff    \frac{r_1}{s_1}= \frac{r_2}{s_2} \iff r_1s_2=r_2s_1 $$ 
+类似地推广到 $ R $上 
+\begin{definition}
+令 $ \hat{F} $是如下集合 $$
+\hat{F} : = \{ \left( r,s \right) \in R\times R: s \neq  0  \}
+$$定义 $ \hat{F} $上的关系 $$
+\left( r_1,s_1 \right)\sim \left( r_2,s_2 \right): \iff r_1s_2=r_2s_1  
+$$  
+\end{definition} 
+\begin{remark}
+    \begin{enumerate}
+        \item $ \sim  $是一个等价关系 
+        \begin{proof}
+            \begin{enumerate}
+                \item  $rs=rs\implies \left( r,s \right) \sim \left( r,s \right)  $
+                \item $ \left( r_1,s_1 \right)\sim \left( r_2,s_2 \right)\iff r_1s_2=r_2s_1 \iff r_2s_1=r_1s_2\iff \left( r_2,s_2 \right)\sim \left( r_1 ,s_1\right)     $  
+                \item 若 $ \left( r_1,s_1 \right)\sim \left( r_2,s_2 \right)   $, $ \left( r_2,s_2 \right)\sim \left( r_3,s_3 \right)   $  那么
+                 $$
+                 r_1s_2=r_2s_1,\quad r_2s_3= r_3s_2
+                 $$从而 $$
+                 \left( r_1s_3 \right)s_2= \left( r_1s_2 \right)s_3= \left( r_2s_1 \right)s_3=s_1\left( r_2s_3 \right)= s_1\left( r_3s_2 \right)     =\left( s_1r_3 \right)s_2 
+                 $$(注意到这里用到了 $ R $的交换性)利用 $ R $上的消去律,可得 $ r_1s_3=s_1r_3 $,即 $ \left( r_1,s_1 \right)\sim \left( r_3,s_3 \right)   $   .
+
+            \end{enumerate}        
+        \end{proof} 
+    \end{enumerate}
+\end{remark}  
+
+
+
+接下来利用此等价关系,构造 $ R $ 上的分式域.
+\begin{definition}
+    设 $ R $是（交换）整环.定义 $ R $的分式域,为配有以下加法 $ +  $和乘法 $ \cdot  $的商环 $ F = \tilde{F}\setminus \sim  $   $$
+    [\left( r_1,s_1 \right) ]+ [\left( r_2,s_2 \right) ]: = [\left( r_1s_2+ r_2s_1,s_1s_2 \right) ] $$
+    $$
+    [\left( r_1,s_1 \right) ] \cdot [\left( r_2,s_2 \right) ] := [\left( r_1 r_2,s_1s_2 \right) ]
+    $$
+\end{definition} 
+
+\begin{remark}
+    \begin{enumerate}
+        \item 上述的加法和乘法是良定义的：
+        \begin{proof}
+            若 $ \left( r_1,s_1 \right)\sim  \left( r_1^{\prime} ,s_1^{\prime}  \right)   $,即 $ r_1s_1^{\prime} = r_1^{\prime} s_1 $.  
+            需要说明\begin{enumerate}
+              \item  $ \left( r_1s_2+ r_2s_1 \right)\left( s_1^{\prime} s_2 \right)= \left( r_1^{\prime} s_2+ r_2s_1^{\prime}  \right)\left( s_1s_2 \right)     $
+              \item $ r_1r_2s_1^{\prime} s_2=r_1^{\prime} r_2s_1s_2 $  
+            \end{enumerate}
+            第二个式子对 $ r_1s_1^{\prime} =r_1^{\prime} s_1 $两边乘 $ r_2s_2 $后由交换性立即得到.第一个式子可以通过第二个式子化为 $ r_2s_1s_1^{\prime} s_2=r_2s_1^{\prime} s_1s_2 $,而这由交换性立即得到.
+               
+            
+        \end{proof}
+        \item $ \left( F,+ ,\cdot  \right)  $满足环公理.
+        \item $ [\left( 0,1 \right) ] $为零元, $ [\left( 1,1 \right) ] $为幺元.
+        \item 在 $ F $中,零元和幺元不相等.  
+        \begin{proof}
+            在 $ R $中, $ 0 \neq  1 $,从而 $ 0\cdot 1\neq 1\cdot  1 $在 $ R $中成立,进而 $[\left( 0,1 \right)    ]\neq  [\left( 1,1 \right) ] $.     
+        \end{proof}
+        \item $ F $是域.
+        \begin{proof}
+            由乘法的定义和 $ R $的交换性,显然 $ F $是交换环.只需要证明 $ F $上的非零元皆可逆.为此,任取 $ [\left( r,s \right) ]  \neq  [\left( 0,1 \right) ]$,则 $ r \neq  0 $.那么 $ \left( s,r \right)\in  \hat{F}  $   ,我们有 
+            $ [\left( s,r \right) ] \in F $,并且 $$
+            [\left( r,s \right) ]\cdot [\left( s,r \right) ]= [\left( rs,sr \right) ]
+            $$ 因为 $ rs\cdot 1= sr \cdot  1 $,故 $ [\left( rs,sr \right) ]= [\left( 1,1 \right) ] $,这就说明了 $ [\left( r,s \right) ] $可逆,且逆元为 $ [\left( s,r \right) ] $.    
+        \end{proof}
+        \item 通常记 $ [\left( r,s \right) ] $为 $ \frac{r}{s} $.  
+    \end{enumerate}
+    
+\end{remark}
+
+接下来说明上述的构造确实满足我们一开始提出的泛性质.首先注意到 $ R $到 $ F $有自然的嵌入 $ r\mapsto [\left( r,1 \right) ]  $,记作 $ \iota :R\hookrightarrow F $,这相当于将 $ r $与 $ \frac{r}{1} $做等同.      
+\begin{theorem}
+    上述构造的 $ F $ 满足泛性质\ref{def:uni of frac F}.\\ 
+     具体地,设 $ R $是（交换）整环,$  F $ 和 $ \iota: R\hookrightarrow F $分别设是 $ R $的分式域和上述的单的环同态.令 $ k $是一个域,$ i:R \hookrightarrow k $是单（环）同态.那么存在唯一的单同态 $ j: F\hookrightarrow k $,使得下图交换   
+     \[\begin{tikzcd}
+	R && k \\
+	& F
+	\arrow["i", hook, from=1-1, to=1-3]
+	\arrow["\iota"', hook, from=1-1, to=2-2]
+	\arrow["{\exists ! j}"', hook, from=2-2, to=1-3]
+\end{tikzcd}\]
+    即使得 $ i = j\circ \iota $. 
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 唯一性：若这样的单同态 $ j:F \hookrightarrow  k $存在,接下来说明这样的 $ j $是唯一的.为此,任取 $ \frac{r}{s} \in  F $,其中 $ r,s \in  R $.
+        由图表的交换性, $j\left( \frac{r}{1} \right)=   j\left( \iota\left( r \right)  \right)= i\left( r \right)   $,$ j\left( \frac{s}{1} \right)  =j\left( \iota\left( s \right)  \right)= i\left( s \right)   $,再由 $ j $是环同态,  $$
+        j\left( \frac{r}{s} \right)=  j\left( \frac{r}{1} \right) j\left(  \frac{1}{s} \right) = j\left( \frac{r}{1}  \right) \left( j\left( \frac{s}{1} \right)   \right)^{-1}     = i\left( r \right)\left( i\left( s \right)  \right)^{-1}   
+        $$由 $ r,s $唯一确定,故 $ j $若存在则唯一.
+        \item 存在性：上面的讨论给出了 $ j $的唯一表示,接下来仅需要说明 $$
+        j\left( \frac{r}{s} \right): = i\left( r \right)\left( i\left( s \right)  \right)^{-1}    
+        $$确实给出了满足条件的环同态.\begin{enumerate}
+            \item 良定义：若 $ \frac{r_1}{s_1 }= \frac{r_2}{s_2} $,那么 $ r_1s_2=r_2s_1 $,因此 $$
+            i\left( r_1 \right)i\left( s_2 \right)= i\left( r_2 \right) i\left( s_{1} \right)    
+            $$ 由 $ i $是环同态可得 $$
+            i\left( r_1 \right) \left( i\left( s_1 \right)  \right)^{-1} = i\left( r_2 \right) i\left( s_2 \right)^{-1}     
+            $$ 
+            \item 环同态：$$\begin{aligned}
+                  j\left(\frac{r_1}{s_1}\right)+j\left(\frac{r_2}{s_2}\right) & =i(r_1)i(s_1)^{-1}+i(r_2)i(s_2)^{-1}=i(r_1s_2)i(s_1s_2)^{-1}+i(r_2s_1)i(s_1s_2)^{-1} \\
+                 & =(i(r_1s_2)+i(r_2s_1))i(s_1s_2)^{-1}=i(r_1s_2+r_2s_1)i(s_1s_2)^{-1} \\
+                 & =j\left(\frac{r_1s_2+r_2s_1}{s_1s_2}\right) \\
+                 & =j\left(\frac{r_1}{s_1}+\frac{r_2}{s_2}\right), \\
+                  j\left(\frac{r_1}{s_1}\right)\cdot j\left(\frac{r_2}{s_2}\right) & =i(r_1)i(s_1)^{-1}\cdot i(r_2)i(s_2)^{-1}=i(r_1)i(r_2)i(s_1)^{-1}i(s_2)^{-1} \\
+                 & =i(r_1r_2)i(s_1s_2)^{-1}=j\left(\frac{r_1r_2}{s_1s_2}\right) \\
+                   & =j\left(\frac{r_1}{s_1}\cdot\frac{r_2}{s_2}\right),
+\end{aligned}$$此外 $ j\left( \frac{1}{1} \right)= i\left( 1 \right)i\left( 1 \right)^{-1} =1    $ 明所欲证.
+            \item 单同态：事实上,域到环的同态皆为单同态.
+            \item 图的交换性：任取 $ r \in R $, $$
+            j\circ \iota\left( r \right) = j\left(  \frac{r}{1} \right) = i\left( r \right) i\left( r \right)^{-1} = i \left( r \right)    
+            $$表明 $  j\circ \iota=i $  .
+        \end{enumerate}
+                  
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{conclusion}
+    整环 $ R $上的分式域构造,可以看成是强制让 $ R $上的所有非零元可逆.$ F $ 的构造让非零元 $ s \in R $在 $ F $ 中有了逆元 $ \frac{1}{s} $.   
+    这种构造是交换环的“局部化”的特殊情况. 
+\end{conclusion}
+
+
+
+
+\chapter{多项式环}
+
+\section{域上的多项式环}
+
+即将说明若 $ k $是一个域,$ k\left[ x \right]  $是一个欧式整环.在此之前,需要对首项系数可逆的多项式的“长除法”.
+
+
+
+\begin{lemma}{“长除法”}\label{lem:long-division}
+
+    设 $ R $是一个环,$  f\left( x \right),g\left( x \right) \in R[x]   $是多项式,其中 $ f\left( x \right) \neq  0  $   .
+    若 $ f\left( x \right)  $的首项系数可逆,那么存在多项式 $ q\left( x \right),r\left( x \right) \in R\left[ x \right]    $,使得 $$
+    g\left( x \right)= q\left( x \right)f\left( x \right)+ r\left( x \right)    
+    $$使得 $ r\left( x \right)=0  $或 $ \mathrm{deg}\,r\left( x \right)     < \mathrm{deg}\,f\left( x \right)  $  成立.
+\end{lemma}
+
+\begin{proof}
+    当 $ \mathrm{deg}\,g\left( x \right)< \mathrm{deg}\,f\left( x \right)   $时,容易看出结论成立.\\ 
+   接下来,固定 $ f\left( x \right) \in  R[x]  $, 若命题不成立,我们取 $ g $是使得结论不成立的,次数最小的多项式,设 $   n  =  \mathrm{deg}\,g\left( x \right) $, $ m = \mathrm{deg}\,f\left( x \right)  $,那么 $ n \ge m $.
+   设 $$
+   f\left( x \right) = a_0+a_1x^1+a_2x^2+\cdots+a_mx^m,\quad g\left( x \right)= b_0+b_1x^1+b_2x^2+\cdots+b_nx^n  
+   $$由假设 $ a_{m} $是可逆元,故存在 $ u= a_{m}^{-1}  \in  R $,使得 $ u a_{m}= 1 $. 令 $$
+   g_{1}\left( x \right): = g\left( x \right) - b_{n}uf\left( x \right) x^{n-m}= \left( b_0+ \cdots + b_{n}x^{n} \right)    -\left( b_{n}ua_{0}x^{n-m}+ \cdots +  b_{n}u a_{m}x^{n} \right)   
+   $$     则 $ g_1 $的 $ n $次项系数为 $ 0 $,故 $ \mathrm{deg}g_1\left( x \right) \le n-1 $     ,那么根据假设, $ g_1 \left( x \right) $对 $ f\left( x \right)  $的“长除法”存在,设 $$
+   g_1\left( x \right) = q_1\left( x \right) f\left( x \right) + r_1\left( x \right) 
+   $$其中 $ r_1\left( x \right)=0  $或 $ \mathrm{deg}r_1\left( x \right) < \mathrm{deg} f\left( x \right)  $.紧接着有 $$
+   g\left( x \right)= b_{n}uf\left( x \right)   x^{n-m} +  q_1\left( x \right) f\left( x \right) + r_1\left( x \right)= \left( b_{n}u x^{n-m}+ q_1\left( x \right)  \right)f\left( x \right)+  r_1\left( x \right)     
+   $$    从而 $ g\left( x \right)  $对 $ f\left( x \right)  $的“长除法”存在,与对$ g $的假设矛盾.   
+\end{proof}
+
+方便起见,引入根的概念 
+\begin{definition}{根}
+    设 $ R $是一个环, $ g\left( x \right) \in R[x]  $是一个多项式.若 $ a \in R $使得 $ g\left( a \right)=0  $,则称 $ a $ 是 $ g\left( x \right)  $的一个根.     
+    
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item $ \left( x-a \right)  $是 $ g $的一个因子,当且仅当 $ a $是 $ g\left( x \right)  $的一个根.    
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{theorem}
+    设 $ k $是一个域,那么 $ k\left[ x \right]  $是一个欧式整环.  
+\end{theorem}
+
+\begin{proof}
+     $ k $ 是一个域,特别地它是一个（交换）整环,从而 $ k[x] $是一个（交换）整环.定义一个赋值 $ \nu: \left( k[x] \setminus 0\right)\to  \mathbb{Z} ^{\ge 0}  $  ,$ \nu\left( f\left( x \right): = \mathrm{deg}\,f\left( x \right)   \right)  $ .
+     由于 $ k $是域,每个非零多项式$ f\left( x \right)  $的首项系数总是可逆元.因此对于所有的 $ f\left( x \right)  , g \left( x \right) \in  k[x]  $ ,其中 $ f\left( x \right)\neq  0  $ ,都存在 $ q\left( x \right)  $ 和 $ r\left( x \right)  $,使得 $$
+     g\left( x \right)= q\left( x \right)f\left( x \right)+ r\left( x \right)    
+     $$使得 $ r\left( x \right)=0     $或 $ \nu\left( r\left( x \right)  \right)< \nu\left( f\left( x \right)  \right)   $.根据定义\ref{def:Euclidean domain},$ k\left( x \right)   $是一个欧式整环.    
+\end{proof}
+
+\begin{corollary}
+    若 $ k $是一个域.那么 $ k[x] $是一个PID,进而 $ k[x] $中有唯一分解性（UFD）.   
+\end{corollary}
+
+\begin{proof}
+    由定理\ref{thm:E.D is a PID},每个欧氏整环都是一PID,由定理\ref{thm:PID's FTA},每个PID都是一个UFD.
+\end{proof}
+
+\begin{proposition}{带余除法的唯一性}\label{pro:division uniqueness}
+    设 $ R $ 是整环,令 $ f\left( x \right) ,g\left( x  \right)  \in R[x] $,其中 $ f\left( x \right) \neq  0 $.
+    设 $ f\left( x \right)  $的首项系数是可逆元,那么 $ g\left( x \right)  $对 $ f\left( x \right)  $的带余除法是唯一的.     
+\end{proposition}
+
+\begin{proof}·
+    设 $$
+    g\left( x \right) = q_1\left( x \right)f\left( x \right)+ r_1\left( x \right)= q_2\left( x \right)f\left( x \right)+ r_2\left( x \right)       
+    $$始终 $ r_1,r_2 $均要么为0,要么次数小于 $ f\left( x \right)  $,则 $$
+    \left( q_1\left( x \right)-q_2\left( x \right) f\left( x \right)   \right)+ \left( r_1\left( x \right)-r_2\left( x \right)   \right) = g\left( x \right)-g\left( x \right)    =0
+    $$  因此 $ \left( q_1\left( x \right)-q_2\left( x \right)   \right)f\left( x \right)=r_1\left( x \right)-r_2\left( x \right)     $ .若 $ r_2\left( x \right)-r_1\left( x \right)\neq 0   $ ,由整环的性质,左侧式子的次数一定不低于 $ f\left( x \right)  $的次数,但是等式右侧的式子次数严格小于 $ f\left( x \right)  $ 的次数.因此 $$
+    \left( q_1\left( x \right)-q_2\left( x \right)   \right)f\left( x \right)=r_2\left( x \right)-r_1\left( x \right)=0    
+    $$立即有 $ r_1\left( x \right)=r_2\left( x \right)   $, $ q_1\left( x \right)= q_2\left( x \right)   $（因为 $ R $是整环）.   
+
+    $\hfill\square$
+\end{proof}
+
+\begin{corollary}
+    设 $ R $是整环, $ f\left( x \right)\neq 0  $.设 $ f\left( x \right)  $的首项系数是单位.则 $ R[x]/\left( f\left( x \right)  \right)  $    中的每个陪集都有唯一的表示 $ r\left( x \right)+ \left( f\left( x \right)  \right)   $,使得要么 $ r\left( x \right)=0  $  ,要么 $ \operatorname{deg}\,r\left( x \right)< \operatorname{deg}\,f\left( x \right)   $ 
+\end{corollary}
+\begin{note}
+    商环 $ R[x]/\left( f\left( x \right)  \right)  $由此可视作带余除法的余数环.
+\end{note}
+\begin{proof}
+    设 $ g\left( x \right)+ \left( f\left( x \right)  \right)   $是 $ R[x]/\left( f\left( x \right)  \right)  $  中的元素.
+    由命题\ref{pro:division uniqueness}和引理\ref{lem:long-division},存在唯一的 $ q\left( x \right)  $和 $ r\left( x \right)  $,使得 $$
+    g\left( x \right)= q\left( x \right)f\left( x \right)+ r\left( x \right)    
+    $$满足 $ r\left( x \right)=0  $或 $ \operatorname{deg}\,r\left( x \right)  < \operatorname{deg}\,f\left( x \right) $.此时 $$
+    g\left( x \right)+ \left( f\left( x \right)  \right)=r\left( x \right)+ \left( f\left( x \right)  \right)    
+    $$   这就说明了存在性. 若 $ r^{\prime} \left( x \right)+ \left( f\left( x \right)  \right)= g\left( x \right)+ \left( f\left( x \right)  \right)     $,则存在 $ q^{\prime} \left( x \right)  $,使得 $ g\left( x \right)  = q^{\prime} \left( x \right)f\left( x \right)+ r^{\prime} \left( x \right)   $   , 带余除法的唯一性给出 $ r^{\prime} \left( x \right)=r\left( x \right)   $. 
+    $\hfill\square$
+\end{proof}
+
+\begin{theorem}\label{thm:mod-f-to-be-vector-space}
+    设 $ k $是域,$ f\left( x \right)\in k[x]  $是次数为 $ d $的非零多项式.则 $ k[x]/\left( f\left( x \right)  \right)  $是 $ d $-维线性空间.
+\end{theorem}
+\begin{remark}
+    回忆 $ \mathbb{C}\simeq  \mathbb{R} [x]/\left( x^{2}+ 1 \right)  $,由此可知,在线性空间的意义下, $ \mathbb{C}\simeq  \mathbb{R} ^{2} $  
+\end{remark}
+\begin{proof}
+    $ k[x]/\left( f\left( x \right)  \right)  $中每一个元素唯一地写作 $$
+    r\left( x \right)+ \left( f\left( x \right)  \right)  
+    $$其中 $ r\left( x \right)=a_0+ a_1x+ \cdots + a_{d-1}x^{d-1}  $是次数小于 $ \operatorname{deg}\,f\left( x \right)  $   的多项式.将系数 $ \left( a_0,\cdots ,a_{d-1} \right)  $与陪集 $ g\left( x \right)+ \left( f\left( x \right)  \right)   $建立映射 ..又该映射保持加法和 $ k $-标量乘法,且是单射（带余除法的唯一性）故为线性空间的同构.  
+
+    $\hfill\square$
+\end{proof}
+
+\begin{example}
+    环 $ \left( \mathbb{Z} /5\mathbb{Z}      \right)[x]/\left( x^{3}+ 1 \right)   $ 的元素个数为125个.
+\end{example}
+
+\begin{proof}
+    由于 $ 5 $是素数,故 $ \mathbb{Z} /5\mathbb{Z}  $是有限的交换整环,进而是一个域.由上面的命题,环 $ \left( \mathbb{Z} /5\mathbb{Z}  \right)[x]/\left( x^{3}+ 1 \right)   $域 同构于 $ \mathbb{Z} /5\mathbb{Z}  $上的3维线性空间,该线性空间上的元素个数为 $ 5^{3}=125 $个. 
+
+    $\hfill\square$
+\end{proof}
+
+\section{多项式环上的不可约元}
+
+\begin{proposition}\label{pro:root to reducible}
+    设 $ k $ 是一个域, $ f\left( x \right)  \in  k[x] $是次数不低于 $ 2 $ 的多项式.
+    若 $ f\left( x \right)  $有根,则 $ f\left( x \right)  $是可约的.   
+\end{proposition}
+
+\begin{proof}
+    若 $ a $ 是 $ f\left( x \right)  $的根,那么 $ \left( x-a \right)  $是 $ f\left( x \right)  $   的因子.
+    若 $ \mathrm{deg} f\left( x \right) \ge 2 $,我们有 $f\left( x \right) =\left( x-a \right) g\left( x \right)  $,其中 $ \mathrm{deg}g\left( x \right) \ge 1  $.
+    特别地 $ g\left( x \right)  $不是 $ R[x] $中的可逆元,故 $ f\left( x \right)  $是可约的.      
+\end{proof}
+
+\begin{proposition}
+    若 $ k $ 是一个域,令 $ f\left( x \right)  \in k[x] $是次数为 $ 2 $ 或 $ 3 $的多项式.
+    那么 $ f\left( x \right)  $不可约,当且仅当 $ f\left( x \right)  $在 $ k $ 中无根.    
+\end{proposition}
+\begin{proof}
+    $ \left( \implies \right)  $是命题\ref{pro:root to reducible}的一个特殊情况.\\ 
+     
+    $ \left(\impliedby \right)  $ 反证法：若 $ f\left( x \right)  $可约,设 $ f\left( x \right) =q_1\left( x \right) q_2\left( x \right)  $   ,对于某两个不可逆的多项式 $ q_1\left( x \right)  $,$ q_2\left( x \right)  $  成立.
+    由于 $ k $是域,我们有 $ q_1\left( x \right)  $和 $ q_2\left( x \right)  $不为常系数多项式（否则它们可逆）.因为 $ \mathrm{deg}f\left( x \right) = 2  $或 $ 3 $,$ q_1,q_2 $其中一个次数为次数为 $ 1 $ ,它等于某个
+    $ ax+ b  $,使得 $ a,b \in k    ,a \neq  0 $.但是根据条件假设 $ -b a^{-1}  $不是 $ f\left( x \right)  $的根矛盾.          
+\end{proof}
+
+\part{模论}
+\chapter{模和Aleb群}
+
+\begin{definition}{模}
+    设 $ R $为环,左 $ R $ -模意谓以下资料
+    \begin{itemize}
+        \item 加法群 $ \left( M,+  \right)  $;
+        \item 映射 $ R\times M\to M $,记作 $ \left( r,m \right) \mapsto r \cdot  m= rm  $,满足以下条件
+        \begin{enumerate}
+            \item $ r\left( m_1+ m_2 \right)=rm_1+ rm_2,\quad r \in  R, m_1,m_2\in M  $ ,
+            \item $ \left( r_1+ r_2 \right)m  = r_1m+ r_2m,\quad r_1,r_2\in R,m \in M$,
+            \item $ \left( r_1r_2m \right)=r_1\left( r_2m \right)   $,
+            \item $ 1_{R}\cdot m=m $   
+        \end{enumerate}
+           
+    \end{itemize} 
+\end{definition}
+\begin{example}
+    设 $  R $为含幺环, $M:= \left( R,+  \right)  $,取映射 $ R\times M\to M $为 $ R $上的左乘映射,构成一个左 $ R $ -模.     
+\end{example}
+
+\begin{example}
+    设 $ R $为含幺环, $ V: = \left\{  \begin{pmatrix} 
+        v_1\\ 
+         v_2\\ 
+          \vdots\\ 
+           v_{n} 
+    \end{pmatrix}  :  v_{i} \in  R ,1 \le i \le n\right\}  = :R^{n}$.取左作用为逐项的左乘作用,则 $ V $是 $ R $ -模,称为 环 $ R $的自由模.   
+\end{example}
+
+\begin{example}
+    加法群都是 $ \mathbb{Z}      $-模. 
+\end{example}
+\begin{example}
+    若 $ R $为域,则 $ R $-模就是域 $ R $上的向量空间,也是 $ R $上的自由模.    
+           
+\end{example}
+
+\section{$ R $ -模范畴}
+
+\begin{definition}{模同态}
+    设 $ R $是环,$ M,N $是 $ R $ -模.称函数 $ f:M \to N $是一个 $ R $ -模同态,若 $ \forall r \in R,\forall a,b \in M $, $$
+    f\left( a+ b \right)= f\left( a \right) + f\left( b \right)$$  $$
+     f\left( r\cdot a \right)=r \cdot f\left( a \right)    
+    $$    也称 $ f $是 $ R $-线性的.  
+\end{definition}
+
+\begin{example}
+    考虑环同态 \(  f:R\to S  \),定义 \(  R  \)在 \(  S  \)上的作用,通过 \[
+    r\cdot s: = f\left( r \right)s,\quad \forall r\in R ,\forall s \in S
+    \]   则 \(  S  \)在此作用下称为一个 \(  R  \)-模.  
+\end{example}
+
+\begin{definition}{子模}
+    设 $ R $是一个环,$ M $ 是 $ R $ -模,$ N $ 是 $ M $的子集,且$ N $也是 $ R $-模. 称 $ N $是 $ M $的一个子模,若含入映射 $ \iota: N \hookrightarrow M $是 $ R $-模同态.       
+\end{definition}
+
+\begin{proposition}{像与核}
+    设 $ f:M\to N $是 $ R $  -模同态,那么 :
+    \begin{enumerate}
+    \item 若 $ M^{\prime}  $ 是 $ M $的子模,则 $ f\left( M^{\prime}  \right)  $是 $ M $的子模;
+    \item 若 $ N^{\prime}  $是 $ M $的子模,则 $ f^{-1} \left( N^{\prime}  \right)  $是 $ M $的子模;       
+    \end{enumerate}
+    
+\end{proposition}
+
+\begin{definition}{生成模}
+令 $ M $是 $ R $ -模,$ m_1,\cdots ,m_{n} $是 $ M $中的元素.称 $ m_1,\cdots ,m_{n} $的全体 $ R $ -线性组合,记作 $ \left<m_1,m_2,\cdots,m_n \right> $,
+为  $ M $的由 $ 1_1,1_2,\cdots,1_n $生成的子模.       
+\end{definition}
+
+\begin{definition}{有限生成与循环}
+    称 $ R $ -模 $ M $是有限生成的,若存在 $ m_1,m_2,\cdots,m_n  \in  M $,使得 $ M= \left<m_1,m_2,\cdots,m_n \right> $.\\ 
+     称 $ M $是循环的,若 $ M = \left<m \right> $对某个 $  m \in M $      成立.
+\end{definition}
+
+\begin{definition}{直和}
+    设 $ R $是环,$  M,N $是 $ R $-模.称 $ R $ -模 $ \left( M\times N ,+ ,\cdot \right)  $为 $ M $和 $ N $的直和,记作 $ M\oplus N $,其中 $ + ,\cdot  $按以下方式定义 $$
+    \left( m_1,n_1 \right)+  \left( m_2,n_2 \right): = \left( m_1+ m_2,n_1+ n_2 \right)   
+    $$ $$
+    r\cdot \left( m,n \right): = \left( rm,rn \right).  
+    $$    
+\end{definition}
+
+\section{标准分解和商}
+
+\begin{theorem}{标准分解}
+    令 $ f:M\to N $ 是 $ R $-模同态,以下交换图成立 
+ \[\begin{tikzcd}
+	M & {M/\mathrm{ker}f} & {f(M)} & N
+	\arrow["\pi"', two heads, from=1-1, to=1-2]
+	\arrow["f", curve={height=-24pt}, from=1-1, to=1-4]
+	\arrow["{\tilde{f}}"', from=1-2, to=1-3]
+	\arrow["\sim", from=1-2, to=1-3]
+	\arrow["\iota"', hook, from=1-3, to=1-4]
+\end{tikzcd}\] 其中 $ \pi $是投影映射, $ \iota $是含入映射, $ \tilde{f} $是诱导同态.此外 $ \tilde{f} $是同构.    
+\end{theorem}
+
+
+\section{整环上的模}
+
+\part{域论}
+\chapter{域扩张}
+
+\section{域和域同态}
+
+\begin{definition}
+    设 $ k $是域.$ k $的一个域扩张是指,配备了同态 $ k\hookrightarrow F $的一个域  $ F $,使得 $ k $等同于 $ F $的一个子域.    
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 域同态无非是域之间的环同态,它一定是单射.
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{example}
+    设 $ f\left( t \right) \in \mathbb{Q} [t]  $是非零不可约多项式.则 $ \mathbb{Q}[t] / \left( f\left( t \right)  \right)  $  是一个域, $ Q\subseteq \mathbb{Q}[t]\left( f\left( t \right)  \right)  $是一个域扩张. 
+\end{example}
+
+\begin{example}
+    设 $ \mathbb{Q}\left( t \right)  $是多项式环 $ \mathbb{Q}[t] $的分式域；即 $ \mathbb{Q} [t] $由商 $ f\left( t \right)/g\left( t \right)   $,其中 $ f\left( t \right),g\left( t \right)\in \mathbb{Q}[t]   $     ,且 $ g\left( t \right)\neq  0  $ .则 $ \mathbb{Q} \subseteq \mathbb{Q} [t] $  是一个域扩张. 
+\end{example}
+
+\begin{example}
+     $ \mathbb{Q} \subseteq \overline{\mathbb{Q} } $,其中 $ \overline{\mathbb{Q} } $是“代数数”,即可以写作有理系数多项式根的复数的全体.  
+\end{example}
+
+\begin{definition}
+    设 $ k $是域.定义 $ k $的特征,为 $ \mathbb{Z} \to k $的唯一环同态的核的非负生成元.即最小的正整数 $ n $,使得 $ n\cdot 1_{k}=0_{k} $,或者当正整数不存在时取0.   
+\end{definition}
+
+\begin{remark}
+    \begin{itemize}
+        \item  $ \mathbb{Z} \to  k  $的唯一性是因为 $ \mathbb{Z}  $是环范畴的始对象.  
+    \end{itemize}
+    
+\end{remark}
+
+\begin{lemma}
+    设 $ k\subseteq F $是一个域扩张.则 $ \operatorname{char}\,k=\operatorname{char}\,F $  
+\end{lemma}
+\begin{proof}
+    由于 $ \mathbb{Z}  $到任意环的环同态唯一,故图 
+\[\begin{tikzcd}
+	k && F \\
+	\\
+	{\mathbb{Z}}
+	\arrow[hook, from=1-1, to=1-3]
+	\arrow["i", from=3-1, to=1-1]
+	\arrow["j"', from=3-1, to=1-3]
+\end{tikzcd}\]交换 .由于 \( k\hookrightarrow F \)是单射,故 \(  \operatorname{ker}\,i=\operatorname{ker}\,j  \) ,进而有相同的生成元,即 \(  \operatorname{char}\,k=\operatorname{char}\,F  \) .
+    \hfill $\square$
+\end{proof}
+
+\begin{lemma}
+    设 \(  F  \)是域,则\(  F  \)包含了唯一的\(  \mathbb{Q}   \)的复制或\(  \mathbb{Z} /p\mathbb{Z}   \)的复制,其中 \(  p>0  \)是素数. 
+\end{lemma}
+\begin{proof}
+    若 \(  \operatorname{char}\,F=n  \),则 要么 \(  n =p  \)对某个素数成立（整环的特征是素数）,要么 \(  n =0  \)  .对于后者,\(  \mathbb{Z} \to F  \)是单射,由定理\ref{thm:frac-feild-uni-property},存在唯一的单同态 \(  \mathbb{Q} \hookrightarrow F  \).
+    
+    若 \(  n = p>0  \),则由同构定理,\(  \mathbb{Z} /p\mathbb{Z} \simeq i\left( \mathbb{Z}  \right)\subseteq F   \),唯一性由 \(\mathbb{Z} \to F   \)像集的唯一性可得.   
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}
+    对于每个素数 \(  p  \),记域 \(  \mathbb{Z} /p\mathbb{Z}   \)为 \(  \mathbb{F}_{p}  \)   
+\end{definition}
+
+上面的引理表明,特征为 \(  k  \)的域的范畴有始对象  \(  \mathbb{F}_{p}  \)  ,特征为 \(  0  \)的域的范畴有始对象 \(  \mathbb{Q}   \)；即存在唯一的域同态 \(  \mathbb{F}_{p}\to k  \)(其中 \(  \operatorname{char}\,k=p  \) )或存在唯一的域同态 \(  \mathbb{Q}\to k  \)(其中 \(  \operatorname{char}\,k=0  \) )    .
+
+因此,可以在每个单独的范畴中研究域扩张问题.
+
+事实上,对于给定的域 \(  k  \),我们考虑\textbf{域\(  k  \)的扩张的范畴}： 对象是域扩张 \(  k\hookrightarrow F  \)  ,态射是（环）同态 \(  j:F^{\prime} \hookrightarrow F^{\prime \prime}   \) ,使得下图交换
+\[\begin{tikzcd}
+	{F^{\prime}} && {F^{\prime\prime}} \\
+	\\
+	k && k
+	\arrow["j", hook, from=1-1, to=1-3]
+	\arrow[hook, from=3-1, to=1-1]
+	\arrow[no head, from=3-1, to=3-3]
+	\arrow["{\mathrm{id}_k}", shift right, no head, from=3-1, to=3-3]
+	\arrow[from=3-3, to=1-3]
+\end{tikzcd}\]
+称 \(  j  \)延拓了 \(  \operatorname{id}_{k}  \).可以视同态为一列扩张 \(  k\subseteq F^{\prime} \subseteq F^{\prime \prime}   \).
+
+始对象是平凡扩张 \(  \operatorname{id}_{k}:k\to k  \). 分别令 \(  k=\mathbb{Q}  \),\(  k= \mathbb{F}_{p}  \) ,可以将上面的讨论统一起来.
+
+\section{有限扩张和扩张的次数}
+\noindent{回忆每个环同态 \(  R\to S  \)都能使得 \(  S  \)称为一个 \(  R  \)-模；特别地,若 \(  k\subseteq F  \)是一个域扩张,则 \(  F  \)视为 \(  k  \)上的线性空间.  }
+\begin{definition}{扩张的次数}
+    域扩张 \(  k\subseteq F  \)的次数,记作 \(  \left[ F:k \right]   \)  ,被定义为 \(  F  \)作为 \(  k  \)-线性空间的维数.  
+\end{definition}
+
+\begin{definition}
+    称域扩张 \(  k\subseteq F  \)是“有限”的,若 \(  F  \)是有限维 \(  k  \)-线性空间.   
+\end{definition}
+
+\begin{lemma}
+    设 \(  k  \)是域,\(  f\left( t \right)\in k[t]   \)是不可约多项式.则 \(  k[t]/f\left( t \right)   \)是一个域,且将 \(  a  \)映到陪集 \(  a+ \left( f\left( t \right)  \right)   \)的同态 \(  k\to k[t]/\left( f\left( t \right)  \right)   \)定义出域扩张 \(  k\subseteq k[t]/\left( f\left( t \right)  \right)   \)     .则扩张是有限扩张,且 \[
+    [k\left( t \right)/\left( f\left( t \right)  \right):k  ]= \operatorname{deg}\,f
+    \]
+\end{lemma}
+\begin{proof}
+    \(  k[t]  \)是欧氏整环进而是PID(定理\ref{thm:E.D is a PID}),PIDs中的不可约元生成极大理想(命题\ref{pro:nonzero-ire-prime-in-PID}),故 \(  k[t]/\left( f\left( t \right)  \right)   \)是一个域 .且\(  k[t]/\left( f\left( t \right)  \right)   \)由定理\ref{thm:mod-f-to-be-vector-space}是一个\(  \operatorname{deg}\,f  \)维线性空间,陪集 \(  1+ \left( f\left( t \right),\cdots ,t ^{d-1}+ \left( f\left( t \right)  \right)   \right)   \)构成一组基.    
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}\label{dim-fomu}
+    设 \(  k\subseteq E\subseteq F  \)是域扩张.若 \(  k\subseteq E  \)和 \(  E\subseteq F  \)都是有限扩张,则 \(  k\subseteq F  \)是有限扩张,且 \[
+    [F:k]=[F:E][E:k]
+    \]    
+\end{proposition}
+\begin{proof}
+    令 \(  [E:k]=m  \),\(  [F :E]=n  \).设 \(   \varepsilon_1,\cdots , \varepsilon _{m}  \)   是 \(  E  \)在 \(  k  \)上的一组基, \(  \varphi_1,\cdots ,\varphi _{n}  \)   是 \(  F   \)在 \(  E  \)上的一组基.  
+    断言 \(   \varepsilon _{i}\varphi _{j}  \),\(  i= 1,\cdots,m ,j= 1,\cdots,n   \)构成 \(  F  \)在 \(  k  \)上的一组基.为了说明 \(  F   \)可以由这组基线性表出,任取 \(  f \in F  \), 设\(   e_1,\cdots,e_n \in   E\),  使得 \[
+    f= e_1\varphi_1+ \cdots+  e_{n}\varphi _{n}= \sum _{i=1}^{n}e_{i}\varphi _{i}
+    \]而每个对于每个 \(  e_{i}  \) ,都存在 \(  k_{i1},\cdots ,k_{im} \in  k \),使得 \[
+    e_{i}= \sum _{j=1}^{m} k_{ij} \varepsilon _{j}
+    \] 于是 \[
+    f= \sum _{i=1}^{n}\sum _{j=1}^{m} k_{ij} \varepsilon _{j}\varphi _{i}
+    \]这就说明了 \(  \left(  \varepsilon _{j}\varphi _{i} \right)   \)在 \(  k  \)上张成了 \(  F  \).
+
+    为了说明线性无关性,   考虑 \(   \varepsilon _{j}\varphi _{i}  \) 在 \(  k  \)上的线性组合 \[
+    \sum _{i,j} k_{ij}  \varepsilon _{j}\varphi _{i}=0
+    \] 由 \(  \varphi _{i}  \)的线性无关性,对于每个 \(  i=1,2,\cdots,n  \), \[
+    \sum _{j=1}^{m} k_{ij} \varepsilon _{j}=0 ,\quad  i= 1,\cdots,n 
+    \]  再由\(  \left(  \varepsilon _{j} \right)   \)的线性无关性,\[
+    k_{i 1}= \cdots = k_{i m}=0,\quad  i= 1,\cdots,n 
+    \] 
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}
+    若 \(  k\subseteq E\subseteq F  \)是域扩张,称 \(  E  \)为扩张 \(  k\subseteq F  \)的中间域.   
+\end{definition}
+
+\begin{remark}
+    \begin{itemize}
+        \item 容易看到若 \(  E  \)是有限扩张 \(  k\subseteq F  \)的中间域,则 \(  k\subseteq E  \)和 \(  E\subseteq F  \)都是有限扩张.    
+        
+    \end{itemize}
+    
+\end{remark}
+
+\hfill   
+
+
+\begin{example}
+    扩张 \(  \mathbb{Q} \subseteq \mathbb{Q} [t]/\left( t ^{7} + 2t ^{2}+ 2\right)   \)没有非平凡的中间域. 
+\end{example}
+
+\begin{proof}
+    若 \(  \mathbb{Q} \subseteq E\subseteq \mathbb{Q} [t]/\left( t ^{7}+ 2t^{2}+ 2 \right)   \) ,则 \[
+    [\mathbb{Q}[t] /\left( t^{7}+ 2t^{2}+ 2 \right) :E][E:\mathbb{Q} ]= 7
+    \]要么 \(  [E:Q]=1  \),要么 \(  [\mathbb{Q}[t]/\left( t^{7}+ 2t^{2}+ 2 \right):E ]=1  \) 
+
+    \hfill $\square$
+\end{proof}
+
+\section{单扩张}
+
+\begin{definition}
+    设 \(  k\subseteq F  \)是域扩张,\(   \alpha_{1},\cdots , \alpha _{r} \in F  \).记 \(  k\left(  \alpha _{1},\cdots , \alpha _{r} \right)   \)为 \(  F  \)中最小的包含了 \(  k  \)和所有 \(  \alpha _{i}  \)      的子域.
+
+    若 \(  F=k\left(  \alpha _{1},\cdots ,\alpha _{r} \right)   \),则称 \(  k\subseteq F  \)是通过 \(  \alpha _{1},\cdots ,\alpha _{r}  \)   有限生成的.
+\end{definition}
+
+\begin{definition}{单扩张}
+    称扩张 \(  k\subseteq F  \)是一个单扩张,若 \(  F=k\left(  \alpha  \right)   \)对某个 \(  \alpha  \in F  \)成立.   
+\end{definition}
+
+\begin{proposition}\label{pro:simple-extension-pro}
+    设 \(  k\subseteq k\left( \alpha  \right)=F   \)是单扩张.则以下其一成立
+    \begin{itemize}
+        \item \(  F\simeq k[t]/\left( p\left( t \right)  \right)   \)对某个满足 \(  p\left(  \alpha  \right)=0   \)的不可约首一多项式 \(  p\left( t \right) \in k[t]   \)   成立；
+        \item  \(  F  \)同构于 \(  k[t]  \)的分式域 \(  k\left( t \right)   \).                             
+    \end{itemize}
+    对于第一种情况,\(  [F:k ]= \operatorname{deg}\,p\left( t \right)   \),对于第二种情况, \(  [F:k]=\infty  \)  .
+\end{proposition}
+
+\begin{proof}
+    定义一个同态 \(  \varphi   \) \[
+    \begin{aligned}
+    \varphi : k[x]& \to F\\ 
+     f\left( t \right) &\mapsto f\left( \alpha  \right)  
+    \end{aligned}
+    \] 若 \(  \operatorname{ker}\,\varphi \neq 0  \),则由于 \(  k[t]  \)是PID,对于某个多项式 \(  p\left( t \right) \in k[t]   \)   ,我们有 \(  \operatorname{ker}\,\varphi = \left( p\left( t \right)  \right)    \) .根据构造, \(  p\left(  \alpha  \right)=0   \),通过乘以首项系数的逆,不妨设 \(  p\left( t \right)   \)是首一的.
+    由第一同构定理, \(  \varphi   \)诱导出单同态 \[
+    \tilde{\varphi}: k[t]/\left( p\left( t \right)  \right) \hookrightarrow F 
+    \]   特别地, \(  k[t]/ \left( p\left( t \right)  \right)   \)视作 \(  F  \)的子环是一个整环,从而 \(  \left( p\left( t \right)  \right)   \)是素理想,进而是极大理想（命题\ref{pro:PID-prime-to-maximal}）,因此 \(  k[t]/\left( p\left( t \right)  \right)   \)是一个域.
+    \(  \operatorname{im}\,\tilde{\varphi}\subseteq F  \)是包含了 \(  \varphi\left( t \right)=\alpha   \)和 \(  \varphi\left( k\right)=k   \) 的 \(  F  \)的子域,又 \(  F  \)是包含了 \(  k  \)和 \(  \alpha  \)的最小的子域,故 \(  \operatorname{im}\,\tilde{\varphi}=F  \)  .因此 \(  \tilde{\varphi}  \)也是满射,进而是同构.此时由定理\ref{thm:mod-f-to-be-vector-space}, \(  [F:k]=[\left( k[t]/\left( p\left( t \right)  \right)\right) :k  ] =\operatorname{deg}\,p \) .
+    这就说明了第一种情况.
+
+    若 \(  \operatorname{ker}\,\varphi=\left( 0 \right)   \) ,则 \(  \varphi:k[t]\to F  \)是单射.又 \(  k[t]  \) 是整环,它有分式域 \(  k\left( t \right)    \).
+    由泛性质\ref{def:uni of frac F},存在单同态 \[
+    k\left( t \right)\hookrightarrow F 
+    \],同态像是包含了 \(  \varphi\left( t \right)=\alpha   \)和 \(  \varphi\left( k \right)=k   \)的域,从而 \(  k\left( t \right)\simeq F   \)   
+
+    \hfill $\square$
+\end{proof}
+    
+\begin{definition}
+    设 \(  k\subseteq F  \)是域扩张,\(   \alpha  \in F  \).称 \(  \alpha   \)是 \(  k  \)上的\(  d  \)次代数元 ,若 \(  [k\left(  \alpha  \right): k ]=d  \)     是有限的.称 \(  \alpha   \)是超越的,若它不是代数的. 
+\end{definition}
+
+\begin{lemma}\label{lem:min-poly-lem}
+    设 \(  k\subseteq F  \)是域扩张,\(  \alpha \in F  \).则 \(  \alpha   \)在 \(  k  \)上是代数的,当且仅当 \(  \alpha   \)是某个非零多项式 \(  f\left( t \right) \in k[t]   \)      的根.
+    此时 \(  \alpha   \)是 多项式 \(  p\left( t \right)\in k[t]   \)的根,其中 \(  p\left( t \right)   \)是唯一的使得 \(  p\left( t \right)|f\left( t \right)    \)    且 \(  k\left(  \alpha  \right)\simeq  k[t]/ \left( p\left( t \right)  \right)    \)的不可约首一多项式. 
+\end{lemma}
+
+\begin{proof}
+    若 \(  \alpha  \)是 \(  k  \)上的代数元,则 \(  k\subseteq k\left( \alpha \right)   \)是命题\ref{pro:simple-extension-pro}中满足第一条的扩张,特别地 \(  p\left( \alpha \right)=0   \)对某个非零不可约首一多项式成立.
+    
+    反之,若 \(  f\left( \alpha \right)=0   \)对某个非零 \(  f\left( t \right)\in k[t]   \)成立.
+    考虑“赋值”同态 \[
+    \varphi:k[t]\to F
+    \]映 \(  g\left( t \right)   \)为 \(  g\left( \alpha \right)   \).由假设 \(  f\left( t \right)\in \operatorname{ker}\,\varphi   \),特别地 \(  \operatorname{ker}\,\varphi\neq \left( 0 \right)   \).由命题\ref{pro:simple-extension-pro} 的证明过程, \(  k\left( \alpha \right)\simeq k[t]/\operatorname{ker}\,\varphi   \)   是\(  k  \)的 有限扩张,从而 \(  \alpha  \)是代数元. 
+    
+    此外, \(  \operatorname{ker}\,\varphi  \)由一个不可约的首一多项式 \(  p\left( t \right)   \)生成.
+    由于 \(  f\left( t \right)\in \operatorname{ker}\,\varphi=\left( p\left( t \right)  \right)    \),故 \(  f\left( t \right)   \)是 \(  p\left( t \right)   \)的一个倍数.
+    
+    最后,\(  k[t]  \)的首一生成元是唯一的：若 \(  \left( p_1\left( t \right)  \right)=\left( p_2\left( t \right)  \right)    \),则 \(  p_1\left( t \right),p_2\left( t \right)    \)相差一个单位,故当它们首一时相等.        
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{极小多项式}
+    设 \(  \alpha   \)在 \(  k  \)上是代数的,\(  \alpha   \)在 \(  k  \)上的极小多项式是指使得 \(  p\left(  \alpha  \right)=0   \)的唯一的不可约首一多项式 \(  p\left( t \right)\in k[x]   \)  .
+        
+\end{definition}
+
+\begin{remark}
+    \begin{itemize}
+        \item  \(  \alpha  \)的次数就是\(  \alpha  \)的极小多项式的次数.     
+    \end{itemize}
+    
+\end{remark}
+
+\begin{proposition}
+    若 \(  \alpha  \)是 \(  k  \)上的代数元,则 \(  k\left( \alpha \right)   \)   中的每个元素都写成 \(  k  \)-系数的\(  \alpha  \)多项式.  
+\end{proposition}
+\begin{proof}
+  由命题\ref{pro:simple-extension-pro}的证明过程,  \[
+    \begin{aligned}
+        \varphi:k[x]& \to F=k\left( \alpha \right) \\ 
+          f\left( t \right)& \mapsto f\left( \alpha \right)  
+    \end{aligned}
+    \]是满射.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{example}
+    “代数数”是复数在 \(  \mathbb{Q}   \)上的代数元,用 \(  \overline{\mathbb{Q} }  \)表示代数数的全体.
+    
+    对于 \(  i \in \overline{\mathbb{Q} }  \),\(  i  \)在 \(  \mathbb{Q}   \)上的极小多项式是 \(  t^{2}+ 1  \)    .
+\end{example}
+
+\begin{proposition}\label{min-poly-division}
+    令 \(  k\subseteq E\subseteq F  \)是域扩张, \(  \alpha \in F  \),设 \(  \alpha  \)在 \(  k  \)上是代数的,有极小多项式 \(  p_{k}\left( t \right)   \).则 \(  \alpha  \)在 \(  E  \)上也是代数的,它的极小多项式 \(  p_{E}\left( t \right)   \)   是 \(  p_{k}\left( t \right)   \)的一个因子. 
+\end{proposition}
+\begin{remark}
+    \(  p_{k}\left( t \right)   \)在域 \(  k  \)上是不可约的,但在更大的域（例如 \(  E  \)）上可能有非平凡的因子.比如 \(  t-\alpha  \)就是 \(  p_{k}\left( t \right)   \)在 \(  F  [t]\)上的因子.      
+\end{remark}
+
+\begin{proof}
+    \(  k\subseteq E  \),\(  p_{k}\left( t \right)   \)可以看做是 \(  E[t]  \)上的多项式.因为 \(  p_{k}\left( \alpha \right)=0   \),于是 \(  \alpha  \)在 \(  E  \)上是代数的,
+    由引理\ref{lem:min-poly-lem},它的极小多项式 \(  p_{E}\left( t \right)\in E[t]   \)整除 \(  p_{k}\left( t \right)   \) .
+
+    \hfill $\square$
+\end{proof}
+
+\begin{example}
+    \[
+    \mathbb{Q} \left( \sqrt{2},\sqrt{3} \right)=\mathbb{Q} \left( \sqrt{2}+ \sqrt{3} \right)  
+    \]是一个单扩张
+\end{example}
+
+\begin{proof}
+    显然 \(  \mathbb{Q} \left( \sqrt{2}+ \sqrt{3} \right)  \subseteq \mathbb{Q} \left( \sqrt{2},\sqrt{3} \right)  \) .
+
+    令 \(  \alpha=\sqrt{2}+ \sqrt{3}  \),则 \[
+    \begin{cases} \alpha=\sqrt{2}+ \sqrt{3},\\ 
+    \alpha^{3} = 11\sqrt{2}+  9\sqrt{3}  \end{cases} 
+    \] 易见 \(  \sqrt{2},\sqrt{3}  \) 都写作 \(  \alpha  \)的\(  \mathbb{Q}   \)- 多项式. 
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}\label{pro:f-f-s}
+    有限域的有限扩张是单扩张.
+\end{proposition}
+\begin{proof}
+    设 \(  k\subseteq F  \)是域扩张,其中 \(  k  \)是有限域.若扩张是有限的,则 \(  F   \)也是有限域,故而乘法群 \(  F^{*}  \)是循环群（有限域的乘法群是循环的）.
+    设 \(  F^{*}=\left<\alpha \right>  \),则 \(  F  \)中的任一元素写作 \(  \alpha  \)的次幂,进而位于 \(  k\left(  \alpha  \right)   \)中.故 \(  k\subseteq k\left(  \alpha  \right)=F   \)   是单扩张.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    设 \(  k\subseteq F  =k\left( \alpha \right) \)是单扩张,\(  \alpha  \)是 \(  k  \)上的代数元.则 \(  k\subseteq F  \)只容许有限个中间域.    
+\end{proposition}
+
+\begin{remark}
+    \begin{itemize}
+        \item 若 \(  t  \)是 \(  k  \)上的超越元,  
+    \end{itemize}
+    
+\end{remark}
+
+\begin{proof}
+    设 \(  p\left( t \right) \in k[t]   \)是 \(  \alpha  \)在 \(  k  \)上的极小多项式,令 \(  E  \)是扩张 \(  k \subseteq k\left( \alpha \right)   \)  的中间域.
+    视 \(  p\left( t \right)   \)为 \(  E[t]  \)上的多项式  ,则由命题\ref{lem:min-poly-lem},\(  \alpha  \)在 \(  E  \)上的极小多项式 \(  p_{E}\left( t \right)   \)是 \(  p\left( t \right)   \)在 \(  E[t]  \)  中的因子.令 \(  p_{E}\left( t \right) = e_0+ e_1t+ \cdots + e_{d-1}^{d-1}+ t ^{d} \in E[t]   \),故 \(  [k\left( \alpha \right):E ]=d  \)  .
+
+    断言 \(  E=k\left(  e_0,\cdots,e_{d-1}  \right)   \),事实上,一方面我们有 \[
+    E^{\prime} \subseteq E \subseteq k\left( \alpha \right) 
+    \]另一方面 \(  E^{\prime}   \)  包含了\(  p_{E}\left( t \right)   \)的所有系数,故\(  p_{E}  \)也是 \(  E^{\prime}   \)上的多项式.又因为 \(  p_{E}\left( t \right)   \)在 \(  E  \)上不可约,从而也在 \(  E^{\prime}   \)上不可约,进而 \(  p_{E}\left( t \right)   \)一定是 \(  \alpha  \)  在 \(  E^{\prime}   \)上的极小多项式.因此 \(  [k\left( \alpha \right):E^{\prime}  ]  =d = [k\left( \alpha \right):E ]\)  
+    ,于是由命题\ref{dim-fomu} \[
+    d = [k\left( \alpha \right):E^{\prime}  ] = [k\left(  \alpha  \right):E ][E:E^{\prime} ]=d [E:E^{\prime} ]
+    \]从而 \(  [E:E^{\prime} ]=0  \), \(  E:E^{\prime}   \),断言成立.
+    
+    断言表明 \(  E  \)由 \(  p\left( t \right)   \)的因子 \(  p_{E}\left( t \right)   \)唯一确定,而 \(  p\left( t \right)   \)在 \(  k\left( \alpha \right)[t]   \)中只有有限个首一的因子,故中间域的选取是有限的.  
+    
+    \hfill $\square$
+\end{proof}
+     
+\begin{theorem}{*}
+    设 \(  k \subseteq F  \)是域扩张.则 \(  F=k\left( \alpha \right)   \)对某个 \(  k  \)上的代数元\(   \alpha   \)成立,当且仅当扩张只容许有限个中间域.
+\end{theorem}
+   
+\begin{proof}
+    “仅当”的方向就是上面的命题,接下来说明“当”的方向.
+    
+    首先断言 \(  k\subseteq F  \)是有限生成的,若不然：可以构造无限长的递增扩域链 \[
+    k \subsetneq k\left( u_1 \right)\subsetneq k\left( u_1,u_2 \right)\subsetneq k\left( u_1,u_2,u_3 \right)\subsetneq \cdots \subseteq F,   
+    \] 给出了无限多个中间域.由此不妨设 \(  F  \)是有\(  n  \)个元素 \(   u_1,\cdots,u_n   \)生成的：\(  F=k\left(  u_1,\cdots,u_n  \right)   \).再断言 \(  u_{i}  \)是代数元,
+    事实上,若 \(  u_{i}  \)是超越元,则 \(  k\left(  u_1,\cdots,u_{i-1} \right)   \)和 \(  k\left(  u_1,\cdots,u_i  \right)   \)之间存在无穷多个中间域,进而 \(  k  \)和 \(  F  \)中间域也有无穷多个.    
+    特别地, \(  k\subseteq F  \)是有限扩张.
+    
+    可以通过归纳化简为 \(  n =  2  \)的情况,具体地,若对于 \(  n\ge 3  \)是命题成立（可化为单扩张）,则 \[
+    F =  k\left( u_1,\cdots ,u_{n} \right) =  k\left( u_1,\cdots ,u_{n-1} \right)\left( u_{n} \right) =  k\left( u \right)\left( u_{n} \right) =  k\left( u,v \right)      
+    \] 对于某个 \(  u  \)成立,其中置 \(  v =  u_{n}  \).因此只需要证明 \(  n =  2  \)的情况.
+    
+    因此,不妨设 \(  F =  k\left( u,v \right)   \).若 \(  k  \)是有限域,则由于 \(  k\subseteq F  \)是有限扩张, 命题\ref{pro:f-f-s} 给出 \(  k\subseteq F  \)是单扩张.
+    
+    
+    \hfill $\square$
+\end{proof}
+
+\section{代数扩张}  
+
+\begin{definition}
+    称域扩张 \(  k\subseteq F  \)是代数扩张,若 \(  F  \)上的每一个元素都是 \(  k  \)上的代数元.   
+\end{definition}
+
+\begin{proposition}
+    有限扩张都是代数扩张.事实上,若 \(  k\subseteq F  \)是有限扩张,且 \(  [F:k]= d  \)  ,则每个 \(  \alpha \in F  \)都是 \(  k  \)上的代数元,且它的次数整除 \(  d  \).   
+\end{proposition}
+\end{document}
+
+

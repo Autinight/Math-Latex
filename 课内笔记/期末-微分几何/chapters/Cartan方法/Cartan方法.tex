@@ -1,0 +1,489 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{ Cartan方法 }
+
+若无特别指出,本章采用以下约定:
+
+\begin{enumerate}
+    \item \(  \left( M,g \right)   \)是一个\(  n  \)维Riemann流形.   
+    \item \(   \nabla   \)是 \(  TM  \)上的Levi-Civita联络.
+    \item \(  U  \)是 \(  M  \)上的一个开子集, \(  \left( E_{i} \right)   \)是\(  U  \)上的一组局部标架, \(  \left(  \varepsilon ^{i} \right)   \)是对偶的余标架.       
+\end{enumerate}
+\section{基本概念}
+
+\begin{definition}{1-形式的内积}
+    设 \(  \alpha = \alpha _{i}\,\mathrm{d} x^{i}  \)和 \(  \beta = \beta _{j}\,\mathrm{d} x^{j}  \)  是两个1-形式,定义它们的内积为分别提升指标后向量场的内积,即 \[
+    \left<\alpha ,\beta  \right>_{g}= \left<g^{ik}\alpha _{k}\frac{\partial }{\partial x^{i}},g^{jl}\beta _{l}\frac{\partial }{\partial x^{j}} \right>=  g^{kl}\alpha _{k}\beta _{l}
+    \]
+\end{definition}
+
+\begin{definition}{联络1-形式}
+    \(  U  \)上存在唯一的光滑 \(  1  \)-形式的\(  n\times n  \)矩阵 \(  \left(  \omega _{i}^{j} \right)   \),使得 \[
+     \nabla _{X}E_{i}=  \omega _{i}^{j}\left( X \right)E_{j},\quad \forall  X \in \mathfrak{X}\left( U \right)  
+    \]或者写作 \[
+     \nabla E_{i}=  \omega _{i}^{j}\otimes E_{j}
+    \]称为是这组标架的\textbf{联络1-形式} .   
+\end{definition}
+\begin{proof}
+     若存在这样的 \(  1  \)-形式 \(   \omega   \),则 \[
+   \Gamma _{ij}^{k}E_{k}=    \nabla _{E_{i}}E_{j}=  \omega _{j}^{k}\left( E_{i} \right)E_{k} 
+    \]  得到 \(   \omega _{j}^{k}\left( E_{i} \right)=  \Gamma _{ij}^{k},\forall i,j,k   \) .于是我们定义 \[
+     \omega _{i}^{j}\left( X \right)=X^{k} \Gamma _{ki}^{j},\quad \forall X = X^{k}E_{k} \in \mathfrak{X}\left( U \right) 
+    \]则由 \(   \Gamma _{ki}^{j}  \)的光滑性, \(   \omega _{i}^{j}  \)是光滑的余标架.对于任意的 \(  X =  X^{k}E_{k} \in \mathfrak{X}\left( U \right)   \), \[
+     \nabla _{X}E_{i}= X^{k} \nabla _{E_{k}}E_{i}= X^{k} \Gamma _{ki}^{l}E_{l}=  \omega _{i}^{l}\left( X \right)E_{l}=  \omega _{i}^{j}\left( X \right) E_{j} 
+    \]   
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{definition}{曲率2-形式}
+    按以下方式定义一个2-形式的矩阵 \(  \left(  \Omega _{i}^{j} \right)   \)\[
+     \Omega _{i}^{j}= \frac{1}{2}R_{kli}^{j} \varepsilon ^{k}\wedge  \varepsilon ^{l}
+    \] 称为是\textbf{曲率2-形式}
+\end{definition}
+
+\section{结构方程}
+
+\begin{theorem}{Cartan结构方程}
+    以下两个Cartan结构方程成立
+    \begin{enumerate}
+        \item  \[
+        \,\mathrm{d}  \varepsilon ^{j}=  \varepsilon ^{i}\wedge  \omega _{i}^{j}
+        \]
+        \item  \[
+   \Omega _{i}^{j}= \,\mathrm{d} { \omega _{i}}^{j} - \omega _{i}^{k}\wedge  \omega _{k}^{j}
+  \]  
+    \end{enumerate}
+    
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item 一方面 \[
+    \begin{aligned}
+    \,\mathrm{d}  \varepsilon ^{j}\left( E_{k},E_{l} \right)&=   E_{k}\left(  \varepsilon ^{j}\left( E_{l} \right)  \right)- E_{l}\left(  \varepsilon ^{j}\left( E_{k} \right)  \right) - \varepsilon ^{j}\left( \left[ E_{k},E_{l} \right]  \right) = - \varepsilon ^{j}\left( \left[ E_{k},E_{l} \right]  \right) 
+    \end{aligned}
+    \] 另一方面 \[
+    \begin{aligned}
+ \left(     \varepsilon ^{i}\wedge  \omega _{i}^{j}\right)\left( E_{k},E_{l} \right)&=    \varepsilon ^{i}\left( E_{k} \right) \omega _{i}^{j}\left( E_{l} \right)-  \varepsilon  ^{i}\left( E_{l} \right) \omega _{i}^{j}\left( E_{k} \right)\\ 
+  &=  \omega _{k}^{j}\left( E_{l} \right)- \omega _{l}^{j}  \left( E_{k} \right)     \\ 
+   &=  \varepsilon ^{j}\left(  \nabla _{E_{l}} E_{k}\right)- \varepsilon ^{j}\left(  \nabla _{E_{k}}E_{l} \right)\\ 
+    &=  \varepsilon ^{j}\left<  \nabla _{E_{l}}E_{k}- \nabla _{E_{k}}E_{l} \right>  \\ 
+     &= - \varepsilon ^{j}\left( \left[ E_{k},E_{l} \right]  \right) 
+    \end{aligned}
+    \]
+    \item  \[
+   \nabla _{X}E_{i}=  \omega _{i}^{j}\left( X \right)E_{j} 
+  \]  \[
+   \Gamma _{ki}^{j}E_{j}=  \nabla _{E_{k}}E_{i}=  \omega _{i}^{j}\left( E_{k} \right)E_{j} 
+  \]故 \[
+   \omega _{i}^{j}\left( E_{k} \right)=  \Gamma _{ki}^{j} 
+  \] \[
+ \begin{aligned}
+ \,\mathrm{d}  \omega _{i}^{j}\left( E_{k},E_{l} \right)&=  E_{k}\left(  \omega _{i}^{j}\left( E_{l} \right)  \right)-E_{l}\left(  \omega _{i}^{j}\left( E_{k} \right)  \right)- \omega _{i}^{j}\left( \left[ E_{k},E_{l} \right]  \right)   
+ \end{aligned}
+  \]\[
+   \omega _{i}^{k}\wedge  \omega _{k}^{j}\left( E_{k},E_{l} \right)= \omega _{i}^{m}\left( E_{k} \right) \omega _{m}^{j}\left( E_{l} \right)   - \omega _{i}^{m}\left( E_{l} \right)  \omega _{m}^{j}\left( E_{k} \right) 
+  \]\[
+  \begin{aligned}
+  R_{kli}&=  \nabla _{E_{k}}  \nabla _{E_{l}}E_{i}- \nabla _{E_{l}} \nabla _{E_{k}}E_{i}- \nabla _{\left[ E_{k},E_{l} \right] }E_{i}\\ 
+   &=  \nabla _{E_{k}}\left(  \omega _{i}^{j}\left( E_{l} \right)E_{j}  \right) - \nabla _{E_{l}}\left(  \omega _{i}^{j}\left( E_{k} \right)E_{j}  \right)-  \omega _{i}^{j}\left( \left[  E_{k},E_{l}\right]  \right)E_{j}  \\ 
+    &=  \omega _{i}^{j}\left( E_{l} \right) \nabla _{E_{k}}E_{j} + E_{k}\left(  \omega _{i}^{j}\left( E_{l} \right)  \right)E_{j} -  \omega _{i}^{j}\left( E_{k} \right) \nabla _{E_{l}} E_{j}- E_{l}\left(  \omega _{i}^{j}\left( E_{k} \right)  \right)E_{j}\\ 
+     &- \omega _{i}^{j}\left( \left[ E_{k},E_{l} \right]  \right)E_{j}  \\ 
+      &=  \omega _{i}^{j}\left( E_{l} \right) \omega _{j}^{m}\left( E_{k} \right)E_{m} + E_{k}  \left(  \omega _{i}^{j}\left( E_{l} \right)  \right)E_{j}-  \omega _{i}^{j}\left( E_{k} \right) \omega _{j}^{m}\left( E_{l} \right)E_{m}-E_{l}\left(  \omega _{i}^{j}\left( E_{k} \right)  \right)E_{j}\\ 
+       &- \omega _{i}^{j}\left( \left[ E_{k},E_{l} \right]  \right)E_{j}     \\ 
+        &=   \omega _{i}^{m}\left( E_{l} \right) \omega _{m}^{j}\left( E_{k} \right)E_{j}+ E_{k}\left(  \omega _{i}^{j}\left( E_{l} \right)  \right)E_{j}- \omega _{i}^{m}\left( E_{k} \right) \omega _{m}^{j}\left( E_{l} \right)E_{j} -E_{l}\left(  \omega _{i}^{j}\left( E_{k} \right)  \right)E_{j}\\ 
+         &- \omega _{i}^{j}\left( \left[  E_{k},E_{l} \right]  \right)E_{j}       
+  \end{aligned}
+  \]于是 \[
+  \begin{aligned}
+  R_{kli}^{j}&=  \omega _{i}^{m}\left( E_{l} \right) \omega _{m}^{j}\left( E_{k} \right)+ E_{k}\left(  \omega _{i}^{j}\left( E_{l} \right)  \right)- \omega _{i}^{m}\left( E_{k} \right) \omega _{m}^{j}\left( E_{l} \right)-E_{l}\left(  \omega _{i}^{j}\left( E_{k} \right)  \right)\\ 
+   &- \omega _{i}^{j}\left( \left[ E_{k},E_{l} \right]  \right)
+  \end{aligned}
+  \] 
+\[
+ \Omega _{i}^{j}= \frac{1}{2}R_{kli}^{j}\left(  \varepsilon ^{k}\otimes  \varepsilon ^{l}- \varepsilon ^{l}\otimes  \varepsilon ^{k} \right) = \sum _{k<l}R_{kli}^{j} \varepsilon ^{k}\otimes  \varepsilon ^{l}
+\]于是 \[
+ \Omega _{i}^{j}\left( E_{k},E_{l} \right)= R_{kli}^{j} = \,\mathrm{d}  \omega _{i}^{j}\left( E_{k},E_{l} \right)-  \omega _{i}^{k}\wedge  \omega _{k}^{j}\left( E_{k},E_{l} \right)  
+\]
+
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+
+\section{规正标价}
+
+\begin{proposition}
+    若 \(  \left(  \varepsilon ^{i} \right)   \)是规正的余标架.则黎曼度量 \(  g  \)在局部上表示为 \[
+    g = \left(  \varepsilon ^{1} \right)^{2}+ \cdots + \left(  \varepsilon ^{n} \right)^{2}  
+    \]  
+\end{proposition}
+
+\begin{proposition}
+    若 \(  \left(  \varepsilon ^{i} \right)   \)是正交的余标架,则 \[
+     \omega _{i}^{j}= - \omega _{j}^{i}
+    \]
+\end{proposition}
+\begin{proof}
+    \[
+  0=   \nabla _{X}\left< \varepsilon ^{i}, \varepsilon ^{j} \right>= \left< \nabla_{X}  \varepsilon ^{i}, \varepsilon ^{j} \right>+ \left< \varepsilon ^{i}, \nabla _{X} \varepsilon ^{j} \right>
+    \] 其中由正交性, \[
+    \left< \nabla _{X} \varepsilon ^{i}, \varepsilon ^{j} \right>= \left< \nabla _{X}E_{i},E_{j} \right>= \omega _{i}^{j}\left( X \right),\quad \left< \varepsilon ^{i}, \nabla _{X} \varepsilon ^{j} \right>= \left<E_{i}, \nabla _{X}E_{j} \right>=  \omega _{j}^{i}\left( X \right)   
+    \]于是 \[
+     \omega _{i}^{j}= - \omega _{j}^{i}
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+\section{超曲面}
+
+约定 \(  N  \)是 \(  M  \)中余1-维的超曲面 , \(   E_1,\cdots,E_n   \)是 \(  M  \)的一个局部规正标架,其中 \(  E_1,\cdots ,E_{n-1}  \)是 \(  N  \)的切向量, \(  E_{n}  \)是\(  N  \)的单位法向量       .相应地, \(  \varepsilon ^{1},\cdots , \varepsilon ^{n-1}  \)是 \(  N  \)的切规正余标架, \(   \varepsilon ^{n}  \)是法向余标架.       
+
+\begin{theorem}
+    设 \(  h  \)是 \(  N  \)的标量第二基本形式,则 \[
+    h_{ij}=  \omega _{j}^{n}\left( E_{i} \right),\quad i,j\in \left\{ 1,\cdots ,n-1 \right\} 
+    \]  
+\end{theorem}
+\begin{proof}
+    \[
+    h_{ij}= h\left( E_{i},E_{j} \right)= \left< \nabla _{E_{i}}E_{j},E_{n} \right>= \left< \omega _{j}^{k}\left( E_{i} \right)E_{k},E_{n}  \right> =  \omega _{j}^{n}\left( E_{i} \right) 
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}{Weingarten}
+    设 \(  S  \)是Weingarten变换,则 \[
+    S\left( X \right)= \sum _{i= 1}^{n-1} \omega _{i}^{n}\left( X \right)E_{i}  
+    \]\[
+    S_{ij}=  \omega _{j}^{n}\left( E_{i} \right)= h_{ij} 
+    \]
+\end{theorem}
+
+
+\begin{theorem}{Gauss方程}
+    设 \(   \Omega ^{N}  \)是 \(  N  \)上诱导度量的曲率2-形式.则 \[
+     \Omega _{i}^{j}=  \Omega _{i}^{j,N}+  \omega _{i}^{n}\wedge  \omega _{j}^{n}
+    \]特别地,若 \(  M  \)是平坦的(比如欧式空间),则 \[
+    0=  \Omega _{i}^{j,N}+  \omega _{i}^{n}\wedge  \omega _{j}^{n}
+    \] 
+\end{theorem}
+\begin{proof}
+    考虑 \(  N  \)上的第二结构方程 \[
+     \Omega _{i}^{j,N}= \,\mathrm{d}  \omega _{i}^{j}- \sum _{k= 1}^{n-1}\omega _{i}^{k}\wedge  \omega _{k}^{j},\quad i,j\in \left\{ 1,2,\cdots ,n-1 \right\}
+    \] 与\(  M  \)上的第二结构方程 \[
+     \Omega _{i}^{j}= \,\mathrm{d}  \omega _{i}^{j}-\sum _{k= 1}^{n} \omega _{i}^{k}\wedge  \omega _{k}^{j}
+    \] 相减并利用反对称性
+
+    \hfill $\square$
+\end{proof}
+
+\begin{lemma}{Gauss曲率}
+   设 \(  M  \)是3维欧式空间,\(  K  \)是\(  N  \)在 \(  M  \)中的Gauss曲率,则     \[
+     \Omega _{2}^{1,N}= K \varepsilon ^{1}\wedge  \varepsilon ^{2}
+    \]
+\end{lemma}
+\begin{proof}
+    根据定义 \[
+     \Omega _{2}^{1,N}= \frac{1}{2}R_{122}^{1} \varepsilon ^{1}\wedge  \varepsilon ^{2}+ \frac{1}{2}R_{212}^{1} \varepsilon ^{2}\wedge  \varepsilon ^{1}
+    \]由曲率张量的对称性和标架的正交性, \[
+    R_{122}^{1}= -R_{212}^{1}= R_{1221}= K
+    \]于是 \[
+     \Omega _{2}^{1,N}= \frac{1}{2}K \varepsilon ^{1}\wedge  \varepsilon ^{2}-\frac{1}{2}K \varepsilon ^{2}\wedge  \varepsilon ^{1}= K \varepsilon ^{1}\wedge  \varepsilon ^{2}
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}
+    对于二维曲面 \(  N  \), 正交标价下的第二结构方程简化为  \[
+     \Omega _{i}^{j}= \,\mathrm{d}  \omega _{i}^{j}
+    \]
+\end{corollary}
+\begin{proof}
+    结构方程中 \(   \omega _{i}^{k}\wedge  \omega _{k}^{j}  \)中的每一项都含对角元,而正交标价下联络1-形式矩阵的对角元为零. 
+
+    \hfill $\square$
+\end{proof}
+\begin{corollary}
+    设 \(  M  \)是3维欧式空间,\(  K  \)是\(  N  \)在 \(  M  \)中的Gauss曲率,则 \[
+    K \varepsilon ^{1}\wedge  \varepsilon ^{2}= \,\mathrm{d}  \omega _{2}^{1}
+    \]
+\end{corollary}
+
+\section{计算}
+
+\subsection{借助氛围欧式空间的计算}
+主要是利用适配标架,在欧式空间上计算,再带入到子流形上获得子流形上几何量.
+\begin{method}{联络形式的计算方法}
+    \begin{enumerate}
+        \item 计算坐标/参数向量场.
+        \item 对坐标/参数向量场进行正交化,得到规正的切丛的标架.
+        \item 计算全协变导数 \[
+         \nabla E_{i}
+        \]结果是一个 \(  \left( 1,1 \right)   \)-张量,通常用欧式空间上的标准向量场 \(   \partial _{i}  \),以及坐标余向量场 \(  \,\mathrm{d} r_{i}  \)表示.   计算的过程中,使用Lebniz律,以及事实 :\[
+     \nabla f= \,\mathrm{d} f,\quad f\in C^{\infty}\left( M \right) 
+    \]
+    \item 根据定义 \[
+     \nabla E_{i}=  \omega _{i}^{j}\otimes E_{j}
+    \]通过将 \(   \nabla E_{i}  \)与 \(  E_{l}  \)做度量配对\(  \left< \nabla E_{i},E_{l} \right>_{g}  \) ,得到 \(   \omega _{i}^{l}  \).   
+    \end{enumerate}
+    
+\end{method}
+
+\begin{method}{Gauss曲率的计算方法}
+    \begin{enumerate}
+        \item 根据上面的方法,计算 \[
+     \omega _{1}^{2}= \left< \nabla E_{1},E_2 \right>_{g}
+    \]或者 \[
+      \omega _{2}^{1}= \left< \nabla E_2,E_1 \right>_{g}
+    \]
+    \item 计算外微分 \[
+    \,\mathrm{d}  \omega _{2}^{1}= -\,\mathrm{d}  \omega _{1}^{2}
+    \]
+    \item 利用简化的Gauss方程 \[
+    K \varepsilon ^{1}\wedge  \varepsilon ^{2}= \,\mathrm{d}  \omega _{2}^{1}
+    \]
+    \item 两边按相同的基表示,对比得到 \(  K  \).
+    \end{enumerate}
+    
+\end{method}
+\begin{example}[ 球面]
+    计算半径为 \(  R  \)的球面的Gauss曲率    
+\end{example}
+
+\begin{solution}
+    考虑参数化 \[
+    r\left(  \theta , \varphi  \right)= \left( R\sin  \varphi \cos  \theta ,R\sin  \varphi \sin  \theta ,R\cos  \varphi  \right)  
+    \] \[
+    r_{ \theta }= R\left( -\sin  \varphi \sin  \theta ,\sin  \varphi \cos  \theta ,0 \right),\quad r_{ \varphi }= R\left( \cos  \varphi \cos  \theta ,\cos  \varphi \sin  \theta ,-\sin  \varphi  \right)  
+    \]则 \[
+    r_{ \theta }\cdot r_{ \varphi }= 0
+    \]令 \[
+    E_1= \frac{r_{ \theta } }{\left| r_{ \theta } \right|  }= \left( -\sin  \theta ,\cos  \theta ,0 \right)  ,\quad E_2= \frac{r_{ \varphi } }{\left| r_{ \varphi } \right|  }= \left( \cos  \varphi \cos  \theta ,\cos  \varphi \sin  \theta ,-\sin  \varphi  \right)  
+    \]令 \[
+    E_3= E_1\times E_2= \begin{pmatrix} 
+        i&j&k\\ 
+         -\sin  \theta &\cos  \theta &0\\ 
+          \cos  \varphi \cos  \theta &\cos  \varphi \sin  \theta &-\sin  \varphi   
+    \end{pmatrix}= \left( -\sin  \varphi \cos  \theta  ,-\sin  \varphi \sin  \theta  , -\cos  \varphi \right)  
+    \]记球面为 \(  \mathbb{S}  \),则 \[
+    E_1,E_2\in T \mathbb{S},\quad E_3\in N \mathbb{S}
+    \]   \[
+     \varepsilon ^{1}= \left| r_{ \theta } \right|\,\mathrm{d}  \theta = R\sin  \varphi \,\mathrm{d}  \theta ,\quad  \varepsilon ^{2}= \left| r_{ \varphi } \right|\,\mathrm{d}  \varphi =R \,\mathrm{d}  \varphi   
+    \]\[
+  \begin{aligned}
+     \nabla E_1=    \nabla \left( -\sin  \theta  \partial _{1}+ \cos  \theta  \partial _{2} \right)&=  -\cos  \theta  \,\mathrm{d}  \theta \otimes  \partial _{1}-\sin  \theta \,\mathrm{d}  \theta \otimes  \partial _{2}
+  \end{aligned}
+    \]其中, \(   \partial _{1}, \partial _{2}, \partial _{3}  \)表示 \(  \mathbb{R} ^{3}  \)上的标准坐标向量场.  另一方面 \[
+     \nabla E_1=  \omega _{1}^{1}\otimes E_1+  \omega _{1}^{2}\otimes E_2+  \omega _{1}^{3}\otimes E_3=  \omega _{1}^{2}\otimes E_2+  \omega _{1}^{3}\otimes E_3
+    \]  \[
+     \omega _{1}^{2}= -\cos  \theta \,\mathrm{d}  \theta \left< \partial _{1},E_2 \right>-\sin  \theta \,\mathrm{d}  \theta \left< \partial _{2} ,E_2\right>= -\cos  \varphi \,\mathrm{d}  \theta 
+    \]于是 \[
+     \omega _{2}^{1}= \cos  \varphi \,\mathrm{d}  \theta 
+    \]
+    
+
+    进而 \[
+    \,\mathrm{d}  \omega _{2}^{1}=\sin  \varphi \,\mathrm{d}  \theta \wedge \,\mathrm{d}  \varphi = \frac{1 }{R\sin  \varphi  }\sin  \varphi  \frac{1 }{R } \varepsilon ^{1}\wedge  \varepsilon ^{2}= \frac{1 }{R^{2} }  \varepsilon ^{1}\wedge  \varepsilon ^{2} 
+    \]由Gauss方程 \[
+    K \varepsilon ^{1}\wedge  \varepsilon ^{2}=  \,\mathrm{d}  \omega _{2}^{1}
+    \]得到 \(  K= \frac{1 }{R^{2} }   \) 
+\end{solution}
+
+\hspace*{\fill} 
+\begin{example}
+    设曲面 $S: \mathbf{r} = \mathbf{r}(u,v)$ 上没有抛物点, $\mathbf{n}$ 是 $S$ 的法向量; 曲面 $\tilde{S}: \tilde{\mathbf{r}}(u,v) = \mathbf{r}(u,v) + \lambda \mathbf{n}(u,v)$ (常数 $\lambda$ 充分小) 称为 $S$ 的平行曲面.
+\begin{enumerate}
+    \item 证明曲面 $S$ 和 $\tilde{S}$ 在对应点的切平面平行;
+    \item 可以选取 $\tilde{S}$ 的单位法向 $\tilde{\mathbf{n}}$, 使得 $\tilde{S}$ 的 Gauss 曲率和平均曲率分别为
+    $$ \tilde{K} = \frac{K}{1 - 2\lambda H + \lambda^2 K}, \quad \tilde{H} = \frac{H - \lambda K}{1 - 2\lambda H + \lambda^2 K}. $$
+\end{enumerate}
+\end{example}
+
+\begin{solution}
+    \begin{enumerate}
+        \item \[
+        \tilde{\mathbf{r}}_{u}= \mathbf{r}_{u}+  \lambda \mathbf{n}_{u},\quad \tilde{\mathbf{r}}_{v}= \mathbf{r}_{v}+  \lambda \mathbf{n}_{v}
+        \] 由Weingarten方程,\[
+         \mathbf{n}_{u}=  \nabla ^{g} _{\mathbf{r}_{u}}\mathbf{n}= -s\left( \mathbf{r}_{u} \right)\in \operatorname{span}\,\left( \mathbf{r}_{u},\mathbf{r}_{v} \right) 
+        \]类似地 \[
+        \mathbf{n}_{v}\in \operatorname{span}\,\left( \mathbf{r}_{u},\mathbf{r}_{v} \right) 
+        \]从而 \[
+        T_{\tilde{\mathbf{r}}\left( u,v \right) }\tilde{S}= \operatorname{span}\,\left( \mathbf{\tilde{r}}_{u}, \mathbf{\tilde{r}}_{v} \right)= \operatorname{span}\,\left( \mathbf{r}_{u},\mathbf{r}_{v} \right)  = T_{\mathbf{r}\left( u,v \right) }S
+        \]这表明\(  S  \)在 \(  \mathbf{r}\left( u,v \right)   \)处的切平面与 \(  \tilde{S}  \)在 \(  \tilde{\mathbf{r}}\left( u,v \right)   \)处的切平面平行.
+        \item  \[
+        g = \left<r_{u},r_{u} \right>\,\mathrm{d} u\otimes \,\mathrm{d} u+ 2\left<r_{u},r_{v} \right>\,\mathrm{d} u\otimes \,\mathrm{d} v+ \left<r_{v},r_{v} \right> \,\mathrm{d} v\otimes \,\mathrm{d} v
+        \] \[
+        \tilde{g}= \left<\tilde{r}_{u},\tilde{r}_{v} \right>\,\mathrm{d} u\otimes \,\mathrm{d} v+ 2\left<\tilde{r}_{u},\tilde{r}_{v} \right>\,\mathrm{d} u\otimes \,\mathrm{d} v+ \left<\tilde{r}_{v},\tilde{r}_{v} \right>\,\mathrm{d} v\otimes \,\mathrm{d} v
+        \]注意到 \[
+        \tilde{r}_{ \Lambda  }= \tilde{r}_{ \Lambda }+  \lambda n_{ \Lambda }= r_{ \Lambda }- \lambda S\left( r_{ \Lambda } \right)= \left( \mathrm{Id}- \lambda S \right)r_{ \Lambda },\quad  \Lambda = u,v  
+        \]于是 \[
+        \left<\tilde{r}_{i},\tilde{r}_{j} \right>= \det \left( \operatorname{Id}- \lambda S \right) ^{2}\left<\tilde{r}_{j},\tilde{r}_{j} \right>
+        \] 进而 \[
+        \tilde{g}= \det \left( Id-  \lambda S \right)^{2}\det g 
+        \]\[
+         \omega _{2}^{1}= \left< \nabla e_{2},e_1 \right>= \left< \nabla ^{g}e_2-h\left( \cdot ,e_2 \right)e_3,e_1  \right>= \left< \nabla ^{g}e_2,e_1 \right>
+        \]类似地 \[
+         \tilde{\omega} _{2}^{1}= \left< \nabla ^{g}e_2,e_1 \right>
+        \]因此 \[
+         \omega _{2}^{1}=  \tilde{\omega}_{2}^{1}
+        \]进而 \[
+        \,\mathrm{d}  \omega _{2}^{1}= \,\mathrm{d}  \tilde{\omega} _{2}^{1}
+        \]于是 \[
+        K  \varepsilon ^{1}\wedge  \varepsilon ^{2}= \tilde{K} \tilde{\varepsilon} ^{1}\wedge  \tilde{\varepsilon} ^{2}
+        \]其中 \(   \tilde{\varepsilon} ^{i}  \)是 \(  e_{i}  \)关于 \(  \tilde{g}  \)的对偶余标架, \(   \varepsilon ^{i}  \)是 \(  e_{i}  \)关于 \(  g  \)的对偶余标架.那么 \[
+         \tilde{\varepsilon} ^{1}\wedge  \tilde{\varepsilon} ^{2}= \sqrt{\tilde{g} } \,\mathrm{d} u\,\mathrm{d} v,\quad   \varepsilon ^{1}\wedge  \varepsilon ^{2}= \sqrt{g}\,\mathrm{d} u\,\mathrm{d} v
+        \]        由于 \[
+        \det \tilde{g} = \det \left( I-  \lambda S \right)^{2}\det g 
+        \]故 \[
+         \tilde{\varepsilon} ^{1}\wedge  \tilde{\varepsilon} ^{2}= \det \left( I- \lambda S \right) \varepsilon ^{1}\wedge  \varepsilon ^{1} 
+        \]进而 \[
+        \tilde{K}= \frac{K }{\det \left( I- \lambda S \right)  } 
+        \]在 \(  e_1,e_2  \)下, \[
+        S= \begin{pmatrix} 
+             \kappa _1 &0\\ 
+              0& \kappa _2  
+        \end{pmatrix} 
+        \] 于是 \[
+        \det \left( I- \lambda S \right)= \det \begin{pmatrix} 
+            1-  \lambda \kappa _1 &0\\ 
+             0&1-  \lambda \kappa _2  
+        \end{pmatrix}= \left( 1-  \lambda \kappa _1 -  \lambda \kappa _2 -  \lambda ^{2}\kappa _1  \kappa _2  \right)=    1-2 \lambda H- \lambda ^{2}K
+        \]最终 \[
+        \tilde{K}= \frac{K }{1-2 \lambda H+  \lambda ^{2}K } 
+        \]
+
+    \end{enumerate}
+    
+\end{solution}
+
+\hspace*{\fill} 
+
+\begin{problem}
+设曲面 $S$ 由方程 $x^2 + y^2 - f(z) = 0$ 给定, $f$ 满足 $f(0) = 0$, $f'(0) \neq 0$, 证明: $S$ 在点 $(0,0,0)$ 的法曲率为常数.
+\end{problem}
+\begin{proof}
+   令 \[
+   F\left( x,y,z \right)= x^{2}+ y^{2}-f\left( z \right)  
+   \],则 \[
+    \operatorname{grad}\, F= \left( 2x,2y,-f^{\prime} \left( z \right)  \right) 
+   \] 令 \[
+   e_3= \frac{ \operatorname{grad}\,F }{\left| \operatorname{grad}\, F \right|  }= \frac{\left( 2x,2y,-f^{\prime} \left( z \right)  \right)  }{\sqrt{4x^{2}+ 4y^{2}+ \left( f^{\prime} \left( z \right)  \right)^{2} } }  
+   \]设 \(   \nabla   \)是 \(  S  \)上的协变导数, 令 \(  N\left( x,y,z \right)= \sqrt{4x^{2}+ 4y^{2}+ \left( f^{\prime} \left( z \right)^{2}  \right) }   \) 
+   则 \[
+    \begin{aligned}
+    \nabla e_3&=  \nabla \left( \frac{1}{N}\left( 2x \partial _{1}+ 2y \partial _{2}-f^{\prime} \left( z \right) \partial _{3}  \right)  \right) \\ 
+     &= d\left( \frac{1 }{N }  \right)\otimes \left( 2x \partial _{1}+ 2y \partial _{2}-f^{\prime} \left( z \right) \partial _{3}  \right)+ \frac{1 }{N } \left( 2\,\mathrm{d} x\otimes  \partial _{1}+ 2\,\mathrm{d} y\otimes  \partial _{2}-f^{\prime \prime} \left( z \right)\,\mathrm{d} z\otimes  \partial _{3}  \right)     
+    \end{aligned}
+   \]其中 \[
+   \,\mathrm{d} \left( \frac{1 }{N }  \right)= -\frac{\,\mathrm{d} N }{N^{2} }  
+   \] \[
+   \,\mathrm{d} N= \frac{1 }{2N }\left( 8x\,\mathrm{d} x+ 8y\,\mathrm{d} y+ 2f^{\prime} \left( z \right)f^{\prime \prime} \left( z \right)\,\mathrm{d} z   \right)  
+   \]从而 \[
+  \begin{aligned}
+    \nabla e_3&= -\frac{1 }{2N^{3} }\left( 8x\,\mathrm{d} x+ 8y\,\mathrm{d} y+ 2f^{\prime} \left( z \right)f^{\prime \prime} \left( z \right)\,\mathrm{d} z   \right)\otimes \left( 2x \partial _{1}+ 2y \partial _{2}-f^{\prime} \left( z \right) \partial _{3}  \right)  \\ 
+     & + \frac{1 }{N }\left( 2\,\mathrm{d} x\otimes  \partial _{1}+ 2\,\mathrm{d} y\otimes  \partial _{2}-f^{\prime \prime} \left( z \right)\,\mathrm{d} z\otimes  \partial _{3}  \right)  
+  \end{aligned}
+   \]选取 \(  e_1,e_2  \),使得 \(  e_1|_{0}= \left( 1,0,0 \right)=  \partial _{1}, e_2|_{0}= \left( 0,1,0 \right)  =  \partial _{2}  \), \(   \varepsilon ^{1}, \varepsilon ^{2}  \)分别是 \(  e_1,e_2  \)的对偶余向量场.那么 \[
+   \operatorname{II} =  \omega _{1}^{3} \otimes \varepsilon ^{1}+  \omega _{2}^{3} \otimes \varepsilon ^{2}
+   \]   在原点处,\(  N\left( 0,0,0 \right)= f^{\prime} \left( 0 \right)    \)  进而 \[
+    \nabla e_3= \frac{1 }{f^{\prime} \left( 0 \right)   }f^{\prime \prime} \left( 0 \right)\,\mathrm{d} z\otimes    \partial _{3}+ \frac{1 }{f^{\prime} \left( 0 \right)  } \left( 2\,\mathrm{d} x\otimes  \partial _{1}+ 2\,\mathrm{d} y\otimes  \partial _{2}-f^{\prime \prime} \left( 0 \right)\,\mathrm{d} z\otimes  \partial _{3}  \right) 
+   \] 在原点处成立.紧接着就有 \[
+    \omega _{3}^{1}= \left< \nabla e_3,e_1 \right>= \frac{1 }{f^{\prime} \left( 0 \right)  }2 \,\mathrm{d} x,\quad  \omega _{3}^{2}= \left< \nabla e_3,e_2 \right>= \frac{1 }{f^{\prime} \left( 0 \right)  } 2\,\mathrm{d} y  
+   \]在原点处成立,其中尖括号表示关于两个向量场的缩并.又\[
+   \,\mathrm{d} x=  \varepsilon ^{1},\quad \,\mathrm{d} y=  \varepsilon ^{2}
+   \]在原点处成立.于是 \[
+   \operatorname{II} _{0}= \left( \frac{2 }{f^{\prime} \left( 0 \right)  } \left(   \varepsilon ^{1}\otimes   \varepsilon ^{1} \right)+ \frac{2 }{f^{\prime} \left( 0 \right)  }\varepsilon ^{2}\otimes   \varepsilon ^{2}    \right)_{0}=  \frac{2 }{f^{\prime} \left( 0 \right)  } \operatorname{Id}_{0}  
+   \]第二基本形式在原点处为数量矩阵,从而法曲率在原点处为常数.
+\end{proof}
+
+\subsection{内蕴解法}
+
+\begin{method}
+    \begin{enumerate}
+        \item 写出一组内蕴的正交余标架\(   \varepsilon ^{1}, \varepsilon ^{2}  \) .
+        \item 计算 \(  \,\mathrm{d}   \varepsilon ^{1},\,\mathrm{d}  \varepsilon ^{2} \),带入Cartan第一结构方程 \[
+        \,\mathrm{d}  \varepsilon ^{i}=  \varepsilon ^{j}\wedge  \omega _{j}^{i}
+        \] 待定系数,或者通过缩并计算\(   \omega _{j}^{i}  \) 的分量. 
+    \end{enumerate}
+    
+\end{method}
+
+\begin{problem}
+已知曲面的第一基本形式, 求 Gauss 曲率:
+\begin{enumerate}
+    \item $I = du du + u^2 dv dv;$
+    \item $I = du du + \sin^2 u dv dv;$
+\end{enumerate}
+\end{problem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 令 \(   \varepsilon ^{1}= \,\mathrm{d} u,  \varepsilon ^{2}=  u\,\mathrm{d} v   \).则 \[
+        I=   \varepsilon ^{1}\otimes  \varepsilon ^{1}+  \varepsilon ^{2}\otimes  \varepsilon ^{2}
+        \] 这表明 \(   \varepsilon ^{1}, \varepsilon ^{2}  \)是曲面的一组正交余标价.  由Cartan结构方程 \[
+        0= \,\mathrm{d}  \varepsilon ^{1}=\varepsilon ^{1}  \wedge \omega _{1}^{1} + \varepsilon ^{2} \wedge  \omega _{1}^{2} = u\,\mathrm{d} v\wedge \omega _{1}^{2}
+        \]\[
+       \mathrm{d} u\wedge \,\mathrm{d} v= \,\mathrm{d}  \varepsilon ^{2}=   \varepsilon ^{j}\wedge\omega _{j}^{2}  =\varepsilon ^{1}  \wedge \omega _{2}^{1} =\,\mathrm{d} u\wedge   \omega _{2}^{1}
+        \]可以得到 \[
+         \omega _{1}^{2}= \,\mathrm{d} v
+        \]由第二结构方程 \[
+       \frac{1 }{u }K\,\mathrm{d} u\wedge \,\mathrm{d} v=   K \varepsilon ^{1}\wedge  \varepsilon ^{2}= \,\mathrm{d}  \omega _{2}^{1}=0
+        \]得到 \(  K=0   \)
+        \item 令 \(   \varepsilon ^{1}= \,\mathrm{d} u, \varepsilon ^{2}= \sin u\,\mathrm{d} v  \)  ,则 \[
+        I=   \varepsilon ^{1}\otimes  \varepsilon ^{1}+  \varepsilon ^{2}\otimes  \varepsilon ^{2}
+        \]表明 \(   \varepsilon ^{1}, \varepsilon ^{2}  \)是曲面的一组正交的余标架.由Cartan结构方程 \[
+       0= \,\mathrm{d}  \varepsilon ^{1}=  \varepsilon ^{j}\wedge  \omega _{j}^{1}=  \varepsilon ^{2} \omega _{2}^{1}= \sin u \,\mathrm{d} v \wedge  \omega _{2}^{1}
+        \] \[
+        \cos u\,\mathrm{d} u\wedge \,\mathrm{d} v= \,\mathrm{d}  \varepsilon ^{2}=   \varepsilon ^{j} \omega _{j}^{2}=  \varepsilon ^{1}\wedge  \omega _{1}^{2}= \,\mathrm{d} u\wedge  \omega _{1}^{2}
+        \]得到 \[
+         \omega _{2}^{1}=- \cos u\,\mathrm{d} v
+        \]从而由Cartan第二结构方程 \[
+    \sin u K\,\mathrm{d} u\wedge \,\mathrm{d} v=     K \,  \varepsilon ^{1}\wedge  \varepsilon ^{2}=  \Omega _{2}^{1}= \,\mathrm{d}  \omega _{2}^{1}= \sin u\,\mathrm{d} u\wedge \,\mathrm{d} v
+        \]得到 \(  K= 1  \) 
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+
+\begin{problem}
+ 设两个曲面 $S$ 和 $\tilde{S}$ 的第一基本形式满足 $\operatorname{I} = \lambda \tilde{\operatorname{I}}$ ($\lambda > 0$, 常数), 证明:
+$$
+K = \frac{1}{\lambda} \tilde{K}.
+$$
+\end{problem}
+\begin{proof}
+    设 \(  S  \)的一组正交余标架是 \(   \varepsilon ^{1}, \varepsilon ^{2}  \),则 \[
+    I= \left(  \varepsilon ^{1} \right)^{2}+ \left(  \varepsilon ^{2} \right)^{2}  
+    \]则 \[
+    \tilde{I}= \left( \sqrt{ \frac{1}{\lambda} }  \varepsilon ^{1} \right)^{2}+  \left( \sqrt{ \frac{1}{\lambda} }  \varepsilon ^{2} \right)^{2}  
+    \]  这表明 \(  \tilde{\varepsilon} ^{1}: =  \sqrt{ \frac{1}{\lambda} } \varepsilon ^{1}  \), \( \tilde{\varepsilon} ^{2}: =   \sqrt{ \frac{1}{\lambda} }  \varepsilon ^{2}  \)构成 \(  \tilde{S}  \)的一个正交余标架.   由Cartan第一结构方程 \[
+    \,\mathrm{d}  \varepsilon ^{1}=  \varepsilon ^{j}\wedge  \omega _{j}^{1},\quad \,\mathrm{d}   \tilde{\varepsilon} ^{1}=  \tilde{\varepsilon} ^{j}\wedge  \tilde{\omega} _{j}^{1}
+    \]将 \(   \tilde{\varepsilon} ^{1} = \sqrt{ \frac{1}{\lambda} } \varepsilon ^{1} \)带入后一个方程,得到 \[
+    \,\mathrm{d}  \varepsilon ^{1}=  \varepsilon ^{j}\wedge  \tilde{\omega} _{j}^{1}
+    \] 于是 \[
+     \varepsilon ^{j}\wedge  \omega _{j}^{1}=  \varepsilon ^{j}\wedge  \tilde{\omega} _{j}^{1}
+    \]类似地 \[
+     \varepsilon ^{j}\wedge  \omega _{j}^{2}=  \varepsilon ^{j}\wedge   \tilde{\omega} _{j}^{2}
+    \]利用正交标价的反对称性,展开得到 \[
+     \varepsilon ^{2}\wedge  \omega _{2}^{1}=  \varepsilon ^{2}\wedge  \tilde{\omega} _{2}^{1},\quad  \varepsilon ^{1}\wedge  \omega _{1}^{2}=  \varepsilon ^{1}\wedge  \tilde{\omega} _{1}^{2}
+    \]于是 \[
+     \omega _{2}^{1}=  \tilde{\omega} _{2}^{1}
+    \]进而 \[
+    \,\mathrm{d}  \omega _{2}^{1}= \,\mathrm{d}   \tilde{\omega} _{2}^{1}
+    \]由Cartan第二结构方程, \[
+    K  \varepsilon ^{1}\wedge  \varepsilon ^{2}= \,\mathrm{d}  \omega _{2}^{1}= \,\mathrm{d}  \tilde{\omega} _{2}^{1} =  \tilde{K}  \tilde{\varepsilon} ^{1}\wedge  \tilde{\varepsilon} ^{2}= \tilde{K}  \frac{1}{\lambda}  \varepsilon ^{1}\wedge  \varepsilon ^{2}
+    \]得到\[
+    K= \tilde{K}\frac{1 }{ \lambda  } 
+    \] 
+
+    \hfill $\square$
+\end{proof}
+\end{document}

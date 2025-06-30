@@ -1,0 +1,303 @@
+
+\documentclass[../../复变函数.tex]{subfiles}
+\usepackage{subfiles}
+
+\begin{document}
+\chapter{绪论}
+    
+
+教师：任金波
+
+邮箱：jren@xmu.edu.cn
+
+作业每周二上课交
+
+
+\noindent 参考书：
+\begin{enumerate}
+    \item E.stein Complex Analysis
+    \item L.Ahlfors Complex Analysis
+\end{enumerate}
+
+
+\noindent 内容：余书前六章
+
+成绩占比：出勤10,作业20,期中30,期末40.
+
+\section{一些断言}
+
+
+\begin{example}
+    设 \(  m,n \in \mathbb{N}   \)均为二整数平方和,则 \(  mn  \)也是二整数的平方和.
+    
+    
+  \begin{proof}
+
+    \noindent   Fake: 
+        令 \(  m = a_1^{2}+ b_1^{2},n =  a_2^{2}+ b_2^{2}, a_{i},b_{j} \in \mathbb{Z}   \),观察到 \[
+        mn =  \left( a_1a_2-b_1b_2 \right)^{2}+  \left( a_1b_2+ a_2b_1 \right)^{2}  
+        \] 
+    
+        \hfill $\square$
+    \end{proof}
+     
+    \noindent Real: 设 \[
+    z_1=  a_1+  ib_1,z_2= a_2+ ib_2  , m=  \left| z_1 \right|^{2},n =   \left| z_2 \right|^{2}
+    \]则 \[
+    mn =  \left| z_1z_2 \right|^{2} =  \left| \left( a_1a_2-b_1b_2 \right) - i\left( a_1b_2+ a_2b_1 \right)   \right|^{2}  
+    \]
+\end{example}
+
+
+\hspace*{\fill} 
+
+
+\begin{example}
+    设 \(  f:\mathbb{C} \to \mathbb{C}   \)可导,考虑 \(  C =  \left\{ z \in \mathbb{C} :\left| z-z_0 \right|= r  \right\}  \) ,则 \[
+    \int_{C}f\left( z \right)\,\mathrm{d} z= 0 
+    \] 并且 \[
+    f\left( z_0 \right)=  \frac{1}{2\pi i}  \int_{C} \frac{f\left( z \right)  }{z-z_0 } \,\mathrm{d} z  
+    \]
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{example}
+    设 \(  f: \mathbb{C} \to \mathbb{C}   \)是可导的,则 \(  f  \)有任意阶导数.  
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{example}
+    设 \(  0<r_1<r_2  \),令 \(  D_{r_1}=  \left\{ z \in \mathbb{C} : \left| z-z_0 \right|<r_1  \right\}  \), \(  D_{r_2}=  \left\{ z \in \mathbb{C} : \left| z-z_0 \right|<r_2  \right\}  \) .
+    考虑 \(  f,g: D_{r_2}\to \mathbb{C}   \)可导,那么若 \(  f\left( z \right)= g\left( z \right)    \)对于任意的 \(  z \in D_{r_1}  \)  成立,则 \(  f\left( z \right)= g\left( z \right)    \)对于任意的 \(  z \in D_{r_2}  \)成立.  
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{example}[ (Liouville)]
+设 \(  g:\mathbb{C} \to \mathbb{C}   \)可导,若 \(  g  \)在 \(  \mathbb{C}   \)上有界,则 \(  g  \)是常值函数.    
+\end{example}
+
+\hspace*{\fill} 
+
+\section{复数的引入}
+
+\[
+\text{自然界}\xrightarrow{\text{数数}} \mathbb{N} \xrightarrow{x + 2= 0} \mathbb{Z}  \xrightarrow{5x= 3} \mathbb{Q}  
+\xrightarrow{x^{2}-2= 0} \mathbb{R} \xrightarrow{x^{2}+ 1}\mathbb{C} 
+\]
+
+\noindent 为什么要求解 \(  x^{2}+ 1  \)？ 
+
+
+\begin{example}
+    考虑 \(  f\left( x \right)= x^{3}+ ax^{2}+ bx+ c,a,b,c \in \mathbb{R}    \), \(  f\left( x \right)= 0   \)一定有实根.
+    问题是如何给出方程实根的根式解？  
+\end{example}
+
+\begin{solution}
+    令 \(  x+  \frac{a}{3} = y  \),则方程化为 \[
+    y^{3} +  py+ q = 0,\quad  p,q \in \mathbb{R} 
+    \] 我们令 \(  y =  u+ v  \),其中 \(  u,v  \)待定,带入方程得到 \[
+   \begin{aligned}
+  &  \left( u+ v \right)^{3}+ p \left( u+ v \right)+  q= 0 \\ 
+\iff  & u^{3}+ v^{3}+ q + \left( 3uv + p \right)\left( u+ v \right)= 0    
+   \end{aligned}
+    \]  可以考虑 \[
+    \begin{cases} u^{3}+ v^{3}= -q\\ 
+      uv=  - \frac{p}{3} \end{cases} \implies \begin{cases} u^{3}+ v^{3}= -q\\ 
+        u^{3}v^{3} =  \left( - \frac{p}{3} \right)^{3}  \end{cases} 
+    \]由韦达定理, \(  u^{3}  \)和 \(  v^{3}  \)是方程 \[
+    z ^{3} + qz-  \frac{p^{3} }{27 }= 0 
+    \]的两个根,从而 \[
+    u^{3},v^{3}   = \frac{q }{2 } + -\sqrt{\frac{q^{2} }{4 }+  \frac{p^{3} }{27 }  } 
+    \]  因此 \[
+    x =  u+ v =  \sqrt[3]{- \frac{q   }{2 }+  \sqrt{ \frac{q^{2}    }{4 }+  \frac{p^{3} }{27 }  } } +  \sqrt[3]{-\frac{q }{2 } -\sqrt{ \frac{q^{2}     }{4 }+  \frac{p^{3} }{27 }  } }
+    \]
+\end{solution}
+
+\hspace*{\fill} 
+
+\begin{example}
+    对于 \[
+    x^{3}-15x+  4= 0
+    \]在形式上,我们有 \[
+    \sqrt{\frac{q^{2} }{4 }+  \frac{p^{3} }{27 }  } =  11\sqrt{-1}
+    \]则 \[
+     x =  \sqrt[3]{2+ 11\sqrt{-1} } +  \sqrt[3]{2-11\sqrt{-1}}=  \left( 2+ \sqrt{-1} \right) +  \left( 2-\sqrt{-1} \right)= 4  
+    \]
+\end{example}
+
+\hspace*{\fill} 
+
+\section{复数的定义}
+
+以下给出复数的三种定义,此三种方式定义出的环是同构的.
+
+\subsection{通过定义乘法}
+
+设 \(  \left( \mathbb{R} ,+  \right)   \)是加法群,则\(  \left( \mathbb{R} ^{2},+  \right): =  \left( \mathbb{R} ,+  \right)\times \left( \mathbb{R} ,+  \right)     \)是一个加法群.  
+
+ \(  \mathbb{R}   \)上还具有环结构,但 若取环的直积,则 \(  \left( 1,0 \right)\times \left( 0,1 \right)= \left( 0,0 \right)     \),得到的环结构具有零因子,不是整环. 
+
+ 事实上,我们定义 \(  \left( a_1,b_1 \right)\cdot \left( a_2,b_2 \right): =  \left( a_1a_2-b_1b_2,a_1b_2+ a_2b_1 \right)     \), 此时 
+ \(  \left( \mathbb{R} ^{2},+ ,\cdot  \right)   \)成为一个交换环,加法单位元是 \(  \left( 0,0 \right)   \),乘法单位元是 \(  \left( 1,0 \right)   \)  . 
+
+ 记 \(  i =  \left( 0,1 \right)   \),断言 \(  \left( \mathbb{R} ^{2},+ ,\cdot  \right)   \)是一个域、事实上
+ ,取 \(  \left( a,b  \right) \in \mathbb{R} ^{2}   \), \(  a,b  \)不全为\(  0  \),则 \(  \left( a,b \right)\cdot \left( \frac{a }{a^{2}+ b^{2} }  , \frac{-b }{a^{2}+ b^{2} } \right)= \left( 1,0 \right)     \),故 \(  \left( a,b \right)   \)可逆.
+ 
+ 称这个域 \(  \left( \mathbb{R} ^{2},+ ,\cdot  \right)   \)  为复数域,记作 \(  \mathbb{C}   \).
+ 
+ 通过将 \(  \mathbb{R} \ni r \mapsto \left( r,0 \right)   \)将 \(  \mathbb{R}   \)嵌入到 \(  \mathbb{C}   \)中.   
+
+\subsection{通过商去\(  x^{2}+ 1  \) }
+
+考虑以 \(  x  \)为未定元的实系数多项式  \(  \mathbb{R} [x]  \) ,它是 PID且是UFD.
+考虑环上的一个理想 \[
+I =  \left( x^{2}+ 1 \right) 
+\]我们知道 \(  x^{2}+ 1  \)在 \(  \mathbb{R} [x]  \)上是不可约的,又 \(  \mathbb{R} [x]  \)是UFD,因此 \(  I  \)是一个极大理想,故而 \[
+\mathbb{R} [x]/ \left( x^{2}+ 1 \right) 
+\]是一个域,称为复数域,记作 \(  \mathbb{C}   \),记 \(  i =  \bar{x}  \) 为 单项式 \(  x  \)所在的代表元.  
+
+通过将 \( \mathbb{R}  \ni r \mapsto \bar{r}  \) 将 \(  \mathbb{R}   \)嵌入到 \(  \mathbb{C}   \)中.  
+\subsection{矩阵环的子环} 
+
+考虑 \(  M_{2\times 2}\left( \mathbb{R}  \right) : =  \left\{ \begin{pmatrix} 
+    a&b\\ 
+     c&d 
+\end{pmatrix}  : a,b,c,d \in \mathbb{R} \right\}   \)是 \(  2\times 2  \)方阵环.
+
+
+考虑它的子环 \(  A =  \left\{ \begin{pmatrix} 
+    a &b\\ 
+     -b&a 
+\end{pmatrix}: a,b \in \mathbb{R}   \right\}  \)是一个交换环,   
+定义 \(   i: =  \begin{pmatrix} 
+    0& 1 \\ 
+-1& 0 
+\end{pmatrix}  \) 
+
+我们有 \[
+\begin{pmatrix} 
+    0&1\\ 
+     -1&0 
+\end{pmatrix} \begin{pmatrix} 
+    0&1\\ 
+     -1&0 
+\end{pmatrix}  =  \begin{pmatrix} 
+    -1 &0\\ 
+     0&-1 
+\end{pmatrix} 
+\]这个子环 \(  A  \)中的元素称为复数, \(  A  \)也记作 \(  \mathbb{C}   \).   
+
+通过将 \(  r \ni \mathbb{R} \mapsto r E  \)将 \(  \mathbb{R}   \)嵌入到 \(  \mathbb{C}   \)中.
+
+\section{复数的三种表述方式}
+
+\begin{enumerate}
+    \item 代数形式： \(  z =  x+ iy, x,y \in \mathbb{R}   \) ,其中 \(  x   \)记作 \(  \operatorname{Re}\,z  \), \(  y  \)记作 \(  \operatorname{Im}\,z  \)    .
+    称 \(  z   \)是纯虚数,若 \(  \operatorname{Re}\,z = 0  \),且 \(  \operatorname{Im}\,z \neq 0  \).   
+    \item 三角形式：  \(  z =  \rho \left( \cos  \theta + i\sin  \theta  \right)   , \rho \in \mathbb{R} _{\ge 0},  \theta  \in \mathbb{R} \),称 \(  \rho   \)为 \(  z  \)的模长, \(   \theta  = \operatorname{Arg}\,z  \)为 \(  z  \)的辐角（当 \(  z \neq 0  \)时） . 
+     
+     对于任意的 \(  z \neq 0  \),存在唯一的 \(   \theta  \in \operatorname{Arg}\,z  \)  ,使得 \(  -\pi < \theta \le \pi   \),此 \(   \theta   \)称为 \(  z  \)的辐角主值,记作 \(  \operatorname{arg}\,z  \).以后每个确定的 \(  \operatorname{Arg}\,z  \)     中的值也记作 \(  \operatorname{arg}\,z  \). 
+
+     \item 指数形式： \(  z =  \rho \cdot e^{i \theta }, \rho  \in \mathbb{R} _{\ge 0}, \theta  \in \mathbb{R}   \),我们有 \[
+     z^{n} =  \rho ^{n} \left( \cos n \theta + i\sin  \theta  \right)=  \rho ^{n}e^{in  \theta } 
+     \] 
+\end{enumerate}
+
+\section{复数的开方}
+
+设 \(  z =  \rho \left( \cos  \theta + i\sin  \theta  \right),\rho \ge 0, \theta  \in \mathbb{R}    \),定义 \[
+ \omega  =  \sqrt[n]{z} =  z^{\frac{1}{n}} =  \left\{w\in \mathbb{C} : w^{n}= z \right\}
+\] 当 \(  n\ge 2  \)时,\(   \omega   \)为多值函数（不是函数）.  
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+回去读3-8页,预习p9-p13,作业是第一章的 7,9,12,13
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+
+
+\section{复球面}
+
+考虑 \(  \mathbb{R} ^{3}  \)上的坐标系 \(  \left( x,y,u \right)   \),
+将 \(  xOy  \)平面 \(  \left\{ u = 0 \right\}  \)等同于 \(  \mathbb{C}   \),即 \(  \left( x,y \right) \leftrightarrow x+ iy   \) .     
+
+设 \(  S  \)是  \(  \mathbb{R} ^{3}  \)上的 的球面 \[
+S : = S^{2}: =   \left\{ \left( x,y,u \right): x^{2}+ y^{2}+ u^{2}  = 1\right\}
+\] 
+
+设 \(  N= \left( 0,0,1 \right)   \)是北极点, 
+任取 \(  xOy  \)平面上一点 \(  A = \left( x,y,0 \right)   \),则直线 \(  NA  \)与与球面交于一点 \(  A^{\prime} : NA\cap S =  \left\{ N,A^{\prime}  \right\}  \).
+
+设 \(  A^{\prime}  =  \left( x^{\prime} ,y^{\prime} ,u^{\prime}  \right)   \),则 \(  \vec{NA} = \left( x,y,-1 \right)   \), \(\vec{NA^{\prime} } =  \left( x^{\prime} ,y^{\prime} ,u^{\prime} -1 \right)   \),
+由于 \(  N,A,A^{\prime}   \)共线,可得 \(  x:y:-1= x^{\prime} :y^{\prime} :u^{\prime} -1  \), 
+我们有 \[
+y^{\prime}  =  y\left( 1-u^{\prime}  \right), x^{\prime}  =  x\left( 1-u^{\prime}  \right),  {x^{\prime} }^{2} + {y^{\prime} }^{2}+  {u^{\prime} }^{2}= 1 
+\]    写成 \[
+x^{2}\left( 1-u^{\prime}  \right)^{2} + y^{2}\left( 1-u^{\prime}  \right)^{2} + {u^{\prime} }^{2}= 1  
+\]得到 \[
+\left( x^{2}+ y^{2} \right)\left( 1-u^{\prime}  \right)^{2} = 1-{u^{\prime} }^{2}  
+\]
+由于 \(  N \neq A^{\prime}   \),可知 \(  u^{\prime}  \neq 1  \),于是 \[
+\left( x^{2}+ y^{2} \right)\left( 1-u^{\prime}  \right)= 1+ u^{\prime}   
+\]  解出 \(  u^{\prime}   \),得到 \[
+u^{\prime}  =  \frac{x^{2}+ y^{2}-1 }{x^{2}+ y^{2}+ 1 } = \frac{\left| z \right|^{2}-1  }{\left| z \right|^{2}+ 1  }  
+\] 进而 \[
+x^{\prime}  =  \left( 1- \frac{\left| z \right|^{2}-1  }{ \left| z \right|^{2}+ 1 }  \right) x =   \frac{2x }{ \left| z \right|^{2}+ 1 } =  \frac{ z+  \bar{z} }{\left| z \right|^{2}+ 1  }  
+\]类似地有 \[
+y^{\prime}  = \frac{2y }{\left| z \right|^{2}+ 1  } =  \frac{z-\bar{z} }{i\left( \left| z \right|^{2}+ 1 \right)   }  
+\]
+
+以上表明存在 \(  \mathbb{C}   \)到 \(  S\setminus N  \)的双射 \(   \varphi : \mathbb{C} \to S \setminus \left\{ N \right\}  \) \[
+\varphi \left( x,y \right)=  \left( x^{\prime} ,y^{\prime} ,u^{\prime}  \right)  
+\]   注意到当 \(  \left| x+ iy \right|\to \infty   \)时,即 \(  \left| OA \right|\to \infty   \)时,我们有 \(  A^{\prime}   \to N\).可以自然地约定一 \(  \infty \not\in \mathbb{C}   \)  ,\(  \mathbb{C} _{\infty}: =  \mathbb{C} \cup \left\{ \infty \right\}  \) 
+称为扩充复数系或扩充复平面,记作 \(  \mathbb{P}^{1}  \)或 \(  \mathbb{P}^{1}\left( \mathbb{C}  \right)   \),  并约定 \(   \varphi \left( \infty \right): = N   \)将 \(   \varphi   \)     扩张到 \(  \mathbb{C} _{\infty}  \)上. 
+
+\begin{proposition}{扩充复平面的性质}
+
+    对于 扩充复平面 \(  \mathbb{C} _{\infty}  \),以及它与复球面的对应 \(   \varphi : \mathbb{C} _{\infty}\to S  \),我们有
+    
+    \begin{enumerate}
+        \item   \(   \varphi   \)在 \(  \left\{ \left| z \right|>1  \right\}  \)上的限制,是其到 \(  \left\{ \text{北半球} \right\}\setminus \left\{ N \right\}  \)的一一对应；  \(   \varphi   \)在 \(  \left\{ \left| z \right|>0  \right\}\cup \left\{ \infty \right\}  \)上的限制与北半球一一对应.
+        \item \(   \varphi   \)在 \(  \left\{ \left| z \right|<1  \right\}  \)上的限制,是其到 南半球的一一对应.     
+        \item 对于直线 \(  L\subseteq \mathbb{C}   \), \(   \varphi   \)在 \(  L  \)上的限制,是其到“\(  S  \)中过 \(  N  \)的圆 \(  \setminus \left\{ N \right\}  \)”的一个一一对应.      
+        \item   \(   \varphi   \)在 \(  S  \)上的一个圆的限制,是其到 \(  \mathbb{C}   \)中某个圆,或 “\(  \mathbb{C}   \)中某直线\(  \cup \left\{ \infty \right\}  \)”的一个一一对应.       
+    \end{enumerate}
+    
+    
+\end{proposition}
+
+
+\begin{remark}
+    也成上述的 \(  S  \)是Riemann球面.  
+\end{remark}
+
+\begin{definition}
+    对于 \(  \infty \in \mathbb{C} _{\infty}  \),定义 \(  \left| \infty \right|: =  \infty: =  + \infty   \)  
+\end{definition}
+
+\begin{remark}
+    不定义  \(  \infty  \)的\(  \operatorname{Re}\,,\operatorname{Im}\,,\operatorname{Arg},\operatorname{arg}\,  \).
+\end{remark}
+
+\begin{definition}
+    对于 \(  \infty \in \mathbb{C} _{\infty}  \),做以下约定 \begin{enumerate}
+        \item \(  \forall   \alpha  \in \mathbb{C}   \), \(  \alpha \pm \infty =  \infty\pm  \alpha  =  \infty  \), \(  \frac{\alpha  }{\infty }   = 0\);
+        \item \(  \forall  \in \mathbb{C} ^{*}  \), \(  \alpha \cdot \infty= \infty\cdot \alpha  =  \infty  \)     
+    \end{enumerate}
+     
+\end{definition}
+
+\begin{remark}
+    不定义两个无穷间的运算.
+\end{remark}
+\end{document}

@@ -1,0 +1,302 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+    
+
+\chapter{基础同调代数}
+
+\section{链复形范畴}
+
+\begin{definition}{分次模}
+    \begin{itemize}
+        \item 考虑一个 \(  R  \)-模直和 \[
+            C_{.}: =  C_{{*}}: = \bigoplus _{n \in \mathbb{Z}}C_{n}
+            \] 通常称 \(  C_{*}  \) 是第 \(  n  \)个分次分量为 \(  C_{n}  \)  的一个分次 \(  R  \)-模.
+        \item      \(  C_{n}  \)  中的每个成员都被称为是 \(  C_{*}  \)的一个 \(  n  \)次齐次元.  
+    \end{itemize}
+    
+\end{definition}
+
+\begin{definition}{分次同态}
+    设 \(  C_{*}  \)和 \(  C_{*}^{\prime}   \)  是两个分次\(  R  \)-模.称一个 \(  R  \)-模同态 \(  f: C_{*}\to C_{*}^{\prime}   \)为一个分次同态,
+    若存在 \(  d  \),使得 \(  f\left( C_{r} \right)\subseteq C_{r+ d}^{\prime}    \)     对所有 \(  r  \)成立.此时称 \(  d  \)为 \(  f  \)的次数.
+    通常记 \(  f|_{C_{r}}  \)为 \(  f_{r}  \).     
+\end{definition}
+
+\begin{definition}{\(  R  \)-模链复形  }
+    一个 \(  R  \)-模链复形是指一对 \(  \left( C_{*},\partial  \right)   \),其中 \(  C_{*}  \)是一个分次 \(  R  \)-模, \(  \partial : =  \partial _{*}: C_{*}\to C_{*}  \)     
+    是一个次数为 \(  -1  \)的 分次自同态,且满足 \(  \partial \circ \partial = 0  \).  
+    
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item \(  \partial   \)由一列 \(  R  \)-模同态 \(  \left\{ \partial _{n}: C_{n}\to C_{n-1} \right\}  \)组成,对所有 \(  n  \) 满足 \(  \partial _{n}\circ \partial _{n-1}= 0  \)   .
+        \item 称 \(  \partial   \)为链复形的微分或边缘算子.
+        \item 通常不提及 \(  \partial   \)而只说 \(  C_{*}  \)是一个链复形.    
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{definition}{链映射}
+    设 \(  C_{*}  \)和 \(  C_{*}^{\prime}   \)是两个链复形.
+    一个链映射 \(  f= f_{*}: C_{*}\to C_{*}^{\prime}   \),是指一个次数为 \(  0  \)的分次模同态,且 满足 \(  f\circ \partial  =  \partial \circ f  \).
+    即一列 \(  R  \)-模同态 \(  f_{n}:C_{n}\to C_{n}^{\prime}   \),使得 \(  \partial _{n}^{\prime} \circ f_{n} =  f_{n-1}\circ \partial _{n}  \)  对于所有的 \(  n  \)成立.   
+\end{definition}
+
+\begin{proposition}
+    存在 \(  R  \)-模链复形和链映射的范畴,记作 \(  \mathbf{Ch_R}  \)  .
+\end{proposition}
+\begin{remark}
+    \begin{enumerate}
+        \item \(  \mathbf{Ch}: =  \mathbf{Ch}_{\mathbb{Z} }  \) 
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{definition}
+    对于一族链复形 \(  \left\{ \left( C^{\alpha }_{*},\partial ^{\alpha } \right)  \right\}  _{\alpha \in  \Lambda }\) ,可以自然地定义它们的直和：
+    取分次模为直和 \(  \bigoplus _{\alpha }C^{\alpha }  \),边缘算子为 \(  \partial  =  \bigoplus _{\alpha }\partial ^{\alpha }  \)  .
+\end{definition}
+
+\begin{example}例如对于 \(  \left( C^{1}_{*},\partial ^{1} \right)   \)和 \( \left( C^{2}_{*}, \partial ^{2} \right)  \),它们的直和 \(  \left( C,\partial  \right)   \)被定义为 \[
+C_{n} =  C_{n}^{1} \oplus C_{n}^{2},\forall n; \quad  \partial \left( c^{1} \oplus c^{2} \right)=  \partial ^{1}\left( c^{1} \right) \oplus  \partial ^{2}\left( c^{2} \right)   
+\]   容易看出 \(  \partial \circ \partial  =  0  \). 
+    
+\end{example}
+
+\hspace*{\fill} 
+
+\section{正合列和同调群}
+
+\begin{definition}{\(  R  \)-模正合列 }
+    \begin{itemize}
+        \item 称一 \(  R  \)-模列 \[
+            M^{\prime}\overset{\alpha}{\operatorname*{\longrightarrow}}M\overset{\beta}{\operatorname*{\longrightarrow}}M^{\prime\prime}
+        \]在 \(  M  \)处正合, 若 \(  \operatorname{ker}\,\beta = \operatorname{Im}\,\alpha   \) .
+        \item 称一列 \[
+            \cdots\longrightarrow M_{n-1}\longrightarrow M_n\longrightarrow M_{n+1}\longrightarrow\cdots
+        \]是正合的,若对于每个 \(  n  \)它都在 \(  M_{n}  \)处正和.
+        \item 一个短正合列是指形如下的 \(  R  \)-模列 \[
+            0\longrightarrow M^{\prime}\longrightarrow M\longrightarrow M^{\prime\prime}\longrightarrow0.
+        \]   
+    \end{itemize}
+    
+\end{definition}
+
+\begin{definition}{链复形正合列}
+    称一个链复形和链映射的列 \[
+        0\longrightarrow C_{.}^{\prime}\xrightarrow{f_{.}}C_{.}\xrightarrow{g_{.}}C_{.}^{\prime\prime}\longrightarrow0
+    \]是正合的,若对于每个 \(  n  \),对应的 模列 \[
+        0\longrightarrow C_{n}^{\prime}\xrightarrow{f_{n}}C_{n}\xrightarrow{g_{n}}C_{n}^{\prime\prime}\longrightarrow0      
+    \]是正合的.  
+\end{definition}
+
+\begin{definition}{同调群}
+    给定 \(  R  \)-模链复形 \(  C_{*}  \),定义 \(  C_{*}  \)的同调群为分次 \(  R  \)-模 \[
+    H_{*}\left( C_{*} \right): =   \bigoplus_{n\in \mathbb{Z} }H_{n}\left( C_{*} \right) 
+    \]    其中 \[
+    H_{n}\left( C_{*} \right) : =   \operatorname{ker}\,\partial _{n} / \operatorname{Im}\,\partial _{n+ 1},\quad \forall n\in \mathbb{Z} 
+    \]
+\end{definition}
+
+
+\begin{proposition}
+    若 \(  f: C_{*}\to C_{*}^{\prime}   \)是链映射,则 \(  f  \)诱导出自然的分次同态 \(  H_{*}\left( f \right): H_{*}\left( C_{*} \right)\to H_{*}\left( C_{*}^{\prime}  \right)     \).此外 \(  H_{*}  \) 是从链复形范畴到分次模范畴上的共变函子.
+\end{proposition}
+
+\begin{proof}
+
+    设 \(  f: C_{*}\to C_{*}^{\prime}   \) 和 \(  g: C_{*}^{\prime} \to  C_{*}^{\prime \prime}   \)是链映射,分别由 \(  \left\{ f_{n} \right\}  \)和 \(  \left\{ g_{n} \right\}  \)组成,则 \(g\circ f \)是由 \(  \left\{g_{n}\circ f_{n} \right\}  \)组成的链映射.
+    
+
+    定义 \[
+    H_{*}\left( f \right) \left( h+  \operatorname{Im}\,\partial _{n+ 1} \right) :=    f_{n}\left( h \right) +  \operatorname{Im}\,\partial _{n+ 1}^{\prime} ,\quad  h \in  \operatorname{ker}\,\partial _{n}
+    \]由于 \(  \partial _{n}^{\prime} \circ f _{n} \left( h \right) =   f_{n-1}\circ \partial _{n} \left( h \right) =  f_{n-1}\left( 0 \right)= 0     \) ,因此 \(  f_{n}\left( h \right) \in  \operatorname{ker}\,\partial _{n}^{\prime}    \) .
+    并且对于 \(  h_1,h_2 \in \operatorname{ker}\,\partial _{n}  \), \(  \left( h_1-h_2 \right) \in \operatorname{Im}\,\partial _{n+ 1}   \)   ,我们有 \(  f_{n}\left( h_1 \right)-f_{n}\left( h_2 \right)= f_{n}\left( h_1-h_2 \right) \in \operatorname{Im}\,\left( f_{n}\circ \partial _{n+ 1} \right) = \operatorname{Im}\, \left( \partial _{n+ 1}^{\prime} \circ f_{n+ 1} \right)\subseteq \operatorname{Im}\,\partial _{n+ 1}^{\prime}       \) 
+    从而映射良定义,以上给出了 \(  H_{*}\left( f \right): H_{*}\left( C_{*} \right)\to H_{*}\left( C_{*}^{\prime}  \right)     \) .
+
+    接下来说明函子性,对于 \(  f: C_{*}\to C_{*}^{\prime}   \) 和 \(  g: C_{*}^{\prime} \to C_{*}^{\prime \prime}   \),任取 \(  h  \in \operatorname{ker}\,\partial _{n}  \),我们有 \[
+    H_{*}\left( g\circ f\right)\left( h+ \operatorname{Im}\,\partial _{n+ 1} \right) =  g_{n}\circ f_{n}\left( h \right)+  \operatorname{Im}\,\partial _{n+ 1}^{\prime \prime}  = H_{*}\left( g \right)\left( f_{n}\left(h  \right) + \operatorname{Im}\,\partial _{n+ 1}^{\prime}  \right)   = H_{*}\left( g \right)\circ H_{*}\left( f \right)  
+    \]  
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{lemma}{蛇引理}
+    对于给定的 \(  R  \)-模同态的交换图：
+    \[\begin{tikzcd}
+	& {M^{\prime}} & M & {M^{\prime\prime}} & 0 \\
+	0 & {N^{\prime}} & N & {N^{\prime\prime}}
+	\arrow["\alpha", from=1-2, to=1-3]
+	\arrow["{f^{\prime}}", from=1-2, to=2-2]
+	\arrow["\beta", from=1-3, to=1-4]
+	\arrow["f", from=1-3, to=2-3]
+	\arrow[from=1-4, to=1-5]
+	\arrow["{f^{\prime\prime}}", from=1-4, to=2-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow["{\alpha^{\prime}}", from=2-2, to=2-3]
+	\arrow["{\beta^{\prime}}", from=2-3, to=2-4]
+\end{tikzcd}\]
+    其中两个水平列是正合的, 存在\(  R  \)-模同态 \(   \delta  : \operatorname{ker}\,f ^{\prime \prime} \to \operatorname{Coker}\,f^{\prime}   \),被称为是连接同态,使得列
+    \[
+        \begin{aligned}\mathrm{Ker~}f^{\prime}&\xrightarrow{\alpha}\mathrm{~Ker~}f\xrightarrow{\beta}\mathrm{~Ker~}f^{\prime\prime}\xrightarrow{\delta}\mathrm{~Coker~}f^{\prime}\xrightarrow{\alpha^{\prime}}\mathrm{~Coker~}f\longrightarrow\mathrm{Coker~}f^{\prime\prime}\end{aligned}
+    \]正合.此外,连接同态 \(   \delta    \)具有函子性,从而可以定义从“蛇”到对应的“六项正合列”   的共变函子.
+\end{lemma}
+
+\begin{proof}
+  \begin{enumerate}
+    \item \(  \operatorname{ker}\,f  \)处正合： \(  \operatorname{ker}\,\beta |_{\operatorname{ker}\,f}= \operatorname{ker}\,f\cap \operatorname{ker}\,\beta  =  \operatorname{ker}\,f\cap \operatorname{Im}\,\alpha  \),
+    任取 \(  x \in \operatorname{ker}\,f\cap \operatorname{Im}\,\alpha   \),设 \(  x =  \alpha \left( y \right)   \),则 \(  \alpha ^{\prime} \circ f^{\prime}  \left( y \right)= f\circ \alpha \left( y \right)=  f\left( x \right)= 0     \),由于 \(  \alpha ^{\prime}   \)是单射, \(  f^{\prime} \left( y \right)= 0   \),
+     \(  y \in \operatorname{ker}\,f^{\prime}   \),这表明 \(  x  \in  \alpha \left( \operatorname{ker}\,f^{\prime}  \right)   \),从而 \(  \operatorname{ker}\,\beta |_{\operatorname{ker}\,f}\subseteq \alpha \left( \operatorname{ker}\,f^{\prime}  \right)   \).
+     反之,任取 \(  x^{\prime}  \in \alpha \left( \operatorname{ker}\,f^{\prime}  \right)   \),设 \(  x^{\prime}  =  \alpha \left( y^{\prime}  \right)   \),使得 \(  f^{\prime} \left( y \right)= 0   \),则 \(  f\left( x^{\prime}  \right)=  f\circ \alpha \left( y^{\prime}  \right)=  \alpha ^{\prime} \circ f^{\prime} \left( y^{\prime}  \right)= \alpha ^{\prime} \left( 0 \right)= 0      \),
+     从而 \(  x^{\prime}  \in \operatorname{ker}\,f  \),又显然 \(  x^{\prime}  \in \operatorname{Im}\,\alpha   \),因此 \(  x^{\prime}  \in \operatorname{ker}\,f\cap \operatorname{Im}\,\alpha   \)  , \(  \alpha \left( \operatorname{ker}\,f^{\prime}  \right)\subseteq \operatorname{ker}\,f\cap \operatorname{Im}\,\alpha = \operatorname{ker}\,\beta |_{\operatorname{ker}\,f}   \),综上, 列在 \(  \operatorname{ker}\,f  \)处正合.
+     \item \(  \operatorname{Coker}\,f  \)处正合：留作练习.   
+     \item \(   \delta    \)的构造：\(  \operatorname{Coker}\,f^{\prime} = N ^{\prime} / \operatorname{Im}\,f ^{ \prime}   \),对于 \(  h \in \operatorname{ker}\, f ^{\prime \prime}   \),注意到 \(  \operatorname{Im}\,\beta  =  M ^{\prime \prime}   \),
+    存在 \( k \in M  \),使得 \(  h =  \beta \left( k \right)   \).因此 \( 0 =  f ^{\prime \prime} \left( h \right) =   f ^{\prime \prime} \circ \beta \left( b \right) =  \beta ^{\prime} \circ f \left( k\right)    \),从而 \(  f\left( k \right) \in  \operatorname{ker}\,\beta  ^{\prime}  =  \operatorname{Im}\,\alpha ^{\prime}   \),存在    
+    \(  l \in N^{\prime}   \),使得 \(  \alpha ^{\prime} \left( l \right) =  f\left( k \right)    \).定义 \(   \delta  \left( h \right): =  l+  \operatorname{Im}\,f^{\prime}    \).
+    
+    
+    为了说明良定义性,只需要说明上述方式定义出的 \(   \delta  \left( 0 \right)   \)一定是 \(  0+ \operatorname{Im}\,f^{\prime}   \),事实上,   若 \(  h = 0  \),则任取 \( \beta ^{-1} \left( h \right)=   \operatorname{ker}\,\beta =   \operatorname{Im}\,\alpha   \)中一 \(  k \),任取 \(  l   \)使得  \(  \alpha ^{\prime} \left( l \right)= f\left( k \right)    \) ,都有    \(  f\left( k \right) \in \operatorname{Im}\,\left( f\circ \alpha  \right)= \operatorname{Im}\,\left( \alpha ^{\prime} \circ f^{\prime}  \right)     \) ,
+    即 \(  \alpha ^{\prime} \left( l \right) \in \operatorname{Im}\,\left( \alpha ^{\prime} \circ f^{\prime}  \right)    \),由于 \(  \alpha ^{\prime}   \)是单射, \(  l \in \operatorname{Im}\,f^{\prime}   \),   表明 \(   \delta  \left( h  \right) =  0+  \operatorname{Im}\,f^{\prime}    \).    
+    
+    \item \(  \operatorname{ker}\,f ^{\prime \prime}   \)处正合： 首先说明 \(  \operatorname{Im}\,\beta |_{\operatorname{ker}\,f}\subseteq \operatorname{ker}\, \delta    \),即 \(   \delta  \circ \beta |_{\operatorname{ker}\,f} = 0  \). 
+    任取 \(  x \in  \operatorname{ker}\,f  \),置 \(  x ^{\prime \prime}  =  \beta \left( x \right)   \), 
+   可以让 \(  x  \)称为定义 \(   \delta  \left( x ^{\prime \prime}  \right)   \)过程中引入的 \(  k  \),则由于 \(  f\left( x \right)= 0   \),引入的 \(  l  \)满足 \(  \alpha ^{\prime} \left( l \right)= f\left( k \right)= 0    \),又 \(  \alpha ^{\prime}   \)是单射, \(  l =  0  \),从而 \(    \delta  \circ \beta \left( x \right)=  \delta  \left( x ^{\prime \prime}  \right)= 0    \).再来说明另一边,取 \(  x ^{\prime \prime}  \in \operatorname{ker}\, f ^{\prime \prime}   \),使得 \(   \delta  \left( x ^{\prime \prime}  \right)= 0   \).则存在
+    \(  l \in  \operatorname{Im}\,f^{\prime}   \), \(  k \in M  \),使得  \(  x ^{\prime \prime}  =  \beta \left( k \right)   \) ,\(  f\left( k \right)=  \alpha ^{\prime} \left( l \right)    \),设 \(  l =  f^{\prime} \left( s \right)   \),其中 \(  s \in M^{\prime}   \). 
+     \(  f\left( k \right) =  \alpha ^{\prime} \circ f^{\prime} \left( s \right)= f\circ \alpha \left( s \right)     \)      , \(  k - \alpha \left( s \right) \in \operatorname{ker}\,f   \).
+     又 \(   \beta \left( k- \alpha \left( s \right)  \right) =  \beta \left( k \right)- \beta \circ \alpha \left( s \right)=  \beta \left( k \right)=  x ^{\prime \prime}       \),因此 \(  x ^{\prime \prime}  \in  \beta \left( \operatorname{ker}\,f \right)   \),表明 \(  \operatorname{ker}\,  \delta  \subseteq \operatorname{Im}\,\beta |_{\operatorname{ker}\,f}  \)   
+    \item \(  \operatorname{Coker}\,f^{\prime}   \)处正合：留作练习. 
+  \end{enumerate}
+  
+       
+
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}\label{thm:short-exact-to-homo-long-exact}
+    给定链复形的短正合列 \[
+        0\longrightarrow C_{*}^{\prime}\xrightarrow{\alpha}C_{*}\xrightarrow{\beta}C_{*}^{\prime\prime}\longrightarrow0
+    \]存在一个同调群的长正合列 \[
+        \longrightarrow H_n(C_*^{\prime})\overset{H_n(\alpha)}{\operatorname*{\operatorname*{\longrightarrow}}}H_n(C_*)\overset{H_n(\beta)}{\operatorname*{\operatorname*{\longrightarrow}}}H_n(C_*^{\prime\prime})\overset{\delta_n}{\operatorname*{\operatorname*{\longrightarrow}}}H_{n-1}(C_*^{\prime})\overset{H_{n-1}(\alpha)}{\operatorname*{\operatorname*{\longrightarrow}}}H_{n-1}(C_*)\longrightarrow
+    \],并且这种对应具有函子性.
+\end{theorem}
+
+\begin{proof}
+    由于链映射与边缘算子的交换性, \(  \alpha   \)和 \(  \beta   \)分别诱导出良定义的商映射 \[
+     \bar{\alpha}: C_{*}^{\prime} / \operatorname{Im}\,\partial ^{\prime}\to   C_{*}^{\prime} / \operatorname{Im}\,\partial ,\quad  \bar{\beta}: C_{*} /\operatorname{Im}\,\partial \to C_{*} ^{\prime \prime} / \operatorname{Im}\,\partial ^{\prime \prime}  
+    \]  并且分别限制在 \(  \operatorname{ker}\,\partial ^{\prime}   \)和 \(  \operatorname{ker}\,\partial   \)上,得到 \[
+     \alpha ^{\prime} : \operatorname{ker}\,\partial ^{\prime} \to  \operatorname{ker}\, \partial ,\quad  \beta ^{\prime} : \operatorname{ker}\,\partial \to \operatorname{ker}\, \partial ^{\prime \prime} 
+    \]  我们得到蛇形交换图
+    \[\begin{tikzcd}
+	&& {C_n^{\prime} / \operatorname{Im} \partial_{n+1}^{\prime}} && {C_n / \operatorname{Im} \partial_{n+1}} && {C_n^{\prime\prime} / \operatorname{Im} \partial_{n+1}^{\prime\prime}} && 0 \\
+	\\
+	0 && {\ker \partial_{n-1}^{\prime}} && {\ker \partial_{n-1}} && {\ker \partial_{n-1}^{\prime\prime}}
+	\arrow["{\bar{\alpha}_n}", from=1-3, to=1-5]
+	\arrow["{\partial_n^{\prime}}", from=1-3, to=3-3]
+	\arrow["{\bar{\beta}_n}", from=1-5, to=1-7]
+	\arrow["{\partial_n}", from=1-5, to=3-5]
+	\arrow[from=1-7, to=1-9]
+	\arrow["{\partial_n^{\prime\prime}}", from=1-7, to=3-7]
+	\arrow[from=3-3, to=3-1]
+	\arrow["{\alpha_{n-1}^{\prime}}"', from=3-3, to=3-5]
+	\arrow["{\beta_{n-1}^{\prime}}"', from=3-5, to=3-7]
+\end{tikzcd}\]
+    注意到由于 \(  \operatorname{Im}\,  \partial ^{\prime} _{n+ 1}\subseteq  \operatorname{ker}\,\partial ^{\prime} _{n} \),映射 \(  [\partial _{n}^{\prime} : C_{n}^{\prime} /\operatorname{Im}\,\partial _{n+ 1}^{\prime} \to  \operatorname{ker}\,\partial _{n-1}^{\prime} ]  \)的核同构于 \(  \operatorname{ker}\, \partial _{n}^{\prime}  /\operatorname{Im}\,\partial _{n+ 1}^{\prime}  =  H_{n}\left( C_{*}^{\prime}  \right)   \) ,
+    类似地有映射的 \(  \operatorname{Coker}\,  \)同构于  \(  H_{n-1}\left( C_{*}^{\prime}  \right)   \)  ,类似地结论对 \(  \partial _{n}  \)和 \(  \partial _{n} ^{\prime \prime}   \)也成立.  于是由蛇引理,得到正合列 \[
+        \begin{aligned}H_n(C_*^{\prime})\xrightarrow{H_n(\alpha)}H_n(C_*)\xrightarrow{H_n(\beta)}H_n(C_*^{\prime\prime})\xrightarrow{\delta_n}H_{n-1}(C_*^{\prime})\xrightarrow{H_{n-1}(\alpha)}H_{n-1}(C_*)\xrightarrow{H_{n-1}(\beta)}H_{n-1}(C_*^{\prime\prime})\end{aligned}
+    \]
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}
+    考虑 \(  R  \)-模交换图 
+    \[\begin{tikzcd}
+	0 && {M_1} && {M_2} && {M_3} && 0 \\
+	\\
+	0 && {N_1} && {N_2} && {N_3} && 0
+	\arrow[from=1-1, to=1-3]
+	\arrow["{\alpha_1}", from=1-3, to=1-5]
+	\arrow["{f_1}"', from=1-3, to=3-3]
+	\arrow["{\alpha_2}", from=1-5, to=1-7]
+	\arrow["{f_2}"', from=1-5, to=3-5]
+	\arrow[from=1-7, to=1-9]
+	\arrow["{f_3}"', from=1-7, to=3-7]
+	\arrow[from=3-1, to=3-3]
+	\arrow["{\beta_1}", from=3-3, to=3-5]
+	\arrow["{\beta_2}", from=3-5, to=3-7]
+	\arrow[from=3-7, to=3-9]
+\end{tikzcd}\]
+    其中两行正合.那么若 \(  f_1,f_3  \)是同构,则 \(  f_2  \)亦然.
+    
+
+\end{corollary}
+
+\begin{proof}
+
+    由蛇引理,可得  \[
+        \begin{aligned}\mathrm{Ker~}f_1&\xrightarrow{\alpha_1}\mathrm{~Ker~}f_2\xrightarrow{\alpha _2 }\mathrm{~Ker~}f_3\xrightarrow{\delta}\mathrm{~Coker~}f_1\xrightarrow{\beta_1}\mathrm{~Coker~}f_2\xrightarrow{\beta _2 }\mathrm{Coker~}f_3\end{aligned}
+    \]此外, 由 \(  f_1  \)和 \(  f_3  \)是同构,可得 \(  \operatorname{ker}\,f_1= \operatorname{ker}\,f_3=  \operatorname{coker}\,f_1= \operatorname{coker}\,f_3= 0 \)
+    从而正合列化为      \[
+        \begin{aligned} 0&\xrightarrow{\alpha_1}\mathrm{~Ker~}f_2\xrightarrow{\alpha _2 }0\xrightarrow{\delta}0\xrightarrow{\beta_1}\mathrm{~Coker~}f_2\xrightarrow{\beta _2 }0\end{aligned}
+    \]且由交换图可知正合列上的限制映射 \(  \alpha _1 ,\beta _1   \)是单射, \(  \alpha _2 ,\beta _2   \)是满射.因此由正合性 \[
+    \operatorname{ker}\,f_2= \operatorname{ker}\,\alpha _2 = \alpha_1\left( 0 \right) ,\quad \operatorname{coker}\,f_2= \operatorname{ker}\,\beta _2 = \beta _1 \left( 0 \right)= 0 
+    \] 这表明 \(  f_2  \)是同构. 
+
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}{四引理}
+    考虑下方的 \(  R  \)-模交换图,其中两行正合.若 \(  f_1  \)是满射, \(  f_4  \)是单射,则 
+    \begin{enumerate}
+        \item \(  f_2  \)是单射 \(  \implies  \) \(  f_3  \)是单射；
+        \item  \(  f_3  \)是满射 \(  \implies  \) \(  f_2  \)是满射.      
+    \end{enumerate}
+        \[\begin{tikzcd}
+	{M_1} && {M_2} && {M_3} && {M_4} \\
+	\\
+	{N_1} && {N_2} && {N_3} && {N_4}
+	\arrow["{\alpha_1}", from=1-1, to=1-3]
+	\arrow["{f_1}"', from=1-1, to=3-1]
+	\arrow["{\alpha_2}", from=1-3, to=1-5]
+	\arrow["{f_2}"', from=1-3, to=3-3]
+	\arrow["{\alpha_3}", from=1-5, to=1-7]
+	\arrow["{f_3}"', from=1-5, to=3-5]
+	\arrow["{f_4}", from=1-7, to=3-7]
+	\arrow["{\beta_1}", from=3-1, to=3-3]
+	\arrow["{\beta_2}", from=3-3, to=3-5]
+	\arrow["{\beta_3}", from=3-5, to=3-7]
+\end{tikzcd}\]
+\end{corollary}
+
+\begin{corollary}{五引理}\label{five-lemma}
+    考虑下面的 \(  R  \)-模交换图,其中两行正合.若 \(  f_1,f_2,f_4  \)和 \(  f_5  \)均为同构,则 \(  f_3  \)亦然；    
+    \[\begin{tikzcd}
+        {M_1} && {M_2} && {M_3} && {M_4} && {M_5} \\
+        \\
+        {N_1} && {N_2} && {N_3} && {N_4} && {N_5}
+        \arrow["{\alpha_1}", from=1-1, to=1-3]
+        \arrow["{f_1}"', from=1-1, to=3-1]
+        \arrow["{\alpha_2}", from=1-3, to=1-5]
+        \arrow["{f_2}"', from=1-3, to=3-3]
+        \arrow["{\alpha_3}", from=1-5, to=1-7]
+        \arrow["{f_3}"', from=1-5, to=3-5]
+        \arrow["{\alpha_4}", from=1-7, to=1-9]
+        \arrow["{f_4}"', from=1-7, to=3-7]
+        \arrow["{f_5}"', from=1-9, to=3-9]
+        \arrow["{\beta_1}", from=3-1, to=3-3]
+        \arrow["{\beta_2}", from=3-3, to=3-5]
+        \arrow["{\beta_3}", from=3-5, to=3-7]
+        \arrow["{\beta_4}", from=3-7, to=3-9]
+    \end{tikzcd}\]
+    
+\end{corollary}
+
+\begin{proof}
+
+
+    \hfill $\square$
+\end{proof}
+
+\end{document}

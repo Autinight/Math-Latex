@@ -1,0 +1,469 @@
+
+\documentclass[../../复变函数.tex]{subfiles}
+
+\begin{document}
+
+\chapter{共形映射}
+
+\section{单叶解析函数}
+\begin{lemma}
+    设函数 $f(z)$ 在点 $z_0$ 的一个邻域内解析，并记 $w_0 = f(z_0)$。
+假设存在一个正整数 $p \ge 1$，使得：
+$$f'(z_0) = f''(z_0) = \dots = f^{(p-1)}(z_0) = 0$$
+并且
+$$f^{(p)}(z_0) \neq 0$$
+那么，可以得到以下两个结论：
+\begin{enumerate}
+    \item 函数 $g(z) = f(z) - w_0$ 在 $z_0$ 处有一个 $p$ 阶零点。
+    \item 存在 $z_0$ 的一个足够小的邻域 $D_{\rho} = \{z \in \mathbb{C} : |z-z_0| < \rho\}$ 和 $w_0$ 的一个邻域 $D_{\mu} = \{w \in \mathbb{C} : |w-w_0| < \mu\}$，使得对于任意一个 $w \in D_{\mu}\setminus \left\{ w_0 \right\}$ ，方程 $f(z) = w$ 在 $D_{\rho }\setminus \left\{ z_0 \right\}$ 内恰好有 \(  p  \)个一阶零点. 
+\end{enumerate}
+\end{lemma}
+\begin{note}
+     对于方程 \(  f\left( z \right)= w   \),一个对 \(  w  \)的微扰不会改变解的个数(记重数),但会改变解的临界状态,将一个 “\(  p  \)阶解”化为  \(  p  \)个“一阶解”.
+\end{note}
+\begin{proof}
+    第一个结论是显然的,下面应用Rouche定理证明第二个.
+    \(  f  \)不恒为常数, \(  z_0  \)同时是 \(  f-w_0  \)和 \(  f^{\prime}   \) 的孤立零点,于是存在以 \(  z_0  \)为心的 圆盘 \(  D_{\rho }  \),使得  \(  f-w_0  \)在 \(  \bar{D}_{\rho }  \)上无其它零点.进而 \[
+    \mu : = \min _{x \in  \partial D_{\rho }}\left| f-w_0 \right|> 0 
+    \]取以 \(  w_0  \)为中心的圆盘 \(  D_{\mu }  \),则由  
+     \[
+     f\left( z \right)-w= \left( f\left( z \right)-w_0  \right)+ \left( w-w_0 \right)   
+     \]可知 \[
+     \left| f-w_0 \right|\ge \mu > \left| w-w_0 \right|,\quad \forall w \in D_{\mu }  
+     \] \(  f-w  \)和 \(  f-w_0  \)有相同的零点个数 \(  p  \) (记重数).
+     
+     最后,只需说明零点的阶数.显然\(  z_0  \)不是 \(  f-w  \)的零点.  任取 \(  f-w  \)在 \(  D  \)上的零点\(  z_1 \in D_{\rho }\setminus \left\{ z_0 \right\} \) ,  根据 \(  D_{\rho }  \)的取法, \(\left( f-w \right)^{\prime} \left( z_1 \right)\neq 0    \),故  \(  z_1  \)是一阶零点. 
+
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}
+    设 \(   f\left( z \right)   \)在区域 \(  D  \)内解析,则 \(  f^{\prime}   \)在 \(  D  \)上无零点.  
+\end{theorem}
+\begin{proof}
+    否则由引理,存在 \(  w \in \mathbb{C}   \),  \(  f-w  \)有两个一阶零点. 
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}{开映射定理}
+    若函数 \(  f  \)在区域 \(  D  \)内解析,且不为常数,则 \(  f\left( D \right)   \)也是一个区域.       
+\end{theorem}
+\begin{proof}
+    由于连续映射保持连通性,只需要证明 \(  f\left( D \right)   \)是一个开集. 任取 \(  w_0 \in f\left( D \right)   \).由上面的引理,存在 \(  w_0  \)的一个邻域 \(  D_{\mu }  \),使得对于任意的 \(  w \in D_{\mu }  \), \(  f-w  \)的零点存在. 即 \(  D_{\mu }\subseteq f\left( D \right)   \).      
+
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}{反函数}
+    若函数 \(  f  \)在区域 \(  D  \)内单叶解析.则  \(  f  \)存在一个在 \(  f\left( D \right)   \)上单叶解析的反函数 \(  f^{-1}   \),使得 \[
+    \left( f^{-1}  \right)^{\prime} \left( w_0 \right)= \frac{1 }{f^{\prime} \left( z_0 \right)  },\quad \left( w_0\in f\left( D \right),z_0 = f^{-1} \left( w_0 \right)      \right) 
+    \]     
+\end{theorem}
+
+\begin{theorem}{保角}
+    设 $U$ 是复平面 $\mathbb{C}$ 中的一个开集，并且 $f: U \to \mathbb{C}$ 是一个在 $U$ 上单叶解析 的函数。那么 $f$ 在 $U$ 上是保角  的。即，对于 $U$ 中任意一点 $z_0$，以及通过 $z_0$ 的任意两条光滑曲线 $\gamma_1(t)$ 和 $\gamma_2(t)$，如果它们在 $z_0$ 处的夹角是 $\theta$，那么它们的像曲线 $f(\gamma_1(t))$ 和 $f(\gamma_2(t))$ 在 $f(z_0)$ 处的夹角也是 $\theta$，并且保持方向不变。
+\end{theorem}
+\begin{proof}
+    设 $z_0 \in U$ 是两条光滑曲线 $\gamma_1(t)$ 和 $\gamma_2(t)$ 的交点，即 $\gamma_1(t_0) = \gamma_2(t_0) = z_0$。
+这两条曲线在 $z_0$ 处的切向量分别为 $\gamma_1'(t_0)$ 和 $\gamma_2'(t_0)$。它们之间的夹角 $\theta$ 等于 $\arg(\gamma_2'(t_0)) - \arg(\gamma_1'(t_0))$。
+通过函数 $f$ 映射后，得到新的曲线 $\Gamma_1(t) = f(\gamma_1(t))$ 和 $\Gamma_2(t) = f(\gamma_2(t))$。它们在 $w_0 = f(z_0)$ 处的切向量，根据链式法则，为：
+\begin{enumerate}
+    \item $\Gamma_1'(t_0) = f'(\gamma_1(t_0))\gamma_1'(t_0) = f'(z_0)\gamma_1'(t_0)$
+    \item $\Gamma_2'(t_0) = f'(\gamma_2(t_0))\gamma_2'(t_0) = f'(z_0)\gamma_2'(t_0)$
+
+\end{enumerate}
+其中 \(  f^{\prime} \left( z_0 \right)\neq 0   \) 
+.曲线切向量之间的夹角是 $\arg(\Gamma_2'(t_0)) - \arg(\Gamma_1'(t_0))$,计算
+$$\begin{aligned} \arg(\Gamma_2'(t_0)) - \arg(\Gamma_1'(t_0)) &= \arg(f'(z_0)\gamma_2'(t_0)) - \arg(f'(z_0)\gamma_1'(t_0)) \\ &= (\arg(f'(z_0)) + \arg(\gamma_2'(t_0))) - (\arg(f'(z_0)) + \arg(\gamma_1'(t_0))) \\ &= \arg(\gamma_2'(t_0)) - \arg(\gamma_1'(t_0)) \\ &= \theta \end{aligned}$$
+就完成了说明.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{伸缩率}
+    设 $f: U \to \mathbb{C}$ 是一个在开集 $U$ 上解析的函数。对于 $U$ 中任意一点 $z_0$,函数 $f$ 在 $z_0$ 处的伸缩率 (magnification factor) 或尺度因子 (scale factor) 定义为其导数在 $z_0$ 处的模 \(  \left| f^{\prime} \left( z_0 \right)  \right|   \) .
+\end{definition}
+
+\section{分式线性变换}
+
+\begin{definition}
+    一个分式线性变换 (Fractional Linear Transformation, FLT) 是一个函数 $f: \mathbb{C}_{\infty} \to \mathbb{C}_{\infty}$，其形式为：
+$f(z) = \frac{az+b}{cz+d}$
+其中 $a, b, c, d \in \mathbb{C}$ 且 $ad-bc \neq 0$。这里的 $\mathbb{C}_{\infty}$ 表示扩展复平面或黎曼球面.
+约定：
+\begin{enumerate}
+    \item 若 $c=0$，则 $f(z) = \frac{az+b}{d}$。此时 $f(\infty) = \infty$。
+    \item 若 $c \neq 0$，则 $f(-d/c) = \infty$ 且 $f(\infty) = a/c$。
+    
+\end{enumerate}
+
+\end{definition}
+
+\begin{definition}
+    \begin{enumerate}
+        \item 定义$\mathrm{GL}_2(\mathbb{C})$: 是所有二阶可逆复数矩阵的集合，在矩阵乘法下构成一个群。
+$\mathrm{GL}_2(\mathbb{C}) = \left\{ A = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \mid a, b, c, d \in \mathbb{C}, \det(A) = ad-bc \neq 0 \right\}$
+        \item 定义$Z(\mathrm{GL}_2(\mathbb{C}))$:是形如 $kI = \begin{pmatrix} k & 0 \\ 0 & k \end{pmatrix}$ 的矩阵，其中 $k \in \mathbb{C}, k \neq 0$，且 $I$ 是单位矩阵。这些矩阵在矩阵乘法下构成 $\mathrm{GL}_2(\mathbb{C})$ 的一个正规子群，记作 $Z(\mathrm{GL}_2(\mathbb{C}))$（这是它的中心）。
+        \item  定义$\mathrm{PGL}_2(\mathbb{C})$: 是商群 $\mathrm{GL}_2(\mathbb{C}) / Z(\mathrm{GL}_2(\mathbb{C}))$。它的元素是 $GL_2(\mathbb{C})$ 中矩阵的等价类，其中如果 $A = kB$ 对于某个 $k \neq 0$，则 $A$ 和 $B$ 属于同一个等价类。
+    \end{enumerate}
+    
+\end{definition}
+
+\begin{theorem}
+    分式线性变换的集合（在复合运算下）与投影线性群 $PGL_2(\mathbb{C})$ 是同构的。
+\end{theorem}
+\begin{proof}
+    我们定义一个映射 $\Phi: GL_2(\mathbb{C}) \to \text{FLT}$，它将矩阵 $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ 映射到对应的分式线性变换 $f_A(z) = \frac{az+b}{cz+d}$.
+由于 $\det(A) = ad-bc \neq 0$，所以 $f_A(z)$ 是一个有效的FLT. $$A = \begin{pmatrix} a & b \\ c & d \end{pmatrix},\quad B = \begin{pmatrix} e & f \\ g & h \end{pmatrix}$$ 
+则 $$AB = \begin{pmatrix} ae+bg & af+bh \\ ce+dg & cf+dh \end{pmatrix}$$。
+所以 $$\Phi(AB)(z) = \frac{(ae+bg)z + (af+bh)}{(ce+dg)z + (cf+dh)}$$.
+另一方面，
+$$\Phi(B)(z) = \frac{ez+f}{gz+h}$$.
+$$\Phi(A)(\Phi(B)(z)) = \frac{a(\frac{ez+f}{gz+h}) + b}{c(\frac{ez+f}{gz+h}) + d} = \frac{a(ez+f) + b(gz+h)}{c(ez+f) + d(gz+h)}= \frac{(ae+bg)z + (af+bh)}{(ce+dg)z + (cf+dh)}$$
+由此可见 $\Phi(AB)(z) = \Phi(A)(\Phi(B)(z))$，即 $\Phi(AB) = \Phi(A) \circ \Phi(B)$。
+因此，$\Phi$ 是一个群同态。
+此外,不难验证 \[
+\text{Ker}(\Phi) = Z(GL_2(\mathbb{C})),\quad  \text{Im}(\Phi)= \mathrm{LFT}
+\]由群同构定理\[
+PGL_2(\mathbb{C}) \cong GL_2(\mathbb{C}) / Z(GL_2(\mathbb{C})) \cong \text{FLT}
+\]
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}
+    定义 \(  \mathbb{C} ^{\infty}  \)上的广义圆为全体的圆或直线,以下都简称为圆. 
+\end{definition}
+\begin{theorem}
+    球面投影将复平面上的圆映射到黎曼球上的圆。反之，黎曼球上的圆在球面投影下映射为复平面上的圆。
+\end{theorem}
+\begin{proof}
+    复平面上的广义圆可以表示为形式：
+$$A(x^2+y^2) + Bx + Cy + D = 0$$
+其中 $$A, B, C, D \in \mathbb{R}$$，且 $A \neq 0$ 表示一个圆， $A = 0$ 且 $B^2+C^2 \neq 0$ 表示一条直线。
+现在，我们用球面投影的逆映射来代换 $x, y$ 和 $|z|^2$：
+$$x = \text{Re}(z) = \frac{x_1}{1-x_3}$$
+$$y = \text{Im}(z) = \frac{x_2}{1-x_3}$$
+$$|z|^2 = \frac{x_1^2+x_2^2}{(1-x_3)^2} = \frac{1-x_3^2}{(1-x_3)^2} = \frac{1+x_3}{1-x_3}$$
+将这些代入广义圆的方程：
+$$A \left(\frac{1+x_3}{1-x_3}\right) + B \left(\frac{x_1}{1-x_3}\right) + C \left(\frac{x_2}{1-x_3}\right) + D = 0$$
+乘以 $(1-x_3)$ (由于 $x_3 \neq 1$, 即不考虑北极点的情况):
+$$A(1+x_3) + Bx_1 + Cx_2 + D(1-x_3) = 0$$
+重新整理，得到一个关于 $x_1, x_2, x_3$ 的线性方程：
+$$Bx_1 + Cx_2 + (A-D)x_3 + (A+D) = 0$$
+这是一个平面方程,平面与球面相交必然上一个圆.
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}
+    分式线性变换把圆变为圆.
+\end{definition}
+\begin{proof}
+    \begin{enumerate}
+        \item 整线性变换 \(  w= az+ b  \) 把圆周变为圆周:
+        若记 $a = re^{i\theta}$, 则 $w = re^{i\theta} z + b$. 容易看出,
+它可由下列三个简单的变换复合而成:
+\[
+\begin{aligned}
+z' &= e^{i\theta} z, \\
+z'' &= rz', \\
+w &= z'' + b.
+\end{aligned}
+\]
+第一个是旋转变换, 第二个是伸缩变换, 第三个是平移变换. 这里, 每一个变换都把圆周
+变为圆周, 因此整线性变换把圆周变为圆周. 
+\item 变为圆周, 因此整线性变换把圆周变为圆周. 对于一般的分式线性变换, 不妨设 $c \neq 0$, 于是
+$$w = \frac{az+b}{cz+d} = \frac{a}{c} + \frac{bc-ad}{c(cz+d)}.$$
+
+若记 $\alpha = \frac{a}{c}, \beta = \frac{bc-ad}{c}$, 则上式可写为
+$w = \alpha + \frac{\beta}{cz+d}.$
+它由下列三个变换复合而成:
+\[
+\begin{aligned}
+z' &= cz+d, \\ z'' &= \frac{1}{z'}, \\ w &= \alpha + \beta z''. 
+\end{aligned}
+\]
+其中, 有两个变换是整线性变换, 它们都把圆周变为圆周. 如果能证明 $w = \frac{1}{z}$ 也把圆周变为圆周, 就完成了说明.平面上圆周的方程写作 \[
+az \bar{z}+ \bar{\beta}z+ \beta \bar{z}+ d= 0,\quad (\left| z-\beta  \right|= -\frac{d }{a },  \text{or} \operatorname{Re}\,\left( \bar{\beta}z \right)= \frac{d }{2 }     )
+\]令 \(  w= \frac{1 }{z }   \),方程化为 \[
+\bar{dww}+ \bar{\beta}\bar{w}+ \beta w+ a= 0
+\] 也是一个圆周
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    分式线性变换 \(  T  \)若不是恒等变换,则最多只有两个不动点.
+\end{proposition}
+\begin{proof}
+    设 \[
+    T\left( z \right)= \frac{az+ b }{cz+ d }  
+    \]则\(  T\left( z \right)= z   \)可以写作一个二次方程 \[
+    cz^{2}+ \left( d-a \right)z-b= 0 
+    \] 最多只有两个根,除非 \(  T\left( z \right)\equiv z   \). 
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{交比}
+    设 \(  z_1,z_2,z_3,z_4  \)是给定的四个点,至少有三个点不同,称比值 \[
+   \frac{z_1 - z_3}{z_1 - z_4} / \frac{z_2 - z_3}{z_2 - z_4}
+    \] 为这四个点的交比,记作 \(  \left( z_1,z_2,z_3,z_4 \right)   \) 
+    
+    约定: \[
+    \begin{aligned}
+    (\infty, z_2, z_3, z_4) &= \frac{z_2-z_4}{z_2-z_3}, & (z_1, \infty, z_3, z_4) &= \frac{z_1-z_3}{z_1-z_4}, \\
+(z_1, z_2, \infty, z_4) &= \frac{z_2-z_4}{z_1-z_4}, & (z_1, z_2, z_3, \infty) &= \frac{z_1-z_3}{z_2-z_3}. 
+    \end{aligned}
+    \]
+\end{definition}
+
+\begin{proposition}
+    定义 \(  L\left( z \right)= \left( z,z_2,z_3,z_4 \right)    \) 则 \[
+    L\left( z_2 \right)= 1,\quad L\left( z_3 \right)= 0,\quad L\left( z_4 \right)= \infty   
+    \]
+\end{proposition}
+\begin{theorem}
+    对于 \(  \mathbb{C} _{\infty}  \)上三个不同的点 \(  z_2,z_3,z_4  \),以及 \(  \mathbb{C} _{\infty}  \)上另一组三个不同的点 \(  w_2,w_3,w_4  \),存在唯一的分式线性变换 \(  T  \),使得 \[
+    T\left( z_{i} \right)= w_{i},\quad i= 2,3,4 
+    \]   
+\end{theorem}
+\begin{remark}
+    下面给出一个构造性的证明,可以用于寻找具体的分式线性变换.
+
+\end{remark}
+\begin{proof}
+    令 \(  L\left( z \right)= \left( z,z_2,z_3,z_4 \right)    \),则 \[
+    L\left( z_2 \right)= 1,\quad L\left( z_3 \right)= 0,\quad L\left( z_4 \right)= \infty.   
+    \]令 \(  S\left( w \right)= \left( w,w_2,w_3,w_4 \right)    \),则   \[
+    S\left( w_2 \right)= 1,\quad S\left( w_3 \right)= 0,\quad S\left( w_4 \right)= \infty   
+    \]令 \(  M= S^{-1} \circ L  \),则 \[
+    M\left( z_2 \right)= S^{-1} \left( L\left( z_2 \right)  \right)= S^{-1} \left( 1 \right)= w_2   
+    \] 类似地, \(  M\left( z_3 \right)= w_3,M\left( z_4 \right)= w_4    \). 
+
+    若存在另一个分式线性变换 \(  M_1  \) 满足条件,则 \(  M^{-1} \circ M_1  \)有三个不动点,矛盾. 
+
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}
+      交比是分式线性变换下的不变量.即若 \(  T  \)是分式线性变换,则 \[
+    \left( z_1,z_2,z_3,z_4 \right)= \left( T\left( z_1 \right),T\left( z_2 \right),T\left( z_3 \right),T\left( z_4 \right)     \right)  
+    \] 
+\end{theorem}
+\begin{remark}
+    对于上一个定理中分式线性变换的构造,可以通过\[
+    \left( w,w_2,w_3,w_4 \right)= \left( z,z_2,z_3,z_4 \right)  
+    \]将 \(  w  \)解出. 
+\end{remark}
+\begin{proof}
+    不妨设 \(  z_2,z_3,z_4  \)是三个不同的点, 令 \(  T\left( z_{j} \right)= w_{j},j= 2,3,4   \) ,则上面定理中的分式线性变换的唯一性表明 \[
+    \left( z,z_2,z_3,z_4 \right)=  \left( T\left( z \right),w_2,w_3,w_4  \right) 
+    \]带入 \(  z= z_1  \)即可. 
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    \(  z_1,z_2,z_3,z_4  \)四点共圆,当且仅当 \[
+    \operatorname{Im}\,\left( z_1,z_2,z_3,z_4 \right)= 0 
+    \] 
+\end{proposition}
+\begin{proof}
+    若该四点共圆,令 \(  L\left( z \right)= \left( z,z_2,z_3,z_4 \right)    \),则 \(  L  \)把该圆周变味实轴. 从而 \(  L\left( z_1 \right)   \)为实数.
+    
+    反之, 若 \(  \operatorname{Im}\,\left( z_1,z_2,z_3,z_4 \right)= 0   \),则交比等于某个实数 \(  t  \), \(  L^{-1}   \)把实轴变为 \(  z_2,z_3,z_4  \)确定的圆周 \(   \gamma   \). \(  t \in \mathbb{R}   \), \(  z_1= L^{-1} \left( t \right) \in  \gamma    \).故四点共圆.  
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}
+    设 $\mathbb{C}_\infty$ 上的圆周 $\gamma$ 把平面分成 $g_1$ 和 $g_2$ 两个域, $z_1, z_2, z_3$ 是 $\gamma$ 上有序的三个点. 如果当我们从 $z_1$ 走到 $z_2$ 再走到 $z_3$ 时, $g_1$ 和 $g_2$ 分别在我们的左边和右边, 就分别称 $g_1$ 和 $g_2$ 为 $\gamma$ 关于走向 $z_1, z_2, z_3$ 的左边和右边.
+\end{definition}
+\begin{proposition}
+    设 $z_1, z_2, z_3$ 是 $\mathbb{C}_\infty$ 中的圆周 $\gamma$ 上有序的三个点, 那么 $\gamma$ 关于走向 $z_1, z_2, z_3$ 右边和左边的点 $z$ 分别满足
+$\text{Im}(z, z_1, z_2, z_3) > 0$
+和
+$\text{Im}(z, z_1, z_2, z_3) < 0.$
+\end{proposition}
+\begin{remark}
+    可以通过观察 \(  z_1= 1, z_2= 0,z_3= \infty  \),此时这三个点确定的是从右往左方向的实轴.交比 \(  \left( z,z_1,z_2,z_3 \right)= z   \).  \(  \operatorname{Im}\,\left( z,z_1,z_2,z_3 \right)   > 0\)对应于 上半平面  \(  \operatorname{Im}\,z> 0  \) ,是右侧.
+\end{remark}
+\begin{remark}
+    换言之,交比映射 \(  L\left( z \right)= \operatorname{Im}\,\left( z,z_1,z_2,z_3 \right)    \)把这三点确定圆周的左侧区域映成下半平面,右侧区域映成上半平面 
+\end{remark}
+\begin{theorem}
+    设 $\gamma_1$ 和 $\gamma_2$ 是 $\mathbb{C}_\infty$ 中的两个圆周, $z_1, z_2, z_3$ 是 $\gamma_1$ 上有序的三个点. 如果分式线性变换 $T$ 把 $\gamma_1$ 映为 $\gamma_2$, 那么它一定把 $\gamma_1$ 关于走向 $z_1, z_2, z_3$ 的右边和左边分别变为 $\gamma_2$ 关于走向 $T(z_1), T(z_2), T(z_3)$ 的右边和左边.
+\end{theorem}
+\begin{example}[ 月牙区域变带状]
+    求一分式线性变换, 把月牙形域 $D = \{z : |z| > 1, |z - 1| < 2\}$ 变为带状域 $G = \{w : 0 < \text{Re} w < 1\}$
+\end{example}
+\begin{solution}
+    设变换为 \(  T  \),则一定有 \(  T\left( -1 \right)= \infty   \). 再考虑让 \(  T\left( 1 \right)= 0   \),则此时 \(  T  \)形如 \[
+    T\left( z \right)=  \lambda \frac{w-1 }{w+ 1 }  
+    \]再让 \(  T\left( 3 \right)= 1   \),取 \(   \lambda = 2  \)得到 \[
+    T\left( z \right)= 2\frac{z-1 }{z+ 1 }  
+    \]此时发现 \(  T\left( i \right)= 2i   \), \(  T  \)将 \(  -1,i,1  \)映到 \(  \infty, 2i,0 \),将圆的外部(左侧),映到直线实部大的一侧. 此外, \(  T  \)将 \(  -1,1+ 2i,3  \)分别映到 \(  \infty,1+ i,1  \).将大圆的内部(右侧)映到对应直线实部小的一侧(右侧).故 \(  T  \)恰为符合条件的一个.              
+\end{solution}
+
+\hspace*{\fill} 
+
+\hspace*{\fill} 
+
+\begin{definition}
+    $\gamma$ 是以 $a$ 为中心、以 $R$ 为半径的圆周, 如果点 $z, z^*$ 在从 $a$ 出发的射线上, 且满足
+\begin{equation}
+|z-a||z^*-a|=R^2,
+\end{equation}
+则称 $z, z^*$ 关于 $\gamma$ 是对称的. 如果 $\gamma$ 是直线, 则当 $\gamma$ 是线段 $[z, z^*]$ 的垂直平分线时, 称 $z, z^*$ 关于 $\gamma$ 是对称的.
+\end{definition}
+\begin{proposition}
+    设 $\gamma$ 是 $\mathbb{C}_\infty$ 中的圆周, 那么 $z, z^*$ 关于 $\gamma$ 对称,当且仅当对 $\gamma$ 上任意三点 $z_1, z_2, z_3$, 有
+$$
+(z^*, z_1, z_2, z_3) = \overline{(z, z_1, z_2, z_3)}
+$$
+\end{proposition}
+\begin{theorem}
+    对称点在分式线性变换下不变. 这就是说, 设分式线性变换 $T$ 把圆周变为 $\Gamma$, 如果 $z, z^*$ 是关于 $\gamma$ 的对称点, 那么 $T(z), T(z^*)$ 是关于 $\Gamma$ 的对称点.
+\end{theorem}
+
+\begin{example}
+    设 \(  a  \)是上半平面中的一点,则分式线性变换 \[
+    w= e^{i \theta }\frac{z-a }{z+ \bar{a} } 
+    \]把上半平面变为单位圆的内部, \(  a  \)变为圆心  
+\end{example}
+\begin{proof}
+     \(  a  \)映到 \(  0  \),对称点 \(  \bar{a}  \)映到对称点 \(  \infty  \),于是变换形如 \[
+     w=  \lambda \frac{z-a }{z-\bar{a} } 
+     \]当 \(  z= 0  \)时, \(  \left| w \right|= 1   \),于是 \(   \lambda = e^{i \theta }  \).       
+
+    \hfill $\square$
+\end{proof}
+\hspace*{\fill} 
+
+\begin{example}
+    单叶函数 \(  w= e^{z}  \)将带状区域 \(  0< \operatorname{Im}\,z < \pi   \)映到上半平面.  
+\end{example}
+\begin{proof}
+    令 \(  z= a+ i \theta   \) ,则 \(  e^{z}= e^{a}e^{i \theta }  \) \[
+    \left\{ e^{a}e^{i \theta }:a \in \mathbb{R} ,0<  \theta < \pi  \right\}= \left\{ z:\operatorname{Im}\,z> 0  \right\}
+    \]
+
+    \hfill $\square$
+\end{proof}
+\begin{example}[]
+    单叶函数 \[
+    w= \left( \frac{z+ 1 }{z-1 }  \right)^{2} 
+    \]把单位半圆盘 \(  \left| z \right|< 1,\operatorname{Im}\,z> 0   \)保形映射到上半平面. 
+\end{example}
+\begin{proof}
+    \[
+    T_1\left( z \right) = \frac{z+ 1 }{z-1 } 
+    \]把 \(  -1  \)和 \(  1  \)分别映到 \(  0  \)和 \(  \infty  \).故 它把圆周\(  \left| z \right|= 1   \) 和直线 \(  \operatorname{Im}\,z= 0  \) 分别映到两条在原点处垂直相交的直线.     
+    由于 \(  T_1\left( i \right)= -i   \),故 \(  T_1  \)将半圆弧映到下半虚轴.  \(  T_1\left( 0 \right)= -1   \)故 \(  T_1  \)将 半圆的直边映到坐半实轴.  
+    
+    由 \(  T_1  \)的保定向性,它将半圆盘映到第三象限. 映射 \(  T_2\left( w \right)= w^{2}   \)将第三象限映到上半平面,故令 \[
+    T= T_2\circ T_1= \left( \frac{z+ 1 }{z-1 }  \right)^{2} 
+    \]即为所需单叶函数.  
+    \hfill $\square$
+\end{proof}
+
+\begin{example}
+    单叶函数 \[
+    T\left( z \right)= \frac{e^{z}-i }{e^{z}+ i }  
+    \]将 带状区域 \(  0< \operatorname{Im}\,z< \pi   \)保形映射到 单位圆盘 \(  \left| w \right|< 1   \)  
+\end{example}
+
+\begin{theorem}
+    设 $D = \{z \in \mathbb{C} : |z| < 1\}$ 是复平面上的开单位圆盘。从 $D$ 到 $D$ 的任意一个全纯自同构（即双射的全纯函数）$f: D \to D$ 都可以表示为以下形式：
+$$f(z) = e^{i\theta} \frac{z-a}{1-\bar{a}z}$$
+其中：
+
+$a$ 是一个复数，且满足 $|a| < 1$（即 $a \in D$）。
+$\theta$ 是一个实数（$e^{i\theta}$ 代表一个旋转因子）。
+
+这个函数族构成了单位圆盘的自同构群，记作 $\text{Aut}(D)$。
+\end{theorem}
+
+\begin{remark}
+    \(  f\left( a \right)= 0 , f'(0) = e^{i\theta} (1-|a|^2)\) 
+\end{remark}
+
+\section{Riemann映照}
+
+
+\begin{theorem}
+    若 \(  w= f\left( z \right)   \)在区域 \(  D  \)内解析,且 \(  \left| f\left( z \right)  \right|   \)在 \(  D  \)内某一点达到最大值,则 \(  f\left( z \right)   \)在 \(  D  \)内恒为常数.      
+\end{theorem}
+
+
+\begin{theorem}{最大模原理}
+    设 \(  D  \)是一有界区域,边界为有限条简单闭曲线 \(  C  \).设 \(  f  \)在 \(  \bar{D}  \)上连续, \(  D  \)上解析,且不恒为常数.记 \(  M: =  \max _{x\in \bar{D}} \left| f\left( z \right)  \right|   \),则 \[
+    \max _{x\in \bar{D}}\left| f\left( z \right)  \right|= \max _{x\in  \partial D}\left| f\left( z \right)  \right|  
+    \]      
+\end{theorem}
+
+
+\begin{theorem}{Schwartz引理}
+    设 \(  f  \)是在开圆盘 \(  \left| z \right|< 1   \)内的解析函数,若\(  f  \)满足以下两条 :
+    \begin{enumerate}
+        \item \(  f\left( 0 \right)= 0   \);
+        \item 当 \(  \left| z \right|< 1   \)时, \(  \left| f\left( z \right)  \right|< 1   \)  .即 \(  f\left( B \right)\subseteq B   \)  
+    \end{enumerate}
+    则以下三条成立
+    \begin{enumerate}
+        \item 当 \(  \left| z \right|< 1   \)时,\(  \left| f\left( z \right)  \right|\le \left| z \right|    \)
+        \item \(  \left| f^{\prime} \left( 0 \right)  \right|\le 1   \)
+        \item 若以下两条成立其一
+     \begin{enumerate}
+            \item 对于任意的 \(  0< \left| z_0 \right|< 1   \),都有 \(  \left| f\left( z_0 \right)  \right|= \left| z_0 \right|    \);
+            \item \(  \left| f^{\prime} \left( 0 \right)  \right|= 1   \). 
+        \end{enumerate}
+             即上两条结论中的等号成立一个.则 \[
+             f\left( z \right)=  \lambda z ,\quad \forall \left| z \right|< 1 
+             \]其中 \(   \lambda   \)是复常数,且 \(  \left|  \lambda  \right|= 1   \)  
+    \end{enumerate}
+    
+      
+\end{theorem}
+
+\begin{theorem}{Riemann}
+    设 \(  G  \)是 \(  \mathbb{C}   \)中的单连通区域, \(  G \neq \mathbb{C}   \).对于 \(  G  \)中任意点 \(  a  \),存在唯一的函数 \(  f:G\to \mathbb{C}   \),使得\begin{enumerate}
+        \item \(  f  \)在 \(  G  \)中单叶全纯;
+        \item  \(  f\left( a \right)= 0   \),\(  f^{\prime} \left( a \right)> 0   \);
+        \item \(  f\left( G \right)= B\left( 0,1 \right)    \)     
+    \end{enumerate}
+          
+\end{theorem}
+\begin{note}
+    意义在于,它表明在相差一个共形映射的意义下,几乎所有(除 \(  \mathbb{C}   \) )单连通开区域都是“等价” 的. 并且两区域的对应在一个标准化后(平移和旋转)是唯一的.
+\end{note}
+\begin{proof}
+    唯一性部分:
+
+    若存在两个这样的函数 \(  f_1,f_2  \). 令 \(  g = f_2\circ f_1^{-1}   \). \(  g  \)是 \(  B\left( 0,1 \right)   \)的全纯自同构.  
+
+    \(  g\left( 0 \right)= f_2\left( a \right)= 0    \).故 \(  g  \)符合Schwartz引理的条件. 从而 \[
+    1\ge \left| g^{\prime} \left( 0 \right)  \right|= \left| f_2^{\prime} \left( f^{-1} \left( 0 \right)  \right)\left( f^{-1}  \right)^{\prime} \left( 0 \right)    \right|= \frac{\left| f_2^{\prime} \left( a \right)  \right|  }{\left| f_1^{\prime} \left( a \right)  \right|  }   
+    \]  这表明 \[
+    \left| f_2^{\prime} \left( a \right)  \right|\le \left| f_1^{\prime} \left( a \right)  \right|  
+    \]令 \(  h= f_1\circ f_2^{-1}   \),可以类似地得到 \[
+    \left| f_1^{\prime} \left( a \right)  \right|\le \left| f_2^{\prime} \left( a \right)  \right|  
+    \] 因此 \[
+    \left| f_2^{\prime} \left( a \right)  \right|= \left| f_1^{\prime} \left( a \right)  \right|  
+    \]进而 \[
+    \left| g^{\prime} \left( 0 \right)  \right|= 1 
+    \]再由Schwartz引理,存在 \(   \lambda \in \mathbb{C} ,\left|  \lambda  \right|= 1   \),使得 \[
+    g\left( z \right)=  \lambda z 
+    \]由于 \[
+    g^{\prime} \left( 0 \right)= \frac{f_2^{\prime} \left( 0 \right)  }{f_1^{\prime} \left( 0 \right)  }> 0  
+    \] , \[
+     \lambda = g^{\prime} \left( 0 \right)> 0,\implies  \lambda = 1 
+    \]于是\[
+    f_2\left( f_1^{-1} \left( z \right)  \right)=   z 
+    \] 得到 \(  f_1\left( z \right)= f_2\left( z \right)    \). 
+
+
+    \hfill $\square$
+\end{proof}
+\end{document}

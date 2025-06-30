@@ -1,0 +1,474 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+    
+\chapter{向量场}
+
+\section{流形上的向量场}
+
+\begin{definition}{向量场}
+    设$M$是一个（带边）光滑流形,$M$上的一个向量场是指,映射$\pi:TM\to M$的一个截面.具体地,一个向量场是指一个连续映射$X:M\to TM$,记作$p\mapsto X_{p}$,具有以下性质 $$ \pi \circ X=\operatorname{Id}_{M} $$或者等价地说,$X_{p}\in T_{p}M$对每个$p \in M$成立.
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 光滑向量场：称向量场是$X$是光滑的,若它视为$M$到$TM$的映射是光滑的,其中$TM$被赋予了光滑结构.
+        \item 粗向量场：称$X$是$M$上的一个粗向量场,若$X:M\to TM$是（不必连续）映射,满足$\pi \circ X= \operatorname{Id}_{M}$.
+        \item 支撑集：向量场$X:M\to TM$的支撑集被定义为 $$ \overline{\{ p \in M:X_{p}\neq 0 \}} $$
+        \item 紧支撑：若$X$的支撑集是紧的,则称$X$是紧支撑的.
+        \item 局部基表示：设$X:M\to TM$是粗向量场,$\left( U,\left( x^{i} \right) \right)$是$M$的任意光滑坐标卡,可以将$X$在任一点$p \in U$处的取值用坐标基向量表示： $$ X_{p}= X^{i}\left( p \right) \left. \frac{ \partial  }{ \partial x^{i} }  \right|_{p}.  $$
+        \item 分量函数：5.中的每个$X^{i}:U\to \mathbb{R}$称为$X$在给定坐标卡中的一个分量函数.
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{proposition}{分量刻画}
+    设$M$是（带边）光滑流形,$X:M\to TM$是粗向量场.若$\left( U,\left( x^{i} \right) \right)$是$M$上的任一光滑坐标卡,那么$X$在$U$上的限制是光滑的,当且仅当$X$在该坐标卡中的所有分量函数都是光滑的.
+\end{proposition}
+\begin{proof}
+    令$\left( x^{i},v^{i} \right)$是$\pi ^{-1}\left( U \right) \subset  TM$与图$\left( U,\left( x^{i} \right) \right)$对应的自然坐标.$X:M\to TM$关于$\left( U,\left( x^{i} \right) \right)$和$\left( \pi ^{-1}\left( U \right) ,\left( x^{i},v^{i} \right)\right)$的坐标表示为 $$ \hat{X}\left( x \right) =\left( x^{1},{\cdots},x^{n},X^{1}\left( x \right) ,{\cdots},X^{n}\left( x \right)  \right)  $$因此$X$在$U$上光滑,当且仅当$\hat{X}$光滑,当且仅当$X^{1},{\cdots},X^{n}$均光滑.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{沿子集的向量场}
+    设$M$是光滑（带边）流形,$A\subset M$是任意子集.称连续映射$X:A\to TM$是沿$A$的一个向量场,若它满足$\pi \circ X=\operatorname{Id}_{A}$,即对于任意的$p \in A$,$X_{p} \in T_{p}M$.
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 开子流形：若$A$是$M$的开子集$U$.由于$T_{p}U\simeq T_{p}M,p \in U$,进而可以将$TU$等同于$\pi ^{-1}\left( U \right)\subset TM$,因此对于向量场$X:U\to TU$,可以视为$U\to TM$的向量场.若$X$是$M$上的光滑向量场,那么$X|U$亦然.
+        \item 光滑性：称沿$A$的向量场$X$是光滑的,若对于任意的$p \in A$,存在$p$在$M$中的邻域$V$,和$V$上的光滑向量场$\tilde{X}$,使得$X|\left( V\cap A \right)=\tilde{X}|\left( V\cap A \right)$.
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{lemma}{延拓引理（闭集上}
+    设$M$是光滑（带边）流形,$A\subset M$是闭子集.设$X$是沿$A$的光滑向量场,对于给定的包含了$A$的开集$U$,存在$M$上的光滑向量场$\tilde{X}$,使得$\tilde{X}|A=X$,$\operatorname{supp}\tilde{X}\subset U$.
+\end{lemma}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 切向量的光滑延拓：特别地,任意切向量可视为沿单点集的向量场,它是光滑的,因为可以在坐标邻域上做常系数的延拓.此外光滑流形是Hausdorff空间,单点集在其上是闭的,因此切向量可以延拓为光滑向量场.
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{proof}
+    任取$p \in A$,设$W_{p}$是$p$在$M$中的邻域,$\tilde{X}_{p}:W_{p}\to TM$是光滑向量场,使得$\tilde{X}_{p}|A\cap W_{p}= X|A\cap W_{p}$,不妨设$W_{p}\subset U$.$\{ W_{p} :p \in A\}\cup \{ M\backslash A \}$构成$M$的开覆盖,设$\{ \psi _{p} \}\cup \{ \psi _{0} \}$是从属于此开覆盖的$M$的光滑单位分解,使得$\operatorname{supp}\left( \psi _{p} \right)\subset W_{p},\operatorname{supp}\left( \psi _{0} \right)\subset M\backslash A$.那么$\psi _{p}\tilde{X}_{p}:W_{p}\to TM$是光滑的向量场,通过令它们在$M\backslash \operatorname{supp}\psi _{p}$上取零,可以光滑地延拓到$M$上.现在,定义 $$ \tilde{X}: = \sum _{p}\psi _{p}\tilde{X}_{p} $$是光滑的向量场.任取$q \in A$,我们有$\psi _{0}\left( q \right)=0$,且对于每个$\psi _{p}$,若$\psi _{p}\left( q \right)>0$,则$\tilde{X}_{p}\left( q \right)= X\left( q \right)$于是 $$ \tilde{X}\left( q \right) =\sum _{p}\psi _{p}\tilde{X}_{p}\left( q \right) +\psi _{0} \tilde{X}_{p}\left( q \right)=\left( \sum _{p}\psi _{p}+\psi _{0} \right) X\left( q \right) =X\left( q \right)   $$因此$\tilde{X}|A=X$.最后 $$ \operatorname{supp}\tilde{X}\subset  \overline{\bigcup _{p}\operatorname{supp}\psi _{p}}=\bigcup _{p}\operatorname{supp\psi _{p}}\subset U $$
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{光滑向量场空间}
+    设$M$是光滑（带边）流形,用$\mathfrak{X}\left( M \right)$表示$M$上的全体光滑向量场.
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item 线性空间：$\mathfrak{X}\left( M \right)$在逐点加法和标量乘法下构成线性空间：  $$ \left( aX+bY \right) _{p}: = aX_{p}+bY_{p}. $$
+        \item 模结构：$\mathfrak{X}\left( M \right)$是环$C^{\infty}\left( M \right)$上的模：对于$M$上的光滑向量场$X,Y$,和$f,g \in C^{\infty}\left( M \right)$,$fX+gY$通过分量函数可以验证是光滑向量场.
+
+        \item 基表示：向量场的基表示除了逐点的表示法之外,也可以写成整体的表示 $$ X= X^{i} \frac{ \partial  }{ \partial x^{i} }  $$其中$X^{i}$是第$i$个分量向量场.
+    \end{enumerate}
+    
+\end{remark}
+
+\subsection{标架}
+
+以下设$M$是$n$-维光滑（带边）流形,$X_{1},{\cdots},X_{k}$是定义在某个子集$A\subset M$的向量场.
+
+\begin{definition}
+    称有序$k$-元组$\left( X_{1},{\cdots},X_{k} \right)$是线性独立的,若对于任意的$p \in A$,$\left( X_{1}|_{p},{\cdots},X_{k}|_{p} \right)$是$T_{p}M$中线性独立的$k$个切向量.
+\end{definition}
+
+\begin{definition}
+    称$\left( X_{1},{\cdots},X_{k} \right)$张成了切丛,若对于每个$p \in A$,$k$-元组$\left( X_{1}|_{p},{\cdots},X_{k}|_{p} \right)$张成了$T_{p}M$.
+\end{definition}
+
+\begin{definition}{局部标架}
+    称定义在开集$U\subset M$的向量场的有序$n$-元组$\left( E_{1},{\cdots},E_{n} \right)$为$M$的一个局部标架,若它们线性独立且张成了切丛.
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 基：若$\left( E_{1},{\cdots},E_{n} \right)$是$M$的一个局部标架,那么对于任意的$p \in U$,$\left( E_{1}|_{p},{\cdots},E_{n}|_{p} \right)$构成$T_{p}M$的一组基.
+        \item 全局标架：若在此之上$U=M$,则称$\left( E_{1},{\cdots},E_{n} \right)$是$M$的一个全局标架.
+        \item 光滑标架：在此之上每个向量场$E_{i}$都光滑,则称它为一个光滑标架.
+        \item 若$\operatorname{dim}M=n$,验证$\left( E_{1},{\cdots},E_{n} \right)$线性独立或张成切丛其一即可.
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{proposition}{标架的补全}
+    令$M$是光滑$n$-维（带边）流形,那么
+    \begin{enumerate}
+        \item 若$\left( X_{1},{\cdots},X_{k} \right)$是定义在开子集$U\subset M$的线性独立的$k$-个光滑向量场,$1\leqslant k <n$.那么对于每个$p \in U$,存在定义在$p$的邻域$V$上的光滑向量场$X_{k+1},{\cdots},X_{n}$,使得$\left( X_{1},{\cdots},X_{n} \right)$是$M$在$U\cap V$上的光滑局部标架.
+        \item 设$p \in M$,$\left( v_{1},{\cdots},v_{k} \right)$是$T_{p}M$上的线性无关的$k$个切向量.对于$1\leqslant k \leqslant n$,存在定义在$p$的某个邻域上的光滑局部标架$\left(  X_{i}\right)$,使得$X_{i}|_{p}= v_{i},i=1,{\cdots},k$.
+        \item 若$\left( X_{1},{\cdots},X_{n} \right)$是闭集$A\subset M$上$n$个线性独立的光滑向量场,那么存在定义在$A$的某个邻域上的光滑局部标架$\left( \tilde{X}_{1},{\cdots},\tilde{X}_{n} \right)$,使得$\tilde{X}_{i}|A= X_{i}, i=1,{\cdots},n$.
+    \end{enumerate}
+    
+\end{proposition}
+
+\begin{definition}{正交标架}
+    对于定义在$A\subset \mathbb{R}^{n}$上的向量场$\left(E_{1},{\cdots},E_{k} \right)$,称它们是正交的,若对于每个$p \in A$,$\left( E_{1}|_{p},{\cdots},E_{k}|_{p} \right)$关于欧式内积是正交的（通过$T_{p}\mathbb{R}^{n}$到$\mathbb{R}^{n}$的标准同构定义$T_{p}\mathbb{R}^{n}$上的内积）.一个由正交的向量场组成的（局部或全局的）标架,称为一个正交标架.
+\end{definition}
+
+\begin{lemma}{Gram-Schmidt正交化}
+    设$\left( X_{j} \right)$是$T\mathbb{R}^{n}$的在开子集$U\subset \mathbb{R}^{n}$上的一个光滑局部标架.那么存在$U$上的光滑正交标架$\left( E_{j} \right)$,使得$\operatorname{span}\left(  E_{1}|_{p},{\cdots},E_{j}|_{p} \right)=\operatorname{span}\left( X_{1}|_{p},{\cdots},X_{j}|_{p} \right)$.
+\end{lemma}
+\begin{proof}
+    对于每一点$p \in U$,对$\left( X_{j}|_{p} \right)$应用Gram-Schimidt正交化,可以通过 $$ E_{j}: = \frac{{X_{j}-\sum _{i=1}^{j-1}\left( X_{j}\cdot E_{i} \right) E_{i}}}{\left| X_{j}-\sum _{i=1}^{j-1}\left( X_{j}\cdot E_{i} \right) E_{i} \right| } $$归纳地得到粗向量场的$n$元组$\left( E_{1},{\cdots},E_{n} \right)$.对于每个$j=1,{\cdots},n$和$p \in U$,由于$X_{j}|_{p}\not\in \operatorname{span}\left( E_{1}|_{p},{\cdots},E_{j-1}|_{p} \right)$,故分母在$U$上无处退化,因此$\left( E_{j} \right)$是光滑的正交标架.
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{可平行化}
+    称一个光滑（带边）流形是**可平行化**的,若它容许一个光滑的全局标架.
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item 例如$\mathbb{R}^{n},\mathbb{S}^{1},\mathbb{T}^{n}$是可平行化的.
+    \end{enumerate}
+    
+\end{remark}
+
+\subsection{向量场作为导子}
+
+\begin{definition}{向量场在光滑函数上的作用}
+    设$X \in \mathfrak{X}\left( M \right)$,$f$是定义在开子集$U\subset M$上的光滑函数,我们可以得到新的函数$Xf:U\to \mathbb{R}$,按以下方式定义 $$ \left( Xf \right) \left( p \right) =X_{p}f $$
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 局部性：由于某点处切向量对函数的作用被函数在任意邻域上的取值决定,从而$Xf$也是被局部确定的.特别地,对于任意开子集$V\subset U$,我们有 $$ \left( Xf \right) |_{V}= X\left( f|_{V} \right)  $$即对于每个$p \in V$,$X_{p}\left( f \right)=X_{p}\left(f|_{V}  \right)$.
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{proposition}{向量场光滑性的刻画}
+    设$M$是光滑（带边）流形,$X:M\to TM$是粗向量场,以下几条等价：
+    \begin{enumerate}
+        \item $X$是光滑的；
+        \item 对于每个$f \in C^{\infty}\left( M \right)$,$Xf$是$M$上的光滑函数；
+        \item 对于每个开子集$U\subset M$,和每个$f \in C^{\infty}\left( U \right)$,$Xf$是$U$上的光滑函数.
+    \end{enumerate}
+    
+\end{proposition}
+
+\begin{proof}
+    $\left( \operatorname{a} \right)\implies \left( \operatorname{b} \right)$：
+任取$p \in M$,设$\left( U,\left( x^{i} \right) \right)$是包含了$p$的光滑坐标卡,设$X= X^{i} \frac{ \partial  }{ \partial x^{i} }$,则$X^{i} \in C^{\infty}\left( M \right)$,于是 $$ Xf=\left( X^{i}\frac{ \partial  }{ \partial x^{i} }  \right) f=X^{i}\frac{ \partial f }{ \partial x^{i} }  $$是$U$上的光滑函数,这表明$Xf$在$M$上光滑.
+
+$\left( \operatorname{b} \right)\implies \operatorname{\left( c \right)}$：设$U\subset M$是开集,任取$f \in C^{\infty}\left( U \right)$,和$p \in U$,设$\psi$是$p$的支撑在$U$的bump函数,定义$\tilde{f}=\psi f$,并在$M\backslash \operatorname{supp}\psi$上对$\tilde{f}$做零延拓.得到$\tilde{f}$是在$p$的某个邻域与$f$相等的光滑函数,因此$Xf=X \left( \tilde{f}|U \right)$是光滑函数.
+
+$\left( \operatorname{c} \right)\implies \left( \operatorname{a} \right)$：任取$p \in M$,设$\left( U,\left( x^{i} \right) \right)$是包含了$p$的光滑坐标卡,设$X= X^{i}\frac{ \partial  }{ \partial x^{i} }$,注意到坐标函数$x^{i}$是$U$上的光滑函数,故 $$ X^{i}=X x^{i} $$是光滑函数,进而$X$是光滑的.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    光滑向量场$X \in \mathfrak{X}\left( M \right)$定义出从$C^{\infty}\left( M \right)$到自身的映射$f\mapsto Xf$.
+\end{proposition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item \(  C^{\infty}\left( M \right)   \)-线性： $X$是$C^{\infty}\left( M \right)$上的$\mathbb{R}$-线性映射.
+        \item 导子性：$X$具有导子性,即对于$f,g \in C^{\infty}\left( M \right)$,我们有 $$ X\left( fg \right) = fXg+gXf $$
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{proposition}{导子$\iff$光滑向量场}\label{向量场就是导子}
+    设$M$是光滑（带边）流形.映射$D:C^{\infty}\left( M \right)\to C^{\infty}\left( M \right)$是一个导子,当且仅当存在某个$X \in \mathfrak{X}\left( M \right)$,使得$Df=Xf$对于任意的$f \in C^{\infty}\left( M \right)$成立.
+
+\end{proposition}
+
+\begin{proof}
+    $\impliedby$前面已经说明了.
+
+$\implies$对于给定的导子$D:C^{\infty}\left( M \right)\to C^{\infty}\left( M \right)$,定义 $$ X_{p}f: = \left( Df \right) \left( p \right)  $$那么$D$的导子性给出$\left( D \left( \cdot \right) \right)\left( p \right)$是$p$处的一个点导子,进而$X_{p}: C^{\infty}\left( M \right)\to \mathbb{R}$是切向量,因此$X$定义出一个粗向量场.又对于任意的$f\in C^{\infty}\left( M \right)$,$Xf=Df$是光滑函数,因此由1.2.知$X$是光滑的向量场.
+
+    \hfill $\square$
+\end{proof}
+
+\section{向量场和光滑映射}
+
+\subsection{F-相关性}
+
+\begin{definition}{F-相关}
+    设$F:M\to N$是光滑的,$X$是$M$上的向量场,$Y$是$N$上的向量场.若对于每个$p \in M$,都有$dF_{p}\left( X_{p} \right)=Y_{F\left( p \right)}$,则称$X$和$Y$是$F$-相关的.
+\end{definition}
+
+\begin{note}
+
+    对于任意的$p \in M$,都有$dF_{p}\left( X_{p} \right) \in T_{F\left( p \right)}N$.一般而言,这种方式无法定义出$N$上的向量场：若$F$非满,则对于$q \in N \backslash F\left( M \right)$上无法通过这种方式给出切向量；若$F$非单,则切向量可能不止有一种选择.
+
+\end{note}
+
+\begin{proposition}{光滑函数的刻画}\label{F-相关性的光滑函数刻画}
+    设$F:M\to N$是（带边）光滑流形之间的光滑函数,$X \in \mathfrak{X}\left( M \right)$,$Y \in \mathfrak{X}\left( N \right)$.$X$和$Y$是$F$-相关的向量场,当且仅当对于任意定义在$N$的开子集的光滑实函数$f$,都有 $$ X\left( f\circ F \right) = \left( Yf \right) \circ F $$
+\end{proposition}
+\begin{proof}
+    任取$p \in M$,和定义在$F\left( p \right)$的某个邻域上的光滑实值函数$f$,我们有 $$ X\left( f\circ F \right) \left( p \right) =X_{p}\left( f\circ F \right) = dF_{p}\left( X_{p} \right) f $$以及 $$ \left( Yf \right) \circ F\left( p \right) = \left( Yf \right) \left( F\left( p \right)  \right) = Y_{F\left( p \right) }f $$因此$X\left( f\circ F \right)=\left( Yf \right)\circ F,p \in M$当且仅当$dF_{p}\left( X_{p} \right)f= Y_{F\left( p \right)}f,p \in M$,当且仅当$dF_{p}\left( X_{p} \right)= Y_{F\left( p \right)}f,p \in M$,即$X$和$Y$是$F$-相关的.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    是$M,N$是光滑（带边）流形,$F:M\to N$是微分同胚.对于每个$X \in \mathfrak{X}$,存在唯一$Y \in \mathfrak{X}\left( N \right)$,使得$X$与$Y$是$F$-相关的.
+\end{proposition}
+
+\begin{proof}
+    对每个$q  \in N=F\left( M \right)$,定义 $$ Y_{q}: = dF_{F^{-1}\left( q \right) }\left( X_{F^{-1}\left( q \right) } \right)  $$显然$Y$是唯一的$F$-相关于$X$的（粗）向量场.
+此外,$Y$的光滑性来自于$Y$是光滑映射的复合$$ N \xrightarrow{F^{-1}} M \xrightarrow{X}TM \xrightarrow{dF} TN$$
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{推出}
+    设$F:M\to N$是光滑（带边）流形之间的微分同胚.设$X \in \mathfrak{X}\left( M \right)$,由1.4.,存在唯一的$F$-相关于$X$的向量场,记作$F_{*}X$,称为$X$通过$F$的推出.具体地 $$ \left( F_{*}X \right) _{q}: = dF_{F^{-1}\left( q \right) }\left( X_{F^{-1}\left( q \right) } \right) ,\quad  q \in N $$
+\end{definition}
+
+\begin{corollary}
+    设$F:M\to N$是微分同胚,$X \in \mathfrak{X}\left( M \right)$,那对于任意的$f \in C^{\infty }\left( N \right)$,我们有 $$ \left( \left( F_{*}X \right) f \right) \circ F= X\left( f\circ F \right) $$
+\end{corollary}
+
+\subsection{向量场和子流形}
+
+\begin{definition}{相切}
+    设$S\subset M$是$M$的浸入或嵌入（带边）子流形.对于给定的$p \in S$,称$M$上的向量场$X$在点$p$与$S$相切,若$X_{p}\in T_{p}S\subset T_{p}M$.称$X$与$S$相切,若它在$S$的每一点上与$S$相切.
+\end{definition}
+
+\begin{note}
+
+    向量场$X$未必能限制在$S$上,因为可能存在$X_{p}\not\in T_{p}S$,所以我们要引入相切的概念.
+
+\end{note}
+
+\begin{proposition}{相切条件}
+    设$M$是光滑流形,$S\subset M$是（带边）嵌入子流形,$X$是$M$上的光滑向量场.那么$X$与$S$相切,当且仅当$\left( Xf \right)|_{S}=0$对于每个满足$f|_{S}\equiv 0$的$f \in C^{\infty}\left( M \right)$成立.
+\end{proposition}
+
+\begin{proof}
+    利用事实 $$ T_{p}S =\{ v \in T_{p}M: vf=0 \text{ whenever }f \in C^{\infty}\left( M \right) \text{ and }f|_{S}=0 \}$$立即得到.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}{含入}
+    设$S\subset M$是（带边）浸入子流形,$Y$是$M$上的光滑向量场.若存在$\iota$-相关于$Y$的向量场$X \in \mathfrak{X}\left( S \right)$,其中$\iota:S \hookrightarrow M$是含入映射,则$Y$与$S$相切.
+\end{proposition}
+
+\begin{proof}
+    $Y_{p}=d \iota _{p}\left( X_{p} \right) \in T_{p}S$
+
+    \hfill $\square$
+\end{proof}
+\begin{proposition}{限制}\label{相切与限制}
+    设$M$是光滑流形,$S\subset M$是（带边）浸入子流形,令$\iota:S \hookrightarrow M$是含入映射.若$Y \in \mathfrak{X}\left( M \right)$与$S$相切,则存在唯一的$S$上的光滑向量场,记作$Y|_{S}$,它与$Y$是$\iota$-相关的.
+\end{proposition}
+\begin{note}
+
+    为了说明光滑性,利用浸入是局部嵌入,给出$X$继承自$Y$的光滑的分量函数.
+
+\end{note}
+\begin{proof}
+    由$Y$于$S$相切,任取$p \in S$,存在$X_{p}\in T_{p}S$,使得$Y_{p}= d \iota _{p}\left( X_{p} \right)$.由于$d\iota _{p}$是单射,$X_{p}$是唯一的,因此$X$定义出$S$上唯一的粗向量场.此外若$X$是光滑的,那么$X$与$Y$是$\iota$-相关的,因此只需要说明$X$在每个局部上都光滑即可.
+由于浸入是局部的嵌入,任取$p \in S$,存在$p$在$S$中的邻域$V$,使得$V$可以嵌入到$M$中.令$\left( U,\left( x^{i} \right) \right)$是$V$在$M$中以$p$为中心的切片图,使得$V\cap U$是使得$x^{k+1}={\cdots}= x^{n}= 0$的子集（并且对于$p \in \partial S,x^{k}\geqslant 0$）,且$\left( x^{1},{\cdots},x^{k} \right)$是$S$在$V\cap U$中的局部坐标.设$Y= Y^{1}\frac{ \partial  }{ \partial x^{1} }+{\cdots}+Y^{n}\frac{ \partial  }{ \partial x^{n} }$,那么$X$有坐标表示$Y^{1}\frac{ \partial  }{ \partial x^{1} }+{\cdots}+Y^{k}\frac{ \partial  }{ \partial x^{k} }$是$V\cap U$上的光滑向量场.
+
+    \hfill $\square$
+\end{proof}
+
+
+\section{李括号}
+
+设 \(  X,Y  \)是 \(  M  \)上的光滑向量场, 它们可视为作用在光滑函数 \(  f: M\to \mathbb{R}   \)的导子.
+我们希望通过 \(  X,Y  \)给出新的导子.但是最简单的依次作用的方式 \(  f\mapsto YXf: =  Y\left( Xf \right)   \)有时并不满足Lebniz律, 从而不能成为一个 \(  YX  \)不能成为一个光滑向量场.      
+\begin{example}
+    定义\(  \mathbb{R} ^{2}  \) 上的向量场 \(  X = \frac{\partial }{\partial x},Y =  x \frac{\partial }{\partial y}  \),令\(  f\left( x,y \right)= x, g\left( x,y \right)= y    \),则直接计算,可以得到
+     \(  XY\left( fg \right)= 2x   \),而 \(  fXYg+ gXYf= x  \),所以 \(  XY  \)不是 \(  C^{\infty }\left( \mathbb{R} ^{2} \right)  \)的导子.      
+
+\end{example}
+
+\hspace*{\fill} 
+
+我们需要观察的是 \(  XY  \)距离成为一个导子多出了什么,计算 \(  XY\left( fg \right)=  XfYg+ XgYf+ fXYg+ gXYf   \),注意到后两项就是导子性所需要的,而前两项是多余的,
+但是我们发现前两项对于 \(  f,g  \)的位置具有对称性,因此如果减去调换后的结果,就可以消去多余项,这就引出了李括号运算 \(  [X,Y]  \).    
+
+\begin{introduction}
+    \item 李括号的导子性
+    \item 李括号的坐标表示
+\end{introduction}
+
+\begin{definition}{李括号}
+    设 \(  X,Y  \)是光滑（带边）流形 \(  M  \)上的两个光滑向量场.定义 \(  X  \)和 \(  Y  \)的李括号  算子 \(  [X,Y]: C^{\infty}\left( M \right)\to C^{\infty}\left( M \right)    \)按照 \[
+    [X,Y]f: =  XYf-YXf
+    \]
+\end{definition}
+
+\begin{lemma}
+    任意一对光滑向量场的李括号,也是一个光滑向量场.
+\end{lemma}
+
+\begin{proof}
+    由命题\ref{向量场就是导子},只需要证明 \(  [X,Y]  \)是 \(  C^{\infty}\left( M \right)   \)上的一个导子.
+    任取 \(  f,g \in C^{\infty}\left( M \right)  \),,计算 \[
+    \begin{aligned}
+    [X,Y]\left( fg \right)& = X\left( Y\left( fg \right)  \right)-Y\left( X\left( fg \right)  \right)\\ 
+     & =      X \left( fYg+ gYf \right) -Y\left( fXg+ gXf \right) \\ 
+      & =  fXYg+  YgXf+  gXYf+  YfXg-\left( fYXg+ XgYf+ gYXf+ XfYg \right)\\ 
+       &  = fXYg+ gXYf-fYXg- gYXf\\ 
+        & =  f[X,Y]g + g[X,Y]f
+    \end{aligned}
+    \]   故导子性成立.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    向量场 \(  [X,Y]  \)在点 \(  p \in M  \)处的取值由以下公式给出 \[
+    [X,Y]_{p}f =  X_{p}\left( Yf \right)-Y_{p}\left( Xf \right)  
+    \]  
+\end{proposition}
+
+\begin{proposition}
+    
+设 \(  X,Y  \)是光滑流形（带边）流形 \(  M  \)上的光滑向量场,令 \(  X =  X^{i}\frac{\partial }{\partial x^{i}}  ,Y =  Y^{j}\frac{\partial }{\partial x^{j}}\)    为 \(  X,Y  \)在
+\(  M  \)的某个局部坐标 \(  \left( x^{i} \right)   \)下的坐标表示.那么 \(  [X,Y]  \) 可以有由以下坐标表示得到 \[
+[X,Y] =  \left( X^{i}\frac{\partial Y^{j}}{\partial x^{i}}-Y^{i}\frac{\partial X^{j}}{\partial x^{i}} \right)\frac{\partial }{\partial x^{j}} 
+\]
+或者简单地写作 \[
+[X,Y] =  \left( XY^{j}-YX^{j} \right)\frac{\partial }{\partial x^{j}} 
+\]
+\end{proposition}
+
+\begin{proof}
+    由于 \(  [X,Y]  \)是一个向量场,它在函数上的作用是被局部决定的:\(  \left( [X,Y]f \right)|_{U} =  [X,Y]\left( f|_{U} \right)    \).
+    因此只需要在单个坐标卡上计算即可,我们有 \[
+    \begin{aligned}
+    [X,Y]f &=  X^{i}\frac{\partial }{\partial x^{i}} \left( Y^{j} \frac{\partial f}{\partial x^{j}} \right)- Y^{j}\frac{\partial }{\partial x^{j}}\left( X^{i}\frac{\partial f}{\partial x^{i}} \right) \\ 
+     & =  X^{i}Y^{j} \frac{\partial ^{2}f}{\partial x^{i}x^{j}} + X^{i} \frac{\partial Y^{j}}{\partial x^{i}} \frac{\partial f}{\partial x^{j}}- Y^{j}X^{i} \frac{\partial ^{2}f}{\partial x^{j}x^{i} }- Y^{j} \frac{\partial X^{i}}{\partial x^{j}} \frac{\partial f}{\partial x^{i}}\\ 
+      & = X^{i} \frac{\partial Y^{j}}{\partial x^{i}} \frac{\partial f}{\partial x^{j}} - Y^{i} \frac{\partial X^{j}}{\partial x^{i}} \frac{\partial f}{\partial x^{j}}\\ 
+       & =   \left(  X ^{i} \frac{\partial Y^{j}}{\partial x^{i}} -Y^{i} \frac{\partial X^{j}}{\partial x^{i}}\right) \frac{\partial }{\partial x^{j}} f 
+    \end{aligned}
+    \] 因此 \[
+    [X,Y] =  \left( X^{i}\frac{\partial Y^{j}}{\partial x^{i}}-Y^{i}\frac{\partial X^{j}}{\partial x^{i}} \right) \frac{\partial }{\partial x^{j}} 
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}
+    对于任意的坐标向量场 \(  \left( \frac{\partial }{\partial x^{i}} \right)   \), \[
+    \left[ \frac{\partial }{\partial x^{i}}, \frac{\partial }{\partial x^{j}} \right] \equiv 0,\quad  \forall  i,j
+    \] 
+\end{corollary}
+
+
+\begin{example}
+    定义光滑向量场 \(  X,Y\in \mathfrak{X}\left( \mathbb{R} ^{3} \right)   \) \[
+    \begin{aligned}
+    X&=  x \frac{\partial }{\partial x} + \frac{\partial }{\partial y} + x\left( y+ 1 \right) \frac{\partial }{\partial z}\\ 
+     Y& =  \frac{\partial }{\partial x} +  y\frac{\partial }{\partial z}  
+    \end{aligned}
+    \] 
+    利用 \(  [X,Y] =  \left( XY^{j}-YX^{j} \right)   \frac{\partial }{\partial x^{j}}\)  计算,得到 \[
+    \begin{aligned}
+    [X,Y]& =  \left( X\left( 1 \right)- Y\left( x \right)   \right) \frac{\partial }{\partial x} +  \left( X\left( 0 \right)-Y \left( 1 \right)   \right) \frac{\partial }{\partial y}    +  \left( X \left( y \right)-Y\left( x\left( y+ 1 \right)  \right)   \right) \frac{\partial }{\partial z}\\ 
+     & =  \frac{\partial }{\partial x}+ \left(1-\left( y+ 1 \right)  \right) \frac{\partial }{\partial z}  \\ 
+      &  =  \frac{\partial }{\partial x}-y \frac{\partial }{\partial z}
+    \end{aligned}
+    \]
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{proposition}{李括号的性质}
+    对于所有的 \(  X,Y,Z \in \mathfrak{X}\left( M \right)   \),李括号满足以下性质
+    \begin{enumerate}
+        \item 双线性：对于 \(  a,b \in \mathbb{R}   \) \[
+        \begin{aligned}
+        \left[ aX+ bY,Z \right]&= a[X,Z]+ b[Y,Z]  \\ 
+          [Z,aX+ bY]& = a[Z,X]+ b[Z,Y]
+        \end{aligned}
+        \] 
+        \item 反对称性：  \[
+        [X,Y]  =  -\left[ Y,X \right] 
+        \]
+        \item  Jacobi恒等式：  \[
+        \left[ X,\left[ Y,Z \right]  \right]+  \left[ Y,\left[ Z,X \right]  \right]+  \left[ Z,\left[ X,Y \right]  \right] =  0   
+        \] 
+        \item 对于 \(  f,g \in C^{\infty}\left( M \right)   \),\[
+        \left[ fX,gY \right] =  fg[X,Y]+ \left( fXg \right)Y-\left( gYf \right)X   
+        \] 
+    \end{enumerate}
+     
+\end{proposition}
+\begin{proof}
+    双线性和反对称性由定义容易得到.
+    为了得到Jacobi恒等式,直接计算 \[
+    \begin{aligned}
+    & \left[ X,\left[ Y,Z \right]  \right]+  \left[ Y,\left[ Z,X \right]  \right]   +  \left[ Z,\left[ X,Y \right]  \right]\\ 
+     & =  [X,YZ-ZY]+  [Y,ZX-XZ]+ [Z,XY-YX]\\ 
+      & =  [X,YZ]-[X,ZY]+ [Y,ZX]-[Y,XZ]+  [Z,XY]-[Z,YX]\\ 
+       & =  XYZ-YZX-XZY+ ZYX + YZX-ZXY \\ 
+      &  -YXZ+ XZY+ ZXY-XYZ-ZYX+ YXZ\\ 
+        & =  0
+    \end{aligned}
+    \]
+    对于最后一条性质,直接计算 \[
+    \begin{aligned}
+    \left[ fX,gY \right]h& = \left( fX \right)\left( gY \right)h-\left( gY \right)\left( fX \right)h\\ 
+     & =  \left( fX \right) \left( g\left( Yh \right)  \right) -\left( gY \right)\left( f\left( Xh \right)  \right)\\ 
+      & =  gf X\left( Yh \right) +  \left( fXg \right)\left( Yh \right) - fgY \left( Xh \right) - \left( gYf \right) \left( Xh \right)  \\ 
+       & = fg[X,Y]h + \left( fXg \right)Yh- \left( gYf \right)Xh                  
+    \end{aligned}
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{proposition}{李括号的自然性}
+
+    设 \(  F: M\to N  \)是光滑（带边）流形之间的光滑映射,令 \(  X_1, X_2 \in \mathfrak{X}\left( M \right)  \), \(  Y_1,Y_2 \in \mathfrak{X}\left( N \right)   \)是
+    向量场,使得 \(  X_{i}  \)是 \(  F  \)-相关于 \(  Y_{i}  \)的 , \(  k= 1,2  \)       .则 \(  [X_1,X_2]  \)是 \(  F  \)-相关于 \(  [Y_1,Y_2]  \)的.   
+    
+\end{proposition}
+
+\begin{proof}
+    利用命题\ref{F-相关性的光滑函数刻画},对于任意的 \(  f \in C^{\infty}\left( N \right)   \),考虑 \[
+    \begin{aligned}
+    \left[ X_1,X_2 \right] \left( f\circ F \right) & = X_1X_2\left( f\circ F \right)-X_2X_1\left( f\circ F \right)      \\ 
+     & =  X_1 [\left( Y_2f \right) \circ F]- X_2[\left( Y_1f \right) \circ F]\\ 
+      & =  \left( Y_1Y_2f \right)\circ F -\left(  Y_2Y_1f   \right)\circ F\\ 
+       & = \left(  [Y_1,Y_2]f \right)\circ F  
+    \end{aligned}
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}{李括号的推出}
+    设 \(  F:M \to N  \)是微分同胚 \(  X_1,X_2 \in \mathfrak{X}\left( M \right)   \).则 \(  F_{*}[X_1,X_2]= [F_{*}X_1,F_{*}X_2]  \)   
+\end{corollary}
+\begin{proof}
+    微分同胚的 \(  F  \)-相关函数存在且唯一,因此由上述命题立即得到 \[
+    F_{*}[X_1,X_2]= [Y_1,Y_2]= [F_{*}X_1,F_{*}X_2]
+    \] 
+
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}{相切与子流形向量场的李括号}
+    设 \(  M  \)是光滑流形, \(  S  \)是\(  M  \)的 （带边）浸入子流形  .
+    若 \(  Y_1,Y_2  \)是 \(  M  \)上相切与 \(  S  \)的光滑向量场,则 \(  \left[ Y_1,Y_2 \right]   \)也相切与 \(  S  \).     
+\end{corollary}
+
+\begin{proof}
+    由命题\ref{相切与限制},存在 \(  S  \)上的光滑向量场 \(  X_1,X_2  \),使得 \(  X_{i}  \)是 \( \iota   \)-相关于 \(  Y_{i}  \)的 \(  i= 1,2  \).
+    于是 \(  [X_1,X_2]  \)是 \(  \iota   \)-相关于 \(  [Y_1,Y_2]  \)的,从而与 \(  S  \)相切.          
+
+    \hfill $\square$
+\end{proof}
+
+\end{document}

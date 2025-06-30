@@ -1,0 +1,265 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+    
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+
+\chapter{Jacobi场}
+
+\section{Jacobi方程}
+
+每条主曲线都是测地线的变分,称为是测地变分.测地变分的变分场 \(  J\left( t \right)   \) 满足一个二阶线性方程,称为是Jacobi方程. \(  \left( J,D_{t}J \right)   \)的初值给出了方程的解空间到两份切空间的对应.称解空间的一个元素为一个Jacobi场.
+
+既然测地变分的变分场是Jacobi场,反过来问,Jacobi场合适是测地变分的变分场?
+当 \(  M  \)测地完备或 \(  I  \)是紧区间是,可以这样构造:以 \(  J\left( 0 \right)   \)为初速度确定一条初始的横截曲线,可以沿着它给出一个初值为 \(  v  \),初始加速度待定的向量场\(  V  \) .这样\(   \sigma   \)上每一点,都可以 依据 \(  V  \) 长出一条测地线,得到了一个测地变分.前面的假设保证了充分小的邻域上,测地线延伸到 \(  I  \)上.  取适当的\(  D_{s}V \left( 0 \right)  \)就可以构造出 所需的测地变分.
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+
+
+\begin{definition}{测地变分}
+    设 \(  \left( M,g \right)   \)是 \(  n  \)维(伪)-Riemann流形.设 \(  I,K\subseteq \mathbb{R}   \)是区间, \(   \gamma :I\to M  \)是测地线, \(   \Gamma   \)是 \(   \gamma   \)的一个变分.称 \(   \Gamma   \)为一个\textbf{测地变分},若 \(   \Gamma _{s}\left( t \right)=  \Gamma \left( s,t \right)    \)对于每个 \(  s  \in K\)         也是一个测地线.
+\end{definition}
+
+\begin{theorem}{Jacobi方程}
+    设 \(  \left( M,g \right)   \)是伪Riemann流形, \(   \gamma   \)是一个测地线, \(  J  \)是沿 \(   \gamma   \)的一个向量场  .若 \(  J  \)是一个测地变分的变分场,则它满足以下 \textbf{Jacobi方程} \[
+    D_{t}^{2}J+ R\left( J, \gamma ^{\prime}  \right) \gamma ^{\prime} = 0 
+    \]   
+\end{theorem}
+
+\begin{proof}
+    设 \(   \Gamma   \)是以  \(  J  \)为变分场的测地变分,  令 \(  T \left( s,t \right) =   \partial _{t} \Gamma \left( s,t \right)   \),\(  S\left( s,t \right)=  \partial _{s} \Gamma \left( t,s \right)    \) .则测地线方程给出 \[
+    D_{t}T\equiv 0
+    \] 沿着横街曲线求导,得到 \[
+    D_{s}D_{t}T\equiv 0
+    \] 由命题\ref{pro:3.29-1}以及对称引理\ref{曲线族的对称引理} \[
+    \begin{aligned}
+    0& = D_{s}D_{t}T\\ 
+     & = D_{t}D_{s}T+  R\left( S,T \right)T  \\ 
+      & = D_{t}^{2}S+ R\left( S,T \right)T 
+    \end{aligned}
+    \]由于 \(  T\left( 0,t \right)=  \gamma ^{\prime} \left( t \right)    \),\(  S\left( 0,t \right)= J   \),带入即可得Jacobi方程成立.  
+
+    \hfill $\square$
+\end{proof}
+\begin{definition}
+    沿测地线的光滑向量场若满足 \textbf{Jacobi}方程,则称为 \textbf{Jacobi场}.
+\end{definition}
+
+\begin{theorem}{Jaocbi场的存在唯一性}
+    设 \(  \left( M,g \right)   \)是(伪)Riemann流形, \(  I\subseteq \mathbb{R}   \)是区间, \(   \gamma :I\to M  \)是测地线.设 \(  a \in I  \), \(  p=  \gamma \left( a \right)   \) ,     任取 \(  v,w \in T_{p}M  \),存在唯一的满足以下条件的沿 \(   \gamma   \)的Jacobi场:  \[
+    J\left( a \right)= v,\quad D_{t}J\left( a \right)= w  
+    \]  
+\end{theorem}
+
+\begin{proof}
+    取正交的沿  \(   \gamma   \)的平行标价 \(  \left( E_{i} \right)   \),设 \(  v =  v^{i}E_{i} \left( a \right)  \),    \(  w =  w^{i}E_{i}\left( p \right)   \), \(   \gamma \left( t \right)=  \gamma ^{i}\left( t \right)E_{i}\left( t \right)     \) . 则 \(   \gamma ^{\prime} \left( t \right) =   \dot{\gamma}^{i}\left( t \right)E_{i}\left( t \right)     \).设 \(  J\left( t \right)= J^{i}\left( t \right)E_{i}\left( t \right)     \),则 Jacobi方程写作 \[
+    \ddot{J}^{i}\left( t \right) + R_{jkl}^{i}\left(  \gamma \left( t \right)  \right) J^{j}\left( t \right) \dot{\gamma}^{k}\left( t \right) \dot{\gamma}^{l}\left( t \right)= 0    ,\quad i=  1,\cdots,n 
+    \]     是一个二阶线性方程组,令 \(  W^{i}\left( t \right) = \dot{J}^{i}\left( t \right)   \),则方程组化为 \[
+    \begin{aligned}
+        \dot{J}^{i}\left( t \right)&= W^{i}\left( t \right)  \\ 
+         \dot{W}^{i}\left( t \right)&= -R_{jkl}^{i}\left(  \gamma \left( t \right)  \right)J^{j}\left( t \right) \dot{\gamma}^{k}\left( t \right) \dot{\gamma}^{l}\left( t \right)\\ 
+       &,\quad    i=  1,\cdots,n      
+    \end{aligned}
+    \] 一个2n个方程的一阶线性ODE,取定初值 \(  J^{i}\left( a \right)=   v^{i}  \) ,\(  W^{i}\left( t \right)= w^{i}   \)下,方程组存在唯一的光滑解,
+    由于 \( D_{t}J\left( a \right)= \dot{J}^{i}\left( t \right)E_{i}\left( t \right)= W^{i}\left( t \right)E_{i}\left( t \right)= w^{i}E_{i}\left( t \right)= w         \)  ,故方程的解 \(  J  \)即为所需要的Jacobi场.  
+    \hfill $\square$
+\end{proof}
+\begin{definition}
+    给定测地线 \(   \gamma   \),令 \( \mathscr{J}\left(  \gamma  \right)\subseteq \mathfrak{X}\left(  \gamma  \right)    \)表示全体沿 \(   \gamma   \)的 Jacobi场.   
+\end{definition}
+
+\begin{corollary}
+    设 \(  \left( M,g \right)   \)是 \(  n  \)维 (伪)Riemann流形, \(   \gamma   \)是一个测地线.则 \(  \mathscr{J}\left(  \gamma  \right)   \)是 \(  \mathfrak{X}\left(  \gamma  \right)   \)的一个 \(  2n  \)维线性子空间.   
+\end{corollary}
+\begin{proof}
+    由于 \(  \mathscr{J}\left(  \gamma  \right)   \)是线性方程(Jaocbi)方程的解空间,故 \(  \mathscr{J}\left(  \gamma  \right)   \)是一个线性空间.定义 \(  \mathscr{J}\left(  \gamma  \right)   \)到 \(  T_{p}M\oplus T_{p}M  \)的映射 \(  J\mapsto \left( J\left( a \right),D_{t}J\left( a \right)   \right)   \),由上面的定理是一个双射,故 \(  \operatorname{dim}\,\mathscr{j}\left(  \gamma  \right)= \operatorname{dim}\,\left( T_{p}M\oplus T_{p}M \right)= 2n    \).      
+
+    \hfill $\square$
+\end{proof}
+
+
+
+
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+\section{Jacobi场的基本计算}
+
+如果一个变分场不将初始的测地线像侧边拖拽,而只做沿着测地线切向上的改变,那么它将不包含任何除了初始测地线以外的信息. 始终沿着 \(   \gamma   \)切向的Jacobi场是"平凡的",始终沿着 \(   \gamma   \)法向的Jacobi场 包含了主要的信息.我们要区分出这些Jacobi场. 
+
+事实上,切Jacobi场是2维的,由平移变换和尺度变换张成.剩下的\(  \left( 2n-2 \right)   \)维都是法向的.
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+
+\begin{definition}
+    给定正则曲线 \(   \gamma :I\to M  \)
+    \begin{enumerate}
+        \item 记 \(  T_{ \gamma \left( t \right) }^{\top}M\subseteq T_{ \gamma \left( t \right) }M  \)为  \(   \gamma ^{\prime} \left( t \right)   \)在 \(  T_{ \gamma \left( t \right) }M  \)中张成的子空间.
+        \item 记 \(  T_{ \gamma \left( t \right) }^{\perp}M  \)为 \(  T_{ \gamma \left( t \right) }^{\top}M  \)的正交补空间.
+        \item 若 \(  V \in \mathfrak{X}\left(  \gamma  \right)   \)使得 \(  V\left( t \right)\in T_{ \gamma \left( t \right) }^{\top}M,\forall  t\in I   \),则称 \(  V  \)为一个\textbf{沿 \(   \gamma   \) }的切向量场.
+        \item 若 \(  V \in \mathfrak{X}\left(  \gamma  \right)   \)使得 \(  V\left( t \right)\in T_{ \gamma \left( t \right) }^{\perp}M,\forall t \in I   \),则称 \(  V  \)为沿 \(   \gamma   \)的一个法向量场.
+        \item 令 \(  \mathfrak{X}^{\top}\left(  \gamma  \right)   \)和 \(  \mathfrak{X}^{\perp}\left(  \gamma  \right)   \)分别表示沿 \(   \gamma   \)的 切向量场和法向量场空间   .
+        \item 若 \(   \gamma   \)是测地线,可以类似地定义 \(  \mathscr{J}^{\top}\left(  \gamma  \right)   \)和 \(  \mathscr{J}^{\perp}\left(  \gamma  \right)   \)      分别为沿 \(   \gamma   \)的切Jacobi场和法Jacobi场.          
+    \end{enumerate}
+     
+\end{definition}
+
+
+\begin{proposition}
+    令 \(  \left( M,g \right)   \)是(伪)Riemann流形, \(   \gamma   \)是一个测地线,\(  J  \) 是 \(   \gamma   \)的一个Jacobi场.  则以下几条等价:
+    \begin{enumerate}
+        \item  \(  J  \)是一个法Jacobi场.
+        \item \(  J  \)与 \(   \gamma ^{\prime}   \)在两个不同的点处正交.
+        \item 在某一点处, \(  D_{t}J  \)与 \(  J  \)均与 \(   \gamma ^{\prime}   \)正交.   
+        \item  \(  D_{t}J  \)和 \(  J  \)与 \(   \gamma ^{\prime}   \)处处正交.    
+    \end{enumerate}
+     
+\end{proposition}
+
+\begin{proof}
+    令 \(  f\left( t \right)= \left<J, \gamma ^{\prime}  \right>   \) ,由 \(  D_{t} \gamma ^{\prime} = 0  \)和联络的度量性, 可得  \[
+    f^{\prime} \left( t \right)= \left<D_{t}J, \gamma ^{\prime}  \right>  
+    \]再求一次导,得到 \[
+    f^{\prime \prime} \left( t \right)= \left<D^{2}_{t}J, \gamma ^{\prime}  \right> 
+    \]由Jacobi方程 \[
+    \begin{aligned}
+        \left<D_{t}^{2}J, \gamma ^{\prime}  \right>& = \left<-R\left( J, \gamma ^{\prime}  \right) \gamma ^{\prime} , \gamma ^{\prime}   \right> \\ 
+         & = -Rm\left( J, \gamma ^{\prime} , \gamma ^{\prime} , \gamma ^{\prime}  \right) \\ 
+          & = 0 
+    \end{aligned}
+    \]故 \(  f^{\prime \prime} \left( t \right)\equiv 0   \),从而 \(  f\left( t \right)   \)形如 \(  at+ b  \)是 \(  t  \)的一个仿射.
+    
+    根据定义, \(  J  \)与 \(   \gamma ^{\prime}   \)在 \(  t  \)处正交,当且仅当 \(  f  \)在 \(  t  \)处退化, \(  D_{t}J  \)与 \(   \gamma ^{\prime}   \)正交,当且仅当 \(  f^{\prime}   \)在 \(  t  \)处退化.而 \(  f^{\prime}   \)在两点处退化,当且仅当 \(  f\equiv 0  \); \(  f  \),\(  f^{\prime}   \)一点处均退化,也当且仅当 \(  f\equiv 0  \).故 \(  1.\iff 2.  \), \(  3.\iff 4.  \),\(  1.\iff 4.  \),命题得证.                 
+
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}
+    设 \(  \left( M,g \right)   \)是(伪)Riemann流形, \(   \gamma :I\to M  \)是非常值的测地线.则 \(  \mathscr{J}^{\perp}\left(  \gamma  \right)   \)是 \(  \mathscr{J}\left(  \gamma  \right)   \)的 \(  2n-2  \)维子空间, \(  \mathscr{J}^{\top}\left(  \gamma  \right)   \)是 \(  \mathscr{J}\left(  \gamma  \right)   \)的2维子空间.并且每个  \(   \gamma   \)的Jacobi场都可以唯一地写作一个切 Jacobi场和法Jacobi场的和.        
+\end{corollary}
+
+\begin{proof}
+    对于每个 \(  a \in I  \),映射 \(  J\mapsto \left( J\left( a \right),D_{t}J\left( a \right)   \right)   \)给出 \(  \mathscr{J}\left(  \gamma  \right)   \)到 \(  T_{ \gamma \left( a \right) }M\oplus T_{ \gamma \left( a \right) }M  \)的一个同构.又由上面的命题, \(  \mathscr{J}^{\perp}\left(  \gamma  \right)   \)无非就是由满足 \(  \left<w, \gamma ^{\prime} \left( a \right)  \right> = \left<v, \gamma ^{\prime} \left( a \right)  \right> = 0  \)的全体 \(  \left( w,v \right) \in T_{ \gamma \left( a \right) }M\oplus T_{ \gamma \left( a \right) }M   \)  构成的子空间下的原像.故 \(  \operatorname{dim}\,\mathscr{J}^{\perp}\left(  \gamma  \right)= 2n-2   \)      .
+
+    由于 \(  J_0\left( t \right)=  \gamma ^{\prime} \left( t \right)    \)和 \(  J_1\left( t \right)= t \gamma ^{\prime} \left( t \right)    \)都位于 \(  \mathscr{J}^{\top}\left(  \gamma  \right)   \).又 \(   \gamma ^{\prime} \left( t \right)   \)无处退化    ,故 \(  J_0  \)与 \(  J_1  \)线性无关, \(  \mathscr{J}^{\top}\left(  \gamma  \right)   \)是至少 \(  2  \)维的.又 \(  J^{\perp}\left(  \gamma  \right)\cap J^{\top}\left(  \gamma  \right)= \left\{ 0 \right\}    \),故 \(  \mathscr{J}^{\top}\left(  \gamma  \right)   \)只能是 \(  2  \)维的.于是有正交分解 \[
+    \mathscr{J}\left(  \gamma  \right)= \mathscr{J}^{\top}\left(  \gamma  \right)\oplus \mathscr{J}^{\perp}\left(  \gamma  \right)   
+    \]       即 \(   \gamma   \)唯一地写作一个切Jacobi场和一个法Jacobi场之和. 
+
+    \hfill $\square$
+\end{proof}
+
+\section{一点处退化的Jacobi场}
+
+
+对于一点处消失的Jacobi场,它可以通过保持起点的变分来实现,具有某种特殊性.在测地坐标下,他可以看成是两条过原点直线(测地线)中间方向相同(\(  D_{t}J\left( 0 \right)   \)) 的一堆"连接两条直线箭头".
+
+借由此,在法坐标上,每个切向量都可以实现为在原点消失的沿径向测地线的Jacobi场的某个取值.
+
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+
+\begin{lemma}
+    设 \(  \left( M,g \right)   \)是(伪)Riemann流形, \(  I\subseteq \mathbb{R}   \)是包含了 \(  0  \)的一个区间, \(   \gamma :I\to M  \)是测地线.设 \(  J:I\to M  \)是 \(   \gamma   \)的一个Jacobi场,使得 \(  J\left( 0 \right)= 0   \).若 \(  M  \)是完备或 \(  I  \)是紧区间成立其一,则 \(  J  \)是以下 \(   \gamma   \)的测地变分的变分场 \[
+     \Gamma \left( s,t \right)= \exp _{p}\left( t\left( v+ sw \right)  \right)  
+    \]其中 \(  p=  \gamma \left( 0 \right), v=  \gamma ^{\prime} \left( 0 \right)    , w = D_{t}J\left( 0 \right) \).            
+\end{lemma}
+
+\begin{proof}
+    若 \(   \sigma :\left( - \varepsilon , \varepsilon  \right)\to M   \)是光滑曲线, \(  V  \)是沿 \(   \sigma   \)的向量场,使得 \[
+     \sigma \left( 0 \right)= p,\quad  \sigma ^{\prime} \left( 0 \right)= J\left( 0 \right), \quad V\left( 0 \right)= v,\quad D_{s}V\left( 0 \right)= D_{t}J\left( 0 \right)      
+    \]     则 \(  J  \)是以下 \(   \gamma   \)的测地变分的变分场 \[
+     \Gamma \left( s,t \right)= \exp _{ \sigma \left( s \right) }\left( tV\left( s \right)  \right)  
+    \]  本题中,取 \(   \sigma \left( s \right)\equiv p   \),则 \(   \sigma ^{\prime} \left( 0 \right)= 0= J\left( 0 \right)    \).取 \(  V\left( s \right)= s w + v  \),则 \[
+    V\left( 0 \right)= v,\quad  D_{s}V\left( 0 \right)=  w
+    \]   \[
+     \Gamma \left( s,t \right)= \exp _{p}\left( t\left( v+ sw \right)  \right)  
+    \]
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}{一点退化的Jacobi场}
+    设 \(  \left( M,g \right)   \)是\(  n  \)维 (伪)Riemann流形, \(  I\subseteq \mathbb{R}   \)是包含了 \(  0  \)的一个区间. \(   \gamma :I\to M  \)是测地线,使得 \(   \gamma \left( 0 \right)= p   \). \(  J:I\to M  \)是 \(   \gamma   \)的一个 Jacobi场,使得 \(  J\left( 0 \right)= 0   \),\(  D_{t}J\left( 0 \right)= w   \).则 \(  J  \)有以下表示 \begin{equation}
+      \label{一点消失的Jacobi场}
+    J\left( t \right)= \,\mathrm{d} \left( \exp _{p} \right)_{tv}\left( tw \right)   
+    \end{equation}其中 \(  v =   \gamma ^{\prime} \left( 0 \right)   \),  \(  tw  \)在标准同构 \(  T_{tv}\left( T_{p}M \right) \simeq T_{p}M  \)             下视作 \(  T_{tv}\left( T_{p}M \right)   \)中的向量.
+    
+    若\(  \left( x^{i} \right)   \)是 \(  p  \)的包含了 \(   \gamma   \)的像 法邻域上的一个法坐标,则 \[
+    J\left( t \right)= tw^{i}\left.  \partial _{i} \right|_{ \gamma \left( t \right) } 
+    \]  其中 \(  w^{i} \left.  \partial _{i} \right|_{0}  \)是 \(  w  \)的法坐标表示.  
+\end{proposition}
+
+\begin{proof}
+    任取 \(  t \in I  \), \(  t  \)落在 \(  I  \)的某个包含了 \(  0  \)的 紧子区间上,由上面的引理可知, \(  J  \)    在这个紧子区间上表为 \[
+     \Gamma \left( s,t \right)=  \exp _{p}\left( t\left( v+ sw \right)  \right) 
+    \]由链式法则, \[
+    J\left( t \right)=  \partial _{s} \Gamma \left( 0,t \right)= \,\mathrm{d} \left( \exp _{p} \right)_{tv}\left( tw \right)    
+    \]在 \(  t  \)附近成立 ,我们在每个 \(  t  \)的附近都能得到这个等式.
+    
+在法坐标下,指数映射的坐标表示为单位映射,故 \(   \Gamma \left( s,t \right)   \)显示地写作 \[
+     \Gamma \left( s,t \right)= \left( t\left( v^{1}+ sw^{1} \right),\cdots ,t\left( v^{n}+ sw^{n} \right)   \right)  
+    \] 关于 \(  s  \)求导并取 \(  s= 0  \),即可得 \[
+    J\left( t \right)= \left( tw^{1},\cdots ,tw^{n} \right)= t w^{i} \left.  \partial _{i} \right|_{ \gamma \left( t \right) }  
+    \]  
+    \hfill $\square$
+\end{proof}
+
+\subsection{常曲率空间的Jacobi场}
+
+\begin{lemma}
+    方程 \[
+    u^{\prime \prime} \left( t \right)+ c u\left( t \right)= 0,\quad u\left( 0 \right)= 0   
+    \]的解空间是函数
+    \[
+    s_{c}\left( t \right)= \begin{cases} t,&c= 0\\ 
+     R\sin \frac{t }{R },& c =  \frac{1 }{R^{2} }> 0\\ 
+      R\sinh  \frac{t }{R },&c =-\frac{1 }{R^{2} }< 0     \end{cases}  
+    \]张成的一维线性子空间.
+\end{lemma}
+\begin{proposition}{常曲率空间的Jacobi场}
+    设 \(  \left( M,g \right)   \) 是有常曲率 \(  c  \)的Riemann流形, \(   \gamma   \)是 \(  M  \)上的单位速度测地线.   则沿 \(   \gamma   \)法向,且在 \(  t= 0  \)处消失的 Jacobi场具有 以下形式: \[
+    J\left( t \right)= k s_{c}\left( t \right)  E\left( t \right) 
+    \]其中 \(  E  \)是任意沿 \(   \gamma   \)平行的单位法向量场, \(  k  \)是任意常数.这样的Jacobi场的初值是 \[
+    D_{t}J\left( 0 \right)= kE\left( 0 \right)  
+    \]范数为 \[
+    \left| J\left( t \right)  \right|= \left| s_{c}\left( t \right)  \right|\left| D_{t}J\left( 0 \right)  \right|   
+    \]   
+\end{proposition}
+\begin{proof}
+    常曲率空间的曲率自同态的计算公式,连同Jacobi方程,给出了 \(  D_{t}^{2}J  \) 与 \(  J  \)相差常数 \(  -c  \)倍的事实.由此,给定单位法向量场 \(  E\left( t \right)   \)的情况下, 常数变易法给出这样的Jacobi方程的解与方程 \[
+    u^{\prime \prime} \left( t \right)+ c u\left( t \right)= 0  
+    \]的解 \(  k s_{c}\left( t \right)   \) 一一对应.  于是 \(  J  \)对应于 \(  E\left( t \right)   \)的所以解就是 \(  ks_{c}\left( t \right)E\left( t \right)    \).又 \(  E\left( t \right)   \)是任意单位法向量场,由此测到了 \(  J  \)的全部形式. 
+
+    最后, \[
+    D_{t}J\left( 0 \right)= ks_{c}^{\prime} \left( 0 \right)E\left( 0 \right)= kE\left( 0 \right)\implies \left| D_{t}J\left( 0 \right)  \right|= \left| k \right|     
+    \]\[
+    \left| J\left( t \right)  \right|= k \left| s_{c}\left( t \right)  \right| \left| E\left( t \right)  \right|= \left| s_{c}\left( t \right)  \right|\left| D_{t}J\left( 0 \right)  \right|     
+    \]
+    
+    
+    
+
+    \hfill $\square$
+\end{proof}
+\end{document}

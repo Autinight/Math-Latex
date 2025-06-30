@@ -1,0 +1,204 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{ 特征函数法 }
+
+\section{基本概念}
+
+考虑一下形式的线性PDE: \[
+\begin{aligned}
+ &\mathrm{E}.\mathrm{Q}:\quad \partial _{t}u= L_{x}u+ F\left( x,t \right) ,\quad \text{or}\quad \frac{\partial ^{2}u}{\partial t^{2}}= L_{x}u+ F\left( x,t \right)   \\ 
+  & \mathrm{B}.\mathrm{C}: \quad B[u\left( x,t \right) ]= g\left( x,t \right),\quad \text{on the boundary} \partial  \Omega \\ 
+   & \mathrm{I}.\mathrm{C}:\quad  u\left( x,0 \right)= f\left( x \right)   , \quad \text{or} \quad  u\left( x,0 \right)= f\left( x \right),  \partial _{t}u\left( x,0 \right)= h\left( x \right)    
+\end{aligned}
+\]
+
+
+\begin{definition}{特征值与特征函数}
+    对于上述问题中的空间算子 \(  L_{x}  \),和区域 \(   \Omega   \).若存在值 \(   \lambda   \)和函数 \(  X\left( x \right)   \),满足 \[
+    L_{x}X\left( x \right)+ \lambda X\left( x \right)=    0
+    \]并且 \[
+    B\left[ X\left( x \right)  \right]= 0 
+    \]    则称 \(   \lambda   \)是区域上空间算子的一个特征值, \(  X\left( x \right)   \)是关于 \(   \lambda   \)的一个特征函数.   
+\end{definition}
+
+\begin{definition}{内积}
+    在函数空间中,两个是指函数 \(  f\left( x \right),g\left( x \right)    \)在区域 \(   \Omega   \)上的标准 \(  L^{2}  \)内积定义为 \[
+    \left<f,g \right>= \int_{ \Omega }f\left( x \right)g\left( x \right)\,\mathrm{d} V  
+    \]   
+\end{definition}
+\begin{theorem}{Laplace算子特征函数的正交性}
+    对于Laplace算子 \(   \Delta   \)在有界区域 \(   \Omega   \)上.满足齐次Dirichlet或齐次Neumann边界条件的特征函数,如果它们对应于不同的特征值,那么它们是正交的.  
+\end{theorem}
+
+\begin{proof}
+    设 \[
+     \Delta  \varphi _{m}=  \lambda _{m} \varphi _{m},\quad  \Delta  \varphi _{n}=  \lambda _{n} \varphi _{n},\quad  \lambda _{m}\neq  \lambda _{n}
+    \]由Green第二恒等式, \[
+    \int_{ \Omega }\left(  \varphi _{m} \Delta  \varphi _{n}- \varphi _{n} \Delta  \varphi _{m} \right)\,\mathrm{d} V= \int_{ \partial  \Omega }\left(  \varphi _{m}\frac{\partial  \varphi _{n}}{\partial n}- \varphi _{n}\frac{\partial  \varphi _{m}}{\partial n} \right)\,\mathrm{d} S  
+    \]将特征方程带入左侧积分,化为 \[
+    \left(  \lambda _{n}- \lambda _{m} \right)\left< \varphi _{m}, \varphi _{n} \right> 
+    \]
+    检查右侧积分:\begin{enumerate}
+        \item Dirichlet: 若 \(   \varphi _{m}= 0, \varphi _{n}= 0  \)在 \(   \partial  \Omega   \)上成立,则右侧积分化为 \[
+        \int_{ \partial  \Omega }\left( 0\cdot \frac{\partial  \varphi _{n}}{\partial n}-0\cdot \frac{\partial  \varphi _{m}}{\partial n} \right)\,\mathrm{d} S= 9 
+        \]  
+        \item Neumann: 若 \(  \frac{\partial  \varphi _{m}}{\partial n}= 0  \),\(  \frac{\partial  \varphi _{n}}{\partial n}= 0  \)在 \(   \partial  \Omega   \)上成立,右侧积分化为 \[
+        \int_{ \partial  \Omega }\left(  \varphi _{m}\cdot 0- \varphi _{n}\cdot 0 \right)\,\mathrm{d} S= 0 
+        \]   
+    \end{enumerate}
+    因此,在以上两种边界条件下,均有 \[
+    \left(  \lambda _{n}- \lambda _{m} \right)\left< \varphi _{m}, \varphi _{n} \right>= 0 
+    \]则当 \(   \lambda _{n}\neq  \lambda _{m}  \)时, \[
+    \left< \varphi _{m}, \varphi _{n} \right>= 0
+    \] 
+
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}{完备性定理}
+    对于一个有界区域 $\Omega \subset \mathbb{R}^n$，其边界 $\partial \Omega$ 足够光滑（例如 $C^1$ 或分段光滑），Laplace 算子 $\Delta$ 在上述任何一种齐次边界条件下，都拥有一系列离散的、正的特征值：
+$$ 0 < \lambda_1 \le \lambda_2 \le \lambda_3 \le \dots $$
+（对于 Neumann 边界条件，$\lambda_1=0$ 对应常数特征函数）。这些特征值趋于无穷大 ($\lambda_n \to \infty$ as $n \to \infty$)，且每个特征值都有有限的重数（即对应有限个线性独立的特征函数）。
+
+更重要的是，对应的特征函数集合 $\{\phi_n(x)\}_{n=1}^\infty$ 构成了一个完备的正交基 (Complete Orthonormal Basis) 在 $L^2(\Omega)$ 空间中（或者更精确地说，在满足相应齐次边界条件的 $L^2(\Omega)$ 的子空间中）。
+
+这意味着，对于任何函数 $f(x) \in L^2(\Omega)$（且满足相应的齐次边界条件），它可以被唯一地表示为这些特征函数的无限线性组合：
+$$ f(x) = \sum_{n=1}^{\infty} c_n \phi_n(x) $$
+其中系数 $c_n$ 可以通过内积（利用正交性）计算得到：
+$$ c_n = \frac{\langle f, \phi_n \rangle}{\langle \phi_n, \phi_n \rangle} = \frac{\int_{\Omega} f(x) \overline{\phi_n(x)} dx}{\int_{\Omega} |\phi_n(x)|^2 dx} $$
+（如果特征函数已经归一化，即 $\int_{\Omega} |\phi_n(x)|^2 dx = 1$，则分母为 1）。
+
+这个级数在 $L^2$ 范数下收敛，即：
+$$ \lim_{N \to \infty} \left\| f - \sum_{n=1}^{N} c_n \phi_n \right\|_{L^2} = \lim_{N \to \infty} \left( \int_{\Omega} \left| f(x) - \sum_{n=1}^{N} c_n \phi_n(x) \right|^2 dx \right)^{1/2} = 0 $$
+\end{theorem}
+
+
+之后均假设\(  L_{x}  \)是像 \(   \Delta   \)这样,具有可数个实   特征值,且特征函数有类似的完备性和正交性的算子. 
+\section{齐次边界问题的解法}
+\begin{theorem}
+    对于\(  L_{x}, \Omega   \).设 \(  \left\{  \lambda _{n} \right\}  \)是 \(  L_{x}  \)的所有特征值, \(  \left\{ X_{n} \right\}  \)是其对应的一族特征函数. 则解 \(  u\left( x,t \right)   \)和非齐次源项 \(  F\left( x,t \right)   \)可以按特征函数展开: \[
+    u\left( x,t \right)= \sum _{n = 1}^{\infty} T_{n}\left( t \right)X_{n}\left( x \right),\quad F\left( x,t \right)= \sum _{n = 1}^{\infty}F_{n}\left( t \right)X_{n}\left( x \right)      
+    \]    其中   \[
+    F_{n}\left( t \right)= \frac{\left<F\left( x,t \right),X_{n}\left( x \right)   \right> }{\left<X_{n}\left( x \right),X_{n}\left( x \right)   \right> }  
+    \]且每个 \(  T_{n} \left( t \right)  \)都是形如下的ODE的解:
+    \begin{enumerate}
+        \item 对于一阶时间导数(热方程): \[
+        T_{n}^{\prime} \left( t \right)+  \lambda _{n}T_{n}\left( t \right)= F_{n}\left( t \right)   
+        \]
+        \item 对于二阶时间导数(波动方程): \[
+        T_{n}^{\prime \prime} \left( t \right)+  \lambda _{n}T_{n}\left( t \right)  = F_{n}\left( t \right) 
+        \]
+    \end{enumerate}
+    
+\end{theorem}
+\begin{proof}
+    由于 \(  \left\{ X_{n} \right\}  \)构成一族完备基,固定 \(  t  \), \(  u\left( x,t \right)   \)总可以按 \(  X_{n}\left( x \right)   \)展开,关于每个 \(  t  \)的系数函数即为 \(  T_{n}\left( t \right)   \)  .    
+    以一阶时间导数的方程为例
+    将展开式带入原始PDE,得到  \[
+    \sum _{n = 1}^{\infty}T_{n}^{\prime} \left( t \right)X_{n}\left( x \right)= L_{x}\left( \sum _{n = 1}^{\infty}T_{n}\left( t \right)X_{n}\left( x \right)   \right)+ \sum _{n = 1}^{\infty}F_{n}\left( t \right)X_{n}\left( x \right)     
+    \]由于 \(  L_{x}  \)是线性的,且 \(  T_{n}\left( t \right)   \)不依赖于 \(  x  \),带入特征关系,得到 \[
+    \sum _{n = 1}^{\infty}T_{n}^{\prime} \left( t \right)X_{n}\left( x \right)  =- \sum _{n = 1}^{\infty} \lambda _{n}T_{n}\left( t \right)X_{n}\left( x \right)+ \sum _{n = 1}^{\infty}F_{n}\left( t \right)X_{n}\left( x \right)    
+    \]   即 \[
+    \sum _{n = 1}^{\infty}\left( T_{n}^{\prime} \left( t \right)+ \lambda _{n}T_{n}\left( t \right)-F_{n}\left( t \right)    \right)X_{n}\left( x \right)= 0  
+    \]两边与 \(  X_{n}  \)做内积,由正交性得到 \[
+    T_{n}^{\prime} \left( t \right)+  \lambda _{n}T_{n}\left( t \right)-F_{n}\left( t \right)= 0   
+    \] 
+
+    \hfill $\square$
+\end{proof}
+\begin{theorem}
+    承接上面的定理.除了上面这些之外,初始条件 \(  u\left( x,t \right)= f\left( x \right)    \)展开为: \[
+    f\left( x \right)= \sum _{n = 1}^{\infty}B_{n}X_{n}\left( x \right)  ,\quad B_{n}= \frac{\left<f,X_{n} \right> }{\left<X_{n},X_{n} \right> } 
+    \]  \[
+    h\left( x \right)= \sum _{n = 1}^{\infty}H_{n}X_{n}\left( x \right),\quad H_{n}= \frac{\left<h,X_{n} \right> }{\left<X_{n},X_{n} \right> }   
+    \]
+    \begin{enumerate}
+        \item 一阶时间导数: 方程 \[
+        T_{n}^{\prime} \left( t \right)+ \lambda _{n}T_{n}\left( t \right)= F_{n}\left( t \right)   
+        \]具有初始条件 \(  T_{n}\left( 0 \right)= B_{n}   \) 确定出唯一解.
+        \item 二阶时间导数: 方程 \[
+        T_{n}^{\prime \prime} \left( t \right)+ \lambda _{n}T_{n}\left( t \right)= F_{n}\left( t \right)   
+        \]具有初始条件 \(  T_{n}\left( 0 \right)= B_{n}   \), \(  T^{\prime} _{n}\left( 0 \right)= H_{n}   \)  ,确定出唯一解.
+    \end{enumerate}
+    
+\end{theorem}
+
+\section{处理非齐次边界条件}
+
+\begin{theorem}
+    若 \(  w\left( x,t \right)   \)满足非齐次边界条件,且 \(  L_{x}w  \)尽可能简单. 令 \[
+    \tilde{F}\left( x,t \right)= F\left( x,t \right)+ L_{x}w-\frac{\partial w}{\partial t}  
+    \]并令 \(  v\left( x,t \right)   \)是以下齐次边界问题的解  \[
+\begin{aligned}
+ &\mathrm{E}.\mathrm{Q}:\quad \partial _{t}v= L_{x}v+ \tilde{F}\left( x,t \right) ,\quad \text{or}\quad \frac{\partial ^{2}v}{\partial t^{2}}= L_{x}v+ F\left( x,t \right)   \\ 
+  & \mathrm{B}.\mathrm{C}: \quad B[v\left( x,t \right) ]= 0,\quad \text{on the boundary} \partial  \Omega \\ 
+   & \mathrm{I}.\mathrm{C}:\quad  v\left( x,0 \right)= f\left( x \right)   , \quad \text{or} \quad  v\left( x,0 \right)= f\left( x \right),  \partial _{t}v\left( x,0 \right)= h\left( x \right)    
+\end{aligned}
+\]令 \[
+u\left( x,t \right)= w\left( x,t \right)+ v\left( x,t \right)   
+\]则 \(  u  \)是原问题的解. 
+\end{theorem}
+\begin{proof}
+    \[
+    B[u]= B[w]+ B[v]= g\left( x,t \right) 
+    \]
+     \[
+   \begin{aligned}
+      \partial _{t}u&=  \partial _{t}w+  \partial _{t}v\\ 
+       &=  \partial _{t}w+ L_{x}v+ \tilde{F}\left( x,t \right)\\ 
+        &=  \partial _{t}w+ L_{x}u-L_{x}w + F\left( x,t \right)+ L_{x}w- \partial _{t}w\\ 
+         &= L_{x}u+ F\left( x,t \right)  
+   \end{aligned}
+     \]
+    \hfill $\square$
+\end{proof}
+
+\begin{problemsec}
+    
+\end{problemsec}
+\begin{problem}
+    求解以为波动方程的初边值问题: \[
+    \begin{cases}  \partial _{tt}u-  \partial _{x x }u= \sin x,&0< x< \pi ,t> 0\\ 
+     u\left( 0,t \right)= u\left( \pi ,t \right)= 0,&t> 0\\ 
+      u\left( x,0 \right)= \frac{1 }{2 }\sin 2x, \partial _{t}u\left( x,0 \right)= 0,&0\le x\le \pi       \end{cases} 
+    \]
+\end{problem}
+
+\begin{proof}
+    
+    方程为 \[
+     \partial _{tt}u=  \partial _{xx }u+ \sin x
+    \]考虑特征值问题 \[
+    \begin{cases}  \partial _{x x}X+  \lambda X=  0,\\ 
+     B[X]= 0 \end{cases} 
+    \]\(   \partial _{x x}=  \Delta _{x}  \)有非负的特征值, 解得 \[
+    X\left( x \right) = C_{ \lambda }\cos \left( \sqrt{ \lambda }x \right)  + D_{ \lambda }\sin \left(  \sqrt{ \lambda }x\right) 
+    \]带入边界条件,得到 \[
+    C_{ \lambda }= 0,\quad D_{ \lambda }\sin \left( \sqrt{ \lambda }\pi  \right)= 0 
+    \]特征值 \(   \lambda   \)满足 \[
+    \sqrt{ \lambda }\pi = n\pi ,\quad n = 1,2,\cdots 
+    \]  即 \[
+     \lambda _{n}= n^{2}
+    \]取 \(  X_{n}\left( x \right)= \sin \left( nx \right)    \) .则 \(  u\left( x,t \right)   \)展开为 \[
+    u\left( x,t \right)= \sum _{n = 1}^{\infty}T_{n}\left( t \right) X_{n}\left( x \right)  
+    \] 其中, \(  T_{n}\left( t \right)   \)满足方程 \[
+    T_1^{\prime \prime} \left( t \right)+ T_1\left( t \right)= 1,\quad T_{n}^{\prime \prime} \left( t \right)+ n^{2}T_{n}\left( t \right)= 0,n\ge 2    
+    \] 解得  \[
+    T_1\left( t \right)= A_1\cos \left( t \right)+ B_1\sin \left( t \right)+ 1   
+    \] \[
+    T_{n}\left( t \right)= A_{n}\cos \left( nt \right)+ B_{n}\sin \left( nt \right)   
+    \]带入初值, \[
+   B_{n}=  T_{n}^{\prime} \left( 0 \right)=  0, n\ge 1
+    \] \[
+    A_{n}= T_{n}\left( 0 \right)=  0,\quad n \neq 1, 2,\quad A_1= T_{1}\left( 0 \right)-1=- 1,\quad  A_2= T_2\left( 0 \right)= \frac{1}{2} 
+    \]于是 \[
+    T_1\left( t \right)=  -\cos t+ 1,\quad T_{2}\left( t \right) = \frac{1}{2}\cos \left( 2t \right),\quad T_{n}\left( t \right)= 0,\quad n \neq 1,2  
+    \]最终 \[
+    u\left( x,t \right)= \left( 1-\cos t \right)\sin \left( x \right)+ \frac{1}{2}\cos \left( 2t \right)    \sin \left( 2x \right) 
+    \]
+
+    \hfill $\square$
+\end{proof}
+\end{document}

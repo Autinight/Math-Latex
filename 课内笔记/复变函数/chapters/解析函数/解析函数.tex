@@ -1,0 +1,486 @@
+
+\documentclass[../../复变函数.tex]{subfiles}
+
+\begin{document}
+
+
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+\chapter{解析函数}
+    
+\section{基本概念}
+
+
+\begin{definition}
+    设 \(  E\subseteq \mathbb{C}   \).
+    \begin{enumerate}
+        \item 若对于任意的 \(  z \in E  \),存在唯一的 \(  w \in \mathbb{C}   \)与之对应,则称
+        在 \(E  \)上确定了一个（单值）单复变函数/映照/映射 \(  f: E\to \mathbb{C}   \) .    
+        \item 若对于任意的 \(  z \in E  \),存在若干 \(  w \in \mathbb{C}   \)（有限或无限）与之对应,且存在 \(  z \in   E\),
+        使得与之对应的 \(  w  \)指数有两个（包含无穷）,则称在 \(  E  \)上确定了一个多只函数（不是函数）.     
+    \end{enumerate}
+    
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item 若非明确指出,“函数”皆指单值函数.
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{definition}
+    设 \(  E,A\subseteq \mathbb{C}   \), \(  f:E\to A  \)是函数.
+    \begin{enumerate}
+        \item 若对于任意的 \(  x_1\neq x_2  \),都有 \(  f\left( x_1 \right)\neq f\left( x_2 \right)    \),则称 \(  f  \)是一个单射.
+        \item 若对于任意的 \(  y \in A  \),都存在 \(  x \in E  \),使得 \(  f\left( x \right)= y   \),则称 \(  f  \)是满射.   
+        \item 若 \(  f  \)是既单又满的,则称 \(  f  \)是一个双射.      
+    \end{enumerate}
+      
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 若 \(  f  \)为双射,则存在反函数 \(  f^{-1} :A\to E  \).  
+        \item 若 \(  E= \mathbb{Z} _{\ge 0}  \),则称函数 \(  f:E\to \mathbb{C}   \)唯一个（复数）数列/序列.  
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{example}
+      \[
+      w =  f\left( z \right)=  \operatorname{Re}\,f\left( z \right) +  i \operatorname{Im}\,f\left( z \right) =  u\left( x,y \right)+ iv\left( x,y \right)     
+      \]复变函数无非是一对二元实函数.
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{example}
+    \begin{itemize}
+        \item 考虑函数 \(  w =  \bar{z}  \),它是关于 \(  x  \)轴的镜像.  
+        \item 考虑 \(  w : =  f\left( z \right): =  z^{2}   \),它是对模长取平方,辐角翻倍的映射.
+        \begin{itemize}
+            \item 例如对于 \(  A =  \left\{ 2e^{i \theta }: 0\le  \theta \le  \frac{\pi}{2} \right\}  \), \(  f\left( A \right)   =  \left\{ 4e^{i \varphi }: 0 \le  \varphi \le \pi  \right\}\) .
+            \item 设 \(  B  \)为倾角为 \(  \frac{\pi  }{3 }   \)的直线, \(  B =  \left\{  z: \operatorname{arg}\,z =  \frac{\pi  }{3 }  \right\}\cup \left\{ z: \operatorname{arg}\,z=  \frac{4\pi  }{ 3}  \right\}\cup \left\{ 0 \right\}  \)  
+            则 \(  f\left( B \right) =  \left\{ z: \operatorname{arg}\,z =  \frac{2\pi  }{3 }   \right\}   \cup  \left\{ 0 \right\}\)  ,它把一个直线变成了一个射线；
+            \item 考虑 双曲线 \(C:=   x^{2}-y^{2}= 4  \),令 \(  w =  f\left( z \right)=  \left( x+ iy \right)^{2} =  x^{2}-y^{2} + 2ixy    \)   
+            \begin{exercise}
+                当 \(  \left\{ 2xy: x,y \in \mathbb{R} ,x^{2}-y^{2}= 4 \right\}= \mathbb{R}   \). 
+            \end{exercise}
+            故 \(  f\left( C \right) =  \left\{ w: \operatorname{Re}\,w= 4 \right\}  \) 
+            
+        \end{itemize}
+        \item 考虑 \(  \left( x,y \right)\to \left( x^{2},x+ y \right)    \) ,则  \[
+        \begin{aligned}
+        w & =  x^{2}+ i\left( x+ y \right)\\ 
+         & =   \left( \frac{z+ \bar{z} }{ 2}  \right)^{2}+ i \left(  \frac{z+ \bar{z} }{2 } +  \frac{z-\bar{z} }{2i }   \right)    \\ 
+          & =   \frac{z^{2} }{4 } +  \frac{z \bar{z} }{2 }+  \frac{\bar{z}^{2} }{4 } +  \left( \frac{1}{2}+  \frac{i }{2 }  \right)z +  \left( -\frac{1}{2}+  \frac{i }{2 }  \right)z     
+        \end{aligned}
+        \]
+          
+    \end{itemize}
+    
+\end{example}
+
+\hspace*{\fill} 
+
+\section{极限和连续}
+
+\begin{definition}
+    设 \(  f: E\to \mathbb{C}   \)是函数, \(  z_0  \)是 \(  E  \)的一个聚点.   
+    若对于任意的 \(  \varepsilon >0  \),存在 \(   \delta     =   \delta  \left( \varepsilon ,f,z_0 \right)>0 \)  ,
+    使得对于任意的 \(  z \in E  \), \(  0<\left| z-z_0 \right|<  \delta     \)时,都有 \(  \left| f\left( z \right)-\alpha   \right|<\varepsilon    \).
+    则称 \(  z  \)趋于 \(  z_0  \)时, \(  f\left( z \right)   \)趋于（极限为） \(  \alpha   \).       
+    记作 \(  \lim_{z\to z_0,z \in E}f\left( z \right)=  \alpha    \),或者简记 \(  \lim_{z\to z_0}f\left( z \right)= \alpha    \),也称 \(  f\left( z \right)\to \alpha  \text{当}z\to z_0   \).   
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item \(  z_0  \)是 \(  E  \)的聚点未必有 \(  z_0 \in E  \);   
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{proposition}
+    若将 \(  f: E\to \mathbb{C}   \)写作 \(  f\left( z \right)=  u\left( x,y \right)+  i v\left( x,y \right)    ,z_0= x_0+ iy_0 \)  , \(  \alpha  =  a+ ib  \), \(  a,b ,x_0,y_0\in \mathbb{R} ,u,v : \mathbb{R} ^{2}  \to \mathbb{R} \).
+    则   \[
+    \lim_{z\to z_0}f\left( z \right) =  \alpha \iff  \begin{cases} \lim_{\left( x,y \right)\to \left( x_0,y_0 \right) }u\left( x,y \right)= a\\ 
+     \lim_{\left( x,y \right)\to \left( x_0,y_0 \right)  }v\left( x,y \right)= b\end{cases}  
+    \]
+\end{proposition}
+
+
+\begin{example}
+
+    记 \(  L_1: =  \lim_{x\to x_0}\lim_{y\to y_0} u\left( x,y \right)   \), \(  L_2 =  \lim_{y\to y_0}\lim_{x\to x_0}u\left( x,y \right)   \), \(  L_3= \lim_{\left( x,y \right)\to \left( x_0,y_0 \right)  }u\left( x,y \right)    \)   
+    
+    \begin{enumerate}
+        \item 考虑  \[
+        u\left( x,y \right) =  \begin{cases} x+ y\sin  \frac{1}{x},& x \neq 0\\ 
+         0& x = 0 \end{cases}  
+        \] \(  \left( x_0,y_0 \right)= \left( 0,0 \right)    \),则 \(  L_1 = 0  \), \(  L_2  \)不存在,但是 \(  L_3  \)存在.
+        \item 考虑 \[
+        u\left( x,y \right)= \begin{cases} \frac{x^{2}-y^{2} }{x^{2}+ y^{2} },& x^{2}+ y^{2}\neq 0\\ 
+         0,& x^{2}+ y^{2}= 0  \end{cases}  
+        \] \(  \left( x_0,y_0 \right)= \left( 0,0 \right)    \).则 \(  L_1 = 1  \), \(  L_2= -1  \),但是 \(  L_3  \)不存在.      
+        \item 考虑 \[
+        u\left( x,y \right)=  \begin{cases} \frac{xy }{ x^{2}+ y^{2}},& x^{2}+ y^{2}\neq 0  \\ 
+          0,& x^{2}+ y^{2}= 0\end{cases}  
+        \]此时 \(  L_1= L_2  \),但是 \(  L_3  \)不存在.  
+    \end{enumerate}
+    
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{proposition}
+    考虑 \(  E =  \mathbb{Z} _{\ge 0}  \),设 \(  N  \)为北极点, \(  A_{k}^{\prime}   \)为 \(  k \in \mathbb{Z} _{\ge 0}\subseteq \mathbb{C}   \)在Riemann球面上对应的点,则 \(  N  \)为 \(  \left\{ A_1^{\prime} ,A_2^{\prime} ,\cdots  \right\}  \)      的一个聚点； \(  \infty  \)为 \(  \left\{ 1,2,\cdots  \right\}  \)的一个聚点  .
+    
+\end{proposition}
+\begin{definition}
+    考虑 \(  E\subseteq \mathbb{C}   \), \(  f:E\to \mathbb{C}   \)是函数, \(  z_0 \in \mathbb{C} _{\infty} = \mathbb{C}  \cup \left\{ \infty \right\}  \)为 \(  E  \)的聚点.
+    对于 \(  \alpha  \in \mathbb{C} _{\infty}  \),称 \(  \lim_{z\to z_0}f\left( z \right)= \alpha    \),若对于任意的 \(  \alpha   \)的开邻域 \(  V  \subseteq \mathbb{C} _{\infty}\),都存在 \(  z_0  \)的开邻域 \(  U\subseteq \mathbb{C} _{\infty}  \)          
+    ,使得对于任意的 \(  z \in \left( E\cap U \right)\setminus \left\{ z_0 \right\}   \) ,都有 \(  f\left( z \right)\in V   \). 
+\end{definition}
+
+\begin{exercise}
+    翻译 \(  \lim_{z\to z_0} f\left( z \right)= \infty   \), \(  \lim_{z\to \infty} f\left( z \right)= \alpha    \),其中 \(  z_0,\alpha  \in \mathbb{C}   \)（用 \(  \varepsilon - \delta    \) 语言）.   
+\end{exercise}
+
+\hspace*{\fill}
+
+\begin{definition}{连续}
+    设 \(  f:E\to \mathbb{C}   \)是函数, \(  E\subseteq \mathbb{C}   \).\(  z_0\in E  \)是 \(  E  \)的聚点.
+    若 \(  \lim_{z\to z_0}f\left( z \right)= f\left( z_0 \right)    \),则称 \(  f  \)在 \(  z_0  \)处连续.
+    
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item  
+        若 \(  f\left( z \right)= u\left( x,y \right)+ iv\left( x,y \right)     \),则  \(  f  \)在 \(  z_0 =  x_0+ iy_0  \)处连续,当且仅当 \(  u,v  \)均在 \(  \left( x_0,y_0 \right)   \)处连续.    
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{definition}{一致连续}
+    设 \(  E\subseteq \mathbb{C}   \), \(  f:E\to \mathbb{C}   \)是函数.
+    若对于任意的 \(  \varepsilon >0  \),存在 \(   \delta   =   \delta  \left( \varepsilon ,f \right)>0   \),使得对于任意的 \(  z ^{\prime} ,z ^{\prime \prime} \in E  \),只要
+     \(  \left| z^{\prime} -z ^{\prime \prime}  \right|<  \delta     \),就有 \(  \left| f\left( z^{\prime}  \right)-f\left(  z ^{\prime \prime}  \right)   \right|< \varepsilon    \).       
+\end{definition}
+
+\begin{theorem}
+    设 \(  E\subseteq \mathbb{C}   \)是一个紧集.若 \(  f: E\to \mathbb{C}   \)是连续的,则称 \(  f  \)在 \(  E  \)上一致连续.  
+\end{theorem}
+
+\begin{remark}
+    \begin{itemize}
+        \item 例如 \(  E  \)是一个 Jordan曲线、有界闭区域.  
+    \end{itemize}
+\end{remark}
+
+\begin{proof}
+    任取\(  \varepsilon >0  \).
+    由连续性, 对于任意的 \(  a \in E  \),都存在一个 \(  r_{a}>0   \),使得对于任意的 \(  z \in U\left( a,r_{a} \right)\cap E   \),都有 
+    \(  \left| f\left( z \right)-f\left( a \right)   \right|< \frac{\varepsilon  }{2 }    \)    .
+    则 \(  E\subseteq  \bigcup_{a\in E} U\left( a, \frac{r_{a} }{ 2}  \right)    \) .由于 \(  E  \)是紧的,  \[
+    E \subseteq  U\left( a_1,\frac{r_1 }{2 }  \right)\cup \cdots \cup  U\left( a_{m}, \frac{r_{m} }{2 }  \right)  
+    \]对于某些以上开邻域成立.
+    
+    取 \(   \delta   =  \min \left\{  \frac{r_1 }{2 },\cdots ,\frac{r_{m} }{2 }   \right\}  \), 
+    此时任取 \(  z^{\prime} ,z ^{\prime \prime}  \in E  \),使得 \(  \left| z^{\prime} , z ^{\prime \prime}  \right|<  \delta     \).设 \(  z^{\prime} \in U\left( a_{k}, \frac{r_{k} }{2 }  \right)   \),则 \(  \left| a_{k}-z ^{\prime \prime}  \right|\le  \left| a_{k}- z^{\prime}  \right|+ \left| z^{\prime} - z ^{\prime \prime}  \right|   < \frac{r_{k} }{2 }+  \delta  <r_{k}   \).      
+    故 \(  z^{\prime} ,z^{\prime \prime} \in U\left( a_{k},r_{k} \right)   \) , \[
+    \left| f\left( z^{\prime}  \right)-f\left( z^{\prime \prime}  \right)   \right|\le  \left| f\left( z^{\prime}  \right)-f\left( a_{k} \right)   \right|+  \left| f\left( z^{\prime \prime}  \right)-f\left( a_{k} \right)   \right|< \frac{\varepsilon  }{2 }+ \frac{\varepsilon  }{ 2}= \varepsilon      
+    \]这表明 \(  f  \)是一致连续的. 
+    \hfill $\square$
+\end{proof}
+
+
+
+\begin{theorem}
+    设 \(  E\subseteq \mathbb{C}   \)是一个紧集, \(  f: E\to \mathbb{C}   \)连续,则
+    \begin{enumerate}
+        \item  \(  f  \)在 \(  E  \)上有界,即 \(  \left| f\left( z \right)  \right| =  \sqrt{\left( u\left( x,y \right)  \right)^{2}+ \left( v\left( x,y \right)  \right)^{2}  }   \)  有界.
+        \item  \(  f\left( E \right)\subseteq \mathbb{C}    \)是一个紧集（由于Hausdorff性）.  
+        \item  \(  \left| f\left( z \right)  \right|   \)在 \(  E  \)能够达到最大值和最小值.  
+    \end{enumerate}
+    
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 取 \(  \varepsilon = 1  \),则对于任意的 \(  a \in E  \),存在 \(  r_{a}>0  \),使得 对于任意的 \(  z \in E  \cap U\left( a,r_{a} \right) \),都有
+         \(  \left| f\left( z \right)-f\left( a \right)   \right|   <1\).则 \(  E\subseteq \bigcup_{a \in E}U\left( a,r_{a} \right)   \),存在有限的子覆盖  ,使得 \(  E\subseteq  \bigcup_{k= 1}^{m} U\left( a_{k},r_{k} \right)    \)       .
+        任取 \(  b\in E  \),设 \(  b \in U\left( a_{k},r_{k} \right)   \),则 \(  \left| f\left( b \right)  \right| \le  \left| f\left( b \right)-f\left( a_{k} \right)   \right|+ \left| f\left( a_{k} \right)  \right|< 1+ \left| f\left( a_{k} \right)  \right|      \).故 \[
+        \left| f\left( b \right)  \right|\le  1+ \max _{1\le k\le m}\left| f\left( a_{k} \right)  \right|<\infty, \quad \forall b \in E  
+        \]   
+        \item 任取 \(  f\left( E \right)   \)的一个开覆盖, \(  f\left( E \right)\subseteq \bigcup_{i\in I}V_{i}    \)  ,则由 \(  f  \)的连续性,  \(  f^{-1} \left( V_{i} \right)   \)是开集 ,我们有 \[
+        E\subseteq  \bigcup_{i \in I}\left( U_{i}\cap E \right) = \left( \bigcup_{i \in I}U_{i}  \right)\cap E    
+        \]由于 \(  E  \)是紧的, 存 
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+阅读17-20,预习21-25,作业书38 1,2
+
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+\section{可微和解析}
+
+\begin{definition}
+    设 \(  D\subseteq \mathbb{C}   \)是区域, \(  f: D\to \mathbb{C}   \)是函数, \(  z_0 \in D  \),
+    若极限 \[
+    \lim_{z\to z_0 ,z \in D} \frac{f\left( z \right)-f\left( z_0 \right)   }{ z-z_0} 
+    \]存在,且等于 \(  \alpha   \),则称 \(  f  \)在 \(  z_0  \)处可导,导数为 \(  \alpha   \),记作 \[
+    \begin{cases} f^{\prime} \left( z_0 \right)= \alpha \\ 
+     \frac{\,\mathrm{d} f }{\,\mathrm{d} z }\left( z_0 \right)= \alpha \\ 
+      \left. \frac{\,\mathrm{d} f }{\,\mathrm{d} z }  \right|_{z= z_0} =  \alpha     \end{cases} 
+    \]       
+\end{definition}
+
+
+\begin{definition}{可微}
+    设 \(  D\subseteq \mathbb{C}   \)是区域, \(  f:D\to \mathbb{C}   \)是函数, \(  z_0 \in D  \).称 \(  f  \)在 \(  z_0  \)可微,若存在 \(  \mathbb{C}   \)-线性函数 \(  L:\mathbb{C} \to \mathbb{C}   \),使得 \[
+    f\left( z \right)-f\left( z_0 \right)=  L\left( z-z_0 \right)+  o\left( \left( z-z_0 \right)  \right),\quad z\to z_0    
+    \]    
+       
+\end{definition}
+
+\begin{proposition}
+    设 \(  D\subseteq \mathbb{C}   \)是区域, \(  f:D\to \mathbb{C}   \)是函数, \(  z_0 \in D  \).则 \(  f  \)在 \(  z_0  \)处可导当且仅当它在 \(  z_0  \)处可微.      
+\end{proposition}
+
+\begin{definition}{解析}
+    设 \(  D\subseteq \mathbb{C}   \)是区域, \(  f:D\to \mathbb{C}   \)是函数.
+    \begin{enumerate}
+        \item 如果 \(  f  \)在 \(  D  \)上的每一点均可导,则称 \(  f  \)在 \(  D  \)内解析.
+        \item 设 \(  z_0 \in D  \),若 \(  f  \)在 \(  z_0  \)的一个邻域内解析,则称 \(  f  \)在 \(  z_0  \)处解析.
+        \item   称 \(  f  \)在闭区域 \(  \bar{D}  \)上解析,若存在区域 \(  G\subseteq \mathbb{C}   \),使得 \(  \bar{D}\subseteq G  \),且 \(  f  \)在 \(  G  \)内解析.    
+        \item 设 \(  D^{\prime} \subseteq D  \)是一个子集      , 若 \(  f  \)在 \(  D^{\prime}   \)的每个点上都解析,在 \(  D\setminus D^{\prime}   \)上的每个点都不解析,则称 \(  D\setminus D^{\prime}   \)上的点为 \(  f  \)的奇点.     
+    \end{enumerate}
+          
+\end{definition}
+
+
+\begin{proposition}
+    设 \(  f,g: D\to \mathbb{C}   \)是解析的,则
+    \begin{enumerate}
+        \item  \(  \left( f\pm  g\right)   ^{\prime} \left( z \right)= f^{\prime} \left( z \right) \pm g^{\prime} \left( z \right)    \)
+        \item  \(  \left( fg \right)^{\prime} \left( z \right)= f^{\prime} \left( z \right) g\left( z \right)+  f\left( z \right)g^{\prime} \left( z \right)        \)  
+        \item 若 \(  g\left( z \right)\neq 0   \), \(  \forall z \in D  \), \(  \left( \frac{f }{g }  \right)^{\prime}  =   \frac{f^{\prime} \left( z \right)g\left( z \right)-f\left( z \right)g^{\prime} \left( z \right)     }{ \left( g\left( z \right)  \right)^{2}  }    \)
+        \item    设 \(  f: D_1\to D_2  \)和 \( g:D_2\to D_3  \)是函数,其中 \(  D_{i}\subseteq \mathbb{C}   \)是区域.设 \(  z_0 \in D_1  \),   \( \zeta _0 = f\left( z_0 \right)   \).若 \(  f  \)在 \(  z_0  \)处可微, \(  F  \)在 \(  \zeta _0   \)处可微,则 \(  F\circ f: D_1\to D_3  \)在 \(  z_0  \)处可微,并且 \[
+        \left( F\circ f \right)^{\prime} \left( z_0 \right)= F^{\prime} \left( \zeta _0  \right)f^{\prime} \left( z_0 \right)    
+        \]         
+        \item 设 \(  f: D\to \mathbb{C}   \)是单的解析函数,且 \(  f^{\prime} \left( z\right)\neq 0   \)  \footnote{事实对于单的解析函数, \(  f^{\prime} \left( z \right)\neq    \)自动成立 } .则 \(  f\left( D \right)\subseteq \mathbb{C}    \)也是区域, \(  f^{-1}  : f\left( D \right)\to D   \)也是解析的,并且若 \(  w_0 =  f\left( z_0 \right)   \),   则 \[
+        \left( f^{-1}  \right)^{\prime} \left( w_0 \right)=  \frac{1 }{f^{\prime} \left( z_0 \right)  }   
+        \]
+    \end{enumerate}
+     
+\end{proposition}
+\begin{exercise}
+    叙述复变函数的反函数定理.
+\end{exercise}
+
+\hspace*{\fill} 
+
+
+\begin{example}[  处处连续单处处不可导的复函数]
+    以下函数在 \(  \mathbb{C}   \)上处处连续但是处处不可导. 
+    \begin{enumerate}
+        \item \(  f\left( z \right) = \bar{z}   \) 
+        \begin{proof}
+            显然连续,但是 \[
+             \frac{f\left( z_0+  \Delta z \right)-f\left( z_0 \right)   }{\left( z_0+  \Delta z \right)-z_0  } =  \frac{\overline{ \Delta z} }{ \Delta z }  
+            \]当 \(   \Delta z\to 0  \)时极限 不存在
+        
+            \hfill $\square$
+        \end{proof}
+        \item \(  f\left( z \right)=  \operatorname{Re}\,z   \)
+        \item \(  f\left( z \right)= \operatorname{Im}\,z   \)
+        \item \(  f\left( z \right)=  \left| z \right|    \)   
+    \end{enumerate}
+    
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{example}[  在一点可导但不解析的函数]
+    考虑 \(  f\left( z \right)=   \left( \operatorname{Re}\,z \right)^{2}  \), 
+    \begin{enumerate}
+       \item \[
+       \frac{f\left( z \right)-f\left( 0 \right)   }{z-0 } =  \frac{\operatorname{Re}\,z }{z } \cdot z  
+       \]其中 \(  \frac{\operatorname{Re}\,z }{z }   \)有界, \(  z\to 0  \),故 \(  f^{\prime} \left( 0 \right)= 0   \),这表明 \(  f  \)在 \(  0  \)处可导.     
+     \item 对于一点 \(  z_0 \neq 0  \),   \[
+         \lim_{ \delta  \to 0} \frac{f\left( z_0+  \Delta x \right)-f\left( z_0 \right)   }{ \Delta x } = \lim_{ \Delta  \to 0} \frac{\left( x_0+  \Delta x \right)^{2}  -x_0^{2}}{ \Delta x }=  \lim_{ \Delta  x\to 0} \frac{2x_0 \Delta + \left(  \Delta x \right)^{2}  }{ \Delta x } =  2x_0\neq 0  
+         \]
+         但是 \[
+         \lim_{ \Delta y \to 0} \frac{f\left( z_0+  \Delta y \right)-f\left( z_0 \right)    }{ \Delta y } =  \lim_{ \Delta y \to 0} \frac{x_0^{2}-x_0^{2} }{ i\Delta y }= 0  
+         \]故 \(  f^{\prime} \left( z_0 \right)   \) 不存在,故 \(  f  \)不解析. 
+    \end{enumerate}
+      \(  f  \)在 \(  0  \)处可导,但不解析.  
+     
+\end{example}
+
+\hspace*{\fill} 
+
+
+\begin{example}[  微分中值定理未必成立]
+考虑 \(  f\left( z \right)= e^{z}   \), 则\(  f^{\prime} \left( z \right)= e^{z}   \)  .令 \(  z_1= 0  \), \(  z_2= 2\pi i  \) ,若中值定理成立,则 \[
+f\left( z_2 \right)-f\left( z_1 \right)= f^{\prime} \left(  \lambda  2\pi i \right)\left( z_2-z_1 \right)   =  0 = 1-1 =  e^{  \lambda  2 \pi i}  
+\]  其中 \(   \lambda \in \left( 0,1 \right)   \), 但这是不可能 的,因此中值定理对于复函数不成立.
+\end{example}
+
+\hspace*{\fill} 
+
+
+\section{CR方程}
+\begin{theorem}{CR方程}
+    设 \(  f:D\to \mathbb{C}   \)是函数,其中 \(  D\subseteq \mathbb{C}   \)是区域.设 \(  f\left( z \right)= u\left( x,y \right)+ i v\left( x,y \right)     \), \(  z_0 =  x_0+ iy_0 \in D  \) .
+    若 \(  f  \)是解析函数, 则有以下Cauchy-Riemann方程对于任意的\(  \left( x_0,y_0 \right)\in D   \) 成立： \[
+    \begin{cases} \frac{\partial u}{\partial x}= \frac{\partial v}{\partial y}\\ 
+     \frac{\partial u}{\partial y}= - \frac{\partial v}{\partial x} \end{cases} 
+    \]
+\end{theorem}
+
+\begin{proof}
+    一方面 \[
+   \begin{aligned}
+    f^{\prime} \left( z_0 \right) &=  \lim_{ \Delta X \to 0}  \frac{f\left( z_0+  \Delta x \right)-f\left( z_0 \right)   }{ \Delta x }  \\ 
+     & =  \lim_{ \Delta x \to 0} \frac{\left( u\left( x_0+  \Delta x,y_0 \right) +  i v\left( x_0+  \Delta x,y_0 \right)   \right) - \left( u\left( x_0,y_0 \right)+ iv\left( x_0,y_0 \right)   \right)   }{ x}\\ 
+      & =  \lim_{ \Delta x \to 0}\left[  \frac{u\left( x_0+  \Delta x ,y_0\right)-u\left( x_0,y_0 \right)   }{ \Delta x }+ i \frac{v\left( x_0+  \Delta x,y_0 \right)-v\left( x_0,y_0 \right)   }{ \Delta x }   \right]   \\ 
+        &=   \frac{\partial u}{\partial x}\left( x_0,y_0 \right) +  i \frac{\partial v}{\partial x}\left( x_0,y_0 \right)  
+   \end{aligned}
+    \]
+    另一方面 \[
+    \begin{aligned}
+    f^{\prime} \left( z_0 \right)& =  \lim_{ \delta y \to 0} \frac{f\left( z_0+ i  \Delta y \right)-f\left( z_0 \right)   }{i \Delta y }\\ 
+     & = \lim_{ \Delta  y \to 0} \frac{\left( u\left( x_0,y_0+  \Delta y \right)+ iv\left( x_0,y_0+  \Delta y \right)   \right)- \left( u\left( x_0,y_0 \right)+ iv\left( x_0,y_0 \right)   \right)   }{i  \Delta y }\\ 
+       &= \lim_{ \Delta y \to 0} \left( \frac{v\left( x_0,y_0+  \Delta y \right)-v\left( x_0,y_0 \right)   }{ \Delta y } - i \frac{u\left( x_0,y_0+  \Delta y \right)- u\left( x_0,y_0 \right)   }{ \Delta x }  \right)      \\ 
+        & =   \frac{\partial v}{\partial y}\left( x_0,y_0 \right)- i \frac{\partial u}{\partial y}\left( x_0,y_0 \right)  
+    \end{aligned}
+    \]两式分别对比实部和虚部,得到 \(  x_0  \)处的CR方程成立. 
+
+    \hfill $\square$
+\end{proof}
+
+\begin{example}[ 点CR \(  \not\implies   \)点可导 ]
+考虑 \[
+f\left( z \right)= \sqrt{\left| xy \right| }=  \sqrt{\left| \operatorname{Re}\,z\cdot \operatorname{Im}\,z \right| } 
+\]在 \(  \left( 0,0 \right)   \)处的行为.设\(  u= \sqrt{\left| xy \right| },v= 0  \).   \begin{enumerate}
+    \item \[
+\frac{\partial u}{\partial x}\left( 0,0 \right)= \lim_{ \Delta x\to 0} \frac{u\left(  \Delta ,0 \right)-u\left( 0,0 \right)   }{ \Delta x }  = \lim_{ \Delta x\to 0} \frac{\sqrt{\left(  \Delta x \right)\cdot 0 }-\sqrt{0\cdot 0} }{ \Delta x } = 0 =  \frac{\partial v}{\partial y}\left( 0,0 \right) 
+\] \[
+\frac{\partial u}{\partial y}\left( 0,0 \right) =  \lim_{ \Delta y\to 0} \frac{u\left( 0, \Delta y \right)-u\left( 0,0 \right)   }{  \Delta x}  = \lim_{ \Delta x\to 0} \frac{\sqrt{\left(  \Delta x \right)\cdot 0 }-\sqrt{0\cdot 0} }{ \Delta y } =  0= -\frac{\partial v}{\partial x}\left( 0,0 \right)  
+\]故 \(  f  \)在 \(  \left( 0,0 \right)   \)处成立CR方程.  
+ \item \[
+ \begin{aligned}
+ \frac{f\left(  \Delta z \right)-f\left( 0 \right)   }{ \Delta z }  =  \frac{\sqrt{\left(  \Delta x \right)\left(  \Delta y \right)  } }{ \Delta x+ i \Delta y }  
+ \end{aligned}
+ \]当它沿斜率为 \(  k  \)的直线趋于零时,我们有 \[
+ \frac{f\left(  \Delta z \right)-f\left( 0 \right)   }{ \Delta z } \to  \frac{\sqrt{\left| k \right| } }{1+ ik }  
+ \]这表明 \(  f^{\prime} \left( 0 \right)   \)不存在.  
+\end{enumerate}
+
+    
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{theorem}
+    设 \(  D\subseteq \mathbb{C}   \)是区域, \(  f:D\to \mathbb{C}   \), \(  f\left( z \right)= u\left( x,y \right)+ iv\left( x,y \right)     \), \(  z_0 =  x_0+ iy_0 \in D  \).则 \(  f  \)在 \(  z_0  \)处可导,当且仅当 \(  u,v  \)在 \(  \left( x_0,y_0 \right)   \)处可微,且 \(  CR  \)方程成立\footnote{也就是说,复可微当且仅当实可微且CR} .
+    此时 \[
+    \begin{aligned}
+    f^{\prime} \left( z_0 \right)& = \frac{\partial u}{\partial x}+ i \frac{\partial v}{\partial x}=  \frac{\partial v}{\partial y}-i \frac{\partial u}{\partial y}\\ 
+     &=  \frac{\partial u}{\partial x}-i\frac{\partial u}{\partial y}  = \frac{\partial v}{\partial y}+ i\frac{\partial u}{\partial x}
+    \end{aligned} 
+    \]         
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item 必要性：
+        设 \(  f^{\prime} \left( z_0 \right)= \alpha = a+ ib   \),\(  a,b\in \mathbb{R}   \).则当 \(  z_0+  \Delta z \in D  \)时, \[
+        \begin{aligned}
+        f\left( z_0+  \Delta z \right)-f\left( z_0 \right)&= \alpha  \Delta z + o\left(  \Delta z \right)    \\ 
+         & =  \left( a+ ib \right)\left(  \Delta x+ i \Delta y \right)+  o\left(  \Delta z \right)   
+        \end{aligned}
+        \]   比较上式两端的实、虚部, \[
+        u\left( x_0+  \Delta x,y_0+  \Delta y \right)-u\left( x_0,y_0 \right)= a \Delta x-b \Delta y+ o\left(  \Delta z \right) \tag{*}   
+        \] \[
+        v\left( x_0+  \Delta x,y_0+  \Delta y \right) -v\left( x_0,y_0 \right) =  b \Delta x+ a \Delta y+ o\left(  \Delta z \right) \tag{**}   
+        \]故 \(  u,v  \)均在 \(  x_0  \)处可微,且   \[
+        \frac{\partial u}{\partial x}\left( x_0,y_0 \right)= \frac{\partial v}{\partial y} \left( x_0,y_0 \right)= a 
+        \] \[
+        -\frac{\partial u}{\partial y}\left( x_0,y_0 \right) = \frac{\partial v}{\partial x}\left( x_0,y_0 \right) = -b
+        \]故点 \(  \left( x_0,y_0 \right)   \)处的 CR方程成立.
+        \item 充分性：
+        设 \(  u,v  \)在 \(  \left( x_0,y_0 \right)   \)处可微,且 \(  CR  \)方程对于一对 \(  \left( a,b \right)   \) 成立,则 \(  \left( * \right)   \)和 \(  \left( ** \right)   \)成立.     \[
+        \begin{aligned}
+        \left( * \right)+ i\left( ** \right) \implies f\left( z_0+  \Delta z \right)-f\left( z_0 \right) =  \alpha \cdot  \Delta z+ o\left(  \Delta z \right)      
+        \end{aligned}
+        \]这表明 \(  f  \)在 \(  z_0  \)处可导.  
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}
+    \(  f= u\left( x,y \right)+ iv\left( x,y \right)    \)在 \(  z_0 \in D  \) 可导的一个充分条件是 以下两条成立
+    \begin{enumerate}
+        \item \(  \frac{\partial u}{\partial x},\frac{\partial u}{\partial y},\frac{\partial v}{\partial x},\frac{\partial v}{\partial y}  \)在 \(  \left( x_0,y_0 \right)   \)的一个邻域存在,且在 \(  \left( x_0,y_0 \right)   \)处连续.
+        \item \(  f  \)在 \(  \left( x_0,y_0 \right)   \)处成立CR方程.     
+    \end{enumerate}
+    
+\end{corollary}
+
+\begin{example}
+    考虑 \(  f\left( z \right)=  x^{2}-iy   \) , \[
+    \frac{\partial u}{\partial x}= 2x,\frac{\partial u}{\partial y}= 0,\frac{\partial v}{\partial x}= 0,\frac{\partial v}{\partial y}= -1,\quad \text{均在 }\mathbb{R} ^{2}\text{上存在且连续}
+    \]CR成立当且仅当 \(  x= - \frac{1}{2}  \) .故 \(  f  \)仅在 \(  x = -\frac{1}{2}  \)处可导.而 \(  \mathbb{C}   \)上任一点的任意邻域包含不在 \(  x= -\frac{1}{2}  \)上的点,因此 \(  f  \)处处不解析.     
+\end{example}
+
+\hspace*{\fill}
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+阅读21-25,预习26-30,作业是第二章的7,8,9,10
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{ Covering Space }
+
+\section{Basic Definitions}
+\begin{definition}{Covering Space}{}
+    Let \(  p:\bar{X}\to X  \) be a surjective map. 
+    \begin{itemize}
+        \item We say an open subset  \(  V  \) of \(  X  \) is \dfntxt{evenly coverd} by p, if \(  p ^{-1} \left( V \right)   \) is a disjoint union of open subsets of \(  \bar{X}  \):  \[
+    p ^{-1} \left( V \right)= \coprod _{i}U_{i} 
+    \] where, each \(  U_{i}  \) is maped homeomorphically onto \(  V  \) by p.
+    \item In this case, we shall refer to each \(  U_{i}  \) as a \dfntxt{sheet}  for \(  p  \) over V. 
+      \item If the space \(  X  \) can be covered by open subsets which are evenly covered by \(  p  \), then we say that \(  p  \) is a \dfntxt{covering projection}; the space \(  \bar{X}  \) is called a covering space of \(  X  \). 
+    \end{itemize}
+    
+    
+\end{definition}
+
+\begin{theorem}{}{}
+    Let \(  p: \bar{X}  \to X\) be a contininuous map, where \(  X  \) is locally path connected.  \begin{enumerate}
+        \item The map \(  p  \) is a covering space iff for each componet \(  \bar{C}  \) of \(  \bar{X}  \), the restriction map \(  p: p ^{-1} \left( C \right) \to C   \) is a covering projection.    
+        \item If \(  p  \) is a covering projection then for each component \(  \bar{C}  \) of \(  \bar{X}  \), the map \(  p: \bar{C} \to p\left(  \bar{C}\right)   \) is a covering projection and \(  p\left( \bar{C} \right)   \) is a component of \(  X  \).     
+    \end{enumerate}
+    
+\end{theorem}
+
+\begin{remark}
+    Thus, we always assume that \(  a   \) covering space is locally path connected and connetcted. For the following content, unless otherwise specified, we will all adopt this assumption.
+\end{remark}
+
+\begin{proposition}{}{}
+    Let \(  p: \bar{X}  \to X\) be a covering projection.If \(  X  \) is Hausdorff then \(  \bar{X}  \) is Hausdorff. Further, if p is finite-to-one, then show that if \(  \bar{X}  \) is Hausdorff then \(  X  \) is Hausdorff.      
+\end{proposition}
+\begin{note}
+    I haven't finish the proof of the second part yet. Actually, if a covering projection is proper it is also closed.Once we have this conclusion we can then finish the proof easilly.
+\end{note}
+\begin{proof}
+    \begin{enumerate}
+        \item 
+        Take two different points \(  \bar{x},\bar{y} \in \bar{X}  \). Denote \(  x : =  p\left( \bar{x} \right), y : =  p\left( \bar{y} \right)    \). 
+        \begin{enumerate}
+        \item  If \(  x\neq y  \) : Since \(  X  \) is Haussdorff , there exists two open sets \(  U,V  \) such that \(  x\in U, y \in V, U\cap V= \varnothing  \).  We have \(  p^{-1} \left( U \right)   , p^{-1} \left( V \right) \) are two open subsets of \(  \bar{X}  \)  with \(  p^{-1} \left( U \right)\cap p^{-1} \left( V \right)= \varnothing    \). Since \(  \bar{x} \in p^{-1} \left( U \right), \bar{y}\in p^{-1} \left( V \right)    \)  , it shows that  \(  \bar{X}  \) is Haussdorff. 
+        \item  If \(  x= y  \): Let \(  W  \) be a open neighbourhood of \(  x= y  \). We write \(  p^{-1} \left( W \right) = \coprod  _{i}W_{i}  \).  Since \(  \bar{x},\bar{y}\in \coprod  _{i} W_{i}  \)    and any two \(  W_{i}  \) are disjoint   , there are two different \(  W_{i_1},W_{i_2}  \) such that \(  \bar{x}\in W_{i_1}, \bar{y}\in  W_{i_2}  \). 
+    \end{enumerate}
+     The above shows that \(  \bar{X}  \) is Hausdorff.
+     \item  Take two different points \(  x,y \in X  \). Then \(  p^{-1} \left( x \right), p^{-1} \left( y \right)    \)  are two finite sets of \(  \bar{X}  \) with empty intersection. We write \[
+     p^{-1} \left( x \right)= \left\{ \bar{x}_{i} \right\}_{i= 1}^{n} ,\quad p^{-1} \left( y \right)= \left\{ \bar{y}_{i} \right\}_{i= 1}^{n}  
+     \]For each \(  i= 1,\cdots ,n  \) ,let \(  U_{i}\ni \bar{x}_{i},V_{i}\ni \bar{y}_{i}, U_{i}\cap V_{i}= \varnothing  \). Then \(  p\left( \bigcup _{i}U_{i} \right)\cap  p\left( \bigcup _{i}V_{i} \right)= \varnothing    \), \(  x \in p\left( \bigcup _{i}U_{i} \right), y \in p\left( \bigcup _{i}V_{i} \right)    \)   .
+    \end{enumerate}
+    
+\end{proof}
+
+\end{document}

@@ -1,0 +1,58 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+ 
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+\chapter{知识点总结}
+\begin{tabular}{|l | c | c | c|}
+\hline
+性质组合             & $H^n(M; \mathbb{Z})$ & $H^n(M; R)$ (\(  R  \)  是域, $R \neq \mathbb{Z}_2$) & $H^n(M; \mathbb{Z}_2)$ \\
+\hline
+紧致且可定向         & $\mathbb{Z}$         & $R$                                       & $\mathbb{Z}_2$         \\
+\hline
+紧致且不可定向       & $0$                  & $0$                                       & $\mathbb{Z}_2$         \\
+\hline
+非紧致且可定向       & $0$                  & $0$                                       & $0$                    \\
+\hline
+非紧致且不可定向     & $0$                  & $0$                                       & $0$                    \\
+\hline
+\end{tabular}
+\begin{theorem}{Kunneth公式}
+    对于同调
+   $$
+H_k(X \times Y; R) \cong \left( \bigoplus_{i+j=k} (H_i(X; R) \otimes_R H_j(Y; R)) \right) \oplus \left( \bigoplus_{i+j=k-1} \text{Tor}_1^R(H_i(X; R), H_j(Y; R)) \right)
+$$
+对于上同调
+$$
+H^k(X \times Y; R) \cong \left( \bigoplus_{i+j=k} (H^i(X; R) \otimes_R H^j(Y; R)) \right) \oplus \left( \bigoplus_{i+j=k+1} \text{Ext}_R^1(H^i(X; R), H^j(Y; R)) \right)
+$$
+\end{theorem}
+
+特别地,域上的Kunneth公式有简洁的形式
+
+\begin{theorem}{域上的Kunneth公式}
+  设 \(  F  \)上一个域
+  
+  对于同调$$
+H_k(X \times Y; F) \cong \bigoplus_{i+j=k} (H_i(X; F) \otimes_F H_j(Y; F))
+$$对于上同调$$
+H^k(X \times Y; F) \cong \bigoplus_{i+j=k} (H^i(X; F) \otimes_F H^j(Y; F))
+$$
+\end{theorem}
+\begin{remark}
+   \begin{enumerate}
+    \item  由此导出维数的计算公式,从而可以方便地计算Betti数,Euler示性式.
+    \item 在张量积环中,乘积的定义为 \[
+    \left( \alpha _1 \otimes \beta _1  \right)\cdot \left( \alpha _2 \otimes \beta _2  \right) =  \left( -1 \right)^{\left| \beta _1  \right|\left| \alpha _2  \right|  }\left( \alpha _1 \cup \alpha _2  \right)\otimes \left( \beta _1 \otimes \beta _2  \right)     
+    \]
+   \end{enumerate}
+   
+\end{remark}
+\end{document}

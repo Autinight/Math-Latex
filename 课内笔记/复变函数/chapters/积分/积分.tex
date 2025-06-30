@@ -1,0 +1,565 @@
+
+\documentclass[../../复变函数.tex]{subfiles}
+
+\begin{document}
+
+
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+    \setcounter{chapter}{3}
+}{}
+
+\chapter{积分}
+
+
+\begin{theorem}
+    设 \(  D\subseteq \mathbb{C}   \)是有界区域, \(  \partial D  \)  由有限条分段光滑曲线并成.设存在 \(   \Omega \subseteq \mathbb{C}   \)是开集,使得 \(  \bar{D}\subseteq  \Omega   \).\(  u\left( x,y \right),v\left( x,y \right)\in \mathbb{C} ^{1}\left(  \Omega  \right)     \)   .则 \[
+    \int_{\partial D}\left( u\,\mathrm{d} x+ v\,\mathrm{d} y \right)= \int_{D}\left( \frac{\partial v}{\partial x}-\frac{\partial u}{\partial y} \right)\,\mathrm{d} x\,\mathrm{d} y  
+    \]
+\end{theorem}
+
+\begin{corollary}{弱版本的Cauchy定理}
+    设 \(  f= u\left( x,y \right)+ iv\left( x,y \right)    \)在 区域\(  D\subseteq \mathbb{C}   \)上解析. \(   \gamma : \left[  \alpha ,\beta  \right]\to D   \)是分段光滑的Jordan闭合曲线,所围成的区域为 \(   \Omega   \),且 \(  u,v \in C^{1}\left( D \right)   \) 则 \[
+    \int_{C}f\left( z \right)\,\mathrm{d} z= 0 
+    \]    
+\end{corollary}
+
+\begin{proof}
+    \[
+ \begin{aligned}
+    \int_{C}f\left( z \right)\,\mathrm{d} z& = \int_{C}\left( u\,\mathrm{d} x-v\,\mathrm{d} y \right)+  i \int_{C} \left( v\,\mathrm{d} x+ u\,\mathrm{d} y \right)   \\ 
+     & =  \int_{ \Omega }\left( -\frac{\partial v}{\partial x}-\frac{\partial u}{\partial y} \right)\,\mathrm{d} x\,\mathrm{d} y+ i \int_{ \Omega }\left( -\frac{\partial v}{\partial y}+ \frac{\partial u}{\partial x} \right)\,\mathrm{d} x\,\mathrm{d} y\\ 
+      & =  \int_{ \Omega }0 \,\mathrm{d} x\,\mathrm{d} y+ i \int_{ \Omega }0\,\mathrm{d} x\,\mathrm{d} y\footnotemark \\ 
+       & = 0  
+ \end{aligned}
+    \]
+\footnotetext{由C-R方程}.
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}
+    设 \(   \gamma \subseteq \mathbb{C}   \)是 Jordan闭合曲线,它等于若干线段的并,  \(   \gamma   \)围绕的区域称为 \(  D  \).则 \(  D\cup  \gamma = :T  \)被称为是一个多角形.    
+\end{definition}
+
+将要证明以下定理
+\begin{theorem}
+    \(  D\subseteq \mathbb{C}   \)单连通, \(  f \in \mathcal{H}\left( D \right)   \),设 \(   \gamma \subseteq D  \)是分段光滑\footnote{事实上只需要可求长}的Jordan闭合曲线,则 \(  \int_{ \gamma }f\left( z \right)\,\mathrm{d} z= 0   \)    
+\end{theorem}
+
+\begin{remark}
+    由于有自交闭折线总可以分成无自交闭折线的并,故对于有自交的闭折线也有类似的结论成立.
+\end{remark}
+
+\begin{lemma}
+    设 \(  D\subseteq \mathbb{C}   \)单连通, \(  f\in \mathcal{H}\left( D \right)   \), \(  T  \)是多边形, \(   \gamma = \partial T  \),则 \(  \int_{ \gamma }f\left( z \right)\,\mathrm{d} z= 0   \)     
+\end{lemma}
+\begin{proof}
+    设 \(  T =  \Delta   \)是一个三角形,配备了逆时针的定向. \(   \gamma = \partial  \Delta   \)  .取 \(   \Delta   \)的中位线,将 \(   \Delta   \)分为四个全等的小三角形  \(   \Delta _1 , \Delta _2 , \Delta _3 , \Delta _4   \),相似比均为 \(  \frac{1}{2}  \),都配备逆时针的定向.    我们有 \[
+    \int_{\partial  \Delta }= \int_{\partial  \Delta _1 }+ \int_{\partial  \Delta _2 }+ \int_{\partial  \Delta _3 }+ \int_{\partial  \Delta _4 }
+    \] \[
+    M =  \left| \int_{\partial  \Delta }f\left( z \right)\,\mathrm{d} z  \right|\le \left| \int_{\partial  \Delta _1 }\right|+ \left| \int_{\partial  \Delta _2 } \right|+ \left| \int_{\partial  \Delta _3 } \right|+ \left| \int_{\partial  \Delta _4 } \right|     
+    \]存在 \(   \Delta ^{\left( 1 \right) } \in \left\{  \Delta _1 , \Delta _2 , \Delta _3 , \Delta _4  \right\}  \),使得 \[
+    \left| \int_{\partial  \Delta ^{\left( 1 \right) }} \right|\ge \frac{M }{4 }  
+    \]将 \(   \Delta ^{\left( 1 \right) }  \)做类似的分割,得到存在  \(   \Delta ^{\left( 2 \right) }\subseteq  \Delta ^{\left( 1 \right) }  \)1:2相似于 \(   \Delta ^{\left( 1 \right) }  \),使得 \[
+    \left| \int_{\partial  \Delta ^{\left( 2 \right) }} \right|\ge \frac{1}{4} \left| \int_{\partial  \Delta ^{\left( 1 \right) }} \right|  \ge \frac{M }{4^{2} } 
+    \]重复以上操作,可以归纳地得到一个闭三角形套 \(   \Delta ^{\left( 0 \right) }: =   \Delta \supseteq  \Delta ^{\left( 1 \right) }\supseteq  \Delta ^{\left( 2 \right) }\supseteq \cdots   \)     
+    前一个与后一个的相似比均为 \(  \frac{1}{2}  \).并且 \[
+    \left| \int_{\partial  \Delta ^{\left( n \right) }}f\left( z \right)  \,\mathrm{d} z\right|\ge \frac{M }{4^{n} }  
+    \] 令 \(  U _{n}=  L\left( \partial  \Delta ^{\left( n \right) } \right)    =  \frac{L\left( \partial U \right)  }{2^{n} }=  \frac{U }{2^{n} }  \)为周长,其中 \(  U =  L\left( \partial  \Delta  \right)   \)  .由紧集套定理,存在\footnote{事实上也唯一} \(  z_0 \in \bigcap_{n = 0}  ^{\infty } \Delta ^{\left( n \right) } \).
+    由于 \(  f  \)在 \(  z_0  \)处可到,对于任意的 \(   \varepsilon > 0  \),存在 \(   \delta >0  \),使得对于任意的 \(  z \in D  \)满足 \(  \left| z-z_0 \right|<  \delta     \),都有 \[
+    \left| \frac{f\left( z \right)-f\left( z_0 \right)   }{z-z_0 }-f^{\prime} \left( z_0 \right)   \right|<  \varepsilon  
+    \]     这等价于 \[
+    \left| f\left( z \right)-f\left( z_0 \right)-f^{\prime} \left( z_0 \right)\left( z-z_0 \right)     \right|<  \varepsilon \left| z-z_0 \right|  \tag{*}
+    \]  由于任意三角形内部两点的距离都小于三角形的周长.
+    存在充分大的 \(  n  \),使得 \(   \Delta ^{\left( n \right) }\subseteq U\left( z_0, \delta  \right)   \),故 \(  \left( * \right)   \)式在 \(   \Delta ^{\left( n \right) }  \)上成立.
+    则对于任意的 \(  z \in  \Delta ^{\left( n \right) }  \), \(  \left| z-z_0 \right|\le L\left( \partial  \Delta ^{\left( n \right) } \right)= \frac{U }{2^{n} }     \)故 \[
+    \left| f\left( z \right)-f\left( z_0 \right)-f^{\prime} \left( z_0 \right)\left( z-z_0 \right)     \right|< \frac{ \varepsilon U }{2^{n} }  
+    \] 由于 \(  \partial  \Delta ^{n}  \)是闭合曲线,且 \(  1  \)和 \(  z  \)在闭合曲线上的积分为零,于是   \[
+    \int_{\partial  \Delta ^{\left( n \right) }}f\left( z \right)\,\mathrm{d} z= \int_{\partial  \Delta ^{\left( n \right) }}\left( f\left( z \right)-f\left( z_0 \right)+ f^{\prime} \left( z_0 \right)z_0-f^{\prime} \left( z_0 \right)z     \right)\,\mathrm{d} z  
+    \]       故 \[
+    \left| \int_{\partial  \Delta ^{\left( n \right) }}f\left( z \right)\,\mathrm{d} z  \right|\le \frac{ \varepsilon U }{2^{n} }L\left( \partial  \Delta ^{\left( n \right) } \right)=  \frac{ \varepsilon U^{2} }{4^{n} }    
+    \]故 \[
+    \frac{M }{4^{n} }\le \frac{ \varepsilon U^{2} }{4^{n} }\implies  M \le  \varepsilon U^{2}  
+    \]由于\(   \varepsilon   \)是任取的,故 \(  M= 0  \).
+    
+    
+    接下来,若 \(  T  \)是多边形,则 \(  T  \)总可以写成若干三角形的无交并,故命题对于 \(  T  \)是多边形的情形也成立.   
+    \hfill $\square$
+\end{proof}
+
+
+
+
+\begin{definition}
+    设 \(  D\subseteq \mathbb{C}   \)是区域, \(  f:D\to \mathbb{C}   \),\(  \Phi :D\to \mathbb{C}   \)是函数.若 \(  \Phi  \in \mathcal{H}\left( D \right)   \),且 \(  f = \Phi ^{\prime}   \),则称 \(  \Phi   \)是\(  f  \)(在 \(  D  \) )上的一个原函数或不定积分.       
+\end{definition}
+\begin{remark}
+    可以证明,原函数在相差一个常数下唯一.
+\end{remark}
+
+\begin{lemma}
+    设 \(  D\subseteq \mathbb{C}   \)是凸区域, \(  f \in \mathcal{H}\left( D \right)   \),则 \(  f  \)在 \(  D  \)上有原函数.    
+\end{lemma}
+
+\begin{proof}
+    固定 \(   \alpha  \in  D  \),任取 \(  z \in D  \), 线段 \(  \left[  \alpha ,z  \right] \in D   \).定义 \[
+    F\left( z \right)= \int_{\left[  \alpha ,z \right] }f\left( \zeta  \right)  \,\mathrm{d} \zeta 
+    \]   断言 \(  F  \)为 \(  f  \)的原函数.
+    
+    取\(  z_0 \in D  \), \(  z \in D  \). 则 \[
+    F\left( z \right)-F\left( z_0 \right)=  \int_{\left[  \alpha ,z \right] }f\left( \zeta  \right)\,\mathrm{d} \zeta -\int_{\left[  \alpha ,z_0 \right] }f\left( \zeta  \right)\,\mathrm{d} \zeta     
+    \]   
+由三角形上的Cauchy积分定理,我们有 \[
+F\left( z \right)-F\left( z_0 \right)= \int_{\left[ z_0,z \right] }f\left( \zeta  \right)\,\mathrm{d} \zeta    
+\]又 \[
+\left( z-z_0 \right)f\left( z_0 \right)= \int_{\left[ z_0,z \right] }f\left( z_0 \right)\,\mathrm{d} \zeta    
+\]从而 \[
+F\left( z \right)-F\left( z_0 \right)-\left( z-z_0 \right)f\left( z_0 \right)= \int_{\left[ z_0,z \right] }\left( f\left( \zeta  \right)-f\left( z_0 \right)   \right)\,\mathrm{d} \zeta     
+\]两边取绝对值并利用一个上界估计,得到 \[
+\left| F\left( z \right)-F\left( z_0 \right)  -\left( z-z_0 \right)f\left( z_0 \right)   \right|\le \left( \sup _{\zeta \in \left[ z_0,z \right] }\left| f\left( \zeta  \right)-f\left( z_0 \right)   \right|  \right)\left| z-z_0 \right|   
+\]从而 \[
+\left| \frac{F\left( z \right)-F\left( z_0 \right)   }{z-z_0 }-f\left( z_0 \right)   \right|\le  \sup _{\zeta \in \left[ z_0,z \right] }\left| f\left( \zeta  \right)-f\left( z_0 \right)   \right|\to 0,\quad \left( z\to z_0 \right)   
+\]故 \(  F^{\prime} \left( z_0 \right)= f\left( z_0 \right)    \). 
+    \hfill $\square$
+\end{proof}
+
+\begin{lemma}
+    设 \(  D\subseteq \mathbb{C}   \)是区域, \(  f \in C\left( D \right)   \)  在 \(  D  \)上有原函数\(  F\left( z \right)   \).k\(  a,b \in D  \), \(   \gamma   \)为连接 \(  a,b  \)的分段光滑道路,则 \[
+    \int_{ \gamma }f\left( z \right)\,\mathrm{d} z= F\left( b \right)-F\left( a \right)   
+    \]     
+\end{lemma}
+\begin{proof}
+    设 \(   \gamma :\left[  \alpha ,\beta  \right]\to D   \),\(   \gamma \left(  \alpha  \right)= a   \),\(   \gamma \left( \beta  \right)= b   \),则 \[
+    \int_{ \gamma }f\left( z \right)\,\mathrm{d} z= \int_{ \alpha }^{ \beta }f\left(  \gamma \left( t \right)  \right) \gamma ^{\prime} \left( t \right)\,\mathrm{d} t= \int_{ \alpha }^{ \beta }F^{\prime} \left(  \gamma \left( t \right)  \right) \gamma ^{\prime} \left( t \right)     \,\mathrm{d} t= F\left( b \right)-F\left( a \right)  
+    \]   
+
+    \hfill $\square$
+\end{proof}
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+
+复习Lebesgue数的性质.
+
+阅读45-50
+
+预习51-55
+
+作业 第三章4.5.9.10
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+\begin{definition}
+    设 \(  X\subseteq \mathbb{C} \simeq \mathbb{R} ^{2}  \),定义 \(  X  \)的直径为 \(  \operatorname{diam}\,X= \sup \left\{ \left| z_1-z_2 \right|: z_1,z_2 \in X  \right\}  \).   
+\end{definition}
+\begin{lemma}
+    设 \(  X\subseteq \mathbb{C}   \)是紧子集,\(  \mathscr{A}= \left\{ Aj : j \in J\right\}  \) \(  \left( A_{j}\subseteq \mathbb{C}  \right)\text{是开集}  \)为 \(  X  \)的一个开覆盖.则存在 \(   \delta  =  \delta  \left( x,\mathscr{A} \right)> 0   \),使得 \(  X  \)中任意直径小于 \(   \delta    \)的开集,都落在 \(  \mathscr{A}  \)的某个元素中.此时成 \(   \delta    \)为 \(  \mathscr{A}  \)的一个元素.          
+\end{lemma}
+\begin{theorem}
+    设 \(  D  \)是单连通区域, \(  f \in \mathcal{H}\left( D \right)   \).
+    \begin{enumerate}
+        \item \(   \gamma \subseteq D  \)是可求长(或分段光滑)的Jordan闭合曲线,则 \[
+        \int_{ \gamma }f\left( z \right)\,\mathrm{d} z= 0 
+        \] 
+        \item 若 \(   \gamma   \)是连接 \(  z_0  \)和 \(  z  \)的 Jordan曲线,积分 \[
+        \int_{ \gamma }f\left( \zeta  \right)\,\mathrm{d} \zeta  
+        \]    只依赖于端点,而与道路的选取无关,从而积分可记为 \(  \int_{z_0}^{z}f\left( \zeta  \right)\,\mathrm{d} \zeta    \). 
+    \end{enumerate}
+      
+\end{theorem}
+
+\begin{proof}
+    任取 \(  \zeta  \in  \gamma   \),存在 \(   \delta  _{\zeta }> 0  \),使得  \[
+    K_{\zeta }= \left\{ z: \left| z-\zeta  \right|<  \delta  _{\zeta }  \right\}\subseteq D
+    \]由于 \(  K_{\zeta }  \)是凸的,故 \(  f  \)在 \(  K_{\zeta }  \)上有原函数 \(  F_{\zeta }  \).由于 \(   \gamma   \)是紧的,取开覆盖 \(  \mathscr{A}= \left\{ K_{\zeta }:\zeta  \in  \gamma  \right\}  \)的一个Lebesgue数 \(   \delta    \).由 \(   \gamma   \)可求长,存在 \(   z_0,\cdots,z_{n}= z_0 \in  \gamma      \),使得 \(  \forall 0\le k\le n-1  \),\(  L\left(   \overset{\frown}{z_{k}z_{k+ 1}}\right)< \delta  \)    .
+
+    由Lebesgue数引理,存在 \(  \mathscr{A}  \) 中的开圆盘 \(  K_{\zeta _{k}}= \left\{ \left| z-\zeta _{k} \right|<  \delta  _{k}  \right\}  \subseteq D\),使得 \[
+        \overset{\frown}{z_{k}z_{k+ 1}}\subseteq  K_{\zeta _{k}}
+    \] 因为 \(  f  \)在 \(  K_{\zeta _{k}}  \)上有原函数,故积分 \[
+    \int_{ \overset{\frown}{z_{k}z_{k+ 1}}}f\left( \zeta  \right)\,\mathrm{d} \zeta = \int_{\left[ z_{k},z_{k+ 1} \right] }f\left( \zeta  \right)\,\mathrm{d} \zeta   
+    \]  故 \[
+    \int_{ \gamma }f\left( \zeta  \right) \,\mathrm{d} \zeta = \sum _{k= 0}^{n-1}f_{ \overset{\frown}{z_{k}z_{k+ 1}}}f\left( \zeta  \right)\,\mathrm{d} \zeta = \int_{[z_0,z_1]+ \left[ z_1,z_2 \right]+ \cdots + [z_{n-1}],z_{n} }f\left( \zeta  \right)\,\mathrm{d} \zeta   = 0
+    \]
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}
+    \(  D\subseteq \mathbb{C}   \)是单连通, \(  f \in \mathcal{H}\left( D \right)   \)  ,则 \(  f  \)在 \(  D  \)上有原函数.   
+\end{theorem}
+\begin{proof}
+    固定 \(  \alpha \in D  \),任取 \(  z \in D  \),令 \(  F\left( z \right)= \int_{ \alpha }^{z}f\left( \zeta  \right)\,\mathrm{d} \zeta     \).任取 \(  z_0 \in D  \),取 \(   \delta  >0  \),使得 \(  \left\{ \left| \zeta -z_0 \right|<  \delta    \right\}\subseteq D  \).      
+    \(  \forall z \in \left\{ \left| \zeta -z_0 \right|\le  \delta    \right\}  \) ,\[
+        F\left( z_0 \right)= \int_{ \gamma }f\left( \zeta  \right)\,\mathrm{d} \zeta   
+    \]\[
+        F\left( z \right)= \int_{ \gamma + \left[ z_0,z \right] }f\left( \zeta  \right)\,\mathrm{d} \zeta   
+    \] \[
+    \left( z-z_0 \right)f\left( z_0 \right)= \int_{\left[ z_0,z \right] }f\left( z_0 \right)\,\mathrm{d} \zeta    
+    \] 前两个减后一个,得到 \[
+    F\left( z \right)-F\left( z_0 \right)-\left( z-z_0 \right)f\left( z_0 \right)= \int_{\left[ z_0,z \right] }\left( f\left( \zeta  \right)-f\left( z_0 \right)   \right)\,\mathrm{d} \zeta      
+    \]从而 \[
+    \left| \frac{F\left( z \right)-F\left( z_0 \right)   }{z-z_0 }-f\left( z_0 \right)   \right|\le  \frac{1 }{\left| z-z_0 \right|  }\int_{\left[ z-z_0 \right] }\left| f\left( \zeta  \right)-f\left( z_0 \right)   \right|\,\mathrm{d} \zeta \le \sup _{\zeta \in \left[ z_0,z \right] }\left| f\left( \zeta  \right)-f\left( z_0 \right)   \right|\to 0\left( z\to z_0 \right)      
+    \]故 \(  F  \)在 \(  z_0  \)处可导,且 \(  F^{\prime} \left( z_0 \right)= f\left( z_0 \right)    \).   
+    \hfill $\square$
+\end{proof}
+
+
+\begin{example}
+    \(  I =  \int_{0}^{2\pi }\sin ^{2n} \theta \,\mathrm{d}  \theta   \) 
+\end{example}
+\begin{solution}
+    令 \(  z= e^{i \theta }  \),则 \(  \sin  \theta = \frac{z^{2}-1 }{2iz }   \), \(  \,\mathrm{d}  \theta = \frac{\,\mathrm{d} z }{iz }   \)   \[
+    \begin{aligned}
+        I&= \int_{\left| z \right|= 1 }\left( \frac{z^{2}-1 }{2iz }  \right)^{2n}\frac{\,\mathrm{d} z }{iz }   \\ 
+         & = \frac{\left( -1 \right)^{n}  }{2^{2n}i }\int_{\left| z \right|= 1 } \left( z^{2}-1 \right)^{2n}\frac{\,\mathrm{d} z }{z^{2n+ 1} }  
+    \end{aligned}
+    \]其中 \[
+    \left( z^{2}-1 \right)^{2n}= \sum _{j= 0}^{2n}\begin{pmatrix} 
+        2n\\ 
+         j 
+    \end{pmatrix}\left( -1 \right)^{2n-j}z^{2j}   
+    \]
+\end{solution}
+\[
+\int_{\left| z \right|= 1 }z^{m}\,\mathrm{d} z= \begin{cases} 0,&m\ge 0\\ 
+ \frac{1}{m+ 1}z^{m+ 1}|_{1}^{1}= 0,&m\le -2\\ 
+   2\pi i,&m= -1\end{cases} 
+\]故 \[
+\begin{aligned}
+    I &=  \frac{\left( -1 \right)^{n}  }{2^{n}i }\int_{\left| z \right|= 1 }\begin{pmatrix} 
+        2n\\ 
+         n 
+    \end{pmatrix}\left( -1 \right)^{2n-n}\frac{1 }{z }\,\mathrm{d} z\\ 
+     & =  \frac{\left( -1 \right)^{n}  }{2^{n}i }2\pi i \begin{pmatrix} 
+         2n\\ 
+          n 
+     \end{pmatrix}\left( -1 \right)^{n}\\ 
+      & = \frac{\pi  }{2^{2n-1} }\begin{pmatrix} 
+          2n\\ 
+           n 
+      \end{pmatrix}=  \frac{\pi  }{2^{2n-1} }\frac{\left( 2n \right)!  }{n!n! }      
+\end{aligned}    
+\]
+\hspace*{\fill} 
+
+\hspace*{\fill} 
+
+\begin{theorem}
+    设 \(  D\subseteq \mathbb{C}   \)是一个区域, \(   \partial D  \)由分段光滑的Jordan闭合曲线 \(   \gamma_0,\cdots,\gamma_{n}   \)构成.\(  \forall 1\le i,j\le n,i\neq j  \),\(   \gamma _{j}  \)在 \(   \gamma _{i}  \)的外区域.并且 \(  \forall 1\le i\le n  \), \(   \gamma _{i}  \)在 \(   \gamma _0   \)的内区域.  令正向为  当动点沿着 \(   \gamma   \)正向运动时, \(  D  \)在动点的左侧  .令 \(  \overline{D}= D\cup  \partial D  \),\(  f\in \mathcal{H}\left( \overline{D} \right)   \)   则 \[
+    \int_{ \partial D}f\left( z \right)\,\mathrm{d} z= 0 
+    \]    
+\end{theorem}
+\section{Cauchy积分公式}
+设 \(  C  \)是分段连续的Jordan闭合曲线.环绕 \(  z_0  \).令 \[
+C_{\rho }= \left\{ \left| z-z_0 \right|= \rho   \right\}
+\]取充分小的 \(  \rho   \),使得 \(  C_{\rho }\subseteq C  \)的内区域.则 \[
+\int_{C_{\rho }}\frac{1 }{z-z_0 }= 2\pi i  
+\]    注意到 \[
+0 =  \int_{ \partial D}\frac{1 }{z-z_0 }\,\mathrm{d} z= \int_{C}\frac{\,\mathrm{d} z }{z-z_0 }-\int_{C_{p}}\frac{\,\mathrm{d} z }{z-z_0 }   
+\]故 \[
+\int_{C}\frac{1 }{z-z_0 }\,\mathrm{d} z= 2\pi i 
+\]
+
+
+更一般地,考虑 \(  D\subseteq \mathbb{C}   \)是单连通区域, \(  f\in \mathcal{H}\left( D \right)   \),\(  C  \)是绕 \(  z_0  \)的Jordan闭合曲线.类似地可知 \[
+\int_{C}\frac{f\left( \zeta  \right)  }{\zeta -z_0 }\,\mathrm{d} \zeta = \int_{C_{\rho }} \frac{f\left( \zeta  \right)  }{\zeta -z_0 }\,\mathrm{d} \zeta  
+\]令 \(  \zeta = z_0+ \rho e^{i \theta }  \),则积分华为 \[
+\int_{0}^{2\pi }\frac{f\left( z_0+ \rho e^{i \theta } \right)  }{\rho \cdot e^{i \theta } }= i\int_{0}^{2\pi }f\left( z_0+ \rho \cdot e^{i \theta } \right)\,\mathrm{d}  \theta \quad   \text{直觉上大约是} 2\pi if \left( z_0 \right),\left( \rho \text{很小} \right)  
+\]    
+
+\begin{theorem}{Cauchy积分公式}
+    \begin{enumerate}
+        \item 设 \(   \Omega \subseteq \mathbb{C}   \)是单连通区域, \(   \gamma \subseteq  \Omega   \)是一个分段光滑的Jordan闭合曲线,环绕 \(  z_0  \) .\(  f\in \mathcal{H}\left(  \Omega  \right)   \),则\[
+            f\left( z \right)= \frac{1 }{2\pi i }\int_{ \gamma }\frac{f\left( \zeta  \right)  }{\zeta -z }\,\mathrm{d} \zeta 
+        \]
+        \item \(  D\subseteq \mathbb{C}   \)是有界区域, \(   \partial D =  \gamma   \)为 \(   \gamma _0 , \gamma _1 ,\cdots , \gamma _{n}  \)的并.且 \(  \forall 1\le i,j\le n  ,i\neq j\),\(   \gamma _{i}  \)在 \(   \gamma _{j}  \)外区域, \(  \forall 1\le i\le n  \),\(   \gamma _{i}  \)在\(   \gamma _0   \)内区域. \(  \bar{D}= D\cup  \partial D  \)          ,\(  f\in \mathcal{H}\left( \bar{D} \right)   \),则 \(  \forall z \in D  \), \[
+        f\left( z \right)= \frac{1 }{2\pi i }\int_{ \gamma }\frac{f\left( \zeta  \right)  }{\zeta -z }\,\mathrm{d} \zeta    
+        \]  
+    \end{enumerate}
+    
+\end{theorem}
+
+\begin{proof}
+    \(  \forall z \in D  \),存在 \(  \rho > 0  \),使得 \(  U_{p}= \left\{ \left| \zeta -z \right|< \rho   \right\}\subseteq D  \), \(  \overline{D}_{\rho }= \overline{D}\setminus U_{p}  \),\(   \partial U_{p}= Cp  \)     ,则 \[
+    \frac{f\left( \zeta  \right)  }{\zeta -z }\in \mathcal{H}\left( \overline{D}_{\rho } \right)  
+    \]从而 \[
+   \begin{aligned}
+    \int_{ \gamma }\frac{f\left( \zeta  \right)  }{\zeta -z }\,\mathrm{d} \zeta & = \int_{C_{\rho }}\frac{f\left( \zeta  \right)  }{\zeta -z }\,\mathrm{d} \zeta \\ 
+     & =  \int_{C_{p}}\frac{f\left( z \right)  }{\zeta -z }\,\mathrm{d} \zeta + \int_{C_{\rho }}\frac{f\left( \zeta  \right)-f\left( z \right)   }{\zeta -z }\,\mathrm{d} \zeta = 2\pi if\left( z \right)+ \int_{C_{\rho }}\frac{f\left( \zeta  \right)-f\left( z \right)   }{\zeta -z }\,\mathrm{d} \zeta     
+   \end{aligned}  
+    \]由 \(  f  \)连续, \(  \forall  \varepsilon > 0  \),存在 \(   \delta  > 0  \),使得 \(  0< \rho <  \delta    \)时, \(  \left| f\left( \zeta  \right)-f\left( z \right)   \right|<  \varepsilon    \), \[
+   \begin{aligned}
+    \left| \int_{C}\frac{f\left( \zeta  \right)-f\left( z \right)   }{\zeta -z }\,\mathrm{d} \zeta   \right|&\le \frac{1 }{\rho  }\sup _{\zeta \in C_{\rho }}  \sup _{\zeta \in C_{\rho }}\left| f\left( \zeta  \right)-f\left( z \right)   \right|L\left( c_{\rho } \right)\\ 
+     &\le \frac{1 }{\rho  } \varepsilon 2  \pi \rho = 2\pi  \varepsilon   
+   \end{aligned}  
+    \]令 \(   \varepsilon \to 0  \)即可.      
+
+    \hfill $\square$
+\end{proof}
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+阅读50-55,尤其51-例1,53-例2
+
+预习56-58
+
+作业 P59 11,12,13,14,15
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+
+\begin{example}
+    计算 \[
+     I =  \frac{1 }{2\pi i }\int_{\left| z \right|= 2 }\frac{\,\mathrm{d} z }{\left( z^{4}-1 \right)\left( z-3 \right)^{2}   }  
+     \]
+\end{example}
+\begin{solution}
+    使得函数在内区域不全纯的点为使得 \(  z^{4}= 1  \)的点.\[
+    \begin{aligned}
+    \frac{1 }{z^{4}-1 }= \frac{1 }{\left( z^{2}-1 \right)\left( z^{2}+ 1 \right)   }&=  \frac{1}{2}\left( \frac{1 }{z^{2}-1 }-\frac{1 }{z^{2}+ 1 }   \right)\\ 
+     & =  \frac{1}{4}\left( \frac{1}{z-1}-\frac{1 }{z+ 1 }  \right)- \frac{1}{4i}\left( \frac{1}{z-i}-\frac{1}{z+i} \right)  
+    \end{aligned}   
+    \]令 \(  k= \pm 1,\pm i  \),则 \[
+    \int_{\left| z \right|= 2 } \frac{1 }{z-k } \frac{1 }{\left( z-3 \right)^{2}  }\,\mathrm{d} z=2\pi i \frac{1}{\left( k-3 \right)^{2} }  
+    \] 故 \[
+ \begin{aligned}
+    I &=  \frac{1}{4} \frac{1 }{\left( 1-3 \right)^{2}  }-\frac{1}{4}\frac{1 }{\left( -1-3 \right)^{2}  }- \frac{1}{4i} \frac{1 }{\left( i-3 \right)^{2}  }+ \frac{1}{4i}\frac{1 }{\left( -i-3 \right)^{2}  }    \\ 
+     & =  \frac{1}{16}- \frac{1}{64}- \frac{1}{4i} \frac{1}{8-6i}+ \frac{1}{4i}\frac{1 }{8+ 6i } \\ 
+      & = \frac{3}{64}- \frac{1}{4i}\left( \frac{12i }{ 100}  \right) = \frac{3}{64}- \frac{3 }{100 }= \frac{3}{4}\left( \frac{1}{16}-\frac{1}{25} \right)= \frac{3}{4} \frac{9 }{400 }= \frac{27 }{1600 }    
+ \end{aligned}
+    \]
+\end{solution}
+
+\hspace*{\fill} 
+
+\hspace*{\fill} 
+
+
+\begin{example}
+    计算 \[
+    I =  \int_{\left| z \right|= 2 } \frac{\sin z }{z^{2}+ 1 }\,\mathrm{d} z 
+    \]
+\end{example}
+\begin{solution}
+    \[
+    \left( \int_{\left| z \right|= 2 }-\int_{\left| z-i \right|= \frac{1}{2} }-\int_{\left| z+ i \right|= \frac{1}{2} } \right)\frac{\sin z }{z^{2}+ 1 }\,\mathrm{d} z  = 0
+    \]其中 \[
+    \int_{\left| z-i \right|= \frac{1}{2} }\frac{\sin z }{z^{2}+ 1 }\,\mathrm{d} z=  \int_{\left| z-i \right|= \frac{1}{2} }\frac{\sin z }{z+ i } \frac{1}{z-i}\,\mathrm{d} z= 2\pi i \frac{\sin i }{2i }= \pi \sin i   
+    \]类似地 \[
+    \int_{\left| z+ i \right|= \frac{1}{2} }\frac{\sin z }{z^{2}+ 1 }z= \int_{\left| z+ i \right|= \frac{1}{2} }\frac{\sin z }{z-i }\frac{1 }{z+ i }z=    2\pi i\frac{\sin \left( -i \right)  }{-2i }= \pi \sin i 
+    \]于是 \[
+    I =  2\pi \sin i
+    \]
+\end{solution}
+
+\hspace*{\fill} 
+
+\hspace*{\fill} 
+
+
+\begin{theorem}
+    设 \(  D\subseteq \mathbb{C}   \)是区域, \(   \partial D =   \gamma   \)由分段光滑的Jordan闭合曲线 \(   \gamma_0,\cdots,\gamma_{n}   \)构成,且对于任意的 \(  1< i,j\le n,i\neq j  \),\(   \gamma _{i}  \)在 \(   \gamma _{j}  \)的外区域,      且对于任意的 \(  1\le i\le n  \),\(   \gamma _{i}  \)在 \(   \gamma _0   \)的内区域.设 \(  f \in \mathcal{H}\left( \overline{D} \right)   \),则 \(  f  \)在 \(  D  \)上任意阶可导,且对于任意的 \(  n\in \mathbb{N}   \),以及任意的 \(  z \in D  \),都有 \[
+    f^{\left( n \right) }\left( z \right)= \frac{n! }{2\pi i }\int_{ \gamma }\frac{f\left( \zeta  \right)  }{\left( \zeta -z \right)^{n+ 1}  }\,\mathrm{d} \zeta    
+    \]        
+\end{theorem}
+\begin{proof}
+    \(  \forall z \in D  \),固定 \(  \rho > 0  \),使得 \(  \overline{U}\left( z.\rho  \right)= \left\{ \left| \zeta -z \right|\le \rho   \right\}   \subseteq D\).
+    
+    通过对 \(  n  \)归纳来证,考虑 \(  n = 1  \)时的命题,任取 \(  h \in \mathbb{C}   \),\(  0\le \left| h \right|<\frac{\rho  }{2 }    \),则 \(  z+ h\in D  \). 考虑\[
+    \begin{aligned}
+   L_{h}:=  \frac{f\left( z+ h \right)-f\left( z \right)   }{h }-\frac{1 }{2\pi i }\int_{ \gamma }\frac{f\left( \zeta  \right)  }{\left( \zeta -z \right)^{2}  }\,\mathrm{d} \zeta     
+    \end{aligned}
+    \]  希望说明 \(  L_{h}\to 0\left( h\to 0 \right)   \).   由Cauchy积分公式,  \[
+    \begin{aligned}
+    L_{h}& =  \frac{1}{h}\left[ \frac{1 }{2\pi i }\int_{ \gamma }\frac{f\left( \zeta  \right)  }{\zeta -\left( z+ h \right)  }\,\mathrm{d} \zeta -\frac{1 }{2\pi i }\int_{ \gamma }\frac{f\left( \zeta  \right)  }{\zeta -z }\,\mathrm{d} \zeta -\frac{h }{2\pi i } \int_{ \gamma }\frac{f\left( \zeta  \right)  }{\left( \zeta -z \right)^{2}  }\,\mathrm{d} \zeta        \right]  
+    \end{aligned}
+    \]
+    \[
+    \begin{aligned}
+        \frac{1}{\zeta -\left( z+ h \right) }-\frac{1 }{\zeta -z }+ \frac{h }{\left( \zeta -z \right)^{2}   }& =  \frac{\left( \zeta -z \right)^{2}-\left( \zeta -z \right)\left( \zeta -z-h \right)-h\left( \zeta -\left( z+ h \right)  \right)     }{ \left( \zeta -z+ h \right)\left( \zeta -z \right)^{2}  }  \\ 
+         & =  \frac{h^{2} }{\left( \zeta -\left( z+ h \right)  \right)\left( \zeta -z \right)^{2}   } 
+    \end{aligned} 
+    \] \[
+    L_{h}= \frac{h }{2\pi i }\int_{ \gamma }f\left( \zeta  \right)\frac{1 }{\left( \zeta -\left( z+ h \right)  \right)\left( \zeta -z \right)^{2}   }   \,\mathrm{d} \zeta 
+    \]由于 \(  f \in C\left(  \gamma  \right)   \),故 \(  M: =  \sup _{\zeta \in  \gamma }\left| f\left( \zeta  \right)  \right|< \infty   \) .又\(  \zeta \not \in U\left( z,\rho  \right)\implies  \left| \zeta -z \right|> \rho     \).   故 \[
+    \left| \zeta -z-h \right| \ge \left| \zeta -z \right|-\left| h \right|> \frac{\rho  }{2 }    
+    \] \[
+    \left| L_{h} \right|\le \frac{\left| h \right|  }{2\pi  }\frac{M }{ \left( \rho  /2 \right) }\frac{L\left(  \gamma  \right)  }{\rho ^{2} }\to 0,\quad (h\to 0)    
+    \]故 \(  n = 1  \)时命题成立.
+    
+    设 \(  n = k \ge 1  \)时成立,考虑 \(  n = k+ 1  \)的情况.  
+    
+    对于任意的 \(  h \in \mathbb{C} <0< \left| h \right|< \frac{\rho  }{2 }    \) \[
+    \begin{aligned}
+  L_{h}: &=    \frac{f^{\left( k \right)  }\left( z+ h \right)-f\left( h \right)  }{h } -  \frac{\left( k+ 1 \right)!  }{2\pi i }\int_{ \gamma }\frac{f\left( \zeta  \right)  }{\left( \zeta -z \right)^{k+ 2}  }\,\mathrm{d} \zeta   \\ 
+   & = \frac{1 }{h }\frac{k! }{2\pi i }\left[ \int_{ \gamma }\frac{f\left( \zeta  \right)  }{\left( \zeta -\left( z+ h \right)  \right)^{k+ 1}  }\,\mathrm{d} \zeta _0 \int_{ \gamma }\frac{f\left( \zeta  \right)  }{\left( \zeta -z \right)^{k+ 1}  }   \right]-\frac{\left( k+ 1 \right)!  }{2\pi i } \int_{ \gamma }\frac{f\left( \zeta  \right)  }{\left( \zeta -z \right)^{k+ 2}  }\,\mathrm{d} \zeta      
+    \end{aligned}
+    \]  计算\[
+    \begin{aligned}
+    \left( \zeta -z \right)^{k+ 1}  -\left( \zeta -\left( z+ h \right)  \right)^{k+ 1}&= \left( \zeta -z \right)^{k+ 1}- \left( \left( \zeta -z \right)-h  \right)^{k+ 1}   \\ 
+     & = \left( \zeta -z \right)^{k+ 1}-\left[ \left( \zeta -z \right)^{k+ 1}-\begin{pmatrix} 
+         k+ 1 \\ 
+          1
+     \end{pmatrix} \left( \zeta -z \right)^{k}\cdot h+ h^{2}\cdot  \alpha \left( h \right)     \right]  \\ 
+      &= \left( k+ 1 \right)\left( \zeta -z \right)^{k}\cdot h+ h^{2}\cdot  \alpha \left( h \right)   
+    \end{aligned}
+    \]其中 \(  \alpha \left( h \right)= O\left( 1 \right)\left( h\to 0 \right)     \) 于是 \[
+   \begin{aligned}
+    L_{h}&= \frac{\left( k+ 1 \right)!  }{2\pi i }\int_{ \gamma }\left[ \frac{1 }{\left( \zeta -\left( z+ h \right)  \right)^{k+ 1}\left( \zeta -z \right)   }  -\frac{1 }{\left( \zeta -z \right)^{k+ 2}  }  \right]f\left( \zeta  \right)\,\mathrm{d} \zeta  + h\cdot O\left( 1 \right)  \\ 
+     & = \frac{\left( k+ 1 \right)!  }{2\pi i }\int_{ \gamma }\frac{\left( \zeta -z \right)^{k+ 1}-\left( \zeta -z+ h \right)^{k+ 1}   }{ \left( \zeta -\left( z+ h \right)^{k+ 1}\left( \zeta -z \right)^{k+ 2}   \right) }f\left( \zeta  \right)\,\mathrm{d} \zeta     + h\cdot O\left( 1 \right) \\ 
+      &\to 0,\left( h\to 0 \right) 
+   \end{aligned} 
+    \]
+    \hfill $\square$
+\end{proof}
+
+\begin{example}
+    计算 \[
+    I =  \int_{C}\frac{\cos z }{\left( z-i \right)^{3}  }\,\mathrm{d} z 
+    \]其中 \(  C  \)绕 \(  i  \)的任意Jordan闭合曲线.  
+\end{example}
+
+\hspace*{\fill} 
+\begin{solution}
+    \[
+   -\cos z_0=  \left( \cos ^{\prime \prime} \left( z_0 \right)  \right)= \frac{2! }{2\pi i }\int _{C}\frac{\cos \zeta  }{\left( \zeta -z_0 \right)^{3}  }\,\mathrm{d} \zeta    
+    \]故 \[
+    I = \frac{2\pi i }{2 }\left( -\cos i \right)= -\pi i\cos i= -\pi \frac{e^{-1}+ e }{2 }i   
+    \]
+\end{solution}
+
+\hspace*{\fill} 
+\begin{corollary}
+    设 \(  D\subseteq \mathbb{C}   \)是区域, \(  f\in \mathcal{H}\left( D \right)   \),则 \(  f  \)在 \(  D  \)上有任意阶导数.    
+\end{corollary}
+
+\begin{proof}
+    对于任意的 \(  z \in D  \),存在 \(  \rho   \),使得 \(  \left\{ \left| \zeta -z \right|\le \rho   \right\}\subseteq D  \).对 \[
+    D_1= \left\{ \left| \zeta -z \right|< \rho   \right\}
+    \]应用高阶的Cauchy积分定理即可.   
+
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}{Cauchy不等式}
+    设 \(  \rho _0 \in \left( 0,+ \infty \right)   \),\(  D =  \left\{ \left| z-z_0 \right|< \rho _0   \right\}  \),\(   \partial D =   \gamma = \left\{ \left| z-z_0 \right|= \rho _0   \right\}  \). \(  f \in \mathcal{H}\left( \overline{D} \right)   \), \(  \left| f\left( z \right)  \right|\le M,\forall z \in  \overline{D}   \).则对于任意的 \(  n \in \mathbb{Z} _{\ge 1},z_0 \in \bar{D}  \),都有 \[
+    \left| f^{\left( n \right) }\left( z_0 \right)  \right|\le \frac{n!M }{\rho _0 ^{n} }  
+    \]      
+\end{theorem}
+
+\begin{proof}
+    任取 \(  0< \rho < \rho _0   \) ,令 \(  C_{\rho }= \left\{ \left| z-z_0 \right|= \rho   \right\}\subseteq D  \).则 \[
+    f^{\left( n \right) }\left( z_0 \right)= \frac{n! }{2\pi i }\int_{C_{\rho }}  \frac{f\left( \zeta  \right)  }{ \left( \zeta -z_0 \right)^{n+ 1} }\,\mathrm{d} \zeta \le  \frac{n! }{2\pi  }2\pi \rho \frac{M }{\rho ^{n+ 1} }=  \frac{n! M}{\rho ^{n} }    
+    \] 令 \(  \rho \to \rho _0   \)即可. 
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{definition}
+    称在 \(  \mathbb{C}   \)上解析的函数为一个\textbf{整函数}.
+\end{definition}
+
+\begin{theorem}{Liouwill}
+    有界整函数必为常函数.
+\end{theorem}
+\begin{proof}
+    令 \(  \left| f\left( z \right)  \right|\le M   \),\(  \forall z\in \mathbb{C}   \)是整函数.
+    
+    对于任意的 \(  z_0 \in \mathbb{C}   \)以及 \(  \rho _0 > 0  \),由于\(  f \in \mathcal{H}\left( U\left( z_0,\rho _0  \right)  \right)   \)   
+    我们有 \[
+    \left| f^{\prime} \left( z_0 \right)  \right|\le \frac{M }{\rho _0  }  
+    \]令 \(  \rho _0 \to \infty  \),得到 \(  f^{\prime} \left( z_0 \right)= 0   \).  
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}
+    设 \(  f  \)是整函数,若存在开圆盘 \(  U\left( z_0,\rho _0  \right)   \),使得 \(  U\left( z_0,\rho _0  \right)   \)和 \(  f  \)的像不交,则 \(  f  \)是常值的.     
+\end{theorem}
+
+\begin{theorem}{Pricard小定理}
+    设 \(  f  \)是整函数,若存在 \(  a \neq b\in \mathbb{C}   \),使得 \(  a \notin f\left( \mathbb{C}  \right),b\not \in f\left( \mathbb{C}  \right)    \),则 \(  f  \)是常函数.    
+\end{theorem}
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+阅读55-58,尤其是Morera定理
+
+预习61-71
+
+作业 第三章 16.17.18.19(不交,强烈建议).
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+
+\begin{theorem}{代数学基本定理}
+    考虑 \(  \mathbb{C}   \) 上的多项式 \[
+    P\left( z \right)= \alpha _{n}z^{n}+ \cdots + \alpha _1 z+ \alpha _0  
+    \], 其中\(  n\ge 1  \),\(  \alpha \neq 0  \) . 存在 \(  z_0 \in \mathbb{C}   \),使得 \(  p\left( z_0 \right)= 0   \).   
+\end{theorem}
+
+\begin{proof}
+    任取 \(  z  \),使得 \(  \left| z \right|\neq 0   \),由三角不等式\[
+\begin{aligned}
+    \left| P\left( z \right)  \right|&\ge \left| \alpha _{n} \right|\left| z \right|^{n}-\left| \alpha _{n-1} \right|\left| z \right|^{n-1}     -\cdots -\left| \alpha _0  \right| \\ 
+     & =  \left| z \right|^{n} \left( \left| \alpha _{n} \right|- \frac{\left| \alpha _{n-1} \right|  }{\left| z \right|  }- \frac{\left| \alpha _{n-2} \right|  }{\left| z \right|^{2}  }    -\cdots - \frac{\left| \alpha _{0} \right|  }{\left| z \right|^{n}  } \right)  
+\end{aligned}
+    \]  存在 \(  M> 0  \),使得 \(  \forall \left| z \right|> M   \),都有  
+    \[
+        \left( \left| \alpha _{n} \right|- \frac{\left| \alpha _{n-1} \right|  }{\left| z \right|  }- \frac{\left| \alpha _{n-2} \right|  }{\left| z \right|^{2}  }    -\cdots - \frac{\left| \alpha _{0} \right|  }{\left| z \right|^{n}  } \right)  > \frac{\left| \alpha _{n} \right|  }{2 } 
+    \]故 \[
+    \left| P\left( z \right)  \right|\ge \frac{\left| \alpha _{n} \right|  }{2 } \left| z \right|^{n}\to \infty ,\quad \left( \left| z \right|\to \infty  \right)    
+    \]若 \(  P\left( z \right)   \)无零点,则 \(  \frac{1 }{P\left( z \right)  } \in \mathcal{H}\left( \mathbb{C}  \right)    \)是有界的整函数,故 \(  \frac{1}{P\left( z \right) }  \)   是常函数,从而 \(  P\left( z \right)   \)亦然,矛盾. 
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}{Morera}
+    设 \(  D\subseteq \mathbb{C}   \)是区域, \(  f \in C\left( D \right)   \).若对任意的 \(   \gamma   \)是 \(  D  \)上三角形的边界,都有   \[
+    \int_{ \gamma }f\left( z \right)\,\mathrm{d} z= 0 
+    \]则 \(  f \in \mathcal{H}\left( D \right)   \)   .
+\end{theorem}
+
+\begin{proof}
+    任取 \(  z_0 \in D  \),取凸开集 \(   \Omega \subseteq D  \),使得 \(  z_0 \in  \Omega   \).任取 \(  z \in  \Omega   \),令 \(  F\left( z \right)= \int_{\left[ z_0,z \right] }f\left( \zeta  \right)\,\mathrm{d} \zeta     \),用证明凸区域的Cauchy定理的方法,可以证明 \(  F  \)在 \(   \Omega   \)上解析,并且 \(  F^{\prime} \left( z \right)= f\left( z \right),\forall z \in  \Omega     \).因为 \(  F  \)有任意阶导数,我们得到 \(  f  \)亦然.从而在 \(   \Omega   \)上解析 .          
+
+    \hfill $\square$
+\end{proof}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

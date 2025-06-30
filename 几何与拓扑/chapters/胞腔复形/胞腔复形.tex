@@ -1,0 +1,173 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+    
+\chapter{胞腔复形}
+
+\section{胞腔复形的构造}
+
+\begin{definition}
+    设 \(  k\ge 1  \)是整数, 对于每个指标 \(  \alpha  \in  \Lambda   \),令 \(  D_{\alpha }^{k}  \)表示 \(  \mathbb{R} ^{k}  \)上的单位闭球 \(  \mathbb{D}^{k}  \)的一个复制.给定两个空间 \(  X  \)和 \(  \left( Y \right)   \),
+    我们称 \(  X  \)是 \(  Y  \)通过黏着 \(  k  \)  -胞腔得到的,若存在一族连续映射 \(  f_{\alpha }: \mathbb{S}^{k-1}\to Y  ,\alpha  \in  \Lambda \),使得 \(  X  \)是无交并空间 \[
+    Y \sqcup _{\alpha  \in  \Lambda }D_{\alpha }^{k}
+    \]在等价关系 \(  x\sim f_{\alpha }\left( x \right),x \in \partial D_{\alpha }^{k},\alpha  \in  \Lambda    \)的下的商空间.   
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item 映射 \(  \left\{ f_{\alpha } \right\}  \)被称为是胞腔的黏着映射；
+        \item 用 \(  \phi _{\alpha }  \)表示商映射在 胞腔 \(  D_{\alpha }^{k}  \)上的限制,则 \(  \phi _{\alpha }|\partial D_{\alpha }^{k}= f_{\alpha }  \),并且 \(  \phi _{\alpha }  \)在 \(  D_{\alpha }^{k}  \)的内部上是单射.   
+        因此 \(  \phi _{\alpha }  \)定义出 \(  D_{\alpha }^{k}  \)到其像集的同胚.称 \(  \phi _{\alpha }\left( \mathrm{int} \left( D_{\alpha }^{k} \right)  \right)   \)为 \(  X  \)上的开胞腔.     
+        \item 称 \(  \phi _{\alpha }  \)为胞腔的特征映射. 
+        \item \(  D_{\alpha }^{k}  \) 的连续像是 \(  X  \)的紧子空间.称它们为 \(  \left( X,Y \right)   \)  上的闭 \(  k  \)-胞腔,记作 \(  e_{\alpha }^{k}  \).  
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{lemma}
+    设 \(  X  \)是 \(  Y  \)通过黏合 \(  k  \)-胞腔得到的空间,则 
+    \begin{enumerate}
+        \item \(  X  \) 的一个子集 \(  A  \)是闭的,当且仅当 \(  A\cap Y  \)   在 \(  Y  \)中是闭的,并且 \(  A\cap e_{\alpha }^{k}  \)在 \(  e_{\alpha }^{k}  \)中是闭的, \(  \alpha \in  \Lambda   \)；
+        \item \(  Y  \)是 \(  X  \)的一个闭子集.      
+    \end{enumerate}
+       
+\end{lemma}
+
+\begin{remark}
+    \begin{enumerate}
+        \item  \(  e_{\alpha }^{k}  \)不需要是闭集,但若 \(  Y  \)是Hausdorff的, 则 \(  f_{\alpha }\left( \mathbb{S}^{k-1} \right)   \)是\(  Y  \)的闭子集,进而\(e_{\alpha }^{k}  \)在 \(  X  \)中是闭的. 
+        \item  \(  e_{\alpha }^{k}  \)不必同胚于 \(  \mathbb{D}^{k}  \),但 \(  e_{\alpha }^{k}  \)的内部同胚于 \(  \mathrm{int} \left( \mathbb{D}^{k} \right)   \).    
+    \end{enumerate}
+        
+\end{remark}
+
+\begin{proof}
+    设 \(  q  \)是商映射,则 
+    \[
+    q^{-1} \left( A \right)=  q^{-1} \left( A \right) \cap \left( Y \sqcup _{\alpha \in  \Lambda }D_{\alpha }^{k} \right)=    q^{-1} \left( A \right)\cap Y  \sqcup _{\alpha  \in  \Lambda }  q|_{D_{\alpha }^{k}}^{-1} \left( A \right)  =  q^{-1} \left( A \right)\cap Y  \sqcup _{\alpha \in  \Lambda } \phi _{\alpha }^{-1} \left( A \right) 
+    \]  \(  A\cap e_{\alpha }^{k}  \)在 \(  e_{\alpha }^{k}  \)中是闭的,当且仅当 \(  \phi _{\alpha }^{-1} \left( A \right)   \)是闭的, \(  A\cap Y  \)    在 \(  Y  \)中是闭的,当且仅当 \(  q|_{Y}^{-1} \left( A\cap Y \right)=  q^{-1} \left( A \right)\cap Y    \)  是闭的.由此可见1.成立.
+    
+    对于 2.,由于 \(  Y\cap Y=  Y  \)在 \(  Y  \)中是闭的, 且\(  \phi _{\alpha }^{-1} \left( Y \right)=  f_{\alpha }^{-1} \left( Y \right) =  \partial D_{\alpha }^{k}   \)是闭集, 由1.可知 \(  Y  \)是闭的.   
+    \hfill $\square$
+\end{proof}
+
+
+\begin{definition}{胞腔复形}
+    一个胞腔复形包含以下信息:
+    \begin{enumerate}
+        \item 一个离散集 \(  X^{0}  \) ,其中的点称为是 \(  0  \)-胞腔. 
+        \item 有限或无限个集合  \(  \left\{ X^{k} \right\}  \), \(  k=  1,\cdots,n   \)或 \(  k =  1,2,\cdots   \).  其中称 \(  X^{k}  \)为 \(  k \)-骨架.
+        \item 对于上面这些 \(  k  \), \(  X^{k}  \)通过 \(  X^{k-1}  \)黏着 \(  k  \)-胞腔得到.      
+    \end{enumerate}
+    
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 若 \(  X =  X^{n}  \)对于某个 \(  n  \)成立,则称 \(  X  \)是有限维的,最小的这样的 \(  n  \)称为是 \(  X  \)的维数,它也是 \(  X  \)的胞腔的最大维数.      
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{example}
+    一个一维胞腔复形 \(  X= X^{1}  \)在代数拓扑中被称为是一个\textbf{图}.它由一些顶点(0-胞腔)和一些附着的边(1-胞腔)组成. 
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{example}
+    球面 \(  S^{n}  \)有由两个胞腔\(  e^{0},e^{n}  \) 组成的胞腔复形结构, \(  n  \)胞腔通过常值映射 \(  S^{n-1}\to e^{0}  \)黏着.等价地说, \(  S^{n}  \)是 \(  D^{n}\setminus  \partial D^{n}  \)的商空间.    
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{example}[实射影空间]
+    \(  \mathbb{R} \mathrm{P}^{n}  \)被定义为 由 \(  \mathbb{R} ^{n+ 1}  \)上全体过 原点的直线构成的空间. \(  \mathbb{R} \mathrm{P}^{n}  \)可以被拓扑地描述为 \(  \mathbb{R} ^{n}\setminus \left\{ 0 \right\}  \)在等价关系 \(  v\sim  \lambda v,\quad  \lambda \neq 0  \)下的商空间. \(  \mathbb{R} \mathrm{P}^{n}  \)也可以视为 \(  n  \)-球面 \(  S^{n}  \)粘贴对径点得到的空间 \(  S^{n} / \left( v\sim -v \right)   \).又或者描述为半球面 \(  D^{n}  \)   通过粘贴 \(   \partial D^{n}  \)上的对径点得到的商空间.在最后一种描述下,注意到 \(   \partial D^{n}  \)粘贴对径点恰好得到 \(  \mathbb{R} \mathrm{P}^{n-1}  \),于是 \(  \mathbb{R} \mathrm{P}^{n}  \)可以通过 \(  \mathbb{R} \mathrm{P}^{n-1}  \)黏着一个 \(  n  \)-胞腔得到,  黏着映射为商投影 \(  S^{n}\to \mathbb{R} \mathrm{P}^{n-1}  \).
+    
+    通过对 \(  \mathbb{R} \mathrm{P}^{n}  \)的 \(  n  \)归纳,可以得到 \(  \mathbb{R} \mathrm{P}^{n}  \)拥有一个胞腔复形结构 \(  e^{0}\cup e^{1}\cup \cdots \cup e^{n}  \)    .它在每个维数 \(  i\le n  \)上恰有一个 \(  i  \)-胞腔.  
+\end{example}
+
+\hspace*{\fill} 
+
+
+\begin{example}[复射影空间]
+    \(  \mathbb{C}  \mathrm{P}^{n}  \)被定义为 \(  \mathbb{C} ^{n+ 1}  \)上全体过原点的直线构成的空间,即 \(  \mathbb{C} ^{n+ 1}  \)   的复-1维的子空间的全体. \(  \mathbb{C} \mathrm{P}^{n}  \)被拓扑地刻画为 \(  \mathbb{C} ^{n+ 1}\setminus \left\{ 0 \right\}  \)在等价关系 \(  v \sim  \lambda v, \lambda \in \mathbb{C} , \lambda \neq 0  \)下的商空间. 也可以刻画为单位球面 \(  S^{2n+ 1}\subseteq \mathbb{C} ^{n+ 1}  \)在等价关系 \(  v\sim  \lambda v, \lambda \in \mathbb{C} ,\left|  \lambda  \right|= 1   \)下的商空间. 由于对于最后一个复分量非零的 \(  v \in S^{2n+ 1}\subseteq \mathbb{C} ^{n+ 1}  \), 存在唯一的 \(   \lambda \in \mathbb{C} ,\left|  \lambda  \right|= 1   \),使得  \(  \left(  \lambda v \right)^{n}=  \lambda v^{n} \in \mathbb{R} _{> 0}   \), 且等价关系保持最后一个分量的非零性,故可以定义等价类在最后一个分量上是否非零.故\(  S^{2n+ 1}  \)上最后一个复分量非零的全体向量,唯一地对应到 \(  S^{2n+ 1}  \)上最后一个分量非零的等价类.     此外, \(  S^{2n+ 1}  \)上最后一个复分量非零的向量形如 \(  \left( w, \sqrt{1-\left| w \right|^{2} } \right) \in \mathbb{C} ^{n}\times \mathbb{C} ,  \left| w \right|\le 1 \),这些向量的全体由函数 \(  w\mapsto \sqrt{1-\left| w \right|^{2} }, \left| w \right|\le 1   \)的图像给出,它恰是边界为\(  S^{2n-1}\subseteq S^{2n+ 1}  \)的  上半球面 \(  D_{+ }^{2n}  \) .
+
+    综上, \(  S^{2n+ 1}  \)在等价关系 \(  v\sim  \lambda v  \)下 ,最后一个复分量非零的等价类与 \(  D_{+ }^{2n}  \)一一对应,  最后一个复分量等于零的等价类全体恰是 \(  \mathbb{C} \mathrm{P}^{n-1}  \).于是 \(  \mathbb{C} \mathrm{P}^{n}  \)  可以通过 \(  \mathbb{C} \mathrm{P}^{n-1}  \)黏着 \(  2n  \)  -胞腔 \(  D_{+ }^{2n}  \)得到.黏着映射为商映射 \(   \partial D_{+ }^{2n}= S^{2n-1}\to \mathbb{C} \mathrm{P}^{n-1}  \).
+    
+    通过对 \(  n  \)归纳,可以得到 \(  \mathbb{C} \mathrm{P}^{n}  \)由胞腔复形结构 \(  e^{0}\cup e^{2}\cup \cdots \cup e^{2n}  \),它在每个不大于 \(  2n  \)的偶维数上恰有一个胞腔.    
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{definition}{子复形}
+    设 \(  X  \)是胞腔复形.若闭子空间 \(  A\subseteq X  \)写作 \(  X  \)的一些胞腔的并,则称 \(  A  \)是 \(  X  \)的一个\textbf{子复形}.     
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 由于 \(  A  \)是闭的, \(  A  \)中每个胞腔的特征映射的像都含于 \(  A  \).特别地,黏着映射的像含于 \(  A  \).故 \(  A  \)本身也是一个胞腔复形.     
+        \item 一个由胞腔复形 \(  X  \)和子复形 \(  A  \)组成的对 \(  \left( X,A \right)   \)被称为是一个 \textbf{CW对}.   
+    \end{enumerate}
+    
+\end{remark}
+
+
+
+\begin{example}
+    存在自然的包含关系 \(  S^{0}\subseteq S^{1}\subseteq \cdots \subseteq S^{n}  \) ,但这些子球面不是\(  S^{n}  \)的子复形.不过可以选择 \(  S^{n}  \)的另一种胞腔复形结构,使得这鞋子球面称为 \(  S^{n}  \)的子复形.具体地,对于每个 \(  S^{k}  \),令 \(  S^{k}  \)是通过 \(  S^{k-1}  \)黏着两个 \(  k  \)-胞腔得到的,这两个胞腔分别为 \(  S^{k}-S^{k-1}  \)的上半部分和下半部分 .       
+
+    此时, 无穷维球面 \(  S^{\infty}= \bigcup  _{n}S^{n}  \)也是一个胞腔复形. 连接对径点的 2-1商映射 \(  S^{\infty}\to \mathbb{R} \mathrm{P}^{\infty}  \)将 \(  S^{\infty}  \)的两个 \(  n  \)-胞腔与 \(  \mathbb{R} \mathrm{P}^{\infty}  \)的唯一的 \(  n  \)-胞腔所等同.      
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{example}
+    胞腔的闭包不一定是子复形. 例如我们可以通过一个像为 \(  S^{1}  \)的非平凡弧的映射 \(  S^{1}\to S^{1}  \)将一个 \(  2  \)-胞腔黏着到 \(  S^{1}  \)上,此时由于 \(  2  \)-胞腔的闭包只包含了 \(  1  \)-胞腔的一个部分,故无法成为一个胞腔复形.       
+\end{example}
+
+\hspace*{\fill} 
+
+\section{空间上的算子}
+
+\begin{proposition}
+    若 \(  X  \)和 \(  Y  \)是胞腔复形,则 \(  X\times Y  \)有由全体积胞腔 \(  e_{\alpha }^{m}\times e_{\beta }^{n}  \)为胞腔的胞腔复形结构.其中 \(  e_{\alpha }^{m}  \)跑遍 \(  X  \)的胞腔, \(  e_{\beta }^{n}  \)跑遍 \(  Y  \)的胞腔.        
+\end{proposition}
+
+\begin{example}
+
+    例如由 \(  S_1^{1}= \left\{ a \right\}\cup e_1^{1} \)和 \(  S_2^{1}  = \left\{ b \right\}\cup e_2^{1}\)   构成的环面 \(  S^{1}\times S^{1}  \), 
+    它的0-胞腔是 \(  \left\{ \left( a,b \right)  \right\}  \),两个1-胞腔是 \(  \left\{ a \right\}\times e_2^{1}  \)和 \(  e_1^{1}\times \left\{ b \right\}  \),一个 2-胞腔是 \(  e_1^{1}\times e_2^{2}  \).    
+    
+\end{example}
+
+\hspace*{\fill} 
+
+
+\begin{proposition}
+    设 \(  \left( X,A \right)   \)是一个CW对,则商空间 \(  X/A  \)有继承自 \(  X  \)的自然的胞腔复形结构\footnote{就是把 \(  A  \)粘成一个点 }. \(  X /A  \)的胞腔为全体 \(  X - A  \)上的胞腔,和一个新的 \(  0  \)-胞腔 \footnote{因为 \(  X  \)上的胞腔要么完全落在 \(  A  \)上,要么最多只有边界粘在 \(  A  \)上.    }    ,为 \(  A  \)在 \(  X /A  \)中的像. 对于 \(  X -A  \)的一个胞腔 \(  e_{\alpha }^{n}  \),若它通过 \(   \varphi _{\alpha }:S^{n-1}\to X^{n-1}  \)     黏着,则它在 \(  X / A  \)上相应的黏着映射为复合映射 \(  S^{n-1}\to X^{n-1}\to X^{n-1} / A^{n-1}  \).  
+\end{proposition}
+
+\begin{example}
+    给定任意胞腔结构的 \(  S^{n-1}  \), 通过 \(  S^{n-1}  \)黏着一个 \(  n  \)-胞腔构造 \(  D^{n}  \), 则 \(  D^{n} / S^{n-1}  \)在自然胞腔结构下变成 \(  S^{n}  \).\footnote{\(  S^{n}  \)通过点 \(  [S^{n-1}]_{ / A}  \)黏着 \(  n  \)-胞腔得到.   }      
+\end{example}
+
+\hspace*{\fill} 
+
+
+\begin{definition}{楔和}
+    \begin{itemize}
+        \item 给定拓扑空间 \(  X,Y  \),以及各一点 \(  x_0\in X,y_0\in Y  \). 定义\textbf{楔和} \(  X\vee Y  \)   ,为通过将无交并 \(  X \coprod  Y  \)上的 \(  x_0,y_0  \)等同于一点,得到的商空间.  
+        \item 更一般地,可以对一族拓扑空间 \(  X_{\alpha }  \),定义楔和 \(  \bigvee _{\alpha }V_{\alpha } \)通过将 \(  x_{\alpha }\in X_{\alpha }  \)等同于一点.   
+    \end{itemize}
+    
+\end{definition}
+
+\begin{example}
+    任给胞腔复形 \(  X  \),商空间 \(  X^{n} / X^{n-1}  \)就是 \(  n  \)-球面 的楔和 \(  \bigvee _{\alpha }S_{\alpha }^{n}  \),其中每个 \(  X  \) 的 \(  n  \)-胞腔对应于一个 \(  n  \)-球面.    \footnote{由于每个 \(  n  \)-胞腔都将边界粘在 \(  \left( n-1 \right)   \)-骨架上, 并且内部两两无交,因此商去 \(  X^{n-1}  \)后,\(  n  \)-胞腔的边界都粘在同一个点上.   }   
+\end{example}
+
+\hspace*{\fill} 
+
+
+
+\end{document}

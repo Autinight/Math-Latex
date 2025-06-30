@@ -1,0 +1,493 @@
+\documentclass[../../PDE.tex]{subfiles}
+
+\begin{document}
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+
+\chapter{绪论}
+
+成绩构成：平时加期中50,期末50,往年一般四六开.
+
+
+
+
+
+\noindent 主要教学内容：
+
+主要讲三类方程,椭圆、抛物、双曲.
+
+\begin{enumerate}
+    \item 二阶PDE分类与定解问题
+    \item 行波法,分离变量法,Fuurier变换法,Green函数法,能量不等式,极值原理
+    \item 三类典型二阶方程定解问题及解的存在性、唯一性、稳定性,包括：波动方程、热传导方程和位势方程
+\end{enumerate}
+
+
+
+将非线性问题线性化是常用的技法,
+回忆ODE的解法
+,考虑方程 \[
+\begin{cases} \frac{\,\mathrm{d} y   }{\,\mathrm{d} x } =  f\left( x,y \right)\\ 
+ y =   \varphi \left( x_0 \right)    \end{cases} 
+\]
+转换成积分方程 \[
+ \varphi \left( x \right) =  y_0+ \int_{x_0}^{x}f\left( s, \varphi \left( s \right)  \right)\,\mathrm{d} s  
+\]转换成线性方程 \[
+ \varphi _{n+ 1 }\left( x \right)= y_0+ \int_{x_0}^{x} f\left( s, \varphi _{n}\left( s \right)  \right)\,\mathrm{d} s 
+\]
+
+\section{分部积分}
+
+\begin{theorem}
+    设 \(  f,g  \)在 \(  \left[ a,b \right]   \)中可到,且导数可积,则 \[
+    \int_{a}^{b}f\left( x \right)g^{\prime} \left( x \right)\,\mathrm{d} x=  f\left( x \right)g\left( x \right)|_{a}^{b} - \int_{a}^{b}f^{\prime} \left( x \right)g\left( x \right)      \,\mathrm{d} x
+    \]  
+\end{theorem}
+
+\begin{theorem}
+    设 \(   \Omega   \)为平面有界区域,其边界由有限条 \(  C^{1}  \)曲线组成,边界的定向为诱导定向, \(  \vec{n} =  \left( \cos \alpha ,\cos \beta  \right)   \)是单位外法向量,如果 \(  P,Q  \)为 \(   \Omega   \)上的 \(  C^{1}  \)函数,则 \[
+   \begin{aligned}
+    \int_{ \Omega }\left( \frac{\partial Q}{\partial x} -\frac{\partial P}{\partial y} \right)\,\mathrm{d} x \,\mathrm{d} y &=  \int_{\partial  \Omega }P \,\mathrm{d} x +  Q \,\mathrm{d} y =  \int_{\partial  \Omega } \left( P\cos \left( t,x \right) + Q\cos \left( t,y \right) \right)\,\mathrm{d} s \\ 
+     & =  \int_{\partial D} \left(  Q\cos \left( n,x \right)-P\cos \left( n,y \right)   \right)  \,\mathrm{d} s=  \int_{\partial D} \left( Q,-P \right)\cdot \vec{n} \,\mathrm{d} s 
+   \end{aligned} 
+    \]  其中的 \(  t  \) 代表沿边界的单位切向向量, \(  n  \)表示沿边界的单位外法向量 .    
+\end{theorem}
+
+\begin{note}
+
+    把一维牛顿-莱布尼兹公式 \[
+    \int_{a}^{b} f^{\prime} \left( x \right)\,\mathrm{d} x =  f\left( b \right)-f\left( a \right)   
+    \]中的符号理解成向外的方向,它与公式 \[
+    \int_{ \Omega }\left( \frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y} \right)  =  \int_{\partial D} \left( Q,-P \right)\cdot \vec{n}  \,\mathrm{d} s
+    \]
+在形式上是一致的.
+\end{note}
+
+\begin{proof}
+
+    第三个等号是因为
+    对于单位外法向量 \(  n  \),
+    \[
+    \cos \left( t,y \right) =  \cos \left( n,x \right)  
+    \]并且 \[
+    \cos \left( t,x \right) =  -\cos \left( n,y \right)  
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}
+     \[
+     \int_{D} \left( \frac{\partial P}{\partial x}+ \frac{\partial Q}{\partial y}+  \frac{\partial R}{\partial z} \right) \,\mathrm{d} x \,\mathrm{d} y \,\mathrm{d} z =  \int_{\partial D} P \,\mathrm{d} y \,\mathrm{d} z +  Q \,\mathrm{d} z \,\mathrm{d}  x +  R \,\mathrm{d} x \,\mathrm{d} y =  \int_{D} \left( P,Q,R \right)\cdot \vec{n} \,\mathrm{d} S  
+     \] \[
+     \int_{D} \mathrm{div} X \,\mathrm{d} x \,\mathrm{d} y \,\mathrm{d} z =  \int_{\partial D} X \cdot \vec{n} \,\mathrm{d} S
+     \]其中 \[
+     \mathrm{div}X =  \frac{\partial P}{\partial x}+  \frac{\partial Q}{\partial y}+  \frac{\partial R}{\partial z}
+     \]
+\end{theorem}
+
+
+\hspace*{\fill}
+
+
+以上这些公式无非一句话： 把区域上的积分写作边界散度.
+
+\begin{theorem}
+    \[
+    \int_{D} u \mathrm{div}X \,\mathrm{d} x\,\mathrm{d} y\,\mathrm{d} z =  \int_{D} \left[ \mathrm{div}\left( uX \right)-X\cdot  \nabla u  \right]\,\mathrm{d} x\,\mathrm{d} y\,\mathrm{d} z =  \int_{\partial D} uX\cdot \vec{n} \,\mathrm{d} S-\int_{D} X \cdot  \nabla u\,\mathrm{d} x\,\mathrm{d} y\,\mathrm{d} z 
+    \]
+\end{theorem}
+
+\begin{note}
+
+    它在形式上与分部积分公式 \[
+    \int_{a}^{b} f^{\prime} \left( x \right)g\left( x \right)\,\mathrm{d} x = \left. f\left( x \right)g\left( x \right)   \right|_{a}^{b} - \int_{a}^{b} f\left( x \right)g^{\prime} \left( x \right)\,\mathrm{d} x    
+    \]
+
+\end{note}
+
+\section{算子运算}
+
+\begin{definition}{梯度算子}
+    设 \(  f=  f\left( x \right),x =  \left(  x_1,\cdots,x_n  \right)^{\mathsf{T}}    \in \mathbb{R} ^{n}\) , \(  f= f\left( x \right)   \)的梯度定义为 \[
+        \nabla f =  \left( \frac{\partial f}{\partial x^{1}},\cdots \frac{\partial f}{\partial x^{n}} \right) 
+       \]  
+\end{definition}
+
+\begin{definition}{散度算子}
+    设 \(  f=  f\left( x \right)= \left( f_1\left( x \right),\cdots ,f_{n}\left( x \right)   \right): \mathbb{R} ^{n}\to \mathbb{R} ^{n},x \in \mathbb{R} ^{n}    \) , \(  f= f\left( x \right)   \)的散度定义为 \[
+    \mathrm{div}f: =   \nabla \cdot f =  \frac{\partial f_1 }{\partial x_1}+ \cdots + \frac{\partial f_{n}}{\partial x_{n}}
+    \] 
+\end{definition}
+
+\begin{definition}{旋度算子}
+    设 \(  f =  f\left( x \right) =  \left( f_1\left( x \right),f_2\left( x \right),f_3\left( x \right)    \right): \mathbb{R} ^{3}\to \mathbb{R} ^{3} ,x =  \left( x_1,x_2,x_3 \right)^{\mathsf{T}} \in \mathbb{R} ^{3}     \) 
+    \(  f=  f\left( x \right)   \)的旋度定义为 \[
+    \mathrm{rot} =  \mathrm{curl}\;f : =   \nabla \times f =  \left( \partial_{2} f_{3} - \partial _{3}f_2,\partial _{3}f_1-\partial _{1}f_3,\partial _{1}f_2-\partial _{2}f_1 \right) \\ 
+     =  \begin{pmatrix} 
+         i&j&k\\ 
+          \partial _1&\partial _2&\partial _{3}\\ 
+           f_1&f_2&f_3 
+     \end{pmatrix} 
+    \] 
+    
+
+    特别地,对于 \(  f =  f\left( x \right)= \left( f_1\left( x \right),f_2\left( x \right),f_3\left( x \right) \right)  : \mathbb{R} ^{2}\to \mathbb{R} ^{2},x =  \left( x_1,x_2 \right)^{\mathsf{T}}\in \mathbb{R} ^{2}     \) , \(  f =  f\left( x \right)   \)的旋度（涡度）定义为： \[
+     \nabla ^{\mathsf{T}}\cdot f =  \partial _{1}f_2-\partial _{2}f_1, \nabla ^{\perp }: =  \left( -\partial _{2},\partial _{1} \right) 
+    \] 
+\end{definition}
+
+\begin{proposition}
+    设 \(  f= f\left( x \right):\mathbb{R} ^{3}\to \mathbb{R} ,x =  \left( x_1,x_2,x_3 \right)^{\mathsf{T}}\in \mathbb{R} ^{3}    \) ,则 \[
+    \operatorname{curl}\, \nabla f =   \nabla \times \left( \partial _{1}f,\partial _{2}f,\partial _{3}f \right)= 0 
+    \] \[
+    \operatorname{div}\, \nabla f =   \nabla \cdot \left( \partial _{1}f,\partial _{2}f,\partial _{3}f \right): =  \partial _{1}^{2}f+ \partial _{2}^{2}f+ \partial _{3}^{2}f=  \Delta f  (\text{拉普拉斯算子} )
+    \]   \[
+    \begin{aligned}
+        \operatorname{curl}\,\left( \operatorname{curl}\,f \right) & =   \nabla \times \left( \partial _{2}f_3-\partial _{3}f_2, \partial _{3}f_1-\partial _{1}f_3,\partial _{1}f_2-\partial _{2}f_1 \right)  \\ 
+         & =  ( \partial _{2}\left( \partial _{1}f_2-\partial _{2}f_1 \right)-\partial _{3} \left( \partial _{3}f_1-\partial _{1}f_3 \right), \partial _{3}\left( \partial _{2}f_3-\partial _{3}f_2 \right)   -\partial _{1}\left( \partial _{1}f_2-\partial _{2}f_1 \right) ,\\ 
+          & \partial _{1}\left( \partial _{3}f_1-\partial _{1}f_3 \right)-\partial _{2}\left( \partial _{2}f_3-\partial _{3}f_2 \right)) =  - \nabla f+  \nabla \left( \operatorname{div}\,f \right)   
+    \end{aligned} 
+    \]
+\end{proposition}
+
+\section{守恒律与PDE}
+
+物理模型：一根长为 \(  l  \)的柔软、有弹性、不考虑重量的均匀细弦,拉紧之后让其离开平衡位置,在垂直于弦的外力作用下做微小横振动,求在不同时刻弦的形状.
+
+\begin{itemize}
+    \item 细：弦的长度远大于直径,在数学上可以当做一根线段处理；
+\end{itemize}
+
+
+\subsection{弦的微小横振动方程}
+
+\begin{enumerate}
+    \item 建立坐标系：取弦的平衡位置为 \(  x  \)轴,在弦运动的平面内,垂直于弦线的平衡位置且通过弦线的一个端点的直线为 \(  u  \)轴.于是,在任意时刻 \(  t  \),弦线上个点的位移为 \(  u =  u\left( x,t \right)   \).
+    \item 动量增量\begin{itemize}
+        \item 在弦上任取以线段 \(  \left( x,x+  \Delta x \right)   \),弧长为 \(   \Delta s =  \int_{x}^{x+   \Delta  x} \sqrt{1+  \left( \frac{\partial u}{\partial x} \right) ^{2}}  \,\mathrm{d} x\), \(  \left( t \text{时刻}\right)   \),
+        由于作微小横振动,因此 \(  \left| \frac{\partial u}{\partial x} \right|\ll 1   \).于是 \(  \left| u_{x}  \right|   \sim 0\), \(   \Delta   s\sim  \Delta   x  \)      
+        \item 在任意时刻 \(  t  \),线段 \(  \left( a,b \right)   \)的动量为： \[
+        \lim_{ \Delta  \to 0} \sum \rho  \Delta s\frac{\partial u}{\partial t} =  \lim_{ \Delta  \to 0} \sum \rho  \Delta x\frac{\partial u}{\partial t} =  \int_{a}^{b}\rho \frac{\partial u}{\partial t}\,\mathrm{d} x
+        \]因此, \(  \left( t_1,t_2 \right)   \)内动量的变化为： \[
+        \int_{a}^{b}\left. \left( \rho \frac{\partial u}{\partial t} \right)  \right|_{t= t_2}\,\mathrm{d} x- \int_{a}^{b}\left. \rho \frac{\partial u  }{\partial t} \right|_{ t= t_1}\,\mathrm{d} x
+        \]   
+    \end{itemize}
+        
+    \item 垂直于弦线的外力产生的冲量
+    \begin{itemize}
+        \item 外加强迫力：设 \(  f_0  \)为作用在弦线上且垂直于平衡位置的强迫外力密度（单位：\(  N/m  \)）,则强迫外力在时段 \(  \left[ t_1,t_2 \right]   \)内产生的冲量为 \[
+        \lim_{ \Delta  \to 0} \sum f_0 \Delta s \Delta t= \lim_{ \Delta  \to 0} \sum f_0 \Delta x \Delta t = \int_{t_1}^{t_2}\,\mathrm{d} t\int_{b}^{a}f_0\,\mathrm{d} x\,\mathrm{d} t
+        \] 
+      
+    \end{itemize}
+    
+\item 弦张力的冲量
+\begin{enumerate}
+     \item 竖直方向上\[
+        \begin{aligned}
+        T_{a}\cdot i_{u}& =- \left| T_{a} \right|\cos \left<T_{a},i_{u} \right> =  -\left| T_{a} \right|\sin  \alpha \\ 
+           T _{b}\cdot i_{u}&= -\left| T_{b}\right| \cos \left<T_{b},i_{u} \right>= \left| T_{b} \right|\sin  \beta  , \quad  \alpha , \beta \ll 1
+        \end{aligned}
+        \]水平方向上 \[
+        \left| T_{a} \right|\cos \alpha =  \left| T_{b} \right|\cos \beta \implies \left| T_{a} \right|   = \left| T_{b} \right| 
+        \]由于 \(  \left| \alpha  \right|,\left|  \beta  \right|\ll 1    \), \(  \sin \alpha \sim \tan \alpha ,\sin \beta \sim \tan \beta   \),于是 \[
+        \left| T_{a} \right|\sin  \alpha \sim \left| T \right|\tan  \alpha = : T_0\tan \alpha  = \left. T_0 \frac{\partial u}{\partial x}    \right|_{x =  a} 
+        \]  \[
+        \left| T_{b} \right|\sin \beta \sim \left| T \right|\tan \beta = : T_0\tan \beta   = \left. T_0\frac{\partial u}{\partial x} \right|_{x= b}
+        \]因此张力垂直于弦线的分量在 \(  [t_1,t_2]  \)内产生的冲量就是 \[
+        \begin{aligned}
+    \int_{t_1}^{t_2} \left. T_0 \frac{\partial u}{\partial x} \right|_{x= b}\,\mathrm{d} t- \int_{t_1}^{t_2} \left. T_0 \frac{\partial u}{\partial x} \right|_{x= a}\,\mathrm{d} t 
+        \end{aligned}
+        \] 
+\end{enumerate}
+
+\item 得到由动量守恒定律给出的弦线作微小横振动所满足的方程 \[
+\begin{aligned}
+I := & \int_{a}^{b}\left[ \left. \rho \frac{\partial u}{\partial t}     \right|_{t= t_2} - \left. \rho \frac{\partial u}{\partial t} \right|_{t= t_1} \right]\,\mathrm{d} x\\ 
+ = &  \int_{t_1}^{t_2}\left[ \left. T_0\frac{\partial u}{\partial x} \right|_{x= b} -\left. T_0\frac{\partial u}{\partial x} \right|_{x= a} \right]\,\mathrm{d} t+  \int_{t_1}^{t_2} \int_{a}^{b}f_0\,\mathrm{d} x\,\mathrm{d} t = :J_1+ J_2
+\end{aligned}
+\]由牛顿莱布尼兹公式 \[
+\begin{aligned}
+I& =  \int_{a}^{b}\rho \left( \left. \frac{\partial u}{\partial t} \right|_{t= t_2}- \left. \frac{\partial u}{\partial t} \right|_{t= t_1} \right) \,\mathrm{d} x\\ 
+ & =  \rho \int_{a}^{b}\,\mathrm{d} x \int_{t_1}^{t_2}\frac{\partial }{\partial t}\left( \frac{\partial u}{\partial t} \right)\,\mathrm{d} t\\ 
+  & =  \rho \int_{t_1}^{t_2}\int_{a}^{b} \frac{\partial ^{2}u}{\partial t^{2}}\,\mathrm{d} x\,\mathrm{d} t  
+\end{aligned}
+\] \[
+J_1=  T_0\int_{t_1}^{t_2}\,\mathrm{d} t\int_{a}^{b} \frac{\partial }{\partial x}\left( \frac{\partial u}{\partial x} \right)\,\mathrm{d} x=  T_0\int_{t_1}^{t_2}\int_{a}^{b}\frac{\partial ^{2}u}{\partial x^{2}}\,\mathrm{d} x\,\mathrm{d} t 
+\]于是 \[
+\rho  \frac{\partial ^{2}u}{\partial t^{2}}= T_0 \frac{\partial ^{2}u}{\partial x^{2}} + f
+\]为弦振动方程,或者写作 \[
+\frac{\partial ^{2}u}{\partial t^{2}} =  \frac{T_0 }{\rho  } \frac{\partial ^{2}u}{\partial x^{2}}+  \frac{f }{\rho  }= : a^{2}\frac{\partial ^{2}u}{\partial x^{2}}+ F  
+\]移项得到 \[
+\frac{\partial ^{2}u}{\partial t^{2}} -a^{2} \frac{\partial ^{2}u}{\partial x^{2}}= F
+\]称为是一维的波动方程.
+
+\end{enumerate}
+
+\subsection{薄膜的微小横振动}
+
+\begin{itemize}
+    \item 物理问题：考虑一个均匀的膜,张紧在平面的某一曲线上,受到与膜所在平面垂直的外力作用,作微小的横振动,假设运动方向与平面垂直,求
+    膜上各个点的位移随时间变化的规律.
+    \item 分析：膜受到外力作用时,由于膜的张力作用,膜产生往返上下运动,在运动过程中膜上各点的位移、加速度、张力都在不断的变化,但遵循物理规律.
+\end{itemize}
+
+
+\(  \,\mathrm{d} S =  \sqrt{1+ u_{x}^{2}+ u_{y}^{2} }\,\mathrm{d}  \sigma  \) 
+
+\begin{enumerate}
+    \item 一小块曲面的面积为 \[
+        \Delta S  =  \iint_{ \delta   }\sqrt{1+ u_{x}^{2}+ u_{y}^{2}}\,\mathrm{d} x\,\mathrm{d} y
+       \]薄膜基本是平的,因此 \(  \left| u_{x} \right| ,\left| u_{y} \right|\ll 1    \),从而 \[
+           \Delta S \sim  \iint_{  \delta   }\,\mathrm{d} x\,\mathrm{d} y =     \Delta  \sigma 
+       \] 不随时间变化.
+       \item 如果假设薄膜的面密度 \(  \rho   \), 取一小段 \(  \rho  \Delta S  \) ,竖直加速度为 \(  \rho  \Delta S \frac{\partial ^{2}u}{\partial t^{2}}  \),求和取极限 \[
+        \lim_{ \Delta  \to 0} \sum  \rho   \Delta S \frac{\partial ^{2}u}{\partial t^{2}} =  \lim_{ \Delta  \to 0} \sum \rho  \Delta  \sigma \frac{\partial ^{2}u}{\partial t^{2}} =  \iint \rho \frac{\partial ^{2}u}{\partial t^{2}}\,\mathrm{d} x\,\mathrm{d} y
+        \]
+        \item 外力：设外力密度为 \(  F  = \left( x,y,t \right) \), 取一小块求和取极限,为 \[
+            \lim_{ \Delta  \to 0} \sum F  \Delta S =  \lim_{ \Delta  \to 0} \sum F \Delta  \sigma = \iint F\left( x,y,t \right)\,\mathrm{d} x\,\mathrm{d} y  
+            \]
+
+        \item 张力：取边界上的一小段,设 \(  \nu   \)为法向量,\(  \tau   \)是切向向量
+            由于膜不能抵抗弯曲和切边的平面薄片,故薄膜的张力垂直于切向和法向,则 \[
+            T \text{的方向与}   \tau  \times  \nu   \text{的方向一致} 
+            \]薄膜的曲面方程是 \(  u =  u\left( x,y,t \right)   \),它的单位法向为 \(  \nu = \frac{ \left( -u_{x},-u_{y},1 \right) }{ \sqrt{1+ u_{x}^{2}+ u_{y}^{2}} }  \sim  \left( -u_{x},-u_{y},1 \right)   \)  .
+            考虑边界的参数方程 \[
+            \begin{cases} x =  x\left( s \right)\\ 
+             y =  y\left( s \right)\\ 
+              u= u\left( x\left( s \right),y\left( s \right)   \right)    \end{cases} 
+            \]可得单位切向为 \[
+                \tau  =  \frac{\left( x^{\prime} ,y^{\prime} ,u_{x} x^{\prime} + u_{y}y^{\prime}  \right)  }{\sqrt{\left( x^{\prime}  \right)^{2}+ \left( y^{\prime}  \right)^{2}+  \left( u_{x}x^{\prime} + u_{y}y^{\prime}  \right)^{2}   } } 
+            \]其中 \[
+            \left( u_{x}x^{\prime} + u_{y}y^{\prime}  \right)^{2}\ll 1 
+            \]于是 \[
+            \tau \sim  \frac{\left( x^{\prime} \left( s \right),y^{\prime} \left( s \right)   ,u^{\prime} \left( s \right) \right)  }{\sqrt{\left( x^{\prime} \left( s \right)  \right)^{2}+ \left( y^{\prime} \left( s \right)  \right)^{2}  } } 
+            \]计算 \[
+            \begin{aligned}
+                \tau  \times  \nu & = \left( \frac{x^{\prime}  }{ \sqrt{\left( x^{\prime}  \right)^{2}+  \left( y^{\prime}  \right)^{2}  }} ,\frac{y^{\prime}  }{\sqrt{\left( x^{\prime}  \right)^{2}+ \left( y^{\prime}  \right)^{2}  } },  \frac{u^{\prime}  }{\sqrt{\left( x^{\prime}  \right)^{2}+ \left( y^{\prime}  \right)^{2}  } }   \right) \times  \left( -u_{x},u_{y},1 \right)  \\ 
+             &  \sim  \left( \frac{y^{\prime}  }{\sqrt{\left( x^{\prime}  \right)^{2}+ \left( y^{\prime}  \right)^{2}  } }, - \frac{x^{\prime}  }{\sqrt{\left( x^{\prime}  \right)^{2}+ \left( y^{\prime}  \right)^{2}  } } , \frac{ u_{x}y^{\prime} -u _{y}x^{\prime}  }{ \sqrt{\left( x^{\prime}  \right)^{2}+ \left( y^{\prime}  \right)^{2}  }}    \right) 
+            \end{aligned}
+            \]取薄膜上的一小块,考虑它在 \(  xy  \)平面上的投影,不妨设它为一块矩形,横纵坐标端点为 \(  x_1,x_2,y_1,y_2  \). 薄膜只有上下振动,沿 \(  x,y  \)方向力的分量均为0.张力为 \[
+            T =  \left| T \right| \left( \tau  \times \nu  \right)  
+            \]   分量为 \[
+            T_{y} =  0,\quad  T_{x}= 0
+            \]将 \(  T  \)做分解,作用在投影的平行于 \(  x  \)的两条边上,得到 \[
+            T_{y} =  \int_{x}^{x+    \Delta  x}  \left| T\left( x,y_1 \right)  \right|\,\mathrm{d} x =  \int_{x_1}^{x+   \Delta  x} \left| T\left( x,y_1+  \delta y \right)  \right|\,\mathrm{d} x  
+            \] 中值定理并消去 \(   \Delta x  \),  得到 \[
+            \left| T\left( \xi,y_1 \right)  \right|  =    \left|  T\left( \eta ,y+  \Delta y \right)  \right| 
+            \]得到 \(  \left| T\left( x_1,y_1 \right)  \right|=  \left| T\left( x_1,y_1+  \Delta y \right)  \right|    \)
+            由于 \(  y  \)是任取的,因此 \(  T  \)的大小与 \(  y \)无关.类似地, \(  T  \)与 \(  x \)无关.  
+            
+            综上 , \(  T  \)与 \(  x,y,t  \)无关.
+            
+            沿竖直方向, \[
+            T =  \int _{ \Gamma }T_0 \frac{u_{x}y^{\prime} -u_{x}x^{\prime}  }{\sqrt{\left( x^{\prime}  \right)^{2}+ \left( y^{\prime}  \right)^{2}  } }\,\mathrm{d} s 
+            \]其中 \(   \Gamma   \)是薄膜在xy平面上的投影.以上写作 \[
+           \begin{aligned}
+            T& =  \int_{ \Gamma } T_0 \left( u_{x},u_{y} \right) \cdot \left(  \frac{y^{\prime}  }{\sqrt{\left( x^{\prime}  \right)^{2}+ \left( y^{\prime}  \right)^{2}  } }, \frac{-x^{\prime}  }{ \sqrt{\left( x^{\prime}  \right)^{2}+ \left( y^{\prime}  \right)^{2}  }}   \right)  \,\mathrm{d} s\\ 
+             &  = \int_{ \Gamma } T_0 \left( u_{x},u_{y} \right)\cdot n \,\mathrm{d} s = T_0 \int_{ \Gamma }\frac{\partial u}{\partial n}\,\mathrm{d} s 
+              =  T_0 \iint_{ \Omega }  \Delta u\,\mathrm{d} x \,\mathrm{d} y 
+           \end{aligned}
+            \] 
+\end{enumerate}
+
+
+
+\subsection{流体力学基本方程组(乱写的)}
+
+设流体运动区域为 \(   \Omega   \),在\(   \Omega   \)内截取一个区域 \(  D  \),考虑时段 \(  \left[ t_1,t_2 \right]   \),
+
+\begin{itemize}
+    \item 质量守恒与连续性方程： \[
+    t_2\text{时刻质量}- t_1\text{时刻质量} =  \left[ t_1,t_2 \right]\text{时段通过边界的流入质量} + \left[ t_1,t_2 \right]\text{时段源生成的质量}  
+    \]
+    \item 动量守恒与运动方程；
+    \[
+   \begin{aligned}
+    \left[ t_1,t_2 \right] \text{时段动量增量} &=  \left[ t_2,t_3 \right]\text{时段通过边界的流入质量产生的动量}  \\ 
+     & +  \left[ t_1,t_2 \right]\text{时段外力与法向应力产生的冲量K} 
+   \end{aligned}
+    \]外力（密度） \(  f  \)+周围流体对它产生的法向应力  \(  p_{n} = -pn  \),其中 \(  p  \)为压强,于是由“动量=质量\(  \times   \)速度”,可得 \[
+    \begin{aligned}
+       &  \iiint_{D} \rho \vec{V} |_{t= t_2} \,\mathrm{d} x\,\mathrm{d} y\,\mathrm{d} z- \iiint_{D}\rho \vec{V} |_{t=t_1}\,\mathrm{d} x\,\mathrm{d} y\,\mathrm{d} z\\ 
+         & =   \int_{t_1}^{t_2}\,\mathrm{d} t  \iint_{\partial D}\vec{V} \rho \vec{V} \cdot n\,\mathrm{d} s+ \int_{t_1}^{t_2}\,\mathrm{d} t \iiint_{D}f \,\mathrm{d} x\,\mathrm{d} y\,\mathrm{d} z+ \int_{t_1}^{t_2}\,\mathrm{d} t \iint_{\partial D}\left( -pn \right)\,\mathrm{d} s 
+    \end{aligned}
+    \]    
+
+    \begin{proof}
+        \[
+        \begin{aligned}
+           & \int_{t_1}^{t_2}\,\mathrm{d} t \iiint _{n} \frac{\partial }{\partial t} \left( \rho \vec{V}  \right)\,\mathrm{d} x\,\mathrm{d} y\,\mathrm{d} z\\ 
+            & =   -\int_{t_1}^{t_2}\,\mathrm{d} t \iint_{\partial n} \vec{V} \left( \rho \vec{V} \cdot \vec{n}  \right) \,\mathrm{d} S+ \int_{t_1}^{t_2}\,\mathrm{d} t \iiint_{ \Omega }f\,\mathrm{d} x\,\mathrm{d} y\,\mathrm{d} z-\int_{t_1}^{t_2}\,\mathrm{d} t \iiint_{}  \nabla P\,\mathrm{d} x\,\mathrm{d} y\,\mathrm{d} z
+        \end{aligned} 
+        \]
+
+        \(  \vec{V} = \left( u,v,w \right)   \)  \[
+    \begin{aligned}
+       I_1=  -\int_{t_1}^{t_2}\,\mathrm{d} t \iint_{\partial n} u\left( \rho \vec{V} \cdot \vec{n}  \right)\,\mathrm{d} S & =  
+        -\int_{t_1}^{t_2}\,\mathrm{d} t \iint_{\partial n} \rho u \vec{V}  \cdot \vec{n}  \,\mathrm{d} S\\ 
+         & =  -\int_{t_1}^{t_2}\,\mathrm{d} t \iiint_{n} \operatorname{div}\,\left( \rho  u \vec{v}  \right)\,\mathrm{d} x\,\mathrm{d} y\,\mathrm{d} z\\ 
+          & =  -\int_{t_1}^{t_2}\,\mathrm{d} t \iiint_{n}\left(  u  \operatorname{div}\,\left( \rho  \vec{V}  \right)+  \rho \vec{V} \cdot  \nabla u \right)\,\mathrm{d} x\,\mathrm{d} y\,\mathrm{d} z   
+    \end{aligned}
+        \]
+    
+        \[
+        \begin{aligned}
+        I_2& =  -\int_{t_1}^{t_2}\,\mathrm{d} t \iint_{\partial n}v\left( \rho \vec{V} \cdot \vec{n}  \right)\,\mathrm{d} S\\ 
+         & =  -\int_{t_1}^{t_2}\,\mathrm{d} t \iiint_{n}\left( v \operatorname{div}\,\left( \rho \vec{V}  \right)+  \rho  \vec{V}  \cdot  \nabla v  \right)   \,\mathrm{d} x\,\mathrm{d} y\,\mathrm{d} z
+        \end{aligned}
+        \] \[
+        \begin{aligned}
+        I_3& =  -\int_{t_1}^{t_2}\,\mathrm{d} t \iint_{\partial n} w\left( \rho  \vec{V} \cdot \vec{n}  \right)\,\mathrm{d} S\\ 
+         & =  -\int_{t_1}  ^{t_2}\,\mathrm{d} t \iiint_{n} \left( w \operatorname{div}\,\left( \rho  \vec{V}  \right)+  \rho \vec{V} \cdot  \nabla w  \right)\,\mathrm{d} x\,\mathrm{d} y\,\mathrm{d} z 
+        \end{aligned}
+        \] \[
+        I =  -\int_{t_1}^{t_2}\,\mathrm{d} t \iiint_{n} \left( \vec{V}  \operatorname{div}\,\left( \rho \vec{V}  \right)+  \rho \left( \vec{V}  \cdot  \nabla  \right)   \right)\vec{V} \,\mathrm{d} x\,\mathrm{d} y\,\mathrm{d} z 
+        \]
+        \hfill $\square$
+    \end{proof}
+
+    \item \[
+    \frac{\partial V}{\partial t} \left( \rho \vec{V}  \right)+  \operatorname{div}\,\left( \rho  \vec{V} \otimes \vec{V}  \right) +   \nabla P= f  
+    \]为动量守恒方程
+     \[
+     \frac{\partial }{\partial t}\left( \rho \vec{V}  \right)+ \vec{V}  \operatorname{div}\,\left( \rho \vec{V}  \right)+ \rho \left( \vec{V} \cdot  \nabla  \right)\vec{V} = f   
+     \]展开第一项,为 \[
+     \rho \frac{\partial \vec{V} }{\partial t} +  \frac{\partial P}{\partial t}\vec{V} +  \vec{V} \operatorname{div}\,\left( \rho \vec{V}  \right) + \rho \left( \vec{V} \cdot  \nabla  \right)\vec{V}  = f
+     \] \[
+     \rho \frac{\partial \vec{V} }{\partial t} + \rho \left( \vec{V} \cdot  \nabla  \right)\vec{V} +   \nabla P= f 
+     \]如果 \(  \rho   \)是常数, \[
+     \frac{\partial \vec{V} }{\partial t} +  \vec{V}  \nabla \vec{V } +   \nabla  \frac{P}{\rho } =  \frac{f}{\rho } ,\quad  \operatorname{div}\,V= 0
+     \] 
+\end{itemize}
+
+\begin{definition}
+    设\(  A =  \left( a_1,a_2,a_3 \right)   \), \(  B =  \left( b_1,b_2,b_3 \right)   \),则 \[
+    A\otimes B :=  \left( a_{i}b_{j} \right)_{3\times 3} 
+    \]  \[
+    [\operatorname{div}\,\left( A\otimes B \right) ]_{j} =  \sum _{i}\partial _{}\left( a_{i}b_{j} \right) 
+    \] 
+\end{definition}
+
+
+\section{变分}
+
+\begin{definition}
+    设 \(   \Omega   \)是 \(  \mathbb{R} ^{n}  \)上的区域,定义在 \(  B\left( 0,1 \right)\subseteq  \Omega    \)上无穷次连续可微,且在 \(   \Omega   \)的边界附近为零的函数的全体,记作 \(  C_{0}^{\infty}\left(  \Omega  \right)   \).     
+\end{definition}
+
+\begin{example}
+     \[
+     \rho \left( x \right)=  \begin{cases}  ke^{ \frac{1 }{1- \left| x \right|^{2}  } },& \left| x \right|<1\\ 
+       0,& \left| x \right|\ge 1   \end{cases}  
+     \]其中 \(  x =  \left(  x_1,\cdots,x_n  \right)\in \mathbb{R} ^{n}   \) , \(  k  \)为常数,可以选取 \(  k  \)使得 \[
+     \int_{\mathbb{R} ^{n}}\rho \left( x \right)\,\mathrm{d} x= 1 
+     \]  
+\end{example}
+
+对于 \(  \forall \varepsilon >0  \),定义 \(  \rho _{\varepsilon }\left( x \right) =  \varepsilon ^{-n}\rho \left(  \frac{x }{\varepsilon  }  \right)    \),则 \(  \int_{\mathbb{R} ^{n}}\rho _{\varepsilon }\left( x \right)\,\mathrm{d} x= 1   \)   
+\hspace*{\fill} 
+
+
+\begin{remark}
+    \(  \rho _{\varepsilon }\left( x \right)   \)在 半径为 \(  \varepsilon   \)的开圆处大于零,在之外的地方等于0.  
+\end{remark}
+\begin{lemma}
+   设 \(   \Omega   \)是 \(  \mathbb{R} ^{n}  \)上的有界区域, \(  f  \)在 \(   \Omega   \)上连续,若对于任意的 \(   \varphi \left( x \right)\in C_{0}^{\infty}\left(  \Omega  \right)    \),都有 \[
+   \int_{ \Omega }f\left( x \right) \varphi \left( x \right)\,\mathrm{d} x= 0  
+   \]则 \(  f\left( x \right)   \)在 \(   \Omega   \)上恒为零,       
+\end{lemma}
+
+\begin{proof}
+    若不然,则存在 \(  x_0 \in  \Omega   \),使得 \(  f\left( x_0 \right)   \neq 0\),不妨设 \(  f\left( x_0 \right)>0   \).由 \(  f  \)的连续性,存在 \(  B_{ \Delta }\left( x_0 \right) \subseteq  \Omega    \),使得 \(  f\left( x \right)>0   \)对于任意的 \(  x \in B_{ \delta }\left( x_0 \right)   \)上成立.
+    对于任意的 \(  \varepsilon  \in \left( 0, \delta   \right)   \),取  \(   \varphi \left( x \right)= \rho _{\varepsilon }\left( x-x_0 \right)    \),我们有 \[
+    \int_{ \Omega }f\left( x \right) \varphi \left( x \right)\,\mathrm{d} x =  \int_{B_{\varepsilon }\left( x_0 \right) } f\left( x \right)\rho _{\varepsilon }\left( x-x_0 \right)    \,\mathrm{d} x >  \int_{B_{\frac{\varepsilon  }{2 }\left( x_0 \right)  }}f\left( x \right)\rho _{\varepsilon } \left( x-x_0 \right) \,\mathrm{d} x>0
+    \]         矛盾.
+
+    \hfill $\square$
+\end{proof}
+
+设 \(  y  F\left( x \right)   \)
+
+\subsection{变分法与膜平衡}
+
+\begin{itemize}
+    \item 几何问题：考虑一个处于张紧状态的薄膜,薄膜抗伸张不抗弯曲,且外力作用
+引起的面积变化所做的功与变化成正比,比例系数 \(  T  \)称为薄膜张力.
+它与这部分的形状和位置无关.先假设薄膜的一部分边界固定在一框架上,另一部分收到
+外力的作用,且整个薄膜在垂直于平衡位置的外力 \(  f\left( x,y \right)\left( N/ m^{2} \right)    \)作用下处于平衡状态,求膜的形状. 
+    \item 最小势能原理：受外力作用的弹性体,在满足已知边界唯一约束的一切可能位移中,达到平衡状态的位移使得物体的总势能最小.
+\end{itemize}
+
+\begin{enumerate}
+    \item 建立坐标系：
+    设膜的水平位置位于 \(  xOy  \) 平面上的区域 \(   \Omega   \),  \(   \Omega   \)的边界 \(  \partial  \Omega =  \gamma +  \Gamma   \)   .在 \(   \gamma   \)上已知膜的位移为 \(   \varphi   \),在 \(   \Gamma   \)   上收到外力的作用,设外力垂直于膜的平衡位置的分量为 \(  p = p\left( x,y \right) \left( N /m \right)    \),
+    作用在膜内的外力为 \(  f =  f\left( x,y \right)\left(  N / m^{2} \right)    \),设膜的形状为 \(  v =  v\left( x,y \right)   \).
+    
+    
+    \[
+    \begin{aligned}& =  \iint_{ \Omega } \sqrt{ 1+ v\times ^{2}+ v_{y}^{2}}\,\mathrm{d} x\,\mathrm{d} y - \iint_{ \Omega }\,\mathrm{d} x\,\mathrm{d} y \\ 
+      & =  \iint_{  \Omega  } \left( \sqrt{1+ v_{x}^{2}+ v_{y}^{2}} -1\right)\,\mathrm{d} x\,\mathrm{d} y\\ 
+       & =  \iint_{ \Omega } \left( 1+  \frac{1}{2}\left( v_{x}^{2}+ v_{y}^{2} \right)-1  \right)  \,\mathrm{d} x\,\mathrm{d} y\\ 
+        & = \frac{1}{2} \iint_{ \Omega } \left( v_{x}+ v_{y}^{2} \right) \,\mathrm{d} x\,\mathrm{d} y
+    \end{aligned}
+    \]
+
+    \[
+    \text{应变能} =   \frac{T }{2 } \iint_{ \Omega } \left( v_{x}^{2}+ v_{y}^{2} \right) \,\mathrm{d} x\,\mathrm{d} y  
+    \]
+    \[
+    \begin{aligned}
+    \text{外力做功}& =  \iint_{ \Omega } f\left( x,y \right) v\left( x,y \right)\,\mathrm{d} x\,\mathrm{d} y +  \int_{ \Gamma }   p\left( x,y \right) v\left( x,y \right)\,\mathrm{d} S  
+    \end{aligned}
+    \]
+
+    \[
+    \text{总势能} =  \text{应变能} - \text{外力做功}
+    \]
+
+    \[
+    \begin{aligned}
+        J\left( v \right) & =  \frac{T }{2 } \iint_{ \Omega } \left( v_{x}^{2}+ v_{y}^{2} \right)\,\mathrm{d} x\,\mathrm{d} y - \iint_{ \Omega }f\left( x,y \right) v\left( x,y \right)\,\mathrm{d} x\,\mathrm{d} y\\ 
+        & - \int_{ \Gamma }     p\left( x,y \right) v\left( x,y \right)\,\mathrm{d} S 
+    \end{aligned}  
+    \]
+
+    设 \(  u =  u\left( x,y \right)   \)是平衡位置状态的位移,则 \[
+    J\left( u \right)= \min _{v} J\left( v \right)  
+    \] 
+
+    \(  v| _{ \gamma }=  \varphi   \)是使得 \(  J\left( v \right)   \)有意义  
+
+
+    
+    \item 最小势能原理：
+    
+    引进函数集合（允许函数类,容许集） \[
+    M_{ \varphi } =  \left\{ v : v \in C^{2}\left(  \Omega  \right)\cap C^{1}\left(  \overline{ \Omega } \right),  v|_{ \gamma }=  \varphi    \right\}
+    \]
+    \begin{itemize}
+        \item 最小势能原理的数学表述（变分问题）：若 \(  u \in M_{ \varphi }  \)为膜达到平衡状态的唯一,则 \[
+        J\left( u \right)=  \min _{v \in M_{ \varphi }}J\left( v \right)  
+        \] 
+
+        令 \[
+        M_{0}=  \left\{ w: w \in C^{2}\left(  \Omega  \right)\cap C^{1}\left(  \overline{ \Omega } \right), w |_{ \gamma }= 0   \right\}
+        \]则对于任意的 \(  t \in R  \), \(  w\in M_{0}  \),有 \(  u +  tw \in M_{ \varphi }  \).   \(  J\left( u \right)\le J\left( u+ tw \right)    \) .
+        再令 \(  j\left( t \right) =  J\left( u+ tw \right)    \),则 \(  j\left( t \right)   \)在 \(  t =  0  \)取最小值,即 \(  j\left( 0 \right)\le j\left( t \right)    \), \(  t \in \mathbb{R}   \) .
+         \[
+         j\left( t \right) =   J\left( u+ tv \right) =   \frac{T }{2 } \iint_{ \Omega }\left( u_{x}+ x \right)    
+         \]    
+    \end{itemize}
+    
+\end{enumerate}
+
+
+\end{document}

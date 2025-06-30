@@ -1,0 +1,54 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+    
+\chapter{范畴论基础}
+
+\section{范畴与态射}
+
+\begin{definition}{范畴}
+    一个范畴$\mathcal{C}$是指以下资料
+    \begin{enumerate}
+        \item 集合$\operatorname{Ob}{\left( \mathcal{C} \right)}$,其元素称为$\mathcal{C}$的对象
+        \item 集合$\operatorname{Mor}{\left( \mathcal{C} \right)}$,其元素称为$\mathcal{C}$的态射,配上一对映射$$\mathrm{Mor}(\mathcal{C})\xrightarrow[t]{s}\mathrm{Ob}(\mathcal{C})$$其中$s$和$t$分别给出态射的来源和目标.
+        对于$X,Y\in \operatorname{Ob}{\left( \mathcal{C} \right)}$,习惯记$\operatorname{Hom}_\mathcal{C}{\left( X,Y \right)}=s ^{-1}\left( X \right)\cap t^{-1}\left( Y \right)$或简记为$\operatorname{Hom}{\left( X,Y \right)}$,其中的元素称为$X$到$Y$的态射
+        \item 对于每个对象$X$,给定元素$\operatorname{id}_{X}{}\in \operatorname{Hom_{\mathcal{C}}}{\left( X,X \right)}$,称为$X$到自身的恒等态射
+        \item 对于任意的$X,Y,Z \in \operatorname{Ob}{\left( \mathcal{C} \right)}$,给定态射之间的合成映射 
+        $$ \begin{aligned} \circ : \operatorname{Hom_{\mathcal{C}}}{\left( X,Y \right)  }\times \operatorname{Hom_{\mathcal{C}}}{\left( Y,Z \right)  } & \to \operatorname{Hom_{\mathcal{C}}}{\left( X,Z \right) }  \\\left( f,g \right)  & \mapsto f\circ g
+        \end{aligned} $$
+        不致混淆时简记$fg=f\circ g$.合成映射满足
+        \begin{enumerate}
+            \item 结合律：对于任意的态射$f,g,h \in \operatorname{Mor}{\left( \mathcal{C} \right)}$,若合成$f\left( gh \right)$和$\left( fg \right)h$都有定义,则 $$ f\left( gh \right) =\left( fg \right) h $$于是两边可以同时写作$fgh$或$f\circ g\circ h$;
+            \item 对于任意的态射$f \in \operatorname{Hom_{\mathcal{C}}}{\left( X,Y \right)}$,都有 $$ f\circ \operatorname{id_{X}}{}=f=\operatorname{id_{Y}}{}\circ f $$
+        \end{enumerate}
+    \end{enumerate}
+    
+\end{definition}
+
+
+
+
+\section{函子与自然变换}
+
+\begin{definition}{函子 }
+    设$\mathcal{C^{\prime}},\mathcal{C}$是范畴,一个函子$F:\mathcal{C^{\prime}}\to \mathcal{C}$是指以下资料：
+    \begin{enumerate}
+        \item 对象间的映射$F:\operatorname{Ob}{\left( \mathcal{C}^{\prime} \right)}\to \operatorname{Ob}{\left( \mathcal{C} \right)}$
+        \item 态射间的映射$F:\operatorname{Mor}{\left( \mathcal{C^{\prime}} \right)}\to \operatorname{Mor}{\left( \mathcal{C} \right)}$,使得
+           \begin{itemize}
+            \item $F$与来源和目标映射相交换（即$sF=Fs$,$tF=Ft$）
+            \item $F\left( g\circ f \right)=F\left( g \right)\circ F\left( f \right)$,$F\left( \operatorname{id_{X}}\right)=\operatorname{id_{FX}}$
+           \end{itemize}
+    \end{enumerate}
+    
+    
+\end{definition}
+
+\begin{definition}{自然变换}
+    函子$F,G:\mathcal{C}^{\prime}\to \mathcal{C}$之间的自然变换$\theta:F\to G$是一族态射 $$ \theta _{x}\in \operatorname{Hom_{\mathcal{C}}}{\left( FX,GX \right) },\quad X \in \operatorname{Ob}{\left( \mathcal{C}^{\prime} \right) } $$使得下图对所有$\mathcal{C}^{\prime}$中的态射$f$交换,
+    \[
+        \begin{tikzcd} FX && GX \\ \\ FY && GY \arrow["{\theta_X}", from=1-1, to=1-3] \arrow["Ff"', from=1-1, to=3-1] \arrow["Gf", from=1-3, to=3-3] \arrow["{\theta_Y}"', from=3-1, to=3-3] \end{tikzcd} 
+    \]
+\end{definition}
+
+\end{document}

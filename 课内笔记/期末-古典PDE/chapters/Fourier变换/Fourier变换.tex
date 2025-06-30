@@ -1,0 +1,576 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+\chapter{Fourier变换}
+\section{Fourier变换}
+\begin{definition}{内积}
+    \begin{enumerate}
+        \item 定义 \(  \left[ -L,L \right]   \)上分段连续的两个复函数 \(  f\left( x \right)   \)和  \(  g\left( x \right)   \)  的内积为 \[
+\left<f,g \right>\equiv  \int_{-L}^{L} f\left( x \right) \overline{g\left( x \right) }\,\mathrm{d} x 
+\]
+\item 定义 \(  f  \) 的范数 \(  \left\| f \right\|  \)为 \[
+\left\| f \right\|= \sqrt{\left<f,f \right>}
+\] 
+    \end{enumerate}
+    
+\end{definition}
+\begin{remark}
+     \[
+     \left<f,g \right>=   \int_{-L}^{L}\left[ f_1\left( x \right)g_1\left( x \right)+ f_2\left( x \right)g_2\left( x \right)     \right]\,\mathrm{d} x + i \int_{-L}^{L}\left[ f_2\left( x \right)g_1\left( x \right)-f_1\left( x \right)g_2\left( x \right)     \right]\,\mathrm{d} x 
+     \]
+\end{remark}
+
+\begin{theorem}
+    记 \(  e_{m}\left( x \right)= e^{im \pi x/L}   \) ,则 \[
+  \begin{aligned}
+  \left<e_{m},e_{n} \right>&=  \int_{-L}^{L}e^{im\pi  x /{L}} \overline{e^{in\pi x /L}} \,\mathrm{d} x = \int_{-L}^{L}e^{i\left( m-n \right) \pi  x/L }\,\mathrm{d} x\\ 
+   &=  \int_{-L}^{L} \left( \cos \frac{\left( m-n \right)\pi x  }{ L} + i \sin \frac{\left( m-n \right)\pi x  }{L }  \right)\,\mathrm{d} x= \begin{cases} 0,&m\neq n\\ 
+    2L,&m= n \end{cases}  
+  \end{aligned}
+    \]
+
+\end{theorem}
+
+\begin{proposition}
+    若 \(  f  \)连续,分段 \(  C^{1}  \)并且 \(  f\left( -L \right)= f\left( L \right)    \)   ,则 \[
+    c_{m}= \frac{1 }{2L } \left<f, e_{m} \right> 
+    \] \[
+    f\left( x \right)= \sum _{m\in \mathbb{Z} }c_{m} e^{im \pi x /L}=  \sum _{m \in \mathbb{Z} }  \left<f,\frac{e_{m} }{\sqrt{2L} }  \right> \frac{e_{m} }{\sqrt{2L} } 
+    \]
+\end{proposition}
+
+\begin{theorem}{Parseval}
+     \[
+     \begin{aligned}
+     \left\| f \right\|^{2}= \int_{-L}^{L}\left| f\left( x \right)  \right|^{2}\,\mathrm{d} x&=  \sum _{m \in \mathbb{Z} }   \left| \left<f, \frac{1 }{\sqrt{2L} }e_{m}  \right> \right|^{2}\\ 
+      &=  2L \sum _{m \in \mathbb{Z} } \left| \frac{1 }{2L } \left<f, e_{m} \right>  \right|^{2}=  2L\sum _{m \in \mathbb{Z} }\left| c_{m} \right|^{2}  
+     \end{aligned}
+     \]
+\end{theorem}
+
+
+\begin{definition}{Fourier变换}
+    设 \(  f\left( x \right)   \)是实变量的实值或复值函数.定义 \(  f\left( x \right)   \)的 \textbf{Fourier}变换为 \(   \xi \in \left( -\infty,\infty \right)   \)的函数 \(  \hat{f}\left( x \right)   \) \[
+    \hat{f}\left(  \xi  \right)\equiv  \frac{1 }{\sqrt{2\pi } }\int_{-\infty}^{\infty}f\left( x \right)e^{-i \xi x}\,\mathrm{d} x  \equiv  \lim_{R\to \infty} \int_{-R}^{R}f\left( x \right)e^{-i  \xi x}\,\mathrm{d} ^{\prime} x,  
+    \]若极限存在.其中 \[
+    \,\mathrm{d} ^{\prime} x= \frac{1 }{\sqrt{2\pi } } \,\mathrm{d} x 
+    \]   
+\end{definition}
+
+\begin{definition}
+    设 \(  m,n  \)是非负整数,称 定义在 \(  \mathbb{R}   \)上的函数 \(  f\left( x \right)   \)有衰减阶 \(  \left( m,n \right)   \),若 \(  f\left( x \right)   \)是 \(  C^{m}  \)的,且存在 \(  K> 0  \),使得对于所有的 \(  \left| x \right|\ge 1   \) \[
+    \left| f\left( x \right)  \right|+ \left| f^{\prime} \left( x \right)  \right|+ \cdots + \left| f^{\left( m \right) }\left( x \right)  \right|\le \frac{K }{\left| x \right|^{n}  }    
+    \]        
+\end{definition}
+\begin{proposition}{求导后变换}
+    若 \(  f  \)具有衰减阶 \(  \left( 1,2 \right)   \),则对于所有的 \(   \xi   \), \[
+    \left( \frac{\,\mathrm{d} f }{\,\mathrm{d} x }  \right)^{\wedge } \left(  \xi  \right)= i  \xi  \hat{f}\left(  \xi  \right)   
+    \]   
+\end{proposition}
+
+\begin{proof}
+    若先只考虑足够好的函数(光滑且急速衰减),由分部积分可以得到等式 \[
+   \begin{aligned}
+    \hat{f}^{\prime} \left(  \xi  \right)&= \int_{-\infty}^{\infty}f^{\prime} \left( x \right)e^{-i  \xi x}\,\mathrm{d} ^{\prime} x\\ 
+     &=  \int_{-\infty}^{\infty} e^{-i  \xi x} \,\mathrm{d} ^{\prime} f\left( x \right)\\ 
+      &= \left. \frac{1 }{\sqrt{2\pi } }f\left( x \right)e^{-i  \xi x}  \right|_{-\infty}^{\infty}- \int_{-\infty}^{\infty}f\left( x \right) \left( -i \xi  \right)e^{-i \xi x}    \,\mathrm{d} ^{\prime} x\\ 
+       &=  i \xi  \hat{f}\left(  \xi  \right) 
+    \end{aligned}   
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}
+  若 \(  f  \)有衰减阶 \(  \left( m,2 \right)   \),则对于所有的 \(   \xi  \in \mathbb{R}   \) \[
+  \left| f^{\left( m \right) }\left( x \right)  \right|^{\wedge }\left(  \xi  \right)= i^{m}  \xi ^{m}\hat{f}\left(  \xi  \right)   
+  \]     
+\end{corollary}
+\begin{proof}
+    反复利用上面的命题.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}{变换后求导}
+    若 \(  f  \)有衰减阶 \(  \left( 0,3 \right)   \),则对于所有的 \(   \xi  \in \mathbb{R}   \) \[
+    i \frac{\,\mathrm{d} \hat{f} }{ \,\mathrm{d}  \xi }\left(  \xi  \right)= \left[ xf\left( x \right)  \right]^{\wedge }\left(  \xi  \right)    
+    \]   
+\end{proposition}
+
+\begin{proof}
+    对于足够好的函数,积分下求导 \[
+    \begin{aligned}
+    i \frac{\mathrm{d}\hat{f}}{\mathrm{d} \xi }\left(  \xi  \right)&= i \frac{\mathrm{d}}{\mathrm{d} \xi } \int_{-\infty}^{\infty} f\left( x \right) e^{-i \xi x}\,\mathrm{d} ^{\prime} x  \\ 
+     &= i \int_{-\infty}^{\infty} \left( -ix \right) f\left( x \right)e^{-i \xi x}\,\mathrm{d} ^{\prime} x\\ 
+      &= \left[ xf\left( x \right)  \right]^{\wedge }\left(  \xi  \right)    
+    \end{aligned} 
+    \]
+
+    \hfill $\square$
+\end{proof}
+\begin{corollary}
+    若 \(  f  \)具有衰减阶 \(  \left( 0,n+ 2 \right)   \)  ,则对于所有的 \(   \xi \in \mathbb{R}   \) \[
+    i^{n}\frac{\mathrm{d}^{n } \hat{f}}{\mathrm{d} \xi ^{n}}\left(  \xi  \right)= \left[ x^{n}f\left( x \right)  \right]  ^{\wedge }\left(  \xi  \right) 
+    \] 
+\end{corollary}
+\begin{proof}
+    反复利用上面的命题
+
+    \hfill $\square$
+\end{proof}
+
+\begin{center}
+    \fbox{
+        \begin{minipage}{0.8\textwidth}\centering
+           \begin{large}
+            Fourier变换把导数变成多项式,把多项式变成导数.
+           \end{large} 
+        \end{minipage}
+    }
+\end{center}
+
+\begin{definition}{卷积}
+    定义 \(  f  \)和 \(  g  \)的卷积 \(  f*g  \)为 \[
+    \left( f*g \right)\left( x \right)  = \int_{-\infty}^{\infty}f\left( x-y \right)g\left( y \right)\,\mathrm{d} y  
+    \]若每个积分存在.   
+\end{definition}
+
+\begin{proposition}
+    在 \(  \mathbb{R} ^{n}  \)上, \[
+    f*g = g *f
+    \] 
+\end{proposition}
+\begin{note}
+    从\(  x  \) 扩散 按平移量\(  -y  \) 反向加权 \(  g\left( y \right)   \) 
+\end{note}
+\begin{theorem}{卷积定理}
+    设 \(  f,g  \)分段连续,且对于 \(  \left| x \right|\ge 1   \),有 \(  \left| f\left( x \right)  \right|\le \frac{K }{\left| x \right|^{2}  }    \)和 \(  \left| g\left( x \right)  \right|\le \frac{K }{\left| x \right|^{2}  }    \)    ,则 \[
+    \hat{f}\left(  \xi  \right)\hat{g}\left(  \xi  \right)= \frac{1 }{\sqrt{2\pi } } \left( f*g \right)^{\wedge }\left(  \xi  \right)     
+    \]
+\end{theorem}
+\begin{proof}
+    \[
+    \begin{aligned}
+    \hat{f}\left(  \xi  \right)\hat{g}\left(  \xi  \right)&= \int_{-\infty}^{\infty} f\left( x \right)    e^{-i \xi x}\,\mathrm{d} ^{\prime} x \int_{-\infty}g\left( y \right)e^{-i \xi y}\,\mathrm{d} ^{\prime} y\\ 
+     &= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f\left( x \right)g\left( y \right)e^{-i \xi \left( x+ y \right) }\,\mathrm{d} ^{\prime} x\,\mathrm{d} ^{\prime} y   \\ 
+      &= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f\left( x-y \right)g\left( y \right)e^{-i \xi x}\,\mathrm{d} ^{\prime} x\,\mathrm{d} ^{\prime} y\\ 
+       &= \int_{-\infty}^{\infty}e^{-i \xi x}\,\mathrm{d} ^{\prime} x \int_{-\infty}^{\infty}f\left( x-y \right)g\left( y \right)\,\mathrm{d} ^{\prime} y  \\ 
+        &= \frac{1 }{\sqrt{2\pi } } \int_{-\infty}^{\infty}\left( f*g \right)\left(  x  \right)e^{-i \xi x}\,\mathrm{d} ^{\prime} x \\ 
+         &= \frac{1 }{\sqrt{2\pi }  } \left( f*g \right)    ^{\wedge }\left( x \right) 
+    \end{aligned}
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+\section{Fourier逆变换}
+
+\begin{theorem}{反演定理}
+    设 \(  f  \)是分段\(  C^{1}  \)且 \(  L^{1}  \),则对于每个 \(  x \in \mathbb{R}   \) \[
+    \frac{f\left( x^{+ } \right)+ f\left( x^{-} \right)   }{2 }= \frac{1 }{\sqrt{2\pi } }\int_{-\infty}^{\infty}\hat{f}\left(  \xi  \right)e^{i \xi x}\,\mathrm{d}  \xi    
+    \]     
+\end{theorem}
+
+\begin{definition}{Fourier逆变换}
+    定义 \(  g\left(  \xi  \right)   \)的Fourier逆 \( \check{g}\left( x \right)    \)  为 \[
+    \check{g}\left( x \right)= \int_{-\infty}^{\infty}g\left(  \xi  \right)e^{i \xi x}\,\mathrm{d} ^{\prime}  \xi = \lim_{R\to \infty}\int_{-R}^{R}g\left(  \xi  \right)e^{i \xi x}\,\mathrm{d} ^{\prime}  \xi    
+    \]若极限存在.其中 \(  \,\mathrm{d} ^{\prime}  \xi   = \frac{1 }{\sqrt{2\pi } }\,\mathrm{d}  \xi  \) 
+\end{definition}
+
+
+\begin{theorem}{Parseval}
+    若 \(  f,\hat{f},g  \)绝对可积,且 \(  f  \)分段 \(  C^{1}  \),则    \[
+    \int_{-\infty}^{\infty}f\left( x \right) \overline{g\left( x \right) }\,\mathrm{d} x =  \int_{-\infty}^{\infty} \hat{f}\left(  \xi  \right)  \overline{\hat{g}\left(  \xi  \right) }\,\mathrm{d}  \xi  
+    \]
+\end{theorem}
+\begin{proof}
+    由于两个函数逆变换后的权重通过共轭抵消,通过不断交换次序可以得到恒等式.
+
+    \hfill $\square$
+\end{proof}
+
+\section{重要例子}
+
+\begin{example}
+    设 \(  a> 0, x\in \mathbb{R}   \) , \(  f\left( x \right)= e^{-a\left| x \right| }   \)  , 则\[
+      \hat{f}\left(  \xi  \right)= \frac{1 }{\sqrt{2\pi } } \frac{2a }{a^{2}+  \xi ^{2} }   
+    \]  
+\end{example}
+\begin{solution}
+ \[
+ \begin{aligned}
+ \hat{f}\left(  \xi  \right)&= \int_{-\infty}^{\infty}e^{-a\left| x \right| }e^{-i \xi x}\,\mathrm{d}^{\prime}  x \\ 
+  &=  \int_{0}^{\infty}e^{-ax}e^{-i \xi x}\,\mathrm{d} ^{\prime} x +  \int_{-\infty}^{0} e^{ax}e^{-i \xi x}\,\mathrm{d} ^{\prime} x\\ 
+   &= \int_{0}^{\infty}e^{-\left( a+ i \xi  \right)x }\,\mathrm{d} ^{\prime} x+  \int_{0}^{\infty}e^{-\left( a-i \xi  \right)x }\,\mathrm{d} ^{\prime} x\\ 
+    &= \frac{1 }{\sqrt{2\pi }  }\left[ \frac{e^{-\left( a+ i \xi  \right)x } }{-\left( a+ i \xi  \right)  } +  \frac{e^{-\left( a-i \xi  \right)x } }{-\left( a-i \xi \right)  }   \right]_{x= 0}^{\infty}\\ 
+     &= -\frac{1 }{\sqrt{2\pi } }\left[ \frac{1 }{-\left( a+ i \xi  \right)  }+ \frac{1 }{-\left( a-i \xi  \right)  }    \right]\\ 
+      &= \frac{1 }{\sqrt{2\pi } }\frac{2a }{a^{2}+  \xi ^{2} }      
+ \end{aligned}
+ \]
+\end{solution}
+
+\hspace*{\fill} 
+\begin{example}
+    令 \(  f\left( x \right)= e^{-ax^{2}},a> 0,-\infty< x< \infty   \),则 \[
+    \hat{f}\left(  \xi  \right)= \frac{1 }{\sqrt{2a} }e^{-\frac{ \xi ^{2} }{4a} }  
+    \] 
+\end{example}
+
+\section{无限域PDE的Fourier方法}
+
+\begin{definition}{好核}
+    称 \(  \left\{  K _{ \varepsilon } \right\}_{ \varepsilon > 0}  \)是一族 \(  \mathbb{R} ^{n}  \)上的函数,称它为一族好核,若它满足以下性质
+    \begin{enumerate}
+        \item \textbf{归一化}: \[
+        \int_{\mathbb{R} ^{n}} K _{ \varepsilon }\left( x \right)\,\mathrm{d} x= 1,\quad \forall  \varepsilon > 0 
+        \]
+        \item \textbf{集中性}:对于任意的 \(   \delta > 0  \), \[
+        \lim_{ \varepsilon \to 0^{+ }}\int_{\left| x \right|>  \delta  }\left|  K _{ \varepsilon }\left( x \right)  \right|\,\mathrm{d} x= 0 
+        \] 
+        \item \textbf{一致 \(  L^{1}  \) }: 存在常数 \(  M> 0  \),使得 \[
+        \int_{\mathbb{R} ^{n}}\left|  K_{ \varepsilon }\left( x \right)  \right|\,\mathrm{d} x\le M,\quad \forall  \varepsilon > 0 
+        \]   
+    \end{enumerate}
+      
+\end{definition}
+
+\begin{theorem}{好核定理}
+    若 \(  \left\{  K_{ \varepsilon }\right\}_{ \varepsilon > 0}  \)是 \(  \mathbb{R} ^{n}  \)上的一族好核,则  对于\(  L^{1}  \)或有界 的函数 \(  f  \) ,  \[\lim_{t \to 0^{+ }}\left( K_{ \varepsilon }*f \right)=  
+    \lim_{ \varepsilon \to 0^{+ }}\left( f*K_{ \varepsilon } \right)\left( x \right)= f\left( x \right)   
+    \]对于所有  \(  f  \)的连续点 \(  x  \)成立.
+    
+    特别地,若 \(  f  \)处处连续,则上面的极限是一致的. 
+\end{theorem}
+\begin{proof}
+   任取 \(   \delta > 0  \),由归一性 \[
+    \begin{aligned}
+    \left| \left( f* K_{ \varepsilon }\right)\left( x \right)-f\left( x \right)    \right|&= \left| \int_{\mathbb{R} ^{n}}K_{ \varepsilon }\left(y\right) f\left(x- y \right)\,\mathrm{d} y- \int_{\mathbb{R} ^{n}} K_{ \varepsilon }\left( y \right)f\left( x \right)     \right|  \,\mathrm{d} y \\ 
+     &=  \left| \int_{\mathbb{R} ^{n}}K_{ \varepsilon }\left( y \right)\left[ f\left( x-y \right)-f\left( x \right)   \right] \,\mathrm{d} y  \right| 
+    \end{aligned}
+    \]将积分区域分解,若 \(  f  \)有界,则   \[
+    \begin{aligned}
+   & \left| \int_{\mathbb{R} ^{n}}K_{ \varepsilon }\left( y \right)\left[ f\left( x-y \right)-f\left( x \right)   \right]\,\mathrm{d} y \right|   \\ 
+    &= \left| \int_{\left| x \right|>  \delta  }K_{ \varepsilon }\left( y \right)\left[ f\left( x-y \right)-f\left( x \right)   \right]\,\mathrm{d} y  \right| +\left|  \int_{\left| x \right|\le  \delta  }K_{ \varepsilon }\left( y \right)\left[ f\left( x-y \right)-f\left( x \right)   \right]\,\mathrm{d} y  \right| \\ 
+     &\le 2\sup _{\left| x \right|>  \delta  }\left| f\left( x \right)  \right| \int_{\left| x \right|>  \delta  }\left| K_{ \varepsilon }\left( x \right)  \right|\,\mathrm{d} x+ M \sup _{\left| x \right|<  \delta  }\left| f\left( x-y \right)-f\left( x \right)   \right|   
+    \end{aligned} 
+    \]
+    令 \(   \varepsilon \to 0  \),得到 \[
+    \mathrm{limsup}_{ \varepsilon \to 0} \left| \int_{\mathbb{R} ^{n}}K_{ \varepsilon }\left( y \right)\left[ f\left( x-y \right)-f\left( x \right)   \right]   \right|\le M\sup _{\left| x \right|<  \delta  }\left| f\left( x-y \right)-f\left( x \right)   \right|  
+    \] 若 \(  x  \)是 \(  f  \)的连续点,则 \[
+    \lim_{ \delta \to 0} \sup _{\left| x \right|<  \delta  }\left| f\left( x-y \right)-f\left( x \right)   \right|= 0 
+    \]  令 \(   \delta \to 0  \),可知 在 \(  f  \)的连续点 \(  x  \)上,   \[
+    \lim_{ \varepsilon \to 0} \left| \int_{\mathbb{R} ^{n}}K_{ \varepsilon }\left( y \right)\left[ f\left( x-y \right)-f\left( x \right)   \right]   \right|= 0 
+    \]即 \[
+    \lim_{ \varepsilon \to 0}\left( f*K_{ \varepsilon } \right)\left( x \right)= f\left( x \right)   
+    \]
+
+    特别地,若\(  f  \)处处连续
+
+  
+    \hfill $\square$
+\end{proof}
+
+
+\subsection{无限杆的热方程}
+
+\subsubsection{形式推导}
+
+考虑以下一维无界域上热方程的初值问题 \[
+\begin{cases} u_{t}= ku_{x x},\quad x\in \mathbb{R} \\ 
+ u\left( x,0 \right)= f\left( x \right)   \end{cases} 
+\]
+
+对微分方程做\(  x  \) 的Fourier变换,得到 \[
+\hat{u}_{t}+ k  \xi ^{2} \hat{u}= 0 
+\]解关于 \(  t  \)的 ODE,得到 \[
+\hat{u}\left(  \xi ,t \right) = F\left(  \xi  \right)e^{-k \xi ^{2}t}  
+\]其中 \(  F\left(  \xi  \right)   \)待定.
+令 \(  t= 0  \),得到 \[
+F\left(  \xi  \right)= \hat{u}\left(  \xi ,0\right)=  \hat{f}\left(  \xi  \right)
+\]  因此 \[
+\hat{u}\left(  \xi ,t \right)= \hat{f}\left(  \xi  \right)e^{-k \xi ^{2}t}  
+\] 令 \(  \hat{h} \left(  \xi  \right)=  e^{-k \xi ^{2}t}   \)则 \[
+h\left(  \xi  \right)= \int_{-\infty}^{\infty}e^{-k \xi ^{2}t+  ix  \xi }\,\mathrm{d} ^{\prime}  \xi  
+\]其中 \[
+-k \xi ^{2} t+ ix  \xi = -kt\left(  \xi - \frac{ix }{2kt }  \right) ^{2}- \frac{x^{2} }{4kt } 
+\]于是 \[
+h\left(  x \right)= \frac{1 }{\sqrt{2kt} }e^{-\frac{x^{2} }{4kt } }  
+\]由卷积定理, \[
+u\left(  x ,t \right)= \frac{1 }{\sqrt{2\pi } } h*f= \int_{-\infty}^{\infty}\frac{1 }{\sqrt{4\pi kt} }e^{- \frac{\left( x-y \right)^{2}  }{4kt } } f\left( y\right)\,\mathrm{d} y   
+\]
+\subsubsection{解的有效性}
+
+\begin{definition}
+    定义 \[
+    H\left( x,t \right)= \frac{1 }{\sqrt{4\pi kt} }e^{-\frac{x^{2} }{4kt } }  ,\quad \left( t> 0 \right) 
+    \]称为热方程的热核.
+\end{definition}
+
+\begin{lemma}
+    热核 \(  H\left( x,t \right)   \)视为以 \(  t> 0  \)为参数的热核族 \(  \left\{ H\left( x,t \right)  \right\}_{t> 0}  \)是一族好核.   
+\end{lemma}
+\begin{proof}
+    \begin{enumerate}
+        \item 首先,由Gauss积分,易见 \[
+      \frac{1 }{\sqrt{4\pi kt} }\int_{-\infty}^{\infty}\left| e^{-\frac{x^{2} }{4kt } } \right|\,\mathrm{d} x=     \frac{1 }{\sqrt{4\pi kt} } \int_{-\infty}^{\infty}e^{-\frac{x^{2} }{4kt } }\,\mathrm{d} x= \frac{1 }{\sqrt{4\pi kt} }\sqrt{\frac{\pi  }{\frac{1 }{4kt }  } }= 1
+        \]故热核族是归一且一致\(  L^{1}  \)的 
+        \item 任取 \(   \delta > 1  \),考虑积分 \[
+      \begin{aligned}
+        &\int_{\left| x \right|>  \delta  } \left| H\left( x,t \right)  \right|\,\mathrm{d} x \\ 
+         &=\frac{1 }{\sqrt{4\pi kt} }   \int_{\left| x \right|>  \delta  }e^{-\frac{x^{2} }{4kt } }\,\mathrm{d} x\\ 
+          &\le \frac{2 }{\sqrt{4\pi kt} } \int_{x >  \delta  }e^{\frac{- \delta x  }{4kt } }\,\mathrm{d} x\\ 
+           &= \frac{2 }{\sqrt{4\pi kt} } \frac{4kt }{ \delta  } e^{-\frac{ \delta ^{2} }{4kt } }\to 0\left( t\to 0^{+ } \right) 
+      \end{aligned}
+        \] 故热核族是集中的.
+      
+    \end{enumerate}
+    综上,热核族是一族好核.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    设 \(  H\left( x,t \right)   \)是热核. 
+    \begin{enumerate}
+        \item 对于 \(  \mathbb{R}   \)上的Riemann可积函数 \(  f  \), \[
+    \lim_{t \to 0^{+ }}\left( H*f \right)\left( x \right)= f\left( x \right)   
+    \]对于 \(  f  \)的所有连续点 \(  x  \)成立.  
+        \item 特别地,取 \(  f \in \mathcal{D}\left( \mathbb{R}  \right)   \).可知 当 \(  t \to 0  \)时, \(  H\left( x,t \right)   \)在分布意义下收敛于Dirac函数 \(   \delta \left( x \right)   \),进而可以将 \(  H\left( x,t \right)   \)视为分布,在 \(  t= 0  \)处补充定义 \(  H\left( x,0 \right)=  \delta \left( x \right)    \)   .   
+    \end{enumerate}
+    
+\end{proposition}
+
+\begin{theorem}
+    令 \(  f\left( x \right)   \)是 \(  \mathbb{R}   \)上的连续函数,且有界或\(  L^{1}  \),则 \[
+    u\left( x,t \right):=  \left( H\left( \cdot ,t \right) *f \right)  \left( x \right) ,\quad \left( x,t \right)\in \mathbb{R} \times \mathbb{R} _{\ge 0} 
+    \]是以下初值问题 \[
+    \begin{cases} u_{t}= k u_{xx},& \left( x,t \right)\in \mathbb{R} \times \mathbb{R} _{> 0} \\ 
+     u\left( x,0 \right)= f\left( x \right),&x \in \mathbb{R}    \end{cases} 
+    \]在满足连续性条件: \(  u\left( x,t \right)\to f\left( x_0 \right)\left( \left( x,t \right)\to \left( x_0,0^{+ } \right)   \right)     \) 下的解.
+\end{theorem}
+
+\begin{proof}
+    热核\(  H\left( x,t \right)= \frac{1 }{\sqrt{4\pi kt} }e^{-\frac{x^{2} }{4kt } }    \) 满足以下问题 \[
+    \begin{cases} H_{t}= H_{xx},& x\in \mathbb{R} ,t\in \mathbb{R} _{> 0}\\ 
+     H\left( x,0 \right)=  \delta \left( x \right),& x\in \mathbb{R}    \end{cases} 
+    \]对于函数 \(  f  \), \[
+     \begin{aligned}
+     \Delta_{x} \left( H*f \right)=   \Delta _{x}\int_{-\infty}^{\infty}H\left( x-y \right)f\left( y \right)\,\mathrm{d} y&=  \int_{-\infty}^{\infty} \left( \Delta _{x}H\left( x-y \right) \right) f\left( y \right)\,\mathrm{d} y    \\ 
+      &=  \left(  \Delta _{x}H \right)*f  
+     \end{aligned}
+    \] 于是 \[
+    u_{t}= H_{t}*f= k  \left( \Delta _{x}H \right)*f= k  \Delta _{x}\left( H*f \right) = k u_{x x} 
+    \]此外, \[
+    u\left( x,0 \right)= \left(  \delta *f \right)\left( x \right)= f\left( x \right)    
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+\subsection{无限域波动方程}
+
+\subsubsection{形式推导}
+考虑以下无限域上波动方程的初值问题 \[
+\begin{cases} u_{tt}= a^{2}u_{x x },&x,t\in \mathbb{R} \\ 
+ u\left( x,0 \right)= f\left( x \right),\quad u_{t}\left( x,0 \right)= g\left( x \right),&x\in \mathbb{R}      \end{cases} 
+\]
+
+对方程 \[
+u_{tt} = a^{2}u_{xx}
+\]两边做关于 \(  x  \)的Fourier变换,得到  \[
+\hat{u}_{tt}\left(  \xi  ,t\right) = -a^{2} \xi ^{2}\hat{u}\left(  \xi,t  \right) 
+\]解方程,得到 \[
+\hat{u}\left(  \xi ,t \right)= c_1\left(  \xi  \right)\cos \left( a \xi t \right)+ c_2\left(  \xi  \right)\sin \left( a \xi t \right)     
+\]以及 \[
+\hat{u}_{t}\left(  \xi ,t \right)= -a \xi c_1\left(  \xi  \right)\sin \left( a \xi t \right)+ a \xi c_2\left(  \xi  \right)\cos \left( a \xi t \right)     
+\]对两个初值条件施行Fourier变换,得到 \[
+\hat{f}\left(  \xi  \right)= \hat{u}\left( x,0 \right)= c_1\left(  \xi  \right),\quad \hat{g}\left(  \xi  \right)= \hat{u}_{t}\left(  \xi ,0 \right)= a \xi c_2\left(  \xi  \right)       
+\]因此 \[
+\hat{u}\left(  \xi ,t \right)= \hat{f}\left(  \xi  \right)  \cos \left( a \xi t \right)+ \hat{g}\left(  \xi  \right)  \frac{\sin \left( a \xi t \right)  }{a \xi  }  
+\]其中 \[
+\begin{aligned}
+\left( \hat{f}\left(  \xi  \right)\cos \left( a \xi t \right)   \right)^{\vee }&=\frac{1 }{\sqrt{2\pi } }f*\left( \cos \left( a \xi t \right)  \right)^{\vee }     
+\end{aligned}
+\]其中 \[
+\cos \left( a \xi t \right)^{\vee }=\frac{1}{2} \mathcal{F}^{-1} \left( e^{ia \xi t}+ e^{-ia \xi t} \right)=  \frac{1}{2}\sqrt{2\pi }\left(  \delta \left( x+ at \right)+  \delta \left( x-at \right)   \right) 
+\]于是 \[
+\left( \hat{f}\left(  \xi  \right)\cos \left( a \xi t \right)   \right)^{\vee } = \frac{1}{2}f* \delta \left( x+ at \right)+ \frac{1}{2}f* \delta \left( x-at \right)=    \frac{1}{2}f\left( x+ at \right)+ \frac{1}{2}f\left( x-at \right)  
+\]
+由  \[
+\mathcal{F}\left[ \mathrm{rect} \right]\left(  \xi  \right)= \frac{1 }{\sqrt{2\pi } } \mathrm{sinc}\left( \frac{ \xi  }{2 }  \right)= \frac{1 }{\sqrt{2\pi } }\frac{\sin \left( \frac{ \xi  }{2 }  \right)  }{\frac{ \xi  }{2 }  }     
+\]其中 \[
+\mathrm{rect}\left( x \right)= \begin{cases} 1,& \left| x \right|\le \frac{1}{2} \\ 
+ 0,& \text{otherwise} \end{cases}  
+\]结合Fourier变换的伸缩率,得到 \[
+F\left[ \mathrm{rect}\left( \frac{x }{2at }  \right)  \right]= \frac{2at }{\sqrt{2\pi } }\frac{\sin  \xi at }{ \xi at }   = \frac{2a }{\sqrt{2\pi } }\frac{\sin  \xi at }{ a\xi  }  
+\]于是 \[
+\left( \frac{\sin \left( a \xi t \right)  }{a \xi  }  \right)^{\vee }=\frac{\sqrt{2\pi } }{2a } \mathrm{rect}\left( \frac{x }{2at }  \right)   
+\]由卷积定理, \[
+\begin{aligned}
+\left( \hat{g}\left(  \xi  \right) \frac{\sin \left( a \xi t \right)  }{a \xi  }   \right)^{\vee }= \frac{1 }{\sqrt{2\pi } }g*\left( \frac{\sqrt{2\pi } }{2a } \mathrm{rect}\left( \frac{x }{2at }  \right)   \right)&= \frac{1 }{2a }g\left( x \right) * \mathrm{rect}\left( \frac{x }{2at }  \right)     \\ 
+ &= \frac{1 }{2a } \int_{-\infty}^{\infty}g\left( y \right)  \mathrm{rect}\left( \frac{x-y }{2at }  \right)\,\mathrm{d} y\\ 
+  &= \frac{1 }{2a } \int_{x-at}^{x+ at}g\left( y \right)\,\mathrm{d} y   
+\end{aligned}
+\]最终,在形式上我们得到
+\begin{center}
+    \fbox{
+        \begin{minipage}{0.8\textwidth}\centering
+           \begin{large}
+           \[
+          \begin{aligned}
+           u\left( x,t \right)&=  k*f+ h*g\\ 
+            &= \frac{1}{2}f\left( x-at \right)+ \frac{1}{2}f\left( x+ at \right)  + \frac{1 }{2a } \int_{x-at}^{x+ at}g\left( y \right)\,\mathrm{d} y  
+          \end{aligned} 
+           \]其中 \(  k\left( x,t \right)= \frac{1}{2}\left[  \delta \left( x-at \right)+  \delta \left( x+ at \right)   \right]      \) ,\(  h\left( x,t \right)= \frac{1 }{2a }\mathrm{rect}\left( \frac{x }{2at }  \right)   \) 
+           \end{large} 
+        \end{minipage}
+    }
+\end{center}
+
+\subsection{半平面上的Laplae}
+
+\subsubsection{形式推导}
+
+考虑以下问题 \[
+\begin{cases} u_{xx}+ u_{yy}= 0,&x\in \mathbb{R} ,y> 0\\ 
+ u\left( x,0 \right)= f\left( x \right),&x\in \mathbb{R}    \end{cases} 
+\]其中 \(  f  \)是在 \(  \mathbb{R}   \)上的有界连续函数.  希望寻求\(  y\ge 0  \)的有界的连续解. 
+
+
+对 \[
+u_{x x}+ u_{yy}= 0
+\]做关于 \(  x  \)的Fourier变换,得到
+\[
+\left( i \xi  \right)^{2} \hat{u}+ \hat{u}_{yy}= 0
+\]即 \[
+\hat{u}_{yy}- \xi ^{2}\hat{u}= 0
+\] 解关于 \(  y  \)的ODE,得到 \[
+\hat{u}\left(  \xi ,y \right)= c_1\left(  \xi  \right) e^{ \xi y}+ c_2\left(  \xi  \right)e^{- \xi y}  
+\]其中 \(  c_1\left(  \xi  \right),c_2\left(  \xi  \right)    \)由初值决定.对初值条件\(  u\left( x,0 \right)= f\left( x \right)    \)做关于 \(  x  \)的Fourier变换,得到 \[
+c_1\left(  \xi  \right)+ c_2\left(  \xi  \right)=   \hat{u}\left(  \xi ,0 \right)= \hat{f}\left(  \xi  \right)  
+\]     当 \(   \xi > 0  \)时,取 \(  c_2\left(  \xi  \right)= \hat{f}\left(  \xi  \right),c_1\left(  \xi  \right)= 0     \).当 \(   \xi \le 0  \)时,取 \(  c_1\left(  \xi  \right)= \hat{f}\left(  \xi  \right)    \),\(  c_2\left(  \xi  \right)= 0   \).易见这种取法使得 \(  \hat{u}\left(  \xi  ,y\right)   \)连续.    于是这里 \[
+\hat{u}\left(  \xi ,y \right)=  \hat{f}\left(  \xi  \right)e^{-\left|  \xi  \right|y } 
+\]  由卷积定理, \[
+u\left(  \xi ,y \right)= \sqrt{2\pi }f*\left( \left( e^{-\left|  \xi  \right|y } \right)^{\vee }  \right)  
+\]其中 \[
+\begin{aligned}
+\left( e^{-\left|  \xi  \right|y } \right)^{\vee }&= \int_{-\infty}^{\infty}e^{-\left|  \xi  \right|y }e^{-i \xi x}\,\mathrm{d} ^{\prime}  \xi\\ 
+ & = \int_{0}^{\infty}e^{- \xi y-i \xi x}  \,\mathrm{d} ^{\prime} x+ \int_{-\infty}^{0}e^{ \xi y-i \xi x}\,\mathrm{d} ^{\prime}  \xi \\ 
+ &=\int_{0}^{\infty}e^{- \xi \left( y+ ix \right) }\,\mathrm{d} ^{\prime}  \xi + \int_{0}^{\infty}e^{- \xi \left( y-ix \right) }\,\mathrm{d} ^{\prime}  \xi \\ 
+  &= \frac{1 }{\sqrt{2\pi } } \left( \frac{1 }{y+ ix } + \frac{1 }{y-ix } \right) = \frac{1 }{\sqrt{2\pi } } \frac{2y }{y^{2}+ x^{2} }  
+\end{aligned}
+\]于是 \[
+u\left( x ,y \right)= \int_{-\infty}^{\infty} f\left( s \right)\frac{2y }{y^{2}+ \left( x-s \right)^{2}  }\,\mathrm{d} s  
+\]
+形式上,我们得到 
+\begin{center}
+    \fbox{
+        \begin{minipage}{0.8\textwidth}\centering
+           \begin{large}
+         \[
+         u\left( x,y \right)= \int_{-\infty}^{\infty}f\left( s \right)\frac{2y }{y^{2}+ \left( x-s \right)^{2}  }\,\mathrm{d} s   
+         \]是以下问题的一个有界连续解:
+
+       \[  \begin{cases} u_{xx}+ u_{yy}= 0,&x\in \mathbb{R} ,y> 0\\ 
+ u\left( x,0 \right)= f\left( x \right),&x\in \mathbb{R}    \end{cases} 
+\]其中 \(  f  \)是在 \(  \mathbb{R}   \)上的有界连续函数.
+           \end{large} 
+        \end{minipage}
+    }
+\end{center}
+
+
+\begin{problemsec}
+    
+\end{problemsec}
+
+\begin{problem}
+    求解如下Cauchy问题: \[
+    \begin{cases} u_{t}-a^{2}u_{x x}+ cu= 0,&x\in \mathbb{R} ,t> 0\\ 
+     u\left( x,0 \right)= \cos x,&x\in \mathbb{R}   \end{cases} 
+    \]其中 \(  c> 0,a\in \mathbb{R}   \)为常数 
+\end{problem}
+\begin{proof}
+    对方程 \[
+    u_{t}-a^{2}u_{xx}+ cu= 0
+    \]做Fourier变换,得到 \[
+    \hat{u}_{t}+ \left( a^{2} \xi ^{2}+ c \right) \hat{u}= 0
+    \]得到\[
+    \hat{u}\left(  \xi ,t \right)= A\left(  \xi  \right)e^{-\left( a^{2} \xi ^{2}+ c \right)t }  
+    \]其中 \(  A\left(  \xi  \right)   \)由初值决定.对 \[
+    u\left( x,0 \right)= \cos x 
+    \]视为缓增分布,施行Fourier变换,得到\[
+    \hat{u}\left(  \xi ,0 \right) = \frac{1}{2}\mathcal{F}\left( e^{ix}+ e^{-ix} \right)= \frac{1}{2}\sqrt{2\pi }\left(  \delta \left( \xi -1 \right)+  \delta \left( \xi + 1 \right)   \right)  
+    \] 带入 \(  t= 0  \),得到 \[
+    A\left(  \xi  \right)= \hat{u}\left(  \xi ,0 \right)=   \frac{1}{2}\sqrt{2\pi }\left(  \delta \left( x-1 \right)+  \delta \left(  \xi + 1 \right)   \right) 
+    \] 于是 \[
+    \hat{u}\left(  \xi ,t \right)= \frac{1}{2}\sqrt{2\pi }\left(  \delta \left( \xi -1 \right)+  \delta \left( \xi + 1 \right)   \right)e^{-\left( a^{2} \xi ^{2}+ c \right)t }  
+    \]两边施行Fourier逆变换,得到 \[
+    \begin{aligned}
+    u\left( x,t \right)&= \frac{1 }{2 } \int_{\mathbb{R} } \delta \left( \xi -1 \right)e^{-\left( a^{2} \xi ^{2}+ c \right)t }e^{i \xi x}\,\mathrm{d}  \xi + \frac{1}{2}\int_{\mathbb{R} } \delta \left( \xi + 1 \right)e^{-\left( a^{2} \xi ^{2}+ c \right) }   e^{i \xi x}\,\mathrm{d}  \xi \\ 
+     &= \frac{1}{2}e^{-\left( a^{2}+ c \right)t }e^{i x}+ \frac{1}{2}e^{-\left( a^{2}+ c \right)t }e^{-i  x}\\ 
+      &=  e^{-\left( a^{2}+ c \right)t }\cos x 
+    \end{aligned}
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+\begin{problem}
+    考虑 \[
+    \begin{cases} u_{tt}= u_{x x}+ 2x,&x\in \mathbb{R} ,t> 0\\ 
+     u\left( x,0 \right)= x^{2},\quad u_{t}\left( x,0 \right)= 0   \end{cases} 
+    \]
+\end{problem}
+\begin{proof}
+    对于 \[
+    u_{tt}= u_{xx}+ 2x
+    \]两边做Fourier变换,得到 \[
+    \hat{u}_{tt}= - \xi ^{2} \hat{u}+ 2i\sqrt{2\pi } \delta ^{\prime} 
+    \]解得 \[
+    \hat{u}\left(  \xi ,t \right)= c_1\left(  \xi  \right)\cos \left(  \xi t \right)+ c_2\left(  \xi  \right)\sin \left(  \xi t \right)+ \frac{2i }{ \xi ^{2} }  \sqrt{2\pi } \delta ^{\prime} \left(  \xi  \right)      
+    \]对 \[
+    u\left( x,0 \right)= x^{2} 
+    \]做Fourier变换,得到 \[
+   c_1\left(  \xi  \right)+ \frac{1 }{ \xi ^{2} }\sqrt{2\pi i} \delta ^{\prime} \left(  \xi  \right)=     \hat{u}\left(  \xi ,0 \right)=- \sqrt{2\pi }  \delta ^{\prime \prime} \left(  \xi  \right)  
+    \]对 \[
+    u_{t}\left( x,0 \right)= 0 
+    \]做Fourier变换,得到 \[
+   c_2\left(  \xi  \right)=   \hat{u}_{t}\left(  \xi ,0 \right)= 0 
+    \]于是 \[
+    \hat{u}\left(  \xi ,t \right)= -\sqrt{2\pi }\left( \frac{2i }{ \xi ^{2} } \delta ^{\prime} \left(  \xi  \right)+ \delta ^{\prime \prime} \left(  \xi  \right)    \right)  \cos \left(  \xi t \right)+ \frac{2i }{ \xi ^{2} }\sqrt{2\pi }   \delta ^{\prime} \left(  \xi  \right)   
+    \]整理得到 \[
+    \hat{u}\left(  \xi ,t \right)=2i\sqrt{2\pi }\left( \frac{ 1-\cos \left(  \xi t \right) }{ \xi ^{2} } \right)    \delta ^{\prime} \left(  \xi  \right)-\sqrt{2\pi }\cos \left(  \xi t \right) \delta ^{\prime \prime} \left(  \xi  \right)   
+    \]其中 \[
+    \frac{1-\cos  \xi t }{ \xi ^{2} } \delta ^{\prime} \left(  \xi  \right)=  \left(  \frac{1}{2} \xi ^{2}+ o\left(  \xi ^{4} \right)  \right) \delta ^{\prime} \left(  \xi  \right)=   \frac{1}{2} t ^{2} \delta ^{\prime} \left(  \xi  \right)
+    \]这里用到了 \[
+     \varphi \left(  \xi  \right) \delta ^{\prime} \left(  \xi  \right)=  \varphi \left( 0 \right) \delta ^{\prime} \left(  \xi  \right)- \varphi ^{\prime} \left( 0 \right) \delta \left(  \xi  \right)      
+    \]此外, \[
+    \cos \left(  \xi t \right) \delta ^{\prime \prime} \left(  \xi  \right)=    \delta ^{\prime \prime} \left(  \xi  \right) + t\sin \left(  \xi t \right) \delta ^{\prime} \left(  \xi  \right)=  \delta ^{\prime \prime} \left(  \xi  \right)- t^{2}\cos \left(  \xi t \right) \delta \left(  \xi  \right)=  \delta ^{\prime \prime} \left(  \xi  \right)- t^{2} \delta \left(  \xi  \right)       
+    \]于是 \[
+    \hat{u}\left(  \xi ,t \right)=i\sqrt{2\pi }t^{2} \delta ^{\prime} \left(  \xi  \right)-\sqrt{2\pi } \delta ^{\prime \prime} \left(  \xi  \right) +  \sqrt{2\pi }t^{2} \delta \left(  \xi  \right)  
+    \]两边做Fourier逆变换,得到 \[
+    u\left( x,t \right)= t^{2}\mathcal{F}^{-1} [i D \mathcal{F}[1]] + \mathcal{F}^{-1} \left( \mathcal{F}[x^{2}] \right) + t^{2}\mathcal{F}[\mathcal{F}[1]]
+    \]于是 \[
+    u\left( x,t \right)= xt^{2}+ x^{2}+ t^{2} 
+    \]
+    \hfill $\square$
+\end{proof}
+
+\begin{problem}
+    求三维半空间中波动方程的初边值问题; \[
+    \begin{cases}  \partial _{tt}u-a^{2} \Delta u= 0,&x\in \mathbb{R} _{+ }^{3},t> 0\\ 
+     u\left( x_1,x_2,0,t \right)= 0,&\left( x_1,x_2 \right)\in \mathbb{R} ^{2},t> 0\\ 
+      u\left( x,0 \right)=  \varphi \left( x \right), \partial _{t}u\left( x,0 \right)= \psi \left( x \right),&x\in \mathbb{R} _{+ }^{3}       \end{cases} 
+    \]
+\end{problem}
+\end{document}

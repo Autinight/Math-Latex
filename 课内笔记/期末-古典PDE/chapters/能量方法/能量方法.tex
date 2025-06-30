@@ -1,0 +1,182 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{ 能量方法 }
+
+\begin{theorem}
+    设 \(  f \in C\left(  \Omega  \right),g \in C\left(  \partial  \Omega  \right)    \) ,则以下边值问题 \[
+    \begin{cases} - \Delta u= f,& x \in  \Omega ,\\ 
+     u= g,& x\in  \partial  \Omega ,\end{cases} 
+    \]最多存在一个解 \(  u \in C^{2}\left(  \Omega  \right)\cap C\left(  \bar{\Omega} \right)    \) 
+\end{theorem}
+\begin{proof}
+    设 \(  \bar{u}  \)是另一个解,令 \(  w= \bar{u}-u  \).则 \[
+    \begin{cases}  \Delta w= 0,&x\in  \Omega \\ 
+     w= 0&x\in  \partial  \Omega  \end{cases} 
+    \]由Green公式,能量 \[
+    E=  \int_{ \Omega } \left|  \nabla w \right|^{2}\,\mathrm{d} x=  - \int_{ \Omega }w  \Delta w+ \int_{ \partial  \Omega }w \frac{\partial w}{\partial \nu }\,\mathrm{d} S= 0+ 0= 0
+    \]于是 \[
+     \nabla w\equiv 0
+    \]表面 \(  w  \)是常值的,又  \(  w  \)在边界上为零,故 \(  w  \)在 \(   \bar{\Omega}  \)上恒为零.这表明解是唯一的.    
+
+    \hfill $\square$
+\end{proof}
+\begin{lemma}{微分Gronwall}
+    设 \(  u,k,h \in C\left( \left[ a,b \right]  \right)   \),且 \(  u  \)非负可微,满足 \[
+    u^{\prime} \left( t \right)\le k\left( t \right)u\left( t \right)+ h\left( t \right)    
+    \]则 \[
+    u\left( t \right)\le  e^{\int_{a}^{t}k\left( s \right)\,\mathrm{d} s }\left( u\left( a \right)+  \int_{a}^{t}h\left( s \right)e^{\int_{s}^{a}k\left( \tau  \right)\,\mathrm{d} \tau  }\,\mathrm{d} s   \right)  
+    \]
+\end{lemma}
+
+\begin{lemma}{积分Gronwall}
+    设 \(  u,k,h  \) 是 \(  I  = [a,b]\)上的非负连续函数,若 \[
+u\left( t \right)\le k\left( t \right)+ \int_{a}^{t} h\left( s \right)u\left( s \right)\,\mathrm{d} s, \forall t\in \left[ a,b \right]    
+\] 则 \[
+u\left( t \right)\le k\left( t \right)e^{\int_{a}^{t}h\left( s \right)\,\mathrm{d} s },\quad \forall t\in \left[ a,b \right]   
+\]
+\end{lemma}
+\begin{definition}{Sobolev空间}
+    设 \(   \Omega \subseteq \mathbb{R} ^{n}  \)是有界开区域, \(  k \in \mathbb{N}   \), \(  D^{\alpha }u,\alpha = \left( \alpha _1 ,\cdots ,\alpha _{n} \right)   \)表示多重弱导数, \(  L^{2}\left(  \Omega  \right)   \)为平方可积空间.定义 \[
+    H^{k}\left(  \Omega  \right)= \left\{ u\in L^{2}\left(  \Omega  \right): D^{\alpha }u\in L^{2}\left(  \Omega  \right), \forall \left| \alpha  \right|\le k    \right\} 
+    \]    
+\end{definition}
+
+\begin{definition}{零边值Sobolev空间}
+    \(   \Omega   \), \(  K,D^{\alpha }u  \) 同前   . 定义 \[
+    H_{0}^{1}\left(  \Omega  \right)= \left\{ u\in H^{1}\left(  \Omega  \right): \left. u \right|_{ \partial  \Omega }  = 0\right\} 
+    \]
+\end{definition}
+
+\begin{lemma}{Poincare不等式}
+    设 \(   \Omega \subseteq \mathbb{R} ^{n}  \)是有界区域,且有Lipschitz边界.则存在仅依赖与 \(   \Omega   \)的常数 \(  C  \),使得对于任意的 \(  u \in H_{0}^{1}\left(  \Omega  \right)   \), \[
+    \left\| u \right\|_{L^{2}\left(  \Omega  \right) }\le C _{P}\left\|  \nabla u \right\|_{L^{2}\left(  \Omega  \right) }
+    \]    
+\end{lemma}
+
+\section{热方程的能量估计}
+
+\begin{theorem}{Dirichlet边界条件}
+设 \(   \Omega \in \mathbb{R} ^{n}  \)是有光滑边界的有界区域. \(   \Omega _{T}: =   \Omega \times (0,T]  \)    , \(   \Gamma _{T}=  \overline{ \Omega _{T}}- \Omega _{T}  \), \(  g \in C\left(  \Gamma _{T} \right)   \), \(  f \in C\left(  \Omega _{T} \right)   \). 考虑带Dirichlet边界条件的初边值问题 \[
+\begin{cases} u_{t}- \Delta u= f\left( x,t \right) ,&\left( x,t \right)\in  \Omega _{T},\\ 
+ u \left( x,0 \right)= u_0\left( x \right),& x\in  \Omega \\ 
+  u\left( x,t \right)= 0,&\left( x,t \right) \in  \Gamma _{T}    \end{cases} 
+\]设解 \(  u  \)的一个能量泛函 \(  E  \)为 \[
+E\left( t \right)= \frac{1 }{2 } \int_{ \Omega } \left| u\left( x,t \right)  \right|^{2} \,\mathrm{d} x   
+\]  那么存在常数 \(  C  \),使得   \[
+   E\left( t \right)\le C\left( E\left( 0 \right)+ \int_{0}^{t}\left\| f \right\|^{2}_{L^{2}}  \,\mathrm{d} s\right)  
+    \]
+\end{theorem}
+\begin{proof}
+    \[
+    \frac{\mathrm{d}E}{\mathrm{d}t} =  \int_{ \Omega } u_{t}\cdot u \,\mathrm{d} x=  \int_{ \Omega } \Delta u \cdot u\,\mathrm{d} x+  \int_{ \Omega }f \cdot u\,\mathrm{d} x
+    \]其中 \[
+    \int_{ \Omega } \Delta u\cdot u\,\mathrm{d} x= \int_{  \partial  \Omega  } u\frac{\partial u}{\partial \nu }\,\mathrm{d} S- \int_{ \Omega } \left|  \nabla u \right|^{2}\,\mathrm{d} x= -  \int_{ \Omega }\left|  \nabla u \right|^{2}\,\mathrm{d} x  = -\left\|  \nabla u \right\|_{L^{2}\left(  \Omega  \right) }^{2}
+    \]
+
+    再由Cauchy-Schwarz不等式 \[
+    \int_{ \Omega }f\cdot u\,\mathrm{d} x\le  \left\| f \right\|_{L^{2}\left(  \Omega  \right) } \left\| u \right\|_{L^{2}\left(  \Omega  \right) }
+    \]合并不等式,得到 \[
+    \frac{\mathrm{d}E}{\mathrm{d}t}\le - \left\|  \nabla u \right\|^{2}_{L^{2}\left(  \Omega  \right) } + \left\| f \right\|_{L^{2}\left(  \Omega  \right) }\left\| u \right\|_{L^{2}\left(  \Omega  \right) }
+    \]由Poincare不等式,存在常数 \(  C_{P}  \),使得 \[
+    C_{p}\left\| u \right\|^{2}_{L^{2}\left(  \Omega  \right) }\le \left\|  \nabla u \right\|_{L^{2}\left(  \Omega  \right) }^{2}
+    \] 于是 
+    
+    由不等式 \(  ab\le \frac{ a^{2}}{2 \varepsilon  }   + \frac{ \varepsilon b^{2} }{2 } \) ,得到 \[ \left\| f \right\|_{L^{2}\left(  \Omega  \right) }\left\| u \right\|_{L^{2}\left(  \Omega  \right) }= 
+    \sqrt{2E} \left\| f \right\|_{L^{2}\left(  \Omega  \right) }\le   \frac{E }{ \varepsilon  }+ \frac{ \varepsilon  }{2 } \left\| f \right\|^{2}_{L^{2}\left(  \Omega  \right) }  
+    \]于是 \[
+    \frac{\mathrm{d}E}{\mathrm{d}t}\le \left( \frac{1 }{ \varepsilon  }-2C_{p}  \right)E + \frac{ \varepsilon  }{2 }\left\| f \right\|^{2}_{L^{2}\left(  \Omega  \right) }  
+    \]取 \(   \varepsilon = \frac{1 }{C_{p} }   \),得到 \[
+    \frac{\mathrm{d}E}{\mathrm{d}t}\le -C_{p}E+ \frac{C_{p} }{2 }\left\| f \right\|^{2}_{L^{2}\left(  \Omega  \right) } 
+    \]由Gronwall不等式, \[
+    E\left( t \right)\le e^{-C_{p}t}\left( E\left( 0 \right)+  \frac{C_{p} }{2 } \int_{0}^{t}\left\| f \right\|^{2}_{L_{^{2}\left(  \Omega  \right) }}e^{-C_{p}\left( t-s \right) }  \,\mathrm{d} s \right)  
+    \] 取 \(  C> \max \left\{ e^{-C_{p}t}, \frac{C_{p} }{2 }  \right\}  \)即可. 
+
+    
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}{唯一性}
+    设 \(   \Omega \in \mathbb{R} ^{n}  \)是有光滑边界的有界区域. \(   \Omega _{T}: =   \Omega \times (0,T]  \)    , \(   \Gamma _{T}=  \overline{ \Omega _{T}}- \Omega _{T}  \), \(  g \in C\left(  \Gamma _{T} \right)   \), \(  f \in C\left(  \Omega _{T} \right)   \). 考虑带Dirichlet边界条件的初边值问题 \[
+\begin{cases} u_{t}- \Delta u= f\left( x,t \right) ,&\left( x,t \right)\in  \Omega _{T},\\ 
+ u \left( x,0 \right)= u_0\left( x \right),& x\in  \Omega \\ 
+  u\left( x,t \right)= \psi \left( x,t \right) ,&\left( x,t \right) \in  \Gamma _{T}    \end{cases} 
+\]该问题的解是唯一的.
+\end{corollary}
+\begin{proof}
+    若 \(  u,\bar{u}  \)是两个解,令 \(  w = u-\bar{u}  \)  
+    则方程是以下问题的解 \[
+    \begin{cases} w_{t}- \Delta w= 0,&\left( x,t \right)\in  \Omega _{T}\\ 
+     w\left( x,0 \right)= 0,&x\in  \Omega \\ 
+      w\left( x,t \right)= 0,&\left( x,t \right)\in  \Gamma _{T}     \end{cases} 
+    \]由上面的能量估计,存在常数 \(  C  \),使得 \[
+    E\left( t \right)\le CE\left( 0 \right)  
+    \] \[
+    E\left( t \right)= \frac{1}{2}\int_{ \Omega }\left| w\left( x,t \right)  \right|^{2}\,\mathrm{d} x,\quad E\left( 0 \right)= 0   
+    \]于是 \[
+    w\left( x,t \right)\equiv 0 
+    \]这表明解唯一.
+    \hfill $\square$
+\end{proof}
+
+\section{波动方程的能量估计}
+
+\begin{theorem}
+    设 \(   \Omega \subseteq \mathbb{R} ^{n}  \)是有光滑边界的有界区域,\(   \Omega _{T}: =   \Omega \times \left[ 0,T \right]   \) ,  \(  u\in C^{2}\left(  \Omega _{T} \right)\cap C^{1}\left( \overline{ \Omega _{T}} \right)    \)  是以下波动方程初边值问题 \[
+    \begin{cases} u_{tt}-a^{2} \Delta u= f\left( x,t \right),&\left( x,t \right)\in  \Omega _{T},\\ 
+     u\left( x,t \right)= 0,&\left( x,t \right)\in  \partial  \Omega \times \left[ 0,T \right],\\ 
+      u\left( x,0 \right)=  \varphi \left( x \right),\quad u_{t}\left( x,0 \right)= \psi \left( x \right),&x\in  \Omega           \end{cases} 
+    \]的解.定义能量 \[
+    E\left( t \right): =   \frac{1}{2} \int_{ \Omega } \left( \left|u_{t} \right|^{2}+a^{2} \left|   \nabla u \right|^{2}   \right)\,\mathrm{d} x = \frac{1}{2}\left\| u_{t} \right\|_{L^{2}\left(  \Omega  \right) }^{2}+ \frac{1}{2}a^{2} \left\|  \nabla  u \right\|^{2}_{L^{2}\left(  \Omega  \right) }  
+    \]则存在常数 \(  M  \),使得 \[
+    E\left( t \right) \le M\left( E\left( 0 \right)+  \int_{0}^{T}\left\| f \right\|^{2}_{ L ^{2}\left(  \Omega  \right) }\,\mathrm{d} t  \right) 
+    \] 
+\end{theorem}
+\begin{proof}
+     \[
+     \frac{\mathrm{d}E}{\mathrm{d}t}=  \int_{ \Omega }\left( u_{t}u_{tt}+ a^{2} \nabla u \nabla u_{t} \right)\,\mathrm{d} x 
+     \]其中 \[
+   \begin{aligned}
+     a^{2}\int_{ \Omega } \nabla u \nabla u_{t}&=  a^{2}\int_{ \partial  \Omega }u_{t} \frac{\partial u}{\partial \nu }\,\mathrm{d} S- a^{2} \int_{ \Omega }u_{t} \Delta u\,\mathrm{d} x\\ 
+      &=  a^{2}\int_{ \partial  \Omega }u_{t} \frac{\partial u}{\partial \nu}\,\mathrm{d} S- \int_{ \Omega }u_{tt}u_{t}\,\mathrm{d} u + \int_{ \Omega }f\left( x,t \right)u_{t}\,\mathrm{d} x 
+   \end{aligned}
+     \]于是 \[
+     \frac{\mathrm{d}E}{\mathrm{d}t}=  a^{2} \int_{ \partial  \Omega }u_{t}\frac{\partial u}{\partial \nu   }\,\mathrm{d} S +  \int_{ \Omega }f u_{t}\,\mathrm{d} x=  \int_{ \Omega } fu_{t}\,\mathrm{d} x
+     \]    由Cauchy不等式, \[
+     \int_{ \Omega }fu_{t}\,\mathrm{d} x\le \left\| f \right\|_{L^{2}\left(  \Omega  \right) } \left\| u_{t} \right\|_{L^{2}\left(  \Omega  \right) }\le \left\| f \right\|_{L^{2}\left(  \Omega  \right) }\sqrt{2E}
+     \]再由不等式 \(  ab\le \frac{a^{2} }{2 }+ \frac{b^{2} }{2 }    \),得到 \[
+     \left\| f \right\|_{L^{2}\left(  \Omega  \right) }\sqrt{2E}\le E+  \frac{1}{2}\left\| f \right\|_{L^{2}\left(  \Omega  \right) }^{2}
+     \] 于是 \[
+     \frac{\mathrm{d}E}{\mathrm{d}t}\le  E+ \frac{1}{2}\left\| f \right\|^{2}_{L^{2}\left(  \Omega  \right) }
+     \]由微分形式的Gronwall不等式, \[
+     E\left( t \right)\le e^{t}\left( E\left( 0 \right)+ \int_{0}^{T}\frac{1}{2}\left\| f \right\|^{2}_{L^{2}\left(  \Omega  \right) }e^{-t}\,\mathrm{d}  t \right)  \le e^{T}\left( E\left( 0 \right)+  \int_{0}^{T}\left\| f \right\|^{2}_{L^{2}\left(  \Omega  \right) }\,\mathrm{d} t  \right) 
+     \]取 \(  M =  e^{T}  \)即可. 
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}{唯一性}
+    设 \(   \Omega \subseteq \mathbb{R} ^{n}  \)是有光滑边界的有界区域,\(   \Omega _{T}: =   \Omega \times \left[ 0,T \right]   \) ,  \(  u\in C^{2}\left(  \Omega _{T} \right)\cap C^{1}\left( \overline{ \Omega _{T}} \right)    \)  则以下波动方程初边值问题 \[
+    \begin{cases} u_{tt}-a^{2} \Delta u= f\left( x,t \right),&\left( x,t \right)\in  \Omega _{T},\\ 
+     u\left( x,t \right)= g\left( x,t \right) ,&\left( x,t \right)\in  \partial  \Omega \times \left[ 0,T \right],\\ 
+      u\left( x,0 \right)=  \varphi \left( x \right),\quad u_{t}\left( x,0 \right)= \psi \left( x \right),&x\in  \Omega           \end{cases} 
+    \]的解是唯一性的.
+\end{corollary}
+\begin{proof}
+    设 \(  \bar{u},u  \)是两个解, \(  w= \bar{u}-u  \),则 \[
+    \begin{cases} w_{tt}-a^{2} \Delta w= 0,&\left( x,t \right)\in  \Omega _{T}\\ 
+     w\left( x,t \right)= 0,&\left( x,t \right) \in  \partial  \Omega \times \left[ 0,T \right]\\ 
+      w\left( x,0 \right)= 0,\quad w_{t}\left( x,t \right)= 0,&x \in  \Omega        \end{cases} 
+    \]  令 \[
+    E\left( t \right)= \frac{1}{2}\int_{ \Omega }\left( \left| w_{t} \right|^{2}+  \left|  \nabla w \right|^{2} \right) \,\mathrm{d} x   
+    \]则 存在常数 \(  M  \),使得 \[
+    E\left( t \right)\le ME\left( 0 \right)  
+    \] 其中 \[
+    E\left( 0 \right)= 0 
+    \]故 \[
+    E\left( t \right)\equiv 0 \implies w_{t}\equiv 0,  \nabla w\equiv 0 
+    \]这表明 \(  w\left( x,t \right)   \)是常值的,又 \(  w\left( x,t \right)|_{ \partial  \Omega \times \left[ 0,T \right] }= 0   \),故 \(  w\equiv 0  \).这表明解是唯一的.   
+
+    \hfill $\square$
+\end{proof}
+\end{document}

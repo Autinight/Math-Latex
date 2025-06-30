@@ -1,0 +1,342 @@
+\documentclass[../../复变函数.tex]{subfiles}
+
+\begin{document}
+
+\chapter{ Final }
+
+\section{2024}
+
+ \begin{problem}
+1. 下列有关全纯函数唯一性定理的叙述, 哪一项是正确的? ( )
+\begin{enumerate}
+    \item 设 $f, g$ 是两个整函数, $\{z_n\}_{n=1}^\infty$ 均是 $f$ 和 $g$ 的零点, 则 $f(z) = g(z), \forall z \in \mathbb{C}$.
+    \item 设 $f$ 在区域 $D$ 内全纯, $z_0 \in D$. 若 $f^{(n)}(z_0) = 0, \forall n = 0, 1, 2, \dots$, 则 $f(z) \equiv 0, \forall z \in D$.
+    \item 设 $f, g$ 是两个整函数, $\varepsilon > 0$ 是一个正数, 若 $f(x) = g(x), \forall x \in (-\varepsilon, \varepsilon)$, 则 $f(z) \not\equiv g(z), \forall z \in \mathbb{C}$.
+    \item 设 $f, g$ 均在区域 $D$ 内全纯, 且 $z_0 \in D, \varepsilon > 0$ 是一个充分小的正数. 若 $f(z) = g(z), \forall z \in B_\varepsilon(z_0) = \{z: |z - z_0| < \varepsilon\}$, 则 $f(z) \not\equiv g(z), \forall z \in D$.
+\end{enumerate}
+\end{problem}
+\begin{proof}
+  \begin{enumerate}
+    \item 错误,需要\(  \left\{ z_{n} \right\}_{n = 1}^{\infty}  \)有一个聚点才能保证.
+    \item 正确, \(  f  \)至少在一个圆盘内恒为零,全纯函数的唯一性(在有聚点的列上相等的意义下)保证了 \(  f  \)恒为零 . 
+    \item 错误,恰恰相反,正确的结论是 \(  f\equiv g  \).
+    \item 错误,同样恰恰相反. 
+  \end{enumerate}
+  
+
+  \hfill $\square$
+\end{proof}
+\begin{problem}
+2. 下列有关全纯函数的奇点叙述, 哪一项是正确的? ( )
+\begin{enumerate}
+    \item 全纯函数的奇点均是孤立的.
+    \item $z = 0$ 是 $e^{\frac{1}{z}}$ 的简单极点.
+    \item 设 $f(z)$ 是复数域 $\mathbb{C}$ 上的一个 $n(n \ge 1)$ 次多项式, 则 $f(z)$ 必以无穷远点 $\infty$ 为它的 $n$ 阶极点.
+    \item 设 $f(z)$ 是一个整函数, 若无穷远点 $\infty$ 是它的可去奇点, 则 $f(z)$ 不可能是一个常数.
+\end{enumerate}
+\end{problem}
+\begin{proof}
+  \begin{enumerate}
+    \item 错误,考虑 \[
+    f\left( z \right)= \frac{1 }{\sin \left( \frac{\pi  }{z }  \right)   }  
+    \] \(  0  \)是非孤立的起点,它是奇点集的一个聚点.
+    \item 错误,沿着实轴趋于 \(  \infty  \),沿着虚轴模长为 \(  1  \),没有极限.  
+    \item 正确,\(  f\left( z \right)= a_{n}z^{n}+ \cdots + a_0z  \) , \(  f\left( \frac{1 }{z }  \right)= a_{n}z^{-n}+ \cdots + a_{0}\frac{1 }{z }    \) , \(  z= 0  \)是 \(  f\left( \frac{1 }{z }  \right)   \)的 \(  n  \)阶极点.   
+    \item 错误,恰恰相反,一定是一个常数.
+  \end{enumerate}
+  
+
+  \hfill $\square$
+\end{proof}
+
+\begin{problem}
+3. 下列有关亚纯函数的叙述, 哪一项是正确的? ( )
+\begin{enumerate}
+    \item 若 $f(z)$ 在区域 $D$ 内是一个亚纯函数, 则 $f(z)$ 在 $D$ 内没有本性奇点.
+    \item 一个亚纯函数若有极点的话, 它的极点一定是孤立的.
+    \item 设 $f(z)$ 是定义在有界区域 $D$ 内的亚纯函数, 若 $f(z)$ 在边界 $\partial D$ 上全纯且没有零点, 则 $f(z)$ 在 $D$ 内可能有无限多个零点和极点.
+    \item 如果无穷远点 $\infty$ 是一个亚纯函数 $f(z)$ 的可去奇点或极点, 则 $f(z)$ 是一个超越整函数.
+\end{enumerate}
+\end{problem}
+\begin{proof}
+  \begin{enumerate}
+    \item 正确,定义就是奇点只有极点.
+    \item 很奇怪,似乎是一句正确的冗余废话,我们再孤立奇点的框架下定义的极点,自然不用谈极点是否孤立.
+    \item 错误,有界区域内无限多个零点会导致一个非孤立零点,这在亚纯函数中不存在.
+    \item 错误,恰恰相反,是一个有理函数.
+  \end{enumerate}
+  
+
+  \hfill $\square$
+\end{proof}
+\begin{problem}
+4. 下列叙述, 哪一项是正确的? ( )
+\begin{enumerate}
+    \item 设 $f(z)$ 在区域 $D$ 内是一个单叶全纯函数, 则 $f'(z)$ 在 $D$ 内可能有零点.
+    \item 若 $f(z)$ 在区域 $D$ 内全纯, 且 $f'(z) \ne 0, \forall z \in D$, 则 $f(z)$ 是定义在 $D$ 内的一个单叶全纯函数.
+    \item 设 $f(z) = \frac{1}{z(z-1)(z-3)}$, 则 $f(z)$ 在原点的去心邻域 $\{z: 0 < |z-1| < 2\}$ 内可以作洛朗展开.
+    \item 设 $f(z) = \frac{z-1}{z(z-2)}$, 则 $f(z)$ 在 $z_0 = 1$ 的邻域 $\{z: |z-1| < 1\}$ 内可作泰勒展开.
+\end{enumerate}
+\end{problem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 错误.
+        \item 错误,只能保证局部的单叶全纯.一个反例是 \(  f= z^{2}  \)在 \(  \mathbb{C} \setminus \left\{ 0 \right\}  \)上导数非零,但是 \(  f\left( 1 \right)= f\left( -1 \right)    \) .
+        \item 错误,奇点 \(  0  \)在这个区域中.  
+        \item 正确, \(  f  \)在这个圆盘上解析. 
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+\begin{problem}
+5. 下列关于全纯函数的有关性质, 哪一项是正确的? ( )
+\begin{enumerate}
+    \item 一个全纯函数的零点总是孤立的.
+    \item 一个不恒为零的全纯函数的零点一定只有有限多个.
+    \item 设 $f(z)$ 在有界区域 $D$ 内全纯, 且不恒为零, 则 $f(z)$ 在 $D$ 内的零点最多只有有限多个.
+    \item 设 $f(z)$ 在有界区域 $D$ 内全纯, 且不恒为零, 则 $f(z)$ 在 $D$ 内可能有无穷多个零点.
+\end{enumerate}
+\end{problem}
+\begin{proof}
+    \begin{enumerate}
+        \item 错误,需要排除常值函数.
+        \item 错误,这个表述在区域有界的情况下是正确的. 整函数\(  e^{z}  \)在虚轴上有无穷多个零点 .
+        \item 错误,没有考虑到零点集的聚点只落在边界上的情况. 一个反例是:考虑单位开圆盘上的函数 \(  f\left( z \right) = \sin \left( \frac{1 }{z-1 }  \right)   \) ,\(  1-\frac{1 }{n\pi  }   \) 都是 \(  f  \)的零点.
+        \item 正确,原因见上一个选项.
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+\begin{problem}
+6. 下列叙述, 哪一项是正确的? ( )
+\begin{enumerate}
+    \item 设 $f(z)$ 在区域 $D$ 内全纯, 若 $z_0 \in D$ 满足 $f'(z_0) \ne 0$, 则 $f(z)$ 在点 $z_0$ 的充分小邻域内是保角的, 但在点 $z_0$ 的充分小邻域内不一定是保形的.
+    \item 任何一个分式线性函数 $L(z) = \frac{az+b}{cz+d}$ ($ad-bc \ne 0$) 均是保形映射.
+    \item 任何一个分式线性函数 $L(z) = \frac{az+b}{cz+d}$ ($ad-bc \ne 0$) 均把一个有限圆周映为一个有限圆周.
+    \item 对复平面上的任何两条直线, 不一定存在共形映射 $w = f(z)$ 把其中一条映为另一条.
+\end{enumerate}
+\end{problem}
+\begin{proof}
+    \begin{enumerate}
+        \item 错误, \(  f  \)是局部单叶解析的,进而是保形的. 
+        \item  正确, \(  L^{\prime} \left( z \right)= \frac{ad-bc }{\left( cz+ d \right)^{2}  } \neq 0   \),从而 \(  L  \)单叶全纯.  
+        \item 错误, \(  z \mapsto \left( z,z_2,z_3,z_4 \right)   \)把\(  z_2,z_3,z_4  \)所在的圆周映到实轴.   
+        \item 错误,事实上,分别取两条直线上的三个点 \(  z_2,z_3,z_4  \),\(  w_2,w_3,w_4  \),就能通过 \(  \left( w,w_1,w_2,w_3 \right)= \left( z,z_2,z_3,z_4 \right)    \)解出 \(  w  \), 构造出一个这样的分式线性变换.   
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+\begin{problem}
+7. 填空题.
+\begin{enumerate}
+    \item 将函数 $\sin(3z^4)$ 展为 $z$ 的幂级数 .
+    \item 函数 $f(z) = \frac{(z-2024)\sin z}{(z-1)^2 z^2 (z+1)^3}$ 的极点及其阶数为 .
+    \item 设 $f(z) = (z-1)(z-2)^2 (z-4)^3$ 以及 $C: |z|=3$. 当 $z$ 沿正方向绕 $C$ 一周后, $\arg f(z)$ 的改变量为.
+    \item 计算积分: $\oint_C \frac{zdz}{(z-1)(z-2)^2}$ , 其中 $C: |z-2|=\frac{1}{3}$, 取逆时针方向.
+    \item 设分式线性函数 $w=f(z)$ 把点 $0, 1, \infty$ 映为 $-1, -i, 1$, 则 $w=$.
+\end{enumerate}
+\end{problem}
+\begin{proof}
+    \begin{enumerate}
+        \item \[
+        \sin w= \sum _{n = 0}^{\infty}\left( -1 \right)^{n} \frac{w^{2n+ 1} }{\left( 2n+ 1 \right)!  } 
+        \]令 \(  w= 3z^{4}  \),得到 \[
+        \sin \left( 3z^{4} \right)= \sum _{n = 0}^{\infty}\left( -1 \right)^{n} \frac{3^{2n+ 1} }{\left( 2n+ 1 \right)!  }    z^{8n+ 4}
+        \]为函数的幂级数展开. 
+        \item 函数的奇点出现在 \(  1,0,-1  \).  \[
+        \frac{\left( z-2024 \right)\sin z  }{z^{2}\left( z+ 1 \right)^{3}  } 
+        \]在 \(  z= 1  \)处全纯且非零,故 \(  z= 1  \)是二阶极点.  函数 \[
+        \frac{\left( z-2024 \right)  }{\left( z-1 \right)^{2}\left( z+ 1 \right)^{3}   } 
+        \]在 \(  z= 0  \)附近处纯且非零. 故 \(  f  \)在 \(  z= 0  \)处极点的存在性与阶数和 \(  \frac{\sin z }{z^{2} }   \)相同.后者的Laurent为 \[
+        \frac{\sin z }{z^{2} }= z^{-1}+ \frac{1 }{6 }z+ \cdots   
+        \]   主要部分的最低次非零系数项为 \(  -1  \)次,故极点存在且阶数为 \(  1  \)阶.  
+         最后,函数 \[
+         \frac{\left( z-2024 \right)  \sin z}{\left( z-1 \right)^{2}z^{2}  } 
+         \]在 \(  z= -1  \)处全纯且非零,故极点阶数为 \(  3  \).  
+         \item 由辐角原理, \(  f  \)沿着 \(  C  \)绕 \(  0  \)的环绕数 \(  N  \) 为 \(  C  \)内部零点的阶数和减去极点的阶数和, \(  N= 1+ 2= 3  \) ,故辐角变化量为 \(  2\pi  N= 6\pi   \).
+         \item  \[
+         \oint_{C}\frac{z\,\mathrm{d} z }{\left( z-1 \right)  \left( z-2 \right)^{2} }= 2\pi i\operatorname{Res}\,\left( f,2 \right)  
+         \]     利用 \[
+         \operatorname{Res}\,\left( f,a \right)= \frac{1 }{\left( m-1 \right)!  }  \lim_{z\to a}\frac{\mathrm{d}^{m-1}}{\mathrm{d}z^{m-1}}\left( \left( z-a \right)^{m}f  \right) ,\quad \text{a是m阶极点}
+         \] \[
+         \operatorname{Res}\,\left( f,2 \right)= \frac{1 }{1 !}\lim_{z\to 2}\frac{\mathrm{d}}{\mathrm{d}z}\left( \frac{z }{z-1 }  \right)   = -1
+         \]于是 \[
+         \oint_{C}\frac{z }{\left( z-1 \right)\left( z-2 \right)^{2}   } \,\mathrm{d} z= -2\pi i
+         \]或者利用柯西积分公式, 令 \(  g = \frac{z }{z-1 }   \)  \[
+         g^{\left( 1\right) }\left( z \right) =\frac{\left( 2-1 \right)!  }{2\pi i } \oint_{C}\frac{g\left( \zeta  \right)  }{\left( \zeta -2 \right)^{2}  }\,\mathrm{d} z\zeta  
+         \]
+         \item 若 \(  w  \)是这样的函数,则 \[
+      \left( z,1,0,\infty \right)= \left( w\left( z \right),w\left( 1 \right),w\left( 0 \right),w\left( \infty \right)     \right)  = \left( w\left( z \right), -i,-1,1 \right) 
+         \]得到 \[
+         z= \frac{w+ 1 }{w-1 }/ \frac{-i+ 1 }{-i-1 }= -i\frac{w+ 1 }{w-1 }    
+         \] 得到 \[
+         1+ \frac{2 }{w-1 }= iz 
+         \] \[
+         w= \frac{2 }{iz-1 }+ 1= \frac{iz+ 1 }{iz-1 }= \frac{z-i }{z+ i }   
+         \]
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+\begin{problem}
+8. 试将 $f(z) = \sin \frac{z}{z-1}$ 在奇点 $z=1$ 的最大去心邻域 $0 < |z-1| < +\infty$ 内展成洛朗级数, 并求 $f(z)$ 在 $z=1$ 的留数 $\text{Res}(f, 1)$.
+\end{problem}
+
+\begin{proof}
+    令 \(  z-1  = w\),则 \[
+    \frac{z }{z-1 }= \frac{w+ 1 }{w }= 1+ \frac{1 }{w }   
+    \]  \[
+    \sin \left( \frac{z }{z-1 }  \right) = \sin \left( 1+ \frac{1 }{w }  \right)= \sin 1\cos \left( \frac{1 }{w }  \right)+ \cos 1 \sin \left( \frac{1 }{w }  \right)   
+    \]其中 \[
+    \cos \left( \frac{1 }{w }  \right)= \sum _{n = 0}^{\infty}\left( -1 \right)^{n}\frac{w^{-2n} }{\left( 2n \right)!  }   
+    \] \[
+    \sin \left( \frac{1 }{w }  \right)= \sum _{n = 0}^{\infty} \left( -1 \right)^{n} \frac{w^{-\left( 2n+ 1 \right) } }{\left( 2n+ 1 \right)  !}   
+    \]于是 \[
+    \sin \frac{z }{z-1 }= \sum _{n = 0}^{\infty}a_{n}\left( z-1 \right)^{-n} 
+    \]其中 \[
+    a_{n}= \begin{cases} \left( -1 \right)^{k}\frac{\sin 1 }{\left( 2k \right)  !},&  n = 2k\\ 
+     \left( -1 \right)^{k} \frac{\cos 1 }{\left( 2k+ 1 \right)!  },& n = 2k+ 1     \end{cases} 
+    \] \[
+    \operatorname{Res}\,\left( f,1 \right)= a_{1}=  \cos 1
+    \]
+
+    \hfill $\square$
+\end{proof}
+\begin{problem}
+9. 试确定方程 $z^4 - 8z + 10 = 0$ 分别在圆 $|z|<1$ 与在圆环 $1<|z|<3$ 内根的个数.
+\end{problem}
+\begin{proof}
+    在 \(  \left| z \right|= 1   \)上, \[
+    \left| z^{4}-8z \right| \le \left| z^{4} \right|+ 8\left| z \right|\le 9< 10  
+    \] 于是由Rouche定理,常函数10与 \(  z^{4}-8z+ 10  \)在 \(  \left| z \right|< 1   \)内由相同的零点个数,为 \(  0  \).
+    在 \(  \left| z \right|= 3   \)上, \[
+    \left| 10 \right|= 10< 57  = \left| z \right|^{4}-8\left| z \right|  \le  \left| z^{4}-8z \right|  
+    \]    由Rouche定理, \(  z^{4}-8z  \)在 \(  \left| z \right|< 4   \) 内与 \(  z^{4}-8z+ 10  \)有相同的零点个数.而 \[
+    z^{4}-8z= z\left( z^{3}-8 \right) 
+    \]  在圆\(  \left| z \right|< 4   \)内 有4个零点(记重数),故 \(  z^{4}-8z+ 10  \)在圆\(  \left| z \right|< 4   \)内 有4个零点.又 \(  z^{4}-8z+ 10  \)在 \(  \left| z \right|\le 1   \)上无零点,故它在圆环内有 \(  4  \)个零点.   
+    \hfill $\square$
+\end{proof}
+\begin{problem}
+10. 利用留数定理计算定积分
+$$ \int_0^\pi \frac{d\theta}{(a+\cos\theta)^2} $$
+其中 $a>1$ 是一个常数.
+\end{problem}
+\begin{proof}
+    令 \(  z= e^{i \theta }  \),则 \(  \cos  \theta = \frac{1}{2}\left( z+ \frac{1 }{z }  \right)   \) , \(  \,\mathrm{d} z= iz\,\mathrm{d}  \theta   \)  令 \(  C \)表示单位圆周,利用 \[
+    \int_{0}^{\pi }\frac{\,\mathrm{d}  \theta  }{\left( a+ \cos  \theta  \right)^{2}  }= \frac{1}{2}\int_{0}^{2\pi }\frac{\,\mathrm{d}  \theta  }{\left( a+ \cos  \theta  \right)^{2}  }  
+    \]积分化为 \[
+    \frac{1}{2}\int_{C}\frac{1 }{ iz}\frac{1 }{\left( a+ \frac{1}{2}\left( z+ \frac{1 }{z }  \right)  \right)^{2}  }  \,\mathrm{d} z= \int_{C} \frac{1 }{i }\frac{2z }{\left( 2az+ z^{2}+ 1 \right)^{2}  }  \,\mathrm{d} z
+    \] 其中 \[
+    2az+ z^{2}+ 1= \left( z+ a \right)^{2}-\left( a^{2}-1 \right)  =\left( z-\left( -a+ \sqrt{a^{2}-1} \right)  \right)\left( z-\left(- a-\sqrt{a^{2}-1} \right)  \right)  
+    \]注意到 \[
+    \left| -a-\sqrt{a^{2}-1} \right|> a> 1 ,\quad \left| -a+ \sqrt{a^{2}-1} \right| < 1
+    \] 于是 \[
+    \int_{C}\frac{1 }{i }\frac{2z }{2az+ z^{2}+ 1 }\,\mathrm{d} z=2\pi i \frac{2 }{i } \operatorname{Res}\,\left( \frac{z }{2az+ z^{2}+ 1 }, -a+ \sqrt{a^{2}-1}  \right)    
+    \]记 \( \beta _1 = -a+ \sqrt{a^{2}-1}, \beta_2 = -a-\sqrt{a^{2}-1}  \) 则留数为 \[
+    \lim_{z\to \beta_1} \frac{1 }{1! } \frac{\mathrm{d}}{\mathrm{d}z} \frac{z }{\left( \beta _1 -\beta _2  \right)^{2}  }=  \frac{\left( \beta _1 -\beta _2  \right)^{2}-2\beta _1 \left( \beta _1 -\beta _2  \right)   }{ \left( \beta _1 -\beta _2  \right)^{4} }   = \frac{-\left( \beta _1 + \beta _2  \right)  }{\left( \beta _1 -\beta _2  \right) ^{3} }= \frac{a }{4\left( a^{2}-1 \right)^{\frac{3}{2}} }  
+    \]于是积分为   \[
+    \frac{\pi a }{\left( a^{2}-1 \right)^{\frac{3}{2}}  } 
+    \]
+    \hfill $\square$
+\end{proof}
+\begin{problem}
+11. 以下两题只需任选一题做.
+\begin{enumerate}
+    \item 计算积分
+    $$ \int_0^{+\infty} \frac{\ln x}{(1+x^2)^2} dx $$
+    \item 试求一保形映射, 把圆周 $|z|=2$ 和圆周 $|z+1|=1$ 所夹的区域映射成单位圆盘 $|w|<1$.
+\end{enumerate}
+\end{problem}
+\begin{proof}
+    \begin{enumerate}
+        \item 令 \(  g\left( z \right)= \frac{\left( \ln z \right)^{2}  }{\left( 1+ z^{2} \right)^{2}  }    \) ,考虑 \(  g  \)在 以下区域上的积分 \[
+    \gamma_{ \varepsilon ,R} =  [ \varepsilon ,R ]_{\text{上沿}}+ C_{R}- [ \varepsilon ,R]_{\text{下沿}}-C_{ \varepsilon }
+    \]  \(  \ln z  \)在 \(  [ \varepsilon ,R]  \)的上沿和下沿上分别取 \(  \ln x  \)和 \(  \ln x+ 2\pi i  \), \(  x\in \left[  \varepsilon ,R \right]   \) .则     \(  g  \)在上下沿的积分差值为 \[
+    \int_{ \varepsilon }^{R}\frac{\left( \ln x \right)^{2}  }{\left( 1+ x^{2} \right)^{2}  }- \frac{\left( \ln x+ 2\pi i \right)^{2}  }{ \left( 1+ x^{2} \right)^{2} }\,\mathrm{d} x=  -4\pi i \int_{ \varepsilon }^{R}\frac{\ln x }{\left( 1+ x^{2} \right)^{2}  }\,\mathrm{d} x+ 4\pi  \int_{ \varepsilon }^{R}\frac{1 }{\left( 1+ x^{2} \right)^{2}  }\,\mathrm{d} x    
+    \] 接下来,由于  \[
+     \lim_{R\to \infty}  R\max _{z\in \left\{ \left| z \right|= R  \right\}}\frac{\left| \ln z \right|^{2}  }{\left( 1+ z^{2} \right)^{2}  }= 0 
+    \]通过L-M不等式,可以得到 \[
+    \lim_{R\to \infty} \int_{C_{R}}g\left( z \right)\,\mathrm{d} z= 0 
+    \]此外, 注意到 \[
+    \lim_{ \varepsilon \to 0^{+ }}  \varepsilon  \max _{z\in C_{ \varepsilon }}\left| \frac{\left( \ln z \right)^{2}  }{\left( 1+ z^{2} \right)^{2}  }  \right|=  \lim_{ \varepsilon \to 0^{+ }}  \varepsilon \frac{\left( \ln  \varepsilon  \right)^{2}  }{\left( 1- \varepsilon ^{2} \right)^{2}  } = 0
+    \]故 \[
+    \lim_{ \varepsilon \to 0} \int_{C_{ \varepsilon }}g\left( z \right)\,\mathrm{d} z= 0 
+    \] \(  g  \)在 \(   \gamma   \)内部有二阶极点 \(  z= i  \)和 \(  z= -i  \)    .于是 \[
+    \int_{ \gamma _{ \varepsilon ,R}}g\left( z \right)\,\mathrm{d} z= 2\pi i\operatorname{Res}\, \left( g,i \right)  + 2\pi i\operatorname{Res}\, \left( g,-i \right) 
+    \]其中\[
+    \operatorname{Res}\, \left( g,i \right)= \lim_{z\to i} \frac{\mathrm{d}}{\mathrm{d}z}\left( \frac{\left( \ln z \right)^{2}  }{\left( z+ i \right)^{2}  }  \right) = \lim_{z\to i}\frac{2\ln z\frac{1 }{z } \left( z+ i \right)^{2}-\left( \ln z \right)^{2}2\left( z+ i \right)   }{\left( z+ i \right)^{4}  } 
+    \] \[
+   = \frac{2 \frac{\pi i }{2 } \frac{1 }{i }\left( 2i \right)+ \frac{\pi ^{2} }{4 }2     }{ \left( 2i \right)^{3} }= \frac{2\pi i+ \frac{\pi ^{2} }{2 }  }{-8i }= \frac{-4\pi + \pi ^{2}i }{16 }  
+    \] \[
+    \operatorname{Res}\, \left( g,-i \right)= \lim_{z\to- i}\frac{\mathrm{d}}{\mathrm{d}z}\left( \frac{\left( \ln z \right)^{2}  }{\left( z-i \right)^{2}  }  \right)  = \lim_{z\to -i} \frac{2\ln z \frac{1 }{z }\left( z-i \right)^{2}-\left( \ln z \right)^{2}2\left( z-i \right)     }{ \left( z-i \right)^{4} } 
+    \]\[
+    = \frac{2\frac{3\pi i }{2 }\frac{1 }{-i }\left( -2i \right)+ \frac{9\pi ^{2} }{4 }2     }{ \left( -2i \right)^{3} }= \frac{-6\pi i+ \frac{9\pi ^{2} }{2 }  }{8i }= \frac{ 12\pi -9\pi^{2} i}{16 }   
+    \]于是 \[
+    \int_{ \gamma _{ \varepsilon ,R}}g\left( z \right)\,\mathrm{d} z= 2\pi i\left( \frac{\pi  }{2 }-\frac{\pi ^{2}i }{2 }   \right)= \pi ^{2}i+ \pi ^{3} 
+    \]令 \(   \varepsilon \to 0,R\to \infty  \),得到 \[
+    -4\pi i \int_{0}^{\infty}\frac{\ln x }{\left( 1+ x^{2} \right)^{2}  } \,\mathrm{d} x+ 4\pi \int_{0}^{\infty}\frac{1 }{\left( 1+ x^{2} \right)^{2}  }\,\mathrm{d} x=\pi ^{2}i+ \pi ^{3} 
+    \] 两边取虚部,得到 \[
+    \int_{0}^{\infty}\frac{\ln x }{\left( 1+ x^{2} \right)^{2}  }= -\frac{1 }{4\pi  } \left( \pi ^{2} \right)=-\frac{\pi  }{4 } 
+    \]
+    \item 令 \[
+    T_1\left( z \right)= \frac{2z }{z+ 2 }  
+    \]则 \(  T  \)将 \(  -2,-1+ i,0  \)依次映到 \(  \infty,2i,0  \).将 \(  -2,2i,2  \)依次映到 \(  \infty,1+ i,1  \).于是 \(  T  \)将所给区域映到带状区域 \(  \left\{ z: 0\le \operatorname{Re}\,z\le 1 \right\}  \)  映射\[
+    T_2\left( z \right): = \pi e^{\frac{\pi i  }{2 }}z 
+    \]将带状区域 \(  \left\{ z: 0\le \operatorname{Re}\,x\le 1 \right\}  \) 映到带状区域 \(  \left\{ z:0\le \operatorname{Im}\,z\le \pi  \right\}  \) 
+    \[
+    T_3\left( z \right)= e^{z} 
+    \]将带状区域 \(  \left\{ z:0\le \operatorname{Im}\,z\le \pi  \right\}  \)映到上半平面. 令 \[
+    T_4\left( z \right)= \frac{z-i }{z+ i }  
+    \]则 \(  T_4  \)将上半平面映到单位圆盘.综合以上,令  \[
+    T\left( z \right) = T_4\circ T_3\circ T_2\circ T_1
+    \]即为所需单叶函数.
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+\begin{problem}
+12. 以下两题, 只需任选一题做.
+\begin{enumerate}
+    \item 设 $D \subset \mathbb{C}$ 是一个单连通区域, 且 $D \ne \mathbb{C}, z_0 \in D$, 则存在一个在 $D$ 内单叶全纯的函数 $w=f(z)$, 满足 $f(z_0)=0, f'(z_0)>0$, 且 $f(z)$ 把 $D$ 保形双射成 $|w|<1$. 试用 Schwarz 引理证明这样的 $w=f(z)$ 是唯一的.
+    \item 设 $D = \{|z|<1\}$ 是单位圆盘. 试求一个全纯函数 $f: D \to D$, 使得 $f\left(\frac{i}{4}\right) = -\frac{i}{8}$. 是否存在一个全纯函数 $f: D \to D$, 满足 $f\left(\frac{i}{4}\right) = -\frac{i}{8}$, 且 $f'\left(\frac{i}{4}\right) = \frac{3}{2}$? 说明理由.
+\end{enumerate}
+\end{problem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 若存在两个这样的函数 \(  f_1,f_2  \). 令 \(  g = f_2\circ f_1^{-1}   \). \(  g  \)是 \(  B\left( 0,1 \right)   \)的全纯自同构.  
+
+    \(  g\left( 0 \right)= f_2\left( a \right)= 0    \).故 \(  g  \)符合Schwartz引理的条件. 从而 \[
+    1\ge \left| g^{\prime} \left( 0 \right)  \right|= \left| f_2^{\prime} \left( f^{-1} \left( 0 \right)  \right)\left( f^{-1}  \right)^{\prime} \left( 0 \right)    \right|= \frac{\left| f_2^{\prime} \left( a \right)  \right|  }{\left| f_1^{\prime} \left( a \right)  \right|  }   
+    \]  这表明 \[
+    \left| f_2^{\prime} \left( a \right)  \right|\le \left| f_1^{\prime} \left( a \right)  \right|  
+    \]令 \(  h= f_1\circ f_2^{-1}   \),可以类似地得到 \[
+    \left| f_1^{\prime} \left( a \right)  \right|\le \left| f_2^{\prime} \left( a \right)  \right|  
+    \] 因此 \[
+    \left| f_2^{\prime} \left( a \right)  \right|= \left| f_1^{\prime} \left( a \right)  \right|  
+    \]进而 \[
+    \left| g^{\prime} \left( 0 \right)  \right|= 1 
+    \]再由Schwartz引理,存在 \(   \lambda \in \mathbb{C} ,\left|  \lambda  \right|= 1   \),使得 \[
+    g\left( z \right)=  \lambda z 
+    \]由于 \[
+    g^{\prime} \left( 0 \right)= \frac{f_2^{\prime} \left( 0 \right)  }{f_1^{\prime} \left( 0 \right)  }> 0  
+    \] , \[
+     \lambda = g^{\prime} \left( 0 \right)> 0,\implies  \lambda = 1 
+    \]于是\[
+    f_2\left( f_1^{-1} \left( z \right)  \right)=   z 
+    \] 得到 \(  f_1\left( z \right)= f_2\left( z \right)    \). 
+    \item 对于第一问,令 \(  f\left( z \right)= -\frac{1 }{2 }z    \) 即可.
+    
+ 
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+\end{document}

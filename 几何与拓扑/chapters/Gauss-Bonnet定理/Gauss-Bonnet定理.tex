@@ -1,0 +1,322 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+    
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+\chapter{Gauss-Bonnet定理}
+
+
+\section{旋转指标定理}
+\subsection{光滑曲线的旋转指标}
+\begin{definition}{简单闭合曲线}
+    设 \(   \gamma   :\left[ a,b \right]\to \mathbb{R} ^{2} \)是平面上的一个容许曲线.成\(   \gamma   \)是\textbf{简单闭合曲线},若 \(   \gamma \left( a \right)=  \gamma \left( b \right)    \),且 \(   \gamma   \)在 \(  [a,b)  \)     上是单射.
+\end{definition}
+
+\begin{definition}
+    定义 平面容许曲线 \(   \gamma   \)的单位切向量场\(  T  \),为以下给出的沿每个 \(   \gamma   \)的光滑线段的向量场  \[
+    T\left( t \right)= \frac{ \gamma ^{\prime} \left( t \right)  }{\left|  \gamma ^{\prime} \left( t \right)  \right|  }  
+    \]  
+\end{definition}
+
+\begin{remark}
+    由于 \(  \mathbb{R} ^{2}  \)上的每个切空间都与 \(  \mathbb{R} ^{2}  \)自然地等同,可以认为 \(  T  \)是映到 \(  \mathbb{R} ^{2}  \)的映射,由于 \(  T  \)是单位长度的,他可以视为 \(  \mathbb{S}^{1}  \)上的映射.      
+\end{remark}
+
+
+\begin{definition}{切角}
+    若 \(   \gamma :\left[ a,b \right]\to \mathbb{R} ^{2}   \)是光滑(或至少连续可微)的正则曲线.若连续函数 \(   \theta :\left[ a,b \right]\to \mathbb{R}    \)使得 \[
+    T\left( t \right)= \left( \cos  \theta \left( t \right),\sin  \theta \left( t \right)   \right),\quad t\in \left[ a,b \right]   
+    \]  则称 \(   \theta   \)为 \(   \gamma   \)的一个切角函数.  
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 令 \(  q:\mathbb{R} \to \mathbb{S}^{1}  \),\(  q\left( s \right)= \left( \cos s,\sin s \right)    \),若给定某一点处的取值,则 \(  \mathbb{S}^{1}  \)上的连续函数 \(  T  \)在 \(  \mathbb{R}   \)上  存在唯一的   同伦提升 \(   \theta :\left[ a,b \right]\to \mathbb{R}    \),使得 \(  q\circ  \theta = T  \).
+        \item 上面这条表面切角函数是存在的,  且在相差一个 \(  2\pi   \)的意义下唯一(因为符合条件的初值为 \(  2k\pi   \) ) 
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{definition}{光滑曲线的旋转指标}
+    若 \(   \gamma   \)是连续可微的简单闭合曲线,使得 \(   \gamma ^{\prime} \left( a \right)=  \gamma ^{\prime} \left( b \right)    \),定义 \(   \gamma   \)的 \textbf{旋转此步骤}为 \[
+    \rho \left(  \gamma  \right)= \frac{1}{2\pi }\left(  \theta \left( b \right)- \theta \left( a \right)   \right)  
+    \]   
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item 由于 \(  \left( \cos  \theta \left( a \right),\sin  \theta \left( a \right)   \right)= \left( \cos  \theta \left( b \right),\sin  \theta \left( b \right)   \right)    \),\(   \theta \left( b \right)- \theta \left( a \right)    \)是 \(  2\pi   \)的整数倍,故 \(  \rho \left(  \gamma  \right)   \)是整数.
+        \item 其他的切角函数总是通过改变 \(   \theta \left( b \right)   \)和 \(   \theta \left( a \right)   \)相同的量得到,因此 \(  \rho \left(  \gamma  \right)   \)是良定义的.       
+    \end{enumerate}
+    
+\end{remark}
+
+\subsection{分段光滑正则闭曲线的旋转指标}
+
+\begin{definition}
+    令 \(   \gamma :\left[ a,b \right]\to \mathbb{R} ^{2}   \)是容许简单闭曲线.令 \(  \left(  a_0,\cdots,a_{k}    \right)   \)是 \(  \left[ a,b \right]   \)的一个容许分划.
+    
+    \begin{enumerate}
+        \item 称  \(   \gamma \left( a_{i} \right)   \)为 \(   \gamma   \)的 \textbf{顶点}.
+        \item \(   \gamma |_{\left[ a_{i-1},a_{i} \right] }  \)为边.   
+    \end{enumerate}
+    
+\end{definition}
+
+\begin{definition}{顶点的分类}
+    在每个顶点 \(   \gamma ^{\prime} \left( a_{i} \right)   \)上,记 \(   \gamma   \)的左,右侧速度向量分别为 \(   \gamma ^{\prime} \left( a_{i}^{-} \right), \gamma ^{\prime} \left( a_{i}^{+ } \right)    \);令 \(  T\left( a_{i}^{-} \right)   \)和 \(  T\left( a_{i}^{+ } \right)   \)为对应的单位速度向量.将这些顶点分为以下三类
+    \begin{enumerate}
+        \item 若\(  T\left( a_{i}^{-} \right)\neq \pm T\left( a_{i}^{+ } \right)    \),则称 \(   \gamma \left( a_{i} \right)   \)是一个普通顶点.
+        \item 若 \(  T\left( a_{i}^{-} \right)= T\left( a_{i}^{+ } \right)    \),则称 \(   \gamma \left( a_{i} \right)   \)是一个平坦顶点.    
+        \item 若 \(  T\left( a_{i}^{-} \right)= -T\left( a_{i} ^{+ }\right)    \) ,则称 \(   \gamma \left( a_{i} \right)   \)是一个尖点. 
+    \end{enumerate}
+         
+\end{definition}
+
+\begin{definition}
+   \begin{enumerate}
+    \item  在每个普通顶点上,定义 \textbf{\(   \gamma \left( a_{i} \right)   \)处的外角 } \(   \varepsilon _{i}  \) 为 \(  T\left( a_{i}^{-} \right)   \)到 \(  T\left( a_{i}^{+ } \right)   \)取值在 \(  \left( -\pi  ,\pi \right)   \)的夹角.若 \(  \left( T\left( a_{i}^{-} \right),T\left( a_{i}^{+ } \right)   \right)   \)是 \(  \mathbb{R} ^{2}  \)的一个定向基\footnote{表现为向外扎一个尖},则取其中的正直,反之亦然.
+    \item 平坦顶点的外角定义为0.
+    \item 尖点的外角无法确定方向,认为尖点处的外角没有定义.
+    \item 若 \(   \gamma \left( a_{i} \right)   \)是普通顶点或平坦顶点, 定义 \(   \gamma \left( a_{i} \right)   \)的内角为 \(   \theta _{i}= \pi - \varepsilon _{i}  \) .
+    \item 对于顶点 \(   \gamma \left( a \right)=  \gamma \left( b \right)    \) , \(  T\left( b \right)   \)和 \(  T\left( a \right)   \)分别扮演了 \(  T\left( a_{i}^{-} \right)   \)和 \(  T\left( a_{i}^{+ } \right)   \)的角色.    
+   \end{enumerate}
+   
+\end{definition}
+
+\begin{definition}
+    称分段光滑的正则曲线 \(   \gamma   \)为一个曲边多面体,若它无尖点,切实某个预紧开集 \(   \Omega \subseteq \mathbb{R} ^{2}  \)  的边界.此外
+    \begin{enumerate}
+        \item 称\(    \Omega   \)为 \(   \gamma   \)的内部.  
+        \item 若 \(   \gamma   \)有 \(   \Omega   \)的边界诱导定向,则称 \(   \gamma   \)是正定向的.   
+    \end{enumerate}
+    
+\end{definition}
+
+
+\begin{definition}{曲边多面体的切角函数}
+    定义曲边多面体的切角函数,为分段光滑的连续函数 \(   \theta :\left[ a,b \right]\to \mathbb{R}    \),使得 \(  T\left( t \right)= \left( \cos  \theta \left( t \right),\sin  \theta \left( t \right)   \right)    \)在使得 \(   \gamma   \)光滑的任一点处成立.在规定 \[
+     \theta \left( a_{i} \right)= \lim_{t\to a_{i}^{- }}  \theta \left( t \right)+  \varepsilon _{i}  
+    \]以及 \[
+     \theta \left( b \right)= \lim_{t \to b^{- }} \theta \left( t \right)+  \varepsilon _{k}  
+    \]下,     \(   \theta   \)是自右连续的.其中 \(   \varepsilon _{k}  \)  是 \(   \gamma \left( b \right)   \)处的外角. 
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 存在性:在 \(  [a,a_1)  \)上,存在 \(  T  \)的在 \(  \mathbb{R}   \)上的提升 \(   \theta \left( t \right)   \),    它取定了 \(  a_{1}  \)处的函数值,从而可以在 \(  [a_1,a_2)  \) 上将 \(  T  \)唯一地提升到 \(  \mathbb{R}   \),以此类推.由于曲线是闭合的,一旦我们指定一点处合适的取值(以 \(  2\pi   \)为间隔 ),都可以将 \(  T  \)唯一地提升到 \(  \mathbb{R}   \)上.    
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{definition}{旋转指标}
+    设 \(   \gamma   \)是曲边多面体,定义它的旋转指标为 \[
+    \rho \left(  \gamma  \right)= \frac{1 }{2\pi  }\left(  \theta \left( b \right)- \theta \left( a \right)   \right)   
+    \]其中 \(   \theta   \)是 \(   \gamma   \)的任一切角函数.   
+\end{definition}
+
+\begin{theorem}{旋转指标定理}
+    正定向的曲边多面体的旋转指标为 \(  + 1  \). 
+\end{theorem}
+
+\section{Gauss-Bonnet公式}
+
+\begin{definition}
+    设 \(  \left( M,g \right)   \)是 \(  2  \)-Riemann流形.称容许简单闭曲线 \(   \gamma :\left[ a,b \right]\to M   \)是 \(  M  \)上的一个曲边多面体,若 \(   \gamma   \)的像是一个预紧开集 \(   \Omega \subseteq M  \)的边界,并且存在包含了 \(   \bar{\Omega}  \)的定向坐标圆盘,使得 \(   \gamma   \)的坐标像在坐标平面上 称为曲边多面体.    
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item \textbf{测地多面体}:若 \(  M  \)上的曲边多面体 \(   \gamma   \) 的边界都刚好是测地线段,则称 \(  \gamma    \)为一个测地多面体.
+        \item 可以按照度量角类似地定义内外角.  
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{definition}{切角函数}
+    设 \(   \gamma :\left[ a,b \right]\to M   \)是曲边多面体, \(   \Omega   \)是它的内部, \(  \left( U, \varphi  \right)   \)是包含了 \(  \overline{ \Omega }  \)的定向光滑坐标卡.    通过坐标映射 \(   \varphi   \)可以将 \(   \gamma , \Omega ,g  \)分别与他们在坐标平面上一开集 \(  \hat{U}\subseteq \mathbb{R} ^{2}  \) 上的表示等同.  令 \(  \left( E_1,E_2 \right)   \)是 \(  g  \)的通过对 \(  \left(  \partial _{x}, \partial _{y} \right)   \)Gram-Schimtdt正交化得到的规正基,使得 \(  E_1  \)在 \(  \hat{U}  \)处处 与 \(   \partial _{x}  \)相差正标量倍. 
+
+    定义 \(   \gamma   \)的切角函数 为一个分段连续函数\(   \theta :\left[ a,b \right]\to \mathbb{R}    \) ,满足 \[
+    T\left( t \right)= \cos \left( t \right)\left. E_1 \right|_{ \gamma \left( t \right) }+ \sin  \theta \left( t \right)\left. E_2 \right|_{ \gamma \left( t \right) }   
+    \]在使得 \(   \gamma ^{\prime}   \)连续的点上成立.并且在分点处自右连续的值. 
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item 存在性:由于 \(  T  \)是单位长度的,故 \(  T\left( t \right)= u_1E_1+ u_2E_2   \)中的 \(  \left( u_1,u_2 \right)   \)落在 \(  \mathbb{S}^{1}  \)上,可以将他提升到 \(  \mathbb{R}   \)上.
+        \item 通过定义无法直接看出旋转指标的坐标无关性,这个事实在下面的引理中得到说明.     
+    \end{enumerate}
+    
+\end{remark}
+
+
+
+\begin{lemma}{旋转指标}
+    设 \(  M  \)是定向的2-Riemann流形,则对于 \(  M  \)上每个正定向的曲边多面体,它依赖于任意规正基的旋转指标都为 \(  + 1  \).       
+\end{lemma}
+
+\begin{note}
+    可以将度量线性同伦到欧式度量,说明旋转指标连续地变化,由于旋转指标的取值是"跳跃"的,从而说明旋转指标的不变性.
+\end{note}
+
+\begin{proof}
+    设 \(   \gamma :\left[ a,b \right]\to M   \)是 \(  M  \)上的曲边多面体, \(   \Omega   \)是它的内部, \(  \left( U, \varphi  \right)   \)是包含了 \(  \overline{ \Omega }  \)的正定向的光滑坐标卡.   则我们既可以用 \(  g  \)给出的内积来计算旋转指标,也可以用欧式内积\(  \bar{g}  \) 来计算,接下来说明计算结果一致.
+    
+    定义 \[
+    g_{s}= \left( 1-s \right)g+ s \bar{g}, s \in \left[ 0,1 \right] 
+    \] 容易看出对于每个 \(  s  \),\(  g_{s}  \)是一个度量.  \(  \left( E_1^{\left( s \right) },E_2^{\left( s \right) } \right)   \)为关于 \(  g_{s}  \)对 \(  \left(  \partial _{x}, \partial _{y} \right)   \)实施Gram-Schmidt正交化得到的关于 \(  g_{s}  \)的规正基,\(  \theta _{g_{s}}  \)     和 \(  \rho _{g_{s}}  \)分别为对应单位速度向量,切角函数和旋转指标. 
+
+    由于
+    \begin{enumerate}
+        \item 正交化的公式给出 \(  E_1^{\left( s \right) },E_2^{\left( s \right) }  \)关于  \(  s  \)的连续性.
+        \item 在任意使得 \(   \gamma   \)光滑的区间 \(  \left[ a_{i-1},a_{i} \right]   \)上,式   \[
+        T_{s}\left( t \right) = u_1\left( t;s \right)\left. E_1^{\left( s \right) } \right|_{ \gamma \left( t \right) }+ u_2\left( t;s \right)\left. E_2^{\left( s \right) } \right|_{ \gamma \left( t \right) }  
+        \] 中的 \(  u_1,u_2  \)可以表示为 \[
+        u_1\left( t;s \right)= \left<T_{s}\left( t \right),E_1^{\left( s \right) }  \right>_{g_{s}},\quad u_2\left( t;s \right)= \left<T_{s}\left( t \right),E_2^{\left( s \right) }  \right>g_{s}  
+        \]均关于  \(  \left( t,s \right)   \) 连续,其中 \[
+        T_{s}\left( t \right)= \frac{ \gamma ^{\prime} \left( t \right)  }{\left|  \gamma ^{\prime} \left( t \right)  \right|_{g_{s}}  }  
+        \].  从而 \(  u_1,u_2:\left[ a_{i-1},a_{i} \right]\times \left[ 0,1 \right]\to \mathbb{S}^{1}    \)在给定初值下存在唯一提升.
+        \item 外角的定义式 \[
+         \varepsilon _{i}= \frac{\,\mathrm{d} V_{g}\left( T\left( a_{i}^{-} \right)  ,T\left( a_{i}^{+ } \right) \right)  }{ \left| \,\mathrm{d} V_{g}\left( T\left( a_{i}^{-} \right),T\left( a_{i}^{+ } \right)   \right)  \right|_{g_{s}} }\arccos \left<T\left( a_{i}^{-},T\left( a_{i}^{+ } \right)  \right)  \right>_{g_{s}} 
+        \]表面 \(   \varepsilon _{i}  \)关于 \(  s  \)连续.  
+    \end{enumerate}
+    故旋转指标函数\(  \rho _{g_{s}}  \)关于 \(  s  \)连续,从而是不变的,恒等于欧式内积下的旋转指标.  
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}
+    设 \(   \gamma   \)是单位速度参数化的曲边多面体,则单位切向量场 \(  T\left( t \right)=  \gamma ^{\prime} \left( t \right)    \).存在沿 \(   \gamma   \)的唯一的单位法向量场 \(  N  \),使得 \(  \left(  \gamma ^{\prime} \left( t \right),N\left( t \right)   \right)   \)构成 \(  T_{ \gamma \left( t \right) }M  \)      的定向基\footnote{若 \(   \gamma   \)正定向,则这相当于 \(  N  \)是正交与 \(   \partial  \Omega   \)内指向的   }.在使得 \(   \gamma   \)光滑的点处 定义 \textbf{\(   \gamma   \)的符号曲率 }为 \[
+     \kappa _{N}\left( t \right)= \left<D_{t} \gamma ^{\prime} \left( t \right),N\left( t \right)   \right>_{g} 
+    \] 
+\end{definition}
+
+\begin{theorem}{Gauss-Bonnet公式}
+    令 \(  \left( M,g \right)   \)是定向的2-Riemann流形,设 \(   \gamma   \)是 \(  M  \)上正定向的曲边多面体, \(   \Omega   \)是 \(   \gamma   \)的内部,则 \[
+    \int_{ \Omega }K\,\mathrm{d} A+  \int_{ \gamma } \kappa _{N}\,\mathrm{d} s+ \sum _{i= 1}^{k} \varepsilon _{i}= 2\pi 
+    \]     其中 \(  K  \)是 \(  g  \)的Gauss曲率, \(  \,\mathrm{d} A  \)是它的Riemann体积形式 \(   \varepsilon _{i}  \)是 \(   \gamma   \)的外角  ,且第二个积分是对弧长的积分.   
+\end{theorem}
+
+\begin{proof}
+    设 \(  a_1,\cdots ,a_{n}  \)是 \(   \gamma   \)的一个容许分划, \(  \left( U, \varphi  \right)   \)是包含了 \(   \overline{ \Omega }\)的正定向的图册,  \(  \left( E_1,E_2 \right)   \)是\(  U  \)上的  一个正定向的规正标架,  \(   \theta \left( t \right)   \)是 \(   \gamma   \)的一个切角函数,  则由Newton-Lebniz公式和旋转指标定理  
+    \[
+    2\pi =  \theta \left( b \right)- \theta \left( a \right)=\sum _{i} \varepsilon _{i}+  \sum _{i}\int_{a_{i-1}}  ^{a_{i}} \theta ^{\prime} \left( t \right)\,\mathrm{d} t 
+    \] 接下来考虑 \(   \theta ^{\prime}   \)和 \(  K, \kappa _{N}  \)的关系,考虑 \[
+     \gamma ^{\prime} \left( t \right)=  \cos \theta \left( t \right)\left. E_1 \right|_{ \gamma \left( t \right) }  +\sin  \theta \left( t \right)\left. E_2 \right|_{ \gamma \left( t \right) } 
+    \] 以及 \[
+    N\left( t \right)= -\sin   \theta \left( t \right)\left. E_1 \right|_{ \gamma \left( t \right) }+   \cos  \theta \left( t \right) \left. E_2 \right|_{ \gamma \left( t \right) } 
+    \]对 \(   \gamma ^{\prime} \left( t \right)   \)求导,得到 \[
+  \begin{aligned}
+    D_{t} \gamma ^{\prime} \left( t \right)&= -\sin  \theta \left( t \right) \theta ^{\prime} \left. E_1 \right|_{ \gamma \left( t \right) }+ \cos  \theta \left( t \right)  \nabla _{ \gamma ^{\prime} }E_1\\ 
+     &+  \cos  \theta \left( t \right) \theta ^{\prime} \left. E_2 \right|_{ \gamma \left( t \right) }+ \sin  \theta \left( t \right) \nabla _{ \gamma ^{\prime} }E_2  
+  \end{aligned}   
+    \] 为了计算 \(   \nabla _{ \gamma ^{\prime} }E_1, \nabla _{ \gamma ^{\prime} }E_2  \),注意到 \[
+    \begin{aligned}
+    0&= D_{v}\left<E_1,E_1 \right>= 2\left< \nabla _{v}E_1,E_1 \right> \\ 
+     0&= D_{v}\left<E_2,E_2 \right>= 2\left< \nabla _{v}E_2,E_2 \right>\\ 
+      0&= D_{v}\left<E_1,E_2 \right>= \left< \nabla _{v}E_1,E_2 \right>+\left< E_1, \nabla _{v}E_2 \right>
+    \end{aligned}
+    \] 由于 \(  E_1,E_2  \)正交, \(   \nabla _{v}E_1  \)是 \(  E_2 \)的倍数, \(   \nabla _{v}E_2  \)是 \(  E_1  \)的倍数,上述第三式,启发我们令 \[
+     \omega \left( v \right)=- \left< \nabla _{v}E_1,E_2 \right>= \left<E_1, \nabla _{v}E_2 \right> 
+    \]  是一个 \(  1  \)-形式,则 \[
+     \nabla _{v}E_1= -w\left( v \right)E_2 ,\quad  \nabla _{v}E_2= + w\left( v \right)E_1 
+    \]  现在可以计算得到 \[
+    \begin{aligned}
+     \kappa _{N}&= \left<D_{t} \gamma ^{\prime} \left( t \right),N  \right> \\ 
+      & =  \theta ^{\prime} -  \omega \left(  \gamma ^{\prime}  \right) 
+    \end{aligned}
+    \]于是 \[
+    2\pi = \sum _{i} \varepsilon _{i}+\int_{ \gamma } \kappa _{N}\,\mathrm{d} s + \int_{ \gamma } \omega  
+    \]由于 \(   \Omega   \)是带角流形,由带角流形的Stokes定理,我们要 \[
+    \int_{ \gamma } \omega = \int_{ \Omega }\,\mathrm{d}  \omega 
+    \] 因此只需要证明 \(  K\,\mathrm{d} A= \,\mathrm{d}  \omega   \) .
+    我们有 \[
+    \begin{aligned}
+    K\,\mathrm{d} A\left( E_1,E_2 \right)& = K=   Rm \left( E_1,E_2,E_2,E_1 \right) \\ 
+     & = \left< \nabla _{E_1} \nabla _{E_2}E_2- \nabla _{E_2} \nabla _{E_1}E_2- \nabla _{\left[ E_1,E_2 \right] }E_2,E_1 \right>\\ 
+      & = \left< \nabla _{E_1} \omega \left( E_2 \right)E_1- \nabla _{E_2} \omega \left( E_1 \right)E_1-  \omega \left( \left[ E_1,E_2 \right]  \right)E_1,E_1    \right>\\ 
+       & = \left<E_1 \omega \left( E_2 \right)E_1+  \omega \left( E_2 \right) \nabla _{E_1}E_1  ,E_1 \right>\\ 
+        & -\left<E_2 \omega \left( E_1 \right)E_1+  \omega \left( E_1 \right) \nabla _{E_2}E_1  ,E_1 \right>- \omega \left( [E_1,E_2] \right) \\ 
+         & = E_1 \omega \left( E_2 \right)-E_2 \omega \left( E_1 \right)- \omega \left( [E_1,E_2] \right)   \\ 
+          & = \,\mathrm{d}  \omega \left( E_1,E_2 \right) 
+    \end{aligned}
+    \]由于体积形式由其系数决定,故 \( K \,\mathrm{d} A= \,\mathrm{d}  \omega   \) 这就完成了证明.
+    \hfill $\square$
+\end{proof}
+\begin{corollary}{全曲率定理}
+    令 \(   \gamma :\left[ a,b \right]\to \mathbb{R} ^{2}   \)是光滑的单位速度简单闭曲线,使得 \(   \gamma ^{\prime} \left( a \right)=  \gamma ^{\prime} \left( b \right)    \), \(  N  \)是内指向的法向量,则 \[
+    \int_{a}^{b} \kappa _{N}\left( t \right)\,\mathrm{d} t= 2pi 
+    \]   
+\end{corollary}
+
+\section{Gauss-Bonnet定理}
+
+\begin{definition}
+    设 \(  M  \)是一个紧的2维流形.
+    \begin{enumerate}
+        \item  \textbf{\(  M  \) }上 的一个曲边三角形,是指有三个顶点和三个变的曲边多边形.
+        \item \(  M  \)的一个光滑三角剖分,是指有限多个曲边三角形,它们的内部两两无交,任意两个不同曲边三角形的交若非空,则要么为一个顶点,要么为一条边,并且这些三角形及其内部的交并成  \(  M  \),. 
+    \end{enumerate}
+     
+\end{definition}
+
+\begin{theorem}{Tibor Rado}
+    每个紧的 \(  2  \)-流形,容许一个三角剖分,使得每条边都属于两个三角形. 
+\end{theorem}
+
+
+\begin{definition}{欧拉示性数}
+    设 \(  M  \)是被三角剖分了的2-流形,定义 \(  M  \)(关于这个三角剖分)的\textbf{欧拉示性数}  为 \[
+    \chi \left( M \right)= V-E+ F 
+    \]其中 \(  V,E,F  \)分别为三角剖分的顶点数,边数,面数. 
+\end{definition}
+
+\begin{remark}
+    事实上欧拉示性数是拓扑不变的,且无关于三角剖分的选取,这是代数拓扑中的重要事实.
+\end{remark}
+
+\begin{theorem}{Gauss-Bonnet定理}
+    若 \(  \left( M,g \right)   \)是一个被光滑三角剖分了的2维紧Riemann流形,则 \[
+    \int_{M}K\,\mathrm{d} A= 2\pi \chi \left( M \right) 
+    \]其中 \(  K  \)是\(  g  \)的 Gauss曲率, \(  \,\mathrm{d} A  \)是它的Riemann密度.  
+\end{theorem}
+
+\begin{theorem}{分类定理}
+    \begin{enumerate}
+        \item  每个紧的,连通的,可定向的2维流形 \(  M  \)都同肧于一个球面,或 \(  n  \)个换面的连通和.
+        \item     每个不可定向的2维流形同肧于\(  n  \)份实射影平面 \(  \mathbb{R} \mathbb{P}^{2}  \)的连通和.  
+        \item 数 \(  n  \)称为 \textbf{\(  M  \)的亏格 }. 
+       \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+    令 \(  \left( M,g \right)   \)是紧的2维Riemann流形, \(  K  \)是它的Gauss曲率,则
+    \begin{enumerate}
+        \item 若 \(  M  \) 同 胚 于球面或射影平面,则 \(K> 0    \)在某处成立.
+        \item 若 \(  M  \) 同胚于环面或 Klein bottle,则要么 \(  K\equiv 0  \),要么 \(  K  \)同事有正负的取值.
+        \item 若 \(  M  \)是任意其他紧的面,则 \(  K<0  \)在某处成立.    
+    \end{enumerate}
+      
+\end{corollary}
+\begin{proof}
+    应用三角剖分,亏格 \(  n  \)的 可定向2-流形的欧拉示性数为 \(  2-2n  \),不可定向的为 \(  2-n  \).  
+
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}
+    令 \(  \left( M,g \right)   \)是紧的 2维Riemann流形, \(  K  \)是它的Gauss曲率
+    \begin{enumerate}
+        \item 若 \(  K> 0  \)在 \(  M  \)上处处成立,则 \(  M  \)的万有覆叠流形同肧于 \(  \mathbb{S}^{2}  \),且 \(  \pi _1 \left( M \right)   \)要么是平凡的,要么同构于二元群 \(  \mathbb{Z} /2  \) 
+        \item 若 \(  K\le 0  \)在 \(  M  \)上处处成立,则 \(  M  \)的万有覆叠流形同肧于 \(  \mathbb{R} ^{2}  \),且 \(  \pi _1 \left( M \right)   \)有限.          
+    \end{enumerate}
+      
+\end{corollary}
+
+
+
+\end{document}

@@ -1,0 +1,331 @@
+\documentclass[../../PDE.tex]{subfiles}
+
+\begin{document}
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+\chapter{波动方程的Cauchy问题}
+
+\section{一维波动方程Cauchy问题的达朗贝尔公式}
+
+在上半空间 \(  \mathbb{R} ^{N}\times [0,\infty)  \) 上考虑波动方程的初值问题
+
+\begin{equation}
+    \begin{cases} \frac{\partial ^{2}u}{\partial t^{2}}-a^{2} \Delta u= f\left( \mathbf{x},t \right),&\left( \mathbf{x},t  \right)\in \mathbb{R} ^{N}\times \left( 0,\infty \right)    \\ 
+        u\left( \mathbf{x},0 \right)=  \varphi \left( \mathbf{x} \right),&\mathbf{x}\in \mathbb{R} ^{N} \\ 
+         u_{t}\left( \mathbf{x},0 \right)= \psi \left( \mathbf{x} \right),&\mathbf{x}\in \mathbb{R} ^{N}   \end{cases} 
+\end{equation}
+
+利用线性叠加原理将它一分为三,考虑以下三个方程
+
+\begin{enumerate}
+    \item \begin{equation}
+        \begin{cases} \frac{\partial ^{2}u_1}{\partial t^{2}}-a^{2} \Delta u_1= 0,&\mathbf{x}\in \mathbb{R} ^{N}\times \left( 0,\infty \right)    \\ 
+            u_1\left( \mathbf{x},0 \right)=  \varphi \left( \mathbf{x} \right),&\mathbf{x}\in \mathbb{R} ^{N} \\ 
+             u_{1t}\left( \mathbf{x},0 \right)= 0,&\mathbf{x}\in \mathbb{R} ^{N}   \end{cases} 
+    \end{equation}
+    \item \begin{equation}
+        \begin{cases} \frac{\partial ^{2}u_2}{\partial t^{2}}-a^{2} \Delta u_2= 0,&\left( \mathbf{x},t  \right)\in \mathbb{R} ^{N}\times \left( 0,\infty \right)    \\ 
+            u_2\left( \mathbf{x},0 \right)= 0,&\mathbf{x}\in \mathbb{R} ^{N} \\ 
+             u_{2t}\left( \mathbf{x},0 \right)= \psi \left( \mathbf{x} \right),&\mathbf{x}\in \mathbb{R} ^{N}   \end{cases} 
+    \end{equation}
+    \item \begin{equation}
+        \begin{cases} \frac{\partial ^{2}u_3}{\partial t^{2}}-a^{2} \Delta u_3= f\left( \mathbf{x},t \right),&\left( \mathbf{x},t  \right)\in \mathbb{R} ^{N}\times \left( 0,\infty \right)    \\ 
+            u_3\left( \mathbf{x},0 \right)=  0,&\mathbf{x}\in \mathbb{R} ^{N} \\ 
+             u_{3t}\left( \mathbf{x},0 \right)= 0,&\mathbf{x}\in \mathbb{R} ^{N}   \end{cases} 
+    \end{equation}
+\end{enumerate}
+则 \[
+u= u_1+ u_2+ u_3
+\]
+
+
+\begin{theorem}{Duhamel齐次化原理}
+    设 \(  u_2\left( \mathbf{x},t \right)= M_{\psi }\left( \mathbf{x},t \right)    \)是上面第二个方程的解,其中 \(  M_{\psi }  \)表示第二个以 \(  \psi   \)为初值的解,则 \(  u_1  \),\(  u_3  \)分别表为
+    \begin{equation}
+      u_1\left( \mathbf{x},t \right)= \frac{\partial }{\partial t}M_{ \varphi } \left( \mathbf{x},t \right) 
+    \end{equation}
+    \begin{equation}
+      u_3\left( \mathbf{x},t \right)= \int_{0}^{t}M_{f_{\tau }}\left( \mathbf{x},t-\tau  \right)\,\mathrm{d} \tau   
+    \end{equation}     
+\end{theorem}
+
+
+故问题化为解以下特殊的一维波动方程的Cauchy问题 \[
+\begin{cases} \frac{\partial ^{2}u}{\partial t^{2}}-a^{2} \frac{\partial ^{2}u}{\partial x^{2}}= 0 ,& x \in \mathbb{R} ,t > 0\\ 
+ u\left( x,0 \right)= 0,&x \in \mathbb{R} \\ 
+  u_{t}\left( x,0 \right)= \psi \left( x \right),&x \in \mathbb{R}    \end{cases} 
+\]方程为双曲方程,特征方程为 \[
+-a^{2} \left( \frac{\mathrm{d}x}{\mathrm{d}t} \right)^{2}+ 1= 0  
+\] 两个特征曲线为 \[
+v =  x+ at,\quad w= x-at
+\]做变量替换 \[
+u\left( x,t \right)= U\left( v\left( x,t \right),w\left( x,t \right)   \right)  
+\]
+
+链式法则一通计算,方程化为 \[
+\frac{\partial ^{2}U}{\partial w \partial v}= 0
+\]故 \[
+\frac{\partial }{\partial v} \frac{\partial U}{\partial w}= 0 ,\quad  \frac{\partial }{\partial w} \frac{\partial U}{\partial v}= 0
+\]存在 \(  g\left( w \right),f\left( v \right)    \),使得 \[
+\frac{\partial U}{\partial w}= g\left( w \right) , \quad U= \int g\left( w \right)\,\mathrm{d} w+ C\left( v \right)   
+\] \[
+\frac{\partial U}{\partial v}= f\left( v \right),\quad U= \int f\left( v \right)\,\mathrm{d} v+ C\left( w \right)   
+\] 通解形如 \[
+U\left( v,w \right)= F\left( v \right)+ G\left( w \right)   
+\]从而 \[
+u\left( x,t \right)= U\left( v,w \right)= F\left( x+ at \right)+ G\left( x-at \right)    
+\]应用初始条件 \[
+\begin{aligned}
+u\left( x,0 \right)&= F\left( x \right)+ G\left( x \right)= 0\\ 
+     u_{t}\left( x,0 \right)& = a F^{\prime} \left( x \right)- a G^{\prime} \left( x \right)= \psi \left( x \right)    
+\end{aligned}
+\]对后一个积分,得到 \[
+a F\left( x \right)- a G\left( x \right)=   \int_{x_0}^{x}\psi \left( x \right) \,\mathrm{d} x+ C
+\]得到 \[
+\begin{aligned}
+    F\left( x \right)&=  \frac{1 }{2a } \int_{x_0}^{x}\psi \left(  \xi \right)\,\mathrm{d}  \xi +  \frac{C }{2a }\\ 
+    G\left( x \right)& = -\frac{1 }{2a } \int_{x_0}^{x}\psi \left(  \xi  \right)\,\mathrm{d}  \xi -\frac{C }{2a }    
+\end{aligned}  
+\]从而 \[
+\begin{aligned}
+F\left( x+ at \right)&= \frac{1 }{2a }\int_{x_0}^{x+ at}\psi \left(  \xi \right)\,\mathrm{d}  \xi + \frac{C }{2a }     \\ 
+ G\left( x-at \right)& = -\frac{1 }{2a } \int_{x_0}^{x- at}\psi \left(  \xi \right)\,\mathrm{d}  \xi  -\frac{C }{2a }    
+\end{aligned}
+\]于是 \[
+u\left( x,t \right) = F\left( x+ at \right)+ G\left( x-at \right)= \frac{1 }{2a }\int_{x-at}^{x+ at}\psi \left(  \xi \right)\,\mathrm{d}  \xi    
+\]应用duhhamel齐次化, \[
+u_1\left( x,t \right)= \frac{\partial }{\partial t} \left( \frac{1 }{2a }\int_{x-at}^{x+ at} \varphi \left(  \xi  \right)   \,\mathrm{d}  \xi \right)=   \frac{1}{2}  \varphi \left( x+ at \right)+ \frac{1}{2} \varphi \left( x- at \right)  
+\] \[
+\begin{aligned}
+    u_3\left( x,t \right)&=  \int_{0}^{t}M_{f_{\tau }}\left( x,t-\tau  \right)\,\mathrm{d} \tau   \\ 
+     & = \frac{1 }{2a } \int_{0}^{t} \tau \int_{x-a\left( t- \tau  \right) }^{x+ a\left( t-\tau  \right) }f\left(  \xi ,\tau  \right) \,\mathrm{d}  \xi 
+\end{aligned}
+\]
+最终,通过 \(  u= u_1+ u_2+ u_3  \),我们得到以下 达朗贝尔公式 
+
+\begin{theorem}
+    一维波动方程的Cauchy问题 \[
+    \begin{cases} \frac{\partial ^{2}u  }{\partial t^{2}}-a^{2} \frac{\partial ^{2}u}{\partial x^{2}}= f\left( x,t \right) ,& x \in \mathbb{R} ,t> 0\\ 
+     u\left( x,0 \right)=  \varphi \left( x \right),& x \in \mathbb{R}\\ 
+      u_{t}\left( x,0 \right)= \psi \left( x \right),& x \in \mathbb{R}     \end{cases} 
+    \]的解为 \[
+    \begin{aligned}
+    u\left( x,t \right)& =  \frac{ \varphi \left( x+ at \right)+  \varphi \left( x-at \right)   }{2 }   +  \frac{1 }{2a } \int_{x-at}^{x+ at}\psi \left(  \xi  \right)\,\mathrm{d}  \xi \\ 
+     & + \frac{1 }{2a }\int_{0}^{t}\,\mathrm{d} \tau \int_{x-a\left( t-\tau  \right) }^{x+ a\left( t-\tau  \right) }f\left(  \xi ,\tau  \right)\,\mathrm{d}  \xi     
+    \end{aligned}
+    \]称为达朗贝尔公式.
+\end{theorem}
+
+
+\section{半无边界问题}
+
+\begin{proposition}
+    考虑Cauchy问题 \[
+    \begin{cases} \frac{\partial ^{2}u}{\partial t^{2}}-a^{2}\frac{\partial ^{2}u}{\partial x^{2}}= 0,&x\in \mathbb{R} ,t> 0\\ 
+     u\left( x,0 \right)=  \varphi \left( x \right),& x \in \mathbb{R} \\ 
+      \frac{\partial u}{\partial t}\left( x,0 \right)= \psi \left( x \right),&x\in \mathbb{R}      \end{cases} 
+    \]其中 \(  a> 0, \varphi \in C^{2}\left( \mathbb{R}  \right),\psi \in C^{1}\left( \mathbb{R}  \right)    \),则
+    \begin{enumerate}
+        \item 若 \(   \varphi ,\psi   \)是关于 \(  x  \)的奇函数,则对于每个固定的 \(  t> 0, u\left( 0,t \right)= 0   \)
+        \item 如果 \(   \varphi ,\psi   \)是关于 \(  x  \)的偶函数,则对于每个固定的 \(  t> 0, \frac{\partial u}{\partial x}\left( 0,t \right)= 0   \).      
+    \end{enumerate}
+     
+\end{proposition}
+\begin{note}
+    利用达朗贝尔公式 \[
+    u\left( x,t \right)= \frac{ \varphi \left( x+ at \right)+  \varphi \left( x-at \right)   }{2 }+ \frac{1 }{2a }\int_{x-at}^{x+ at}\psi \left(  \xi  \right)\,\mathrm{d}  \xi     
+    \]即可.
+\end{note}
+
+\begin{problem}
+    解下列问题: 
+    \begin{enumerate}
+        \item \[
+        \begin{cases} \frac{\partial ^{2}u}{\partial t^{2}}= a^{2}\frac{\partial ^{2}u}{\partial x^{2}},&x> 0,t> 0\\ 
+         u\left( 0,t \right)= 0,&t> 0\\ 
+          u\left( x,0 \right)=  \varphi \left( x \right),x> 0\\ 
+           \frac{\partial u}{\partial t}\left( x,0 \right)= \psi \left( x \right)      ,x> 0\end{cases} 
+        \]
+    \end{enumerate}
+    
+\end{problem}
+
+\hspace*{\fill} 
+\begin{proof}
+    \begin{enumerate}
+        \item 将 \(   \varphi   \),\(  \psi \left( x \right)   \)做奇延拓,得到 \(  \Phi \left( x \right),\Psi \left( x \right)    \)   ,考虑Cauchy问题 \[
+        \begin{cases} \frac{\partial ^{2}U}{\partial t^{2}}= a^{2}\frac{\partial ^{2}U}{\partial x^{2}},& x \in \mathbb{R} ,t> 0\\ 
+         U\left( x,0 \right)=  \varphi \left( x \right),&x\in \mathbb{R} \\ 
+          U_{t}\left( x,0 \right)= \Psi \left( x \right),& x \in \mathbb{R}      \end{cases} 
+        \]
+    \end{enumerate}
+    解为  \[
+    U\left( x,t \right)= \frac{\Phi \left( x+ at \right)+ \Phi \left( x-at \right)   }{2 }+ \frac{1 }{2a }\int_{x-at}^{x+ at}\Psi \left(  \xi  \right)\,\mathrm{d}  \xi     
+    \]并且满足 \(  U\left( 0,t \right)= 0   \),故 \(  U  \)在 \(  x> 0,t> 0  \)上是原问题的一个解,故 \[
+    u\left( x,t \right)= \begin{cases} \frac{ \varphi \left( x+ at \right)+  \varphi \left( x-at \right)   }{2 }+ \frac{1 }{2a }\int_{x-at}^{x+ at}\psi \left(  \xi  \right)\,\mathrm{d}  \xi ,&x> 0,t< \frac{x }{a }\\ 
+     \frac{ \varphi \left( x+ at \right)- \varphi \left( at-x \right)   }{2 }+ \frac{1 }{2a }\int_{at-x}^{x+ at}\psi \left(  \xi  \right)\,\mathrm{d}  \xi ,&x> 0,t> \frac{x }{a }         \end{cases}  
+    \]   
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{proposition}
+    考虑有齐次初值条件的非齐次方程 
+    \[
+    \begin{cases} \frac{\partial ^{2}u}{\partial t^{2}}= a^{2}\frac{\partial ^{2}u}{\partial x^{2}}+ f\left( x,t \right),& x \in \mathbb{R} ,t> 0\\ 
+     u\left( x,0 \right)= \frac{\partial u}{\partial t}\left( x,0 \right)= 0,& x \in \mathbb{R}     \end{cases} 
+    \]则
+    \begin{enumerate}
+        \item 如果对于每个固定的 \(  t  \),\(  f\left( x,t \right)   \)是关于 \(  x  \)的 奇函数,则 \(  u\left( 0,t \right)= 0   \),
+        \item 如果对于每个固定的 \(  t  \),\(  f\left( x,t \right)   \)是关于 \(  x  \)的偶函数,则 \(  \frac{\partial u}{\partial x}\left( 0,t \right)= 0   \)       
+    \end{enumerate}
+    
+\end{proposition}
+
+\begin{note}
+    利用达朗贝尔公式公式 \[
+    u\left( x,t \right)= \frac{1 }{2a }\int_{0}^{t}\,\mathrm{d} \tau \int_{x-a\left( t-\tau  \right) }^{x+ a\left( t+ \tau  \right) }f\left(  \xi ,\tau  \right)\,\mathrm{d}  \xi    
+    \]
+\end{note}
+
+
+\section{高维波动方程的Cauchy问题}
+
+考虑初值问题 \[
+\begin{cases} u_{tt}- \Delta u= 0,&\left( \mathbf{x},t \right)\in \mathbb{R} ^{N}\times \left( 0,\infty \right)\\ 
+ u\left( \mathbf{x},0 \right)=  \varphi \left( \mathbf{x} \right),&\mathbf{x}\in \mathbb{R} ^{N}\\ 
+  u_{t}\left( \mathbf{x},0 \right)= \psi \left( \mathbf{x} \right),&\mathbf{x}\in \mathbb{R} ^{N}       \end{cases} 
+\]的 \(  C^{m}  \)解, 其中 \(  N\ge 2  \),   \(  m\ge 2  \). 
+
+\subsection{球面平均}
+
+
+\begin{definition}
+    设 \(  \mathbf{x} \in \mathbb{R} ^{N}, t> 0,r> 0 \),定义 
+    \begin{enumerate}
+        \item 一点处的球面平均函数: \[
+        U\left( \mathbf{x};r,t \right)= \frac{1 }{N \omega _{N}r^{N-1} } \int_{ \partial B\left( \mathbf{x},r \right) }   u\left( \mathbf{y},t \right)\,\mathrm{d} S\left( \mathbf{y} \right)    
+        \]为 \(  u\left( \cdot ,t \right)   \)在球面 \(   \partial B\left( \mathbf{x},r \right)   \)上的平均,其中 \(   \omega _{N}  \)是 \(  N  \)维单位球的体积.
+        \item 类似地定义 \[
+        \begin{aligned}
+        \Phi \left( \mathbf{x};r \right)&= \frac{1 }{N \omega _{N}r^{N-1} }\int_{ \partial B\left( \mathbf{x},r \right) } \varphi \left( \mathbf{y} \right)\,\mathrm{d} S\left( \mathbf{y} \right)     \\ 
+         \Psi \left( \mathbf{x};r \right)& =  \frac{1 }{N \omega _{N}r^{N-1} }\int_{ \partial B\left( \mathbf{x},r \right) }\psi \left( \mathbf{y} \right)\,\mathrm{d} S\left( \mathbf{y} \right)    
+        \end{aligned}
+        \]    
+        
+        
+    \end{enumerate}
+    
+\end{definition}
+
+\begin{theorem}{Euler-Possion-Darboux}
+    对于固定的 \(  \mathbf{x}\in \mathbb{R} ^{N}  \),对于高维的Cauchy问题,若 \(  u \in C^{m}\left( \mathbb{R} ^{N}\times [0,\infty)  \right)   \)是一个解,则按\(  u  \)定义的 \(  U \in C^{m}\left( \overline{\mathbb{R} _{+ }} \times \left[ 0,\infty \right) \right)   \)     ,并且 
+    \begin{equation}
+     \begin{cases}  U_{tt}-U_{rr}-\frac{N-1 }{r }U_{r}= 0,&\left( r,t \right) \in \mathbb{R} _{+ }\times \left( 0,\infty \right)\\ 
+        U\left( r,0 \right)= \Phi ,& r\in \mathbb{R} _{+ }\\ 
+         U_{t}\left( r,0 \right)= \Psi ,&r\in \mathbb{R} _{+ }   \end{cases}    
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    对 \(  U\left( \mathbf{x};r,t \right)   \)积分下关于 \(  r  \)求导,利用格林公式,得到 \[
+    U_{r}\left( \mathbf{x};r,t \right)= \frac{r }{N } \cdot \frac{1 }{ \omega _{N}r^{N} } \int_{B\left( \mathbf{x},r \right) } \Delta u\left( \mathbf{y},t \right)\,\mathrm{d} \mathbf{y}    
+    \]球面平均趋于0 : \[
+    \lim_{r\to 0^{+ }}U_{r}\left( \mathbf{x};r,t \right)= 0 
+    \]  对于 \(  U_{r}  \)求导,一通计算得到 \[
+    \lim_{r\to 0^{+ }}U_{rr}\left( \mathbf{x};r,t \right)= \frac{1 }{N } \Delta u\left( \mathbf{x},t \right)   
+    \] 类似地计算 \(  U_{rrr}  \)等等,可以验证 \(  U\in C^{m}\left( \mathbb{R} _{+ }\times \left[ 0,\infty \right)  \right)   \)  
+
+
+    另一方面,由上面计算的 \(  U_{r}  \)以及方程 \(  u_{tt}=  \Delta u  \),得到 \[
+    U_{r}\left( \mathbf{x};r,t \right)= \frac{r }{N }\cdot \frac{1 }{ \omega _{N}r^{N}  }\int_{B\left( \mathbf{x},r \right) }u_{tt}\left( \mathbf{y} ,t\right)\,\mathrm{d} \mathbf{y}    
+    \]  \[
+    r^{N-1}U_{r}= \frac{1}{N \omega _{N}}\int_{B\left( \mathbf{x},r \right) }u_{tt}\,\mathrm{d} \mathbf{y}
+    \]两边对 \(  r  \)求导,得到 \[
+  \begin{aligned}
+    \left( r^{N-1}U_{r} \right)_{r}&= \frac{1 }{N \omega _{N} } \int_{ \partial B\left( \mathbf{x},r \right) }u_{tt}\,\mathrm{d} S\\ 
+     & = r^{N-1}U_{tt}   
+  \end{aligned}
+    \] 
+    \hfill $\square$
+\end{proof}
+
+
+
+接下来化Euler-Possion-Darboux方程为通常的一维波动方程.
+
+首先,令 \(  N = 3  \),\(  U  \in C^{2}\left( \mathbb{R} ^{3}\times \left[ 0,\infty \right]  \right) \)是初值问题的解,令 \[
+\begin{aligned}
+\overline{U}& = rU\\ 
+ \overline{\Phi }& =  r\Phi \\ 
+  \overline{\Psi }& =  r\Psi  
+\end{aligned}
+\]  
+
+
+则 
+
+\begin{theorem}
+    \(  \overline{U}  \)满足方程 
+    \begin{equation}
+      \begin{cases}   \overline{U}_{tt}- \overline{U}_{rr}= 0,&\left( r,t \right)\in \mathbb{R} ^{+ }\times \left( 0,\infty \right)\\ 
+       \overline{U}=  \overline{\Phi }, \overline{U}_{t}=  \overline{\Psi },&\left( r,t \right) \in \mathbb{R} ^{+ }\times \left\{ t= 0 \right\}\\ 
+        \overline{U}= 0    ,& \left( r,t \right)\in \left\{ r= 0 \right\}\times \left( 0,\infty \right)  \end{cases} 
+    \end{equation} 
+\end{theorem}
+
+
+\begin{proof}
+    \[
+    \begin{aligned}
+    \overline{U}_{tt}&= rU_{tt} = r\left( U_{rr}+  \frac{2 }{r }U_{r}  \right)\\ 
+     & = rU_{rr}+ 2U_{r}= \left( U+ rU_{r} \right)_{r}\\ 
+      & =  \left( \overline{U}_{r} \right)_{r}= \overline{U}_{rr}   
+    \end{aligned}
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+
+
+\begin{theorem}{Kirchhoff公式}
+    三维波动方程的初值问题的解为 \[
+    u\left( \mathbf{x},t \right)= \frac{1}{ \sigma \left(  \partial B_{r} \right) } \int _{ \partial B\left( \mathbf{x},t \right) } \left[ t\psi \left( \mathbf{y} \right)+  \varphi \left( \mathbf{y} \right)+  \nabla  \varphi \left( \mathbf{y} \right)\cdot \left( \mathbf{y}-\mathbf{x} \right)     \right]\,\mathrm{d} S\left( \mathbf{y} \right),\quad x\in \mathbb{R} ^{3},t> 0  
+    \]
+\end{theorem}
+
+\begin{proof}
+    利用达朗贝尔公式,当 \(  0\le r\le t  \)时 \[
+    \overline{U\left( \mathbf{x};r,t \right) }= \frac{1 }{2 }\left[ \overline{\Phi }\left( r+ t \right)-\overline{\Phi }\left( r-t \right)   \right]+ \frac{1 }{2 } \int_{-r+ t}^{r+ t}  \overline{\Psi }\left( \mathbf{y} \right)\,\mathrm{d} \mathbf{y}    
+    \] 由 \[
+    u\left( \mathbf{x},t \right)= \lim_{r\to 0^{+ }}u\left( \mathbf{x};r,t \right)  
+    \]可得 \[
+    \begin{aligned}
+    u\left( \mathbf{x},t \right)&= \lim_{r\to 0^{+ }} \frac{ \overline{U}\left( \mathbf{x};r,t \right)  }{r }\\ 
+     & =    \lim_{r\to 0^{+ }}\left[  \frac{ \overline{\Phi }\left( r+ t \right)- \overline{\Phi}\left( t-r \right)   }{2r }+ \frac{1 }{2r } \int_{t-r}^{t+ r}  \overline{\Psi }\left( \mathbf{y} \right)    \,\mathrm{d} \mathbf{y}\right]\\ 
+      & =  \overline{\Phi }^{\prime} \left( t \right)+  \overline{\Psi }\left( t \right)   
+    \end{aligned}
+    \]带入,并利用 \[
+    \frac{1}{ \sigma \left(  \partial B_{t}\right) } \int_{ \partial B\left( \mathbf{x},t \right) } \varphi \left( \mathbf{y} \right) \,\mathrm{d} S\left( \mathbf{y} \right)=  \frac{1 }{ \sigma \left( B_{1} \right)  } \int_{ \partial B\left( 0,1 \right) }  \varphi \left( \mathbf{x}+ tz \right)\,\mathrm{d} S\left( \textbf{z} \right)    
+    \]故 \[
+    \frac{\partial }{\partial t}\left( \frac{1 }{ \sigma \left(  \partial _{t} \right)  } \int_{ \partial B\left( \mathbf{x},t \right) } \varphi \left( \mathbf{y} \right)  \,\mathrm{d} S\left( \mathbf{y} \right) \right)=  \frac{1}{ \sigma \left(  \partial B_{t} \right) } \int_{ \partial B\left( \mathbf{x},t \right) } \nabla  \varphi \left( \mathbf{y} \right)\cdot \frac{\mathbf{y}-\mathbf{x} }{ t}\,\mathrm{d} S\left( \mathbf{y} \right)    
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{theorem}{二维波动方程Cauchy问题的Possion公式}
+    \[
+    u\left( \mathbf{x},t \right)= \frac{1 }{2 } \frac{1}{ \sigma \left(  \partial B_{t} \right) } \int_{ \partial B\left( \mathbf{x},t \right) } \frac{   t }{ \sqrt{t^{2}-\left| \mathbf{y}-\mathbf{x} \right|^{2} }}   \left[ \varphi \left( \mathbf{y} \right)+ t\psi \left( \mathbf{y} \right)+ D \varphi \left( \mathbf{y} \right)\cdot \left( \mathbf{y}-\mathbf{x} \right)  \right]  \,\mathrm{d} \mathbf{y}
+    \]
+\end{theorem}
+
+\end{document}

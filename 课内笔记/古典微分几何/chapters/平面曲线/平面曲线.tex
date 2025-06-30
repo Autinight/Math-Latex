@@ -1,0 +1,271 @@
+\documentclass[../../古典微分几何.tex]{subfiles}
+\usepackage{subfiles}
+\begin{document}
+
+\chapter{平面曲线}
+
+\section{基本概念}
+
+\begin{definition}{正则曲线}
+    设 \(  c: \left( a,b \right)\to E^{2} \left( \text{或}E^{3} \right)   \)是 \(  C^{\infty}  \)映射,满足正则性条件： \[
+    \left| \frac{\,\mathrm{d} c }{\,\mathrm{d} t }  \right| \neq 0 
+    \]则称 \(  c  \)为平面（或空间）正则曲线.   
+\end{definition}
+    
+\begin{remark}
+    \begin{enumerate}
+        \item 对于 \(  c\left( t \right)= \left( x\left( t \right),y\left( t \right)   \right)    \), \(  c^{\prime} \left( t \right)= \left( x^{\prime} \left( t \right)  ,y^{\prime} \left( t \right) \right)    \)  
+        \item 方便起见,若无额外声明,以后提及曲线均指正则曲线
+        \item 称 \(  \frac{\,\mathrm{d} c }{\,\mathrm{d} t } \left( t \right)   \)为切向量场
+        \item 由定义可见,曲线与参数的选取是有关的,我们总希望选取一个好用的参数化方法
+        \begin{example}
+            考虑 \(  c_1\left( t \right)= \left( \cos t,\sin t \right)    \) ,  \(  c_2\left( t \right)= \left( \cos 2t,\sin 2t \right)    \), \(  c_3\left( t \right)= \left( \cos t^{2},\sin t^{2} \right)    \)  ,它们的像相同,但是不是同一个曲线.  其中\(  c_1,c_2  \)正则,而 \(  c_3  \)则不然,这是因为 \(  c_3^{\prime} \left( 0 \right)= \left( 0,0,0 \right)    \) .  
+        \end{example}
+        
+        \hspace*{\fill} 
+        
+    \end{enumerate}
+    
+\end{remark}
+
+\noindent 问题：哪些曲线有正则的参数化？
+
+\begin{example}
+    在解析几何中,曲线由水平集给出 \[
+    C =  \left\{ \left( x,y \right): f\left( x,y \right)= \text{常数}   \right\}
+    \]
+    \begin{definition}
+        若 \(   \nabla f\left( p \right) \neq 0   \),则称 \(  f\left( p \right)   \)为一个正则值.  
+    \end{definition}
+假设   \(  c =  f\left( p \right)   \)是正则,则 \[
+ \nabla f\left( p \right)= \left( f_{x}\left( p \right),f_{y}\left( p \right)   \right)\neq 0  
+\]从而 \(  f_{x}\left( p \right)\neq 0   \)或者 \(  f_{y}\left( p \right)\neq 0   \).不妨设 \(  f_{x}\left( p \right)\neq 0   \),则由隐函数定理,存在
+\(  x\left( y \right)   \),使得 \(  f\left( x\left( y \right),y  \right)\equiv f\left( p \right)    \)在 \(  p  \)附近成立.即 \(  \left\{ f = f\left( p \right)  \right\}  \)可由 \(  \left( x\left( y \right)  ,y\right) = : c\left( y \right)   \)参数表示.
+ \(  c^{\prime} \left( y \right)= \left( x^{\prime} \left( y \right),1  \right)\neq 0    \)           ,从而 \(  c  \)是水平集在 \(  p  \)附近的一个 正则的参数化.
+ 
+ \begin{remark}
+    由紧性,若每一点附近都有一个正则参数化,可以拼接成整体的参数化.
+ \end{remark} 
+\end{example}
+
+ 
+\hspace*{\fill} 
+
+\begin{definition}{弧长}
+    曲线 \(  c  \)的弧长被定义为 \[
+    L\left( c \right)=  \int_{a}^{b} \left| c^{\prime} \left( t \right)  \right|\,\mathrm{d} t  
+    \] 
+\end{definition}
+
+\begin{definition}{弧长函数}
+    定义 \[
+    s\left( t \right)= \int_{a}^{t} \left| c^{\prime} \left( s \right)  \right|\,\mathrm{d} s,\quad  t \in \left( a,b \right)   
+    \]为曲线 \(  c  \)的弧长函数. 
+\end{definition}
+
+\begin{remark}
+  \begin{enumerate}
+    \item   \(  s\left( t \right)   \)表为从 \(  c\left( a \right)   \)到 \(  c\left( t \right)   \)曲线段的弧长.  
+
+  \end{enumerate}
+   
+\end{remark}
+
+\begin{definition}
+    对于正则曲线 \(  c  \),\(  s^{\prime} \left( t \right)= \left| c^{\prime} \left( t \right)  \right| >0   \), 它的弧长函数 \(  s\left( t \right)   \)严格单增,由反函数定理,它有反函数 \(  t =  t\left( s \right),s \in [0,l]   \) ,其中 \(  l = L\left( c \right)   \). \(  \frac{\,\mathrm{d} t }{ \,\mathrm{d} s} =  \frac{1 }{\left| c^{\prime} \left( t \right)  \right|  }    \)  
+    定义 \(  \tilde{c}\left( s \right): =  c\left( t\left( s \right)  \right)    \),称为 \(  c  \)的弧长参数化.  
+\end{definition}
+\begin{remark}
+    \[
+        \tilde{c}^{\prime} \left( s \right)=  \frac{\,\mathrm{d} c }{\,\mathrm{d} s } =  \frac{\,\mathrm{d} c }{\,\mathrm{d} t }\cdot \frac{\,\mathrm{d} t }{\,\mathrm{d} s }    
+        \]称下列曲线\[
+        \left| \tilde{c}^{\prime} \left( s \right)  \right| =  \frac{\left| \frac{\,\mathrm{d} c }{\,\mathrm{d} t }  \right|  }{\left| c ^{\prime} \left( t \right) \right|  }  \equiv 1
+        \]为单位速度曲线,（通常也称为弧长曲线）. 
+
+   
+\end{remark}
+
+
+\begin{definition}{标架}
+    对于正则曲线 \(  c  \), 
+    令 \(  T\left( t \right)=  \frac{c^{\prime} \left( t \right)  }{\left| c^{\prime} \left( t \right)  \right|  }    \)为单位切向量场, \(  N\left( t \right)=  T\left( t \right) \begin{bmatrix} 
+        0&1\\ 
+         -1&0 
+    \end{bmatrix}     \)  称为 \(  c  \)的规正（活动）标架.
+\end{definition}
+
+由于切向量场与自身的导数垂直,对于 每个 \(  t  \),存在数 \(  K\left( t \right)   \),使得 \(  T^{\prime} \left( t \right)=  K\left( t \right) N\left( t \right)     \) ,
+从而确定出 一个函数 \(  K\left( t \right)   \).又 \(  N^{\prime} \left( t \right)= L\left( t \right)T\left( t \right)     \),计算 \[
+\begin{aligned}
+0& = \frac{\,\mathrm{d}  }{\,\mathrm{d} t }\left<T\left( t \right),N\left( t \right)   \right>\\ 
+ & =  \left<T^{\prime} ,N \right>+ \left<T,N^{\prime}  \right>  = K+ L
+\end{aligned}
+\]    于是 \[
+L\left( t \right)= - K\left( t \right),\quad  N^{\prime} \left( t \right)= -K\left( t \right)T\left( t \right)    
+\]
+
+
+\begin{example}
+    \begin{enumerate}
+        \item 直线 \(  c\left( t \right)= \left( at,bt \right)    \), \(  a^{2}+ b^{2}= 1  \),则 \(  T\left( t \right)= \left( a,b \right)\implies K\left( t \right)\equiv 0     \)  
+        \item 圆： \(  c\left( t \right)= \left( \cos t,\sin t \right)    \)  , \(  T\left( t \right)=  \left( -\sin t,\cos t \right)    \) ,\(  N\left( t \right)= \left( -\cos t,\sin t \right)    \) , \(  T^{\prime} \left( t \right)= \left( -\cos t,-\sin t \right)    = N\left( t \right)\implies K\left( t \right)\equiv 1  \).
+        对于 \(  \bar{c}\left( t \right)   = r \left( \cos t,\sin t \right) \),它的 \(  K\left( t \right)   \) 也为 \(  1  \),因此需要对 \(  K\left( t \right)   \)稍作修饰. 
+    \end{enumerate}
+    
+\end{example}
+\hspace*{\fill} 
+\begin{definition}{曲率}
+    对于正则曲线 \(  c  \),设 \(  \left( T,N \right)   \)是它的正规标架,定义它的曲率为 \[
+    k\left( t \right)=  \frac{T^{\prime} \left( t \right)\cdot N\left( t \right)   }{\left| c^{\prime} \left( t \right)  \right|  }  
+    \]  
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 考虑弧长参数化 \(  c\left( s \right)   \),此时 \(  T\left( s \right)= c ^{\prime \prime}  \left( s \right)    \), \(  T^{\prime} \left( s \right)=  c^{\prime} \left( s \right)= k\left( s \right)N\left( s \right)      \)   
+        .可以得到简洁的标架运动方程 \[
+        \begin{aligned}
+        T^{\prime} \left( s \right)= k\left( s \right)N\left( s \right)\\ 
+         N^{\prime} \left( s \right)= -k\left( s \right)T\left( s \right)       
+        \end{aligned}
+        \]或者写作 \[
+        \frac{\,\mathrm{d}  }{\,\mathrm{d} s }\begin{bmatrix} 
+            T\\ 
+             N 
+        \end{bmatrix} =  \begin{bmatrix} 
+            0&k\\ 
+             -k&0 
+        \end{bmatrix} \begin{bmatrix} 
+            T\\ 
+             N 
+        \end{bmatrix}    
+        \]
+
+        \item 曲率可以通过弧长参数化方便地计算 \(  k\left( s \right) =  \frac{\,\mathrm{d}  }{\,\mathrm{d} s } T\left( s \right)\cdot N\left( s \right)     \) 
+        \item 也称这样的曲率为符号曲率,它是带符号的,与\(  N  \)选取的方向有关. 
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{example}
+    计算 \[
+    c\left( t \right)= \left( t,\sin t \right)  
+    \]曲率 
+    \begin{solution}
+        \(  c^{\prime} \left( t \right)= \left( 1,\cos t \right)    \) , \(  \left| c^{\prime} \left( t \right)  \right|= \sqrt{1+ \cos ^{2}t}   \) , \[
+        T\left( t \right)=  \frac{1 }{\sqrt{1+ \cos ^{2}t} } \left( 1,\cos t \right)   
+        \] \[
+        N\left( t \right)= T\left( t \right) \begin{bmatrix} 
+            0&1\\ 
+             -1&0 
+        \end{bmatrix} =  \frac{1 }{\sqrt{1+ \cos ^{2}t} } \left( -\cos t,1 \right)     
+        \] \[
+        T^{\prime} \left( t \right)=  \left( \frac{1 }{\sqrt{1+ \cos ^{2}t} }  \right)^{\prime} \left( 1,\cos t \right)+  \frac{1 }{\sqrt{1+ \cos ^{2}t} } \left( 0,-\sin t \right)     
+        \] \[
+        k\left( t \right)=  \frac{T^{\prime} \left( t \right)\cdot N\left( t \right)   }{\left| c^{\prime} \left( t \right)  \right|  } = \frac{  \left( \frac{1 }{\sqrt{1+ \cos ^{2}t} }  \right)^{2} \cdot \left( -\sin t \right)     }{ \sqrt{1+ \cos ^{2}t}}  =  - \frac{\sin t }{\left( 1+ \cos ^{2}t \right)^{\frac{3}{2}}  } 
+        \]
+    \end{solution}
+    
+    \hspace*{\fill} 
+    
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{proposition}{\(  k  \)的计算公式 }
+  \[
+    k\left( t \right)=  \frac{c^{\prime} \left( t \right)\times  c ^{\prime \prime} \left( t \right) \cdot \left( 0,0,1 \right)    }{\left| c^{\prime} \left( t \right)  \right|^{3}  }  
+    \]
+\end{proposition}
+
+\begin{proof}
+    \(  c^{\prime} \left( t \right)= \left| c^{\prime} \left( t \right)  \right|T\left( t \right)     \), \(  c ^{\prime \prime} \left( t \right)= \left| c^{\prime} \left( t \right)  \right| T\left( t \right)+ \left| c^{\prime} \left( t \right)  \right| ^{2} k\left( t \right)N\left( t \right)        \)  ,
+    将平面嵌入到 三维空间中,计算 \[
+   \begin{aligned}
+    c^{\prime} \left( t \right)\times  c ^{\prime \prime} \left( t \right) &   =  \left| c^{\prime}  \right|T +  \left( \left| c \right|T +  \left| c \right|^{2} kN   \right)   \\ 
+     & =   \left| c \right|^{3} k\;T\times N 
+   \end{aligned}
+    \]以 两边点乘 \(  \left( 0,0,1 \right)   \)（以 \(  N,T  \)和与它们垂直的向量构成的基下的坐标） ,得到 \[
+    k\left( t \right)=  \frac{c^{\prime} \left( t \right)\times  c ^{\prime \prime} \left( t \right) \cdot \left( 0,0,1 \right)    }{\left| c^{\prime} \left( t \right)  \right|^{3}  }  
+    \]  \[
+    \left| K\left( t \right)  \right| =  \frac{\left| c^{\prime} \left( t \right)\times  c ^{\prime \prime} \left( t \right)   \right|  }{\left| c^{\prime} \left( t \right)  \right|  }  
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+\section{曲率的几何意义}
+
+\begin{enumerate}
+    \item 对 正则曲线的弧长参数化\(  c\left( s \right)   \)做Taylor展开, \[
+        \begin{aligned}
+            c\left( s \right)& = c\left( s_0 \right)+  c^{\prime} \left( s_0 \right)\left( s-s_0 \right)+  \frac{1}{2}c ^{\prime \prime} \left( s_0 \right)\left( s-s_0 \right)^{2}+  o\left( \left( s-s_0 \right)^{2}  \right)       \\ 
+             & =   c\left( s_0 \right)+  T^{\prime} \left( s_0 \right)\left( s-s_0 \right)+  \frac{1}{2} k\left( s_0 \right)N\left( s_0 \right)\left( s-s_0 \right)^{2}     
+        \end{aligned}
+        \] 
+        用二次曲线逼近 \(  c\left( s \right)   \), \(  k  \)表示用来逼近的二次曲线的二次部分（抛物线）沿 \(  N  \)的方向弯曲的程度.   
+
+    \item 高斯映射：
+    
+
+    对于正则曲线 \(  c :\left( a,b \right)\to   \),定义高斯映射 
+     \(  N: \left( a,b \right)\to S^{1}\subseteq \mathbb{R} ^{2}   \) 
+
+     把每一点处的单位法向量映到圆周上一点.由 \(  N^{\prime} \left( s \right)=  -k\left( s \right)T\left( s \right)     \), 可得\(  \left| k\left( s \right)  \right|= \left| N^{\prime} \left( s \right)  \right|    \).曲率的大小为高斯映射在圆周上运动的速度.  
+\end{enumerate}
+
+
+\begin{remark}
+    \begin{enumerate}
+        \item 对曲线 \(  c \left( t \right)  \)做等距变换,记作 \(  \mathcal{T}\left( c \right)\left( t \right)    \)  ,则曲率不变.
+        \item   在一定的群作用下保持不变的量称为不变量.
+        \item 从而曲率是等距同构下的不变量.
+    \end{enumerate}
+    
+    
+\end{remark}
+
+\section{曲率对曲线的几乎“决定”}
+
+给定连续函数 \(  k\left( s \right)   \), 给定初值 \(  T\left( 0 \right),N\left( 0 \right)    \)为一处的规正基, 考虑方程 \[
+\frac{\,\mathrm{d}  }{\,\mathrm{d} s } \begin{bmatrix} 
+    T\left( s \right)\\ 
+     N\left( s \right)   
+\end{bmatrix} =  \begin{bmatrix} 
+    0& k\left( s \right)\\ 
+     -k\left( s \right)&0   
+\end{bmatrix} \begin{bmatrix} 
+    T\left( s \right)  \\ 
+     N\left( s \right) 
+\end{bmatrix}    
+\]  由 ODE的知识, 则该方程存在唯一解 \(  T\left( s \right),N\left( s \right)    \).
+给定 \(  c\left( 0 \right)   \), 令 \[
+c\left( s \right)=  c\left( 0 \right)  +  \int_{0}^{s} T\left( t  \right)\,\mathrm{d} t  
+\] 为了说明 \(  c\left( s \right)   \)的曲率就是 \(  k  \),我们希望 \[
+\begin{bmatrix} 
+    T\left( s \right)  \\ 
+     N\left( s \right) 
+\end{bmatrix} 
+\]在每一点处都是正交矩阵.
+
+\begin{proof}
+    令 \(  A \left( s \right)=  \begin{bmatrix} 
+        T\left( s \right)\\ 
+         N\left( s \right)   
+    \end{bmatrix}    \) ,则 \[
+    \frac{\,\mathrm{d}  }{\,\mathrm{d} s }A =  \begin{bmatrix} 
+        0&k\\ 
+         -k&0 
+    \end{bmatrix}A =: KA 
+    \]计算 \[
+    \begin{aligned}
+        \frac{\,\mathrm{d}  }{\,\mathrm{d} s }A A^{T} & =  KA A^{\mathsf{T}}+ A A^{\mathsf{T}} K^{\mathsf{T}} 
+    \end{aligned}
+    \]于是 \(  I\left( s \right)= I   \)是上述关于 \(  A A^{\mathsf{T}}  \)的方程的一个解,又该方程的解唯一,因此 \[
+    A A^{T}\left( s \right)  =  I
+    \]  
+
+    \hfill $\square$
+\end{proof}
+
+\end{document}

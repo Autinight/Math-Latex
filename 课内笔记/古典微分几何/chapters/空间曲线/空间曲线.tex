@@ -1,0 +1,569 @@
+\documentclass[../../古典微分几何.tex]{subfiles}
+\usepackage{subfiles}
+\begin{document}
+
+\chapter{空间曲线}
+
+\begin{example}{空间曲线}
+   \begin{enumerate}
+    \item 圆柱螺线： \[
+        c\left( t \right)=  \left( a\cos t,a\sin t,bt \right)  
+        \] 速度向量场为 \[
+        c^{\prime} \left( t \right)= \left( -a\sin t,a\cos t,b \right)  
+        \] \(  \left| c^{\prime} \left( t \right)  \right|=  \sqrt{a^{2}+ b^{2}}   \),于是 \(  \frac{\,\mathrm{d} s }{\,\mathrm{d} t } =  \sqrt{a^{2}+ b^{2}}   \)  , \(  s =  \sqrt{a^{2}+ b^{2}}t  \),可以通过 \[
+        c\left( s \right)= \left( a\cos \frac{s }{\sqrt{a^{2}+ b^{2}} },a \sin \frac{s }{\sqrt{a^{2}+ b^{2}} }   , \frac{bs }{\sqrt{a^{2}+ b^{2}} } \right)  
+        \]来弧长参数化 
+   \end{enumerate}
+   
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{remark}
+    与平面曲线不同,由于空间曲线是余2维的流形,法空间是2维的,我们需要两个“描述弯曲的”函数.
+\end{remark}
+
+\begin{definition}
+    设 \(  c\left( s \right)   \)是空间曲线, \(  \left| c^{\prime} \left( s \right)  \right|\equiv 1   \),
+    定义单位切向量 \(  T\left( s \right)=  c^{\prime} \left( s \right)    \)  .
+    \begin{enumerate}
+        \item 定义曲率为 \[
+            \kappa  \left( s \right)=  \left| T^{\prime} \left( s \right)  \right|  
+           \]
+        \item 定义 \(  N\left( s \right) =  \frac{T^{\prime} \left( s \right)  }{\left| T^{\prime} \left( s \right)  \right|  }    \)  ,称为主法向量.
+       
+        \item 定义 \(  B\left( s \right): =  T\left( s \right)\times  N\left( s \right)     \) ,称为从法向量.
+        此时 \(  \left\{ T,N,B \right\}  \)构成一个 \(  \mathbb{R} ^{3}  \)的右手系,称为 \(  \mathbb{R} ^{3}  \)的规正基.   
+    \end{enumerate}
+    
+\end{definition}
+
+\begin{remark}
+   \begin{enumerate}
+    \item  当 \(   \kappa  \left( s \right)\neq    0\)时, \(  N\left( s \right)   \)才有定义.
+    \item 认为当 \(   \kappa  \left( s \right)= 0   \)时, \(  N\left( s \right)   \)的选取不唯一.
+    \item 由于 \(  B\cdot N= 0  \),求导得到 \(  B^{\prime} \cdot N+  B\cdot N^{\prime} = 0  \).    
+   \end{enumerate}
+     
+\end{remark}
+
+
+\begin{definition}
+    定义 \(  \left\{ c\left( t \right);T\left( t \right),N\left( t \right),B\left( t \right)     \right\}  \) ,其中 \(  T\left( t \right)=  \frac{c\left( t \right)  }{\left| c^{\prime} \left( t \right)  \right|  }    \), \(  N\left( t \right)=  \frac{T^{\prime} \left( t \right)  }{\left| T^{\prime} \left( t \right)  \right|  }    \), \(  B\left( t \right)=  T\left( t \right)\times N\left( t \right)     \)   ,
+    为曲线的\textbf{Frenet标架}.
+\end{definition}
+
+\begin{definition}
+    定义 \(  \tau \left( s \right)=  -B^{\prime} \left( s \right)\cdot N\left( s \right)     \),称为曲线的挠率. 
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item \(  \tau \left( s \right)= - \left( T\left( s \right)\times N\left( s \right)   \right)^{\prime} \cdot N\left( s \right)     \);
+        \item \(  \tau \left( s \right) =  N^{\prime} \left( s \right)\cdot B\left( s \right)     \)  
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{proposition}
+    我们有线性ODE \[
+    \frac{\,\mathrm{d}  }{\,\mathrm{d} s } \begin{bmatrix} 
+        T\left( s \right)\\ 
+         N\left( s \right)\\ 
+          B\left( s \right)    
+    \end{bmatrix} =  \begin{bmatrix} 
+        0 &  \kappa  \left( s \right)&0 \\ 
+         - \kappa  \left( s \right)&0&\tau \left( s \right)\\ 
+          0&-\tau \left( s \right)&0   
+
+    \end{bmatrix} \begin{bmatrix} 
+        T\left( s \right)  \\ 
+         N\left( s \right)\\ 
+          B\left( s \right)  
+    \end{bmatrix}    
+    \]称为 Frenet标架的运动方程.
+\end{proposition}
+
+\begin{proof}
+    首先 \(   T^{\prime} \left( s \right)     =   \kappa  \left( s \right)N\left( s \right)  \) ,
+    \(  B^{\prime} \left( s \right)=  -\tau \left( s \right)N\left( s \right)    \). 
+    由于 \(\begin{bmatrix} 
+        T\\ 
+         N\\ 
+          B 
+    \end{bmatrix} \)是正交矩阵,对 \(  \begin{bmatrix} 
+        T\\ 
+         N\\ 
+          B 
+    \end{bmatrix} \begin{bmatrix} 
+        T\\ 
+         N\\ 
+          B 
+    \end{bmatrix}^{\top}    \) 求导,得到 \[
+    A \begin{bmatrix} 
+        T\\ 
+         N\\ 
+          B 
+    \end{bmatrix} \begin{bmatrix} 
+        T\\ 
+         N\\ 
+          B 
+    \end{bmatrix}^{\top} +  \begin{bmatrix} 
+        T\\ 
+         N\\ 
+          B 
+    \end{bmatrix} \left(  A \begin{bmatrix} 
+        T\\ 
+         N\\ 
+          B 
+    \end{bmatrix}  \right) ^{\top} =  A+  A^{\top}= 0    
+    \]故 \(  A  \)是反对称的. 
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{example}
+    考虑 \[
+    c\left( s \right)=  \left( a \cos \frac{s }{\sqrt{a^{2}+ b^{2}} }, a\sin \frac{s }{\sqrt{a^{2}+ b^{2}} }  , \frac{bs }{\sqrt{a^{2}+ b^{2}} } \right)  
+    \]我们有 \[
+    T\left( s \right)= c^{\prime} \left( s \right)= \left( - \frac{a }{\sqrt{a^{2}+ b^{2}} }\sin  \frac{s }{\sqrt{a^{2}+ b^{2}} }, \frac{a }{\sqrt{a^{2}+ b^{2}} } \cos  \frac{s }{\sqrt{a^{2}+ b^{2}} }, \frac{b }{\sqrt{a^{2}+ b^{2}} }      \right)   
+    \] \[
+    T^{\prime} \left( s \right)=  \left( - \frac{a }{a^{2}+ b^{2} } \cos  \frac{s }{\sqrt{a^{2}+ b^{2}} }, - \frac{a }{a^{2}+ b^{2} } \sin \frac{s }{\sqrt{a^{2}+ b^{2}} }, 0     \right)  
+    \]不妨设 \(  a,b>0  \), 于是 \[
+     \kappa  \left( s \right)= \left| T^{\prime} \left( s \right)  \right|=  \frac{a }{a^{2}+ b^{2} }   
+    \] \[
+    N\left( s \right)=  \frac{T^{\prime} \left( s \right)  }{\left|  \kappa  \left( s \right)  \right|  }=  \left( -\cos  \frac{s }{\sqrt{a^{2}+ b^{2}} }, -\sin  \frac{s }{\sqrt{a^{2}+ b^{2}} }, 0   \right)   
+    \] \[
+    B\left( s \right)= T\left( s \right)\times N\left( s \right)= \left( \frac{b }{\sqrt{a^{2}+ b^{2}} }\sin \frac{s }{\sqrt{a^{2}+ b^{2}} } , - \frac{b }{\sqrt{a^{2}+ b^{2}} } \cos  \frac{s }{\sqrt{a^{2}+ b^{2}} }, \frac{a }{\sqrt{a^{2}+ b^{2}} }      \right)    
+    \] \[
+ \begin{aligned}
+    \tau \left( s \right)& = N^{\prime} \left( s \right)\cdot B\left( s \right)=  \left( \frac{1 }{\sqrt{a^{2}+ b^{2}} }\sin  \frac{s }{\sqrt{a^{2}+ b^{2}} },- \frac{1}{\sqrt{a^{2}+ b^{2}}}   \cos \frac{s }{\sqrt{a^{2}+ b^{2}} } , 0\right)\cdot B\left( s \right)     \\ 
+    & =  \frac{b }{a^{2}+ b^{2} }  
+ \end{aligned}
+    \]
+\end{example}
+
+\hspace*{\fill} 
+  
+\begin{proposition}{计算公式 }
+    设 \(  c\left( t \right)   \)是正则空间曲线,\(  T\left( t \right)= \frac{c^{\prime} \left( t \right)  }{\left| c^{\prime} \left( t \right)  \right|  }    \).
+    \begin{enumerate}
+       
+
+        \item \[
+        T^{\prime} \left( t \right)=  \frac{ \left<c ^{\prime \prime} \left( t \right),c^{\prime} \left( t \right)   \right>c^{\prime} \left( t \right)  }{ \left| c^{\prime} \left( t \right)  \right|^{3} }   
+        \]
+        
+        \item \[
+        N\left( t \right)=  \frac{c ^{\prime \prime} \left( t \right)- \left<c^{\prime} \left( t \right), \frac{c^{\prime} \left( t \right)  }{\left| c^{\prime} \left( t \right)  \right|  }   \right>  \frac{c^{\prime} \left( t \right)  }{\left| c^{\prime} \left( t \right)  \right|  }  }{ \text{模长}}  
+        \]相当于对 \(  c^{\prime} \left( t \right),c ^{\prime \prime} \left( t \right)    \)规正化.
+        
+        \item \[
+        B\left( t \right)= T\left( t \right)\times N\left( t \right)   =  \frac{c^{\prime} \left( t \right)\times c ^{\prime \prime} \left( t \right)   }{\left| c^{\prime} \left( t \right)\times  c ^{\prime \prime} \left( t \right)   \right|  } 
+        \]
+
+        \item \[
+          \begin{aligned}
+            \kappa  \left( t \right)=   \frac{\left| c^{\prime} \left( t \right)\times  c ^{\prime \prime} \left( t \right)   \right|  }{\left| c^{\prime} \left( t \right)  \right|^{3}  } 
+          \end{aligned}
+           \]
+
+        \item \[
+        \tau \left( t \right)=  \frac{\left( c^{\prime} ,c ^{\prime \prime} ,c ^{\prime \prime\prime}  \right)\left( t \right)   }{\left| c^{\prime} \times c ^{\prime \prime}  \right|^{2}\left( t \right)   }  
+        \]
+    \end{enumerate}
+    
+\end{proposition}
+\begin{proof}
+    \begin{itemize}
+        \item  \[
+            \frac{\,\mathrm{d}  }{\,\mathrm{d} s }T =  \frac{\,\mathrm{d} t }{\,\mathrm{d} t }\cdot \frac{\,\mathrm{d} t }{\,\mathrm{d} s }=  \frac{1}{\left| c^{\prime} \left( t \right)  \right| }\cdot T^{\prime} \left( t \right)    
+            \]  
+        \item \[
+            T^{\prime} \left( t \right)=  \frac{c ^{\prime \prime} \left( t \right)  }{\left| c^{\prime} \left( t \right)  \right|  } +  \left( \frac{1}{\left| c^{\prime} \left( t \right)  \right| } \right)^{\prime}  c^{\prime} \left( t \right)      
+        \]
+        
+        \item \[
+        N\left( t \right) =  \frac{ \frac{\,\mathrm{d} T }{\,\mathrm{d} s }  }{\left| \frac{\,\mathrm{d} T }{\,\mathrm{d} s }  \right|  }   =  \frac{T^{\prime} \left( t \right)  }{\left| T^{\prime} \left( t \right)  \right|  } 
+        \]
+        \item \[
+        \left| c^{\prime} \left( t \right)  \right|^{\prime}  =  \frac{\,\mathrm{d}  }{\,\mathrm{d} t } \left<c^{\prime} \left( t \right),c^{\prime} \left( t \right)   \right>^{\frac{1}{2}}   =  \frac{\left<c^{\prime} \left( t \right),c ^{\prime \prime} \left( t \right)   \right>}{\left| c^{\prime} \left( t \right)  \right| }
+        \]
+
+        \item \[
+        T^{\prime} \left( t \right)=    \frac{ \left<c ^{\prime \prime} \left( t \right),c^{\prime} \left( t \right)   \right>c^{\prime} \left( t \right)  }{ \left| c^{\prime} \left( t \right)  \right|^{3} }   
+        \]
+        
+        \item \[
+        N\left( t \right)=  \frac{c ^{\prime \prime} \left( t \right)- \left<c^{\prime} \left( t \right), \frac{c^{\prime} \left( t \right)  }{\left| c^{\prime} \left( t \right)  \right|  }   \right>  \frac{c^{\prime} \left( t \right)  }{\left| c^{\prime} \left( t \right)  \right|  }  }{ \text{模长}}  
+        \]
+        
+        \item \[
+         \kappa  \left( t \right)= \left| \frac{\,\mathrm{d} T }{\,\mathrm{d} s }  \right|=  \left|  \frac{\,\mathrm{d} t }{\,\mathrm{d} s }T^{\prime} \left( t \right)   \right|=  \frac{\left| T^{\prime} \left( t \right)  \right|  }{c^{\prime} \left( t \right)  }    = \frac{c ^{\prime \prime} \left( t \right)- \left<c ^{\prime \prime} \left( t \right), \frac{c^{\prime} \left( t \right)  }{\left| c^{\prime} \left( t \right)  \right|  }     \right> \frac{c^{\prime} \left( t \right)  }{\left| c^{\prime} \left( t \right)  \right|  }   }{ \left| c^{\prime} \left( t \right)  \right|^{2} } 
+        \]
+        \item \[
+            \begin{aligned}
+              \kappa  \left( t \right)& = \frac{c ^{\prime \prime} \left( t \right)- \left<c ^{\prime \prime} \left( t \right), \frac{c^{\prime} \left( t \right)  }{\left| c^{\prime} \left( t \right)  \right|  }     \right> \frac{c^{\prime} \left( t \right)  }{\left| c^{\prime} \left( t \right)  \right|  }   }{ \left| c^{\prime} \left( t \right)  \right|^{2} } \\ 
+               & = \frac{\left| c ^{\prime \prime} \left( t \right)\times  \frac{c^{\prime} \left( t \right)  }{\left| c ^{\prime} \left( t \right)  \right|  }   \right|  }{\left| c^{\prime} \left( t \right)  \right|^{2}  }  =  \frac{\left| c^{\prime} \left( t \right)\times  c ^{\prime \prime} \left( t \right)   \right|  }{\left| c^{\prime} \left( t \right)  \right|^{3}  } 
+            \end{aligned}
+             \]
+
+        
+        \item \[
+        \tau \left( s \right)=  - \frac{\,\mathrm{d}  }{\,\mathrm{d} s }B\left( s \right)\cdot N\left( s \right)    
+        \] \[
+      \begin{aligned}
+        \tau \left( t \right)& =  -\frac{\,\mathrm{d} t }{\,\mathrm{d} s }  \cdot  \frac{\,\mathrm{d} B }{\,\mathrm{d} t }\cdot N\\ 
+         & =  - \frac{1}{\left| c^{\prime} \left( t \right)  \right| }  \left(  \frac{c^{\prime} \times  c ^{\prime \prime \prime}   }{\left| c^{\prime} \times  c ^{\prime \prime}  \right|  } +  \left(  \frac{1}{\left| c^{\prime} \times c ^{\prime \prime}  \right| } \right)^{\prime}  c^{\prime} \times  c ^{\prime \prime}   \right) \cdot  \frac{c ^{\prime \prime} - \left<c ^{\prime \prime} ,T \right>T }{\left| c ^{\prime \prime} - \left<c ^{\prime \prime} ,T \right>T \right|  }\\ 
+          & =  - \frac{1}{\left| c^{\prime}  \right| }\cdot  \frac{1}{\left| c^{\prime}  \times  c ^{\prime \prime}  \right| }\cdot   \left(  \frac{c ^{\prime}  \times  c ^{\prime \prime\prime} \cdot c ^{\prime \prime}   }{ \left|\frac{c^{\prime}  }{\left| c^{\prime}  \right|  }  \times  c ^{\prime \prime}  \right| }  \right) \\ 
+           & =  \frac{\left(   c^{\prime} , c ^{\prime \prime} , c ^{\prime \prime\prime}  \right)  }{\left| c^{\prime} \times  c ^{\prime \prime}  \right|^{2}  } 
+      \end{aligned}
+        \]
+        
+    \end{itemize}
+    
+
+    \hfill $\square$
+\end{proof}
+
+
+\section{几何意义}
+
+\begin{itemize}
+    \item Taylor展开见教材
+    \item 曲率 \(   \kappa  \left( s \right)   \)是偏离切线的程度
+    \item 挠率 \(  \tau \left( s \right)= - \frac{\,\mathrm{d} B }{\,\mathrm{d} s }\cdot N    \)是偏离平面的程度  
+    
+
+    \begin{lemma}{曲率和挠率的刚体运动不变性}
+        设 \(  c\left( s \right)   \)是 \(  E^{3}  \)上的曲线, 曲率和挠率分别为 \(   \kappa ,\tau   \).   
+        设 \(  F: E^{3}\to E^{3}  \)是合同变换,使得 \(  F\left( X \right)= XA+ P_0   \)  .\(  \tilde{c}\left( s \right)   \)被定义为 \(  F\left( c\left( s \right)  \right)   \),它的曲率和挠率分别为 \(   \tilde{\kappa}   \)和 \(  \tilde{\tau}   \).
+        \begin{enumerate}
+            \item 若 \(  \det A = 1  \),即 \(  A \in SO\left( 3 \right)   \),则 \(  \tilde{\tau} = \tau , \tilde{\kappa} =  \kappa   \)；
+            \item 若 \(  \det A = -1  \),则  \(  \tilde{\tau} = \tau , \tilde{\kappa} = - \kappa   \)     
+        \end{enumerate}
+            
+    \end{lemma}
+\begin{proof}
+    先考虑 \(  \det A= 1  \)的情况： 
+   \begin{itemize}
+    \item   \(  \left| \tilde{c}^{\prime} \left( s \right)  \right|=  \left| c^{\prime} \left( s \right)A  \right|\equiv 1    \),故 \(  \tilde{c}^{\prime} \left( s \right)   \)仍为弧长参数化.
+    \item \(  \tilde{\tau} ^{\prime} \left( s \right)=  \tilde{c}^{\prime} \left( s \right)= T\left( s \right)A     \),   \(  \tilde{N}\left( s \right)=  \frac{\tilde{T}^{\prime} \left( s \right)  }{\left| \tilde{T}^{\prime} \left( s \right) \right|   }= N\left( s \right)A     \) \footnote{此处假设 \(   \kappa  \left( s \right)\neq 0   \) }, \(  \tilde{B}\left( s \right)= B\left( s \right)    \) \footnote{由于 \(  A  \)是保定向的 } 
+    \item  \[
+    \begin{aligned}
+    \frac{\,\mathrm{d}  }{\,\mathrm{d} s }\begin{bmatrix} 
+         \tilde{T}\\ 
+          \tilde{N}\\ 
+           \tilde{B} 
+    \end{bmatrix} & =  \frac{\,\mathrm{d}  }{\,\mathrm{d} s } \begin{bmatrix} 
+        T\\ 
+         N\\ 
+          B 
+    \end{bmatrix}A \\ 
+     & =  \begin{bmatrix} 
+         0& \kappa  &0\\ 
+          - \kappa  &0&\tau \\ 
+           0&-\tau &0 
+     \end{bmatrix} \begin{bmatrix} 
+         T\\ 
+          N\\ 
+           B 
+     \end{bmatrix}A   \\ 
+      & = \begin{bmatrix} 
+          0& \kappa  &0\\ 
+           - \kappa  &0&\tau \\ 
+            0&-\tau &0 
+      \end{bmatrix}     \begin{bmatrix} 
+          \tilde{T}\\ 
+           \tilde{N}\\ 
+            \tilde{B} 
+      \end{bmatrix} 
+    \end{aligned}
+    \]这表明 \(   \tilde{\kappa}=  \kappa  ,\tilde{\tau} = \tau   \) 
+   \end{itemize}
+      
+
+   对于 \(  \det A= -1  \)的情况,除 \(  \tilde{B}\left( s \right)= -B\left( s \right)    \)外,其余与 \(  \det A= 1  \)的情况相等,  此时 \[
+   \begin{aligned}
+   \frac{\,\mathrm{d}  }{\,\mathrm{d} s }\begin{bmatrix} 
+       \tilde{T}\\ 
+        \tilde{N}\\ 
+         \tilde{B} 
+   \end{bmatrix} & =  \frac{\,\mathrm{d}  }{\,\mathrm{d} s }\left( \begin{bmatrix} 
+       T\\ 
+        N\\ 
+         -B 
+   \end{bmatrix}A  \right)     \\ 
+    & =  \begin{bmatrix} 
+         \kappa N\\ 
+          - \kappa  T+ \tau B\\ 
+           \tau N 
+    \end{bmatrix}A\\ 
+     & =  \begin{bmatrix} 
+         0&  \kappa &0\\ 
+          - \kappa &0&-\tau \\ 
+           0&\tau &0 
+     \end{bmatrix} \begin{bmatrix} 
+         T\\ 
+          B\\ 
+           -B 
+     \end{bmatrix}A\\ 
+      & =  \begin{bmatrix} 
+           0 &  \kappa &0\\ 
+            - \kappa &0&-\tau \\ 
+             0&\tau &0
+      \end{bmatrix} \begin{bmatrix} 
+          \tilde{T}\\ 
+           \tilde{N}\\ 
+            \tilde{B} 
+      \end{bmatrix}     
+   \end{aligned}
+   \]这表明 \(   \tilde{\kappa} \left( s \right)=  \kappa \left( s \right)    \), \(  \tilde{\tau} \left( s \right)= -\tau \left( s \right)    \)  
+    \hfill $\square$
+\end{proof}
+    \begin{theorem}
+        设正则曲线 \(  c\left( t \right)   , t \in \left( a,b \right) \)满足 \(   \kappa  \left( t \right)\neq 0   \).那么 \(  \tau \left( t \right)\equiv 0   \)当且仅当 \(  c\left( t \right)   \)是平面曲线.    
+    \end{theorem}
+    
+    \begin{remark}
+        \begin{enumerate}
+            \item 若 \(  k\left( t \right)\equiv 0   \)在 \(  t \in \left( a,b \right)   \)上成立,则 \(  c\left( t \right)   \)是直线 , \(   t \in \left( a,b \right)   \).
+            \item 若 \(  k\left( t_0 \right)= 0   \),  当 \(  t \neq t_0  \)时, \(  k\left( t \right)\neq 0   \),    曲线先在一个平面上,一段时间后在两平面的交线上曲率为0,跑到另一个平面上   .
+        \end{enumerate}
+        
+    \end{remark}
+
+    \begin{proof}
+        设弧长参数化的曲线 \(  c\left( s \right)   \)是平面曲线, 我们先承认挠率是刚体运动下的不变量,则可以
+        不妨设 \(  c\left( s \right)= \left( x\left( s \right),y\left( s \right),0   \right)    \) 
+        ；此时 \(  B\left( s \right)= \pm \left( 0,0,1 \right)    \), \(  \tau \left( s \right)=  - B^{\prime} \left( s \right)\cdot N =  0    \)  .
+
+        反过来,若 \(  \tau \equiv 0  \),由Frenet方程, \(  \frac{\,\mathrm{d} B }{\,\mathrm{d} s }=-\tau \left( s \right)\cdot N\left( s \right)= 0     \)   ,
+        从而 \(  B\left( s \right)\equiv B\left( 0 \right)    \).求导解方程,可得 \(  \left<c\left( s \right)-c\left( 0 \right),B\left( s \right)    \right>\equiv 0  \), 一定有 \(  c\left( s \right)\subseteq B\left( s \right)^{\perp } + c\left( 0 \right)    \).  
+        \hfill $\square$
+    \end{proof}
+
+\end{itemize}
+
+\section{曲率和挠率的基本定理}
+
+\begin{proposition}
+    若曲线 \(  c_1\left( t \right)= c_2\left( l\left( t \right)  \right)    \),其中 \(  l^{\prime} \left( t \right)\neq 0   \),则 \(  \tau _1 \left( t \right)= \tau _2 \left( l\left( t \right)  \right)    \), \(   \kappa _1 \left( t \right)=  \kappa _2 \left( l\left( t \right)  \right)    \)    
+\end{proposition}
+
+\begin{proof}
+我们有 \[
+\begin{aligned}
+T_1\left( t \right)  & =  \frac{c_1^{\prime} \left( t \right)  }{ \left| c_1^{\prime} \left( t \right)  \right|  } =  \frac{\frac{\,\mathrm{d} l }{\,\mathrm{d} t } c_2^{\prime} \left( l \right)   }{\left| \frac{\,\mathrm{d} l }{\,\mathrm{d} t } c_2^{\prime} \left( t \right)   \right|  }\\ 
+ & =  \begin{cases} T_2\left( l \right),& \frac{\,\mathrm{d} l }{\,\mathrm{d} t }>0\\ 
+  -T_2\left( l \right),& \frac{\,\mathrm{d} l }{\,\mathrm{d} t }<0     \end{cases}  
+\end{aligned}
+\]若 \(  \frac{\,\mathrm{d} l }{\,\mathrm{d} t }>0   \),则称参数变换保定向,反之则称其改变定向. 
+    \begin{enumerate}
+        \item 若 \(  \frac{\,\mathrm{d} l }{\,\mathrm{d} t }>0   \),则 \[
+        \begin{cases} T_1\left( t \right)= T_2\left( l \right)\\ 
+         N_1\left( t \right)=  \frac{ \frac{\,\mathrm{d} l }{\,\mathrm{d} t } T_2^{\prime} \left( l \right)   }{ \left|  \frac{\,\mathrm{d} l }{\,\mathrm{d} t } T_2^{\prime} \left( l \right)   \right|  }= N_2\left( l \right)      \\ 
+          B_1\left( t \right) = B_2\left( t \right) \end{cases} 
+        \]  \[
+        \begin{aligned}
+        \frac{\,\mathrm{d}  }{\,\mathrm{d} s }\begin{bmatrix} 
+            T_1\left( t \right)\\ 
+             N_1\left( t \right)   \\ 
+              B_1\left( t \right) 
+        \end{bmatrix} & =  \frac{\,\mathrm{d} t }{\,\mathrm{d} s }\frac{\,\mathrm{d}  }{\,\mathrm{d} t }\begin{bmatrix} 
+             T_1\left( t \right)\\ 
+              N_1\left( t \right)\\ 
+               B_1\left( t \right)    
+        \end{bmatrix}\\ 
+         & =  \frac{1 }{\left| c_1^{\prime} \left( t \right)  \right|  } \frac{\,\mathrm{d}  }{\,\mathrm{d} s }\begin{bmatrix} 
+              T_2\left( l\left( t \right)  \right)  \\ 
+               N_2\left( l\left( t \right)  \right) \\ 
+                B_2\left( l\left( t \right)  \right) 
+         \end{bmatrix} \\ 
+          & =   \frac{1 }{\left| c_1^{\prime} \left( t \right)  \right|  } \frac{\,\mathrm{d} l }{\,\mathrm{d} t }           \frac{\,\mathrm{d}  }{\,\mathrm{d} l } \begin{bmatrix} 
+              T_2\left( l \right)  \\ 
+               N_2\left( l \right) \\ 
+                B_2\left( l \right) 
+          \end{bmatrix}\\ 
+           & =  \frac{1 }{\left| c_1^{\prime} \left( t \right)  \right|  } \frac{\,\mathrm{d} l }{\,\mathrm{d} t }\frac{\,\mathrm{d} s }{\,\mathrm{d} l } \frac{\,\mathrm{d}  }{\,\mathrm{d} s }       \begin{bmatrix} 
+               T_2\\ 
+                N_2\\ 
+                 B_2 
+           \end{bmatrix}\\ 
+            & = \frac{1 }{\left| c_1^{\prime} \left( t \right)  \right|  } \frac{\,\mathrm{d} l }{\,\mathrm{d} t } \left| c_2^{\prime} \left( l \right)  \right|     \begin{bmatrix} 
+                0&  \kappa _2 \left( l \right)&0\\ 
+                 - \kappa _2 \left( l \right)   &0& \tau _2 \left( l \right)\\ 
+                  0&-\tau _2 \left( l \right)  & 0
+            \end{bmatrix} \begin{bmatrix} 
+                T_2\\ 
+                 N_2\\ 
+                  B_2 
+            \end{bmatrix}\\ 
+             & =  \begin{bmatrix} 
+                 0& \kappa _2 \left( l \right)&0\\ 
+                  - \kappa _2 \left( l \right)&0   &\tau _2 \left( l \right)\\ 
+                    0&-\tau _2 \left( l \right) &0
+             \end{bmatrix} \begin{bmatrix} 
+                 T_1\\ 
+                  N_1\\ 
+                   B_1 
+             \end{bmatrix}    
+        \end{aligned}
+        \]这表明 \(   \kappa _1 \left( t \right)=  \kappa _2 \left( l\left( t \right)  \right)    \), \(  \tau _1 \left( t \right)= \tau _2 \left( l\left( t \right)  \right)    \)  
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}
+    设 \(  c_1,c_2  \)是有相同曲率和挠率的空间曲线,则存在刚体运动 \(  F  \),使得 \(  c_2= F\left( c_1 \right)   \)   
+\end{definition}
+
+\begin{proof}
+        设 \(  c_1,c_2  \)的Frenet标架为 \(  \left\{ T_1,N_1,B_1 \right\}  \), \(  \left\{ T_2,N_2,B_2 \right\}  \).不妨设
+         \(  0  \)在参数的定义域中,令 \[
+         A =  \begin{bmatrix} 
+             T_1\\ 
+              N_1\\ 
+               B_1 
+         \end{bmatrix}^{-1} \left( 0 \right)  \begin{bmatrix} 
+             T_2\\ 
+              N_2\\ 
+               B_2 
+         \end{bmatrix} \left( 0 \right)  
+         \]    则  \(  A \in SO\left( 3 \right)   \)  .
+         令 \[
+         P_0= C_2\left( 0 \right)-c_1\left( 0 \right)A  
+         \]令 \(  F  \)是合同变换 \[
+         F : =  XA+ P_0
+         \] 希望证明 \(  F\left( c_1\left( s \right)  \right)= c_2\left( s \right)    \) .设 \(  \tilde{c_2}\left( s \right)=  F\left( c_1\left( s \right)  \right)    \) ,则 由曲率和挠率的刚体运动不变性,它的曲率和挠率也分别为 \(   \kappa   \)和 \(  \tau   \).  
+考虑两个曲线的Frenet方程 \[
+\frac{\,\mathrm{d}  }{\,\mathrm{d} s }\begin{bmatrix} 
+    T_2\left( s \right)\\ 
+     N_2\left( s \right)\\ 
+      B_2\left( s \right)    
+\end{bmatrix} =  \begin{bmatrix} 
+    0&  \kappa \left( s \right)&0\\ 
+     - \kappa \left( s \right)&0&\tau \left( s \right)\\ 
+      0&-\tau \left( s \right)&0     
+\end{bmatrix} \begin{bmatrix} 
+    T_2\left( s \right)\\ 
+     N_2\left( s \right)\\ 
+      B_2\left( s \right)    
+\end{bmatrix}    
+\]
+\[
+    \frac{\,\mathrm{d}  }{\,\mathrm{d} s }\begin{bmatrix} 
+        \tilde{T_2}\left( s \right)\\ 
+         \tilde{N_2}\left( s \right)\\ 
+          \tilde{B_2}\left( s \right)    
+    \end{bmatrix}A =  \begin{bmatrix} 
+        0&  \kappa \left( s \right)&0\\ 
+         - \kappa \left( s \right)&0&\tau \left( s \right)\\ 
+          0&-\tau \left( s \right)&0     
+    \end{bmatrix} \begin{bmatrix} 
+        \tilde{T_2}\left( s \right)\\ 
+         \tilde{N_2}\left( s \right)\\ 
+          \tilde{B_2}\left( s \right)    
+    \end{bmatrix}    
+    \]它们满足同一个线性ODE,并且有相同的初值,由解的唯一性,我们有 \[
+    \begin{bmatrix} 
+        \tilde{T_2}\\ 
+         \tilde{N_2}\\ 
+          \tilde{B_2} 
+    \end{bmatrix}\left( s \right)=  \begin{bmatrix} 
+        T_2\\ 
+         N_2\\ 
+          B_2 
+    \end{bmatrix}\left( s \right)    
+    \]从而 \[
+    \tilde{c_2}\left( s \right)=  \int_{0}^{s}\tilde{T_2}\left( l \right)\,\mathrm{d} l+ \tilde{c_2}\left( 0 \right)= \int_{0}^{s}T_2\left( l \right)\,\mathrm{d} l+  c_2\left( 0 \right)=  c_2\left( s \right)      
+    \]
+    \hfill $\square$
+\end{proof}
+
+
+\begin{theorem}
+    设 \(   \kappa \left( s \right),\tau \left( s \right)    \)在 \(  \left[ a,b \right]   \)上连续,且 \(   \kappa \left( s \right)>0   \).
+    那么 存在曲线 \(  c\left( s \right)   \),使得它的曲率和挠率分别为 \(   \kappa \left( s \right)   \)和 \(  \tau \left( s \right)   \).      
+\end{theorem}
+\begin{proof}
+    考虑线性方程 \[
+    \frac{\,\mathrm{d}  }{\,\mathrm{d} s } \begin{bmatrix} 
+        T\\ 
+         N\\ 
+          B 
+    \end{bmatrix}\left( s \right) =  \begin{bmatrix} 
+        0& \kappa \left( s \right)&0\\ 
+         - \kappa \left( s \right)&0&\tau \left( s \right)\\ 
+          0&-\tau \left( s \right)&0     
+    \end{bmatrix} \begin{bmatrix} 
+        T\\ 
+         N\\ 
+          B 
+    \end{bmatrix}\left( s \right)      
+    \]任取 \(  T\left( a \right), N\left( a \right)    ,B\left( a \right) \)为规正基,使得 \(  B\left( a \right)= T\left( a \right)\times N\left( a \right)     \)  .
+    由线性ODE解的存在唯一性,存在上述方程的一组解 \(  \left\{ T\left( s \right),N\left( s \right),B\left( s \right)    \right\}  \).令 \(  c\left( s \right)=  \int_{a}^{s}T\left( l \right)\,\mathrm{d} l    \).  
+    令 \[
+    L\left( s \right)=  \begin{bmatrix} 
+        T\\ 
+         N\\ 
+          B 
+    \end{bmatrix}\left( s \right) \begin{bmatrix} 
+        T\\ 
+         N\\ 
+          B\\ 
+            
+    \end{bmatrix}^{\top}  \left( s \right)     
+    \]
+
+    则 \[
+    \begin{aligned}
+    \frac{\,\mathrm{d}  }{\,\mathrm{d} s }L\left( s \right) &=  \begin{bmatrix} 
+        T\\ 
+         N\\ 
+          B 
+    \end{bmatrix} \begin{bmatrix} 
+        T\\ 
+         N\\ 
+          B 
+    \end{bmatrix}^{\top}     + \begin{bmatrix} 
+        T\\ 
+         N\\ 
+          B 
+    \end{bmatrix} \left( A \begin{bmatrix} 
+        T\\ 
+         N\\ 
+          B 
+    \end{bmatrix}  \right)  ^{\top}\\ 
+     &=  A\left( s \right)L\left( s \right)+ L\left( s \right)   A^{\top}\left( s \right) 
+    \end{aligned}
+    \]由解的唯一性, \(  L\left( s \right)\equiv I   \).故 \(  T\left( s \right),N\left( s \right),B\left( s \right)     \)是规正基.并且 \(  \left| c^{\prime} \left( s \right)  \right|\equiv \left| T\left( s \right)  \right|\equiv 1    \), \(   \kappa \left( s \right)   \), \(  \tau \left( s \right)   \)     是 \(  c\left( s \right)   \)的曲率和挠率. 
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    考虑 \(  E^{3}  \)中 \(   \kappa   \)和 \(  \tau   \)均为常数的曲线
+    \begin{enumerate}
+        \item 若 \(   \kappa \equiv 0  \),则曲线为直线
+        \item 若 \(   \kappa >0  \), \(  \tau \equiv 0  \),则曲线为平面上的圆
+        \begin{exercise}
+            \(  \frac{\,\mathrm{d}  }{\,\mathrm{d} s }   \left( c\left( s \right)+ \frac{1 }{ \kappa  }N\left( s \right)    \right)= 0 \implies c\left( s \right)+ \frac{1}{k}N\left( s \right)\equiv P_0   \),是以 \(  P_0  \)为心的圆；  
+        \end{exercise}
+        \item 若 \(   \kappa >0  \), \(  \tau \neq 0  \),则曲线为圆柱螺旋线 \[
+        c\left( s \right)= \left(  a \cos \frac{s }{\sqrt{a^{2}+ b^{2}} }, a \sin \frac{s }{\sqrt{a^{2}+ b^{2}} }  ,\frac{bs }{\sqrt{a^{2}+ b^{2}} } \right)  
+        \] \[
+         \kappa \left( s \right)\equiv  \frac{a }{a^{2}+ b^{2} },\quad  \tau \left( s \right)\equiv \frac{b }{a^{2}+ b^{2} }    
+        \]  解出 \(  a,b  \),得到 \[
+        a =  \frac{ \kappa  }{ \kappa ^{2}+ \tau ^{2} }, b=  \frac{\tau  }{\tau ^{2}+  \kappa ^{2} }  
+        \] 
+        
+        \hspace*{\fill} 
+           
+    \end{enumerate}
+       
+\end{proposition}
+
+\end{document}

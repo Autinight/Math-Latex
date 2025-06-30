@@ -1,0 +1,194 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+    
+
+\chapter{拓扑空间}
+
+\section{和空间与积空间}
+
+\begin{definition}{和空间}
+    设 \(  \left( X_{j}| j \in J \right)   \) 是一族非空且两两无交的拓扑空间 ,则集合 \[
+    \mathcal{O} =  \left\{ U\subseteq \coprod X_{j}:\text{对于任意的}j \in J, U\cap  X_{j} \subseteq X_{j}\text{是开集} \right\}
+    \]构成无交并集 \(  \coprod X_{j}  \)上的一个拓扑.称 \(  \left( \coprod X_{j}, \mathcal{O} \right)   \)  为 \(  X_{j}  \)的拓扑和. 
+\end{definition}
+
+
+
+\section{连续映射}
+
+\begin{definition}{嵌入}
+    设 \(  X,Y  \)是拓扑空间, \(  f:X \to Y  \)是连续映射.若 \(  X \simeq f\left( X \right)   \),则称 \(  f  \)是一个拓扑嵌入.    
+\end{definition}
+
+\begin{example}
+    设 \(  X,Y  \)是拓扑空间, \(  X\times Y  \)是积空间.对于任意的 \(  y \in Y  \),定义映射 \[
+\begin{aligned}
+ i _{y}: X &\to X\times Y\\ 
+   x& \mapsto \left( x,y \right) 
+\end{aligned}
+\]   则 \(  i_{y}  \)是嵌入映射. 
+\end{example}
+\begin{proof}
+
+    \(  i_{y}\left( X \right) =  X\times \left\{ y \right\}   \), \(  X  \)到 \(  X\times  \left\{ y \right\}  \)之间存在连续的双射 \( f: x\mapsto\left( x,y \right)   \) .
+    这是因为 \(  X\times \left\{ y \right\}  \)上的开集形如 \(  U\cap \left( X\times \left\{ y \right\} \right)  \),其中 \(   U \)是 \(  X\times Y  \)上的开集, \(  U \cap \left( X \times \left\{ y \right\} \right)   \)写作 \(  V\times \left\{ y \right\}  \),其中 \(  V  \)是 \(  X  \)上开集的并,进而也是开集.
+    则 \(  f^{-1} \left( V\times \left\{ y \right\} \right)= V   \)是开集,从而 \(  f  \)是连续映射.又显然 \(  f  \)是开映射,故 \(  f  \)是拓扑空间之间的同构,这表明 \(  i_{y}  \)是嵌入.                
+
+    \hfill $\square$
+\end{proof}
+
+
+\section{商空间}
+
+\begin{definition}
+    令$X$是拓扑空间,$X^{\prime}=\{ X_{j}:j \in J \}$是$X$的一个分划.自然映射$v:X\to X^{\prime}$被定义为$v\left( x \right)=X_{j}$,其中$X_{j}$是（唯一的）包含了$x$的分划中的子集.那么$X^{\prime}$上的商拓扑是指全体$U^{\prime}$组成的集族,其中$U^{\prime}$是$X^{\prime}$的子集,它使得$v ^{-1} \left( U^{\prime} \right)$是$X$中的开集.
+\end{definition}
+
+\begin{remark}
+    $X$上的一个等价关系确定了$X$上的一个分划,我们记相应的商空间为$X / \sim$,其中$\sim$表示所说的等价关系.
+\end{remark}
+
+\begin{proposition}{泛性质}
+    设$h:X\to Y$是映射,$\ker h$是$X$上的一个等价关系,使得$x \sim x^{\prime}$当且仅当$h\left( x \right)=h\left( x^{\prime} \right)$.相应的商空间记作$X / \ker\varphi$.那么存在唯一的映射$\varphi: X/\ker \varphi\to Y$使得下图交换.
+    \[
+        \begin{tikzcd} X && Y \\ \\ & {X/\ker{\varphi}} \arrow["h", from=1-1, to=1-3] \arrow["v"', from=1-1, to=3-2] \arrow["\varphi"', from=3-2, to=1-3] \end{tikzcd}
+    \]
+\end{proposition}
+\begin{proof}
+    唯一的取法是$\varphi \left( [x] \right)=h\left( x \right)$,显然该映射良定义,且是单的.
+
+    \hfill $\square$
+\end{proof}
+
+\subsection{等化}
+
+\begin{definition}{等化}
+    称一个连续的满射$f:X\to Y$是一个等化,若$U$是$Y$中的开集当且仅当$f^{-1}\left( U \right)$是$X$中的开集.
+\end{definition}
+
+\begin{example}
+    \begin{enumerate}
+        \item 给定$X$上的等价关系$\sim$,$X / \sim$给出一个商拓扑.自然映射$v:X\to X/\sim$是一个等化.
+        \item 若$f:X\to Y$是一个连续的满射,且$f$是开（闭）的,那么$f$是一个等化.
+        \begin{proof}
+            若$f$满足条件,任取$Y$中的开集$U$,$f$的连续性给出$f^{-1}\left( U \right)$是$X$中的开集；任取$Y$中的集合$V$,使得$f^{-1}\left( V \right)$是$X$中的开集,那么$f$是满射给出$V=f\left( f^{-1}\left( V \right) \right)$,再由$f$是开映射可知,$V$是一个开集.（若$f$是闭映射,$Y\backslash V=f\left( f^{-1}\left( Y \backslash V \right) \right)=f\left( X \backslash f^{-1}\left( V \right) \right)$是一个闭集）
+
+        
+            \hfill $\square$
+        \end{proof}
+        \item  若$f:X\to Y$是具有截面的连续映射,那么$f$是一个等化.
+        \begin{proof}
+            只需注意到有截面的连续映射一定是满的.
+        
+            \hfill $\square$
+        \end{proof}
+    \end{enumerate}
+    
+\end{example}
+
+\hspace*{\fill} 
+\begin{theorem}
+    设$f:X\to Y$是一个连续的满射.那么$f$是一个等化,当且仅当对于任意的空间$Z$,以及映射$g:Y\to Z$,有$g$是连续的当且仅当$gf$是连续的.
+    \[
+        \begin{tikzcd} X && Z \\ \\ & Y \arrow["gf", from=1-1, to=1-3] \arrow["f"', from=1-1, to=3-2] \arrow["g"', from=3-2, to=1-3] \end{tikzcd} 
+    \]
+\end{theorem}
+
+\begin{note}
+     $gf$是否连续标志着“商空间”$Y$中一类特定形式的集合（$g^{-1}\left( V \right)$）是否是开的.
+目标通过条件给出$f$是一个等化时,若想要充分地利用条件,需要找出使得条件成立的最苛刻的空间（使得$gf$连续推出$g$连续变得非常困难）,而往往越精细的空间里,映射越难连续,并且空间的选取应该无关于$g$,同时使得$f$连续以避免对$g$的性质产生影响,综合种种考量我们取$Z$为使得$f$连续的最精细的空间,即商空间.
+
+$g$几乎扮演了同胚映射的作用,因此我们希望$Z$取到与$Y$同胚的空间.从结果上而言,$Z$应该是商空间$X/ \ker \varphi$.
+
+\end{note}
+\begin{proof}
+    \textbf{若$f$是一个等化},任取$Z$中的开集$V$,那么由$fg$的连续性可知$f^{-1}\left( g^{-1}\left( V \right) \right)=\left( fg \right)^{-1}\left( V \right)$是开集.$f$是一个等化给出了$g^{-1}\left( V \right)$是开集,这就表明$g$是一个连续映射.反之,若$g$是连续映射,那么$gf$作为连续映射的复合当然是连续的.
+
+现在设条件成立,取$Z = X /\ker f$,$v:X \to X/\ker f$是自然映射,由商的泛性质知,存在唯一的单射$\varphi:Y \to X /\ker f$使得$\varphi \circ v=f$,由$f$是满射知$\varphi$也是满的,进而是双射.
+考虑图表
+\[
+  \begin{tikzcd} X && {X/\ker f} \\ \\ & Y \arrow["v", from=1-1, to=1-3] \arrow["f"', from=1-1, to=3-2] \arrow["{\varphi^{-1}}"', from=3-2, to=1-3] \end{tikzcd}  
+\]
+由条件,$v = \varphi ^{-1}f$的连续性推出$\varphi ^{-1}$的连续性.
+由证明过的定理的方向,$v$是等化表明$f= \varphi \circ v$的连续性可以给出$\varphi$的连续性.综上$\varphi$是一个同胚映射.最后只需再注意到等化是同胚不变地即可.
+    \hfill $\square$
+\end{proof}
+
+
+\begin{lemma}
+    设$f:X\to Y$是一个等化,$g:Y\to Z$是一个连续的满射,那么$g$是一个等化当且仅当$gf$是一个等化.
+
+\end{lemma}
+
+\begin{proof}
+   由上面的定理$g$是连续的当且仅当$gf$是连续的.
+
+设$gf$是一个等化,那么任取$Z$的子集$U$,若$g^{-1}\left( U \right)$是一个开集,那么由$f$连续,$\left( gf \right)^{-1}\left( U \right)=f^{-1}\left( g^{-1}\left( U \right) \right)$是一个开集,再由$gf$是一个等化知$U$是一个开集.这表明$g$是一个等化.
+
+再设$g$是一个等化,那么任取$Z$中的子集$U$,若$\left( gf \right)^{-1}\left( U \right)=f^{-1}\left( g^{-1}\left( U \right) \right)$是一个开集,由$f$是等化知$g^{-1}\left( U \right)$是一个开集,再由$g$是等化只$U$是一个开集.这表明$gf$是一个等化.
+
+    \hfill $\square$
+\end{proof}
+
+\subsection{纤维}
+
+\begin{definition}
+    令$f:X\to Y$是函数,$y \in Y$.称$f^{-1}\left( y \right)$为$f$在$y$上的纤维.
+\end{definition}
+
+\begin{remark}
+    若$f$是群同态,那么$f^{-1}\left( 1 \right)$就是$f$的kernel,$f^{-1}\left( y \right)$就是kernel的陪集.更一般地,纤维是$X$上的等价关系$\ker f$的等价类.
+\end{remark}
+
+\begin{theorem}
+    设$f:X\to Y$是一个等化,$Z$是拓扑空间,$h:X\to Z$是在$f$的纤维上取常值的连续映射.那么$hf^{-1}:Y\to Z$是连续的.
+此外,$h f^{-1}$是一个开映射（或闭映射）当且仅当$U$是$X$中的开集使得$U = f^{-1}f\left( U \right)$蕴含$h\left( U \right)$是开集.
+\[
+    \begin{tikzcd} X && Z \\ \\ & Y \arrow["h", from=1-1, to=1-3] \arrow["f"', from=1-1, to=3-2] \arrow["{hf^{-1}}"', from=3-2, to=1-3] \end{tikzcd}
+\]
+\end{theorem}
+
+\begin{remark}
+    与$f$的纤维相容的连续映射诱导出商空间上的连续映射.$hf^{-1}$的开闭与否决定了关于$f$的饱和集在$h$下的像是否是开的.
+\end{remark}
+
+\begin{proof}
+    $h$在$f$的纤维上取常值蕴含了$hf^{-1}:Y\to Z$是良定义的.$hf^{-1}\circ f=h$是连续映射,上面的定理知$hf^{-1}$也是连续的.
+任取$Y$中的开集$V$,那么$f$的连续性给出$f^{-1}\left( V \right)$是$X$中的开集.
+若$hf^{-1}$是一个开映射,那么对于任意$X$中的开集$U$使得$U = f^{-1}f\left( U \right)$,$h\left( U \right)=\left( hf^{-1} \right)f\left( U \right)$.而根据$f$是一个等化,由$f^{-1}\left( f\left( U \right) \right)=U$是开的可知$f\left( U \right)$是开的.
+反之,若条件成立,任取$Y$中的开集$V$,$f^{-1}\left( V \right)$是开集,并且$f^{-1}\left( V \right)=f^{-1}f\left( f^{-1}\left( V \right) \right)$,从而$hf^{-1}\left( V \right)=h\left( f^{-1}\left( V \right) \right)$是开集,这就说明了$hf^{-1}$是一个开映射.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}
+    设$X,Z$是拓扑空间,$h:X\to Z$是一个等化,那么映射$\varphi: X/\ker h\to Z$,$\varphi \left( [x] \right): = h\left( x \right)$是一个同胚映射.
+\end{theorem}
+
+\begin{proof}
+    注意到$\varphi \left( [x_{1}] \right)=\varphi \left( [x_{2}] \right)\iff x_{1} \sim x_{2} \iff [x_{1}]=[x_{2}]$这同时说明了$\varphi$是良定义和单的.$\varphi$满是因为$h$是满的,从而$h\left( X \right)= \varphi \left( [X] \right)=\varphi \left( X/  \ker h \right)=Z$.这就说明了$\varphi$是一个双射.
+令$v:X\to X /\ker h$是自然映射,那么$h = \varphi \circ v$,根据2.3,由$h$连续和$v$是一个等化可得$\varphi$连续.为了说明$\varphi$是一个开映射,任取$X/ \ker h$中的开集$U$,那么由$\varphi$连续知$h^{-1}\varphi \left( U \right)= v^{-1}\left( U \right)$是一个开集,由$h$是一个等化,故$\varphi \left( U \right)$是一个开集.
+
+
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}
+    设$X,Y$分别是带有等价关系$\sim,\square$的拓扑空间.设$f:X\to Y$是保持等价关系的连续映射（$x \sim x^{\prime}\implies f\left( x \right)\square f\left( x^{\prime} \right)$）.那么诱导映射 $\bar{f}: X/\sim \to Y / \square$是连续的；此外,若$f$还是一个等化,那么$\bar{f}$亦然.
+
+\end{theorem}
+
+\begin{proof}
+    设$v:X \to X / \sim$和$\omega: Y\to Y / \square$是自然映射,
+$\omega f: X \to Y/ \square$在$v$的纤维上取常值.为了说明$\omega f$是连续的,任取$Y/ \square$中的开集$V^{\prime}$,那么$V= \omega^{-1}\left( V^{\prime} \right)$是开集,$f^{-1}\left( V \right)$也是开集,故$\left( \omega f \right)^{-1}\left( V^{\prime} \right)=f^{-1}\left( V \right)$是开集,这就说明了$\omega f$是连续映射.由3.2.,$\bar{f}=\omega fv^{-1}$是连续映射.
+此外,若$f$是一个等化,由2.4.,因为$\omega$是一个等化,故$\omega f$也是一个等化.这表明$\bar{f}v=\omega fv^{-1}v$也是一个等化,故再一次由2.4.知,$\bar{f}$是一个等化.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}
+    设$X,Z$是紧的Hausdorff空间,$h:X\to Z$是一个连续的满射.那么$\varphi:X/\ker h \to Z$,$\varphi \left( [x] \right): = h\left( x \right)$是一个同胚映射.
+\end{theorem}
+
+\end{document}

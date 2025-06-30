@@ -1,0 +1,704 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+    
+\chapter{微分形式}
+\section{交错张量代数}
+
+\begin{lemma}\label{alt-tensor-lemma}
+    设 $ \alpha $是有限维线性空间 $ V $上的 共变 $ k $-张量, 那么以下几条等价：
+    \begin{enumerate}
+        \item $ \alpha $是交错的；
+        \item 若 $ v_1,v_2,\cdots,v_k $线性相关,则 $ \alpha\left( v_1,v_2,\cdots,v_k \right)=0  $;
+        \item 若 $ k $-向量组中存在相同的项,则 $ \alpha $在其上取值为 $ 0 $       $$
+        \alpha\left( v_1,\cdots ,w,\cdots ,w,\cdots ,v_{k} \right)=0 
+        $$
+    \end{enumerate}
+    
+\end{lemma}
+\begin{proof}
+    1. $ \implies $2., 1. $ \implies $ 3.都显然,接下来说明3.$ \implies $1.和 3.$ \implies $2.    
+
+    设3.成立,那么任取 $ v_1,v_2,\cdots,v_k\in V $, $$
+    \begin{aligned}
+    0 & = \alpha\left( v_1,\cdots ,v_{i}+ v_{j},\cdots ,v_{i}+ v_{j},\cdots ,v_{k} \right)\\ 
+     & = \alpha\left( v_1,\cdots ,v_{i},\cdots ,v_{j},\cdots ,v_{k} \right)   + \alpha\left( v_1,\cdots ,v_{j},\cdots ,v_{i},\cdots ,v_{k} \right) 
+    \end{aligned}
+    $$这就说明了交错性. 
+
+    此外,任取线性相关的 $ v_1,v_2,\cdots,v_k $,不妨设 $ v_{k} = \sum_{i=1  }^{k-1} a^{i}v_{i} $,则 $$
+    \begin{aligned}
+    \alpha\left( v_1,\cdots ,v_{k} \right)& = \alpha\left( v_1,\cdots , \sum_{i=1}^{k-1}a^{i}v_{i} \right)   \\ 
+     & = \sum_{i=1}^{k-1} a^{i} \alpha\left( v_1,\cdots ,v_{i},\cdots ,v_{k-1},v_{i} \right)\\ 
+      & = 0 
+    \end{aligned}
+    $$  
+\end{proof}
+
+\begin{definition}{交错子}
+    定义交错子为映射 $ \mathrm{Alt}:T^{k}\left( V^{*} \right)\to  \Lambda ^{k}\left( V^{*} \right)   $ $$
+    \mathrm{Alt}\,\alpha: =  \frac{1}{k!} \sum_{\sigma \in S_{k}} \left( \mathrm{sgn}\sigma \right) \left( \sigma \alpha \right)  
+    $$ 
+\end{definition}
+
+\begin{example}若 $ \alpha $是 $ 1 $-张量,那么 $ \mathrm{Alt}\alpha=\alpha $.若 $ \beta $是 $ 2 $-张量,那么
+     $$
+     \left( \mathrm{Alt}\beta \right)\left( v,w \right)= \frac{1}{2}\left( \beta\left( v,w \right)-\beta\left( w,v \right)   \right)   
+     $$     
+     若 $ \gamma $是 $ 3 $-张量,则 $$
+\begin{aligned}
+    \left( \mathrm{Alt}\,\gamma \right)\left( v,w,x \right)= &\frac{1}{6}\left( \gamma\left( v,w,x \right)+ \gamma\left( w,x,v \right)+\gamma\left( x,v,w \right)     \right)\\ 
+      & -\frac{1}{6}\left( \gamma\left( w,v,x \right)-\gamma\left( v,x,w \right)-\gamma\left( x,w,v \right)    \right) 
+\end{aligned}   
+     $$  
+ 
+\end{example}
+
+\begin{proposition}
+    设 $ \alpha $ 是有限维线性空间上的交错张量,那么
+    \begin{enumerate}
+        \item $ \mathrm{Alt}\,\alpha $是交错的；
+        \item $ \mathrm{Alt}\,\alpha=\alpha $当且仅当 $ \alpha $是交错的；   
+    \end{enumerate}
+    
+    
+\end{proposition}
+
+\subsection{初等交错张量}
+
+\begin{definition}{多重指标}
+    对于给定的正整数 $ k $,称有序的 $ k $-元组 $ I = \left( i_1,i_2,\cdots,i_k \right)  $为一个长度为 $ k $的多重指标.
+    若 $ I $是这样一个多重指标,$ \sigma \in S_{k} $,令 $ I_{\sigma} $为 $$
+    I_{\sigma}= \left( i_{\sigma\left( 1 \right) },\cdots ,i_{\sigma\left( k \right) } \right) 
+    $$      
+\end{definition}
+
+\begin{definition}{初等交错张量}
+    是 $ V $是 $ n $-维线性空间,$ \left( \varepsilon_1,\cdots ,\varepsilon_{n} \right)  $是 $ V^{*} $的一组基.
+    对于每个 $ I = \left( i_1,\cdots ,i_{k} \right)  $,使得 $ 1 \le i_1,i_2,\cdots,i_k\le  n $,定义一个共变 $ k $-张量 $ \varepsilon^{I}: = \varepsilon^{i_1\cdots i_{k}} $          $$
+    \varepsilon^{I}\left( v_1,\cdots ,v_{k} \right)= \det \begin{pmatrix} 
+        \varepsilon^{i_1}\left( v_1 \right) & \cdots  & \varepsilon^{i_1}\left( v_{k} \right)\\ 
+         \vdots & \ldots & \vdots\\ 
+          \varepsilon^{i_{k}}\left( v_1 \right)& \cdots & \varepsilon^{i_{k}} \left( v_{k} \right) 
+    \end{pmatrix} = \det \begin{pmatrix}v_1^{i_1} & \ldots & v_{k}^{i_1}\\ \vdots & \ddots & \vdots\\ v_1^{i_{k}} & \ldots & v_{k}^{i_{k}}\end{pmatrix}.  
+    $$称为初等交错张量或初等 $ k $-余向量. 
+\end{definition}
+
+\begin{definition}
+    设 $ I,J $是长度为 $ k $的多重指标,定义 $ \delta_{J}^{I} $ $$
+    \delta_J^I=\det\begin{pmatrix}\delta_{j_1}^{i_1}&\ldots&\delta_{j_k}^{i_1}\\\vdots&\ddots&\vdots\\\delta_{j_1}^{i_k}&\ldots&\delta_{j_k}^{i_k}\end{pmatrix}
+    $$   
+\end{definition}
+\begin{remark}
+    \begin{itemize}
+        \item $$
+        \delta_{J}^{I} = \begin{cases} \operatorname{sgn}\,\sigma& \text{若} I \text{和} J \text{均无重复指标,并且} J= I_{\sigma} \text{对某个} \sigma \in S_{k}\text{成立}  \\ 
+         0 & \text{若} I \text{或} J \text{有重复指标,或} J \text{不是} I \text{的一个置换}   \end{cases} 
+        $$ 
+        \begin{proof}
+            当无重复指标,且 $ J $是 $ I $的置换时  
+            $$
+            \begin{aligned}
+            \delta_{J}^{I } & = \det  \begin{pmatrix} 
+                 \varepsilon^{i_1}\left( E_{j_1} \right) & \cdots  &  \varepsilon ^{i_1} \left( E_{j_{k}} \right)  \\ 
+                 \vdots & \ldots &\vdots \\ 
+                   \varepsilon^{i_{k}}\left( E_{j_{1}} \right)  & \cdots & \varepsilon^{i_{k}}\left( {E_{j_{k}}} \right) 
+            \end{pmatrix}  \\ 
+             & = \varepsilon^{I} \left( E_{j_1},\cdots ,E_{j_{k}} \right) \\ 
+              & =\left( \operatorname{sgn}\,\sigma \right)\left(   \sigma \varepsilon^{I}  \right) \left( E_{i_1},\cdots ,E_{i_{k}} \right)\\ 
+               & = \operatorname{sgn}\,\sigma 
+            \end{aligned}
+            $$
+            当有重复指标时显然 $ \delta_{J}^{I}=0 $ 
+            当 $ J $不是 $ I $的置换时,不妨设 $ j_{k} $不在 $ I $中,那么 $ \delta_{J}^{I} $的行列式的第 $ k $列为 $ 0 $.     
+        \end{proof}
+    \end{itemize}
+    
+\end{remark}
+
+\begin{lemma}{初等 $ k $-余向量的性质 }\label{e-tensor-property}
+    设 $ \left( E_{i} \right)  $是 $ V $的一组基,$ \left( \varepsilon^{i} \right)  $是 $ V^{*} $的对偶基,则 
+    \begin{itemize}
+        \item 若 $ I $有重复指标,则 $ \varepsilon^{I}= 0 $;
+        \item 若 $ J=I_{\sigma} $对某个 $ \sigma \in S_{k} $成立,则 $ \varepsilon^{I}= \left( \operatorname{sgn}\,\sigma \right) \varepsilon^{J}  $   ;
+        \item  $
+        \varepsilon^{I}\left( E_{j_1},\cdots ,E_{j_{k}} \right) = \delta _{J}^{I} 
+        $
+    \end{itemize}
+\end{lemma}
+\begin{proof}
+    只证明第二条,$$
+    \begin{aligned}
+    \varepsilon^{I_{\sigma}} \left( v_1,\cdots ,v_{k} \right)& =  \det\begin{pmatrix}\varepsilon^{i_{\sigma\left( 1 \right) } }\left(v_1\right)&\cdots&\varepsilon^{i_{\sigma\left( 1 \right) }}\left(v_k\right)\\\vdots&\cdots&\vdots\\\varepsilon^{i_{\sigma\left( k \right) }}\left(v_1\right)&\cdots&\varepsilon^{i_{\sigma\left( k \right) }}\left(v_k\right)\end{pmatrix} \\ 
+     & = \left( \operatorname{sgn}\, \sigma^{-1}  \right) \det\begin{pmatrix}\varepsilon^{i_1}\left(v_1\right)&\cdots&\varepsilon^{i_1}\left(v_k\right)\\\vdots&\cdots&\vdots\\\varepsilon^{i_k}\left(v_1\right)&\cdots&\varepsilon^{i_k}\left(v_k\right)\end{pmatrix}\\ 
+      & = \left( \operatorname{sng}\,\sigma \right) \varepsilon^{I}\left( v_1,\cdots ,v_{k} \right)  
+    \end{aligned}
+    $$
+\end{proof}
+\begin{definition}{递增指标}
+    称多重指标 $ I = \left( i_1,i_2,\cdots,i_k \right)  $是递增的,若 $ i_1<\cdots <i_{k} $  
+\end{definition}
+\begin{remark}
+    常用 $ \sum^{\prime}  $表示对递增指标的求和,例如 $$
+    \sum_{I}^{^{\prime} } \alpha_{I} \varepsilon^{I} : = \sum_{\left\{ I:i_1<\cdots <i_{k} \right\}} \alpha_{I} \varepsilon^{I}
+    $$ 
+\end{remark}
+\begin{proposition}{交错张量空间的基}
+    设 $ V $是 $ n $-维线性空间,$ \left( \varepsilon^{i} \right)  $是 $ V^{*} $的一组基,则对于每个正整数 $ k \le n $,集合 $$
+    \mathscr{E} = \left\{  \varepsilon^{I}: I\text{是长度为k的递增指标} \right\}
+    $$构成 $ \Lambda^{k}\left( V^{*} \right)  $的一组基.因此 $$
+    \operatorname{dim}\,\Lambda^{k}\left( V^{*} \right) = \begin{pmatrix} 
+        n\\ 
+         k 
+    \end{pmatrix} =  \frac{n! }{ k!\left( n-k \right)!  }   
+    $$若 $ k >n $,则 $ \Lambda^{k}\left( V^{*} \right)=0  $        
+\end{proposition}
+
+\begin{proof}
+    当 $ k >n $时,任意 $ k $个 $ V $中的向量都是线性相关的,故由引理\ref{alt-tensor-lemma},$ V $上的任意交错 $ k $-张量都是零映射.
+    
+    当 $ k \le n $时,为了说明 $ \mathscr{E} $张成了 $ \Lambda^{k}\left( V^{*} \right)  $,令 $ \alpha \in  \Lambda^{k}\left( V^{*} \right)  $.对于每个多重指标 $ I = \left( i_1,\cdots ,i_{k} \right)  $  ,定义 $$
+    \alpha_{I}: = \alpha\left( E_{i_1},\cdots ,E_{i_{k}} \right) 
+    $$ $ \alpha $的交错性给出：若 $ I  $有重复指标,则 $ \alpha_{I}=0 $,并且 $ \alpha_{J} = \left( \operatorname{sgn}\,\sigma \right) \alpha_{I}  $,若 $ J= I_{}\sigma $,因此任取多重指标 $ J $,我们有  $$
+    \begin{aligned}
+     \sum_{I}^{\prime} \alpha_{I} \varepsilon^{I}\left( E_{j_1},\cdots ,E_{j_{k}} \right)  = \sum_{I}^{\prime} \alpha_{I}\delta_{J}^{I}= \alpha_{J} = \alpha\left( E_{j_1},\cdots ,E_{j_{k}} \right) 
+    \end{aligned}
+    $$这表明 $ \sum_{I} ^{\prime} \alpha_{I} \varepsilon^{I} = \alpha $,因此 $ \mathscr{E} $张成了 $ \Lambda^{k}\left( V^{*} \right)  $.
+    
+    为了说明 $ \mathscr{E} $中元素线性无关,设 $$
+    \sum_{I}^{\prime} k_{I}\varepsilon^{I} = 0
+    $$ 对每个 $ J=\left( j_1,\cdots ,j_{k} \right)  $,上式两端作用在 $ \left( E_{j_1},\cdots ,E_{j_{k}} \right)  $上,即可得到 $ k_J  = 0$,这就说明了线性无关性.   
+\end{proof}
+\begin{corollary}\label{top-tensor-space}
+    对于n维线性空间 $ V $, $ \Lambda^{n}\left( V^{*} \right)  $是由 $ \varepsilon^{1\cdots n} $张成的1-维线性空间,并且该初等k-余向量在 $ \left( v_1,\cdots ,v_{n} \right)  $上作用的取值为系数矩阵的行列式.    
+\end{corollary}
+
+\begin{proposition}
+    设 $ V $是 $ n $-维线性空间, $ \omega\in  \Lambda ^{n}\left( V^{*} \right)  $.
+    若 $ T:V\to V $是线性映射,$ v_1,v_2,\cdots,v_n $是 $ V $上的向量,那么 $$
+     \omega \left( Tv_1,\cdots ,Tv_{n} \right) = \left( \det T \right) \omega \left( v_1,\cdots ,v_{n} \right)   
+    $$      
+\end{proposition}
+
+\begin{proof}
+    设 $ \left( E_{i} \right)  $是 $ V $的一组基 $ \left(  \varepsilon _{i} \right)  $是对偶基,设 $ T $的表示矩阵为 $ \left( T_{i}^{j} \right)  $,令 $ T_{i}: = TE_{i}= T_{i}^{j}E_{j} $.
+    由引理\ref{top-tensor-space}, $ \omega= c   \varepsilon ^{1\cdots n} $对于某个实数 $ c $成立.
+    
+    由所证式子两端的交错性,不妨只考虑 $ v_1,\cdots ,v_{n} $线性无关的情况,又由多线性不只考虑 $ \left( v_1,\cdots ,v_{n} \right)=\left( E_1,\cdots ,E _{n} \right)   $.事实上, $$
+    \begin{aligned}
+     \omega \left( TE_1,\cdots ,TE_{n} \right) & = c  \varepsilon ^{1\cdots n}\left( T_1,\cdots ,T_{n} \right) \\ 
+      & =c \det \left(  \varepsilon ^{j}\left(  T_{j}\right)  \right) \\ 
+       & = c \det \left( T_{i}^{j} \right)=c\det T 
+    \end{aligned}
+    $$另一方面 $$
+    \begin{aligned}
+    \left( \det T \right)  \omega \left( E_1,\cdots ,E_{n} \right)&  = \left( \det T \right)c \varepsilon ^{1\cdots n}\left( E_1,\cdots ,E_{n} \right)= c\det T     
+    \end{aligned}
+    $$ 这就说明了命题.
+\end{proof} 
+
+\subsection{楔积}
+
+\begin{definition}{楔积}
+    设 $ V $是有限维实线性空间.给定 $  \omega \in  \Lambda ^{k}\left( V^{*} \right)  $和 $ \eta \in   \Lambda ^{l}\left( V^{*} \right)  $,定义它们的楔积或外积,为 $ \left( k+ l \right)  $-余向量 $$
+     \omega \wedge \eta: = \frac{\left( k+ l \right)!  }{k!l! } \mathrm{Alt}\left(  \omega \otimes \eta \right)  
+    $$    
+\end{definition}
+
+上面这坨诡异的系数其实是为了方便下面的引理
+
+\begin{lemma}\label{e-wedge-lemma}
+    设 $ V $是 $ n $维线性空间, $ \left(  \varepsilon ^{1},\cdots , \varepsilon ^{n} \right)  $是 $ V^{*} $的一组基.对于任意多重指标  $ I = \left( i_1,\cdots ,i_{k} \right)  $和 $ J= \left( j_1,\cdots,j_{l} \right)  $,  $$
+     \varepsilon ^{I} \wedge \varepsilon^{J} = \varepsilon^{IJ}
+    $$其中 $ IJ: = \left( i_1,\cdots ,i_{k},j_1,\cdots ,j_{l} \right)  $.  
+\end{lemma}
+\begin{proof}
+    由多线性,只需要说明 $$
+     \varepsilon ^{I}\wedge  \varepsilon ^{J} \left( E_{p_1},\cdots ,E_{p_{k+ l}} \right) =  \varepsilon ^{IJ}\left( E_{p_1},\cdots ,E_{p_{k+ l}} \right)  
+    $$对每一列基向量 $ \left( E_1,\cdots ,E_{k+ l} \right)  $成立,接下来分4种情况讨论.
+    \begin{enumerate}
+        \item 当 $ P = \left( p_1,\cdots ,p_{k+ l} \right) $中有重复指标时,两边根据定义均为 $ 0 $.
+        \item 当 $ P $中含有均不在 $I,J $中出现的指标时,右侧由引理\ref{e-tensor-property}可知为零,此外左侧求和式的每一项,要么包含 $  \varepsilon ^{I} $作用的不是指标为 $ I $的基向量的置换,要么 $  \varepsilon ^{J} $不是,故每一项均为零,因此左侧式也为零.
+        \item 当 $ P =IJ $,且 $ P $中无重复项时,右侧由引理\ref{e-tensor-property}取1.左侧 $$
+        \begin{aligned}
+         &\varepsilon ^{I} \wedge  \varepsilon ^{J}\left( E_{p_1},\cdots ,E_{p_{k+ l}} \right)\\ 
+            & = \frac{\left( k+ l \right)!  }{k!l! } \mathrm{Alt}\left(  \varepsilon ^{I}\otimes  \varepsilon ^{J} \right)\left( E_{p_1},\cdots ,E_{p_{k+ l}} \right)   \\ 
+            & =  \frac{1}{k!l!} \sum_{\sigma \in S_{k}} \left( \operatorname{sgn}\,\sigma \right)  \varepsilon ^{I}\left( E_{p_1},\cdots ,E_{p_{k}} \right) \varepsilon ^{J}\left( E_{p_{k+ 1}},\cdots ,E_{p_{k+ l}} \right)   
+        \end{aligned}
+        $$  当存在 $ \left\{  1,2,\cdots,k \right\} $的置换 $ \tau \in S_{k} $,和 $ \left\{ k+ 1,\cdots ,k+ l \right\} $ 的置换 $ \eta \in S_{l} $,使得 $ \sigma = \tau\eta $时,最下方和式的一项才会非零,因此 $$
+        \begin{aligned}
+         & \varepsilon ^{I}\wedge  \varepsilon ^{J}\left( E_{p_1},\cdots ,E_{p_{k+ l}} \right)  \\ 
+          & = \frac{1}{k!l!} \sum_{\tau \in S_{k},\eta \in S_{l}} \left( \operatorname{sgn}\,\tau \right)\left( \operatorname{sgn}\,\eta \right)   \varepsilon ^{I}\left( E_{p_{\tau\left( 1 \right) }},\cdots ,E_{p_{\tau\left( k \right) }} \right)  \varepsilon ^{J}\left( E_{p_{\tau\left( k+ 1 \right) }} ,\cdots , E_{p_{\tau\left( k+ l \right) }}\right)\\ 
+        & = \left( \frac{1}{k!} \sum_{\tau \in S_{k}} \left( \operatorname{sgn}\,\tau \right) \varepsilon ^{I} \left( E_{p_{\tau\left( 1 \right) }},\cdots , E_{p_{\tau\left( k \right) }} \right)   \right) \left(  \frac{1}{l!} \sum_{\eta \in S_{l}}\left( \operatorname{sgn}\,\eta \right) \varepsilon ^{J}\left(  E_{p_{\tau\left( k+ 1 \right),\cdots ,E_{p_{\tau\left( k+ l \right) }} }} \right)  \right)    \\ 
+         & = \left( \operatorname{Alt}\, \varepsilon ^{I} \right)\left( E_{p_1},\cdots ,E_{p_{k}} \right) \left( \operatorname{Alt}\,  \varepsilon ^{J} \right)\left( E_{p_{k+ 1}},\cdots ,E_{p_{k+ l}} \right)  \\ 
+          & =  \varepsilon ^{I}\left( E_{p_1},\cdots ,E_{p_{k}} \right)  \varepsilon ^{J}\left( E_{p_{k+ 1}} ,\cdots ,E_{p_{k+ l}}\right)\\ 
+        & = 1    
+        \end{aligned}
+        $$  
+        \item 当 $ P $是 $I J $的置换,且 $ P $无重复指标时,通过一个置换化为第三种情况.   
+    \end{enumerate}
+     
+\end{proof}
+
+\begin{proposition}
+    设 $  \omega , \omega ^{\prime} ,\eta,\eta^{\prime}  $和 $  \xi  $是有限维线性空间  $ V $上的多重余向量,则
+    \begin{enumerate}
+        \item 双线性： 对于 $ a,a^{\prime}  \in \mathbb{R}  $, $$
+        \begin{aligned}
+        \left( a \omega + a^{\prime}  \omega ^{\prime}  \right)\wedge \eta&= a\left(  \omega \wedge \eta \right) + a^{\prime} \left(  \omega ^{\prime} \wedge \eta \right)    \\ 
+         \eta\wedge \left( a \omega + a^{\prime}  \omega ^{\prime}  \right)& =  a\left( \eta \wedge  \omega  \right)+ a^{\prime} \left( \eta \wedge  \omega ^{\prime}  \right)   
+        \end{aligned}
+        $$ 
+        \item 结合律： $$
+         \omega \wedge \left( \eta \wedge  \xi  \right)= \left(  \omega \wedge \eta  \right)\wedge  \xi   
+        $$
+        \item 反交换律： 对于 $  \omega \in  \Lambda ^{k}\left( V^{*} \right)  $,$ \eta \in  \Lambda ^{l}\left( V^{*} \right)   $ $$
+         \omega \wedge \eta  = \left( -1 \right)^{kl} \eta \wedge  \omega . 
+        $$
+        \item 设 $ \left(  \varepsilon ^{i} \right)  $是 $ V^{*} $的任意一组基,$ I=\left( i_1,\cdots ,i_{k} \right)  $,则 $$
+         \varepsilon ^{i_1}\wedge \cdots \wedge  \varepsilon ^{i_{k}} =  \varepsilon ^{I}.
+        $$     
+        \item 对于任意余向量 $  \omega ^{1},\cdots , \omega ^{k} $ 和向量 $ v_1,\cdots ,v_{k} $,$$
+         \omega ^{1}\wedge \cdots \wedge  \omega ^{k}\left( v_1,\cdots ,v_{k} \right) = \det \left(  \omega ^{j}\left( v_{i} \right)  \right)  
+        $$ 
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+双线性由张量积的双线性及 $ \operatorname{Alt} $的线性立即得到.
+
+对于结合律,只需注意到 $$
+\left(  \varepsilon ^{I}\wedge  \varepsilon ^{J} \right)\wedge  \varepsilon ^{K} =  \varepsilon ^{IJ}\wedge  \varepsilon ^{K} =  \varepsilon ^{IJK} =  \varepsilon ^{I}\wedge  \varepsilon ^{JK}=  \varepsilon ^{I} \wedge \left(  \varepsilon ^{J}\wedge  \varepsilon ^{K} \right) 
+$$再由双线性得到一般的情况.
+
+对于反交换律,设 $ \tau  $是 $ IJ $到 $ JI $的置换,则 $$
+ \varepsilon ^{I}\wedge  \varepsilon ^{J} =  \varepsilon ^{IJ} = \left( \operatorname{sgn}\,\tau  \right)  \varepsilon ^{JI} = \left( \operatorname{sgn}\,\tau  \right)  \varepsilon ^{J}\wedge   \varepsilon ^{I}  
+$$ 再由双线性得到.
+
+性质4.由引理\ref{e-wedge-lemma}归纳得到.
+
+对于性质5.,考虑 $  \omega ^{1}, \ldots , \omega ^{k} $是基 $ \left(  \varepsilon ^{i} \right)  $的一部分的情况,该情况由4.和初等余向量的定义立即得到.
+对于一般的情况,只需注意到所需等式两端的多线性,两边分别拆成若干 $  \varepsilon ^{K} \left( v_1, \ldots ,v_{k} \right)  $  和 $ \det \left(   \varepsilon ^{k_{j}}\left( v_{i} \right)  \right)  $的和,每一项两两相等.  
+\end{proof}
+\begin{definition}{可分解性}
+    称 $ k $-余向量是可分解的,若存在余向量 $  \omega^{1},\cdots , \omega ^{k} $,使得 $ \eta = \omega ^{1}\wedge \cdots \wedge  \omega ^{k} $   
+\end{definition}
+\begin{remark}
+    \begin{itemize}
+        \item 对于 $ k>1 $,存在不可分解的 $ k $-余向量.
+        \item 任意 $ k $-余向量写作可分解余向量的线性组合. 
+    \end{itemize}
+      
+\end{remark}
+\begin{proposition}{楔积的泛性质}
+楔积是唯一的具有结合律、双线性、反交换律且满足 $$
+ \varepsilon ^{i_1}\wedge \cdots \wedge  \varepsilon ^{i_{k}} =  \varepsilon ^{I}
+$$的 $  \Lambda ^{k}\left( V^{*} \right) \times  \Lambda ^{l}\left( V^{*} \right)\to  \Lambda ^{k+ l}\left( V^{*} \right)    $的映射. 
+\end{proposition}
+\begin{proof}
+    任取 $ k $-余向量和 $ l $-余向量 $  \omega ,\eta  $,则 $  \omega ,\eta  $均写作 $  \varepsilon ^{I} $的线性组合.将每个 $  \varepsilon ^{I} $写作 $  \varepsilon ^{i_1}\wedge \cdots \wedge  \varepsilon ^{i_{k}} $的形式,利用结合律、双线性、反交换律,易见 $  \omega \wedge \eta  $的唯一性.        
+
+\end{proof}
+
+
+\begin{definition}{外代数}
+设 $ V $ 是 $ n $-维线性空间,定义线性空间 $  \Lambda \left( V^{*} \right)  $ $$
+ \Lambda \left( V^{*} \right) =  \bigoplus_{k=0}^{n}  \Lambda ^{k}\left( V^{*} \right)  
+$$  在楔积下, $  \Lambda \left( V^{*} \right)  $构成反交换的分次代数,称为 $ V $ 的外代数（或Grassman代数）. 
+\end{definition}
+
+\begin{remark}
+    \begin{itemize}
+        \item $ \operatorname{dim} \,\Lambda \left( V^{*} \right) = 2^{n}  $ 
+    \end{itemize}
+    
+\end{remark}
+
+\subsection{内部乘法}
+
+\begin{definition}
+    设 $ V $是有限维线性空间,对每个 $ v\in V $,定义线性映射 $$
+    i_{v}:  \Lambda ^{k}\left( V^{*} \right)\to  \Lambda ^{k-1}\left( V^{*} \right)  
+    $$称为通过 $ v $的内部乘法, $$
+    i_{v} \omega \left( w_1,\cdots ,w_{k-1} \right) : =  \omega \left( v, \omega _{1},\cdots , \omega _{k-1} \right)  
+    $$   
+\end{definition}
+
+\begin{remark}
+    \begin{itemize}
+        \item 约定当 $  \omega  $为零向量时,$ i_{v} \omega: =0 $  
+    \end{itemize}
+\end{remark}
+
+\begin{lemma}\label{Int-Multy-lemma}
+    设 $ V $是有限维线性空间,$ v \in V $,则 
+    \begin{enumerate}
+        \item $ i_{v}\circ i_{v}= 0 $
+        \item 若 $  \omega \in  \Lambda ^{k}\left( V^{*} \right)  $,$ \eta  \in  \Lambda ^{l}\left( V^{*} \right)  $,则 $$
+        i_{v}\left(  \omega \wedge \eta  \right)= \left( i_{v} \omega  \right)\wedge \eta + \left( -1 \right)^{k} \omega \wedge \left( i_{v}\eta  \right)    
+        $$   
+    \end{enumerate}
+      
+\end{lemma}
+
+\begin{proof}
+    只证明第二条.
+
+    由于每个正rank的余向量都可以写作可分解余向量的线性组合,因此只需考虑 $  \omega  $和 $ \eta  $均可分解的情况即可.
+    该特殊情况的公式是下面的公式的直接结果:对于 $  \omega ^{1},\cdots , \omega ^{k} $,以下成立 $$
+    i_{v}\left(  \omega ^{1}\wedge \cdots \wedge  \omega ^{k} \right) = \sum _{i=1 }^{k}\left( -1 \right)^{i-1} \omega ^{i} \left( v \right) \omega ^{1}\wedge \cdots \wedge  \hat{ \omega ^{i}}  \wedge \cdots \wedge  \omega ^{k}
+    $$ 为此,取 $ v_1=v $,并任取 $ v_2,\cdots ,v_{k} $,接下来证明 $$
+    \left(  \omega ^{1}\wedge \cdots \wedge  \omega ^{k} \right)\left( v_1,\cdots ,v_{k} \right) = \sum _{i=1}^{k}\left( -1 \right)^{i-1}    \omega ^{i}\left( v_1 \right)\left(  \omega ^{1}\wedge \cdots \wedge \hat{ \omega ^{i}} \wedge \cdots \wedge  \omega ^{k} \right) \left( v_2,\cdots ,v_{k} \right)  
+    $$左侧取值为 $ \det \left(  \omega ^{i}\left( v_{j} \right)  \right)  $ ,右侧取值为 $ \left(  \omega ^{i}\left( v_{j} \right)  \right)  $按第一行的展开式,故二者相等. 
+\end{proof}
+
+\section{流形上的微分形式}
+\begin{definition}
+    设 $ M $是 $ n $-维光滑流形,回忆$ T^{k}T^{*}M  $是 $ M $上的共变 $ k $-张量丛,由全体交错张量的子集记作 $  \Lambda ^{k}T^{*}M  $ $$
+     \Lambda ^{k}T^{*}M : =  \coprod _{p \in M}  \Lambda ^{k}\left( T_{p}^{*}M \right) 
+    $$   
+\end{definition}
+
+\begin{remark}
+   \begin{enumerate}
+    \item   $  \Lambda ^{k}T^{*}M $是 $ T^{k}T^{*}M $ 的光滑子丛,进而是 $ M $上的rank- $ \begin{pmatrix} 
+        n\\ 
+         k 
+    \end{pmatrix}  $的光滑向量丛.     
+    \begin{proof}
+        在每个坐标上取 $ T^{k} T^{*}M $的坐标标架中交错的项,它构成 $  \lambda ^{k}T^{*}M $的一个局部光滑标架,从而由子丛光滑性的局部标架判据,$  \Lambda ^{k}T^{*}M $是光滑子丛.  
+    \end{proof}
+   \end{enumerate}
+  
+\end{remark}
+
+\begin{definition}{微分形式}
+     $  \Lambda ^{k}T^{*}M $的一个截面被称为是一个微分 $ k $-形式,或简称 $ k $-形式.即一个（连续）的张量场,它在每一点处的取值均为一个交错张量. $ k $-被称为是形式的次数.即全体光滑 $ k $-形式构成的向量空间为 $$
+      \Omega ^{k}\left( M \right): =  \Gamma \left(  \Lambda ^{k}T^{*}M \right)  
+     $$   
+\end{definition}
+
+\begin{remark}
+    \begin{itemize}
+        \item 可以逐点的定义两个微分形式的楔积: $ \left(  \omega \wedge \eta  \right)_{p}: =  \omega _{p}\wedge \eta _{p}  $ 
+        \item 定义 $  \Omega ^{*}\left( M \right): = \bigoplus_{k=0}^{n} \Omega ^{k}\left( M \right)   $,则 $  \Omega ^{*}\left( M \right)  $构成一个反交换的分次代数.  
+    \end{itemize}
+    
+\end{remark}
+
+\begin{proposition}{基表示}
+    在每个光滑坐标卡上,$ k $-形式 $  \omega  $写作 $$
+     \omega = \sum _{I}^{\prime}  \omega _{I} \,\mathrm{d} x^{i_1}\wedge \cdots \wedge \,\mathrm{d} x^{i_{k}} = \sum _{I}^{\prime}  \omega _{I}\,\mathrm{d} x^{I}
+    $$  
+\end{proposition}
+\begin{remark}
+ \begin{itemize}
+    \item 视 $ \omega _{I} $为0-形式,数乘无非是0-形式的楔积. 
+    \item 每个 $ \omega _{I} $都是连续函数,且 $ \omega  $光滑当且仅当每个 $ \omega _{I} $均光滑.
+    \item 引理\ref{e-tensor-property}翻译为 $$
+    \,\mathrm{d} x^{i_1}\wedge \cdots \wedge \,\mathrm{d} x^{i_{k}}\left( \frac{\partial }{\partial x^{j_1}},\cdots ,\frac{\partial }{\partial x^{j_{k}}} \right) = \delta _{J}^{I}
+    $$   
+    \item 分量 $ \omega _{I} $由 $$
+    \omega _{I} = \omega \left( \frac{\partial }{\partial x^{i_1}},\cdots ,\frac{\partial }{\partial x^{i_{k}}} \right) 
+    $$给出 
+ \end{itemize}
+
+\end{remark}
+
+\begin{definition}{微分形式的拉回}
+    是 $ F:M\to N $是光滑映射,$ \omega  $是 $ N $上的微分形式,拉回 $ F^{*}\omega  $被定义为 $ \omega  $作为张量场通过 $ F $的拉回,它是 $ M $上的一个微分形式： $$
+    \left( F^{*}\omega  \right)_{p}\left(  v_1,\cdots,v_k  \right) = \omega _{F\left( p \right) }  \left( \,\mathrm{d} F_{p}\left( v_1 \right),\cdots ,\,\mathrm{d} F_{p}\left( v_{k} \right)   \right) 
+    $$       
+\end{definition}
+
+\begin{lemma}{拉回的性质}
+    设 $ F:M\to N $是光滑映射,则
+    \begin{enumerate}
+        \item $ F^{*}:\Omega ^{k}\left( N \right)\to \Omega ^{k}\left( M \right)   $是 $ \mathbb{R} ^{2} $上的线性映射.
+        \item $ F^{*}\left( \omega \wedge \eta  \right) = \left( F^{*}\omega  \right)\wedge \left( F^{*}\eta  \right)    $;
+        \item 在任意光滑坐标卡上 $$
+        F^{*}\left( \sum _{I}^{\prime} \omega _{I} \,\mathrm{d} y^{i_1}\wedge \cdots \wedge \,\mathrm{d} y^{i_{k}}  \right) = \sum _{I}^{\prime} \left( \omega _{I}\circ F \right) \,\mathrm{d} \left( y^{i_1}\circ F \right)  \wedge \cdots \wedge \,\mathrm{d} \left( y^{i_{k}} \circ F\right)  
+        $$   
+    \end{enumerate}
+     
+\end{lemma}
+\begin{proof}
+    \begin{enumerate}
+        \item 由逐点拉回的线性立即得到；
+        \item  $$
+       \begin{aligned}
+       &  \left( F^{*}\left( \omega \wedge \eta  \right)   \right)_{p}\left(  v_1,\cdots,v_k  ,v_{k+ 1},\cdots ,v_{k+ l}\right) \\ 
+         & = \left( \omega \wedge  \eta  \right)_{F\left( p \right) }  \left( \,\mathrm{d} F_{p}\left( v_1 \right),\cdots ,\,\mathrm{d} F_{p}\left( v_{k} \right) ,\,\mathrm{d} F_{p}\left( v_{k+ 1} \right),\cdots ,  \,\mathrm{d} F_{p}\left( v_{k+ l} \right)  \right)\\ 
+         & =  \frac{1}{k!l!} \sum _{\sigma  \in S_{k}} \omega_{F\left( p \right) } \left( \,\mathrm{d} F_{p}\left( v_{\sigma \left( 1 \right) }  \right)  ,\cdots ,\,\mathrm{d} F_{p} \left( v_{\sigma \left( k \right) } \right)\right) \eta_{F\left( p \right) } \left( \,\mathrm{d} F_{p}\left( v_{\sigma \left( k+ 1 \right) } \right) ,\cdots ,\,\mathrm{d} F_{p}\left( v_{\sigma \left( k+l \right) } \right)   \right) \\ 
+          & = \frac{1}{k!l!} \sum _{\sigma  \in S_{k}} \left( F^{*}\omega  \right)_{p}\left( v_{\sigma \left( 1 \right) } ,\cdots ,v_{\sigma \left( k \right) }\right)  \left( F^{*}\eta  \right)_{p}\left( v_{\sigma \left( k+ 1 \right) },\cdots ,v_{\sigma \left( k+ l \right) } \right)  \\ 
+           & = \left( F^{*}\omega \wedge F^{*}\eta  \right)_{p} \left( v_1,\cdots ,v_{k+ l} \right)  
+       \end{aligned}
+        $$
+        \item 由结合律, $$
+        \sum _{I}^{\prime}  \omega _{I} \,\mathrm{d} y^{i_1}\wedge \cdots \wedge \,\mathrm{d} y^{i_{k}} = \sum _{I}^{\prime}  \left( \omega _{I} \,\mathrm{d} y^{i_1} \right)\wedge \cdots \wedge \,\mathrm{d} y^{i_{k}} 
+        $$由性质1.2.和结合律归纳地得到 $$
+        F^{*}\left( \sum _{I}^{\prime} \omega _{I} \,\mathrm{d} y^{i_1}\wedge \cdots \wedge  \,\mathrm{d} y^{i_{k}}  \right) = \sum _{I}^{\prime}  \left( F^{*}\omega _{I}\,\mathrm{d} y^{i_1} \right)\wedge \left( F^{*} \,\mathrm{d} y^{i_2} \right)\wedge \cdots \wedge \left( F^{*}\,\mathrm{d} y^{i_{k}} \right)   
+        $$由1-形式拉回的性质,我们得到上式等于 $$
+       \begin{aligned}
+       &   \sum _{I}^{\prime} \left( \left( \omega _{I}\circ F \right)  \,\mathrm{d} \left( y^{i_1}\circ F \right)  \right) \wedge \,\mathrm{d} \left( y^{i_1}\circ F \right)\wedge \cdots \wedge  \,\mathrm{d} \left( y^{i_{k}}\circ F \right)   \\ 
+        & = \sum _{I}^{\prime} \left( \omega _{I}\circ F \right) \,\mathrm{d} \left( y^{i_1}\circ F \right)\wedge \cdots \wedge \,\mathrm{d} \left( y^{i_{k}}\circ F \right)    
+       \end{aligned}
+        $$
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{example}
+    设 $ F: \mathbb{R} ^{2}\to \mathbb{R} ^{3} $, $ F\left( u,v \right)= \left( u,v,u^{2}-v^{2} \right)   $,$ \omega  $是 $ \mathbb{R} ^{3} $上的 2-形式 $ y\,\mathrm{d} x\wedge \,\mathrm{d} z+ x\,\mathrm{d} y\wedge \,\mathrm{d} z $.拉回映射 $ F^{*}\omega  $按以下方式计算 $$
+    \begin{aligned}
+    F^{*}\left( y \,\mathrm{d} x\wedge \,\mathrm{d} z+ x\,\mathrm{d} y\wedge \,\mathrm{d} z \right)& = \left( y\circ f \right)\,\mathrm{d} \left( x\circ F \right)\wedge \,\mathrm{d} \left( z\circ F \right)+  \left( x\circ F \right)\,\mathrm{d} \left( y\circ F \right)\wedge \,\mathrm{d} \left( z\circ F \right)\\ 
+     & = v \,\mathrm{d} u \wedge  \,\mathrm{d} \left( u^{2}-v^{2} \right)+  u \,\mathrm{d} v\wedge \,\mathrm{d} \left( u^{2}-v^{2} \right)\\ 
+    & =  v \,\mathrm{d} u   \wedge \left( 2u\,\mathrm{d} u-2v\,\mathrm{d} v \right)+  u \,\mathrm{d} v\wedge \left( 2u\,\mathrm{d} u-2v\,\mathrm{d} v \right)\\ 
+    &= 2uv \left( \,\mathrm{d} u\wedge \,\mathrm{d} u-\,\mathrm{d} v\wedge \,\mathrm{d} v \right)- 2v^{2} \,\mathrm{d} u\wedge \,\mathrm{d} v+  2u^{2}\,\mathrm{d} v\wedge \,\mathrm{d} u\\ 
+     & = -2\left( v^{2}+ u^{2} \right)\,\mathrm{d} u\wedge \,\mathrm{d} v   
+    \end{aligned}
+    $$     
+\end{example}
+
+\begin{example}
+    令 $ \omega = \,\mathrm{d} x\wedge \,\mathrm{d} y $是 $ \mathbb{R} ^{2} $上的2-形式,视极坐标变换 $ x = r\cos \theta ,y= r\sin \theta  $ 为单位映射关于不同坐标的坐标表示,我们有 $$
+    \begin{aligned}
+    \,\mathrm{d} x\wedge \,\mathrm{d} y& = \mathrm{Id}^{*}\left( \,\mathrm{d} x\wedge \,\mathrm{d} y \right)\\ 
+     & = \,\mathrm{d} \left( r\cos \theta  \right)\wedge \,\mathrm{d} \left( r\sin \theta  \right)    \\ 
+      & = \left( \cos \theta \,\mathrm{d} r- r\sin \theta  \,\mathrm{d} \theta  \right)\wedge \left(  \sin \theta \,\mathrm{d} r+  r\cos \theta \,\mathrm{d} \theta  \right)\\ 
+       & = -r\sin^{2} \theta \,\mathrm{d} \theta \,\mathrm{d} r+ r\cos ^{2}\theta  \,\mathrm{d} r\,\mathrm{d} \theta \\ 
+        & =   r \,\mathrm{d} r\wedge \,\mathrm{d}\theta 
+    \end{aligned}
+    $$
+\end{example}
+
+\begin{proposition}{顶形式的拉回}
+    设 $ F:M\to N $是 $ n $-维（带边）流形之间的光滑映射.设 $ \left( x^{i} \right)  $和 $ \left( y^{j} \right)  $  分别是开子集 $ U\subseteq M $和 $ V\subseteq N $上的光滑坐标,且 $ u $是 $ V $上的连续实值函数,那么在 $ U\cap F^{-1} \left( V \right)  $上有以下成立 $$
+    F^{*}\left( u\,\mathrm{d} y^{1}\wedge \cdots \wedge \,\mathrm{d} y^{n} \right) = \left( u\circ F \right) \left( \det DF  \right)\,\mathrm{d} x^{1}\wedge \cdots \wedge \,\mathrm{d} x^{n}   
+    $$其中 $ DF  $表示 $ F $在这些坐标上的Jacobi矩阵. 
+\end{proposition}
+
+\begin{proof}
+    由于 $ \Lambda ^{n}T^{*}M $在每一点处的纤维由 $ \,\mathrm{d} x^{1}\wedge \cdots \wedge \,\mathrm{d} x^{n} $张成,因此只需要说明等式两端在 $ \left( \frac{\partial }{\partial x^{1}} ,\cdots ,\frac{\partial }{\partial x^{n}}\right)  $上的取值相同.  
+    一方面 $$
+    F^{*}\left( u\,\mathrm{d} y^{1}\wedge \cdots \wedge \,\mathrm{d} y^{n} \right)= \left( u\circ F \right) \,\mathrm{d} F^{1}\wedge \cdots \wedge \,\mathrm{d} F^{n}  
+    $$ 命题\ref{wedge-property}给出 $$
+    \,\mathrm{d} F^{1}\wedge \cdots \wedge \,\mathrm{d} F^{n}\left( \frac{\partial }{\partial x^{1}},\cdots ,\frac{\partial }{\partial x^{n}} \right)  = \det \left( \,\mathrm{d} F^{j}\left( \frac{\partial }{\partial x^{i}} \right)  \right) = \det \left( \frac{\partial F^{j}}{\partial x^{i}} \right)   
+    $$另一方面 $$
+    \left( \,\mathrm{d} x^{1}\wedge \cdots \wedge \,\mathrm{d} x^{n} \right)\left(  \frac{\partial }{\partial x^{1}},\cdots ,\frac{\partial }{\partial x^{n}} \right) = 1  
+    $$分别带入即可.
+\end{proof}
+
+\begin{corollary}
+    设 $ \left( U,\left( x^{i} \right)  \right)  $和 $ \left( \tilde{U},\left( \tilde{x}^{j} \right)  \right)  $是 $ M $上相交的光滑坐标卡,则以下恒等式在 $ U\cap  \tilde{U} $上成立： $$
+    \,\mathrm{d} \tilde{x}^{1}\wedge \cdots \wedge \,\mathrm{d} \tilde{x}^{n} = \det  \left(  \frac{\partial \tilde{x}^{j}}{\partial x^{i}} \right) \,\mathrm{d} x^{1}\wedge \cdots \wedge \,\mathrm{d} x ^{n} 
+    $$    
+\end{corollary}
+
+\begin{proof}
+    上面的命题中将 $ F $取成单位映射,它关于这两个坐标的Jacobi就是 $ \frac{\partial \tilde{x}^{j}}{\partial x^{i}} $  
+\end{proof}
+
+\begin{definition}{内部乘法}
+    内部乘法自然地推广到向量场和微分形式上,取逐点的作用: 对于 $ X \in \mathfrak{X}\left( M \right)  $和 $ \omega  \in \Omega ^{k}\left( M \right)  $,定义一个 $ \left( k-1 \right)  $-形式 $ i_{X}\omega  $ $$
+    \left( i_{X}\omega  \right)_{p} : = i_{X_{p}} \omega _{p}
+    $$    
+\end{definition}
+
+\begin{proposition}
+    设 $ X $是 $ M $上的光滑向量场,则 
+    \begin{enumerate}
+        \item 若 $ \omega  $是光滑的微分形式,则 $ i_{X}\omega  $是光滑的；
+        \item $ i_{X}: \Omega ^{k}\left( M \right)\to  \Omega ^{k-1}\left( M \right)   $是 $ C^{\infty}\left( M \right)  $-线性的,因此对应与光滑的丛同态 $ i_{X}: \lambda ^{k}T^{*}M\to  \Lambda ^{k-1}T^{*} M $      
+    \end{enumerate}
+
+      
+\end{proposition}
+\begin{proof}
+    \begin{enumerate}
+        \item 设 $ \omega = \sum _{I}^{\prime} \omega _{I}\,\mathrm{d} x^{I} $, $ X = X^{i} \frac{\partial }{\partial x^{i}} $设 $ i_{x}\omega = \sum _{J}^{\prime} \omega ^{\prime} _{J}\,\mathrm{d} x^{J} $, 则 $$
+        \omega _{J}   = \left( i_{X}\omega  \right) \left( \,\mathrm{d} x^{J} \right)= X^{i}\omega ^{\left( i,J \right) }  = X^{i}\omega _{\left( i,J \right) }
+        $$ 其中 $ X^{i} $和 $ \omega _{\left( i,J \right) } $均为光滑函数,因此 $ i_{X}\omega  $是光滑的.
+        \item $ i_{X} $的 $ C^{\infty}\left( M \right)  $-线性由逐点内部乘法的线性,以及1.得到.  
+    \end{enumerate}
+    
+\end{proof}
+\section{外微分}
+
+
+
+\begin{definition}{欧氏空间上的外微分}
+    设 $  \omega = \sum _{J}^{\prime}  \omega _{J   }\,\mathrm{d} x^{J} $是开集 $ U\subseteq \mathbb{R} ^{n} $(或 $ \mathbb{H}^{n} $ )上的光滑 $ k $-形式.定义 $ \,\mathrm{d}  \omega  $为以下 $ \left( k+ 1 \right)  $-形式 $$
+    \,\mathrm{d} \left( \sum _{J}^{\prime}  \omega _{J}\,\mathrm{d} x^{J} \right): = \sum _{J}^{\prime} \,\mathrm{d}  \omega _{J}\wedge \,\mathrm{d} x^{J}
+    $$     具体地 $$
+    \,\mathrm{d} \left( \sum _{J}^{\prime}  \omega _{J} \,\mathrm{d} x^{j_1}\wedge \cdots \wedge x^{j_{k}} \right) : = \sum _{J}^{\prime} \sum _{i} \frac{\partial  \omega _{J}}{\partial x^{i}}\wedge \,\mathrm{d} x^{j_1}\wedge \cdots \wedge \,\mathrm{d} x^{j_{k}}
+    $$
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 当 $  \omega  $是 $ 1 $-形式时, $$
+        \begin{aligned}
+        \,\mathrm{d} \left(  \omega _{j} \,\mathrm{d} x^{j} \right)  & = \sum _{i,j} \frac{\partial  \omega _{j}}{\partial x^{i}} \,\mathrm{d} x^{i}\wedge \,\mathrm{d} x^{j}\\ 
+         & = \sum _{i<j} \left( \frac{\partial  \omega _{j}}{\partial x^{i}}\,\mathrm{d} x^{i}\wedge \,\mathrm{d} x^{j} +  \frac{\partial  \omega _{i}}{\partial x^{j}}\,\mathrm{d} x^{j}\wedge \,\mathrm{d} x^{i} \right)\\ 
+          & = \sum _{i<j} \left( \frac{\partial  \omega _{j}}{\partial x^{i}}- \frac{\partial  \omega_{i} }{\partial x^{j}} \right) \,\mathrm{d}x ^{i}\wedge \,\mathrm{d} x^{j}  
+        \end{aligned}
+        $$  此时 $  \omega  $是闭的,当且仅当 $ d \omega =0 $.  
+        \item 当 $ f $是零形式时 $$
+        \begin{aligned}
+        \,\mathrm{d} f= \frac{\partial f}{\partial x^{i}} \,\mathrm{d} x^{i} 
+        \end{aligned}
+        $$  
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{proposition}{$ \mathbb{R} ^{n} $上外微分的性质    }\label{Euc-Ext-Diff}  
+    \begin{enumerate}
+        \item $ \,\mathrm{d}  $在 $ \mathbb{R}  $上是线性的；
+        \item 若 $  \omega  $是光滑 $ k $-形式,$ \eta  $是光滑 $ l $-形式,它们定义在开集 $ U\subseteq \mathbb{R} ^{n} $(或 $ \mathbb{H}^{n} $ )上,则 $$
+        \,\mathrm{d} \left(  \omega \wedge \eta  \right)=   \,\mathrm{d}  \omega \wedge \eta + \left( -1 \right)^{k} \omega \wedge \,\mathrm{d} \eta       
+        $$
+        \item $ \,\mathrm{d} \circ\,\mathrm{d} \equiv 0 $;
+        \item $ \,\mathrm{d}  $与拉回交换：若 $ U $是 $ \mathbb{R} ^{n} $或 $ \mathbb{H}^{n} $上的开集, $ V $是 $ \mathbb{R} ^{m} $或 $ \mathbb{H}^{m} $上的开集, $ F:U\to V $是光滑映射,$  \omega \in  \Omega ^{k}\left( V \right)  $,则 $$
+        F^{*}\left( \,\mathrm{d}  \omega  \right) = d\left( F^{*} \omega  \right) 
+        $$                 
+    \end{enumerate}
+    
+\end{proposition}
+\begin{proof}
+    
+\begin{enumerate}
+    \item 线性由定义和切向量 $ \frac{\partial }{\partial x^{i}} $的线性显然；
+    \item 由 $ \,\mathrm{d}  $和 $ \wedge  $的线性,只需考虑 $  \omega = u\,\mathrm{d} x^{I} $和 $ \eta =v\,\mathrm{d} x^{J} $的情况.
+    需要先说明对于一般的多重指标 $ I $（不要求递增）,有 $ \,\mathrm{d} \left( u\,\mathrm{d} x^{I} \right)  = \,\mathrm{d} u \wedge \,\mathrm{d} x^{I}$成立：事实上,设 $ J $是递增指标,$ \sigma \in S_{k} $,使得 $ J= I_{\sigma } $,则 $$
+    \,\mathrm{d} \left( u\,\mathrm{d} x^{I} \right) = \left( \operatorname{sgn}\, \sigma  \right)\,\mathrm{d} \left( u\,\mathrm{d} x^{J} \right)= \left( \operatorname{sgn}\,\sigma  \right) \,\mathrm{d} u\wedge \,\mathrm{d} x^{J}= \,\mathrm{d} u\wedge \,\mathrm{d} x^I    
+    $$接下来, $$
+    \begin{aligned}
+    \,\mathrm{d} \left(  \omega \wedge \eta  \right)& =  \,\mathrm{d} \left( u\,\mathrm{d} x^{I}\wedge v\,\mathrm{d} x^{J} \right)\\ 
+     & =  \,\mathrm{d} \left( uv  \right)\wedge  \left( \,\mathrm{d} x^{I}\wedge \,\mathrm{d} x^{J} \right)\\ 
+      & = \left( v\,\mathrm{d} u+ u\,\mathrm{d} v \right)\wedge  \left( \,\mathrm{d} x^{I}\wedge \,\mathrm{d} x^{J} \right)\\ 
+       & =   \left( \,\mathrm{d} u\wedge \,\mathrm{d}x ^{I} \right)\wedge \left( v\,\mathrm{d} x^{J} \right)+     \left( -1 \right)^{k} \,u\mathrm{d} x^{I}\wedge  \left( \,\mathrm{d} v\wedge \,\mathrm{d} x^{J} \right) \\ 
+        & = \,\mathrm{d}  \omega \wedge \eta + \left( -1 \right)^{k}  \omega \wedge \,\mathrm{d} \eta  
+    \end{aligned}
+    $$
+    \item 对于 $ k=0 $的情况,我们有 $$
+    \begin{aligned}
+    \,\mathrm{d} \left( \,\mathrm{d} u \right) & = \,\mathrm{d} \left( \frac{\partial u}{\partial x^{j}}\,\mathrm{d} x^{j} \right)\\ 
+     & =    \sum _{i<j} \left( \frac{\partial ^{2}u}{\partial x^{i} \partial x^{j}}- \frac{\partial ^{2}u}{\partial x^{j} \partial x^{i}} \right) \,\mathrm{d} x^{i}\wedge \,\mathrm{d} x^{j}=0 
+    \end{aligned}
+    $$利用上面的结果和2.,考虑一般的情况 $$
+    \begin{aligned}
+    \,\mathrm{d} \left( \,\mathrm{d}  \omega  \right)  & = \,\mathrm{d} \left( \sum _{J}^{\prime} \,\mathrm{d}  \omega _{J}\wedge \,\mathrm{d} x^{j_1}\wedge \cdots \wedge \,\mathrm{d} x^{j_{k}} \right) \\ 
+     & = \sum _{J}^{\prime}  \,\mathrm{d} \left( \,\mathrm{d}  \omega _{J} \right)\wedge \,\mathrm{d} x^{j_1} \wedge \cdots \wedge \,\mathrm{d} x^{j_{k}}\\ 
+      & +  \sum _{J}^{\prime} \sum _{i=1}^{k}\left( -1 \right)^{k} \,\mathrm{d}  \omega _{J}\wedge \,\mathrm{d} x^{j_1}\wedge \cdots \wedge \,\mathrm{d} \left( \,\mathrm{d} x^{j_1} \right)\wedge \cdots \wedge \,\mathrm{d} x^{j_{k}}  =0
+    \end{aligned}
+    $$            
+    \item 由线性,只需要检查 $  \omega  = u\,\mathrm{d} x^{i_1}\wedge \cdots \wedge \,\mathrm{d} x^{i_{k}} $的情况,此时,左侧为 $$
+    \begin{aligned}
+    F^{*}\left( \,\mathrm{d}  \omega  \right)& =  F^{*} \left( \,\mathrm{d} u \wedge \,\mathrm{d} x^{i_1}\wedge \cdots \wedge \,\mathrm{d} x^{i_{k}} \right)\\ 
+     & =  \,\mathrm{d} \left( u\circ F \right)\wedge \,\mathrm{d} \left( x^{i_1}\circ F \right)\wedge \cdots \wedge \,\mathrm{d} \left( x^{i_{k}} \circ F\right)   
+    \end{aligned}
+    $$ 
+\end{enumerate}
+\hfill $\square$
+\end{proof}
+
+
+利用这些性质将微分形式的定义移植到流形上去
+
+\begin{theorem}{流形上外微分的存在唯一性}
+    设 $ M $是光滑带边流形.则对所有的 $ k $ 存在唯一的算子 $ d:  \Omega ^{k}\left( M \right)\to   \Omega ^{k+ 1}\left( M \right)   $  ,使得以下性质成立：
+    \begin{enumerate}
+        \item  $ d $在 $ \mathbb{R}  $上线性；
+        \item 若 $  \omega  \in  \Omega ^{k}\left( M \right)  $, $ \eta  \in  \Omega ^{l}\left( M \right)  $,则 $$
+        \,\mathrm{d} \left(  \omega \wedge \eta  \right)  =  \,\mathrm{d}  \omega \wedge \eta + \left( -1 \right)^{k}  \omega \wedge \,\mathrm{d} \eta .  
+        $$    
+        \item $ \,\mathrm{d} \circ \,\mathrm{d}  \equiv 0 $;
+        \item 对于 $ f \in  \Omega ^{0}\left( M \right) = C^{\infty}\left( M \right)   $, $ \,\mathrm{d} f $ 是 $ f $的微分,由 $ \,\mathrm{d} f\left( X \right) = Xf  $  给出.
+    \end{enumerate}
+    
+\end{theorem}
+
+\begin{proof}
+    对于 $ M $上的任意一个光滑坐标卡 $ \left( U,\varphi  \right)  $,在其上定义 $$
+     \,\mathrm{d}  \omega : = \varphi ^{*} \,\mathrm{d} \left( \varphi ^{-1*} \omega  \right) 
+    $$ 右侧式为上面定义的  $ \mathbb{R} ^{n} $上的外微分在 $ \varphi  $下的拉回.需要说明此定义是良定义的,为此,考虑两个重叠的光滑坐标卡 $ \left( U,\varphi  \right)  $和 $ \left( V,\psi  \right)  $
+    ,则 $ \varphi \circ \psi ^{-1}  $是它们之间的过渡函数,为 $ \mathbb{R} ^{n} $（或 $ \mathbb{H}^{n} $ ）上的开子集的微分同胚.由命题\ref{Euc-Ext-Diff}, $$
+    \left( \varphi \circ \psi ^{-1}  \right)^{*}  \,\mathrm{d} \left( \varphi ^{-1*}  \omega   \right)  = \,\mathrm{d} \left(  \left( \varphi \circ \psi ^{-1}  \right)^{*} \varphi ^{-1*} \omega    \right) 
+    $$   又 $ \left( \varphi \circ \psi ^{-1}  \right)^{*} = \psi ^{-1^{*}} \varphi ^{*}   $ 因此 $$
+    \psi ^{-1*} \varphi ^{*} \,\mathrm{d} \left( \varphi ^{-1*} \omega   \right)= \,\mathrm{d} \left( \psi ^{-1*} \omega   \right)   
+    $$从而 $$
+    \varphi ^{*}\,\mathrm{d} \left( \varphi ^{-1*} \omega   \right)= \psi^{*} \,\mathrm{d} \left( \psi ^{-1*} \omega   \right)  
+    $$这就说明了良定义性.
+    再来说明这样定义的外微分满足性质1.-4.首先线性由 $ \mathbb{R} ^{n} $上 $ \,\mathrm{d}  $的线性和拉回的线性是显然的. 再来考虑2, $$
+    \begin{aligned}
+        \,\mathrm{d} \left(  \omega \wedge \eta  \right) & = \varphi ^{*} \,\mathrm{d} \left( \varphi ^{-1*} \left( \omega \wedge \eta  \right)  \right)  \\ 
+         & = \varphi ^{*}\,\mathrm{d} \left( \varphi ^{-1*} \omega \wedge \varphi ^{-1*}\eta  \right) \\ 
+          & = \varphi ^{*}\left( \,\mathrm{d} \left( \varphi ^{-1*} \omega  \right) \wedge \varphi ^{-1*}\eta  + \left( -1 \right)^{k} \varphi ^{-1*} \omega \wedge  \,\mathrm{d} \left( \varphi ^{-1*}\eta  \right)  \right)\\ 
+           & = \varphi ^{*}\,\mathrm{d} \left( \varphi ^{-1*} \omega  \right) \wedge  \varphi ^{*} \varphi ^{-1*}\eta  +  \left( -1 \right)^{k}\varphi ^{*} \varphi ^{-1*} \omega \wedge \varphi ^{*}\,\mathrm{d} \left( \varphi ^{-1*}\eta  \right)  \\ 
+            & =  \,\mathrm{d}  \omega \wedge \eta + \left( -1 \right)^{k}  \omega \wedge \,\mathrm{d} \eta   
+    \end{aligned} 
+    $$  对于3, $$
+    \begin{aligned}
+    \,\mathrm{d} \circ \left( \,\mathrm{d}  \omega  \right) &= \,\mathrm{d} \left( \varphi ^{*}\,\mathrm{d} \left( \varphi ^{-1*} \omega  \right)  \right)\\ 
+     &=\varphi ^{*} \,\mathrm{d} \left( \varphi ^{-1*} \varphi ^{*} \,\mathrm{d} \left( \varphi ^{-1*} \omega  \right)  \right)\\ 
+      & = \varphi ^{*} \,\mathrm{d} \left( \,\mathrm{d} \varphi ^{-1*} \omega  \right)       \equiv  0
+    \end{aligned}
+    $$对于4. $$
+  \,\mathrm{d} f\left( X \right)  = \varphi ^{*}\,\mathrm{d} \left( f\circ \varphi ^{-1}  \right)  \left( X \right) =    \,\mathrm{d} \left( f\circ \varphi ^{-1} \circ \varphi  \right)\left( X \right) = Xf  
+    $$其中第二个等号后的 $ \,\mathrm{d}  $既可以表示外微分,又可以表示函数微分,从而可以通过 $ \varphi ^{*} $  拉回为函数的微分 $ \,\mathrm{d} f $.
+    
+    为了说明唯一性,设 $ \,\mathrm{d}  $是任意满足上面四条性质的算子.首先需要说明 $ \,\mathrm{d}  \omega  $是被局部决定的：若 $  \omega _{1} $和 $  \omega _{2} $是在开集 $ U\subseteq M $上相等的微分形式,任取 $ p \in U $ ,设 $ \psi  $是 $ p $点的支撑在 $ U $的光滑bump函数,令 $ \eta  =  \omega _{1}- \omega _{2} $,则 $ \psi \eta  $通过补充 $ U $以外的定义为 $ 0 $,是恒为0的微分形式,从而 $ 0 = \,\mathrm{d} \psi \eta = \psi \,\mathrm{d} \eta +  \,\mathrm{d} \psi \wedge \eta  $ ,在 $ p $的附近,我们有 $ \psi  \equiv  1 $ ,且
+    $ d\psi \equiv 0 $,因此 $ \,\mathrm{d}  \omega _{1}|_{p}-\,\mathrm{d}  \omega _{2}|_{p}=0 $ .
+
+
+    现在任取 $  \omega  \in  \Omega ^{k}\left( M \right)  $,设 $ \left( U,\varphi  \right)  $是任意光滑坐标卡,则 $  \omega  $在 $ U $上可以写作 $ \sum _{I}^{\prime}  \omega _{I} \,\mathrm{d} x^{I} $,任取 $ p \in U $, 通过延拓 $  \omega _{I} $和 $ x^{I} $得到新的微分形式 $ \sum _{I}^{\prime}  \tilde{\omega}_{I} \,\mathrm{d}  \tilde{x}^{I} $,它在 $ p $的附近与 $  \omega  $相等.          
+    上面的四条性质和前文的讨论表明,$  \,\mathrm{d} \left( \sum _{I}^{\prime}  \tilde{\omega}_{I}\,\mathrm{d} \tilde{x}^{I} \right)  $在 $ p $的附近由 $  \omega _{I} $和 $\,\mathrm{d}  x^{I} $唯一确定,因此 $  \omega  $是被唯一决定了的.  
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}
+    若 $ A = \bigoplus _{k} A^{k}$ 是分次代数,线性映射 $ T: A\to A  $被称为是一个 $ m $次的映射,若 $ T\left( A^{k} \right)\subseteq A^{k+ m}  $   .它被称为是一个反导子,若它满足 $$
+    T\left( x,y \right)= \left( Tx \right)y+  \left( -1 \right)^{k}x\left( Ty \right)    ,\quad x\in A^{k},y \in A^{l}
+    $$
+\end{definition}
+\begin{remark}
+    上面的定理由此可以表述为：函数的微分可以唯一地延拓到 $  \Omega ^{*}\left( M \right)  $上次数为 $ + 1 $ 且平方为0的反导子. 
+\end{remark}
+
+\begin{proposition}{内部乘法的反导子性}
+    设 $ M $是光滑流形, $ X \in \mathfrak{X}\left( M \right)  $.内部乘法 $ i_{X}:  \Omega^{*}\left( M \right)\to  \Omega ^{*}\left( M \right)   $是次数为 $ -1 $  且平方为 $ 0 $的反导子. 
+\end{proposition}
+\begin{proof}
+    次数为 $ -1 $和平方为 $ 0 $ 是显然的,接下来考虑反导子性.
+    由引理\ref{Int-Multy-lemma}得到反导子性.
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}{外微分与拉回的交换性}
+设 $ F:M\to N $是光滑映射,对于每个 $ k $,拉回映射 $ F^{*}:  \Omega ^{k}\left( N \right)\to  \Omega ^{k}\left( M \right)   $   与 $ \,\mathrm{d}  $交换：$$
+F^{*}\left( \,\mathrm{d}  \omega  \right) = \,\mathrm{d} \left( F^{*} \omega  \right),\quad      \omega  \in  \Omega ^{k}\left( N \right)  
+$$ 
+\end{proposition}
+
+\begin{proof}
+    分别任取 $ M $和 $ N $的光滑坐标卡 $ \left( U,\varphi  \right)  $和 $ \left( V,\psi  \right)  $,在 $ U\cap F^{-1} \left( V \right)  $上
+    $$
+    \begin{aligned}
+    F^{*}\left(\,\mathrm{d}  \omega  \right)& = F^{*}\psi ^{*} \,\mathrm{d} \left( \psi ^{-1*} \omega  \right)   \\ 
+     & = \varphi ^{*}\circ \left( \psi \circ F\circ \varphi ^{-1}  \right)^{*} \,\mathrm{d} \left( \psi ^{-1*} \omega  \right)  \\ 
+      & = \varphi ^{*} \,\mathrm{d} \left(  \omega \circ \psi ^{-1} \circ \psi \circ F\circ \varphi ^{-1}  \right) \\ 
+       & = \varphi ^{*}\,\mathrm{d} \left( \varphi ^{-1*}F^{*} \omega  \right)\\ 
+        & = \,\mathrm{d} \left( F^{*} \omega  \right)  
+    \end{aligned}
+    $$     
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}
+    称光滑微分形式 $  \omega  \in  \Omega ^{k}\left( M \right)  $是闭的,若 $ \,\mathrm{d}  \omega =0 $.称它是恰当的,若存在 $ \left( k-1 \right)  $形式 $ \eta  $,使得 $  \omega  = \,\mathrm{d} \eta  $.            
+\end{definition}
+
+\end{document}

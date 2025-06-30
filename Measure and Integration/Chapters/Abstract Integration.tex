@@ -1,0 +1,213 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{ Abstract Integration }
+
+\section{The Concept of Measurbility}
+
+\begin{definition}{}{}
+    \begin{enumerate}
+        \item A collection \(  \mathfrak{M}  \) of subsets of a set \(  X  \) is said to be a \dfntxt{\(   \sigma   \)-algebra} in \(  X  \) if \(  \mathfrak{M}  \) has the following properties: \begin{enumerate}
+            \item \(  X \in \mathfrak{M}  \). 
+            \item If \(  A \in \mathfrak{M}  \)  , then \(  A^{c} \in  \mathfrak{M}  \).
+            \item If \(  A =  \bigcup _{n = 1}^{\infty} A_{n}  \) and \(  A_{n} \in  \mathfrak{M}  \) for \(  n = 1,2,3,\cdots   \) , then \(  A \in \mathfrak{M}  \).      
+        \end{enumerate}
+        \item If \(  \mathfrak{M}  \) is a \(   \sigma   \)-algebra in \(  X  \), then \(  X  \) is called a \dfntxt{measurable} provided that \(  f^{-1} \left( V \right)   \) is measurable set in \(  X  \) for every open set \(  V  \) in \(  Y  \).         
+        \item If \(  X  \) is a measurable space, \(  Y  \) is a topological space, and \(  f   \) is a mapping of \(  X  \) into Y, then \(  f  \) is said to be \dfntxt{measurable} provided that \(  f^{-1} \left( V \right)   \) is a measurable set in \(  X  \) for every open set \(  V  \) in \(  Y  \).          
+             
+    \end{enumerate}
+    
+\end{definition}
+
+\begin{note}
+    对比topological space的定义, \(   \sigma   \)-algebra 的定义是对称的, 即可测集的补集仍是可测的, 而对于拓扑空间, 开集的补集不是开集, 而是被定义为了闭集这样的对象.
+\end{note}
+
+\begin{lemma}{}{}
+    \begin{enumerate}
+        \item Let  \(  X  \) be a measurable space , \(  Y ,Z  \) be topological spaces. If \(  f:X\to Y  \) is measurable , and if  \(  g:Y\to Z  \) is continuous, then     \(  g\circ f :X\to Z  \) is measurable. 
+        \item Let \(  u,v  \) be real measurable functions on a measurable space \(  X  \), let \(  \Phi   \) be a continuous mapping of the plane into a topological space \(  Y  \), and define \[
+        h\left( x \right)=  \Phi \left( u\left( x \right),v\left( x \right)   \right)  
+        \]for  \(  x \in X  \). Then  \(  h: X\to Y  \) is measurable.       
+    \end{enumerate}
+    
+\end{lemma}
+\begin{corollary}{}{}
+    Let \(  X  \) be a measurable space. The following propositions hold
+    \begin{enumerate}
+        \item If \(  f =  u+ iv  \), where \(  u  \) and \(  v   \) are real measurable functions on \(  X  \), then \(  f   \) is a  complex measurable function on \(  X  \). 
+        \item If \(  f= u+ iv  \) is a complex measurable function on \(  X  \), then \(  u,v  \), and \(  \left| f \right|   \) are real measurable functions on \(  X  \). 
+        \item If \(  f  \) and \(  g  \) are complex measurable functions on \(  X  \), then so are \(  f+ g  \) and \(  fg  \).
+        \item If \(  E  \) is a measurable set in \(  X  \) and if \[
+        \chi _{E}\left( x \right)= \begin{cases} 1& x\in E\\ 
+         0&x\not\in  E \end{cases}  
+        \] then \(  \chi _{E}  \) is a measurable function.
+        \item If \(  f  \) is a complex measurable function on \(  X  \) , there is a complex measurable function \(  \alpha   \) on \(  X  \) such that \(  \left| \alpha  \right|=  1   \)                         and \(  f= \alpha \left| f \right|   \) .  
+    \end{enumerate}
+     
+    
+\end{corollary}
+
+\begin{theorem}{}{}
+    If \(  \mathscr{F}  \) is any collection of  subsets of \(  X  \) , there exists a smallest \(   \sigma   \)-algebra \(  \mathfrak{M}^{*}  \) such that \(  \mathscr{F}\subseteq  \mathfrak{M}^{*}  \).     
+\end{theorem}
+
+\begin{definition}{Borel}{}
+    Let \(  X  \) be a topological space. 
+    \begin{enumerate}
+        \item By \dfntxt{Borel \(   \sigma   \)-algebra} , we mean the smallest \(   \sigma   \)-algebra \(  \mathscr{B}  \) in \(  X  \) such that every open set in \(  X  \) belongs to \(  \mathscr{B}  \).   The members of \(  \mathscr{B}  \) are called the \dfntxt{Borel sets} of \(  X  \).  
+        \item All countable unions of closed sets and all countable intersections of open sets are Borel sets, which we called \dfntxt{\(  F_{ \sigma } \)'s  and \(  G_{ \delta }  \)'s}, respectively. 
+        \item By a \dfntxt{Borel function}, we mean a measurable function on the measurable space \(  \left( X,\mathscr{B} \right)   \) .
+    \end{enumerate}
+         
+\end{definition}
+\begin{remark}
+   \begin{enumerate}
+    \item  The letters \(  F  \) and \(  G  \) were used for colsed and opensets,respectively, and \(   \sigma   \) refers to union, \(   \delta   \) to intersection. 
+    \item A continuous function is Borel-measurable, since the preimage of any open set is open and therefore a Borel set.
+   \end{enumerate}
+      
+\end{remark}
+
+\begin{theorem}{}{}
+    Suppose \(  \mathfrak{M}  \) is a \(   \sigma   \)-algbera in \(  X  \) ,and \(  Y  \) is a topological space. Let \(  f   \) map \(  X  \) into \(  Y  \).
+    \begin{enumerate}
+        \item If \(   \Omega   \) is the collection of all sets \(  E\subseteq Y  \) such that \(  f^{-1} \left( E \right)\in  \mathfrak{M}   \), then \(   \Omega   \) is a \(   \sigma   \)- algebra in \(  Y  \). 
+        \item If \(  f  \) is measurable and \(  E  \) is a Borel set in \(  Y  \) , then \(  f^{-1} \left( E \right) \subseteq \mathfrak{M}   \). 
+        \item If \(  Y= [-\infty,\infty]  \) and \(  f^{-1} \left( (\alpha ,\infty] \right)\subseteq  \mathfrak{M}   \) for every real \(  \alpha   \), then \(  f   \)  is measurable . 
+        \item If \(  f  \) is measurable, if \(  Z  \) is topological space, if \(  g:Y\to Z  \) is a Borel mapping, and if \(  h= g\circ f  \), then \(  h:X\to Z  \) is measurable.                   
+    \end{enumerate}
+           
+\end{theorem}
+
+
+\begin{theorem}{}{}
+    If \(  f_{n}:X\to [-\infty,\infty]  \) is measurable,for \(  \neq 1,2,3,\cdots   \) , and \[
+    g =  \sup _{n\ge 1}f_{n},\quad h= \lim_{n\to \infty}\sup f_{n},
+    \] then \(  g  \) and \(  h  \) are measurable.    
+\end{theorem}
+
+\begin{corollary}{}{}
+    \begin{enumerate}
+        \item The limit of every pointwise convergent sequence of complex measurable functions is measurable.
+        \item If \(  f  \) and \(  g  \) are measurable(with range in \(  [-\infty,\infty]  \) ), then so are \(  \max \left\{ f,g \right\}  \) and \(  \min \left\{ f,g \right\}  \). In particular , this is true of the functions \[
+        f^{+ }= \max \left\{ f,0 \right\},\quad f^{-}= -\min \left\{ f,0 \right\}.
+        \]    which are called the \dfntxt{positive part} and \dfntxt{negative part} of \(  f  \) , respectively. 
+    \end{enumerate}
+    
+\end{corollary}
+\begin{remark}
+   \begin{enumerate}
+    \item  There are the standrd representation \[
+    \left| f \right|= f^{+ }+ f^{-},\quad  f= f^{+ }-f^{-} 
+    \]
+    \item And easy but (may) useful observation is : If \(  f= g-h, g \ge 0, h \ge 0  \), then \(  f^{+ }\le g  \) and \(  f^{-} \le h  \).   
+   \end{enumerate}
+   
+\end{remark}
+
+\section{Simple Functions}
+
+\begin{definition}{}{}
+    A complex function \(  s  \) on a measurable space \(  X  \) whose range consists of only finitely many points will be called a \dfntxt{simple function}. Among these are the nonnegative simple functions, whose range is a finite subset of \(  [0,\infty)  \).    
+
+   Specifically, if \(   \alpha_1,\cdots,\alpha_n   \) are distinct values of a simple function \(  s  \), and if we set \(  A_{i}= \left\{ x:s\left( x \right)= \alpha _{i}  \right\}  \) , then clearly \[
+    s= \sum _{i= 1}^{n}\alpha _{i}\chi _{A_{i}}.
+    \]Where \(  \chi _{A_{i}}  \) is the characteristic function of \(  A_{i}  \).      
+\end{definition}
+\begin{remark}
+  \begin{itemize}
+    \item   Here, we explicity exclude \(  \infty  \) from the values of a simple function. 
+    \item It is clear that \(  s  \) is mearuable if and only if each of the sets \(  A_{i}  \) is measurable.  
+  \end{itemize}
+  
+\end{remark}
+
+\begin{theorem}{}{}
+    Let \(  f: X\to [0,\infty]  \) be measurable space. There exists simple measurable functions \(  s_{n}  \) on \(  X  \) such that 
+    \begin{enumerate}
+        \item \(  0\le s_1\le s_2\le \cdots \le f  \). 
+        \item \(  s_{n}\left( x \right)\to f\left( x \right)    \) as \(  n\to \infty  \) , for every \(  x \in X  \).     
+    \end{enumerate}
+       
+\end{theorem}
+
+\begin{proofsketch}
+    We construst a sequence of Borel  simple functions \( \left\{  \varphi _{n}\left( x \right) \right\}    \) to act as an \dfntxt{identify}. 当 \(  n  \) 增大的同时, 我们同时让 \(   \varphi _{n}\left( x \right)   \)的单位逼近精度和单位逼近范围随着 \(  n  \)提升.并且在舍弃误差时,总是向下取整,使得该单位逼近是自下而上的.   
+\end{proofsketch}
+
+\begin{proof}
+    For every \(  x \in [0,\infty]  \), and for every \(  n\in \mathbb{N}   \), there exists a unique integer \(  k_{n}\left( x \right)   \), such that  \[
+    k_{n}\left( x \right)2^{-n}\le x<  \left( k_{n}\left( x \right)+ 1  \right)2^{-n}  
+    \]For every \(  n\in \mathbb{N}   \), we define
+    \[
+     \varphi _{n}\left( x \right)= \begin{cases}  k_{n}\left( x \right) 2^{-n},  &0\le x\le n\\ 
+      n,& x\ge n\end{cases}  
+    \]Each \(   \varphi _{n}\left( x \right)   \) is then a Borel simple function. It is not hard to show that \(  0\le  \varphi _1 \le  \varphi _2 \cdots \le \cdots  \le  \operatorname{Id}\). For each \(  n   \), we define \[
+    s_{n}\left( x \right): = \left(  \varphi _{n}\circ f \right)\left( x \right)   
+    \]   Then \( \left\{  s_{n}   \right\} \) is a suquence of simple measurable functions such that \(  0\le s_1\le s_2\le \cdots \le f  \) .  Since \(  \lim_{n\to \infty} \varphi _{n}\left( x \right)= x   \), then  \(  \lim_{n\to \infty}s_{n}\left( x \right)= f\left( x \right)    \).  
+\end{proof}
+
+\section{Measure}
+\begin{definition}{Measure and Measure Space}{}
+ \begin{enumerate}
+    \item[(a)] A \dfntxt{positive measure} is a function $\mu$, defined on a $\sigma$-algebra $\mathfrak{M}$, whose range is in $[0, \infty]$ and which is \dfntxt{countably additive}. This means that if $\{A_i\}$ is a disjoint countable collection of members of $\mathfrak{M}$, then
+    \[ \mu\left(\bigcup_{i=1}^{\infty} A_{i}\right)=\sum_{i=1}^{\infty} \mu\left(A_{i}\right). \]
+    To avoid trivialities, we shall also assume that $\mu(A) < \infty$ for at least one $A \in \mathfrak{M}$.
+    \item[(b)] A \dfntxt{measure space} is a measurable space which has a positive measure defined on the $\sigma$-algebra of its measurable sets.
+    \item[(c)] A \dfntxt{complex measure} is a complex-valued countably additive function defined on a $\sigma$-algebra.
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}{}{6-27-1}
+     Let $\mu$ be a positive measure on a $\sigma$-algebra $\mathfrak{M}$. Then
+\begin{enumerate}
+    \item $\mu(\emptyset) = 0.$
+    \item $\mu(A_1 \cup \dots \cup A_n) = \mu(A_1) + \dots + \mu(A_n)$ if $A_1, \dots, A_n$ are pairwise disjoint members of $\mathfrak{M}$.
+    \item $A \subset B$ implies $\mu(A) \le \mu(B)$ if $A \in \mathfrak{M}, B \in \mathfrak{M}$.
+    \item $\mu(A_n) \to \mu(A)$ as $n \to \infty$ if $A = \bigcup_{n=1}^\infty A_n, A_n \in \mathfrak{M}$, and
+    \[ A_1 \subset A_2 \subset A_3 \subset \dots \]
+    \item $\mu(A_n) \to \mu(A)$ as $n \to \infty$ if $A = \bigcap_{n=1}^\infty A_n, A_n \in \mathfrak{M}$,
+    \[ A_1 \supset A_2 \supset A_3 \supset \dots, \]
+    and $\mu(A_1)$ is finite.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Take \(  A \in \mathfrak{M}   \) such that  \(  \mu \left( A \right)< \infty   \). \footnote{That is what we supposed at the definition of measure.}  And let \(  A_2= A_3= \cdots = \varnothing  \), then \(  \mu \left( \varnothing \right)> 0   \) leads to a contradition to the countably additive.  
+        \item Take \(  A_{n+ 1}= A_{n+ 2}= \cdots = \varnothing  \).
+        \item Note that \(  B=\left( B\setminus A \right) \cup A  \), then   by additivity \[
+        \mu \left( B \right)= \mu \left( A \right)+ \mu \left( B\setminus A \right)\ge \mu \left( A \right)    
+        \] 
+        \item Let \(  A_0= \varnothing  \), and let \(  B_{n}=  A_{n}\setminus A_{n-1}  \) for all  \(  n\in \mathbb{N}   \). Then \(  B_1,\cdots ,B_{n}  \) are pairwise disjoint members of \(  \mathfrak{M}  \) such that \(  A=  \bigcup _{n = 1}^{\infty}B_{n}  \)  . We have \[
+        \mu \left( A \right)=  \sum _{n = 1}^{\infty}\mu \left( B_{n} \right)= \sum _{n = 1}^{\infty}\mu \left( A_{n}\setminus A_{n-1} \right)   
+        \]    If one of the \(  \mu \left( A_{n} \right)   \) is \(  \infty  \), then \(  \lim_{n\to \infty}\mu \left( A_{n} \right)   \) and \(  \mu \left( A \right)   \) both are \(  \infty  \) . Otherwise, we have \[
+        \mu \left( A_{n}\setminus A_{n-1} \right)= \mu \left( A_{n} \right)-\mu \left( A_{n-1} \right),\quad \forall n   \mathbb{N} 
+        \] Thus \[
+      \mu \left( A \right)=    \sum _{n = 1}^{\infty}\mu \left( A_{n}\setminus A_{n-1} \right)= \lim_{n\to \infty}\mu \left( A_{n} \right)  
+        \]
+        \item Let \(  B_{n}=  A_{n}\setminus A_{n+ 1}  \) for all \( n \in \mathbb{N}    \).   \(  B_1,\cdots ,B_{n}  \) are pariwise disjoint members of \(  \mathfrak{M}  \) with finite measure, such that\[
+        A_1\setminus A= A_1\setminus \left( \bigcap_{n = 1}^{\infty}A_{n}  \right) = \bigcup _{n = 1}^{\infty}\left( A_1\setminus A_{n} \right)= \bigcup _{n = 1}^{\infty}\left( \bigcup _{k = 1}^{n}B_{k} \right) = \bigcup _{n = 1}^{\infty}B_{n}
+        \] . We have \[
+       \mu  \left( A_1\setminus A \right)=  \mu \left( \bigcup _{n = 1}^{\infty}B_{n} \right) , 
+        \]   where the RHS is \(  \mu \left( A_1 \right)-\mu \left( A \right)    \) , and the LHS is \[
+        \sum _{n = 1}^{\infty}\left( \mu \left( A_{n} \right)-\mu \left( A_{n+ 1} \right)   \right)= \mu \left( A_1 \right)-\lim_{n\to \infty}\mu \left( A_{n+ 1} \right)    
+        \]Since \(  \mu \left( A_1 \right)< \infty   \), we have \[
+        \mu \left( A \right)= \lim_{n\to \infty}\mu \left( A_{n} \right)  
+        \] 
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{example}{}{}
+    \begin{enumerate}
+\item For any $E \subset X$, where $X$ is any set, define $\mu(E) = \infty$ if $E$ is an infinite set, and let $\mu(E)$ be the number of points in $E$ if $E$ is finite. This $\mu$ is called the \dfntxt{counting measure} on $X$.
+\item Fix $x_0 \in X$, define $\mu(E) = 1$ if $x_0 \in E$ and $\mu(E) = 0$ if $x_0 \notin E$, for any $E \subset X$. This $\mu$ may be called the \dfntxt{unit mass concentrated at $x_0$}.
+\item Let $\mu$ be the counting measure on the set $\{1, 2, 3, \dots\}$, let $A_n = \{n, n + 1, n + 2, \dots\}$. Then $\bigcap A_n = \emptyset$ but $\mu(A_n) = \infty$ for $n = 1, 2, 3, \dots$. This shows that the hypothesis
+\[ \mu(A_1) < \infty \]
+is not superfluous in Theorem \ref{thm:6-27-1}(5).
+\end{enumerate}
+\end{example}
+\end{document}

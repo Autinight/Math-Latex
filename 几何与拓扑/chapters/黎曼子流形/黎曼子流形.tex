@@ -1,0 +1,816 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+    
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+
+
+\chapter{Riemann子流形}
+
+在本章中,都假设 \(  \left( \tilde{M},\tilde{g}  \right)   \)是 \(  m  \)维（伪）Riemann流形,\(  \left( M,g \right)   \)是 \(  \tilde{M}  \)的 \(  n  \)维嵌入子流形,记与 \(  \left( M,g \right)   \)有关的协变导数和曲率量为 \(  \left(  \nabla ,R,Rm, \text{etc}. \right)   \), \(  \left( \tilde{M}, \tilde{g}  \right)   \)的相关量相应地记作 \(  \left(  \tilde{\nabla} ,\tilde{R}, \widetilde{Rm}, \text{etc.} \right)   \).可以不严格地用 \(  \left<v,w \right>  \)   同时表示关于 \(  g  \)和 \(  \tilde{g}   \)的度量配对.  
+
+
+\section{第二基本形式}
+
+类似于 \ref{sse-Riemann子流形}中的操作,在 \(  M  \)适配于 \(  \tilde{M}  \)  的一组正交标架 \(  \left(  E_1,\cdots,E_m  \right)   \)下, 定义称为是\textbf{切投影}和\textbf{法投影}的正交投影: \[
+\begin{aligned}
+    \pi ^{\top}&: T \tilde{M}|_{M}\to TM,\\ 
+     \pi ^{\perp}&: T \tilde{M}|_{M}\to NM.  
+\end{aligned}
+\]为 \(  \left(  E_1,\cdots,E_m  \right)   \)向 \(  \mathrm{span} \left(  E_1,\cdots,E_n  \right)   \)和 \(  \mathrm{span}\left( E_{n+ 1},\cdots ,E_{m} \right)   \)的通常投影.它们都是光滑丛同态\footnote{在每个纤维上线性,且将光滑截面映到光滑截面}.若 \(  X  \)是 \(  T \tilde{M}|_{M}  \)   的一个截面,通常简记 \(  X^{\top}=  \pi ^{\top}X  \), \(  X^{\perp}= \pi ^{\perp}X  \)分别为\(  X  \)的切投影和法投影. 
+
+若 \(  X,Y  \)是 \(  \mathfrak{X}\left( M \right)   \)上的光滑向量场,可以将它们延拓到 \(  \tilde{M}  \)的一个开子集上(也记作X和Y),作用氛围协变导数 \(   \tilde{\nabla} \)后在 \(  M  \)上的点分解,得到 \[
+ \tilde{\nabla} _{X}Y= \left(  \tilde{\nabla} _{X}Y \right)^{\top}+ \left(  \tilde{\nabla} _{X}Y \right)^{\perp}  
+\]     
+
+\begin{definition}{第二基本形式}
+    定义\textbf{\(  M  \)的第二基本形式 }为映射 \(  \operatorname{II}: \mathfrak{X}\left( M \right)\times \mathfrak{X}\left( M \right)\to  \Gamma \left( NM \right)     \)  \[
+    \operatorname{II}\left( X,Y \right)= \left(  \tilde{\nabla} _{X}Y \right)^{\perp},  
+    \]其中 \(  X,Y  \) 被延拓到了 \(  \tilde{M}  \)的任意开子集上.  
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item 由于 \(  \pi ^{\perp}  \)映光滑截面为光滑截面,\(  \operatorname{II}\left( X,Y \right)   \)是 \(  NM  \)上的一个光滑截面.   
+        \item 这个定义还不完整,它的良定义性在下面的命题中指出.
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{proposition}{第二基本形式的性质} 
+    设 \(  \left( M,g \right)   \)是 \(  \left( \tilde{M},\tilde{g}  \right)   \)的嵌入(伪)Riemann子流形,\(  X,Y\in \mathfrak{X}\left( M \right)   \).
+    \begin{enumerate}
+        \item \(  \operatorname{II}\left( X,Y \right)   \)与 \(  X,Y  \)延拓到 \(  \tilde{M}  \)中开子集的方式无关.
+        \item \(  \operatorname{II}\left( X,Y \right)   \)在 \(  C^{\infty}\left( M \right)   \)关于 \(  X  \)和 \(  Y  \)是双线性的.
+        \item \(  \operatorname{II}\left( X,Y \right)   \)是关于 \(  X  \)和 \(  Y  \)对称的.\footnote{命题中这些性质对于 \(  X  \)来说都是天然的.由于对称性, \(  Y  \)也具有 \(  X  \)拥有的一切性质.  }
+        \item \label{enum-1-4}\(  \operatorname{II}\left( X,Y \right)   \)在一点 \(  p \in M  \)处的取值仅依赖于 \(  X_{p}  \)和 \(  Y_{p}  \).     
+    \end{enumerate}
+       
+    
+\end{proposition}
+
+
+\begin{proof}
+    取 \(  X,Y  \)到 \(  M  \)在 \(  \tilde{M}  \)上的邻域上的一个延拓.先说明 \(  \operatorname{II}\left( X,Y \right)   \)是对称的.  由联络 \(   \tilde{\nabla}   \)的对称性,   \[
+    \operatorname{II}\left( X,Y \right)-\operatorname{II}\left( Y,X \right)= \left(  \tilde{\nabla} _{X}Y- \tilde{\nabla} _{Y}X \right)^{\perp}= \left[ X,Y \right]^{\perp}    
+    \] 由于 \(  X,Y  \)都与 \(  M  \)相切,故 \(  \left[ X,Y \right]   \)亦然,从而 \(  \left[ X,Y \right]^{\perp}= 0   \).这就说明, \(  \operatorname{II}  \)的对称性.
+  \(   \tilde{\nabla} _{X}Y|_{p}  \)关于 \(  X  \)仅依赖与 \(  X_{p}  \)处的取值,关于 \(  X  \)是 \(  C^{\infty}\left( M \right)   \)-线性的,与 \(  X  \)在 \(  \tilde{M}  \)中的延拓方式无关,故 \(  \operatorname{II}\left( X,Y \right)   \)关于 \(  X  \)也满足这些性质.由于对称性,\(  \operatorname{II}\left( X,Y \right)   \)关于 \(  Y  \)由满足这些性质.           
+    \hfill $\square$
+\end{proof}
+    
+\begin{definition}
+    对于任意的 \(  p \in M  \), \(  v,w \in T_{p}M  \),定义 \(  \operatorname{II}\left( v,w \right)   \)为 \(  \operatorname{II}\left( V,W \right)   \)在 \(  p  \)处的取值,其中 \(  V,W  \)是 \(  M  \)上满足 \(  V_{p}= v,W_{p}= W  \)的任意向量场.        
+\end{definition}
+\begin{remark}
+    由上述第二基本形式的性质\ref{enum-1-4}可得
+\end{remark}
+
+
+\begin{theorem}{Gauss公式}
+    设 \(  \left( M,g \right)   \)是 (伪)Riemann流形 \(  \left( \tilde{M},\tilde{g}  \right)   \)的嵌入Riemann子流形.若 \(  X,Y  \in \mathfrak{X}\left( M \right) \)被延拓到定义在 \(  M  \)于 \(  \tilde{M}  \)中邻域上的任意光滑向量场,则由以下公式沿着 \(  M  \)成立: \[
+     \tilde{\nabla} _{X}Y=  \nabla _{X}Y+ \operatorname{II}\left( X,Y \right) 
+    \]      
+\end{theorem}
+
+\begin{note}
+    由联络的正交分解和第二基本形式的定义,只需要证明 \(  \left(  \tilde{\nabla} _{X}Y \right)^{\top}=  \nabla _{X}Y   \).再由Levi-Civita联络的唯一性,只需要证明 \(  \left(  \tilde{\nabla} _{X}Y \right)^{\top}   \)给出 \(  M  \)上良定义的对称度量联络.    
+
+\end{note}
+
+\begin{corollary}{沿曲线的Gauss公式}
+    设 \(  \left( M,g \right)   \)是(伪)Riemann流形 \(  \left( \tilde{M}, \tilde{g}  \right)   \)的嵌入Riemann子流形,\(   \gamma :I\to M  \)是光滑曲线.若 \(  X  \)是沿 \(   \gamma   \)处处相切于 \(  M  \)的光滑向量场,则 \[
+    \tilde{D}_{t}X= D_{t}X+ \operatorname{II}\left(  \gamma ^{\prime} ,X \right) 
+    \]      
+\end{corollary}
+
+\begin{proof}
+    任取 \(  t_0 \in I  \),我们可以找到 \(   \gamma \left( t_0 \right)   \)附近的适配正交标架 \(  \left(  E_1,\cdots,E_m  \right)   \).   将 \(  X\left( t \right)   \)展开为 \(  X\left( t \right)= \sum _{i= 1}^{n}X^{i}\left( t \right)E_{i}\left( t \right)|_{ \gamma \left( t \right) }     \)  利用Lebniz律,Gauss公式和 \(  E_{i}  \)的可扩张性,得到 \[
+    \begin{aligned}
+    \tilde{D}_{t}X& =  \sum _{i= 1}^{n}\left( \dot{X}^{i}E_{i}+ X^{i} \tilde{\nabla} _{ \gamma ^{\prime} }E_{i} \right)  \\ 
+     & = \sum _{i= 1}^{n}\left( \dot{X}^{i}E_{i}+ X^{i} \nabla _{ \gamma ^{\prime} }E_{i}+ X^{i}\operatorname{II}\left(  \gamma ^{\prime} ,E_{i} \right)  \right)\\ 
+       & = D_{t}X+ \operatorname{II}\left(  \gamma ^{\prime} ,X \right)  
+    \end{aligned}
+    \] 
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{Weingarten映射}
+    对于任意法向量场 \(  N \in  \Gamma \left( NM \right)   \),可以按以下方式得到一个标量值的对称双线性形式 \(  \operatorname{II}_{N}: \mathfrak{X}\left( M \right)\times \mathfrak{X}\left( M \right)\to C^{\infty}\left( M \right)     \) \[
+    \operatorname{II}_{N}\left( X,Y \right)= \left<N,\operatorname{II}\left( X,Y \right)  \right> 
+    \]令 \(  W_{N}: \mathfrak{X}\left( M \right)\to \mathfrak{X}\left( M \right)    \)   表示上面的对称双线性型对应的自伴随线性映射 ,它由以下刻画 \[
+    \left<W_{N}\left( X \right),Y  \right>= \operatorname{II}_{N}\left( X,Y \right)= \left<N,\operatorname{II}\left( X,Y \right)  \right> 
+    \]则映射 \(  W_{N}  \)称为 \textbf{\(  N  \)方向的Weingarten映射 }.由于第二基本形式是 \(  C^{\infty}\left( M \right)   \)-双线性的,故 \(  W_{N}  \)是 \(  C^{\infty}\left( M \right)   \)-线性的,从而给出 \(  TM  \)到自身的一个光滑丛同态.     
+\end{definition}
+
+
+\begin{proposition}{Weingarten方程}
+    设 \(  \left( M,g \right)   \)是(伪)Riemann子流形 \(  \left( \tilde{M}, \tilde{g}  \right)   \)的嵌入Riemann子流形.对于每个 \(  X \in \mathfrak{X}\left( M \right)   \)和 \(  N \in  \Gamma \left( NM \right)   \),以下方程成立: \[
+    \left(  \tilde{\nabla} _{X}N \right)^{\top}= -W_{N}\left( X \right)  
+    \]  其中 \(  N  \)被延拓到 \(  \tilde{M}  \)的任意开子集上.    
+\end{proposition}
+\begin{remark}
+    可以说,法向量能代替 氛围联络的法向信息(第二基本形式).
+\end{remark}
+
+\begin{proof}
+    在 \(  M  \)的点上,协变导数 \(   \tilde{\nabla} _{X}N  \)无关于  \(  X  \)和 \(  N  \)延拓的方式\footnote{仅由求导方向的曲线像的取值所决定\ref{pro:3.16-1}  }  .任取 \(  Y \in \mathfrak{X}\left( M \right)   \),将它扩张到 \(  \tilde{M}  \)上的一个开子集.由于 \(  \left<N,Y \right>  \)沿着 \(  M  \)恒等于零,且 \(  X  \)相切于 \(  M  \),下面的计算对于 \(  M  \)上的所有点成立: \[
+    \begin{aligned}
+    0& =  X\left<N,Y \right>\\ 
+     & = \left< \tilde{\nabla} _{X}N,Y \right>+ \left<N, \tilde{\nabla} _{X}Y \right>\\ 
+      & = \left< \tilde{\nabla} _{X}N,Y \right>+ \left<N,  \nabla _{X}Y+ \operatorname{II}\left( X,Y \right)  \right>\\ 
+       & = \left< \tilde{\nabla} _{X}N,Y \right>+ \left<N,\operatorname{II}\left( X,Y \right)  \right>\\
+       & = \left< \tilde{\nabla} _{X}N,Y \right>+  \left<W_{N}\left( X \right),Y  \right>\\ 
+        & = \left< \tilde{\nabla} _{X}N+ W_{N}\left( X \right),Y  \right>
+    \end{aligned}
+    \]       由于 \(  Y  \)可以被选为任意于 \(  M  \)相切的向量场,我们有 \[
+    0= \left< \tilde{\nabla} _{X}N+ W_{N}\left( X \right)  \right>^{\top}= \left(  \tilde{\nabla} _{X}N \right)^{\top}+ W_{N}\left( X \right)  
+    \]  
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{theorem}{Gauss方程}
+    设 \(  \left( M,g \right)   \)是(伪)Riemann流形 \(  \left( \tilde{M}, \tilde{g}  \right)   \)的嵌入Riemann子流形.对于所有的 \(  W,X,Y,Z \in \mathfrak{X}\left( M \right)   \),以下方程成立: \[
+    \widetilde{Rm}\left( W,X,Y,Z \right)=  Rm\left( W,X,Y,Z \right)- \left<\operatorname{II}\left( W,Z \right),\operatorname{II}\left( X,Y \right)   \right>+ \left<\operatorname{II}\left( W,Y \right),\operatorname{II}\left( X,Z \right)   \right>  
+    \]   
+\end{theorem}
+
+\begin{proof}
+    将 \(  W,X,Y,Z  \)延拓到 \(  \tilde{M}  \)的任意开子集上,按定义展开 \(  \widetilde{Rm}  \) ,并由Gauss公式,沿着 \(  M  \)有以下成立 \[
+    \begin{aligned}
+    \widetilde{Rm}\left( W,X,Y,Z \right)&= \left< \tilde{\nabla} _{W} \tilde{\nabla} _{X}Y- \tilde{\nabla} _{X} \tilde{\nabla} _{W}Y- \tilde{\nabla} _{\left[ W,X \right] }Y,Z \right>  \\ 
+     & = \left< \tilde{\nabla} _{W}\left(  \nabla _{X}Y+ \operatorname{II} \left( X,Y \right)  \right),Z  \right>- \left< \tilde{\nabla} _{X}\left(  \nabla _{W}Y+ \operatorname{II} \left( W,Y \right)  \right),Z  \right>\\ 
+    &\quad    -\left< \tilde{\nabla} _{\left[ W,X \right] }Y,Z \right>
+    \end{aligned}
+    \]    对所有 \( \tilde{\nabla} _{\cdot }  \operatorname{II} \left( \cdot ,\cdot  \right)   \)的项应用Weingarten方程, 比如 \[
+    \left< \tilde{\nabla} _{W}\operatorname{II} \left( X,Y \right),Z  \right>= - \left<\operatorname{II} \left( W,Z \right),\operatorname{II} \left( X,Y \right)   \right>
+    \]得到 \[
+  \begin{aligned}
+   \widetilde{Rm}\left( W,X,Y,Z \right)&= \left< \tilde{\nabla} _{W} \nabla _{X}Y- \tilde{\nabla} _{X} \nabla _{W}Y- \tilde{\nabla} _{\left[ W,X \right] } Y,Z\right> \\ 
+     &\quad - \left<\operatorname{II} \left( W,Z \right),\operatorname{II} \left( X,Y \right)   \right>+ \left<\operatorname{II} \left( X,Z \right),\operatorname{II} \left( W,Y \right)   \right>
+  \end{aligned}
+    \]将每个 \(   \tilde{\nabla}   \)按切向和法向分解,由于 \(  Z   \)是切向的,可以通过Gauss公式将 \(   \tilde{\nabla}   \)的 \(  \sim   \)去掉,得到 \[
+\begin{aligned}
+    \left< \tilde{\nabla} _{W} \nabla _{X}Y- \tilde{\nabla} _{X} \nabla _{W}Y- \tilde{\nabla} _{\left[ W,X \right] }Y,Z \right>&= \left< \nabla _{W} \nabla _{X}Y- \nabla _{X} \nabla _{W}Y- \nabla _{\left[ W,X \right] }Y,Z \right> \\ 
+     & =  Rm\left( W,X,Y,Z \right) 
+\end{aligned}
+    \]    故最终我们得到 \[
+    \widetilde{Rm}\left( W,X,Y,Z \right)= Rm\left( W,X,Y,Z \right)-\left<\operatorname{II} \left( W,Z \right),\operatorname{II} \left( X,Y \right)   \right>+ \left<\operatorname{II} \left( W,Y \right),\operatorname{II} \left( X,Z \right)   \right>  
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{法联络}
+    设 \(  \left( M,g \right)   \)是(伪)Riemann流形 \(  \left( \tilde{M},\tilde{g} \right)   \)的Riemann子流形.定义\textbf{法联络} \(   \nabla ^{\perp}: \mathfrak{X}\left( M \right)\times  \Gamma \left( NM \right)\to  \Gamma \left( NM \right)     \)为 \[
+     \nabla _{X}^{\perp}N= \left(  \tilde{\nabla} _{X}N \right)^{\perp} 
+    \]   其中 \(  N  \)被延拓成 \(  M  \)在 \(  \tilde{M}  \)的邻域上的一个光滑向量场.
+\end{definition}
+
+\begin{proposition}
+    设 \(  \left( M,g \right)   \)是(伪)Riemann流形 \(  \left( \tilde{M},\tilde{g} \right)   \)的一个嵌入Riemann子流形,则 \(   \nabla ^{\perp}  \)是 \(  NM  \)上良定义的联络,并且与 \(  \tilde{g}  \)相容: 对于任意两个 \(  NM  \)的截面 \(  N_1,N_2  \),以及每个 \(  X \in \mathfrak{X}\left( M \right)   \),我们有 \[
+    X\left<N_1,N_2 \right>= \left< \nabla _{X}^{\perp}N_1,N_2 \right>+ \left<N_1, \nabla _{X}^{\perp}N_2 \right>
+    \]        
+\end{proposition}
+
+\begin{definition}{对第二基本形式的协变导数}
+    令 \(  F\to M  \)是一个向量丛,它在每个 \(  p \in M  \)处的纤维为全体双线性映射 \(  T_{p}M\times T_{p}M\to N_{p}M  \).则 \(  F  \)是 \(  M  \)上的一个光滑向量丛. \(  F  \)的每个截面都对应到一个 \(  C^{\infty}\left( M \right)   \)-双线性的 光滑映射 \(  \mathfrak{X}\left( M \right)\times \mathfrak{X}\left( M \right)\to  \Gamma \left( NM \right)     \) \footnote{例如第二基本形式}.按以下方式定义 \(  F  \)上的联络 \(   \nabla ^{F}  \) \[
+    \left(  \nabla _{X}^{F}B \right)\left( X,Y \right)=  \nabla _{X}^{\top}\left( B\left( Y,Z \right)  \right)-B\left(  \nabla _{X}Y,Z \right)-B\left( Y, \nabla _{X}Z \right)     \footnote{回忆张量场上联络的计算公式}
+    \]   
+\end{definition}
+
+\begin{theorem}{Codazzi方程}
+    设 \(  \left( M,g \right)   \)是(伪)Riemann流形 \(  \left( \tilde{M},\tilde{g} \right)   \)的嵌入Riemann子流形.设 \(  X,Y,W \in \mathfrak{X}\left( M \right)   \)被延拓到 \(  M  \)的任意开邻域上,则 \[
+    \left( \widetilde{R}\left( W,X \right)Y  \right) ^{\perp}= \left(  \nabla _{W}^{F} \operatorname{II} \right)\left( X,Y \right)  -\left(  \nabla _{X}^{F}\operatorname{II}  \right)\left( W,Y \right)  
+    \]    
+\end{theorem}
+
+\begin{proof}
+    由于等式两边都是法向的,只需要证明对于任意的 \(  N \in  \Gamma \left( NM \right)   \), \[
+    \left<\widetilde{R}\left( W,X \right)Y,N  \right>^{\perp}= \left<\left(  \nabla _{W}^{F} \operatorname{II} \right)\left( X,Y \right),N   \right>-\left<\left(  \nabla _{X}^{F}\operatorname{II}  \right)\left( W,Y \right),N   \right>
+    \]  由Gauss公式,  \[
+   \begin{aligned}
+    \left<\tilde{R}\left( W,X \right)Y,N  \right>^{\perp}& = \left<  \tilde{\nabla} _{W}\left(  \nabla _{X}Y+ \operatorname{II} \left( X,Y \right)  \right),N  \right>^{\perp}\\ 
+     & -\left< \tilde{\nabla} _{X}\left(  \nabla _{W}Y+ \operatorname{II} \left( W,Y \right)  \right),N  \right>^{\perp}\\ 
+      & - \left< \tilde{\nabla} _{\left[ W,X \right] } Y,N\right> ^{\perp}
+   \end{aligned}
+    \]对右侧只保留法向部分展开,得到 \[
+   \begin{aligned}
+    \left<\tilde{R}\left( W,X \right)Y,N  \right>^{\perp}& = \left<\operatorname{II} \left( W,  \nabla _XY \right)+ \left(  \nabla _{W}^{F} \operatorname{II} \right)\left( X,Y \right)+\operatorname{II} \left(  \nabla _{W}X,Y \right)+ \operatorname{II} \left( X, \nabla _{W}Y \right)   ,N   \right> \\ 
+     & -\left<\operatorname{II} \left( X, \nabla _{W}Y \right)+ \left(  \nabla _{X}^{F}\operatorname{II}  \right)\left( W,Y \right) + \operatorname{II} \left(  \nabla _{X}W,Y \right)+ \operatorname{II} \left(  \nabla _{X}Y,W \right),N      \right>\\ 
+      &-\left<\operatorname{II} \left( \left[ W,X \right],Y  \right)  ,N\right>
+   \end{aligned}
+    \]两对含有 \(   \nabla _{X}Y  \)和 \(   \nabla _{W}Y  \)的项相消,额外的三项通过 \(   \nabla _{W}X+  \nabla _{X}W-\left[ W,X \right]= 0   \)相消,最终,得到 \[
+    \left<\tilde{R}\left( W,X \right)Y,N  \right>^{\perp}= \left<\left(  \nabla _{W}^{F}\operatorname{II}  \right)\left( X,Y \right)- \left(  \nabla _{X}^{F}\operatorname{II}  \right)\left( W,Y \right) ,N    \right>
+    \]   即为所需.
+    \hfill $\square$
+\end{proof}
+
+\section{曲线的曲率}
+
+\begin{definition}{测地曲率}
+    设 \(  \left( M,g \right)   \)是(伪)Riemann子流形, \(   \gamma :I\to M  \)是 \(  M  \)上的光滑单位速度曲线.定义 \(   \gamma   \)的(测地)曲率为加速度场的模长,即函数 \(   \kappa :I\to \mathbb{R}   \) \[
+     \kappa \left( t \right): =  \left| D_{t} \gamma ^{\prime} \left( t \right)  \right|.  \footnote{描述了曲线偏离测地线的程度.}
+    \]    
+    
+
+    对于一般的参数曲线,对 \(  M  \)分情况定义: 
+    \begin{enumerate}
+        \item  \(  M  \)是黎曼流形, 则任取 \(   \gamma   \)是 \(  M  \)上的任意正则曲线,可以找到 它的单位速度重参数化 \(   \tilde{\gamma} =  \gamma \circ  \varphi   \),我们定义 \(   \gamma   \)在 \(  t  \)处的(测地)曲率为 \(   \tilde{\gamma}   \)在 \(   \varphi ^{-1} \left( t \right)   \)处的(测地)曲率.       
+        \item 若 \(  M  \)是伪黎曼流形,需要限制 \(   \gamma   \)为使得 \(  \left|  \gamma ^{\prime} \left( t \right)  \right|   \)处处非零的曲线,做类似地定义.   
+    
+    \end{enumerate}
+    
+\end{definition}
+
+\begin{proposition}
+    单位速度曲线有退化的(测地)曲率,当且仅当它是测地线.
+\end{proposition}
+
+
+\begin{definition}
+    设 \(  \left( \tilde{M}, \tilde{g}  \right)   \)是(伪)Riemann流形, \(  \left( M,g \right)   \)是它的Riemann子流形.每个 \(   \gamma :I\to M  \)都有两种测地曲率.
+    \begin{enumerate}
+        \item \(   \gamma   \)视为 \(  M  \)上的光滑曲线时,它的测地曲率 \(   \kappa   \)称为\textbf{内蕴曲率};
+        \item \(   \gamma   \)视为 \(  \tilde{M}  \)上的光滑曲线时,它的测地曲率 \(   \tilde{\kappa}   \)称为\textbf{外蕴曲率}.      
+    \end{enumerate}
+       
+\end{definition}
+
+\begin{proposition}{\(  \operatorname{II}  \)的几何解释}
+    设 \(  \left( M,g \right)   \)是(伪)Riemann流形 \(  \left( \tilde{M},\tilde{g}  \right)   \)的嵌入 Riemann子流形, \(  p \in M  \),\(  v\in T_{p}M  \).    
+    \begin{enumerate}
+        \item \(  \operatorname{II}\left( v,v \right)   \)是 \(  g  \)-测地线 \(   \gamma _v   \)在 \(  p  \)处的 \(  \tilde{g}   \)-加速度.
+        \item 若 \(  v  \)是单位向量,则 \(  \left| \operatorname{II}\left( v,v \right)  \right|   \)是 \(   \gamma _v   \)在\(  p  \)处的 \(  \tilde{g}  \)-曲率.          
+    \end{enumerate}
+    
+\end{proposition}
+\begin{proof}
+    设 \(   \gamma :\left( - \varepsilon , \varepsilon  \right)   \to M\)是使得 \(   \gamma \left( 0 \right)= p   \),\(   \gamma ^{\prime} \left( 0 \right)= v   \)的正则曲线.   对 \(   \gamma ^{\prime}   \)应用沿 \(   \gamma   \)的Gauss公式,得到 \[
+    \tilde{D}_{t}  \gamma ^{\prime} = D_{t} \gamma ^{\prime} + \operatorname{II}\left(  \gamma ^{\prime} , \gamma ^{\prime}  \right) 
+    \]若 \(   \gamma   \)是 \(  M  \)上的 \(  g  \)-测地线,则 上述公式化为 \[
+    \tilde{D}_{t} \gamma ^{\prime} = \operatorname{II}\left(  \gamma ^{\prime} , \gamma ^{\prime}  \right) 
+    \]在零处取值得到所需的两个结论.     
+
+    \hfill $\square$
+\end{proof}
+
+\begin{lemma}
+    设 \(  V  \)是一个内积空间,\(  W  \)是向量空间, \(  B,B^{\prime} :V\times V\to W  \)是对称且双线性的.若 \(  B\left( v,v \right)= B^{\prime} \left( v,v \right)    \)对于所有的 单位向量\(  v \in V  \)成立,则 \(  B= B^{\prime}   \)      
+\end{lemma}
+\begin{remark}
+    由此, \(  \operatorname{II}  \)完全由 \(  \operatorname{II}\left( v,v \right)   \)所决定,其中 \(  v  \)取遍单位向量.   
+\end{remark}
+
+\begin{proof}
+    若条件成立,由 \(  B  \)和 \(  B^{\prime}   \)的双线性, \(  B\left( v,v \right)= B^{\prime} \left( v,v \right)    \)对于所有的向量 \(  v  \)成立,而不只是单位向量.引理由以下极化恒等式立即得到 \[
+    B\left( v,w \right)=  \frac{1 }{4 } \left( B\left( v+ w,v+ w \right),B\left( v-w,v-w \right)   \right)   
+    \]    
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{definition}{完全测地}
+    称 \(  \left( \tilde{M},\tilde{g} \right)   \)的子流形 \(  \left( M,g \right)   \)是\textbf{完全测地}的,若对于每个与 \(  M  \)在某一点 \(  t_0   \)与 \(  M  \)相切的 \(  \tilde{g}  \)-测地线,都在某个区间\(  \left( t_0- \varepsilon ,t_0+  \varepsilon  \right)   \)上完全地落在 \(  M  \)上.        
+\end{definition}
+
+\begin{proposition}
+    设 \(  \left( M,g \right)   \) 是(伪)Riemann流形\(  \left( \tilde{M},\tilde{g} \right)   \) 的嵌入Riemann子流域,则一下三条等价:
+    \begin{enumerate}
+        \item \(  M  \)在 \(  \tilde{M}  \)中是完全测地的.
+        \item \(  M  \)上的每个 \(  g  \)-测地线也都是 \(  \tilde{M}  \)上的 \(  \tilde{g}  \)-测地线.
+        \item \(  M  \)的第二基本形式恒为零.       
+    \end{enumerate}
+    
+\end{proposition}
+
+\begin{note}
+    对于\(  1.\implies 2  \), 将 \(  \tilde{M}  \)与 \(  M  \)相切的测地线 \(   \tilde{\gamma}   \) 的加速度利用Gauss公式分解,两项正交故均为零.测地线的唯一性给出二者在局部上相等.应用到每个局部上得到全局相等.
+    
+    \(  2.\implies 3.  \),利用Gauss公式得到 \(  \operatorname{II}\left(  \gamma ^{\prime} , \gamma ^{\prime}  \right)= 0   \)对于任意 \(  M  \)的 \(  g  \)-测地线 \(   \gamma   \)成立. 测地线的存在唯一性给出 \(  TM  \)上的任意切向量都刻画为测地线的速度,而 \(  \operatorname{II}  \)由对角量\(  \operatorname{II}\left( v,v \right)   \)所决定,故 \(  \operatorname{II}\equiv 0  \).
+    
+    \(  3.\implies   1.\)还是利用Gauss公式,得到曲线加速度的局部相等,再由唯一性退出测地线的局部相等. 
+\end{note}
+
+\section{超曲面}
+
+本节考虑 \(  M  \)是 \(  \tilde{M}  \)的超曲面\footnote{余维数为1的子流形}的特殊情况.设 \(  \left( M,g \right)   \)是 \(  \left( n+ 1 \right)   \)-维Riemann流形 \(  \left( \tilde{M},\tilde{g} \right)   \)的 \(  n  \)-维嵌入Riemann子流形.
+
+此时, \(  M  \)上每一个点只有两个单位法向量.在局部适配正交标价 \(\left(    E_1,\cdots,E_{n+ 1}   \right)  \)  下,唯二的选择是 \(  \pm E_{n+ 1}  \).因此,对于 \(  M  \)的每一个点,在充分小的邻域内都能选取光滑的沿 \(  M  \)的单位法向量场.   
+
+若 \(  M  \)和 \(  \tilde{M}  \)均可定向,则可以选取沿 \(  M  \)的全局光滑单位法向量场.对于一般情况而言则未必. 
+
+\subsection{标量第二基本形式和形状算子}
+
+\begin{definition}
+    选定超曲面 \(  M\subseteq \tilde{M}  \)的一个光滑单位向量场 \(  N  \)后,定义 \textbf{\(  M  \)的标量第二基本形式 }为由 \(  h= \operatorname{II}_{N}  \)给出的对称协变2-张量场 \(  h\in  \Gamma \left(  \Sigma ^{2}T^{*}M \right)   \),换言之 \[
+    h\left( X,Y \right)= \left<N,\operatorname{II}\left( X,Y \right)  \right> 
+    \]    
+\end{definition}
+
+\begin{remark}
+    符号由 \(  N  \)的选取决定,绝对值无关于 \(  N  \)的选取.  
+\end{remark}
+
+\begin{proposition}
+    \begin{enumerate}
+        \item \[
+    h\left( X,Y \right)= \left<N, \tilde{\nabla} _{X}Y \right> 
+    \]
+    \item \(  h\left( X,Y \right)   \)可以由 \[
+    \operatorname{II} \left( X,Y \right)= h\left( X,Y \right)N  
+    \]确定 .即若 \(  \operatorname{II} \left( X,Y \right)= h^{\prime} \left( X,Y \right)N    \),则 \(  h\left( X,Y \right)= h^{\prime} \left( X,Y \right)    \)  
+    \end{enumerate}
+    
+\end{proposition}
+
+\begin{proof}
+    对于 \(  X,Y\in \mathfrak{X}\left( M \right)   \),延拓到 \(  \tilde{M}  \)的开集上,  由Gauss公式 \[
+     \tilde{\nabla} _{X}Y=  \nabla _{X}Y+ \operatorname{II}\left( X,Y \right) 
+    \]又 \(   \nabla _{X}Y  \)与 \(  N  \)正交,故 \(   \tilde{\nabla} _{X}Y= \operatorname{II}\left( X,Y \right)   \).   
+
+
+    第二条通过两边与 \(  N  \)度量配对即可. 
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{形状算子}
+    选定的法向量 \(  N  \) 决定出 Weiengarten映射 \(  W_{N}: \mathfrak{X}\left( M \right)\to \mathfrak{X}\left( M \right)    \),记作 \(  s = W_{N}  \),称为是 \(  M  \)的\textbf{形状算子}.   
+\end{definition}
+
+\begin{remark}
+    与 \(  h  \)类似, \(  s  \)的符号由 \(  N  \)的选取决定.   
+\end{remark}
+
+\begin{proposition}
+    \begin{enumerate}
+        \item  \(  s  \)可以视为通过 \(  h  \)提升指标得到的 \(  M  \)的 \(  \left( 1,1 \right)   \)-张量场,由一下刻画 \[
+        \left<sX,Y \right>= h\left( X,Y \right),\quad \forall X,Y \in \mathfrak{X}\left( M \right)  
+        \]    
+        \item 分量形式下,写作 \[
+        s_{i}^{j}= h_{i}^{j}= g^{jk}h_{ik}
+        \]
+        \item 由于 \(  h  \)是对称的, \(  s  \)是 \(  TM  \)的自伴随的自同态,即 \[
+        \left<sX,Y \right>= \left<X,sY \right>,\quad X,Y \in \mathfrak{X}\left( M \right) 
+        \]   
+    \end{enumerate}
+    
+\end{proposition}
+
+\begin{remark}
+    设 \(  S,B,I  \)分别为 \(  s, h, g  \)的矩阵,则 \(  S =  B\cdot I^{-1}   \),从而   \(  \det s= \det h \left( \det g \right)^{-1}    \) 
+\end{remark}
+
+\begin{proof}
+    \[
+   h_{ij}= h\left( E_{i},E_{j} \right)= \left<sE_{i},E_{j} \right>= \left<s_{i}^{k}E_{k},E_{j} \right>= s_{i}^{k}g_{kj} 
+    \]从而 \[
+        g^{jk} h_{ij}=  s_{i}^{k}g_{kj}g^{jk}= s_{i}^{k}
+    \]互换 \(  k,j  \),得到 \[
+    s_{i}^{j}=  g^{jk}h_{ik}
+    \] 可以写成矩阵 \[
+    \left( s \right)= \left( g \right)^{-1} \left( h \right)   
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+
+
+\begin{theorem}{超曲面的基本方程}
+    设 \(  \left( M,g \right)   \)是黎曼流形 \(  \left( \tilde{M},\tilde{g} \right)   \)的Riemann超曲面,\(  N  \)是沿 \(  M  \)的光滑单位法向量. 
+    \begin{enumerate}
+        \item \textbf{超曲面的Gauss公式}:若 \(  X,Y \in \mathfrak{X}\left( M \right)   \)延拓到 \(  \tilde{M}  \)的开集上,则 \[
+         \tilde{\nabla} _{X}Y=  \nabla _{X}Y+ h\left( X,Y \right)N 
+        \]  
+        \item 超曲面曲线的Gauss公式:若 \(   \gamma :I\to M  \)是一个光滑曲线, \(  X:I\to TM  \)是沿 \(   \gamma   \)的光滑向量场,则 \[
+        \tilde{D}_{t}X= D_{t}X+ h\left(  \gamma ^{\prime} ,X \right)N 
+        \]
+        \item 超曲面的Weigarten方程: 对于所有 \(  X \in \mathfrak{X}\left( M \right)   \), \[
+         \tilde{\nabla} _{X}N= -sX
+        \]    \footnote{可以说法向量完全提纯了氛围联络的法向信息(第二基本形式)}
+        \item 超曲面的Gauss方程:对于所有的 \(  W,X,Y,Z \in \mathfrak{X}\left( M \right)   \), \[
+        \widetilde{Rm}\left( W,X,Y,Z \right)= Rm\left( W,X,Y,Z \right)-\frac{1}{2} \left( h \owedge h \right)\left( W,X,Y,Z \right)    
+        \] 
+        \item 超曲面的Codazzi方程:对于所有的 \(  W,X,Y,Z \in \mathfrak{X}\left( M \right)   \) \[
+        \widetilde{Rm}\left( W,X,Y,N \right)= \left( Dh \right)\left( Y,W,X \right)   
+        \] \footnote{外微分是后两个作为求导项交换;是先对着最后一项求导的,是负的.}
+    \end{enumerate}
+    
+\end{theorem}
+
+\begin{proof}
+    1.2.由一般情况的方程立即得到.对于3.先写出一般的Weigarten方程 \[
+    \left(  \tilde{\nabla} _{X}N \right)^{\top}= -sX 
+    \]由于 \(  \left< \nabla _{\tilde{X}}N,N \right>  = \frac{1}{2}X\left( \left| N \right|^{2}  \right) = 0\)\footnote{由于法空间只有一个方向,故当模长不变时,法向量沿某个切向的偏移趋势只可能是切向的},立即有 \(   \tilde{\nabla} _{X}N  \)与 \(  M  \)相切,故3.成立.   
+
+    最后来说明Codazzi方程,首先由一般的Codazzi方程 \[
+    \begin{aligned}
+\left( \tilde{R}\left( W,X \right)Y  \right)^{\perp} &= \left(  \nabla _{W}^{F}\operatorname{II}  \right)\left( X,Y \right)    -\left(  \nabla _{X}^{F}\operatorname{II}  \right)\left( W,Y \right)  
+    \end{aligned}
+    \]由于 \(  N  \)是单位向量场, \[
+    0=  \nabla _{W}^{\perp}\left<N,N \right>_{\tilde{g}}=  2\left< \nabla _{W}^{\perp}N,N \right>_{\tilde{g}}
+    \]故 \(  N  \)关于法向联络平行 .  因此 \[
+   \begin{aligned}
+    \left(  \nabla _{W}^{F}\operatorname{II}  \right)\left( X,Y \right)&=  \nabla _{W}^{\perp}\left( h\left( X,Y \right)N  \right)- \operatorname{II} \left(  \nabla _{W}X,Y \right)-\operatorname{II} \left( X, \nabla _{W}Y \right)\\ 
+     &= \left( W\left( h\left( X,Y \right)  \right) -h\left(  \nabla _{W}X,Y \right)- h\left( X, \nabla _{W}Y \right)   \right)N    \\ 
+      &= \left(  \nabla _{W}h \right)\left( X,Y \right)   N
+   \end{aligned}  
+    \]类似地 \[
+    \left(  \nabla _{X}^{F}\operatorname{II}  \right)\left( W,Y \right)= \left( \nabla _{X}h \right)\left( W,Y \right)N  
+    \]注意到由于 \(  h  \)是对称的,故\(  \left(  \nabla _{W}h \right)   \)和  \(  \left(  \nabla _{X}h \right)   \)亦然.   因此 \[
+    \left( \tilde{R}\left( W,X \right)Y  \right)^{\perp} = - \left(  \nabla _{X}h \right)\left(Y,W \right)N+  \left(  \nabla _{W}h \right)\left( Y,X \right)N     = \left( Dh \right)\left( Y,W,X \right)N  
+    \]两边与 \(  N  \)度量配对即可. 
+    \hfill $\square$
+\end{proof}
+
+\subsection{主曲率}
+
+\begin{lemma}
+    设 \(  V  \)是有限维内积空间, \( s:V\to V  \)是自伴随的线性自同态.令 \(  C  \)表示 \(  V  \)的单位向量集,则存在 \(  v_0 \in C  \),使得函数 \(  v\mapsto \left<sv,v \right>  \)在 \(  v_0  \)处达到极大值,并下每个这样的向量都是 \(  s  \)关于特征值 \(   \lambda _0 = \left<sv_0,v_0 \right>  \)的一个特征向量.         
+\end{lemma}
+
+\begin{proposition}{有限维谱定理}
+    设 \(  V  \)是有限维内积空间, \(  s:V\to V  \)是自伴随的线性自同态.则 \(  V  \)有一个 \(  s  \)-特征向量组成的正交基,并且每个特征值都是实数.    
+\end{proposition}
+
+\begin{proposition}
+    形状算子 \(  s:T_{p}M\to T_{p}M  \) 有 实特征值 \(   \kappa_1,\cdots,\kappa_n   \),以及由 \(  s  \)-正交向量组成的 \(  T_{p}M  \)的正交基 \(  \left(  b_1,\cdots,b_n \right)   \),使得 \(  sb_{i}=  \kappa _i b_{i} ,\forall i \).   在这组基下,\(  h  \)和 \(  s  \)都表为正对角矩阵, \(  h  \)有以下形式\[
+        h\left( v,w \right)=  \kappa _1 v^{1}w^{1}+ \cdots +  \kappa _n v^{n}w^{n} 
+        \]     
+\end{proposition}
+
+\begin{definition}
+    称形状算子 \(  s  \)在点 \(  p \in M  \)处的特征值为 \textbf{\(  M  \)在点 \(  p  \)处的主曲率  },相应的特征空间称为主方向.  
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item 当反转选定的法向量时,主曲率都改变方向.
+        \item 主方向和主曲率无关于坐标基的选取.
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{definition}
+    \begin{enumerate}
+        \item 定义Gauss曲率为 \[
+        K= \det \left( s \right) 
+        \]
+        \item 定义平均曲率为 \[
+        H =   \frac{1}{n} \operatorname{tr}\,\left( s \right)= \frac{1}{n} \operatorname{tr}\,_{g}\left( h \right)  
+        \]
+    \end{enumerate}
+    由于迹和行列式都无关于坐标基的选取,当单位法向量选定时,上面的两个曲率是良定义的,并且可以通过主曲率表示为 \[
+    K=  \kappa _1  \kappa _2 \cdots  \kappa _{n},\quad H= \frac{1}{n} \left(  \kappa _1 + \cdots +  \kappa _{n} \right) 
+    \]
+\end{definition}
+
+\begin{remark}
+    当反转法向量时, \(  H  \)改变符号, \(  K  \)变为 \(  \coprod_{n=1}^{\infty} \left( -1 \right)^{n}K   \)   
+\end{remark}
+
+
+
+\section{欧氏空间上的超曲面}
+
+用 \(  \left( M,g \right)   \)表示 \(  \mathbb{R} ^{n+ 1}  \)上的 \(  n  \)维嵌入Riemann子流形, \(  \bar{g}  \)是 \(  \mathbb{R} ^{n+ 1}  \)上的欧式度量, \(  g  \)是 \(  \bar{g}  \)在 \(  M  \)上的诱导度量.        
+
+\begin{proposition}
+    对于欧式空间上的超曲面 \(  M  \),有以下Gauss方程和 Codazzi方程成立  \[
+    \begin{aligned}
+    \frac{1}{2}h \owedge h&= Rm,\\ 
+      Dh&= 0
+    \end{aligned}
+    \]在 \(  M  \)的一组局部标价下, \[
+    \begin{aligned}
+    h_{il}h_{jk}-h_{ik}h_{jl}&= R_{ijkl}\\ 
+    h_{ij;k}-h_{ik;j}&= 0
+    \end{aligned}
+    \]  特别地,  \(  \mathbb{R} ^{n+ 1}  \)上超曲面的 Riemann曲率张量完全由第二基本形式决定.
+\end{proposition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 满足 \(  Dh= 0  \)的对称2-张量被称为是一个 \textbf{Codazzi张量}.因此 \(  Dh= 0  \)可以看作是 \(  h  \)称为一个 Codazzi张量   .
+        \item 对于\(  n  \)-Riemann流形 \(  \left( M,g \right)   \),以及给定的光滑对称 \(  2  \)-张量 \(  h  \).定理给出了存在以 \(  h  \)为表带第二基本形式的等距同构浸入 \(  M\to \mathbb{R} ^{n+ 1}  \)的必要条件.
+        \item 事实上, Gauss方程和Codazzi方程至少在局部上给出了上面这种情况的充分条件.      
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{proposition}
+    设 \(  M\subseteq \mathbb{R} ^{n+ 1}  \)是超曲面.对于每个单位向量 \(  v \in T_{p}M  \),令 \(   \gamma =  \gamma _{v}:I\to M  \)是 \(  M  \)上以 \(  v  \)为初速度的测地线.则 \(  \left| h\left( v,v \right)  \right|   \)是 \(   \gamma   \)在 \(  0  \)处的欧式曲率.并且 \(  h\left( v,v \right)= \left< \gamma ^{\prime \prime} \left( 0 \right),N_{p}  \right>> 0   \)当且仅当 \(   \gamma ^{\prime \prime} \left( 0 \right)   \)与 \(  N_{p}  \)有相同的方向.          
+\end{proposition}
+
+\begin{proof}
+    由Gauss公式 \[
+     \gamma ^{\prime \prime} \left( 0 \right)= \bar{D}_{t} \gamma ^{\prime} \left( 0 \right)= D_{t} \gamma ^{\prime} \left( 0 \right)+ h\left( v,v \right)N_{p}= h\left( v,v \right)N_{p}     
+    \]故 \[
+    \left|  \gamma ^{\prime \prime} \left( 0 \right)  \right|= \left| h\left( v,v \right)  \right|  
+    \]且 \[
+    \left< \gamma ^{\prime \prime} \left( 0 \right),N_{p}  \right>_{\bar{g}}= h\left( v,v \right) 
+    \]
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    设\(   \gamma :I\to \mathbb{R} ^{m}  \)是单位速度曲线, \(  t_0 \in I  \),\(   \kappa \left( t_0 \right)\neq 0   \).则 
+    \begin{enumerate}
+        \item 存在单位速度参数化的圆 \(  c:\mathbb{R} \to \mathbb{R} ^{m}  \) ,被称为是 \(   \gamma \left( t_0 \right)   \)处的 \textbf{密切圆},使得在 \(  t= t_0  \)处, \(  c  \)与 \(   \gamma   \)有着相同的位置,速度和加速度.
+        \item  \(   \gamma   \)在 \(  t_0  \)处的欧式曲率 \(   \kappa \left( t_0 \right)= \frac{1 }{R }    \),其中 \(  R  \)是密切圆的半径.        
+    \end{enumerate}
+       
+\end{proposition}
+
+\begin{proof}
+    \(  \mathbb{R} ^{m}  \)上的任意圆都存在形如下的单位参数化c \[
+    c\left( t \right)=  q +  R \cos \left( \frac{t-t_0 }{ R}  \right)v+  R\sin \left( \frac{t-t_0 }{R }  \right)w   
+    \] 其中 \(  \left( v,w \right)   \)是 \(  \mathbb{R} ^{m}  \)上的一对正交的单位向量. 它满足 \[
+    c\left( t_0 \right)=  q+  Rv,\quad c^{\prime} \left( t_0 \right)= w,\quad c^{\prime \prime} \left( t_0 \right)= -\frac{v }{R }    
+    \]  
+
+    通过令 \[
+    R= \frac{1 }{ \kappa \left( t_0 \right)  },\quad w =   \gamma ^{\prime} \left( t_0 \right),\quad v =  - \frac{ \gamma ^{\prime \prime} \left( t_0 \right)  }{ \kappa \left( t_0 \right)  },\quad q=  \gamma \left( t_0 \right)+ \frac{ \gamma ^{\prime \prime} \left( t_0 \right)  }{ \kappa ^{2}\left( t_0 \right)  }     
+    \]可以得到对应的 \(  c  \)就是符合条件的密切圆.
+    
+    
+    接下来说明唯一性,设 \[
+  c_1\left( t \right)\equiv 1+ R_1\cos \left( \frac{t-t_0 }{R_1 }  \right)v_1+  R_1\sin \left( \frac{t-t_0 }{R_1 }  \right)w_1   
+    \]是另一个密切圆.则 \[
+    w_1=  \gamma ^{\prime} \left( t_0 \right)= w 
+    \] \[
+    -\frac{v_1 }{R_1 }=  \gamma ^{\prime \prime} \left( t_0 \right)= -\frac{v }{R }   \implies v_1= v, R_1= R
+    \]进而 \[
+    q_1=  \gamma \left( t_0 \right)-R_1v_1=  \gamma \left( t_0 \right)-Rv= q   
+    \]从而得到\(  c\equiv c_1  \),这就说明了唯一性. 
+
+    \hfill $\square$
+\end{proof}
+
+\subsection{欧式空间上的计算}
+
+
+对于光滑嵌入超曲面 \(  M\subseteq \mathbb{R} ^{n+ 1}  \),通常来说在一组局部参数表示下的计算是最简单的.设 \(  X:U\to \mathbb{R} ^{n+ 1}  \)是 \(  M  \)的一个光滑局部参数化.  \(  U\subseteq \mathbb{R} ^{n}  \)上的坐标 \(  \left(  u^1,\cdots,u^n  \right)   \)给出了 \(  M  \)上的一个局坐标.坐标向量场 \(   \partial _{i}= \frac{\partial }{\partial u^{i}}  \)推出到 \(  M  \)上的向量场 \(  \,\mathrm{d} X\left(  \partial _{i} \right)   \).既可以将 \(  \,\mathrm{d} X\left(  \partial _{i} \right)   \)看作是 限制切丛 \(  T\mathbb{R} ^{n+ 1}|_{M}  \)上的截面,也可以将它看成是 \(  \mathbb{R} ^{n+ 1}  \)-值函数.在这种等同下, \(  \,\mathrm{d} X\left(  \partial _{i} \right)   \)在 \(  T\mathbb{R} ^{n+ 1}\simeq \mathbb{R} ^{n+ 1}  \)的标准基下的坐标表示,等同于他作为 \(  \mathbb{R} ^{n+ 1}  \)-值函数的坐标表示.  事实上,对于视为向量值函数的情况我们可以计算 \[
+\,\mathrm{d} X_{u}\left(  \partial _{i} \right)=   \partial _{i}X\left( u \right)= \left(  \partial _{i}X^{1}\left( u \right),\cdots , \partial _{i}X^{n}\left( u \right)   \right)   
+\]      
+另一方面,在坐标上考虑微分映射在切向量上的作用:如果将切向量视为行向量,则 \(  \,\mathrm{d} X_{u}\left(  \partial _{i} \right)   \)表为第 \(  i  \)个单位坐标 行向量右乘 Jacobi矩阵, 结果为Jacobi矩阵的第 \(  i  \)行.这与向量值函数按每个分量求导如出一辙.
+\begin{definition}
+    方便起见,记 \[
+    X_{i}=  \partial _{i}X
+    \] \(  M  \)上沿着 \(  U  \)的向量场.  
+\end{definition}
+
+一旦我们计算出了向量场 \(   X_1,\cdots,X_n   \),可以通过以下方式计算处一个单位法向量场: 任取不含于 \(  \operatorname{span}\,\left(  X_1,\cdots,X_n  \right)   \)的坐标向量场 \(  \frac{\partial }{\partial x^{j_0}}  \),对 局部标价 \(  \left(  X_1,\cdots,X_n , \frac{\partial }{\partial x^{j_0}} \right)   \)施行Gram-Schmidt正交化,得到与 \(  M  \)适配的正交标价 \(  \left(  E_1,\cdots,E_{n+ 1}  \right)   \). 两个单位法向量的选择是 \(  N= \pm E_{n+ 1}  \).
+
+对于3维欧式空间的情况,特别的可以通过叉乘 后做单位化的方式得到使得标架正定向的单位法向量 \[
+N =  \frac{X_1\times X_2 }{\left| X_1\times X_2 \right|  } 
+\]
+
+\begin{proposition}
+    设 \(  M\subseteq \mathbb{R} ^{n+ 1}  \)是嵌入超曲面. \(  X:U\to \mathbb{R} ^{n+ 1}  \)是 \(  M  \)的一个局部参数化.   \(  \left(  X_1,\cdots,X_n  \right)   \)是由 \(  X  \)决定的 \(  TM  \)的一个局部标架.   则标量第二基本形式 \(  h  \)由以下给出: \begin{enumerate}
+        \item \[
+        h\left( X_{i},X_{j} \right)= \left<sX_{i},X_{j} \right>= - \left< \nabla _{X_{i}}N,X_{j} \right>= -\left<\frac{\partial }{\partial u^{i}}N,X_{j} \right> 
+        \]
+        \item \[
+            h\left( X_{i},X_{j} \right)=  \left<X_{ij},N \right>: =  \left<\frac{\partial ^{2}X}{\partial u^{j}u^{i}},N \right>
+        \] \footnote{这里是法向量场的参数表示}
+    \end{enumerate}
+   
+\end{proposition}
+\begin{remark}
+    同时视 \(  N  \)为 \(  M  \)上的向量场和  \(  M  \)上沿 \(  U  \)的向量场.    
+\end{remark}
+\begin{proof}
+    对以下恒等于零的函数对 \(  u_{j}  \)求导 \[
+    \left<\frac{\partial X}{\partial u^{i}}\left( u \right) ,N\left( X\left( u \right)  \right)  \right>
+    \] 
+得到 \[
+0 =  \left< \frac{\partial ^{2}X}{\partial u^{j}u^{i}}\left( u \right),N\left( X\left( u \right)  \right)  \right>+  \left<\frac{\partial X}{\partial u^{i}}\left( u \right),\frac{\partial }{\partial u^{j}} N\left( X\left( u \right)  \right)   \right> \tag{*}
+\]接下来利用曲线速度计算  \(  \frac{\partial }{\partial u^{j}}N\left( X\left( u_0 \right)  \right)   \),考虑 \(  U  \)上的一个局部标架 \(  \left(  u^1,\cdots,u^n  \right)   \),定义 曲线\(   \gamma \left( t \right)= X\left( u_0^{1},\cdots ,u_0^{j}+ t,\cdots ,u_0^{n} \right)    \)    ,则 \(   \gamma \left( 0 \right)= X\left( u_0 \right)    \), \(   \gamma ^{\prime} \left( 0 \right)= \frac{\partial X}{\partial u^{j}}\left( u_0 \right)    \). 从而 \[
+\frac{\partial }{\partial u^{j}}N\left( X\left( u_0 \right)  \right)=  \frac{\mathrm{d}}{\mathrm{d}t} N\circ  \gamma \left( 0\right) = D_{t}\left( N\circ  \gamma  \right)\left(0\right)= \overline{ \nabla } _{ \gamma ^{\prime} \left( 0 \right) }N\left(  \gamma \left( 0 \right)  \right)=    \overline{ \nabla }_{X_{j}\left( u_0 \right) }N\left( X\left( u_0 \right)  \right) 
+\]  接下来由Weingarten方程,我们有 \[
+\begin{aligned}
+\left<\frac{\partial X}{\partial u^{i}}\left( u \right),\frac{\partial }{\partial u^{j}}N\left( X\left( u \right)  \right)   \right>&=  \left<\frac{\partial X}{\partial u^{i}}\left( u \right), \overline{ \nabla }_{X_{j}\left( u_0 \right) }N\left( X\left( u \right)  \right)   \right>\\ 
+ &= \left<X_{i}\left( u \right),-s\left( X_{j}\left( u \right)  \right)    \right>\\ 
+  &= -h \left( X_{i}\left( u \right),X_{j}\left( u \right)   \right) 
+\end{aligned}
+\]带入(*)式即可. 
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    设 \(  M\subseteq \mathbb{R} ^{n+ 1}  \)是Riemann超曲面.在给定单位法向量下,  \(   \kappa_1,\cdots,\kappa_n   \)是 \(  M  \)在 \(  p  \)处 的主曲率.存在等距同构 \(   \varphi :\mathbb{R} ^{n+ 1}\to \mathbb{R} ^{n+ 1}  \),将 \(  p  \)     映到原点,将 \(  p  \)的一个邻域映到 形如 \(  x^{n+ 1}= f\left(  x^1,\cdots,x^n  \right)   \)  的图像.其中 \[
+    f\left( x \right)= \frac{1 }{2 }\left( { \kappa _1 \left(x^{1}  \right)^{2} }+  \kappa _2 \left( x^{2} \right)^{2}+ \cdots +  \kappa _{n}\left( x^{n} \right)^{2}    \right)+  O\left( \left| x \right|^{3}  \right)    
+    \]
+\end{proposition}
+\begin{proof}
+    通过一个平移和一个旋转,不妨设 \(  p  \)为原点, 且\(  T_{p}M  \)  等于 \(  \operatorname{span}\,\left(  \partial _{1},\cdots , \partial _{n} \right)   \).通过对前 \(  n  \)个分量的一个正交变换,不妨 \(   \partial_1,\cdots,\partial_n   \)使得 \(  M  \)的标量第二基本形式的坐标表示具有对角型,分别以 \(   \kappa_1,\cdots,\kappa_n   \)为对角元    .必要时,通过一个反射,不妨设 \(  \left( 0,\cdots ,1 \right)   \)为单位法向量.
+    
+    由隐函数定理,存在函数 \(  f  \),使得在 \(  0 \in \mathbb{R} ^{n+ 1}  \)的一个邻域 \(  U  \)上,成立 \[
+    q\in M \iff x^{n+ 1}\left( q \right)= f\left( x^{1}\left( q \right),\cdots ,x^{n}\left( q \right)   \right)  
+    \]   于是 \(  M  \)有参数表示 \[
+   X=  \left( x^{1},\cdots ,x^{n},f\left( x^{1},\cdots ,x^{n} \right)  \right) 
+    \] 由于 \(  T_0M=  \operatorname{span}\,\left( X_1,\cdots ,X_{n} \right)= \operatorname{span}\,\left(  \partial _{1},\cdots , \partial _{n} \right)    \),故 \[
+     \partial _{1}f= \cdots =  \partial _{n}f= 0,\quad X_{i}=  \partial _{i},\quad i= 1,\cdots ,n
+    \] 于是 由上面的命题\[
+    h\left( X_{i},X_{j} \right) =  \left<\frac{\partial ^{2}X}{\partial x^{i}x^{j}} , e_{n}\right>=  \partial _{i} \partial _{j}f
+    \]由Taylor展开即得命题成立.
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+     \(  M\subseteq \mathbb{R} ^{n+ 1}  \)是Riemann超曲面. 若 \(  \mathbb{R} ^{n+ 1}  \)上的向量场 \(  N =  N^{i} \partial _{i}  \) \footnote{这里是几何坐标上的表示,而非参数坐标} 在 \(  M  \)上的限制成为它的一个单位法向量场.则对于每个与 \(  M  \)相切的  向量场 \(  X = X^{j} \partial _{j}  \),可以利用Weingarten方程直接计算 \[
+     sX = - \overline{ \nabla }_{X}N  = - X^{j} \left(  \partial _{j}N^{k} \right) \partial _{k} 
+     \] 
+\end{proposition}
+
+
+\begin{proposition}
+    若 \(  M  \)在 \(  U  \subseteq \mathbb{R} ^{n+ 1}\) 上被局部地定义为光滑实函数 \(  F  \)的正则水平集 \(  U\cap M  \) .则 \(  \operatorname{grad}\,F  \)在 \(  M\cap U  \)上非零,可以选取沿 \(  M  \)的单位法向量场为 \[
+    N=  \frac{\operatorname{grad}\,F }{\left| \operatorname{grad}\,F \right|  } 
+    \]     
+\end{proposition}
+
+\begin{example}{球面的形状算子}
+    函数 \(  F:\mathbb{R} ^{n+ 1}\to \mathbb{R}   \), \(  F\left( x \right)= \left| x \right|^{2}    \)是每个球面 \(  \mathbb{S}^{n}\left( R \right)   \)的光滑定义函数.梯度为 \(  \operatorname{grad}\,F  = 2 x^{i} \partial _{i}\)    ,沿着 \(  \mathbb{S}^{n}\left( R \right)   \)长度为 \(  2R  \),且为外向指向的. 沿着 \(  \mathbb{S}^{n}\left( \mathbb{R}  \right)   \)的一个单位法向量场为 \[
+     N =  \frac{1}{R}x^{i} \partial _{i}
+    \]   容易计算出形状算子为 \[
+    sX = - \frac{1}{R} X^{j} \left(  \partial _{j}x^{i} \right) \partial _{i}= \frac{1}{R}X^{i} \partial _{i}= -\frac{1}{R}X 
+    \]于是 \[
+    s =  -\frac{1 }{R }\operatorname{Id} 
+    \]主曲率均为 \(  -\frac{1 }{R }   \),平均曲率为 \(  - \frac{1 }{R }   \),  Gauss曲率为 \(  \left( -1 \right)^{n} \frac{1 }{R^{n} }    \).    
+\end{example}
+
+\hspace*{\fill} 
+
+
+\begin{proposition}
+    对于 \(  \mathbb{R} ^{3}  \)上的曲面,若参数化 \(  X  \)给定,由于 \(  X_1,X_2  \)在每一点处与 \(  M  \)相切,内积为非零法向量,故一个单位法向量的选择是 \[
+    N =  \frac{X_1\times X_2 }{\left| X_1\times X_2 \right|  } 
+    \]    
+\end{proposition}
+
+\subsection{曲面Gauss曲率的内蕴性}
+
+
+\begin{theorem}{Gauss绝妙定理}
+    设 \(  \left( M,g \right)   \)是\(  \mathbb{R} ^{3}  \)的 \(  2  \)-维嵌入Riemann子流形.对于每个 \(  p \in M  \), \(  M  \)在 \(  p  \)处的Gauss曲率等于 \(  g  \)在 \(  p  \)处的标量曲率的一半,或者等价地说,选定 \(  T_{p}M  \)的一组规正基 \(  \left( b_1,b_2 \right)   \)下,   \[
+    R_{1221}=  Rm_{p}\left( b_1,b_2,b_2,b_1 \right) = h_{11}h_{22}-h_{12}^{2}=  K\left( p \right) 
+    \]因此 Gauss曲率是 \(  \left( M,g \right)   \)的局部等距同构不变量.         
+\end{theorem}
+\begin{proof}
+    二维(伪)Riemann流形 \(  \left( M,g \right)   \)成立 \[
+    Rm = \frac{1 }{4 }S g\owedge g 
+    \] 
+
+    Gauss方程  \(  Rm=  \frac{1}{2}h \owedge h  \)直接给出 \(  K\left( p \right)   \)  用曲率张量的表示.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}
+    对于抽象的2-维Riemann流形 \(  \left( M,g \right)   \),定义它的Gauss曲率 \(  K  \)为  \(  K= \frac{1}{2}S  \),其中 \(  S  \)是它的标量曲率.    
+\end{definition}
+
+\section{截面曲率}
+
+\begin{definition}
+    设  \(  n\ge 2  \), \(  M  \)是 \(  n  \)维Riemann  流形, \(  p \in M  \), \(  V\subseteq T_{p}M  \)是原点的星形邻域,使得 \(  \exp _{p}  \)将它微分同胚地映到一个开集 \(  U\subseteq M  \).令 \(  \Pi   \)是 \(  T_{p}M  \)的一个二维子空间.   由于 \(  \Pi \cap V  \)是 \(  V  \)的一个嵌入子流形, 故 \( S_{\Pi }: =   \exp _{p}\left( \Pi \cap V \right)   \)是 \(  U  \)的一个包含了 \(  p  \)的一个 嵌入子流形,成为 \textbf{由 \(  \Pi   \)决定的平截面 }.  
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item \(  S_{\Pi }  \)是初速度取在 \(  \Pi   \)上的测地线扫过的集合.
+        \item 由于 \(  \,\mathrm{d} \left( \exp _{p} \right)_{0} : T_{0}\left( \Pi \cap V \right)\simeq \Pi \to T_{p} S_{\Pi }   \)是单位映射,故 \(  T_{p}S_{\Pi }= \Pi   \).  
+    \end{enumerate}
+    
+\end{remark}
+
+
+\begin{definition}
+    定义\textbf{ \(  \Pi   \)的截面曲率 },记作 \(  \mathrm{sec}\left( \Pi  \right)   \), \(  S_{\Pi }  \)在 \(  p  \)处的内蕴Gauss曲率. 其中 \(  S_{\Pi }  \)配备了嵌入 \(  S_{\Pi }\subseteq M  \)的诱导度量.
+    
+    若 \(  \left( v,w \right)   \)是 \(  \Pi   \)的一组基,也记 \(  \mathrm{sec}\left( v,w \right)=  sec\left( \Pi  \right)    \).   
+\end{definition}
+
+\begin{definition}
+    对于内积空间 \(  V  \)上的向量 \(  v,w  \),引入以下记号 \[
+    \left| v\wedge w \right|= \sqrt{\left| v \right|^{2}\left| w \right|^{2}-\left<v,w \right>^{2}  } 
+    \]  
+\end{definition}
+\begin{remark}
+    由Cauchy不等式, \(  \left| v\wedge w \right|\ge 0   \),取等当且仅当 \(  w,v  \)线性相关.且 \(  v,w  \)规范正交时, \(  \left| v\wedge w \right|= 1   \)    .
+\end{remark}
+
+
+\begin{proposition}{截面曲率的计算公式}
+    令 \(  \left( M,g \right)   \)是Riemann流形, \(  p \in M  \).若 \(  v,w  \)   是 \(  T_{p}M  \)上线性无关的向量,则由  \(  v,w  \)张成的平面的截面曲率由以下给出 \[
+    \mathrm{sec}\left( v,w \right)=  \frac{Rm_{p}\left( v,w,w,v \right)  }{\left| v\wedge w \right|^{2}  }  
+    \]  
+\end{proposition}
+
+\begin{proof}
+    设 \(  \Pi   \)是 \(  v,w  \)张成的 \(  T_{p}M  \)的二维子空间. \(  S_{\Pi }  \)是它决定的一个平截面.    设 \(  \hat{g}  \)是它作为嵌入子流形 \(  S_{\Pi }\subseteq M  \)的诱导度量.  
+
+    先说明 \(  S_{\Pi }  \)的第二基本形式 \(  \hat{\operatorname{II} }  \)在 \(  p  \)处退化.任取 \(  z \in \Pi   \),存在 落在 \(  p  \)充分小邻域的 \(  g  \)-测地线 \(   \gamma   \),它以 \(  p  \)为起点, \(  z  \)为初速度,并且也落在 \(  S_{\Pi }  \)上.由曲线的Gauss公式,以及测地线方程,我们有 \[
+    0 =  D_{t} \gamma ^{\prime} =  \hat{D}_{t} \gamma ^{\prime} + \hat{\operatorname{II} }\left(  \gamma ^{\prime} , \gamma ^{\prime}  \right) 
+    \]            由于右侧两项始终正交,在 \(  p  \)处取值,得到 \(  \hat{\operatorname{II}} \left( z,z \right)= 0   \).  \(  \hat{\operatorname{II} }  \)的对称性和极化恒等式给出 \(  \hat{\operatorname{II}}\equiv 0  \).   进而由Gauss公式, \[
+    Rm_{p}=  \hat{Rm}_{p}
+    \]可以在任意一组 \(  \hat{\operatorname{II}}  \)的规正基 \(  \left( b_1,b_2 \right)   \)下,得到 \[
+    \begin{aligned}
+        \mathrm{sec}\left( b_1,b_2 \right)&= \hat{Rm}_{p}\left( b_1,b_2,b_2,b_1 \right)=  Rm_{p}\left( b_1,b_2,b_2,b_1 \right).   
+    \end{aligned} 
+    \]  
+    最后通过下列正交化计算任意 \(  \Pi   \)的基  \(  \left( v,w \right)   \)  下的截面曲率表示: \[
+    \begin{aligned}
+    b_1&=  \frac{v }{\left| v \right|  }  \\ 
+     b_2&= \frac{w- \left<w,b_1 \right>  b_1}{\left| w-\left<w,b_1 \right> b_1\right|  }=   \frac{w- \left<w,v \right> \frac{v }{\left| v \right| ^{2} }  }{\left| w-\left<w,v \right> \frac{v }{\left| v \right|^{2}  } \right|  } 
+    \end{aligned}
+    \]计算 \[
+    \begin{aligned}
+    \mathrm{sec}\left( v,w \right)&= \mathrm{sec}\left( b_1,b_2 \right)\\ 
+     &=   Rm_{p}\left( b_1,b_2,b_2,b_1 \right)\\ 
+      &=  Rm_{p}\left( \frac{v }{\left| v \right|  } ,\frac{w-\left<w,v \right>\frac{v }{\left| v \right|^{2}  }  }{ \left| w-\left<w,v \right> \frac{v }{\left| v \right|^{2}  }  \right| }  ,\frac{w-\left<w,v \right>\frac{v }{\left| v \right|^{2}  }  }{ \left| w-\left<w,v \right> \frac{v }{\left| v \right|^{2}  }  \right| }  ,\frac{v }{\left| v \right|  }  \right) \\ 
+       &= \frac{Rm_{p}\left( v,w,w,v \right)  }{\left| v \right|^{2}\left| w- \left<w,v \right>\frac{v }{\left| v \right|^{2}  }  \right|^{2}   }   
+    \end{aligned}
+    \]这里使用了 \(  Rm  \)关于前2 和后2 分量的反对称性.最后,化简 \[
+    \begin{aligned}
+    &\left| v \right|^{2}\left| w-\left<w,v \right> \frac{v }{\left| v \right|^{2}  }  \right|^{2}\\ 
+     &=   \left| v \right|^{2} \left( \left| w \right|^{2}+  \left<w,v \right>^{2}\frac{1 }{\left| v \right|^{2}  }   -2 \left<w,v \right>^{2} \frac{1 }{\left| v \right|^{2}  } \right)\\ 
+      &= \left| v \right|^{2}\left| w \right|^{2}- \left<w,v \right>^{2}\\ 
+       &= \left| v\wedge w \right|^{2}      
+    \end{aligned}
+    \] 
+    \hfill $\square$
+\end{proof}
+\begin{proposition}
+    设 \(  R_1,R_2  \)是有限维内积空间 \(  V  \)上的代数曲率张量.若对于任意一对线性无关的 \(  v,w \in V  \),都有 \[
+    \frac{R_1\left( v,w,w,v \right)  }{\left| v\wedge w \right|  }= \frac{R_2\left( v,w,w,v \right)  }{\left| v\wedge w \right|  }  
+    \]则 \(  R_1= R_2  \).    
+\end{proposition}
+\begin{proof}
+    令 \(  D =  R_1-R_2  \),则 \(  D  \)也是一个  \(  V  \)上的代数曲率张量.并且对于任意的 \(  v,w \in V  \), \(  D\left( v,w,w,v \right)= 0   \).
+    
+    任取 \(  w,v,x \in V  \),  \[
+    \begin{aligned}
+    0&=  D\left( w+ v,x,x,w+ v \right)\\ 
+     &= D\left( w,x,x,w \right)+ D\left( v,x,x,v \right)+ D\left( w,x,x,v \right)+ D\left( v,x,x,w \right)\\ 
+      &= 2D\left( w,x,x,v \right)       
+    \end{aligned}
+    \]上面的结果还立即给出 \[
+    \begin{aligned}
+    0&= D\left( w,x+ u,x+ u,v \right)\\ 
+     &= D\left( w,x,x,v \right)+ D\left( w,x,u,v \right)+ D\left( w,u,x,v \right)+ D\left( w,u,u,v \right)\\ 
+      &= D\left( w,x,u,v \right)+ D\left( w,u,x,v \right)        
+    \end{aligned}
+    \]此外,代数Bianchi恒等式给出 \[
+    \begin{aligned}
+    0&= D\left( w,x,u,v \right)+ D\left( x,u,w,v \right)+ D\left( u,w,x,v \right)   \\ 
+     &= D\left( w,x,u,v \right)-D\left( x,w,u,v \right)-D\left( w,u,x,v \right) \\ 
+      &= D\left( w,x,u,v \right)+ D\left( w,x,u,v \right)   + D\left( w,x,u,v \right)\\ 
+       &= 3D\left( w,x,u,v \right)     
+    \end{aligned}
+    \]
+对于所有的 \(  w,x,u,v \in V  \)成立. 
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}{Ricci曲率和标量曲率的几何意义}
+    设 \(  \left( M,g \right)   \)是 \(  n  \)维Riemann流形(\(  n\ge 2  \) ), \(  p \in M  \).   
+    \begin{enumerate}
+        \item 对于每个单位向量 \(  v \in T_{p}M  \), \(  Rc_{p}\left( v,v \right)   \)  等于 \(  \left( v,b_2 \right),\cdots ,\left( v,b_{n} \right)    \)张成的平截面的截面曲率之和.其中 \(  \left( b_1,\cdots ,b_{n} \right)   \)是使得 \(  b_1= v  \)的 \(  T_{p}M  \)的任意规正基.
+        \item  \(  p  \)处的标量曲率,等于在任意\(  T_{p}M  \)的 规正基下,所有不相等的基向量张成平截面的截面曲率之和.  
+    \end{enumerate}
+    
+\end{proposition}
+\begin{proof}
+    \begin{enumerate}
+        \item 任取符合条件的规正基 \(  \left(  b_1,\cdots,b_n  \right)   \), \[
+        Rc_{p}\left( v,v \right)= R_{11}\left( p \right)= R_{k 1 1}{}^{k}\left( p \right)=   \sum _{k= 1}^{n}Rm_{p}\left( b_{k},v,v,b_{k} \right)= \sum _{k=2}^{n}\mathrm{sec}\left( v,b_{k} \right)   
+        \] 
+        \item 任取\(  T_{p}M  \)的规正基 \(  \left(  b_1,\cdots,b_n  \right)   \), \[
+        S\left( p \right)= R_{j}{}^{j}= g^{jk}R_{jk}= \sum _{k= 1}^{n}R_{kk}=\sum _{k= 1}^{n}\sum _{j= 1}^{n}R_{k j j } {}^{k}= \sum _{j \neq k} \mathrm{sec}\left( b_{j},b_{k} \right)   
+        \]  
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+
+\subsection{模型空间的截面曲率}
+
+\begin{definition}
+    称一个Riemann度量或Riemann流形是有\textbf{常值截面曲率}的,若它的截面曲率在所有点的所有平面上都相同.
+\end{definition}
+
+\end{document}

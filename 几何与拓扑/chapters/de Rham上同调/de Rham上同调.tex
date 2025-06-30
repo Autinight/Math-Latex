@@ -1,0 +1,186 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+\chapter{de Rham上同调}
+
+\section{de Rham上同调群}
+\begin{definition}
+    \(  d: \Omega ^{p}\left( M \right)\to  \Omega ^{p+ 1}\left( M \right)    \)是线性的,核和像都是线性子空间,定义 \[
+    \mathcal{Z}^{p}\left( M \right)=  \operatorname{ker}\,\left( d: \Delta O^{p}\left( M \right)\to  \Omega ^{p+ 1}\left( M \right)   \right)= \left\{ \text{closed p-forms on M} \right\} 
+    \] \[
+    \mathcal{B}^{p}\left( M \right)= \operatorname{Im}\,\left( d: \Omega ^{p-1}\left( M \right)\to  \Omega ^{p}\left( M \right)   \right)= \left\{ \text{exact p-forms on M} \right\}  
+    \] 约定 \(   \Omega ^{p}\left( M \right)   \)当 \(  p<0  \)或 \(  p> \neq \operatorname{dim}\,M  \)时为零.   
+\end{definition}
+
+
+\begin{definition}
+    定义 \(  p  \)阶 de Rham上同调群为商空间 \[
+    H_{\mathrm{dR}}^{p}\left( M \right)= \frac{\mathcal{Z}^{p}\left( M \right)  }{ \mathcal{B}^{p}\left( M \right)   }
+    \] 
+\end{definition}
+
+\begin{example}
+    Poincare引理相当于说 \[
+    H_{\mathrm{dR}}^{1}\left( U \right)= 0 
+    \]对于任意的星型开集 \(  U  \subseteq \mathbb{R} ^{n}\)成立. 
+\end{example}
+
+\hspace*{\fill} 
+
+\begin{proposition}
+    任意光滑映射 \(  F:M\to N  \)的拉回映射 \(  F^{*}: \Omega ^{p}\left( N \right)\to  \Omega ^{p}\left( M \right)    \)将 \(  \mathcal{Z}^{p}\left( N \right)   \)送到 \(  \mathcal{Z}^{p}\left( M \right)   \),将 \(  \mathcal{B}^{p}\left( N \right)   \)送到 \(  \mathcal{B}^{p}\left( M \right)   \),给出 \(  H_{\mathrm{dR}}^{p}\left( N \right)   \)到 \(  H_{\mathrm{dR}}^{p}\left( M \right)   \)的线性映射,成为诱导上同调映射.
+
+\end{proposition}
+\begin{proof}
+    由拉回和外微分的交换性易得.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}
+    \(  M\mapsto H_{\mathrm{dR}}^{p}\left( M \right)   \)连同 \(  F\mapsto F^{*}  \)给出一个反变函子.  
+\end{corollary}
+
+\begin{corollary}
+    de Rham上同调是微分同胚不变的.
+\end{corollary}
+\subsection{基本计算}
+
+\begin{proposition}
+    令 \(  \left\{ M_{j} \right\}  \)是可数个(带边)光滑 \(  n  \)-流形, \(  M= \coprod  _{j}M_{j}  \).则对于每个 \(  p  \),含入映射 \(  \iota _{j}:M_{j}\hookrightarrow   \)共同诱导出 \(  H_{\mathrm{dR}}^{p}\left( M \right)   \)到 \(  \prod _{j}H_{\mathrm{dR}}^{p}\left( M_{j} \right)   \)      的同构.
+\end{proposition}
+
+
+\begin{proposition}
+    若 \(  M  \)是连通的(带边)流形,则 \(  H_{\mathrm{dR}}^{0}\left( M \right)   \)等于常值函数空间,从而使1维的.  
+\end{proposition}
+
+\begin{proof}
+    \(  \mathcal{B}^{0}\left( M \right)= 0   \), \(  \mathcal{Z}^{0}\left( M \right)= \left\{ f: \,\mathrm{d} f= 0 \right\}= \left\{ f \text{ is constant} \right\}   \)  
+
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}
+    0维流形 \(  M  \)的 \(  H_{\mathrm{dR}}^{0}\left( M \right)   \)是一些1-向量空间的直积,每份对应一个点.  
+\end{corollary}
+
+\begin{lemma}
+    任取光滑(带边)流形 \(  M  \), 存在两个映射 \(  i_0^{*},i_1^{*}: \Omega ^{*}\left( M\times I \right)\to  \Omega ^{*}\left( M \right)    \)  之间的同伦算子.其中 \[
+   i_{t}:M\to M\times I,\quad  i_{t}\left( x \right)= \left( x,t \right)  
+    \]
+\end{lemma}
+
+
+\begin{proposition}
+    设\(  M  \),\(  N  \)是带边流形, \(  F,G:M\to N  \)同伦的光滑映射.则  对于每个 \(  p  \),诱导映射 \(  F^{*},G^{*}:H_{\mathrm{dR}}^{p}\left( M \right)\to H_{\mathrm{dR}}^{p}\left( M \right)    \)相同.   
+\end{proposition}
+
+\begin{proof}
+        \[
+H:M\times I\to N
+\]是 \(  F  \)到 \(  G  \)的同伦,则\[
+F^{*}= \left( H\circ  i_0\right)^{*}= i_0^{*}\circ H^{*}= i_1^{*}\circ H^{*}=  \left( H\circ i_1 \right)^{*}= G^{*}  
+\]  
+
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{同伦不变性}
+    设 \(  M  \)和 \(  N  \)是同伦等价的光滑(带边)流形,则 \[
+    H_{\mathrm{dR}}^{p}\left( M \right)\simeq H_{\mathrm{dR}}^{p}\left( N \right)  
+    \]对于每个 \(  p  \)成立.   
+\end{definition}
+
+
+\begin{definition}
+    定义 \(  \Phi :H_{\mathrm{dR}}^{1}\left( M \right)\to \mathrm{Hom}\left( \pi _1 \left( M,q \right),\mathbb{R}   \right)    \) ,给定上同调类 \(  [ \omega ] \in H_{\mathrm{dR}}^{1}\left( M \right)   \),定义 \[
+    \Phi [ \omega ]: \pi _1 \left( M,q \right)\to \mathbb{R}  ,\quad \Phi \left[  \omega  \right]\left[  \gamma  \right]= \int_{ \tilde{\gamma} } \omega   
+    \]其中 \(   \tilde{\gamma}   \)是代表 \(  [ \gamma ]  \)的一个分段光滑曲线.    
+\end{definition}
+
+\begin{definition}
+    设 \(  M  \)是连通的光滑流形,对于每个 \(  q \in M  \), \(  \Phi :H_{\mathrm{dR}}^{1}\left( M \right)\to \mathrm{Hom}\left( \pi \left( M,q \right),\mathbb{R}   \right)    \)是良定义的单射.   
+\end{definition}
+\begin{remark}
+    事实上是同构.
+\end{remark}
+\begin{proof}
+    单射的部分相当于说若 \(   \omega   \)在任意 基于 \(  q  \)的回路上为零,则它是恰当的.  而恰当当且仅当任意回路上的积分为0(不一定基于\(  q  \) ).
+
+    只需要对于基于 \(  q^{\prime}   \) 任意的回路,将回路插入进 \(  q^{\prime}   \)到 \(  q  \)的往返路径中,得到 \(  q  \)的回路即可.   
+
+    \hfill $\square$
+\end{proof}
+
+\begin{corollary}
+    若 \(  M  \)单连通,且有有限基本群,则 \(  H_{\mathrm{dR}}^{1}\left( M \right)= 0   \).  
+\end{corollary}
+\begin{proof}
+    不存在非平凡的有限群到 \(  \mathbb{R}   \)的群同态. 
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{lemma}{紧支的Poincare引理}
+    令 \(  n\ge p\ge 1  \),\(   \omega   \)是 \(  \mathbb{R} ^{n}  \)上紧支的 \(  p  \)-形式. \(  p= n  \)另外假设 \(  \int_{\mathbb{R} ^{n}} \omega = 0  \)      ,则存在\(  \mathbb{R} ^{n}  \)上紧支的 \(  \left( p-1 \right)   \)-形式 \(  \eta   \),使得 \(  \,\mathrm{d} \eta =  \omega   \)    
+\end{lemma}
+
+\begin{definition}
+    记 \(   \Omega _{c}^{p}\left( M \right)   \)是 \(  M  \)上紧支的光滑 \(  p  \)-形式空间.则可以定义相应的紧支de Rham上同调群 \(  H_{c}^{p}\left( M \right)   \).    
+\end{definition}
+
+
+\begin{theorem}
+    \[
+    H_{c}^{p}\left( \mathbb{R} ^{n} \right)\simeq \begin{cases} 0&0\le p< n \\ 
+     \mathbb{R} ,&p= n\end{cases}  
+    \]
+\end{theorem}
+
+\begin{proof}
+    对于 \(  0< p< n  \)的同调群,根据紧支的Poincare引理,闭紧支形式都是恰当紧支的.
+    
+    对于 \(  p= 0  \)的同调群,由于闭链只有常函数,而紧支的常函数只有0,故可得 \(  H_{c}^{p}\left( \mathbb{R} ^{n} \right)\simeq 0   \)  
+
+    对于 \(  p= n  \)的情况,定义映射 \[
+    \Phi : H_{c}^{n}\left( \mathbb{R} ^{n} \right) \to \mathbb{R} ,\quad [ \omega ]\mapsto  \int_{\mathbb{R} ^{n}} \omega  
+    \] Stokes定理给出了 \(I \)的良定义性,紧支Poincare引理给出了 \(  \Phi   \)是单的.
+    
+    为了说明\( I \)是满射,任取 \(  C \in \mathbb{R}   \),我们证明存在光滑紧致的 \(  n  \)-形式,使得其在 \(  \mathbb{R} ^{n}  \)上的积分等于 \(  C  \).具体地,取支撑在 \(  \overline{B}\left( 0,1 \right)   \)的光滑bump函数 \(  \Phi   \),设 \[
+    A =  \int_{\mathbb{R} ^{n}}\Phi \,\mathrm{d} x^{1}\wedge \,\mathrm{d} x^{2}\wedge \cdots \wedge \,\mathrm{d} x^{n}= \int_{\overline{B}\left( 0,1 \right) }\Phi \,\mathrm{d} x^{1}\wedge \cdots \wedge \,\mathrm{d} x^{n}
+    \]    则 \[
+    \frac{\Phi  }{A }\,\mathrm{d} x^{1}\wedge \,\mathrm{d} x^{n} 
+    \]是所需的光滑紧支 \(  n  \)-形式.    
+
+    \hfill $\square$
+\end{proof}
+
+\vspace{1em} % Add some vertical space
+\subsection{顶上同调}
+\begin{tabular}{|l | c | c | c|}
+\hline
+性质组合             & $H^n(M; \mathbb{Z})$ & $H^n(M; R)$ (\(  R  \)  是域, $R \neq \mathbb{Z}_2$) & $H^n(M; \mathbb{Z}_2)$ \\
+\hline
+紧致且可定向         & $\mathbb{Z}$         & $R$                                       & $\mathbb{Z}_2$         \\
+\hline
+紧致且不可定向       & $0$                  & $0$                                       & $\mathbb{Z}_2$         \\
+\hline
+非紧致且可定向       & $0$                  & $0$                                       & $0$                    \\
+\hline
+非紧致且不可定向     & $0$                  & $0$                                       & $0$                    \\
+\hline
+\end{tabular}
+
+\section{度理论}
+\end{document}

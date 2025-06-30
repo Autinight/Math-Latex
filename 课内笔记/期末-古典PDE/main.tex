@@ -1,0 +1,59 @@
+\documentclass[lang=cn,12pt,color=blue,pad,fontset=none]{elegantbook}
+%fontset=none,
+\title{PDE}
+% \subtitle{课内复习版}
+
+\author{Autin}
+\usepackage{stmaryrd}
+
+\usepackage{quiver} 
+
+\setmainfont{Aa顺風顺水顺财神}[BoldFont=Shanggu Round-Bold]
+\setCJKmainfont{Aa顺風顺水顺财神}[BoldFont=Shanggu Round-Bold]
+\setCJKsansfont{Aa顺風顺水顺财神}[BoldFont=Shanggu Round-Bold]
+\setCJKmonofont{Aa顺風顺水顺财神}[BoldFont=Shanggu Round-Bold]
+ 
+\usepackage{subfiles}
+\extrainfo{} 
+
+\setcounter{tocdepth}{3}
+
+% \logo{xmu-logo.pdf}
+\cover{image.png}
+\usepackage{CJKutf8}
+% 本文档命令
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+ 
+% 修改标题页的橙色带
+% \definecolor{customcolor}{RGB}{32,178,170}
+% \colorlet{coverlinecolor}{customcolor}
+
+\begin{document}
+
+\maketitle
+
+\frontmatter
+
+\tableofcontents
+
+\mainmatter
+
+\subfile{chapters/特征函数法/特征函数法.tex}
+
+\subfile{chapters/Fourier变换/Fourier变换.tex}
+
+\subfile{chapters/分布理论初步/分布理论初步.tex}
+
+\subfile{chapters/高维积分/高维积分.tex}
+
+\subfile{chapters/能量方法/能量方法.tex}
+
+\subfile{chapters/Green函数/Green函数.tex}
+
+\subfile{chapters/极值原理/极值原理.tex}
+
+\end{document}
+ 
+
+ 

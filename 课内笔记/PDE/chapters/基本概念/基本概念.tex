@@ -1,0 +1,270 @@
+\documentclass[../../PDE.tex]{subfiles}
+
+\begin{document}
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+
+\chapter{基本概念}
+
+\begin{definition}{多重指标}
+  \begin{enumerate}
+    \item   称 \(  \alpha = \left(  \alpha_1,\cdots,\alpha_N \right)\in \mathbb{Z} _{+ }^{N}   \)为一个多重指标,其中 \(  \alpha _{k}  \)是非负整数. 
+    \item 设 \(   \alpha , \beta \in Z_{+ }^{N}  \),定义 \[
+    \alpha \ge \beta :\iff \alpha _{k}\ge \beta _k ,\forall k=  1,\cdots,N
+    \] 
+    \item 定义 \(  \alpha ,\beta   \)的加法和减法为逐分量的加法和减法. 
+    \item 定义 \(  \left| \alpha  \right|: =  \sum _{k= 1}^{N}\alpha _{k}   \) 
+  \end{enumerate}
+   
+\end{definition}
+
+\begin{definition}{微分算子}
+    设 \(  \alpha \in Z_{+ }^{N}, \left| \alpha  \right|= m   \),称 \[
+    D^{m} : =  D_{1}^{ \alpha _1 }\cdots D_{N}^{ \alpha _{N}}=  \frac{\partial ^{m} }{\partial x_1^{\alpha _1 }\cdots \partial x_{N}^{ \alpha _{N}} } 
+    \] 为一个 \(  m  \)阶微分算子. 
+\end{definition}
+
+\begin{definition}{线性微分算子}
+    若微分算子 \(  L  \)满足 
+    \begin{enumerate}
+        \item 对于任意的 \(  c \in \mathbb{R}   \),都有 \(  L\left[ cu \right]= cL\left[ u \right]    \);
+        \item 对于任意的 \(  u_1,u_2  \),都有 \(  L\left[ u_1+ u_2 \right]= L\left[ u_1 \right]+ L\left[ u_2 \right]     \)    
+    \end{enumerate}
+     则称 \(  L  \)为一个线性微分算子. 
+\end{definition}
+
+\begin{definition}
+    线性微分算在 \(  L  \)作用在位置函数 \(  u\left( x \right)   \)上形成的方程称为线性偏微分方程 \[
+    L\left[ u \right]= \sum _{\left| \alpha  \right|\le m } \alpha _{\alpha }\left( x \right)  D^{\alpha }u
+    \]  
+\end{definition}
+
+\begin{proposition}
+    设 \(  L,M,N  \) 是线性微分算子, \(  c_1,c_2\in \mathbb{R}   \),则 
+    \begin{enumerate}
+        \item \(  L+ M= M+ L  \) 
+        \item \(  \left( L+ M \right)+ N   = L+ \left( M+ N \right) \)
+        \item \(  \left( LM \right)N = L\left( MN \right) \)
+        \item \(  L\left( c_1M+ c_2N \right)= c_1LM+ c_2LM   \)
+        \item 若 \(  L,M  \)具有常系数,则 \(  LM= ML  \)     
+    \end{enumerate}
+     
+\end{proposition}
+
+
+\begin{definition}
+    一个偏微分方程（组）中最高阶微商的阶数称为方程的阶数    .
+\end{definition}
+
+\begin{definition}{半线性PDE}
+    若PDE的最高阶微商项是线性的,则称 PDE是半线性的. \[
+    \sum _{\left|  \alpha  \right|= m } a_{\alpha }\left( x \right)D^{ \alpha }u= D^{\alpha }u + a_0\left( D^{m-1}u,D^{m-2}u,\cdots ,Du,u,x \right)= 0  
+    \]
+\end{definition}
+
+\begin{definition}{拟线性}
+    若PDE的最高阶微商项是线性的,且系数依赖与自变量,位置函数以及它的低阶微商项,即 \[
+    \sum _{\left| \alpha  \right|= m } a_{\alpha }\left( D^{m-1}u,D^{m-2}u,\cdots ,Du,u,x \right)D^{ \alpha }u+ a_0\left( D^{m-1}u,D^{m-2}u,\cdots ,Du,u,x \right)  = 0
+    \]
+\end{definition}
+
+\begin{definition}{完全非线性}
+    称PDE是完全非线性的,若它关于最高阶微商是非线性的.
+\end{definition}
+
+\section{二阶PDE的分类}
+
+在区域 \(   \Omega \subseteq \mathbb{R} ^{2}  \),考虑以下形式的二阶PDE 
+\begin{equation}\label{3.30-1}
+  A\left( x,y \right) \frac{\partial ^{2}u}{\partial x^{2}}+ 2B\left( x,y \right)\frac{\partial ^{2}u}{\partial x \partial y}+ C\left( x,y \right)  \frac{\partial ^{2}u}{\partial y^{2}}= F\left( x,y,u,\frac{\partial u}{\partial x},\frac{\partial u}{\partial y} \right) 
+\end{equation} 
+若 \(  F  \)形如 \[
+F\left( x,y,u,\frac{\partial u}{\partial x},\frac{\partial u}{\partial y} \right)= F_1\left( x,y \right)u+ F_2\left( x,y \right)\frac{\partial u}{\partial x}+ F_3\left( x,y \right)\frac{\partial u}{\partial y}+ F_4\left( x,y \right)     
+\]则二阶PDE是线性的.
+设 \(  A,B,C  \)连续可微, \(  F  \)是 \(   \Omega \times \mathbb{R} ^{3}  \)上的连续函数. 
+
+
+\begin{definition}{判别式}
+    定义 \[
+    D\left( x,y \right)= B^{2}\left( x,y \right)-A\left( x,y \right)C\left( x,y \right),\quad \left( x,y \right)\in  \Omega      
+    \]
+
+    对于二阶线性PDE,设 \(  \left( x_0,y_0 \right)\in  \Omega    \)
+    \begin{enumerate}
+        \item 若 \(  D\left( x_0,y_0 \right)> 0   \),称方程在 \(  \left( x_0,y_0 \right)   \)处是双曲型的.
+        \item 若 \(  D\left( x_0,y_0 \right)= 0   \),称方程在 \(  \left( x_0,y_0 \right)   \)    处是抛物型的.
+        \item 若 \(  D\left( x_0,y_0 \right)< 0   \),称方程在 \(  \left( x_0,y_0 \right)   \)处是椭圆型的.  
+    \end{enumerate}
+     
+\end{definition}
+
+
+\begin{theorem}
+    非奇异变换不改变方程的类型.考虑非奇异变换 \[
+    T:  \Omega \to \mathbb{R} ^{2},\quad \left( x,y \right)\mapsto \left(   \xi ,\eta  \right)  
+    \]使得 Jacobi行列式 \[
+    J= \frac{ \partial \left(  \xi ,\eta  \right)  }{ \partial \left( x,t \right)  }= \det \begin{pmatrix} 
+        \frac{\partial  \xi }{\partial x}&\frac{\partial  \xi }{\partial y}\\ 
+         \frac{\partial \eta }{\partial x}&\frac{\partial \eta }{\partial y} 
+    \end{pmatrix}  
+    \]在 \(   \Omega   \)上处处非零.令 \[
+    v\left(  \xi ,\eta  \right)= u\left( x\left(  \xi ,\eta  \right)  ,y\left(  \xi ,\eta  \right) \right)  
+    \] 得到关于 \(  v  \)的方程 \[
+    A^{*}\left(  \xi ,\eta  \right)\frac{\partial ^{2}v}{\partial  \xi ^{2}}+ 2B^{*}\left(  \xi ,\eta  \right)\frac{\partial ^{2}v}{\partial  \xi  \partial \eta }+ C^{*}\left(  \xi ,\eta  \right)\frac{\partial ^{2}v}{\partial \eta ^{2}}= F^{*}\left(  \xi ,\eta ,v ,\frac{\partial v}{\partial  \xi },\frac{\partial v}{\partial \eta }\right)    
+    \] 其中 
+    \begin{enumerate}
+        \item \[
+        A^{*}\left(  \xi ,\eta  \right)= A\left( \frac{\partial  \xi }{\partial x} \right)^{2}+ 2B\frac{\partial  \xi }{\partial x}\frac{\partial  \xi }{\partial y}+  C^{2}\left( \frac{\partial  \xi }{\partial y} \right)^{2}  
+        \]
+        \item \[
+        B^{*}\left(  \xi ,\eta  \right)= A\frac{\partial  \xi }{\partial x}\frac{\partial \eta }{\partial x}+ B\left( \frac{\partial  \xi }{\partial x}\frac{\partial \eta }{\partial y}+ \frac{\partial  \xi }{\partial y}\frac{\partial \eta }{\partial x} \right)+ C\frac{\partial  \xi }{\partial y}\frac{\partial \eta }{\partial y}  
+        \]
+        \item \[
+        C^{*}\left(  \xi ,\eta  \right)= A\left( \frac{\partial \eta }{\partial x} \right)^{2}+ 2B \frac{\partial \eta }{\partial x}\frac{\partial \eta }{\partial y}+ C\left( \frac{\partial \eta }{\partial y} \right)^{2}   
+        \]若令 \[
+        M =  \begin{pmatrix} 
+            A&B\\ 
+             B&C 
+        \end{pmatrix} 
+        \]则 
+        \begin{enumerate}
+            \item \(  A^{*}= \left(  \xi _{x}, \xi _{y} \right)   M\begin{pmatrix} 
+                 \xi _{x}\\ 
+                   \xi _{y} 
+            \end{pmatrix} \)
+            \item \(  B^{*}= \left(  \xi _{x}, \xi_{y}  \right)M\begin{pmatrix} 
+                \eta _{x}\\ 
+                 \eta _{y} 
+            \end{pmatrix}    \)
+            \item \(  C^{*}= \left( \eta _{x},\eta _{y} \right)M \begin{pmatrix} 
+                \eta _{x}\\ 
+                 \eta _{y} 
+            \end{pmatrix}    \)   
+        \end{enumerate}
+        
+    \end{enumerate}
+    
+    判别式的关系为 \[
+    D\left( x,y \right)= {B^{*}}^{2}-A^{*}\left(  \xi ,\eta  \right)C^{*}\left(  \xi ,\eta  \right)= J^{2}\left( B^{2}\left( x,y \right)-A\left( x,y \right)C\left( x,y \right)    \right)    
+    \]
+\end{theorem}
+
+\begin{definition}
+    考虑方程 \[
+    A\left( \frac{\mathrm{d}y}{\mathrm{d}x} \right)^{2}- 2 B \frac{\mathrm{d}y}{\mathrm{d}x}+ C= 0 
+    \]它的根是 \[
+    \begin{aligned}
+    \frac{\mathrm{d}y}{\mathrm{d}x}& =  \frac{B+ \sqrt{B^{2}-AC} }{A }\\ 
+     \frac{\mathrm{d}y}{\mathrm{d}x}& =  \frac{B- \sqrt{B^{2}-AC} }{A }   
+    \end{aligned}
+    \]这些方程被称为是 \ref{3.30-1}的特征方程.是Oxy平面上沿着 \(   \xi ,\eta   \)为常数的曲线族的常微分方程. 
+\end{definition}
+
+\begin{proposition}
+    设特征方程的解为 \[
+     \varphi _1 \left( x,y \right)= c_1,\quad  \varphi _2 \left( x,y \right)= c_2  
+    \]其中 \(  c_1,c_2  \)为常数,在变换 \[
+     \xi =  \varphi  _1 \left( x,y \right),\quad \eta =  \varphi _2 \left( x,y \right)  
+    \]下,方程\ref{3.30-1}转化为标准方程. 
+\end{proposition}
+\begin{proof}
+     方程化为标准形式,当且仅当 \[
+     A^{*}\left(  \xi ,\eta  \right)= A \xi _{x}^{2}+ 2B \xi _{x} \xi _{y}+ C \xi _{y}^{2}= 0 
+     \] \[
+     C^{*}\left(  \xi ,\eta  \right)= A\eta _{x}^{2}+ 2B \eta _{x}\eta _{y}+ C\eta _{y}^{2}= 0
+     \]
+     当且仅当 \[
+     A\left( \frac{\zeta _{x} }{\zeta _{y} }  \right)^{2}+ 2B \frac{\zeta _{x} }{\zeta _{y} }+ C= 0  
+     \]对于\(  \zeta =  \xi ,\eta   \)成立. 用 \(   \varphi   \)代替 \(   \varphi _1 , \varphi _2   \),则   \[
+    0=  \,\mathrm{d}  \varphi \left( x,y \right)=   \varphi _{x}\,\mathrm{d} x+  \varphi _{y}\,\mathrm{d} y
+     \]   \[
+     \frac{\mathrm{d}y}{\mathrm{d}x}=  -\frac{ \varphi _{x} }{ \varphi _{y} } 
+     \]带入特征方程,得到 \[
+     A\left( \frac{ \varphi _{x} }{ \varphi _{y} }  \right)^{2}+ 2B \frac{ \varphi _{x} }{ \varphi _{y} }+ C= 0  
+     \]故  \(  \zeta =  \varphi   \)的替换,使得方程化为标准形式. 
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}{双曲型}
+    \begin{enumerate}
+        \item 若 \(  D\left( x,y \right)> 0   \),特征方程的积分曲线产生两个产生两个实的不同的特征族,使得 \(  A^{*},C^{*}  \)为0,原方程化为 \[
+            u_{ \xi \eta }= \phi _1 \left(  \xi ,\eta ,u,u_{ \xi },u_{\eta } \right) 
+            \]其中 \(  \phi _1 = \frac{F^{*} }{ 2B^{*}}   \).称为双曲型方程的第一典型形式.
+        \item 引入新变量 \[
+         \alpha =  \xi + \eta ,\quad \beta =  \xi -\eta 
+        \]则 \[
+        u_{ \xi \eta }= u_{ \alpha  \alpha }-u_{\beta \beta }
+        \]原方程化为 \[
+        u_{ \alpha  \alpha }-u_{\beta \beta }= \phi _2 \left(  \alpha ,\beta ,u,u_{ \alpha },u_{\beta } \right) 
+        \]称为双曲型方程的第二典型形式.
+    \end{enumerate}
+       
+\end{proposition}
+
+\begin{proposition}{抛物型}
+    设 \(  D\left( x,y \right)= 0   \),则存在一个实特征族,考虑 \(   \xi =  \varphi \left( x,y \right)= c   \).任取与 \(   \xi   \)无关的 \(  \eta   \),方程化为 \[
+    u_{\eta \eta }= \phi _3 \left(  \xi ,\eta ,u,u_{ \xi },u_{\eta } \right) 
+    \] 称为\textbf{抛物型方程的典型形式},其中 \(  \phi _3 = \frac{F^{*} }{ C^{*}}   \).
+    若取\(  \eta = c  \)并任选无关的 \(   \xi   \),方程化为 \[
+    u_{ \xi  \xi }= \phi _3 ^{*}\left(  \xi ,\eta ,u,u_{ \xi },u_{\eta } \right) 
+    \]      
+\end{proposition}
+\begin{proof}
+考虑 \(   \xi = c  \),由于 \(  B^{2} =  AC  \)且 \(  A^{*}= 0  \) \[
+A^{*}= A \xi _{x}^{2}+ 2B \xi _{x} \xi _{y}+ C \xi _{y}^{2}= \left( \sqrt{A} \xi _{x}+ \sqrt{C} \xi _{y} \right)^{2}= 0 
+\]   从而 \[
+\sqrt{A} \xi _{x}+ \sqrt{C} \xi _{y}= 0
+\]于是 \[
+\begin{aligned}
+    B ^{*}&= A \xi _{x}\eta _{x}+ B\left(  \xi _{x}\eta _{y}+  \xi _{y}\eta _{x} \right)+ C \xi _{y}\eta _{y} \\ 
+     & = \left( \sqrt{A} \xi _{x}+ \sqrt{C} \xi _{y} \right)\left( \sqrt{A}\eta _{x}+ \sqrt{C}\eta _{y} \right)= 0  
+\end{aligned} 
+\]因此 \(  A^{*}= B^{*}= 0  \),任选 \(  \eta   \)与 \(   \xi   \)无关,方程两边除以 \(  C  \)就得到    
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}{椭圆型}
+    若 \(  D\left( x,y \right)<0   \), 
+    设特征曲线为 \[
+     \xi  = \alpha + i\beta ,\quad \eta = \alpha -i\beta 
+    \]其中 \(  \alpha \left( x,y \right), \beta \left( x,y \right)    \)是实函数,考虑坐标变换 \[
+    \alpha \left( x,y \right)= \operatorname{Re}\, \xi \left( x,y \right)=  \frac{1}{2}\left(  \xi + \eta  \right),\quad \beta \left( x,y \right)= \operatorname{Im}\, \xi \left( x,y \right)= \frac{1 }{2\pi  }\left(  \xi -\eta  \right)        
+    \] 
+    方程化为 \[
+    u_{\alpha \alpha }+ u_{\beta \beta }= \phi _5 \left( \alpha ,\beta ,u,u_{\alpha },u_{\beta } \right) 
+    \]称为 椭圆型方程的典型形式.
+\end{proposition}
+
+
+\begin{remark}
+    二阶线性PDE的标准型:
+
+    \begin{enumerate}
+        \item 找处\(  A,B,C  \),判断 \(  B^{2}-AC  \)在每一点处的符号,确定方程类型.
+        \item 解两个特征方程,得到特征曲线;
+        \item 引入变量 \(   \xi ,\eta   \),计算 \(  u_{x},u_{y},u_{xx},u_{xy},u_{yy}  \).
+        \item 带入原方程计算得到标准方程.    
+    \end{enumerate}
+    
+\end{remark}
+
+\section{定解问题}
+
+\begin{definition}{适定性}
+    称一个PDE的定解问题在某个函数类 \(  C  \)中是适定的,如果
+    \begin{enumerate}
+        \item 在 \(  C  \)中存在解.
+        \item \(  C  \)中的解是唯一的.
+        \item 解连续依赖于给定的数据,如初值,边值和系数等.   
+    \end{enumerate}
+     
+\end{definition}
+
+\end{document}

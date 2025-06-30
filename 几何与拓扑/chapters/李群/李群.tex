@@ -1,0 +1,58 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+    
+
+\chapter{李群} 
+
+\section{基本概念}
+
+\begin{definition}{李群}
+    一个李群是指,一个带有群结构的光滑（带边）流形 \(  G  \),配有一个光滑的乘法映射 \(  m: G\times G \to G  \)和一个光滑的取逆映射 \(  i: G \to G  \), \[
+    m\left( g,h \right)= gh,\quad  i\left( g \right)= g^{-1}   
+    \]   
+\end{definition}
+
+
+\begin{definition}
+    设 \(  G  \)是一个李群,对于任意的 \(   g \in G  \),定义映射 \(  L_{g},R_{g}: G\to G  \),分别称为左平移和右平移,按 \[
+    L_{g}\left( h \right): =  gh,\quad  R_{g}\left( h \right): =  hg  
+    \]   
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item 由于 \(  L_{g}  \)可以表示为复合映射 \[
+        G \xrightarrow{\iota _g }G\times G \xrightarrow{m} G
+        \] 其中 \(  \iota _{g}\left( h \right)= \left( g,h \right)    \),  \(  m  \)是乘法,因此 \(  L_{g}  \)是光滑的.
+        \item \(  L_{g}  \)有光滑的逆映射 \(  L_{g^{-1} }  \),因此是微分同胚.     
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{example}[李群的例子]
+    \begin{enumerate}
+        \item 一般线性群 \(  \mathrm{GL}\left( n,\mathbb{R}  \right)   \)（Example\ref{一般线性群}）的矩阵乘法表为 \(  A,B  \)分量的多项式,进而是光滑的.取逆映射由 Cramer法则可知也是光滑的.因此 \(  \mathrm{GL}\left( n,\mathbb{R}  \right)   \)构成一个李群.   
+        \item 令 \(  \mathrm{GL}^{+ }\left( n,\mathbb{R}  \right)   \)表示由正行列式矩阵构成的 \(  \mathrm{GL}\left( n,\mathbb{R}  \right)   \)的子集.因为 \(  \det \left( AB \right)= \left( \det A \right)\left( \det  B\right)     \),且 \(  \det \left( A^{-1}  \right)   = 1 / \det A\),所以 \(  \mathrm{Gl}^{+ }\left( n,\mathbb{R}  \right)   \)是 \(  \mathrm{GL}\left( n,\mathbb{R}  \right)   \)      的一个子群；
+        并且 \(  \mathrm{GL}^{+ }\left( n,\mathbb{R}  \right)   \)是行列式函数这样一个连续函数在 \(  \left( 0,\infty \right)   \)下的原像,故而是\(  \mathrm{GL}\left( n,\mathbb{R}  \right)   \)的一个开子集.
+        群作用是 \(  \mathrm{GL}\left( n,\mathbb{R}  \right)   \)上的限制,从而是光滑映射.因此 \(  \mathrm{GL}^{+ }\left( n,\mathbb{R}  \right)   \)是一个李群. 
+        \item 令 \(  G  \)是一个李群.若 \(  H\subseteq G  \)同时是 \(  G  \)的子群和开子集,则 \(  H  \)构成一个李群,被称为是 \(  G  \)的一个 \textbf{开子群}.
+        \item \textbf{复一般线性群 } \(  \mathrm{GL}\left( n,\mathbb{C}  \right)   \)为全体 \(  n\times n  \) 的可逆复矩阵.它是 \(  2n^{2}  \)-维光滑流形 \(  \mathrm{M}\left( n,\mathbb{C}  \right)   \)的一个开子流形,并且通过分解实虚部可知矩阵乘法和逆映射均为光滑映射,因此 \(  \mathrm{GL}\left( n,\mathbb{C} \right)   \)也构成一个李群.
+        \item 若 \(  V  \)是任意实或复的线性空间,令 \(  \mathrm{GL}\left( V \right)   \)表示全体 \(  V  \)到自身的可逆线性映射.则 \(  \mathrm{Gl}\left( V \right)   \)在线性映射的复合下构成群.
+        若 \(  V  \)的维数为 \(  n <\infty  \),则 \(  V  \)的任意一组基给出  \(  \mathrm{GL}\left( V \right)   \)到 \(  GL\left( n,\mathbb{R}  \right)   \)或 \(  GL\left( n,\mathbb{C}  \right)   \)的一个同构,因此 \(  \mathrm{GL}\left( V \right)   \)构成一个李群.
+        \item \(  \mathbb{R} ^{n} , n\ge 1  \)和 \(  \mathbb{C}^{n},n\ge 1  \) 分别在各自加法下构成李群.     
+        \item 非零实数集 \(  \mathbb{R} ^{*}\simeq \mathrm{GL}\left( 1,\mathbb{R}  \right)   \)构成 \(  1  \)-维李群, \(  \mathbb{R} ^{+ }\simeq  \mathrm{GL}^{+ }\left( 1,\mathbb{R}  \right)   \)是 \(  \mathbb{R} ^{*}  \)的开子群,故而也是 \(  1  \)-维李群.
+        \item  非零复数集 \(  \mathbb{C}^{*}  \simeq \mathrm{GL}\left( 1,\mathbb{C}  \right) \)构成 \(  2  \)-维李群.
+        \item 圆 \(  \mathbb{S}^{1}\subseteq \mathbb{C}  \)是一个光滑流形,且在复数乘法下构成群.在选取合适的角函数作为局部坐标下,乘法和逆运算
+        的坐标表示为 \(  \left( \theta _1 , \theta _2  \right)\mapsto  \theta _1 +  \theta _2 , \theta \mapsto - \theta    \)均是光滑的,因此 \(  \mathbb{S}^{1}  \)构成一个李群,被称为是 \textbf{圆群}.
+        \item 给定李群 \(   G_1,\cdots,G_k   \),定义它们的乘积,为积流形 \(  G_1\times \cdots \times G_{k}  \)                   配备
+        以下分量乘法 \[
+        \left(  g_1,\cdots,g_k  \right) \left( g_1^{\prime} ,\cdots ,g_{k}^{\prime}  \right): =  \left( g_1g_1^{\prime} ,\cdots ,g_{k}g_{k}^{\prime}  \right)   
+        \]不难验证这是一个李群.
+        \item \(  n  \)-圆环 \(  \mathbb{T}^{n}=  \mathbb{S}^{1}\times \cdots \times \mathbb{S}^{1}  \)是一个 \(  n  \)-为阿贝尔李群.   
+    \end{enumerate}
+    
+\end{example}
+
+\hspace*{\fill} 
+
+\end{document}

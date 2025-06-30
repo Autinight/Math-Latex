@@ -1,0 +1,354 @@
+
+\documentclass[../../复变函数.tex]{subfiles}
+
+\begin{document}
+
+
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+    \setcounter{chapter}{4}
+}{}
+
+
+\chapter{Taylor级数}
+
+\begin{introduction}
+    \item 局部一致收敛 \(  \iff   \)紧一致收敛 
+    \item 局部一致收敛解析函数列满足\begin{enumerate}
+        \item     解析函数列的极限解析
+        \item 导数列一致收敛到极限函数导数
+    \end{enumerate}
+    
+
+\end{introduction}
+
+\begin{definition}
+    \begin{enumerate}
+        \item 称函数 \(  f: \mathbb{Z} _{\ge 1}\to \mathbb{C}   \)或 \(  f: \mathbb{Z} _{\ge 0}\to \mathbb{C}   \)为一个复序列.记 \(  z_{k}: =  f\left( k \right)   \).
+        \item 称形式和 \(  z_1+ z_2+ z_3+ \cdots   \),或 \(  z_{-n}+ z_{-n-1}+ \cdots + z_{-1}+ z_0+ z_1+ \cdots   \)  为一个复级数.
+    \end{enumerate}
+       
+\end{definition}
+
+\begin{remark}
+    给定序列 \(  \left( f_{k} \right)_{k= 1}   \),容易给出一个级数 \(  f_1+ \left( f_2-f_1 \right)+ \left( f_3-f_2 \right)+ \cdots     \)  .
+ 反过来,给定级数 \(  z_1+ z_2+ \cdots + z_{n}  \),容易得到序列 \(  z_1,z_2,\cdots   \)  
+\end{remark}
+
+\begin{proposition}
+    \begin{enumerate}
+        \item 设 \(  \left( z_{k} \right)_{k}= \left( a_{k}+ ib_{k} \right)_{k}    \) ,则 \(  z_{k}\to a+ bi  \),当且仅当 \(  a_{k}\to a  \),\(  b_{k}\to b  \).   
+        \item {Cauchy准则}: \(  \sum _{k= 1}^{\infty}z_{k}  \)收敛,当且仅当 \(  \forall  \varepsilon > 0  \),\(  \exists N> 0  \),s.t. \(  \forall n\ge N, p\ge 1  \),都有 \[
+        \left| z_{n+ 1}+ \cdots + z_{n+ p} \right|< \varepsilon  
+        \]    
+        \item 绝对收敛:\(  \sum _{k= 1}^{\infty}z_{k}  \)绝对收敛, 当且仅当 \(  \left( \left| a_{k} \right|  \right)_{k},\left( \left| b_{k} \right|  \right)  _{k}  \)均绝对收敛. 
+        \item Cauchy乘积:设 \(  \sum _{n =  1}^{\infty}z_{n}^{\prime} , \sum _{n = 1}^{\infty} z_{n}^{\prime \prime}   \)分别绝对收敛到 \(   \sigma ^{\prime} , \sigma ^{\prime \prime}   \).则 \[
+        \sum _{n = 1}^{\infty}\sum _{i+ j = n}z_{i}^{\prime} z_{j}^{\prime \prime} 
+        \] 绝对收敛到 \(   \sigma ^{\prime} , \sigma ^{\prime \prime}   \). \footnote{事实上,一个绝对收敛即可.}
+    \end{enumerate}
+    
+\end{proposition}
+
+
+\begin{definition}{函数项级数}
+    设 \(  E\subseteq \mathbb{C}   \)是一个子集,设 \(  \forall  n\ge 1  \), \(  f_{n}:E\to \mathbb{C}   \)是函数.   若 \(  \forall z_0 \in E  \), \(  f_{n}\left( z_0 \right)\to f\left( z_0 \right),\quad n\to \infty    \).则称 \(  \left( f_{n} \right)_{n\ge 1}   \)是(逐点)收敛到 \(  f:E\to C  \)的.此时 \(  f  \)为极限函数或和函数.     
+
+\end{definition}
+
+\begin{definition}
+    设 \(  \sum _{k= 1}^{\infty}f_{k}\left( z \right)   \)是 \(  E  \)上的函数项级数.若 \(   \varepsilon > 0  \),存在 \(  N =  N\left(  \varepsilon ,E \right)> 0   \),使得对于所有的 \(  n\ge N  \),以及 \(  z \in E  \),均与 \[
+    \left| \sum _{k= 1}^{n}f_{k}\left( z \right)-f\left( z \right)   \right|<  \varepsilon  
+    \]则称 \(  \sum _{k= 1}^{\infty}f_{k}\left( z \right)   \)一致收敛到 \(  f  \).        
+\end{definition}
+
+
+\begin{theorem}{Cauchy一致收敛原理}
+     \(  E, \sum _{k= 1}^{\infty}f_{k}  \)同上,则 \(  \sum _{k= 1}^{\infty}f_{k}  \)在 \(  E  \)上一致收敛,当且仅当 \(  \forall  \varepsilon > 0  \),存在 \(  N> 0  \),使得 \(  \forall n\ge N,p\ge 1  \),     都有 \[
+     \left| f_{n+ 1}\left( z \right)+ \cdots + f_{n+ p}\left( z \right)   \right|<  \varepsilon  
+     \]对于所有的\(  n  \)成立.  
+\end{theorem}
+
+\begin{theorem}{Weierstrass判别法}
+    设 \(  f_{k}:E\to \mathbb{C}   \)是函数,  \(  \forall z \in E  \),都有 \(  \left| f_{k}\left( z \right)  \right|\le a_{k}   \)  .若非负项数项级数 \(  \sum _{k= 1}^{\infty}a_{k}  \)收敛,则 \(  \sum _{k= 1}^{\infty}f_{k}  \)在 \(  E  \)上一致收敛.   
+\end{theorem}
+
+\begin{example}
+    考虑 \[
+    \sum _{k= 1}^{\infty}\frac{\cos kz }{ k^{2}} 
+    \]
+
+    若 \(  E= R  \),容易看出级数收敛.
+    
+    当 \(  E= \mathbb{C}   \)时,是否仍一致收敛? 
+\end{example}
+
+
+
+\hspace*{\fill} 
+
+
+\begin{theorem}{一致收敛保持连续性}
+    设 \(  f_{k}:E\to \mathbb{C}   \) \(  \forall k\ge 1  \)均连续,且 \(  \sum _{k= 1}^{n}f_{k}  \)在 \(  E  \)上一致收敛到 \(  f  \),则 \(  f \in C\left( E \right)   \).      
+\end{theorem}
+
+
+\begin{theorem}{级数的逐项积分}
+    设 \(   \gamma \subseteq \mathbb{C}   \)是分段光滑的 Jordan曲线.  \(  \forall k\ge 1  \), \(  f_{k}: \gamma \to \mathbb{C}   \)是连续函数\footnote{保证积分存在}.    \(  \sum _{k= 1}^{n}f_{k}  \)在 \(   \gamma   \)上局部一致收敛到 \(  f  \).则 \[
+    \int _{ \gamma }f\left( z \right)\,\mathrm{d} z= \sum _{k= 1}^{\infty}\int_{ \gamma }f\left( z \right)\,\mathrm{d} z  
+    \]   
+\end{theorem}
+\begin{note}
+    注意到曲线像是紧集,故 \(  \sum f_{k}  \)在其上一致收敛,故我们有误差的一致性.利用曲线弧长的上界估计,给出积分列的一致逼近. 
+\end{note}
+
+
+
+\begin{definition}
+    设 \(  D\subseteq \mathbb{C}   \)是区域. \(  f_{k} :D\to \mathbb{C}    \).\(  \forall k\ge 1  \).若 \(  \forall  K\subseteq D  \)是紧的,都有 \(  \sum _{k= 1}^{n}f_{k}  \)在 \(  K  \)上一致收敛到 \(  f  \),则称 \(  \sum _{k= 1}^{\infty}f_{k}  \)在 \(  D  \)上是紧一致收敛到 \(  f  \) 的(内闭一致收敛).  
+\end{definition}
+
+
+\begin{theorem}
+    \(  D  ,f_{n}\)同上. \(  f_{n} \in \mathcal{H}\left( D \right),\forall n\ge 1   \).且 \(  \sum _{n= 1}^{m}f_{n}  \)在 \(  D  \)上 紧一致收敛到 \(  f  \)  ,则 \(  f \in \mathcal{H}\left( D \right)   \),且 \(  \forall k\ge 1  \),都有 \[
+    f^{\left( k \right) }\left( z \right)= \sum _{n= 1}^{\infty}f_{n}^{\left( k \right) }\left( z \right)  
+    \] 且 \(  \sum _{ n =  1 }^{m}f_{n}^{\left( k \right) }  \)在 \(  D  \)上紧一致收敛到 \(  f^{\left( k \right) }  \).   
+\end{theorem}
+
+
+\begin{proof}
+    \(  \forall z_0 \in D  \),取 \(  K  \)为 \(  z_0  \)的一个紧邻域,则 \(  \sum f_{n}  \)在 \(  K  \)上 一致收敛到 \(  f  \).     
+    故 \(  f \in C\left( K \right)   \),进而 \(  f \in C\left( D \right)   \).
+    
+    \(  \forall z_0 \in D  \),取 \(  r> 0  \),使得 \(  \overline{U}:= \overline{U}\left( z_0,r \right)\subseteq D   \).   任取 \(   \gamma \subseteq U: =  U\left( z_0,t \right)   \)是分段光滑的Jordan闭合曲线.
+    由于 \(  \sum f_{n}  \)在 \(  \overline{U}  \)上一致收敛到 \(  f  \),进而在 \(   \gamma   \)上亦然,我们要 \[
+    \int_{ \gamma }f\left( z \right)\,\mathrm{d} z= \sum _{k= 1}^{\infty}\int_{ \gamma }f_{k}\left( z \right)\,\mathrm{d} z=\sum _{k= 1}^{\infty}0= 0  
+    \]由Morera定理, \(  f \in \mathcal{H}\left( U \right)   \),进而 \(  f \in \mathcal{H}\left( D \right)   \).    
+
+    任取紧集 \(  K  \),它含于更大的紧集 \(  \overline{G}  \),其中 \(  G  \)是开集.  由于开集内部每一点都含于一个与边界有正距离的圆盘,利用紧性,只需要说明在任一点的落在\(  G\)的紧圆盘上,一致收敛性成立即可.  
+    我们有Cauchy不等式 \[
+    \sup \left\{ \left| S_{n}^{\left( k \right) }\left( z \right)-f^{\left( k \right) }\left( z \right)   \right|  \right\}\le C \sup \left\{ \left| S_{n}\left( z \right)  -f\left( z \right) \right|  \right\}
+    \]在任意一个合适圆盘内成立,其中 \(  C  \)是与 \(  z  \)无关的常数  .由Cauchy准则,得到一致收敛性.
+    \hfill $\square$
+\end{proof}
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+阅读 P61-68
+
+预习 P68-76
+
+作业 P87 2.3.5.
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+
+
+\section{幂级数}
+
+\begin{introduction}
+    \item 收敛半径的存在性  
+\end{introduction}
+
+\begin{definition}
+    称形式和 \[
+    \sum _{n =  0}^{\infty}  \alpha _{n}\left( z-z_0 \right)^{n}.\quad z_0 \in \mathbb{C} , \alpha _{n}\in \mathbb{C} \tag{*} 
+    \]为一个幂级数.
+\end{definition}
+
+
+\begin{theorem}{Abel第一定理}
+    若(*)在 \(  z_1\left( \neq z_0 \right)   \)处收敛,  则幂级数在 \(  \left\{ z \in \mathbb{C} :\left| z-z_0 \right|< \left| z_1-z_0 \right|   \right\}  \)上绝对收敛.
+\end{theorem}
+\begin{proof}
+    通项 \(  \to 0  \),故存在 \(  M> 0  \),使得 \[
+    \left| \alpha _{n}\left( z_1-z_0 \right)^{n}  \right|< M,\quad \forall n\ge 0 
+    \]   令\[
+    k: =  \left| \frac{z-z_0 }{z_1-z_0 }  \right|< 1 
+    \] \[
+    \begin{aligned}
+    \sum _{n = 1}^{\infty}\alpha _{n}\left( z-z_0 \right)^{n}=  \sum _{n =  1}^{\infty} \left( \alpha _{n}\left( z_1-z_0 \right)^{n}  \right)\left( \frac{z-z_0 }{z_1-z_0 }  \right)^{n}    \\ 
+    \end{aligned}
+    \] \[
+    \text{通项模长最终} \le Mk^{n}
+    \]由比较判别法,绝对收敛.
+
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}
+    若下列成立其一 
+    \begin{enumerate}
+        \item \(  l =  \lim_{n\to \infty}\left| \frac{\alpha _{n+ 1} }{ \alpha _{n} }  \right|   \)
+        \item \(  l =  \lim_{n\to \infty} \sqrt[n]{\left| \alpha _{n} \right| } \)  
+        \item \(  l = \lim   \sup _{n\to \infty} \sqrt[n]{\left| \alpha _{n} \right| }\) 
+    \end{enumerate}
+    则称 \(  R =  \frac{1 }{l }   \)为幂级数的收敛半径. 约定 \(  l = 0  \)时 ,\(  R =  + \infty  \), \(   l =  +  \infty  \)时, \(  R = 0  \).   
+    
+    此时, \(  \left| z-z_0 \right|> R   \)时,幂级数发散. \(  \left| z-z_0 \right|< R   \)时, 幂级数收敛.  
+\end{theorem}
+
+\begin{lemma}
+    若 \(  K_1,K_2\subseteq \mathbb{R} ^{n}  \)是两个闭集,且至少其中一个有界,且 \(  K_1\cap K_2= \varnothing  \),则\[
+    \mathrm{dist}\left( K_1,K_2 \right)>0 
+    \]  
+\end{lemma}
+
+\begin{theorem}
+    设 \(  R> 0  \),则 \(  \sum _{n = 1}^{m} \alpha _{n}\left( z-z_0 \right)^{n}   \)  在 \(  U\left( z_0,R \right)   \)上紧一致收敛到 \(  f\left( z \right)   \).且和函数 \(  f\left( z \right) \in \mathcal{H}\left( U\left( z_0,R \right)  \right)    \),且对于任意的 \(  k\ge 1  \),有 \[
+        f^{\left( k \right) }\left( z \right)=  k!\alpha _{k}+  \frac{\left( k+ 1 \right)!  }{1! }\alpha _{k+ 1}\left( z-z_0 \right)+ \frac{\left( k+ 2 \right)!  }{2! }\alpha _{k+ 2}\left( z-z_0 \right)^{2}+ \cdots        
+    \] 特别地, \[
+        \alpha _{k}= \frac{f^{\left( k \right)  } \left( z_0 \right)}{k! } 
+    \]
+\end{theorem}
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+阅读67-74
+
+预习 75-81
+
+作业 第四节6,7,9,11
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+\section{全纯函数的Taylor展开}
+
+\begin{theorem}
+    若 \(  f \in \mathcal{H}\left( B\left( z_0,R \right)  \right)   \),则 \(  f  \)可以在 \(  B\left( z_0,R \right)   \)上展开为幂级数 \[
+    f\left( z \right) =  \sum _{ \neq 0}^{\infty} \frac{f^{\left( n \right) }\left( z_0 \right)  }{n! }\left( z-z_0 \right)^{n},\quad z\in B\left( z_0,R \right)    
+    \] 
+\end{theorem}
+
+\begin{theorem}
+     \(  f  \)在 \(  z_0   \)处全纯,当且仅当 \(  f  \)在 \(  z_0  \)的邻域内可以展开成幂级数: \[
+     f\left( z \right)=  \sum _{ n = 0}^{\infty} \frac{f^{\left( n \right)\left( z_0 \right)  } }{n! }\left( z-z_0 \right)^{n}   
+     \]    
+\end{theorem}
+
+\begin{definition}
+    设 \(  f  \)在 \(  z_0  \)处全纯且不恒为零,如果 \[
+    f\left( z_0 \right)= 0,f^{\prime} \left( z_0 \right)= 0,\cdots ,f^{\left( m-1 \right) }\left( z_0 \right)= 0, f^{\left( m \right) }\left( z_0 \right)\neq 0    
+    \]则称 \(  z_0  \)为 \(  f  \)的 \(  m  \)阶零点.
+
+\end{definition}
+
+\begin{theorem}
+    \(  z_0  \)为 \(  f  \)的 \(  m  \)阶零点,当且仅当 \(  f  \)在 \(  z_0  \)的邻域内表为 \[
+    f\left( z \right)= \left( z-z_0 \right)^{m}g\left( z \right)   
+    \]其中 \(  g  \)在 \(  z_0  \)处全纯,且 \(  g\left( z_0 \right)\neq 0   \)        
+\end{theorem}
+
+\begin{proof}
+    若 \(  z_0  \)是 \(  f  \)的 \(  m  \)阶零点,则 \[
+    \begin{aligned}
+    f\left( z \right)&=  \sum _{n = 0}^{\infty} \frac{f^{\left( n \right)\left( z_0 \right)  } }{n! }\left( z-z_0 \right)^{n}\\ 
+     &= \sum _{n = m}^{\infty} \frac{f^{\left( n \right)\left( z_0 \right)  } }{n! }\left( z-z_0 \right)^{n}\\ 
+      &= \left( z-z_0 \right)^{m} \left( \frac{f^{\left( m \right) }\left( z_0 \right)  }{m! }+ \cdots   \right)\\ 
+       &= \left( z-z_0 \right)^{m}g\left( z \right)          
+    \end{aligned}
+    \]   其中 \(  g\left( z \right)   \)为括号中的幂级数.它在 \(  z_0  \)处全纯,且 \[
+    g\left( z_0 \right)= \frac{f^{\left( m \right) }\left( z_0 \right)  }{ m!} \neq 0  
+    \]  反之,若存在 \(  g  \)使得 \(  f= \left( z-z_0 \right)^{m}g\left( z \right)    \)  ,显然 \(  f  \)在 \(  z_0  \)处全纯,且直接计算容易得到 \(  z_0  \)是 \(  f  \)的 \(  m  \)阶零点.     
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}
+    设 \(  D  \)是 \(  \mathbb{C}   \)上的区域, \(  f \in \mathcal{H}\left( D \right)   \),如果 \(  f  \)在 \(  D  \)中的小圆盘 \(  B\left( z_0, \varepsilon  \right)   \)上恒为零,则 \(  f  \)在 \(  D  \)上恒为零.        
+\end{proposition}
+\begin{proof}
+    一方面,全纯函数的泰勒系数在一个邻域内相等,泰勒系数恒为零是一个开的条件.另一方面,任意阶导数的连续性给出泰勒系数不全为零是闭的条件.又泰勒系数恒为零的点存在,故 \(  D  \)上\(  f  \)的泰勒系数恒为零.  
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{proposition}
+    设 \(  D  \)是 \(  \mathbb{C}   \)上的区域, \(  f \in \mathcal{H}\left( D \right)   \),\(  f\left( z \right)   \)不恒为零.则 \(  f  \)在 \(  D  \)中的零点是孤立的.即若 \(  z_0  \)为 \(  f  \)的零点,则必存在 \(  z_0  \)的邻域 \(  B\left( z_0, \varepsilon  \right)   \),使得 \(  f  \)在 \(  B\left( z_0, \varepsilon  \right)   \)零点只有 \(  z_0  \).             
+\end{proposition}
+\begin{proof}
+     \(  f  \)在 \(  z_0  \)的邻域上不恒为零.设 \(  z_0  \)是 \(  f  \)的 \(  m  \)阶零点,则 \(  f  \)在 \(  z_0  \)的一个邻域上表为 \(  f\left( z \right)= \left( z-z_0 \right)^{m}f\left( z \right)     \), \(  g\left( z_0 \right)   \neq 0\),故 \(  g  \)在 \(  z_0  \)的一个邻域 \(  B\left( z_0, \varepsilon  \right)   \)上恒不为零,从而 \(  f  \)在其上没有 \(  z_0  \)以外的零点.              
+
+    \hfill $\square$
+\end{proof}
+
+\begin{theorem}{解析函数的唯一性}
+    设 \(  D  \)是 \(  \mathbb{C}   \)上的区域, \(  f_1,f_2\in \mathcal{H}\left( D \right)   \),若存在 \(  D  \)上的点列\(  \left\{ z_{n} \right\}  \),使得 \(  f_1\left( z_{n} \right)= f_2\left( z_{n} \right),\neq  1,\cdots    \),且 \(  \lim_{n\to \infty}z_{n}= a \in D  \),则在 \(  D  \)上 \(  f_1\left(  z\right)\equiv f_2\left( z \right)    \)         .
+\end{theorem}
+\begin{proof}
+    令 \(  g\left( z \right)   = f_1\left( z \right)-f_2\left( z \right)  \) ,则 \(  g\left( z_{n} \right)=  0,n =  1,\cdots,   \) .由于 \(  g \in \mathcal{H}\left( D \right)   \),故 \(  g\left( a \right)= \lim_{n\to \infty}g\left( z_{n} \right)= 0    \). 但是 \(  \left\{ z_{n} \right\}  \)也都是 \(  g  \)的零点,这表明 \(  g  \)的零点不孤立,只能有 \(  g\left( z \right)\equiv 0   \).      
+
+    \hfill $\square$
+\end{proof}
+
+\begin{proposition}{常用展开}
+    \begin{enumerate}
+        \item \[
+        e^{z}= \sum _{n = 0}^{\infty} \frac{z^{n} }{n! },\quad z\in \mathbb{C}  
+        \]
+        \item \[
+        \cos z= \sum _{ n = 0}^{\infty}\left( -1 \right)^{n} \frac{z^{2n} }{\left( 2n \right)!  } ,\quad  \sin z= \sum _{ n = 0}^{\infty}\left( -1 \right)^{n}\frac{z^{2n+ 1} }{\left( 2n+ 1 \right)!  },\quad   z \in \mathbb{C}   
+        \]
+        \item \[
+        -\log\left( 1-z \right)=  \sum  _{n = 1}^{\infty} \frac{z^{n} }{n },\quad \left| z \right|< 1   
+        \]  \[
+        \log\left( 1+ z \right)=  \sum _{ n = 1}^{\infty} \left( -1 \right)^{n-1}\frac{z^{n} }{n },\quad \left| z \right|< 1    
+        \]
+        \item \[
+        \left( 1+ z \right)^{\alpha }= \sum _{ n = 0}^{\infty} \binom{ \alpha    }{n  }z^{n},\quad \left| z \right|< 1   
+        \]
+    \end{enumerate}
+  
+\end{proposition}
+\begin{proof}
+    利用幂级数的全纯性,泰勒级数在实轴上的一致性, 解析函数的唯一性,可以将实函数的泰勒展开公式推广到幂级数在复平面的收敛域上.
+
+    \hfill $\square$
+\end{proof}
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+阅读73-77
+
+预习78-84
+
+作业88页 8,10
+
+
+\hspace*{\fill} 
+\hrule
+\hspace*{\fill}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

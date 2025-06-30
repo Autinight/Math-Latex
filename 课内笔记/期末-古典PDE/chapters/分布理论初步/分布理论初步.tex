@@ -1,0 +1,271 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{ 分布理论初步 }
+\section{基本概念}
+\begin{definition}{测试函数空间}
+     设 \(   \Omega   \)是 \(  \mathbb{R} ^{n}  \)中的一个开集. 定义测试函数空间 \(  \mathcal{D}\left(  \Omega  \right)   \)为全体紧支光滑的复值函数 \(   \varphi : \Omega \to \mathbb{C}   \)的集合,即满足:
+    \begin{enumerate}
+        \item \[
+         \varphi \in C^{\infty}\left(  \Omega  \right) 
+        \]
+        \item \[
+        \operatorname{supp}\,\left(  \varphi  \right)= \overline{\left\{ x \in  \Omega  : \varphi \left( x \right)\neq 0 \right\}}\text{是 } \Omega \text{的一个紧子集} 
+        \]  
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}{测试函数空间上的收敛}
+    给定序列 \(  \left\{  \varphi _{p} \right\}_{p\ge 1}\subseteq \mathcal{D}\left(  \Omega  \right)  \).称该序列收敛到 \(  0 \in \mathcal{D}\left(  \Omega  \right)   \),若以下两条成立:
+    \begin{enumerate}
+        \item 存在紧集 \(  K\subseteq  \Omega   \),使得对于每个 \(  p\ge 1  \),\(  \operatorname{supp}\,\left(  \varphi _{p} \right)\subseteq K   \)
+        \item 对于每个多重指标 \(  \alpha   \), \(  \left\{ \partial ^{\alpha } \varphi _{p} \right\}_{p\ge 1}  \)在 \(  K  \)上一致收敛到 \(  0  \),即 \[
+        \lim_{p\to \infty} \left\|  \partial ^{\alpha } \varphi _{p} \right\|_{L^{\infty}\left( K \right) }= 0
+        \]       
+    \end{enumerate}
+      
+\end{definition}
+\begin{definition}{分布}
+     一个分布(或广义函数) \(  T  \),被定义为从测试函数空间 \(  \mathcal{D}\left(  \Omega  \right)   \)到 \(  \mathbb{C}   \)的一个线性泛函 \[
+    T: \mathcal{D}\left(  \Omega  \right)\to \mathbb{C}  ,\quad  \varphi \mapsto \left<u, \varphi  \right>
+    \]
+   满足以下两个条件\begin{enumerate}
+    \item 对于任意的 \(   \varphi ,\psi  \in \mathcal{D}\left(  \Omega  \right)   \)和 \(  \alpha ,\beta \in \mathbb{C}   \),我们有 \[
+    \left<u,\alpha  \varphi + \beta \psi  \right>= \alpha \left<u, \varphi  \right>+ \beta \left( u,\psi  \right) 
+    \]  
+    \item 对于任意的紧集 \(  K\subseteq  \Omega   \),存在非负整数 \(  p  \)和正常数 \(  C  \),使得对于任意的 \(   \varphi \in C_{K}^{\infty}\left(  \Omega  \right)   \),都有 \[
+    \left| \left<u, \varphi  \right> \right|\le C \sup _{\left| \alpha  \right|\le p }\left\|  \partial ^{\alpha } \varphi  \right\|_{L^{\infty}\left( K \right) } 
+    \]    
+    
+   \end{enumerate}
+   
+
+   全体 \(   \Omega   \)上的分布记作 \(  \mathcal{D}^{\prime} \left(  \Omega  \right)   \).  
+\end{definition}
+
+\begin{definition}{分布意义下的收敛}
+    设 \(   \Omega   \)是 \(  \mathbb{R} ^{n}  \)中的一个非空开集.考虑一个分布序列 \(  \left\{ T_{k} \right\}_{k= 1}^{\infty}  \), \(  T_{k}\in \mathcal{D}^{i\left(  \Omega  \right) }  \). 称 \(  \left\{ T_{k} \right\}  \)在 \textbf{分布意义下收敛}到分布 \(  T\in \mathcal{D}^{i\left(  \Omega  \right) }  \),若对于任意的测试函数 \(   \varphi \in \mathcal{D}\left(  \Omega  \right)   \),都有 \[
+    \lim_{k\to \infty}\left<T_{k},\varphi  \right>= \left<T, \varphi  \right>
+    \]       
+\end{definition}
+
+
+\begin{definition}{分布的导数}
+     设 \(   \Omega \subseteq \mathbb{R} ^{n}  \)是非空开集. 对于分布 \(  T\in \mathcal{D}^{\prime} \left(  \Omega  \right)   \) ,定义它的导数 \(  T^{\prime}   \),为满足以下关系的分布 \(  T^{\prime} \in \mathcal{D}^{\prime} \left(  \Omega  \right)   \) \[
+    \left<T^{\prime} , \varphi  \right>= -\left<T, \varphi ^{\prime}  \right>
+    \]  
+
+    由此,可以递归地定义高阶导数 \(  T^{\left( n \right) }:   \) \[
+    \left<T^{\left( n \right) }, \varphi  \right>=  \left( -1 \right)^{n}\left<T, \varphi ^{\left( n \right) } \right>,\quad \forall  \varphi \in \mathcal{D}\left(  \Omega  \right)  
+    \] 
+\end{definition}
+
+\begin{remark}
+   \begin{enumerate}
+    \item 这是我们从边界项退化(紧支性)的分部积分公式抽象出来的定义 
+    \item 需要说明良定义性.
+   \end{enumerate}
+   
+\end{remark}
+
+
+\begin{example}[ Dirac函数 ]
+    对于任意的 \(  a \in  \Omega   \),定义分布 \(   \delta _{a}\in \mathcal{D}^{\prime} \left(  \Omega  \right)   \).其中 \[
+    \left< \delta _{a}, \varphi  \right>=  \varphi \left( a \right),\quad \forall  \varphi \in \mathcal{D}\left(  \Omega  \right)  
+    \]  可以验证这是一个分布.
+
+   对于 \(  \mathcal{D}^{\prime}  \left( \mathbb{R} ^{n} \right)  \)上的Dirac函数 \(   \delta _{0}  \),简记作 \(   \delta   \).   
+\end{example}
+
+\begin{example}[ 正则分布 ]
+    对于一个局部可积的函数 \(  f\left( x \right)   \),可以定义出分布 \(  T_{f}  \) ,成为 \(  f  \)对应的正则分布  \[
+    \left<T_{f}, \varphi  \right>= \int_{-\infty}^{\infty}f\left( x \right) \varphi \left( x \right)\,\mathrm{d} x  
+    \] 
+    尽管 \(   \delta   \)不是一个函数,在应用的过程中,方便起见,约定 \[
+    \int_{-\infty}^{\infty} \delta\left(x-a\right)  f\left( x \right)\,\mathrm{d} x = f\left( a \right) 
+    \] 
+\end{example}
+
+
+\begin{example}
+    \[
+    H\left( t \right)= \begin{cases} 0,&t< 0\\ 
+     1,&t> 0 \end{cases}  
+    \] \[
+    H^{\prime} \left( t \right)=  \delta \left( t \right)  
+    \]
+\end{example}
+\begin{proposition}
+    \[
+    f\left( x \right) \delta ^{\prime} \left( x \right)= f\left( 0 \right) \delta ^{\prime} \left( x \right) - f^{\prime} \left( x \right) \delta \left( x \right)     
+    \]
+\end{proposition}
+\section{Schwartz空间与Fourier变换}
+\begin{definition}{Schwartz空间}
+    Schwartz空间,记作 \(  \mathcal{S}\left( \mathbb{R} ^{n} \right)   \),为全体 \(  \mathbb{R} ^{n}  \)上的复值光滑速降函数,确切地说,称 \(  f:\mathbb{R} ^{n}\to \mathbb{C}   \)属于Schwartz空间 \(  \mathcal{S}\left( \mathbb{R} ^{n} \right)   \),若:
+    \begin{enumerate}
+        \item  \(  f \in C^{\infty}\left( \mathbb{R} ^{n} \right)   \)
+        \item 对于任意的多重指标 \(  \alpha   \)和 \(  \beta   \), \[
+        \left\| x^{\beta }D^{\alpha }f\left( x \right)  \right\|_{L^{\infty}}<\infty
+        \]   
+    \end{enumerate}
+        
+\end{definition}
+
+\begin{definition}{Schwartz空间上的Fourier变换与逆变换}
+    对于 \(  f \in \mathcal{S}\left( \mathbb{R} ^{n} \right)   \),其中Fourier变换 \(  \hat{f}\left(  \xi  \right)   \)(或 记作 \(  \mathcal{F}f\left(  \xi  \right)   \) ),被定义为 \[
+    \hat{f}\left(  \xi  \right)=\frac{1 }{\left( 2\pi  \right)^{\frac{n }{2 } }  }  \int_{\mathbb{R} ^{n}}f\left( x \right)e^{- ix\cdot  \xi } \,\mathrm{d} x 
+    \]  其逆变换为 \[
+    f\left( x \right)= \frac{1 }{\left( 2\pi  \right)^{\frac{n }{2 } }  } \int_{\mathbb{R} ^{n}} \hat{f}\left(  \xi  \right)e^{ ix\cdot  \xi }\,\mathrm{d}  \xi   
+    \]
+\end{definition}
+
+\begin{theorem}{Fourier变换的性质}
+    \begin{enumerate}
+        \item 对于任意的 \(  f,g\in \mathcal{S}\left( \mathbb{R} ^{n} \right)   \)以及 \(  a,b\in \mathbb{C}   \),都有 \[
+        \mathcal{F}\left( af+ bg \right)= a \mathcal{F}\left( f \right)+ b \mathcal{F}\left( g \right)   
+        \]  
+        \item \[
+        \mathcal{F}: \mathcal{S}\left( \mathbb{R} ^{n} \right)\to \mathcal{S}\left( \mathbb{R} ^{n} \right)  
+        \]是一个同肧映射.
+        \item \[
+        \mathcal{F}\left( \mathcal{F}\left( f \right)  \right)\left( x \right)= f\left( -x \right)   
+        \]
+        \item 对于多重指标 \(  \alpha   \), \[
+        \mathcal{F}\left( D^{\alpha }f \right)\left(  \xi  \right)= \left(i \xi   \right)^{\alpha } \hat{f}\left(  \xi  \right)  
+        \] 
+        \item 对于多重指标 \(  \beta   \), \[
+        \mathcal{F}\left( x^{\beta }f\left( x \right)  \right)\left(  \xi  \right)=\left( i \right) ^{\left| \beta  \right| }D^{\beta } \hat{f}\left(  \xi  \right)    
+        \]
+        \item 对于任意的 \(  a \in \mathbb{R} ^{n}  \), \[
+        \mathcal{F}\left( f\left( \cdot  -a \right)  \right)\left(  \xi  \right)= e^{-ia\cdot  \xi } \hat{f}\left(  \xi  \right)   
+        \]
+        \item  对于任意的 \(  a \in \mathbb{R} ^{n}  \) \[
+        \mathcal{F}\left( e^{ia\cdot \left( \cdot  \right) }f \right)\left(  \xi  \right)= \hat{f}\left(  \xi -a \right)   
+        \] 
+        \item 对于任意的 \(  a \in \mathbb{R} ,a\neq 0  \), \[
+        \mathcal{F}\left( f\left( a \cdot  \right)  \right)\left(  \xi  \right)= \frac{1 }{\left| a \right|^{n}  } \hat{f}\left( \frac{ \xi  }{a }  \right)    
+        \] 
+        \item 对于 \(  f,g \in \mathcal{S}\left( \mathbb{R} ^{n} \right)   \) \[
+        \mathcal{F}\left( f*g \right) \left(  \xi  \right)= \left( 2\pi  \right)^{\frac{n }{2 } } \hat{f}\left(  \xi  \right)\hat{g}\left(  \xi  \right)    
+        \] 
+        \item  对于任意的 \(  f,g \in \mathcal{S}\left( \mathbb{R} ^{n} \right)   \), \[
+        \mathcal{F}\left( fg \right)\left(  \xi  \right)=   \frac{1 }{\left( 2\pi  \right)^{\frac{n }{2 } }  }\left( \hat{f}*\hat{g} \right)\left(  \xi  \right)   
+        \] 
+        \item 对于 \(  f,g \in \mathcal{S}\left( \mathbb{R} ^{n} \right)   \), \[
+        \int_{\mathbb{R} ^{n}} f\left( x \right) \overline{g\left( x \right) }\,\mathrm{d} x= \int_{\mathbb{R} ^{n}} \hat{f}\left(  \xi  \right) \overline{\hat{g}\left(  \xi  \right) }\,\mathrm{d}  \xi   
+        \] 这表明 \(  Fourier  \)变换在 \(  L^{2}\left( \mathbb{R} ^{n} \right)   \)上是等距同构.  
+    \end{enumerate}
+    
+\end{theorem}
+
+\begin{definition}{缓增分布}
+    一个缓增分布 \(  T  \)是指一个从 \(  \mathcal{S}\left( \mathbb{R} ^{n} \right)   \)到 \(  \mathbb{C}   \)的线性泛函 \(  T:\mathcal{S}\left( \mathbb{R} ^{n} \right)\to \mathbb{C}    \).满足
+    \begin{enumerate}
+        \item  \(  \forall f,g \in \mathcal{S}\left( \mathbb{R} ^{n} \right)   \), \(  \forall a,b\in \mathbb{C}   \),\[
+        T\left( af+ bg \right)= aT\left( f \right)+ bT\left( g \right)   
+        \]  
+        \item 存在常数 \(  C> 0  \)和有限个多重指标对 \(  \left( \alpha _1 ,\beta _1  \right),\cdots ,\left( \alpha _{m},\beta _{m} \right)    \),使得对于所有的 \(  f\in \mathcal{S}\left( \mathbb{R} ^{n} \right)   \),都有 \[
+        \left| T\left( f \right)  \right|\le C\sum _{j= 1}^{m} \left\| x^{\beta _{j}}D^{\alpha _{j}}f\left( x \right)  \right\|_{L^{\infty}} 
+        \]   
+        全体缓增分布构成的空间记作 \(  \mathcal{S}^{\prime} \left( \mathbb{R} ^{n} \right)   \). 
+    \end{enumerate}
+        
+\end{definition}
+
+\begin{example} [缓增函数诱导的缓增分布]
+    对于 "缓增的"\(  g:\mathbb{R} ^{n}\to \mathbb{C}   \) ,即它的增长速度不超过某个多项式, \(  g  \)可以定义出缓增分布 \(  T_{g}:  \) \[
+    T_{g}\left( f \right)= \int_{\mathbb{R} ^{n}} g\left( x \right)f\left( x \right)\,\mathrm{d} x,\quad f\in \mathcal{S}\left( \mathbb{R} ^{n} \right)   
+    \]
+    由于 \(  f  \)速降而 \(  g  \)增长不快于多项式,右侧积分绝对收敛且良定义.    
+\end{example}
+
+\begin{example}
+    Dirac分布 \(   \delta _{a}\left( f \right)= f\left( a \right),\quad \forall f\in \mathcal{S}\left( \mathbb{R} ^{n} \right)     \) 是一个缓增分布.
+\end{example}
+
+\begin{definition}{缓增分布上的Fourier变换}
+    对于一个缓增分布 \(  T\in \mathcal{S}^{\prime} \left(\mathbb{R} ^{n} \right)   \) ,定义其Fourier变换 \(  \hat{T}  \)(或记作 \(  \mathcal{F}T  \) ),为满足以下的分布 \[
+    \hat{T}\left( f \right)= T\left( \hat{f} \right),\quad \forall f\in \mathcal{S}\left( \mathbb{R} ^{n} \right)   
+    \] 
+\end{definition}
+
+\begin{theorem}{缓增分布上的Fourier变换的性质}
+    对于 \(  T,T_1,T_2\in \mathcal{S}^{\prime} \left( \mathbb{R} ^{n} \right), \varphi \in \mathcal{S}\left( \mathbb{R} ^{n} \right)    \),
+    \begin{enumerate}
+        \item 对于任意的 \(  a,b\in \mathbb{C}   \), \[
+        \mathcal{F}\left( aT_1+ bT_2 \right)= a \mathcal{F}T_1+  b \mathcal{F}T_2 
+        \]
+        \item Fourier变换是 \(  \mathcal{S}^{\prime} \left( \mathbb{R} ^{n} \right)   \)到自身的同肧. 
+    \end{enumerate}
+     
+\end{theorem}
+
+
+\begin{proposition}
+    在分布的意义下,\[
+    \int_{-\infty}^{\infty}e^{ikx}\,\mathrm{d} x= 2\pi  \delta \left( k \right) 
+    \]其中,左侧不是真正的积分,它代表一个分布,按以下方式定义 \[
+    \left<\int_{-\infty}^{\infty}e^{ikx}\,\mathrm{d} x, \varphi \left( x \right)  \right>: =  \int_{-\infty}^{\infty} \left( \int_{-\infty}^{\infty}e^{ikx}\,\mathrm{d} x \right) \varphi \left( k \right)\,\mathrm{d} k  
+    \]
+\end{proposition}
+\begin{proof}
+     一方面\[
+    \begin{aligned}
+    & \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}e^{ikx}  \varphi \left( k \right)\,\mathrm{d} x\,\mathrm{d} k\\ 
+     &=  \int_{-\infty}^{\infty} \int_{-\infty}^{\infty}  \varphi \left( k \right)e^{-i\left( -x \right)k } \,\mathrm{d} k\,\mathrm{d} x\\ 
+      &= \sqrt{2\pi } \int_{-\infty}^{\infty} \hat{\varphi}\left( -x \right)\,\mathrm{d} x =\sqrt{2\pi } \int_{-\infty}^{\infty} \hat{\varphi}\left( x \right)\,\mathrm{d} x \\ 
+       &= \sqrt{2\pi } \int_{-\infty}^{\infty} \hat{\varphi}\left( x \right) e^{i\cdot 0\cdot x}\,\mathrm{d} x\\ 
+        &= 2\pi  \varphi \left( 0 \right) 
+    \end{aligned} 
+     \]另一方面 \[
+     \left<2\pi  \delta \left( k \right), \varphi \left( k\right)   \right>= 2\pi \left< \delta \left( k \right), \varphi \left( k \right)   \right>= 2\pi  \varphi \left( 0 \right) 
+     \]这表明在分布的意义下 \[
+     \int_{-\infty}^{\infty}e^{ikx}\,\mathrm{d} x= 2\pi  \delta \left( k \right) 
+     \]
+
+    \hfill $\square$
+\end{proof}
+
+
+\begin{proposition}{常用Fourier(逆)变换}
+    \begin{enumerate}
+        \item 在 \(  \mathbb{R} ^{n}  \)上,  \[
+        \mathcal{F}[1]=  \left( 2\pi  \right)^{\frac{n }{2 } }  \delta ,\quad \mathcal{F} [ \delta ]= \frac{1 }{\left( 2\pi  \right)^{\frac{n }{2 } }  } 
+        \]
+        \item \[
+        \mathcal{F}\left(  \delta \left( x-a \right)  \right)=\frac{1 }{\sqrt{2\pi } }  e^{-i \xi a} 
+        \]
+        \item \[
+        \mathcal{F}[e^{-iax}]\left(  \xi  \right) = \sqrt{2\pi }\delta \left(  \xi +   a \right)  
+        \]
+        \item 记 \[
+        \mathrm{rect}\left( t \right)= \begin{cases} 1,&\left| t \right|< \frac{1 }{2 } \\ 
+         0,& \text{otherwise}  \end{cases}  
+        \]则 \[
+        \mathcal{F}[  \mathrm{rect}\left( \frac{t }{T }  \right) ]\left(  \xi  \right) = \frac{T }{\sqrt{2\pi }}\mathrm{sinc}\left(  \xi T /2 \right)  = \frac{T }{\sqrt{2\pi }}\frac{\sin \left(  \xi T / 2 \right)  }{  \xi  T /2 }  
+        \]特别地 \[
+        \mathcal{F}[\mathrm{rect}]\left(  \xi  \right)= \frac{1 }{\sqrt{2\pi } } \mathrm{sinc}\left( \frac{ \xi  }{2 }  \right)    
+        \]
+        \item 一维的情况\[
+        \mathcal{F}\left[ \frac{1 }{\sqrt{2\pi } }\frac{2a }{a^{2}+ x^{2} } \right]\left(  \xi  \right)  =e^{-\left|  \xi  \right|a } 
+        \]
+        \item 三维空间上, \[
+        \mathcal{F}^{-1} [\frac{1 }{4\pi c^{2} } \partial _{t}\left( \frac{ \delta \left( \left| x \right|-ct  \right)  }{t }  \right)  ]= \cos \left( c\left| k \right|t  \right) 
+        \]\[
+        \mathcal{F}^{-1} [\frac{1 }{4\pi c^{2}t } \delta \left( \left| x \right|-ct  \right)  ]= \frac{\sin \left( c\left| k \right|t  \right)  }{c\left| k \right|  } 
+        \]
+       \item \[
+       \mathcal{F}[H\left( x \right) ]= \sqrt{\frac{\pi  }{2 } } \delta \left(  \xi  \right)+ \frac{1 }{i\sqrt{2\pi } \xi  }  
+       \]
+        \item \[
+        \mathcal{F}\left\{  \Delta f\left( x \right)  \right\}\left(  \xi  \right)= -\left|  \xi  \right|^{2}\mathcal{F}\left( f\left( x \right)  \right)\left(  \xi  \right)    
+        \]
+        
+    \end{enumerate}
+    
+\end{proposition}
+
+
+\end{document}

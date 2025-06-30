@@ -1,0 +1,788 @@
+\documentclass[lang=cn,12pt,color=green,fontset=none,thmcnt=section]{elegantbook}
+
+\title{标题}
+\subtitle{副标题}
+
+\author{作者}
+\institute{机构}
+\date{日期}
+\version{版本}
+\bioinfo{自定义}{信息}
+
+\setmainfont{Aa顺風顺水顺财神}
+\setCJKmainfont{Aa顺風顺水顺财神}
+\setCJKsansfont{Aa顺風顺水顺财神}
+\setCJKmonofont{Aa顺風顺水顺财神}
+
+\extrainfo{不要以为抹消过去,重新来过,即可发生什么改变.—— 比企谷八幡}
+
+\setcounter{tocdepth}{3}
+
+
+\cover{image.png}
+\usepackage{CJKutf8}
+% 本文档命令
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+
+% 修改标题页的橙色带
+% \definecolor{customcolor}{RGB}{32,178,170}
+% \colorlet{coverlinecolor}{customcolor}
+
+\begin{document}
+
+ \maketitle
+\frontmatter
+
+
+\tableofcontents
+\mainmatter                 
+
+\chapter{}
+
+\chapter{}
+
+\chapter{}
+
+\chapter{}
+
+\chapter{}
+
+\chapter{}
+
+\chapter{}
+
+\chapter{}
+
+\chapter{}
+
+\chapter{}
+
+\chapter{}
+
+\chapter{}
+
+\chapter{}
+
+
+
+\chapter{}
+
+\begin{exercise}[] 计算第一型曲面积分 $$ \operatorname{\left( 1 \right) } \int
+_{\Sigma}\left( x+y+z \right) \,d\sigma,\quad \left( 2 \right) \int
+_{\Sigma}z^{2}d\sigma $$其中$\Sigma$表示上半球面$x^{2}+y^{2}+z^{2}=a^{2}$.
+\end{exercise}
+
+\begin{solution}
+    $\Sigma$由$\varphi :\Omega\to \mathbb{R}^{3}$,$\varphi \left( \theta,\eta
+    \right): = \left( a\sin \eta\cos\theta ,a\sin\eta \sin\theta,a\cos
+    \eta\right)$参数化,\\ 其中$\Omega: = \left\{ \left( \theta,\eta \right)\in
+    \mathbb{R}^{2}:\theta \in[0,2\pi],\eta \in\left[ 0, \frac{\pi}{2} \right]
+    \right\}$,我们有 $$ d\sigma = a^{2}\sin \eta\,d \eta\,d\theta $$ $\left(
+    \operatorname{1} \right)$ $$ \begin{aligned} \int _{\Sigma}\left( x+y+z
+    \right) d\sigma & = \int _{\Omega} a\left( \sin \eta\cos\theta +\sin \varphi
+    \sin\theta +\cos \eta \right) a^{2}\sin \eta\\ & = a^{3}\int
+    _{0}^{\pi/2}\sin \eta\,d \eta\int _{0}^{ 2\pi }\sin \eta \left( \cos\theta
+    +\sin\theta \right)+\cos \eta\,d\theta \\ & = \pi a^{3}\int _{0}^{ \pi /2}
+    \sin 2\eta\,d \eta \\ & =\pi a^{3} \end{aligned} $$ $\left( \operatorname{2}
+    \right)$ $$ \begin{aligned} \int _{\Sigma}z^{2}d\sigma & = \int
+    _{\Omega}a^{2}\cos ^{2}\eta\,a^{2}\sin\eta \\ & =2\pi a^{4}\int _{0}^{
+    \pi/2} \cos ^{2}\eta \sin \eta\,d \eta \\ & = 2\pi a^{4}\int _{\pi/2}^{
+    0}\cos ^{2}\eta \,d\cos \eta \\ & = \frac{2}{3}\pi a^{4}\end{aligned} $$
+\end{solution}
+
+\begin{exercise}[]
+设\(B_{r} \) 是\(\mathbb{R}^{3}\) 中以原点为心,\(r\) 为半径的开球,\(
+    f:B_1 \to \mathbb{R}
+\) 连续可积,证明： \[
+    \int_{B_1} \,d{x} = \int_{0}^{1}\left( \iint_{\partial{B_{r}}} \,d{\sigma} \right)  \,d{r}
+\]
+
+\end{exercise}
+
+\begin{proof}
+  对于每个$r \in[0,1]$,$\partial B_{r}$由
+  \\ $\varphi _{r}:\Omega\to
+   \mathbb{R}^{2}$,$\Omega: =[0,2\pi]\times\left[ 0, \pi \right]$,$\varphi _{r}
+   \left( \theta,\eta \right): = \left( r\sin\eta \cos\theta,r\sin \eta
+   \sin\theta,r\cos \eta \right)$刻画. 于是 $$ d\sigma = r^{2}\sin\theta\, d\theta\,
+   d \eta $$原式右侧积分化为三重积分 $$ \int _{0}^{1}\left( \int _{0}^{2\pi}\int
+   _{0}^{\pi}\left( f\circ \varphi _{r\,} \right)r^{2} \sin\theta \,d\theta \,d
+   \eta \right) \,dr = \int _{0}^{1}\int _{0}^{2\pi}\int _{0}^{\pi}\left( f\circ
+   \varphi _{r} \right) r^{2}\sin\theta\,d\theta \,d \eta \,dr$$其中$\varphi
+   _{r}$可视为映射$\left( r,\theta,\eta \right)\mapsto \left( r\sin \eta \cos\theta,
+   r\sin \eta \sin \theta,r\cos \eta \right)$,即球坐标变换,因此上式右侧积分即为 $$ \int
+   _{B_{1}}f\left( x \right) \,dx $$
+
+\end{proof}
+
+\begin{exercise}
+设$\Sigma$为单位球面$x^{2}+y^{2}+z^{2}=1$,$f:\mathbb{R}\to \mathbb{R}$为连续函数,$a,b,
+c$是三个不全为令的实数,证明Poisson公式： $$ \int _{\Sigma}f\left( ax+by+cz \right) d\sigma =
+2\pi \int _{-1}^{1}f\left( \sqrt{ a^{2}+b^{2}+c^{2} } t\right) \,dt $$
+    
+\end{exercise}
+
+\begin{proof}
+
+平面 $ax+ by+ cz= 0 $是单位球面上与过原点,且方向向量为 $\left( a,b,c \right) $的直线垂直的平面.其上存在两个向量 $u ,v$,使得 $u,v,w$ 
+构成 $ \mathbb{R}^{3}   $的一个定向与标准定向相同的标准正交基,其中 $ w : = \frac{1}{ \sqrt{ a^{2}+ b^{2}+ c^{2}}}\left( a,b,c \right) $.
+$\varphi: [0,2\pi]\times [-1,1]\to \mathbb{R}^{3}$,$\varphi\left( \theta,w \right) : = \left( \sqrt{1-w^{2}} \cos \theta ,\sqrt{1- w^{2}} \sin \theta
+ ,w \right)  $是单位球面的一个参数表示,在这个参数表示下 $$
+ d \sigma =  dw d\theta 
+ $$
+ 因此 $$
+ \begin{aligned}
+    \int_{\Sigma} f\left( ax+ by+ cz    \right)d \sigma  & =  \int_{-1}^{1} \int_{0}^{2\pi} f\left(  \sqrt{ a^{2}+ b^{2}+ c^{2}} \omega   \right)\, d\omega d \theta
+        & = 2\pi\int_{-1}^{1}f\left( \sqrt{a^{2}+ b^{2}+ c^{2}w}\,dw \right)   
+ \end{aligned} 
+ $$
+
+\end{proof}
+
+
+\begin{exercise}
+
+    计算第二型曲面积分 $$
+    I= \iint_{\Sigma} y dz \wedge   dx
+    $$其中曲面 $\Sigma  $   是上半椭球面 $ \frac{x^{2}}{a^{2}}+  \frac{y^{2}}{b^{2}}+  \frac{z^{2}}{c^{2}} = 1 \left(  z \ge   0 \right) $,定向为上侧方向.
+\end{exercise}
+
+\begin{solution}
+
+    $r\left( v,u \right) : = \left( a\sin v \cos u , b \sin v \sin u , c \cos v      \right) $是 $ \Sigma   $的一个参数表示.
+    此时 $$
+\begin{aligned}
+    dz \wedge  dx & =  \frac{\partial \left( z,x \right) }{\partial    \left( v,u \right) } \,\mathrm{d}u \,\mathrm{d}v\\
+    & = \det \begin{pmatrix} 
+        -c  \sin v   & 0   \\ 
+        a \cos v \cos u    & -a \sin v \sin u 
+    \end{pmatrix}  \,\mathrm{d} \,\mathrm{d}v
+   \\ & = ac \sin^{2}v\sin  u \,\mathrm{d}u \,\mathrm{d}v
+\end{aligned} 
+    $$
+    于是 $$
+  \begin{aligned}
+    I & = \int_{0}^{2\pi}\int_{0}^{\frac{\pi}{2}} abc \sin^{3} v  \sin ^{2}u \, du dv
+\\        &    = abc \int_{0}^{\frac{\pi}{2}} \sin^{3}v\,dv \int_{0}^{2\pi} \sin ^{2}u du
+\\ & = \frac{2}{3}\pi abc
+  \end{aligned}
+    $$
+\end{solution}
+
+\begin{exercise}
+    计算第二型曲面积分 $$I=\iint_{\Sigma}(z+x)\mathrm{d}y\wedge\mathrm{d}z+(x+y)\mathrm{d}z\wedge\mathrm{d}x+(y+z)\mathrm{d}x\wedge\mathrm{d}y,$$
+
+    其中 $\Sigma    $   是由 $x^{2}+ y^{2}=1,z=1$及三个坐标平面围成的立体在第一卦限的部分的表面,取外侧方向
+
+\end{exercise}
+ 
+\begin{solution}
+   设 $ \Sigma _{1} $是侧面,$ \Sigma_{2} $是顶面, 分别记在 $ \Sigma_1 $、$ \Sigma_2 $上的积分为 $ I_1  $、$ I_2    $ \\      可取与 $\Sigma_1  $相容的参数表示 $$
+ x =  \cos \theta    ,\quad y =  \sin \theta     ,\quad  z = t ,\quad  \left(  \theta, t  \right) \in \left[  0 , \pi /2  \right]      \times  \left[  0 ,1  \right]      
+    $$此时 $$
+    dy \wedge  d z  = \det \begin{pmatrix} 
+         \cos \theta  & 0 \\
+         0& 1 
+    \end{pmatrix} = \cos \theta \,\mathrm{d}t \,\mathrm{d} \theta,\quad dz \wedge  dx = \det \begin{pmatrix} 
+         0 & 1 \\ -\sin  \theta  & 0   
+    \end{pmatrix} =  \sin \theta  \,\mathrm{d}t\,\mathrm{d} \theta,\quad d  x \wedge dy =0
+    $$于是 $$
+    \begin{aligned}
+     I_1 & =  \int _{0}^{1} \int _{0}^{\frac{\pi}{2}} \left( \cos \theta +  t \right) \cos \theta +  \left(  \cos \theta +  \sin \theta \right)\sin \theta   d \theta dt  \\ 
+     & = \int_{0}^{1}\int_{0}^{ \frac{\pi}{2}} \left( 1+  t\cos \theta +  \frac{1}{2}\sin  2\theta \right)  \,\mathrm{d}\theta \mathrm{d}t \\ 
+     & =  \frac{3}{2}+  \frac{\pi}{2}
+    \end{aligned}
+    $$
+    取 $ \Sigma_{2} $的参数表示 $$
+    x= r\cos \theta ,\quad y= r \sin  \theta,\quad z = 1,\quad \left( r,\theta \right) \in  [ 0,1]\times  [0, \frac{\pi}{2}] 
+ $$ 相应地 $$
+ dy \wedge dz= dx \wedge  dz = 0,\quad dx \wedge  dy=r\,dr d\theta 
+ $$计算 $$
+    \begin{aligned}
+     I_{2}& = \int_{0}^{1} \int_{0}^{\frac{\pi}{2}} r^{2}\sin \theta+ r \,\mathrm{d}r \,\mathrm{d}\theta= \frac{1}{3} +  \frac{1}{4}\pi 
+    \end{aligned}
+    $$
+于是 $$
+I = I_1+ I_2=\frac{3}{4}\pi+  \frac{11}{6}
+$$
+
+\end{solution}
+
+\begin{exercise}
+    设$I=[a,b]\times[c,d]$为$\mathbb{R}^2$中闭矩形,其边界$\partial I$定向为逆时针方向,
+    设$f:I\to\mathbb{R}$为$C^1$函数,证明
+
+$$\oint_{\partial I}f\:\mathrm{d}x=\int_{a}^{b}f(x,c)\:\mathrm{d}x-\int_{a}^{b}f(x,d)\:\mathrm{d}x=-\iint_{I}\frac{\partial f}{\partial y}(x,y)\:\mathrm{d}x\mathrm{d}y,$$ $$\oint_{\partial I}f\:\mathrm{d}y=\int_{c}^{d}f(b,y)\:\mathrm{d}y-\int_{c}^{d}f(a,y)\:\mathrm{d}y=\iint_{I}\frac{\partial f}{\partial x}(x,y)\:\mathrm{d}x\mathrm{d}y.$$
+
+
+
+注意,这里等式中的三个积分从左往右分别是第二型曲线积分,定积分以及二重积分.
+\end{exercise}
+
+\begin{proof}
+    令 $\gamma :[0,4]\to  \partial  I   $, $$
+    \gamma = \begin{cases}  \left( \left( 1-t \right) a+ tb,c \right) , & t \in  \left[ 0,1 \right]
+            \\  \left(  b ,\left( 2-t \right) c+  \left( t-1 \right) \right) ,  & t \in    [1,2  ]  
+        \\  \left(  \left( 3-t \right) b+  \left( t-2 \right)d ,a  \right), & t \in  \left[  2,3 \right]       
+    \\ \left(  a, \left( 4-t \right) d+  \left( t+ 3     \right)c  \right), & t \in  [3,4] \end{cases}
+    $$那么 $\gamma  $是逐段光滑曲线,像集是 $\partial  I    $, 又$f\,dx$是 $I$上的 $C^{1}$-1形式.我们有 $$
+   \begin{aligned}
+    \oint_{ \partial  I } f \,dx & =  \sum_{k=1}^{4}\int_{\left[ k-1,k \right] } \gamma^{*}\left( f dx  \right)
+    \\ & = \sum_{k=1}^{4} \int_{\left[ k-1,k         \right] }\left( f \circ \gamma \right) \, d \left(  x \circ \gamma  \right)   
+   \end{aligned}
+    $$其中在 $[1,2]$和 $[3,4]$上 $x \circ \gamma$是常值,故在其上 $ d\left( x\circ \gamma \right)= 0 $
+    因此 $$
+    \begin{aligned}
+        \oint _{ \partial I }\,dx &= \int_{[0,1]} \left( f\circ \gamma \right)d \left( x \circ \gamma  \right) +  \int_{[2,3]} \left( f\circ \gamma  \right) d \left( x \circ \gamma  \right)
+        \\ & = \int_{[0,1]} f\left( \left( 1-t \right) a+  tb, c \right)\,d \left( \left( 1-t \right) a+  tb     \right)+  \int_{ [2,3]}   f\left(  \left(  3-t \right)b+ \left( t-2 \right)a  ,d \right)d\,\left(  \left( 3-t \right)b+ \left( t-2 \right)a   \right)  
+        \\ & = \int_{a}^{b}f\left( x,c \right) \,dx - \int_{a}^{b}f\left( x,d \right) \,dx
+    \end{aligned}
+    $$ 同理可得 $$
+    \oint_{\partial I   } f\, dy= \int_{c}^{d}f\left( b,y \right) dy - \int_{c}^{d}f\left( a,y \right) dy
+    $$
+另一方面
+    $$
+     \begin{aligned}
+        -\iint_{I} \frac{\partial f}{\partial y} \left( x,y \right)\, \mathrm{d} x \mathrm{d}y
+        &= -\int_{a}^{b} dx \int_{c}^{d} \frac{\partial f}{\partial y}\left( x,y \right) dy \\
+        & = -\int_{a}^{b}f \left(x, d \right) -f \left(x, c \right) \, \mathrm{d} x 
+ & = \int_{a}^{b}f\left( x,c \right) \mathrm{d}x -\int_{c}^{b}f\left( x,d \right)  \mathrm{d} x
+     \end{aligned} 
+    $$
+
+    类似地 $$
+  \begin{aligned}
+    \iint_{I}\frac{\partial f}{\partial x}f\left( x,y \right) \, \mathrm{d}x \mathrm{d}y & = \int_{c}^{d  } \,dy \int_{a}^{b} \frac{\partial f}{\partial x}f\left( x, y \right)  \, \mathrm{d}x \\
+    & = \int_{c}^{d}f\left( b,y \right) -f\left( c,y \right)  \mathrm{d} y
+  \\  & = \int_{a}^{b}f\left( b,y \right) \mathrm{d}y -\int_{c}^{d} f\left( a,y \right) \mathrm{d} y
+  \end{aligned}
+    $$这就完成了说明
+\end{proof}
+
+\begin{exercise}
+    设 $I   =\left[ a,b \right] \times \left[  c,d \right]  $为 $\mathbb{R}^{2}     $中的闭矩形,其边界 $\partial I $定向为逆时针方向,利用Green公式计算以下第二型曲线积分 $$
+    \oint_{\partial I   } e^{x}\sin y \,\mathrm{d}x    +  e^{x}\cos y \,\mathrm{d}y
+    $$
+    
+\end{exercise}
+
+\begin{solution}
+    由Green公式
+     $$
+    \begin{aligned}
+     &   \int_{\partial I } e^{x} \sin y \,\mathrm{d} x+ e^{x}\cos y \, \mathrm{d} y  
+      \\ = & \iint_{I} \left( \frac{\partial e^{x}\cos   y}{\partial x} -\frac{\partial e^{x}\sin   y}{\partial y}  \right) \,\mathrm{d}x \mathrm{d}y
+      \\ = & \iint_{I} \left( e^{x}\cos   y - e^{x} \cos y \right)  \,\mathrm{d}x \mathrm{d}y
+    \\ = & 0     \end{aligned}  
+      $$
+\end{solution}
+
+
+\begin{exercise}
+    应用Green公式计算下列第二型曲线积分
+   $$\left( 1 \right) \; \oint_{C} \left( x^{2}+ xy   \right)\,\mathrm{d}x+  \left( x^{2}+ y^{2} \right)\,\mathrm{d}y 
+   \quad \left( 2 \right) \; \oint_{C} \ln  \frac{2+ y}{1+ x^{2}}\,\mathrm{d}x+ \frac{x\left( y+ 1       \right) }{2+ y} \,\mathrm{d}y $$
+
+   $$
+    \begin{aligned}
+    \oint_{C} \left( x^{2}+ xy   \right)\,\mathrm{d}x+  \left( x^{2}+ y^{2} \right)\,\mathrm{d}y  & =    \int_{-1}^{1}\int_{-1}^{1} \left( 2x- x \right)\,\mathrm{d}x \mathrm{d}y   
+    \\ & = 0
+\end{aligned}
+   $$
+
+   $$
+\begin{aligned}
+    \oint_{C} \ln \frac{2+ y}{1+ x^{2}}\,\mathrm{d}x +  \frac{x\left( y+ 1 \right)  }{2+ y } \,\mathrm{d}y    
+    & =  \int_{-1}^{1}\int_{-1}^{1} \frac{y+ 1    }{2+ y  } -   \frac{1}{2+ y} \,\mathrm{d}x \mathrm{d}y
+    \\ & =  \int_{-1}^{1}\int_{-1}^{1}\left( 1- \frac{2}{2+ y} \right)  \,\mathrm{d}x \mathrm{d}y 
+    \\ & = 4-4 \ln 3
+\end{aligned}
+   $$
+\end{exercise}
+
+\begin{exercise}
+     设 $C$为抛物线 $2x= \pi y^{2}$自 $\left( 0,0 \right)   $到 $\left( \frac{\pi}{2},1  \right) $的弧段,求 $$
+     I= \int_{C} \left( 2xy^{3}-y^{2} \cos x     \right)\,\mathrm{d}x +  \left( 1-2y \sin x+  3x^{2}y^{2} \right) \,\mathrm{d}y  
+     $$
+\end{exercise}
+
+\begin{solution}
+    令 $I_1 $为题中形式在线段 $\{ \frac{\pi}{2}  \} \times \left[ 0,1 \right] $(从下到上)上的积分,$ I_{2}     $为在 $ \left[ 0,\frac{\pi}{2}\right] \times  \{ 0 \}  $(从左到右)上的积分,那么  由Green公式, $$
+    \begin{aligned}
+    I- I_1- I_2 &= \int_{0}^{1}\,dy\int_{0}^{ \frac{\pi}{2}y^{2}}\left( -2y\cos x+ 6xy^{2} -6xy^{2}+ 2y\cos x   \right) \,\mathrm{d}x
+       \\ & = 0
+    \end{aligned}
+    $$又 $$
+    I_1= \int_{0}^{1} \left( 1- 2y+ \frac{3}{4}\pi^{2} y^{2} \right)dy =  \frac{1}{4}\pi^{2} 
+    $$ $$
+    I_{2}= \int_{0}^{\frac{\pi}{2}} 0\,\mathrm{d}x = 0
+    $$因此 $$
+    I=I_1+ I_2=  \frac{1}{4}\pi^{2}
+    $$
+\end{solution}
+
+\begin{exercise}
+    设 $ \mathbb{S}^{1}  $为平面上的单位圆周,定向为逆时针方向,计算第二型曲线积分 $$
+    I = \oint_{ \mathbb{S}^{1}}  \frac{\left( x-y        \right)\,\mathrm{d}x+ \left( x+ 4y  \right)\,\mathrm{d}y   }{ x^{2}+ 4y^{2}} 
+    $$    
+\end{exercise}
+
+\begin{solution}
+   记 $$
+   I= \oint_{ \mathbb{S}^{1}} P \,\mathrm{d}x+  Q \,\mathrm{d}y 
+   $$那么 $$
+   Q_{x}= P_{y}= \frac{-x^{2}-8xy+ 4y^{2} }{x^{2}+ 4y^{2} } 
+   $$对于充分小的 $ \varepsilon > 0 $,令  $$
+   \gamma _{ \varepsilon} : = x^{2}+  4y^{2} = 4 \varepsilon^{2}
+   $$ 设定 $ \gamma  $在边界上沿逆时针为其定向,赋予内部区域 $ D $ 以边界诱导的定向. 
+\end{solution}
+由Green公式 $$
+\begin{aligned}
+I& = \oint_{ \mathbb{S}^{1}+  \gamma_{\varepsilon}^{-1} }\left(  P \,\mathrm{d}x+  Q \,\mathrm{d}y  \right) +  \oint _{ \gamma _{ \varepsilon }} \left( P \,\mathrm{d}x +  Q \,\mathrm{d} y \right)  
+\\ & = \oint_{ \gamma _{ \varepsilon}} \left( P \,\mathrm{d}x +  Q \,\mathrm{d} y \right) 
+\end{aligned}
+$$
+考虑变量替换 $ x = 2\varepsilon \cos  \theta , \quad y= \varepsilon \sin  \theta $,我们有 $$
+\begin{aligned}
+    \oint _{ \gamma_{ \varepsilon }} \left( Pdx+  Qdy \right)  & = \int _{ 0}^{ 2\pi} \frac{ \varepsilon\left(  2\cos  \theta - \sin  \theta \right) \,\mathrm{d} \left( 2 \varepsilon \cos  \theta \right) +  \epsilon \left( 2\cos  \theta + 4\sin  \theta   \right) \,\mathrm{d} \left(  \varepsilon \sin  \theta \right)     }{4\varepsilon ^{2} } 
+    \\& =\frac{1}{4} \int_{0}^{2\pi} \left( -4 \cos  \theta \sin  \theta +  2 \sin ^{2} \theta +  2 \cos  ^{2} \theta +  4 \sin  \theta \cos  \theta  \right) \,\mathrm{d} \theta 
+    \\ & = \pi
+\end{aligned} 
+$$  故 $ I = \pi $ 
+
+
+\chapter{}
+
+\begin{exercise}
+    证明 $ \mathbb{R} ^{2} $ 上的1次形式 $ \left( x+ 2y \right)\,\mathrm{d} x+  \left( 2x -y \right)\,\mathrm{d} y   $ 是恰当形式,并求出它的一个原函数.
+\end{exercise}
+\begin{proof}
+    记 $ P\left( x,y \right): = x+ 2y  $, $ Q\left( x,y \right): = 2x-y  $,则 $$
+    \frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x} = 2
+    $$  这表明 $ P\,\mathrm{d} x+ Q\,\mathrm{d} y $是 $ \mathbb{R} ^{2} $上的一个闭形式,且在星形域 $ \mathbb{R} ^{2} $上有定义,故由Poincaré引理, $ P\,\mathrm{d} x+ Q\,\mathrm{d} y $是恰当形式.
+    对每个 $ \left( x,y \right)  \in \mathbb{R} ^{2} $,定义曲线 $ \gamma: [0,2]\to  \mathbb{R} ^{2} $  $$
+    \gamma_{\left( x,y \right) }\left( t \right) :  = \begin{cases} \left( tx,0 \right)& t \in \left[ 0,1 \right]\\ 
+    \left( x,\left( t-1 \right)y  \right)& t \in [1,2]    \end{cases}
+    $$  定义函数 $ f $   $$
+    f\left( x,y \right): =  \int_{\gamma_{\left( x,y \right) }} \left( P \,\mathrm{d} x+ Q\,\mathrm{d} y \right) 
+    $$ 则 $$
+    \begin{aligned}
+        f\left( x,y \right) &= \int_{0}^{1}\left(  P\circ \gamma_{\left( x,y \right) }  \right)\left( t \right)  \,\mathrm{d} \left( x\circ \gamma_{\left( x,y \right) } \right)   + \int_{1}^{2} \left( Q\circ \gamma_{\left( x,y \right) }\right)\left( t \right) \,\mathrm{d} \left( y\circ \gamma_{\left( x,y \right) } \right) \\ 
+          & = \int_{0}^{1}x^{2}t\,\mathrm{d} t +  \int_{1}^{2} \left( 2x- \left( t-1 \right)y  \right) y\,\mathrm{d} t\\ 
+           & = \frac{1}{2}x^{2}+ 2xy- \frac{1}{2}y^{2}
+    \end{aligned}   
+    $$是 $ P\,\mathrm{d} x+ Q\,\mathrm{d} y $的一个原函数. 
+    
+\end{proof}
+
+\begin{exercise}
+    设 $ f:\mathbb{R} ^{1}\to \mathbb{R} ^{1} $连续可微,$ L $是平面上分段光滑的简单闭曲线,证明：
+    \begin{enumerate}
+        \item  $ \oint_{L}f\left( xy \right) \left( y\,\mathrm{d} x+  x \,\mathrm{d} y \right) = 0   $ 
+        \item  $ \oint_{L}f\left( x^{2}+ y^{2} \right) \left( x \,\mathrm{d} x+  y\,\mathrm{d} y \right)   = 0 $ 
+    \end{enumerate}
+    
+    
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 令 $ P\left( x,y \right): = f\left( xy \right)y   $, $ Q \left( x,y \right): = f\left( xy \right)x   $  ,则积分写作 $ \oint_{L} \left( P\,\mathrm{d} x+ Q\,\mathrm{d} y \right)  $,又 $$
+         \frac{\partial P}{\partial y}\left( x,y \right)  = f^{\prime} \left( xy \right) xy+  f\left( xy \right) = \frac{\partial Q}{\partial x}\left( x,y \right)   
+        $$ 故 $ P\,\mathrm{d} x+ Q\,\mathrm{d} y $是 $\mathbb{R} ^{2} $上的闭形式,进而是恰当形式,由恰当形式的保守性,积分 \\ 
+         $ \oint_{L} \left( P\,\mathrm{d} x+ Q\,\mathrm{d} y \right)=0  $   
+        
+        \item 令 $ P\left( x,y \right): = f\left( x^{2}+ y^{2} \right)x ,Q\left( x,y \right): = f\left( x^{2}+ y^{2} \right)y     $,积分写作 $ \oint_{L} P\,\mathrm{d} x+ Q\,\mathrm{d} y $,又 $$
+        \frac{\partial P}{\partial y}\left( x,y \right) = 2xyf^{\prime} \left( x^{2}+ y^{2} \right)   = \frac{\partial Q}{\partial x}\left( x,y \right) 
+        $$  因此 $ P\,\mathrm{d} x+ Q\,\mathrm{d} y $是 $ \mathbb{R} ^{2} $上的闭形式,进而是恰当形式,由恰当形式的保守性,积分 \\ 
+         $ \oint_{L}\left( P\,\mathrm{d} x+ Q\,\mathrm{d} y \right)=0  $   
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{exercise}
+    先证明以下曲线积分与路径无关,然后计算其积分值 $$
+    \int_{\left( 1,0 \right) }^{\left( 6,8 \right) } \frac{ x \,\mathrm{d} x +  y \,\mathrm{d} y }{  x^{2}+ y^{2}} ,\quad \text{沿不通过原点的分段光滑曲线} 
+    $$ 
+\end{exercise}
+
+\begin{proof}
+    令 $ P \left( x,y \right): = \frac{x }{x^{2}+ y^{2} }   $,$ Q \left( x,y \right): = \frac{y }{x^{2}+ y^{2} }   $,则 $$
+    \frac{\partial P}{\partial y}\left( x,y \right) =  - \frac{2xy}{\left( x^{2}+ y^{2} \right)^{2} }   = \frac{\partial Q}{\partial x} \left( x,y \right)$$
+    故曲线积分与路径无关,特别地 $$
+    \begin{aligned}
+    &\int_{\left( 1,0 \right) }^{\left( 6,8 \right) } \frac{ x\,\mathrm{d} x+ y\,\mathrm{d} y }{x^{2}+ y^{2} }  \\ 
+     & =  \int_{\left( 1,0 \right) }^{\left( 6,0 \right) } \frac{x\,\mathrm{d} x+ y\,\mathrm{d} y }{x^{2}+ y^{2} }+  \int_{\left( 6,0 \right) }^{\left( 6,8 \right) } \frac{ x\,\mathrm{d} x+ y\,\mathrm{d} y }{ x^{2}+ y^{2}}  \\ 
+      & = \int_{1}^{6} \frac{1}{x} \,\mathrm{d} x+  \int_{0}^{8} \frac{y}{36+ y^{2}}\,\mathrm{d} y\\ 
+       & = [- \frac{1}{x^{2}}]_{1}^{6} +  \left[ \frac{1}{2} \ln \left( 36+ y^{2} \right)  \right]_{0}^{8}\\ 
+        & =  - \frac{1}{36} + 1 +   \ln 10 - \ln 6\\ 
+         & = \frac{35}{36} +  \ln 5-\ln 3 
+    \end{aligned}
+    $$
+\end{proof}
+
+\begin{exercise}
+    利用Gauss公式计算以下第二型曲面积分 $$
+    \iint_{S} z \,\mathrm{d} y\wedge \,\mathrm{d} z+ \cos y \,\mathrm{d} z\wedge \,\mathrm{d} x+  \,\mathrm{d} x\wedge \,\mathrm{d} y
+    $$其中 $ S $为单位球面 $ x^{2}+ y^{2}+ z^{2}=1 $,取外侧方向.    
+\end{exercise}
+
+\begin{solution}
+    记 $ \omega : = z\,\mathrm{d} y\wedge \,\mathrm{d} z+ \cos y\,\mathrm{d} z\wedge  \,\mathrm{d} x+ \,\mathrm{d} x\wedge \,\mathrm{d} y $ 
+    ,则 $$ 
+    \begin{aligned}
+        \,\mathrm{d} \omega  & =  \left( \,\mathrm{d} \cos y \right) \wedge \left( \,\mathrm{d} z\wedge \,\mathrm{d} x \right) \\ 
+         & =  -\sin y \,\mathrm{d} x\wedge \,\mathrm{d} y\wedge \,\mathrm{d} z
+    \end{aligned}
+    $$ 
+    用 $ B $表示单位闭球,则由Gauss公式,原积分为 $$
+   \begin{aligned}
+    \int_{S} \omega & = \int_{B} d\omega \\ 
+     & = \int_{B}-\sin y\,\mathrm{d} x\,\mathrm{d} y\,\mathrm{d} z\\ 
+      & = 0 
+   \end{aligned}
+    $$ 其中最后一个等号是因为 $ B $关于 $ y $对称,且 $ \sin y $是奇函数.   
+\end{solution}
+
+\begin{exercise}
+    通过添加适当的辅助面,利用Gauss公式计算以下第二型曲面积分 $$
+    \iint_{\Sigma} x^{3} \,\mathrm{d} y\wedge \,\mathrm{d} z+ y^{3} \,\mathrm{d} z\wedge \,\mathrm{d} x+ z^{3}\,\mathrm{d} x\wedge \,\mathrm{d} y
+    $$其中 $ \Sigma $为单位球面 $ x^{2}+ y^{2}+ z^{2} =1 $的上半部分,取上侧方向.  
+\end{exercise}
+\begin{solution}
+    记 $ \omega : = x^{3}\,\mathrm{d} y\wedge \,\mathrm{d} z+ y^{3}\,\mathrm{d} z\wedge \,\mathrm{d} x+ z^{3}\,\mathrm{d} x\wedge \,\mathrm{d} y $ ,则 $$
+    \begin{aligned}
+    \,\mathrm{d} \omega&  = 3x^{2} \,\mathrm{d} x\wedge \,\mathrm{d} y\wedge \,\mathrm{d} z+  3y^{2}\,\mathrm{d} y\wedge \,\mathrm{d} z\wedge \,\mathrm{d} x+ 3z^{2}\,\mathrm{d} z \wedge \,\mathrm{d} x\wedge \,\mathrm{d} y\\ 
+     & =  3\left( x^{2}+ y^{2}+ z^{2} \right) \left( \,\mathrm{d} x\wedge \,\mathrm{d} y\wedge \,\mathrm{d} z \right)  
+    \end{aligned}
+    $$设 $ \Sigma^{\prime}  $是外侧定向的单位球面的下半部分,设 $ B $是单位球, 则由Gauss公式和对称性  $$
+   \begin{aligned}
+    2\int_{\Sigma} \omega & = \int_{\Sigma+ \Sigma^{\prime} }\omega \\ 
+     & =  \int_{B}\,\mathrm{d} \omega \\ 
+      & = 3 \int_{B} \left( x^{2}+ y^{2}+ z^{2} \right) \,\mathrm{d} x\,\mathrm{d} y\,\mathrm{d} z\\ 
+       & = 3 \int_{0}^{1} \int_{0}^{2\pi }\int_{0}^{\pi } r^{4} \sin \varphi \,\mathrm{d} \varphi \,\mathrm{d} \theta \,\mathrm{d} r\\ 
+        & = \frac{12}{5}\pi   
+   \end{aligned}
+    $$ 因此 $$
+    \int_{\Sigma}\omega  = \frac{6}{5}\pi 
+    $$
+\end{solution}
+
+\begin{exercise}
+    设 $ \Omega  $是 $ \mathbb{R} ^{3} $中满足Gauss公式条件的区域,$ \vec{n} = \left( \vec{n}_{x}, \vec{n}_{y},\vec{n}_{z} \right)   $表示 $ \partial \Omega  $的单位外法向量, $ \vec{l} \in \mathbb{R} ^{3} $是任意给定的常值向量,证明 $$
+    \iint_{\partial \Omega } \vec{\ell}\cdot \vec{n} \,\mathrm{d} \sigma  = 0
+    $$     
+\end{exercise}
+\begin{proof}
+    设 $\vec{\ell} = \left( a,b,c \right)  $,其中 $ a,b,c \in \mathbb{R}  $,视 $ \vec{\ell} $为常值函数,则散度 $ \operatorname{div}\, \vec{\ell} = 0 $,因此由散度定理 $$
+    \iint_{\partial \Omega } \vec{\ell}\cdot  \vec{n} \,\mathrm{d} \sigma  =  \iiint_{\Omega } \operatorname{div}\,\vec{\ell} \,\mathrm{d} x\,\mathrm{d} y\,\mathrm{d} z = 0
+    $$    
+\end{proof}
+
+\begin{exercise}
+    设 $ \Omega  $是 $ \mathbb{R} ^{3} $中区域, $ F:\Omega \to \mathbb{R} ^{3} $为 $ C^{1} $向量值函数, $ \varphi : \Omega \to \mathbb{R}  $为 $ C^{1} $ 标量函数,证明： $$
+    \mathrm{div}\left( \varphi F  \right) = \varphi \mathrm{div} F+ F\cdot \nabla \varphi  
+    $$
+\end{exercise}
+
+\begin{proof}
+   $$
+   \begin{aligned}
+    \operatorname{div}\,\left( \varphi  F^{i} \right)  & = \sum _{i=1}^{3} \frac{\partial  \left( \varphi  F \right)^{i} }{\partial x^{i}} \\ 
+     & = \sum _{i=1}^{3} \left(  \frac{\partial \varphi }{\partial x^{i}} F^{i}+  \varphi  \frac{\partial F^{i}}{\partial x^{i}} \right) \\ 
+      & = \varphi \sum _{i=1}^{3} \frac{\partial F^{i}}{\partial x^{i}} +  \sum _{i=1}^{3}F^{i} \frac{\partial \varphi }{\partial x^{i}}\\ 
+       & = \varphi \operatorname{div}\,F+  F\cdot \nabla \varphi 
+   \end{aligned} 
+   $$
+\end{proof}
+\begin{exercise}
+    设 $ \mathcal{C} $是 $ \mathbb{R} ^{3} $任一分段光滑的简单闭曲线,$ f,g,h: \mathbb{R} \to \mathbb{R}  $是 $ C^{1} $    函数,证明： $$
+    \oint_{\mathcal{C}}[f\left( x \right)-yz ]\,\mathrm{d} x+ [g\left( y \right)-xz ]\,\mathrm{d} y+  [h\left( z \right)-xy ]\,\mathrm{d} z = 0
+    $$
+\end{exercise}
+
+\begin{proof}
+    设 $ P \left( x,y,z \right): = f\left( x \right)-yz   $,$ Q\left( x,y,z \right): = g\left( y \right)-xz   $,$ R\left( x,y,z \right): = h\left( z \right)-xy   $  ,$ \omega : = P\,\mathrm{d} x+ Q\,\mathrm{d} y+ R\,\mathrm{d} z $ 则 $$
+    \frac{\partial P}{\partial y}= -z = \frac{\partial Q}{\partial x},\quad  \frac{\partial P}{\partial z} = -y= \frac{\partial R}{\partial x},\quad  \frac{\partial Q}{\partial z}=-x = \frac{\partial R}{\partial y}
+    $$这表明 $ \omega  $是定义在$ \mathbb{R} ^{3} $上的闭形式,进而是恰当的,从而由恰当形式的保守性, $ \oint_{\mathcal{C}} \omega =0 $   .
+\end{proof}
+
+\begin{exercise}
+    设 $ \mathcal{C}_{1} $和 $ \mathcal{C}_{2} $是 $ \mathbb{R} ^{3} $中以 $ \left( 0,0,0 \right)  $为起点, $ \left( 1,2,3\right)  $为终点的两条光滑的简单曲线,证明： $$
+    \int_{\mathcal{C}_{1}}yz\,\mathrm{d} x+ xz\,\mathrm{d}y + xy\,\mathrm{d} z = \int_{\mathcal{C}_{2}} yz\,\mathrm{d} x+ xz\,\mathrm{d} y+ xy\,\mathrm{d} z
+    $$ 即上述1次形式的曲线积分与路径无关,并选取适当路径,计算 $$
+    \int_{\left( 0,0,0 \right) }^{\left( 1,2,3\right) } yz\,\mathrm{d} x+ xz\,\mathrm{d} y+ xy\,\mathrm{d} z
+    $$
+\end{exercise}
+\begin{proof}
+    记 $ \left( x,y,z \right): = \left( x^{1},x^{2},x^{3} \right)   $,记 $ \omega _{i}: =  {x_1x_2x_3 }/{x^{i} } ,i= 1,2,3 $,并设 $ \omega : = \omega _{i}x^{i} $  (采用Einstein求和约定).则 $$
+    \frac{\partial \omega _{i}}{\partial x^{j}} = \frac{\partial \omega _{j}}{\partial x^{i}} =  \frac{x^{1}x^{2}x^{3} }{x^{i}x^{j} },\quad  i,j = 1,2,3 ,\quad i \neq j
+    $$ 因此 $ \omega  $是定义在$ \mathbb{R} ^{3} $ 上的闭形式,进而由Pocaré引理,$ \omega  $是恰当的, 而恰当形式在分段光滑曲线上的的积分只与起始点有关,而与路径无关,因此 $$
+    \int_{\mathcal{C}_{1}}\omega = \int_{\mathcal{C}_{2}}\omega 
+    $$令 $ \gamma :[0,3]\to  \mathbb{R} ^{3} $ $$
+    \gamma  \left( t \right): = \begin{cases} \left( t,0,0 \right),& t \in [0,1]\\ 
+     \left( 1,2\left( t-1 \right),0  \right),& t \in [1,2]\\ 
+      \left( 1,2,3\left( t-2 \right)  \right),& t\in  [2,3]    \end{cases}  
+    $$ 则 $ \gamma  $是分段光滑的连续曲线,且始终点分别为 $ \left( 0,0,0 \right)  $和 $ \left( 1,2,3 \right)  $,因此 $$
+   \begin{aligned}
+    \int_{\left( 0,0,0 \right) }^{\left( 1,2,3 \right) } \omega & = \int_{\gamma }\omega \\ 
+     & = \sum _{i=1}^{3} \int_{i-1}^{i} \gamma ^{*}\omega \\ 
+      & = \int_{0}^{1} 0 \,\mathrm{d} t+ +  \int_{1}^{2}  0\,\mathrm{d} \left( t-1 \right)+  \int_{2}^{3} 6 \,\mathrm{d} \left( t-2 \right)  \\ 
+       & = 6
+   \end{aligned}
+    $$   
+\end{proof}
+\begin{exercise}
+    记 $ X = \left( P,Q,R \right)  $为向量场,定义旋度 $ \operatorname{rot}\, X $为 $$
+    \operatorname{rot}\,X = \left( \frac{\partial R}{\partial y}-\frac{\partial Q}{\partial z}, \frac{\partial P}{\partial z}- \frac{\partial R}{\partial x}, \frac{\partial Q}{\partial x}- \frac{\partial P}{\partial y} \right) 
+    $$  设 $ f\left( x,y,z \right)  $是光滑的三元函数,证明: $ \operatorname{rot}\,\left( \nabla f \right)=0  $  
+\end{exercise}
+\begin{proof}
+    $$
+    \nabla f= \left( f_{x},f_{y},f_{z} \right) 
+    $$由 $ f $是光滑函数, $ f_{xz}= f_{zx},f_{xy}=f_{yx},f_{yz} = f_{zy} $,  于是 $$
+    \operatorname{rot}\,\left( \nabla f \right) = \left(f_{zy}-f_{yz},f_{xz}-f_{zx}, f_{yx} -f_{xy}\right) =0  
+    $$
+\end{proof}
+
+\begin{exercise}
+    利用Feynman积分技巧计算 $$
+    I = \int_{0}^{1} \frac{\ln \left( 1+ x \right)  }{ 1+ x^{2}} \,\mathrm{d} x. 
+    $$
+\end{exercise}
+\begin{solution}
+    令 $ I\left( a \right) = \int_{0}^{1} \frac{\ln \left( 1+ ax \right)   }{1+ x^{2} }  \,\mathrm{d} x $ ,则 $$
+    \begin{aligned}
+        \frac{\partial I}{\partial a} = \int_{0}^{1} \frac{\partial }{\partial a} \frac{\ln \left( 1+ ax \right)  }{1+ x^{2} }\,\mathrm{d} x&=  \int_{0}^{1} \frac{1}{1+ ax}  \frac{x}{1+ x^{2}} \,\mathrm{d} x \\ 
+         & = \frac{1}{1+ a^{2}} \left[ -\ln \left( 1+ a \right) +  \frac{1}{2}\ln 2+  \frac{1}{4}\pi a  \right] 
+    \end{aligned}
+    $$积分得 $$
+    \int_{0}^{1} I^{\prime} \left( a \right)\,\mathrm{d} a = \frac{\pi   }{4 } \ln 2-I\left( 1 \right) 
+    $$又 $$
+    \int_{0}^{1}I^{\prime} \left( a \right)\,\mathrm{d} a = I\left( 1 \right)-I \left( 0 \right)    = I\left( 1 \right) 
+    $$因此 $$
+    I = I\left( 1 \right) = \frac{\pi    }{8 } \ln 2  
+    $$
+\end{solution}
+
+\begin{exercise}
+    记 $$
+    I\left( y \right) = \int_{0}^{1} \frac{x^{y}-x }{\ln x } \sin \left(  \ln  \frac{1}{x} \right) \,\mathrm{d} x,\quad    
+    $$
+
+    \begin{enumerate}
+        \item 证明 $ I\left( y \right)  $在 $ \left( 0,\infty \right)  $上可微；
+        \item 求出 $ I\left( y \right)  $   
+    \end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}
+        \item 令 $ f\left( x,y \right): = \frac{x^{y}-x }{\ln x }\sin  \left( \ln  \frac{1}{x} \right)    $, $ x^{y} $在 $ [0,\infty) $上连续, $ \sin \left( \ln x \right)  $在 $ (0,1] $上连续有界,     则 $ f_{y}\left( x,y \right) = x^{y} \sin  \left( \ln \left( \frac{1}{x} \right)  \right)   = -x^{y}\sin \left( \ln x \right) $在 $(0,\infty)  $上可积,故 $ I\left( y \right)  $在 $ \left( 0,\infty \right)  $上可微.     
+        \item  $$
+        \begin{aligned}
+        I^{\prime} \left( y \right) & = \int_{0}^{1} x^{y} \sin \left( \ln \left( \frac{1}{x} \right)  \right) \,\mathrm{d} x\\ 
+         & = \int_{0}^{1} - e^{y\ln x} \sin \left( \ln x \right)     \,\mathrm{d} x\\ 
+          & = \int_{0}^{1} -e^{y u} \sin u \,\mathrm{d}  e^{u},\quad  u = \ln x\\ 
+           & = -\int_{-\infty}^{0} e^{\left( y+ 1 \right)u } \sin u \,\mathrm{d} u\\ 
+            & = \frac{1}{\left( y+ 1 \right)^{2}+ 1 }
+        \end{aligned}
+        $$因此 $$
+        I\left( y \right) = \int I^{\prime} \left( y \right)\,\mathrm{d} y  = \int \frac{1}{\left( y+ 1 \right)^{2}+ 1 } \,\mathrm{d} y = \arctan \left( y+ 1 \right)+ C   
+        $$带入 $ I\left( 1 \right) = 0  $ ,得 $ C = -\arctan 2 $,因此 $$
+        I\left( y  \right) = \arctan \left( y+ 1 \right)-\arctan 2  
+        $$ 
+    \end{enumerate}
+    
+\end{solution}
+
+\begin{exercise}
+    设二元函数 $ f\left( x,y \right)  $在 $ [a,b]\times [c,d] $中连续,记 $$
+    H\left( s,t \right) = \int_{a}^{s} f\left( x,t \right) \,\mathrm{d} x, \quad  \left( s,t \right) \in [a,b]\times [c,d]   
+    $$证明二元函数 $ H\left( s,t \right)  $在 $ [a,b]\times  [c,d] $中连续.    
+\end{exercise}
+\begin{proof}
+    任取 $ \varepsilon >0 $,由 $ f\left( x,y \right)  $在紧集 $ [a,b]\times  [c,d] $   连续,则 $ f\left( x,y \right)  $在其上有界且一致连续,设 $ \left| f \right| \le  M  $  .存在 $ \delta  $,使得当 $ \left| \left( x_1,y_1 \right)  - \left( x_2,y_2 \right) \right| < \delta   $    时, $ \left| f\left( x_1,y_1 \right)  -f\left( x_2,y_2 \right) \right|< \frac{\varepsilon}{2 \left( b-a \right) }  $ ,令 $ r = \min \left\{  \delta ,  \frac{\varepsilon}{2M} \right\} $ ,
+任取 $ \left( x,t \right) \in [a,b]\times  [c,d]  $ 则对于任意的 $ \left( \delta _{1},\delta _{2} \right) \in B_{r}\left( s,t \right)    $ 
+    $$
+  \begin{aligned}
+    &\left|  H\left( s+ \delta _{1},t+ \delta _{2} \right)-H\left( s,t \right)  \right| \\ 
+     & \le \left|  \int_{a}^{s+ \delta _{1}}f\left( x,t+ \delta _{2} \right)- \int_{a}^{s+ \delta _{1}} f\left( x,t \right)  \right| +  \left| \int_{a}^{s+ \delta _{1}}f\left( x,t \right)- \int_{a}^{s} f\left( x,t \right)      \right| \\ 
+      & \le \int_{a}^{b} \left| f\left( x,t+ \delta _{2} \right)  -f\left( x,t \right)  \right|  \,\mathrm{d} x +  \delta _{1}M \\ 
+       & \le \left( b-a \right) \frac{\varepsilon}{2\left( b-a \right) }  +  rM\\ 
+       & < \frac{\varepsilon}{2}+  \frac{\varepsilon}{2} = \varepsilon 
+  \end{aligned} 
+    $$因此 $ H\left( s,t \right)  $在 $ [a,b]\times [c,d] $上连续. 
+    
+\end{proof}
+
+
+\chapter{}  
+
+\begin{exercise}
+    求下列函数的导数
+    \begin{enumerate}
+        \item  $$
+        f\left( x \right) = \int_{x}^{x^{2}} e^{-x^{2}t^{2}}\,\mathrm{d} t 
+        $$
+        \item $$
+        f\left( x \right)= \int_{0}^{x}\left( t+ x \right)g\left( t \right)dt,\quad \text{其中} g \text{可微}   
+        $$
+    \end{enumerate}
+    
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}
+        \item  记 $ s = x $, $ r= x^{2} $, $ H\left( x,s,r \right) = \int_{s}^{r} e^{-x^{2}t^{2}}\,\mathrm{d} t  $   ,则 $$
+        \begin{aligned}
+        f^{\prime} \left( x \right)&  = \frac{\partial H}{\partial x} +  \frac{\partial H}{\partial s} \frac{\partial s}{\partial x}+  \frac{\partial H}{\partial r} \frac{\partial r}{\partial x}  \\ 
+         & = \int_{s}^{r} \frac{\partial }{\partial x} e^{-x^{2}t^{2}} \,\mathrm{d} t -e^{-x^{2}s^{2}}+ e^{-x^{2}r^{2}}2x\\ 
+          & = -2x\int_{x}^{x^{2}}t^{2} e^{-x^{2}t^{2}}\,\mathrm{d} t- e^{-x^{4}}+ 2x e^{-x^{6}}
+        \end{aligned}
+        $$
+        \item  $$
+        \begin{aligned}
+        f^{\prime} \left( x \right) & = \int_{0}^{x} \frac{\partial }{\partial x}  [\left( t+ x \right) g\left( t \right)  ]\,\mathrm{d} t + 2xg\left( x \right) \\ 
+         & =  \int_{0}^{x}g\left( t \right)\,\mathrm{d} t+  2xg\left( x \right)  
+        \end{aligned}
+        $$
+    \end{enumerate}
+    
+\end{solution}
+
+\begin{exercise}
+    记 $$
+     \eta \left( A \right)  = \sup _{y \in D} \left| \int_{A}^{\infty} f\left( x,y \right) \,\mathrm{d} x  \right| ,\quad  A >a
+    $$证明： $ \int_{a}^{\infty} f\left( x,y \right)\,\mathrm{d} x  $关于 $ y \in D $一致收敛 $ \iff $ $ \lim_{A \to \infty}\eta \left( A \right)=0  $    
+\end{exercise}
+\begin{proof}
+    若 $ \int_{a}^{\infty} f\left( x,y \right)\,\mathrm{d} x  $关于 $ y \in D $一致收敛.则对于任意的 $ \varepsilon >0 $,存在 $ A_{0} = A_{0}\left( \varepsilon  \right)>a  $,使得当 $ A >A_0 $时 $$
+    \left| \int_{A}^{\infty} f\left( x,y \right) \,\mathrm{d} x  \right|<\varepsilon ,\quad  \forall  y \in D 
+    $$  有 $ \eta \left( A \right)   \le \varepsilon    $    对于任意的 $ A >A_0\left( \varepsilon  \right)  $成立,这表明 $ \lim_{A \to \infty}\eta \left( A \right) =0 $.
+    
+    反之,若 $ \lim_{A \to \infty}\eta \left( A \right)=0  $.任取 $ \varepsilon >0 $,存在 $ A_0 $,使得当 $ A> A_0 $时, $ \eta \left( A \right) <\varepsilon   $.此时 $$
+    \left| \int_{A}^{\infty}f\left( x,y \right)\,\mathrm{d} x  \right| \le \eta \left( A \right)<\varepsilon  ,\quad  \forall  y\in D  
+    $$      这表明 $ \int_{a}^{\infty}f\left( x,y \right)\,\mathrm{d} x  $关于 $ y \in D $一致收敛.  
+
+    $\hfill\square$
+\end{proof}
+
+\begin{exercise}
+    证明以下Cauchy收敛原理：积分 $ \int_{a}^{\infty}f\left( x,y \right)\,\mathrm{d} x  $关于 $ y \in D $一致收敛 ,当且仅当任给 $ \varepsilon >0 $,存在 $ A_0 = A_0\left( \varepsilon  \right)>a  $    ,当 $ A^{\prime} >A>A_0 $时,成立 $$
+    \left| \int_{A}^{A^{\prime} } f\left( x,y \right)\,\mathrm{d} x  \right|<\varepsilon ,\quad  \forall y \in D 
+    $$ 
+\end{exercise}
+
+\begin{proof}
+    若一致收敛,任取 $ \varepsilon >0 $,存在 $ A_0=A_0\left( \varepsilon  \right)>a  $,使得 $$
+    \left| \int_{A}^{\infty}f\left( x,y \right)\,\mathrm{d} x  \right|< \frac{\varepsilon}{2},\quad \forall A>A_0, y \in Y 
+    $$  于是 $$
+    \begin{aligned}
+        \left| \int_{A}^{A^{\prime} }f\left( x,y \right)\,\mathrm{d} x  \right|& = \left| \int_{A^{\prime} }^{\infty}f\left( x,y \right)\,\mathrm{d} x -\int_{A}^{\infty}f\left( x,y \right)\,\mathrm{d} x  \right|\\ 
+         & \le \left| \int_{A^{\prime} }^{\infty}f\left( x,y \right)\,\mathrm{d} x  \right|   + \left| \int_{A}^{\infty}f\left( x,y \right)\,\mathrm{d} x  \right| \\ 
+          & < \varepsilon  ,\quad  \forall  A^{\prime} >A>A_0, \quad y \in D
+    \end{aligned}
+    $$
+
+    反之,若上述Cauchy条件成立.注意到它蕴含了逐点收敛的Cauchy条件,故 $$
+    \int_{A}^{\infty} f\left( x,y \right)\,\mathrm{d} x \;\text{收敛}
+    $$对于任意的 $ y \in D $成立. 任取 $ \varepsilon >0 $,存在 $ A_0 >a $,使得 当 $ A^{\prime} >A>A_0 $时, $$
+    \left| \int_{A}^{A^{\prime} }f\left( x,y \right)\,\mathrm{d} x  \right|<\frac{\varepsilon}{2} ,\quad \forall y \in D 
+    $$  此外,任取 $ y \in D $,存在 $ A_1:=A_1\left( y \right) > A_0 $,使得对于任意的 $ A\ge  A_1 $,都有 $$
+    \left| \int_{A}^{\infty}f\left( x,y \right)\,\mathrm{d} x  \right|< \frac{\varepsilon}{2} $$特别地, $$
+    \left| \int_{A_1\left( y \right) }^{\infty}f\left( x,y \right)\,\mathrm{d} y  \right|< \frac{\varepsilon}{2} 
+    $$
+    因此,对于任意的 $ A> A_0 $,我们有 $$
+    \left| \int_{A}^{\infty}f\left( x,y \right)\,\mathrm{d} x \right| \le  \left| \int_{A_1\left( y \right) }^{\infty}f\left( x,y \right)\,\mathrm{d} x  \right| + \left| \int_{A}^{A_1\left( y \right) }f\left( x,y \right)\,\mathrm{d} x  \right| < \varepsilon  
+    $$ 
+    $\hfill\square$
+\end{proof}
+
+\begin{exercise}
+    证明积分 $$
+    \int_{0}^{\infty} e^{-t^{2}} [\sin \left( xt \right) ]^{2023}[\arctan \left( x^{2}t \right) ]^{2024}\,\mathrm{d} t
+    $$关于 $ x \in \mathbb{R}  $一致收敛 
+\end{exercise}
+
+\begin{proof}
+    注意到$$
+    [\sin \left( xt \right) ]^{2023}[\arctan \left( x^{2}t \right) ]^{2024}\le  \left( \frac{\pi}{2} \right)^{2024},\quad \forall x \in \mathbb{R} ,t \in \mathbb{R} _{\ge 0} = :M
+    $$
+    令 $ F\left( t \right): = e^{-t^{2}}M  $,则被积函数的绝对值函数始终小于等于 $ F\left( t \right)  $,此外 $$
+    \int_{0}^{\infty}\left| F\left( t \right)  \right| \,\mathrm{d} t \le  \int_{0}^{1}e^{-t^{2}}+  \int_{1}^{\infty}e^{-t}\,\mathrm{d} t \le 1+  1 = 2
+    $$ 因此 $ \int_{0}^{\infty}F\left( t \right)\,\mathrm{d} t  $收敛,故由Weierstrass判别法,原积分关于 $ x \in \mathbb{R}  $一致收敛.  
+    $\hfill\square$
+\end{proof}
+
+\begin{exercise}
+    证明积分 $$
+    \int_{0}^{\infty} \frac{x \sin \left( yx \right)  }{1+ x^{2} } \,\mathrm{d} x 
+    $$
+    \begin{enumerate}
+        \item 关于 $ y\in [ \delta ,\infty) $一致收敛,其中 $  \delta >0 $；
+        \item 关于 $ y \in \left( 0,\infty \right)  $不一致收敛.   
+    \end{enumerate}
+    
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 注意到 $$
+        \int_{0}^{A}\sin \left( yx \right)\,\mathrm{d} x =   \left[  -\frac{1}{y}\cos \left( yx \right) \right]_{x=0}^{A}   = \frac{1}{y}\left( 1-\cos \left( Ay \right)  \right) \le \frac{1}{ \delta },\quad \forall A >0,\forall y \in [ \delta ,\infty)
+        $$即积分 $ \int_{a}^{A}f\left( x,y \right)\,\mathrm{d} x  $关于 $ y \in [ \delta ,\infty) $一致有界. 又 $ \left( \frac{x}{1+ x^{2}} \right)^{\prime}  =  \frac{1-x^{2} }{ \left( 1+ x^{2} \right)^{2} }    $,故 $ \frac{x}{1+ x^{2}} $   在 $ x>1 $时单调,又 $ \lim_{x \to \infty} \frac{x}{1+ x^{2}} =0$,特别地,可视其为关于 $ y $一致收敛于0的函数.
+        故由A-D判别法,积分关于 $ y \in [ \delta ,\infty) $一致收敛.
+        \item     考虑积分 $$
+        \begin{aligned}
+            \int_{k}^{2k } \frac{x \sin \left( \frac{x}{k} \right) }{1+ x^{2} }\,\mathrm{d} x  \ge  \frac{\sqrt{2} }{2 } \int_{k}^{2k} \frac{x}{1+ x^{2}} \,\mathrm{d} x &  =  \frac{\sqrt{2} }{4 } \left[ \ln \left( 1+ x^{2} \right)  \right]_{x=k}^{x=2k} \\ 
+             & = \frac{\sqrt{2} }{4 } \ln  \left( \frac{1+ 4k^{2} }{ 1+ k^{2}}  \right) \ge \frac{\sqrt{2} }{4 }\ln 3      \\ 
+               & \forall k\ge  \sqrt{3}
+        \end{aligned}
+        $$这违背了一致收敛的Cauchy准则,故积分关于 $ y\in \left( 0,\infty \right)  $不一致收敛. 
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+
+\begin{exercise}
+    记 $$
+    I\left( p \right) = \int_{1}^{\infty} \frac{\sin x }{x^{p} } \,\mathrm{d} x,\quad p>0  
+    $$    证明 \begin{enumerate}
+        \item $ I\left( p \right)  $关于 $ p \in \left( 0,\infty \right)  $不是一致收敛的；
+        \item 对于任意的 $  \delta >0 $,$ I\left( p \right)  $关于 $ p \in [ \delta ,\infty) $是一致收敛的.     
+    \end{enumerate}
+    
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+       
+        \item  由于 $ \lim_{n \to \infty} n^{\frac{1}{n}} =1$,故存在 $  N \in \mathbb{N}  $,使得对于所以的 $ k >N $,有 $ \left( 2k\pi + 2 \right)^{\frac{1}{2k\pi + 2}}  > \frac{1}{2}$ .
+        
+        考虑积分 $$
+        \int_{2k\pi + 1}^{2k\pi + 2 }\frac{\sin x }{x^{\frac{1}{2k\pi + 2}} }\,\mathrm{d} x\ge \int_{2k\pi + 1}^{2k\pi + 2} \frac{\sqrt{2} }{2 } \frac{1 }{\left( 2k\pi + 2 \right)  ^{\frac{1}{2k\pi+ 2 }}}   \ge  \frac{\sqrt{2} }{4 } ,\quad  \forall k >N
+        $$这表明 $ I\left( p \right)  $不满足关于 $ p $一致收敛的 Cauchy条件,因此 $ I\left( p \right)  $关于 $ p \in \left( 0,\infty \right)  $不是一致收敛的.
+        
+        \item 注意到 $$
+        \left| \int_{1}^{A} \sin x\,\mathrm{d} x \right| = \left| \cos 1-\cos A \right| \le 2,\quad \forall A >1
+        $$特别地,可以看做 $ \int_{1}^{A} \sin x\,\mathrm{d} x $在 $ A\to \infty $时关于 $ p \in [ \delta ,\infty) $一致有界.   
+
+        此外, 易见 $ \frac{1}{x^{p}} $关于 $ x $单调,且 $$
+        \frac{1}{x^{p}}\le  \frac{1}{x^ \delta } ,\quad \forall x >1,p \in [ \delta ,\infty]
+        $$  而 $ \lim_{x \to \infty} \frac{1}{x^{ \delta }}=0 $,故当 $ x\to \infty $时, $ \frac{1}{x^{p}} $关于 $ p \in [ \delta ,\infty) $一致地收敛于零.由A-D判别法,积分关于 $ p \in [ \delta ,\infty) $一致收敛. 
+    \end{enumerate}
+    
+
+    \hfill $\square$
+\end{proof}
+\begin{exercise}
+    设 $ f\left( x,y \right)  $,$ g\left( x,y \right)  $满足下列条件
+    \begin{enumerate}
+        \item $ f\left( x,y \right)\ge 0  $, $ \forall \left( x,y \right) \in [a,\infty)\times D  $  ；当 $ A\to \infty $时,含参积分 $ \int_{a}^{A}f\left( x,y \right)\,\mathrm{d} x  $  关于 $ y \in D $一致有界,即存在常数 $ K $以及 $ A_0>a $,使得当 $ A\ge A_0 $时,    
+    \end{enumerate}
+      
+\end{exercise}
+\end{document}

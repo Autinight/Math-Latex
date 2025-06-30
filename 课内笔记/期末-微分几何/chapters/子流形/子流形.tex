@@ -1,0 +1,31 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{ 子流形 }
+
+
+\begin{theorem}{超曲面的基本方程}
+    设 \(  \left( M,g \right)   \)是黎曼流形 \(  \left( \tilde{M},\tilde{g} \right)   \)的Riemann超曲面,\(  N  \)是沿 \(  M  \)的光滑单位法向量. 
+    \begin{enumerate}
+        \item \textbf{超曲面的Gauss公式}:若 \(  X,Y \in \mathfrak{X}\left( M \right)   \)延拓到 \(  \tilde{M}  \)的开集上,则 \[
+         \tilde{\nabla} _{X}Y=  \nabla _{X}Y+ h\left( X,Y \right)N 
+        \]  
+        \item 超曲面曲线的Gauss公式:若 \(   \gamma :I\to M  \)是一个光滑曲线, \(  X:I\to TM  \)是沿 \(   \gamma   \)的光滑向量场,则 \[
+        \tilde{D}_{t}X= D_{t}X+ h\left(  \gamma ^{\prime} ,X \right)N 
+        \]
+        \item 超曲面的Weigarten方程: 对于所有 \(  X \in \mathfrak{X}\left( M \right)   \), \[
+         \tilde{\nabla} _{X}N= -sX
+        \]    \footnote{可以说法向量完全提纯了氛围联络的法向信息(第二基本形式)}
+        \item 超曲面的Gauss方程:对于所有的 \(  W,X,Y,Z \in \mathfrak{X}\left( M \right)   \), \[
+        \widetilde{Rm}\left( W,X,Y,Z \right)= Rm\left( W,X,Y,Z \right)-\frac{1}{2} \left( h \owedge h \right)\left( W,X,Y,Z \right)    
+        \] 
+        \item 超曲面的Codazzi方程:对于所有的 \(  W,X,Y,Z \in \mathfrak{X}\left( M \right)   \) \[
+        \widetilde{Rm}\left( W,X,Y,N \right)= \left( Dh \right)\left( Y,W,X \right)   
+        \] \footnote{外微分是后两个作为求导项交换;是先对着最后一项求导的,是负的.}
+    \end{enumerate}
+    
+\end{theorem}
+
+
+\end{document}

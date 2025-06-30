@@ -1,0 +1,640 @@
+\documentclass[../../几何与拓扑.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+    \frontmatter
+
+    \tableofcontents
+    
+    \mainmatter
+}{}
+
+    
+\chapter{张量}
+
+
+\section{多线性代数}
+\subsection{多线性映射}
+
+\begin{definition}{多线性映射}
+    设$V_{1},{\cdots},V_{k}$,$W$是线性空间.映射$F:V_{1}\times{\cdots}\times V_{k}\to W$被称为是多线性的,若对于每个$i$ $$ F\left( v_{1},{\cdots},av_{i}+a^{\prime}v_{i}^{\prime} ,{\cdots},v_{k}\right) =aF\left( v_{1},{\cdots},v_{i},{\cdots},v_{k} \right) +a^{\prime}F\left( v_{1},{\cdots},v_{i},{\cdots},v_{k} \right)  $$记全体$V_{1}\times{\cdots}\times V_{k}$到$W$的多线性映射为$L\left( V_{1},{\cdots},V_{k};W \right)$
+    
+\end{definition}
+\begin{remark}
+    $L\left( V_{1},{\cdots},V_{k};W \right)$在逐点加法和标量乘法下构成线性空间.
+\end{remark}
+
+\begin{example}{一些多线性映射}
+    \begin{enumerate}
+        \item $\mathbb{R}^{n}$上的标准内积是双线性映射.
+        \item $\mathbb{R}^{3}$上的叉乘是双线性映射.
+        \item $\mathbb{R}^{n}$上$n$个向量的行列式.
+
+    \end{enumerate}
+    
+\end{example}
+
+\begin{example}{余向量场的张量积}
+  \\设$V$是向量空间,$\omega,\eta \in V^{*}$.定义函数$\omega \otimes \eta:V\times V\to \mathbb{R}$ $$ \omega \otimes \eta \left( v_{1},v_{2} \right) : = \omega \left( v_{1} \right) \eta \left( v_{2} \right)  $$
+\end{example}
+
+\begin{example}{多线性映射的张量积}
+ \\ 令$V_{1},{\cdots},V_{k}$,$W_{1},{\cdots},W_{l}$是向量空间,设$F \in L\left( V_{1},{\cdots},V_{k},\mathbb{R} \right)$,$G \in L\left( W_{1},{\cdots},W_{l},\mathbb{R} \right)$,定义函数 $$ F\otimes G: V_{1}\times{\cdots}\times V_{k}\times W_{1}\times{\cdots}\times W_{l}\to \mathbb{R} $$通过 $$ F\otimes G\left( v_{1},{\cdots},v_{k},w_{1},{\cdots},w_{l} \right) : = F\left( v_{1},{\cdots},v_{k} \right) G\left( w_{1},{\cdots},w_{l} \right)  $$它是$L\left( V_{1},{\cdots},V_{k},W_{1},{\cdots},W_{l};\mathbb{R} \right)$中的元素,称为是$F$和$G$的张量积.
+\end{example}
+\begin{remark}
+    \begin{enumerate}
+        \item 张量积运算$\otimes$是双线性的,且满足结合律.
+        \item 由结合律,可以无歧义地定义多个多线性映射的张量积.
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{proposition}{多线映射空间的基}
+    设$V_{1},{\cdots},V_{k}$是微分分别为$n_{1},{\cdots},n_{k}$的实向量空间.对于每个$j\in \{ 1,{\cdots},k \}$,设$\left( E_{1}^{\left( j \right)},{\cdots},E_{n_{j}}^{\left( j \right)} \right)$是$V_{j}$的一组基,令$\left( \varepsilon ^{1}_{\left( j \right)},{\cdots}, \varepsilon _{\left( j \right)}^{n_{j}} \right)$是$V_{j}^{*}$上的对偶基.那么集合 $$ \mathscr{B}: = \{ \varepsilon ^{i_{1}}_{\left( 1 \right) }\otimes {\cdots}\otimes \varepsilon ^{i_{k}}_{\left( k \right) }:1\leqslant i_{1}\leqslant n_{1},{\cdots},1\leqslant i_{k}\leqslant n_{k} \} $$是$L\left( V_{1},{\cdots},V_{k},\mathbb{R} \right)$的一组基,进而空间的维数为$n_{1}{\cdots}n_{k}$
+\end{proposition}
+
+\begin{proof}
+    任取$F \in L\left( V_{1},{\cdots},V_{k};\mathbb{R} \right)$,对于每一组$\left( i_{1},{\cdots},i_{k} \right)$,定义一个实数 $$ F_{i_{1}{\cdots}i_{k}}: = F\left( E_{i_{1}}^{\left( 1 \right) },{\cdots},E_{i_{k}}^{\left( k \right) } \right)  $$接下来说明 $$ F= F_{i_{1}{\cdots}i_{k}}\varepsilon ^{i_{1}}_{\left( 1 \right) }\otimes {\cdots}\otimes \varepsilon ^{i_{k}}_{\left( k \right) } $$为此,任取$\left( v_{1},{\cdots},v_{k} \right)\in V_{1}\times{\cdots}\times V_{k}$,设$v_{1}=v_{1}^{i_{1}}E_{i_{1}}^{\left( 1 \right)},{\cdots},v_{k}= v_{k}^{i_{k}}E_{i_{k}}^{\left( k \right)}$,那么 $$\begin{aligned}  F\left( v_{1},{\cdots},v_{k} \right)  & =F\left( v_{1}^{i_{1}}E_{i_{1}}^{\left( 1 \right) } ,{\cdots},v_{k}^{i_{k}}E_{i_{k}}^{\left( k \right) }\right)  \\
+        & =v_{1}^{i_{1}}{\cdots}v_{k}^{i_{k}}F\left( E_{i_{1}}^{\left( 1 \right) },{\cdots},E_{i_{k}}^{\left( k \right) } \right)  \\
+        & = v_{1}^{i_{1}}{\cdots}v_{k}^{i_{k}}F_{i_{1}{\cdots}i_{k}},\quad i\text{ }\text{as a sum}\end{aligned}  $$另一方面 $$\begin{aligned} &  \left(  F_{i_{1}{\cdots}i_{k}}\varepsilon ^{i_{1}}_{\left( 1 \right) }\otimes {\cdots}\otimes \varepsilon ^{i_{k}}_{\left( k \right) } \right) \left( v_{1},{\cdots},v_{k} \right)  \\
+        & = F_{i_{1}{\cdots}i_{k}}\left( \varepsilon ^{i_{1}}_{\left( 1 \right)}\otimes {\cdots}\otimes \varepsilon _{\left( k \right)}^{i_{k}} \right)\left( v_{1},{\cdots},v_{k} \right)   ,\quad  i\text{ as a sum}\end{aligned} $$其中 $$ \begin{aligned} &  \left( \varepsilon ^{i_{1}}_{\left( 1 \right) }\otimes {\cdots}\otimes \varepsilon ^{i_{k}}_{\left( k \right) } \right)\left( v_{1},{\cdots},v_{k} \right)   \\
+       & = \left( \varepsilon ^{i_{1}}_{\left( 1 \right) }\otimes {\cdots}\otimes \varepsilon _{\left( k \right) }^{i_{k}} \right) \left( v_{1}^{j_{1}}E_{j_{1}}^{\left( 1 \right) },{\cdots},v_{k}^{j_{k}}E_{j_{k}}^{\left( k \right) } \right) ,\quad \text{j as a sum}\text{, i is not} \\
+        & = v_{1}^{j_{1}}{\cdots}v_{k}^{j_{k}}\left( \varepsilon ^{i_{1}}_{\left( 1 \right) }\otimes {\cdots}\otimes \varepsilon _{\left( k \right) }^{i_{k}} \right) \left( E_{j_{1}}^{\left( 1 \right)  },{\cdots},E_{j_{k}}^{\left( k \right) } \right)  ,\quad  j\text{ as a sum, i is not} \\
+        & =v_{1}^{i_{1}}{\cdots}v_{k}^{i_{k}}\end{aligned}  $$
+       于是$\left( F_{i_{1}{\cdots}i_{k}}\varepsilon ^{i_{1}}_{\left( 1 \right)}\otimes{\cdots}\otimes \varepsilon ^{i_{k}}_{\left( k \right)} \right)\left( v_{1},{\cdots},v_{k} \right)=v_{1}^{i_{1}}{\cdots}v_{k}^{i_{k}}F_{i_{1}{\cdots}i_{k}},\text{ i as a sum}$
+       这就说明了 $$ F= F_{i_{1}{\cdots}i_{k}}\varepsilon ^{i_{1}}_{\left( 1 \right) }\otimes {\cdots}\otimes \varepsilon ^{i_{k}}_{\left( k \right) } $$
+       
+       为了说明$\mathscr{B}$是线性无关的,设一个线性组合为零 $$ F_{i_{1}{\cdots}i_{k}}\varepsilon _{\left( 1 \right) }^{i_{1}}\otimes {\cdots}\otimes  \varepsilon _{\left( k \right) }^{i_{k}}=0 $$分别作用在每一组$\left( E_{i_{1}}^{\left( 1 \right)},{\cdots},E_{i_{k}}^{\left( k \right)} \right)$,得到$F_{i_{1}{\cdots}i_{k}}=0$,这就说明了线性无关性.
+\end{proof}
+
+\subsection{线性空间的抽象张量积}
+
+\begin{definition}{形式线性组合}
+    $S$中元素的一个形式线性组合,是指一个实值函数$f \in \mathbb{R}^{S}$,使得$f\left( s \right)=0$对于有限个$s \in S$以外成立.
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item 对于每个$x \in S$,存在唯一的$\delta _{x}\in \mathscr{F}\left( S \right)$,使得$\delta _{x}\left( x \right)=1$,$\delta _{x}^{-1}\left( 0 \right)= S\backslash\{ x \}$.通常将$\delta _{x}$与$x$等同.
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{definition}{自由线性空间}
+    $S$上的自由（实）线性空间,记作$\mathscr{F}\left( S \right)$,是指$S$上全体形式线性组合构成的空间.
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 线性结构：在逐点加法和标量乘法下,$\mathscr{F}\left( S \right)$构成一个$\mathbb{R}$-线性空间.
+        \item 基：$f \in \mathscr{F}\left( S \right)$唯一地写作$f=\sum _{i=1}^{m}a_{i}x_{i}$.其中$\{ x_{1},{\cdots},x_{m} \}=[f\neq 0]$,$a_{i}=f\left( x_{i} \right)$.因此$S$是$\mathscr{F}\left( S \right)$的一组基,$\mathscr{F}\left( S \right)$是有限维线性空间当且仅当$S$是有限集合.
+        \item 泛性质：对于每个集合 $ S $和任意向量空间 $ W $,每个映射 $ A:S\to W $有唯一的到线性映射 $ \overline{A}: \mathscr{F}\left( S \right) \to W $的延拓.  
+        \begin{proof}
+            对于 $ f= \sum_{i=1 }^{m} a_{i}x_{i} $, $ \overline{A} \left( f \right) $唯一的取法是 $$
+            \overline{A}\left( f \right)  =\sum_{i=1}^{m} a_{i} \overline{A} \left( x_{i}    \right)=  \sum_{i=1}^{m} a_{i}A\left( x_{i} \right) 
+            $$ 
+        \end{proof}
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{definition}{抽象张量积}
+    设 $ V_1,V_2,\cdots,V_k  $是使线性空间.令 $ \mathscr{R} $  为 $ \mathscr{F} \left( V_1\times \cdots V_{k} \right) $中全体形如以下元素张成的空间： $$
+    \left( v_1,\cdots,av_{i},\cdots,v_{k} \right)-a \left( v_1,\cdots,v_{i},\cdots,v_{k} \right),  
+    $$ $$
+    \left( v_1,\cdots,v_{i}+ v_{i}^{\prime} ,\cdots,v_{k} \right)- \left( v_1,\cdots,v_{i},v_{k} \right)-\left( v_1,\cdots,v_{i}^{\prime} ,\cdots,v_{k} \right)   
+    $$其中 $ v_{j},v_{j}^{\prime} \in  V_{j} $,$ i \in  \{  1,2,\cdots,k \} $,$  a \in \mathbb{R}$.\\ 
+     定义 $ V_1,V_2,\cdots,V_k $的张量积空间,记作 $ V_1 \otimes \cdots\otimes  V_{k} $,为下面的商空间 $$
+     V_1\otimes  \cdots \otimes  V_{k} : = \mathscr{F}\left( V_1\times \cdots \times  V_{k} \right) \setminus \mathscr{R} 
+     $$   令 $ \Pi: \mathscr{F}\left( V_1 \times \cdots \times V_{k} \right) \to V_1\otimes \cdots \otimes V_{k} $为自然投影.元素 $ \left( v_1,v_2,\cdots,v_k    \right)  $在 $ V_1 \otimes  \cdots \otimes  V_{k} $   的等价类记作 $$
+     v_1\otimes  \cdots \otimes v_{k}: =\Pi \left( v_1,v_2,\cdots,v_k     \right). 
+     $$ 称为 $ v_1,v_2,\cdots,v_k $的抽象张量积.  
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 线性：显然 $$
+        v_1 \otimes \cdots \otimes av_{i}\otimes \cdots \otimes v_{k}= a\left( v_1\otimes \cdots \otimes v_{i}\otimes \cdots \otimes v_{k} \right) 
+        $$ $$
+        \begin{aligned}
+            v_1\otimes \cdots \otimes \left( v_{i}+ v_{i}^{\prime}  \right) \otimes \cdots \otimes v_{k}= & \left( v_1 \otimes \cdots \otimes v_{i} \otimes \cdots \otimes v_{k} \right)\\ 
+             & + \left( v_1\otimes \cdots \otimes  v_{i}^{\prime} \otimes \cdots \otimes v_{k} \right)   
+        \end{aligned} 
+        $$
+        \item 每个 $ V_1\otimes  \cdots \otimes V_{k} $中的元素写作 $ v_1\otimes \cdots \otimes v_{k} $的线性组合,但不一定能写作单个的 $ v_1\otimes \cdots \otimes v_{k} $   
+    \end{enumerate}
+    
+\end{remark}
+\begin{proposition}{张量积的泛性质}\label{pro:tensor universal}
+
+    令 $ V_1,V_2,\cdots,V_k $是有限维线性空间,$ A:V_1\times \cdots V_{k} \to X$是多线性映射,那么
+    存在唯一的线性映射 $ \tilde{A}: V_1\otimes \cdots \otimes V_{k}\to X $,使得下图交换   
+  \[\begin{tikzcd}
+	{V_1\times \cdots \times V_{k} } && X \\
+	\\
+	{V_1 \otimes \cdots \otimes  V_{k}}
+	\arrow["A", from=1-1, to=1-3]
+	\arrow["\pi", from=1-1, to=3-1]
+	\arrow["{ \tilde{A}}"', dashed, from=3-1, to=1-3]
+\end{tikzcd}\]其中 $ \pi $是映射 $ \pi\left( v_1,\cdots ,v_{k} \right)  =v_1 \otimes \cdots \otimes  v_{k}$  
+\end{proposition}
+
+    
+\begin{proof}
+   每个映射 $ A:V_1\times \cdots \times V_{k} \to X $唯一地延拓到线性映射 $ \overline{A}: \mathscr{F}\left( V_1\times \cdots \times V_{k} \right)\to X  $  . $ A $是多线性映射,无非是 $ \mathscr{R} \subseteq \mathrm{ker} \overline{A} $.  因此 $ \overline{A}$
+   诱导出线性映射 $ \tilde{A}: \mathscr{F}\left( V_1\times \cdots \times V_{k} \right)\setminus  \mathscr{R}= V_1\otimes \cdots \otimes V_{k}\to X  $ ,使得 $ \overline{A}= \tilde{A} \circ \Pi $ ,又 $ \pi= \Pi\circ i $,其中 $ i: V_1\times \cdots \times V_{k}\hookrightarrow  V_1\otimes \cdots \otimes V_{k} $  是含入映射, $ \overline{A}\circ i = A $ 故 $ A=  \tilde{A}\circ \pi $ .\\ 
+         接下来考虑唯一性,注意到形如 $ v_1\otimes \cdots \otimes v_{k} $的向量都有唯一的映法 $ \tilde{A}\left( v_1\otimes \cdots \otimes v_{k} \right)= A\left( v_1,\cdots ,v_{k} \right)   $  ,而 $ V_1\otimes \cdots \otimes V_{k} $上的元素写作 $ v_1\otimes \cdots \otimes v_{k} $的线性组合,$ \tilde{A} $   的线性保证了映法的唯一性.\\ 
+          可以用下图概括上述论证
+          \[\begin{tikzcd}
+	{V_1\times \cdots \times V_{k}} && X \\
+	\\
+	{ \mathscr{F}\left( V_1\times \cdots \times  V_{k} \right) } && {V_1 \otimes \cdots\otimes  V_{k}}
+	\arrow["A", from=1-1, to=1-3]
+	\arrow["i"', from=1-1, to=3-1]
+	\arrow["{\exists !\bar{A}}"', dashed, from=3-1, to=1-3]
+	\arrow["\Pi"', from=3-1, to=3-3]
+	\arrow["{\mathscr{R}\subset \ker{\bar{A}}}", from=3-1, to=3-3]
+	\arrow["{\exists! \tilde{A}}"', dashed, from=3-3, to=1-3]
+\end{tikzcd}\]
+\end{proof}
+
+\begin{proposition}{张量积空间的基}\label{pro:base of abstract tensor}
+    设 $ V_1,V_2,\cdots,V_k$是维数分别为 $ n_1,n_2,\cdots,n_k $的实线性空间.对于每个 $ j= 1,2,\cdots,k $,设 $ \left( E_1^{\left( j \right) }   ,\cdots , E^{\left( j \right)}_{n_{j}} \right)  $    是 $ V_{j} $的一组基,则集合 $$
+    \mathscr{C}= \left\{ E_{i_1 }^{\left( 1 \right) }\otimes \cdots \otimes E_{i_{k}} ^{\left( k \right)}: 1 \le i_1\le n_1,\cdots ,1\le i_{k}\le  n_{k} \right\}
+    $$ 是 $ V_1\otimes \cdots \otimes  V_{k} $的一组基,它的维数等于 $ n_1\cdots n_{k} $.  
+\end{proposition}
+
+
+\begin{proof}
+    \begin{enumerate}
+        \item 根据定义,全体 $ v_1\otimes \cdots \otimes  v_{k} $张成了空间 $ V_1\otimes \cdots \otimes V_{k} $,而每个 $ v_1\times \cdots v_{k} $写作 $ E_{i_1}^{\left( 1 \right) }\times \cdots \times E_{i_{k}} ^{\left( k \right) }$  的线性组合,且投影映射 $ \pi $保持线性,故 $ \mathscr{C} $  张成了 $ V_1\otimes \cdots \otimes V_{k} $.
+        \item 为了说明线性无关系,设以下线性组合为0 $$
+        a^{i_1,i_2,\cdots,i_k   } E_{i_{1}  }^{\left( 1 \right) }\otimes \cdots \otimes  E_{i_{k}}^{\left( k \right) }=0
+        $$ 对每个 $ \left( m_1,m_2,\cdots,m_k \right)  $,定义 $$
+        \tau^{m_1,m_2,\cdots,m_k} \left( v_1,\cdots ,v_{k} \right) : = \varepsilon_{\left( 1 \right) }^{m_1}\left( v_1 \right)\cdots \varepsilon_{\left( k \right) }^{m_{k}} \left( v_{k} \right) 
+        $$ 由泛性质\ref{pro:tensor universal},它延拓到线性映射 $ \tilde{\tau} ^{m_1,\cdots ,m_{k}} : V_1\otimes \cdots \otimes V_{k} \to \mathbb{R}  $ ,作用在上述线性组合上的两边,得到 $$
+        a^{m_1,\cdots ,m_{k}}=0
+        $$故线性无关性成立.
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{proposition}{张量积空间的结合律}
+    设 $ V_1,V_2,V_3 $是有限维实线性空间,那么存在唯一的同构 $$
+    V_1\otimes \left( V_2\otimes V_3 \right)\simeq V_1\otimes V_2\otimes V_3\simeq \left( V_1\otimes V_2 \right)\otimes V_3  
+    $$ 使得 $ v_1\otimes \left( v_2\otimes v_3 \right)  $,$ v_1\otimes v_2\otimes v_3 $和 $ \left( v_1\otimes v_2 \right)\otimes v_3  $对应.   
+\end{proposition}
+
+\begin{proof}
+    只说明第一个同构,第二个同构完全类似.
+    定义映射 $$ \begin{aligned}
+        \alpha :V_1\times V_2\times V_3 & \to \left( V_1\otimes V_2 \right)\otimes V_3  \\ 
+          \left( v_1,v_2,v_3 \right) & \mapsto \left( v_1\otimes v_2 \right)\otimes v_3 
+    \end{aligned} $$显然它是多线性的,由泛性质\ref{pro:tensor universal},它唯一地延拓到线性映射 $ \tilde{\alpha }: V_1\otimes V_2\otimes V_3\to\left( v_1\otimes v_2 \right)\otimes V_3 $ ,使得 $ \tilde{\alpha} \left( v_1\otimes v_2\otimes v_3 \right)= \alpha\left( v_1\otimes v_2 \right)\otimes v_3   $ .
+    $ \left( V_1\otimes V_2 \right)\otimes V_3  $由形如 $ \left( v_1\otimes v_2 \right)\otimes v_3  $  的元素张成,故 $ \alpha $是满射,从而 $ \tilde{\alpha}= \alpha\circ \pi $亦然,又由维数关系,它是同构.故 $ V_1\otimes \left( V_2\otimes V_3 \right)\simeq  V_1\otimes V_2\otimes V_3  $   .又任意满足性质的其他映射均在每个 $ v_1\otimes v_2\otimes v_3 $上与 $ \tilde{\alpha} $一致,进而在 $ V_1\otimes V_2\otimes V_3 $上一致,即唯一性成立.    
+\end{proof}
+
+\begin{proposition}{抽象张量积与具体张量积}\label{pro:tow-tensor-iso}
+    若 $ V_1,\cdots ,V_{k} $是有限维线性空间,存在标准同构 $$
+    V_1^{*}\otimes \cdots \otimes V_{k}^{*}\simeq L\left( V_1,\cdots ,V_{k};\mathbb{R}  \right), 
+    $$ 
+\end{proposition}
+\begin{remark}
+    \begin{enumerate}
+        \item 考虑 $ V_{i} $与第二对偶空间的同构 $ V_{i}^{**} $,我们有另外的同构 $$
+        V_1\otimes \cdots \otimes V_{k}\simeq V_1^{**}\otimes \cdots \otimes V_{k}^{* * }\simeq  L\left( V_1^{*},\cdots ,V_{k}^{*};\mathbb{R}  \right)
+        $$  
+    \end{enumerate}
+    
+\end{remark}
+\begin{proof}
+    定义 $$
+    \begin{aligned}
+    \Phi: V_1^{*}\times \cdots V_{k}^{*}& \to  L\left( V_1,V_2,\cdots,V_k;\mathbb{R}  \right)\\ 
+     \Phi\left( \omega_1,\cdots ,\omega_{k} \right)\left( v_1,\cdots ,v_{k} \right) & : = \omega_1\left( v_1     \right)\cdots \omega_{k}\left( v_{k} \right)      
+    \end{aligned}
+    $$那么显然 $ \Phi $是多线性的,由泛性质\ref{pro:tensor universal} ,它诱导出映射 $ \tilde{\Phi} $. 此外 $ \Phi $映由\ref{pro:base of abstract tensor}给出的 $ V_1^{*}\otimes \cdots \otimes V_{k}^{*} $的基为 $ L\left( V_1,\cdots ,V_{k};\mathbb{R}  \right)  $的基,因此 $ \tilde{\Phi} $是同构.   
+\end{proof}
+
+\subsection{线性空间上的共变和反变张量}
+
+\begin{definition}{共变张量}
+    设 $ V $是有限维线性空间,$ k $是正整数. $ V $上的一个共变 $ k $-张量是指,$ k $-折张量积空间 $ V^{*}\otimes \cdots \otimes V^{*} $上的一个元素.
+    通过命题\ref{pro:tow-tensor-iso},通常视为一个 $ V $上的 $ k $-线性映射 $$
+    \alpha: \underbrace{V\times \cdots \times V}_{k \text{个}}\to \mathbb{R} .
+    $$数字 $ k $被称为是 $ \alpha $的 rank.    
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item 0-tensor:约定 $ 0 $-tensor为一个实数.
+        \item 简记 $ k $-折张量积空间空间为 $$
+        T^{k}\left( V^{*} \right) : = V^{*}\otimes \cdots \otimes V^{*}
+        $$  
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{example}{一些共变张量}
+    \begin{enumerate}
+        \item 每个线性映射 $ \omega: V\to \mathbb{R}  $都是一个多线性映射,共变 $ 1 $-向量就是余向量.因此 $ T^{1}\left( V^{*} \right)  $   就是 $ V^{*} $.
+        \item 每个内积都是一个 $ 2 $-tensor,也就是双线线型.
+        \item 行列式函数视为  $ n $个向量的函数,是 $ \mathbb{R} ^{n} $上的一个 $ k $ -tensor.   
+    \end{enumerate}
+    
+
+
+    
+\end{example}
+
+\begin{definition}{反变张量}
+    类似地,设 $ V $是有限维线性空间,反变张量是指 $$
+    T^{k}\left( V \right) =V\otimes \cdots \otimes V
+    $$中的一个元素 .
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 由 $ T $是有限维空间, $$
+        T^{k}\left( V \right)    \simeq   \left\{ \alpha: V^{*}\times \cdots \times V^{*}\to \mathbb{R}  \right\} 
+        $$
+
+        \begin{proof}
+            考虑 \(  \Phi : T^{k}\left( V \right) \to \left\{ \alpha : V^{*}\times \cdots \times V^{*}\to \mathbb{R}  \right\}   \) \[
+            \Phi \left(  v_1,\cdots,v_k  \right)\left(  w_1,\cdots,w_k  \right): =  w_1\left( v_1 \right)w_2\left( v_2 \right)\cdots w_{k}\left( v_{k} \right)     
+            \] 其中 \(  \left(  v_1,\cdots,v_k  \right)\in V\otimes \cdots \otimes V   \), \(  \left( w_1,\cdots ,w_{k} \right) \in V^{*}\times \cdots \times V^{*}   \)  
+            易见 \(  \Phi   \)是良定义的. 
+            \hfill $\square$
+        \end{proof}
+    \end{enumerate}
+
+\end{remark}
+
+\begin{definition}{混合张量积}
+    对于非负整数 $ k,l $,定义 $ V $上的  $ \left( k,l \right)  $型混合张量积空间为 $$
+    T^{\left( k,l \right) }\left( V \right): = \underbrace{V\otimes \cdots \otimes V}_{k\text{个}}\otimes \underbrace{V^{*}\otimes \cdots \otimes V^{*}}_{l\text{个}}
+    $$  
+\end{definition}
+\begin{remark}
+    $$\begin{aligned}&T^{(0,0)}(V)=T^0(V^*)=T^0(V)=\mathbb{R},\\&T^{(0,1)}(V)=T^1(V^*)=V^*,\\&T^{(1,0)}(V)=T^1(V)=V,\\&T^{(0,k)}(V)=T^k(V^*),\\&T^{(k,0)}(V)=T^k(V).\end{aligned}$$
+\end{remark}
+
+\begin{definition}{混合张量积空间的基}
+    设 $ V $是有限维实线性空间.设 $ \left( E_{i} \right)  $  是 $ V $的一组基,$ \left( \varepsilon ^{j} \right)  $是 相应的 $ V^{*} $   的对偶基.那么 $$
+\begin{aligned}
+    \left\{ \varepsilon^{i_1}\otimes \cdots \otimes \varepsilon^{i_{k}}: 1 \le i_1,\cdots ,i_{k},\le n \right\}\text{是} T^{k}\left( V^{*} \right)\text{的一组基} \\ 
+     \left\{ E_{i_1}\otimes \cdots \otimes E_{i_{l}} : 1 \le  i_1,i_2,\cdots,i_k\le n\right\}\text{是} T^{k}\left( V \right)\text{的一组基}\\ 
+      \left\{ E_{i_1}\otimes \cdots \otimes E_{i_{k}}\otimes \varepsilon^{j_1}\otimes \cdots \otimes  \varepsilon^{j_{\ell}} : 1\le i_1,\cdots ,i_{k} \le n,j_1,\cdots j_{l}\le n   \right\} \text{是} T^{\left( k,l \right) }\left( V \right) \text{的一组基}
+\end{aligned} 
+    $$
+\end{definition}
+
+\begin{proof}
+    这是命题\ref{pro:base of abstract tensor}的一个特殊情况.
+\end{proof}
+
+\begin{proposition}
+    令 \(  V  \)是有限维线性空间. 存在自然的（与基无关的） \(  T^{\left( k+ 1,l \right) }\left( V \right)   \)和以下多线性映射空间的同构 \[
+    \underbrace{V^{*}\times \cdots \times V^{*}}_{k \text{个}} \times  \underbrace{V\times \cdots \times V} _{ l \text{个}} \to V
+    \] 
+\end{proposition}
+
+\begin{proof}
+    由命题\ref{pro:tow-tensor-iso}, \[
+    T^{\left( k+ 1 ,l\right) }\left( V \right)\simeq L\left( \underbrace{V^{*}, \cdots , V^{*}}_{k+ 1\text{个}}, \underbrace{V, \cdots , V}_{l \text{个}};\mathbb{R} \right)  
+    \]定义 \(  \Phi : T^{\left( k+ 1 ,l\right) }\left( V \right)\simeq L\left( \underbrace{V^{*}, \cdots , V^{*}}_{k\text{个}}, \underbrace{V, \cdots , V}_{l \text{个}};V \right) \to  T^{\left( k+ 1 ,l\right) }\left( V \right)\simeq L\left( \underbrace{V^{*}, \cdots , V^{*}}_{k+ 1\text{个}}, \underbrace{V, \cdots , V}_{l \text{个}};\mathbb{R} \right)    \)  \[
+    \Phi \left( A \right)\left( w_1,\cdots ,w_{k+ 1},v_1,\cdots ,v_{l} \right): =  w_{k+ 1}\left(  A\left( w_1,\cdots ,w_{k}, v_1,\cdots,v_l  \right)  \right)   
+    \]易见 \(  \Phi   \)是线性同构. 
+    \hfill $\square$
+\end{proof}
+
+\begin{definition}{缩并}
+    由上面的命题, \(  T^{\left( 1,1 \right) }\left( V \right)   \)可视为 \(  V  \)的自同态空间,可以在其上定义出自然的算子
+     \(  \mathrm{tr}: T^{\left( 1,1 \right) }\left( V \right)\to \mathbb{R}    \)为  \(  V  \)的自同态的迹,即任意一组基下的表示矩阵的对角和.    
+     更一般地,我们定义 \(  \mathrm{tr}: T^{\left( k+ 1,l + 1 \right) }\to T^{\left( k,l \right) }\left( V \right)   \),通过令 \(  \left( \operatorname{tr}\,F \right)\left(   \omega^1,\cdots,\omega^k , v_1,\cdots,v_l  \right)    \)为以下 \(  \left( 1,1 \right)   \)-张量 的迹 \[
+     F\left(  \omega^1,\cdots,\omega^k ,\cdot , v_1,\cdots,v_l ,\cdot  \right) \in T^{\left( 1,1 \right) }\left( V \right)  
+     \]   此算子称为迹或缩并.
+\end{definition}
+
+\begin{proposition}
+    在一组基下, \(  \operatorname{tr}\,F  \)的分量为 \[
+    \left( \operatorname{tr}\,F \right) ^{ i_1,\cdots,i_k }_{ j_1,\cdots,j_l } =  \sum _{m} F^{ i_1,\cdots,i_k, m}_{ j_1,\cdots,j_l ,m}
+    \] 
+\end{proposition}
+
+\begin{note}
+    因此 \(  \operatorname{tr}  \)无非就是令最后一个上下指标相等并求和. 
+\end{note}
+
+\begin{remark}
+    更一般地,我们可以让张量在任意一对指标上做缩并,只要这对指标一个是共变的,一个是反变的.这样的算子没有各自的记号,我们需要时单独提及.
+\end{remark}
+
+
+\section{对称张量和交错张量}
+
+\subsection{对称张量}
+
+\begin{definition}
+    设 $ V $是有限维线性空间.$ V $上的一个 共变$ k $-张量 $ \alpha $被称为是对称的,若对于每个 $ 1\le i <j\le k $, $$
+    \alpha\left( v_1,\cdots ,v_{i},\cdots ,v_{j},\cdots ,v_{k} \right)= \alpha\left( v_1,\cdots ,v_{j},\cdots ,v_{i},\cdots ,v_{k} \right)  
+    $$ 显然对称张量空间是线性的,记作 $ \Sigma^{k}\left( V^{*} \right)  $ .
+\end{definition}
+
+\begin{remark}
+    \\对于共变 $ k $-张量 $ \alpha $,以下三条等价 
+    \begin{enumerate}
+        \item $ \alpha $是对称的；
+        \item 对于每组 $ v_1,\cdots ,v_{k}  \in V$, 和置换 $ \tau \in S_{k} $, $$
+        \alpha\left( v_1,\cdots ,v_{k} \right)= \alpha\left( v_{\tau\left( 1 \right) },\cdots ,v_{\tau\left( k \right) }   \right)  
+        $$ 
+        \item $ \alpha $关于任意组基的函数 $ \alpha_{i_1\cdots i_{k}} $是在指标置换下不变.  
+    \end{enumerate}
+    \begin{proof}
+        每个置换写作对换的积,故前两条等价.
+           设 $ \left( \varepsilon_{i_1   },\cdots ,\varepsilon_{i_{k}} \right)  $是一组基,那么 $$
+           \alpha = \alpha_{i_1\cdots i_{k}} \varepsilon_{i_1} \otimes \cdots \otimes \varepsilon_{i_{k}}
+           $$ 任取 $ \tau \in S_{k} $,由对称性 $$
+           a_{i_1\cdots i_{k}}=\alpha\left( E_{i_1},\cdots, E_{i_{k}} \right) = \alpha\left(  E_{i_{\tau\left( 1 \right) }},\cdots ,E_{i_{\tau\left( k \right) }} \right) =a_{i_{\tau\left( 1 \right) }}\cdots a_{i_{\tau\left( k \right) }}
+           $$ 
+    \end{proof}故 1.$ \implies $3.成立.对于 3.$ \implies $1.,只需要取定一组基,将每个 $ v_{i} $写作基表示,并利用多线性将求和符号提出.此时发现条件3.保证了调换 $ v_1,\cdots ,v_{k} $的顺序只是求和顺序的一个调换.  
+\end{remark}
+
+\begin{definition}{对称子}
+    $ T^{k}\left( V^{*} \right)  $到 $ \Sigma^{k}\left( V^{*} \right)  $存在自然的投影 $ \mathrm{Sym} $ ,按以下方式定义 $$
+    \mathrm{Sym}\,\alpha : = \frac{1}{k!} \sum_{\sigma \in S_{k}} \sigma \alpha
+    $$其中 $ \sigma \alpha $按以下方式定义 $$
+    \sigma \alpha\left( v_1,\cdots ,v_{k} \right): = \alpha\left( v_{\sigma\left( 1 \right) },\cdots ,v_{\sigma\left( k \right) } \right)  
+    $$
+\end{definition}
+\begin{proposition}{对称子的性质}
+    设 $ \alpha $ 是有限维线性空间上的共变张量,那么
+    \begin{enumerate}
+        \item $ \mathrm{Sym}\,\alpha $是对称的 ；
+        \item $ \mathrm{Sym}\,\alpha=\alpha $当且仅当 $ \alpha $是对称的.  
+    \end{enumerate}
+    
+\end{proposition}
+
+
+即便 $ \alpha $和 $ \beta $都是 $ V $上的对称张量,但是 $ \alpha\otimes \beta $不一定对称.不过利用对称子,可以定义出一种新的乘积运算,使得运算结果仍为对称张量.
+
+\begin{definition}{对称积}
+    设 $ \alpha \in \Sigma^{k}\left( V^{*} \right)  $,$ \beta \in  \Sigma^{l}\left( V^{*} \right)  $,定义对称积 $ \alpha \beta $为下述的 $ \left( k+ \ell \right)  $-张量 $$
+    \alpha \beta : = \mathrm{Sym}\,\left( \alpha \otimes \beta \right) 
+    $$具体地, $$
+    \alpha \beta\left( v_1,\cdots ,v_{k+ l} \right)= \frac{1}{\left( k+ l \right)! } \sum_{\sigma \in S_{k+ l}}  \alpha\left( v_{\sigma\left( 1 \right) },\cdots ,v_{\sigma\left( k \right) } \right)\beta\left( v_{\sigma\left( k+ 1 \right) },\cdots ,v_{\sigma\left( k+ l \right) } \right)  
+    $$    
+\end{definition}
+
+\begin{proposition}{对称积的性质}
+    \begin{enumerate}
+        \item 对称积是对称的双线性映射：对于每个对称张量 $ \alpha,\beta,\gamma $和所有的 $ a,b \in \mathbb{R}  $, $$
+        \alpha \beta = \beta \alpha,
+        $$ $$
+        \left( a\alpha+ b\beta \right)\gamma= a\alpha\gamma+ b\beta \gamma =  \gamma \left( a \alpha+  b\beta \right)  
+        $$  
+        \item 若 $ \alpha,\beta $是余向量,那么 $$
+        \alpha\beta= \frac{1}{2} \left( \alpha \otimes  \beta +  \beta \otimes \alpha \right) 
+        $$ 
+    \end{enumerate}
+    
+    
+\end{proposition}
+
+\subsection{交错张量}
+\begin{definition}{交错张量}
+    设 $ V $是有限维线性空间,$ \alpha $  是 $ V $上的 共变$ k $-张量.称 $ \alpha $是交错的,若任取 $ v_1,v_2,\cdots,v_k\in V $,和一对不同的指标 $ i,j $     ,都有 $$
+    \alpha\left(v_1,\cdots ,v_{i},\cdots ,v_{j},\cdots ,v_{k}  \right)= \alpha\left( v_1,\cdots ,v_{j},\cdots ,v_{i},\cdots ,v_{k} \right)  
+    $$ 交错 $ k $-张量也被称为是外形式、多余向量、$ k $-余向量.$ V $上全体交错 $ k $-张量空间记作 $ \Lambda^{k}\left( V^{*} \right)  $,它是 $ T^{k}\left( V^{*} \right)     $的线性子空间.       
+\end{definition}
+
+\begin{remark}
+    对于共变 $ k $-张量 $ l=\alpha $  ,以下几条等价
+\begin{enumerate}
+    \item $ \alpha $交错；
+    \item 任取向量 $ v_1,\cdots ,v_{k} $,和 $ \sigma\in S_{k} $, $$
+    \alpha\left( v_{\sigma\left( 1 \right) },\cdots ,v_{\sigma\left( k \right) } \right) = \left( \mathrm{sgn} \sigma \right) \alpha\left( v_1,\cdots ,v_{k} \right)   
+    $$    
+    \item 在任一组基下,$ \alpha $对应的分量函数 $ \alpha_{i_1\cdots i_{k}} $在指标的对换下变号.  
+\end{enumerate}
+\end{remark}
+\begin{remark}
+    $ 0 $-张量和 $ 1 $-张量均同时是对称的和交错的. $ 2 $-交错张量是反称双线性型.   
+\end{remark}
+
+\begin{proposition}
+    设 $ \beta $是一个共变 $ 2 $-张量,那么 $ \beta $可以写作对称张量和交错张量的和,具体地 $$
+    \begin{aligned}
+        \beta\left( v,w \right)&= \frac{1}{2}\left( \beta\left( v,w \right)+ \beta\left( w,v \right)   \right)+  \frac{1}{2} \left(\beta\left( v,w \right)-\beta\left( w,v \right)   \right)   \\ 
+          & = \alpha\left( v,w \right)+ \sigma\left( v,w \right)  
+    \end{aligned}
+    $$其中 $ \alpha\left( v,w \right): = \frac{1}{2}\left( \beta\left( v,w \right)+ \beta\left( w,v \right)   \right)   $ 是对称张量, $ \sigma\left( v,w \right): = \frac{1}{2}\left( \beta\left( v,w \right)-\beta\left( w,v \right)   \right)   $ 是交错张量.
+\end{proposition}
+
+\section{流形上的张量和张量场}
+
+\begin{definition}{流形上的张量丛}
+    设 $ M $是光滑（带边）流形.\\ 
+     定义 $ M $上的共变 $ k $   -张量丛为 $$
+     T^{k}T^{*}M = \prod_{p \in M} T^{k}\left( T_{p}^{*}M \right).  
+     $$\\ 
+    定义 $ M $上的反变 $ k $-张量丛为 $$
+    T^{k}TM= \prod_{p \in M}T^{k}\left( T_{p}M \right)  
+    $$  \\ 
+     定义 $ M $上的 $ \left( k,l \right)  $-型混合张量丛为 $$
+     T^{\left( k,l \right) }TM= \prod_{p\in M}T^{\left( k,l \right) }\left( T_{p}M \right)  
+     $$  
+\end{definition}
+\begin{remark}
+    有自然的等同$$\begin{aligned}&T^{(0,0)}TM=T^0T^*M=T^0TM=M\times\mathbb{R},\\&T^{\left( 0,1 \right) }TM=T^1T^*M=T^*M,\\&T^{\left( 1,0 \right) }TM=T^1TM=TM,\\&T^{(0,k)}TM=T^kT^*M,\\&T^{(k,0)}TM=T^kTM.\end{aligned}$$
+\end{remark}
+
+\begin{remark}
+    $ T^{\left( k,l \right) }TM $上有自然rank-$ \left( k+ l \right)  $ 的光滑向量丛结构.
+\end{remark}
+
+\begin{definition}{张量场}
+     $ M $上张量丛的一个截面被称为是一个张量场.由于其上定义了光滑结构,可以谈论张量场的光滑性. 
+\end{definition}
+
+\begin{remark}
+    在做自然的等同下,共变 $ 1 $-张量场等同于余向量场,反变 $ 1 $-张量场等同于向量场.  
+\end{remark}
+
+\begin{proposition}{光滑张量场空间}
+    全体光滑张量场空间,被分别记作 $ \Gamma\left( T^{k}T^{*}M \right)  $ ,$ \Gamma\left( T^{k}TM \right)  $,$ \Gamma\left( T^{\left( k,l \right)} TM \right) $.
+    它们是 $ \mathbb{R}  $上的无穷维线性空间,且是环 $ C^{\infty}\left( M \right)  $    上的模.
+    在任意光滑坐标 $ \left( x^{i} \right)  $下,光滑张量场有坐标表示 $$
+    A= \begin{cases} A_{i_1\cdots i_{k}}\,\mathrm{d} x^{i_1}\otimes \cdots \otimes \,\mathrm{d} x^{i_{k}}  ,& A \in \Gamma\left( T^{k}T^{*}M \right);\\ 
+     A^{i_1\cdots i_{k}}\frac{\partial }{\partial x^{i_1}} \otimes \cdots \otimes \frac{\partial }{\partial x^{i_{k}}},& A \in \Gamma\left( T^{k}TM \right);\\ 
+      A^{i_1\cdots i_{k}}_{j_1\cdots j_{l}} \frac{\partial }{\partial x^{i_1}}\otimes \cdots \otimes \frac{\partial }{\partial x^{i_{k}}}\otimes \,\mathrm{d} x^{j_1}\otimes \cdots \otimes \,\mathrm{d} x^{j_{l}} ,& A \in \Gamma\left( T^{\left( k,l \right) }TM \right) .  \end{cases}
+    $$ 
+\end{proposition}
+\begin{remark}
+    \begin{enumerate}
+        \item $ A_{i_1\cdots i_{k}} $,$ A^{i_1\cdots i_{k}} $,$ A^{i_1\cdots i_{k}}_{j_1\cdots j_{l}} $被称为是分量函数；
+        \item 记光滑共变 $ k $-余向量空间为 $$
+        \mathscr{T}^{k}\left( M \right): = \Gamma\left( T^{k}T^{*}M \right)  
+        $$    
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{proposition}{张量场的光滑性判据}\label{pro:tensor-smoothness}
+    设 $ M $是光滑（带边）流形,$ A:M\to T^{k}T^{*}M $是粗截面,那么以下几条等价
+    \begin{enumerate}
+        \item A是光滑的；
+        \item 在每个光滑坐标卡下,$ A $的分量函数光滑；
+        \item $ M $上的每一个点都含于某个光滑坐标卡,使得 $ A $在其上有光滑的分量函数.  
+        \item 若 $ X_1,X_2,\cdots,X_k\in \mathfrak{X} \left( M \right) $,那么函数 $ A\left( X_1,\cdots ,X_{k} \right):M\to \mathbb{R}   $, $$
+        A\left( X_1,X_2,\cdots,X_k   \right)\left( p \right)= A_{p}\left( X_{1}|_{p},\cdots ,X_{k}|_{p} \right)   
+        $$光滑.
+        \item 任取定义在某个开子集$U \subseteq M $上的光滑向量场 $ X_1,X_2,\cdots,X_k $,$ A\left( X_1,X_2,\cdots,X_k \right)  $在 $ U $上光滑.         
+    \end{enumerate}
+      
+\end{proposition}
+\begin{remark}
+    对于混合张量场有类似的命题.
+\end{remark}
+\begin{proof}
+    $ A $光滑,当且仅当在每个（任一点都有某个）光滑坐标卡下, $ A $的坐标表示光滑.
+    任取 $ M $的光滑坐标卡 $ \left( U,\left( x^{i} \right)  \right)  $   ,它给出 $ T^{k}T^{*}M $上的自然坐标. $ A $在其上的坐标表示为 $$
+  p\mapsto  \left(  \left( A^{i_1\cdots i_{k}}_{j_1\cdots j_{l}}\left( p \right)  \right) ,\left( x^{i} \left( p \right)\right)   \right) 
+    $$ 易见上面的函数光滑,当且仅当 $ A_{i_1\cdots i_{k}} $  光滑.\\ 
+     因此1.和2.等价,1.和3.等价,故1.2.3.等价.\\ 
+      设在某个坐标上 $$
+      A= A_{i_1\cdots i_{k}}\,\mathrm{d} x^{i_1}\otimes \cdots \otimes \,\mathrm{d} x^{i_{k}}
+      $$ $$
+      X_{j}= X_{j}^{m} \frac{\partial }{\partial x^{m}},\quad j=1,\cdots ,k
+      $$那么 $$
+      A\left( X_1,\cdots ,X_{k} \right)=  A_{i_1\cdots i_{k}} X_{1}^{i_1}\cdots X_{k}^{i_{k}}
+      $$因此得 3.$ \implies $4. \\ 
+       对每一组 $ i_1,\cdots ,i_{k} $ 我们有 $$
+      A\left( \frac{\partial }{\partial x^{i_1}},\cdots ,\frac{\partial }{\partial x^{i_{k}}} \right)= A_{i_1\cdots i_{k}} 
+      $$由此得 5.$\implies  $2. \\ 
+       对于开子集 $ U\subseteq M $,以及 $ p \in U $,设 $ \psi $是 $ p $的支撑在 $ U $的光滑 bump函数,定义 $ \tilde{X}_{j}: = \psi X $,并在 $ M \setminus U $上补充定义为 $ 0 $,得到 $ \tilde{X}_{j} $是在 $ p $附近与 $ X_{j} $一致的光滑向量场.
+       4.的条件给出 $ A\left( \tilde{X}_{1},\cdots ,\tilde{X}_{k} \right)  $在 $ p $处光滑.故 4. $ \implies $5.成立.\\ 
+        5.$ \implies $4.只需要将全局向量场限制在任一点 $ p $的某个邻域上即可.                  
+\end{proof}
+\begin{proposition}{数乘与张量积的分量}{tensor-fenliang}
+    设 $ M $是光滑（带边）流形,$ A\in \mathscr{T}^{k}\left( M \right),B\in \mathscr{T}^{l}\left( M \right)   $,$ f\in C^{\infty}\left( M \right)  $.那么 $ fA $和 $ A\otimes B $也是光滑张量场,且在任意坐标上,有分量函数的关系 $$
+    \left( fA \right)_{i_1\cdots i_{k}}=fA_{i_1\cdots i_{k}} 
+    $$ $$
+    \left( A\otimes B \right)_{i_1\cdots i_{k+ l}} =A_{i_1\cdots i_{k}}B_{i_{k+ 1}\cdots B_{i_{k+ l}}}
+    $$     
+\end{proposition}
+\begin{proof}
+    若在某个坐标上 $$
+    A= A_{i_1\cdots i_{k}}\,\mathrm{d} x^{i_1}\otimes \cdots \otimes dx^{i_{k}}
+    $$ $$
+    B= B_{j_1\cdots j_{l}} \,\mathrm{d} x^{j_1}\otimes \cdots \otimes \,\mathrm{d} x^{j_{l}}
+    $$那么 $$
+    fA= fA_{i_1\cdots i_{k}} \,\mathrm{d} x^{i_1}\cdots \,\mathrm{d} x^{i_{k}}
+    $$ $$
+    \begin{aligned}
+        A\otimes B&= \left( A_{i_1\cdots i_{k}} \,\mathrm{d} x^{i_1}\otimes \cdots \otimes \,\mathrm{d} x^{i_{k}}\right)\left( B_{i_{k+ 1}\cdots i_{k+ l}} \,\mathrm{d} x^{i_{k+ 1}} \otimes \cdots \otimes \,\mathrm{d} x^{i_{k+ l}}\right)   \\ 
+         & = A_{i_1\cdots i_{k}}B_{i_{k+ 1}\cdots i_{k+ l   }} dx^{i_1}\otimes \cdots \otimes \,\mathrm{d} x^{i_{k+ l}}
+    \end{aligned}
+    $$ 
+\end{proof}
+
+\begin{definition}{诱导}\label{def:tensor-induce}
+    设 $ A $是 $ M $上的光滑共变 $ k $-张量,它诱导出映射 $$
+    \mathfrak{X}\left( M \right)\times \cdots \times  \mathfrak{X}\left( M \right)\to C^{\infty}\left( M \right)   
+    $$
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item 映射是 $ C^{\infty}\left( M \right)  $上的多线性映射,即对于 $ f,f^{\prime} \in C^{\infty}\left( M \right)  $,和 $ X_{i},X_{i}^{\prime} \in \mathfrak{X}\left( M \right)  $, $$
+        \begin{aligned}
+        & A\left( X_1,\cdots ,fX_{i}+ f^{\prime} X_{i}^{\prime} ,\cdots ,X_{k} \right)  \\ 
+         & = fA\left( X_1,\cdots ,X_{i},\cdots ,X_{k} \right)+ f^{\prime} A\left( X_1,\cdots ,X_{i}^{\prime} ,\cdots ,X_{k} \right)  
+        \end{aligned}
+        $$
+        \begin{proof}
+            固定其他分量, $ A $可视为 $ 1 $-张量,等同于光滑向量场,而光滑余向量场具有 $ C^{\infty}\left( M \right)  $上的线性.   
+        \end{proof}  
+        
+    \end{enumerate}
+    
+\end{remark}
+\begin{lemma}{张量场的刻画引理}\label{tensor-char-lemma}
+一个映射 $$
+\mathscr{A}: \mathfrak{X}\left( M \right) \times \cdots \times \mathfrak{X}\left( M \right) \to C^{\infty}\left( M \right)  
+$$被某个光滑共变 $ k $-张量诱导,当且仅当 $ \mathscr{A} $是 $ C^{\infty}\left( M \right)  $上的多线性映射.   
+\end{lemma}
+\begin{proof}
+    必要性在定义\ref{def:tensor-induce}的Remark中已经说明,接下来考虑充分性.\\ 
+    类似余向量场的刻画引理,依次说明局部性、逐点性,导出在每一点给出诱导的形式的良定义性,最后说明光滑性.
+\end{proof}
+
+\subsection{张量场的拉回}
+\begin{definition}{逐点拉回}
+    设 $ F:M\to N $是光滑映射. 任取 $ p \in M $和 $ k $-张量 $ \alpha \in T^{k}\left( T^{*}_{F\left( p \right)N } \right)  $,定义 $ \alpha $通过 $ F $在点 $ p $处的逐点拉回,为一个张量 $ d F_{p}^{*}\left( \alpha \right)\in T^{k}\left( T_{p}^{*}M \right)   $ $$
+    dF_{p}^{*}\left( \alpha \right)\left( v_1,\cdots ,v_{k} \right) = \alpha\left( d F_{p } \left( v_1 \right),\cdots ,d F_{p}\left( v_{k} \right) \right)   
+    $$       
+\end{definition}  
+
+\begin{definition}{拉回}
+    若 $ A $是 $ N $上的共变 $ k $-张量,定义 $ A $通过 $ F $的拉回,为 $ M $上的一个粗向量场 $ F ^{*}A $,按 $$
+    \left( F^{*}A \right)_{p}: =    dF _{p}^{*}\left( A_{F\left( p \right) } \right)  
+    $$它在 $ v_1,v_2,\cdots,v_k\in T_{p}M $上的作用为 $$
+    \left( F ^{*}A \right)_{p}\left( v_1,v_2,\cdots,v_k  \right)= A_{F\left( p \right) }\left( dF _{p}\left( v_1 \right),\cdots ,dF _{p}\left( v_{k} \right)   \right)   
+    $$        
+\end{definition}
+
+\begin{proposition}
+    设 $ F :M \to N $和 $ G:N\to P $是光滑映射,$ A,B $是 $ N $上的共变张量场,且 $ f $是定义在 $ N $上的实值函数,那么
+    \begin{enumerate}
+        \item $ F^{*}\left( fB \right)= \left( f\circ F \right)F^{*}B   $ ;
+        \item $ F ^{*}\left( A\otimes B \right)=F^{*}A\otimes F ^{*}B  $ ;
+        \item $ F^{*}\left( A+ B \right)=F ^{*}A+ F ^{*}B  $;
+        \item $ F ^{*}B $是（连续的）张量场,并且若 $ B $光滑,则 $ F^{*}B $光滑  ；
+        \item $ \left( G\circ F  \right)^{*}B=F^{*}\left( G^{*}B \right)   $;
+        \item $ \left( \mathrm{Id}_{N} \right)^{*}B=B  $.     
+    \end{enumerate}
+          
+\end{proposition}
+\begin{proof}
+    \begin{enumerate}
+        \item  $$
+        \begin{aligned}
+        F^{*}\left( fB \right)_{F}\left( v_1,\cdots ,v_{k} \right) & = \left( fB \right)_{F\left( p \right) }\left( dF _{p}\left( v_1 \right),\cdots ,dF _{p}\left( v_{k} \right)   \right)\\ 
+         & =      \left( f\circ F \right) B_{F\left( p \right) } \left( dF _{p}\left( v_1 \right),\cdots ,dF _{p}\left( v_{k} \right)   \right)\\ 
+          & = \left( f\circ F \right)F^{*}B\left( v_1,\cdots ,v_{k} \right)    
+        \end{aligned}
+        $$因此 $ F^{*}\left( fB \right)=\left( f\circ F  \right)F ^{*}B   $ 
+
+        \item $$
+    \begin{aligned}
+    F^{*}\left( A\otimes B \right)\left( v_1,\cdots ,v_{k},v_{k+ 1},\cdots ,v_{k+ l} \right)   & = 
+    F^{*}\left( A\left( v_1,\cdots ,v_{k} \right)B\left( v_{k+ 1},\cdots ,v_{k+ l} \right)   \right)\\ 
+     & = A\left( dF _{p}\left( v_1 \right),\cdots dF _{p}\left( v_{k} \right)B\left( dF _{p}\left( v_{k+ 1} \right),\cdots ,dF _{p}\left( v_{k+ l} \right)   \right)    \right) \\ 
+       & = F^{*}A\left( v_1,\cdots ,v_{k} \right)F^{*}B\left( v_{k+ 1},\cdots ,v_{k+ l} \right)\\ 
+        & = \left( F^{*}A\otimes F^{*}B \right)\left( v_1,\cdots ,v_{k+ l} \right)    
+    \end{aligned}$$因此$F^{*}\left( A\otimes B \right)= F^{*}A\otimes F^{*}B$.
+    \item 略
+    \item 选定 $ N $上的光滑坐标 $ \left( y^{j} \right)  $,设 $ B= B_{j_1\cdots j_{l}} \,\mathrm{d} y^{j_1} \cdots \,\mathrm{d} y^{j_{l} }$ 
+    那么 $$
+  \begin{aligned}
+    F^{*}B &= F^{*}\left( B_{j_1\cdots j_{l}}\,\mathrm{d} y^{j_1}\otimes \cdots\otimes  \,\mathrm{d} y^{j_{l}} \right) \\ 
+     & = B_{j_1\cdots j_{l}}\circ F \,\mathrm{d} \left( y^{j_1}\circ F \right)\otimes \cdots \otimes   \,\mathrm{d} \left( y^{j_{l}}\circ F \right) 
+  \end{aligned}$$其中 $ \,\mathrm{d} \left( y^{j_{k}}\circ F \right)  $, $  k=1,\cdots ,l $是光滑的余向量场,由\ref{pro:tensor-fenliang} $ F^{*}B $ 是光滑的.
+  \item 略
+  \item 略
+    \end{enumerate}
+\end{proof}
+\begin{corollary}{拉回的坐标表示}
+    设 $ F:M\to N $是光滑映射,$ B $是 $ N $上的共变 $ k $-张量.若 $ p \in M $,$ \left( y^{i} \right)  $是 $ N $的 在 $ F\left( p \right)  $附近的光滑坐标,那么 $ F^{*}B $有以下表示 $$
+    F^{*}B\left( B_{i_1\cdots i_{k}}\,\mathrm{d} y^{i_1}\otimes \cdots \otimes \,\mathrm{d} y^{i_{k}} \right) 
+= \left( B_{i_1\cdots i_{k}}\circ F \right)\,\mathrm{d} \left( y^{i_1}\circ F \right)\otimes \cdots \otimes \,\mathrm{d} \left( y^{i_{k}}\circ F \right)       $$         
+\end{corollary}
+
+\begin{example}
+    令 $ M = \left\{ \left( r,\theta \right)  : r>0,\left| \theta \right|< \frac{\pi}{2} \right\} $并且 $ N = \left\{ \left( x,y \right):x>0  \right\} $,
+    令 $ F:M\to \mathbb{R} ^{2} $   是光滑映射 $ F\left( r,\theta \right)=\left( r\cos \theta,r\sin \theta \right)   $.张量场 $ A: = x^{-2}\,\mathrm{d} y\otimes \,\mathrm{d} y $通过 $ F $的拉回通过替换 $ x = r\cos \theta,y= r\sin \theta $得到. $$
+    \begin{aligned}F^*A&=(r\cos\theta)^{-2}d(r\sin\theta)\otimes d(r\sin\theta)\\&=(r\cos\theta)^{-2}(\sin\theta dr+r\cos\theta d\theta)\otimes(\sin\theta dr+r\cos\theta d\theta)\\&=r^{-2}\tan^2\theta dr\otimes dr+r^{-1}\tan\theta(d\theta\otimes dr+dr\otimes d\theta)+d\theta\otimes d\theta.\end{aligned}
+    $$    
+\end{example}
+
+\end{document}
