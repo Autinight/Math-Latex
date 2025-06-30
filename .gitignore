@@ -63,6 +63,7 @@ acs-*.bib
 *.dfn
 *.lem
 *.pps
+*.ep
 
 # attachfile2
 *.atfi
