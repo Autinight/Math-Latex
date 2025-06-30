@@ -213,7 +213,7 @@ is not superfluous in Theorem \ref{thm:6-27-1}(5).
 \section{Integration of Positive Funtions}
 
 
-\begin{definition}{}{}
+\begin{definition}{Integration of Positive Funtions}{}
 \begin{enumerate}
     \item If $s: X \to [0, \infty)$ is a measurable simple function, of the form
 \[
@@ -229,11 +229,55 @@ The convention $0 \cdot \infty = 0$ is used here; it may happen that $\alpha_i =
 \int_E f \, d\mu = \sup \int_E s \, d\mu,
 \]
 the supremum being taken over all simple measurable functions $s$ such that $0 \le s \le f$.
-The left member of (3) is called the \dfntxt{Lebesgue integral} of $f$ over $E$, with respect to the measure $\mu$. It is a number in $[0, \infty]$.
+The left member above is called the \dfntxt{Lebesgue integral} of $f$ over $E$, with respect to the measure $\mu$. It is a number in $[0, \infty]$.
 \end{enumerate}
 
 \end{definition}
 \begin{remark}
     We apparently have two definitions for \(  \int_{E}f\,\mathrm{d} \mu   \) if \(  f   \) is simple, they are the same.  
 \end{remark}
+
+\begin{corollary}{}{}
+    \begin{enumerate}
+    \item[(a)] If $0 \le f \le g$, then $\int_E f \, d\mu \le \int_E g \, d\mu$.
+    \item[(b)] If $A \subset B$ and $f \ge 0$, then $\int_A f \, d\mu \le \int_B f \, d\mu$.
+    \item[(c)] If $f \ge 0$ and $c$ is a constant, $0 \le c < \infty$, then
+    \[
+    \int_E cf \, d\mu = c \int_E f \, d\mu.
+    \]
+    \item[(d)] If $f(x) = 0$ for all $x \in E$, then $\int_E f \, d\mu = 0$, even if $\mu(E) = \infty$.
+    \item[(e)] If $\mu(E) = 0$, then $\int_E f \, d\mu = 0$, even if $f(x) = \infty$ for every $x \in E$.
+    \item[(f)] If $f \ge 0$, then $\int_E f \, d\mu = \int_X \chi_E f \, d\mu$.
+\end{enumerate}
+\end{corollary}
+
+\begin{remark}
+    We can also regard the \(  \int_{E} f \,\mathrm{d} \mu   \) as the restricted function \(  f|_{E}  \)  integrates on the induced measure space  \(  E  \). 
+\end{remark}
+
+
+\begin{proposition}{}{}
+Let $s$ and $t$ be nonnegative measurable simple functions on $X$. For $E \in \mathfrak{M}$, define
+\[
+\varphi(E) = \int_E s \, d\mu.
+\]
+Then $\varphi$ is a measure on $\mathfrak{M}$. Also
+\[
+\int_X (s + t) \, d\mu = \int_X s \, d\mu + \int_X t \, d\mu.
+\]
+\end{proposition}
+
+\begin{theorem}{Lebesgue's Monotone Convergence Theorem}{}
+Let $\{f_n\}$ be a sequence of measurable functions on $X$, and suppose that
+\begin{enumerate}
+\item[(a)] $0 \le f_1(x) \le f_2(x) \le \cdots \le \infty$ for every $x \in X$,
+\item[(b)] $f_n(x) \to f(x)$ as $n \to \infty$, for every $x \in X$.
+\end{enumerate}
+Then $f$ is measurable, and
+\[
+\int_X f_n \, d\mu \to \int_X f \, d\mu \quad \text{as } n \to \infty.
+\]
+\end{theorem}
+
+
 \end{document}
