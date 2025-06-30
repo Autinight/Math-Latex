@@ -52,7 +52,15 @@
 \ifamznotes@math
     \RequirePackage{mathtools}          % for math macros; also loads amsmath
     \RequirePackage{amsthm}
-    \renewcommand\qedsymbol{$\squoval$}
+
+    \newenvironment{solution}[1][\solutionname]{%
+  \begin{proof}[#1]\renewcommand{\qedsymbol}{\(\lozenge\)}% % Use a diamond symbol
+}{%
+  \end{proof}%
+}
+
+
+    
     \RequirePackage{derivative}
 \fi
 
@@ -63,15 +71,16 @@
 
 % ------------------------------------------------------------
 % RENAME
+\newcommand{\solutionname}{Solution.}
 \newcommand{\proofsketchname}{Proof sketch}
 \renewcommand{\contentsname}{Contents}
 \renewcommand{\proofname}{Proof.}
 
 % ------------------------------------------------------------
 % FONTS
-\setCJKmainfont{微软雅黑}[Scale = 1.2,BoldFont=Shanggu Round-Bold]
-\setCJKsansfont{微软雅黑}[Scale = 1.2,BoldFont=Shanggu Round-Bold]
-\setCJKmonofont{微软雅黑}[Scale = 1.2,BoldFont=Shanggu Round-Bold]
+\setCJKmainfont{华文中宋}[Scale = 1.2,BoldFont=Shanggu Round-Bold]
+\setCJKsansfont{华文中宋}[Scale = 1.2,BoldFont=Shanggu Round-Bold]
+\setCJKmonofont{华文中宋}[Scale = 1.2,BoldFont=Shanggu Round-Bold]
 \setmainfont{STIXTwoText}[
     Scale = 1.4, %放大了字体
   Extension = .otf,
