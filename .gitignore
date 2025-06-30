@@ -58,6 +58,11 @@ acs-*.bib
 
 # amsthm
 *.thm
+*.aux
+*.col
+*.dfn
+*.lem
+*.pps
 
 # attachfile2
 *.atfi
