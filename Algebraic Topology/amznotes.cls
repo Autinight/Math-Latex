@@ -78,9 +78,9 @@
 
 % ------------------------------------------------------------
 % FONTS
-\setCJKmainfont{华文中宋}[Scale = 1.2,BoldFont=Shanggu Round-Bold]
-\setCJKsansfont{华文中宋}[Scale = 1.2,BoldFont=Shanggu Round-Bold]
-\setCJKmonofont{华文中宋}[Scale = 1.2,BoldFont=Shanggu Round-Bold]
+\setCJKmainfont{华文中宋}[Scale = 1.2]
+\setCJKsansfont{华文中宋}[Scale = 1.2]
+\setCJKmonofont{华文中宋}[Scale = 1.2]
 \setmainfont{STIXTwoText}[
     Scale = 1.4, %放大了字体
   Extension = .otf,
