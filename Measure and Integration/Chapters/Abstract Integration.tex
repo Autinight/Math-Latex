@@ -82,7 +82,7 @@
 \end{theorem}
 
 
-\begin{theorem}{}{}
+\begin{theorem}{}{7-5-1}
     If \(  f_{n}:X\to [-\infty,\infty]  \) is measurable,for \(  \neq 1,2,3,\cdots   \) , and \[
     g =  \sup _{n\ge 1}f_{n},\quad h= \lim_{n\to \infty}\sup f_{n},
     \] then \(  g  \) and \(  h  \) are measurable.    
@@ -267,6 +267,26 @@ Then $\varphi$ is a measure on $\mathfrak{M}$. Also
 \]
 \end{proposition}
 
+\begin{proof}
+    If  \(  E_1,E_2,\cdots   \) are disjoint members of  \(  \mathfrak{M}  \) whose union is \(  E  \), the countable additivity of \(  \mu   \) shows that  \[
+    \begin{aligned}
+     \varphi \left( E \right)&= \sum _{i= 1}^{n} \alpha _{i}\mu \left( A_{i}\cap E \right)\\ 
+      &=  \sum _{i = 1}^{n}\sum _{j = 0}^{\infty} \alpha _{i}\mu \left( A_{i}\cap E_{j} \right) \\ 
+       &= \sum _{j = 0}^{\infty}\sum _{i = 1}^{n}\alpha _{i}\mu \left( A_{i}\cap E_{j} \right)\\ 
+        &= \sum _{j = 0}^{\infty} \varphi \left( E_{j} \right) 
+    \end{aligned} 
+    \] Also, \(   \varphi \left( \varnothing \right)\neq \infty   \), \(  \mu   \) is not identically   \(  \infty  \).  
+
+    Next, let \(  \beta _1 ,\cdots ,\beta _{m}  \) be distinct values of \(  t  \).   And let \(  B_{j}: = \left\{ x: t\left( x \right)= \beta _{j}  \right\}  \). Then \[
+    \begin{aligned}
+    \int_{X}\left( s+ t \right)\,\mathrm{d} \mu &= \sum _{i,j}\int_{A_{i}\cap B_{j}}\left( s+ t \right)\,\mathrm{d} \mu \\ 
+     &= \sum _{i,j}\alpha _{i}\mu \left( A_{i}\cap B_{j} \right)+ \sum _{i,j}\beta _{j}\mu \left( A_{i}\cap B_{j} \right)\\ 
+      &=         \sum _{i}\alpha _{i}\mu \left( A_{i} \right)+ \sum _{j}\beta _{j}\mu \left( B_{j} \right)\\ 
+       &= \int_{X}s \,\mathrm{d} \mu + \int_{X} t\,\mathrm{d} \mu   
+    \end{aligned}
+    \] 
+\end{proof}
+
 \begin{theorem}{Lebesgue's Monotone Convergence Theorem}{}
 Let $\{f_n\}$ be a sequence of measurable functions on $X$, and suppose that
 \begin{enumerate}
@@ -279,5 +299,12 @@ Then $f$ is measurable, and
 \]
 \end{theorem}
 
+\begin{proof}
+    Since \(  \int_{X} f_{n}\,\mathrm{d} \mu \le \int_{X}f_{n+ 1}\,\mathrm{d} \mu   \) for all \(  n  \), there exists an \(  \alpha > 0  \) such that \[
+    \int_{X}f_{n}\,\mathrm{d} \mu \to \alpha ,\quad \text{as } n \to \infty
+    \]   By Theorem \ref{thm:7-5-1}, \(  f  \) is measurable,  then by \(  \int_{X}f_{n}\,\mathrm{d} \mu \le \int_{X} f\,\mathrm{d} \mu    \;\forall n\), \[
+    \alpha \le \int_{X}f \,\mathrm{d} \mu 
+    \]  
+\end{proof}
 
 \end{document}
