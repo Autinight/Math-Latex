@@ -78,4 +78,55 @@ F^{s}\left( \mathbf{e}_{k} \right),& k< r\\
 \end{aligned}
    \]
 \end{proof}
+
+\begin{definition}{}{}
+For $n \geq 1$ and for any singular $n$-simplex $\sigma$ in $X$, we define
+\[
+\partial_n(\sigma) = \sum_{r=0}^{n}(-1)^r \sigma \circ F^r
+\]
+and extend it linearly to obtain homomorphisms $\partial_n : S_n(X, A) \to S_{n-1}(X, A)$. We define $S_n(X, A) = (0)$ for $n \leq -1$ and $\partial_n = 0$ for $n \geq 0$.
+\end{definition}
+\begin{note}
+    \(   \sigma   \) is a map from \(   \Delta _{n}  \) to \(  X  \).  \(   \sigma \circ F^{r}  \) is the restriction of \(   \sigma   \) on its face opposite to \(  \mathbf{e}_{r}  \). Then \(   \partial _{n}\left(  \sigma  \right)   \) is something like a closed \(  \left( n-1 \right)   \) - surface consists of  \(   \sigma   \) 's faces.  
+\end{note}
+\begin{proposition}{Singular Chain Complex}{}
+$(S(X, A), \partial) = \{S_n(X, A), \partial_n\}$ is a chain complex and the association $(X, A) \leadsto (S.(X, A), \partial)$ is a functor.
+\end{proposition}
+\begin{proof}
+    We shall first show that \(   \partial ^{2}\left(  \sigma  \right)= 0   \) for any singular n-simplex, \(  n\ge 2  \): \[
+     \begin{aligned}
+     \partial ^{2}\left(  \sigma  \right)&=  \partial \left( \sum _{s= 0}^{n}\left( -1 \right)^{s} \sigma \circ F^{s}  \right) \\ 
+      &= \sum _{s= 0}^{n} \left( -1 \right)^{s} \partial \left(  \sigma \circ F^{s} \right)  \\ 
+       &= \sum _{s= 0}^{n}\sum _{r= 0}^{n-1}\left( -1 \right)^{s}\left( -1 \right)^{r} \sigma \circ F^{s}\circ F^{r} \\ 
+        &= \sum _{0\le r< s\le n}\left( -1 \right)^{s+ r} \sigma \circ F^{r}\circ F^{s-1}+ \sum _{n-1\ge r\ge s\ge 0}\left( -1 \right)^{s+ r} \sigma \circ F^{s}\circ F^{r}\\ 
+         &= \sum _{0\le r< s\le n}\left( -1 \right)^{s+ r}\circ F^{r}\circ F^{s-1}+ \sum _{n-1\ge s\ge r\ge 0}\left( -1 \right)^{s+ r} \sigma \circ F^{r}\circ F^{s}    \\ 
+          &= \sum _{0\le r< s\le n}\left( -1 \right)^{s+ r}\circ F^{r}\circ F^{s-1}-\sum _{n\ge s>  r\ge 0}  \left( -1 \right)^{s+ r} \sigma \circ F^{r}\circ F^{s-1}\\ 
+           &= 0 
+     \end{aligned} 
+    \]  
+
+    Given a map \(  f: \left( X,A \right)\to \left( Y,B \right)   \) . Since \(  \left( f\circ  \sigma  \right)\circ F^{r}= f\circ \left(  \sigma \circ F^{r} \right)    \) , we define \(  f.  \) as \(  f_{.}\left(  \sigma  \right):= f\circ  \sigma    \) extended by linearlity.  Then  \(   \partial \left( f.\left(  \sigma  \right)  \right)= f.\left(  \partial \left(  \sigma  \right)  \right)    \)  by the definition of \(    \partial   \) and \(  f.  \)'s linearlity.   The rest of the details are ommited.
+\end{proof}
+
+\begin{definition}{}{}
+The \dfntxt{relative singular homology groups} of a topological pair $(X,A)$ are the homology groups $H_*(S.(X,A))$ and are denoted by $H_*(X,A)$. Taking $A = \varnothing$, we get the homology groups $H_*(X)$.
+\end{definition}
+\begin{remark}{}{}
+Given any commutative ring $R$
+\begin{enumerate}
+    \item We could have formed the \dfntxt{free module} $S_n(X;R)$ of all the singular $n$-chains in $X$.
+    \item Exactly as before, we would have got a chain complex $S.(X;R)$, subchain complex $S.(A;R)$ and the quotient complex $S.(X,A;R)$, etc. 
+    \item The corresponding homology groups $H_*(X;R)$, etc. , are then called the homology groups $X$ with coefficients in $R$. Clearly they form a \dfntxt{graded $R$-module} by themselves. It is customary to drop the notation $R$ when $R=\mathbb{Z}$.
+\end{enumerate}
+
+\end{remark}
+
+\section{Basic Properties}
+\begin{remark}
+    \begin{itemize}
+          \item  It is easily seen that $\{S_.(X,A), \partial\}$ is a functor from the category of topological pairs to the category of chain complexes; thus $H_*(X,A)$ and $H_*(X)$ are also functors. 
+        \item Given $f : (X,A) \to (Y,B)$, we shall denote by $f_.,$ the map induced by $f$ on $S_.(X,A)$ and by $f_*$ the map induced by $f$ on $H_*(X,A)$. 
+    \end{itemize}
+    
+\end{remark}
 \end{document}
