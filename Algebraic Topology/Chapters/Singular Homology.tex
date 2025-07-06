@@ -4,6 +4,78 @@
 
 \chapter{ Singular Homology }
 
+\section{The Construction}
 
+\begin{definition}{}{}
+Let $X$ be any topological space and $n \ge 0$ be an integer. By a \dfntxt{singular n-simplex} in $X$, we mean a continuous map $\sigma : |\Delta_n| \to X$. By a \dfntxt{singular n-chain} in $X$, we mean a finite sum $\sum_i n_i\sigma_i$, where $n_i \in \mathbb{Z}$ and $\sigma_i$ are singular $n$-simplices in $X$. We can add any two chains in an obvious way to obtain another chain by simply following the rule
+\[
+n\sigma + m\sigma = (n+m)\sigma \tag{4.5}
+\]
+Then the collection of all singular $n$-chains in $X$ becomes a free abelian group, with the empty sum playing the role of the zero-element. The collection of all singular $n$-simplices is then a basis for this group. We denote this group by $S_n(X)$.
+\end{definition}
 
+\begin{proposition}{Functoriality}{}
+    If $f: X \to Y$ is a map of topological spaces, then $\sigma \mapsto f \circ \sigma$ extends to define a graded group homomorphism $f. : S.(X) \to S.(Y)$. Since $(g \circ f) \circ \sigma = g \circ (f \circ \sigma)$, it follows that the association $X \mapsto S.(X)$ defines a functor.
+
+\end{proposition}
+
+\begin{definition}{Relative Chain Complex}{}
+    If \(  A  \) is a subspace of \(  X  \) and \(   \sigma   \) is a singular simplex in \(  A  \)  then it can be considered as a singular simplex in \(  X  \) via the inclusion map \(  A\hookrightarrow X  \) .    In this way, \(  S_{n}\left( A \right)   \) becomes a subgroup of \(  S_{n}\left( X \right)   \) . We denote the quotient group \(  S_{n}\left( X \right)/ S_{n}\left( A \right)    \) by \(  S_{n}\left( X,A \right)   \).        
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item \(  S_{n}\left( X,A \right)   \) is a free abelian group with the collection of all singular n-simplexex \(   \sigma    \) in \(  X  \) whose image is not contained in \(  A  \) as a basis.    
+        \item If \(  A = \varnothing  \), then clearly \(  S_{n}\left( X,A \right)=  S_{n}   \left( X \right) \).  
+    \end{enumerate}
+    
+\end{remark}
+\begin{definition}{}{}
+For each integer $r \ge 0$, the \dfntxt{face map} or the \dfntxt{face operator} $F^r : \mathbb{R}^\infty \to \mathbb{R}^\infty$ is defined by
+\[
+F^r(\mathbf{e}_s) = \begin{cases} \mathbf{e}_s, & \text{if } s < r, \\ \mathbf{e}_{s+1}, & \text{if } s \ge r \end{cases}
+\]
+and extended linearly.
+\end{definition}
+
+\begin{remark}{}{}
+\begin{enumerate}
+    \item Note that for each $n \ge r$, $F^r$ carries $\Delta_{n-1}$ onto the $(n-1)$-face of $\Delta_n$ opposite to the vertex $\mathbf{e}_r$, in an \dfntxt{order preserving} manner.
+    \item We shall denote each $F^r$ restricted to any $\Delta_n, n \ge r$ also by $F^r$, the exact meaning being understood from the context. 
+\end{enumerate}
+ 
+\end{remark}
+
+\begin{lemma}{}{}
+$F^r \circ F^{s-1} = F^{s} \circ F^r$ if $r < s$. \footnote{这里修正了shastri书中的一个笔误,他可能写错了\(  s-1  \)    的位置}
+\end{lemma}
+\begin{proof}
+    Since \(  r< s  \), \(  r\le s-1  \)  , we fully expand the LHS by definition
+   \[
+   \begin{aligned}
+   F^{r}\circ F^{s-1}\left( \mathbf{e}_{k} \right)&= \begin{cases} F^{r}\left( \mathbf{e}_{k} \right),& k< s-1\\ 
+    F^{r}\left( \mathbf{e}_{k+ 1} \right),& k\ge s-1   \end{cases}\\ 
+    &= \begin{cases} \mathbf{e}_{k},&k< s-1 , k< r\\ 
+     \mathbf{e}_{k+ 1},&  r\le k< s-1\\ 
+      \mathbf{e}_{k+ 1},& s-1\le k< r-1 \,(\text{empty set})\\ 
+       \mathbf{e}_{k+ 2},& k\ge s-1, k\ge r-1 \end{cases}\\ 
+        &= \begin{cases} \mathbf{e}_{k},&k< r\\ 
+         \mathbf{e}_{k+ 1},&r\le k< s-1\\ 
+          \mathbf{e}_{k+ 2},&k\ge s-1 \end{cases}     
+   \end{aligned}
+   \] Similarly,  \[
+\begin{aligned}
+   F^{s}\circ F^{r}\left( \mathbf{e}_{k} \right)&= \begin{cases}
+F^{s}\left( \mathbf{e}_{k} \right),& k< r\\ 
+ F^{s}\left( \mathbf{e}_{k+ 1} \right),&k\ge r    \end{cases}\\ 
+  &= \begin{cases} \mathbf{e}_{k},&k<  r,k\le s\\ 
+   \mathbf{e}_{k+ 1},&k< r,k\ge s \,(\text{empty set})\\ 
+    \mathbf{e}_{k+ 1},&k\ge  r,k< s-1\\ 
+     \mathbf{e}_{k+ 2}, &k\ge r,k\ge s -1\end{cases} \\ 
+      &= \begin{cases} \mathbf{e}_{k},& k<  r\\ 
+        \mathbf{e}_{k+ 1},& r\le  k< s-1\\ 
+         \mathbf{e}_{k+ 2},&k\ge s-1
+         \end{cases} 
+\end{aligned}
+   \]
+\end{proof}
 \end{document}
