@@ -125,9 +125,75 @@ Given any commutative ring $R$
 \begin{remark}
     \begin{itemize}
           \item  It is easily seen that $\{S_.(X,A), \partial\}$ is a functor from the category of topological pairs to the category of chain complexes; thus $H_*(X,A)$ and $H_*(X)$ are also functors. 
-        \item Given $f : (X,A) \to (Y,B)$, we shall denote by $f_.,$ the map induced by $f$ on $S_.(X,A)$ and by $f_*$ the map induced by $f$ on $H_*(X,A)$. 
+        \item Given $f : (X,A) \to (Y,B)$, we shall denote by $f_.,$ the map induced by $f$ on $S_.(X,A)$ and by $f_*$ the map induced by $f$ on $H_*(X,A)$.
     \end{itemize}
     
 \end{remark}
+\begin{lemma}{}{}
+There exist functorial chain homotopies
+$$ h : S_q(X, A) \to S_{q+1}((X, A) \times \mathbb{I}), q \geq 0, $$
+,called \dfntxt{prism operator }, between the two inclusion induced maps $\eta_0, \eta_1 : S.(X, A) \to S.((X, A) \times \mathbb{I})$, where for any \(  t\in \mathbb{I}  \), \(  \eta _{t}  \) is the inclusion map \[
+        \eta _{t}\left( x \right)=  \left( x,t \right) ,\quad t \in \mathbb{I}
+        \]  
+\end{lemma}
 
+\begin{theorem}{Homotopy invariance}{}
+Let $f, g : (X, A) \to (Y, B)$ be \dfntxt{homotopic} to \dfntxt{each other}. Then $f_* = g_*$ on $H_*(X, A)$.
+\end{theorem}
+
+\begin{proof}
+    Let \(  G  : \left( X,A \right)\times \mathbb{I} \to \left( Y,B \right)   \) be a homotopy between \(  f  \) and \(  g  \). For any \(  t \in \mathbb{I}  \), let \(  \eta _{t}:\left( X,A \right)\to \left( X,A \right)\times \mathbb{I}    \) be inclusion map \(  \eta _{t}\left( x \right)= \left( x,t \right)    \). Then \(  G\circ \eta _{0}= f  \), \(  G\circ \eta _{1}= g  \) . Only need to show that chain maps \(   \left( \eta _0  \right).  \) and \(  \left( \eta _1  \right).   \)  are chain homotopic, thus \(  \left( \eta _{0} \right)_{*}= \left( \eta _{1} \right)_{*}    \), \(  f_{*}= g_{*}  \), which is implied by the lemma above.  
+\end{proof}
+
+\begin{corollary}{}{}
+Homotopy-equivalent topological spaces have isomorphic homology groups; in particular, a contractible space has the homology groups of a point-space.
+\end{corollary}
+
+\begin{example}{}{}
+    Let \(  \star  \) be a point space. We have \[
+    H_{k}\left( \star \right) = \begin{cases} \mathbb{Z} ,&k= 0\\ 
+     0,&k \ge 1 \end{cases}  
+    \] 
+\end{example}
+\begin{proof}
+    Let $n$ be any positive integer. There is a unique singular $n$-simplex $\sigma : |\Delta_n| \to \{\star\}$ and hence $S_n(\star) \cong \mathbb{Z}$ for each $n \geq 0$. Observe that $\partial : S_{2n+1}(\star) \to S_{2n}(\star)$ is the zero-map because $\Delta_{2n+1}$ has an even number of $(2n)$-faces and the terms in $\partial(\sigma)$ cancel in pairs. However, similar reasoning tells us that $\partial : S_{2n}(\star) \to S_{2n-1}(\star)$ is an isomorphism. Thus we have a chain complex
+\begin{center}
+\begin{tikzcd}
+... \arrow[r, "0"] & \mathbb{Z} \arrow[r, "\cong"] & \mathbb{Z} \arrow[r, "0"] & \mathbb{Z} \arrow[r, "\cong"] & \mathbb{Z} \arrow[r] & 0
+\end{tikzcd}
+\end{center}
+Thus it follows that $H_0(\star) \cong \mathbb{Z}$ and $H_i(\star) = (0)$ for all $i > 0$.
+\end{proof}
+
+\begin{example}{}{}
+    Let $\{X_j : j \in J\}$ be the set of path connected components of $X$ so that $X = \bigsqcup_{j \in J} X_j$. Then \[
+    H_{*}\left( X \right)= \bigoplus _{j \in J}H_{*}\left( X_{j} \right)  
+    \]
+\end{example}
+\begin{remark}
+    Thus in practice, we can often assume that the space itself is path connected, while dealing with its homology groups.
+\end{remark}
+\begin{proof}
+ Since $|\Delta_n|$ is a path connected space, it follows that any singular $n$-simplex in $X$ is contained completely in one of the path components $X_j$. Therefore, it follows that the entire chain complex $S_*(X)$ is the direct sum of the subchain complexes $S_*(X_j)$. Hence the homology is also a direct sum of $H_*(X_j), j \in J$ by Theorem \ref{thm:7-9}. 
+\end{proof}
+
+\begin{theorem}{Homology Long Exact Sequence of the pair \(  \left( X,A \right)   \) }{}
+    By definition of $S_.(X,A)$, we have an exact sequence of chain complexes
+\[
+0 \to S_.(A) \to S_.(X) \to S_.(X, A) \to 0.
+\]By Theorem \ref{thm:7-9-2}, this yields the long exact sequence of homology groups
+\begin{gather*}
+    \left\{
+    \begin{gathered}
+        \dots \to H_i(A) \to H_i(X) \to H_i(X,A) \xrightarrow{\delta} H_{i-1}(A) \to \dots \\
+        \dots \to H_1(X,A) \xrightarrow{\delta} H_0(A) \to H_0(X) \to H_0(X,A),
+    \end{gathered}
+    \right.
+    \tag{4.6}
+\end{gather*}
+which is functorial.
+\end{theorem}
+\begin{remark}
+     This sequence comes handy in many computations as we shall see soon.
+\end{remark}
 \end{document}
