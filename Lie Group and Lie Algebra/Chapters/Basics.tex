@@ -1,0 +1,32 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Basics}
+
+\section{单位分解}
+
+\begin{theorem}{单位分解的存在性}{}
+    设 \(  M  \)是一个流形, \(  \mathscr{U}= \left\{ U_{\alpha }: \alpha \in A \right\}  \)是\(  M  \)   的一个开覆盖, 则
+    \begin{enumerate}
+        \item 存在从属于 \(  \mathscr{U}  \)的单位分解 \(  \Phi  = \left\{  \varphi _{i}: i \in I \right\}  \)且 \(  I  \)是至多可数的, \(  \operatorname{supp} \varphi _{i}  \)是紧的. 
+        \item     存在从属于 \(  \mathscr{U}  \)的具有相同指标集的单位分解 \(  \Phi = \left\{  \varphi _{\alpha } :\alpha \in A\right\}  \), 且至多可数多个 \(   \varphi _{\alpha }\neq 0  \).      
+        \item 如果 \(  \mathscr{U}  \)局部有限, 且 \(  \overline{U_{\alpha }}  \)是紧的. 则存在从属于 \(  \mathscr{U}  \)的具有相同指标集的单位分解 \(  \Phi = \left\{ \phi _{\alpha }: \alpha \in A \right\}  \)    且 \(  \operatorname{supp} \varphi _{\alpha }  \)是紧的.  \footnote{由于紧急的闭子集是紧的,所以第三条可以有第二条简单地导出. }
+    \end{enumerate}
+    
+\end{theorem}
+
+
+\begin{corollary}{}{}
+    设 \(  M  \)是一个流形, \(  D\subseteq M  \)是闭集,  \(  U\subseteq M  \)是 \(  D  \)的一个开邻域. 则存在 \(  f \in C^{\infty}\left( M \right)   \), 使得 \(  \left. f \right|_{D} \equiv 1  \), 且 \(  \operatorname{supp}f \subseteq U  \).       
+\end{corollary}
+
+\begin{proof}
+    考虑 \(  M  \)的 一个特殊的开覆盖,  \(  \left\{ U, M\setminus D \right\}  \). 对它应用上面定理的第二种情况即可. 
+\end{proof}
+
+\section{向量场和微分算子}
+
+
+
+\end{document}

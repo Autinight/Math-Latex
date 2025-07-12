@@ -308,4 +308,23 @@ are inclusion maps.
 \]
 By the definition of excisive couple , we can replace \(   H_i( S.(X_1) + S.(X_2) )   \) by \(  H_{i}\left( X_1\cup X_2 \right)   \) to obtain Mayer-Vietoris.  
 \end{proof}
+
+\section{Problems}
+\begin{problem}{}{}
+Compute the homology of $\mathbb{S}^p \times \mathbb{S}^q$ using Mayer-Vietoris.
+\end{problem}
+\begin{proof}
+   We assume that \( p, q\ge 1  \).   Let \(  U^{+ }  \), \(  U^{-}  \) be  \(  \mathbb{S}^{q}  \) without the north pole and south pole  respectivily.  Then \( \left( A,B \right): =   \left( \mathbb{S}^{p}\times U^{+ },\mathbb{S}^{p}\times U^{-} \right)   \) is a excisive couple of \(  \mathbb{S}^{p}\times \mathbb{S}^{q}  \). Since \(  U^{+ }\cap U^{-}  \)        can deformation retract to the equator of \(  \mathbb{S}^{q}  \), which is \(  \mathbb{S}^{q-1}  \), then  \(  A\cap B  \) can deformation retract to  \(  \mathbb{S}^{p}\times \mathbb{S}^{q-1}  \).    
+
+   \[\begin{array}{l}
+\cdots \xrightarrow{i^{\prime} _{*}}  H_{i+ 1}\left( \mathbb{S}^{p} \right)\oplus H_{i+ 1}\left( \mathbb{S}^{q} \right) \xrightarrow{j_*} H_{i+1}(\mathbb{S}^{p}\times \mathbb{S}^{q}) \xrightarrow{\partial} H_i(\mathbb{S}^{p}\times \mathbb{S}^{q-1}) \xrightarrow{i_*} H_i(\mathbb{S}^{p}) \oplus H_i(\mathbb{S}^{q})  \to \cdots 
+\end{array}
+\] THe following short exact sequence seperates \[
+0\to \operatorname{ker} \partial \xrightarrow{\iota }H_{i+ 1}\left( \mathbb{S}^{p}\times \mathbb{S}^{q} \right) \xrightarrow{ \partial } \operatorname{Im} \partial \to 0
+\]which is  \[
+0\to  \operatorname{Im}j_{*} \simeq \operatorname{Coker}j_{*}\xrightarrow{\iota }H_{i+ 1}\left( \mathbb{S}^{p}\times \mathbb{S}^{q} \right)\xrightarrow{ \partial }\operatorname{ker}i_{*}\to 0 
+\] where \(  \operatorname{Im}j_{*}\simeq  H_{i+ 1}\left( \mathbb{S}^{p} \right)\oplus H_{i+ 1}\left( \mathbb{S}^{q} \right)/\operatorname{Im}i^{\prime} _{*}    = \operatorname{Coker}i_{*}^{\prime} \) . Thus we have \[
+H_{i+ 1}\left( \mathbb{S}^{p}\times \mathbb{S}^{q} \right)\simeq \operatorname{ker}i_{*}\oplus \operatorname{Coker}i_{*}^{\prime}  
+\]
+\end{proof}
 \end{document}
