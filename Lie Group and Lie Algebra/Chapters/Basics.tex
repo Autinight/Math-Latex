@@ -182,7 +182,7 @@ $$\mathcal{D}|_U = \sum_{|\alpha| \le r} a_\alpha(x) \partial^\alpha$$
    \]称为是对密度的积分.
   \end{definition}
         
-  \begin{remark}
+-  \begin{remark}
     需要证明 \(  J  \)与紧支单位分解的选取无关.  
   \end{remark}
   
@@ -208,7 +208,7 @@ $$\mathcal{D}|_U = \sum_{|\alpha| \le r} a_\alpha(x) \partial^\alpha$$
 \end{remark}
 
 \begin{definition}{}{}
-  \(  M  \)是可定向的, 当且仅当 \(  M  \)上存在一个处处非零的 \(  m  \)- 形式.    
+  \(  M  \)是可定向的, 当且仅当 \(  M  \)上存 在一个处处非零的 \(  m  \)- 形式.    
 \end{definition}
 
 \begin{theorem}{}{}
@@ -217,4 +217,102 @@ $$\mathcal{D}|_U = \sum_{|\alpha| \le r} a_\alpha(x) \partial^\alpha$$
   \]
 \end{theorem}
 
+\section{映射与子流形}
+
+\begin{lemma}{}{}
+    设 \(  M,N  \)是 \(  C^{\infty}  \)流形, \(   \varphi :M\to N \)连续   . 若对于任意的\(  N  \)的开集 \(  V  \), 和 \(  g \in C^{\infty}\left( V \right)   \). \(  g\circ  \varphi \inC^{\infty}\left(  \varphi^{-1}\left( V \right)  \right)  \) . 则 \(   \varphi  \)是 \(  C^{\infty}  \)的.       
+\end{lemma}
+ 
+\begin{lemma}{}{}
+    对于 \(  y \in N  \)附近的两个 \(  C^{\infty}  \)函数 \(  g_1,g_2  \), 若 \(  g_1\sim_{y}g_2  \)(函数芽) . 则 \(  g_1\circ  \varphi\sim_{x}g_2\circ  \varphi  \).     
+\end{lemma}  
+
+\begin{definition}{拉回映射}{}
+    \(  M,N  , \varphi\)同前 . 则 \(   \varphi  \)诱导出线性  映射 \[
+     \begin{aligned}
+     \varphi ^{*}: C^{\infty}_{y}\left( N \right)&\to C^{\infty}_{x}\left( M \right)  \\ 
+      g\mapsto  g\circ  \varphi
+     \end{aligned}
+    \]称为是关于 \(   \varphi  \)的\dfntxt{拉回映射} 
+\end{definition}
+
+\begin{definition}{切映射}{}
+     \(  M,N  , \varphi\)同前. 则 \(   \varphi  \)诱导出对偶空间(微分算子空间)之间的映射 \[
+     \left( \,\mathrm{d} \varphi \right) _{*} : C^{\infty}_{x}\left( M \right)^{*}\toC^{\infty}_{ \varphi\left( x \right) }\left( N \right)^{*}  
+     \]  通过做限制得到映射 
+    \begin{enumerate}
+      \item \[
+      \left( \,\mathrm{d} \varphi \right)_{x}: T_{x}M\toT_{ \varphi\left( x \right) }N 
+      \]
+      \item \[
+      \left( \,\mathrm{d} \varphi \right)_{x}^{\left( \infty \right) } : C^{\infty}_{x}\left( M \right)^{*}\toC^{\infty}_{ \varphi\left( x \right) }\left( N \right)^{*}  
+      \]
+    \end{enumerate}
+    
+\end{definition}
+\begin{remark}
+    这里蕴含了一些事实
+    \begin{enumerate}
+      \item 如果 \(  X  \)是切向量, 则 \(  \left( \,\mathrm{d} \varphi \right)_{x}\left( X \right)    \)也是.   
+      \item \(   \varph^{-1*}\left( m_{y} \right)\subseteqm_{x}   \) , 从而 \(   \varph^{-1*}\left( m_{y}^{k} \right)\subseteq m_{x}^{k}   \). 
+      \item 若 \(  D  \)是一个 \(  r  \)阶微分表达式, \(  \left( \,\mathrm{d} \varphi \right)_{x}\left( D \right)    \)     也是 \(  r  \)阶微分表达式.  
+    \end{enumerate}
+    
+\end{remark}
+
+\begin{definition}{}{}
+    
+\(  M,N, \varphi  \)同前. 若 \(  X  \)是 \(  M  \)上的向量场.
+    若 \(  X \in \mathfrak{X}\left( M \right)   \), \(  Y \in \mathfrak{X}\left( N \right)   \)满足 \[
+    \forall_{x \inM} \left( \,\mathrm{d} \varphi \right)_{x}\left( X\left( x \right)  \right)=Y\left(  \varphi\left( x \right)  \right)   
+    \]  则称 \(  X  \)和 \(  Y  \)是 \(   \varphi  \)   -相关的. 
+\end{definition}
+
+\begin{lemma}{}{}
+     设 \(  D  \)是 \(  M  \)上的微分算子. \(  D: C^{\infty}\left( M \right)\to  C^{\infty}\left( M \right)    \) . 若 \(  \tilde{D}\in D\left( C^{\infty}\left( N \right)  \right)  \) . 则 \(  \tilde{D}: C^{\infty}\left( N \right)\to C^{\infty}\left( N \right)    \)
+\end{lemma}
+
+\begin{definition}{}{}
+    \(   \varphi:M\to N  \)诱导出映射 \[
+     \varphi ^{*}:  \Omega^{*}\left( N \right)\to \Omega^{*}\left( M \right)  
+    \] 
+\end{definition}
+
+
+\begin{definition}{}{}
+    设 \(  M,N , \varphi  \)同前. \(  \operatorname{dim}M=m, \operatorname{dim}=n  \). \(  r_{x}: =\operatorname{rank}\left( \,\mathrm{d} \varphi \right)_{x}   \). 
+    \begin{enumerate}
+      \item 若对于任意的 \(  x \in M  \), \(  r_{x}=n  \). 则称 \(   \varphi  \)是一个淹没(Submersion). 
+      \item 若对于任意的 \(  x \in M  \) , \(  r_{x} =m  \) . 则称 \(   \varphi  \)是一个浸入(immersion) .       
+    \end{enumerate}
+       
+\end{definition}
+
+\begin{proposition}{}{}
+    \begin{enumerate}
+      \item 若 \(   \varphi  \)是一个淹没, 则 \(  m\ge n  \). 且存在局部坐标系, 使得 \[
+     \tilde{\varphi}\left(  x^1,\cdots,x^m \right)=\left(  x^1,\cdots,x^n \right)  
+    \]
+    \item 若 \(   \varphi  \)是一个浸入, 则 \(  m\le n  \). 且存在局部坐标, 使得 \[
+     \tilde{\varphi}\left(  x^1,\cdots,x^m \right)=\left(  x^1,\cdots,x^n,0,\cdots,0 \right)  
+    \]  
+    \end{enumerate}
+      
+\end{proposition}
+
+
+\begin{definition}{}{}
+    设 \(  M,N  \)是拓扑流形. \(   \varphi:M\toN  \)是连续映射. 
+    \begin{enumerate}
+      \item 若对于任意的 \(  x \in M  \). 记 \(  y= \varphi\left( x \right)   \) . 存在 \(  x,y  \)附近的坐标卡 \(  \left( U, \varphi_{U}: U\to \tilde{U} \right), (V ,  \varphi_{v}:V\to \tilde{V})   \).使得\[
+       \tilde{\varphi}= \varphi_{V}\circ b\phi\circ  \varphi_{U}^{-1}: \tilde{U}\to \tilde{V}
+      \]是一个从 \(  \mathbb{R}^{m}  \)到 \(  \mathbb{R}^{n}  \)的投影. 则称 \(   \varphi  \)是一个拓扑淹没.         
+      \item 可以类似地定义出拓扑浸入. 
+    \end{enumerate}
+      
+\end{definition}
+
+\begin{definition}{}{}
+    设 \(  M  \)设 \(  C^{\infty}  \)流形. \(  N  \)是拓扑流形. 若 \(   \varphi: M\toN  \)是拓扑的淹没且满, 则存在唯一的 \(  C^{\infty}  \)结构, 使得 \(   \varphi  \)是一个 \(  C^{\infty}  \)淹没.        
+\end{definition}
 \end{document}
