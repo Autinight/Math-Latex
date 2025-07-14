@@ -162,6 +162,59 @@ $$\mathcal{D}|_U = \sum_{|\alpha| \le r} a_\alpha(x) \partial^\alpha$$
   \end{theorem}
 
   \section{积分}
+  
+设 \(  M  \)是流形, \(  \operatorname{dim}M =  m  \), \(   \omega   \)是 \(  M  \)上的一个 \(  m  \)-形式. \(  f \in C^{\infty}\left( M \right)   \). 
+  \begin{enumerate}
+    \item 取 \(  M  \)的一个图册 \(  \mathcal{U}= \left\{ \left( U_{\alpha } , \varphi _{\alpha }\right): \alpha \in A  \right\}  \). 
+    \item 取从属于 \(  \mathcal{U}  \)的一个紧支单位分解. \(  \Phi = \left\{  \varphi _{i}: i \in I \right\}  \)    
+    \item 则 \(  f = \sum _{i \in I}f\cdot  \varphi _{i}  \). 记 \(  f_{i}= f \varphi _{i}  \)  
+    \item 设 \(  \operatorname{supp} \varphi _{i}\subseteq U_{\alpha }  \) . 
+    \item   设 \(  V_{\alpha }  \)中的坐标为 \(  \left(  x^1,\cdots,x^n  \right)   \) , \(  f_{i}: U_{ \alpha }\to \mathbb{R}   \). 定义 \(  \tilde{f}_{i}= f_{i}\circ  \varphi _{\alpha }^{-1} : V_{\alpha }\to \mathbb{R}   \).  
+    \item  设 \(   \omega   \)在 \(  U_{\alpha }  \)上有表达式 \(   \omega  =  \omega _{\alpha }\left( x \right)\,\mathrm{d} x^{1}\wedge \cdots \wedge \,\mathrm{d} x^{m}   \)   . 
+  \end{enumerate}
+  \begin{definition}{对密度的积分}{}
+    
+  
+   定义 \[
+   J_{i}: =  \int_{U_{\alpha }} \tilde{f}_{i}\left( x \right)\left|  \omega _{\alpha }\left( x \right)  \right|\,\mathrm{d} x^{1}\cdots \,\mathrm{d} x^{n}  
+   \]定义 \[
+   J:= \int_{M}f\left|  \omega  \right|: =  \sum _{i \in I}J_{i} 
+   \]称为是对密度的积分.
+  \end{definition}
+        
+  \begin{remark}
+    需要证明 \(  J  \)与紧支单位分解的选取无关.  
+  \end{remark}
+  
+\begin{definition}{可定向性}{}
+  
+  对于流形 \(  M  \). 如果存在一个图册 \(  \left\{ U_{\alpha }: \alpha \in A \right\}  \)使得任意两个坐标卡的之间的转移函数的Jacobi行列式都是正的. 则称 \(  M  \)是\dfntxt{可定向}的.   
+  \begin{itemize}
+    \item  称这样的图册为\dfntxt{定向图册}
+    \item 若 \(  \mathcal{U_1}  \)和 \(  \mathcal{U_2}  \)是两个定向图册, 满足 \(  \mathcal{U}_{1}\cup  \mathcal{U}_{2}  \)还是定向图册,则称 \(  \mathcal{U}_{1}  \)和 \(  \mathcal{U}_{2}  \)是\dfntxt{定向相容}的.     
+  \end{itemize}
+  
+\end{definition}
 
+\begin{definition}{对形式的积分}{}
+若\(  M  \)还是可定向的,可以  定义 \[
+  J_{i}= \int_{U_{\alpha }} \tilde{f}_{i}\left( x \right) \omega _{\alpha }\left( x \right)\,\mathrm{d} x^{1}\cdots \,\mathrm{d} x^{n}  
+  \]定义 \[
+  J: = \int_{M}f  \omega : =   \sum _{\in I}J_{i}
+  \] 
+\end{definition}
+\begin{remark}
+  可以证明, \(  J  \)不依赖于与 \(  \mathcal{U}  \)定向相同的图册的选取.   
+\end{remark}
+
+\begin{definition}{}{}
+  \(  M  \)是可定向的, 当且仅当 \(  M  \)上存在一个处处非零的 \(  m  \)- 形式.    
+\end{definition}
+
+\begin{theorem}{}{}
+  设 \(  M  \)是可定向的带边流形, \(   \omega   \)是一个紧支的 \(  \left( m-1 \right)   \)   形式, 则 \[
+  \int_{M}\,\mathrm{d}  \omega = \int_{ \partial M} \omega 
+  \]
+\end{theorem}
 
 \end{document}
