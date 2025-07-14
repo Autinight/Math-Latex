@@ -1,0 +1,33 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Fisher-Kpp equations}
+
+\begin{definition}{}{}
+\[  \frac{\partial u}{\partial t}  =  \frac{\partial ^{2}u}{\partial x^{2}}+  u-u^{2}\]
+\end{definition}
+    \section{Deviration of Biological Model }
+    Denote by \(  K\left( x,y \right)= K\left( x-y \right)    \) the proportion of individuals travelling from \(  x  \)   to \(  y  \), where \(  K\ge 0  \) and is compatcly supported .  
+
+    \begin{note}
+        \begin{itemize}
+            \item $K(x, y)$ 代表了单位时间内, 从源位置 $y$ 移动到目标位置 $x$ 的个体的比率或比例.
+            \item 要计算所有从其他位置 $y$ 到达位置 $x$ 的个体总数, 我们需要对所有可能的源位置进行积分. 来自 $y$ 附近一个小区域的贡献是 $y$ 处的种群密度 $u(y, t)$ 与扩散核 $K(x, y)$ 的乘积.
+            \item $K \ge 0$: 这是一个物理上的必然要求. 移动的个体比例或速率不可能是负数.
+            \item 紧支撑 (Compactly supported):\begin{itemize}
+                \item 数学意义: 函数 $K(z)$ 在某个有界集之外恒为零. 在一维空间中, 这意味着存在一个最大的扩散距离 $R > 0$, 使得对于所有的 $|z| > R$, 都有 $K(z) = 0$.
+                \item 生物学意义: 这是一个非常符合现实的假设. 它意味着一个个体在单次扩散事件中只能移动有限的最大距离. 例如, 植物的种子只能被风带走那么远, 或者一个动物一天之内只能跑这么远. 这与标准的扩散模型 ($\frac{\partial^2 u}{\partial x^2}$) 形成了对比, 后者在数学上意味着个体有微小但非零的概率瞬间移动到任意远的地方.
+                
+            \end{itemize}
+            \item 4. 归一化 (Normalization)
+"proportion of individuals" (个体的比例) 这个措辞强烈暗示了一个归一化条件. 如果一个在位置 $y$ 的个体要移动, 它必须移动到某个地方. 因此, 如果我们将扩散核对所有可能的目标位置 $x$ 进行积分, 结果应该是其离开的总概率 (或总比率). 通常将其归一化为 1.
+$$\int_{-\infty}^{\infty} K(x, y) \,dx = 1 \quad \text{对于任意 } y$$
+利用均匀性假设, 我们可以令 $z = x-y$, 于是有 $dz = dx$. 该条件变得与 $y$ 无关:
+$$\int_{-\infty}^{\infty} K(z) \,dz = 1$$
+这意味着 $K$ 是一个描述扩散距离分布的概率密度函数 (probability density function).
+        \end{itemize}
+        
+    \end{note}
+
+\end{document}
