@@ -1,0 +1,121 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Introduction }
+\section{Arithmetic in   [0,infty]    } 
+\section{Metric Space}
+\begin{lemma}{}{}
+    \(  X  \) is a metric space, \(  x \in X  \), \(  B_1,B_2  \) are twos balls in \(  X  \). If \(  x  \in B_1\cap B_2  \) , then \(  x  \) is the center of an open ball \(  B\subseteq  B_1\cap B_2  \).       
+\end{lemma}
+\begin{proof}
+    We may assume that \(  B_1,B_2  \) have  different center. Let  \(  y_1\neq y_2  \), \[
+B_1= \left\{ x: d\left( x,y_1 \right)< r_1  \right\},\quad B_2= \left\{ x:d\left( x,y_2 \right)< r_2  \right\}
+\] 
+Take  \(  x \in B_1\cap B_2  \), we claim that there exists  \(  r_0> 0  \) such that  \(  B: =  \left\{ y: d\left( x,y \right)< r_0  \right\}\subseteq B_1\cap B_2  \). Otherwise , for all \(  r > 0 \),  there exists a point \(  y_{r}  \) such that   the following two hold at the same time \begin{enumerate}
+    \item \(  d\left( x,y_{r} \right)< r   \)
+    \item \(  d\left( y_{r},y_1 \right)\ge r_1   \) or \(  d\left( y_{r},y_2 \right)\ge r_2   \).   
+\end{enumerate}
+Thus \[
+d\left( x,y_1 \right)\ge d\left( y_{r},y_1 \right)-d\left( x,y_{r} \right)>  r_1-r   ,\quad  \text{or} \quad  d\left( x,y_2 \right)> r_2-r 
+\] The above shows that \[
+r> \min \left\{ r_1-d\left( x,y_1 \right),r_2-d\left( x,y_2 \right)   \right\},\quad \forall r> 0
+\] which is a contradiction.
+\end{proof}
+
+\section{Limits of Set Sequences}
+
+\begin{definition}{Limit Inferior and Limit Superior}{}
+    Let $\{A_n\}_{n=1}^\infty$ be a sequence of sets.
+    \begin{enumerate}
+        \item By the \dfntxt{Limit Inferior of the sequence}, we mean \[
+        \liminf_{n \to \infty} A_n = \bigcup_{N=1}^\infty \bigcap_{n=N}^\infty A_n = \left\{ x:  \exists N_0\in \mathbb{N} , \forall n> N_0,x \in A_{n}\right\}
+        \]
+        \item By the \dfntxt{Limit Superior of the sequence},we mean \[
+        \limsup_{n \to \infty} A_n = \bigcap_{N=1}^\infty \bigcup_{n=N}^\infty A_n =  \left\{ x: \forall N\in \mathbb{N} , \exists n\ge N, x\in A_{n} \right\}
+        \]
+    \end{enumerate}
+    
+\end{definition}
+\begin{note}
+    \begin{enumerate}
+        \item Limit Inferior包含那些“最终稳定下来”的元素，即从某个点之后就永远属于序列中所有后续集合的元素。
+        \item  Limit Superior 包含那些“反复出现”的元素，即在无限多个集合中出现的元素。
+    \end{enumerate}
+
+\end{note}
+
+\begin{proposition}{}{}
+    For any sequence of sets $\{A_n\}$, it always holds that:
+$$\liminf_{n \to \infty} A_n \subseteq \limsup_{n \to \infty} A_n$$
+\end{proposition}
+\begin{proofsketch}
+    直觉上是显然的,因为 “最终稳定下来”的元素一定会“反复出现”.
+\end{proofsketch}
+
+\begin{proof}
+    It is obvious by the \(  \left\{ x:x \in P \right\}  \) form representation of the Limit Inferior and Superior.
+\end{proof}
+
+\begin{definition}{Limit of a Set Sequence}{}
+    If the limit inferior and limit superior of a set sequence $\{A_n\}_{n=1}^\infty$ are equal, i.e., $\liminf_{n \to \infty} A_n = \limsup_{n \to \infty} A_n$, then we say the \dfntxt{limit} of the sequence exists, and it is defined as:
+$$\lim_{n \to \infty} A_n = \liminf_{n \to \infty} A_n = \limsup_{n \to \infty} A_n$$
+\end{definition}
+
+\begin{proposition}{}{}
+     Let $\{A_n\}_{n=1}^\infty$ be a sequence of sets.
+     \begin{enumerate}
+        \item If $\{A_n\}$ is an increasing sequence, then the limit of \(  \left\{ A_{n} \right\}   \) exists and \[
+        \lim_{n\to \infty}A_{n}= \bigcup _{n = 1}^{\infty}A_{n}
+        \]
+        \item If \(  \left\{ A_{n} \right\}  \) is a decreasing sequence, then the limit of \(  \left\{ A_{n} \right\}   \) exists and  \[
+        \lim_{n\to \infty}A_{n}= \bigcap_{n = 1}^{\infty}A_{n} 
+        \] 
+     \end{enumerate}
+     
+\end{proposition}
+\begin{proof}
+    \begin{enumerate}
+        \item If \(  \left\{ A_{n} \right\}  \) is increasing , then  \[
+        \bigcap_{n = N}^{\infty}A_{n}= A_{N} 
+        \]and\[ 
+       \bigcup _{n = N}^{\infty}A_{n}= \bigcup _{n =  1}^{\infty}A_{n},\forall N\in \mathbb{N} .
+        \] Thus \[
+        \liminf_{n \to \infty} A_n = \bigcup_{N=1}^\infty \bigcap_{n=N}^\infty A_n = \bigcup _{N = 1}^{\infty}A_{N}
+        \] and\[
+        \limsup_{n \to \infty} A_n = \bigcap_{N= 1}^{\infty}\bigcup _{n = N}^{\infty}A_{n}=  \bigcap_{N = 1}^{\infty} \bigcup _{n = 1}^{\infty}A_{n}=  \bigcup _{n = 1}^{\infty}A_{n}  
+        \]which are the same.
+        \item If \(  \left\{ A_{n} \right\}  \) is decreasing, then \[
+        \bigcap_{n = N}^{\infty}A_{n}= \bigcap_{n = 1}^{\infty}A_{n}  
+        \] and \[
+        \bigcup _{n = N}^{\infty}A_{n}= A_{N}
+        \]Thus  \[
+        \liminf_{n \to \infty} A_n = \bigcup_{N=1}^\infty \bigcap_{n=N}^\infty A_n = \bigcup _{N = 1}^{\infty}\bigcap_{n = 1}^{\infty}A_{n}= \bigcap_{n = 1}^{\infty}A_{n}  
+        \] and\[
+        \limsup_{n \to \infty} A_n = \bigcap_{N= 1}^{\infty}\bigcup _{n = N}^{\infty}A_{n}= \bigcap_{N = 1}^{\infty}A_{N}   
+        \]which are the same.
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{proposition}{}{}
+    For a sequence of sets $\{A_n\}_{n=1}^\infty$ and their corresponding sequence of indicator functions $\{\chi_{A_n}(x)\}_{n=1}^\infty$:
+    \begin{itemize}
+        \item 
+$\chi_{\liminf_{n \to \infty} A_n}(x) = \liminf_{n \to \infty} \chi_{A_n}(x)$
+\item $\chi_{\limsup_{n \to \infty} A_n}(x) = \limsup_{n \to \infty} \chi_{A_n}(x)$
+\item  $\lim_{n \to \infty} A_n$ exists, then
+$\chi_{\lim_{n \to \infty} A_n}(x) = \lim_{n \to \infty} \chi_{A_n}(x)$
+    \end{itemize}
+    
+\end{proposition}
+\begin{proofsketch}
+    \begin{itemize}
+        \item 若 \(  x  \)在limit inferior 里面,则\(  x  \)是“最终稳定”的, \(  \chi _{A_{n}}\left( x \right)   \)是关于 \(  n  \) “最终”恒为1的.
+        \item 若 \(  x  \)在 limit superior里面,则 \(  x  \)是  “反复出现”的,即相当于 \(  N  \)多大,总会出现之后的某个 \(  n  \)使得 \(  \chi _{A_{n}}\left( x \right)= 1   \).
+        \item 当极限存在时,函数列 \(  \left\{ \chi _{A_{n}}\left( x \right)  \right\}_{n = 1}^{\infty}  \)的limit inferior 和 supperior根据上两条相等,等于极限集合的 \(  \chi   \). 
+    \end{itemize}
+    
+\end{proofsketch}
+
+\end{document}

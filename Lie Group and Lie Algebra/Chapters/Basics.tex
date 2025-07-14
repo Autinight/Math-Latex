@@ -1,0 +1,167 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Basics}
+
+\section{单位分解}
+
+\begin{theorem}{单位分解的存在性}{}
+    设 \(  M  \)是一个流形, \(  \mathscr{U}= \left\{ U_{\alpha }: \alpha \in A \right\}  \)是\(  M  \)   的一个开覆盖, 则
+    \begin{enumerate}
+        \item 存在从属于 \(  \mathscr{U}  \)的单位分解 \(  \Phi  = \left\{  \varphi _{i}: i \in I \right\}  \)且 \(  I  \)是至多可数的, \(  \operatorname{supp} \varphi _{i}  \)是紧的. 
+        \item     存在从属于 \(  \mathscr{U}  \)的具有相同指标集的单位分解 \(  \Phi = \left\{  \varphi _{\alpha } :\alpha \in A\right\}  \), 且至多可数多个 \(   \varphi _{\alpha }\neq 0  \).      
+        \item 如果 \(  \mathscr{U}  \)局部有限, 且 \(  \overline{U_{\alpha }}  \)是紧的. 则存在从属于 \(  \mathscr{U}  \)的具有相同指标集的单位分解 \(  \Phi = \left\{ \phi _{\alpha }: \alpha \in A \right\}  \)    且 \(  \operatorname{supp} \varphi _{\alpha }  \)是紧的.  \footnote{由于紧急的闭子集是紧的,所以第三条可以有第二条简单地导出. }
+    \end{enumerate}
+    
+\end{theorem}
+
+
+\begin{corollary}{}{}
+    设 \(  M  \)是一个流形, \(  D\subseteq M  \)是闭集,  \(  U\subseteq M  \)是 \(  D  \)的一个开邻域. 则存在 \(  f \in C^{\infty}\left( M \right)   \), 使得 \(  \left. f \right|_{D} \equiv 1  \), 且 \(  \operatorname{supp}f \subseteq U  \).       
+\end{corollary}
+
+\begin{proof}
+    考虑 \(  M  \)的 一个特殊的开覆盖,  \(  \left\{ U, M\setminus D \right\}  \). 对它应用上面定理的第二种情况即可. 
+\end{proof}
+
+\section{向量场和微分算子}
+
+\begin{definition}{}{}
+\begin{enumerate}
+    \item 设 \(  M  \)是一个流形, \(  p \in M  \) . 若 \(  f,g \in C^{\infty}\left( M \right)   \)满足, 存在 \(  p  \)的开邻域 \(  U  \), 使得 \(  \left. f \right|_{U} =  \left. g \right|_{U}  \), 则称 \(  f  \)和 \(  g  \)在 \(  p  \)附近等价. 
+    \item 称 \(  C^{\infty}\left( M \right)/ \sim    \)为 \(  p  \)附近的函数芽, 记作 \(  C^{\infty}_{p}\left( U \right)   \) . 
+    \item 对于 \(  f\in C^{\infty}_{p}\left( M \right)   \), 它的芽记作 \(  [f] \in C^{\infty}_{p}\left( M \right)   \)    
+\end{enumerate}
+
+\end{definition}
+
+在欧式空间上, 光滑函数有展开式
+\[
+f\left( x \right)= f\left( x_0 \right)+ \sum _{i= 1}^{m} \frac{\partial f}{\partial x^{i}}  \left( x-x_0 \right)^{i} + \sum _{i,j= 1}^{m}\frac{1 }{2 }\frac{\partial ^{2}f}{\partial x^{i} \partial x^{j}}\left( x_0 \right)\left( x-x_0 \right)^{i}\left( x-x_0 \right)^{j}+ O\left( \left\| x-x_0 \right\|^{2} \right)      
+\]
+
+\[
+    D =  C\left( x \right)+ \sum _{i= 1}^{m}a_{i}\left( x \right)\frac{\partial }{\partial x^{i}}+ \sum _{i,j= 1}^{m}\frac{1 }{2 }b_{ij}\left( x \right)\frac{\partial ^{2}}{\partial x^{i} \partial x^{j}}    
+    \]
+
+    \begin{definition}{}{}
+        令\(  m_{p}= \left\{ f\in C^{\infty}_{p}\left( M \right):f\left( p \right)= 0   \right\}  \), 则 \(  m_{p}  \)是 \(  C^{\infty}_{p}\left( M \right)   \)的一个极大理想. 特别地, \(  m_{p}^{k}  \)也是 \(  C^{\infty}_{p}\left( M \right)   \)的理想.      
+    \end{definition}
+    则 \(  f  \)的 展开式的第二项和第三项分别视作 \(  m_{p}  \)和 \(  m_{p}^{2}  \)  中的元素.
+
+    \begin{definition}{Differential Expression of Order \(  r  \) }{}
+      \begin{enumerate}
+        \item  一个 \(  r  \)阶 微分表达式, 是指一个线性函数 \(  D: C^{\infty}_{p}\left( M \right)\to \mathbb{R}    \) 满足 \(  D\left( m_{p}^{r+ 1} \right)= 0   \).  
+        \item 全体 \(  p  \)处的 \(  r \)阶微分表达式记作 \(  T_{p}^{\left( r \right) }\left( M \right)   \)
+        \item 定义 \(  T_{p}^{\left( \infty \right) }\left( M \right)= \bigcup _{r \ge 0} T_{p}^{\left( r \right) }\left( M \right)    \)    
+      \end{enumerate}
+      
+    \end{definition}
+
+
+    在这个定义下, 当 \(  r = 2 \)时, \[
+  \begin{aligned}
+    D\left( f\left( x \right)  \right)&= D\left( f\left( x_0 \right)+ \sum   \frac{\partial f}{\partial x^{i}}\left( x-x_0 \right)^{i}+ \sum \frac{1 }{2 } \frac{\partial ^{2}f}{\partial x^{i}\partial x^{j}  } \left( x-x_0 \right)^{i}\left( x-x_0 \right)^{j}   \right)   \\ 
+     &= D\left( f\left( x_0 \right)  \right)+  \sum _{i} \frac{\partial f}{\partial x^{i}}\left( x_0 \right)D\left( \left( x-x_0 \right)^{i}  \right) + \sum _{i,j}\frac{1 }{2 }\frac{\partial ^{2}f    }{\partial x^{i} \partial x^{j}}   \left( x_0 \right)D\left( \left( x-x_0 \right)^{i}\left( x-x_0 \right)^{j}   \right)  \\ 
+      &=: c f\left( x_0 \right)+ \sum _{i}a_{i}\frac{\partial f}{\partial x^{i}}\left( x_0 \right)+   \sum _{i,j}\frac{1 }{2 }b_{ij}\frac{\partial ^{2}f}{\partial x^{i} \partial x^{j}}\left( x_0 \right)   
+  \end{aligned}
+    \]其中 \(  c,a_{i},b_{i,j}  \)均为常数. 
+
+    \begin{definition}{切向量}{}
+       \begin{enumerate}
+        \item  对于一个\(  1  \)阶微分表达式 \(  X  \), 若它满足 \[
+        X\left( f\cdot g \right) =  X\left( f \right)\cdot g\left( x_0 \right)+ f\left( x_0 \right)X\left( g \right)     
+        \]则称 \(  X  \)为 \(  p  \)处的一个切向量.    
+
+        具体地,  \[
+        X\left( f \right)= \sum _{i= 1}^{m}a_{i}\frac{\partial f}{\partial x^{i}}\left( x_0 \right)  
+        \]
+        \item 记 \(  T_{p}\left( M \right)   \)为 \(  p  \)处全体切向量构成的线性空间. 则 \(  T_{p}\left( M \right)\simeq \mathbb{R} ^{m}   \).  \(   \partial _{i}: =  \frac{\partial }{\partial x^{i}}  \)构成 \(  T_{p}\left( M \right)   \)的基.      
+       \end{enumerate}
+       
+    \end{definition}
+   
+    让 \(  p \in U  \)在 \(  U  \)上可变 \(  \iff   \) \(  x \in V  \) 跑起来.   则 \(  X =  \sum a^{i}\left( x \right)\frac{\partial }{\partial x^{i}}   \), \(  a^{i} \in C^{\infty}\left( u \right)   \).   
+    
+    \begin{definition}{多重指标}{}
+      \begin{itemize}
+        \item   一个多重指标 \(  \alpha   \)是指 \(  \alpha = \left( \alpha _1 ,\cdots  , \alpha _{m} \right)   \) , \(  \alpha _{i} \in \mathbb{N}   \). 定义 \(  \alpha   \)的长度为 \(  \left| \alpha  \right|= \alpha _1 + \cdots + \alpha _{m}   \)
+        \item 定义记号 \[
+         \partial ^{\alpha } : =  \left( \frac{\partial }{\partial x^{1}} \right) ^{\alpha _1 }\cdots \left( \frac{\partial }{\partial x^{m}} \right)^{\alpha _{m}} 
+        \]
+      \end{itemize}
+           
+    \end{definition}
+    
+    \begin{proposition}{}{}
+        \(  T_{p}^{\left( r \right) }\left( M \right)   \)的一组基为 \(  \left\{  \partial ^{\alpha }: \left| \alpha  \right|\le r  \right\}  \)  
+    \end{proposition}
+
+    \begin{definition}{}{}
+        一个线性映射 $\mathcal{D}: C^\infty(M) \to C^\infty(M)$ 是一个阶数至多为 r 的微分算子，如果对于流形 $M$ 上的任意一个局部坐标图 $(U, x^1, \dots, x^m)$，算子在 $U$ 上的限制 $\mathcal{D}|_U$ 都可以表示为：
+$$\mathcal{D}|_U = \sum_{|\alpha| \le r} a_\alpha(x) \partial^\alpha$$
+其中：
+\begin{itemize}
+    \item $\alpha = (\alpha_1, \dots, \alpha_m)$ 是多重指标.
+    \item $\partial^\alpha = \frac{\partial^{|\alpha|}}{(\partial x^1)^{\alpha_1} \cdots (\partial x^m)^{\alpha_m}}$ 是偏微分.
+    \item 
+每一个系数 $a_\alpha(x)$ 都是定义在 $U$ 上的光滑函数，即 $a_\alpha \in C^\infty(U)$.
+\end{itemize}
+
+
+
+    \end{definition}
+    
+    \begin{definition}{}{}
+       \begin{itemize}
+        \item  开集 \(  U  \)上的切向量的全体记作 \(  \mathfrak{X}\left( U \right)   \)  .  
+        \item  开集 \(  U  \)上的微分算子的全体记作 \(  D\left( U\right)   \)  
+       \end{itemize}
+       
+    \end{definition}
+ \begin{remark}
+    \(  D\left( U \right)   \)上按算子的复合, 可以定义出自然的乘法. 它是结合但不交换的.  
+ \end{remark}
+
+  \begin{definition}{}{}
+    \(  \mathfrak{X}\left( U \right)   \)上有Lie括号 \[
+   \begin{aligned}
+   \left[  ,  \right]   : \mathfrak{X}\left( U \right)\times \mathfrak{X}\left( U \right)&\to \mathfrak{X}\left( U \right)\\ 
+     \left[ X,Y \right]&:=  XY-YX     
+   \end{aligned}
+    \] 
+  \end{definition}
+
+  \begin{proposition}{}{}
+    \begin{itemize}
+        \item \(  C^{\infty}\left( U \right)   \)是交换结合的 \(  \mathbb{R}   \)-代数. 
+        \item \(  \mathfrak{X}\left( U \right)   \)和 \(  D\left( U \right)   \)都是 \(  C^{\infty}\left( U \right)  \)模     
+    \end{itemize}
+    
+  \end{proposition}
+
+  \begin{proposition}{}{}
+    若 \(  D_1  \)是 \(  r_1  \)阶的微分算子, \(  D_2  \)是 \(  r_2  \)阶的微分算子, 则 \begin{itemize}
+        \item \(  D_1\cdot D_2  \)的阶数 \(  \le r_1+ r_2   \).        
+        \item \(  D_1D_2-D_2D_1  \)的阶数 \(  \le r_1+ r_2-1  \)  
+    \end{itemize}
+    
+  \end{proposition}
+
+  \begin{theorem}{}{}
+     设 \(  M  \)是一个流形, \(  \operatorname{dim} M = m  \) .  \(  X_1,\cdots ,X_{m}\in \mathfrak{X}\left( M \right)   \)  满足对于任意的 \(  p \in M  \). \(  X_1\left( p \right), X_2\left( p \right),\cdots , X_{m}\left( p \right)     \)构成 \(  T_{p}\left( M \right)   \)的一组基\footnote{即 \(  M  \)是一个可平行化的流形 }.    记 \(  X^{\alpha }= X_1^{\alpha _1 }\cdots X_{m}^{\alpha _{m}}  \). 则
+   \begin{itemize}
+    \item    \(  \forall p \in M  \) , \(  \left\{ X_{\left( p \right) }^{\alpha } :\left| \alpha  \right|\le r \right\}  \)构成 \(  T_{p}^{\left( r \right) }\left( M \right)   \)的基.   
+    \item 等价地说, \(  \left\{ X^{\alpha }: \alpha = \left( \alpha _1 ,\cdots ,\alpha _{m} \right)  \right\}  \)构成 \(  D\left( M \right)   \)的   作为 \(  C^{\infty}\left( M \right)   \)模的基.  
+    \item 此时, \(  D  \)可以写作 \[
+    D= \sum  a_{\alpha }X^{\alpha } ,\quad a_{\alpha }\in C^{\infty}\left( M \right) 
+    \] 
+   \end{itemize}
+   
+  \end{theorem}
+
+  \section{积分}
+
+
+\end{document}
