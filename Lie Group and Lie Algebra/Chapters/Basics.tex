@@ -312,7 +312,58 @@ $$\mathcal{D}|_U = \sum_{|\alpha| \le r} a_\alpha(x) \partial^\alpha$$
       
 \end{definition}
 
+\begin{theorem}{}{}
+   设 \(  M  \)设 \(  C^{\infty}  \)流形. \(  N  \)是拓扑流形. 若 \(   \varphi: M\to N  \)是拓扑的淹没且满, 则存在唯一的 \(  C^{\infty}  \)结构, 使得 \(   \varphi  \)是一个 \(  C^{\infty}  \)淹没.  
+\end{theorem}
+
 \begin{definition}{}{}
-    设 \(  M  \)设 \(  C^{\infty}  \)流形. \(  N  \)是拓扑流形. 若 \(   \varphi: M\to N  \)是拓扑的淹没且满, 则存在唯一的 \(  C^{\infty}  \)结构, 使得 \(   \varphi  \)是一个 \(  C^{\infty}  \)淹没.        
+  设 \(   \varphi   :M\to N\)是一个浸入. 
+  \begin{enumerate}
+    \item 若 \(   \varphi   \)是单的, 则称 \(   \varphi   \)是一个\dfntxt{嵌入}. 
+    \item 若 \(   \varphi   \)是嵌入, 且 \(   \varphi _{M}: M\to  \varphi \left( M \right)   \)    是同胚. 则称 \(   \varphi   \)是一个\dfntxt{正则嵌入. } 
+  \end{enumerate}
+   
 \end{definition}
+
+\begin{theorem}{正则嵌入的水平集刻画}{}
+  设 \(   \varphi :M\to N  \)是正则嵌入. 则对于 \(  y \in  \varphi \left( M \right)   \). 存在 \(  y  \)在 \(  N  \)中的开邻域 \(  V  \), 以及 \(  V  \)上的\(  C^{\infty}  \)映射 \(  F: V\to \mathbb{R}   ^{n-m}\). 使得  \(   \varphi \left( M \right)\cap V= \left\{ z\in V: F\left( z \right)= 0  \right\}   \)          
+\end{theorem}
+
+\begin{theorem}{正则嵌入的参数刻画}{}
+  对于 \(  x \in M , y =  \varphi \left( x \right)\in  \varphi \left( M \right)   \). 存在 \(  x  \)在 \(  M  \)中的开邻域 \(  U  \), \(  y  \)在 \(  N  \)中的开邻域 \(  V  \). 使得 \(   \varphi \left( U \right)=  \varphi \left( M \right)\cap V    \).         
+\end{theorem}
+
+\begin{theorem}{}{}
+  设 \(  P  \)是任一 \(  C^{\infty}  \)流形.  \(   \varphi :M\to N  \)是正则嵌入.   \(  u: P\to M  \)是任一映射. 则 \[
+ u \text{是} C^{\infty}\text{的} \iff   \varphi \circ u:P\to N \text{是} C^{\infty} \text{的}. 
+  \]   
+\end{theorem}
+
+\begin{definition}{}{}
+  若 \(   \varphi :M\to N  \)是嵌入且满足\[
+ u \text{是} C^{\infty}\text{的} \iff   \varphi \circ u:P\to N \text{是} C^{\infty} \text{的}. 
+  \]    则称 \(   \varphi   \)是\dfntxt{拟正则嵌入} .   
+\end{definition}
+
+\begin{definition}{}{}
+  设 \(  N  \)是一个 \(  C^{\infty}  \)流形.  \(  M\subseteq N  \). 若 \(  i: M\to N  \)是嵌入. 则称 \(  M  \)是 \(  N  \)的子流形. 若 \(  i  \)还是正则或拟正则的. 则称 \(  M  \)是 \(  N  \)的正则或拟正则子流形.          
+\end{definition}
+
+\begin{theorem}{正则值}{}
+  设 \(  M,N  \)是 \(  C^{\infty}  \)流形. \(   \varphi :M\to N  \)是 \(  C^{\infty}  \)映射. 对于 \(  y \in N  \). 记 \(  M^{\prime} =  \varphi ^{-1} \left( y \right)   \) . 若对任一的 \(  x \in M^{\prime}   \). \(  \operatorname{rank}\left( \,\mathrm{d}  \varphi  \right)_{x}= n   \). 则 \(  M^{\prime}   \)是 \(  M  \)的一个正则子流形, 维数为 \(  m-n  \).   这样的 \(  y  \)叫 \(   \varphi   \)的一个正则值.            
+\end{theorem}
+
+\begin{example}{}{}
+  \begin{enumerate}
+    \item \(  \mathrm{Mat}\left( n,\mathbb{R}  \right)\simeq \mathbb{R} ^{2}   \)是\(  n^{2}  \)维流形.  
+    \item \(  \operatorname{GL} \left( n,\mathbb{R}  \right)= \left\{ M\in \mathrm{Mat}\left( n,\mathbb{R}  \right):\det M\neq 0  \right\}   \)作为 \(  \mathrm{Mat}\left( n,\mathbb{R}  \right)   \)的一个开子集也是一个\(  n^{2}  \)维流形.    
+    \item  \(  \mathrm{SL}\left( n,\mathbb{R}  \right)= \left( M\in \mathrm{Mat}\left( n,\mathbb{R}  \right)  \right):\det M= 1    \)   \[
+    \begin{aligned}
+    \det : \mathrm{Mat}\left( n,\mathbb{R}  \right)&\to \mathbb{R} \\ 
+     M&\mapsto \det M  
+    \end{aligned}
+    \]  \(  SL  \left( n,\mathbb{R}  \right)= \det ^{-1} \left( I \right)  \). 取一个 \(  M \in \mathrm{Mat}\left( n,\mathbb{R}  \right)   \), \(  \det M= 1  \). 要证明 \(  \left( \,\mathrm{d} \left( \det  \right)  \right)_{M}: \mathbb{R} ^{n^{2}}\to \mathbb{R}    \)   
+  \end{enumerate}
+  
+\end{example}
 \end{document}
