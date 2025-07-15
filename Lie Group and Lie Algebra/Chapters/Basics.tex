@@ -220,7 +220,7 @@ $$\mathcal{D}|_U = \sum_{|\alpha| \le r} a_\alpha(x) \partial^\alpha$$
 \section{映射与子流形}
 
 \begin{lemma}{}{}
-    设 \(  M,N  \)是 \(  C^{\infty}  \)流形, \(   \varphi :M\to N \)连续   . 若对于任意的\(  N  \)的开集 \(  V  \), 和 \(  g \in C^{\infty}\left( V \right)   \). \(  g\circ  \varphi \inC^{\infty}\left(  \varphi^{-1}\left( V \right)  \right)  \) . 则 \(   \varphi  \)是 \(  C^{\infty}  \)的.       
+    设 \(  M,N  \)是 \(  C^{\infty}  \)流形, \(   \varphi :M\to N \)连续   . 若对于任意的\(  N  \)的开集 \(  V  \), 和 \(  g \in C^{\infty}\left( V \right)   \). \(  g\circ  \varphi \in C^{\infty}\left(  \varphi^{-1}\left( V \right)  \right)  \) . 则 \(   \varphi  \)是 \(  C^{\infty}  \)的.       
 \end{lemma}
  
 \begin{lemma}{}{}
@@ -238,14 +238,14 @@ $$\mathcal{D}|_U = \sum_{|\alpha| \le r} a_\alpha(x) \partial^\alpha$$
 
 \begin{definition}{切映射}{}
      \(  M,N  , \varphi\)同前. 则 \(   \varphi  \)诱导出对偶空间(微分算子空间)之间的映射 \[
-     \left( \,\mathrm{d} \varphi \right) _{*} : C^{\infty}_{x}\left( M \right)^{*}\toC^{\infty}_{ \varphi\left( x \right) }\left( N \right)^{*}  
+     \left( \,\mathrm{d} \varphi \right) _{*} : C^{\infty}_{x}\left( M \right)^{*}\to C^{\infty}_{ \varphi\left( x \right) }\left( N \right)^{*}  
      \]  通过做限制得到映射 
     \begin{enumerate}
       \item \[
-      \left( \,\mathrm{d} \varphi \right)_{x}: T_{x}M\toT_{ \varphi\left( x \right) }N 
+      \left( \,\mathrm{d} \varphi \right)_{x}: T_{x}M\to T_{ \varphi\left( x \right) }N 
       \]
       \item \[
-      \left( \,\mathrm{d} \varphi \right)_{x}^{\left( \infty \right) } : C^{\infty}_{x}\left( M \right)^{*}\toC^{\infty}_{ \varphi\left( x \right) }\left( N \right)^{*}  
+      \left( \,\mathrm{d} \varphi \right)_{x}^{\left( \infty \right) } : C^{\infty}_{x}\left( M \right)^{*}\to C^{\infty}_{ \varphi\left( x \right) }\left( N \right)^{*}  
       \]
     \end{enumerate}
     
@@ -254,7 +254,7 @@ $$\mathcal{D}|_U = \sum_{|\alpha| \le r} a_\alpha(x) \partial^\alpha$$
     这里蕴含了一些事实
     \begin{enumerate}
       \item 如果 \(  X  \)是切向量, 则 \(  \left( \,\mathrm{d} \varphi \right)_{x}\left( X \right)    \)也是.   
-      \item \(   \varph^{-1*}\left( m_{y} \right)\subseteqm_{x}   \) , 从而 \(   \varph^{-1*}\left( m_{y}^{k} \right)\subseteq m_{x}^{k}   \). 
+      \item \(   \varphi^{-1*}\left( m_{y} \right)\subseteq m_{x}   \) , 从而 \(   \varphi^{-1*}\left( m_{y}^{k} \right)\subseteq m_{x}^{k}   \). 
       \item 若 \(  D  \)是一个 \(  r  \)阶微分表达式, \(  \left( \,\mathrm{d} \varphi \right)_{x}\left( D \right)    \)     也是 \(  r  \)阶微分表达式.  
     \end{enumerate}
     
@@ -264,7 +264,7 @@ $$\mathcal{D}|_U = \sum_{|\alpha| \le r} a_\alpha(x) \partial^\alpha$$
     
 \(  M,N, \varphi  \)同前. 若 \(  X  \)是 \(  M  \)上的向量场.
     若 \(  X \in \mathfrak{X}\left( M \right)   \), \(  Y \in \mathfrak{X}\left( N \right)   \)满足 \[
-    \forall_{x \inM} \left( \,\mathrm{d} \varphi \right)_{x}\left( X\left( x \right)  \right)=Y\left(  \varphi\left( x \right)  \right)   
+    \forall_{x \in M} \left( \,\mathrm{d} \varphi \right)_{x}\left( X\left( x \right)  \right)=Y\left(  \varphi\left( x \right)  \right)   
     \]  则称 \(  X  \)和 \(  Y  \)是 \(   \varphi  \)   -相关的. 
 \end{definition}
 
@@ -302,7 +302,7 @@ $$\mathcal{D}|_U = \sum_{|\alpha| \le r} a_\alpha(x) \partial^\alpha$$
 
 
 \begin{definition}{}{}
-    设 \(  M,N  \)是拓扑流形. \(   \varphi:M\toN  \)是连续映射. 
+    设 \(  M,N  \)是拓扑流形. \(   \varphi:M\to N  \)是连续映射. 
     \begin{enumerate}
       \item 若对于任意的 \(  x \in M  \). 记 \(  y= \varphi\left( x \right)   \) . 存在 \(  x,y  \)附近的坐标卡 \(  \left( U, \varphi_{U}: U\to \tilde{U} \right), (V ,  \varphi_{v}:V\to \tilde{V})   \).使得\[
        \tilde{\varphi}= \varphi_{V}\circ b\phi\circ  \varphi_{U}^{-1}: \tilde{U}\to \tilde{V}
@@ -313,6 +313,6 @@ $$\mathcal{D}|_U = \sum_{|\alpha| \le r} a_\alpha(x) \partial^\alpha$$
 \end{definition}
 
 \begin{definition}{}{}
-    设 \(  M  \)设 \(  C^{\infty}  \)流形. \(  N  \)是拓扑流形. 若 \(   \varphi: M\toN  \)是拓扑的淹没且满, 则存在唯一的 \(  C^{\infty}  \)结构, 使得 \(   \varphi  \)是一个 \(  C^{\infty}  \)淹没.        
+    设 \(  M  \)设 \(  C^{\infty}  \)流形. \(  N  \)是拓扑流形. 若 \(   \varphi: M\to N  \)是拓扑的淹没且满, 则存在唯一的 \(  C^{\infty}  \)结构, 使得 \(   \varphi  \)是一个 \(  C^{\infty}  \)淹没.        
 \end{definition}
 \end{document}
