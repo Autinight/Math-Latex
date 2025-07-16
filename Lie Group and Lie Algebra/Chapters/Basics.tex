@@ -352,7 +352,14 @@ $$\mathcal{D}|_U = \sum_{|\alpha| \le r} a_\alpha(x) \partial^\alpha$$
 \begin{theorem}{正则值}{}
   设 \(  M,N  \)是 \(  C^{\infty}  \)流形. \(   \varphi :M\to N  \)是 \(  C^{\infty}  \)映射. 对于 \(  y \in N  \). 记 \(  M^{\prime} =  \varphi ^{-1} \left( y \right)   \) . 若对任一的 \(  x \in M^{\prime}   \). \(  \operatorname{rank}\left( \,\mathrm{d}  \varphi  \right)_{x}= n   \). 则 \(  M^{\prime}   \)是 \(  M  \)的一个正则子流形, 维数为 \(  m-n  \).   这样的 \(  y  \)叫 \(   \varphi   \)的一个正则值.            
 \end{theorem}
-
+\begin{note}
+  \begin{itemize}
+    \item \(  m-n  \)衡量的是 \(  M  \)上 有多少维数的信息, 在通过\(   \varphi   \)映射的过程中被压缩掉了. 
+    \item  \(  y  \)的正则性, 体现在它的“来源信息”在 \(  M  \)上是光滑的. 
+    \item 正则值 \(  y  \)给出的正则子流形 \(  M^{\prime}   \), 就是 \(  M  \)上那些在映射 \(   \varphi   \)下被压缩成 \(  y  \)的信息构成的子流形.        
+  \end{itemize}
+  
+\end{note}
 \begin{example}{}{}
   \begin{enumerate}
     \item \(  \mathrm{Mat}\left( n,\mathbb{R}  \right)\simeq \mathbb{R} ^{2}   \)是\(  n^{2}  \)维流形.  
@@ -362,7 +369,23 @@ $$\mathcal{D}|_U = \sum_{|\alpha| \le r} a_\alpha(x) \partial^\alpha$$
     \det : \mathrm{Mat}\left( n,\mathbb{R}  \right)&\to \mathbb{R} \\ 
      M&\mapsto \det M  
     \end{aligned}
-    \]  \(  SL  \left( n,\mathbb{R}  \right)= \det ^{-1} \left( I \right)  \). 取一个 \(  M \in \mathrm{Mat}\left( n,\mathbb{R}  \right)   \), \(  \det M= 1  \). 要证明 \(  \left( \,\mathrm{d} \left( \det  \right)  \right)_{M}: \mathbb{R} ^{n^{2}}\to \mathbb{R}    \)   
+    \]  \(  SL  \left( n,\mathbb{R}  \right)= \det ^{-1} \left( I \right)  \). 取一个 \(  M \in \mathrm{Mat}\left( n,\mathbb{R}  \right)   \), \(  \det M= 1  \). 要证明 \(  \left( \,\mathrm{d} \left( \det  \right)  \right)_{M}: \mathbb{R} ^{n^{2}}\to \mathbb{R}    \)   . 按分量求偏导,得到 \[
+    \frac{\partial }{\partial a_{ij}} \left( \det M \right)=  A_{ij}(\text{代数余子式})  
+    \]由于 \(  \det M= 1  \).  至少有一个 \(  A_{ij}\neq 0  \). 从而  \(  \left( \,\mathrm{d} \left( \det  \right)  \right)_{M}   \)是满的. 
+  \item 定义 \(  P: \mathrm{Mat}\left( n,\mathbb{R}  \right)\to  \mathrm{SMat}\left( n,\mathbb{R}  \right)(\text{对称矩阵}) \simeq \mathbb{R} ^{\frac{n\left( n+ 1 \right)  }{2 } }   \) .  \[
+  P\left( A \right): = A^{\top}A 
+  \]则 \(  O\left( n,\mathbb{R}  \right)= P^{-1} \left( I \right)   \) . 对于 \(  A \in O\left( n,\mathbb{R}  \right)   \). \[
+  \left( \,\mathrm{d} P \right)_{A}: \mathrm{Mat}\left( n,\mathbb{R}  \right)\to \mathrm{SMat}\left( n,\mathbb{R}  \right)   
+  \]与上例不同, 这里用分量的形式去计算 Jacobi是看不清楚的, 不过由于 \(  P  \)本身足够简单, 我们可以用微分最原始的含义来观察. 考虑  \[
+  P\left( A+  \varepsilon B \right)-P\left( A \right)=  \varepsilon \left( \,\mathrm{d} P \right)_{A}\left( B \right)+ O\left(  \cdots   \right)     
+  \]带入得到 \[
+  \left( A^{T}+  \varepsilon B^{T} \right)\left( A+  \varepsilon B \right)-A^{\top}A=    \varepsilon \left(B^{\top}A+ A^{\top}B \right)+ O\left(  \varepsilon  \right)  
+  \]于是 \(  \left( \,\mathrm{d} P \right)_{A}   \left( B \right)= B ^{\top}A+ A^{\top}B\) . 只需要证明这个关于 \(  B  \)的映射是满的. 为此, 解方程 \[
+  A^{\top}B+ B^{\top}A= C
+  \] 取 \(  B = \frac{1}{2}AC  \), 利用 \(  A,C  \)对称,   带入得到 \[
+  \frac{1}{2}A^{\top}AC+ \frac{1}{2}C^{\top}A^{\top}A= \frac{1}{2}\left( C+ C^{\top} \right)= C 
+  \]  
+  故 \(  O\left( n,\mathbb{R}  \right)   \)是 \(  \mathrm{Mat}\left( n,\mathbb{R}  \right)   \)的一个 \(  \frac{n\left( n-1 \right)  }{2 }   \)维正则子流形. 注意到对于 \(  A \in O\left( n,\mathbb{R}  \right)   \) , \(  \det A= 1  \)或 \(  \det A= -1  \) , 可以窥见事实上 \(  O\left( n,\mathbb{R}  \right)   \)有两个连通分支.  
   \end{enumerate}
   
 \end{example}
