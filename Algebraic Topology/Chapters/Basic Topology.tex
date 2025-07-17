@@ -1,0 +1,121 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\chapter{Basic Topology}
+\section{Exercises}
+
+\begin{problem}{Convex Bodies}{}
+    A convex body is a compact, convex subset \(  K\subseteq \mathbb{R} ^{n}  \) which contains 0 as an interior point and which is symmetric around the origin .
+    \begin{enumerate}
+        \item Prove that the following formula defines a norm on  \(  \mathbb{R} ^{n}  \): \[
+        N\left( x \right): =  \inf \left\{  \lambda > 0: \frac{x}{ \lambda }\in K \right\} 
+        \] 
+        \item Prove that \(  K  \) is homeomorphic to  \(  \mathbb{D}^{n}  \) and that \(   \partial K  \) is homeomorphicc to \(  \mathbb{S}^{n-1}  \)    . 
+    \end{enumerate}
+     
+\end{problem}
+\begin{note}
+    \begin{enumerate}
+        \item 若 \(  K  \)是一个单位球. 则 \(  N\left( x \right)= \left\| x \right\|   \).  
+        \item 证明 \(  N\left( x \right)   \)是一个norm, 需要证明:1.非负正定 2.绝对一次齐次 3.三角不等式.    
+        \item 由于 \(   \varphi   \)的形式足够简单, 可以通过直接构造逆映射证明双射.  
+    \end{enumerate}
+    
+\end{note}
+
+\begin{lemma}{}{}
+    \(  X   \) is compact, \(  Y   \) is Hausdorff   . If \(  \exists f :X\to Y  \) is a continious bijection, then \(  X,Y  \) are homeomorphic.   
+\end{lemma}
+\begin{proof}
+    \begin{enumerate}
+        \item It is obvious that \(  N\left( x \right)\ge 0   \).  If \(  N\left( x \right)= 0   \) , then \[
+        \inf \left\{  \lambda > 0: \frac{x }{ \lambda  }\in K  \right\}= 0
+        \]   which means that for all  \(   \varepsilon > 0  \),   \(  \frac{x }{  \varepsilon   } \in K   \) .Since \(  K  \) is compact, \(  \mathrm{dist}\left( K,0 \right)< \infty   \).      If \(  x \neq 0  \) ,then \(  \left\| x \right\|> 0  \) . We take   \(   \varepsilon _0   < \frac{1 }{\mathrm{dist}\left( K,0 \right) \cdot \left\| x \right\| } \) . Then \(  \left\| \frac{x }{ \varepsilon _0  }  \right\|>   \mathrm{dist}\left( K,0 \right) \)    . But \(  \frac{x }{  \varepsilon _0  }    \in K\), which is a contradiction.For the second part, let \(  x \in \mathbb{R} ^{n}, k \in \mathbb{R} \setminus \left\{ 0 \right\}  \). For all \(   \lambda > N\left( x \right)   \) ,  \[
+        \frac{x }{ \lambda  }\in K \implies  \frac{kx }{k \lambda  } \in K  
+        \]  ,which shows that \(  N\left( kx \right)\le kN\left( x \right)    \)    .  Replace \(  k   \) by \(  \frac{1 }{ k}   \) and replace \(  x  \) by \(  kx  \), we have \(  N\left( kx \right)\ge kN\left( x \right)    \). Thus \(  N\left( kx \right)= kN\left( x \right)    \).       For the triangle inequality , we need to show that \[
+       \inf \left\{  \lambda > 0:\frac{x_1+ x_2 }{ \lambda  }\in K  \right\} \le \inf \left\{  \lambda > 0: \frac{x_1 }{ \lambda  }\in K  \right\}+ \inf \left\{  \lambda > 0: \frac{x_2 }{ \lambda  }  \in K\right\}
+        \] Let \(   \lambda _0 = N\left( x_1+ x_2 \right)   \) .  Only need to show that \[
+        \frac{x_1+ x_2 }{N\left( x_1 \right)+ N\left( x_2 \right)   } \in K 
+        \]For all \(   \delta > 0  \), we have  \[
+        \frac{x_1 }{N\left( x_1 \right)+  \delta   }\in K,\quad \frac{x_2 }{N\left( x_2 \right)+  \delta   }  \in K
+        \]. Since \(  K  \) is convex , we have the convex combination \[
+        \frac{1 }{N\left( x_1 \right)+ N\left( x_2 \right)+ 2 \delta    } \left( \left( N\left( x_2 \right)+  \delta   \right)\frac{x_2 }{N\left( x_2 \right)+  \delta   }+ \left( N\left( x_1 \right)+  \delta   \right)\frac{x_1 }{N\left( x_1 \right)+  \delta   }     \right) \in K 
+        \]That is \[
+        \frac{x_1+ x_2 }{N\left( x_1 \right)+ N\left( x_2 \right)+ 2 \delta    }\in K 
+        \] for all \(   \delta > 0  \). Then \[
+        N\left( x_1+ x_2 \right)\le N\left( x_1 \right)+ N\left( x_2 \right)+ 2 \delta ,\quad \forall  \delta > 0 \implies N\left( x_1+ x_2 \right)\le N\left( x_1 \right)+ N\left( x_2 \right)      
+        \] 
+        \item    \(  x\in K^{\circ }\iff  N\left( x \right)< 1   \) ,  \(  x \in \mathrm{Ext}\left( K \right)\iff  N\left( x \right)> 1    \) ,  \(  x \in  \partial K  \iff N\left( x \right)= 1 \).    We define a map \(   \varphi : \mathbb{R} ^{n}\to \mathbb{R} ^{n}  \) . \[
+         \varphi \left( x \right): =\begin{cases}  N\left( x \right) \frac{x }{\left\| x \right\| }  , &  x\neq 0\\ 0,& x = 0   \end{cases} 
+        \]We have  \[
+        \left\|  \varphi \left( x \right)  \right\|= N\left( x \right)
+        \]   Then \(   \varphi   \) maps  \(  K^{\circ}  \) on to  \(  \left( \mathbb{D} ^{n}\right)^{\circ}    \), and maps \(   \partial K  \) on to \(  \mathbb{S}^{n-1}  \).  To show \(   \varphi   \) is continious , only need to show it is continious at \(  0  \) .  In fact,  \(\left\|  \lim_{x\to 0} \varphi \left( x \right)  \right\|=   \lim_{x\to 0}\left\|  \varphi \left( x \right)  \right\|=\lim_{x\to 0} N\left( x \right)= 0   \) since \(  N  \) is a norm   . We define  \(  \psi : \mathbb{R} ^{n}\to \mathbb{R} ^{n}  \) : \[
+        \psi \left( x \right):= \begin{cases} \frac{\left\| x \right\| }{N\left( x \right)  }x ,& x \neq 0\\ 
+         0,& x= 0  \end{cases}  
+        \]   Then \(   \varphi \circ \psi = \psi \circ  \varphi = \operatorname{Id}  \) .   The same skills can be used to show \(  \psi   \) is continious at \(  0  \)  as well . 
+        Finally , by the lemma above, \(  X,Y  \) are homeomorphic.  
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{problem}{}{}
+    Let \(  X,X^{\prime}   \) be topological spaces and \(  x \in X  \) , \(  x^{\prime}  \in X^{\prime}   \) be base points. Prove that the wedge sum \(  X \vee X^{\prime}   \) is homeomorphic to the subspace: \[
+    \left( X\times \left\{ x^{\prime}  \right\} \right)\cup \left( \left\{ x \right\}\times X^{\prime}  \right)\subseteq  X\times X^{\prime}   
+    \]    
+\end{problem}
+
+\begin{proof}
+    \(  X\vee X^{\prime} = \left( X \coprod  X^{\prime}  \right)/ \left\{ x\sim x^{\prime}  \right\}   \) . Considering map \(   \varphi : X\times X^{\prime}  \to X\vee  X^{\prime}   \) \[
+     \varphi \left( x_1,x_2 \right)=\begin{cases} x_1,& x_2= x^{\prime} \\ 
+      x_2,&x_1= x \end{cases} 
+    \]  \[
+    \varphi \left( x_1,x_2 \right)= \left( 1+ x_2-x^{\prime}  \right)\left(x_1\right) 
+    \]
+\end{proof}
+
+\begin{problem}{}{}
+    The torus  \(  \mathbb{T}  \)  is the quotient of \(  \left[ 0,1 \right]^{2}   \)  by the equivalence relation generated by \(  \left( 0,y \right)\sim \left( 1,y \right)    \) for all \(  x,y \in \left[ 0,1 \right]   \) . Prove that \(  \mathbb{T}  \) is homeomorphic to : 
+    \begin{enumerate}
+        \item The product \(  \mathbb{S}^{1}\times \mathbb{S}^{1}  \) 
+        \item The quotient of \(  \mathbb{R} ^{2}  \)  under the action of the (discrete) group \(  \mathbb{Z}^{2}  \) by translation. 
+    \end{enumerate}
+      
+\end{problem}
+
+
+\begin{problem}{Projective spaces}{}
+    Let \(  \mathbb{K}= \mathbb{R}  \) or \(  \mathbb{C}  \) . The \(   n  \) -dimensional projectinve space \(  \mathbb{KP}^{n}  \) is the orbit space of \(  \mathbb{k}^{n+ 1}\setminus \left\{ 0 \right\}   \) under the action of \(  \mathbb{k}^{*}  \) by rescaling. 
+    \begin{enumerate}
+        \item Prove that \(  \mathbb{RP}^{n}  \) is homeomorphic to the orbit space \(  \mathbb{S}^{n} \setminus \left\{ \pm 1 \right\}  \) , where \(  \left\{ \pm 1 \right\}   \) acts by multiplication on \(  \mathbb{S}^{n}\subseteq \mathbb{R} ^{n+ 1}  \) . 
+        \item Prove that \(  \mathbb{CP}^{n}  \) is homeomorphic to the orbit space \(  \mathbb{S}^{2n+ 1} \setminus  \mathbb{S}^{1}  \) , where \(  \mathbb{S}^{1}= \left\{ z \in \mathbb{C}  : \left| z \right|= 1 \right\}  \) acts on \(  \mathbb{S}^{2n+ 1} \subseteq \mathbb{C}^{n+ 1}  \) by multiplication. 
+        \item Prove that \(  \mathbb{RP}^{1}  \) is homeomorphic to \(  \mathbb{S}^{1}  \) and that \(  \mathbb{CP}^{1}  \) is homeomorphic to \(  \mathbb{S}^{2}  \) .             
+    \end{enumerate}
+           
+\end{problem}
+
+\begin{problem}{}{}
+    \begin{enumerate}
+        \item Let \(  A  \) be a compact subspace of a Hausdorff space \(  X  \) . Prove that \(  X/A  \) is Hausdorff .   
+    \end{enumerate}
+    
+\end{problem}
+\begin{proof}
+    \begin{lemma}{}{}
+         \(  G  \)作用在 \(  X  \)上. 假设 \(  G  \)作用是proper的. \[
+         \begin{aligned}
+         G\times X&\to  X\times X\\ 
+          \left( g,x \right)&\mapsto \left( g \cdot x, x \right)   
+         \end{aligned}
+         \]   
+    \end{lemma}
+    \(  \forall [x] , [y] \in  X  / A  \).  
+    \begin{enumerate}
+        \item  \(  x\not\in A , y\not\in A  \) . Let \(  p: X\to  X/ A  \) is the quotient map . Take a neiboughood of \(  x,y  \)  ,  \(  U_{x}, U_{y}  \), such that \(  U_{x}\cap U_{y}  = \varnothing\) , \(  U_{x}\cap A \neq \varnothing, U_{y}\cap A \neq \varnothing  \). 
+        \begin{lemma}{}{}
+         设 $X$ 是一个 Hausdorff 空间, $K$ 是 $X$ 的一个紧子集, $p$ 是 $X$ 中一个不属于 $K$ 的点 (即 $p \in X \setminus K$). 那么, 存在两个不相交的开集 $U$ 和 $V$, 使得 $K \subset U$ 且 $p \in V$.
+        \end{lemma}     
+        \item \(  x \in A, y \not\in A  \) 
+    \end{enumerate}
+     
+\end{proof}
+\end{document}
