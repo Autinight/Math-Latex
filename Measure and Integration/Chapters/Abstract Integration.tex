@@ -124,7 +124,7 @@
   
 \end{remark}
 
-\begin{theorem}{}{}
+\begin{theorem}{}{7.19}
     Let \(  f: X\to [0,\infty]  \) be measurable space. There exists simple measurable functions \(  s_{n}  \) on \(  X  \) such that 
     \begin{enumerate}
         \item \(  0\le s_1\le s_2\le \cdots \le f  \). 
@@ -256,7 +256,7 @@ The left member above is called the \dfntxt{Lebesgue integral} of $f$ over $E$, 
 \end{remark}
 
 
-\begin{proposition}{}{}
+\begin{proposition}{}{7-19-2}
 Let $s$ and $t$ be nonnegative measurable simple functions on $X$. For $E \in \mathfrak{M}$, define
 \[
 \varphi(E) = \int_E s \, d\mu.
@@ -267,6 +267,10 @@ Then $\varphi$ is a measure on $\mathfrak{M}$. Also
 \]
 \end{proposition}
 
+
+\begin{note}
+    \(   \varphi \left( E \right) =  \int_{E}s\,\mathrm{d} \mu    \) 就是依据 \(  s  \) 对测度 \(  \mu   \)进行一个有限的算数的加权.    自然地也就成为一个测度 . 
+\end{note}
 \begin{proof}
     If  \(  E_1,E_2,\cdots   \) are disjoint members of  \(  \mathfrak{M}  \) whose union is \(  E  \), the countable additivity of \(  \mu   \) shows that  \[
     \begin{aligned}
@@ -304,7 +308,113 @@ Then $f$ is measurable, and
     \int_{X}f_{n}\,\mathrm{d} \mu \to \alpha ,\quad \text{as } n \to \infty
     \]   By Theorem \ref{thm:7-5-1}, \(  f  \) is measurable,  then by \(  \int_{X}f_{n}\,\mathrm{d} \mu \le \int_{X} f\,\mathrm{d} \mu    \;\forall n\), \[
     \alpha \le \int_{X}f \,\mathrm{d} \mu 
-    \]  
+    \]  Take any simple function  \(  0\le s\le f  \) , and \(  0\le c< 1  \) .  Define \[
+    E_{n}^{s}: = \left\{ x \in X: f_{n}\left( x \right)\ge cs\left( x \right)   \right\}
+    \] Then since \(   \varphi \left( E \right): =  \int_{E}s\,\mathrm{d} \mu    \)   is a measure , \[
+    \alpha\ge   \lim_{n\to \infty} \int_{X} f_{n}\,\mathrm{d} \mu \ge  \lim_{n\to \infty} \int_{E_{n}^{s}}f_{n}\,\mathrm{d} \mu \ge  c\lim_{n\to \infty}\int_{E_{n}^{s}}s\,\mathrm{d} \mu = c \lim_{n\to \infty} \varphi \left( E_{n}^{s} \right)=  c  \varphi \left( X \right)  \] That is \[
+    \alpha \ge c \int_{X}s \,\mathrm{d} \mu 
+    \]Since \(  s  \) is arbitrary, \[
+    \alpha \ge c \int_{X} f\,\mathrm{d} \mu 
+    \]  and since \(  c  \) is arbitrary , \[
+    \alpha \ge  \int_{X} f\,\mathrm{d} \mu 
+    \]  which completes the proof. 
 \end{proof}
+
+
+\begin{corollary}{}{}
+    Let \(  f,g  :X\to \left[ 0,\infty \right] \) be mearuable functions on \(  X  \) .   Then \(  f+ g  \) is mearuable and   \[
+    \int_{X}\left( f+ g \right)\,\mathrm{d} \mu = \int_{X}f\,\mathrm{d} \mu + \int_{X} g\,\mathrm{d} \mu  
+    \]
+\end{corollary}
+\begin{proof}
+    Let \(  \left\{ s_{n} \right\} ,\left\{ s_{n}^{\prime}  \right\}  \) be  simple function sequences  in Theorem \ref{thm:7.19} of \(  f ,g  \) , respectively .   Then by the theorem above and the Proposition \ref{pps:7-19-2}  \[
+   \begin{aligned}
+    \int_{X}\left( f+ g \right)\,\mathrm{d} \mu  = \lim_{n\to \infty}  \int_{X}\left( s_{n}+ s_{n}^{\prime}  \right)\,\mathrm{d} \mu &= \lim_{n\to \infty} \int_{X} s_{n}\,\mathrm{d} \mu + \lim_{n\to \infty} \int_{X}s_{n}^{\prime} \,\mathrm{d} \mu\\ 
+     &= \int_{X}f\,\mathrm{d} \mu + \int_{g}\,\mathrm{d} \mu   
+   \end{aligned}
+    \]
+\end{proof}
+ 
+
+\begin{corollary}{}{}
+    If $f_n: X \to [0, \infty]$ is \dfntxt{measurable}, for $n = 1, 2, 3, \dots$, and
+\[
+f(x) = \sum_{n=1}^{\infty} f_n(x) \quad (x \in X),
+\]
+then
+\[
+\int_X f \, d\mu = \sum_{n=1}^{\infty} \int_X f_n \, d\mu.
+\]
+\end{corollary}
+
+\begin{proof}
+    Let \(  g_{n}\left( x \right)= \sum _{k= 1}^{n}f_{k}\left( x \right)    \) .  Then \(  g_1\le g_2\le \cdots \le \infty  \) and  \(  f= \lim_{n\to \infty}g_{n}\left( x \right)   \)  . Applying Monotone Convergence Theorem to \(  \left\{ g_{n} \right\}   \) and \(  f  \) , we have  \[
+    \int_{X}f\,\mathrm{d} \mu = \lim_{n\to \infty} \int_{X} \sum _{k = 1}^{n}f_{k}\left( x \right)\,\mathrm{d} \mu  =  \lim_{n\to \infty}\sum _{k= 1}^{n}\int_{X}f_{k}\left( x \right)\,\mathrm{d} \mu =  \sum _{n = 1}^{\infty} \int_{X}f_{n}\,\mathrm{d} \mu   
+    \]
+\end{proof}
+
+
+\begin{corollary}{}{}
+If $a_{ij} \ge 0$ for $i$ and $j = 1, 2, 3, \dots$, then
+\[ \sum_{i=1}^{\infty} \sum_{j=1}^{\infty} a_{ij} = \sum_{j=1}^{\infty} \sum_{i=1}^{\infty} a_{ij}. \]
+\end{corollary}
+\begin{proof}
+    Let \(  \mu   \) be counting measure on \(  \mathbb{Z}   \) .     Let \[
+    f_{i}\left( j \right) = a_{ij}   ,\quad f\left( k \right)= \sum _{ i= 1}^{\infty}f_{i}\left( k \right)   =  \sum _{i = 1}^{\infty}a_{ik}
+    \] By Monotone Convergence Theorem , for any measurable \(  g  \) ,   \[
+    \int_{\mathbb{Z} }g\,\mathrm{d} \mu  =  \int_{\mathbb{Z} } \lim_{n\to \infty}  \chi  \left( \left\{ 1,\cdots ,n \right\} \right)g \,\mathrm{d} \mu =  \lim_{n\to \infty} \int_{\mathbb{Z} } \chi  \left( \left\{ 1,\cdots ,n \right\} \right)g\,\mathrm{d} \mu =   \sum _{ k= \infty}^{n}g\left( k \right)  
+    \] Thus \[
+    \int_{\mathbb{Z} } f\,\mathrm{d} \mu =  \sum _{ j= 1}^{\infty}\sum _{i= 1}^{\infty}a_{ij}
+    \]   And we have  \[
+    \sum _{ i= 1}^{\infty} \int_{X}f_{i}\,\mathrm{d} \mu =  \sum _{i = 1}^{\infty}  \sum _{j= 1}^{\infty}a_{ij}
+    \] The above  corollary shows that \[
+    \int_{\mathbb{Z} }f\,\mathrm{d} \mu =  \sum _{ i= 1}^{\infty}\int_{X}f_{i}\,\mathrm{d} \mu  
+    \] That is \[
+    \sum _{i= 1}^{\infty}\sum _{j= 1}^{\infty}a_{ij}= \sum _{j= 1}^{\infty}\sum _{i= 1}^{\infty}a_{ij}
+    \]
+\end{proof}
+
+
+\begin{lemma}{Fatou's Lemma}{}
+If $f_n: X \to [0, \infty]$ is \dfntxt{measurable}, for each positive integer $n$, then
+\[
+\int_X \left( \lim_{n \to \infty} \inf f_n \right) d\mu \le \lim_{n \to \infty} \inf \int_X f_n d\mu.
+\tag{1}
+\]
+
+\end{lemma}
+
+\begin{note}
+   有了Monotone Convergence Theorem 之后, 关键的不等式就剩下 \[
+    \int_{X}\inf _{n\ge k} f_{n}\,\mathrm{d} \mu \le  \inf _{n\ge k} \int_{X}f_{n}\,\mathrm{d} \mu  
+    \] 它的含义是 局部最小的积分小于等于积分的最小. 
+\end{note}
+\begin{proof}
+    Let \[
+    g_{k}\left( x \right) =  \inf _{n\ge k} f_{n}\left( x \right) 
+    \] Then \[
+    \lim_{n\to \infty} \inf  f_{n}=  \lim_{n\to \infty}g_{n}=: g
+    \]where  \(  \left\{ g_{k} \right\} , g  \)  are all measurable .   It is obvious that \(  \left\{ g_{k} \right\}  \) is increasing .  Thus \[
+    \lim_{n\to \infty}  \int_{X}g_{n}\,\mathrm{d} \mu =  \int_{X}g\,\mathrm{d} \mu =  \int_{X}\left( \lim_{n\to \infty}\inf f_{n} \right)\,\mathrm{d} \mu  
+    \]Only need to show that \[
+    \int_{X}\inf _{n\ge k} f_{n}\,\mathrm{d} \mu \le  \inf _{n\ge k} \int_{X}f_{n}\,\mathrm{d} \mu  
+    \] which is true since \[
+    \int_{X}\inf _{n\ge k}f_{n}\,\mathrm{d} \mu \le  \int_{X}f_{n}\,\mathrm{d} \mu  ,\text{for all   }  n\ge k
+    \]
+\end{proof}
+
+\begin{theorem}{}{}
+Suppose $f: X \to [0, \infty]$ is measurable, and
+\[
+\varphi(E) = \int_E f \, d\mu \quad (E \in \mathfrak{M}).
+\]
+Then $\varphi$ is a measure on $\mathfrak{M}$, and
+\[
+\int_X g \, d\varphi = \int_X gf \, d\mu
+\]
+for every measurable $g$ on $X$ with range in $[0, \infty]$.
+\end{theorem}
+
+
 
 \end{document}
