@@ -479,6 +479,9 @@ If $f \in L^1(\mu)$, then
 \left| \int_X f d\mu \right| \le \int_X |f| d\mu.
 \]
 \end{theorem}
+\begin{proofsketch}
+    转一转 \(  f  \)把它的虚部转没掉.   
+\end{proofsketch}
 \begin{proof}
     Let \(  z =  \int_{X} f\,\mathrm{d} \mu   \) , \(  z  \) is a complex number .  There exists a complex number \(  \alpha   \) (\(  \alpha = \frac{\bar{z} }{\left| z \right|  }   \) ) , such that \(  \left| \alpha  \right|= 1   \) , and   \[
     \left| \int_{X} f\,\mathrm{d} \mu  \right|=  \alpha z= \alpha \int_{X}f\,\mathrm{d} \mu  = \int_{X} \alpha f \,\mathrm{d} \mu 
@@ -649,10 +652,13 @@ converges for almost all x, $f \in L^1(\mu)$, and
         \item Suppose \(  f \in L^{1}\left( \mu  \right)    \) and \(  \int_{E}f\,\mathrm{d} \mu = 0  \) for every \(  E \in \mathfrak{M}  \)    . Then \(  f= 0  \) a.e. on \(  X  \) .   
         \item Suppose \(  f \in L^{1}\left( \mu  \right)   \) and \[
         \left| \int_{X}f\,\mathrm{d} \mu  \right|= \int_{X}\left| f \right|\,\mathrm{d} \mu   
-        \] Then there is a constant \(  \alpha    \) such that \(   \alpha f= \left| f \right|    \)   a.e. on \(  X  \) .  
+        \] Then there is a constant \(  \alpha    \) such that \(   \alpha f= \left| f \right|    \)   \(  a.e.  \)  on \(  X  \) .  
     \end{enumerate}
     
 \end{theorem}
+\begin{note}
+    3.就是说如果能通过旋转将 \(  f  \)的虚部的积分作用清零. 那么函数值的虚部也可以清零.  
+\end{note}
 \begin{proof}
     \begin{enumerate}
         \item Let \(  A_{n}= \left\{ x \in E: f\left( x \right)\ge \frac{1 }{n }   \right\}  \) . Then \[
@@ -665,6 +671,15 @@ converges for almost all x, $f \in L^1(\mu)$, and
         \]  It follows by 1. that \(  \mu ^{+ }= 0   \) a.e. on \(  E  \) .  Since \(  \mu ^{+ }\left( X\setminus E \right)\equiv 0    \) , \(  \mu ^{+ }= 0   \) a.e. on \(  X  \) . We conclude similarly that \[
         u^{-}= v^{+ }= v^{-}= 0 ,\quad a.e.
         \]    
+        \item Let \(  z=  \int_{X}f\,\mathrm{d} \mu   \). Then \(  z   \) is a complex number .   Take \(  \alpha = \bar{z}/\left| z \right|   \) .Then \[
+        \alpha z = \left| z \right|= \left| \int_{X}f\,\mathrm{d} \mu  \right|  
+        \]  Where \[
+        \alpha z= \alpha \int_{X}f\,\mathrm{d} \mu = \int_{X}\alpha f\,\mathrm{d} \mu 
+        \] It follows that \[
+        \int_{X}\alpha f\,\mathrm{d} \mu = \left| \int_{X}f\,\mathrm{d} \mu  \right|= \int_{X}\left| f \right|\,\mathrm{d} \mu \implies \int_{X}\left( \alpha f-\left| f \right|  \right)\,\mathrm{d} \mu = 0   
+        \] which shows that \[
+        \alpha f= \left| f \right|,\quad a.e. \text{ on } X  
+        \]
     \end{enumerate}
     
 \end{proof}
