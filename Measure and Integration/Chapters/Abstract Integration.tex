@@ -414,7 +414,160 @@ Then $\varphi$ is a measure on $\mathfrak{M}$, and
 \]
 for every measurable $g$ on $X$ with range in $[0, \infty]$.
 \end{theorem}
+\begin{note}
+    将 measurable function \(  f  \) 视为对measure \(  \mu   \)的某种 countable次算数加权操作.   那么得益于 \(  \mu   \)对countable操作的相容性,  \(   \varphi   \)也就成为一个测度.  \(   \varphi   \)的积分行为也验证了这种看法的合理性.    
+\end{note}
+\begin{proof}
+    \begin{itemize}
+        \item Let \(  E_1,\cdots ,E_{n},\cdots    \) be disjoint measurable sets such that \(  E= \bigcup _{n = 1}^{\infty}E_{n}  \).  Then \(  \left\{ \sum _{k= 1}^{n}\chi _{E_{k}}f \right\}  \) be increasing measurable function sequence such that  \(  \lim_{n\to \infty} \sum _{k= 1}^{n}\chi _{E_{k}}f= f  \).     The Monotone Convergence Theorem shows that \[
+   \begin{aligned}
+    \sum _{n = 1}^{\infty} \varphi \left( E_{k} \right)= \lim_{n\to \infty} \sum _{ k= 1}^{n} \int_{E_{k}}f\,\mathrm{d} \mu &=   \lim_{n\to \infty} \int_{E} \sum _{k = 1}^{n}\chi _{E_{k}}f\,\mathrm{d} \mu  \\ 
+     &=  \int_{E}f\,\mathrm{d} \mu =  \varphi \left( E \right) 
+   \end{aligned}
+    \]Since \(   \varphi \left( \varnothing \right) = 0   \) .  \(   \varphi   \) is a measure on \(  X  \) . 
+    
+    \item To show the second results. See that it is true for \(  g = \chi _{E}  \) . Thus it is true for \(  g  \) is a simple function .   And the general case follows from the Monotone Convergence Theorem. 
+    \end{itemize}
+    
+\end{proof}
 
 
+\section{Integration of Complex Functions }
+
+\begin{definition}{Lebegsgue Integrability}{}
+We define $L^1(\mu)$ to be the collection of all complex measurable functions $f$ on $X$ for which
+\[
+\int_X |f| \, d\mu < \infty.
+\]
+Note that the measurability of $f$ implies that of $|f|$, hence the above integral is defined.
+
+The members of $L^1(\mu)$ are called \dfntxt{Lebesgue integrable functions} (with respect to $\mu$) or \dfntxt{summable functions}. 
+\end{definition}
+
+\begin{definition}{Complex Integration}{}
+If $f = u + iv$, where $u$ and $v$ are real measurable functions on $X$, and if $f \in L^1(\mu)$, we define
+\[
+\int_{E} f \,d\mu = \int_{E} u^{+} \,d\mu - \int_{E} u^{-} \,d\mu + i \int_{E} v^{+} \,d\mu - i \int_{E} v^{-} \,d\mu \tag{1}
+\]
+for every measurable set $E$.
+\end{definition}
+\begin{remark}
+ We have $u^+ \le |u| < |f|$, etc., so that each of these four integrals is finite. Thus (1) defines the integral on the left as a complex number.
+\end{remark}
+
+\begin{definition}{Real Integration}{}
+Occasionally it is desirable to define the integral of a measurable function $f$ with range in $[-\infty, \infty]$ to be
+\[
+\int_E f \,d\mu = \int_E f^+ \,d\mu - \int_E f^- \,d\mu, \tag{2}
+\]
+provided that at least one of the integrals on the right of (2) is finite. The left side of (2) is then a number in $[-\infty, \infty]$.
+\end{definition}
+
+
+\begin{theorem}{}{}
+Suppose $f$ and $g \in L^1(\mu)$ and $\alpha$ and $\beta$ are complex numbers. Then $\alpha f + \beta g \in L^1(\mu)$, and
+\[
+\int_{X} (\alpha f + \beta g) \,d\mu = \alpha \int_{X} f \,d\mu + \beta \int_{X} g \,d\mu
+\]
+\end{theorem}
+\begin{proofsketch}
+    可积性来自于模长的三角不等式. 主要证明可加性 . 将 \(  f+ g = h  \)的 正负部分到两边, 就都变成了非负函数. 积分即可. 
+\end{proofsketch}
+\begin{theorem}{}{}
+If $f \in L^1(\mu)$, then
+\[
+\left| \int_X f d\mu \right| \le \int_X |f| d\mu.
+\]
+\end{theorem}
+\begin{proof}
+    Let \(  z =  \int_{X} f\,\mathrm{d} \mu   \) , \(  z  \) is a complex number .  There exists a complex number \(  \alpha   \) (\(  \alpha = \frac{\bar{z} }{\left| z \right|  }   \) ) , such that \(  \left| \alpha  \right|= 1   \) , and   \[
+    \left| \int_{X} f\,\mathrm{d} \mu  \right|=  \alpha z= \alpha \int_{X}f\,\mathrm{d} \mu  = \int_{X} \alpha f \,\mathrm{d} \mu 
+    \]   Suppose \(  \alpha f= u+ iv  \) ,  since \(  \int_{X}\alpha f\,\mathrm{d} \mu   \) is a real number , \(  \int_{X}v\,\mathrm{d} \mu = 0  \) . We have \[
+    \int_{X}\alpha f\,\mathrm{d} \mu = \int_{X}u\,\mathrm{d} \mu \le \int_{X}\left| \alpha f \right|\,\mathrm{d} \mu = \int_{X}\left| f \right|\,\mathrm{d} \mu   
+    \]   
+\end{proof}
+
+\begin{theorem}{Lebesgue's Dominated Convergence Theorem}{}
+Suppose $\{f_n\}$ is a sequence of complex measurable functions on $X$ such that
+\[
+f(x) = \lim_{n \to \infty} f_n(x)
+\]
+exists for every $x \in X$. If there is a function $g \in L^1(\mu)$ such that
+\[
+|f_n(x)| \le g(x) \quad (n = 1, 2, 3, \dots; x \in X),
+\]
+then $f \in L^1(\mu)$,
+\[
+\lim_{n \to \infty} \int_X |f_n - f| \, d\mu = 0,
+\]
+and
+\[
+\lim_{n \to \infty} \int_X f_n \, d\mu = \int_X f \, d\mu.
+\]
+\end{theorem}
+
+\begin{note}
+    \( \left\{ f_{n} \right\}  \)不一定单调,  能将极限从积分外 塞进积分里的工具 , 目前我们只有Fatou's Lemma , 但是它原始的样子跟我们需要的不等号是反向的. 自然的想法是填一个负号, 这又会导致 函数失去非负性, 而控制函数 \(  g  \)恰好能弥补这一点不足. 实现起来, 我们从 \(  g  \)上扣去 \(  f,f_{n}  \)    , 而非直接拿出 \(  f, f_{n}  \)去做.  
+\end{note}
+\begin{proof}
+    Since \(  \left| f \right|\le g   \)  and \(  f   \) is measurable , \(  f \in  L^{1}\left( \mu  \right)    \) .  Function \(  \left( 2g- \left| f_{n}-f \right| \right)    \)   is a  nonnegative measurable function .  Applying Fatou's Lemma to it , we have \[
+    \int_{X}\lim_{n\to \infty}\inf \left( 2g-\left| f_{n}-f \right|  \right)\,\mathrm{d} \mu \le \lim_{n\to \infty}\inf \int_{X}\left( 2g-\left| f_{n}-f \right|  \right)\,\mathrm{d} \mu   
+    \]where \[
+    \lim_{n\to \infty} \inf \left( 2g-\left| f_{n}-f \right|  \right) = 2g- \lim_{n\to \infty}\sup \left| f_{n}-f \right| = 2g
+    \] \[
+    \lim_{n\to \infty}\inf \int_{X}\left( 2g- \left| f_{n}-f \right|  \right)\,\mathrm{d} \mu =  2\int_{X}g\,\mathrm{d} \mu  - \lim_{n\to \infty}\sup \int_{X}\left| f_{n}-f \right|\,\mathrm{d} \mu   
+    \] The original inequality comes to  \[
+    2\int_{X}g\,\mathrm{d} \mu \le  2\int_{X}g\,\mathrm{d} \mu - \lim_{n\to \infty}\sup \int_{X}\left| f_{n}-f \right|\,\mathrm{d} \mu  
+    \] Since \(  \int_{X}g\,\mathrm{d} \mu   \) is finite, we can substract \(  2\int_{X}g\,\mathrm{d} \mu   \) both sides and get \[
+    \lim_{n\to \infty}\sup \int_{X}\left| f_{n}-f \right|\,\mathrm{d} \mu \le 0 
+    \]  Thus \[
+     \lim_{n\to \infty}\int_{X}\left| f_{n}-f \right|\,\mathrm{d} \mu = 0 
+    \]Finnaly , we have\[
+ \begin{aligned}
+    \left| \lim_{n\to \infty} \int_{X}f_{n}\,\mathrm{d} \mu - \int_{X}f\,\mathrm{d} \mu \right|  &= \left| \lim_{n\to \infty} \int_{X} \left( f_{n}-f \right)\,\mathrm{d} \mu   \right|  \\ 
+     &\le  \lim_{n\to \infty} \int_{X}\left| f_{n}-f \right|\,\mathrm{d} \mu \\ 
+      &= 0 
+ \end{aligned}
+    \] which completes the proof. 
+\end{proof}
+
+\section{The Sets of Measure Zero}
+
+\begin{definition}{}{}
+Let $P$ be a property which a point $x$ may or may not have. If $\mu$ is a measure on a $\sigma$-algebra $\mathfrak{M}$ and if $E \in \mathfrak{M}$, the statement "$P$ holds \dfntxt{almost everywhere on $E$}" (abbreviated to "$P$ holds a.e. on $E$") means that there exists an $N \in \mathfrak{M}$ such that $\mu(N) = 0$, $N \subset E$, and $P$ holds at every point of $E - N$.
+\end{definition}
+
+\begin{remark}
+     This concept of a.e. depends of course very strongly on the given measure, and we shall write “a.e. $[\mu]$” whenever clarity requires that the measure be indicated.
+\end{remark}
+
+\begin{example}{}{}
+    For example, if $f$ and $g$ are measurable functions and if
+\[
+\mu(\{x: f(x) \neq g(x)\}) = 0,
+\]
+we say that $f = g$ a.e. $[\mu]$ on $X$, and we may write $f \sim g$. 
+\end{example}
+\begin{remark}
+  This is easily seen to be an equivalence relation.  The transitivity ($f \sim g$ and $g \sim h$ implies $f \sim h$) is a consequence of the fact that the union of two sets of measure 0 has measure 0.
+\end{remark}
+
+\begin{proposition}{}{}
+  If $f \sim g$, then, for every $E \in \mathfrak{M}$,
+\[
+\int_E f d\mu = \int_E g d\mu.
+\]
+
+\end{proposition}
+
+\begin{theorem}{}{}
+Let $(X, \mathfrak{M}, \mu)$ be a measure space, let $\mathfrak{M}^*$ be the collection of all $E \subset X$ for which there exist sets $A$ and $B \in \mathfrak{M}$ such that $A \subset E \subset B$ and $\mu(B - A) = 0$, and define $\mu(E) = \mu(A)$ in this situation. Then $\mathfrak{M}^*$ is a $\sigma$-algebra, and $\mu$ is a measure on $\mathfrak{M}^*$.
+\end{theorem}
+
+\begin{remark}
+    
+This extended measure $\mu$ is called \dfntxt{complete}, since all subsets of sets of measure 0 are now measurable; the $\sigma$-algebra $\mathfrak{M}^*$ is called the \dfntxt{$\mu$-completion} of $\mathfrak{M}$. The theorem says that every measure can be completed, so, whenever it is convenient, we may assume that any given measure is complete; this just gives us more measurable sets, hence more measurable functions. 
+
+\end{remark}
 
 \end{document}

@@ -1,0 +1,59 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Probability}
+
+\begin{definition}{Discrete Probability Model}{}
+    Let \(   \Omega   \) be a set , \(  \left|  \Omega  \right|< \infty   \) .  \(  Q=  \varphi \left(  \Omega  \right)   \) the collection of all subsets of \(   \Omega   \) .  \(  P:  \varphi \left( E \right)\to \left[ 0,1 \right]    \)       a function . If
+    \begin{enumerate}
+        \item \(  P\left(  \Omega  \right)= 1   \).
+        \item  \(  P\left( A\cup B \right)= P\left( A \right)+ P\left( B \right)     \) for all \(  A,B \in  \varphi \left(  \Omega  \right)   \) , \(  A\cap B= \varnothing  \) .     
+    \end{enumerate}
+    Then we call \(  \left(  \Omega ,Q,P \right)   \) a  discrete probability model . 
+\end{definition}
+
+
+\begin{proposition}{}{}
+    Let \(  \left(  \Omega ,Q,P \right)   \) be a discerte probability model , 
+    \begin{enumerate}
+        \item Let \(  A \in  \varphi \left(  \Omega  \right)    \) ,  \(  \bar{A}: = \left\{ x \in  \Omega ,x \not\in A \right\}  \). THen \[
+        P\left( \bar{A} \right)= 1-P\left( A \right)  
+        \]
+        \item \(  A,B \in  \varphi \left(  \Omega  \right)   \) , then \[
+        P\left( A\cup B \right)= P\left( A \right)+ P\left( B \right)-P\left( A\cap B \right)    
+        \]   
+    \end{enumerate}
+     
+\end{proposition}
+
+\begin{remark}
+    If \(  P\left( \left\{ \cdot  \right\} \right)=  \frac{1 }{\left|  \Omega  \right|  }    \) , then we say the probability is \dfntxt{uniform} . 
+\end{remark}
+
+\begin{example}{}{}
+    Take \(   \Omega   = \left\{ a,b \right\}\)  , \( Q=  P\left(  \Omega  \right)= \left\{ \varnothing, a,b,  \Omega  \right\}   \). \(  P\left( a \right)=  \theta , P\left( b \right)= 1- \theta     \) .  Then \(  P  \) can extends to a probability, and \(  \left(  \Omega ,Q,P  \right)   \) comes to a discerte probability model.     
+\end{example}
+
+
+\begin{definition}{Random Variable}{}
+    A \dfntxt{Random Variable} (R.V) is  just a  map \(  X: \Omega \to \mathbb{R}   \) .  
+\end{definition}
+
+\begin{example}{A Random Variable}{}
+    \(  A \in  \varphi \left(  \Omega  \right)   \) . Let \(  X =  \chi _{A}  \) . Then \(  X  \) is a random variable. And \[
+    P\left( X= 1 \right)= P\left( A \right),\quad P\left( X= 0 \right)= 1-P\left( A \right).     
+    \]
+\end{example}
+
+\begin{definition}{Expectation (Mean Value of a R.V)}{}
+    Let \(  X  \) be a \(  R. V  \) . If 
+    \begin{enumerate}
+        \item \(  \left| X\left(  \Omega  \right)  \right|< \infty   \) ,  
+    \end{enumerate}
+      
+\end{definition}
+
+
+
+\end{document}
