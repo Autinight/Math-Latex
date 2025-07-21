@@ -389,4 +389,43 @@ $$\mathcal{D}|_U = \sum_{|\alpha| \le r} a_\alpha(x) \partial^\alpha$$
   \end{enumerate}
   
 \end{example}
+
+\section{Frobenius定理}
+\begin{definition}{\(  C^{\infty}  \)分布 }{}
+  在光滑流形 $M$ 上, 一个 $k$-维 $C^{\infty}$ 分布（smooth distribution）是一个映射 $\Delta: M \to \bigcup_{p \in M} \operatorname{Gr}(k, T_p M)$, 这里\[
+  \operatorname{Gr}(k, V) = \{ W \subseteq V \mid W \text{ 是 } k \text{-维子空间} \}
+  \] 其中: 
+\begin{itemize}
+  \item 对于每个 $p \in M$, $\Delta_p$ 是切空间 $T_p M$ 的一个 $k$-维子空间.
+  \item $\Delta$ 是光滑的,即它对应于切丛 $TM$ 的一个光滑子向量丛: 局部存在光滑向量场 $X_1, \dots, X_k$ 生成 $\Delta_p = \operatorname{span}\{X_1(p), \dots, X_k(p)\}$.
+\end{itemize}
+
+\end{definition}
+
+\begin{definition}{}{}
+     设 \(  \mathscr{L}  \)是 \(  N \)上的一个分布.   
+  \begin{itemize}
+    \item 设 \(\mathscr{L} \) 是一个 \(  m  \)维分布.  \(  M  \)是 \(  N  \)的一个 \(  m  \)维子流形. 若对于 \(  x \in M  \) . \(  T_{x}M= L_{x}  \), 则称 \(  M  \)是 \(  \mathscr{L} \)的一个积分子流形.          
+    \item 若对于任意的 \(  x \in N  \) . 都存在一个过 \(  x  \)的 \(  \mathscr{L}  \)的积分子流形. 则称 \(  \mathscr{L}  \)是可积的.    
+    \item 若 \(  \left[ \mathscr{L},\mathscr{L} \right]\subseteq \mathscr{L}   \), 则称 \(  \mathscr{L}  \)是对合的 (involutive) .    
+  \end{itemize}
+  
+\end{definition}
+\begin{remark}
+  由于Lie bracket是封闭的, 从而可积一定是对合的.
+\end{remark}
+
+
+\begin{theorem}{局部Frobenius}{}
+  设 \(  \mathscr{L}  \)是 \(  N  \)上的一个分布.  若 \(  \mathscr{L}  \)是对合的, 则 \(  \mathscr{L}  \)是可积的.     
+\end{theorem}
+
+\begin{theorem}{整体Frobenius}{}
+  设 \(  N  \)是一个 \(  n  \)维  \(  C^{\infty}  \)流形. \(  \mathscr{L}  \)是 \(  N  \)上的一个 \(  m  \)维对合分布  . 则过 \(  N  \)上任一点 \(  p  \) , 存在唯一的 \(  \mathscr{L}  \)的极大积分子流形 \(  M_{p}  \) .        \(  \mathscr{L}  \)的任何积分子流形都是 \(  N  \)的拟正则子流形, 并且是某一个极大积分子流形的开子流形. 
+\end{theorem}
+\begin{proofsketch}
+  对 \(  p \in N  \), \[
+  M_{p}= \left\{ q \in N: \text{存在一条分片光滑的 }\mathscr{L}\text{的积分曲线, 连接}p\text{和}q \right\}
+  \] 参考Warner的GTM94
+\end{proofsketch}
 \end{document}
