@@ -506,9 +506,9 @@ and
 \]
 \end{theorem}
 
-\begin{note}
-    \( \left\{ f_{n} \right\}  \)不一定单调,  能将极限从积分外 塞进积分里的工具 , 目前我们只有Fatou's Lemma , 但是它原始的样子跟我们需要的不等号是反向的. 自然的想法是填一个负号, 这又会导致 函数失去非负性, 而控制函数 \(  g  \)恰好能弥补这一点不足. 实现起来, 我们从 \(  g  \)上扣去 \(  f,f_{n}  \)    , 而非直接拿出 \(  f, f_{n}  \)去做.  
-\end{note}
+\begin{proofsketch}
+     \( \left\{ f_{n} \right\}  \)不一定单调,  能将极限从积分外 塞进积分里的工具 , 目前我们只有Fatou's Lemma , 但是它原始的样子跟我们需要的不等号是反向的. 自然的想法是填一个负号, 这又会导致 函数失去非负性, 而控制函数 \(  g  \)恰好能弥补这一点不足. 实现起来, 我们从 \(  g  \)上扣去 \(  f,f_{n}  \)    , 而非直接拿出 \(  f, f_{n}  \)去做.  
+\end{proofsketch}
 \begin{proof}
     Since \(  \left| f \right|\le g   \)  and \(  f   \) is measurable , \(  f \in  L^{1}\left( \mu  \right)    \) .  Function \(  \left( 2g- \left| f_{n}-f \right| \right)    \)   is a  nonnegative measurable function .  Applying Fatou's Lemma to it , we have \[
     \int_{X}\lim_{n\to \infty}\inf \left( 2g-\left| f_{n}-f \right|  \right)\,\mathrm{d} \mu \le \lim_{n\to \infty}\inf \int_{X}\left( 2g-\left| f_{n}-f \right|  \right)\,\mathrm{d} \mu   
@@ -552,7 +552,7 @@ we say that $f = g$ a.e. $[\mu]$ on $X$, and we may write $f \sim g$.
   This is easily seen to be an equivalence relation.  The transitivity ($f \sim g$ and $g \sim h$ implies $f \sim h$) is a consequence of the fact that the union of two sets of measure 0 has measure 0.
 \end{remark}
 
-\begin{proposition}{}{}
+\begin{proposition}{Completion of a Measure}{}
   If $f \sim g$, then, for every $E \in \mathfrak{M}$,
 \[
 \int_E f d\mu = \int_E g d\mu.
@@ -569,5 +569,104 @@ Let $(X, \mathfrak{M}, \mu)$ be a measure space, let $\mathfrak{M}^*$ be the col
 This extended measure $\mu$ is called \dfntxt{complete}, since all subsets of sets of measure 0 are now measurable; the $\sigma$-algebra $\mathfrak{M}^*$ is called the \dfntxt{$\mu$-completion} of $\mathfrak{M}$. The theorem says that every measure can be completed, so, whenever it is convenient, we may assume that any given measure is complete; this just gives us more measurable sets, hence more measurable functions. 
 
 \end{remark}
+
+\begin{proof}
+   We begin by checking that \(  \mu   \) is well defined for every \(  E \in \mathfrak{M}^{*}  \) . If for \(  i= 1,2  \) ,   \(  A_{i}\subseteq E\subseteq B_{i}  \),   where \(  A_{i},B_{i}\in \mathfrak{M}, \mu \left( B_{i}-A_{i}\right)= 0 \) .     We need to show that \(  \mu \left( A_1 \right)= \mu \left( A_2 \right)    \). Since \(  A_1\subseteq E\subseteq B_2  \) ,  \[
+   \mu \left( A_1 \right)\le \mu \left( B_2 \right)= \mu \left( A_2 \right)+ \mu \left( B_2-A_2 \right)= \mu \left( A_2 \right)     
+   \] By symmetric , \[
+   \mu \left( A_2 \right)\le \mu \left( A_2 \right)  
+   \]Thus \(  \mu \left( A_1 \right)= \mu \left( A_2 \right)    \), \(  \mu \left( E \right)   \) is well defined. 
+    Next , let us verify that \(  \mathfrak{M}^{*}  \) has the three defining properties of a \(   \sigma   \)-algebra. 
+    \begin{enumerate}
+        \item It is clearly that \(  X \in \mathfrak{M}^{*}  \). 
+        \item If \(  A\subseteq E\subseteq B  \) , then \(  B^{c} \subseteq E^{c} \subseteq A^{c}   \) . And since \(  \mu \left( A^{c}-B^{c} \right)= \mu \left( A^{c}\cap B \right)= \mu \left( B-A \right)= 0     \) , \(  E^{c} \in \mathfrak{M}^{*}  \). 
+        \item Suppose \(  A_{i}\subseteq E_{i}\subseteq B_{i} , i =  1,2,\cdots   \), where \(  A_{i},B_{i} \in \mathfrak{M}  \),    \(  \mu \left( B_{i}-A_{i} \right)= 0   \)       .  Let \(  E= \bigcup E_{i} ,A= \bigcup A_{i} ,B= \bigcup B_{i}  \) .  Since \[
+        B-A= \bigcup _{i}\left( B_{i}-A \right)\subseteq \bigcup _{i} \left( B_{i}-A_{i} \right)  
+        \], \[
+        \mu \left( B-A \right)\le \sum _{i}\mu \left( B_{i}-A_{i} \right)= 0  
+        \]Then by \(  A\subseteq E\subseteq B  \) , it follows that  \(  E \in \mathfrak{M}^{*}  \).   
+
+        Finally, we show the countable additive of \(  \mu   \) .  If the above sets \(  E_{i}   \)   are disjoint, the smae is true of the sets \(  A_{i}  \) , then \[
+        \mu \left( E \right)= \mu \left( A \right)= \sum _{i}\mu \left( A_{i} \right)= \sum _{i}\mu \left( E_{i} \right)    
+        \] 
+    \end{enumerate}
+       
+\end{proof}
+
+\begin{definition}{More Mearuable Functions}{}
+    We say a function \(  f  \) defined on a set \(  E \in \mathfrak{M}  \) is \dfntxt{measurable on \(  X  \) } .  If \(  \mu \left( E^{c} \right)= 0   \) and if \(  f^{-1} \left( V \right)\cap E   \)     is a measurable for every open set \(  V  \) . 
+\end{definition}
+
+\begin{remark}
+    \begin{itemize}
+        \item If we define \(  f\left( x \right)= 0   \) for \(  x \in E^{c}   \) , we obtain a mearuable function on \(  X  \) , in the old sense. 
+        \item If our measure happens to be complete , we can define \(  f  \) on \(  E^{c}  \) in a perfrctly arbitrary manner, and we still get a measurable function . The integral of \(  f  \) over any set \(  A \in \mathfrak{M}  \) is independent of the definition of \(  f  \) on \(  E^{c}  \); therefore this definition need not even be specified at all.       
+    \end{itemize}
+       
+\end{remark}
+\begin{theorem}{}{}
+Suppose $\{f_n\}$ is a sequence of complex measurable functions defined a.e. on X such that
+\[
+\sum_{n=1}^{\infty} \int_X |f_n| \, d\mu < \infty.
+\tag{1}
+\]
+Then the series
+\[
+f(x) = \sum_{n=1}^{\infty} f_n(x)
+\tag{2}
+\]
+converges for almost all x, $f \in L^1(\mu)$, and
+\[
+\int_X f \, d\mu = \sum_{n=1}^{\infty} \int_X f_n \, d\mu.
+\tag{3}
+\]
+\end{theorem}
+\begin{remark}
+    \begin{itemize}
+        \item 现在, 考察积分和求和是否可交换, 只需要检查模长积分的级数是否收敛. 
+        \item 即便 \(  f_{n}  \)在 \(  X  \)上处处被定义, 级数收敛的地方也只是\dfntxt{almost everywhere} .   
+    \end{itemize}
+    
+\end{remark}
+\begin{note}
+    此时,控制函数就是绝对级数本身, 它在一个满测集上将原级数控制住. 其特殊性间接给出了原级数的几乎处处收敛性质. 
+\end{note}
+\begin{proof}
+   Let \(  S_{n}  \) be the set on which \(  f_{n}  \) is defined, so  that \(  \mu \left( S_{n}^{c} \right)= 0   \)   . Let \(  S= \bigcap S_{n}   \).  Put \(   \varphi \left( x \right)= \sum \left| f_{n}\left( x \right)  \right|     \) , for \(  x \in S  \) .By Monotone Convergence Theorem \[
+   \int_{S} \varphi \,\mathrm{d} \mu \le \sum _{n = 1}^{\infty}\int_{S}\left| f_{n} \right|\,\mathrm{d} \mu < \infty 
+   \]   Let \(  E= \left\{ x\in S:  \varphi \left( x \right)< \infty  \right\}  \) . Then it follows that   \(  \mu \left( E^{c} \right)= 0   \) .    We have \[
+   \sum _{n = 1}^{\infty}\left| f_{n}\left( x \right)  \right|< \infty ,\quad \forall x \in E
+   \] Thus \[
+   f\left( x \right)= \sum _{n = 1}^{\infty}f_{n}\left( x \right)  
+   \] converges on  \(  E  \) , which is a set with its complement measure zero . That is to say \(  f  \) coverges for almost all \(  x  \) . And since \(  f \in L^{1}\left( \mu |_{E} \right)   \) , \(  \mu \left( E \right)= 0   \) , we have \(  f \in L^{1}\left( \mu  \right)   \) .      Finally , by Monotone Convergence Theorem  ,  \[
+   \int_{X}f\,\mathrm{d} \mu = \int_{E} f\,\mathrm{d} \mu = \sum _{n = 1}^{\infty}\int_{E}f_{n}\,\mathrm{d} \mu =   \sum _{n = 1}^{\infty}\int_{X}f_{n}\,\mathrm{d} \mu  
+   \]
+\end{proof}
+
+\begin{theorem}{}{}
+    \begin{enumerate}
+        \item Suppose \(  f: X\to \left[ 0,\infty \right]   \) is measurable , \(  E \in \mathfrak{M}  \) , and \(  \int_{E}f\,\mathrm{d} \mu   = 0\) . Then \(  f= 0  \) a.e. on \(  E  \).      
+        \item Suppose \(  f \in L^{1}\left( \mu  \right)    \) and \(  \int_{E}f\,\mathrm{d} \mu = 0  \) for every \(  E \in \mathfrak{M}  \)    . Then \(  f= 0  \) a.e. on \(  X  \) .   
+        \item Suppose \(  f \in L^{1}\left( \mu  \right)   \) and \[
+        \left| \int_{X}f\,\mathrm{d} \mu  \right|= \int_{X}\left| f \right|\,\mathrm{d} \mu   
+        \] Then there is a constant \(  \alpha    \) such that \(   \alpha f= \left| f \right|    \)   a.e. on \(  X  \) .  
+    \end{enumerate}
+    
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item Let \(  A_{n}= \left\{ x \in E: f\left( x \right)\ge \frac{1 }{n }   \right\}  \) . Then \[
+       0=  \int_{E}f\,\mathrm{d} \mu \ge \int_{A_{n}}f\,\mathrm{d} \mu \ge \mu \left( A_{n} \right)\frac{1 }{n } . 
+        \]  It follows that \[
+        \mu \left( A_{n} \right)= 0 ,\quad \forall n = 1,2,\cdots  
+        \] Let \(  A   = \bigcup _{n = 1}^{\infty}A_{n}\)  .  Then \(  \mu \left( A \right)= 0   \) , and \(  f\equiv 0  \) on \(  E\setminus A  \).  Thus \(  f= 0   \) a.e. on \(  E  \) .     
+        \item Suppose \(  f = u+ iv  \) .  Let \(  E=  \left\{ x \in X : u\left( x \right)\ge 0  \right\} \) . Since \(  \operatorname{Re}f = u^{+ }  \)  on \(  E  \) ,  then  \[
+        \int_{E}u^{+ }\,\mathrm{d} \mu = 0
+        \]  It follows by 1. that \(  \mu ^{+ }= 0   \) a.e. on \(  E  \) .  Since \(  \mu ^{+ }\left( X\setminus E \right)\equiv 0    \) , \(  \mu ^{+ }= 0   \) a.e. on \(  X  \) . We conclude similarly that \[
+        u^{-}= v^{+ }= v^{-}= 0 ,\quad a.e.
+        \]    
+    \end{enumerate}
+    
+\end{proof}
 
 \end{document}
