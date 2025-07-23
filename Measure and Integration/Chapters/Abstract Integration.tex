@@ -1,6 +1,13 @@
 \documentclass[../main.tex]{subfiles}
 
+
 \begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+}{}
 
 \chapter{ Abstract Integration }
 
@@ -497,9 +504,9 @@ If $f \in L^1(\mu)$, then
 \left| \int_X f d\mu \right| \le \int_X |f| d\mu.
 \]
 \end{theorem}
-\begin{proofsketch}
-    转一转 \(  f  \)把它的虚部转没掉.   
-\end{proofsketch}
+\begin{note}
+    被缩放的部分实际上是 \(  f  \)因改变了方向产生的损耗.  
+\end{note}
 \begin{proof}
     Let \(  z =  \int_{X} f\,\mathrm{d} \mu   \) , \(  z  \) is a complex number .  There exists a complex number \(  \alpha   \) (\(  \alpha = \frac{\bar{z} }{\left| z \right|  }   \) ) , such that \(  \left| \alpha  \right|= 1   \) , and   \[
     \left| \int_{X} f\,\mathrm{d} \mu  \right|=  \alpha z= \alpha \int_{X}f\,\mathrm{d} \mu  = \int_{X} \alpha f \,\mathrm{d} \mu 
