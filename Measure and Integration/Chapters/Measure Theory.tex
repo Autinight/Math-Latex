@@ -1,0 +1,139 @@
+\documentclass[../main.tex]{subfiles}
+
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+}{}
+
+\chapter{Measure Theory}
+
+\section{Outer Measure}
+\begin{definition}{Outer Measure}{}
+A function $\varphi$ defined for every subset $A$ of an arbitrary set $X$ is called an \dfntxt{outer measure} on $X$ if the following conditions are satisfied:
+\begin{enumerate}
+    \item[(i)] $\varphi(\emptyset) = 0$,
+    \item[(ii)] $0 \leq \varphi(A) \leq \infty$ whenever $A \subset X$,
+    \item[(iii)] $\varphi(A_1) \leq \varphi(A_2)$ whenever $A_1 \subset A_2$,
+    \item[(iv)] $\varphi(\bigcup_{i=1}^{\infty} A_i) \leq \sum_{i=1}^{\infty} \varphi(A_i)$ for every countable collection of sets $\{A_i\}$ in $X$.
+\end{enumerate}
+\end{definition}
+
+\begin{example}{Outer Measure}{}
+\begin{enumerate}
+\item[(i)] In an arbitrary set $X$, define $\varphi(A) = 1$ if $A$ is nonempty and $\varphi(\emptyset) = 0$.
+\item[(ii)] Let $\varphi(A)$ be the number (possibly infinite) of points in $A$.
+\item[(iii)] Let $\varphi(A)=\left\{\begin{array}{ll} 0 & \text { if card } A \leq \aleph_{0}, \\ 1 & \text { if card } A > \aleph_{0} . \end{array}\right.$
+\item[(iv)] If $X$ is a metric space, fix $\varepsilon > 0$. Let $\varphi(A)$ be the smallest number of balls of radius $\varepsilon$ that cover $A$.
+\item[(v)] Select a fixed $x_0$ in an arbitrary set $X$, and let
+\[
+\varphi(A)=\left\{\begin{array}{ll}
+0 & \text { if } x_{0} \notin A, \\
+1 & \text { if } x_{0} \in A;
+\end{array}\right.
+\]
+$\varphi$ is called the \dfntxt{Dirac measure} concentrated at $x_0$.
+\end{enumerate}
+\end{example}
+
+\begin{definition}{}{}
+Let $\varphi$ be an outer measure on a set $X$. A set $E \subset X$ is called \dfntxt{$\varphi$-measurable} if
+\[
+\varphi(A) = \varphi(A \cap E) + \varphi(A - E)
+\]
+for every set $A \subset X$. In view of property (iv) above, observe that $\varphi$-measurability requires only
+\[
+\varphi(A) \ge \varphi(A \cap E) + \varphi(A - E).
+\]
+\end{definition}
+
+\begin{lemma}{}{7-23-1}
+A set $E \subset X$ is $\varphi$-measurable if and only if
+\[
+\varphi(P \cup Q) = \varphi(P) + \varphi(Q)
+\]
+for all sets $P$ and $Q$ such that $P \subset E$ and $Q \subset E^{c}$.
+\end{lemma}
+
+\begin{proof}
+   For Necessity, if \(  E   \) is \(   \varphi   \)-measurable , then for all such \(  P,Q  \),  \[
+     \varphi \left( P\cup Q \right)=  \varphi \left( \left( P\cup Q \right)\cap E  \right) +  \varphi \left( \left( P\cup Q \right)-E  \right)=  \varphi \left( P \right)+  \varphi \left( Q \right)     
+    \]  
+
+    For sufficiency ,  let \(  P= A\cap E  \) , \(  Q= A\cap E^{c}= A\setminus  E  \) .     Then \[
+       \varphi \left( A \right)=  \varphi \left( P\cup Q \right)=   \varphi \left( P \right)+  \varphi \left( Q \right)    =\varphi \left( A\cap E \right)+  \varphi \left( A\setminus E \right)  
+    \]
+    
+    
+\end{proof}
+
+\begin{theorem}{}{}
+Suppose $\varphi$ is an outer measure on an arbitrary set $X$.
+Then the following four statements hold:
+\begin{enumerate}
+\item[(i)] $E$ is $\varphi$-measurable whenever $\varphi(E) = 0$.
+\item[(ii)] $\emptyset$ and $X$ are $\varphi$-measurable.
+\item[(iii)] $E_1 - E_2$ is $\varphi$-measurable whenever $E_1$ and $E_2$ are $\varphi$-measurable.
+\item[(iv)] If $\{E_i\}$ is a \dfntxt{countable collection of disjoint $\varphi$-measurable sets}, then $\bigcup_{i=1}^\infty E_i$ is $\varphi$-measurable and
+\[
+\varphi\left(\bigcup_{i=1}^\infty E_i\right) = \sum_{i=1}^\infty \varphi(E_i).
+\]
+\end{enumerate}
+More generally, if $A \subset X$ is an arbitrary set, then
+\[
+\varphi(A) = \sum_{i=1}^\infty \varphi(A \cap E_i) + \varphi(A \cap \tilde{S}),
+\]
+where
+\[
+S = \bigcup_{i=1}^\infty E_i.
+\]
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item Take any \(  A\subseteq X  \) . Since \(  A\cap E\subseteq E  \) , \(   \varphi \left( A\cap E \right)= 0   \) .  Thus \[
+         \varphi \left( A\cap E \right)+   \varphi \left( A\cap E^{c} \right)=  \varphi \left( A\cap E^{c} \right)\le  \varphi \left( A \right)    
+        \]   
+        \item Follows immediately frome lemma \ref{lem:7-23-1}.
+        \item Take any \(  P,Q  \) such that \(  P\subseteq \left( E_1\setminus E_2 \right) = E_1\cap  E_2^{c}  \) , \(  Q\subseteq \left( E_1\setminus E_2 \right)^{c}= E_1^{c}\cup E_2   \) .   \[
+        \begin{aligned}
+         \varphi \left( Q \right)&=  \varphi \left( Q\cap E_2 \right)+  \varphi \left( Q-  E_2 \right)
+        \end{aligned}   
+        \] Note that \(  Q-E_2 \subseteq E_1^{c}  \) , \(  Q\cap E_2\subseteq E_2  \) . Since \(  P\subseteq E_1  \) , the measurability of \(  E_1  \) implis that  \[
+         \varphi \left( P \right)+  \varphi \left( Q-E_2 \right)=  \varphi \left( P\cup \left( Q-E_2 \right)  \right)   
+        \]  Note that \(  P\cup \left( Q-E_2 \right)\subseteq E_2^{c}   \)  . Since \(  Q\cap E_2\subseteq E_2  \) , we have \[
+         \varphi \left( P\cup \left( Q-E_2 \right) \right)+  \varphi \left( Q\cap E_2 \right)=  \varphi \left( P\cup Q \right)   
+        \]  Finally , we have \[
+        \begin{aligned}
+         \varphi \left( P \right)+  \varphi \left( Q \right)&=   \varphi \left( P \right)+  \varphi \left( Q\cap E_2 \right)+  \varphi \left( Q- E_2 \right)\\ 
+          &=        \varphi \left( P\cup \left( Q-E_2 \right)  \right)+  \varphi \left( Q\cap E_2 \right)\\ 
+           &=  \varphi \left( P\cup Q \right)    
+        \end{aligned}
+        \]
+        \item  Let \(  S_{k} = \bigcup _{i= 1}^{k}E_{i}  \).  We proceed by finite induction and first note that the result is obviously true for \(  k= 1  \) . For \(  k> 1  \) assume that \(  S_{k}  \) is \(   \varphi   \)-measurable and that \[
+         \varphi \left( A \right)\ge  \sum _{i = 1}^{k} \varphi \left( A\cap E_{i} \right)+  \varphi \left( A\cap S_{k}^{c} \right)   ,\quad \forall A\subseteq X
+        \]   Then \[
+        \begin{aligned}
+         \varphi \left( A \right)&=  \varphi \left( A\cap E_{k+ 1} \right)+  \varphi \left( A\cap E_{k+ 1}^{c} \right)\\ 
+          &=  \varphi \left( A\cap E_{k+ 1} \right)+  \varphi \left( A\cap E_{k+ 1}^{c}\cap S_{k}^{c} \right)+  \varphi \left( A\cap E_{k+ 1}^{c}\cap S_{k} \right)\\ 
+           &=  \varphi \left( A\cap E_{k+ 1} \right)+  \varphi \left( A\cap S_{k+ 1}^{c} \right)+  \varphi \left( A\cap S_{k} \right)        
+        \end{aligned}
+        \]  Replaced \(  A  \) by \(  A\cap S_{k}  \) , we have \[
+         \varphi \left( A\cap S_{k} \right)\ge \sum _{i = 1}^{k} \varphi \left( A\cap S_{k}\cap E_{i} \right)+  \varphi \left( A\cap S_{k}\cap S_{k}^{c} \right)=     \sum _{i = 1}^{k} \varphi \left( A\cap E_{i} \right) 
+        \]   Thus \[
+         \varphi \left( A \right) \ge \sum _{i = 1}^{k+ 1} \varphi \left( A\cap E_{k+ 1} \right)+  \varphi \left( A\cap S_{k+ 1}^{c} \right)  
+        \] Then the subadditivity gives that \[
+         \varphi \left( A \right)\ge   \varphi \left( A\cap S_{k+ 1} \right)+  \varphi \left( A\cap S_{k+ 1}^{c} \right)   
+        \] this , inturn , implies that \(  S_{k+ 1}  \) is \(   \varphi   \)-measurable. Since we now know  for every set \(  A\subseteq X  \) and for all positive integers \(  k  \) \[
+         \varphi \left( A \right)\ge \sum _{i = 1}^{k} \varphi \left( A\cap E_{i} \right)+  \varphi \left( A\cap S_{k}^{c} \right)   
+        \]     We have \[
+         \varphi \left( A \right)\ge \sum _{i = 1}^{\infty} \varphi \left( A\cap E_{i} \right)+  \varphi \left( A\cap S^{c} \right)  \ge  \varphi \left( A\cap S \right)+  \varphi \left( A\cap S^{c} \right)   
+        \] where \(  S= \bigcup _{i = 1}^{\infty}E_{k}  \) .   Thus \(  S  \) is measurable .   Replace \(  A  \) by \(  S  \) above , we have \[
+         \varphi \left( S \right)\ge \sum _{i = 1}^{\infty} \varphi \left( S\cap E_{i} \right)+  \varphi \left( S\cap S^{c} \right)=  \sum _{i = 1}^{\infty} \varphi \left( E_{i} \right)    
+        \]  Then the second part follows from the subadditivity of \(   \varphi   \) .  
+    \end{enumerate}
+    
+\end{proof}
+\end{document}
