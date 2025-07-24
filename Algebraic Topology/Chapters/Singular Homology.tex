@@ -335,4 +335,32 @@ H_{i+ 1}\left( \mathbb{S}^{p}\times \mathbb{S}^{q} \right)\simeq \operatorname{k
 \end{enumerate}
 
 \end{proof}
+
+\begin{exercise}{}{}
+Compute $H_*(\vee_k \mathbb{S}^{n_k})$ where $\vee_k \mathbb{S}^{n_k}$ denotes the bouquet of spheres of varying dimensions $n_k$. In particular, compute $H_*(\vee_k \mathbb{S}^n)$ where each $n_k = n$.
+\end{exercise}
+
+\begin{proof}
+ Let \(  U  \) be a sufficiently small open neighbourhood near the base point .      Let \(  X_1=  \vee _{k-1}\mathbb{S}^{n_{k-1}} \cup U  \)    .  \(  X_2=  \mathbb{S}^{n_{k}}\cup U\)   .   \(  X_1  \) is homotopic equivalent to \(  \vee _{k-1}\mathbb{S}^{n_{k-1}}  \) .       \(  X_2  \) is homotopic equivalent to \(  \mathbb{S}^{n_{k}}  \)  . \(  X_1\cap X_2= U  \) is contractible . The Mayer-Vietoris sequence is \[
+    \cdots H_{l+ 1}\left( \vee _{k}\mathbb{S}^{n_{k}} \right) \xrightarrow{ \partial }0\to H_{l}\left( \vee _{k-1}\mathbb{S}^{n_{k-1}} \right)\oplus H_{l}\left( \mathbb{S}^{n_{k}} \right)\to  H_{l}\left( \vee _{k}\mathbb{S}^{n_{k}} \right)  \xrightarrow{ \partial } 0\cdots  
+    \]  when \( l \ge 2  \) .  Thus \[
+    H_{l}\left(  \vee _{k-1}\mathbb{S}^{n_{k-1}}\right)\oplus H_{l}\left( \mathbb{S}^{n_{k}} \right)\simeq  H_{l}\left( \vee _{k}\mathbb{S}^{n_{k}} \right)   ,\quad l\ge 2
+    \] By induction , we have \[
+ H_{l}\left( \vee _{k}\mathbb{S}^{n_{k}} \right) \simeq \oplus _{k}H_{l}\left( \mathbb{S}^{n_{k}} \right),\quad l\ge  2 
+    \] The M-V sequence reduces to \[
+     0\to  H_{1}\left( \vee _{k-1}\mathbb{S}^{n_{k-1}} \right)\oplus H_{1}\left( \mathbb{S}^{n_{k}} \right)\to H_{1}\left( \vee _{k}\mathbb{S}^{n_{k}} \right)   \xrightarrow{ \partial }H_0\left( U \right)   \to  H_0\left( \vee _{k-1}\mathbb{S}^{n_{k-1}} \right)\oplus H_{0}\left( \mathbb{S}^{n_{k}} \right)  \cdots    
+    \] when \(  l = 1  \) .   The exactness show that \[
+    \operatorname{Im} \partial =  \operatorname{ker}\left( H_0\left( U \right)\to H_0\left( \vee _{k-1}\mathbb{S}^{n_{k-1}} \right)\oplus H_0\left( \mathbb{S}^{n_{k}} \right)    \right)= 0 
+    \]Thus \[
+    0\to H_1\left( \vee _{k-1}\mathbb{S}^{n_{k-1}} \right)\oplus H_1\left( \mathbb{S}^{n_{k}} \right)\to H_1\left( \vee _{k}\mathbb{S}^{n_{k}} \right)\to 0   
+    \] And \[
+    H_1\left( \vee _{k}\mathbb{S}^{n_{k}} \right) \simeq H_{1}\left( \vee _{k-1}\mathbb{S}^{n_{k-1}} \right)\oplus H_1\left( \mathbb{S}^{n_{k}} \right)   
+    \] By induction \[
+    H_{1}\left( \vee _{k}\mathbb{S}^{n_{k}} \right)\simeq \bigoplus_{k} H_{1}\left( \mathbb{S}^{n_{k}} \right)  
+    \] And since \(  \vee _{k}\mathbb{S}^{n_{k}}  \) is path-connected , finally we have \[
+    H_{l}\left( \vee _{k}\mathbb{S}^{n_{k}} \right)= \begin{cases} \mathbb{Z} , & l = 0\\ 
+     \bigoplus _{k}H_{l}\left( \mathbb{S}^{n_{k}} \right),&  l\ge 1  \end{cases}  
+    \] Where \(  H_{l}\left( \mathbb{S}^{n_{k}} \right)   \) we have already known. 
+\end{proof}
+
 \end{document}

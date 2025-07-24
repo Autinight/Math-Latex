@@ -70,7 +70,7 @@ for all sets $P$ and $Q$ such that $P \subset E$ and $Q \subset E^{c}$.
     
 \end{proof}
 
-\begin{theorem}{}{}
+\begin{theorem}{}{7-24-1}
 Suppose $\varphi$ is an outer measure on an arbitrary set $X$.
 Then the following four statements hold:
 \begin{enumerate}
@@ -84,7 +84,7 @@ Then the following four statements hold:
 \end{enumerate}
 More generally, if $A \subset X$ is an arbitrary set, then
 \[
-\varphi(A) = \sum_{i=1}^\infty \varphi(A \cap E_i) + \varphi(A \cap \tilde{S}),
+\varphi(A) = \sum_{i=1}^\infty \varphi(A \cap E_i) + \varphi(A \cap S^{c}),
 \]
 where
 \[
@@ -140,4 +140,87 @@ S = \bigcup_{i=1}^\infty E_i.
     \end{enumerate}
     
 \end{proof}
+
+\begin{lemma}{}{}
+Let $\{E_i\}$ be a sequence of arbitrary sets. Then there exists a sequence of disjoint sets $\{A_i\}$ such that each $A_i \subset E_i$ and
+\[
+\bigcup_{i=1}^{\infty} E_i = \bigcup_{i=1}^{\infty} A_i.
+\]
+If each $E_i$ is $\varphi$-measurable, and so is $A_i$.
+\end{lemma}
+\begin{proof}
+    Let \(  S_{k}= \bigcup _{i= 1}^{k}E_{i}  \) .  Let  \(  A_{k}= S_{k}\setminus S_{k-1} ,k \ge 1  \) , where \(  S_0   = \varnothing\) .  Then \[
+    \bigcup _{i = 1}^{\infty}E_{i}= \bigcup _{i = 1}^{\infty}\left( S_{k}\setminus S_{k-1} \right)  = \bigcup _{i = 1}^{\infty}A_{i} .
+    \]  If each \(  E_{i}  \) is \(   \varphi   \)-measurable.   \(  E_{i+ 1}\cup E_{i}= \left( E_{i+ 1}-E_{i} \right)\cup E_{i}    \) is measurable follows from the (ii), (iii) of the above theorem . Inductively , every \(  S_{k}=  \left( S_{k-1}\setminus E_{k} \right)\cup E_{k}   \)  is measurable.  Then  each \(  A_{k}   \) is measurable .  
+\end{proof}
+
+\begin{theorem}{}{7-24-2}
+If $\{E_i\}$ is a sequence of \dfntxt{$\varphi$-measurable} sets in X, then $\cup_{i=1}^{\infty} E_i$ and $\cap_{i=1}^{\infty} E_i$ are \dfntxt{$\varphi$-measurable}.
+\end{theorem}
+
+\begin{proof}
+    By the lemma above, there exists a sequence of disjoint \(   \varphi   \) - measurable sets \(  \left\{ A_{i} \right\}  \) such that each \(  A_{i}\subseteq E_{i}  \) , and \[
+    \bigcup _{i = 1}^{\infty}E_{i}= \bigcup _{i = 1}^{\infty}A_{i}
+    \]  It follows from Theorem \ref{thm:7-24-1} that \(  \bigcup _{i = 1}^{\infty}A_{i}  \) is measurable , then \(  \bigcup _{i = 1}^{\infty}E_{i}  \) is as well .   Since \(  X   \) is measurable , \(  E_{i}^{c}= X\setminus E_{i}  \) is measurable , then   \(  \bigcup _{i = 1}^{\infty}E_{i}^{c}  \) is measurable .  Thus \[
+    \bigcap_{i= 1}^{\infty}E_{i}=  X\setminus \bigcup _{i= 1}^{\infty}E_{i}^{c} 
+    \] is measurable . 
+\end{proof}
+
+\begin{definition}{}{}
+A nonempty collection $\Sigma$ of sets $E$ satisfying the following two conditions is called a \dfntxt{$\sigma$-algebra}:
+\begin{enumerate}
+    \item[(i)] if $E \in \Sigma$, then $E^{c} \in \Sigma$;
+    \item[(ii)] $\cup_{i=1}^{\infty} E_i \in \Sigma$ if each $E_i$ is in $\Sigma$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}{}{}
+In a topological space, the elements of the smallest $\sigma$-algebra that contains all open sets are called \dfntxt{Borel sets}. The term ``smallest'' is taken in the sense of inclusion.
+\end{definition}
+\begin{proof}
+    We need to show that the ``smallest'' exists. 
+\end{proof}
+
+\begin{corollary}{}{}
+If $\varphi$ is an \dfntxt{outer measure} on an arbitrary set $X$, then the class of $\varphi$-measurable sets forms a \dfntxt{$\sigma$-algebra}.
+\end{corollary}
+\begin{proof}
+    Follows immediately from Theorem \ref{thm:7-24-1} and Theorem \ref{thm:7-24-2}. 
+\end{proof}
+
+\begin{corollary}{}{}
+Suppose $\varphi$ is an outer measure on $X$ and $\{E_i\}$ a countable collection of $\varphi$-measurable sets.
+\begin{enumerate}
+    \item[(i)] If $E_1 \subset E_2$ with $\varphi(E_1) < \infty$, then
+    \[
+        \varphi(E_2 \setminus E_1) = \varphi(E_2) - \varphi(E_1).
+    \]
+    \item[(ii)] (Countable additivity) If $\{E_i\}$ is a disjoint sequence of sets, then
+    \[
+        \varphi(\bigcup_{i=1}^{\infty} E_i) = \sum_{i=1}^{\infty} \varphi(E_i).
+    \]
+    \item[(iii)] (Continuity from the left) If $\{E_i\}$ is an increasing sequence of sets, that is, if $E_i \subset E_{i+1}$ for each $i$, then
+    \[
+        \varphi(\bigcup_{i=1}^{\infty} E_i) = \varphi(\lim_{i \to \infty} E_i) = \lim_{i \to \infty} \varphi(E_i).
+    \]
+    \item[(iv)] (Continuity from the right) If $\{E_i\}$ is a decreasing sequence of sets, that is, if $E_i \supset E_{i+1}$ for each $i$, and if $\varphi(E_{i_0}) < \infty$ for some $i_0$, then
+    \[
+        \varphi(\bigcap_{i=1}^{\infty} E_i) = \varphi(\lim_{i \to \infty} E_i) = \lim_{i \to \infty} \varphi(E_i).
+    \]
+    \item[(v)] If $\{E_i\}$ is any sequence of $\varphi$-measurable sets, then
+    \[
+        \varphi(\liminf_{i \to \infty} E_i) \le \liminf_{i \to \infty} \varphi(E_i).
+    \]
+    \item[(vi)] If
+    \[
+        \varphi(\bigcup_{i=i_0}^{\infty} E_i) < \infty
+    \]
+    for some positive integer $i_0$, then
+    \[
+        \varphi(\limsup_{i \to \infty} E_i) \ge \limsup_{i \to \infty} \varphi(E_i).
+    \]
+\end{enumerate}
+\end{corollary}
+
+
 \end{document}
