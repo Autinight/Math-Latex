@@ -1,0 +1,193 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+}{}
+
+\chapter{ De Rham Theory}
+
+\section{De Rham Cohomology}
+\begin{definition}{}{}
+The \dfntxt{$q$-th de Rham cohomology} of $\mathbb{R}^n$ is the vector space
+\[
+H_{DR}^q(\mathbb{R}^n) = \{\text{closed } q\text{-forms}\}/\{\text{exact } q\text{-forms}\}.
+\]
+We sometimes suppress the subscript $DR$ and write $H^q(\mathbb{R}^n)$. If there is a need to distinguish between a form $\omega$ and its cohomology class, we denote the latter by $[\omega]$.
+\end{definition}
+
+\begin{remark}
+    The definition wors equally well for any open subset \(  U \subseteq \mathbb{R} ^{n}  \) . So we may also speak of the de Rham cohomology \(  H_{DR}^{*}\left( U \right)   \) of \(  U  \) .    
+\end{remark}
+
+\begin{example}{}{}
+    \begin{enumerate}
+        \item  When \(  n = 0  \) , \[
+        H^{q}= \begin{cases} \mathbb{R} ,&q= 0\\ 
+         0,&q> 0 \end{cases} 
+        \] 
+        \item When \(  n = 1  \) .  \(  \left( \operatorname{ker} d \right)\cap   \Omega ^{0}\left( \mathbb{R} ^{1} \right)    \) are the constant functions \[
+        H^{0}\left( \mathbb{R} ^{1} \right)= \mathbb{R}  
+        \]  On \(   \Omega ^{1}\left( \mathbb{R} ^{1} \right)    \) , \(  \operatorname{ker}d  \) are all the \(  1  \)-forms. If \(   \omega = g\left( x \right)\,\mathrm{d} x   \) is a 1-form , then by taking \[
+        f= \int_{0}^{x}g\left( u \right)\,\mathrm{d}u ,  
+        \] we find that \[
+        \,\mathrm{d} f= g\left( x \right)\,\mathrm{d} x 
+        \] Therefore every 1-form on \(  \mathbb{R} ^{1}  \) is exact and \[
+        H^{1}\left( \mathbb{R} ^{1} \right)= 0.  
+        \]
+        \item Let \(  U  \) be a disjoint union of \(  m  \) open intervals on \(  \mathbb{R} ^{1}  \) .  Then \[
+        H^{0}\left( U \right)= \mathbb{R} ^{m} 
+        \] and \[
+        H^{1}\left( U \right)= 0 
+        \] 
+        \item In general \[
+        H^{*}\left( \mathbb{R} ^{n} \right)= \begin{cases} \mathbb{R} ,& \text{in demension 0},\\
+        0,& \text{ohterwise} \end{cases}  
+        \]This result is called the Poincare lemma and will be proved  later.         
+    \end{enumerate}
+    
+\end{example}
+
+
+
+\begin{definition}{}{}
+    Let \(   \Omega ^{*}_{c}\left( \mathbb{R} ^{n} \right)   \) be the colletction of the compact supported forms on \(  \mathbb{R} ^{n}  \) , which is a cochain complex.  Then we denote the cohomology  of this complex by \(  H_{c}^{*}\left( \mathbb{R} ^{n} \right)   \) 
+\end{definition}
+
+\begin{example}{}{}
+    \begin{enumerate}
+        \item \[
+        H_{c}^{*}\left( \mathrm{point} \right)  = \begin{cases} \mathbb{R} ,& \text{ in dimension 0} , \\ 
+         0,& \text{ elsewhere.} \end{cases} 
+        \]
+        \item The compact cohomology of \(  \mathbb{R} ^{1}  \). Again the closed 0-fomrs are the constant functions. Since there are no constant functions on \(  \mathbb{R} ^{1}  \) with compact support.  \[
+        H_{c}^{0}\left( \mathbb{R} ^{1} \right)= 0.  
+        \] To compute \(  H_{c}^{1}\left( \mathbb{R} ^{1} \right)   \) , consider the integration map \[
+        \int_{\mathbb{R} ^{1}}:  \Omega _{c}^{1}\left( \mathbb{R} ^{1} \right)\to \mathbb{R} ^{1} 
+        \]   This map is clearly surjective. It vanishes on the exact 1-forms \(  \,\mathrm{d} f  \) where \(  f  \) has conpact support, for if the support of \(  f  \)    lies in the interior of \(  \left[ a,b \right]   \) , then \[
+        \int_{\mathbb{R} ^{1}} \frac{\,\mathrm{d} f }{\,\mathrm{d} x }\,\mathrm{d} x= \int_{a}^{b}\frac{\mathrm{d}f}{\mathrm{d}x} \,\mathrm{d} x= f\left( b \right)-f\left( a \right)= 0   
+        \]  If \(  g\left( x \right)\,\mathrm{d} x\in  \Omega _{c}^{1}\left( \mathbb{R} ^{1} \right)    \) is in the kernel of the integration map, then the function \[
+        f\left( x \right)= \int_{-\infty}^{x}g\left( u \right)\,\mathrm{d} u  
+        \] will ahve compact support and \(  \,\mathrm{d} f= g\left( x \right)\,\mathrm{d} x   \)  . Hence the kernel of \(  \int_{\mathbb{R} ^{1}}  \)  are precisely the exact forms and \[
+        H_{c}^{1}\left( \mathbb{R} ^{1} \right)= \frac{ \Omega _{c}^{1}\left( \mathbb{R} ^{1} \right)  }{ \operatorname{ker}\int_{\mathbb{R} ^{1}} }= \operatorname{Im}\int_{\mathbb{R} ^{1}}  = \mathbb{R} ^{1}
+        \]
+        \item More generally, \[
+        H_{c}^{*}\left( \mathbb{R} ^{n} \right)= \begin{cases} \mathbb{R} ,& \text{ in demension }n\\ 
+         0,& \text{ otherwise. } \end{cases}  
+        \] This result is the Poincare lemma for cohomology with compact support and will be proved later. 
+    \end{enumerate}
+    
+\end{example}
+
+\begin{exercise}{}{}
+    Compute \(  H_{DR}^{*}\left( \mathbb{R} ^{2}-P-Q \right)    \) where \(  P  \) and \(  Q  \) are two points in \(  \mathbb{R} ^{2}  \). Find the closed forms that represent the cohomology classes.     
+\end{exercise}
+
+\begin{proof}
+    First , \[
+    H_{DR}^{k}\left( \mathbb{R} ^{2}-P-Q \right)= 0,\quad k\ge 3 ,\quad H_{DR}^{0}\left( \mathbb{R} ^{2}-P-Q \right)\simeq \mathbb{R} .  
+    \] Since there is no nonzero 3-form on \(  \mathbb{R} ^{2}-P-Q  \).  
+    To compute \(  H^{2}_{DR}\left( \mathbb{R} ^{2}-P-Q \right)   \) .  Consider a 2-form on \(  \alpha = f\left( x,y \right)\,\mathrm{d} x\,\mathrm{d} y   \) on \(  \mathbb{R} ^{2}-P-Q  \) .   Since \(  \mathbb{R} ^{2}-P-Q  \) is open , it is a submanifold of  \(  \mathbb{R} ^{2}  \) .  It follows that \(  \alpha    \) is closed from Stokes Theorem . 
+    
+    Finally, let \(   \omega =  g\left( x,y \right)\,\mathrm{d} x+ h\left( x,y \right)\,\mathrm{d} y    \) . Then \[
+    \,\mathrm{d}  \omega = \left( g_{x}-h_{y} \right)\,\mathrm{d} x\wedge \,\mathrm{d} y 
+    \]  We aim to find a solution of \[
+    g_{x}-h_{y}= f
+    \] on \(  \mathbb{R} ^{2}-P-Q  \) .  It is actually exists. Let \(  \alpha   \) be any closed 1-form on \(  \mathbb{R} ^{2}-P-Q  \) .   We may assume that \(  P= \left( -1,0 \right), Q= \left( 1,0 \right)    \) . Let \[
+     \omega _{P}= \frac{-y\,\mathrm{d} x+ \left( x+ 1 \right)\,\mathrm{d} y  }{ \left( x+ 1 \right)^{2}+ y^{2} },\quad  \omega _{Q} = \frac{-y\,\mathrm{d} x+ \left( x-1 \right)\,\mathrm{d} y  }{ \left( x-1 \right)^{2}+ y^{2} }  
+    \]  Then \[
+    \,\mathrm{d}  \omega _{p}= \,\mathrm{d}  \omega _{Q} = 0,\quad   
+    \] Let \(  C_{P} ,C_{Q}  \) be two sufficiently small loops around \(  P,Q  \), respectively. And \(  C_{P} ,C_{Q}  \) is not around \(  Q,P  \) ,respectively.  Then \[
+    \int_{C_{P}}  \omega _{p}=  \int_{C_{Q}} \omega _{Q}= 2 \pi ,\quad  \int_{C_{Q}} \omega _{P} = \int_{C_{P}} \omega _{Q}= 0
+    \]    For any 1-form \(  \alpha   \) , we define \[
+    c_{P}\left(  \alpha   \right)=  \frac{1 }{2 \pi }   \int_{C_{p}} \alpha  ,\quad c_{Q}\left(  \alpha   \right)=  \frac{1 }{2 \pi } \int_{C_{Q}} \alpha  
+    \] For any loops on \(  \mathbb{R} ^{2}-P-Q  \) , it is homotopic to a linear combinition of \(  C_{p}  \) and \(  C_{q}  \) .  Let \[
+    \beta = \alpha - c_{P}\left( \alpha  \right) \omega _{P }- C_{Q}\left( \alpha  \right) \omega _{Q}  
+    \] Since any loop  \(   \gamma   \),  \(  \mathbb{R} ^{2}-P-Q  \) is homotopic to a  combination of  \(  C_{P}  \) and \(  C_{Q}  \) . Thus \[
+     \int_{ \gamma }\beta \equiv 0
+    \]  Thus \(  \beta   \) is a exact form . That is to say \[
+    [\alpha ]= c_{P}\left( \alpha  \right)[ \omega _{p}] + c_{Q}\left( \alpha  \right) [ \omega _{Q}]
+    \]  Thus \[
+    H_{DR}^{1}\left( \mathbb{R} ^{2}-P-Q \right)=  \operatorname{span}\left<[ \omega _{P}] ,[ \omega _{Q}]\right> \simeq \mathbb{R} ^{2}
+    \] And the represent classes of \(  \alpha   \) is  \(  c_{P}\left( \alpha  \right)[ \omega _{P}]   + C_{Q}\left( \alpha  \right)[ \omega _{Q}] \)  
+\end{proof}
+
+\section{The Mayer-Vietoris Sequence}
+
+\begin{definition}{}{}
+   Let \(   x_1,\cdots,x_m   \) and \(   y_1,\cdots,y_n   \) be the standard coordinates on \(  \mathbb{R} ^{m}  \) and \(  \mathbb{R} ^{n}  \) , respectively .      Let \(  f: \mathbb{R} ^{m}\to \mathbb{R} ^{n}  \) be a smooth map. The commutativity with \(  \,\mathrm{d}   \) defines the pullback map \(  f^{*}  \) uniquely   : \[
+    f^{*}\left( \sum g_{I}\,\mathrm{d} y_{i_1}\cdots \,\mathrm{d} y_{i_{q}} \right)=  \sum \left( g_{I}\circ f \right) \,\mathrm{d} f_{i_1}\cdots \,\mathrm{d} f_{i_{q}} , 
+    \] where \(  f_{i} = y_{i}\circ f  \) is the i=\(  i  \) -th component of the function \(  f   \) .    
+\end{definition}
+
+\begin{proposition}{}{}
+    \(  f^{*}  \) commutes with \(  \,\mathrm{d}   \)   
+\end{proposition}
+\begin{proof}
+     \[
+     \begin{aligned}
+     \,\mathrm{d} f^{*}\left( g_{I}\,\mathrm{d} y_{i_1}\cdots \,\mathrm{d} y_{i_{q}} \right)=  \,\mathrm{d} \left( \left( g_{I}\circ f \right) \,\mathrm{d} f_{i_1}\cdots \,\mathrm{d} f_{i_{q}}  \right)  = \,\mathrm{d} \left( g_{I}\circ f \right)\,\mathrm{d} f_{i_1}\cdots \,\mathrm{d} f_{i_{q}}   
+     \end{aligned}
+     \] \[
+     \begin{aligned}
+     f^{*}\,\mathrm{d} \left( g_{I} \,\mathrm{d} y_{i_1}\cdots \,\mathrm{d} y_{i_{q}} \right)&=  f^{*}\left( \sum _{i} \frac{\partial g_{I}}{\partial y_{i}} \,\mathrm{d} y_{i}\,\mathrm{d} y_{i_1}\cdots \,\mathrm{d} y_{i_{q}}\right)\\ 
+      &= \sum _{i}\left(  \frac{\partial g_{I}}{\partial y_{i}}\,\mathrm{d} f_{i} \right) \,\mathrm{d} f_{i_1}\cdots \,\mathrm{d} f_{i_{q}}\\ 
+       &=  \,\mathrm{d} \left( g_{I}\circ f \right)     \,\mathrm{d} f_{i_1}\cdots \,\mathrm{d} f_{i_{q}}
+     \end{aligned}
+     \]
+\end{proof}
+
+\begin{proposition}{}{}
+  Let \(  g  \) be a smooth function on \(  \mathbb{R} ^{n}  \) .     \(  \,\mathrm{d} g  \) is independent of the coordinate system. 
+\end{proposition}
+
+\begin{proposition}{}{}
+    If \(   \omega = \sum g_{I}\,\mathrm{d} u _{I}  \) , then \(  \,\mathrm{d}  \omega = \sum \,\mathrm{d} g_{I}\,\mathrm{d} u_{I}  \)  
+\end{proposition}
+\begin{proposition}{}{}
+
+$\Omega^*$ is a \dfntxt{contravariant functor} from the category of \dfntxt{Euclidean spaces} $\{\mathbb{R}^n\}_{n \in \mathbb{Z}}$ and \dfntxt{smooth maps}: $\mathbb{R}^m \to \mathbb{R}^n$ to the category of \dfntxt{commutative differential graded algebras} and their \dfntxt{homomorphisms}. It is the \dfntxt{unique} such functor that is the \dfntxt{pullback of functions} on $\Omega^0(\mathbb{R}^n)$. Here the commutativity of the graded algebra refers to the fact that
+\[
+\tau\omega = (-1)^{\deg \tau \deg \omega} \omega\tau.
+\]
+
+
+\end{proposition}
+
+\begin{remark}
+    The functor \(   \Omega ^{*}  \) may be extended to the category of differential manifolds.  
+\end{remark}
+
+\begin{theorem}{Mayer-Vietoris Sequence}{}
+    Suppose \(  M = U\cup V  \) with \(  U,V  \) open . Then there is a sequence of inclusions  
+\begin{center}
+\begin{tikzcd}
+M & U \coprod V \arrow[l] & U \cap V \arrow[l, shift left, "\partial_0"] \arrow[l, shift right, "\partial_1"']
+\end{tikzcd}
+\end{center}
+where $U \coprod V$ is the disjoint union of $U$ and $V$ and $\partial_0$ and $\partial_1$ are the inclusions of $U \cap V$ in $V$ and in $U$ respectively. Applying the contravariant functor $\Omega^*$, we get a sequence of restrictions of forms
+\begin{center}
+\begin{tikzcd}
+\Omega^*(M) \arrow[r] & \Omega^*(U) \oplus \Omega^*(V) \arrow[r, shift left, "\partial_0^*"] \arrow[r, shift right, "\partial_1^*"'] & \Omega^*(U \cap V),
+\end{tikzcd}
+\end{center}
+where by the restriction of a form to a submanifold we mean its image under the pullback map induced by the inclusion. By taking the difference of the last two maps, we obtain the \dfntxt{Mayer-Vietoris sequence}
+\[
+\begin{tikzcd}
+0 \arrow[r] & \Omega^*(M) \arrow[r] & \Omega^*(U) \oplus \Omega^*(V) \arrow[r] & \Omega^*(U \cap V) \arrow[r] & 0 \\
+& & {(\omega, \tau)} \arrow[r, mapsto] & {\tau - \omega} &
+\end{tikzcd}
+\]
+\end{theorem}
+
+
+\begin{proposition}{}{}
+    The Mayer-Vietoris sequence is exact. 
+\end{proposition}
+\begin{proof}
+    The exactness is clear except at the last step. s
+\end{proof}
+\end{document}
