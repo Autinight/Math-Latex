@@ -54,12 +54,30 @@
     If  \(  M  \) is a smooth \(  n  \)- manifold with or without boundary , we say that a subset \(  A\subseteq M  \) has \dfntxt{measure zero in \(  M  \) } if for every smooth chat \(  \left( U, \varphi  \right)   \) for \(  M  \) , the subset \(   \varphi \left( A\cap U \right)\subseteq \mathbb{R} ^{n}   \) has \(  n  \)- dimensional measure zero .        
 \end{definition}
 
-\begin{lemma}{}{}
+\begin{lemma}{}{7-28-3}
     Let \(  M  \) be a smooth \(  n  \)-manifold with or without boundary and \(  A\subseteq M  \) . Suppose that for some collection \(  \left\{ \left( U_{\alpha }, \varphi _{\alpha } \right)  \right\}  \) of smooth charts whose domains cover \(  A  \), \(   \varphi _{\alpha }\left( A\cap U_{\alpha } \right)   \) has measure zero in \(  \mathbb{R} ^{n}  \) for each \(  \alpha   \) . Then \(  A  \) has measure zero in \(  M  \) .           
 \end{lemma}
 \begin{proof}
     Let \(  \left( V,\psi  \right)   \) be any smooth chat for \(  M  \) . We need to show that \(   \psi  \left( A\cap V \right)   \) has measure zero . There exists countably many \(  U_{\alpha }  \)'s covering \(  A\cap V  \) . We write \[
     \psi \left( A\cap V \cap U_{\alpha }\right) = \left( \psi \circ  \varphi _{\alpha }^{-1}  \right)\circ  \varphi _{\alpha }\left( A\cap V\cap U_{\alpha } \right)  
     \]  \(   \varphi _{\alpha }\left( A\cap V\cap U_{\alpha } \right)   \) is a subset of measure zero set \(   \varphi _{\alpha }\left( A\cap U_{\alpha } \right)   \) , thus has measure zero as well. It follows from Proposition \ref{pps:7-28-1} that \(  \psi \left( A\cap V\cap U_{\alpha } \right)   \) has measure zero . Then \(  \psi \left( A\cap V \right)   \) is a countable unions of measure zero sets , thus is measure zero as well.   
+\end{proof}
+
+
+\begin{exercise}{}{}
+    Let \(  M  \) be a smooth manifold with or without boundary. Show that a countable union of sets of measure zero in \(  M  \) has measure zero.   
+\end{exercise}
+
+\begin{proof}
+    Suppose \(  A_1,A_2,\cdots   \) are sets of measure zero in \(  M  \) . Let \(  A = \bigcup _{i= 1}^{\infty}A_{i}  \) . Take charts \(  \left( U_{ij}, \varphi _{ij} \right), j = 1,2,\cdots    \) such that  \(  A_{i}\subseteq  \bigcup _{j = 1}^{\infty}U_{ij}  \) .    Then \(  \left\{ U_{ij} \right\}_{i,j}^{\infty}  \) are countably many open sets that containing \(  A  \) , such that for each \(  i,j  \) ,  \[
+     \varphi _{ij}\left( A\cap U_{ij} \right)\subseteq \bigcup _{i = 1}^{\infty} \varphi _{ij}\left( A_{i}\cap U_{ij} \right)  
+    \]    is a countable union of measure zero sets, thus itself is measure zero. Then it follows from Lemma \ref{lem:7-28-3} that \(  A  \) is of measure zero.  
+\end{proof}
+
+\begin{proposition}{}{}
+    Suppoes \(  M  \) is a smooth manifold with or without boundary and \(  A\subseteq M  \) has measure zero in  \(  M  \). Then \(  M\setminus A  \) is dense in \(  M  \).      
+\end{proposition}
+\begin{proof}
+    If  \(  M\setminus A  \) is not dense. Then \(  A  \) contains a nonempty open subset of \(  M  \), which implies that there is a chat \(  \left( V,\psi  \right)   \) , such that  \(  \psi \left( A\cap V \right)   \) is a nonemtpy open subsets of \(  \mathbb{R} ^{n}  \) . It is imposible that  \(  \psi \left( A\cap V \right)   \) has measure zero at the same time that it is open.          
 \end{proof}
 \end{document}

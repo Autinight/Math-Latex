@@ -1,0 +1,282 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+}{}
+
+\chapter{ Law of Large Number }
+\section{Independence}
+\begin{definition}{Independence}{}
+    \begin{itemize}
+        \item  Two events $A$ and $B$ are \dfntxt{independent} if $P(A \cap B) = P(A)P(B)$.
+        \item Two random variables $X$ and $Y$ are \dfntxt{independent} if for all $C, D \in \mathcal{R}$,
+\[
+\begin{aligned}
+P(X \in C, Y \in D) = P(X \in C)P(Y \in D)
+\end{aligned}
+\]that is, the events $A = \{X \in C\}$ and $B = \{Y \in D\}$ are independent.
+\item Two $\sigma$-fields $\mathcal{F}$ and $\mathcal{G}$ are \dfntxt{independent} if for all $A \in \mathcal{F}$ and $B \in \mathcal{G}$ the events $A$ and $B$ are independent.
+    \end{itemize}
+\end{definition}
+
+
+\begin{exercise}{}{}
+\begin{enumerate}
+    \item Show that if $A$ and $B$ are independent, then so are $A^c$ and $B$, $A$ and $B^c$, and $A^c$ and $B^c$.
+    \item Conclude that events $A$ and $B$ are independent if and only if their indicator random variables $1_A$ and $1_B$ are independent.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item If \(  A  \) and \(  B  \) are independent, then \[
+        P\left( A\cap B \right)= P\left( A \right)P\left( B \right)   
+        \]   Note that \[
+        P\left( A\cap B \right)+ P\left( A^{c}\cap B \right)= P\left( B \right)   
+        \] We have \[
+        P\left( A^{c}\cap B \right)= P\left( B \right)\left( 1-P\left( A \right)  \right)= P\left( B \right)P\left( A^{c} \right)     
+        \]  Similarly, \[
+        P\left( A\cap B^{c} \right)= P\left( A \right)P\left( B^{c} \right)   
+        \] \[
+        P\left( A^{c}\cap B^{c} \right)= P\left( B^{c} \right)-P\left( A\cap B^{c} \right)= P\left( B^{c} \right)- P\left( A \right)P\left( B^{c} \right)= P\left( A^{c} \right)P\left( B^{c} \right)        
+        \]
+        \item  \[
+         \sigma \left( 1_{A} \right)= \left\{ \varnothing,A, A^{c}, \Omega  \right\} ,\quad  \sigma \left( 1_{B} \right)= \left\{ \varnothing,B,B^{c}, \Omega  \right\} 
+        \] If \(   \sigma \left( 1_{A} \right)   \) and \(   \sigma \left( 1_{B} \right)   \) are independent, it is clear that \(  A  \) and \(  B  \) are as well.  Conversly, only need to show that  \(  \varnothing  \) and \(  A  \) are independent, the remaining follows from 1. and symmetry.        We have \[
+        P\left( \varnothing \cap A \right) = 0=  P\left( \varnothing \right)P\left( A \right)   
+        \]
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{definition}{}{}
+    \begin{itemize}
+        \item $\sigma$-fields $\mathcal{F}_1, \mathcal{F}_2, \dots, \mathcal{F}_n$ are \dfntxt{independent} if whenever $A_i \in \mathcal{F}_i$ for $i = 1, \dots, n$, we have
+\[
+P \left(\bigcap_{i=1}^n A_i\right) = \prod_{i=1}^n P(A_i)
+\]
+\item 
+Random variables $X_1, \dots, X_n$ are \dfntxt{independent} if whenever $B_i \in \mathcal{R}$ for $i = 1, \dots, n$ we have
+\[
+P \left(\bigcap_{i=1}^n \{X_i \in B_i\}\right) = \prod_{i=1}^n P(X_i \in B_i)
+\]
+\item Sets $A_1, \dots, A_n$ are \dfntxt{independent} if whenever $I \subset \{1, \dots, n\}$ we have
+\[
+P \left(\bigcap_{i \in I} A_i\right) = \prod_{i \in I} P(A_i)
+\]
+    \end{itemize}
+\end{definition}
+
+\begin{remark}
+    The last definition looks slightly different from the former two, but it is consistent with the independence of the indicator variables \(  1_{A_{i}},1\le i\le n  \).  
+\end{remark}
+\begin{exercise}{}{}
+Let $A_1, A_2, \dots, A_n$ be independent. Show
+\begin{enumerate}
+    \item $A_1^c, A_2, \dots, A_n$ are independent;
+    \item $1_{A_1}, \dots, 1_{A_n}$ are independent.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+  \begin{enumerate}
+    \item   If \(  1\not \in I  \), then it is obvious that  \[
+    P\left( \cap _{i\in I}A_{i} \right)= \prod _{i\in I}P\left( A_{i} \right).   
+    \]  If \(  1 \in I  \), note that    \[
+   \begin{aligned}
+    P\left( \cap _{i \in I\setminus \left\{ 1 \right\}}A_{i}\cap  A_{1} ^{c}\right)&=  P\left( \cap _{i \in I\setminus \left\{ 1 \right\}} A_{i}\right)-  P\left( \cap _{i \in I\setminus \left\{ 1 \right\}}A_{i}\cap A_{1} \right)  \\ 
+     &=  \prod _{i\in I\setminus \left\{ 1 \right\}}P\left( A_{i} \right)-\prod _{ i\in I}P\left( A_{i} \right)   \\ 
+      &=  \left( 1-P\left( A_{1} \right)  \right)\prod _{ i \in I\setminus \left\{ 1 \right\}} P\left( A_{i} \right)\\ 
+       &=  P\left( A_{1}^{c} \right)\prod _{i \in I\setminus \left\{ 1 \right\}}P\left( A_{i} \right)   
+   \end{aligned}
+    \]
+    \item  \[
+     \sigma \left( 1_{A_{i}} \right) = \left\{ \varnothing,A_{i}^{c},A_{i}, \Omega  \right\}
+    \]  Take \(  B_{i}\in  \sigma \left( 1_{A_{i}} \right), i=  1,\cdots,n    \).  \(  B_{i}= \varnothing  \) for some \(  i  \)   , then both \(  P\left( \bigcap_{i= 1}^{n}B_{i}  \right)   \) and \(  \prod _{i= 1}^{n}P\left( B_{i} \right)   \) are zero.   The ramainings follows from 1. 
+  \end{enumerate}
+  
+\end{proof}
+
+\begin{example}{}{}
+Let $X_1, X_2, X_3$ be independent random variables with
+\[
+P(X_i = 0) = P(X_i = 1) = 1/2
+\]
+Let $A_1 = \{X_2 = X_3\}$, $A_2 = \{X_3 = X_1\}$ and $A_3 = \{X_1 = X_2\}$. These events are
+pairwise independent since if $i \neq j$, then
+\[
+P(A_i \cap A_j) = P(X_1 = X_2 = X_3) = 1/4 = P(A_i)P(A_j)
+\]
+but they are not independent since
+\[
+P(A_1 \cap A_2 \cap A_3) = 1/4 \neq 1/8 = P(A_1)P(A_2)P(A_3)
+\]
+\end{example}
+\subsection{Sufficient Conditions}
+
+\begin{definition}{Independence between conllections}{}
+    Collections of sets $\mathcal{A}_1, \mathcal{A}_2, \ldots, \mathcal{A}_n \subset \mathcal{F}$ are said to be \dfntxt{independent} if whenever $A_i \in \mathcal{A}_i$ and $I \subset \{1, \ldots, n\}$ we have $P(\bigcap_{i \in I} A_i) = \prod_{i \in I} P(A_i)$.
+\end{definition}
+
+\begin{lemma}{}{}
+Without loss of generality we can suppose each $A_i$ contains $\Omega$. In this case the condition is equivalent to
+\[
+P \left(\bigcap_{i=1}^n A_i\right) = \prod_{i=1}^n P(A_i) \text{ whenever } A_i \in \mathcal{A}_i
+\]
+since we can set $A_i = \Omega$ for $i \notin I$.
+\end{lemma}
+
+\begin{definition}{\(  \pi  \),\(   \lambda   \)- systems  }{}
+    \begin{itemize}
+        \item  We say that $\mathcal{A}$ is a \dfntxt{$\pi$-system} if it is closed under intersection, that is, if $A, B \in \mathcal{A}$ then $A \cap B \in \mathcal{A}$. 
+        \item     
+ We say that $\mathcal{L}$ is a \dfntxt{$\lambda$-system} if
+\begin{enumerate}
+    \item[(i)] $\Omega \in \mathcal{L}$.
+    \item[(ii)] If $A, B \in \mathcal{L}$ and $A \subset B$, then $B - A \in \mathcal{L}$.
+    \item[(iii)] If $A_n \in \mathcal{L}$ and $A_n \uparrow A$, then $A \in \mathcal{L}$.
+\end{enumerate}
+    \end{itemize}
+
+\end{definition}
+\begin{theorem}{$\pi - \lambda$ \dfntxt{Theorem}}{}
+If $\mathcal{P}$ is a $\pi$-system and $\mathcal{L}$ is a $\lambda$-system that contains $\mathcal{P}$, then $\sigma(\mathcal{P}) \subset \mathcal{L}$.
+\end{theorem}
+\begin{theorem}{}{8-3-1}
+Suppose $\mathcal{A}_1, \mathcal{A}_2, \dots, \mathcal{A}_n$ are independent and each $\mathcal{A}_i$ is a $\pi$-system. Then $\sigma(\mathcal{A}_1), \sigma(\mathcal{A}_2), \dots, \sigma(\mathcal{A}_n)$ are independent.
+\end{theorem}
+ 
+\begin{theorem}{}{}
+In order for $X_1, \dots, X_n$ to be independent, it is sufficient that for all $x_1, \dots, x_n \in (-\infty, \infty]$
+\[ P(X_1 \le x_1, \dots, X_n \le x_n) = \prod_{i=1}^n P(X_i \le x_i) \]
+\end{theorem}
+
+\begin{theorem}{}{}
+Suppose $\mathcal{F}_{i,j}$, $1 \leq i \leq n$, $1 \leq j \leq m(i)$ are independent \(   \pi  \)-systems   and let $\mathcal{G}_i = \sigma(\bigcup_j \mathcal{F}_{i,j})$. Then $\mathcal{G}_1, \dots, \mathcal{G}_n$ are independent.
+\end{theorem}
+\begin{proof}
+Let $\mathcal{A}_i$ be the collection of sets of the form $\bigcap_j A_{i,j}$ where $A_{i,j} \in \mathcal{F}_{i,j}$. $\mathcal{A}_i$ is a $\pi$-system that contains $\Omega$ and contains $\bigcup_j \mathcal{F}_{i,j}$, so Theorem \ref{thm:8-3-1} implies $\sigma(\mathcal{A}_i) = \mathcal{G}_i$ are independent.
+\end{proof}
+\begin{theorem}{}{}
+If for $1 \le i \le n$, $1 \le j \le m(i)$, $X_{i,j}$ are independent and $f_i : \mathbf{R}^{m(i)} \to \mathbf{R}$ are measurable, then $f_i(X_{i,1}, \dots, X_{i,m(i)})$ are independent.
+\end{theorem}
+\begin{proof}
+     \(   \sigma \left(X_{i,j} \right), 1\le i\le n,1\le j\le m\left( i \right)    \) are independent \(   \pi  \)- systems. Then \(  \mathcal{G}_{i} =  \sigma \left( \bigcup _{j}\left(  \sigma \left( X_{i,j} \right)  \right)  \right)   \) are independent. Take any Borel set \(  B \subseteq \mathbb{R}   \), then \[
+  \begin{aligned}
+     \left( f_{i}\left( X_{i,1},\cdots ,X_{i,m\left( i \right) } \right)  \right)^{-1} \left( B \right)&=  \left( X_{i,1},\cdots ,X_{i,m\left( i \right) } \right)^{-1} \left( f_{i}^{-1} \left( B \right)  \right)\\ 
+      &\subseteq   \sigma \left( \bigcup _{j}\left(  \sigma \left( X_{i,j} \right)  \right)  \right)   
+  \end{aligned}  
+     \] Thus \(  f_{i}\left( X_{i,1},\cdots ,X_{i,m\left( i \right) } \right)   \) are independent.  
+\end{proof}
+
+\subsection{Independence, Distribution, and Expectation}
+
+\begin{theorem}{}{}
+Suppose $X_1, \dots, X_n$ are independent random variables and $X_i$ has distribution $\mu_i$. Then $(X_1, \dots, X_n)$ has distribution $\mu_1 \times \dots \times \mu_n$.
+\end{theorem}
+\begin{theorem}{}{}
+Suppose $X$ and $Y$ are independent and have distributions $\mu$ and $\nu$. If $h : \mathbf{R}^2 \to \mathbf{R}$ is a measurable function with $h \ge 0$ or $E|h(X, Y)| < \infty$, then
+\[
+\begin{aligned}
+Eh(X, Y) = \iint h(x, y) \mu(dx) \nu(dy)
+\end{aligned}
+\]
+In particular, if $h(x, y) = f(x)g(y)$ where $f, g : \mathbf{R} \to \mathbf{R}$ are measurable functions with $f, g \ge 0$ or $E|f(X)|$ and $E|g(Y)| < \infty$, then
+\[
+\begin{aligned}
+Ef(X)g(Y) = Ef(X) \cdot Eg(Y)
+\end{aligned}
+\]
+\end{theorem}
+\begin{theorem}{}{}
+If $X_1, \dots, X_n$ are independent and have
+\begin{enumerate}
+    \item[(a)] $X_i \ge 0$ for all $i$, or
+    \item[(b)] $E|X_i| < \infty$ for all $i$, then
+\end{enumerate}
+\[
+E\left(\prod_{i=1}^n X_i\right) = \prod_{i=1}^n EX_i
+\]
+that is, the expectation on the left exists and has the value given on the right.
+\end{theorem}
+
+
+\subsection{Sums of Independent Random Variables}
+
+\begin{theorem}{}{}
+If $X$ and $Y$ are independent, $F(x) = P(X \leq x)$, and $G(y) = P(Y \leq y)$, then
+\[
+P(X + Y \leq z) = \int F(z - y) dG(y)
+\]
+The integral on the right-hand side is called the \dfntxt{convolution} of $F$ and $G$ and is denoted $F * G(z)$. The meaning of $dG(y)$ will be explained in the proof.
+\end{theorem}
+
+\begin{proof}
+    \[
+   \begin{aligned}
+    P\left( X+ Y\le z \right)&=  \int 1_{\left( x+ y \le z\right) }\,\mathrm{d} \left( \mu \times \nu  \right)\\ 
+     &=   \int \int 1_{\left( x+ y\le z \right) } \,\mathrm{d} \mu  \,\mathrm{d} \nu \\ 
+      &=  \int F\left( z-y \right)\,\mathrm{d} \nu \\ 
+       &=  \int F\left( z-y \right) \,\mathrm{d} G\left( y \right)   
+   \end{aligned} 
+    \]where \(  \,\mathrm{d} G\left( y \right)   \) is just a notation for \(  \,\mathrm{d} \nu   \).  We apply this notation motivated from the Lebesgue-Stieljes integration.  
+\end{proof}
+
+\begin{theorem}{}{}
+Suppose that $X$ with density $f$ and $Y$ with distribution function $G$ are independent. Then $X + Y$ has density
+\[
+h(x) = \int f(x - y)dG(y)
+\]
+When $Y$ has density $g$, the last formula can be written as
+\[
+h(x) = \int f(x - y) g(y)dy
+\]
+\end{theorem}
+
+\begin{proof}
+     \[
+     F\left( x \right)=  \int_{-\infty}^{x}f\left( x \right)\,\mathrm{d} x  
+     \] Since everything is nonnegative, from Fubini's theorem, we get\[
+  \begin{aligned}
+     P\left( X+ Y\le z \right)&=  \int \int_{-\infty}^{z-y}f\left( x \right)\,\mathrm{d} x \,\mathrm{d} G\left( y \right)    \\ 
+      &=  \int \int_{-\infty}^{z}f\left( x- y \right)\,\mathrm{d} x\,\mathrm{d} G\left( y \right)\\ 
+       &= \int_{-\infty}^{z}\int f\left( x-y \right)\,\mathrm{d} G\left( y \right)\,\mathrm{d} x  \\ 
+        &=  \int_{-\infty}^{z} h\left( x \right)\,\mathrm{d} x   
+  \end{aligned}
+     \] which shows that \(  X+ Y   \) has density \(  h\left( x \right)   \). 
+     
+     When \(  Y  \) has density \(  g  \), then \[
+    \int f\left( x-y \right)\,\mathrm{d}  G\left( y \right)=   \int f\left( x-y \right) g\left( y \right)\,\mathrm{d} y 
+     \] 
+\end{proof}
+\begin{example}{The gamma density}{}
+The \dfntxt{gamma density} with parameters $\alpha$ and $\lambda$ is given by
+\[
+f(x) = \begin{cases}
+\lambda^\alpha x^{\alpha-1}e^{-\lambda x} / \Gamma(\alpha) & \text{for } x \geq 0 \\
+0 & \text{for } x < 0
+\end{cases}
+\]
+where $\Gamma(\alpha) = \int_0^\infty x^{\alpha-1}e^{-x}dx$.
+\end{example}
+
+\begin{theorem}{}{}
+    If \(  X = \mathrm{gamma}\left( \alpha , \lambda  \right)   \) and \(  Y= \operatorname{gamma}\left( \beta , \lambda  \right)   \) are independent, then \(  X+ Y  \)    is \(  \operatorname{gamma}\left( \alpha + \beta , \lambda  \right)   \). Consequently if \(   X_1,\cdots,X_n   \) are independent \(  \operatorname{exponential}\left(  \lambda  \right)    \) r.v's, then \(  X_1+ \cdots + X_{n}  \) has a \(  \operatorname{gamma}\left( n, \lambda  \right)   \) distribution.      
+\end{theorem}
+
+\begin{example}{Normal distribution}{}
+In Example 1.6.2, we introduced the normal
+density with mean $\mu$ and variance $a$,
+\[
+(2\pi a)^{-1/2} \exp(-(x - \mu)^2/2a).
+\]
+\end{example}
+
+\begin{theorem}{}{}
+If $X = \text{normal}(\mu, a)$ and $Y = \text{normal}(\nu, b)$ are independent, then $X + Y = \text{normal}(\mu + \nu, a + b)$.
+\end{theorem}
+
+\section{Weak Laws of Large Numbers}
+\end{document}

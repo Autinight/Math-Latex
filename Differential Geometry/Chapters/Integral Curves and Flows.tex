@@ -1,0 +1,48 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+}{}
+
+\chapter{ Integral Curves and Flows }
+
+\section{Integral Curves}
+
+\begin{definition}{Integral Curve}{}
+    If $V$ is a vector field on $M$, an \dfntxt{integral curve of $V$} is a differentiable curve $\gamma: J \to M$ whose velocity at each point is equal to the value of $V$ at that point:
+$$\gamma'(t) = V_{\gamma(t)} \quad \text{for all } t \in J.$$
+If $0 \in J$, the point $\gamma(0)$ is called the \dfntxt{starting point of $\gamma$}. 
+\end{definition}
+
+Finding integral curves boils down to sloving a system of ordinary differential equations in a smooth chat. Suppose \(  V  \) is a smooth vector field on \(  M  \) and \(   \gamma :J\to M  \) is a smooth curve. On a smooth coordinate domain \(  U\subseteq M  \), we can write \(   \gamma   \) in local coordinates as  \[
+ \gamma \left( t \right)= \left(  \gamma ^{1}\left( t \right),\cdots , \gamma ^{n}\left( t \right)   \right)  
+\]     Then the condition \(   \gamma ^{\prime} \left( t \right)= V_{ \gamma \left( t \right) }   \) for \(   \gamma   \) to be an integral curve of \(  V  \) can be written \[
+ \dot{\gamma}^{i}\left( t \right) \left. \frac{\partial }{\partial x^{i}} \right|_{ \gamma \left( t \right) }=   V^{i}\left(  \gamma \left( t \right)  \right)\left. \frac{\partial }{\partial x^{i}} \right|_{ \gamma \left( t \right) } , 
+\]  which reduces to the following autonomous system of ordinary differential equatoins:  
+\[
+\begin{aligned}
+\dot{\gamma}^1(t) &= V^1(\gamma^1(t), \dots, \gamma^n(t)), \\
+&\vdots \\
+\dot{\gamma}^n(t) &= V^n(\gamma^1(t), \dots, \gamma^n(t)).
+\end{aligned}
+\]
+
+\begin{proposition}{}{}
+    Let \(  V  \) be a smooth vector field on a smooth manifold \(  M  \) . For each point \(  p \in M  \) , there exists \(   \varepsilon > 0  \) and a smooth curve \(   \gamma : \left( - \varepsilon , \varepsilon  \right)\to M   \) that is an integral curve of \(  V  \) starting at \(  p  \) .        
+\end{proposition}
+
+\begin{proof}
+    The ODE system corosponding to the condition \[
+      \gamma ^{\prime} \left( t \right)= V_{ \gamma \left( t \right) } 
+     \] is smooth. Thus it satisfies the local Lipschitz condition. The the proposition follows from the Picard-Lindelöf Theorem. 
+\end{proof}
+
+\section{Exercise}
+
+
+
+\end{document}
