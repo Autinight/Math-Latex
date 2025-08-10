@@ -126,4 +126,65 @@ $\chi_{\lim_{n \to \infty} A_n}(x) = \lim_{n \to \infty} \chi_{A_n}(x)$
     
 \end{proofsketch}
 
+\section{Ordinal and Transfinite Induction}
+
+\begin{definition}{Ordinal}{}
+    A set \(  \alpha   \) is said to be an \dfntxt{ordinal}, if the following two hold:
+    \begin{enumerate}
+        \item Transitive Set: If \(  x \in \alpha   \), then \(  x\subseteq \alpha   \). (Equivalently, if \(  z \in y  \), \(  y \in \alpha   \), then \(  z \in \alpha   \)   ).
+        \item Well-ordered by \(  \in   \): For any \(  x,y \in \alpha   \), either \(  x \in y  \) or \(  y \in x  \).     And there is a \(  \in   \)-smallest element in any nonempty subset of \(  \alpha   \).       
+    \end{enumerate}
+     
+\end{definition}
+
+\begin{lemma}{}{}
+    If \(   \alpha   \) is an ordinal, then \(  \alpha \not \in \alpha   \).  
+\end{lemma}
+\begin{proof}
+    If \(  \alpha \in \alpha   \), then \(  \left\{  \alpha  \right\}  \) is a subset of \(  \alpha   \). But there is no smallest  ordinal in \(  \left\{ \alpha  \right\}  \), which is a contradiction.  
+\end{proof}
+\begin{definition}{Classification of Ordinal}{}
+    \begin{enumerate}
+        \item \dfntxt{Zero Ordinal}: Only \(  0= \varnothing  \). 
+        \item  \dfntxt{Successor Ordinal}: Ordinal numbers of the form $\alpha+1 = \alpha \cup \{\alpha\}$
+        \item \dfntxt{Limit Ordinal}: Ordinal that is neither zero ordinal nor successor ordinal.
+    \end{enumerate}
+    
+\end{definition}
+
+\begin{example}{Ordinal}{}
+    \begin{enumerate}
+        \item \[
+         \omega = \left\{ 0,1,2,3,\cdots  \right\}
+        \] is the smallest infinite ordinal, which is a limit ordinal.
+        \item \[
+         \omega \cdot 2:= \left\{ 0,1,2,\cdots , \omega , \omega + 1, \omega + 2,\cdots  \right\}
+        \] is a limit ordinal. 
+        \item \[
+         \omega _{1}: = \left\{ \alpha :  \alpha  \text{ is a ountable ordinal} \right\}
+        \] is the smallest uncountable ordinal. 
+
+        \begin{enumerate}
+            \item \dfntxt{Unountable}: If \(   \omega _1   \) is countable, then \(   \omega _{1} \in  \omega _{1}  \) by definition,  which is a contradiction.
+            \item \dfntxt{Smallest}: If there is a uncountable ordinal \(  \beta   \) such that \(  \beta <  \omega _1   \). Then \(  \beta \in  \omega _1   \), which is a contradiction to the uncountability of \(  \beta   \).     
+        \end{enumerate}
+        
+    \end{enumerate}
+    
+\end{example}
+
+\begin{theorem}{Transfinite Induction}{}
+     For any ordinal \(  \alpha   \), let \(  P\left( \alpha  \right)   \) be a property of \(  \alpha   \). If the following holds : 
+    \begin{itemize}
+        \item For any ordinal \(  \alpha   \), if \(  P\left( \beta  \right)   \) holds for any \(  \beta < \alpha   \) , then \(  P\left( \alpha  \right)   \) holds.    
+    \end{itemize}
+       Then \begin{itemize}
+        \item For any ordinal \(  \alpha   \), \(  P\left( \alpha  \right)   \) is true.  
+       \end{itemize}
+       
+\end{theorem}
+
+\begin{proof}
+    Let \(  S  \) be the collection of \(  \alpha   \) such that \(  P\left( \alpha  \right)   \) is false. Then if the transfinite indunction is not true, \(  S  \) is nonempty. Since the class of ordinal is well-ordered, there is a smallest ordinal \(   \gamma   \) in \(  S  \). Then for any \(  \beta <  \gamma   \), \(  \beta \not \in S  \) , that is \(  P\left( \beta  \right)   \) is true.   But it contradicts to what we supposed at first.      
+\end{proof}
 \end{document}

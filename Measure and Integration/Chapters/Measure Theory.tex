@@ -50,6 +50,10 @@ for every set $A \subset X$. In view of property (iv) above, observe that $\varp
 \]
 \end{definition}
 
+\begin{note}
+    也就是说, \(  E  \)是可测的, 当且仅当任意集合 \(  A  \)都可以被 \(  E  \)按外测度被良好地拆解为 \(  A\cap E  \)和 \(  A\setminus E  \).      
+\end{note}
+
 \begin{lemma}{}{7-23-1}
 A set $E \subset X$ is $\varphi$-measurable if and only if
 \[
@@ -57,6 +61,10 @@ A set $E \subset X$ is $\varphi$-measurable if and only if
 \]
 for all sets $P$ and $Q$ such that $P \subset E$ and $Q \subset E^{c}$.
 \end{lemma}
+
+\begin{note}
+    也就是说 \(  E  \)可测, 当且仅当 落在\(  E  \)的内, 外的集合 在外测度意义下是无关的. 
+\end{note}
 
 \begin{proof}
    For Necessity, if \(  E   \) is \(   \varphi   \)-measurable , then for all such \(  P,Q  \),  \[
@@ -120,7 +128,7 @@ S = \bigcup_{i=1}^\infty E_i.
           &=  \varphi \left( A\cap E_{k+ 1} \right)+  \varphi \left( A\cap E_{k+ 1}^{c}\cap S_{k}^{c} \right)+  \varphi \left( A\cap E_{k+ 1}^{c}\cap S_{k} \right)\\ 
            &=  \varphi \left( A\cap E_{k+ 1} \right)+  \varphi \left( A\cap S_{k+ 1}^{c} \right)+  \varphi \left( A\cap S_{k} \right)        
         \end{aligned}
-        \]  Replaced \(  A  \) by \(  A\cap S_{k}  \) , we have \[
+        \]  Replace \(  A  \) by \(  A\cap S_{k}  \) , we have \[
          \varphi \left( A\cap S_{k} \right)\ge \sum _{i = 1}^{k} \varphi \left( A\cap S_{k}\cap E_{i} \right)+  \varphi \left( A\cap S_{k}\cap S_{k}^{c} \right)=     \sum _{i = 1}^{k} \varphi \left( A\cap E_{i} \right) 
         \]   Thus \[
          \varphi \left( A \right) \ge \sum _{i = 1}^{k+ 1} \varphi \left( A\cap E_{k+ 1} \right)+  \varphi \left( A\cap S_{k+ 1}^{c} \right)  
@@ -219,8 +227,201 @@ Suppose $\varphi$ is an outer measure on $X$ and $\{E_i\}$ a countable collectio
     \[
         \varphi(\limsup_{i \to \infty} E_i) \ge \limsup_{i \to \infty} \varphi(E_i).
     \]
+    
 \end{enumerate}
 \end{corollary}
 
+\begin{proof}
+    (v)  Let \(  A_{j}=  \bigcap_{k= j}^{\infty}E_{k}   \) , then \[
+    \liminf_{i\to \infty}E_{i}= \lim_{j\to \infty}A_{j}= \bigcup _{j = 1}^{\infty}A_{j}
+    \] It follows from (iv) that \[
+     \varphi \left( \liminf_{i\to \infty}E_{i} \right)= \lim_{j\to \infty} \varphi \left( A_{j} \right)  
+    \] Since \(  A_{j}\subseteq  E_{j}  \), we have \(   \varphi \left( A_{j} \right)\le  \varphi \left( E_{j} \right)    \), then \[
+    \lim_{j\to \infty} \varphi \left( A_{j} \right)\le \liminf_{i\to \infty} \varphi \left( E_{j} \right)  
+    \]   Thus \[
+     \varphi \left( \liminf_{i\to \infty}E_{i} \right)\le \liminf_{i\to \infty} \varphi \left( E_{i} \right)  
+    \]
+\end{proof}
 
+\begin{definition}{}{}
+    \begin{itemize}
+        \item An outer measure \(   \varphi   \) on a topological space \(  X  \) is called a \dfntxt{Borel outer measure} if all Borel sets are \(   \varphi   \)-measurable. 
+        \item A Borel outer measure is \dfntxt{finite} if \(   \varphi \left( X \right)    \) is finite.
+        \item An outer measure \(   \varphi   \) on a set \(  X  \) is called \dfntxt{regular} if for each \(  A\subseteq X  \) there exists a \(   \varphi   \)-measurable set \(  B\supseteq A  \) such that \(   \varphi \left( B \right)=  \varphi \left( A \right)    \). 
+        \item A \dfntxt{Borel rugular outer measure} is a Borel set \(  B  \) such that \(   \varphi \left( B \right)=  \varphi \left( A \right)    \).
+        \item A \dfntxt{Radon outer measure} is a Borel regular outer measure that is finite on compact sets.             
+    \end{itemize}
+    
+\end{definition}
+\section*{Exercises for Outer Measure}
+
+\begin{exercise}{}{}
+     If \(  X  \) is a metric space, fix \(   \varepsilon > 0  \). Let \(   \varphi \left( A \right)   \) be the smallest number of balls of radius \(   \varepsilon   \) that cover \(  A  \).      
+
+Let \(   \varphi _{ \varepsilon }\left( A \right): =  \varphi \left( A \right)    \) denote the dependence on \(   \varepsilon   \), and define \[
+\psi \left( A \right) : = \lim_{ \varepsilon \to 0 }  \varphi _{ \varepsilon }\left( A \right)  
+\] What is \(  \psi \left( A \right)   \)  and what are the correspoding \(  \psi   \)-measurable sets. 
+\end{exercise}
+\begin{proof}
+    If there are only finite points in \(  A  \). Let \[
+    l : =  \min \left\{ d\left( x,y \right) :x,y \in A ,x \neq y\right\}
+    \] Then for any \(  x,y \in A  \), \(  x \neq y  \). If \(  B_1,B_2  \) are ball of radius \( \frac{l }{2 }   \) such that \(  x\in B_1, y \in B_2  \).     Then \(  B_1\cap B_2= \varnothing  \).  But each point in \(  A  \) must covered by one of such ball, which shows that \(  \psi \left( A \right)\ge  \left| A \right|    \).    Since it is obvious that \(  \psi \left( A \right)\le \left| A \right|    \),  then \(  \psi \left( A \right)= \left| A \right|    \). 
+    
+    Now suppose that \(  A  \) is a infinite set. If \(  \psi \left( A \right)< \infty   \), say \(  \psi \left( A \right)= n   \) . Then for any sufficiently small \(   \varepsilon   \), there are balls \(  B_1,\cdots ,B_{n}  \)  with radius \(   \varepsilon   \) cover \(  A  \). Take any \(  n+ 1  \) different points \(  p_1,\cdots ,p_{n+ 1}  \)  of \(  A  \). Let  \(   \varepsilon = \frac{1}{2} \min \left\{ d\left( p_{i},p_{j} \right): i\neq j  \right\}  \), then \(   B_1,\cdots,B_n   \) cannot cover these \(  n+ 1  \) points, thus cannot cover  \(  A  \), which is a contradiction. Thus we have \(  \psi \left( A \right)= \infty   \) . 
+
+    We find that \(  \psi   \) is just the counting measure on \(  X  \).Take any \(  E\subseteq X  \),and take any \(  A\subseteq X  \), if \(  A  \) is finite, then \(  A\cap E, A- E  \) are as well, and \(  \left| A \right|= \left| A\cap E \right|+ \left| A-E \right|     \)   , that is \(  \psi \left( A \right)= \psi \left( A\cap E \right)+ \psi \left( A-E \right)     \).  If \(  A  \) is infinite, then one of the \(  A\cap E  \)   and \(  A-E  \) is as well. Then \[
+    \psi \left( A \right)= \infty= \psi \left( A\cap E \right)+ \psi \left( A-E \right)   
+    \]The above shows that \(  E  \) is \(  \psi   \)-measurable. Thus all subset of \(  X  \) are \(  \psi   \)-measurable.        
+\end{proof}
+
+\begin{exercise}{}{}
+    It was shown that \(   \varphi \left( E_2\setminus E_1 \right)=  \varphi  \left( E_2 \right)- \varphi \left( E_1 \right)     \) if \(  E_1\subseteq E_2  \) are \(   \varphi   \)-measurable with \(   \varphi \left( E_1 \right)< \infty   \). Prove that this result remains true if \(  E_2  \) is not assumed to be \(   \varphi   \)-measurable.      
+\end{exercise}
+\begin{proof}
+   Since \(  E_1  \) is measurable,    \[
+      \varphi \left( E_2 \right)=  \varphi \left( E_2\cap E_1 \right)+  \varphi \left( E_2-E_1 \right)   
+     \] but \[
+      \varphi \left( E_2\cap E_1 \right)=  \varphi \left( E_1 \right)  
+     \]which completes the proof. 
+\end{proof}
+
+\section{Carath\'eodory Outer Measure}
+
+\begin{definition}{Carath\'eodory outer measure}{}
+    An outer measure \(   \varphi  \) defined on a metric space \(  \left( X,p \right)   \) is called a \dfntxt{Carath\'eodory outer measure} if \[
+     \varphi \left( A\cup B \right)=  \varphi \left( A \right)+  \varphi \left( B \right)   
+    \] whenever \(  A,B  \) are arbitrary subsets of \(  X  \) with \(  d\left( A,B \right)> 0   \). Where \[
+    d\left( A,B \right): = \inf \left\{ \rho \left( a,b \right): a \in A, b\in B  \right\} 
+    \]     
+\end{definition}
+
+\begin{theorem}{}{8-10-1}
+    If \(   \varphi   \) is a Carath\'eodory outer measure on a metric space \(  X  \), then all closed sets are \(   \varphi   \)-measurable.    
+\end{theorem}
+\begin{proofsketch}
+    用一列集合近似代替\(  C  \)是标准的想法. 证明的核心要素有: 1.\(  C  \)是闭集, 使得按距离向外逼近的行为是良好的. 2. 距离这个属性与Carath\'odory条件是相适应的.   此外, 将命题转化为极限 \[
+    \lim_{i \to \infty}  \varphi \left( A\setminus C_{i} \right)=  \varphi \left( A\setminus C \right)  
+    \]是标准的流程. 要证明该极限成立, 则需要一定的技巧. 这里将 \(  A\setminus C_{i}  \)和 \(  A\setminus C  \)相差的中间部分进行细分量化, 将原极限转化为 \[
+\lim_{i \to \infty}    \sum _{j = i}^{\infty} \varphi \left( T_{j} \right) 
+    \]的极限问题, 从而转化为级数的收敛性问题. 将集合隔一个分组, 变成两组两两相隔正距离的集合, 以便套用Carath\'eodory条件.   
+\end{proofsketch}
+\begin{proof}
+    Let \(  C \subseteq X  \) be any closed sets. Take \(  A \subseteq X  \), only need to show that \[
+     \varphi \left( A \right)\ge  \varphi \left( A\cap C \right) +  \varphi \left( A\setminus C \right)   
+    \]We assume that \(   \varphi \left( A \right)< \infty   \).  Define \[
+    C_{i}: = \left\{ x: d\left( x,C \right)\le \frac{1 }{i }   \right\}
+    \] Since \(  d\left( A\setminus C_{i}, A\cap C \right)   > 0\),  \[
+     \varphi \left( A \right)\ge   \varphi \left( \left( A\setminus C_{i} \right)\cup \left( A\cap C \right)   \right)=   \varphi \left( A\setminus C_{i} \right)+  \varphi \left( A\cap C \right)    
+    \] Only need to show that \[
+    \lim_{i \to \infty}  \varphi \left( A\setminus C_{i} \right)=  \varphi \left( A\setminus C \right)  
+    \] Define \[
+    T_{i}:=  \left\{ x \in A: \frac{1 }{i+ 1 }< d\left( x,C \right)\le \frac{1 }{i }    \right\}
+    \], then \[
+    A\setminus C\subseteq  \left( A\setminus C_{i} \right)\cup \bigcup _{j = i}^{\infty}T_{i} 
+    \] Thus \[
+     \varphi \left( A\setminus C \right)\le  \varphi \left( A\setminus C_{i} \right)+ \sum _{j = i}^{\infty} \varphi \left( T_{i} \right)   
+    \] Once we have \(  \sum _{j= 1}^{\infty} \varphi \left( T_{i} \right)< \infty   \), then \(  \lim_{i\to \infty}\sum _{j = i}^{\infty} \varphi \left( T_{i} \right)= 0   \),  the conclusion follows from it. To show this, note that \(  \,\mathrm{d} \left( T_{i},T_{j} \right)> 0   \) whenever \(  \left| i-j \right|\ge 2   \). Then it by induction follows from Carath\'odory condition that \[
+    \sum _{ j= 1}^{\infty} \varphi \left( T_{2i} \right) \le  \varphi \left( A \right) < \infty
+    \] \[
+    \sum _{j = 1}^{\infty} \varphi \left( T_{2j-1} \right)\le  \varphi \left( A \right) < \infty 
+    \]    Thus \(  \sum _{j = 1}^{\infty} \varphi \left( T_{i} \right)< \infty   \), which completes the proof.  
+\end{proof}
+
+\begin{theorem}{}{8-10-2}
+Suppose $\mathcal{F}$ is a family of subsets of a topological space X that contains all open and all closed subsets of X. Suppose also that $\mathcal{F}$ is closed under countable unions and countable intersections. Then $\mathcal{F}$ contains all Borel sets; that is, $\mathcal{B} \subset \mathcal{F}$.
+\end{theorem}
+\begin{note}
+    可以将包含\(  \mathcal{B}  \)描述成对以下三种集合的封闭性: 1.开集 2. 补集 3.可数并. 
+
+    如果我们事先没有对补集的封闭性, 可以通过加强1.3.的条件,使得当我们强制使得补集封闭后, 得到的新集族依旧满足1.3. 具体地, 我们希望原集族对于开集的补集,也就是闭集也封闭; 对于可数并的补集, 也就是可数交也封闭. 
+\end{note}
+\begin{proof}
+    Let \[
+    \mathcal{H}=  \mathcal{F}\cap \left\{ A:A^{c}\in \mathcal{F} \right\}
+    \] Obseve that \(  \mathcal{H}  \) contains all closed sets. Moreover, it is easily seen that \(  \mathcal{H}  \) is closed under complementation and countable unions. Thus \(  \mathcal{H}  \) is a \(   \sigma   \)-algebra that contains the open sets and therefore contains all Borel sets.    
+\end{proof}
+
+\begin{theorem}{}{}
+    If \(   \varphi   \) is a Carath\'eodory outer measure on a metric space \(  X  \), then the Borel sets of \(  X  \) are \(   \varphi   \)-measurable.    
+\end{theorem}
+\begin{proof}
+    Since the collection of \(   \varphi   \)-measurable sets is itself a \(   \sigma   \)-algebra , it is closed under complements and countable union and countable intersection. Theorem \ref{thm:8-10-1} gives that \(   \varphi   \)-measurable sets contains closed sets, thus contains open sets as well.  Then  the conclusion follows from Theorem \ref{thm:8-10-2} .
+\end{proof}
+
+\section*{Exercises for this section}
+
+\begin{exercise}{Smallest \(   \sigma   \)-algebra containing open sets }{}
+    Prove that in every topological space $X$, there exists a smallest $\sigma$-algebra that contains all open sets in $X$. That is, prove that there is a $\sigma$-algebra $\Sigma$ that contains all open sets and has the property that if $\Sigma_1$ is another $\sigma$-algebra containing all open sets, then $\Sigma \subset \Sigma_1$. In particular, for $X = \mathbb{R}^n$, note that there is a smallest $\sigma$-algebra that contains all the closed sets in $\mathbb{R}^n$.
+\end{exercise}
+
+\begin{proof}
+    Let \[
+     \Sigma : = \bigcap_{\mathcal{M}_{\alpha } \text{ is a } \sigma \text{ algebra containing }X }\mathcal{M}_{\alpha } 
+    \] Then it is obvious that \(   \Sigma   \) is closed under complement,  countable union, and contains all open sets. Thus \(   \Sigma   \) is a \(   \sigma   \)-algebra containing all open sets.   
+\end{proof}
+
+\begin{exercise}{}{}
+     In a topological space $X$ the family of Borel sets, $\mathcal{B}$, is by definition the $\sigma$-algebra generated by the closed sets. The method below is another way of describing the Borel sets using transfinite induction. You are to fill in the necessary steps:
+    \begin{enumerate}
+        \item For an arbitrary family $\mathcal{F}$ of sets, let
+        \[
+            \mathcal{F}^* = \left\{ \bigcup_{k=1}^{\infty} E_k : \text{ where either } E_i \in \mathcal{F} \text{ or } \tilde{E}_i \in \mathcal{F} \text{ for all } i \in \mathbb{N} \right\}.
+        \]
+        Let $\Omega$ denote the smallest uncountable ordinal. We will use transfinite induction to define a family $\mathcal{E}_\alpha$ for each $\alpha < \Omega$.
+        \item Let $\mathcal{E}_0 :=$ all closed sets $:= \mathcal{K}$. Now choose $\alpha < \Omega$ and assume that $\mathcal{E}_\beta$ has been defined for each $\beta$ such that $0 \le \beta < \alpha$. Define
+        \[
+            \mathcal{E}_\alpha := \left( \bigcup_{0 \le \beta < \alpha} \mathcal{E}_\beta \right)^*
+        \]
+        and define
+        \[
+            \mathcal{A} := \bigcup_{0 \le \alpha < \Omega} \mathcal{E}_\alpha.
+        \]
+        \item Show that each $\mathcal{E}_\alpha \subseteq \mathcal{B}$.
+        \item Show that $\mathcal{A} \subset \mathcal{B}$.
+        \item Now show that $\mathcal{A}$ is a $\sigma$-algebra to conclude that $\mathcal{A} = \mathcal{B}$.
+        \begin{enumerate}
+            \item Show that $\emptyset, X \in \mathcal{A}$.
+            \item Let $A \in \mathcal{A} \implies A \in \mathcal{E}_\alpha$ for some $\alpha < \Omega$. Show that this implies $\tilde{A} \in \mathcal{E}_\alpha^* \subset \mathcal{E}_\beta$ for every $\beta > \alpha$.
+            \item Conclude that $\tilde{A} \in \mathcal{A}$ and thus conclude that $\mathcal{A}$ is closed under complementation.
+            \item Now let $\{A_k\}$ be a sequence in $\mathcal{A}$. Show that $\bigcup_{k=1}^{\infty} A_k \in \mathcal{A}$.
+            (Hint: Each $A_k$ is in $\mathcal{A}_{\alpha_k}$ for some $\alpha_k < \Omega$. We know that there is $\beta < \Omega$ such that $\beta > \alpha_k$ for each $k \in \mathbb{N}$.)
+        \end{enumerate}
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    3. Since \(  \mathcal{E}_{0} \subseteq  \mathcal{B}  \) , only need to show that if \(  \mathcal{E}_{\beta } \subseteq \mathcal{B}  \) for all \(  0\le \beta < \alpha   \) , then \(  \mathcal{E}_{\alpha }\subseteq \mathcal{B}  \). Take any \(  E \in \mathcal{E}_{\alpha }  \) , then there are \(   E_1,\cdots,E_k ,\cdots   \), such that \(  E_{i} \in \bigcup _{0 \le \beta < \alpha }\mathcal{E}_{\beta }  \), or \(  E_{i}^{c}\in \bigcup _{0 \le \beta < \alpha } \mathcal{E}_{\beta }  \) , and \(  E=  \bigcup _{k= 1}^{\infty}E_{k}  \).  We suppose that \(  E_{i} \in \mathcal{E}_{\beta _{i}}  \) or \(  E_{i}^{c} \in \mathcal{E}_{\beta _{i}}  \). Since \(  \mathcal{E}_{\beta _{i}} \subseteq \mathcal{B}  \) for all \(  \beta _{i}  \), and since \(  \mathcal{B}  \) is closed under complement, then \(  E_{i} \in \mathcal{B}  \). Since \(  \mathcal{B}  \) is closed under countable union, \(  E= \bigcup _{k = 1}^{\infty}E_{k} \in \mathcal{B}  \). Thus \(  \mathcal{E}_{\alpha } \subseteq \mathcal{B}  \). 
+
+    4. We have shown that \(  \mathcal{E}_{\alpha } \subseteq \mathcal{B}  \) for all \(  \alpha <  \Omega   \),  then it is immediate that \(  A\subseteq \mathcal{B}  \).  
+
+    5. (a)  Since \(  \varnothing \in \mathcal{E}_{0}  \) and \(  X= \left( \varnothing \right)^{c}\in \mathcal{E}_{1}= \left( \mathcal{E}_{0} \right)^{*}   \)  , then \(  \varnothing,X \in \mathcal{A}  \).
+
+    (b)  Write \[
+    \mathcal{E}_{\alpha }^{*}= \left\{ \bigcup _{k= 1}^{\infty}E_{k}: \text{  where either }E_{i} \in \mathcal{E}_{\alpha } \text{ or } E_{i}^{c}\in \mathcal{E}_{\alpha }\text{ for all } i\in \mathbb{N}  \right\}
+    \]We take \(  E_1 = A^{c} \), then \(  E_1^{c}= A\in \mathcal{E}_{\alpha }  \), and take \(  E_{2}= \cdots = \varnothing  \).Then \(  A^{c}= \bigcup _{k = 1}^{\infty}E_{k} \in \mathcal{E}_{\alpha }^{*}  \). If \(  \beta  >  \alpha   \), then  \[
+   \mathcal{E}_{\alpha }\subseteq  \bigcup _{0 \le  \gamma < \beta }\mathcal{E}_{ \gamma  }
+    \]   Let \(  *  \) act on both side, then it follows from the definition of \(  *  \) that \[
+    \left( \mathcal{E}_{\alpha } \right)^{*}\subseteq \left( \bigcup _{0\le  \gamma < \beta }\mathcal{E}_{ \gamma } \right)^{*}= \mathcal{E}_{\beta }  
+    \]  Thus \(  A^{c} \in \mathcal{E}_{\alpha }^{*}\subseteq \mathcal{E}_{\beta }  \) for every \(  \beta > \alpha   \). 
+    
+    (c) It is immediate from (b) that \(  A^{c} \in \mathcal{E}_{\beta }\subseteq \mathcal{A}  \) .
+
+    (d) Suppose that \(  A_{k} \in \mathcal{E}_{\alpha _{k}}  \) for some \(  \alpha _{k}<  \Omega   \). Let \[
+     \gamma : = \bigcup _{k \in \mathbb{N} }\alpha _{k},\quad \beta : =  \gamma + 1
+    \] Then \(   \gamma ,\beta <  \Omega   \), and \(  \alpha _1 ,\cdots ,\alpha _{k}< \beta   \). Then \[
+    \bigcup _{k = 1}^{\infty}A_{k}\in \left( \bigcup _{k = 1}^{\infty} \mathcal{E}_{\alpha _{k}} \right)^{*}\subseteq \mathcal{E}_{\beta }\subseteq \mathcal{A} 
+    \]   
+    
+\end{proof}
+
+\begin{exercise}{}{}
+    An outer measure \(   \varphi   \) on a space \(  X  \) is called \(   \sigma   \)-finite if there exists a countable number of sets \(  A_{i}  \) with \(   \varphi \left( A_{i} \right)< \infty   \) such that \(  X\subseteq \bigcup _{i= 1}^{\infty}A_{i}  \). Assuming that \(   \varphi   \) is a \(   \sigma   \)-finite Borel regular outer measure on a metric space \(  X  \), prove that \(  E\subseteq X  \) is \(   \varphi   \)-measurable if and only if there exists an \(  F_{ \sigma }   \) set \(  F\subseteq E  \) such that \(   \varphi \left( E\setminus F \right)= 0   \).       
+\end{exercise}
+\begin{proof}
+    Let \(  E_{i}: = E\cap A_{i}  \). Then \[
+    E=  \bigcup _{i = 1}^{\infty}E_{i},\quad  \varphi \left( E_{i} \right)\le  \varphi \left( A_{i} \right)< \infty  
+    \] Once we show that there is a closed set \(  F_{i}\subseteq E_{i}  \), such that \(   \varphi \left( E_{i}\setminus F_{i} \right)= 0   \) for all \(  i  \), then let \(  F= \bigcup _{i = 1}^{\infty}F_{i}\in F_{ \sigma }  \), it follows that  \[
+     \varphi \left( E\setminus F \right)\le  \varphi \left( \bigcup \left( E\setminus F_{i} \right)  \right)\le  \varphi \left( \bigcup \left( E_{i}\setminus F_{i} \right)  \right)\le \sum _{i} \varphi \left( E_{i}\setminus F_{i} \right)= 0    
+    \]   
+\end{proof}
 \end{document}
