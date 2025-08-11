@@ -248,7 +248,7 @@ Suppose $\varphi$ is an outer measure on $X$ and $\{E_i\}$ a countable collectio
         \item An outer measure \(   \varphi   \) on a topological space \(  X  \) is called a \dfntxt{Borel outer measure} if all Borel sets are \(   \varphi   \)-measurable. 
         \item A Borel outer measure is \dfntxt{finite} if \(   \varphi \left( X \right)    \) is finite.
         \item An outer measure \(   \varphi   \) on a set \(  X  \) is called \dfntxt{regular} if for each \(  A\subseteq X  \) there exists a \(   \varphi   \)-measurable set \(  B\supseteq A  \) such that \(   \varphi \left( B \right)=  \varphi \left( A \right)    \). 
-        \item A \dfntxt{Borel rugular outer measure} is a Borel set \(  B  \) such that \(   \varphi \left( B \right)=  \varphi \left( A \right)    \).
+        \item A \dfntxt{Borel rugular outer measure} is a Borel outer measure such that for each \(  A\subseteq X  \), there exists a Borel set \(  B  \) such that \(   \varphi \left( B \right)=  \varphi \left( A \right)    \).    
         \item A \dfntxt{Radon outer measure} is a Borel regular outer measure that is finite on compact sets.             
     \end{itemize}
     
@@ -414,8 +414,8 @@ Suppose $\mathcal{F}$ is a family of subsets of a topological space X that conta
     
 \end{proof}
 
-\begin{exercise}{}{}
-    An outer measure \(   \varphi   \) on a space \(  X  \) is called \(   \sigma   \)-finite if there exists a countable number of sets \(  A_{i}  \) with \(   \varphi \left( A_{i} \right)< \infty   \) such that \(  X\subseteq \bigcup _{i= 1}^{\infty}A_{i}  \). Assuming that \(   \varphi   \) is a \(   \sigma   \)-finite Borel regular outer measure on a metric space \(  X  \), prove that \(  E\subseteq X  \) is \(   \varphi   \)-measurable if and only if there exists an \(  F_{ \sigma }   \) set \(  F\subseteq E  \) such that \(   \varphi \left( E\setminus F \right)= 0   \).       
+\begin{exercise}*{}{}
+      An outer measure \(   \varphi   \) on a space \(  X  \) is called \(   \sigma   \)-finite if there exists a countable number of sets \(  A_{i}  \) with \(   \varphi \left( A_{i} \right)< \infty   \) such that \(  X\subseteq \bigcup _{i= 1}^{\infty}A_{i}  \). Assuming that \(   \varphi   \) is a \(   \sigma   \)-finite Borel regular outer measure on a metric space \(  X  \), prove that \(  E\subseteq X  \) is \(   \varphi   \)-measurable if and only if there exists an \(  F_{ \sigma }   \) set \(  F\subseteq E  \) such that \(   \varphi \left( E\setminus F \right)= 0   \).       
 \end{exercise}
 \begin{proof}
     Let \(  E_{i}: = E\cap A_{i}  \). Then \[
@@ -423,5 +423,155 @@ Suppose $\mathcal{F}$ is a family of subsets of a topological space X that conta
     \] Once we show that there is a closed set \(  F_{i}\subseteq E_{i}  \), such that \(   \varphi \left( E_{i}\setminus F_{i} \right)= 0   \) for all \(  i  \), then let \(  F= \bigcup _{i = 1}^{\infty}F_{i}\in F_{ \sigma }  \), it follows that  \[
      \varphi \left( E\setminus F \right)\le  \varphi \left( \bigcup \left( E\setminus F_{i} \right)  \right)\le  \varphi \left( \bigcup \left( E_{i}\setminus F_{i} \right)  \right)\le \sum _{i} \varphi \left( E_{i}\setminus F_{i} \right)= 0    
     \]   
+\end{proof}
+
+
+\begin{exercise}{}{}
+Let $\varphi$ be an outer measure on a space $X$. Suppose $A \subset X$ is an arbitrary set with $\varphi(A) < \infty$ such that there exists a $\varphi$-measurable set $E \supset A$ with $\varphi(E) = \varphi(A)$. Prove that $\varphi(A \cap B) = \varphi(E \cap B)$ for every $\varphi$-measurable set $B$.
+\end{exercise}
+\begin{proof}
+   \[
+      \varphi \left( A \right)=  \varphi \left( E \right)=  \varphi \left( E\cap B \right)+  \varphi \left( E\setminus B \right)   
+     \]  \[
+    \begin{aligned}
+      \varphi \left( A\cap B \right)\ge  \varphi \left( A \right)- \varphi \left( A\setminus B \right)&=  \varphi \left( E \right)- \varphi \left( A\setminus B \right)  \\ 
+       &=  \varphi \left( E\cap B \right)+  \varphi \left( E\setminus B \right)- \varphi \left( A\setminus B \right)\\ 
+        &\ge  \varphi \left( E\cap B \right)    
+    \end{aligned}    
+     \] Since \(  A\cap B\subseteq E\cap B  \), \(   \varphi \left( A\cap B \right)\le  \varphi \left( E\cap B \right)    \). Finally, we have \(   \varphi \left( A\cap B \right)=  \varphi \left( E\cap B \right)    \)   
+\end{proof}
+
+
+\begin{exercise}{}{}
+In $\mathbb{R}^2$, find two disjoint closed sets $A$ and $B$ such that $\mathbf{d}(A, B) = 0$. Show that this is not possible if one of the sets is compact.
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Let \(  A  \) be the graph of \(  y= \frac{1 }{x }   \). Let \(  B = \left\{ \left( x,y \right): y= 0  \right\}  \). Then \(  \left\{ \left( n,\frac{1 }{n }  \right): n\in \mathbb{N}   \right\}  \subseteq A\) , \(  \left\{ \left( n,0 \right): n \in \mathbb{N}   \right\}\subseteq B  \), then \[
+        \mathbf{d}\left( A,B \right)\le \inf \left\{ d\left( \left( n,\frac{1 }{n }  \right), \left( n,0 \right)   \right)  : n \in \mathbb{N} \right\} = \lim_{n\to \infty}\frac{1 }{n }= 0  
+        \]
+        \item If \(  A  \) is compact, \(  B  \) is closed. Since \(  \mathbf{d}\left( A,B \right)= 0   \), there are convergent sequences \(  \left\{ a_{n} \right\}\subseteq A  \) and \(  \left\{ b_{n} \right\}\subseteq B  \) such that \(  \lim_{n\to \infty}d\left( a_{n},b_{n} \right)= 0   \).   Since \(  A  \) is bounded and closed, there is a  cluster point \(   a \in A  \) of \(  \left\{ a_{n} \right\}  \). Suppose that \(  \lim_{k\to \infty}a_{n_{k}}= a  \), then \(  \lim_{k\to \infty}b_{n_{k}}= a\in B  \). \(  A\cap B\neq \varnothing  \), which is a contradiction.      
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+Let $\varphi$ be an outer Carathéodory measure on $\mathbb{R}$ and let $f(x) := \varphi(I_x)$, where $I_x$ is an open interval of fixed length centered at $x$. Prove that $f$ is lower semicontinuous. What can you say about $f$ if $I_x$ is taken as a closed interval? Prove the analogous result in $\mathbb{R}^n$; that is, let $f(x) := \varphi(B(x, a))$, where $B(x, a)$ is the open ball with fixed radius $a$ centered at $x$.
+\end{exercise}
+\begin{exercise}{}{}
+In a metric space $X$, prove that $\operatorname{dist}(A, B) = d(\bar{A}, \bar{B})$ for arbitrary sets $A, B \in X$.
+\end{exercise}
+\begin{exercise}{}{}
+Let $A$ be a non-Borel subset of $\mathbb{R}^n$ and define for each subset $E$,
+\[\begin{aligned}
+\varphi(E) = \begin{cases} 0 & \text{if } E \subset A, \\ \infty & \text{if } E \setminus A \neq \emptyset. \end{cases}
+\end{aligned}\]
+Prove that $\varphi$ is an outer measure that is not Borel regular.
+\end{exercise}
+\begin{exercise}{}{}
+Let $\mathcal{M}$ denote the class of $\varphi$-measurable sets of an outer measure $\varphi$ defined on a set $X$. If $\varphi(X) < \infty$, prove that the family
+\[
+\mathcal{F} := \{A \in \mathcal{M} : \varphi(A) > 0\}
+\]
+is at most countable.
+\end{exercise}
+
+
+\section{Lebesgue Measure}
+
+\begin{theorem}{}{}
+Suppose each edge $I_k = [a_k, b_k]$ of an $n$-dimensional interval $I$ is partitioned into $\alpha_k$ subintervals. The products of these intervals produce a partition of $I$ into $\beta := \alpha_1 \cdot \alpha_2 \cdots \alpha_n$ subintervals $I_i$ and
+\[
+v(I) = \sum_{i=1}^{\beta} v(I_i).
+\]
+\end{theorem}
+
+
+\begin{theorem}{}{}
+For each interval $I$ and each $\epsilon > 0$, there exists an interval $J$ whose interior contains $I$ and
+\[
+v(J) < v(I) + \epsilon.
+\]
+\end{theorem}
+
+
+\begin{definition}{Lebesgue outer measure}{}
+    The \dfntxt{Lebesgue outer measure} of an arbitrary set \(  E\subseteq \mathbb{R} ^{n}  \), denoted by \(   \lambda ^{*}\left( E \right)   \), is defined by \[
+     \lambda ^{*}\left( E \right): = \inf \left\{ \sum _{k= 1}^{\infty}v\left( I _{k} \right)  \right\}, 
+    \] where the infimum is taken over all countable collections of closed intervals \(  I _{k}  \) such that \[
+    E\subseteq \bigcup _{k = 1}^{\infty}I _{k}. 
+    \]  
+\end{definition}
+
+\begin{remark}
+   \begin{itemize}
+    \item  It may be necessary at times to emphasize the dimension of the Euclidean space in which Lebesgue outer measure if defined. When clarification is needed, we will write \(   \lambda _{n}^{*}\left( E \right)   \) in plce place of \(   \lambda ^{*}\left( E \right)   \).   
+    \item We have not prove that \(  \dfntxt{Lebesgue outer measure}  \) is actually a outer measure till now. 
+   \end{itemize}
+   
+\end{remark}
+
+
+\begin{theorem}{}{}
+    For a closed interval \(  I\subseteq \mathbb{R} ^{n}  \), \(   \lambda ^{*}\left( I \right)= v\left( I \right)    \).   
+\end{theorem}
+
+\begin{proof}
+    The inequality \(   \lambda ^{*}\left( I \right)\le v\left( I \right)    \) holds, since \(  I  \) itself givs a element of \(  \left\{ \sum _{k = 1}^{\infty}v\left( I _{k} \right)  \right\}  \)   in the definition of \(   \lambda ^{*}\left( I \right)   \). 
+
+    To prove the opposite inequality, choose \(   \varepsilon > 0  \), and a sequence of closed intervals \(  I_1,I_2,\cdots   \) such that \[
+    I\subseteq \bigcup _{k = 1}^{\infty}I _{k},\quad \sum _{ k= 1}^{\infty}v\left( I _{k} \right) \le  \lambda ^{*}\left( E \right)+  \varepsilon   
+    \]  We can choose closed intervals \(  J_{k}  \) such that \[
+    v\left( J_{k} \right)\le v\left( I _{k} \right)+ \frac{ \varepsilon  }{2^{k} },\quad  I _{k}\subseteq J_{k}^{\circ}   
+    \]Let \(  \mathcal{F}  : =  \left\{ J_{k}^{\circ}:k \in \mathbb{N}  \right\}\).    Then \(  \mathcal{F}  \) is an open cover of \(  I  \), since \(  I  \) is compact, it has a lebesgue number \(  \eta   \).    There is a finitely many partition \(   K_1,\cdots,K_m   \) of \(  I  \) such that each  with diameter less than \(  \eta   \). Then \(  K_{i}  \) is contained in some  element of \(  \mathcal{F}  \), we say \(  J_{k_{i}}  \)    althoung two \(  K_{i}  \) may be contained in a same \(  J_{k_{i}}  \).  Let \(  N_{m}  \) be the smallest number of \(  J_{k_{i}}  \) containing \(  K_{i}  \), then \[
+    v\left( I \right)= \sum _{i= 1}^{m}v\left( K_{i} \right)\le \sum _{i = 1}^{N_{m}}v\left( J_{k_{i}} \right)\le \sum _{ k = 1}^{\infty}v\left( J_{k} \right)    \le   \lambda ^{*}\left( E \right)+ 2 \varepsilon  
+    \]     Since \(   \varepsilon   \) is arbitrary, \(  v\left( I \right)\le  \lambda ^{*}\left( E \right)    \).   
+\end{proof}
+
+\begin{theorem}{}{}
+    Lebesgue outermeasure, \(   \lambda ^{*}  \), defined on \(  \mathbb{R} ^{n}  \) is a Carath\'eorody outer measure.  
+\end{theorem}
+
+\begin{proof}
+    We first verify that \(   \lambda ^{*}  \) is an outer measure. We only show the subadditivity of \(   \lambda ^{*}  \), the other conditions are obvious. Let \( \left\{ A_{i} \right\}  \) be a countable collection of arbitrary subsets of \(  \mathbb{R} ^{n}  \). Denote \(  A: = \bigcup _{i = 1}^{\infty}A_{i}  \).       There is a countable family of closed intervals \(  \left\{ I _{j}^{\left( i \right) } \right\}_{j \in \mathbb{N} }  \) such that \[
+    A_{i}\subseteq \bigcup _{j = 1}^{\infty} I^{\left( i \right) }_{j},\quad   \sum _{j = 1}^{\infty}v\left( I _{j}^{\left( i \right) } \right)<  \lambda ^{*}\left( A_{i} \right)+ \frac{ \varepsilon  }{2^{i} }   
+    \] Collection of closed interval \(  \left\{ I _{j}^{\left( i \right) } \right\}_{i,j\in \mathbb{N} }  \)   can be aranged to a sequence of closed invervals, such that \[
+    A\subseteq  \bigcup _{i,j\in \mathbb{N} } I^{\left( i \right) }_{j}
+    \] Thus \[
+     \lambda ^{*}\left( A \right)\le \sum _{i,j}v\left( I _{j}^{\left( i \right) } \right)\le \sum _{i = 1}^{\infty} \lambda ^{*}\left( A_{i} \right)+  \varepsilon    
+    \] Since \(   \varepsilon > 0  \) is arbitrary, the countable subadditivity of \(   \lambda ^{*}  \) is established.      
+
+    To show that \(   \lambda ^{*}  \) is Carath\'eorody outer measure. We take any \(   \varepsilon > 0  \) , and take a countable conllection of closed intervals \(  I_1,I_2,\cdots   \)   such that \[
+    A\cup B\subseteq \bigcup _{ k= 1}^{\infty}I _{k},\quad  \sum _{k = 1}^{\infty}v\left( I _{k} \right)\subseteq  \lambda ^{*}\left( A\cup B \right).   
+    \] We can subdividing each \(  I _{k}  \) into smaller invervals if necessary, we may assume that each interval \(   I _{k}  \) which diameter less that \(  \mathbf{d}\left( A,B \right)   \). Then \(  \left\{  I _{k} \right\}  \) can be seperated into two subfamiles \(  \left\{ I _{k}^{\prime}  \right\}  \) and \(  \left\{ I _{k}^{\prime \prime}  \right\}  \). The members in the former have empty intersection with \(  B  \) , and that  in the later have empty intersection with \(  A  \). \(  \left\{ I _{k} \right\}= \left\{ I _{k}^{\prime}  \right\} \sqcup \left\{ I _{k}^{\prime \prime}  \right\}  \). Thus \[
+    A\subseteq \bigcup _{k = 1}^{\infty}\left\{ I _{k}^{\prime}  \right\},\quad B\subseteq \bigcup _{k= 1}^{\infty} \left\{ I _{k}^{\prime \prime}  \right\}
+    \]          We have \[
+    \begin{aligned}
+     \lambda ^{*}\left( A \right)+  \lambda ^{*}\left( B \right)&\le  \sum _{k= 1}^{\infty}v\left( I _{k}^{\prime}  \right)+ \sum _{k = 1}^{\infty}v\left( I _{k}^{\prime \prime}  \right)     \\ 
+      & = \sum _{ k= 1}^{\infty}v\left( I _{k} \right)\\ 
+       &<   \lambda ^{*}\left( A\cup B \right)+  \varepsilon   
+    \end{aligned}
+    \] Since \(   \varepsilon > 0  \) is arbitrary, we have \[
+     \lambda ^{*}\left( A \right)+  \lambda ^{*}\left( B \right)\le  \lambda ^{*}\left( A\cup B \right)   
+    \] 
+\end{proof}
+
+\begin{corollary}{}{}
+    All Borel sets in \(  \mathbb{R} ^{n}  \) are Lebesgue measurable. In particular, each open set and each closed set are Lebesgue measurable.  
+\end{corollary}
+
+\begin{definition}{Lebesgue Measure}{}
+    Donote by \(   \lambda   \)  the set function obtained by restricting \(   \lambda ^{*}  \) to the family of Lebesgue measurable sets. \(   \lambda   \) is called \dfntxt{Lebesgue measure}.   
+\end{definition}
+
+\begin{corollary}{}{}
+    Let \(  J  \) be an opoen interval in \(  \mathbb{R} ^{n}  \). Then \[
+     \lambda \left( J \right)= \mathrm{vol}\left( J \right)  
+    \]  
+\end{corollary}
+\begin{proof}
+    There is a sequence of closed intervals \(  I _{k}  \)  such taht \(  J= \bigcup _{ k= 1}^{\infty}I _{k}  \), then \[
+     \lambda \left( J \right)= \lim_{k\to \infty} \lambda \left( I _{k} \right)= \lim_{k\to \infty} \mathrm{vol}\left( I _{k} \right)= \mathrm{vol}\left( J \right)    
+    \] 
 \end{proof}
 \end{document}
