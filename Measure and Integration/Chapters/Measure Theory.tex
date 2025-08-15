@@ -196,7 +196,7 @@ If $\varphi$ is an \dfntxt{outer measure} on an arbitrary set $X$, then the clas
     Follows immediately from Theorem \ref{thm:7-24-1} and Theorem \ref{thm:7-24-2}. 
 \end{proof}
 
-\begin{corollary}{}{}
+\begin{corollary}{}{8-14-1}
 Suppose $\varphi$ is an outer measure on $X$ and $\{E_i\}$ a countable collection of $\varphi$-measurable sets.
 \begin{enumerate}
     \item[(i)] If $E_1 \subset E_2$ with $\varphi(E_1) < \infty$, then
@@ -573,5 +573,452 @@ v(J) < v(I) + \epsilon.
     There is a sequence of closed intervals \(  I _{k}  \)  such taht \(  J= \bigcup _{ k= 1}^{\infty}I _{k}  \), then \[
      \lambda \left( J \right)= \lim_{k\to \infty} \lambda \left( I _{k} \right)= \lim_{k\to \infty} \mathrm{vol}\left( I _{k} \right)= \mathrm{vol}\left( J \right)    
     \] 
+\end{proof}
+
+\begin{theorem}{}{8-12-1}
+    The following five conditions are equivalent for Lebesgue outer measure, \(   \lambda ^{*}  \), on \(  \mathbb{R} ^{n}  \): 
+    \begin{enumerate}
+        \item \(  E\subseteq   \mathbb{R} ^{n}\) is \(   \lambda ^{*}  \)-measurable.
+        \item For each \(   \varepsilon > 0  \), there is an open set \(  U \supseteq E  \) such that \(   \lambda ^{*}\left( U\setminus E \right)<  \varepsilon    \). 
+        \item There is a \(  G_{ \delta }  \) set \(  U  \supseteq E\) such that \(   \lambda ^{*}\left( U\setminus E \right)= 0   \).   
+        \item For each \(   \varepsilon > 0  \), there is a closed set \(  F\subseteq E  \) such that \(   \lambda ^{*}\left( E\setminus F \right)<  \varepsilon    \). 
+        \item There is an \(  F_{ \sigma }  \) set \(  F\subseteq E  \) such that \(   \lambda ^{*}\left( E\setminus F \right)= 0   \).             
+    \end{enumerate}
+      
+\end{theorem}
+
+ \begin{proof}
+    1.\(  \implies   \) 2. : We first assmu that \(   \lambda ^{*}\left( E \right)< \infty   \).   Take closed intervals \(  I_1,I_2,\cdots   \) such that \[
+    E\subseteq \bigcup _{k= 1}^{\infty}I _{k},\quad \sum _{k = 1}^{\infty}v\left( I _{k} \right)<  \lambda ^{*}\left( E \right)+ \frac{ \varepsilon  }{2 }   
+    \] Let \(  I^{\prime} _{k}  \) be closed intervals whose interior contains \(  I _{k}  \) ,and \[
+    v\left( I^{\prime} _{k} \right)< v\left( I _{k} \right)+ \frac{ \varepsilon  }{2^{k+ 1} }   
+    \]   Let \[
+    U : =  \bigcup _{k = 1}^{\infty} \left( I _{k}^{\prime}  \right)^{\circ} 
+    \] is a open set.Since \(  U,E  \) is \(   \lambda   \)-measurable,   \[
+    \begin{aligned}
+     \lambda ^{*}\left( U\setminus E \right)=  \lambda \left( U\setminus E \right)  &=  \lambda \left( U \right)- \lambda \left( E \right)  \\ 
+      &=  \lambda \left( U \right)- \lambda ^{*}\left( E \right)\\ 
+       &<   \sum _{k = 1}^{\infty} v\left(  I _{k}^{\prime}  \right)- \left( \sum _{k = 1}^{\infty}v\left( I _{k} \right)- \frac{ \varepsilon  }{2 }   \right)\\ 
+        &\le  \varepsilon      
+    \end{aligned}
+    \]
+    Now, note that \(  \mathbb{R} ^{n}  \) is \(   \sigma   \)-finite, we suppose that \(  A_1,A_2,\cdots   \) are measruable sets such that \[
+    \mathbb{R} ^{n}= \bigcup _{ j = 1}^{\infty}A_{j},\quad  \lambda \left( A_{j} \right)< \infty,\forall j\in \mathbb{Z} _{> 0} 
+    \]   Then \(  E_{j}: = E\cap A_{j}  \) is a \(   \lambda ^{*}  \)-measurable set with \(   \lambda \left( E_{j} \right)< \infty   \) for each \(  j  \). For each \(   \varepsilon > 0  \), and each \(  j \in \mathbb{Z} _{> 0}  \), there is an open set \(  U_{j}\supseteq E  \) such that \[
+     \lambda ^{*}\left( U_{j}\setminus E_{j} \right)<  \frac{ \varepsilon  }{2^{j} } 
+    \] Let \(  U: = \bigcup _{j = 1}^{\infty}U_{j}  \)        ,then \[
+     \lambda ^{*}\left( U\setminus E \right)\le \sum _{j= 1}^{\infty} \lambda ^{*}\left( U_{j}\setminus E \right)\le \sum _{j = 1}^{\infty}   \lambda ^{*}\left( U_{j}\setminus E_{j} \right)\le  \varepsilon  
+    \] which completes the proof. 
+    
+    2. \(  \implies   \) 3. : For each \(  n \in \mathbb{Z} _{> 0}  \), there is a open set \(  U_{n}  \), such that \[
+     \lambda ^{*}\left( U_{n}\setminus E \right)< \frac{1 }{n }  
+    \]Let \[
+    U:= \bigcap_{n = 1}^{\infty} U_{n} 
+    \]   then \(  U  \) is a \(  G_{ \delta }  \) set, such that \[
+     \lambda ^{*}\left( U\setminus E \right)\le  \lambda ^{*}\left( U_{n}\setminus E \right)< \frac{1 }{n },\quad \forall n.   
+    \]That is \(   \lambda ^{*}\left( U\setminus E \right)= 0   \). 
+
+    3.\(  \implies   \) 1. : Since \(   \lambda ^{*}  \) is a Carathéorody measure, then all Borel sets is measurable. Specially, the \(  G_{ \delta }  \) set \(  U  \)  is measurable. And since \(   \lambda ^{*}  \)-zero set is measurable,  then \[
+  E =  U\setminus \left( U\setminus E \right)  
+    \]   is measurable.
+    
+    2. \(  \implies   \) 4. : There is an open set \(  U\supseteq  E^{c}  \)   such that \(   \lambda ^{*}\left( U\setminus E^{c} \right)<  \varepsilon    \) . Let \(  F = U^{c}  \), then \[
+    E\setminus F= E\cap F^{c}=  E\cap U=  U\setminus E^{c} 
+    \] Thus \[
+     \lambda ^{*}\left( E\setminus F \right)=  \lambda ^{*}\left( U\setminus E^{c} \right)<  \varepsilon   
+    \]
+
+    4.\(  \implies   \) 5. : For each \(  n \in \mathbb{Z} _{> 0}  \), there is a closed set \(  F_{n}\subseteq E  \) such taht \[
+     \lambda ^{*}\left( E\setminus F_{n} \right)< \frac{1 }{n }  
+    \] Let \[
+    F: = \bigcup _{n = 1}^{\infty}F_{n} , 
+    \] then \(  F  \) is a \(  F_{ \sigma }  \) set, such that \[
+     \lambda ^{*}\left( E\setminus F \right)\le  \lambda ^{*}\left( E\setminus F_{n} \right)< \frac{1 }{n },\quad \forall n .   
+    \] That is \(   \lambda ^{*}\left( E\setminus F \right)= 0   \).
+    
+    5. \(  \implies   \) 1. : Since \(  E\setminus F  \) and \(  F  \) is measurable, we have \[
+    E = \left( E\setminus F \right)\cup F 
+    \]    is measurable.
+ \end{proof}
+
+ \section*{Exercises for Lebesgue Measure}
+
+ \begin{exercise}{}{}
+    With $\lambda_t$ defined by
+\[\begin{aligned}
+\lambda_t(E) = \lambda(|t| E),
+\end{aligned}\]
+prove that $\lambda_t(N) = 0$ whenever $\lambda(N) = 0$.
+ \end{exercise}
+\begin{proof}
+    Since \(   \lambda \left( N \right)= 0   \), for each \(   \varepsilon   \), there is a sequence of closed intervals \(  I_1,\cdots   \) such that \[
+    E\subseteq  \bigcup _{k = 1}^{\infty}I _{k},\quad \sum _{k = 1}^{\infty}v\left( I _{k} \right)< \frac{ \varepsilon  }{\left| t \right|^{n}  }  
+    \] where \(  n  \) is the dimension of the Euclidean space we discuss.  Then \[
+    \left| t \right|E \subseteq  \bigcup _{k = 1}^{\infty} \left| t \right|I _{k},\quad \sum _{k = 1}^{\infty}v\left( \left| t \right| I _{k}  \right)=    \left| t \right|^{n} \sum _{k = 1}^{\infty} v\left( I _{k} \right)  <  \varepsilon 
+    \]   That is \[
+     \lambda ^{*}\left( \left| t \right|E  \right)<  \varepsilon ,\quad \forall  \varepsilon > 0 
+    \] Thus \(  \left| t \right|E   \) is measurable, and \[
+     \lambda \left( \left| t \right|E  \right)=  \lambda ^{*}\left( \left| t \right|E  \right)= 0  
+    \] 
+\end{proof}
+
+\begin{exercise}{}{}
+Let $I, I_1, I_2, \dots, I_k$ be intervals in $\mathbb{R}$ such that $I \subset \bigcup_{i=1}^k I_i$. Prove that
+\[
+v(I) \le \sum_{i=1}^k v(I_i),
+\]
+where $v(I)$ denotes the length of the interval $I$.
+\end{exercise}
+
+\begin{proof}
+   We may assume that \(  v\left( I \right)< \infty   \), that is \(  I  \) is bounded.     Since \(  v\left( I \right)= v\left( \overline{I} \right)    \), \(  v\left( I _{i} \right)=  v\left( \overline{I} _{i} \right)    \) , and \(  \bar{I}\subseteq \bigcup _{ i = 1}^{k} \bar{I}_{i}  \), we may assume that \(  I,I_1,\cdots , I _{k}  \) are closed intervals. For any \(   \varepsilon > 0  \), there are closed intervals \(  I^{\prime} _{i}  \) such that \[
+     I _{i}\subseteq \left( I^{\prime} _{i} \right)^{\circ},\quad  v\left( I _{i}^{\prime}  \right)\le v\left( I _{i} \right)+ \frac{ \varepsilon  }{2^{i} }   
+     \] Then \(  \left\{\left(  I _{i}^{\prime} \right) ^{\circ}    \right\}\) is a open cover of  \(  I  \).        Since \(  I  \) is compact, it has a Lebesgue number \(  \eta   \).   We can subdivide \(  I  \) into subintervals  \(  K_1,\cdots ,K_{m}  \) with diameter  less that \(  \eta   \). Then each \(K_j\) is contained in some \((I_{i_j}')^\circ\).
+
+We can formalize this by defining a map \(f: \{1, \dots, m\} \to \{1, \dots, k\}\) such that for each \(j\), \(K_j \subset (I_{f(j)}')^\circ\). Since the subintervals \(K_j\) have disjoint interiors and their union is \(I\), we can write the total length of \(I\) and group the sum according to the covering interval index:
+\[
+v(I) = \sum_{j=1}^m v(K_j) = \sum_{i=1}^k \left( \sum_{j: f(j)=i} v(K_j) \right).
+\]
+For any fixed \(i\), the intervals \(\{K_j\}_{j: f(j)=i}\) are a collection of disjoint intervals all contained within \((I_i')^\circ\). Therefore, the sum of their lengths cannot exceed the length of \((I_i')^\circ\):
+\[
+\sum_{j: f(j)=i} v(K_j) = v\left(\bigcup_{j: f(j)=i} K_j\right) \le v((I_i')^\circ) = v(I_i').
+\]
+Applying this inequality to our grouped sum, we obtain a single chain of inequalities:
+\[
+v(I) = \sum_{i=1}^k \left( \sum_{j: f(j)=i} v(K_j) \right) \le \sum_{i=1}^k v(I_i') \le \sum_{i=1}^k \left( v(I_i) + \frac{\epsilon}{2^i} \right) = \sum_{i=1}^k v(I_i) + \epsilon \sum_{i=1}^k \frac{1}{2^i}.
+\]
+Since \(\sum_{i=1}^k \frac{1}{2^i} < 1\), we have \(v(I) < \sum_{i=1}^k v(I_i) + \epsilon\). As \(\epsilon > 0\) was arbitrary, we conclude that
+\[
+v(I) \le \sum_{i=1}^k v(I_i).
+\]
+
+\end{proof}
+\begin{exercise}{}{}
+Let $E \subset \mathbb{R}$, and for each real number $t$, let $E + t = \{x + t : x \in E\}$.
+Prove that $\lambda^*(E) = \lambda^*(E + t)$. From this show that if $E$ is Lebesgue measurable, then so is $E + t$.
+\end{exercise}
+
+\begin{proof}
+    Once we show that \[
+     \lambda ^{*}\left( E+ t\right)\le  \lambda ^{*}\left( E\right),\quad \forall t  
+    \]. By replacing \(  t  \) by \(  -t  \), \(  E  \)   by \(  E + t \), we have \[
+     \lambda ^{*}\left( E \right) \le  \lambda ^{*}\left( E+ t \right),\forall t 
+    \]Then we get \(   \lambda ^{*}\left( E \right)=  \lambda ^{*}\left( E+ t \right)    \).  To show this, for each \(   \varepsilon > 0  \), we take closed intervals \(  I_1,\cdots   \) such that \[
+    E\subseteq \bigcup _{k = 1}^{\infty} I _{k},\quad  \sum _{k = 1}^{\infty} v\left(  I _{k} \right)<  \lambda \left( E \right)+  \varepsilon   
+    \] Then \[
+    E+ t\subseteq \bigcup _{ k= 1}^{\infty} \left( I _{k}+ t \right),\quad \sum _{k = 1}^{\infty} v\left( I _{k}+ t \right)= \sum _{k = 1}^{\infty} v\left( I _{k} \right)   <  \lambda \left( E \right)+  \varepsilon  . 
+    \]    Thus \[
+     \lambda \left( E+ t \right)\le  \lambda \left( E \right)+  \varepsilon   .
+    \] Since \(   \varepsilon > 0  \) is arbitrary, \(   \lambda \left( E+ t \right)\le  \lambda \left( E \right)    \). 
+    
+    To show that \(  E+ t  \) is Lebesgue measurable. There is a \(  G_{ \delta }  \) set \(  G  \), such that  \[
+    G\supseteq E,\quad  \lambda ^{*}\left( G\setminus E \right)= 0 . 
+    \] Since open sets is closed under translation  and since intersection is kept, then \(  G_{ \delta }+ t  \) is a \(  G_{ \delta }  \) set as well. We have \[
+    \left( G+ t \right)\supseteq \left( E+ t \right),\quad  \left( G+ t \right)\setminus \left( E+ t \right)= \left( G\setminus E \right)+ t      
+    \]   Thus \[
+     \lambda ^{*}\left( \left( G+ t \right)\setminus \left( E+ t \right)   \right)=  \lambda ^{*}\left( \left( G\setminus E \right)+ t  \right)=  \lambda ^{*}\left( G\setminus E \right)= 0   
+    \] Then it follows from Theorem \ref{thm:8-12-1} that \(  E+ t  \) is measurable.  
+\end{proof}
+
+\begin{exercise}*{}{}
+Prove that Lebesgue measure on $\mathbb{R}^n$ is independent of the choice of coordinate system. That is, prove that Lebesgue outer measure is invariant under rigid motions in $\mathbb{R}^n$.
+\end{exercise}
+\begin{remark}
+    或许需要积分的替换公式, 之后再来看. 
+\end{remark}
+
+\begin{proof}
+    Since we have shown that Lebesgue otuer measure is invariant under translation, we only need to show that is it also invariant under Orthogonal Transformation. 
+\end{proof}
+
+\begin{exercise}{}{}
+Let $P$ denote an arbitrary $(n-1)$-dimensional hyperplane in $\mathbb{R}^n$. Prove that $\lambda(P) = 0$.
+\end{exercise}
+
+\begin{proof}
+    Since Lebesgue measure is invariant under rigid motions. We may assume that  \(  P= \left\{ x_{n}= 0 \right\}  \). For each \(   \varepsilon > 0  \), let \[
+    I _{k}: = \left[ - \frac{k }{2 } , \frac{k }{2 }  \right]^{n-1}\times  \left[  \frac{- \varepsilon  }{2 k^{n-1} }\cdot  \frac{1 }{2^{k} } , \frac{ \varepsilon  }{2 k^{n-1} } \cdot \frac{1 }{2^{k} }   \right] 
+    \]   Then \[
+    P \subseteq  \bigcup _{k= 1}^{\infty}I _{k},\quad v\left( I _{k} \right)= \frac{ \varepsilon  }{2^{k} }  ,\quad \forall k 
+    \] Thus \[
+     \lambda \left( P \right)\le \sum _{k = 1}^{\infty} v\left( I _{k} \right)\le  \varepsilon   
+    \] Since \(   \varepsilon   \) is arbitrary, \(   \lambda \left( P \right)= 0   \).   
+\end{proof}
+
+\begin{exercise}{}{}
+    In this problem, we want to show that every Lebesgue measurable subset of $\mathbb{R}$ must be “densely populated” in some interval. Thus, let $E \subset \mathbb{R}$ be a Lebesgue measurable set, $\lambda(E) > 0$. For each $\varepsilon > 0$, show that there exists an interval $I$ such that
+\[ \frac{\lambda(E \cap I)}{\lambda(I)} > 1 - \varepsilon. \]
+\end{exercise}
+
+\begin{note}
+    我们发现构造这样一个 \(  I  \)是及其困难的. 转而使用反证法, 去论证 ``如果一个建筑的每一块砖都不合格, 那么整个建筑的质量必然有问题''.
+\end{note}
+
+\begin{proof}
+     Suppose conversely, there exists an \(   \varepsilon > 0  \) , such that for each interval \(  I  \), we have \[
+     \frac{ \lambda \left( E\cap I \right)  }{ \lambda \left( I \right)  }\le 1- \varepsilon .  
+     \]  Let \(  U   \) be a open set such that \[
+     U\supseteq E,\quad  \lambda \left( U\setminus E \right)<  \delta  .
+     \] Suppose \[
+     U=  \bigcup _{k = 1}^{\infty} I _{k}
+     \] where \(  I _{k}  \) are disjoint open intervals. Then \[
+      \lambda \left( E\cap U \right) = \sum _{k = 1}^{\infty}  \lambda \left( E\cap I _{k} \right) \le  \left( 1- \varepsilon  \right) \sum _{k = 1} ^{\infty}\lambda \left( I _{k} \right) = \left( 1- \varepsilon  \right) \lambda \left( U \right)    
+     \]  Since \[
+       \lambda \left( U \right)=  \lambda \left( E\cap U \right)+  \lambda \left( U\setminus E \right)   
+     \], we have \[
+      \lambda \left( E\cap U \right)+  \lambda \left( U\setminus E \right) \ge  \frac{1 }{1- \varepsilon  } \lambda \left( E\cap U \right)    
+     \] Thus \[
+      \delta \ge \left( 1-\frac{1 }{1- \varepsilon  }  \right) \lambda \left( E\cap U \right)  = \frac{ \varepsilon  }{1- \varepsilon  } \lambda \left( E \right)  
+     \] since \(  E\cap U= E  \).  Note that \(   \delta   \) can be choosed arbitrarily and indepent with \(   \varepsilon   \) and \(   \lambda \left( E \right)   \), then it leads to a contradiction, which completes the proof.  
+\end{proof}
+ \begin{exercise}{}{}
+    Prove that every set $A \subset \mathbb{R}^n$ is contained within a $G_{\delta}$-set $G$ with the property $\lambda(G) = \lambda^*(A)$.
+ \end{exercise}
+ \begin{proof}
+    For any \(  n > 0  \), there are closed intervals \(  I_1^{\left( n \right) },I_2^{\left( n \right) },\cdots   \) such that \[
+    A\subseteq \bigcup _{k = 1}^{\infty}I _{k}^{\left( n \right) },\quad \sum _{k = 1}^{\infty}v\left(  I _{k}^{\left( n \right) } \right)\le  \lambda ^{*}\left( A \right)+ \frac{ 1  }{2n }   
+    \] For each \(  k  \), there is a closed interval   \(  \left( I^{\left( n \right) }_{k} \right)^{\prime}  \) such that \[
+    I _{k}^{\left( n \right) }\subseteq \left(  \left( I^{\left( n \right) }_{k} \right)^{\prime} \right)^{\circ },\quad v\left(\left( I^{\left( n \right) }_{k} \right)^{\prime} \right)< v\left(I _{k}^{\left( n \right) }  \right)+ \frac{1  }{2^{k+ 1}n }    
+    \] Let  \[
+    G:= \bigcap_{n = 1}^{\infty} \bigcup _{k = 1}^{\infty} \left( \left( I^{\left( n \right) }_{k} \right)^{\prime}   \right)^{\circ}  
+    \] is a \(  G_{ \delta }  \) set. Then \[
+     \lambda \left( G \right)\le  \lambda \left( \bigcup _{k = 1}^{\infty} \left( I^{\left( n \right) }_{k} \right)^{\prime}   \right)  \le \sum _{k = 1}^{\infty}v\left( \left( I^{\left( n \right) }_{k} \right)^{\prime}   \right)<  \lambda ^{*}\left( A \right)+ \frac{1 }{n },\quad \forall n   
+    \] Thus \[
+     \lambda \left( G \right)\le  \lambda ^{*}\left( A \right)  
+    \] The other hand, since \(  G\supseteq A  \), it is immediate that \[
+     \lambda \left( G \right)=  \lambda ^{*}\left( G \right)\ge  \lambda ^{*}\left( A \right) .   
+    \] Finally, \[
+     \lambda \left( G \right)=  \lambda ^{*}\left( A \right)  
+    \] 
+ \end{proof}
+
+ 
+\begin{exercise}{}{}
+Let $\{E_k\}$ be a sequence of Lebesgue measurable sets contained in a compact set $K \subset \mathbb{R}^n$. Assume for some $\varepsilon > 0$ that $\lambda(E_k) > \varepsilon$ for all $k$. Prove that there is some point that belongs to infinitely many $E_k$'s.
+\end{exercise}
+
+\begin{note}
+    对于由一列成员组成的族类, 一个点属于无穷多个成员, 当且仅当它永远无法仅被有限多个成员``杀死'', 当且仅当它是``反复出现''的, 当且仅当它属于集合列的极限上集.  
+\end{note}
+
+\begin{proof}
+   A point belongs to infinitely many \(  E_{k}  \), if and only if it belongs to \[
+   \limsup_{k\to \infty}E_{k}: = \bigcap_{n = 1}^{\infty} \bigcup _{k = n}^{\infty}E_{k} 
+   \] Since  \(   \lambda \left( \bigcup _{k = 1}^{\infty}E_{k} \right)\le  \lambda \left( K \right)< \infty    \). It follows from Corollary \ref{col:8-14-1} that \[
+    \lambda \left( \lim_{k\to \infty}\sup E_{k} \right)\ge  \limsup_{k\to \infty} \lambda \left( E_{k} \right)  \ge  \varepsilon > 0
+   \] Thus \[
+   \lim_{k\to \infty}\sup E_{k}\neq \varnothing
+   \] which completes the proof. 
+\end{proof}
+
+\begin{exercise}{}{}
+    Let \(  T: \mathbb{R} ^{n}\to \mathbb{R} ^{n}  \) be a Lipschitz map. Prove that if \(   \lambda \left( E \right)= 0   \), then \(   \lambda \left( T\left( E \right)  \right)= 0   \).    
+\end{exercise}
+\begin{proof}
+    Suppose that \[
+    d\left( T\left( x_1 \right),T\left( x_2 \right)   \right)\le  L \cdot d\left( x_1,x_2 \right)  
+    \] Since \(   \lambda \left( E \right)= 0   \), for any \(   \varepsilon > 0  \), there are closed intervals \(  I_1,\cdots   \), such that \[
+     E\subseteq \bigcup_{k= 1}^{\infty}I _{k},\quad \sum _{k= 1}^{\infty}v\left( I_{k} \right)<  \varepsilon    
+    \]There are finitely many Cubes \(  Q_{k1},\cdots ,Q _{k m_{k}}  \) , such that  \[
+    I _{k}\subseteq \bigcup _{ i = 1}^{m_{k}}Q_{k i},\quad  \sum _{i = 1}^{m_{k}}v\left( Q_{k i} \right)< 2v\left( I_{k} \right)  
+    \]Thus we may assume that \(  I _{k}  \) are all cubes. Denote the diameter of \(  I_{k}  \) by \(  \sqrt{n}a_{k}  \) , and denote the centre of \(  I_{k}  \) by \(  c_{k}  \), then \[
+    d\left( T\left( x \right),T\left( c_{k} \right)   \right)\le L\cdot d\left( x,c_{k} \right)\le \sqrt{n}L\cdot a_{k}  
+    \]Thus \(  T\left( I_{k} \right)   \) is contained by the cube centering \(  T\left( c_{k} \right)   \) with diameter \( n L \cdot a_{k}  \), which we denote by \(  I^{\prime} _{k}  \), then \[
+    v\left( I^{\prime} _{k} \right)\le n^{n} L^{n}v\left( I_{k} \right)  
+    \]. We have \[
+    T\left( E \right)\subseteq \bigcup _{k = 1}^{\infty}I^{\prime} _{k},\quad  \sum _{k = 1}^{\infty}v\left( I^{\prime} _{k} \right)< n^{n}L^{n} \varepsilon   
+    \], which concludes that \(   \lambda \left( T\left( E \right)  \right)= 0   \).          
+\end{proof}
+
+\section{The Contor Set}
+
+\begin{definition}{Contor set}{8-15-1}
+    The Cantor set is a subset of the interval \(  \left[ 0,1 \right]   \). We will desccribe it by constructing its complement in \(  \left[ 0,1 \right]   \). 
+    \begin{enumerate}
+        \item At the fist step, let \(  I_{1,1}  \) denote the open interval \(  \left( \frac{1}{3},\frac{2}{3} \right)   \). Thus \(  I_{1,1}  \) is the open middle third of the interval \(  I= \left[ 0,1 \right]   \). 
+        \item The second step involves performing the first tep on each of the two remaining intervals of \(  I-I_{1,1}  \). That is, We produce two open intervals, \(  I_{2,1}  \) and \(  I_{2,2}  \), each being the open middle third of one of the two intervals that constitute \(  I-I_{1,1}  \).
+        \item At the \(  i  \)th step we produce \(  2^{i-1}  \) open intervals \(  I_{i,1},I_{i,2},\cdots ,I_{i,2^{i-1}}  \), each of length \(  \left( \frac{1 }{3 }  \right)^{i}   \). The \(  \left( i+ 1 \right)   \) th step consists in producing midddle thirds of each of the intervals of \[
+        I- \bigcup _{j= 1}^{i}\bigcup _{k = 1}^{2^{j-1}}I_{j,k}. 
+        \]         
+        \item With \(  C  \) denoting the Cantor set, we define its complement by \[
+        I\setminus C= \bigcup _{j = 1}^{\infty}\bigcup _{k = 1}^{2^{j-1}}I_{j,k}. 
+        \] 
+    \end{enumerate}
+      
+\end{definition}
+
+\begin{proposition}{}{}
+    Let \(  C  \) be the Contor set. Then the following holds: 
+    \begin{enumerate}
+        \item \(  C  \) is closed, that is \(  C = \bar{C}  \). 
+        \item Let \(   \lambda   \) be the Lebesgue measure, then \[
+         \lambda \left( \bar{C} \right)=  \lambda \left( C \right)= 0  
+        \]
+        \item \(  C  \) is nowhere dense.    
+        \item The cardinality of \(  C  \) is \[
+        \left| C \right|= 2^{\aleph_0} = \left| R \right|= c 
+        \] 
+    \end{enumerate}
+     
+\end{proposition}
+
+\begin{proof}
+    \begin{enumerate}
+        \item \(  I\setminus C  \) is open by definition. Thus \(  C  \) is closed.
+        \item  \[
+         \lambda \left( I\setminus C \right)=  \sum _{j = 1}^{\infty}\sum _{k = 1}^{2^{j-1}}  \lambda \left( I_{j,k} \right)= \sum _{j = 1}^{\infty}2^{j-1}\left( \frac{1 }{3 }  \right)^{j}= \frac{1 }{2 } \sum _{j = 1}^{\infty}\left( \frac{2 }{3 }  \right)^{j}= 1     
+        \]  Thus \[
+         \lambda \left( C \right)= 1- \lambda \left( I\setminus C \right)= 1-1= 0  
+        \]
+        \item 
+        
+
+        
+        \begin{note}
+            \(  \left[ 0,1 \right]   \)上的每一个值通过修饰存在唯一的二进制表示. 同样地也存在唯一的三进制表示. Contor集就是把每个三进制表示中, 字符含1的数都去掉.  
+        \end{note}Every number \(  x \in \left[ 0,1 \right]   \) has a ternary expansion of the form \[
+        x = \sum _{i = 1}^{\infty} \frac{x_{i} }{3^{i} } 
+        \]  where each \(  x_{i}  \) is \(  0,1  \), or \(  2  \) and we write \(  x = 0,x_1x_2\cdots   \) This expansion   unique except when \[
+        x = \frac{a }{3^{n} } 
+        \] (Since \(  \frac{1 }{3^{n} }   \) has another expresion \(  \sum _{i = n+ 1}^{\infty}\frac{2 }{3^{i} }   \)  )where \(  a  \) and \(  n  \) are  positive integers with \(  0< a< 3^{n}  \) and where \(  3  \) does not divide \(  a  \). In this case, \(  x  \) has the form \[
+        x = \sum _{i = 1}^{n} \frac{x_{i} }{3^{i} } 
+        \]where \(  x_{i}  \) is either \(  1  \) or \(  2  \). If \(  x_{n}= 2  \), we will use this expression to represent \(  x  \). However, if \(  x_{n}= 1  \), we will use the following representation for \(  x  \): \[
+        x = \frac{x_1 }{3 }+ \frac{x_2 }{3^{2} }+ \cdots +  \frac{x_{n-1} }{3^{n-1} }+ \frac{0 }{3^{n} }+ \sum _{i = n+ 1}^{\infty}\frac{2 }{3^{i} }     .
+        \] Thus , with this convention, each number \(  x \in \left[ 0,1 \right]   \) has a uniue ternary expansion.          
+        
+        Let \(  x \in I  \) and conssider its ternary expansion \(  x = 0.x_1x_2\cdots   \), bearing in mind the convention we have adopted above. Obseve that \(  x\not \in I_{1,1}  \) if and only if \(  x_1\neq 1  \). Also , if \(  x_1\neq 1  \), then \(  x\not \in  I_{2,1}\cup I_{2,2}  \) if and only if \(  x_2\neq 1  \).       Continuing in this way, we see that \(  x \in C  \) if and only if \(  x_{i}\neq 1  \) for each positive integer \(  i  \). Thus, there is a one-to-one correspondence between elements of  \(  C  \) and all sequences \(  \left\{ x_{i} \right\}   \) in which each \(  x_{i}   \) is either \(  0  \) or \(  2  \).        The cardinality of the latter is \(  2^{\aleph_0}  \), which is \(  \left| \mathbb{R}  \right|= c   \).   
+    \end{enumerate}
+    
+\end{proof}
+\section*{Exercises for Cantor set}
+\begin{exercise}{}{}
+    Prove that the Cantor-type set $C_\alpha$ (The method of construction is the same as \(  C  \),except that at the \(  i  \)th step, each of the intervals removed has length \(  \alpha 3 ^{-i}  \)   ) is nowhere dense, has cardinality $c$, and has Lebesgue measure $1 - \alpha$. 
+\end{exercise}
+\begin{proof}
+\begin{itemize}
+    \item     \(  \overline{C}_{\alpha }= C_{\alpha }  \). Only need to show that \[
+    \mathrm{int}\left( C_{\alpha } \right)= \varnothing 
+    \]  With \(  E_{k}  \) denoting the result of the \(  k  \)th step constructing the \(  C_{\alpha }  \), we define its complements by \[
+   I\setminus E_{k}:=  \bigcup _{j = 1}^{k} \bigcup _{m = 1}^{2^{j-1}}I_{m,j}
+   \]    Then  \(  E_1\supseteq E_2\supseteq \cdots   \) , and \(  C _{\alpha }= \bigcap_{k = 1}^{\infty}E_{k}   \).If there is a nonempty open inverval \(  (a,b)\subseteq C_{\alpha }  \). Then \[
+   \left( a,b \right)\subseteq E_{k},\quad \forall k 
+   \] Note that \(  E_{k}  \) is a disjoint union of closed intervals with length \(  l_{k}  \), which satisfies \[
+   l_{k}= \frac{1}{2}\left( l_{k-1}-\alpha _3 ^{-k} \right)< \frac{1 }{2 }l_{k-1}  \implies l_{k}< \frac{1 }{2^{k} } 
+   \] . There is a \(  k_0  \) such that \( l_{k_0}< b-a \). Since \[
+   \left( a,b \right)\subseteq E_{k_0} 
+   \]   is a connected set lying in \(  E_{k_0}  \), \(  E_{k_0}  \) has a component with length more than \(  b-a  \), which is a contradiction.  Thus there is no open interval contained in \(  C_{\alpha }  \), that is \(  C_{\alpha }= \bar{C}_{\alpha } \) is no where dense.  
+ 
+   \item We denote the two closed intervals of \(  I\setminus I_{1,1}  \) by \( J_1 , J_2 \). Denote the two closed intervals of \(  J_1-I_{2,1}  \) by  \(  J_{1,1}, J_{1,2}  \), and denote the two that of \(  J_{2}-I_{2,2}  \)  by \(  J_{2,1}, J_{2,2}  \) . Inductively, denote the two intervals of \(  J_{i_1,i_2,\cdots ,i_{j-1}}-I_{j,2^{j-1}i_1+ \cdots + 2^{0}i_{j-1}}  \)     by \(  J_{i_1,\cdots ,i_{j-1},1}, J_{i_1,\cdots ,i_{j-1},2}  \). Then \[
+   E_{k}= \bigcup _{i_1,\cdots ,i_{k}\in \left\{ 1,2 \right\}^{k}}J_{i_1,\cdots ,i_{k}}
+   \] Let \[
+    \Sigma : = \left\{ 1,2 \right\}^{\mathbb{N} }
+   \]Given a \(  \left( s_1,s_2,\cdots  \right)\in  \Sigma    \), we can get a sequence of nested closed intervals \[
+   J_{s_1}\supseteq J_{s_1,s_2}\supseteq \cdots 
+   \] From Nested Interval Theorem, there is a unique point \(  s \in \bigcap_{k= 1}^{\infty}J_{s_1,\cdots ,s_{k}}   \). We define a \(  f  \) by mapping \(  \left( s_1,s_2,\cdots  \right) \in  \Sigma   \) to \(  s \in C_{\alpha }  \).
+   To show that  \(  f   \) is injective, we take  \[
+   s= \left( s_1,s_2,\cdots  \right) , t = \left( t_1,t_2,\cdots  \right) \in  \Sigma , \quad s\neq t  
+   \]     Then there is a smallest \(  k \in \mathbb{Z} _{> 0}  \), such that \(  s_{k}\neq t_{k}  \). We may assume that \(  s_{k}= 1  \), \(  t_{k}= 2  \).     Then \[
+   f\left( s \right)\in J_{s_1,s_2,\cdots ,s_{k-1},1},\quad f\left( t \right)\in J_{t_1,t_2,\cdots ,t_{k-1},2}= J_{s_1,s_2,\cdots ,s_{k-1},2}  
+   \] Since \(  J_{s_1,s_2,\cdots ,s_{k-1},1}\cap J_{s_1,s_2,\cdots ,s_{k-1},2}= \varnothing  \), \(  f\left( s \right)\neq f\left( t \right)    \). Thus \(  f  \) is injective.   
+   To show that \(  f  \) is surjective. Take any \(  x \in C_{\alpha }  \). Since \[
+   C_{\alpha }= \bigcap_{k = 1}^{\infty}E_{k} 
+   \] , we have \[
+   x \in E_{k},\quad \forall k
+   \] And since \[
+  E_1= J_{1}\cup J_2
+   \] is a disjoint union. There exists a unique \(  i_1\in \left\{ 1,2 \right\}  \), such that \[
+   x \in J_{i_1}
+   \]  Then \[
+   x \in E_2\cap J_{i_1}=J_{i_1,1}\cup J_{i_1,2}
+   \]There exists a unique \(  i_2\in \left\{ 1,2 \right\}  \) such that \[
+   x \in J_{i_1,i_2}
+   \] Inductively, once we show that there exists a unique \( \left( i_1,\cdots ,i_{k} \right) \in \left\{ 1,2 \right\}^{k}  \) such that \[
+   x \in J_{i_1,i_2,\cdots ,i_{k}}
+   \]  From \[
+   x \in E_{k+ 1}\cap J_{i_1,\cdots ,i_{k}}= J_{i_1,\cdots ,i_{k},1}\cup J_{i_1,\cdots ,i_{k},2}
+   \] we know that there exists a unique \( \left(  i_1,\cdots ,i_{k+ 1}  \right) \in \left\{ 1,2 \right\}^{k+ 1}  \) , such that \[
+   x \in J_{i_1,\cdots ,i_{k+ 1}}
+   \] Thus we have determined a unique \(  \left( i_1, i_2,\cdots \right)\in  \Sigma    \) , such that \[
+   x \in \bigcap_{k = 1}^{\infty} J_{i_1,i_2,\cdots ,i_{k}} 
+   \] That is \[
+   f\left( i_1,i_2,\cdots  \right)= x 
+   \] Thus \(  f  \) is surjective. 
+   Finally, we have \[
+   c= 2^{\aleph_0}= \left|  \Sigma  \right|= \left| C_{\alpha } \right|  
+   \] 
+      \item  \[
+    \lambda \left( I\setminus C_{\alpha } \right)=  \lambda \left( \bigcup _{j = 1}^{\infty}\bigcup _{k = 1}^{2^{j-1}}I_{k,j} \right)= \sum _{j = 1}^{\infty} 2^{j-1} \alpha \left( \frac{1 }{3 }  \right)^{j}   = \alpha 
+   \]Thus \[
+    \lambda \left( C_{\alpha } \right)=  \lambda \left( I \right)- \lambda \left( I\setminus C_{\alpha } \right)= 1-\alpha    
+   \]  
+\end{itemize}
+\end{proof}
+\begin{exercise}{}{}
+Construct an open set $U \subset [0, 1]$ such that $U$ is dense in $[0, 1]$, $\lambda(U) < 1$, and $\lambda(U \cap (a, b)) > 0$ for every interval $(a, b) \subset [0, 1]$.
+\end{exercise}
+
+\begin{proof}
+   Define \[
+   U: = I\setminus C_{ \alpha },\quad  0<   \alpha < 1
+   \]Where \(  C_{\alpha }  \) is the Cantor type set with Lebesgue measure \(  1-\alpha   \) . Then \[
+    \lambda \left( U \right)=  \lambda \left( I \right)- \lambda \left( C_{\alpha } \right)= \alpha > 0   
+   \]  If \(  U  \) is not dense. Then there is a nonempty open subset \(  Y\subseteq \left[ 0,1 \right]   \) such that  \[
+   Y\subseteq U^{c}= C_{\alpha }
+   \] which is a contradicion to \(  C_{\alpha }  \) is no where dense.  Since \(  U  \) is dense, \[
+   U\cap \left( a,b \right)\neq \varnothing 
+   \] That is \(  U\cap \left( a,b \right)   \) is a nonempty open set, thus its Lebesgue measure is nonzero. 
+\end{proof}
+  
+\begin{exercise}{}{}
+    Prove that the family of Borel subsets of $\mathbb{R}$ has cardinality $c$. From this deduce the existence of a Lebesgue measurable set that is not a Borel set.
+
+\end{exercise}
+\begin{exercise}{}{}
+    Let $E$ be the set of numbers in $[0, 1]$ whose ternary expansions have only finitely many 1's. Prove that $\lambda(E) = 0$.
+
+\end{exercise}
+
+\begin{proof}
+    Let \(  E_{k}  \) be the set of numbers in \( I=  \left[ 0,1 \right)  \) whose ternary expansions have no \(  1's  \)   after the \(  k  \)th digit . Then \[
+    E= \bigcup _{k = 1}^{\infty}E_{k},\quad E_1\subseteq E_2\subseteq \cdots 
+    \] Let \(  I_{1},I_2,I_3  \) be the fomer, middle, latter third of the \( I= [0,1)  \) respectively, specially, we say \(  [0,\frac{1}{3}), [\frac{1}{3},\frac{2}{3}), [\frac{2}{3},1)  \) . Once we have defined \(  I_{i_1,i_2,\cdots ,i_{k}}  \), then we define \(  I_{i_1,i_2,\cdots ,i_{k},1}  \) by the first third of the interval \(  I_{i_1,i_2,\cdots ,i_{k}}  \) as before , the remainings are similar.   We have \[
+    E_{k}= I\setminus \bigcup _{j= k}^{\infty} \bigcup _{i_1,i_2,\cdots ,i_{k}\in \left\{ 1,2,3 \right\}^{k},i_{k+ 1},\cdots ,i_{j}\in \left\{ 1,3 \right\}^{j-k}}I_{i_1,i_2,\cdots ,i_{j},2}
+    \]Let \[
+    A_{k,m}: = \bigcup _{j= k}^{m}  \bigcup _{i_1,i_2,\cdots ,i_{k}\in \left\{ 1,2,3 \right\}^{k},i_{k+ 1},\cdots ,i_{j}\in \left\{ 1,3 \right\}^{j-k}}I_{i_1,i_2,\cdots ,i_{j},2}
+    \] Then \[
+    A_{k,k}\subseteq A_{k,k + 1}\subseteq \cdots 
+    \]Denote \(  \bigcup _{m = k}^{\infty}A_{k,m}  \) by \(  A_{k}  \), then \(  E_{k}= I\setminus A  _{k}\)  . We have \[
+     \lambda \left( A_{k} \right)= \lim_{m\to \infty} \lambda \left( A_{k,m} \right)= \sum _{j = k}^{\infty}3^{k} 2^{j-k}\left( \frac{1 }{3 }  \right)^{j + 1}=\frac{1 }{3 }  \left( \frac{3 }{2 }  \right)^{k}\sum _{j = k}^{\infty}  \left( \frac{2 }{3 }  \right)^{j} = 1
+    \]Thus \[
+     \lambda \left( E_{k} \right)= \lambda \left( I \right)-   \lambda \left( A_{k} \right)= 1-1= 0  
+    \] It follows from the continuity of \(   \lambda   \) from below that \[
+     \lambda \left( E \right)=  \lim_{k\to \infty} \lambda \left( E_{k} \right)= 0
+    \]  
+\end{proof}
+\begin{proof}
+    Another proof, use Cantor set. 
+    \begin{note}
+        \begin{itemize}
+            \item 标准Cantor集合描述了[0,1]内三进制表示不含1的那些数. 
+            \item 通过对Cantor集\(  \frac{1}{3^{k}}  \)倍的 缩放,可以实现所描述的三进制范围表示相对于小数点的滞后(\(  k  \)个字符 ).
+            \item 缩放后Cantor集的起点,决定了新Cantor集开始作用的之前的三进制字符都是哪些.
+            \item 一切的一切,源于Cantor集的自相似性,也就是说 \[
+            C= \left( \frac{1 }{3 }C  \right)+ \left( \frac{1 }{3 }C+ \frac{2 }{3 }   \right)  
+            \]
+        \end{itemize}
+    \end{note}
+    \(  E_{k}  \) is defined as above. Let \(  P_{k}: = \left\{ 0,1,2 \right\}^{k}  \). For \(  p= \left( d_1,\cdots ,d _{k} \right) \in P_{k}   \), define \[
+    C_{p}: = \frac{1}{3^{k}}C +  \sum _{j = 1}^{k}\frac{d _{j} }{3^{j} } 
+    \]   Then the similar process we describe \(  C  \) gives that  \[
+    C_{p}= \left\{ x \in \left[ 0,1 \right]:   x = \left( 0.m_1m_2 \cdots \right)_{ternary} ,  m_{i}= d _{i} \text{ for }1\le i\le k, m_{j}\neq 1 \text{ for } j> k \right\}
+    \] We have \[
+    E_{k} =  \bigcup _{ p \in P_{k}}C_{p}
+    \]  Since \[
+     \lambda \left( C_{p} \right)= \frac{1}{3^{k}} \lambda \left( C \right)  = 0
+    \] We have \[
+    E_{k}\le \sum _{ p \in P_{k}} \lambda \left( C_{p} \right) = 0
+    \]Then \[
+     \lambda \left( E \right)= \lim_{k\to \infty} \lambda \left( E_{k} \right)= 0  
+    \]
 \end{proof}
 \end{document}
