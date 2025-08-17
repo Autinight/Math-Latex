@@ -134,7 +134,7 @@ S = \bigcup_{i=1}^\infty E_i.
          \varphi \left( A \right) \ge \sum _{i = 1}^{k+ 1} \varphi \left( A\cap E_{k+ 1} \right)+  \varphi \left( A\cap S_{k+ 1}^{c} \right)  
         \] Then the subadditivity gives that \[
          \varphi \left( A \right)\ge   \varphi \left( A\cap S_{k+ 1} \right)+  \varphi \left( A\cap S_{k+ 1}^{c} \right)   
-        \] this , inturn , implies that \(  S_{k+ 1}  \) is \(   \varphi   \)-measurable. Since we now know  for every set \(  A\subseteq X  \) and for all positive integers \(  k  \) \[
+        \] this , in turn , implies that \(  S_{k+ 1}  \) is \(   \varphi   \)-measurable. Since we now know  for every set \(  A\subseteq X  \) and for all positive integers \(  k  \) \[
          \varphi \left( A \right)\ge \sum _{i = 1}^{k} \varphi \left( A\cap E_{i} \right)+  \varphi \left( A\cap S_{k}^{c} \right)   
         \]     We have \[
          \varphi \left( A \right)\ge \sum _{i = 1}^{\infty} \varphi \left( A\cap E_{i} \right)+  \varphi \left( A\cap S^{c} \right)  \ge  \varphi \left( A\cap S \right)+  \varphi \left( A\cap S^{c} \right)   
@@ -528,8 +528,8 @@ v(J) < v(I) + \epsilon.
     \]     Since \(   \varepsilon   \) is arbitrary, \(  v\left( I \right)\le  \lambda ^{*}\left( E \right)    \).   
 \end{proof}
 
-\begin{theorem}{}{}
-    Lebesgue outermeasure, \(   \lambda ^{*}  \), defined on \(  \mathbb{R} ^{n}  \) is a Carath\'eorody outer measure.  
+\begin{theorem}{}{8-17-1}
+    Lebesgue outer measure, \(   \lambda ^{*}  \), defined on \(  \mathbb{R} ^{n}  \) is a Carath\'eorody outer measure.  
 \end{theorem}
 
 \begin{proof}
@@ -1020,5 +1020,280 @@ Construct an open set $U \subset [0, 1]$ such that $U$ is dense in $[0, 1]$, $\l
     \]Then \[
      \lambda \left( E \right)= \lim_{k\to \infty} \lambda \left( E_{k} \right)= 0  
     \]
+\end{proof}
+
+\section{Existence of Nonmeasurable Sets}
+
+\begin{lemma}{}{8-16-1}
+If $S \subset \mathbb{R}$ is a Lebesgue measurable set of positive and finite measure, then the set of differences $D_S := \{x - y : x, y \in S\}$ contains an interval.
+\end{lemma}
+\begin{proofsketch}
+    Since \[
+    \begin{aligned}
+    x \in D_{S}&\iff  S\cap \left( S+ x \right)
+     \neq \varnothing\\ &\iff  \text{There exists } T\subseteq S\text{ such that }   T\cap \left(T+ x \right)\neq \varnothing    
+    \end{aligned}
+    \] Only need to find a such \(  T  \), and a interval \(  I  \), such that \(  T\cap \left( T+ x \right)\neq \varnothing   \) for \(  \forall x \in I  \).
+    
+    When \(  T\cap \left( T+ x \right)= \varnothing   \), we have \(   \lambda \left( T\cup \left( T+ x \right)  \right)= 2 \lambda \left( T \right)    \)  . Once we find a not too large (less than \(  2 \lambda \left( T \right)   \) ) set containing \(  T\cup \left( T+ x \right)   \) for all \(  x \in I  \).   From another perspective, we need to find an \(  T  \) occupise at least half of a set (relative to Lebesgue measure) and dose not escape it under a tiny transformation. 
+\end{proofsketch}
+\begin{proof}
+    For each \(   \varepsilon > 0  \), there exists an open set \(  U\supseteq S  \) with \(   \lambda \left( U \right)< \left( 1+  \varepsilon  \right) \lambda \left( S \right)     \). We write \(  U  \) as a countable disjoint union of open intervals: \[
+    U = \bigcup _{k = 1}^{\infty}I_{k}
+    \]Then \[
+     \lambda \left( S \right)=  \lambda \left( S\cap U \right)= \sum _{k = 1}^{\infty} \lambda \left( S\cap I_{k} \right)   
+    \] We have \[
+    \sum _{k = 1}^{\infty} \lambda \left( I_{k} \right) < \left( 1+  \varepsilon  \right) \sum _{k= 1}^{\infty} \lambda \left( S\cap I_{k} \right)   
+    \] Then there is some \(   k_0 \) such that \[
+     \lambda \left( I_{k} \right)< \left( 1+  \varepsilon  \right) \lambda \left( S\cap I_{k_0} \right)   
+    \]     We take \(   \varepsilon = \frac{1 }{3 }   \), then \[
+     \lambda \left( S\cap I_{k_0} \right)> \frac{3 }{4 }  \lambda \left( I_{k_0} \right)   
+    \] For any \(  \left| t \right|< \frac{1 }{2 }   \lambda \left( I_{k_0} \right)   \) , \(  S\cap I_{k_0}\cup \left( S\cap I_{k_0}+ t \right)   \) is contained in some open interval with Lebesgue measure \(  \frac{3}{2} \lambda \left( I_{k_0} \right)   \). Thus \[
+     \lambda \left( S\cap I_{k_0}\cup \left( S\cap I_{k_0}+ t \right)  \right)\le \frac{3 }{2 } \lambda \left( I_{k_0} \right)   
+    \]  Then it follows that it is impossible that \[
+    \left( S\cap I_{k_0} \right)\cap \left( S\cap I_{k_0}+ t \right)= \varnothing ,\quad \text{for some }  \left| t \right|< \frac{1 }{2 }  
+    \]since otherwise the Lebsgue measure of the union of the two is  greater than \(  2  \lambda \left( S\cap I_{k_0} \right)> \frac{3 }{2 } \lambda \left( I_{k_0} \right)     \), which is a contradiction. Now we have \[
+    \left( -\frac{1}{2},\frac{1}{2} \right)\subseteq  D_{S\cap I_{k_0}}\subseteq D_{S} 
+    \]
+\end{proof}
+
+\begin{exercise}{}{}
+    There exists a set \(  E\subseteq \mathbb{R}   \)  that is not Lebesgue measurable. 
+\end{exercise}
+
+\begin{proof}
+    We define a ralation on the real line by \[
+    x \sim y:\iff  x-y \in \mathbb{Q} 
+    \]Then it is easy to verify that \(  \sim   \) is a equivalent relation. Then \(  \mathbb{R}   \) can be seprated by the class of the relation. Note that every equivalent class is countable. But \(  \mathbb{R}   \) is uncountable, there are uncountably many equivalent class. Now we use the axiom of choice, to get a set \(  S  \) by selecting precisely one point from each equivalent class. Then \[
+    \mathbb{R} = S+ \mathbb{Q}: = \bigcup _{ r \in \mathbb{Q} }\left( S+ r \right)  
+    \] If \(  S  \) is Lebesgue measurable, then \(   \lambda \left( S \right)> 0   \) since \[
+    \infty=  \lambda \left( \mathbb{R}  \right)= \sum _{r \in \mathbb{Q} } \lambda \left( S+ r \right)= \sum _{r\in \mathbb{Q} } \lambda \left( S \right)   
+    \] Now, considering \[
+    D_{S}= \left\{ x-y: x,y \in S\right\}
+    \]If \(  x\neq y  \), since \(  x,y  \) belong to different class, \(  x-y\not \in \mathbb{Q}   \).   Then we have \[
+    D_{S}\subseteq 0\cup  \left( \mathbb{R} \setminus \mathbb{Q}  \right) 
+    \] which cannot contain any inverval. Then it follows from the lemma above that \(   \lambda \left( S \right)= \infty   \). But then there exists a closed inverval \(  I   \) such that  \[
+    0<  \lambda \left( S\cap I \right)< \infty 
+    \] and \(  S\cap I   \) is measurable, it follows fome the lemma again that there is a interval \[
+    J\subseteq D_{S\cap I}\subseteq D_{S}
+    \] , which is a contradiction.
+\end{proof}
+
+\section*{Exersices for Existence of Nonmeasurable Sets}
+
+\begin{exercise}{}{}
+    Prove that there every subset of \(  \mathbb{R}   \)  with
+ positive outer Lebesgue measure contains a nonmeasurable subset.
+\end{exercise}
+\begin{proof}
+    Let \(  T\subseteq \mathbb{R}   \) be any subset of \(  \mathbb{R}    \) with  positive outer Lebesgue measure. The \(  \sim   \) defined as above is also a equivalent relation on \(  T  \). Let \(  S  \) be the same set we just defined in the above theorem.  \[
+    T= T\cap \mathbb{R} = T\cap \left( \bigcup _{r \in \mathbb{Q} }\left( S+ r \right)  \right)= \bigcup _{r \in \mathbb{Q} }\left( T\cap \left( S+ r \right)  \right)  
+    \] which is a disjoint union. We have \[
+   0<   \lambda ^{*}\left( T \right)\le \sum _{r \in \mathbb{Q} } \lambda ^{*}\left( T\cap \left( S+ r \right)  \right)  
+    \]There exists an \(  r_0 \in \mathbb{Q}  \) such that \[
+     \lambda ^{*}\left( T\cap \left(S+ r_0  \right)  \right)> 0 
+    \] We denote \(  T\cap \left( S+ r_0 \right)   \) by \(  S^{\prime}   \). If \(  S^{\prime}   \) is Lebesgue measurable.  Note that \(  D_{S^{\prime} }\subseteq \left( \mathbb{R} \setminus \mathbb{Q}  \right)\cup \left\{ 0 \right\}   \). If \(   \lambda \left( S^{\prime}  \right)< \infty   \), then it is a contradiction to Lemma \ref{lem:8-16-1}. If \(   \lambda \left( S^{\prime}  \right)= \infty   \). Then there exists a closed interval \(  I  \) such that \[
+    0<  \lambda \left( S^{\prime} \cap I \right)< \infty 
+    \]   then there is an interval \(  J  \) such that \[
+    J\subseteq D_{S^{\prime} \cap I}\subseteq D_{S^{\prime} }
+    \] which is a contradicion as well. 
+\end{proof}
+
+\begin{exercise}{}{}
+Let $\mathcal{N}$ denote the nonmeasurable set constructed in this section. Show that if $E$ is a measurable subset of $\mathcal{N}$, then $\lambda(E) = 0$.
+\end{exercise}
+\begin{proof}
+    We still use the notation \(  S  \) to represent that nonmeasurable set. If \[
+    E\subseteq S,\quad  \lambda \left( E \right)> 0 
+    \] If \(   \lambda \left( E \right)< \infty   \), then from Lemma \ref{lem:8-16-1} there is an interval \(  J  \) such that \[
+    J\subseteq D_{E}\subseteq D_{S}
+    \] which is a contradiction.  Again, if \(   \lambda \left( E \right)= \infty   \), then there exists a closed interval \(  I  \) such that \[
+    0<  \lambda \left( E\cap I \right)< \infty 
+    \]  Then again from Lemma \ref{lem:8-16-1} there exists an interval \(  J  \) such that \[
+    J\subseteq D_{E\cap I}\subseteq D_{E}\subseteq D_{S},
+    \] which is a contradicion.
+\end{proof}
+
+\section{Lebesgue-Stieljes Measure}
+
+\begin{definition}{}{}
+    If \(  f  \) is a nondecreasing function defined on \(  \mathbb{R}   \), then the ``length'' of a half-open interval \(  (a,b]  \), denoted by \(  \alpha _{f}\left( (a,b] \right)   \), can be defined by \[
+     \alpha _{f}\left( (a,b] \right)= f\left( b \right)-f\left( a \right)   
+    \]    
+\end{definition}
+
+\begin{definition}{Lebesgue-Stieltjes outer measure}{}
+    The Lebesgue-Stieltjes outer measure of an arbitrary set \(  E\subseteq \mathbb{R}   \) is defined by \[
+     \lambda _{f}^{*}\left( E \right): = \inf \left\{ \sum _{h_{k}\in \mathcal{F}}\alpha _{f}\left( h_{k} \right)  \right\} 
+    \] where the infimum is take over all countable collections \(  \mathcal{F}  \) of half-open intervals \(  h_{k}  \) of the form \(  (a_{k},b_{k}]  \) such that \[
+    E\subseteq \bigcup _{ h _{k}\in \mathcal{F}}h_{k}
+    \]   
+\end{definition}
+
+\begin{remark}
+    If \(  f  \) is right-continuous, then the (Lebesgue) length of each interval \(  (a_{k},b_{k}]  \) that appears above can be assumed to be arbitrarily small, beacause \[
+    \alpha _{f}((a,b])= f\left( b \right)-f\left( a \right)= \sum _{k = 1}^{N}\left[ f\left( a_{k} \right)-f\left( a_{k-1} \right)   \right]= \sum _{k = 1}^{N} \alpha _{f}\left( (a_{k-1},a_{k}] \right)    
+    \] whenever \(  a= a_0< a_1< \cdots < a_{N}= b  \).  
+\end{remark}
+
+\begin{theorem}{}{}
+    If \(  f:\mathbb{R} \to \mathbb{R}   \) is a nondecreasing function, then \(   \lambda _{f}^{*}  \) is a Carath\'eodory outer measure.  We denote the restriction of \(   \lambda _{f}^{*}  \) on measruable sets by \(   \lambda _{f}  \).  
+\end{theorem}
+\begin{proof}
+    To show that \(   \lambda _{f}^{*}  \) is a outer measure, we only need to show the it is monotone and countably subadditive. 
+
+    For the proof of monotonicity, let \(  A_1\subseteq A_2  \) be any subset of \(  \mathbb{R}   \). Take any \(   \varepsilon > 0  \). There is a countable collections \(  h_1,h_2,\cdots   \) of \(  \mathcal{F}  \), such that   \[
+    A_2\subseteq \bigcup _{k = 1}^{\infty}h_{k},\quad \sum _{k = 1}^{\infty}\alpha _{f}\left( h_{k} \right)<  \lambda ^{*}_{f}\left( A_2 \right)+  \varepsilon   
+    \] Then \[
+    A_1\subseteq \bigcup _{k = 1}^{\infty}h_{k},\quad \sum _{k = 1}^{\infty}\alpha _{f}\left( h_{k} \right)<  \lambda _{f}^{*}\left( A_2 \right)+  \varepsilon   
+    \]That is \[
+     \lambda _{f}^{*}\left( A_1 \right) \le  \lambda _{f}^{*}\left( A_2 \right)+  \varepsilon  
+    \]Since \(   \varepsilon > 0  \) is arbitrary, \(   \lambda _{f}^{*}\left( A_1 \right)\le  \lambda _{f}^{*}\left( A_2 \right)    \)  .
+
+    The proof of countable subadditivity is virtually identical to the proof the corresponding result of Lebesgue measure given in Theorem  \ref{thm:8-17-1}, since we didn't use any explicit expresion of the length of an interval there.
+
+    The same idea of prooving Lebesgue outer measure to be Carathéodory is effective for that of the Lebesgue-Stieljes oute measure, since the only thing we should check to repeate that proof here is whether we can subdividing each \(  h_{k}  \) into smaller members of \(  \mathcal{F}  \) whose diameter less than \(  \mathbf{d}\left( A,B \right)   \). But that was shown in the remark of the definition.   
+\end{proof}
+
+
+\begin{theorem}{}{}
+    If \(  f:\mathbb{R} \to \mathbb{R}   \) is nondecreasing and right-continuous then \[
+     \lambda _{f}\left( (a,b] \right) =  f\left( b \right)-f\left( a \right)   
+    \] 
+\end{theorem}
+\begin{note}
+    回忆Lebesgue测度的情况, 我们将闭集构成的覆盖, 通过微小的几乎不影响测度的(向两边)扩张, 其内部形成一组开覆盖. 我们是利用这组开覆盖来覆盖身为紧集的闭区间, 以处理问题的.
+
+    这里, 我们由于选择了半开区间, 只需要对右侧进行微小的扩张, 作为代价, 我们研究的集合本身不再是紧集.  这里假设\(  f  \)是右连续, 就同时解决了两个问题: 
+    \begin{enumerate}
+        \item 向右微小扩张, 得益于右连续, 对测度的影响也变成是无限小的.
+        \item 得益于右连续, 用闭集 \(  [a^{\prime} ,b]  \),向左逼近 \(  (a,b], a^{\prime} \to a  ^{+ }\)的行为也是良好的. 
+    \end{enumerate}
+     
+\end{note}
+\begin{proof}
+    It suffices to show that \[
+     \lambda _{f}\left( (a,b] \right)\ge f\left( b \right)-f\left( a \right)   
+    \]For each \(   \varepsilon > 0  \), we take a sequence of half-invervals \(  h_1= (a_1,b_1],h_2= (a_2,b_2],\cdots   \) such that \[
+    (a,b] \subseteq \bigcup _{k = 1}^{\infty}h_{k},\quad \sum _{k = 1}^{\infty}\alpha _{f}\left( h_{k} \right)<  \lambda _{f}\left( (a,b] \right)+  \varepsilon   .
+    \]  Since \(  f  \) is right-continuous , we have \[
+    \lim_{t \to 0^{+ }} \alpha _{f}\left( (a_{k},b_{k}+ t] \right)= \alpha _{f}((a_{k},b_{k}])
+    \] Consequently, we may replace each \(  (a_{k},b_{k}]  \) with \(  (a_{k},b_{k}^{\prime} ]  \)  such that   \[
+    b_{k}< b_{k}^{\prime} ,\quad   \alpha _{f}((a_{k},b_{k}^{\prime} ])< \alpha _{f}((a_{k},b_{k}]) + \frac{ \varepsilon  }{2^{k} } 
+    \] 
+    
+    Let $a' \in (a, b)$. The compact set $[a', b]$ is covered by a finite family of open intervals, which we denote $\mathcal{C}_{fin} = \{ C_j \}_{j=1}^N$, where $C_j = (a_j, b'_j)$.
+$[a', b] \subseteq \bigcup_{j=1}^N C_j$
+. By the Lebesgue number lemma, there exists an $\eta > 0$ such that any subset of $[a', b]$ with diameter less than $\eta$ is contained in at least one $C_j$. We partition $[a', b]$ into subintervals $I_k = [t_{k-1}, t_k]$ for $k=1, \dots, m$, each with length less than $\eta$. Thus, for each $I_k$, we can choose an interval from $\mathcal{C}_{fin}$ that contains it.
+
+Let's formalize this choice. We define an assignment function $\phi: \{1, \dots, m\} \to \{1, \dots, N\}$ such that for each $k$, $I_k \subseteq C_{\phi(k)}$. 
+
+We can now write the total increase of $f$ over $[a', b]$ and group the terms according to our assignment:
+$$f(b) - f(a') = \sum_{k=1}^m (f(t_k) - f(t_{k-1})) = \sum_{j=1}^N \left( \sum_{k \text{ s.t. } \phi(k)=j} (f(t_k) - f(t_{k-1})) \right)$$
+The outer sum is over the indices of the open cover $\mathcal{C}_{fin}$, ensuring no open interval is counted more than once.
+
+Now, let's analyze the inner sum for a fixed \( j \). Let \( \mathcal{P}_j = \{ I_k \mid \phi(k)=j \} \) be the set of subintervals assigned to \( C_j \). These are a finite number of disjoint subintervals, all contained within \( C_j = (a_j, b'_j) \). Let \( t_{\min, j} \) be the minimum of all left endpoints of intervals in \( \mathcal{P}_j \), and \( t_{\max, j} \) be the maximum of all right endpoints. Then \( \bigcup_{I_k \in \mathcal{P}_j} I_k \subseteq [t_{\min, j}, t_{\max, j}] \).
+Since \( f \) is nondecreasing, the sum of increases over disjoint intervals is less than or equal to the increase over their convex hull:
+\[ \sum_{I_k \in \mathcal{P}_j} (f(t_k) - f(t_{k-1})) \le f(t_{\max, j}) - f(t_{\min, j}) \]
+Furthermore, since all these \( I_k \) are in \( C_j = (a_j, b'_j) \), we have \( a_j < t_{\min, j} \) and \( t_{\max, j} < b'_j \). The nondecreasing property of \( f \) implies:
+\[ f(t_{\max, j}) - f(t_{\min, j}) \le f(b'_j) - f(a_j) \]
+Combining these, for each \( j \), we have established:
+\[ \sum_{k \text{ s.t. } \phi(k)=j} (f(t_k) - f(t_{k-1})) \le f(b'_j) - f(a_j) \]
+Substituting this back into our grouped sum:
+\[ f(b) - f(a') \le \sum_{j=1}^N (f(b'_j) - f(a_j)) \]
+This sum is over a finite subset of the original infinite cover used to define the \( 2\varepsilon \) bound. Therefore:
+\[ \sum_{j=1}^N (f(b'_j) - f(a_j)) \le \sum_{i=1}^\infty (f(b'_i) - f(a_i)) < \lambda_f((a, b]) + 2\varepsilon \]
+So we have \( f(b) - f(a') < \lambda_f((a, b]) + 2\varepsilon \).
+ 
+
+Since \( \varepsilon \) is arbitrary, we have \( f(b) - f(a') \le \lambda_f((a, b]) \).
+Furthermore, the right continuity of \( f \) implies \( \lim_{a' \to a^+} f(a') = f(a) \), and hence
+\[ f(b) - f(a) \le \lambda_f((a, b]) \]
+as desired.
+\end{proof}
+
+
+\begin{theorem}{}{}
+Suppose $\mu$ is a finite Borel outer measure on $\mathbb{R}$ and let
+\[ f(x) = \mu((-\infty, x]). \]
+Then the Lebesgue-Stieltjes measure, $\lambda_f$, agrees with $\mu$ on all Borel sets.
+\end{theorem}
+
+\begin{proof}*
+  \(  f  \) is nondecreasing from definition.  Note that \[
+  (-\infty,x]= \bigcap_{n \in \mathbb{N} }(-\infty,x+ \frac{1 }{n } ]
+  \] Since \(  \mu   \) is finite, the continuity from below gives that  \[
+  \lim_{n\to \infty}\mu \left( (-\infty,x+ \frac{1 }{n } ] \right) = \mu\left(  (-\infty,x] \right) 
+  \]That is \[
+  \lim_{n\to \infty}f\left( x+ \frac{1 }{n }  \right)= f\left( x \right)  
+  \] Since \(  f  \) is nondecreasing , \[
+  \lim_{t \to 0^{+ }} f\left( x+ t \right)= f\left( x \right)  
+  \] 
+
+  Since \[
+  (-\infty,a]\cup (a,b]= (-\infty,b]
+  \] then \[
+  f\left( b \right)-f\left( a \right)= \mu ((-\infty,b])-\mu ((-\infty,a])= \mu ((a,b])
+  \] thus proving that \(  \mu   \) and \(   \lambda _{f}  \) agree on all half-open intervals.   Since very open set in \(  \mathbb{R}   \) is  a countable union of disjoint half-open intervals, it follows that \(  \mu   \) and \(   \lambda _{f}  \) agree on all open sets.   It will be shown later that \(  \mu , \lambda _{f}  \) agree on all Borel sets . 
+\end{proof}
+
+\section*{Exercises for Lebesgue-Stieltjes Measure}
+
+\begin{exercise}{}{}
+Let $f: \mathbb{R} \to \mathbb{R}$ be a nondecreasing function and let $\lambda_f$ be the Lebesgue-Stieltjes measure generated by $f$. Prove that $\lambda_f(\{x_0\}) = 0$ if and only if $f$ is left-continuous at $x_0$.
+\end{exercise}
+
+\begin{proof}
+     \[
+     \left\{ x_0 \right\}= \bigcap_{n\in \mathbb{N} } (x_0,x_0+ \frac{1 }{n } ]
+     \] It follows from the continuity from above that \[
+   \lim_{n\to \infty}\left(    f\left( x_0+ \frac{1 }{n }  \right)-f\left( x_0 \right) \right) =  \lambda _{f} \left( \left\{ x_0 \right\} \right)   
+     \] Since \(  f  \) is nondecreasing, \[
+     \lim_{t\to 0^{+ }}f\left( x_0+ t \right)= \lim_{n\to \infty}f\left( x_0+ \frac{1 }{n }  \right)  
+     \]  We have \[
+     \lim_{t\to 0^{+ }}f\left( x_0+ t \right)-f\left( x_0 \right) =  \lambda _{f} \left( \left\{ x_0 \right\} \right)  
+     \] The LHS\(  = 0  \) iff \(  f  \) is left-continuous, which completes the proof.  
+\end{proof}
+\begin{exercise}{}{}
+    Let $f$ be a nondecreasing function defined on $\mathbb{R}$. Define a Lebesgue-Stieltjes-type measure as follows: For $A \subset \mathbb{R}$ an arbitrary set,
+\[\begin{aligned}
+\Lambda_{f}^{*}(A) = \inf \left\{ \sum_{h_k \in \mathcal{F}} [f(b_k) - f(a_k)] \right\},
+\end{aligned}\]
+where the infimum is taken over all countable collections $\mathcal{F}$ of closed intervals of the form $h_k := [a_k, b_k]$ such that
+\[\begin{aligned}
+E \subset \bigcup_{h_k \in \mathcal{F}} h_k.
+\end{aligned}\]
+In other words, the definition of $\Lambda_f^*(A)$ is the same as $\lambda_f^*(A)$ except that closed intervals $[a_k, b_k]$ are used instead of half-open intervals $(a_k, b_k]$.
+As in the case of Lebesgue-Stieltjes measure it can be easily seen that $\Lambda_f^*$ is a Carathéodory measure. (You need not prove this.)
+\begin{enumerate}
+\item[(a)] Prove that $\Lambda_f^*(A) \le \lambda_f^*(A)$ for all sets $A \subset \mathbb{R}^n$.
+\item[(b)] Prove that $\Lambda_f^*(B) = \lambda_f^*(B)$ for all Borel sets $B$ if $f$ is left-continuous.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Let \(  (a_1,b_1],(a_2,b_2],\cdots   \) be a sequence of  half-open intervals , such  that \[
+        A\subseteq \bigcup _{k = 1}^{\infty}(a_{k},b_{k}],\quad \sum _{k = 1}^{\infty} (f\left( b_{k} \right)-f\left( a_{k} \right)  ) <  \lambda ^{*}_{f}\left( A \right)+  \varepsilon  
+        \]Then we have \[
+        A\subseteq \bigcup _{k = 1}^{\infty}\left[ a_{k},b_{k} \right],\quad \sum _{k = 1}^{\infty}\left( f\left( b_{k} \right)-f\left( a_{k} \right)   \right)<  \lambda _{f}^{*}\left( A \right)+  \varepsilon    
+        \]    Thus \[
+     \Lambda _{f}^{*}\left( A \right) \le  \lambda _{f}^{*}\left( A \right)+  \varepsilon   
+        \] Since \(   \varepsilon > 0  \) is arbitrary, we have \[
+         \Lambda _{f}^{*}\left( A \right) \le  \lambda _{f}^{*}\left( A \right) 
+        \]
+        \item   Let \( \left[ a_1,b_1 \right],\left[ a_2,b_2\right],\cdots      \) be a sequence of closed intervals , such that \[
+        B\subseteq \bigcup _{k = 1}^{\infty}\left[ a_{k},b_{k} \right],\quad \sum _{k = 1}^{\infty}\left( f\left( b_{k} \right)-f\left( a_{k} \right)   \right)<  \Lambda _{f}^{*}\left( B \right)+  \varepsilon    
+        \] If \(  f   \) is left-continuous, for each \(  k \in \mathbb{N}   \), there is \(  a_{k}^{\prime}   \), such that \[
+        f\left( a_{k} \right)-f\left( a_{k}^{\prime}  \right)< \frac{ \varepsilon  }{2^{k} }   
+        \] Then \[
+        B\subseteq \bigcup _{k = 1}^{\infty}(a_{k}^{\prime} ,b_{k}],\quad \sum _{k = 1}^{\infty}\left( f\left( b_{k} \right)-f\left( a_{k}^{\prime}  \right)   \right)<  \Lambda _{f}^{*}\left( B \right)+  2\varepsilon 
+        \]   That is \[
+         \lambda _{f}^{*}\left( B \right)\le  \Lambda _{f}^{*}\left( B \right)+ 2 \varepsilon   
+        \] Since \(   \varepsilon > 0  \) is arbitrary, we have \[
+         \lambda _{f}^{*}\left( B \right)\le  \Lambda _{f}^{*}\left( B \right)  
+        \] 
+    \end{enumerate}
+    
 \end{proof}
 \end{document}
