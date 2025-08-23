@@ -1296,4 +1296,219 @@ As in the case of Lebesgue-Stieltjes measure it can be easily seen that $\Lambda
     \end{enumerate}
     
 \end{proof}
+
+\section{Hausdorff Measure}
+\begin{definition}{Hausdorff Outer Measure}{8-19-1}
+Hausdorff measure is defined in terms of an auxiliary set function that we introduce first. Let $0 \le s < \infty$, $0 < \varepsilon \le \infty$, and let $A \subset \mathbb{R}^n$. Define
+\[
+H_{\varepsilon}^{s}(A) = \inf \left\{ \sum_{i=1}^{\infty} \alpha(s) 2^{-s} (\operatorname{diam} E_i)^s : A \subset \bigcup_{i=1}^{\infty} E_i, \operatorname{diam} E_i < \varepsilon \right\},
+\]
+where $\alpha(s)$ is a normalization constant defined by
+\[
+\alpha(s) = \frac{\pi^{\frac{s}{2}}}{\Gamma(\frac{s}{2}+1)},
+\]
+with
+\[
+\Gamma(t) = \int_{0}^{\infty} e^{-x} x^{t-1} \,dx, \quad 0 < t < \infty.
+\]It follows from the definition that if $\varepsilon_1 < \varepsilon_2$, then $H_{\varepsilon_1}^s(E) \ge H_{\varepsilon_2}^s(E)$. This allows the following, which is the definition of \dfntxt{s-dimensional Hausdorff measure}:
+\[
+H^s(A) = \lim_{\varepsilon \to 0} H_{\varepsilon}^s(A) = \sup_{\varepsilon > 0} H_{\varepsilon}^s(A).
+\]
+
+\end{definition}
+
+\begin{remark}
+    \begin{itemize}
+        \item Hausdorff Measure can be defined in any metric space.
+        \item The sets \(  E_{i}  \) in the definition of \(  H_{ \varepsilon }^{s}\left( A \right)   \) are arbitrary subsets of \(  \mathbb{R} ^{n}  \). However, they could be taken to be closed sets, since \(  \operatorname{diam}E_{i}= \operatorname{diam} \overline{E_{i}}  \).     
+    \end{itemize}
+    
+\end{remark}
+
+
+\begin{theorem}{}{}
+    For each nonnegative number \(  s  \), \(  H^{s}  \) is a Carathéodory outer measure.  
+\end{theorem}
+
+\begin{proof}
+    First we show that \(  H^{s}  \)  is an outer measure. We only show that \(  H^{s}  \) is subadditive, the other properties are obvious. Let \(  A_1,A_2,\cdots   \) be a sequence of sets with \(  H^{s}  \)- outer measure finite. Let \(  A= \bigcup _{k = 1}^{\infty}A_{k}  \). For any \(   \varepsilon > 0  \), and for each \(  k  \), there are sets \(  E^{\left( k \right) }_{1},\cdots   \) such that \[
+    A_{k}\subseteq  \bigcup _{i = 1}^{\infty}E_{i}^{\left( k \right) },\quad  \sum _{i = 1}^{\infty}\alpha \left( s \right)2^{-s} \left( \operatorname{diam}E_{i}^{\left( k \right) } \right)^{s}< H_{ \varepsilon }^{s}\left( A_{k} \right)+ \frac{ \varepsilon  }{2^{k} } 
+    \]       We can arange \(  \left\{ E_{i}^{\left( k \right) } \right\}_{i,k \in \mathbb{Z} _{> 0}}  \) to be a sequence of sets such that  \[
+    A\subseteq \bigcup _{i,k \in \mathbb{Z} _{> 0}}E_{i}^{\left( k \right) },\quad  \sum _{i,k \in \mathbb{Z} _{> 0}} \alpha \left( s \right)2^{-s}\left( \operatorname{diam}E_{i}^{\left( k \right) } \right)^{s}< \sum _{k= 1}^{\infty}H_{ \varepsilon }^{s}\left( A_{k} \right)   +  \varepsilon 
+    \]  Thus \[
+    H_{ \varepsilon }^{s}\left( A \right)\le \sum _{k = 1}^{\infty} H_{ \varepsilon }^{s}\left( A_{k} \right)+  \varepsilon  
+    \] Since \(  H_{ \varepsilon }^{s}\left( A_{k} \right)\le  H^{s}\left( A_{k} \right)    \) for each \(  k  \), we have \[
+    H_{ \varepsilon }^{s}\left( A \right)\le  \sum _{k = 1}^{\infty}H^{s}\left( A_{k} \right)+  \varepsilon   
+    \]   Let \(   \varepsilon > 0  \), we have \[
+    H^{s}\left( A \right)\le \sum _{k = 1}^{\infty}H^{s}\left( A_{k} \right)  
+    \]
+    Now we show that \(  H^{s}  \) is a Carathéodory outer measure. Suppose that \(  A,B  \) be two sets with \(  \mathbf{d}\left( A,B \right)> 0   \), and suppose \(  0<  \varepsilon < \mathbf{d}\left( A,B \right)   \).    
+    Let \(  \left\{ E_{k} \right\}  \) be a covering of \(  A\cup B  \)   with \(  \operatorname{diam}\left( E_{i} \right)< \varepsilon    \) .Then each \(  E_{k}  \) cannot intersect with both \(  A  \) and \(  B  \). Let \(  \mathcal{A}  \) be the collection of  \(  E_{k}  \) intersecting with \(  A  \) , and Let \(  \mathcal{B}  \) be that of intersecting with \(  B  \). Then  \[
+   \begin{aligned}
+    \sum _{k = 1}^{\infty} \alpha \left( s \right)2^{-s}\left( \operatorname{diam}E_{i} \right)^{s}&  = \sum _{ E_{k}\in \mathcal{A}}\alpha \left( s \right)2^{-s} \left( \operatorname{diam}E_{k} \right)^{s} + \sum _{ E_{k}\in \mathcal{B}}\alpha \left( s \right)2^{-s}\left( \operatorname{diam}E_{k} \right)^{s}   \\ 
+     &\ge H_{ \varepsilon }^{s}\left( A \right)+ H_{ \varepsilon }^{s}\left( B \right)  
+   \end{aligned}
+    \]  We can take \(  \left\{ E_{i} \right\}  \) such that \[
+    \sum _{k = 1}^{\infty}\alpha \left( s \right)2^{-s}\left( \operatorname{diam}E_{i} \right)^{s}< H_{ \varepsilon }^{s}\left( A\cup B \right)   +  \varepsilon 
+    \]     Thus we have \[
+    H_{ \varepsilon }^{s}\left( A\cup B \right)\ge H_{ \varepsilon }^{s}\left( A \right)+ H_{ \varepsilon }^{s}\left( B \right)+  \varepsilon    
+    \]Since \(  0<  \varepsilon < \mathbf{d}\left( A,B \right)   \) is arbitrary, take \(   \varepsilon \to 0^{+ }  \), it follows that \[
+    H^{s}\left( A\cup B \right)\ge H^{s}\left( A \right)+ H^{s}\left( B \right)   
+    \], which shows that \(  H^{s}  \) is a Carathéodory outer measure.      
+\end{proof}
+
+\begin{theorem}{}{}
+For each $A \subset \mathbb{R}^n$, there exists a Borel set $B \supset A$ such that
+\[H^s(B) = H^s(A).\]
+\end{theorem}
+
+\begin{proof}
+    Let \(  \left\{  \varepsilon _{j} \right\}  \) be a decreasing suquence of positive numbers such that \(   \varepsilon _{j}\to 0   \) as \(  j\to \infty  \). For each \(  j  \), there is a suquence of closed set (Remark of Definition \ref{dfn:8-19-1}) \(  E_{i,j}  \) , such that \[
+    B\subseteq \bigcup _{i= 1}^{\infty}E_{i,j},\quad \sum _{i= 1}^{\infty}\alpha \left( s \right)2^{-s} \left( \operatorname{diam}\left( E_{i,j} \right)  \right)^{s}<  H_{ \varepsilon_{j} }^{s}\left( B \right)+  \varepsilon _{j}   
+    \] Let \(  A_{j}: = \bigcup _{i = 1}^{\infty}E_{i,j}  \), and let \(  A: = \bigcap_{j= 1}^{\infty}A_{j}   \). Then   \(  A  \) is a Borel set such that \(  B\subseteq A  \). Note that \[
+    H_{ \varepsilon _{j}}^{s}\left( B \right)+  \varepsilon _{j}>  \sum _{i = 1}^{\infty} \alpha \left( s \right)2^{-s}\left( \operatorname{diam}\left( E_{i,j} \right)  \right)^{s}\ge H_{ \varepsilon _{j}}^{s}\left( A_{j} \right)\ge  H_{ \varepsilon _{j}}^{s} \left( A \right) 
+    \]    Let \(  j\to \infty  \), we have \[
+    H^{s}\left( B \right)\ge H^{s}\left( A \right)  \implies H^{s}\left( B \right)= H^{s}\left( A \right)  
+    \] 
+\end{proof}
+
+\begin{theorem}{}{8-19-2}
+Suppose $A \subset \mathbb{R}^n$ and $0 \le s < t < \infty$. Then
+\begin{enumerate}
+\item[(i)] If $H^s(A) < \infty$ then $H^t(A) = 0$.
+\item[(ii)] If $H^t(A) > 0$ then $H^s(A) = \infty$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+    (ii) is just a restatement of (i). We now show that (i) holds.
+    Take any \(   \varepsilon > 0  \), there are \(  \left\{ E_{i} \right\}  \) with \(  \operatorname{diam}\left( E_{i} \right)\le  \varepsilon    \) such that \[
+    A\subseteq \bigcup _{i= 1}^{\infty}E_{i},\quad  \sum _{i = 1}^{\infty}\alpha \left( s \right) 2^{-s} \left( \operatorname{diam}\left( E_{i} \right)  \right)^{s}< H_{ \varepsilon }^{s}\left( A \right)+  \varepsilon  \le H^{s}\left( A \right)+  \varepsilon    
+    \]Then \[
+    \begin{aligned}
+    H_{ \varepsilon }^{t}\left( A \right)&\le \sum _{i = 1}^{\infty}\alpha \left( t \right)2^{-t}\left( \operatorname{diam}\left( E_{i} \right)  \right)^{t}\\ 
+     &= \frac{\alpha \left( t \right)  }{\alpha \left( s \right)  }2^{s-t}  \sum _{i = 1}^{\infty}\alpha \left( s \right)2^{-s}    \left( \operatorname{diam}\left( E_{i} \right)  \right)^{s} \left( \operatorname{diam}\left( E_{i} \right)  \right)^{t-s}\\ 
+      &\le \frac{ \alpha \left( s \right)  }{ \alpha \left( t \right)  } 2^{s-t}  \varepsilon ^{t-s}   \left( H^{s}\left( A \right)+  \varepsilon   \right) 
+    \end{aligned}
+    \]   Let \(   \varepsilon \to 0  \), we have \[
+    H^{t}\left( A \right)\le 0 \implies H^{t}\left( A \right)= 0  
+    \] 
+\end{proof}
+
+\section*{Exercises for Hausdorff Measure}
+
+\begin{exercise}{}{}
+    If $A \subset \mathbb{R}$ is an arbitrary set, show that $H^1(A) = \lambda^*(A)$.
+\end{exercise}
+
+\begin{remark}{}{}
+In this problem, you will see the importance of the constant that appears in the definition of Hausdorff measure. The constant $\alpha(s)$ that appears in the definition of $H^s$-measure is equal to 2 when $s = 1$. That is, $\alpha(1) = 2$, and therefore, the definition of $H^1(A)$ can be written as
+\[
+H^1(A) = \lim_{\varepsilon\to 0} H_{\varepsilon}^1(A),
+\]
+where
+\[
+H_{\varepsilon}^1(A) = \inf \left\{ \sum_{i=1}^{\infty} \operatorname{diam} E_i : A \subset \bigcup_{i=1}^{\infty} E_i \subset \mathbb{R}, \operatorname{diam} E_i < \varepsilon \right\}.
+\]
+This result is also true in $\mathbb{R}^n$ but is more difficult to prove. The isodiametric inequality $\lambda^*(A) \le \alpha(n) \left(\frac{\operatorname{diam} A}{2}\right)^n$ (whose proof is omitted in this book) can be used to prove that $H^n(A) = \lambda^*(A)$ for all $A \subset \mathbb{R}^n$.
+\end{remark}
+
+\begin{proof}
+    For any \(   \varepsilon > 0  \), there are closed intervals \(  I_1,\cdots   \) with \(  v\left( I_{i} \right)<  \varepsilon    \) such that \[
+    A\subseteq \bigcup _{i = 1}^{\infty}I_{i},\quad \sum _{i= 1}^{\infty}v\left( I_{i} \right)<  \lambda ^{*}\left( A \right)+  \varepsilon   
+    \]   Then \[
+    \sum _{i= 1}^{\infty} \alpha \left( 1 \right)2^{-1} \left( \operatorname{diam}I_{i}  \right)^{1}= \sum _{i= 1}^{\infty}v\left( I_{i} \right)<  \lambda ^{*}\left( A \right)+  \varepsilon    
+    \] Thus \[
+    H_{ \varepsilon }^{1}\left( A \right) <  \lambda ^{*}\left( A \right)+  \varepsilon   
+    \] Take \(   \varepsilon \to 0  \), we have \[
+    H^{1}\left( A \right)\le   \lambda ^{*}\left( A \right)  
+    \] 
+    The other hand, take \(   \varepsilon > 0  \),  there are closed set \(  E_{i}  \) with \(  \operatorname{diam}E_{i}<  \varepsilon   \) , such that \[
+    A\subseteq \bigcup _{i= 1}^{\infty}E_{i},\quad \sum _{i= 1}^{\infty} \operatorname{diam}E_{i}<  H^{1}_{ \varepsilon }\left( A \right) +  \varepsilon  
+    \]  Note that \[
+    \operatorname{diam}E_{i}=  \sup E_{i}-\inf E_{i}
+    \]Let \[
+    I_{i} : =  \left[\inf E_{i}-\frac{ \varepsilon  }{2^{i+ 1} }, \sup E_{i}+ \frac{ \varepsilon  }{2^{i+ 1} }   \right]
+    \] Then \[
+    E_{i}\subseteq I_{i},\quad  v\left( I_{i} \right)<  \operatorname{diam}E_{i}+ \frac{ \varepsilon  }{2^{i} } 
+    \] Thus \[
+    A\subseteq \bigcup _{i = 1}^{\infty}I_{i},\quad \sum _{i= 1}^{\infty}v\left( I_{i} \right) <  H^{1}_{ \varepsilon }\left( A \right)  + 2 \varepsilon < H^{1}\left( A \right)+ 2 \varepsilon  
+    \] Since \(   \varepsilon > 0  \) is arbitrary,  we have \[
+     \lambda ^{*}\left( A \right)\le  H^{1}\left( A \right)  
+    \] 
+\end{proof}
+\begin{exercise}{}{}
+For $A \subset \mathbb{R}^n$, use the isodiametric inequality introduced in Exercise 4.1 to show that
+\[
+\lambda^*(A) \le H^n(A) \le \alpha(n) \left(\frac{\sqrt{n}}{2}\right)^n \lambda^*(A).
+\]
+\end{exercise}
+\begin{proof}
+    For each \(   \varepsilon > 0  \), there are  sets \(  E_1,E_2,\cdots   \) with \(  \operatorname{diam}E_{i}<  \varepsilon   \) such that \[
+    A\subseteq \bigcup _{i= 1}^{\infty}E_{i},\quad \sum _{i= 1}^{\infty}\alpha \left( n \right) 2^{-n} \left( \mathrm{diam} \left( E_{i} \right)   \right)^{n}< H_{ \varepsilon }^{n}\left( A \right)+  \varepsilon   
+    \] Then\[
+     \lambda ^{*}\left( A \right)\le \sum _{i= 1}^{\infty} \lambda ^{*}\left( E_{i} \right)\le \sum _{i= 1}^{\infty}\alpha \left( n \right)2^{-n} \left( \operatorname{diam}\left( E_{i} \right)  \right)^{n}    < H_{ \varepsilon }^{n}\left( A \right)+  \varepsilon  
+    \]Take \(   \varepsilon \to 0  \), then \[
+     \lambda ^{*}\left( A \right)\le H^{n}\left( A \right)  
+    \] 
+
+    For each \(   \varepsilon > 0  \), there are closed intervals \(  I_1,I_2,\cdots   \) such that  \[
+    A\subseteq \bigcup _{i= 1}^{\infty}I_{i},\quad \sum _{i= 1}^{\infty}v\left( I_{i} \right)<  \lambda ^{*}\left( A \right)+  \varepsilon   
+    \] Since for each \(  I_{i}  \), there are finitely may squares \(  J_{i,j}  \) ,   such that    \[
+    I_{i}\subseteq \bigcup _{j= 1}^{\infty}J_{i,j},\quad    \sum _{j= 1}^{\infty}v\left( J_{i,j} \right)< v\left( I_{i} \right)+ \frac{ \varepsilon  }{2^{i} }   
+    \] We can arange \(  \left\{ J_{i,j} \right\}_{i,j\in \mathbb{Z} _{> 0}}  \) into a sequence of  squares \(  \left\{ K_{m} \right\}  \) such that \[
+    A\subseteq \bigcup _{m= 1}^{\infty}K_{m},\quad \sum _{i= 1}^{\infty}v\left( K_{m} \right)<  \lambda ^{*}\left( A \right)+ 2 \varepsilon   
+    \] Note that \[\left( 
+\frac{1}{\sqrt{n}}    \operatorname{diam}\left( K_{m} \right)  \right)^{n}= v\left( K_{m} \right)  
+    \] We have \[
+  \begin{aligned}
+    H_{ \varepsilon }^{n}\left( A \right)\le \sum _{i= 1}^{\infty} \alpha \left( n \right)2^{-n} \left( \operatorname{diam}\left( K_{m} \right)  \right)^{n}&= \alpha\left( n \right)\left( \frac{\sqrt{n} }{2 }  \right)^{n}   \sum _{i= 1}^{\infty}v\left( K_{m} \right)   \\ 
+     &\le \alpha \left( n \right)\left( \frac{\sqrt{n} }{2 }  \right)^{n}  \left(  \lambda ^{*}\left( A \right)+ 2 \varepsilon   \right) 
+  \end{aligned}
+    \] Take \(   \varepsilon \to 0  \), we have \[
+    H^{n}\left( A \right)\le \alpha \left( n \right)\left( \frac{\sqrt{n} }{2 }  \right)^{n} \lambda ^{*}\left( A \right)    
+    \] 
+\end{proof}
+\begin{exercise}{}{}
+    Show that \(  H^{s}\equiv 0  \) on \(  \mathbb{R} ^{n}  \) for all \(  s> n  \).   
+\end{exercise}
+
+\begin{proof}
+    Let \[
+    I_{k}:= [-k ,k]^{n}
+    \] For any \(  A\subseteq \mathbb{R} ^{n}  \), we have \[
+    A\subseteq \bigcup _{k= 1}^{\infty}I_{k}
+    \]Isodiametric inequality gives that \[
+     H^{n}\left( I_{k} \right)\le \alpha \left( n \right)\left( \frac{\sqrt{n} }{2 }  \right)^{n} \lambda   ^{*}\left( I_{k} \right)< \infty  
+    \]Then Theorem \ref{thm:8-19-2} gives that  \[
+    H^{s}\left( I_{k} \right)= 0 
+    \]Thus we have \[
+   H^{s}\left( A \right)\le  \sum _{k= 1}^{\infty} H^{s}\left( I_{k} \right)  = 0
+    \]   
+\end{proof}
+
+\begin{exercise}{}{}
+    Let $C \subset \mathbb{R}^2$ denote the circle of radius 1 and regard $C$ as a topological space with the topology induced from $\mathbb{R}^2$. Define an outer measure $\mathcal{H}$ on $C$ by
+\[\begin{aligned}
+\mathcal{H}(A) := \frac{1}{2\pi} H^1(A) \quad \text{for any set } A \subset C.
+\end{aligned}\]
+Later in the book, we will prove that $H^1(C) = 2\pi$. Thus, you may assume that. Show that
+\begin{enumerate}
+\item[(i)] $\mathcal{H}(C) = 1$.
+\item[(ii)] Prove that $\mathcal{H}$ is a Borel regular outer measure.
+\item[(iii)] Prove that $\mathcal{H}$ is rotationally invariant; that is, prove that for every set $A \subset C$, one has $\mathcal{H}(A) = \mathcal{H}(A')$, where $A'$ is obtained by rotating $A$ through an arbitrary angle.
+\item[(iv)] Prove that $\mathcal{H}$ is the only outer measure defined on $C$ that satisfies the previous three conditions.
+\end{enumerate}
+\end{exercise}
+
+\section{Hausdorff Dimension of Cantor Sets}
+
+\begin{definition}{General Cantor set}{}
+Let $0 < \gamma < 1/2$ and set $I_{0,1} = [0, 1]$. Let $I_{1,1}$ and $I_{1,2}$ denote the intervals $[0, \gamma]$ and $[1 - \gamma, 1]$ respectively. They result by deleting the open middle interval of length $1 - 2\gamma$. At the next stage, delete the open middle interval of length $\gamma(1 - 2\gamma)$ of each of the intervals $I_{1,1}$ and $I_{1,2}$. There remain $2^2$ closed intervals each of length $\gamma^2$. Continuing this process, at the $k$th stage there are $2^k$ closed intervals each of length $\gamma^k$. Denote these intervals by $I_{k,1}, \dots, I_{k,2^k}$. We define the generalized Cantor set as
+\[
+C(\gamma) = \bigcap_{k=0}^{\infty} \bigcup_{j=1}^{2^k} I_{k,j}.
+\]
+\end{definition}
+
+
+
 \end{document}
