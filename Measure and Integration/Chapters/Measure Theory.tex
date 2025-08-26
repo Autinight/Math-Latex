@@ -1510,5 +1510,52 @@ C(\gamma) = \bigcap_{k=0}^{\infty} \bigcup_{j=1}^{2^k} I_{k,j}.
 \end{definition}
 
 
+\begin{theorem}{Hausdorff Dimension of Cantor Sets}{}
+    The Hausdorff Diemension of \(  C\left(  \gamma  \right)   \), denoted by  \(  s\), is \[
+   s= \log 2/ \log\left( \frac{1 }{ \gamma  }  \right) 
+    \] that is the unique \(  s  \) such that   \[
+    2 \gamma ^{s}= 1
+    \] 
+\end{theorem}
+
+\begin{note}
+    通过选取特定的 \(  s  \), 使得 \(  C\left(  \gamma  \right)   \)构造过程中的每一个 ``丢弃''中间区间的过程都是恰好 完全不损失``\(  s  \)-长度的 ''.  这样, \(  C\left(  \gamma  \right)   \)中 \(  I_{k,j}  \)的 \(  s  \)-长度可以完全它内部更小的组件的 \(  s  \)-长度和来代替.    
+
+    由于\(  C\left(  \gamma  \right)   \)的自相似性, 每个区间 \(  I  \), 在盖住了最大的一个小组件 \(  I_{k,k_{1}}  \)时,  也会同时连同被跟它一样大的另外三个组件 \(  I_{k,k_2},I_{k,k_3},I_{k,k_4}  \)  所含住.这样就提供了上下两边包夹的不等式关系.
+\end{note}
+
+\begin{proof}
+    Since \(  C\left(  \gamma  \right)\subseteq \bigcup _{j= 1}^{2^{k}}I_{k,j}   \)  for each \(  k  \). We have  \[
+    H^{s}_{ \gamma ^{k}}\left( C\left(  \gamma  \right)  \right) \le \sum _{j= 1}^{2^{k}} \ell\left( I_{k,j} \right) ^{s}= 2^{k}\left(  \gamma ^{k} \right)^{s}=  \left( 2 \gamma ^{s} \right)^{k}  
+    \] We choose \(  s  \) such that \(  2 \gamma ^{s}= 1  \), then    \[
+    H^{s}_{ \gamma ^{k}}\left( C\left(  \gamma  \right)  \right)\le  1,\quad \forall k 
+    \] Since \(  \lim_{k\to \infty} \gamma ^{k}= 0  \), we have \[
+    H^{s}\left( C\left(  \gamma  \right)  \right)= \lim_{k\to \infty}H^{s}_{ \gamma ^{k}}\left( C\left(  \gamma  \right)  \right)\le 1  
+    \]  
+
+    It is important to observe that we choose our \(  s  \) such that \[
+    \sum _{j= 1}^{2^{k}}  \ell\left( I_{k,j} \right)^{s}= 1 
+    \] 
+
+    Next, we show that \(  H^{s}\left( C\left(  \gamma  \right)  \right)\ge \frac{1 }{4 }    \) , which along with above implies that the Hausdorff dimension of \(  C\left(  \gamma  \right)   \) equals \(  \log 2 / \log\left( \frac{1 }{ \gamma  }  \right)   \) . We will establish this by showing that if \[
+    C\left(  \gamma  \right)\subseteq \bigcup _{j= 1}^{\infty}J_{i} 
+    \] is an open covering \(  C\left(  \gamma  \right)   \) by intervals \(  J_{i}  \), then \[
+    \sum _{i= 1}^{\infty} \ell\left( J_{i} \right)^{s}\ge \frac{1 }{4 }  
+    \] Firstly, we will show that for any open interval \(  I  \) and fixed \(   l  \) that \[
+    \sum _{I_{i,l}\subseteq I} \ell\left( I_{l,i} \right)^{s}\le 4 \ell\left( I \right)^{s}  
+    \]    Let \(  k  \) be the smallest number    such that \(  I  \) contains some \(  I_{k,j}  \). Then there are at most for of \(  I_{k,j}  \)'s intersect with \(  I  \), otherwise there are some \(  I_{k-1,j}  \) contained in \(  I  \). We call them \(  I_{k,k_{m}},m = 1,2,3,4  \).  Then \[
+    4 \ell\left( I \right)^{s} \ge \sum _{m= 1}^{4} \ell\left( I_{k,k_{m}} \right)^{s}=  \sum _{m= 1}^{4}\sum _{I_{l,i}\subseteq I_{k,k_{m}}}  \ell\left( I_{l,i} \right)^{s} 
+    \]    Since \[
+     \ell\left( I_{k,k_{m}} \right)^{s}= \frac{1 }{2^{k} },\quad  \sum _{I_{l,i}\subseteq I_{k,k_{m}}}   \ell\left( I_{l,i} \right)^{s}= 2^{l-k}\frac{1 }{2^{l} }= \frac{1 }{2^{k} }   
+    \]  Thus \[
+    4 \ell\left( I \right)^{s}\ge \sum _{I_{l,i}\subseteq I} \ell\left( I_{l,i} \right)^{s}  
+    \] From this, we can get \[
+    \sum _{i= 1}^{\infty} \ell\left( J_{i} \right)^{s}\ge  \frac{1 }{4 }\sum _{i= 1}^{\infty}\sum _{I_{l,k}\subseteq J_{i}} \ell\left( I_{l,k} \right)^{s}  \ge \frac{1 }{4 }\sum _{k= 1}^{2^{l}} \ell\left( I_{l,k} \right)^{s}= \frac{1 }{4 }   
+    \] since the covering has an Lebesgue number , thus for sufficiently large \(  l  \), each \(  I_{l,k}  \) is contained in some \(  J_{i}  \).   
+\end{proof}
+
+\section{Measures on Abstract Spaces}
+
+Given
 
 \end{document}
