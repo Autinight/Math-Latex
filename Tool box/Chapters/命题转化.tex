@@ -1,0 +1,61 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+}{}
+
+\chapter{ 命题转化 }
+
+\section{优势腾挪}
+``腾''思想, 正是数学家们面对复杂问题时的核心策略之一. 当一个问题的原始设定带有令人不悦的限制、非标准的环境或复杂的局部结构时, 高手们想的不是硬着头皮在原地解决, 而是:
+
+``我能否构建一个新的世界, 在那个世界里, 这些障碍都烟消云散, 变成了新世界的基本法则''
+\begin{theorem}{}{}
+    Suppose \(   \varphi   \) is an \dfntxt{Borel outer measure}  on a  metric space \(  X  \). Then for each Borel set \(  B\subseteq X  \) with \(   \varphi \left( B \right)< \infty   \) and each \(   \varepsilon > 0  \), there exists a closed set \(  F\subseteq B  \) such that \[
+     \varphi \left( B\setminus F \right)<  \varepsilon  
+    \]      Furthermore, suppose \[
+    B\subseteq \bigcup _{i= 1}^{\infty}V_{i}
+    \]where each \(  V_{i}  \) is an open set with \(   \varphi \left( V_{i} \right)< \infty   \). Then for each \(   \varepsilon > 0  \), there is an open set \(  W\supseteq B  \) such that \[
+     \varphi \left( W\setminus B \right)<  \varepsilon  
+    \]    
+\end{theorem}
+\begin{note}
+    题目对于 \(  B  \)的条件给予了``额外''(脱离\(   \sigma   \)-代数体系 ) 的增强条件 \(   \varphi \left( B \right)< \infty   \). 通过定义新的测度 \(  \mu \left( A \right):=  \varphi \left( A\cap B \right)    \). 将增强条件``腾挪''到 变成测度的增强条件 \(  \mu \left( X \right)< \infty   \). 以增加命题的整体性, 使得证明不拘泥于某个特定集合的 \(   \varphi \left( B \right)< \infty   \) .
+\end{note}
+\begin{proof}
+
+   Select a Borel set \(  B  \) with \(   \varphi \left( B \right)< \infty   \), and define \[
+   \mu \left( A \right): =   \varphi \left( A\cap B \right)  
+   \]It is easy to verify that \(  \mu   \) is an outer measure on \(  X  \), and also all Borel    set is \(  \mu   \)-measurable. Furthermore, \(  \mu \left( X \right)< \infty   \).   Once we show that the first part is true for \(  \mu   \) , then for each \(   \varepsilon > 0  \)  \[
+    \varphi \left( B\setminus F \right)=\mu \left( B\setminus F \right)<  \varepsilon  
+   \] is true for some closed set \(  F  \) and the specific Borel set \(  B  \) we have just selected. Since \(  B  \) is arbitray,  we may assume that \(   \varphi \left( X \right)< \infty   \) in the following proccess. 
+    Let \[
+    \mathcal{D}: = \left\{ A:   \forall  \varepsilon > 0, \exists \text{ closed set } F\subseteq A \text{ s.t. } \varphi \left( A\setminus F \right)<  \varepsilon   \right\}
+    \]  Only need to show that \(  \mathcal{D}  \) is a \(   \sigma   \)-algebra  containing all closed sets. That is to say from Theorem \ref{thm:8-10-2} that \(  \mathcal{D}  \) contains all closed and open sets and is closed under countable union and countable intersection. Take any open set \(  U\subseteq X  \)  . Let \[
+    F_{i}: = \left\{ x: d\left( x,U^{c}\right)\ge \frac{1 }{i }   \right\}
+    \]  be a closed set for each \(  i  \). Then \[
+    F_1\subseteq F_2\subseteq \cdots ,\quad  U = \bigcup _{i= 1}^{\infty}F_{i} 
+    \] Thus \[
+   \lim_{k\to \infty}  \varphi \left( U\setminus \bigcup _{i= 1}^{k}F_{i} \right) =  \varphi \left( U\setminus \bigcup _{i= 1}^{\infty}F_{i} \right)=  \varphi \left( \varnothing \right)= 0  
+    \] For each \(   \varepsilon > 0  \), there exists \(  k  \) such that \[
+     \varphi \left( U\setminus \bigcup _{i= 1}^{k}F_{i} \right)<  \varepsilon 
+    \], where  \(  \bigcup _{i= 1}^{k}F_{i}  \) is a closed set.  
+    
+    Now, we take a sequence of membser \(  A_1,A_2,\cdots   \)  in \(  \mathcal{D}  \). For each \(  i  \), there is a closed set \(  C_{i}\subseteq A_{i}  \), such that \[
+     \varphi \left( A_{i}\setminus C_{i} \right)< \frac{ \varepsilon  }{2^{i+ 1} }  
+    \]  Note that \[
+    \bigcup _{i= 1}^{\infty}A_{i}\setminus \bigcup _{i= 1}^{\infty}C_{i}\subseteq \bigcup _{i= 1}^{\infty}\left( A_{i}\setminus C_{i} \right),\quad \bigcap_{i= 1}^{\infty}A_{i}\setminus \bigcap_{i= 1}^{\infty}C_{i}\subseteq \bigcup _{i= 1}^{\infty}\left( A_{i}\setminus C_{i} \right)    
+    \]We have \[
+     \varphi \left( \bigcap_{i= 1}^{\infty}A_{i}\setminus \bigcap_{_{i= 1}}^{\infty}C_{i}   \right)\le \sum _{i= 1}^{\infty} \varphi \left( A_{i}\setminus C_{i} \right)<  \varepsilon   
+    \] \[
+    \lim_{k\to \infty} \varphi \left( \bigcup _{i= 1}^{\infty}A_{i}\setminus \bigcup _{i= 1}^{k}C_{i}  \right)=  \varphi \left( \bigcup _{i= 1}^{\infty}A_{i}\setminus \bigcup _{i= 1}^{\infty}C_{i} \right)\le \sum _{i= 1}^{\infty} \varphi \left( A_{i}\setminus C_{i} \right)< \frac{ \varepsilon  }{2 }    
+    \] Then there exists \(  k  \) such that \[
+     \varphi \left( \bigcup _{i= 1}^{\infty}A_{i}\setminus \bigcup _{i= 1}^{k}C_{i} \right)<  \varepsilon  
+    \] Thus \(  \bigcap_{i= 1}^{\infty}A_{i},\bigcup _{i= 1}^{\infty}A_{i} \in \mathcal{D}   \). 
+\end{proof}
+
+\end{document}

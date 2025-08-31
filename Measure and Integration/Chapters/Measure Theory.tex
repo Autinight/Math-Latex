@@ -1556,6 +1556,450 @@ C(\gamma) = \bigcap_{k=0}^{\infty} \bigcup_{j=1}^{2^k} I_{k,j}.
 
 \section{Measures on Abstract Spaces}
 
-Given
+\begin{definition}{}{}
+Let $X$ be a set and $\mathcal{M}$ a $\sigma$-algebra of subsets of $X$. A \dfntxt{measure} on $\mathcal{M}$ is a function $\mu: \mathcal{M} \to [0, \infty]$ satisfying the properties
+\begin{enumerate}
+\item[(i)] $\mu(\emptyset) = 0$;
+\item[(ii)] if $\{E_i\}$ is a sequence of disjoint sets in $\mathcal{M}$, then
+\[ \mu\left(\bigcup_{i=1}^{\infty} E_i\right) = \sum_{i=1}^{\infty} \mu(E_i). \]
+\end{enumerate}
+Thus, a measure is a countably additive set function defined on $\mathcal{M}$.
 
-\end{document}
+\begin{itemize}
+    \item  Sometimes the notion of \dfntxt{finite additivity} is useful. It states that 
+    \item[(ii)\(  ^{\prime}   \) ] If \(   E_1,\cdots,E_k   \) is any finite family of disjoint sets in \(  \mathcal{M}  \), then \[
+    \mu \left( \bigcup _{i= 1}^{k}E_{i} \right)= \sum _{i= 1}^{k}\mu \left( E_{i} \right).   
+    \]  
+    \item If \(  \mu   \) satisfies (i) and (ii\(  ^{\prime}   \) ) but not necessarily (ii), then \(  \mu   \) is called a \dfntxt{finitely additive measure}. 
+    \item Then triple \( \left(  M,\mathcal{M},\mu  \right)   \)    is called a \dfntxt{measure space}, and sets should be referred to as \(  \mathcal{M}  \)-measurable, to indicate their dependence on \(  \mathcal{M}  \).  
+    \item If \(  M  \) consitutes the family of Borel sets in a meatric space \(  X  \), then \(  \mu   \) is called a \dfntxt{Borel measure}. 
+    \item A measure \(  \mu   \) is said to be \dfntxt{finite} if \(  \mu \left( X \right)< \infty   \), and \dfntxt{\(   \sigma   \)-finite } if \(  X  \) can be wriiten as \(  X= \bigcup _{i= 1}^{\infty}E_{i}  \), where \(  \mu \left( E_{i} \right)< \infty   \) for each \(  i  \).
+    \item A measure \(  \mu   \) with the property that all subsets of sets of \(  \mu   \)-measure zero are measurable is said to be \dfntxt{complete}, and \(  \left( X,\mathcal{M},\mu  \right)   \) is called a \dfntxt{complete measure space}. 
+    \item A Borel measure on a topological space \(  X  \) that is finite on compact sets is called a \dfntxt{Radon measure}.             
+\end{itemize}
+
+\end{definition}
+
+\begin{example}{EXAMPLES}{}
+Here are some examples of measures.
+\begin{enumerate}
+    \item $(\mathbb{R}^n, \mathcal{M}, \lambda)$, where $\lambda$ is Lebesgue measure and $\mathcal{M}$ is the family of Lebesgue measurable sets.
+    \item $(X, \mathcal{M}, \varphi)$, where $\varphi$ is an outer measure on an abstract set $X$ and $\mathcal{M}$ is the family of $\varphi$-measurable sets.
+    \item $(X, \mathcal{M}, \delta_{x_0})$, where $X$ is an arbitrary set and $\delta_{x_0}$ is an outer measure defined by
+    \[
+        \delta_{x_0}(E) = \begin{cases} 1 & \text{if } x_0 \in E, \\ 0 & \text{if } x_0 \notin E. \end{cases}
+    \]
+    The point $x_0 \in X$ is selected arbitrarily. It can easily be shown that all subsets of $X$ are $\delta_{x_0}$-measurable, and therefore $\mathcal{M}$ is taken as the family of all subsets of $X$.
+    \item $(\mathbb{R}, \mathcal{M}, \mu)$, where $\mathcal{M}$ is the family of all Lebesgue measurable sets, and $x_0 \in \mathbb{R}$ and $\mu$ is defined by
+    \[
+        \mu(E) = \lambda(E \setminus \{x_0\}) + \delta_{x_0}(E)
+    \]
+    whenever $E \in \mathcal{M}$.
+    \item $(X, \mathcal{M}, \mu)$, where $\mathcal{M}$ is the family of all subsets of an arbitrary space $X$ and where $\mu(E)$ is defined as the number (possibly infinite) of points in $E$.
+\end{enumerate}
+\end{example}
+
+\begin{theorem}{}{}
+Let $(X, \mathcal{M}, \mu)$ be a measure space and suppose $\{E_i\}$ is a sequence of sets in $\mathcal{M}$.
+\begin{enumerate}
+    \item (Monotonicity) If $E_1 \subset E_2$, then $\mu(E_1) \le \mu(E_2)$.
+    \item (Subtractivity) If $E_1 \subset E_2$ and $\mu(E_1) < \infty$, then $\mu(E_2 - E_1) = \mu(E_2) - \mu(E_1)$.
+    \item (Countable subadditivity)
+    \[
+        \mu(\bigcup_{i=1}^{\infty} E_i) \le \sum_{i=1}^{\infty} \mu(E_i).
+    \]
+    \item (Continuity from the left) If $\{E_i\}$ is an increasing sequence of sets, that is, if $E_i \subset E_{i+1}$ for each $i$, then
+    \[
+        \mu(\bigcup_{i=1}^{\infty} E_i) = \mu(\lim_{i \to \infty} E_i) = \lim_{i \to \infty} \mu(E_i).
+    \]
+    \item (Continuity from the right) If $\{E_i\}$ is a decreasing sequence of sets, that is, if $E_i \supset E_{i+1}$ for each $i$, and if $\mu(E_{i_0}) < \infty$ for some $i_0$, then
+    \[
+        \mu(\bigcap_{i=1}^{\infty} E_i) = \mu(\lim_{i \to \infty} E_i) = \lim_{i \to \infty} \mu(E_i).
+    \]
+    \item 
+    \[
+        \mu(\liminf_{i \to \infty} E_i) \le \liminf_{i \to \infty} \mu(E_i).
+    \]
+    \item If
+    \[
+        \mu(\bigcup_{i=i_0}^{\infty} E_i) < \infty
+    \]
+    for some positive integer $i_0$, then
+    \[
+        \mu(\limsup_{i \to \infty} E_i) \ge \limsup_{i \to \infty} \mu(E_i).
+    \]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Only 1. and 3. have not been established in Corollary \ref{col:8-14-1}. For 1. , note that \(  E_2\setminus E_1  \in \mathcal{M}\) and \[
+    \mu \left( E_2 \right)= \mu \left( E_2\setminus E_1 \right)+ \mu \left( E_1 \right)\ge  \mu \left( E_1 \right)    
+    \]  
+
+    To show 3., we start by defining \[
+    A_{i}:=  E_{i}\setminus \left( \bigcup _{k= 1}^{i-1} E_{k}\right),\quad i= 2,3,\cdots ,\quad A_1:= E_1 
+    \]Then \( A_1,A_2,\cdots    \) are disjoint sets in \(  \mathcal{M}  \) .  And \[
+    \bigcup _{i= 1}^{\infty}E_{i}= \bigcup _{i= 1}^{\infty}A_{i},\quad A_{i}\subseteq E_{i}
+    \]Thus \[
+    \mu \left( \bigcup _{i= 1}^{\infty}E_{i}\right)= \mu \left( \bigcup _{i= 1}^{\infty}A_{i} \right)= \sum _{i= 1}^{\infty}\mu \left( A_{i} \right)\le    \sum _{i= 1}^{\infty}\mu \left( E_{i} \right) 
+    \]
+\end{proof}
+
+
+\begin{theorem}{}{}
+Suppose $(X,\mathcal{M},\mu)$ is a measure space. Define $\overline{\mathcal{M}} = \{A \cup N : A \in \mathcal{M}, N \subset B \text{ for some } B \in \mathcal{M} \text{ such that } \mu(B) = 0\}$ and define $\bar{\mu}$ on $\overline{\mathcal{M}}$ by $\bar{\mu}(A \cup N) = \mu(A)$. Then $\overline{\mathcal{M}}$ is a $\sigma$-algebra, $\bar{\mu}$ is a complete measure on $\overline{\mathcal{M}}$, and $(X,\overline{\mathcal{M}},\bar{\mu})$ is a complete measure space. Moreover, $\bar{\mu}$ is the only complete measure on $\overline{\mathcal{M}}$ that is an extension of $\mu$.
+\end{theorem}
+
+\begin{proof}
+    It is easy to proof that \(  \overline{\mathcal{M}}  \) is closed under uncountable unions since  this is true for measure zero sets. To show that \(  \overline{\mathcal{M}}  \) is closed under complementation. We take \(  A\in \mathcal{M}, N\subseteq B  \) such that \(  \mu \left( B \right)= 0   \).  We may assume that \(  A\cap N= \varnothing  \) since \(  A\cup N=  A\cup \left( N\setminus A \right)   \), where \(  N\setminus A\subseteq B  \). Thus \[
+ A\cup N= \left( A\cup B \right)\cap \left( \left( B^{c}\cup N \right)\cup \left( A\cup B \right)   \right)  
+    \]Then \[
+    \left( A\cup N \right)^{c}=  \left( A\cup B \right)^{c}\cup \left( \left( B\cap N ^{c}\right)\cap \left( A\cup B\right)^{c}   \right)   
+    \]      Where \(  \left( A\cup B \right)^{c} \in \mathcal{M}   \), and \[
+    \left( B\cap N^{c} \right)\cap \left( A\cup B \right)^{c}\subseteq B  
+    \]
+    
+    To show that \(  \bar{\mu}  \) is not unambiguous, we assume that \(  A_1\cup N_1= A_2\cup N_2  \), where \(  A_1,A_2\in \mathcal{M}  \), \(  N_1\subseteq B_1,N_2\subseteq B_2  \), \(  \mu \left( B_1 \right)= \mu \left( B_2 \right)= 0    \). Since \(  A_1\subseteq A_2\cup N_2  \), we have \[
+    \mu \left( A_1\cup N_1 \right)= \mu \left( A_1 \right)\le \mu \left( A_2\cup N_2 \right)   
+    \] Similarly, \(  \mu \left( A_2\cup N_2 \right)\subseteq \mu \left( A_1\cup N_1 \right)    \). 
+ It is easily verified that \(  \bar{\mu}  \) is complete since \[
+\bar{\mu}\left( N \right)= \bar{\mu}\left( \varnothing\cup N \right)= \mu \left( \varnothing \right)= 0   
+ \] Suppose \(  \nu   \) is another complete measure on \(  \overline{\mathcal{M}}  \) that is an extension of \(  \mu   \) . Let \(  A\cup N\in  \overline{\mathcal{M}}  \) , \(  N\subseteq B,  \) \(  \mu \left( B \right)= 0   \). Then \[
+ \nu \left( A\cup N \right)\ge  \nu \left( A \right)= \mu \left( A \right)= \bar{\mu}\left( A\cup N \right)    
+ \]The other hand, \[
+ \nu \left( A\cup N \right)= \nu \left( A\cup \left( N\setminus A \right)  \right)= \nu \left( A \right)+ \nu \left( N\setminus A \right)    
+ \] since \(  N\setminus A\subseteq B  \) is \(  \nu   \)  - measurable for completeness. Then \[
+\begin{aligned}
+ \nu \left( A\cup N \right)= \nu \left( A \right)+ \nu \left( N\setminus A \right)= \mu \left( A \right)+ \nu \left( N\setminus A \right)&\le \mu \left( A \right)+\nu  \left(  B\right)   \\ 
+  &\le \mu \left( A \right)+ \mu \left( B \right)\\ 
+   &= \mu \left( A \right)\\ 
+    &= \bar{\mu}\left( A\cup N \right)      
+\end{aligned}   
+ \]We have \[
+ \nu \left( A\cup N \right)= \mu \left( A\cup N \right)   
+ \]for all \(  A\cup N \in   \overline{\mathcal{M}}  \)      
+\end{proof}
+\section*{Exercises for Abstract Measure Space}
+\begin{exercise}{}{}
+    Let $\{\mu_k\}$ be a sequence of measures on a measure space such that $\mu_{k+1}(E) \ge \mu_k(E)$ for each measurable set $E$. With $\mu$ defined as $\mu(E) = \lim_{k\to\infty} \mu_k(E)$, prove that $\mu$ is a measure.
+\end{exercise}
+\begin{proof}
+    It is obvious that \(  \mu \left( \varnothing \right)= 0   \) and \(  \mu   \) is nonnegative . If \(  \left\{ E_{i} \right\}  \) is a sequence of measurable sets. Then \[
+\begin{aligned}
+    \mu \left( \bigcup _{i= 1}^{\infty}E_{i} \right)&= \lim_{k\to \infty}\mu _{k} \left( \bigcup _{i= 1}^{\infty}E_{i} \right) \\ 
+     &= \lim_{k\to \infty} \sum _{i= 1}^{\infty}\mu _{k}\left( E_{i} \right)  \\ 
+      &= \sum _{i= 1}^{\infty}\mu \left( E_{i} \right) 
+\end{aligned}
+    \]  
+\end{proof}
+
+
+\section{Regular Outer Measure}
+
+
+\begin{theorem}{}{}
+If $\varphi$ is a \dfntxt{regular outer measure} on $X$, then
+\begin{enumerate}
+\item[(i)] If $A_1 \subset A_2 \subset \dots$ is an increasing sequence of arbitrary sets, then
+\[
+\varphi\left(\bigcup_{i=1}^{\infty} A_i\right) = \lim_{i\to\infty} \varphi(A_i).
+\]
+\item[(ii)] If $A \cup B$ is $\varphi$-measurable, $\varphi(A) < \infty$, $\varphi(B) < \infty$, and $\varphi(A \cup B) = \varphi(A) + \varphi(B)$, then both $A$ and $B$ are $\varphi$-measurable.
+\end{enumerate}
+\end{theorem}
+\begin{note}
+    \begin{enumerate}
+        \item 自下连续对于\dfntxt{正则的外测度}也成立.
+        \item 大可测集可以在外测度意义下被完全分为两个小集合, 则这两个小集合也可测.
+    \end{enumerate}
+    
+\end{note}
+\begin{proof}
+    (i) For each \(  k\in \mathbb{Z} _{> 0}  \), thers exists a \( \varphi  \)-measurable set \(  C_{k}  \), such that \(  C_{k}\supseteq A_{k}  \) and \(   \varphi \left( C_{k} \right)=  \varphi \left( A_{k} \right)    \). Then we define \[
+    B_{i}:= \bigcup _{j= i}^{\infty}C_{j}.
+    \]\(  \left\{ B_{k} \right\}  \) forms a increasing sequence of \(   \varphi   \)-measurable sets such that  \[
+    A_{k}\subseteq B_{k}\subseteq C_{k}
+    \]It follows that \[
+     \varphi \left( \bigcup _{i= 1}^{\infty}A_{i} \right)\le  \varphi \left( \bigcup _{i= 1}^{\infty}B_{i} \right)= \lim_{i\to \infty} \varphi \left( B_{i} \right)= \lim_{i\to \infty} \varphi \left( A_{i} \right)
+    \] Since \(   \varphi \left( A_{k} \right)\le  \varphi \left( B_{k} \right)\le  \varphi \left( C_{k} \right)=  \varphi \left( A_{k} \right)      \)          for each \(  k  \). 
+    
+    (ii) There exists \(   \varphi   \)-measurable set \(  C^{\prime} \supseteq A  \) such that \(   \varphi \left( C^{\prime}  \right)=  \varphi \left( A \right)    \). Let \[
+    C: =  C^{\prime} \cap \left( A\cup B \right) 
+    \] then \(  C  \) is \(   \varphi   \)-measurable. Note that \[
+    A\subseteq C\subseteq C^{\prime} 
+    \]We have  \(   \varphi \left( C \right)=  \varphi \left( A \right)    \), then \[
+    \begin{aligned}
+     \varphi \left( C \right)+  \varphi \left( B \right)&=  \varphi \left( A \right)+  \varphi \left( B \right)\\ 
+      &=  \varphi \left( A\cup B \right)\\ 
+       &=  \varphi \left( \left( A\cup B \right)\cap C  \right)+  \varphi \left( \left( A\cup B \right)\setminus C  \right)\\ 
+        &=  \varphi \left( C \right)+  \varphi \left( B\setminus C \right)\\ 
+         &=  \varphi \left( C \right)+  \varphi \left( B \right)- \varphi \left( B\cap C \right)         
+    \end{aligned}
+    \] where we use the measurability of \(  C  \) on the third and fifth equality. The above implies that \(   \varphi \left( B\cap C \right)= 0   \), \(  B\cap C  \) is \(   \varphi   \)-measurable. Since \(  C\setminus A\subseteq \left( A\cup B \right)\setminus A\subseteq B   \), we have \(  C\setminus A\subseteq B\cap C   \). Then it follows that  \(  C\setminus A  \) is \(   \varphi   \)-measruable, thus \(  A= C\setminus \left( C\setminus A \right)   \) is as well. The symmetry  gives that \(  B  \) is \(   \varphi   \)-measruable .   
+\end{proof}
+
+
+\begin{theorem}{}{8-30-1}
+    Suppose \(   \varphi   \) is an \dfntxt{Borel outer measure}  on a  metric space \(  X  \). Then for each Borel set \(  B\subseteq X  \) with \(   \varphi \left( B \right)< \infty   \) and each \(   \varepsilon > 0  \), there exists a closed set \(  F\subseteq B  \) such that \[
+     \varphi \left( B\setminus F \right)<  \varepsilon  
+    \]      Furthermore, suppose \[
+    B\subseteq \bigcup _{i= 1}^{\infty}V_{i}
+    \]where each \(  V_{i}  \) is an open set with \(   \varphi \left( V_{i} \right)< \infty   \). Then for each \(   \varepsilon > 0  \), there is an open set \(  W\supseteq B  \) such that \[
+     \varphi \left( W\setminus B \right)<  \varepsilon  
+    \]    
+\end{theorem}
+\begin{note}
+   Method of part I : 题目对于 \(  B  \)的条件给予了``额外''(脱离\(   \sigma   \)-代数体系 ) 的增强条件 \(   \varphi \left( B \right)< \infty   \). 通过定义新的测度 \(  \mu \left( A \right):=  \varphi \left( A\cap B \right)    \). 将增强条件``腾挪''到 变成测度的增强条件 \(  \mu \left( X \right)< \infty   \). 以增加命题的整体性, 使得证明不拘泥于某个特定集合的 \(   \varphi \left( B \right)< \infty   \) .
+
+   Trick of part II: 我们通过挖去闭集的方法``雕刻''向外逼近的开集. ``雕刻''的原材料就是题目给出的\(   \varphi   \)-有限开集  \( V_{i}  \). 由于要求得到 \(  W\supseteq B  \), 我们必须在没有 \(  B  \)的集合上``雕刻''. 自然想到在每个 \(  V_{i}  \)中没有\(  B  \)的地方, 也就是 \(  V_{i}\setminus B  \)      上, 利用Part I挖去一个很大的闭集 \(  C_{i}  \). 
+\end{note}
+\begin{proof}
+
+   Select a Borel set \(  B  \) with \(   \varphi \left( B \right)< \infty   \), and define \[
+   \mu \left( A \right): =   \varphi \left( A\cap B \right)  
+   \]It is easy to verify that \(  \mu   \) is an outer measure on \(  X  \), and also all Borel    set is \(  \mu   \)-measurable. Furthermore, \(  \mu \left( X \right)< \infty   \).   Once we show that the first part is true for \(  \mu   \) , then for each \(   \varepsilon > 0  \)  \[
+    \varphi \left( B\setminus F \right)=\mu \left( B\setminus F \right)<  \varepsilon  
+   \] is true for some closed set \(  F  \) and the specific Borel set \(  B  \) we have just selected. Since \(  B  \) is arbitray,  we may assume that \(   \varphi \left( X \right)< \infty   \) in the following proccess. 
+    Let \[
+    \mathcal{D}: = \left\{ A:   \forall  \varepsilon > 0, \exists \text{ closed set } F\subseteq A \text{ s.t. } \varphi \left( A\setminus F \right)<  \varepsilon   \right\}
+    \]  Only need to show that \(  \mathcal{D}  \) is a \(   \sigma   \)-algebra  containing all closed sets. That is to say from Theorem \ref{thm:8-10-2} that \(  \mathcal{D}  \) contains all closed and open sets and is closed under countable union and countable intersection. Take any open set \(  U\subseteq X  \)  . Let \[
+    F_{i}: = \left\{ x: d\left( x,U^{c}\right)\ge \frac{1 }{i }   \right\}
+    \]  be a closed set for each \(  i  \). Then \[
+    F_1\subseteq F_2\subseteq \cdots ,\quad  U = \bigcup _{i= 1}^{\infty}F_{i} 
+    \] Thus \[
+   \lim_{k\to \infty}  \varphi \left( U\setminus \bigcup _{i= 1}^{k}F_{i} \right) =  \varphi \left( U\setminus \bigcup _{i= 1}^{\infty}F_{i} \right)=  \varphi \left( \varnothing \right)= 0  
+    \] For each \(   \varepsilon > 0  \), there exists \(  k  \) such that \[
+     \varphi \left( U\setminus \bigcup _{i= 1}^{k}F_{i} \right)<  \varepsilon 
+    \], where  \(  \bigcup _{i= 1}^{k}F_{i}  \) is a closed set.  
+    
+    Now, we take a sequence of membser \(  A_1,A_2,\cdots   \)  in \(  \mathcal{D}  \). For each \(  i  \), there is a closed set \(  C_{i}\subseteq A_{i}  \), such that \[
+     \varphi \left( A_{i}\setminus C_{i} \right)< \frac{ \varepsilon  }{2^{i+ 1} }  
+    \]  Note that \[
+    \bigcup _{i= 1}^{\infty}A_{i}\setminus \bigcup _{i= 1}^{\infty}C_{i}\subseteq \bigcup _{i= 1}^{\infty}\left( A_{i}\setminus C_{i} \right),\quad \bigcap_{i= 1}^{\infty}A_{i}\setminus \bigcap_{i= 1}^{\infty}C_{i}\subseteq \bigcup _{i= 1}^{\infty}\left( A_{i}\setminus C_{i} \right)    
+    \]We have \[
+     \varphi \left( \bigcap_{i= 1}^{\infty}A_{i}\setminus \bigcap_{_{i= 1}}^{\infty}C_{i}   \right)\le \sum _{i= 1}^{\infty} \varphi \left( A_{i}\setminus C_{i} \right)<  \varepsilon   
+    \] \[
+    \lim_{k\to \infty} \varphi \left( \bigcup _{i= 1}^{\infty}A_{i}\setminus \bigcup _{i= 1}^{k}C_{i}  \right)=  \varphi \left( \bigcup _{i= 1}^{\infty}A_{i}\setminus \bigcup _{i= 1}^{\infty}C_{i} \right)\le \sum _{i= 1}^{\infty} \varphi \left( A_{i}\setminus C_{i} \right)< \frac{ \varepsilon  }{2 }    
+    \] Then there exists \(  k  \) such that \[
+     \varphi \left( \bigcup _{i= 1}^{\infty}A_{i}\setminus \bigcup _{i= 1}^{k}C_{i} \right)<  \varepsilon  
+    \] Thus \(  \bigcap_{i= 1}^{\infty}A_{i},\bigcup _{i= 1}^{\infty}A_{i} \in \mathcal{D}   \). 
+
+    It follows from the first part that for each \(  i  \), there exists a closed set \(  C_{i}  \subseteq V_{i}\setminus B\), such that \[
+     \varphi \left( \left( V_{i}\setminus C_{i} \right)\setminus B  \right)=  \varphi \left( \left( V_{i}\setminus B \right)\setminus C_{i}  \right)< \frac{ \varepsilon  }{2^{i} }   
+    \]  Let \[
+    W:=  \bigcup _{i= 1}^{\infty}\left( V_{i}\setminus C_{i} \right)
+    \], which is an open set. We have \[
+     \varphi \left( W\setminus B \right)=  \varphi \left( \bigcup _{i= 1}^{\infty}\left( V_{i}\setminus C_{i} \right)\setminus B  \right)  \le \sum _{i= 1}^{\infty} \varphi \left( \left( V_{i} \setminus C_{i}\right)\setminus B  \right) <  \varepsilon 
+    \]
+\end{proof}
+
+\begin{corollary}{}{}
+In the previous theorem, if $\varphi$ is assumed to be a \dfntxt{Borel regular outer measure}, then the conclusions remain valid if the phrase “for each Borel set B” is replaced by “for each $\varphi$-measurable set B.”
+\end{corollary}
+
+\begin{theorem}{}{8-30-2}
+Let $\varphi$ be a \dfntxt{Carathéodory outer measure}. For each set $A \subset X$, define
+\[
+\psi(A) = \inf\{\varphi(B) : B \supset A, B \text{ a Borel set}\}.
+\]
+Then $\psi$ is a \dfntxt{Borel regular outer measure} on $X$ that agrees with $\varphi$ on all \dfntxt{Borel sets}.
+\end{theorem}
+\begin{proof}
+    We first show that \(  \psi   \) is an outer measure on \(  X  \). The monotonicity and \(  \psi \left( \varnothing \right)= 0   \) is obvious. We only show that \(  \psi   \) is countably subadditive. Let \(  A_1,A_2,\cdots   \) be a sequence of subsets of \(  X  \). Take any \(   \varepsilon > 0  \).  By the definition of \(  \psi   \), for each \(  A_{i}  \), there is a Borel set \(  B_{i} \supseteq A_{i} \) such that \[
+    \psi \left( A_{i} \right) >  \varphi \left( B_{i} \right)-\frac{ \varepsilon  }{2^{i} }  
+    \]  Then \[
+    \sum _{i= 1}^{\infty}\psi \left( A_{i} \right)\ge \sum _{i= 1}^{\infty} \varphi \left( B_{i} \right)- \varepsilon \ge    \varphi \left( \bigcup _{i= 1}^{\infty}B_{i} \right)- \varepsilon  
+    \]Since \(  \bigcup _{i= 1}^{\infty}B_{i}  \) is a Borel set contaning \(  \bigcup _{i= 1}^{\infty}A_{i}  \), then  \[
+     \varphi \left( \bigcup _{i= 1}^{\infty}B_{i} \right)\ge \psi \left( \bigcup _{i= 1}^{\infty}A_{i} \right)  
+    \] from the definition of \(  \psi \left( \bigcup _{i= 1}^{\infty}A_{i} \right)   \). Thus \[
+    \sum _{i= 1}^{\infty}\psi \left( A_{i} \right)\ge \psi \left( \bigcup _{i= 1}^{\infty}A_{i} \right)- \varepsilon   
+    \]Since \(   \varepsilon   \) is arbitrary, the countably subadditive is true for \(  \psi   \).    
+    
+    To show that all Borel sets are \(  \psi   \)-measurable, we suppose \(  D\subseteq X  \) is a Borel set. Only need to show that \[
+    \psi \left( A \right)\ge \psi \left( A\cap D \right)+ \psi \left( A\setminus D \right)   
+    \] is true for all sets \(  A\subseteq X  \) with \(  \psi \left( A \right)< \infty   \). For each \(   \varepsilon > 0  \), there exsist a Borel set \(  B\supseteq A  \) such that \[
+    \psi \left( A \right)>  \varphi \left( B \right)- \varepsilon   
+    \]      Then \[
+    \begin{aligned}
+    \psi \left( A \right)&>  \varphi  \left( B \right)- \varepsilon \\ 
+     &\ge   \varphi \left( B\cap D \right)+  \varphi \left( B\setminus D \right)- \varepsilon \\ 
+      &\ge    \psi \left( A\cap D \right)+ \psi \left( A\setminus D \right)- \varepsilon    
+    \end{aligned}
+    \] \(  D  \) is \(  \psi   \)-measurable since \(   \varepsilon > 0  \) is arbitrary. To show that \(  \psi   \) agrees with \(   \varphi   \) on all Borel sets. Take any Borel set \( B\subseteq X  \). It is obvious that \[
+    \psi \left( B\right)\le  \varphi \left( B \right)  
+    \]   As for the opposite inequality, choose a suquence of Borel sets  \(  D_{i}\supseteq B\) such that \(  \lim_{i\to \infty} \varphi \left( D_{i} \right)= \psi \left( B \right)    \).  Then, with \(  D: = \liminf_{i\to \infty}D_{i}  \), we have by  Corollary \ref{col:8-14-1} (v) , \[
+     \varphi \left( B \right)\le   \varphi \left( D \right)\le \liminf_{i\to \infty} \varphi \left( D_{i} \right)= \psi \left( B \right)   
+    \]Then we have \[
+    \psi \left( A \right)= \inf \left\{ \psi \left( B \right):B\supseteq A, B\text{ a Borel set}  \right\} 
+    \]For each positive \(  i  \), there exists Borel set \(  B_{i}  \) such that \[
+    B_{i}\supseteq A,\quad \psi \left( A \right)> \psi \left( B _{i}\right)-\frac{1 }{i }   
+    \]  Let \(  B: = \bigcap_{i= 1}^{\infty}B_{i}   \) , which is a Borel set. We have \[
+    \psi \left( A \right)> \psi \left( B_{i} \right)-\frac{1 }{i }\ge \psi \left( B \right)-\frac{1 }{i },\quad \forall i     
+    \] That is \(  \psi \left( A \right)\ge \psi \left( B \right)    \), thus \(  \psi \left( A \right)= \psi \left( B \right)    \) from \(  B\supseteq A  \).   
+\end{proof}
+
+\section{Outer Measure Generated by Measure}
+
+\begin{definition}{Measure on Algebra}{}
+An \dfntxt{algebra} in a space $X$ is defined as a nonempty collection of subsets of $X$ that is closed under the operations of finite unions and complements. Thus, the only difference between an algebra and a $\sigma$-algebra is that the latter is closed under countable unions. By a \dfntxt{measure on an algebra}, $\mathcal{A}$, we mean a function $\mu: \mathcal{A} \to [0, \infty]$ satisfying the properties
+\begin{enumerate}
+    \item[(i)] $\mu(\emptyset) = 0$,
+    \item[(ii)] if $\{A_i\}$ is a disjoint sequence of sets in $\mathcal{A}$ whose union is also in $\mathcal{A}$, then
+\end{enumerate}
+\[\begin{aligned}
+\mu\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} \mu(A_i).
+\end{aligned}\]
+\end{definition}
+
+\begin{remark}
+    A measure on the algebra \(  \mathcal{A}  \) is a  real measure, if and only if  \(  \mathcal{A}  \) is a \(   \sigma   \)-algebra.  
+\end{remark}
+
+\begin{definition}{}{8-29-1}
+ A measure \(  \mu   \)  on an algebra $\mathcal{A}$ is called \dfntxt{$\sigma$-finite} if $X$ can be written
+\[\begin{aligned}
+X = \bigcup_{i=1}^{\infty} A_i
+\end{aligned}\]
+with $A_i \in \mathcal{A}$ and $\mu(A_i) < \infty$.
+\end{definition}
+
+\begin{theorem}{}{}
+Let $\mu$ be a measure on an algebra $\mathcal{A}$ and let $\mu^*$ be the corresponding set function generated by $\mu$. Then
+\begin{enumerate}
+\item[(i)] $\mu^*$ is an outer measure.
+\item[(ii)] $\mu^*$ is an extension of $\mu$; that is, $\mu^*(A) = \mu(A)$ whenever $A \in \mathcal{A}$.
+\item[(iii)] Each $A \in \mathcal{A}$ is $\mu^*$-measurable.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+    The proof of (i) is similar to the proof of \(   \lambda ^{*}  \) is an outer measure. 
+    
+    Now we prove (ii). Take \(  A\in \mathcal{A}  \). It follows from definition that \[
+    \mu ^{*}\left( A \right)\le \mu \left( A \right)  
+    \] For the opposite of the inequality, we take any sequence \(  A_1 ,A_2,\cdots  \in \mathcal{A}  \), such that \[
+    A\subseteq \bigcup _{i= 1}^{\infty}A_{i}
+    \]We define \[
+    B_{i}:= \left( A\cap A_{i} \right)\setminus \left( \bigcup _{j\neq i} A_{j} \right)  
+    \]Then \(  B_1,B_2,\cdots   \) are disjoint members of \(  \mathcal{A}  \) and \[
+    A= \bigcup _{i= 1}^{\infty}B_{i}
+    \] Since \(  \mu   \) is additive on \(  \mathcal{A}  \), we have     \[
+    \mu \left( A \right) = \sum _{i= 1}^{\infty}\mu \left( B_{i} \right)\le \sum _{i= 1}^{\infty}\mu \left( A_{i} \right)  
+    \]Since the RHS tends to \(  \mu ^{*}\left( A \right)   \), we have \(  \mu \left( A \right)\le \mu ^{*}\left( A \right)    \)  . 
+
+    For (iii), we need to show \[
+    \mu ^{*}\left( E \right)\ge \mu ^{*}\left( A\setminus E \right)+ \mu ^{*}\left( A\cap E \right)   
+    \] for each \(  E\subseteq X  \). We may assume that \(  \mu ^{*}\left( E \right)< \infty   \).  We take \(  A_1,A_2,\cdots \in \mathcal{A}  \) such that \[
+    E\subseteq \bigcup _{i= 1}^{\infty}A_{i},\quad \sum _{i= 1}^{\infty}\mu \left( A_{i} \right)< \mu ^{*}\left( E \right)+  \varepsilon   
+    \] Then \[
+    A\cap E\subseteq \bigcup _{i= 1}^{\infty} \left( A_{i}\cap A \right)\implies  \mu ^{*}\left( A\cap E \right)\le \sum _{i= 1}^{\infty}\mu \left( A_{i}\cap A \right)   
+    \]  Since \(  \mu   \) is additive on \(  \mathcal{A}  \)   \[
+    \mu \left( A_{i} \right)= \mu \left( A_{i}\cap A \right)+ \mu \left( A_{i}\setminus A \right)   
+    \] And since \(  \mu   \) agrees with \(  \mu ^{*}  \) on \(  \mathcal{A}  \)   \[
+    \begin{aligned}
+    \mu ^{*}\left( E \right)+  \varepsilon &> \sum _{i= 1}^{\infty}\mu \left( A_{i} \right)\\ 
+     &= \sum _{i= 1}^{\infty}\mu \left( A_{i}\cap A \right)+ \sum _{i= 1}^{\infty}\mu \left( A_{i}\setminus A \right)\\ 
+      &\ge \mu ^{*}\left( A\cap E \right)+ \mu ^{*}\left( \bigcup _{i= 1}^{\infty}A_{i}\setminus A \right)\\ 
+       &\ge \mu ^{*}\left( A\cap E \right)+ \mu ^{*}\left( E\setminus A \right)         
+    \end{aligned}
+    \] Let \(   \varepsilon \to 0  \), we get \[
+    \mu ^{*}\left( E \right)\ge \mu ^{*}\left( A\cap E \right)+ \mu ^{*}\left( E\setminus A \right)   
+    \] Thus \(  A   \) is \(  \mu ^{*}  \)-measurable.   
+\end{proof}
+
+\begin{example}{}{}
+Let us see how the previous result can be used to produce Lebesgue–Stieltjes measure. Let $\mathcal{A}$ be the algebra formed by including $\emptyset, \mathbb{R}$, all intervals of the form $(-\infty, a]$, $(b, +\infty)$, along with all possible finite disjoint unions of these and intervals of the form $(a, b]$. Suppose that $f$ is a nondecreasing right-continuous function and define $\mu$ on intervals $(a, b]$ in $\mathcal{A}$ by
+\[\begin{aligned}
+\mu((a, b]) = f(b) - f(a),
+\end{aligned}\]
+and then extend $\mu$ to all elements of $\mathcal{A}$ by additivity. Then we see that the outer measure $\mu^*$ generated by $\mu$  agrees with the definition of Lebesgue–Stieltjes measure . Our previous result states that $\mu^*(A) = \mu(A)$ for all $A \in \mathcal{A}$, which agrees with Theorem above.
+\end{example}
+
+\begin{remark}{}{}
+In the previous example, the right continuity of $f$ is needed to ensure that $\mu$ is in fact a measure on $\mathcal{A}$. For example, if
+\[ f(x) := \begin{cases} 0 & x \le 0, \\ 1 & x > 0, \end{cases} \]
+then $\mu((0, 1]) = 1$. But $(0, 1] = \bigcup_{k=1}^{\infty} (\frac{1}{k+1}, \frac{1}{k}]$ and
+\[\begin{aligned}
+\mu\left(\bigcup_{k=1}^{\infty} (\frac{1}{k+1}, \frac{1}{k}]\right) &= \sum_{k=1}^{\infty} \mu((\frac{1}{k+1}, \frac{1}{k}]) \\
+&= 0,
+\end{aligned}\]
+which shows that $\mu$ is not a measure.
+\end{remark}
+
+\begin{theorem}{Carathéodory–Hahn extension theorem}{}
+Let $\mu$ be a measure on an algebra $\mathcal{A}$, let $\mu^*$ be the outer measure generated by $\mu$, and let $\mathcal{A}^*$ be the $\sigma$-algebra of $\mu^*$-measurable sets.
+\begin{enumerate}
+\item[(i)] Then $\mathcal{A}^* \supset \mathcal{A}$ and $\mu^* = \mu$ on $\mathcal{A}$.
+\item[(ii)] Let $\mathcal{M}$ be a $\sigma$-algebra with $\mathcal{A} \subset \mathcal{M} \subset \mathcal{A}^*$ and suppose $\nu$ is a measure on $\mathcal{M}$ that agrees with $\mu$ on $\mathcal{A}$. Then $\nu = \mu^*$ on $\mathcal{M}$ if $\mu$ is $\sigma$-finite.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+    (i) is just a restatement of Theorem \ref{dfn:8-29-1}.
+    
+    (ii) Take any \(  E\in \mathcal{M}  \), if \(  A_1,A_2,\cdots  \in \mathcal{A} \) is a countable collection  covering \(  E  \), then \[
+    \nu \left( E \right)\le \sum _{i= 1}^{\infty}\nu \left( A_{i} \right)= \sum _{i= 1}^{\infty}\mu ^{*}\left( A_{i} \right)   
+    \]  Since \(  \left\{ \sum _{i= 1}^{\infty}\mu ^{*}\left( A_{i} \right)  \right\}  \) tends to \(  \mu ^{*}\left( E \right)   \). We have \(  \nu \le \mu ^{*}  \) on \(  \mathcal{M}  \). To show the equality. Since \(  \mu   \) is \(   \sigma   \)-finite, there are disjoint \(  X_1,X_2,\cdots \in \mathcal{A}  \) such that \[
+    X\subseteq \bigcup _{i= 1}^{\infty}X_{i},\quad \mu \left( X_{i} \right)< \infty,\quad \forall i 
+    \]   Take any \(  A\in \mathcal{A}  \), such that \(  \mu \left( A \right)< \infty   \),  since \(  A\setminus E\in \mathcal{M}  \), we have \[
+    \mu ^{*}\left( A\setminus E \right)\ge \nu \left( A\setminus E \right)  = \nu \left( A \right)-\nu \left( E\cap A \right)= \mu \left( A \right)-\nu \left( E\cap A \right)    
+    \] That is \[
+    \nu \left( E\cap A \right)\ge \mu \left( A \right)-\mu ^{*}\left( A\setminus E \right)   \ge \mu ^{*}\left( E\cap A \right) 
+    \]From \(  \mu   \) is \(   \sigma   \)-finite, we know that there are disjoint \(  X_1,X_2,\cdots \in \mathcal{A}  \) such that  \[
+    X\subseteq \bigcup _{i= 1}^{\infty}X_{i},\quad \mu \left( X_{i} \right)< \infty,\forall i 
+    \]  Thus \[
+    \begin{aligned}
+    \nu \left( E \right)&= \nu \left( E\cap \left( \bigcup _{i= 1}^{\infty}X_{i} \right)  \right)   \\ 
+     &=  \sum _{i= 1}^{\infty}\nu \left( E\cap X_{i} \right)\\ 
+      &\ge\sum _{i= 1}^{\infty} \mu  ^{*}\left( E\cap X_{i} \right)  \\ 
+       &\ge \mu ^{*}\left( E \right) 
+    \end{aligned}
+    \]
+\end{proof}
+
+\begin{theorem}{}{}
+Suppose $(X,\mathcal{M},\mu)$ is a measure space, where $X$ is a metric space and $\mu$ is a finite Borel measure (that is, $\mathcal{M}$ denotes the Borel sets of $X$ and $\mu(X) < \infty$). Then for each $\varepsilon > 0$ and each Borel set $B$, there exist an open set $U$ and a closed set $F$ such that $F \subset B \subset U$, $\mu(B \setminus F) < \varepsilon$, and $\mu(U \setminus B) < \varepsilon$.
+\end{theorem}
+
+\begin{proof}
+    It is a immediate corollary of Theorem \ref{thm:8-30-1} and the agreements between \(  \mu   \) and \(  \mu ^{*}  \) on \(  \mathcal{M}  \)   .
+\end{proof}
+
+\begin{definition}{}{}
+    If $\mu$ is a measure defined on a $\sigma$-algebra $\mathcal{M}$ rather than on an algebra $\mathcal{A}$, there is another method for generating an outer measure. In this situation, we define $\mu^{**}$ on an arbitrary set $E \subset X$ by
+\[
+\mu^{**}(E) = \inf\{\mu(B) : B \supset E, B \in \mathcal{M}\}.
+\]
+
+\end{definition}
+\begin{remark}
+   We know \(  \mu ^{*}\le \mu ^{**}  \) from  definition.   
+    For \(  A_1,A_2,\cdots  \in \mathcal{M}  \) covering \(  E  \) , let \(  B_{i}= A_{i}\setminus A_{i-1}  \), \(  B= \bigcup _{i= 1}^{\infty}B_{i}  \).   \[
+  E\subseteq   B= \bigcup _{i= 1}^{\infty}A_{i},\quad \mu \left( B \right)= \sum _{i= 1}^{\infty}\mu \left( B_{i} \right)\le \sum _{i= 1}^{\infty}\mu \left( A_{i} \right)   
+    \] Which shows that  \(  \mu ^{*}\left( E \right)\le \mu ^{**}\left( E \right)    \) 
+\end{remark}
+\begin{theorem}{}{}
+Consider a measure space $(X, \mathcal{M}, \mu)$. The set function $\mu^{**}$ defined above is an outer measure on $X$. Moreover, $\mu^{**}$ is a regular outer measure and $\mu(B) = \mu^{**}(B)$ for each $B \in \mathcal{M}$.
+\end{theorem}
+
+\begin{proof}
+     The proof proceeds exactly as in Theorem \ref{thm:8-30-2}. One need only
+ replace each reference to a Borel set in that proof with M-measurable set. Since there we don't use any relation between Borel sets and open/closed sets at all. All we need there is Borel sets is a \(   \sigma   \)-algebra .
+\end{proof}
+
+\begin{theorem}{}{}
+Suppose $(X,\mathcal{M},\mu)$ is a measure space and let $\mu^*$ and $\mu^{**}$ be the outer measures generated by $\mu$ as described above in diffenrent ways, respectively. Then for each $E \subset X$ with $\mu(E) < \infty$ there exists $B \in \mathcal{M}$ such that $B \supset E$,
+\[ \mu^*(B) = \mu^*(E) = \mu^{**}(E). \]
+\end{theorem}
+\begin{proof}
+    We shall show the part that \(  \mu \left( B \right)= \mu ^{*}\left( B \right)= \mu ^{*}\left( E \right)     \). Then the ramaining had been shown above. 
+
+    For each \(k \in \mathbb{Z} _{> 0}  \) and every set \(  E  \), there exists a sequence \(  \left\{ A_{i} \right\}\in \mathcal{M}  \) such that  \[
+    E\subseteq \bigcup _{i= 1}^{\infty}A_{i},\quad \sum _{i= 1}^{\infty}\mu \left( A_{i} \right) < \mu ^{*}\left( E \right)+  \frac{1 }{k }  
+    \]  Setting \(  B_{k} = \bigcup _{i= 1}^{\infty}A_{i}  \) for that.  Then \[
+    E\subseteq B_{k},\quad \mu \left( B _{k}\right)< \mu ^{*}\left( E \right)+ \frac{1 }{k }   
+    \] And setting \[
+    B: = \bigcap_{k= 1}^{\infty}B_{k} 
+    \], we get \[
+    E\subseteq B,\quad \mu \left( B \right)\le \mu ^{*}\left( E \right)  \implies \mu \left( B \right)= \mu ^{*}\left( E \right)  
+    \]
+\end{proof}
+\end{document}       

@@ -1,0 +1,35 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+}{}
+
+\chapter{ Measurable Functions }
+
+\begin{definition}{}{}
+    We endow $\overline{\mathbb{R}}$ with a topology called the order topology in the following manner. For each $a \in \mathbb{R}$ let
+\[
+L_a = \overline{\mathbb{R}} \cap \{x : x < a\} = [-\infty, a) \quad \text{and} \quad R_a = \overline{\mathbb{R}} \cap \{x : x > a\} = (a, \infty].
+\]
+The collection $\mathcal{S} = \{L_a : a \in \mathbb{R}\} \cup \{R_a : a \in \mathbb{R}\}$ is taken as a subbasis for this topology. A basis for the topology is given by
+\[
+\mathcal{S} \cup \{R_a \cap L_b : a, b \in \mathbb{R}, a < b\}.
+\]
+Observe that the topology on $\mathbb{R}$ induced by the order topology on $\overline{\mathbb{R}}$ is precisely the usual topology on $\mathbb{R}$.
+\end{definition}
+
+\begin{definition}{Measurable Functions}{}
+   \begin{itemize}
+    \item  Suppose $(X, \mathcal{M})$ and $(Y, \mathcal{N})$ are measure spaces. A mapping $f: X \to Y$ is called \dfntxt{measurable with respect to $\mathcal{M}$ and $\mathcal{N}$} if
+$f^{-1}(E) \in \mathcal{M} \text{ whenever } E \in \mathcal{N}.$
+If there is no danger of confusion, reference to $\mathcal{M}$ and $\mathcal{N}$ will be omitted, and we will simply use the term ``measurable mapping.''
+   \end{itemize}
+   
+\end{definition}
+
+
+\end{document}
