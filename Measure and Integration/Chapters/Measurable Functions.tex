@@ -10,6 +10,8 @@
 
 \chapter{ Measurable Functions }
 
+\section{Elementray Properties of Measruable Functions}
+
 \begin{definition}{}{}
     We endow $\overline{\mathbb{R}}$ with a topology called the order topology in the following manner. For each $a \in \mathbb{R}$ let
 \[
@@ -27,9 +29,59 @@ Observe that the topology on $\mathbb{R}$ induced by the order topology on $\ove
     \item  Suppose $(X, \mathcal{M})$ and $(Y, \mathcal{N})$ are measure spaces. A mapping $f: X \to Y$ is called \dfntxt{measurable with respect to $\mathcal{M}$ and $\mathcal{N}$} if
 $f^{-1}(E) \in \mathcal{M} \text{ whenever } E \in \mathcal{N}.$
 If there is no danger of confusion, reference to $\mathcal{M}$ and $\mathcal{N}$ will be omitted, and we will simply use the term ``measurable mapping.''
+\item If $Y$ is a topological space, a restriction is placed on $\mathcal{N}$. In this case it is always assumed that $\mathcal{N}$ is the $\sigma$-algebra of Borel sets $\mathcal{B}$. Thus, in this situation, a mapping $(X,\mathcal{M}) \xrightarrow{f} (Y,\mathcal{B})$ is measurable if
+\[\begin{aligned}
+f^{-1}(E) \in \mathcal{M} \text{ whenever } E \in \mathcal{B}.
+\end{aligned}\]
+\item When $Y$ is taken as $\overline{\mathbb{R}}$ (endowed with the order topology) and $(X,\mathcal{M})$ is a topological space with $\mathcal{M}$ the collection of Borel sets. Then $f$ is called a \dfntxt{Borel measurable function}. 
+\item When $X = \mathbb{R}^n$, $\mathcal{M}$ is the class of Lebesgue measurable sets and $Y = \overline{\mathbb{R}}$. Here, the measurability of \(  f  \)  required that $f^{-1}(E)$ be Lebesgue measurable whenever $E \subset \overline{\mathbb{R}}$ is Borel, in which case $f$ is called a \dfntxt{Lebesgue measurable function}. The definitions imply that $E$ is a measurable set if and only if $\chi_E$ is a measurable function.
+
    \end{itemize}
    
 \end{definition}
+
+\begin{theorem}{}{}
+    If the mapping $(X, \mathcal{M}) \xrightarrow{f} (Y, \mathcal{B})$ is measurable, where $\mathcal{B}$ is the $\sigma$-algebra of Borel sets.  Define
+\[\begin{aligned}
+\Sigma = \{E : E \subset Y \text{ and } f^{-1}(E) \in \mathcal{M}\}.
+\end{aligned}\]Then \(   \Sigma   \) is a \(   \sigma   \)-algebra.  
+\end{theorem}
+\begin{proof}
+    Easy to verify.
+\end{proof}
+
+\begin{corollary}{}{}
+    A continuous mapping is a Borel measurable function.
+\end{corollary}
+\begin{proof}
+   If \(  f  \) is continuous, \(   \Sigma   \) contains all open open sets. Since \(   \Sigma   \) is a \(   \sigma   \)-algebra, \(   \Sigma   \) contains all Borel sets.   
+\end{proof}
+
+\begin{definition}{}{}
+    If \(  f: X\bar{\to}\mathbb{R}   \), we call the sets \[
+    \left\{ f> a \right\}:= \left\{ x\in X:f\left( x \right)> a  \right\}
+    \]the \dfntxt{superlevel sets of \(  f  \) }. 
+\end{definition}
+
+\begin{theorem}{}{}
+Let $f: X \to \overline{\mathbb{R}}$, where $(X,\mathcal{M})$ is a measure space. The following conditions are equivalent:
+\begin{enumerate}
+\item[(i)] $f$ is measurable.
+\item[(ii)] $\{f > a\} \in \mathcal{M}$ for each $a \in \mathbb{R}$.
+\item[(iii)] $\{f \ge a\} \in \mathcal{M}$ for each $a \in \mathbb{R}$.
+\item[(iv)] $\{f < a\} \in \mathcal{M}$ for each $a \in \mathbb{R}$.
+\item[(v)] $\{f \le a\} \in \mathcal{M}$ for each $a \in \mathbb{R}$.
+\end{enumerate}
+\end{theorem}
+
+
+\begin{theorem}{}{}
+A function $f: X \to \overline{\mathbb{R}}$ is measurable if and only if
+\begin{enumerate}
+    \item[(i)] $f^{-1}\{-\infty\} \in \mathcal{M}$ and $f^{-1}\{\infty\} \in \mathcal{M}$ and
+    \item[(ii)] $f^{-1}(a,b) \in \mathcal{M}$ for all open intervals $(a,b) \subset \mathbb{R}$.
+\end{enumerate}
+\end{theorem}
 
 
 \end{document}
