@@ -1,0 +1,96 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+}{}
+
+\chapter{ Week 1 }
+
+代靖涵 25120222201319
+
+\begin{exercise}{}{}
+写出下列随机试验的样本空间:
+\begin{enumerate}
+    \item 抛三枚硬币;
+    \item 抛三颗骰子;
+    \item 连续抛一枚硬币,直至出现正面为止;
+    \item 口袋中有黑、白、红球各一个,先从中任取出一个,放回后再任取出一个;
+    \item 口袋中有黑、白、红球各一个,先从中任取出一个,不放回后再任取出一个.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}
+        \item 将硬币出现正,反面分别记作 \(  Z,F  \). 则样本空间为 \[
+        \left\{ Z,F \right\}^{3}
+        \] 
+        \item 将一次试验的结果用有序三元组 \(  (k_1,k_2,k_3)  \)表示, 其中 \(  k_{i}  \)为第 \(  i  \)颗骰子的点数, 则样本空间为 \[
+        \left\{ 1,2,3,4,5,6 \right\}^{3}
+        \]   
+        \item 定义 \(   \omega _{k}  \)为一个长度为 \(  k  \)的有序组: \[
+         \omega _{k}= \left( a_1,a_2,\cdots ,a_{k} \right) ,\text{其中 } a_{k}= Z \text{ 且 } a_{i}= F , \forall 1\le i< k  
+        \]  用 \(   \omega _{k}  \)表示前 \(  k-1  \)次为反面,  第 \(  k  \)次为正面的结果.  则样本空间为 \[
+         \Omega = \left\{  \omega _{k}: k \in \mathbb{Z} _{> 0} \right\}
+        \] 
+        \begin{remark}
+            理论上存在一个永不出现正面的结果, 即无限序列 $\omega_{\infty} = (F, F, F, \dots)$. 可以考虑样本空间为 \[
+            \left\{  \omega _{k}:k\in \mathbb{Z} _{> 0} \right\}\cup \left\{  \omega _{\infty} \right\}
+            \]
+        \end{remark}
+        \item 将黑,白,红的结果分别记作 \(  B,W,R  \). 将一次试验的结果用\( S:=  \left\{ B,W,R \right\}  \)上的一个有序二元组表示, 则样本空间为 \[
+        S^{2}= \left\{ B,W,R \right\}^{2}
+        \]  
+        \item \(  B,W,R  ,S\)同上. 样本空间为 \[
+         \Omega = \left\{ \left( s_1,s_2 \right)\in S^{2}:s_1\neq s_2  \right\}
+        \] 
+    \end{enumerate}
+    
+\end{solution}
+
+
+\begin{exercise}{}{}
+先抛一枚硬币,若出现正面(记为 $Z$),则再掷一颗骰子,试验停止;若出现反面(记为 $F$),则再抛一次硬币,试验停止.那么该试验的样本空间 $\Omega$ 是什么?
+\end{exercise}
+\begin{solution}
+    用 \(  S: = \left\{ Z,F \right\}  \)表示硬币出现的两种结果, 用 \(  T: = \left\{ 1,2,3,4,5,6 \right\}  \)表示掷骰子出现的点数结果. 则样本空间为 \[
+     \Omega = \left( \left\{ Z \right\}\times T \right)\sqcup \left( \left\{ F \right\}\times S  \right) 
+    \]  
+\end{solution}
+
+\begin{exercise}{}{}
+设 $A,B,C$ 为三事件,试表示下列事件:
+\begin{enumerate}
+    \item $A,B,C$ 都发生或都不发生;
+    \item $A,B,C$ 中不多于一个发生;
+    \item $A,B,C$ 中不多于两个发生;
+    \item $A,B,C$ 中至少有两个发生.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item 都发生: \[
+        A\cap B\cap C
+        \]都不发生: \[
+        A^{c}\cap B^{c}\cap C^{c}
+        \]于是该情况用集合表示为 \[
+        \left( A\cap B\cap C \right)\cup \left( A^{c}\cap B^{c}\cap C^{c} \right)  
+        \]
+        \item  \[
+        \left( A\cap B^{c}\cap C^{c} \right)\cup \left( A^{c}\cap B\cap C^{c} \right)\cup \left( A^{c}\cap B^{c}\cap C \right)   \cup \left( A^{c}\cap B^{c}\cap C^{c} \right) 
+        \] 或者等价的, 这当且仅当 \(  A,B,C  \)中至少有两个不发生, 即 \[
+        \left( A^{c}\cap B^{c} \right)\cup \left( A^{c}\cap C^{c} \right)\cup \left( B^{c}\cap C^{c} \right)   
+        \] 
+        \item \(  A,B,C  \)不多于两个发生, 当且仅当 \(  A,B,C  \)不会同时发生, 用集合表示为  \[
+        \left( A\cap B\cap C \right)^{c} 
+        \]
+        \item A,B,C中至少有两个发生,当且仅当 \(  A  \)和\(  B  \), \(  A  \)和 \(  C  \), \(  B  \)和 \(  C  \)三组中至少一个同时发生,即 \[
+        \left( A\cap B \right)\cup \left( A\cap C \right)\cup \left( B\cap C \right)   
+        \]      
+    \end{enumerate}
+    
+\end{proof}
+\end{document}
