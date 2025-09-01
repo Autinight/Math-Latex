@@ -121,7 +121,7 @@ P(A_1 \cap A_2 \cap A_3) = 1/4 \neq 1/8 = P(A_1)P(A_2)P(A_3)
 \end{definition}
 
 \begin{lemma}{}{}
-Without loss of generality we can suppose each $A_i$ contains $\Omega$. In this case the condition is equivalent to
+Without loss of generality we can suppose each $\mathcal{A}_{i}$ contains $\Omega$. In this case the condition is equivalent to
 \[
 P \left(\bigcap_{i=1}^n A_i\right) = \prod_{i=1}^n P(A_i) \text{ whenever } A_i \in \mathcal{A}_i
 \]
@@ -147,6 +147,39 @@ If $\mathcal{P}$ is a $\pi$-system and $\mathcal{L}$ is a $\lambda$-system that 
 \begin{theorem}{}{8-3-1}
 Suppose $\mathcal{A}_1, \mathcal{A}_2, \dots, \mathcal{A}_n$ are independent and each $\mathcal{A}_i$ is a $\pi$-system. Then $\sigma(\mathcal{A}_1), \sigma(\mathcal{A}_2), \dots, \sigma(\mathcal{A}_n)$ are independent.
 \end{theorem}
+\begin{proofsketch}
+     对于任一取定的事件 \(  F \),  ``(取定任一集族中)与 \(  F  \)独立 ''的性质集是一个 \(   \lambda   \)-system. 由于 \(  \mathcal{A}_{1}  \)是 \(   \pi  \)-system,  于是 \(  \mathcal{A}_{1}  \)中与 \(  F  \)独立 的集合包含了 \(   \sigma \left( \mathcal{A}_{1} \right)   \), 通过任意的 \(  F  \), 传递归纳 集族的独立性一步步``升级''到 它们的生成 \(   \sigma   \)-代数上.   
+\end{proofsketch}
+\begin{remark}
+    It is not easy to show that if \(  A,B \in \mathcal{L}  \) then \(  A\cap B\in \mathcal{L}  \) or \(  A\cup B\in \mathcal{L}  \), but it is easy to check that if \(  A,B\in \mathcal{L}  \) with \(  A\subseteq B  \), then \(  B-A\in \mathcal{L}  \).      
+\end{remark}
+\begin{proof}
+    Let \( F\in \mathcal{P}\) be any event. We define \[
+    \mathcal{L}: = \left\{ A\in \mathcal{A}_{1}: P\left( A\cap F \right)= P\left( A \right)P\left( F \right)    \right\}
+    \]We check that \(  \mathcal{L}  \)   is a \(   \lambda   \)-system. (i) follows from  \(  P\left( A\cap  \Omega  \right)= P\left( A \right)\cdot 1= P\left( A \right)P\left(  \Omega  \right)      \). To show (ii), we take  \( A, B \in \mathcal{L}, B\supseteq A  \). Note that \[
+    \left( B-A \right)\cap F=  \left( B\cap F \right)-\left( A\cap F \right),  
+    \] we have \[
+    \begin{aligned}
+    P\left( \left( B\setminus A \right)\cap F  \right)&= P\left( \left( B\cap F \right)-\left( A\cap F \right)   \right)\\ 
+     &=    P\left( B\cap F \right)-P\left( A\cap F \right)\\ 
+      &=   P\left( B \right)P\left( F \right)-P\left( A \right)P\left( F \right)\\ 
+       &= \left( P\left( B \right)-P\left( A \right)   \right)P\left( F \right)=  P\left( \left( B-A \right)  \right)P\left( F \right)       
+    \end{aligned}
+    \]   which shows that \(  \left( B-A \right)\in \mathcal{L}   \) 
+
+    For (iii), take \(  B_{n}\in \mathcal{L}, B_{n}\uparrow B \). Then since \(  \left( B_{n}\cap F \right)\uparrow B\cap F   \), we have \[
+    \begin{aligned}
+    P\left( B\cap F \right)&= \lim_{n\to \infty} P\left( B_{n}\cap F \right)\\ 
+     &= \lim_{n\to \infty}P\left( B_{n} \right)P\left( F \right)\\ 
+      &=  P\left( B \right)P\left( F \right)      
+    \end{aligned},
+    \]which implies that \(  B \in \mathcal{L}  \). 
+    Thus \(  \mathcal{L}  \) is a \(   \lambda   \)-system. It follows from \(   \pi- \lambda   \) Theorem that \(  \mathcal{L}\supseteq  \sigma \left( \mathcal{A}_{1} \right)   \)  For each \(  A_2,\cdots ,A_{n}  \), \(  A_{i}\in \mathcal{A}_{i},i= 2,3,\cdots ,n  \), by taking \(  F= \bigcap_{i= 2}^{n}A_{i}   \), we have \[
+    P\left( A \cap A_2\cap \cdots \cap A_{n}\right)= P\left( A \right)P\left( \bigcap_{i= 2}^{n}A_{i}  \right)= P\left( A \right)P\left( A_2 \right)\cdots P\left( A_{n} \right),\quad \forall  A\in  \sigma \left( \mathcal{A}_{1} \right)       
+    \]      We get that \[
+\tag{*} \text{if }   \mathcal{A}_{1},\cdots ,\mathcal{A}_{n}  \text{ are independent }  \pi-\text{systems, then }  \sigma \left( \mathcal{A}_{1} \right),\mathcal{A}_{2},\cdots ,\mathcal{A}_{n}\text{ are as well}  
+    \]  By applying \(  (*)  \) into \(  \mathcal{A}_{2},\cdots ,\mathcal{A}_{n},  \sigma \left( \mathcal{A}_{1} \right)   \), we get \(   \sigma \left( \mathcal{A}_{2} \right),\mathcal{A}_{3},\cdots ,\mathcal{A}_{n}, \sigma \left( \mathcal{A}_{1} \right)    \)    are independent. The proof completes after \(  n  \) iterations. 
+\end{proof}
  
 \begin{theorem}{}{}
 In order for $X_1, \dots, X_n$ to be independent, it is sufficient that for all $x_1, \dots, x_n \in (-\infty, \infty]$
