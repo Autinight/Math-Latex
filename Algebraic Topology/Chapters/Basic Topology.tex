@@ -2,6 +2,55 @@
 
 \begin{document}
 \chapter{Basic Topology}
+
+\section{度量空间}
+
+\begin{definition}{}{}
+    令 \(  X \neq \varnothing  \)是一个非空集合.  \(  X  \)上的一个度量, 是指一个映射 \[
+    \begin{aligned}
+    d: X\times X&\to \mathbb{R} \\ 
+     \left( x,y\right)&\mapsto d\left( x,y \right)   
+    \end{aligned}
+    \]使得对于任意的 \(  x,y,z\in X  \), 有
+    \begin{enumerate}
+        \item \(  d\left( x,y \right)\ge 0   \), 且 \(  d\left( x,y \right)= 0   \iff  x= y\)  
+        \item \(  d\left( x,y \right)= d\left( y,x \right)    \) 
+        \item \(  d\left( x,z \right)\le d\left( x,y \right)+ d\left( y,z \right)     \)  
+    \end{enumerate}
+       
+\end{definition}
+
+\begin{example}{}{}
+    \(  X\neq \varnothing  \), 定义 \(  d:X\times X\to \mathbb{R}   \) \[
+    d\left( x,y \right)= \begin{cases} 0,&x= y \\ 
+     1,&x\neq y\end{cases}  
+    \]  是一个度量.
+\end{example}
+\begin{proof}
+    1.2.是显然的. 3.当 \(  x= z  \)时是显然的. 若 \(  x\neq z  \), 则要么 \(  x\neq y  \), 要么 \(  z\neq y  \), 从而 \[
+    d\left( x,z \right)= 1\le d\left( x,y \right)  + d\left( y,z \right) 
+    \]   
+\end{proof}
+
+\begin{exercise}{}{}
+    设 \(  \left( X,d \right)   \)是度量空间, 定义 \[
+    \rho :X\times X\to \mathbb{R} 
+    \] \[
+    \rho \left( x,y \right)= \frac{d\left( x,y \right)  }{1+ d\left( x,y \right)  }  
+    \]则 \(  \rho   \)是一个有界度量.  
+\end{exercise}
+\begin{proof}
+    1.2.是显然的, 验证度量的第三条定义,  \[
+    \begin{aligned}
+    \frac{d\left( x,z \right)  }{1+ d\left( x,z \right)  }+ \frac{d\left( y,z \right)  }{1+ d\left( y,z \right)  }&= \frac{2d\left( x,z \right)d\left( y,z \right)  + d\left( x,z \right)+ d\left( y,z \right)    }{d\left( x,z \right)d\left( y,z \right)+ d\left( x,z \right)+ d\left( y,z \right)+ 1      }   \\ 
+    & \ge \frac{d\left( x,z \right)d\left( y,z \right)+ d\left( x,z \right)+ d\left( y,z \right)     }{d\left( x,z \right)d\left( y,z \right)+ d\left( x,z \right)+ d\left( y,z \right)+ 1     }  
+    \end{aligned}
+    \]其中最后一行小于等于 \(  1  \), 由 \(  d\left( x,z \right)+ d\left( y,z \right)\ge d\left( x,y \right)     \), 利用不等式 \[
+    \frac{a+ c }{b+ c }\ge \frac{a }{b },\quad (0< a\le b  , c\ge 0)
+    \]可得上式最后一行大于等于 \[
+    \frac{d\left( x,z \right)d\left( y,z \right)+ d\left( x,y \right)    }{d\left( x,z \right)d\left( y,z \right)+ d\left( x,y \right)+ 1    } \ge \frac{d\left( x,y \right)  }{d\left( x,y \right)+ 1  }  
+    \]  
+\end{proof}
 \section{Exercises}
 
 \begin{problem}{Convex Bodies}{}

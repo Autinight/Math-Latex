@@ -1,0 +1,247 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{ Week 1 }
+
+代靖涵 25120222201319
+
+\begin{exercise}{}{9-2-1}
+     设 \(  \left\{ f_{k} \right\}  \)为实值函数列且 \(  g\left( x \right)= \sup _{k\in \mathbb{N} }f_{k}\left( x \right)    \), \(  h\left( x \right)= \inf _{k\in \mathbb{N} }f_{k}\left( x \right)    \). 证明: \(  \forall a\in \mathbb{R}   \)
+    \begin{enumerate}
+        \item \[
+        \left\{ x:g\left( x \right)> a  \right\}= \bigcup _{k= 1}^{\infty}\left\{ x:f_{k}\left( x \right)> a  \right\},
+        \]
+        \item \[
+        \left\{ x: g\left( x \right)\le a  \right\}= \bigcap_{k= 1}^{\infty}\left\{ x:f_{k}\left( x \right)\le a  \right\} ,
+        \]
+        \item \[
+        \left\{ x:h\left( x \right)< a  \right\}= \bigcup _{k= 1}^{\infty}\left\{ x:f_{k}\left( x \right)< a  \right\},
+        \]
+        \item \[
+        \left\{ x:h\left( x \right)\ge a  \right\}= \bigcap_{k= 1}^{\infty}\left\{ x:f_{k}\left( x \right)\ge a  \right\} ,
+        \]
+    \end{enumerate}
+        
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 给定 \(  x  \), \(  g\left( x \right)> a   \)当且仅当 \(  a  \)不是 \(  \left\{ f_{k}\left( x \right)  \right\}  \)的上界,这当且仅当存在 \(  k\in \mathbb{N}   \),使得 \(  f_{k}\left( x \right)> a   \).即 存在 \(  k \in \mathbb{N}   \), 使得 \(  x \in \left\{ x:f_{k}\left( x \right)> a  \right\}  \),也就是说 \[
+        x \in \bigcup _{k= 1}^{\infty}\left\{ x:f_{k}\left( x \right)> a  \right\}
+        \]因此 \[
+        \left\{ x:g\left( x \right)> a  \right\}= \bigcup _{k= 1}^{\infty}\left\{ x:f_{k}\left( x \right)> a  \right\}
+        \]  
+        \item  \(  g\left( x \right)\le a   \), 当且仅当 \(  a  \)是 \(  \left\{ f_{k}\left( x \right)  \right\}  \)的上界; 当且仅当对于任意的   \(  k\in \mathbb{N}   \), \(  f_{k}\left( x \right)\le a   \); 当且仅当 \[
+        x \in \bigcap_{k= 1}^{\infty}\left\{ x:f_{k}\left( x \right)\le a  \right\} 
+        \]
+        \item 注意到 \[
+        h\left( x \right)=  -\sup _{k\in \mathbb{N} }(-f_{k}\left( x \right) ) 
+        \] \(  h\left( x \right)< a   \)当且仅当 \(  \sup _{k\in \mathbb{N} }(-f_{k}\left( x \right) )> -a  \) . 将1.的结果应用于实值函数列 \(  \left\{ -f_{k}\left( x \right)  \right\}  \)以及值 \( - a  \), 得到 \[
+        \begin{aligned}
+        \left\{ x:h\left( x \right)< a  \right\}= \left\{ x: \sup _{k\in \mathbb{N} }\left( -f_{k}\left( x \right) \right) > -a  \right\}&= \bigcup _{k= 1}^{\infty} \left\{ x: -f_{k}\left( x \right) > -a \right\}\\ 
+         &= \bigcup _{k= 1}^{\infty}\left\{ x:  f_{k}\left( x \right)< a \right\}
+        \end{aligned}
+        \]   
+        \item 类似地, \(  h\left( x \right)\ge a   \)当且仅当 \(  \sup _{k\in \mathbb{N} }(-f_{k}\left( x \right) )\le -a  \). 将2.的结果应用与实值函数列 \(  \left\{ -f_{k}\left( x \right)  \right\}  \)以及值 \(  -a  \), 得到   \[
+        \begin{aligned}
+        \left\{ x:h\left( x \right)\ge a  \right\}= \left\{ x:\sup _{k\in \mathbb{N} }(-f_{k}\left( x \right) )\le -a \right\}&= \bigcap _{k= 1}^{\infty}\left\{ x:-f_{k}\left( x \right)\le -a  \right\}\\ 
+         &= \bigcap _{k= 1}^{\infty}\left\{ x:f_{k}\left( x \right)\ge a  \right\} 
+        \end{aligned}
+        \]  
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{exercise}{}{9-2-2}
+    设 $\{f_m\}$ 为实值函数列. 下列等式是否成立? 若成立请证明, 若不成立请举出反例.
+\begin{enumerate}
+\item[(i)] $\bigcup_{k=1}^{\infty} \bigcap_{m=1}^{\infty} \{x : f_m(x) \ge \frac{1}{k}\} = \bigcup_{k=1}^{\infty} \bigcap_{m=1}^{\infty} \{x : f_m(x) > \frac{1}{k}\};$
+\item[(ii)] $\bigcap_{k=1}^{\infty} \bigcup_{m=1}^{\infty} \{x : f_m(x) \le \frac{1}{k}\} = \bigcap_{k=1}^{\infty} \bigcup_{m=1}^{\infty} \{x : f_m(x) < \frac{1}{k}\}.$
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+  \begin{enumerate}
+    \item  由于  \[
+ \left\{ x:f_{m}\left( x \right)\ge \frac{1 }{k }   \right\}\supseteq  \left\{ x:f_{m}\left( x \right)> \frac{1 }{k }   \right\} 
+    \]故 \[
+    LHS\supseteq RHS
+    \]另一方面, 注意到 \[
+    \left\{ x:f_{m}\left( x \right)\ge \frac{1 }{k }   \right\}\subseteq \left\{ x:f_{m}\left( x \right)> \frac{1 }{k+ 1 }   \right\}
+    \]我们有 \[
+    \bigcup _{k= 1}^{\infty}\bigcap_{m= 1}^{\infty}\left\{ x:f_{m}\left( x \right)\ge \frac{1 }{k }   \right\} \subseteq \bigcup _{k= 2}^{\infty}\bigcap_{m= 1}^{\infty}\left\{ x:f_{m}\left( x \right)> \frac{1 }{k }   \right\}\subseteq \bigcup _{k= 1}^{\infty}\bigcap_{m= 1}^{\infty}\left\{ x:f_{m}\left( x \right)> \frac{1 }{k }   \right\}  
+    \]因此两集合相等. 
+    \item 由于 \[
+    \left\{ x:f_{m}\left( x \right)\le \frac{1 }{k }   \right\}\supseteq \left\{ x:f_{m}\left( x \right)< \frac{1 }{k }   \right\}
+    \]故 \[
+    LHS\supseteq RHS
+    \]另一方面,  \[
+    \left\{ x:f_{m}\left( x \right)\le \frac{1 }{k }   \right\}\subseteq \left\{ x:f_{m}\left( x \right)< \frac{1 }{k-1 }   \right\},\quad \forall k\ge 2
+    \] \[
+   \begin{aligned}
+    \bigcap_{k= 1}^{\infty}\bigcup _{m= 1}^{\infty}\left\{ x:f_{m}\left( x \right)\le \frac{1 }{k }   \right\}&\subseteq \bigcap_{k= 2}^{\infty}\bigcup _{m= 1}^{\infty}\left\{ x:f_{m}\left( x \right)\le \frac{1 }{k }   \right\}\\ 
+     &\subseteq \bigcap_{k= 2}^{\infty}\bigcup _{m= 1}^{\infty}\left\{ x:f_{m}\left( x \right)< \frac{1 }{k-1 }   \right\} \\ 
+      &=  \bigcap_{k= 1}^{\infty}\bigcup _{m= 1}^{\infty}\left\{ x:f_{m}\left( x \right)< \frac{1 }{k }   \right\}    
+   \end{aligned}
+    \]因此两集合相等.
+  \end{enumerate}
+  
+\end{proof}
+
+\begin{exercise}{}{9-2-3}
+    设 $A_1 \subset A_2 \subset \cdots \subset A_n \subset \cdots$, $B_1 \subset B_2 \subset \cdots \subset B_n \subset \cdots$, 则
+\[ \left( \bigcup_{n=1}^{\infty} A_n \right) \cap \left( \bigcup_{n=1}^{\infty} B_n \right) = \bigcup_{n=1}^{\infty} (A_n \cap B_n). \]
+\end{exercise}
+\begin{proof}
+    \[
+    \begin{aligned}
+    x\in LHS&\iff \exists n_1,n_2\in \mathbb{N} , s.t. x\in A_{n_1}\cap B_{n_2} 
+    \end{aligned}
+    \] 不妨设 \(  n_2\ge n_1  \), 则\[
+    x \in A_{n_1}\cap B_{n_2}\implies  x \in A_{n_2}\cap B_{n_2}\subseteq \bigcup _{n = 1}^{\infty}\left( A_{n}\cap B_{n} \right) 
+    \] 因此 \[
+    LHS \subseteq RHS
+    \] 另一方面, 若 \(  x \in \bigcup _{n = 1}^{\infty}\left( A_{n}\cap B_{n} \right)   \), 则存在 \(  n_0\in \mathbb{Z} _{> 0}  \), 使得 \[
+    x\in A_{n_0}\cap B_{n_0}
+    \]从而 \[
+    x \in A_{n_0}\subseteq \bigcup _{n = 1}^{\infty}A_{n},\quad x\in B_{n_0}\subseteq \bigcup _{n = 1}^{\infty}B_{n}
+    \]进而 \[
+    x \in \left( \bigcup _{n = 1}^{\infty}A_{n} \right)\cup \left( \bigcup  _{n =  1}^{\infty}B_{n}  \right) 
+    \]  这表明 \[
+    RHS\supseteq LHS
+    \]综上, 命题中两集合相等.
+\end{proof}
+
+\begin{exercise}{}{}
+    设有集合 $A,B,E$ 和 $F$.
+\begin{enumerate}
+\item[(i)] 若 $A \cup B = E \cup F, A \cap F = \emptyset$ 以及 $B \cap E = \emptyset$, 则
+$A = E \text{且} B = F;$
+\item[(ii)] 若 $A \cup B = E \cup F$, 令 $A_1 = A \cap E, A_2 = A \cap F$, 则
+$A_1 \cup A_2 = A.$
+\end{enumerate}
+\end{exercise}
+
+ \begin{proof}
+ \begin{enumerate}
+    \item[(i)]  \[
+  E\subseteq  E\cup F= A\cup B
+  \] 由于 \(  B\cap E= \varnothing  \), 因此 \[
+  E\subseteq  A
+  \] 类似地, \[
+  F\subseteq E\cup F= A\cup B
+  \], 由于 \(  A\cap F= \varnothing  \), 我们有 \[
+  F\subseteq B
+  \] 由对称性, 通过调换 \(  E  \)和 \(  A  \), \(  B  \)和 \(  F  \)的位置, 可得 \[
+  A\subseteq E,\quad B\subseteq F
+  \]   因此 \[
+  A= E,\quad B= F
+  \]
+  \item[(ii)]  \[
+  A_1\cup A_2= \left( A\cap E \right)\cup \left( A\cap F \right)= A\cap \left( E\cup F \right)= A\cap \left( A\cup B \right)= A    
+  \]
+ \end{enumerate}
+ 
+ \end{proof}
+
+ \begin{exercise}{}{}
+设$\{f_j(x)\}$是定义在$\mathbf{R}^n$上的函数列, 试用点集 $\{x: f_j(x) \ge 1/k\} \quad (j,k = 1,2,\cdots)$ 表示点集$\{x: \varlimsup_{j\to\infty} f_j(x)>0\}$.
+\end{exercise}
+\begin{proof}
+     \[
+     \overline{\lim}_{j\to \infty}f_{j}\left( x \right)= \inf _{j\in \mathbb{Z} _{> 0}} \sup _{m\ge j}f_{m}\left( x \right)  
+     \] 令\(  g_{j}\left( x \right): = \sup _{m\ge j}f_{m}\left( x \right)    \). 则\[
+     \left\{ x: \overline{\lim}_{j\to \infty}f_{j}\left( x \right)> 0  \right\}= \left\{ x: \inf _{j\in \mathbb{Z} _{> 0}}g_{j}\left( x \right)> 0  \right\}
+     \] 其中 \[
+     \left\{ x:\inf _{j\in \mathbb{Z} _{> 0}}g_{j}\left( x \right)> 0  \right\}= \bigcup _{k= 1}^{\infty}\left\{ x: \inf _{j\in \mathbb{Z} _{> 0}}g_{j}\left( x \right)\ge \frac{1 }{k }   \right\}
+     \]由Exercise \ref{ex:9-2-1}可知 \[
+     \left\{ x:\inf _{j\in \mathbb{Z} _{> 0}}g_{j}\left( x \right)\ge \frac{1 }{k }   \right\}= \bigcap_{j= 1}^{\infty}\left\{ x:g_{j}\left( x \right)\ge \frac{1 }{k }   \right\} 
+     \]因此 \[
+     \left\{ x:\overline{\lim}_{j\to \infty}f_{j}\left( x \right)> 0  \right\}= \bigcup _{k= 1}^{\infty}\bigcap_{j= 1}^{\infty}\left\{ x: \sup _{m\ge j}f_{m}\left( x \right)\ge \frac{1 }{k }   \right\} 
+     \] 对函数列 \(  \left\{ \sup _{m\ge j}f_{m}\left( x \right)  \right\}_{j}  \)应用 Exercise  \ref{ex:9-2-2} (i), 得到 \[
+     \bigcup _{k= 1}^{\infty}\bigcap_{j= 1}^{\infty}\left\{ x: \sup _{m\ge j}f_{m}\left( x \right)\ge \frac{1 }{k }   \right\}= \bigcup _{k= 1}^{\infty}\bigcap_{j= 1}^{\infty}\left\{ x: \sup _{m\ge j}f_{m}\left( x \right)> \frac{1 }{k }   \right\}  
+     \]再由 Exercise \ref{ex:9-2-1} 1.的结果,得到 \[
+     \left\{ x:\sup _{m\ge j}f_{m}\left( x \right)> \frac{1 }{k }   \right\}= \bigcup _{m= j}^{\infty}\left\{ x:f_{m}\left( x \right)> \frac{1 }{k }   \right\}
+     \]最终我们有 \[
+     \left\{ x: \overline{\lim}_{j\to \infty}f_{j}\left( x \right)> 0  \right\}= \bigcup _{k= 1}^{\infty}\bigcap_{j= 1}^{\infty}\bigcup _{m= j}^{\infty}\left\{ x:f_{m}\left( x \right)> \frac{1 }{k }   \right\} 
+     \]断言 \[
+     \bigcup _{k= 1}^{\infty}\bigcap_{j= 1}^{\infty}\bigcup _{m= j}^{\infty}\left\{ x:f_{m}\left( x \right)> \frac{1 }{k }   \right\}=     \bigcup _{k= 1}^{\infty}\bigcap_{j= 1}^{\infty}\bigcup _{m= j}^{\infty}\left\{ x:f_{m}\left( x \right)\ge  \frac{1 }{k }   \right\}
+     \]其中 \( LHS  \subseteq   RHS\)由 \(  \left\{ x:f_{m}\left( x \right)> \frac{1 }{k }   \right\}\subseteq \left\{ x:f_{m}\left( x \right)\ge \frac{1 }{k }   \right\}  \)得到.  另一边注意到 \[
+    \left\{ x:f_{m}\left( x \right)> \frac{1 }{k+ 1 }   \right\}\supseteq \left\{ x:f_{m}\left( x \right)\ge \frac{1 }{k}   \right\}
+     \], 从而 \[
+    \begin{aligned}
+     \bigcup _{k= 1}^{\infty}\bigcap_{j= 1}^{\infty}\bigcup _{m= j}^{\infty}\left\{ x:f_{m}\left( x \right)\ge  \frac{1 }{k }   \right\}& \subseteq \bigcup _{k= 2}^{\infty}\bigcap_{j= 1}^{\infty}\bigcup _{m= j}^{\infty}\left\{ x:f_{m}\left( x \right)>  \frac{1 }{k }   \right\}  \\ 
+      & \subseteq \bigcup _{k= 1}^{\infty}\bigcap_{j= 1}^{\infty}\bigcup _{m= j}^{\infty}\left\{ x:f_{m}\left( x \right)> \frac{1 }{k }   \right\} 
+    \end{aligned}
+     \]因此\[
+     \left\{ x: \overline{\lim}_{j\to \infty}f_{j}\left( x \right)> 0  \right\}= \bigcup _{k= 1}^{\infty}\bigcap_{j= 1}^{\infty}\bigcup _{m= j}^{\infty}\left\{ x:f_{m}\left( x \right)\ge  \frac{1 }{k }   \right\} 
+     \]
+\end{proof}
+\begin{exercise}{}{}
+设$\{f_n(x)\}$是定义在$[a,b]$上的函数列, $E\subset [a,b]$且有
+\[\lim_{n\to\infty}f_n(x) = \chi_{[a,b]\setminus E}(x), \quad x\in [a,b].\]
+若令 $E_n = \{x\in [a,b]: f_n(x)\ge \frac{1}{2}\}$, 试求集合 $\lim_{n\to\infty} E_n$.
+\end{exercise}
+\begin{proof}
+   若 \(  x \in [a,b]\setminus E  \), 则 \[
+   \lim_{n\to \infty}f_{n}\left( x \right)= 1
+   \]从而 存在 \(  k \in \mathbb{Z} _{> 0}  \), 使得对于任意的 \(  m\ge k  \), 都有 \(  f_{m}\left( x \right)\ge  \frac{1 }{2 }    \), 即 \[
+   x \in \bigcup _{k = 1}^{\infty}\bigcap_{m = k}^{\infty}E_{m}=  \liminf_{n\to \infty}E_{n} 
+   \]   这表明 \[
+   [a,b]\setminus E\subseteq  \liminf_{n\to \infty}E_{n}
+   \] 若 \(  x \in E  \), 则 \(  \lim_{n\to \infty}f_{n}\left( x \right)= 0   \), 存在 \(  k \in \mathbb{Z} _{> 0}  \), 使得对于任意的 \(  m\ge k  \), \(  f_{m}\left( x \right)< \frac{1 }{2 }    \)     , 即 \[
+   \begin{aligned}
+    x\in \bigcup _{k= 1}^{\infty}\bigcap_{m= k}^{\infty}E_{m}^{c}=  \bigcup _{k = 1}^{\infty}\left( \bigcup _{m = k}^{\infty}E_{m} \right)^{c}&= \left( \bigcap_{k= 1}^{\infty}\bigcup _{m= k}^{\infty}E_{m}  \right)^{c}    \\ 
+     &=\left(  \limsup_{n\to \infty}E_{n} \right)^{c} 
+   \end{aligned}
+   \]这表明 \[
+   E\subseteq \left( \limsup_{n\to \infty}E_{n} \right)^{c} 
+   \]即 \[
+   [a,b]\setminus E\supseteq \limsup_{n\to \infty}E_{n}
+   \]综上, \[
+   \left[ a,b \right]\setminus E \subseteq \liminf_{n\to \infty}E_{n}\subseteq \limsup_{n\to \infty}E_{n}\subseteq \left[ a,b \right]\setminus E 
+   \]这表明 \(  \lim_{n\to \infty}E_{n}  \)存在, 且 \[
+   \lim_{n\to \infty}E_{n}= \left[ a,b \right]\setminus E 
+   \] 
+\end{proof}
+\begin{exercise}{}{}
+设有集合列$\{A_n\}, \{B_n\}$, 试证明
+\begin{enumerate}
+    \item[(i)] $\varlimsup_{n\to\infty} (A_n \cup B_n) = \left(\varlimsup_{n\to\infty} A_n\right) \cup \left(\varlimsup_{n\to\infty} B_n\right);$
+    \item[(ii)] $\varliminf_{n\to\infty} (A_n \cap B_n) = \left(\varliminf_{n\to\infty} A_n\right) \cap \left(\varliminf_{n\to\infty} B_n\right).$
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item 令 \(  C_{k}= \bigcup _{n = k}^{\infty}A_{n}   \), \(  D_{k}= \bigcup _{n = k}^{\infty}B_{n}  \). 则 \[
+    \left( \overline{\lim}_{n\to \infty}A_{n} \right)\cup \left( \overline{\lim}_{n\to \infty}B_{n} \right)=\left(  \bigcap_{k= 1}^{\infty}C_{k} \right) \cup    \left( \bigcap_{k= 1}^{\infty}D_{k}  \right) 
+    \]   \[
+    \begin{aligned}
+    \overline{\lim_{n\to \infty}}\left( A_{n}\cup B_{n} \right)=  \bigcap_{k= 1}^{\infty}\bigcup _{n = k}^{\infty}\left( A_{n}\cup B_{n} \right)&= \bigcap_{k= 1}^{\infty}\left(   \left( \bigcup _{n = k}^{\infty}A_{n} \right)\cup \left( \bigcup _{n = k}^{\infty}B_{n}  \right)   \right)  \\ 
+     &=  \bigcap_{k= 1}^{\infty}\left( C_{k}\cup D_{k} \right)  
+    \end{aligned}
+    \]只需要证明 \[
+    \left( \bigcap_{k= 1}^{\infty}C_{k}  \right)\cup \left( \bigcap_{k= 1}^{\infty}D_{k}  \right)= \bigcap_{k= 1}^{\infty}\left( C_{k}\cup D_{k} \right)    \tag{*}
+    \] 注意到 \(  C_1\supseteq C_2\supseteq \cdots   \), \(  D_1\supseteq D_2\supseteq \cdots   \), 从而 \(  C_1^{c}\subseteq C_2^{c}\subseteq \cdots   \), \(  D_1^{c}\subseteq D_2^{c}\subseteq \cdots   \),由Exercise \ref{ex:9-2-3}可得 \[
+    \left( \bigcup _{n = 1}^{\infty}C_{n}^{c} \right)\cap \left( \bigcup _{n = 1}^{\infty}D_{n}^{c} \right)  = \bigcup _{n = 1}^{\infty}\left( C_{n}^{c}\cap D_{n}^{c} \right) 
+    \] 其中 \[
+    \left( \bigcup _{n = 1}^{\infty}C_{n}^{c} \right)=\left(  \bigcap_{n = 1}^{\infty}C_{n} \right)^{c} ,\quad  \bigcup _{n = 1}^{\infty}D_{n}^{c}=\left(  \bigcap_{n = 1}^{\infty}D_{n}   \right)^{c}  
+    \] 进而 \[
+    \left( \bigcup _{n = 1}^{\infty}C_{n}^{c} \right)\cap \left( \bigcup _{n = 1}^{\infty}D_{n}^{c} \right)= \left( \bigcap_{n = 1}^{\infty}C_{n}  \right)^{c}\cap \left( \bigcap_{n = 1}^{\infty}D_{n}  \right)^{c}=  \left( \left( \bigcap_{n = 1}^{\infty}C_{n}  \right) \cap  \left( \bigcap_{n = 1}^{\infty}D_{n}  \right)       \right)^{c} 
+    \]此外\[
+    \bigcup _{n = 1}^{\infty}\left( C_{n}^{c}\cap D_{n}^{c} \right)= \bigcup _{n = 1}^{\infty}\left( C_{n}\cup D_{n} \right)^{c}=  \left( \bigcap_{n = 1}^{\infty}\left( C_{n}\cup D_{n} \right)     \right)^{c} 
+    \](*)两边的补集相等, 从而(*)成立.
+    \item 令 \(  C_{k}= \bigcap_{n = k}^{\infty}A_{n}   \), \(  B_{k}= \bigcap_{ n = k}^{\infty}B_{n}   \). 则 \(  C_1\subseteq C_2\subseteq \cdots   \), \(  D_1\subseteq D_2\subseteq \cdots   \)    . \[
+   \begin{aligned}
+    \varliminf_{n\to\infty} (A_n \cap B_n) = \bigcup _{n = 1}^{\infty}\bigcap_{k= n}^{\infty}\left( A_{k}\cap  B_{k} \right)&=   \bigcup _{n = 1}^{\infty} \left( \left( \bigcap_{k= n}^{\infty}A_{k}  \right)\cap \left( \bigcap_{k= n}^{\infty}B_{k}  \right)  \right)\\ 
+     &= \bigcup _{n = 1}^{\infty}\left( C_{n}\cap D_{n} \right) 
+   \end{aligned}  
+    \] \[
+    \varliminf_{n\to\infty} A_n = \bigcup _{n = 1}^{\infty}C_{n},\quad  \varliminf_{n\to\infty} B_n = \bigcup _{n = 1}^{\infty}D_{n}
+    \]因此只需要证明 \[
+    \bigcup _{n = 1}^{\infty}\left( C_{n}\cap D_{n} \right)=  \left( \bigcup _{n = 1}^{\infty}C_{n} \right)\cap \left( \bigcup _{n = 1}^{\infty}D_{n} \right)   
+    \]这由Exercise \ref{ex:9-2-3}立即得到.
+    \end{enumerate}
+    
+\end{proof}
+\end{document}

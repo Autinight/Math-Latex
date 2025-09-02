@@ -84,4 +84,27 @@ A function $f: X \to \overline{\mathbb{R}}$ is measurable if and only if
 \end{theorem}
 
 
+\begin{lemma}{}{}
+If $f$ and $g$ are measurable functions, then the following sets are measurable:
+\begin{enumerate}
+    \item[(i)] $X \cap \{x : f(x) > g(x)\}$,
+    \item[(ii)] $X \cap \{x : f(x) \ge g(x)\}$,
+    \item[(iii)] $X \cap \{x : f(x) = g(x)\}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    If \(  f\left( x \right)   > g\left( x \right) \), then there is a rational number \(  r  \) such that \(  f\left( x \right)> r> g\left( x \right)    \). Therefore, it follows that \[
+    \left\{ f> g \right\}= \bigcup _{r \in \mathbb{Q} }\left( \left\{ f> r \right\} \cap \left\{ g< r \right\}\right), 
+    \]which is a measurable set , and easily (i) holds. (ii) is just the complements of (i) with \(  f  \) and \(  g  \) interchanged. (iii) is just the intersection two of two measruable sets of type (ii), and so it too is measurable.     
+\end{proof}
+\begin{definition}{}{}
+    If $f$ and $g$ are real-valued measurable functions, then $f+g$ is undefined at points where it would be of the form $\infty - \infty$. This difficulty is overcome if we define
+
+\[(f+g)(x) := \begin{cases} f(x)+g(x), & x \in X - B, \\ \alpha, & x \in B, \end{cases}\]
+
+where $\alpha \in \overline{R}$ is chosen arbitrarily and where
+
+\[B := (f^{-1}\{\infty\} \cap g^{-1}\{-\infty\}) \cup (f^{-1}\{-\infty\} \cap g^{-1}\{\infty\}).\]
+\end{definition}
 \end{document}
