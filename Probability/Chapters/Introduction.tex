@@ -322,6 +322,29 @@ If $X_1, X_2, \dots$ are random variables then so are
 \[ \inf_n X_n \qquad \sup_n X_n \qquad \limsup_n X_n \qquad \liminf_n X_n \]
 \end{theorem}
 
+\section*{Exercise}
+
+\begin{exercise}{}{9-3-1}
+    Show that if \(  \mathcal{A}  \) generates \(  \mathcal{S}  \), then \(  X ^{-1} \left( \mathcal{A} \right)\equiv \left\{ \left\{ X \in A \right\}: A\in \mathcal{A} \right\}   \) generates \(   \sigma \left( X \right)= \left\{ \left\{ X \in B \right\}:B \in \mathcal{S} \right\}   \)    
+\end{exercise}
+
+\begin{proof}
+    First, we show that \[
+     \sigma \left( X ^{-1} \left( \mathcal{A} \right)  \right)\subseteq X ^{-1} \left( \mathcal{S} \right)  
+    \] For which , we only need to show that 
+    \begin{enumerate}
+        \item \(  X ^{-1} \left( \mathcal{S} \right)   \) is a \(   \sigma   \)-algebra;
+        \item \(  X ^{-1} \left( \mathcal{A} \right)\subseteq  X ^{-1} \left( \mathcal{S} \right)    \).   
+    \end{enumerate}
+   2. is obvious from \(  \mathcal{A}\subseteq \mathcal{S}  \) . Since \(  \mathcal{S}  \) is a \(   \sigma   \)-algebra, and the compementation, union are kept  under preimage, then \(  X ^{-1} \left( \mathcal{S} \right)   \) is a \(   \sigma   \)-algebra.  
+
+   Next, we show that \[
+   X ^{-1} \left( \mathcal{S} \right)\subseteq   \sigma \left( X ^{-1} \left( \mathcal{A} \right) \right)  
+   \]We define \[
+   \mathcal{C}: = \left\{ B\in \mathcal{S}: X ^{-1} \left( B \right)\in  \sigma \left( X ^{-1} \left( \mathcal{A} \right)  \right)   \right\}
+   \] It is not hard to see that \(  \mathcal{C}  \) is a \(   \sigma   \)-algebra. Once we show that \(  \mathcal{A}\subseteq \mathcal{C}  \), we have \(  \mathcal{S}\subseteq \mathcal{C}  \), then it follows that  \(  X ^{-1} \left( \mathcal{S} \right)\subseteq  \sigma \left( X ^{-1} \left( \mathcal{A} \right)  \right)    \). For that , we take \(  A\in \mathcal{A}  \), since \(  X ^{-1} \left( A \right)\in  X ^{-1} \left( \mathcal{A} \right)\subseteq  \sigma \left( X ^{-1} \left( \mathcal{A} \right)  \right)     \),  \(  A \in \mathcal{C}  \). Thus we completes the proof.        
+\end{proof}
+
 \section{Expected Value}
 
 \begin{definition}{Expected Value}{}

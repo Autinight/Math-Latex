@@ -181,11 +181,15 @@ Suppose $\mathcal{A}_1, \mathcal{A}_2, \dots, \mathcal{A}_n$ are independent and
     \]  By applying \(  (*)  \) into \(  \mathcal{A}_{2},\cdots ,\mathcal{A}_{n},  \sigma \left( \mathcal{A}_{1} \right)   \), we get \(   \sigma \left( \mathcal{A}_{2} \right),\mathcal{A}_{3},\cdots ,\mathcal{A}_{n}, \sigma \left( \mathcal{A}_{1} \right)    \)    are independent. The proof completes after \(  n  \) iterations. 
 \end{proof}
  
-\begin{theorem}{}{}
+\begin{theorem}{}{9-3-2}
 In order for $X_1, \dots, X_n$ to be independent, it is sufficient that for all $x_1, \dots, x_n \in (-\infty, \infty]$
 \[ P(X_1 \le x_1, \dots, X_n \le x_n) = \prod_{i=1}^n P(X_i \le x_i) \]
 \end{theorem}
-
+\begin{proof}
+    Let \(  \mathcal{A}_{i}  \) be the colletcion of the sets of the form \(\left\{ X_{i}\le x_{i} \right\}  \). Since \[
+    \left\{ X_{i}\le x\right\}\cap \left\{ X_{i}\le y \right\}= \left\{ X_{i}\le x\wedge y \right\}
+    \]\(  \mathcal{A}_{i}  \) is a \(   \pi  \)-system. Since we allowed \(  x_{i}= \infty  \), \(   \Omega \in \mathcal{A}_{i}  \). Exercise \ref{ex:9-3-1} implies that \(   \sigma \left( \mathcal{A}_{i} \right)=  \sigma \left( X_{i} \right)    \), so the result follows from   Theorem \ref{thm:9-3-2}.  
+\end{proof}
 \begin{theorem}{}{}
 Suppose $\mathcal{F}_{i,j}$, $1 \leq i \leq n$, $1 \leq j \leq m(i)$ are independent \(   \pi  \)-systems   and let $\mathcal{G}_i = \sigma(\bigcup_j \mathcal{F}_{i,j})$. Then $\mathcal{G}_1, \dots, \mathcal{G}_n$ are independent.
 \end{theorem}
