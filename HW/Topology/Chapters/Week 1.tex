@@ -1,0 +1,261 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{ Week 1 }
+
+代靖涵 25120222201319
+
+\begin{exercise}{}{}
+    设 \(  \left( X,d \right)   \)是度量空间, 定义 \[
+    \rho :X\times X\to \mathbb{R} 
+    \] \[
+    \rho \left( x,y \right)= \frac{d\left( x,y \right)  }{1+ d\left( x,y \right)  }  
+    \]验证 \(  \rho   \)是一个度量.  
+\end{exercise}
+\begin{proof}
+    对于正定性, 首先 \(  \rho \ge 0  \)是显然的, 此外, \[
+    \rho \left( x,y \right)= 0\iff \frac{d\left( x,y \right)  }{1+ d\left( x,y \right)  }= 0\iff d\left( x,y \right)= 0\iff x= y   
+    \] . 接下来考虑对称性, 只需要看到 \[
+    \rho \left( x,y \right)= \frac{d\left( x,y \right)  }{1+ d\left( x,y \right)  }= \frac{d\left( y,x \right)  }{1+ d\left( y,x \right)  }= \rho \left( y,x \right)    
+    \]即可. 最后来验证三角不等式, 取 \(  x,y,z \in X  \).  \[
+    \begin{aligned}
+    \frac{d\left( x,z \right)  }{1+ d\left( x,z \right)  }+ \frac{d\left( y,z \right)  }{1+ d\left( y,z \right)  }&= \frac{2d\left( x,z \right)d\left( y,z \right)  + d\left( x,z \right)+ d\left( y,z \right)    }{d\left( x,z \right)d\left( y,z \right)+ d\left( x,z \right)+ d\left( y,z \right)+ 1      }   \\ 
+    & \ge \frac{d\left( x,z \right)d\left( y,z \right)+ d\left( x,z \right)+ d\left( y,z \right)     }{d\left( x,z \right)d\left( y,z \right)+ d\left( x,z \right)+ d\left( y,z \right)+ 1     }  
+    \end{aligned}
+    \]其中最后一行小于等于 \(  1  \), 由 \(  d\left( x,z \right)+ d\left( y,z \right)\ge d\left( x,y \right)     \), 利用不等式 \[
+    \frac{a+ c }{b+ c }\ge \frac{a }{b },\quad (0< a\le b  , c\ge 0)
+    \]可得上式最后一行大于等于 \[
+    \frac{d\left( x,z \right)d\left( y,z \right)+ d\left( x,y \right)    }{d\left( x,z \right)d\left( y,z \right)+ d\left( x,y \right)+ 1    } \ge \frac{d\left( x,y \right)  }{d\left( x,y \right)+ 1  }  
+    \]  
+\end{proof}
+
+\begin{exercise}{}{}
+设 $X = \mathbb{Z}$, $p$ 是素数. 对于任何非零整数 $x$, 总存在唯一的 $v(x) \in \mathbb{N}$,
+使得 $|x| = p^{v(x)}q$, 其中正整数 $q$ 与 $p$ 互素. 定义 $d: X \times X \to \mathbb{R}$,
+\[ d(x, y) = \begin{cases} 0, & x = y, \\ p^{-v(x-y)}, & x \neq y. \end{cases} \]
+证明 $d$ 是 $X$ 上的有界度量, 并且满足下面比三角不等式更强的条件:
+\[ d(x, z) \le \max\{d(x, y), d(y, z)\}. \]
+(我们称满足这个不等式的度量为\dfntxt{超度量}.)
+\end{exercise}
+
+\begin{proof}
+    显然 \(  d  \)满足正定性. 由于 \[
+    p^{v\left( x-y \right) }q_1=  \left| x-y \right|= \left| y-x \right|= p^{v\left( y-x \right) }q_2 
+    \]其中 \(  p  \)与 \(  q_1,q_2  \)互素.  素因子分解的唯一性导出 \[
+    v\left( x-y \right)= v\left( y-x \right)  
+    \] 因此 \[
+    d\left( x,y \right)= d\left( y,x \right)  
+    \]最后, 证明任取 \(  x,y,z \in X  \), 均有 \[ d(x, z) \le \max\{d(x, y), d(y, z)\}. \]. 当 \(  x,y,z  \)中任两个相等时, 上面的不等式都显然成立, 下设 \(  x \neq y, y\neq z, x \neq z  \).    则   \[
+    \left| x-z \right|= p^{v\left( x-z \right) }q_1,\quad \left| x-y \right|= p^{v\left( x-y \right) }q_2,\quad \left| y-z \right|= p^{v\left( y-z \right) }q_3   
+    \] 此外, 我们注意到一下三式成立其一
+    \begin{itemize}
+        \item \(  \left| x-z \right|= \left| x-y \right|+ \left| y-z \right|     \)
+        \item \(  \left| x-z \right|= \left| x-y \right|-\left| y-z \right|     \)  
+        \item \(  \left| x-z \right|= \left| y-z \right|-\left| x-y \right|     \) 
+    \end{itemize}
+    记 \[
+    M: = \max \left\{ v\left( x-y \right), v\left( y-z \right)   \right\},\quad m: = \min \left\{ v\left( x-y \right),v\left( y-z \right)   \right\}
+    \]
+  总有形如下的式子成立 \[
+    p^{v\left( x-z \right) }q_1= p^{m}\left( \left( -1 \right)^{s_1} p^{M-m}q_{i}+ \left( -1 \right)^{s_2}  q_{j} \right) 
+    \]其中 \(  s_1,s_2 \in \left\{ 0,1 \right\} \), \(  \left\{ i,j \right\}= \left\{ 2,3 \right\}  \). 由于 \(  q_1  \)与 \(  p  \)互素, 且两边素因子 \(  p  \)的个数相同, 因此 总有 \[
+    v\left( x-z \right)\ge m 
+    \]  
+   于是 \[
+    \begin{aligned}
+    d\left( x,z \right)= p^{-v\left( x-z \right) }\le  p^{-m}&= p^{-\min \left\{ v\left( x-y \right),v\left( y-z \right)   \right\}} \\ 
+     &= \max \left\{ p^{-v\left( x-y \right) },p^{-v\left( y-z \right) } \right\}\\ 
+      &= \max \left\{ d\left( x,y \right),d\left( y,z \right)   \right\}
+    \end{aligned} 
+    \]
+\end{proof}
+
+\begin{exercise}{}{}
+设 $A, B$ 是度量空间 $(X,d)$ 的子集. 证明:
+\begin{enumerate}
+    \item 若 $A \subset B$, 则 $A^\circ \subset B^\circ$.
+    \item $A^\circ \cup B^\circ \subset (A \cup B)^\circ$.
+    \item $A^\circ \cap B^\circ = (A \cap B)^\circ$.
+\end{enumerate}
+举一个反例说明 (2) 中的包含关系不能换为相等关系.
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item 任取 \(  x \in A^{\circ}  \), 存在 开球 \(  N_{ \varepsilon }\left( x \right)   \), \[
+        x \in N_{ \varepsilon }\left( x \right)\subseteq A 
+        \] 由于 \(  A\subseteq B  \), 也有 \[
+        x \in N_{ \varepsilon }\left( x \right)\subseteq B 
+        \]这表明 \(  x \in B^{\circ }  \), 因此 \(  A^{\circ }\subseteq B^{\circ}   \).
+        \item 注意到 \(  A\subseteq A\cup B  \), 由1. 可知 \[
+        A^{\circ }\subseteq \left( A\cup B \right)^{\circ} 
+        \] 同样地, 由 \(  B\subseteq A\cup B  \)可得 \[
+        B^{\circ }\subseteq \left( A\cup B \right)^{\circ} 
+        \]因此 \[
+        A^{\circ }\cup B^{\circ }\subseteq \left( A\cup B \right)^{\circ} 
+        \]
+        \item 注意到 \(  A\cap B\subseteq A,  A\cap B\subseteq B  \), 由1. 可知 \[
+        \left( A\cap B \right)^{\circ }\subseteq A^{\circ },\quad \left( A\cap B \right)^{\circ }\subseteq B^{\circ}  
+        \]进而 \[
+        \left( A\cap B \right)^{\circ }\subseteq A^{\circ }\cap B^{\circ} 
+        \]   反过来, 任取 \(  x \in A^{\circ }\cap B^{\circ }  \), 存在开球 \(  N_{ \varepsilon _1 }\left( x \right)   \)和 \(  N_{ \varepsilon _2 }\left( x \right)   \), 使得 \[
+         x\in N_{ \varepsilon _1 }\left( x \right)\subseteq A,\quad x \in N_{ \varepsilon _2 }\left( x \right)\subseteq B  
+        \] 则 \[
+         x\in N_{\min \left\{  \varepsilon _1 , \varepsilon _2  \right\}}\left( x \right)\subseteq \left( A\cap B \right)  
+        \]这表明 \(  x \in \left( A\cap B \right)^{\circ }   \), 因此 \[
+        A^{\circ}\cap B^{\circ}\subseteq \left( A\cap B \right)^{\circ} 
+        \]   
+
+
+        (2)反例: 考虑 \(  A= \mathbb{Q}   \), \(  B= \mathbb{R} \setminus \mathbb{Q}   \). 由于 \(  \mathbb{R}   \)上任意非空开区间内都同时存在有理数和无理数, 因此  \(  A^{\circ}= B^{\circ }= \varnothing  \).   \(  A^{\circ}\cup B^{\circ}= \varnothing  \). 但是 \(  \left( A\cup B \right)^{\circ}= \left( \mathbb{R}  \right)^{\circ}= \mathbb{R}     \).  
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+设 $A$ 是度量空间 $X$ 的子集, 证明 $A$ 的导集 $A'$ 是 $X$ 的闭集.
+\end{exercise}
+\begin{proof}
+  需要证明 \(  \left( A^{\prime}  \right)^{\prime} \subseteq A^{\prime}    \) . 若 \(  x \in \left( A^{\prime}  \right)^{\prime}    \), 则对于任意的 \(   \varepsilon > 0  \), \[
+ \left(  N_{ \varepsilon }\left( x \right)\setminus \left\{ x \right\} \right)\cap A^{\prime} \neq \varnothing  
+  \]  取 \[
+  y \in \left( N_{ \varepsilon }\left( x \right)\setminus \left\{ x \right\}  \right)\cap A^{\prime}  
+  \]令 \(  l: = \min \left\{ d\left( x,y \right)  ,  \varepsilon -d\left( x,y \right) \right\}  \) , 则 \(  N_{l}\left( y \right)\subseteq N_{ \varepsilon }\left( x \right)  \setminus \left\{ x \right\}  \). 由于 \(  y \in A^{\prime}   \), 我们有 \[
+  \left( N_{ l }\left( y \right)\setminus \left\{ y \right\}  \right)\cap A\neq \varnothing 
+  \]  而 \(  N_{ l }\left( y \right)\setminus \left\{ y \right\} \subseteq N_{ \varepsilon }\left( x \right)\setminus \left\{ x \right\}    \), 因此  \[
+  \left( N_{ \varepsilon }\left( x \right)  \setminus \left\{ x \right\} \right)\cap A \neq \varnothing
+  \]这表明 \(  x\in A^{\prime}   \). 于是我们证明了 \[
+  \left( A^{\prime}  \right)^{\prime} \subseteq A^{\prime}  
+  \] 即 \(  A^{\prime}   \)是 \(  X  \)的闭集.  
+\end{proof}
+\begin{exercise}{}{}
+设 $A$ 是度量空间 $X$ 的子集. 证明 $A$ 的边界 $\partial A$ 是 $X$ 的闭集.
+\end{exercise}
+
+\begin{proof}
+    根据定义,  \(  A  \)的内部 , 外部, 边界两两无交, 且 \[
+    X= \mathrm{ext}\left( A \right)\sqcup A^{\circ } \sqcup  \partial A 
+    \]  而 \(  \mathrm{ext} \left( A \right)  \)和 \(  A^{\circ}  \)由定义可知均为开集, 进而 \(  \mathrm{ext}\left( A \right)\cup A^{\circ}   \)是一个开集. \(   \partial A  \)是闭集, 当且仅当 \(  X\setminus  \partial A  \)是一个开集, 事实上 \[
+    X\setminus  \partial A= \left( \mathrm{ext}\left( A \right)\sqcup A^{\circ } \sqcup  \partial A  \right) \setminus  \partial A= \mathrm{ext}\left( A \right)\sqcup A^{\circ } 
+    \]     的确是一个开集, 因此 \(   \partial A  \)是 \(  X  \)的闭集.  
+\end{proof}
+
+\begin{exercise}{}{}
+   
+考虑 $\mathbb{R}^n$ 上的标准范数 
+\[
+|x| = \sqrt{x \cdot x} = \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2},
+\]验证 \(  \left( \mathbb{R} ^{n},\left| \cdot  \right|  \right)   \)是一个赋范空间. 
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 显然 \(  \left| x \right|\ge 0 ,\forall x\in \mathbb{R} ^{n}   \), 此外 \[
+        \begin{aligned}
+        \left| x \right|= 0&\iff \sqrt{x_1^{2}+ x_2^{2}+ \cdots + x_{n}^{2}}= 0\\ 
+         &\iff x_1^{2}+ x_2^{2}+ \cdots + x_{n}^{2}= 0\\ 
+          &\iff x_1= x_2= \cdots = x_{n}= 0\\ 
+           &\iff x= 0  
+        \end{aligned}
+        \]
+        \item 任取 \(  t\in \mathbb{R}   \), \(  x \in \mathbb{R} ^{n}  \), 则 \[
+        \begin{aligned}
+        \left| tx \right|&=  \sqrt{\left( tx_1 \right)^{2}+ \cdots + \left( tx_{n} \right)^{2}  }\\ 
+         &= \left| t \right|\sqrt{x_1^{2}+ \cdots + x_{n}^{2}}\\ 
+          &= \left| t \right|\left| x \right|     
+        \end{aligned}
+        \]
+        \item 任取 \(  x,y \in \mathbb{R}   \).  Minkowski不等式给出 $$\left( \sum_{i=1}^n |x_i + y_i|^p \right)^{1/p} \le \left( \sum_{i=1}^n |x_i|^p \right)^{1/p} + \left( \sum_{i=1}^n |y_i|^p \right)^{1/p}$$ 特别地, 取 \(  p= 2  \), 我们有 \[
+        \begin{aligned}
+        \left| x+ y \right|&= \left( \sum _{i= 1}^{n}\left| x_{i}+ y_{i} \right|^{2}  \right)^{\frac{1}{2}}   \\ 
+         &\le \left( \sum _{i= 1}^{n}\left| x_{i} \right|^{2}  \right)^{\frac{1}{2}}+ \left( \sum _{i= 1}^{n}\left| y_{i} \right|^{2}  \right)^{\frac{1}{2}}\\ 
+          &= \left| x \right|+ \left| y \right|    
+        \end{aligned}
+        \] 
+    \end{enumerate}
+    以上表明 \(  \left| \cdot  \right|   \)是 \(  \mathbb{R} ^{n}  \)上的一个范数, 进而 \(  \left( \mathbb{R} ^{n},\left| \cdot  \right|  \right)   \)是一个赋范空间.   
+\end{proof}
+
+\begin{exercise}{}{}
+    设 $[a, b]$ 是 $\mathbb{R}$ 中的闭区间,
+$$W = \{f:[a, b] \to \mathbb{R} \mid f \text{ 是连续函数}\}.$$
+验证
+$$|f| = \sqrt{f \cdot f} = \left[ \int_a^b f(x)^2 dx \right]^{\frac{1}{2}}$$
+使 $W$ 成为赋范线性空间. 这个范数称为 $W$ 上的 \dfntxt{$L^2$-范数}.
+\end{exercise}
+\begin{proof}
+      \begin{enumerate}
+        \item 对于任意的 \(  f \in W  \), 由定义显然有 \(  \left| f \right|\ge 0   \). 此外, \[
+        \begin{aligned}
+        \left| f \right|= 0&\iff  \int_{a}^{b}f\left( x \right)^{2}\,\mathrm{d} x= 0   
+        \end{aligned}
+        \]  一个数学分析中的结论是, 非负连续函数在有限区间上的积分为零, 当且仅当该函数恒为零, 因此 \(  f= 0  \). 这就说明了正定性. 
+        \item  任取 \(  t\in \mathbb{R}   \), 则 \[
+        \begin{aligned}
+        \left| tf \right|&= \left[ \int_{a}^{b}\left( tf \left( x \right)  \right)^{2}\,\mathrm{d} x  \right]^{\frac{1}{2}}\\ 
+         &=  \left[ t^{2}\int_{a}^{b}f\left( x \right)^{2}\,\mathrm{d} x  \right]^{\frac{1}{2}}\\ 
+          &= \left| t \right|\left[ \int_{a}^{b}f\left( x \right)^{2}\,\mathrm{d} x  \right]^{\frac{1}{2}}\\ 
+           &= \left| t \right|\left| f \right|        
+        \end{aligned}
+        \]  
+        \item 任取 \(  f,g\in W  \). Minkowski不等式给出 $$\left( \int_{[a,b]} |f(x)+g(x)|^p \,d\mu \right)^{1/p} \le \left( \int_{[a,b]} |f(x)|^p \,d\mu \right)^{1/p} + \left( \int_{[a,b]} |g(x)|^p \,d\mu \right)^{1/p}$$ 特别地, 取 \(  p= 2  \),我们有 \[
+        \left| f+ g \right|\le \left| f \right|+ \left| g \right|   
+        \] 
+    \end{enumerate}以上表明 \(  \left| \cdot  \right|   \)是  \(  W  \)上的一个范数, 因此 \(  \left( W,\left| \cdot  \right|  \right)   \)是一个赋范空间.   
+\end{proof}
+\begin{exercise}{}{}
+令 $\mathbb{Q}$ 是有理数域, $p$ 是一个素数. 任何有理数 $q \neq 0$ 总可以写为 $q = p^k \cdot \frac{m}{n}$, 其中 $k, m, n \in \mathbb{Z}, p \nmid mn$. 显然 $k$ 是由 $q$ 唯一确定的, 记为 $k = v_p(q)$. 我们定义 $\mathbb{Q}$ 上的 \dfntxt{p-进范数}
+\[
+|\cdot|_p : \mathbb{Q} \to \mathbb{R}, \quad |q|_p = \begin{cases} 0, & q=0, \\ p^{-v_p(q)}, & q \neq 0. \end{cases}
+\]
+\begin{enumerate}
+    \item 证明这是一个 $\mathbb{Q}$ 上的范数, 而且是具有乘性的:
+    \[
+    |uv|_p = |u|_p \cdot |v|_p,
+    \]
+    并且满足更强的三角不等式 (称为\dfntxt{非 Archimedes (阿基米德) 范数})
+    \[
+    |u+v|_p \le \max\{|u|_p, |v|_p\}.
+    \]
+    这个范数诱导的度量和拓扑分别称为 $\mathbb{Q}$ 上的 \dfntxt{p-进度量} 和 \dfntxt{p-进拓扑}. 这个度量限制于子集 $\mathbb{Z}$, 即为习题 4.5 中所定义的度量.
+    \item 证明对于不同的素数 $p$, $\mathbb{Q}$ 上的 $p$-进度量彼此不等价.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item  注意到 \[
+        \left| -1 \right|_{p}= \left| 1 \right|_{p}= 1  
+        \]因此乘性蕴含了范数的定义中的第二条, 此外, 题中给出的强三角不等式也蕴含了范数定义中的第三条. 因此只需要依次证明正定性和这两条性质. \begin{enumerate}
+            \item \(  \left| \cdot  \right|_{p}   \)显然是正定的.
+            \item 接下来证明乘性. 当 \(  u,v  \)其一为零时, 等式平凡地成立, 因此下设 \(  u,v\neq 0  \).  设 \[
+            u= p^{k_1}\cdot \frac{m_1 }{n_1 },\quad v= p^{k_2}\cdot \frac{m_2 }{n_2 }  
+            \]其中 \(  k_{i},m_{i},n_{i}\in \mathbb{Z} , p\not \mid m_{i}n_{i}, i= 1,2  \). 我们有 \[
+           uv= p^{k_1+ k_2}\cdot \frac{m_1m_2 }{n_1n_2 } 
+            \] 这里 \(  p\not \mid  m_1m_2n_1n_2\). 由于形如上的表示唯一, 因此\(  v_{p}\left( uv \right)= k_1+ k_2   \). 这表明 \[
+            \left| uv \right|_{p}= p^{-\left( k_1+ k_2 \right) }= p^{-k_1}p^{-k_2} = \left| u \right|_{p}\left| v \right|_{p}  
+            \] 
+            \item 同样的, 当 \(  u,v  \)其一为零时, 不等式 平凡地成立. 同样设 \(  u,v \neq 0  \), 沿用(b)中对 \(  u,v  \)的表示. 这里不妨设 \(  k_1\le k_2  \), 则 \(  \left| u \right|_{p}\ge \left| v \right|_{p}    \)  . 我们有 \[
+       \begin{aligned}
+          u+ v&= p^{k_1}\left( \frac{m_1 }{n_1 }+ p^{k_2-k_1}\cdot \frac{m_2 }{n_2 }   \right)  \\ 
+           &= p^{k_1}\left( \frac{m_1n_2+ p^{k_2-k_1}m_2n_1 }{n_1n_2 }  \right) 
+       \end{aligned}
+            \]这里 \(  p\not \mid  n_1n_2\), 因此 \[
+            v_{p}\left( u+ v \right)\ge k_1
+            \] 我们有 \[
+            \left| u+ v \right|_{p}= p^{-v_{p}\left( u+ v \right) }\le p^{-k_1} = \left| u \right|_{p}=  \max \left\{ \left| u \right|_{p},\left| v \right|_{p}   \right\}
+            \]
+           
+        \end{enumerate}
+         因此 \(  \left| \cdot  \right|_{p}   \)是一个范数, 且满足以上乘性和强三角不等式. 
+           \item 考虑两个素数 \(  p_1,p_2  \) .对于任意的 \(  k_1,k_2\in \mathbb{Z} _{> 0}  \), \[
+    \left| \frac{1 }{p_1^{k_1}p_2^{k_2} }  \right|_{p_1}= p_1^{k_1},\quad \left| \frac{1 }{p_1^{k_1}p_2^{k_2} }  \right|_{p_2}= p_2^{k_2}
+    \] 由于 \(  k_1,k_2  \)是任意的,因此不存在任何正常数 \(  M  \), 可以使得 \[
+    \left|q \right|_{p_1}\le M\left| q \right|_{p_2}  
+    \]  对于所有 \(  q \in \mathbb{Q}   \)成立 (因为 \(  \lim_{k_1\to \infty}p_1^{k_1}= \infty  \), 固定 \(  k_2= 1  \)时将导出一个矛盾  ). 进而 下式无法对于全体 \(  u,v \in \mathbb{Q}   \)成立: \[
+     d _{p_1}\left( u,v \right)\le M d _{p_2}\left( u,v \right)  
+    \] 其中 \(  d _{p_1}, d _{p_2}  \)分别为 \(  \left| \cdot  \right|_{p_1}, \left| \cdot  \right|_{p_2}    \)诱导的度量. 这表明 \(  \mathbb{Q}   \)上的 \(  p_1  \)-进度量和 \(  p_2  \)-进度量不等价. 由于 \(  p_1,p_2  \)可以是任意不相等的素数, 因此 \(  \mathbb{Q}   \)上的 \(  p  \)-进度量彼此不等价.        
+    \end{enumerate}
+   
+    
+\end{proof}
+\end{document}

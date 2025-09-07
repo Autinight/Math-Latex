@@ -1,0 +1,69 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+}{}
+
+\chapter{ Limit Points }
+
+\section{Limit Points and Closure}
+
+\begin{definition}{}{}
+Let $A$ be a subset of a topological space $(X, \mathcal{T})$. A point $x \in X$ is said to be a \dfntxt{limit point} (or \dfntxt{accumulation point} or \dfntxt{cluster point}) of \dfntxt{A} if every open set, $U$, containing $x$ contains a point of $A$ different from $x$.
+\end{definition}
+\begin{note}
+    \(  A  \)的极限点\(  x  \) 是不能与 \(  A\setminus \left\{ x \right\}  \) ``分离开''的点.  也就是说在每一个开集里面, \(  x  \)和 \(  A\setminus \left\{ x \right\}  \)要么都有在里面的点, 要么都没有.  
+\end{note}
+\begin{proposition}{}{}
+Let $A$ be a subset of a topological space $(X, \mathcal{T})$. Then $A$ is closed in $(X, \mathcal{T})$ if and only if $A$ contains all of its limit points.
+\end{proposition}
+
+\begin{proofsketch}
+    如果集合\(  A  \) 是闭的, 那么\(  A  \) 外面的点\(  x  \) 都被落在\(  A  \)外面的一个开集\(  U  \) 给包住了, 那么就 导致了 \(  x  \)不是极限点. 
+    
+    如果 \(  A  \)包含了所有极限点, 那么 \(  A  \)外面的点\(  x  \) 都不是极限点,  从而 \(  x  \)一定能被与 \(  A  \)无交的一个开集给包住.  
+\end{proofsketch}
+
+\begin{proof}
+    If \(  A  \) contains all of its limit points. Take any \(  x \in A^{c}  \),  then \(  x  \) is not a limit point of \(  A  \). There exists open set \(  U  \) , containing \(  x  \) contains no point of \(  A  \). Then \(  U\subseteq A^{c}  \), which implies that \(  A^{c}  \) is an open set. Thus \(  A  \) is a closed set.
+    
+    Now, let \(  A  \) be a closed set. Let \(  x  \) be any limit point of \(  A  \). If \(  x \not \in A  \),  then there is a open set \(  U\subseteq A^{c}  \) such that \(  x \in U  \). By the definition of the limit point , there is a point \(  y  \) of \(  A  \) different from \(  x  \) belongs to \(  U  \), which is a contradiction to \(  U \cap A= \varnothing  \). 
+\end{proof}
+
+\begin{proposition}{}{9-7-1}
+Let $A$ be a subset of a topological space $(X, \mathcal{T})$ and $A'$ the set of all limit points of $A$. Then $A \cup A'$ is a closed set.
+\end{proposition}
+
+\begin{remark}
+    The proof shows that : If \(  U  \) is an open set, and \(  A  \) an arbitrary set. Then \(  U\cap A= \varnothing  \) implies that \(  U\cap A^{\prime} = \varnothing  \).    
+\end{remark}
+
+\begin{proof}
+   
+    Let \(  p \in X\setminus \left( A\cup A^{\prime}  \right)   \), then \(  p  \) neither a point in \(  A  \) nor a limit point of \(  A  \). Thus there exists a open set  \(  U  \), such that  \(  p \in U  \), \(  U\cap A= \varnothing  \).      We now claim that \(  U\cap A^{\prime} = \varnothing  \), otherwise, we take \(  q \in U\cap A^{\prime}   \). Then \(  U  \) contains a point of \(  A  \) different from \(  q  \), which is a contradiction to \(  U\cap A= \varnothing  \). Thus we have \[
+    U\cap \left( A\cup A^{\prime}  \right)= \varnothing\implies p \in U\subseteq  X\setminus \left( A\cup A^{\prime}  \right)  
+    \]Then \(  X\setminus \left( A\cup A^{\prime}  \right)   \) is an open set.   
+\end{proof}
+
+\begin{definition}{}{}
+Let $A$ be a subset of a topological space $(X, \mathcal{T})$. Then the set $A \cup A'$ consisting of $A$ and all its limit points is called the \dfntxt{closure of A} and is denoted by $\overline{A}$.
+\end{definition}
+
+\begin{definition}{}{}
+Let $A$ be a subset of a topological space $(X, \mathcal{T})$. Then $A$ is said to be \dfntxt{dense} in $X$ or \dfntxt{everywhere dense} in $X$ if $\overline{A} = X$.
+\end{definition}
+\begin{proposition}{}{}
+Let $A$ be a subset of a topological space $(X, \mathcal{T})$. Then $A$ is dense in $X$ if and only if every non-empty open subset of $X$ intersects $A$ non-trivially (that is, if $U \in \mathcal{T}$ and $U \neq \emptyset$ then $A \cap U \neq \emptyset$.)
+\end{proposition}
+
+\begin{proof}
+    If \(  A  \) is dense in \(  X  \), then \(  \overline{A}= X  \).    Take any non-empty  open subset \(  U  \) of \(  X  \). If \(  A\cap U= \varnothing  \), then \(  A^{\prime} \cap U= \varnothing  \) from Propoistion \ref{pps:9-7-1} Remark .       Thus \(  U\cap  \overline{A}= \varnothing  \), then \(  U\cap X= \varnothing  \), which is a contradiction. Thus \(  A\cap U\neq \varnothing  \).
+    
+    Conversely,  if for any \(  U\in \mathcal{T}  \), and \(  U\neq \varnothing  \), we have \(  A\cap U\neq \varnothing  \). Take any \(  x \in X  \). If \(  x \not \in A  \), then for any   open set \(  V\in \mathcal{T}  \), containing \(  x  \), we have \(  A\cap V\neq \varnothing  \). And we have \(  V\cap \left( A\setminus \left\{ x \right\} \right)\neq \varnothing   \). Thus  \(  x  \) is a limit point of \(  A  \). It follows that \(  x \in A\cup A^{\prime} = \overline{A}  \), \(  X\subseteq \bar{A}  \). Then \(  X= \overline{A}  \).            
+\end{proof}
+
+\end{document}

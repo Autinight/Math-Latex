@@ -141,7 +141,7 @@ since we can set $A_i = \Omega$ for $i \notin I$.
     \end{itemize}
 
 \end{definition}
-\begin{theorem}{$\pi - \lambda$ \dfntxt{Theorem}}{}
+\begin{theorem}{$\pi - \lambda$ \dfntxt{Theorem}}{9-3-3}
 If $\mathcal{P}$ is a $\pi$-system and $\mathcal{L}$ is a $\lambda$-system that contains $\mathcal{P}$, then $\sigma(\mathcal{P}) \subset \mathcal{L}$.
 \end{theorem}
 \begin{theorem}{}{8-3-1}
@@ -213,6 +213,16 @@ If for $1 \le i \le n$, $1 \le j \le m(i)$, $X_{i,j}$ are independent and $f_i :
 \begin{theorem}{}{}
 Suppose $X_1, \dots, X_n$ are independent random variables and $X_i$ has distribution $\mu_i$. Then $(X_1, \dots, X_n)$ has distribution $\mu_1 \times \dots \times \mu_n$.
 \end{theorem}
+\begin{proof}
+     \[
+     \begin{aligned}
+     P\left( \left(  X_1,\cdots,X_n  \right)\in A_1\times \cdots \times A_{n}  \right)&= P\left( X_1\in A_1,\cdots ,X_{n}\in A_{n} \right)\\ 
+      &=    \prod _{i= 1}^{n}P\left( X_{i}\in A_{i} \right)\\ 
+       &=  \prod _{i= 1}^{n}\mu _{i}\left( A_{i} \right)\\ 
+        &= \left( \mu _1 \times \cdots \times \mu _{n} \right)\left( A_1\times \cdots \times A_{n} \right)    
+     \end{aligned}
+     \]The above shows that the distribution of \(  (X_1,\cdots ,X_{n})  \) and the measure \(  \mu _1 \times \cdots \times \mu _{n}  \) agree on the sets of the form \(  A_1\times \cdots \times A_{n}  \), which forms a \(   \pi  \)-system  generates \(  \mathcal{R}^{n}  \).   Since the collection of the sets on which two measures here agree forms a \(  \mathcal{L}  \)-system. Then it follows from Theorem \ref{thm:9-3-3} that \(  \mu _1 \times \cdots \times \mu _{n}  \) and \(  \left( X_1,\cdots ,X_{n} \right)   \) agree on \(  \mathcal{R}^{n}  \).      
+\end{proof}
 \begin{theorem}{}{}
 Suppose $X$ and $Y$ are independent and have distributions $\mu$ and $\nu$. If $h : \mathbf{R}^2 \to \mathbf{R}$ is a measurable function with $h \ge 0$ or $E|h(X, Y)| < \infty$, then
 \[

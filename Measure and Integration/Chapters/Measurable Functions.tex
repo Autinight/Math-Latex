@@ -75,7 +75,7 @@ Let $f: X \to \overline{\mathbb{R}}$, where $(X,\mathcal{M})$ is a measure space
 \end{theorem}
 
 
-\begin{theorem}{}{}
+\begin{theorem}{}{9-3-4}
 A function $f: X \to \overline{\mathbb{R}}$ is measurable if and only if
 \begin{enumerate}
     \item[(i)] $f^{-1}\{-\infty\} \in \mathcal{M}$ and $f^{-1}\{\infty\} \in \mathcal{M}$ and
@@ -103,8 +103,28 @@ If $f$ and $g$ are measurable functions, then the following sets are measurable:
 
 \[(f+g)(x) := \begin{cases} f(x)+g(x), & x \in X - B, \\ \alpha, & x \in B, \end{cases}\]
 
-where $\alpha \in \overline{R}$ is chosen arbitrarily and where
+where $\alpha \in \overline{\mathbb{R} }$ is chosen arbitrarily and where
 
 \[B := (f^{-1}\{\infty\} \cap g^{-1}\{-\infty\}) \cup (f^{-1}\{-\infty\} \cap g^{-1}\{\infty\}).\]
 \end{definition}
+
+\begin{theorem}{}{}
+    If \(  f,g  :X\to   \overline{\mathbb{R} } \) are measurable functions, then \(  f+ g  \)  and \(  fg  \) are measurable.  
+\end{theorem}
+
+\begin{proof}
+    Define \(  F:X\to  \overline{\mathbb{R} }\times   \overline{\mathbb{R} }  \) by \[
+    F\left( x \right)= \left( f\left( x \right),g\left( x \right)   \right)  
+    \] and \(  G: \overline{\mathbb{R} }\times  \overline{\mathbb{R} }\to  \overline{\mathbb{R} }   \) by \[
+    G\left( x,y \right) = \begin{cases} \alpha ,& \left\{ x,y \right\}= \left\{ \infty,-\infty \right\}\\ 
+     x+ y,&\text{otherwise} \end{cases} 
+    \] Where \(  \alpha   \) is the value we dertermined where \(  f+ g  \) are taken on \(  B  \)   , 
+\[B := (f^{-1}\{\infty\} \cap g^{-1}\{-\infty\}) \cup (f^{-1}\{-\infty\} \cap g^{-1}\{\infty\}).\].  Then \(  G\circ F\left( x \right)= f\left( x \right)+ g\left( x \right)     \).   It suffices to show that \(  G\circ F  \) is measurable.  Referring to Theorem \ref{thm:9-3-4}, we need first show that  \(  \left( f+ g \right)^{-1} \left( \infty \right)    \) and \(  \left( f+ g \right)^{-1} \left( -\infty \right)    \)   is measurable, which is a very easy but a little tedious proccess, thus we ommit it here. We only need to show that \(  \left( G\circ F \right)^{-1} \left( J \right)\in \mathcal{M}    \) whenever \(  J\subseteq \mathbb{R}   \) is an open interval.  Now \(  U: = G^{-1} \left( J \right)   \) is an open set in \(  \mathbb{R} ^{2}  \), since \(  G  \) is continuous on \(  \mathbb{R} ^{2}  \) and any point in \(  G^{-1} \left( J \right)   \) cannot lie in \(  \left( \overline{\mathbb{R} } \right)^{2}\setminus \mathbb{R} ^{2}   \)  .  Futhermore, \(  U  \) is the union of a countable family \(  \mathcal{F}  \), of \(  2  \)-dimensional intervals \(  I  \) of the form \(  I= I_1\times I_2  \), where \(  I_1,I_2  \) are open intervals in \(  \mathbb{R}   \).       Since d\[
+    F^{-1} \left( I \right)=  f^{-1} \left( I_1 \right)\cap g^{-1} \left( I_2 \right)   
+    \] We have \[
+    F^{-1} \left( U \right)= F^{-1} \left( \bigcup _{I \in \mathcal{F}} I \right)= \bigcup _{I \in \mathcal{F}}  F^{-1} \left( I \right) 
+    \] is measurable. Thus \(  Gc\circ F  \) is measurable , since \[
+    \left( G\circ F \right)^{-1} \left( J \right)= F^{-1} \left( U \right)   
+    \]  The product is measurable by essentially the same proof.
+\end{proof}
 \end{document}

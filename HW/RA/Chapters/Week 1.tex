@@ -244,4 +244,111 @@ $A_1 \cup A_2 = A.$
     \end{enumerate}
     
 \end{proof}
+
+\begin{exercise}{}{}
+   
+    设$\{f_n(x)\}$以及$f(x)$都是定义在$\mathbf{R}^1$上的实值函数, 且有
+    \[
+        \lim_{n\to\infty}f_n(x) = f(x), \quad x \in \mathbf{R}^1,
+    \]
+    则对$t \in \mathbf{R}^1$, 有
+    \[\begin{aligned}
+        &\{x \in \mathbf{R}^1: f(x) \le t\} \\
+        ={}& \bigcap_{k=1}^{\infty}\bigcup_{m=1}^{\infty}\bigcap_{n=m}^{\infty}\left\{x \in \mathbf{R}^1: f_n(x) < t + \frac{1}{k}\right\}.
+    \end{aligned}\]
+\end{exercise}
+\begin{proof}
+    记 \[
+    S: = \bigcap _{k= 1}^{\infty}\bigcup _{m= 1}^{\infty}\bigcap _{n = m}^{\infty}\left\{ x\in \mathbb{R} ^{1}:  f_{n}\left( x \right)< t+ \frac{1 }{k }   \right\}
+    \]
+    对于固定的 \(  x  \), 若 \( \lim_{n\to \infty}f_{n}\left( x \right)=    f\left( x \right)\le t   \), 则对于任意的 \(  k\in \mathbb{Z} _{> 0}  \), 存在   \(  m \in \mathbb{Z} _{> 0}  \), 使得对于任意的 \(  n\ge m  \), 均有 \(  f_{n}\left( x \right) < t+ \frac{1 }{k }    \), 翻译成集合的语言, 即 \(  x \in S  \). 因此 \[
+    \left\{ x\in \mathbb{R} ^{1}: f\left( x \right)\le t  \right\}\subseteq S
+    \] 
+    
+    反之, 若 \(  x \in S  \),   则对于任意的 \(  k\in \mathbb{Z} _{> 0}  \), 存在   \(  m \in \mathbb{Z} _{> 0}  \), 使得对于任意的 \(  n\ge m  \), 均有 \(  f_{n}\left( x \right) < t+ \frac{1 }{k }    \). 此时, 若 \(  f\left( x \right)> t   \), 可取 \(  k_0  \)使得 \(  \frac{1 }{k_0 }< f\left( x \right)-t    \)  , 相应地 存在 \(  m_0\in \mathbb{Z} _{> 0}  \)  , 使得对于任意的 \(  n\ge m_0  \), 都有  \(  f_{n}\left( x \right)< t+ \frac{1 }{k_0 }    \). 我们得到 \[
+    f\left( x \right)= \lim_{n\to \infty}f_{n}\left( x \right)\le t+ \frac{1 }{k_0 }< f\left( x \right)    
+    \]   从而导出了一个矛盾. 这表明一定有 \(  f\left( x \right)\le t   \). 即 \(  x \in \left\{ x:\mathbb{R} ^{1}:f\left( x \right)\le t  \right\}  \). 因此 \[
+    S\subseteq \left\{ x\in \mathbb{R} ^{1}:f\left( x \right)\le t  \right\}
+    \]  
+\end{proof}
+
+\begin{exercise}{}{}
+    若 $(A \setminus B) \sim (B \setminus A)$, 则 $A \sim B$, 对吗?
+\end{exercise}
+
+\begin{proof}
+    正确的. 只需要证明存在 \(  A  \)到 \(  B  \)的单射, 通过调换 \(  A,B  \)的地位, 可以得到 \(  B  \)到 \(  A  \)的单射. 进而由Cantor-Bernstein-Schroeder定理, 它们是对等的. 下面来证明这件事. 由 \(  \left( A\setminus B \right)\sim \left( B\setminus A \right)    \), 可知存在单射 \(  f:A\setminus B\to B\setminus A  \). 定义 \(  g:A\to B  \) \[
+    g\coloneqq\begin{cases} f\left( x \right),&x \in A\setminus B\\ 
+     x,&x \in A\cap B  \end{cases} 
+    \]       注意到 \(  g\left( A\setminus B \right)\cap g\left( A\cap B \right)= f\left( A\setminus B \right)\cap \left( A\cap B \right)\subseteq \left( B\setminus A \right)\cap \left( A\cap B \right)= \varnothing        \) .且 \(  g|_{A\setminus B} = f \)和 \(  g|_{A\cap B}= Id _{A\cap B}  \)均为单射. 因此 \(  g  \)本身也是一个单射.   
+\end{proof}
+
+\begin{exercise}{}{}
+    若 $A \subset B$, 且 $A \sim (A \cup C)$, 试证明 $B \sim (B \cup C)$.
+\end{exercise}
+\begin{proof}
+    首先, \[
+    B \subseteq B\cup C \implies \operatorname{card}\left( B \right)\le \operatorname{card}\left( B\cup C \right)  
+    \]  由于 \(  A\sim \left( A\cup C \right)   \), 存在单射 \(  f:A\cup C\to A  \). 定义 \(  g:B\cup C\to B  \)  \[
+    g\left( x \right) \coloneqq \begin{cases} f\left( x \right),& x \in A\cup C\\ 
+     x,& x \in B\setminus \left( A\cup C \right)      \end{cases} 
+    \]  由于 \(  \operatorname{Im}g|_{A\cup C}\cap \operatorname{Im}g|_{B\setminus \left( A\cup C \right) }=   \)  \(  f\left( A\cup C \right)\cap \left( B\setminus  \left( A\cup C \right)  \right)\subseteq A\cap \left( B\setminus A \right)= \varnothing     \), 且 \(  g|_{A\cup C}  \)和 \(  g|_{B\setminus  \left( A\cup C \right) }  \)均为单射, 故 \(  g  \)是单射.  这表明 \[
+    \operatorname{card}\left( B\cup C \right)\le \operatorname{card}\left( B \right)  
+    \] 由Cantor-Bernstein-Schroeder定理, 我们有 \[
+    \operatorname{card}\left( B\cup C \right)= \operatorname{card}\left( B \right)  
+    \]即 \(  B\sim \left( B\cup C \right)   \)  
+\end{proof}
+\begin{exercise}{}{}
+  设$E_k \subset \mathbb{R}^n (k = 1, 2, \cdots)$. 证明:
+\[\begin{aligned}
+\overline{\lim_{k \to \infty}} \chi_{E_k}(x) = \chi_{\overline{\lim_{k \to \infty}} E_k}(x).
+\end{aligned}\]
+\end{exercise}
+\begin{proof}
+    给定 \(  x \in \mathbb{R} ^{n}  \). 若 \(  \overline{\lim}_{k\to \infty} \chi _{E_{k}}\left( x \right)= 0   \), 则 \[
+    \lim_{n\to \infty} \sup _{k\ge n}\chi _{E_{k}}\left( x \right)= 0 
+    \]  这表明 存在 \(  m \in \mathbb{Z} _{> 0}  \), 使得对于任意的 \(  n\ge m  \), 都有  \[
+    \sup _{k\ge n}\chi _{E_{k}}\left( x \right)< \frac{1 }{2 }  
+    \]  但是 \(  \chi _{E_{k}}\left( x \right)\in \left\{ 0,1 \right\}   \), 因此只能有 \[
+    \chi _{E_{k}}\left( x \right)= 0, \forall k\ge n \implies  x \in E_{k}^{c},\forall k\ge n 
+    \] 以上表明 \[
+    x \in  \bigcup _{m= 1}^{\infty} \bigcap _{n = m}^{\infty} E_{k}^{c}= \bigcup _{m= 1}^{\infty}\left( \bigcup _{n = m}^{\infty}E_{k} \right)^{c}= \left( \bigcap _{m= 1}^{\infty}  \bigcup _{n = m}^{\infty}E_{k} \right)^{c}= \left( \overline{\lim_{k\to \infty}}E_{k} \right)^{c}   
+    \]从而 \[
+    \chi _{\overline{\lim_{k\to \infty}}E_{k}}\left( x \right)= 0 
+    \]
+
+    若  \(  \overline{\lim_{k\to \infty}}\chi _{E_{k}}\left( x \right)\neq 0   \), 则 \(  1\ge   \overline{\lim_{k\to \infty}}\chi _{E_{k}}\left( x \right)> 0  \). 从而对于任意的 \(  m\in \mathbb{Z} _{> 0}   \) , 存在 \( k\ge m  \), 使得 \[
+   \chi _{E_{k}}\left( x \right)> 0
+    \]  同样的, 由于 \(  \chi _{E_{k}}\left( x \right)\in \left\{ 0,1 \right\}   \), 只能有 \(  \chi _{E_{k}}\left( x \right)= 1   \), 这说明 \(  \overline{\lim_{k\to \infty}}\chi _{E_{k}}\left( x \right)= 1   \) .   此外, \(  x \in E_{k}  \) . 以上表明\[
+    x \in \bigcap _{m= 1}^{\infty}\bigcup _{k= m}^{\infty}E_{k}= \overline{\lim_{k\to \infty}}E_{k}
+    \]即 \[
+    \overline{\lim_{k\to \infty}}\chi _{E_{k}}\left( x \right)=  \chi _{\overline{\lim_{k\to \infty}}E_{k}}\left( x \right)= 1 
+    \]
+
+    这就说明了题设等式成立.
+\end{proof}
+\begin{exercise}{}{}
+    设 $f: X \to Y, A \subset X, B \subset Y$, 试问下列等式成立吗?
+\begin{enumerate}
+\item[(i)] $f^{-1}(Y \setminus B) = f^{-1}(Y) \setminus f^{-1}(B)$;
+\item[(ii)] $f(X \setminus A) = f(X) \setminus f(A)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item[(i)]  \[
+        \begin{aligned}
+        x\in f^{-1} \left( Y\setminus B \right)&\iff f\left( x \right)\in Y\setminus B\\ 
+         &\iff    f\left( x \right)\in Y \text{ 且 } f\left( x \right)\not \in B\\ 
+          &\iff  x \in f^{-1} \left( Y \right)\text{ 且 } x\not \in f^{-1} \left( B \right)\\ 
+           &\iff x \in f^{-1} \left( Y \right)\setminus f^{-1} \left( B \right)      
+        \end{aligned}
+        \]故等式成立.
+        \item[(ii)]等式不成立, 考虑\(  X,Y  \)非空, 且 \(  A  \)为 \(  X  \)的非空真子集.    \(  f  \)在 \(  X  \)上取常值 \(  y \in Y  \).   此时 \[
+        f\left( X\setminus A \right)= \left\{ y \right\},\quad f\left( X \right)\setminus f\left( A \right)= \varnothing   
+        \]
+    \end{enumerate}
+    
+\end{proof}
 \end{document}

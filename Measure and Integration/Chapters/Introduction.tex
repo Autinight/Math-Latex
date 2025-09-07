@@ -11,6 +11,55 @@
 }{}
 
 \chapter{Introduction }
+
+\section{Sets}
+
+\begin{lemma}{}{}
+    Suppose \(  f:X\to Y  \), \(  g:Y\to X  \), then there are decompositions \[
+    X= A\cup \tilde{A},\quad Y= B\cup \tilde{B}
+    \]such that \(  A\cap \tilde{A}= \varnothing, B\cap \tilde{B}= \varnothing  \) and \(  f\left( A \right)= B   \), \(  g\left( \tilde{B} \right)= \tilde{A}  \).     
+\end{lemma}
+
+\begin{note}
+    我们从随便一个 \(  A  \)出发, 先让一些简单的条件得到满足, 比如 \(  B= f\left( A \right), \tilde{B}= Y\setminus B   \) , \(  \tilde{A}= g\left( Y\setminus f\left( E \right)  \right)   \), 就它们确定地写出来. 剩下 \(  A\cap \tilde{A} = \varnothing \)和 \(  A\cup \tilde{A}= X  \)需要满足.   直接找到特定的目标一开始是困难的, 于是我们先把满足 \(  A\cap \tilde{A}= \varnothing  \)的``好东西''都收集起来, 即 \(  \mathcal{S}  \). 再在 \(  \mathcal{S}  \)中寻找一个满足 \(  A\cup \tilde{A}= X  \)的候选. ``极大元''就是一个看起来非常可疑的对象(如果它也落在 \(  \mathcal{S}  \), 事实上也的确如此 ). 
+\end{note}
+
+\begin{proof}
+    Let  \[
+    \mathcal{S}: = \left\{ E\subseteq X: E\cap g\left( Y\setminus f\left( E \right)  \right) = \varnothing  \right\}.
+    \] We define \[
+    A: = \bigcup _{ E \in \mathcal{S}}E
+    \] Let \[
+    B: = f\left( A \right),\quad \tilde{B}: = Y\setminus f\left( A \right),\quad \tilde{A}: =  g\left( \tilde{B} \right)= g\left( Y\setminus f\left( A \right)  \right)    
+    \] It is obvious that \(  B\cap \tilde{B}= \varnothing, B\cup \tilde{B}= Y  \). We should show \(  A\cap \tilde{A}= \varnothing  \), which is equivalent to \(  A\in \mathcal{S}  \),  and   \(  A\cup \tilde{A}= X  \).   First , take any \(  E \in \mathcal{S}  \), we have \[
+    E\cap g\left( Y\setminus f\left( A \right)  \right)\subseteq E\cap g\left( Y\setminus f\left( E \right)  \right)= \varnothing  .
+    \]Then we concludes that  \[
+    A\cap g\left( Y\setminus f\left( A \right)  \right)= \varnothing\implies A\in \mathcal{S} 
+    \] To show that \(  A\cup \tilde{A}= X  \), we suppose conversely that there is \(  x\in X  \) such that \[
+    x \not \in A\cup \tilde{A}
+    \]  Let \(  A^{\prime} : =  A\cup \left\{ x \right\}  \), then \[
+   \begin{aligned}
+   A^{\prime} \cap g\left( Y\setminus f\left( A^{\prime}  \right)  \right)&= \left( A\cup \left\{ x \right\} \right)\cap g\left( Y\setminus \left( f\left( A \right)\cup \left\{ x \right\}  \right)  \right)  \\ 
+    &\subseteq \left( A\cup \left\{ x \right\} \right)\cap \tilde{A} \\ 
+    &= \left( A\cap \tilde{A}  \right) \cup \left( \left\{ x \right\}\cap \tilde{A} \right)     \\ 
+     &= \varnothing
+   \end{aligned}
+    \] Thus \(  A^{\prime} \in \mathcal{S}  \), which is a contradiction to the definition of \(  A  \).  
+\end{proof}
+
+
+\begin{theorem}{Cantro-Bernstein}{}
+    If \(  X\supseteq A, Y\supseteq B  \),  and if \(  X\sim B  \), \(  Y\sim A  \), then \(  X \sim Y  \).    
+\end{theorem}
+
+\begin{proof}
+    We know that there are injection \(  f :X\to Y   \) and \(  g:Y\to X  \). There are decompositions  \[
+    X= A\cup \tilde{A},\quad Y= B\cup \tilde{B}
+    \]such that \(  A\cap \tilde{A}= \varnothing, B\cap \tilde{B}= \varnothing  \) and \(  f\left( A \right)= B   \), \(  g\left( \tilde{B} \right)= \tilde{A}  \).     Then we define \(  F:X\to Y  \) \[
+    F\left( x \right)\coloneqq \begin{cases} f\left( x \right),& x \in A\\ 
+     \left( g|_{\tilde{B}} \right) ^{-1} \left( x \right) ,& x \in \tilde{A}   \end{cases}  
+    \] is a bijection.
+\end{proof}
 \section{Arithmetic in   [0,infty]    } 
 \section{Metric Space}
 \begin{lemma}{}{}

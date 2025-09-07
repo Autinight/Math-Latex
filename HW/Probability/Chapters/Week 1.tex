@@ -2,16 +2,15 @@
 
 \begin{document}
 
-\ifSubfilesClassLoaded{
-
-    \tableofcontents
-    
-}{}
 
 \chapter{ Week 1 }
 
 代靖涵 25120222201319
 
+
+\begin{remark}
+    已按要求自行批改. 证明过程已核对, 未发现逻辑问题.
+\end{remark}
 \begin{exercise}{}{}
 写出下列随机试验的样本空间:
 \begin{enumerate}
@@ -90,6 +89,56 @@
         \item A,B,C中至少有两个发生,当且仅当 \(  A  \)和\(  B  \), \(  A  \)和 \(  C  \), \(  B  \)和 \(  C  \)三组中至少一个同时发生,即 \[
         \left( A\cap B \right)\cup \left( A\cap C \right)\cup \left( B\cap C \right)   
         \]      
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{exercise}{}{}
+请叙述下列事件的对立事件:
+\begin{enumerate}
+    \item $A=$“掷两枚硬币, 皆为正面”;
+    \item $B=$“射击三次, 皆命中目标”;
+    \item $C=$“加工四个零件, 至少有一个合格品”.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item \(  A  \)的对立事件为 \(  A^{c}=   \)  ``掷两枚硬币, 至少有一枚为反面''
+         \item \(  B  \)的 对立事件为\(  B^{c}=   \)  ``射击三次, 至少有一次未命中目标''
+         \item \(  C  \)的对立事件为\(  C^{c}=   \) : ``加工四个零件, 皆为不合格品'' .
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{exercise}{}{}
+    设 $\mathscr{F}$ 为一事件域, 若 $A_n \in \mathscr{F}, n=1,2,\cdots$, 试证：
+\begin{enumerate}
+\item $\emptyset \in \mathscr{F}$ ;
+\item 有限并 $\bigcup_{i=1}^{n} A_i \in \mathscr{F}, n \ge 1$ ;
+\item 有限交 $\bigcap_{i=1}^{n} A_i \in \mathscr{F}, n \ge 1$ ;
+\item 可列交 $\bigcap_{i=1}^{\infty} A_i \in \mathscr{F}$ ;
+\item 差运算 $A_1 - A_2 \in \mathscr{F}$ .
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item 由于 \(   \Omega  \in \mathcal{F}  \), \(  \mathcal{F}  \)对补集封闭, \(  \varnothing =   \Omega ^{c}  \), 从而 \(  \varnothing\in \mathcal{F}  \).
+        \item 定义 \(  B_{k}: = \varnothing, k> n  \). \(  B_{l}: = A_{l}, 1\le l \le n  \). 1.指出 \(  \varnothing\in \mathcal{F}  \)  , 故 \(  B_{k} \in \mathcal{F},\forall k  \).  由于 \(  \mathcal{F}  \)对可数并封闭, 我们有 \[
+        \bigcup _{i= 1}^{n}A_{i}= \bigcup _{i= 1}^{\infty}B_{i}\in \mathcal{F} 
+        \]    
+        \item  我们有 \(  A_{1}^{c},\cdots ,A_{n}^{c}\in \mathcal{F}  \), 由 2. \[
+       \left(  \bigcap_{i= 1}^{n}A_{i} \right)^{c} =\bigcup _{i= 1}^{n}A_{i}^{c} \in \mathcal{F}
+        \] 又 \(  \mathcal{F}  \)对补集封闭, 得到 \[
+        \bigcap_{i= 1}^{n}A_{i}\in \mathcal{F} 
+        \]
+        \item 我们有 \(  A_1^{c},A_2^{c},\cdots \in \mathcal{F}  \) . \(  \mathcal{F}  \)对可数并封闭, 故 \[
+        \left( \bigcap  _{i= 1}^{\infty}A_{i} \right)^{c}= \bigcup _{i= 1}^{\infty}A_{i}^{c}  \in \mathcal{F}
+        \]又 \(  \mathcal{F}  \)对补集封闭, 故 \[
+        \bigcap _{i= 1}^{\infty}A_{i}\in \mathcal{F}
+        \]  
+        \item  \[
+        A_1-A_2= A_1\cap A_2^{c}
+        \]我们已经知道 \(  \mathcal{F}  \)对补集和有限交封闭, 故上述集合属于 \(  \mathcal{F}  \).  
     \end{enumerate}
     
 \end{proof}

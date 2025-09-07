@@ -1,0 +1,145 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+}{}
+
+\chapter{ Topological Space }
+\section{Basic definition}
+\begin{definition}{}{9-6-1}
+Let $X$ be a non-empty set. A set $\mathcal{T}$ of subsets of $X$ is said to be a \dfntxt{topology} on $X$ if
+\begin{enumerate}
+    \item[(i)] $X$ and the empty set, $\emptyset$, belong to $\mathcal{T}$,
+    \item[(ii)] the union of any (finite or infinite) number of sets in $\mathcal{T}$ belongs to $\mathcal{T}$, and
+    \item[(iii)] the intersection of any two sets in $\mathcal{T}$ belongs to $\mathcal{T}$.
+\end{enumerate}
+The pair $(X, \mathcal{T})$ is called a \dfntxt{topological space}.
+\end{definition}
+\begin{definition}{}{}
+Let $(X, \mathcal{T})$ be any topological space. Then the members of $\mathcal{T}$ are said to be \dfntxt{open sets}.
+\end{definition}
+\begin{proposition}{}{}
+If $(X, \mathcal{T})$ is any topological space, then
+\begin{enumerate}
+    \item[(i)] $X$ and $\emptyset$ are open sets,
+    \item[(ii)] the union of any (finite or infinite) number of open sets is an open set,
+    \item[(iii)] the intersection of any finite number of open sets is an open set.
+\end{enumerate}
+\end{proposition}
+
+\begin{definition}{}{}
+Let $(X, \mathcal{T})$ be a topological space. A subset $S$ of $X$ is said to be a \dfntxt{closed set} in $(X, \mathcal{T})$ if its complement in $X$, namely $X \setminus S$, is open in $(X, \mathcal{T})$.
+\end{definition}
+\begin{proposition}{}{}
+If $(X, \mathcal{T})$ is any topological space, then
+\begin{enumerate}
+    \item[(i)] $\emptyset$ and $X$ are closed sets,
+    \item[(ii)] the intersection of any (finite or infinite) number of closed sets is a closed set and
+    \item[(iii)] the union of any finite number of closed sets is a closed set.
+\end{enumerate}
+\end{proposition}
+\begin{definition}{}{}
+A subset $\mathcal{S}$ of a topological space $(X, \mathcal{T})$ is said to be \dfntxt{clopen} if it is both open and closed in $(X, \mathcal{T})$.
+\end{definition}
+
+\section{Basis for a Topology}
+
+\begin{definition}{}{}
+Let $(X, \mathcal{T})$ be a topological space. A collection $\mathcal{B}$ of open subsets of $X$ is said to be a \dfntxt{basis} for the topology $\mathcal{T}$ if every open set is a union of members of $\mathcal{B}$.
+\end{definition}
+
+\begin{remark}
+    拓扑基不是唯一的, 根据定义, 一旦一个集族 \(  \mathcal{B}  \)成为了一个拓扑基 , 我们无论往 \(  \mathcal{B}  \)添加多少开集, 它还是这个拓扑的基. 因此直觉上, 拓扑的基是越小越好用的.  
+\end{remark}
+
+\begin{note}
+    也就是说, 拓扑基是通过任意并运算生成拓扑的对象.
+\end{note}
+
+\begin{proposition}{}{9-6-2}
+Let $X$ be a non-empty set and let $\mathcal{B}$ be a collection of subsets of $X$. Then $\mathcal{B}$ is a basis for a topology on $X$ if and only if $\mathcal{B}$ has the following properties:
+\begin{enumerate}
+    \item[(a)] $X = \bigcup_{B \in \mathcal{B}} B$, and
+    \item[(b)] for any $B_1, B_2 \in \mathcal{B}$, the set $B_1 \cap B_2$ is a union of members of $\mathcal{B}$.
+\end{enumerate}
+\end{proposition}
+\begin{remark}
+    这里不谈与 \(  X  \)上的任何一个具体的拓扑的关系, 只谈一个集族 什么时候能够生成一个拓扑. 
+\end{remark}
+\begin{note}
+    这个命题刻画了一个集族距离成为一组基有多远. 即一个集族需要什么额外条件, 才能通过任意并这个运算生成出一个拓扑. 命题中的条件(a)无非对应于Definition \ref{dfn:9-6-1} (i). 而通过基任意并生成的这个操作, 天然就是为了 Definition \ref{dfn:9-6-1} (ii)而建立的. 因此 (b)就是为了满足\ref{dfn:9-6-1} (iii)而提出的条件. 我们发现生成拓扑对于有限交封闭的要求, 完全地变成了对于基的有限交的封闭的要求.
+\end{note}
+\begin{proof}
+    If \(  \mathcal{B}  \) is a basis for a topology on \(  X  \), say \(  \mathcal{T}_{\mathcal{B}}  \). Then \(  X \in \mathcal{T}  \) means that there is a collection of sets in \(  \mathcal{B}  \) ,say \(  \mathcal{B}_{1}  \), such that \[
+    X = \bigcup _{B\in \mathcal{B}_{i}}B\subseteq \bigcup _{B\in \mathcal{B}}B
+    \]      And since every sets in \(  \mathcal{B}  \) is a subset of \(  X  \), it follows that (a) holds. To show (b), we only need to see that \(  \mathcal{B}\subseteq  \mathcal{T}_{\mathcal{B}} \). Since \(  \mathcal{T}  \) is closed under finite intersection, we have \(  B_1\cap B_2\in  \mathcal{T}_{\mathcal{B}}  \)    .
+    
+    Then conversely , if  \(  \mathcal{B}  \) has the properties (a), (b), we only show that  the collection \(  \left<\mathcal{B} \right>  \) of union of the members in \(  \mathcal{B}  \),  satisfies Definition \ref{dfn:9-6-1} (iii). We take \(   A_1,A_2 \in \left<\mathcal{B} \right>  \), and suppose that \[
+    A_{i}= \bigcup _{j \in I_{i}}B_{j},\quad B_{j}\in \mathcal{B}, \quad I_{i}\text{ is a index set },i= 1,2
+    \] Then \[
+   \begin{aligned}
+    A_1\cap A_2&= \left( \bigcup _{j_1\in I_1}B_{j_1} \right) \cap \left( \bigcup _{j_2\in I_2}B_{j_2} \right)  \\ 
+     &= \bigcup _{j_2 \in I_2}\left( \left( \bigcup _{j_1\in I_1}B_{j_1} \right) \cap B_{j_2} \right) \\ 
+      &= \bigcup _{j_2\in I_2}\left( \bigcup _{j_1\in I_1} \left( B_{j_1} \cap B_{j_2}\right)  \right)\\ 
+       &= \bigcup _{j_1\in I_1,j_2\in I_2}B_{j_1}\cap B_{j_2} 
+   \end{aligned}
+    \] Since every \(  B_{j_1}\cap B_{j_2}  \) is a union of members of \(  \mathcal{B}  \), and \(  A_1\cap A_2  \) is a union of such \(  B_{j_1}\cap B_{j_2}  \), then \(  A_1\cap A_2  \) is a union of members of \(  \mathcal{B}  \).       
+\end{proof}
+
+\begin{proposition}{}{9-6-4}
+Let $(X, \mathcal{T})$ be a topological space. A family $\mathcal{B}$ of open subsets of $X$ is a basis for $\mathcal{T}$ if and only if for any point $x$ belonging to any open set $U$, there is a $B \in \mathcal{B}$ such that $x \in B \subseteq U$.
+\end{proposition}
+
+\begin{remark}
+    表述``there is a \(  B \in \mathcal{B}  \) such that \(  x \in B\subseteq U  \)  ''就是在说  ``\(  U  \)可以由 \(  \mathcal{B}  \)通过`并'生成  ''. 带入这句话之下, 这个命题几乎就是一句``废话''. 同样的道理也出现在 Proposition \ref{pps:9-6-5}
+\end{remark}
+
+\begin{note}
+    想要看 \(  \mathcal{B}  \)是否作为基生成了拓扑 \(  \mathcal{T}  \)  . 我们不用谈 \(  \mathcal{B}  \)中的元素如何如何 ``并''出每一个开集 \(  U  \). 而是只需要 \(  \mathcal{B}  \)对于开集是足够``精细''的 , 以至于对于任意的开集 \(  U  \),  我们可以用 \(  \mathcal{B}  \)里面的元素在 \(  U  \)上 ``框出''它的任意一个点 .   
+\end{note}
+\begin{proof}
+    If \(  \mathcal{B} \)  is a basis for \(  \mathcal{T}  \). Then we can write \(  U  \) as \[
+    U = \bigcup _{ i \in I}B_{i}
+    \]   Then for any \(  x \in U  \), there exists \(  i_0 \in I  \) such that \(  x \in B_{i_0} \subseteq U  \).
+    
+    Now we show the converse. First we show that \(  \mathcal{B}  \) is a basis . We use Proposition \ref{pps:9-6-2} to verify this. Since \(  X  \) is a open set , for any \(  x \in X  \), there is a \(  B_{x} \in \mathcal{B}  \) , such that \(  x\in B_{x}\subseteq X  \), we get \[
+    X= \bigcup _{x \in X}B_{x}\subseteq  \bigcup _{B\in \mathcal{B}}B \subseteq X
+    \]     Thus \[
+    X = \bigcup _{B\in \mathcal{B}}B
+    \] Take any \(  B_1,B_2 \in \mathcal{B}  \), we know \(  B_1\cap B_2  \) is again an open set. Then similarly, we get \[
+    B_1\cap B_2= \bigcup _{x \in B_1\cap B_2}B_{x}
+    \]  is a union of members in \(  \mathcal{B}  \). Thus \(  \mathcal{B}  \) is actually a basis. Finally , we only need to show that  \(  \mathcal{B}  \) generates \(  \mathcal{T}  \) , that is \(  \left<\mathcal{B} \right>= \mathcal{T}  \). \(  \left<\mathcal{B} \right>  \) is the collection of unions of members in \(  \mathcal{B}  \). \(  \left<\mathcal{B} \right>\subseteq \mathcal{T}  \) is obvious. \(  \mathcal{T}\subseteq \left<\mathcal{B} \right>  \) concludes from \[
+    U = \bigcup _{x \in U}B_{x} \in \left<\mathcal{B} \right>
+    \]        
+\end{proof}
+
+\begin{proposition}{}{9-6-5}
+Let $\mathcal{B}$ be a basis for a topology $\mathcal{T}$ on a set $X$. Then a subset $U$ of $X$ is open if and only if for each $x \in U$ there exists a $B \in \mathcal{B}$ such that $x \in B \subseteq U$.
+\end{proposition}
+\begin{note}
+    把基\(  \mathcal{B}  \)看成是 \(  \mathcal{T}  \)中代表着``足够精细''的某一批.  
+    验证 \(  U  \)是否是开集, 只需要看   \(  U  \)是否可以被这一小批集合``概括''. 
+\end{note}
+
+\begin{proof}
+     \(  \implies   \) is immediately from Proposition \ref{pps:9-6-4}. Now suppose that  for each  \(  x\in U  \), ther exists a \(  B_{x}\in \mathcal{B}  \) such that \(  x \in B\subseteq U  \), then    \[
+     U= \bigcup _{x \in U}B_{x}\in \left<\mathcal{B} \right>= \mathcal{T}
+     \]
+\end{proof}
+
+\begin{proposition}{}{}
+Let $\mathcal{B}_1$ and $\mathcal{B}_2$ be bases for topologies $\mathcal{T}_1$ and $\mathcal{T}_2$, respectively, on a non-empty set $X$. Then $\mathcal{T}_1 = \mathcal{T}_2$ if and only if
+\begin{enumerate}
+    \item for each $B \in \mathcal{B}_1$ and each $x \in B$, there exists a $B' \in \mathcal{B}_2$ such that $x \in B' \subseteq B$, and
+    \item for each $B \in \mathcal{B}_2$ and each $x \in B$, there exists a $B' \in \mathcal{B}_1$ such that $x \in B' \subseteq B$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proofsketch}
+    考虑这句话: 表述``there is a \(  B \in \mathcal{B}  \) such that \(  x \in B\subseteq U  \)  ''就是在说  ``\(  U  \)可以由 \(  \mathcal{B}  \)通过`并'生成 ''. 1.是说 \(  \mathcal{B}_{1}  \)中任意集合可以由 \(  \mathcal{B}_{2}  \)``并''出来. 自然地\(  \mathcal{T}_{1}  \)中任意集合也被 \(  \mathcal{B}_{2}  \)``并出来''. 因此1.就是 \(  \mathcal{T}_{1}\subseteq \mathcal{T}_{2}  \). 同样地,  2.就是 \(  \mathcal{T}_{2}\subseteq \mathcal{T}_{1}  \).      
+\end{proofsketch}
+\end{document}
