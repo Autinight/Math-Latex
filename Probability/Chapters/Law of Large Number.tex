@@ -193,6 +193,9 @@ In order for $X_1, \dots, X_n$ to be independent, it is sufficient that for all 
 \begin{theorem}{}{}
 Suppose $\mathcal{F}_{i,j}$, $1 \leq i \leq n$, $1 \leq j \leq m(i)$ are independent \(   \pi  \)-systems   and let $\mathcal{G}_i = \sigma(\bigcup_j \mathcal{F}_{i,j})$. Then $\mathcal{G}_1, \dots, \mathcal{G}_n$ are independent.
 \end{theorem}
+\begin{note}
+    对于独立的 \(   \pi  \)-systems, 可以把它们按任意分组方式, ``攒起来''做 \(   \sigma   \)-代数扩张, 得到新的独立系统.  
+\end{note}
 \begin{proof}
 Let $\mathcal{A}_i$ be the collection of sets of the form $\bigcap_j A_{i,j}$ where $A_{i,j} \in \mathcal{F}_{i,j}$. $\mathcal{A}_i$ is a $\pi$-system that contains $\Omega$ and contains $\bigcup_j \mathcal{F}_{i,j}$, so Theorem \ref{thm:8-3-1} implies $\sigma(\mathcal{A}_i) = \mathcal{G}_i$ are independent.
 \end{proof}
@@ -237,6 +240,24 @@ Ef(X)g(Y) = Ef(X) \cdot Eg(Y)
 \end{aligned}
 \]
 \end{theorem}
+
+\begin{proof}
+    From the Changing of Variables and the Fubini's Theorem, we have \[
+    \begin{aligned}
+    Eh\left( X,Y \right)&= \int h \,\mathrm{d} \left( \mu \times \nu  \right)= \iint h\left( x,y \right)\mu \left( \,\mathrm{d} x \right)\nu \left( \,\mathrm{d} y \right)      
+    \end{aligned}
+    \]
+
+    To show the second part, we first assmu that \(  f,g \ge 0  \), then \[
+    \begin{aligned}
+     Ef\left( X \right)g\left( Y \right)&= \iint f\left( x \right)g\left( y \right)\mu \left( \,\mathrm{d} x \right)\nu \left( \,\mathrm{d} y \right)\\ 
+      &= \int g\left( y \right) \int f\left( x \right)\mu \left( \,\mathrm{d} x \right)\nu \left( \,\mathrm{d} y \right)\\ 
+       &=  \int g\left( y \right)Ef\left( X \right)          \nu \left( \,\mathrm{d} y \right)\\ 
+        &=  Ef\left( X \right)Eg\left( Y \right)   
+    \end{aligned}
+    \] 
+    For another assumption, we apply the above result to the nonnegative function \(  \left| f \right|, \left| g \right|    \), to get \(  E\left| h\left( X,Y \right)  \right|< \infty   \)  , and we repeat the last argument to prove the desired result.
+\end{proof}
 \begin{theorem}{}{}
 If $X_1, \dots, X_n$ are independent and have
 \begin{enumerate}
