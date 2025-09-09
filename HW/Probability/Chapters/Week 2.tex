@@ -1,0 +1,240 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+
+\chapter{ Week 2 }
+
+\begin{exercise}{}{}
+抛三枚硬币,求至少出现一个正面的概率.
+\end{exercise}
+\begin{proof}
+    将\(  Z  \), \(  F  \)分别记作硬币为 正, 反面的结果. 则样本空间为 \[
+     \Omega \coloneqq \left\{ Z,F \right\}^{3}
+    \]  是一个有限集, 其基数为 \(  8  \). 事件空间 $\mathcal{F}$ 取为 $\Omega$ 的幂集 $\mathcal{P}(\Omega)$. 由于硬币是均匀的, 每个基本事件 $\omega \in \Omega$ 都是等可能的, 因此概率测度 $P$ 对于任意事件 $A \in \mathcal{F}$ 定义为 $P(A) = |A|/|\Omega|$. 事件``至少出现一个正面''为以下集合 \[
+A\coloneqq     \left\{ Z,F \right\}^{3}\setminus \left\{ \left( F,F,F \right)  \right\}
+    \]该集合的基数为 \(  7  \). 根据古典概率测度空间的概率计算方法, 可得事件的概率\(  P  \)为 \[
+    P= \frac{\left|  \Omega  \right|  }{\left| A \right|  } = \frac{7 }{8 }  
+    \] 
+\end{proof}
+\begin{exercise}{}{}
+任取两个正整数,求它们的和为偶数的概率.
+\end{exercise}
+\begin{proof}
+   对于每个 \(  N\in \mathbb{Z} _{> 0}  \), 考虑古典概率空间 \(  \left(  \Omega _{N},\mathcal{F}_{N},P_{N} \right)   \), 其中 \[
+    \Omega _{N}\coloneqq  \left\{ 1,\cdots ,N \right\}^{2},\quad \mathcal{F}_{N}\coloneqq \mathcal{P}\left(  \Omega _{N} \right), \quad P_{N}\left( A \right)\coloneqq  \frac{\left| A \right|  }{\left|  \Omega _{N} \right|  }   ,\forall  A\in \mathcal{F}_{N}
+   \]事件 \(  A_{N}\coloneqq   \)  ``任取 \(  \left\{ 1,\cdots ,N \right\}^{2}  \)的两个正整数, 它们的和为偶数 '' 为以下集合 \[
+   \left\{ \left( k_1,k_2 \right): k_1,k_2\text{同时为奇数},\text{或}k_1,k_2\text{同时为偶数}\right\}
+   \] 当 \(  N \)为奇数时, 事件的 基数为 \[
+   \left| A_{N} \right|=  \left( \frac{N-1 }{2 }  \right)^{2} + \left( \frac{N+ 1 }{ 2}  \right)^{2} = \frac{N^{2}+ 1 }{2 } 
+   \]当 \(  N  \)为偶数时, 事件的基数为 \[
+  \left| A_{N} \right|=   \left( \frac{N }{2 }  \right)^{2}+ \left( \frac{N }{2 }  \right)^{2}= \frac{N^{2} }{2 } 
+   \] 因此, ``和为偶数''的概率为 \[
+   P= \lim_{N\to \infty}P_{N}=  \lim_{N\to \infty}\frac{\left| A_{N} \right|  }{\left|  \Omega _{N} \right|  } = \lim_{N\to \infty}\frac{\left| A_{N} \right|  }{N^{2} } = \frac{1 }{2 } 
+   \]
+\end{proof}
+\begin{exercise}{}{}
+考虑一元二次方程 $x^2+Bx+C=0$, 其中 $B,C$ 分别是将一颗骰子接连掷两次先后出现的点数, 求该方程有实根的概率 $p$ 和有重根的概率 $q$.
+\end{exercise}
+\begin{proof}
+    考虑古典概率测度空间 \(  \left(  \Omega ,\mathcal{F},P \right)   \) ,其中 \[
+     \Omega \coloneqq \left\{ 1,2,3,4,5,6 \right\}^{2},\quad \mathcal{F}\coloneqq \mathcal{P}\left(  \Omega  \right),\quad P\left( A \right)\coloneqq \frac{\left| A \right|  }{\left|  \Omega  \right|  },\forall A\in \mathcal{F}   
+    \]
+  令  \[
+     \Delta \coloneqq B^{2}-4C
+    \]则 \[
+    p= P\left(  \Delta \ge 0 \right),\quad q= P\left(  \Delta = 0 \right)  
+    \]枚举可得 \[
+    A\coloneqq \left\{  \Delta = 0   \right\}= \left\{ \left( 2,1 \right),\left( 4,4 \right)  \right\}
+    \] \[
+  \begin{aligned}
+    B\coloneqq \left\{  \Delta \ge  0 \right\}&= \left\{ \left( B,1 \right):B\ge 2  \right\}\cup \left\{ \left( B,2 \right):B\ge 3  \right\}\cup \left\{ \left( B,3 \right):B\ge 4  \right\}\\ 
+     &\cup \left\{ \left( B,4 \right):B\ge 4  \right\} \cup \left\{ \left( B,5 \right):B\ge 5  \right\}\cup \left\{ \left( B,6 \right):B\ge 5  \right\}
+  \end{aligned}
+    \]从而 \[
+    \left| A \right|= 2,\quad \left| B \right|=19  
+    \]于是 \[
+    q= P\left( A \right)= \frac{\left| A \right|  }{\left|  \Omega  \right|  }= \frac{1 }{18 },\quad p= P\left( B \right)=  \frac{\left| B \right|  }{\left|  \Omega  \right|  }= \frac{19 }{36 }      
+    \]
+\end{proof}
+\begin{exercise}{}{}
+从一副 52 张的扑克牌中任取 4 张, 求下列事件的概率:
+\begin{enumerate}
+\item 全是黑桃;
+\item 同花;
+\item 没有两张同一花色;
+\item 同色.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+    用\(  E,F,G,H  \)分别表示黑桃, 草花,红桃, 方片 四个花色, 令 \(  \mathcal{S}\coloneqq \left\{ E,F,G,H \right\} \times \left\{ 1,2,\cdots ,13 \right\} \)表示扑克牌的全体 . 考虑古典概率测度空间 \(  \left(  \Omega ,\mathcal{F},P \right)   \), 其中 \[
+     \Omega \coloneqq \left\{ A \subseteq \mathcal{S} : |A| = 4 \right\},\quad \mathcal{F}\coloneqq \mathcal{P}\left(  \Omega  \right),\quad P\left( A \right)\coloneqq \frac{\left| A \right|  }{\left|  \Omega  \right|  },\forall A\in \mathcal{F}   
+    \] \(   \Omega   \)的基数为 \[
+    \left|  \Omega  \right|= C_{52}^{4}= \frac{52! }{4! 48! }  
+    \] \begin{enumerate}
+        \item 用 \(  A  \)表示事件``全是黑桃''. 则 \[
+    \left| A \right|= C_{13}^{4}= \frac{13! }{4! 9! }  
+    \] 于是 \[
+    P\left( A \right)= \frac{\left| A \right|  }{\left|  \Omega  \right|  }= \frac{48!13!  }{52! 9!}   
+    \]
+        \item 用 \(  B  \)表示事件``同花''. 则由对称性和可加性可知 \[
+        P\left( B \right)= 4P\left( A \right)= 4 \frac{48!13!  }{52! 9!}
+        \] 
+        \item 用 \(  C  \)表示事件``没有两张同一花色''. 则 \(  C  \)与 ``各抽取一张黑桃, 草花, 红桃, 方片''的样本集是一一对应的. 从而 \[
+        \left| C \right|=  \left( C_{13}^{1} \right)^{4} =  13 ^{4}
+        \] 于是 \[
+        P\left( C \right)=\frac{\left| C \right|  }{\left|  \Omega  \right|  }=  \frac{13 ^{4} 4! 48! }{52! }   
+        \]
+        \item 用 \(  D  \)表示事件``全是黑色'', \(  E  \)表示事件``同色'' .  则由对称性和可加性可知  \(  P\left( E \right)= 2P\left( D \right)    \). 而 \[
+        \left| D \right|= C_{26}^{4}= \frac{26! }{4! 22! }  
+        \] 故 \[
+        P\left( E \right)= 2P\left( D \right)= 2\frac{\left| D \right|  }{\left|  \Omega  \right|  }=2 \frac{48!26! }{52!22! }    
+        \]
+    \end{enumerate}
+    
+\end{solution}
+
+\begin{exercise}{}{}
+设 9 件产品中有 2 件不合格品. 从中不返回地任取 2 件, 求取出的 2 件中全是合格品、仅有一件合格品和没有合格品的概率各为多少?
+\end{exercise}
+
+\begin{proof}
+    用 \(  a_{i}  \)表示第 \(  i  \)件产品.  令 \(  \mathcal{S}\coloneqq \left\{ a_{i}: i= 1,\cdots ,9 \right\}  \).  其中 \(  a_1,a_2  \)是不合格品, 其余为合格品. 考虑古典概率测度空间 \( \left(  \Omega ,\mathcal{F},P \right)   \), 其中 \[
+     \Omega \coloneqq \left\{ A\subseteq \mathcal{S}:\left| A \right|= 2  \right\},\quad \mathcal{F}\coloneqq \mathcal{P}\left(  \Omega  \right),\quad  P\left( E \right)\coloneqq \frac{\left| E \right|  }{\left|  \Omega  \right|  },\forall E\in \mathcal{F}   
+    \]  则 \[
+    \left|  \Omega  \right|= C_{9}^{2}= \frac{9! }{7!2! }=  36
+    \]  用\(  E_1,E_2,E_3  \)分表表示事件``全是合格品'', ``仅有一件合格品'', ``没有合格品''. 则 \(  E_1\cup E_2\cup E_3=  \Omega   \).  计算 \[
+    \left| E_1 \right|= C_{7}^{2}= 21 ,\quad \left| E_2 \right|= C_{2}^{1}\times C_{7}^{1}= 14, \quad \left| E_3 \right|= C_{2}^{2}= 1    
+    \]从而 \[
+    P\left( E_1 \right)= \frac{\left| E_1 \right|  }{\left|  \Omega  \right|  }= \frac{7 }{12 },\quad P\left( E_2 \right)= \frac{\left| E_2 \right|  }{\left|  \Omega  \right|  }= \frac{7 }{18 },\quad P\left( E_3 \right)= \frac{\left| E_3 \right|  }{\left|  \Omega  \right|  }= \frac{1 }{36 }         
+    \]
+\end{proof}
+\begin{exercise}{}{}
+口袋中有 7 个白球、3 个黑球, 从中任取两个, 求取到的两个球的颜色
+\begin{enumerate}
+\item 相同的概率;
+\item 不同的概率.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    用 \(  W_1,\cdots ,W_{7}  \)表示7个白球,  \(  B_1,B_2,B_3  \)表示三个黑球. 令 \(  S\coloneqq \left\{ W_1,\cdots ,W_7,B_1,B_2,B_3 \right\}  \). 考虑古典概率空间 \(  \left(  \Omega ,\mathcal{F},P \right)   \), 其中 \[
+     \Omega \coloneqq \left\{ A\subseteq \mathcal{S}:\left| A \right|= 2  \right\},\quad \mathcal{F}\coloneqq \mathcal{P}\left(  \Omega  \right) 
+    \]    则 \[
+    \left|  \Omega  \right|= C_{10}^{2}= 45 
+    \]
+    \begin{enumerate}
+        \item 令 \(  E  \)表示两个球颜色相同的时间. 则 \[
+        \left| E \right|= C_{7}^{2}+ C_{3}^{2}= 24 
+        \] 从而 \[
+        P\left( E \right)= \frac{\left| E \right|  }{\left|  \Omega  \right|  }= \frac{8 }{15 }   
+        \]
+        \item 令 \(  F  \)表示两个球颜色不同的事件, 注意到 \(  E\cup F=  \Omega   \), 我们有 \[
+        P\left( F \right)= 1-P\left( E \right)=   \frac{7 }{15 } 
+        \] 
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+甲口袋有 5 个白球、3 个黑球, 乙口袋有 4 个白球、6 个黑球. 从两个口袋中各任取一球, 求取到的两个球颜色相同的概率.
+\end{exercise}
+   
+\begin{proof}
+    用 \(  \mathcal{S}_{1}  \)表示甲口袋中球的全体, \(  \mathcal{S}_{2}  \)表示乙口袋中球的全体. 考虑古典概率空间 \(  \left(  \Omega  ,\mathcal{F},P \right)   \), 其中 \[
+     \Omega \coloneqq \mathcal{S}_{1}\times \mathcal{S}_{2}
+    \] 则 \[
+    \left|  \Omega  \right|= \left| \mathcal{S}_{1} \right|\times \left| \mathcal{S}_{2} \right|= 80   
+    \]令 \(  A  \)表示事件 ``两个球颜色相同''. 则 \[
+    \left| A \right|= C_{5}^{1}\times C_{4}^{1}+ C_{3}^{1}\times C_{6}^{1}= 38 
+    \] 因此 \[
+    P\left( A \right)= \frac{\left| A \right|  }{\left|  \Omega  \right|  }= \frac{19 }{40 }   
+    \]
+\end{proof}
+\begin{exercise}{}{}
+从 $n$ 个数 $1,2,\cdots,n$ 中任取 2 个, 问其中一个小于 $k$ ($1<k<n$), 另一个大于 $k$ 的概率是多少?
+\end{exercise}
+\begin{proof}
+    考虑古典概率空间 \(  \left(  \Omega ,\mathcal{F},P \right)   \), 其中 \[
+     \Omega \coloneqq \left\{ A\subseteq \left\{ 1,2,\cdots ,n \right\}: \left| A \right|= 2  \right\}
+    \] 用 \(  A_{k}  \)表示时间``其中一个小于 \(  k  \), 另一个大于\(  k  \)  ''. 则 \[
+    \left| A_{k} \right|= C_{k-1}^{1}\times C_{n-k}^{1}= \left( k-1 \right)\left( n-k \right)   
+    \]而 \[
+    \left|  \Omega  \right|= C_{n}^{2}= \frac{n\left( n-1 \right)  }{2 }  
+    \] 因此 \[
+    P\left( A_{k} \right)= \frac{\left| A_{k} \right|  }{\left|  \Omega  \right|  }= \frac{2\left( k-1 \right)\left( n-k \right)   }{n\left( n-1 \right)  }   
+    \]
+\end{proof}
+\begin{exercise}{}{}
+口袋中有 10 个球, 分别标有号码 1 到 10, 现从中不返回地任取 4 个, 记下取出球的号码, 试求:
+\begin{enumerate}
+\item 最小号码为 5 的概率;
+\item 最大号码为 5 的概率.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    考虑古典概率空间\(  \left(  \Omega ,\mathcal{F},P \right)   \), 其中 \[
+     \Omega \coloneqq \left\{ A\subseteq \left\{ 1,2,\cdots ,10 \right\}:\left| A \right|= 4  \right\}
+    \] 于是 \[
+    \left|  \Omega  \right|=210
+    \]
+    \begin{enumerate}
+        \item 令 \(  A  \)表示最小号码为5的事件, 则该事件的样本个数与``从 \(  \left\{ 6,7,8,9,10 \right\}  \)中任取3个 ''相同, 因此 \[
+        \left| A \right|= C_{5}^{3}= 10
+        \]  \[
+        P\left( A \right)= \frac{15 }{210 }= \frac{1 }{21 }   
+        \]
+        \item 令 \(  B  \)表示最大号码为 \(  5  \)的时间, 则该事件 的样本个数与 ``从 \(  \left\{ 1,2,3,4 \right\}  \)中任取3个 ''相同, 因此 \[
+        \left| B \right|= C_{4}^{3}= 4
+        \]从而 \[
+        P\left( B \right)= \frac{\left| B \right|  }{\left|  \Omega  \right|  }= \frac{2 }{105 }   
+        \]  
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+掷三颗骰子,求以下事件的概率:
+\begin{enumerate}
+    \item 所得的最大点数小于等于 5;
+    \item 所得的最大点数等于 5.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    令 \(  S= \left\{ 1,2,3,4,5,6 \right\}  \), 考虑古典概率空间 \(  \left(  \Omega ,\mathcal{F},P \right)   \), 其中 \[
+     \Omega \coloneqq S^{3}
+    \]  则 \[
+    \left|  \Omega  \right|= 6^{3}= 216 
+    \]
+\begin{enumerate}
+    \item 令 \(  A  \)表示事件 ``所得的最大点数小于等于5'', 则 \[
+    A= \left( S\setminus \left\{ 6 \right\} \right)^{3} 
+    \]从而 \[
+    \left| A \right|= 5^{3}=  125
+    \] 因此 \[
+    P\left( A \right)= \frac{\left| A \right|  }{\left|  \Omega  \right|  }= \frac{125 }{216 }   
+    \]
+    \item 令 \(  B  \)表示事件``所得的最大点数等于5''. 令 \(  C \)表示事件 ``最大的点数小于等于4''. 则 \[
+    \left| C \right|= \left| \left( S\setminus \left\{ 5,6 \right\} \right) \right| ^{3}  = 64
+    \]从而 \[
+    P\left( C \right)= \frac{\left| C \right|  }{\left|  \Omega  \right|  }= \frac{64 }{216 }   
+    \] 注意到\[
+    B= A\setminus C
+    \]因此 \[
+    P\left( B \right)= P\left( A \right)-P\left( C \right)= \frac{61 }{216 }    
+    \]
+\end{enumerate}
+
+\end{proof}
+\begin{exercise}{}{}
+把 10 本书任意地放在书架上,求其中指定的 4 本书放在一起的概率.
+\end{exercise}
+\begin{proof}
+    令 \(  B  \)表示10本书的全体. 考虑古典概率空间 \(  \left(  \Omega ,\mathcal{F},P \right)   \). 其中 \[
+     \Omega \coloneqq \left\{  \sigma :  \sigma \text{是} B\text{的一个置换} \right\}
+    \]  则 \[
+    \left|  \Omega  \right|=  10!
+    \]令 \(  A  \)表示4本书放在一起的事件. 先将\(  4  \)本书排列, 再将 \(  4  \)本书固定, 作为整体参与到与其他6本书的排列, 这样的排列的全体可以与 \(  A  \)建立一个双射. 我们得到    \[
+    \left| A \right|= 4! 7! 
+    \]因此 \[
+    P\left( A \right)= \frac{\left| A \right|  }{\left|  \Omega  \right|  }= \frac{4!7! }{10! }=    \frac{1 }{30 } 
+    \]   
+\end{proof}
+\end{document}

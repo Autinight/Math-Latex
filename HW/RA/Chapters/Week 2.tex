@@ -1,0 +1,111 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+}{}
+
+\chapter{ Week 2 }
+
+\begin{exercise}{}{}
+    试作\(  (-1,1)  \)到 \(  \left[ -1,1 \right]   \)之间的一个双射.  
+\end{exercise}
+\begin{proof}
+    取(-1,1)的一个可数 子集 \(  \left\{ \frac{1 }{n }  \right\}_{n\in \mathbb{Z} _{\ge 2}}  \). 做映射 \(  f: \left\{ -1,1 \right\}\cup \left\{ \frac{1 }{n }  \right\}_{n \in \mathbb{Z} _{\ge 2}}\to \left\{ \frac{1 }{n }  \right\}_{n\in \mathbb{Z} _{\ge 2}} \), \[
+    f\coloneqq \begin{cases} \frac{1 }{2 },& x= -1\\
+    \frac{1 }{3 },&x = 1\\ 
+     \frac{1 }{n+ 2 },& x= \frac{1 }{n }    ,n \in \mathbb{Z} _{\ge 2} \end{cases} 
+    \]  则 \(  f  \)是一个双射. 定义 \(  F:\left[ -1,1 \right]\to \left( -1,1 \right)    \) \[
+    F\left( x \right)\coloneqq \begin{cases} f\left( x \right),& x \in \left\{ -1,1 \right\}\cup \left\{ \frac{1 }{n }  \right\}_{n \in \mathbb{Z} _{\ge 2}}\\ 
+     x,& x \in \left( -1,1 \right) \setminus \left\{ \frac{1 }{n }  \right\}_{n\in \mathbb{Z} _{\ge 2}}  \end{cases}  
+    \]  则 \[
+    \operatorname{Im}F= \operatorname{Im}f\cup \left( \left( -1,1 \right)\setminus \left\{ \frac{1 }{n }  \right\}_{n\in  \mathbb{Z} _{\ge 2}}  \right)= \left\{ \frac{1 }{n }  \right\}_{n\in \mathbb{Z} _{\ge 2}}\cup \left( \left( -1,1 \right)\setminus \left\{ \frac{1 }{n }  \right\}_{n\in \mathbb{Z} _{\ge 2}}  \right)= \left( -1,1 \right)   
+    \]故 \(  F  \) 是一个满射. 此外, 任取 \(  x,y \in \left[ -1,1 \right]   \), 设 \(  F\left( x \right)= F\left( y \right)    \), 则 若 \(  F\left( x \right)= F\left( y \right)\in \left\{ \frac{1 }{n }  \right\}_{n \in \mathbb{Z} _{\ge 2}}    \), 则  \(  f\left( x \right)= f\left( y \right)\implies x= y    \); 若 \(  F\left( x \right)= F\left( y \right)\in \left( -1,1 \right)\setminus \left\{ \frac{1 }{n }  \right\}_{ n\in \mathbb{Z} _{\ge 2}}     \), 则 \(  x= F\left( x \right)= F\left( y \right)= y    \). 因此 \(  F  \)是一个单射. 最终我们得到 \(  F  \)是 \(  \left[ -1,1 \right]   \)到 \(  (-1,1)  \)的一个双射.     逆映射 \(  F^{-1}   \)即为题目所需的双射.       
+\end{proof}
+
+\begin{exercise}{}{}
+    试证明系数为有理数的多项式的全体组成一个可数集.
+\end{exercise}
+\begin{proof}
+   定义 \[
+   \mathbb{Q} ^{k}[x]\coloneqq\left\{  \sum _{m= 0}^{k}a_{m}x^{m}: a_0,a_1,\cdots ,a_{m}\in \mathbb{Q}  \right\}
+   \]易见存在 \(  \mathbb{Q} ^{k}\left[ x \right]   \)到 \(  \mathbb{Q} ^{k+ 1}  \)之间的一个双射. 注意到 \[
+   \mathbb{Q} [x]= \bigcup _{k= 0}^{\infty}\mathbb{Q} ^{k}[x]
+   \]  其中每个 \(  \mathbb{Q} ^{k}\left[ x \right]   \)都与 \(  \mathbb{Q} ^{k+ 1}  \)等势. 而 \(  \mathbb{Q} ^{k+ 1}  \)作为可数集的笛卡尔积仍是可数集. 又可数集的可数并仍可数, 因此 \(  \mathbb{Q} \left[ x \right]   \)也是一个可数集.   
+\end{proof}
+\begin{exercise}{}{}
+设 $E \subset (0,1)$ 是无限集. 若从 E 中任意选取不同的数所组成的无穷正项级数总是收敛的, 试证明 E 是可数集.
+\end{exercise}
+\begin{proof}
+令 \[
+E_{n}\coloneqq E\cap (\frac{1 }{n+ 1 },\frac{1 }{n }  ]
+\]则 \[
+E= \bigcup _{n = 1}^{\infty}E_{n}
+\] 若存在 \(  k \in \mathbb{Z} _{> 0}  \)使得 \(  E_{k}  \)为不可数集, 则 \(  E_{k}  \) 包含一个可数无限子集, 将其写成一个序列 \(  \left\{ a_{j} \right\}_{j \in \mathbb{N} }  \).   由于 \(  \lim_{j\to \infty}a_{j}= 0  \)不成立, 故级数\[
+\sum _{k= 1}^{\infty}a_{k}
+\] 发散, 与题设矛盾.  因此, 对于任意的 \(  k \in \mathbb{Z} _{> 0}  \), \(  E_{k}  \)可数, 进而 \(  E  \)是可数集.   
+\end{proof}
+\begin{exercise}{}{}
+试作开圆 $\{(x,y): x^2+y^2<1\}$ 与闭圆盘 $\{(x,y): x^2+y^2 \le 1\}$ 之间的一一对应.
+\end{exercise}
+\begin{proof}
+    记 \[
+    D\coloneqq \left\{ \left( x,y \right):x^{2}+ y^{2}< 1  \right\},\quad  \overline{D}\coloneqq \left\{ \left( x,y \right):x^{2}+ y^{2}\le 1  \right\}
+    \]令 \[
+    S\coloneqq   \overline{D}\setminus D= \left\{ \left( x,y \right):x^{2}+ y^{2}= 1  \right\}
+    \] 只需要找到 \(  D\setminus \left\{ \left( 0,0 \right)  \right\}  \)与 \(  \bar{D}\setminus \left\{ \left( 0,0 \right)  \right\}  \)之间的一一对应.  将圆盘上的点用极坐标表示, 我们寻找 \[
+    (0,1)\times \left[ 0,2 \pi \right)\to  (0,1]\times \left[ 0,2 \pi \right)  
+    \]的一一对应. 令 \(  f:(0,1]\to (0,1)  \) \[
+    f\left( x \right)= \begin{cases} \frac{1 }{n+ 1 },&x= \frac{1 }{n }, n\in \mathbb{Z} _{> 0}  \\ 
+     x, & x \in (0,1]\setminus \left\{ \frac{1 }{n }  \right\}_{n\in \mathbb{Z} _{> 0}} \end{cases}  
+    \] 则 \(  f  \)是一个双射. 定义 \(  F:(0,1]\to [0,2 \pi)\to (0,1)\times [0,2 \pi]  \) \[
+    F\left( r, \theta  \right)= \left( f\left( r \right), \theta   \right)  
+    \]则 \(  F  \)是一个双射.   令 \(  \rho \left( r, \theta  \right)= \left( r\cos  \theta , r\sin  \theta  \right)    \)为极坐标映射, 它是 \(  \mathbb{R} ^{2}\setminus \left\{ 0,0 \right\}  \)上的同胚映射. 最后, 令 \(  G:\bar{D}\to D \) \[
+    G\left( x,y \right)= \begin{cases}\left( \rho \circ  F\circ  \rho ^{-1}   \right)\left( x,y \right),& \left( x,y \right)\neq \left( 0,0 \right)\\ 
+     \left( 0,0 \right),& \left( x,y \right)= \left( 0,0 \right)        \end{cases}  
+    \] 则 \(  G  \)是一个双射. 
+\end{proof}
+\begin{exercise}{}{}
+    设 $f(x)$ 是定义在 $[0,1]$ 上的实值函数, 且存在常数 $M$, 使得对于 $[0,1]$ 中任意有限个数: $x_1, x_2, \cdots, x_n$, 均有
+\[ |f(x_1) + f(x_2) + \cdots + f(x_n)| \le M, \]
+试证明下述集合是可数集: $E = \{x \in [0,1]: f(x) \ne 0\}$.
+\end{exercise}
+
+\begin{proof}
+令 \[
+E^{+ }= f^{-1} \left( 0,\infty \right) ,\quad E^{-}= f^{-1} \left( (-\infty,0) \right) 
+\]则 \[
+E= E^{+ }\cup E^{-}
+\]注意到\[
+  E^{+ }= f^{-1} \left( (0,\infty) \right)= \bigcup _{n = 1}^{\infty}f^{-1} \left( \left( \frac{1 }{n },\infty  \right) \right)  
+  \]令 \(  E_{n}= f^{-1} \left( \left( \frac{1 }{n },\infty  \right) \right)   \). 若存在 \(  n_0\in \mathbb{Z} _{> 0}  \), 使得 \(  E_{n_0}  \)是不可数集. 对于题目给定的 \(  M  \), 找到使得  \[
+  k_{M}\frac{1 }{n_0 }> M 
+  \]的正整数 \(  k_{M}  \)      . \(  E_{n_0}  \)存在一个含有 \(  k_{M}  \)个元素的子集 \(  x_1,x_2,\cdots ,x_{k_{M}}  \). 满足 \[
+  \left| f\left( x_1 \right)+ \cdots + f\left( x_{k_{M}} \right)   \right|>  k_{M}\frac{1 }{n_0 }> M  
+  \], 与题设矛盾. 因此对于任意的 \(  n\in \mathbb{Z} _{> 0}  \), \(  E_{n}  \)都是一个可数集. 进而 \(  E^{+ }  \)是一个可数集.      类似地, 可以证明 \(  E^{-}  \)是一个可数集, 进而 \(  E= E^{+ }\cup E^{-}  \)是一个可数集.  
+\end{proof}
+ \begin{exercise}{}{}
+设 $f(x)$ 是定义在 $\mathbf{R}^1$ 上的实值函数. 如果对于任意的 $x_0 \in \mathbf{R}^1$, 必存在 $\delta > 0$, 当 $|x - x_0| < \delta$ 时, 有 $f(x) \ge f(x_0)$, 试证明集合 $E = \{y: y = f(x)\}$ 是可数集.
+\end{exercise}
+\begin{proof}
+    令 \[
+    A_{n}\coloneqq \left\{ x_0\in \mathbb{R} : \text{当} \left| x-x_0 \right|< \frac{1 }{n }\text{时, 有} f\left( x \right)\ge f\left( x_0 \right)     \right\}
+    \] 则 由题设可知 \[
+    \mathbb{R} = \bigcup _{n = 1}^{\infty}A_{n}
+    \]再令 \[
+    A_{n,k}=  A_{n}\cap (\frac{k }{n },\frac{k+ 1 }{n }  ]
+    \]则 \[
+   A_{n}= \bigcup _{k= -\infty}^{\infty}A_{n,k},\quad  \mathbb{R} = \bigcup _{n = 1}^{\infty}\bigcup _{k = -\infty}^{\infty}A_{n,k}
+    \]令 \[
+    E_{n,k}\coloneqq  f\left( A_{n,k} \right) 
+    \]则 \[
+    E= \bigcup _{n = 1}^{\infty}\bigcup _{k= -\infty}^{\infty}E_{n,k}
+    \] 若 \(  E_{n,k}  \)非空, 则取 \(  y_1\in E_{n,k}  \). 存在 \(  x_1 \in A_{n}\cap (\frac{k }{n },\frac{k+ 1 }{n }  ]  \), 使得 \(  f\left( x_1 \right)= y_1   \). 任取 \(  y_2 \in E_{n,k}  \), 存在 \(  x_2\in A_{n}\cap (\frac{k }{n },\frac{k+ 1 }{n }  ]  \), 使得 \(  f\left( x_2 \right)= y_2   \)       . 注意到 \(  \left| x_1-x_2 \right|< \frac{1 }{n }    \), 根据 \(  A_{n}  \)的定义, 我们有 \(  f\left( x_1 \right)\ge f\left( x_2 \right)    \)以及 \(  f\left( x_2 \right)\ge f\left( x_1 \right)    \). 因此 \(  y_1= y_2  \), 此时 \(  E_{n,k}  \)为单点集 \(  \left\{ y_1 \right\}  \).        于是对于所有的 \(  n \in \mathbb{Z} _{> 0}  \),  \[
+    \bigcup _{k= -\infty}^{\infty}E_{n,k}
+    \]是单点集或空集的可数并, 从而是至多可数集.  进而 \(  E  \)作为可数集的可数并也是一个可数集. 
+\end{proof}
+
+\end{document}

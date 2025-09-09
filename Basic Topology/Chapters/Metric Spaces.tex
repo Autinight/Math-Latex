@@ -10,5 +10,27 @@
 
 \chapter{ Metric Spaces }
 
+\section{Convergence of Sequences}
+
+\begin{definition}{Convergence}{}
+Let $(X,d)$ be a metric space and $x_1,\dots,x_n,\dots$ a sequence of points in $X$. Then the sequence is said to \dfntxt{converge to} $x \in X$ if given any $\varepsilon > 0$ there exists an integer $n_0$ such that for all $n \ge n_0$, $d(x,x_n) < \varepsilon$.
+This is denoted by $x_n \to x$.
+
+The sequence $y_1,y_2,\dots,y_n,\dots$ of points in $(X,d)$ is said to be \dfntxt{convergent} if there exists a point $y \in X$ such that $y_n \to y$.
+\end{definition}
+
+
+\begin{proposition}{}{}
+Let $(X, d)$ be a metric space. A subset $A$ of $X$ is closed in $(X, d)$ if and only if every convergent sequence of points in $A$ converges to a point in $A$. (In other words, $A$ is closed in $(X, d)$ if and only if $a_n \to x$, where $x \in X$ and $a_n \in A$ for all $n$, implies $x \in A$.)
+\end{proposition}
+
+\section{Completeness}
+
+\begin{definition}{Cauchy sequence}{}
+A sequence $x_1, x_2, \dots, x_n, \dots$ of points in a metric space $(X, d)$ is said to be a \dfntxt{Cauchy sequence} if given any real number $\varepsilon > 0$, there exists a positive integer $n_0$, such that for all integers $m \ge n_0$ and $n \ge n_0$, $d(x_m, x_n) < \varepsilon$.
+\end{definition}
+\begin{proposition}{}{}
+Let $(X,d)$ be a metric space and $x_1,x_2,\dots,x_n,\dots$ a sequence of points in $(X,d)$. If there exists a point $a \in X$, such that the sequence converges to $a$, that is, $x_n \to a$, then the sequence is a Cauchy sequence.
+\end{proposition}
 
 \end{document}

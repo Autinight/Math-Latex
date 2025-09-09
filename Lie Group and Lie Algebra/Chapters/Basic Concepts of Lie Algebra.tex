@@ -1,0 +1,42 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+}{}
+
+\chapter{ Basic Concepts of Lie Algebra }
+
+\section{Definitions and first examples}
+
+\begin{definition}{}{}
+A vector space $L$ over a field $\mathbb{F}$, with an operation $L \times L \to L$, denoted $(x, y) \mapsto [xy]$ and called the \dfntxt{bracket} or \dfntxt{commutator} of $x$ and $y$, is called a \dfntxt{Lie algebra} over $\mathbb{F}$ if the following axioms are satisfied:
+\begin{enumerate}
+\item[(L1)] The bracket operation is bilinear.
+\item[(L2)] $[xx] = 0$ for all $x \in L$.
+\item[(L3)] $[x[yz]]+[y[zx]]+[z[xy]] = 0 \quad (x, y, z \in L)$.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+   \begin{itemize}
+    \item  (L1) and (L2), applied to \(  \left[ x+ y, x+ y \right]   \) imply anticommutativity : (L2\(  ^{\prime}   \)) \(  \left[ xy \right]= \left[ -yx \right]    \). 
+    \item Conversely, if \(  \operatorname{char}\mathbb{F}\neq 2  \), it is clear that (L2\(  ^{\prime}   \) ) will imply (L2). 
+   \end{itemize}
+     
+\end{remark}
+
+\section{Lie algebras of derivations}
+
+\begin{definition}{}{}
+   \begin{itemize}
+    \item   By an \dfntxt{F-algebra} (not necessarily associative) we simply mean a vector space $\mathfrak{A}$ over F endowed with a bilinear operation $\mathfrak{A} \times \mathfrak{A} \to \mathfrak{A}$, usually denoted by juxtaposition (unless $\mathfrak{A}$ is a Lie algebra, in which case we always use the bracket).
+    \item  By a \dfntxt{derivation} of $\mathfrak{A}$ we mean a linear map $\delta: \mathfrak{A} \to \mathfrak{A}$ satisfying the familiar product rule $\delta(ab) = a\delta(b) + \delta(a)b$ for each \(  n\in \mathbb{Z}   \) . 
+   \end{itemize}
+   
+\end{definition}
+
+\end{document}

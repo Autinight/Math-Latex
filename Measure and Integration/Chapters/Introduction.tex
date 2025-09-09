@@ -14,6 +14,8 @@
 
 \section{Sets}
 
+\subsection{Equivalence between sets}
+
 \begin{lemma}{}{}
     Suppose \(  f:X\to Y  \), \(  g:Y\to X  \), then there are decompositions \[
     X= A\cup \tilde{A},\quad Y= B\cup \tilde{B}
@@ -60,6 +62,74 @@
      \left( g|_{\tilde{B}} \right) ^{-1} \left( x \right) ,& x \in \tilde{A}   \end{cases}  
     \] is a bijection.
 \end{proof}
+
+\subsection{Countable sets and the Cardinality of the Continuum}
+
+\begin{example}{}{}
+    The following sets are countable: 
+    \begin{enumerate}
+        \item \(  \left\{ I_{\alpha } \right\}_{\alpha  \in  \Lambda }  \), where \(  I_{\alpha }\subseteq \mathbb{R} ^{1}  \) is an interval and \(  I_{\alpha }\cap I_{\beta }= \varnothing  \) whenever \(  \alpha \neq \beta   \).
+        \item Let \(  f:\mathbb{R} ^{1}\to \mathbb{R} ^{1}  \) be a monotone function, then \[
+        A\coloneqq \left\{ x:f\left( x \right)\text{ is not continuous at }x  \right\}
+        \] is a countable set.     
+        \item Let \(  f: \mathbb{R} \to \mathbb{R}   \), define \[
+        E\coloneqq \left\{ x\in \mathbb{R} : f\left( x \right) \text{ is not continuous on }x,\text{but the right limit }f\left( x+ 0 \right)\text{ exists}   \right\}
+        \] 
+    \end{enumerate}
+    
+\end{example}
+\begin{proof}
+    \begin{enumerate}
+        \item We take a rational number \(  r_{\alpha }  \) in each \(  I_{\alpha }  \).
+        \item We take a rational number \(  r_{x}  \) in \(  \left( f\left( x-0 \right), f\left( x+ 0 \right)   \right)   \) for each \(  x  \) that \(  f  \) is not continuous on it.      
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{theorem}{}{}
+    Let \(  A  \) be a infinite set and \(  \left| A \right|= \alpha    \). If \(  B  \) is countable, then \[
+    \left| A\cup B \right|= \alpha  
+    \]   
+\end{theorem}
+\begin{proof}
+    Since \(  B^{\prime} \coloneqq B\setminus A  \) is countable, and \(  A\cup B^{\prime}= A\cup \left( B\setminus A \right)= A    \), we may assume that \(  A\cup B= \varnothing  \).   There exists countable set \(  A_1\subseteq A  \). Then \(  A_1\cup B  \) is countable. We have \(  A_1\cup B\sim A_1  \). There exists bijection \(  f:A_1\cup B\to A_1  \). Since \[
+    A= A_1\cup \left( A\setminus A_1 \right),\quad A\cup B= \left( A_1\cup B \right)\cup \left( A\setminus A_1 \right)   
+    \]Define \(  F:A\cup B\to A   \)  \[
+    F\left( x \right)= \begin{cases} f\left( x \right),&x \in A_1\cup B \\ 
+     x,&x \in  A\setminus A_1   \end{cases}  
+    \]     Then \(  F  \) is a bijection. Thus \(  \left| A\cup B \right|= \left| A \right|= \alpha     \). 
+\end{proof}
+
+\begin{theorem}{}{}
+    \[
+   A\text{ is a infinite set} \iff  \exists A_1 \text{ is a proper subset of }A, s.t. \left| A_1 \right|= \left| A \right|  
+    \]
+\end{theorem}
+
+\begin{theorem}{}{}
+    \(  \left[ 0,1 \right]= \left\{ x:0\le x\le 1 \right\}   \) is a uncoutable set. 
+\end{theorem}
+\begin{proofsketch}
+   试图建立 \(  (0,1]\sim \mathscr{H}  \)  , 其中 \(  \mathscr{H}  \)表示自然数列全体. 将 \(  \left[ 0,1 \right]   \)上的数按二进制展开(只采用具有无穷多个1的表示). 将展开式从低到高位次, 将两个数码1之间的间隔(位置差) 组成一个自然数列. 从而建立了 \(  (0,1]\sim  \mathscr{H}  \).  
+\end{proofsketch}
+
+\begin{definition}{}{}
+    Define \[
+    c\coloneqq \left| (0,1] \right| 
+    \] called the \dfntxt{cardinality of the continuum}.
+\end{definition}
+\begin{theorem}{}{}
+    Let \(  \left\{ A_{k} \right\}  \) be a suquence of sets. If \[
+    \left| A_{k} \right|= c,\quad \forall k\in \mathbb{N}  
+    \]Then \[
+    \left| \bigcup _{k= 1}^{\infty}A_{k} \right|= c 
+    \] 
+\end{theorem}
+\begin{proofsketch}
+     \(  A_{k}\sim [ k,k+ 1 )   \), 故 \(  \left| \bigcup _{k= 1}^{\infty}A_{k} \right|\le \left| \coprod  _{k= 1}^{\infty}A_{k} \right|\le  \left| [1,\infty) \right|= c    \). 而 \(  A_{k}\subseteq \bigcup _{k= 1}^{\infty}A_{i}\implies  \left| \bigcup _{k= 1}^{\infty}A_{k} \right|\ge c   \). 因此由CSB定理, \(  \left| \bigcup _{k= 1}^{\infty}A_{k} \right|= c   \).   
+\end{proofsketch}
+ 
+
 \section{Arithmetic in   [0,infty]    } 
 \section{Metric Space}
 \begin{lemma}{}{}
