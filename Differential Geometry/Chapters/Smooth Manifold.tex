@@ -1,0 +1,115 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+}{}
+
+\chapter{ Smooth Manifold }
+
+
+\section{Topological Manifolds}
+
+\begin{definition}{}{}
+    Suppose $M$ is a topological space. We say that $M$ is a \dfntxt{topological manifold of dimension n} or a \dfntxt{topological n-manifold} if it has the following properties:
+
+\begin{itemize}
+\item $M$ is a \dfntxt{Hausdorff space}\(  (\mathbf{T}_{2})  \) : for every pair of distinct points $p, q \in M$, there are disjoint open subsets $U, V \subseteq M$ such that $p \in U$ and $q \in V$.
+\item $M$ is \dfntxt{second-countable}: there exists a countable basis for the topology of $M$.
+\item $M$ is \dfntxt{locally Euclidean of dimension n}: each point of $M$ has a neighborhood that is homeomorphic to an open subset of $\mathbb{R}^n$.
+\end{itemize}
+\end{definition}
+
+\begin{remark}
+    The third property means, more specifically, that for each $p \in M$ we can find
+\begin{itemize}
+    \item an open subset $U \subseteq M$ containing $p$,
+    \item an open subset $\hat{U} \subseteq \mathbb{R}^n$, and
+    \item a homeomorphism $\varphi: U \to \hat{U}$.
+\end{itemize}
+\end{remark}
+
+\begin{remark}
+    A topological manifold \(  M  \) is locally compact, locally path-connected, seperable, Lind\"elof, \(   \sigma   \)-finite, \(  T_3  \), \(  T_4  \), and paracompact.    
+\end{remark}
+\subsection{Coordinate Chart}
+
+\begin{definition}{Coordinate Chart}{}
+    Let $M$ be a topological \dfntxt{$n$-manifold}. A \dfntxt{coordinate chart} (or just a \dfntxt{chart}) on $M$ is a pair $(U, \varphi)$, where $U$ is an open subset of $M$ and $\varphi: U \to \hat{U}$ is a homeomorphism from $U$ to an open subset $\hat{U} = \varphi(U) \subseteq \mathbb{R}^n$ . 
+    
+\end{definition}
+
+\begin{remark}
+    \begin{itemize}
+        \item By definition of a topological manifold, each point $p \in M$ is contained in the domain of some chart $(U, \varphi)$. 
+        \item If $\varphi(p) = 0$, we say that the chart is \dfntxt{centered at p}.
+        \item  If $(U, \varphi)$ is any chart whose domain contains $p$, it is easy to obtain a new chart centered at $p$ by subtracting the constant vector $\varphi(p)$.
+    \end{itemize}
+    
+\end{remark}
+
+\section{Smooth Structures}
+
+\begin{definition}{Smoothly Compatible}{}
+    Let $M$ be a topological $n$-manifold. 
+    \begin{itemize}
+        \item If $(U, \varphi), (V, \psi)$ are two charts such that $U \cap V \neq \varnothing$, the composite map $\psi \circ \varphi^{-1}: \varphi(U \cap V) \to \psi(U \cap V)$ is called the \dfntxt{transition map from $\varphi$ to $\psi$}.
+        \item  Two charts $(U, \varphi)$ and $(V, \psi)$ are said to be \dfntxt{smoothly compatible} if either $U \cap V = \emptyset$ or the transition map $\psi \circ \varphi^{-1}$ is a diffeomorphism. 
+    \end{itemize}
+  
+    
+\end{definition}
+
+\begin{remark}
+    \begin{itemize}
+        \item \(  \psi \circ  \varphi ^{-1}   \)  is a composition of homeomorphisms, and is therefore itself a homeomorphism.
+        \item Since $\varphi(U \cap V)$ and $\psi(U \cap V)$ are open subsets of $\mathbb{R}^n$, smoothness of this map is to be interpreted in the ordinary sense of having continuous partial derivatives of all orders. 
+    \end{itemize}
+    
+\end{remark}
+
+\begin{definition}{Atlas}{}
+    We define an \dfntxt{atlas for M} to be a collection of charts whose domains cover $M$.
+An atlas $\mathcal{A}$ is called a \dfntxt{smooth atlas} if any two charts in $\mathcal{A}$ are smoothly compatible with each other.
+\end{definition}
+
+\begin{definition}{Maximal Atlas}{}
+   A smooth atlas $\mathcal{A}$ on $M$ is \dfntxt{maximal} if it is not properly contained in any larger smooth atlas. This just means that any chart that is smoothly compatible with every chart in $\mathcal{A}$ is already in $\mathcal{A}$. 
+\end{definition}
+
+\begin{definition}{Smooth Structures and Smooth Manifolds}{}
+\begin{itemize}
+    \item   If $M$ is a topological manifold, a \dfntxt{smooth structure on M} is a maximal smooth atlas.
+    \item  A \dfntxt{smooth manifold} is a pair $(M, \mathcal{A})$, where $M$ is a topological manifold and $\mathcal{A}$ is a smooth structure on $M$.
+\end{itemize}
+\end{definition}
+
+\begin{lemma}{Smooth Manifold Chart Lemma}{}
+Let $M$ be a set, and suppose we are given a collection $\{U_\alpha\}$ of subsets of $M$ together with maps $\varphi_\alpha : U_\alpha \to \mathbb{R}^n$, such that the following properties are satisfied:
+\begin{enumerate}
+    \item For each $\alpha$, $\varphi_\alpha$ is a bijection between $U_\alpha$ and an open subset $\varphi_\alpha(U_\alpha) \subseteq \mathbb{R}^n$.
+    \item For each $\alpha$ and $\beta$, the sets $\varphi_\alpha(U_\alpha \cap U_\beta)$ and $\varphi_\beta(U_\alpha \cap U_\beta)$ are open in $\mathbb{R}^n$.
+    \item Whenever $U_\alpha \cap U_\beta \neq \emptyset$, the map $\varphi_\beta \circ \varphi_\alpha^{-1} : \varphi_\alpha(U_\alpha \cap U_\beta) \to \varphi_\beta(U_\alpha \cap U_\beta)$ is smooth.
+    \item Countably many of the sets $U_\alpha$ cover $M$.
+    \item Whenever $p, q$ are distinct points in $M$, either there exists some $U_\alpha$ containing both $p$ and $q$ or there exist disjoint sets $U_\alpha, U_\beta$ with $p \in U_\alpha$ and $q \in U_\beta$.
+\end{enumerate}
+Then $M$ has a unique smooth manifold structure such that each $(U_\alpha, \varphi_\alpha)$ is a smooth chart.
+\end{lemma}
+\section{Manifolds with Boundary}
+
+\begin{definition}{Manifolds with Boundary}{}
+    An \dfntxt{n-dimensional topological manifold with boundary} is a second-countable Hausdorff space $M$ in which every point has a neighborhood homeomorphic either to an open subset of $\mathbb{R}^n$ or to a (relatively) open subset of $\mathbb{H}^n$ .
+  
+\end{definition}
+\begin{definition}{Chart for Manifolds with Boundary}{}
+   Let \(  M  \) be an n-dimensional topological manifold with boundary.  An open subset $U \subseteq M$ together with a map $\varphi : U \to \mathbb{R}^n$ that is a homeomorphism onto an open subset of $\mathbb{R}^n$ or $\mathbb{H}^n$ will be called a \dfntxt{chart for $M$}.
+        \begin{itemize}
+            \item  When it is necessary to make the distinction, we will call $(U,\varphi)$ an \dfntxt{interior chart} if $\varphi(U)$ is an open subset of $\mathbb{R}^n$ (which includes the case of an open subset of $\mathbb{H}^n$ that does not intersect $\partial\mathbb{H}^n$). 
+            \item We call \(  \left( U, \varphi  \right)   \) a \dfntxt{boundary chart} if $\varphi(U)$ is an open subset of $\mathbb{H}^n$ such that $\varphi(U) \cap \partial\mathbb{H}^n \neq \emptyset$. 
+            \item A boundary chart whose image is a set of the form $B_r(x) \cap \mathbb{H}^n$ for some $x \in \partial\mathbb{H}^n$ and $r > 0$ is called a \dfntxt{coordinate half-ball}.
+        \end{itemize}
+\end{definition}
+\end{document}

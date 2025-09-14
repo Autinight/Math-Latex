@@ -19,6 +19,17 @@ This is denoted by $x_n \to x$.
 The sequence $y_1,y_2,\dots,y_n,\dots$ of points in $(X,d)$ is said to be \dfntxt{convergent} if there exists a point $y \in X$ such that $y_n \to y$.
 \end{definition}
 
+\begin{theorem}{}{}
+    Let \(  \left( X,d \right)   \) be a metric space. \(  A\subseteq X  \) is a subset, \(  p \in A  \).   Then \(  p  \) is a limit point of \(  A  \), if and only if there exists a  sequence \(    \left\{ a_{n} \right\}\) composed with distinct points in \(  A  \) converging to \(  p  \).  
+\end{theorem}
+
+\begin{proof}
+    If \(  p  \) is a limit point of \(  A  \). Then \(  B_{d}\left( p,1 \right)\cap \left( A\setminus \left\{ p \right\} \right)\neq \varnothing    \), we choose a point \(  a_1  \) there. If we have points \(  a_1,a_2,\cdots ,a_{n}  \) such that  \(  a_{i}\in B_{d}\left( p,\frac{1 }{i }  \right)\cap B_{d}\left( p, m_{i} \right)    \), where \[
+    m_{i}\coloneqq \min \left\{ d\left( p, a_{j} \right)  \right\}_{1\le j\le i}
+    \]   Since the sets \(  \left( B_{d}\left( p,\frac{1 }{n+ 1 }  \right)\cap B_{d}\left( p, m_{n} \right)   \right)\cap \left( A\setminus \left\{ p \right\} \right)    \) is nonempty, we can take a point in it.  We inductively give a seuquence \(  \left\{ a_{n} \right\}  \) composed with distinc points in \(  A  \).
+    
+    If \(  \left\{ a_{n} \right\}  \) is such sequence. Let  \(  U  \) be any open set containg \(  p  \). Since \(  \left\{ B_{d}\left( x,  \varepsilon  \right): x \in X,  \varepsilon > 0  \right\}  \) is a basis for \(  \left( X,d \right)   \). We have from  Proposition \ref{pps:9-6-5} that there exists a ball \(  B  \) such that \(  p \in B\subseteq U  \). Then it is easy to verify that there exists \(  B_{d}\left( p, \varepsilon  \right)   \) such that \(   p \in B_{d}\left( p, \varepsilon  \right)\subseteq B   \). Since the sequence  \(  \left\{ a_{n} \right\}  \) in \(  A  \)  converges to \(  p  \), there      exists some (in fact, infinitely many)  \(  a_{n} \in B_{d}\left( p, \varepsilon  \right)   \) that is not equal to \(  p  \).  i.e, \(  p \in B_{d}\left( p, \varepsilon  \right)\cap \left( A\setminus \left\{ p \right\} \right)\subseteq U\cap \left( A\setminus \left\{ p \right\} \right)    \neq \varnothing \). 
+\end{proof}
 
 \begin{proposition}{}{}
 Let $(X, d)$ be a metric space. A subset $A$ of $X$ is closed in $(X, d)$ if and only if every convergent sequence of points in $A$ converges to a point in $A$. (In other words, $A$ is closed in $(X, d)$ if and only if $a_n \to x$, where $x \in X$ and $a_n \in A$ for all $n$, implies $x \in A$.)
@@ -32,5 +43,18 @@ A sequence $x_1, x_2, \dots, x_n, \dots$ of points in a metric space $(X, d)$ is
 \begin{proposition}{}{}
 Let $(X,d)$ be a metric space and $x_1,x_2,\dots,x_n,\dots$ a sequence of points in $(X,d)$. If there exists a point $a \in X$, such that the sequence converges to $a$, that is, $x_n \to a$, then the sequence is a Cauchy sequence.
 \end{proposition}
+
+\begin{definition}{}{}
+A metric space $(X,d)$ is said to be \dfntxt{complete} if every Cauchy sequence in $(X,d)$ converges to a point in $(X,d)$.
+\end{definition}
+
+\begin{proposition}{}{}
+Let $(X,d)$ be a metric space, $Y$ a subset of $X$, and $d_1$ the metric induced on $Y$ by $d$.
+\begin{enumerate}
+    \item[(i)] If $(X,d)$ is a complete metric space and $Y$ is a closed subspace of $(X,d)$, then $(Y,d_1)$ is a complete metric space.
+    \item[(ii)] If $(Y,d_1)$ is a complete metric space, then $Y$ is a closed subspace of $(X,d)$.
+\end{enumerate}
+\end{proposition}
+
 
 \end{document}

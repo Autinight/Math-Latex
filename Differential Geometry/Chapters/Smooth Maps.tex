@@ -1,0 +1,28 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+}{}
+
+\chapter{ Smooth Maps }
+
+\section{Smooth Functions and Smooth Maps}
+
+\subsection{Smooth Maps Between Manifolds}
+
+\begin{definition}{Smooth Maps Between Manifolds}{}
+    Let $M, N$ be smooth manifolds, and let $F: M \to N$ be any map. We say that $F$ is a \dfntxt{smooth map} if for every $p \in M$, there exist smooth charts $(U, \varphi)$ containing $p$ and $(V, \psi)$ containing $F(p)$ such that $F(U) \subseteq V$ and the composite map $\psi \circ F \circ \varphi^{-1}$ is smooth from $\varphi(U)$ to $\psi(V)$ .
+\end{definition}
+
+\begin{remark}
+    \begin{itemize}
+        \item By taking \(  N= V= \mathbb{R} ^{k}  \) and \(  \psi =\mathrm{Id}:\mathbb{R} ^{k}\to \mathbb{R} ^{k}  \), we get the definition of smoothness of real-valued or vector-valed functions.  
+    \end{itemize}
+    
+\end{remark}
+
+\end{document}

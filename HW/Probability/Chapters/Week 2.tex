@@ -5,6 +5,13 @@
 
 \chapter{ Week 2 }
 
+代靖涵 25120222201319
+
+\begin{remark}
+   在提交作业前, 我已对所有解答进行了自查, 并修改了其中的笔误. 在解题过程中, 我特意尝试用更为形式化和结构化的方式来构建解答, 以锻炼巩固基本功. 
+因此, 部分题目的解法可能显得有些“小题大做”, 若有任何谬误或考虑不周之处, 恳请老师不吝赐教.
+\end{remark}
+
 \begin{exercise}{}{}
 抛三枚硬币,求至少出现一个正面的概率.
 \end{exercise}
@@ -14,7 +21,7 @@
     \]  是一个有限集, 其基数为 \(  8  \). 事件空间 $\mathcal{F}$ 取为 $\Omega$ 的幂集 $\mathcal{P}(\Omega)$. 由于硬币是均匀的, 每个基本事件 $\omega \in \Omega$ 都是等可能的, 因此概率测度 $P$ 对于任意事件 $A \in \mathcal{F}$ 定义为 $P(A) = |A|/|\Omega|$. 事件``至少出现一个正面''为以下集合 \[
 A\coloneqq     \left\{ Z,F \right\}^{3}\setminus \left\{ \left( F,F,F \right)  \right\}
     \]该集合的基数为 \(  7  \). 根据古典概率测度空间的概率计算方法, 可得事件的概率\(  P  \)为 \[
-    P= \frac{\left|  \Omega  \right|  }{\left| A \right|  } = \frac{7 }{8 }  
+    P= \frac{\left| A \right|  }{\left|  \Omega  \right| } = \frac{7 }{8 }  
     \] 
 \end{proof}
 \begin{exercise}{}{}
@@ -85,10 +92,10 @@ A\coloneqq     \left\{ Z,F \right\}^{3}\setminus \left\{ \left( F,F,F \right)  \
         \] 于是 \[
         P\left( C \right)=\frac{\left| C \right|  }{\left|  \Omega  \right|  }=  \frac{13 ^{4} 4! 48! }{52! }   
         \]
-        \item 用 \(  D  \)表示事件``全是黑色'', \(  E  \)表示事件``同色'' .  则由对称性和可加性可知  \(  P\left( E \right)= 2P\left( D \right)    \). 而 \[
+        \item 用 \(  D  \)表示事件``全是黑色'', \(  Y  \)表示事件``同色'' .  则由对称性和可加性可知  \(  P\left( Y \right)= 2P\left( D \right)    \). 而 \[
         \left| D \right|= C_{26}^{4}= \frac{26! }{4! 22! }  
         \] 故 \[
-        P\left( E \right)= 2P\left( D \right)= 2\frac{\left| D \right|  }{\left|  \Omega  \right|  }=2 \frac{48!26! }{52!22! }    
+        P\left( Y\right)= 2P\left( D \right)= 2\frac{\left| D \right|  }{\left|  \Omega  \right|  }=2 \frac{48!26! }{52!22! }    
         \]
     \end{enumerate}
     
@@ -180,7 +187,7 @@ A\coloneqq     \left\{ Z,F \right\}^{3}\setminus \left\{ \left( F,F,F \right)  \
         \item 令 \(  A  \)表示最小号码为5的事件, 则该事件的样本个数与``从 \(  \left\{ 6,7,8,9,10 \right\}  \)中任取3个 ''相同, 因此 \[
         \left| A \right|= C_{5}^{3}= 10
         \]  \[
-        P\left( A \right)= \frac{15 }{210 }= \frac{1 }{21 }   
+        P\left( A \right)= \frac{10 }{210 }= \frac{1 }{21 }   
         \]
         \item 令 \(  B  \)表示最大号码为 \(  5  \)的时间, 则该事件 的样本个数与 ``从 \(  \left\{ 1,2,3,4 \right\}  \)中任取3个 ''相同, 因此 \[
         \left| B \right|= C_{4}^{3}= 4
@@ -237,4 +244,141 @@ A\coloneqq     \left\{ Z,F \right\}^{3}\setminus \left\{ \left( F,F,F \right)  \
     P\left( A \right)= \frac{\left| A \right|  }{\left|  \Omega  \right|  }= \frac{4!7! }{10! }=    \frac{1 }{30 } 
     \]   
 \end{proof}
+
+\begin{exercise}{}{}
+$n$ 个人随机地围一圆桌而坐,求甲、乙两人相邻而坐的概率.
+\end{exercise}
+
+\begin{proof}
+  令 $\mathcal{P} = \{p_1, p_2, \dots, p_n\}$ 为 $n$ 个人的集合. 将一次试验用一个单射 \(  f: \mathcal{P}\to \mathbb{Z} /n\mathbb{Z}   \)表示. 则样本空间为 \[
+   \Omega \coloneqq \left\{ f \in \left( \mathbb{Z} /n\mathbb{Z}  \right)^{\mathcal{P}}: f\text{是一个单射}  \right\}
+  \]考虑古典概率测度空间\(  \left(  \Omega , \mathcal{F},P \right)   \). 则 \[
+  \left|  \Omega  \right|=  n! 
+  \]设 \(  p_1,p_2  \)分别为甲, 乙.  令 \(  A  \)表示两人相邻的事件. 则 \(  f \in A  \) 当且仅当  \(  f\left( p_1 \right)-f\left( p_2 \right)  = [\pm 1]_{n}  \). 由对称性, 可知 \[
+  \left| A \right|= 2 \left| \left\{ f:f\left( p_1 \right)-f\left( p_2 \right)= [1]_{n}   \right\} \right|  = 2 n \left( n-2 \right) !
+  \]因此 \[
+  P\left( A \right)= \frac{\left| A \right|  }{\left|  \Omega  \right|  }=  \frac{2n\left( n-2 \right)!  }{n! }= \frac{2 }{n-1 }    
+  \]  
+\end{proof}
+
+\begin{exercise}{}{}
+一个人把六根草紧握在手中,仅露出它们的头和尾,然后随机地把六个头两两相接,六个尾也两两相接.求放开手后六根草恰巧连成一个环的概率. 
+\end{exercise}
+
+\begin{proof}
+    将草头分别记作 \(  \left\{ H_1,H_2,H_3,H_4,H_5,H_6 \right\}  \), 草尾记作 \(  \left\{ T_1,T_2,T_3,T_4,T_5,T_6 \right\}  \)  . 一个样本 \(   \omega \in  \Omega   \), 是指一次六个草头和六个草尾的分别的两两配对. 记作一个无序二元组的集合 \[
+    \left\{ \begin{aligned}
+    &\left( H_{i_1},H_{i_2} \right), \left( H_{i_3},H_{i_4} \right), \left( H_{i_5},H_{i_6} \right)  \\ 
+     &\left( T_{j_1}, T_{j_2} \right), \left( T_{j_3}, T_{j_4} \right), \left( T_{j_5}, T_{j_6} \right)    
+    \end{aligned}  \right\}
+    \]这里括号表示无序二元组. 其中 \[
+    \left\{ i_1,i_2,i_3,i_4,i_5,i_6 \right\}= \left\{ j_1,j_2,j_3,j_4,j_5,j_6 \right\}= \left\{ 1,2,3,4,5,6 \right\}
+    \]考虑古典概率测度空间 \(  \left(  \Omega ,\mathcal{F},P \right)   \). 固定 \(  H_1  \), 则与 \(  H_1  \)相连的有  \[
+    \left| \left\{ i_1: \left( H_1,H_{i_1} \right)\in  \omega ,  \omega \in  \Omega   \right\} \right|= 5 
+    \]种, 固定 \(  H_1,H_{i_1}  \), 则与 \(  H_{i_1}  \)相连的有  \[
+    \left| \left\{ i_2: \left( H_1,H_{i_1} \right)\in  \omega , \left( H_{i_1},H_{i_2} \right)\in  \omega ,  \omega \in  \Omega    \right\} \right|= 3 
+    \] 种. 尾端的情况是一样的, 因此由乘法原理 \[
+    \left|  \Omega  \right|= \left( 5\times 3 \right)^{2}= 225  
+    \]现在令 \(  A  \)表示六根草恰巧连成环的事件. 若 \(  \eta \in A  \), 则设 \(  \left( H_{1},H_{i_2} \right)\in \eta    \) , 则 \(  \left( T_{i_2},T_{1} \right)\not \in \eta    \). 即若设\(  \left( T_{i_2},T_{i_3} \right)\in \eta    \),     则 \(  i_3\not \in \left\{ 1,i_2 \right\}  \). 进一步地,  若 \(  \left( H_{i_3},H_{i_4} \right)\in \eta    \), 则 \(  i_4\not \in \left\{ 1,i_2,i_3 \right\}  \). 若 \(  \left( T_{i_4},T_{i_5} \right)\in \eta    \), 则 \(  i_5\not \in \left\{ 1,i_2,i_3, i_4 \right\}  \). 若 \(  \left( H_{i_5},H_{i_6} \right)\in \eta    \) , 则 \(  i_6\not \in \left\{ 1,i_2,i_3,i_4,i_5 \right\}  \). 最终, \(  \left| A \right|   \)取决于\(  \left( i_2,i_3,i_4,i_5 \right)   \)的选择.    我们有 \[
+    \left| A \right|= 5!=  120
+    \]因此 \[
+    P\left( A \right)= \frac{\left| A \right|  }{\left|  \Omega  \right|  }= \frac{120 }{225 }   = \frac{8 }{15 } 
+    \]    
+\end{proof}
+
+\begin{exercise}{}{}
+把 $n$ 个“0”与 $n$ 个“1”随机地排列,求没有两个“1”连在一起的概率.
+\end{exercise}
+
+\begin{proof}
+    将一次试验的样本视为\(  \left\{ 1,2,\cdots ,2n \right\}  \)的一个 \(  n  \)个元素的子集 \(  \left\{ i_1,i_2,\cdots ,i_{n} \right\}  \), 表示 \(  i_1,\cdots ,i_{n}  \)位置出现的是1, 其余位置出现的是零. 因此, 考虑古典概率空间 \(  \left(  \Omega ,\mathcal{F},P \right)   \), 其中 \[
+     \Omega \coloneqq \left\{A\subseteq \left\{ 1,2,\cdots ,2n \right\}:  \left| A \right|= n  \right\}
+    \]     则 \[
+    \left|  \Omega  \right|= C_{2n}^{n}  
+    \]令 \(  A  \)表示没有两个``1''连在一起的事件. 则 \[
+    \left\{ i_1,\cdots ,i_{n} \right\}\in A\iff  \left| i_{j}-i_{k} \right|\ge 2,\forall j\neq k 
+    \] 
+    考虑将 \(  n  \)个``1''插入到 \(  n  \)个``0''的 两端和空隙共 \(  \left( n+ 1 \right)   \)个位置, 我们得到 \[
+    \left| A \right|= C_{n+ 1}^{n}= n+ 1 
+    \]因此 \[
+    P\left( A \right)= \frac{\left| A \right|  }{\left|  \Omega  \right|  }= \frac{n+ 1 }{C_{2n}^{n} }   
+    \]   
+\end{proof}
+
+
+\begin{exercise}{}{}
+将 12 个球随机地放入 3 个盒子中, 试求第一个盒子中有 3 个球的概率.
+\end{exercise}
+\begin{proof}
+    将12个小球用数字表示, 设它们的集合为 \(  S= \left\{ 1,2,\cdots ,12 \right\}  \). 将三个盒子用 \(  T= \left\{ 1,2,3 \right\}  \)  表示. 则一次试验的结果可以视为一个映射 \(  f: S\to T  \). 考虑古典概率测度空间 \(  \left(  \Omega , \mathcal{F},P \right)   \). 其中 \[
+     \Omega \coloneqq\left\{ f \in T^{S} \right\}
+    \]  则 \[
+    \left|  \Omega  \right|= 3^{12} 
+    \]令 \(  A  \)表示第一个盒子中有三个球的概率, 则 \[
+    A= \left\{ f \in T^{S}:  \left| f^{-1} \left( 1 \right)  \right|= 3  \right\}
+    \] 令 \(  A_{i_1,i_2,i_3}  \)表示 第一个盒子中有球 \(  i_1,i_2,i_3  \)的事件.  则对于任意的 \(  \left\{ i_1,i_2,i_3 \right\}  \subseteq \left\{ 1,2,\cdots ,12 \right\}\)  , \(  A_{i_1,i_2,i_3}  \)的概率相同. 特别地, 取 \(  \left( i_1,i_2,i_3 \right)= \left( 10, 11 , 12 \right)    \), 我们有 \[
+    \left| A \right|= C_{12}^{3}  \left| A_{10, 11 , 12} \right| 
+    \]  而 \[
+    \left| A_{10, 11 , 12} \right|= \left| \left\{ g\in \left\{ 2,3 \right\}^{\left\{1,2,\cdots ,9 \right\}} \right\} \right|  = 2^{9}
+    \]因此 \[
+    P\left( A \right)= \frac{\left| A \right|  }{\left|  \Omega  \right|  }=  \frac{C_{12}^{3}2^{9} }{3^{12} }   
+    \]
+\end{proof}
+
+
+\begin{exercise}{}{}
+甲乙两艘轮船驶向一个不能同时停泊两艘轮船的码头, 它们在一昼夜内到达的时间是等可能的. 如果甲船的停泊时间是一小时, 乙船的停泊时间是两小时, 求它们中任何一艘都不需要等候码头空出的概率是多少?
+\end{exercise}
+
+\begin{proof}
+    将一昼夜的时间视作 \(  \left[ 0,1 \right]   \). 将一次试验的样本用 甲, 乙到达时间的序偶表示为 \(  \left( a,b \right)\in \left[ 0,1 \right]^{2}    \). 考虑 \(   \Omega   \)上的Lebesgue子测度空间  \(  \left(  \Omega , \mathcal{L}, \mu  \right)   \), 由于 \(  \left[ 0,1 \right]^{2}   \)的Lebesgue测度为1, 它是一个概率空间. 此时甲的停泊时间视为 \(  \frac{1 }{24 }   \), 乙的停泊时间视为 \(  \frac{1 }{12 }   \). 令 \(  A  \)表示不需要等待的事件, 则 \[
+    A= \left\{ \left( a,b \right)\in  \Omega : b-a\ge \frac{1 }{24 }   \right\}\cup \left\{ \left( a,b \right): a-b\ge \frac{1 }{12 }   \right\}= :A_1\cup A_2
+    \]   考虑 \(  A_1  \)的Lebesgue测度, 为  边长为 \(  \left( 1-\frac{1 }{24 }  \right)   \)的等腰直角三角形的面积, 计算得到 \[
+    \mu \left( A_1 \right)= \frac{1}{2}\cdot \frac{23^{2} }{24^{2} }  
+    \] 考虑 \(  A_2  \)的Lebesgue测度, 为 边长为 \(  \left( 1-\frac{1 }{12 }  \right)   \)的等腰直角三角形的面积, 计算得到 \[
+    \mu \left( A_2 \right)= \frac{1 }{2 }\cdot  \frac{11^{2} }{12 ^{2} }   
+    \]  由于 \(  A_1\cap A_2= \varnothing  \), 因此事件 \(  A  \)的概率为 \[
+    \mu \left( A \right)= \frac{1013 }{1152 } 
+    \]  
+\end{proof}
+\begin{exercise}{}{}
+在平面上画有间隔为 $d$ 的等距平行线, 向平面任意投掷一个边长为 $a,b,c$ (均小于 $d$) 的三角形, 求三角形与平行线相交的概率.
+\end{exercise}
+
+\begin{proof}
+    设 \(  E  \)为三角形与平行线相交的事件, 由于 \(  a,b,c  \)均小于 \(  d  \), 三角形最多与一条平行线相交.  令 \(  N  \)表示三角形与平行线的交点个数, 为一个随机变量.  由于三角形区域是凸集, 平行线穿过凸集时, 必然``进入''一个点 且``离开''一个点. 取值为 \(  0  \)或 \(  2  \)  . (当平行线与三角形相切时, 我们规定\(  N= 0  \). 这种情况构成一个零测集 ) .则 \[
+    E= \left\{ N= 2 \right\}
+    \] \(  N  \)可视为 \(  E  \)的指示函数的两倍 \(2\cdot   1_{E} \).   根据期望的定义和线性, 我们有 \[
+    E[N]= E[2\cdot 1_{E}]= 2\int 1_{E} \,\mathrm{d} P= 2P\left( E \right) 
+    \]用 \(  N_{a}, N_{b},N_{c}  \)分别表示 三条边与平行线的交点个数, 它们是取值 在 \(  \left\{ 0,1 \right\}  \)上的随机变量(同样的, 在相切时规定为0) . 则 \[
+    N_{a}+ N_{b}+ N_{c}= N
+    \] 由期望的线性,  \[
+    E[N]= E[N_{a}]+ E[N_{b}]+ E[N_{c}]
+    \]因此 \[
+    2 P\left( E \right)= E[N_{a}] + E[N_{b}]+ E[N_{c}]
+    \]计算 \(  E[N_{a}]  ,E[N_{b}], E[N_{c}]\) , 可以将三角形的每一条边独立地视为一个线段, 对三角形的任意抛掷看成是对线段的任意抛掷. 化为典型的布丰投针问题, 我们有 \[
+    E[N_{a}]= \frac{2a }{ \pi d },\quad  E[N_{b}]= \frac{2b }{ \pi d }, \quad E[N_{c}]= \frac{2c }{ \pi d }
+    \]因此 \[
+    P\left( E \right)=\frac{1}{2} \left( \frac{2a }{ \pi d }+ \frac{2b }{  \pi d }+ \frac{2c }{  \pi d } \right) = \frac{a+ b+ c }{ \pi d } 
+    \]为相交的概率.
+\end{proof}
+
+
+\begin{exercise}{}{}
+设 $a>0$, 有任意两数 $x, y$, 且 $0<x<a, 0<y<a$, 试求 $xy<a^2/4$ 的概率.
+\end{exercise}
+
+\begin{proof}
+    考虑 测度空间 \(  \left(  \Omega , \mathcal{L}, P \right)   \), 其中 \(   \Omega \coloneqq \left( 0,a \right)^{2}   \), \(  \mathcal{L}  \)是 \(   \Omega   \)上的Lebesuge可测集的全体, \(  P  \coloneqq \frac{\mu  }{\mu \left(  \Omega  \right)  } \).是归一化的Lebesgue测度, 这里 \(  \mu   \)表示Lebesgue测度 . 则 \(  \left(  \Omega ,\mathcal{L},P \right)   \)是一个概率空间. 令 \(  A  \)表示 \(  xy< \frac{a^{2} }{4 }   \)的事件. 则 \[
+    A= \left\{ \left( x,y \right): 0\le x\le \frac{a }{4 }, 0< y< a  \right\}\cup \left\{ \frac{a }{4 }< x< a, 0< y< \frac{a^{2} }{4x }   \right\}
+    \]因此 \[
+    \begin{aligned}
+    P\left( A \right)&=  \int 1_{A}\,\mathrm{d} P\\ 
+     &=  \frac{1 }{\mu \left(  \Omega  \right)  } \int_{0}^{\frac{a }{4 } }  \int_{0}^{a}1 \,\mathrm{d} y \,\mathrm{d} x +  \frac{1 }{\mu \left(  \Omega  \right)  } \int_{\frac{a }{4 } }^{a} \int_{0}^{\frac{a^{2} }{4x } }1 \,\mathrm{d} y \,\mathrm{d} x \\ 
+      &= \frac{1 }{4 }+ \int_{\frac{a }{4 } }^{a}\frac{1 }{4x }\,\mathrm{d} x   = \frac{1}{4}+  \frac{ \ln 2}{2} 
+    \end{aligned} 
+    \]
+\end{proof}
+
+
 \end{document}

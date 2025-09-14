@@ -1,0 +1,105 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{ Week 1 }
+
+
+代靖涵 25120222201319
+
+
+\begin{exercise}{}{}
+    设 \(  f:\mathbb{R} ^{m}\to \mathbb{R} ^{n}  \)是一个连续函数.  \( U\subseteq \mathbb{R} ^{m}  \),  \( U= B_{1}^{m}\left( 0 \right)   \). 定义 \[
+     \Gamma \left( f \right)= \left\{ \left( x, f\left( x \right)  \right): x \in B_{1}^{m}\left( 0 \right)   \right\} 
+    \]求证: \(   \Gamma \left( f \right)   \)是拓扑流形.  试问 \(   \Gamma \left( f \right)   \)是否是一个光滑流形?     
+\end{exercise}
+
+\begin{proof}
+    \(   \Gamma \left( f \right)   \)是 \(  \mathbb{R} ^{m+ n}  \)的子空间, 由于 \(  \mathbb{R} ^{m+ n}  \)是Hausdorff且第二可数的, 故 \(   \Gamma \left( f \right)   \)也是Hausdorff且第二可数的.    考虑映射 \(   \varphi : \Gamma \left( f \right)\to B_{1}^{m}\left( 0 \right)    \), \[
+     \varphi \left( \left( x,f\left( x \right)  \right)  \right)\coloneqq x 
+    \] 为向第一个分量的投影映射,  \(   \varphi   \)是一个连续映射. 它有逆映射为 \[
+ B_{1}^{m}\left( 0 \right)\to  \Gamma \left( f \right),\quad      x\mapsto  \left( x,f\left( x \right)  \right) 
+    \] 也是一个连续映射. 因此 \(   \varphi   \)是 \(   \Gamma \left( f \right)   \)到\(  \mathbb{R} ^{m}  \)上开集 \(  B_{1}^{m}\left( 0 \right)   \)的一个同胚映射. 故 \(   \Gamma \left( f \right)   \)是局部欧的, 它有全局的坐标卡 \(  \left(  \varphi ,  \Gamma \left( f \right)  \right)   \).  这就说明了 \(   \Gamma \left( f \right)   \)是一个拓扑流形.  由于 \(  \left(  \varphi ,  \Gamma \left( f \right), B_{1}^{m}\left( 0 \right)   \right) \)本身构成 \(  M  \)的一个图册, 相容性条件空洞地成立 ,  因此 \(   \Gamma \left( f \right)   \)上存在一个光滑结构, 故 \(   \Gamma \left( f \right)   \)在配备了这个光滑结构下成为一个光滑流形(但不一定是\(  \mathbb{R} ^{m+ n}  \)的子流形 ).   
+\end{proof}
+
+\begin{exercise}{}{}
+    \begin{enumerate}
+        \item 叙述 \(  n  \)维带边流形 \(  \left( M,  \partial M \right)   \)的定义.
+        \item 验证 \(   \partial M  \)是一个 \(  \left( n-1 \right)   \)-维拓扑流形.    
+    \end{enumerate}
+    
+\end{exercise}
+
+\begin{proof}
+   \begin{enumerate}
+    \item  一个 \(  n  \)维带边拓扑流形 \(  M  \) 是指, 一个第二可数的Hausdorff空间, 同时满足对于任意的 \(  p \in M  \), 存在\(  M  \)上包含了 \(  p  \)的开集 \(  U  \), 以及 \(  \mathbb{R} ^{n}  \)或 \(  \mathbb{H}^{n}  \)上的一个开集 \(  V  \), 使得 \(   \varphi :U\to V  \)是一个同胚映射.       \(  M  \)的边界 \(   \partial M  \)被定义为  \[
+     \partial M\coloneqq \left\{ p: \text{存在} \text{坐标卡}\left(U ,  \varphi :U\to V \subseteq \mathbb{H}^{n}\right), s.t. p \in U,  \varphi \left( p \right)\in  \partial \mathbb{H}^{n}   \right\}
+    \]  
+    \item \(   \partial M  \)在赋予了 \(  M  \)的子空间拓扑下也是一个第二可数的Hausdorff空间.   现在, 定义 \[
+    \mathrm{Int}\left( M \right)\coloneqq \left\{ p: \text{存在坐标卡}\left( U,   \varphi \right), s.t. ,  \varphi \left( p \right)\in \mathrm{Int}\left( \mathbb{H}^{n} \right)    \right\} 
+    \]我们希望证明 \[
+    \mathrm{Int}\left( M \right)\cap  \partial M= \varnothing 
+    \]从而 \(  p \in  \partial M  \)与否与坐标卡的选取无关. 
+    为此, 我们假设存在 \(  p \in \mathrm{Int}\left( M \right)\cap  \partial M   \). 由于\( p \in \mathrm{Int}\left( M \right)   \), 存在包含了 \(  p  \)的 坐标卡 \(  \left( U_1, \varphi _1  \right)   \) , 使得 \(   \varphi _1 :U_1\to V_1  \)是一个同胚映射, 其中 \(  V_1  \)是 \(  \mathbb{R} ^{n}  \)的一个开集 (由于 \(  \mathrm{Int}\left( \mathbb{H}^{n} \right)   \)是 \(  \mathbb{R} ^{n}  \)的开集, 这里不妨认为 \(  V_1  \)就是 \(  \mathbb{R} ^{n}  \)的开集    ). 设 \(   \varphi _1 \left( p \right)=  q_1 \), 则 \(  V_1  \)是 \(  q_1  \)在 \(  \mathbb{R} ^{n}  \)上的一个开邻域.    此外, 由于 \(  p \in  \partial M  \), 存在另一个包含了 \(  p  \) 坐标卡 \(  \left( U_2, \varphi _2  \right)   \),     使得 \(   \varphi _2 :U_2\to V_2  \)是一个同胚映射. 其中 \(  V_2  \)是 \(  \mathbb{H}^{n}  \)上的开集. 且 \(  q_2\coloneqq  \varphi _2 \left( p \right)\in  \partial \mathbb{H}^{n}   \). 则  \(  V_2  \)是 \(  q_2  \)在 \(  \mathbb{H}^{n}  \)上的一个开邻域, 使得 \(  V_2\cap  \partial \mathbb{H}^{n}\neq \varnothing  \).   现在, 令 \(  U\coloneqq U_1\cap U_2  \),  考虑映射 \[
+     \varphi _2 \circ  \varphi _1 ^{-1} :  \varphi _1 \left( U \right)\to  \varphi _2 \left( U \right)  ,\quad q\mapsto   \varphi _2 \left(  \varphi _1 ^{-1} \left( q \right)  \right) 
+    \]      是两个同胚映射 \(  \left(  \varphi _1 ^{-1}  \right)|_{ \varphi _1 \left( U \right) },  \varphi _2 |_{U}   \) 的复合映射, 从而也是一个同胚映射. 由区域不变性定理,  上述映射将 \(  \mathbb{R} ^{n}  \)上的开集 \(   \varphi _1 \left( U \right)   \) 映到一个开集. 但是 \(  q_2 \in  \varphi _2 \left( U \right)   \), 而以 \(  q_2  \)为中心的任意 \(  \mathbb{R} ^{n}  \)上的 开球不含于 \(  \mathbb{H}^{n}  \), 进而不含于  \(   \varphi _2 \left( U \right)   \), 因此 \(   \varphi _2 \left( U \right)   \)不是一个开集, 产生了一个矛盾. 至此, 我们证明了 \(  \mathrm{Int}\left( M \right)\cap  \partial M=  \varnothing   \).     
+    
+    设 \(  \left\{ \left(  \varphi _{\alpha }, U_{\alpha } \right)  \right\}  \)是 \(  M  \)的一个图册. 取其中 \(   \varphi _{\alpha }  \)的像为 \(  \mathbb{H}^{n}  \)中子集的 部分 \(  \left\{  \left( \varphi _{\beta }, U_{\beta } \right)  \right\}  \)    . 则 \(  \left\{ U_{\beta } \right\}  \)是 \(  M  \)上  覆盖了 \(   \partial M  \)的一族开集.   令 \(  V_{\beta }\coloneqq U_{\beta }\cap  \partial M  \), 则 \(  \left\{ V_{\beta } \right\}  \)是 \(   \partial M  \)上覆盖了 \(   \partial M  \)的一族开集.    定义 \[
+   \begin{aligned}
+    \psi _{\beta }: V_{\beta }&\to  \varphi _{\beta }\left( V_{\beta } \right) \\ 
+      p&\mapsto  \varphi _{\beta }\left( p \right) 
+   \end{aligned}
+    \] 是一个双射.由于\(  p \in  \partial M  \)与否与坐标卡的选取无关, 因此 \(   \varphi _{\beta }\left( p \right)\in  \partial \mathbb{H}^{n}, \forall p \in V_{\beta }   \). 现在, 一方面 \[
+     \varphi _{\beta }\left( U_{\beta } \right)\cap  \partial \mathbb{H}^{n}=  \varphi _{\beta }\left( U_{\beta }\cap   \varphi _{\beta }^{-1} \left(  \partial \mathbb{H}^{n} \right)  \right)\subseteq  \varphi _{\beta }\left( U_{\beta }\cap  \partial M \right)=  \varphi _{\beta }\left( V_{\beta } \right)    
+    \]另一方面, \[
+     \varphi _{\beta }\left( V_{\beta } \right)=  \varphi _{\beta }\left( U_{\beta }\cap  \partial M \right)=  \varphi _{\beta }\left( U_{\beta } \right)\cap  \varphi _{\beta }\left(  \partial M \right)\subseteq  \varphi _{\beta }\left( U_{\beta } \right)\cap  \partial \mathbb{H}^{n}     
+    \]因此 \[
+     \varphi _{\beta }\left( V_{\beta } \right)=   \varphi _{\beta }\left( U_{\beta } \right)\cap  \partial \mathbb{H}^{n}  
+    \]是 \(   \partial \mathbb{H}^{n} \)上的一个开集.  由于 \(   \partial \mathbb{H}^{n}\simeq \mathbb{R} ^{n-1}  \), \(   \varphi _{\beta }\left( V_{\beta } \right)   \)可以等同于 \(  \mathbb{R} ^{n-1}  \)上的一个开集.  此外,  \(  \psi _{\beta }=  \varphi _{\beta }|_{V_{\beta }}  \),  \(  \psi _{\beta }^{-1} = \left(  \varphi _{\beta } \right)^{-1} |_{ \varphi _{\beta }\left( V_{\beta } \right) }   \)均为连续映射.    故 \(  \psi _{\beta }  \)是同胚映射. 于是我们找到了\(   \partial M  \)上的一个图册 \(  \left\{ \left( V_{\beta }, \psi _{\beta } \right)  \right\}  \). 因此 \(   \partial M  \)是一个 \(  \left( n-1 \right)   \)维拓扑流形.    
+   \end{enumerate}
+    
+\end{proof}
+
+\begin{exercise}{通过粘接构造光滑流形}{}
+    \begin{enumerate}
+        \item 设 \(  M  \)上有一族光滑的图册\(  \left\{  \varphi _{\alpha },U_{\alpha },V_{ \alpha } \right\}  \). 记 \(   \varphi _{ \alpha \beta }\coloneqq  \varphi _{\beta }\circ  \varphi _{\alpha }^{-1}   \). 证明: \(   \varphi _{\alpha \beta }  \)满足cocycle条件:
+        \begin{enumerate}
+            \item \(   \varphi _{\beta  \gamma }\circ  \varphi _{\alpha \beta }=  \varphi _{ \alpha  \gamma }  \)
+            \item \(   \varphi _{\alpha  \alpha }= \mathrm{Id}  \)
+            \item \(   \varphi _{\alpha \beta }= \left(  \varphi _{\beta \alpha } \right)^{-1}    \)   
+        \end{enumerate}
+        \item 假设给定一族开集 \(  \left\{ V_{\alpha } \right\}  \). 对于每一对 $(\alpha, \beta)$, 给定 $V_\alpha$ 中的一个开集\(  V_{\alpha \beta }  \) , 给定一族微分同构$\varphi_{\alpha\beta}: V_{\alpha\beta} \to V_{\beta\alpha}$. 并且, 这一族映射 $\{\varphi_{\alpha\beta}\}$ 满足cocycle条件. 令 \(  \tilde{M}=  \sqcup V_{\alpha }  \). 定义 ``\(  \sim   \) '': \[
+        x\sim y:\iff \exists \alpha ,\beta , s.t. x\in V_{\alpha }, y \in V_{\beta } \text{ 且 } y=  \varphi _{\alpha \beta }\left( x \right) 
+        \]  证明:
+        \begin{enumerate}
+            \item \(  \sim   \)是一个等价关系
+            \item \(  \tilde{M}/\sim   \)同胚于 \(  M  \)
+            \item 构造一个\(  \tilde{M}  \)上的光滑结构.    
+        \end{enumerate}
+        
+            
+    \end{enumerate}
+    
+\end{exercise}
+
+\begin{proof}
+ \begin{enumerate}
+    \item \begin{enumerate}
+        \item 对于任意的 \(  x \in V_{\alpha }\cap U_{\beta }\cap U_{ \gamma }  \), 我们有 \[
+        \begin{aligned}
+         \varphi _{\beta  \gamma }\circ  \varphi _{\alpha \beta }\left( x \right) &=   \varphi _{ \gamma }\circ  \varphi _{\beta }^{-1} \circ  \varphi _{\beta }\circ  \varphi _{\alpha }^{-1}  \left( x \right)\\ 
+          &=  \varphi _{ \gamma }\circ  \varphi _{\alpha }^{-1} \left( x \right)\\ 
+           &=   \varphi _{\alpha  \gamma }\left( x \right)   
+        \end{aligned}
+        \]因此在 \(  U_{\alpha }\cap U_{\beta }\cap U_{ \gamma }  \)上成立 \(   \varphi _{\beta  \gamma }\circ  \varphi _{\alpha \beta }=  \varphi _{\alpha  \gamma }  \).
+        \item 对于任意的 \(  x \in U_{\alpha }  \), \[
+         \varphi _{\alpha \alpha }\left( x \right) =  \varphi _{\alpha }\circ  \varphi _{\alpha }^{-1} \left( x \right) = x
+        \]    因此 \(   \varphi _{\alpha }= \mathrm{Id}_{U_{\alpha }}  \) 
+        \item 对于任意的 \(  x \in U_{\alpha }\cap U_{\beta }  \) 
+    \end{enumerate}
+    \(  x \in V_{\alpha },  \varphi _{\alpha }^{-1} \left( x \right)\in U_{\beta }   \) 
+ \end{enumerate}
+ 
+\end{proof}
+
+\end{document}

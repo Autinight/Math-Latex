@@ -2,13 +2,10 @@
 
 \begin{document}
 
-\ifSubfilesClassLoaded{
-
-    \tableofcontents
-    
-}{}
 
 \chapter{ Week 2 }
+
+代靖涵 25120222201319
 
 \begin{exercise}{}{}
     试作\(  (-1,1)  \)到 \(  \left[ -1,1 \right]   \)之间的一个双射.  
@@ -108,4 +105,79 @@ E= E^{+ }\cup E^{-}
     \]是单点集或空集的可数并, 从而是至多可数集.  进而 \(  E  \)作为可数集的可数并也是一个可数集. 
 \end{proof}
 
+\begin{exercise}{}{}
+    设 $f(x)$ 在 $(a,b)$ 上可微, 且除可数集外, 有 $f'(x)=0$, 试证明 $f(x)=c$(常数).
+\end{exercise}
+
+\begin{proof}
+    若 \(  f  \)不为常值, 则 \(  f^{\prime}   \)在 \(  \left( a,b \right)   \)上不恒为零.
+    \begin{enumerate}
+        \item 若 \(  f^{\prime}   \)在 \(  (a,b)  \)上取非零常值, 此时 \(  \left\{ f^{\prime} \left( x \right)\neq 0  \right\}= \left( a,b \right)   \)为不可数集.
+        \item 若 存在 \(  x_1  \), \(  x_2  \)使得 \(  f^{\prime} \left( x_1 \right)\neq f^{\prime} \left( x_2 \right)    \), 不妨设 \(  x_2> x_1  \), \(  f^{\prime} \left( x_2 \right)> f^{\prime} \left( x_1 \right)    \) .       此时 \(  f  \)为 \(  \left[ x_1,x_2 \right]   \)上的可微函数,   由 Darboux定理, 对于任意的 \(  c \in \left( f^{\prime} \left( x_1 \right),f^{\prime} \left( x_2 \right)   \right)   \),  都 存在 \(  x_{c}  \)使得 \(  f^{\prime} \left( x_{c} \right)= c  \). 特别地, 我们可以将 \(  c  \)的取值限制在 \(  \left( f^{\prime} \left( x_1 \right),f^{\prime} \left( x_2 \right)   \right)\setminus \left\{ 0 \right\}   \)上. 即存在单射 \(  F: \left( f^{\prime} \left( x_1 \right),f^{\prime} \left( x_2 \right)   \right)\setminus \left\{ 0 \right\}\to \left\{ f^{\prime} \left( x \right)\neq 0  \right\}   \) \[
+        F\left( c \right)= x_{c} 
+        \]   这表明 \[
+        \left| \left\{ f^{\prime} \left( x \right)\neq 0  \right\} \right|\ge \left| \left( f^{\prime} \left( x_1 \right),f^{\prime} \left( x_2 \right)   \right)\setminus \left\{ 0 \right\}  \right|  
+        \]其中 \(  \left( f^{\prime} \left( x_1 \right),f^{\prime} \left( x_2 \right)   \right)   \)有连续统的势, 为不可数集, 从而 \(  \left( f^{\prime} \left( x_1 \right),f^{\prime} \left( x_2 \right)   \right) \setminus \left\{ 0 \right\}  \)为不可数集, 进而 \(  \left\{ f^{\prime} \left( x \right)\neq 0  \right\}  \)也不可数.   
+    \end{enumerate}
+       至此, 我们说明了如果 \(  f\left( x \right)   \)不为常值函数, 则 \(  \left\{ f^{\prime} \left( x \right)\neq 0  \right\}  \)一定不可数, 因此原命题成立.  
+\end{proof}
+
+\begin{exercise}{}{9-11-1}
+    设 $E \subset \mathbf{R}$ 是不可数集, 则 $E' \neq \varnothing$.
+\end{exercise}
+\begin{proof}
+    若 \(  E  \)为不可数集, 则存在 \(   n\in \mathbb{Z} _{> 0}  \), \(  \left[ -n,n  \right]\cap E   \)为不可数集. 若不然, \[
+    E = \bigcup  _{n = 1}^{\infty} \left( \left[ -n,n \right]\cap E  \right) 
+    \]   为可数集的可数并, 进而 \(  E  \)是至多可数的,  矛盾. 下设 \(  n_0 \in \mathbb{Z} _{> 0}  \), \(  E_{n_0}\coloneqq \left[ -n_0,n_0 \right]\cap E   \)   为不可数集. 即 \(  I_0= [-n_0, n_0]  \). 将 \(  I_0  \)二等分为 \(  I_0= I_1\cup I_2\coloneqq [-n_0,0]\cup [0,n_0]  \).则 记 \(  E_{n_0,i}\coloneqq E_{n_0}\cap I_{i}, i= 1,2  \). 则 \(  E_{n_0,1}, E_{n_0,2}  \)中至少一个为不可数集, 取其一记作 \(  E_{n_0,i_1}  \).      闭区间 \(  I_{i_1}  \) 二分为 \(  I_{i_1,1}, I_{i_1,2}  \), 记 \(  E_{n_0,i_1,j}\coloneqq I_{i_1,j}\cap E, j= 1,2  \). 类似地,  \(  E_{n_0,i_1,1}, E_{n_0,i_1,2}  \)中至少一个为不可数集, 取其一记作 \(  E_{n_0,i_1,i_2}  \). 反复上述过程, 若我们得到不可数集 \(  E_{n_0,i_1,\cdots ,i_{n}}  \), 可以将区间 \(  I_{i_{n}}  \)二分, 类似地得到不可数集 \(  E_{n_0,i_1,\cdots ,i_{n+ 1}}  \).       此时, 我们有闭区间套 \[
+    I_{i_1}\supseteq I_{i_1,i_2}\supseteq \cdots I_{i_1,i_2,\cdots ,i_{n}}\supseteq  \cdots 
+    \]由闭区间套定理, 存在唯一的点 \(  x    \), 使得 \[
+     x \in I_{i_1,\cdots i_{n}},\quad \forall  n\in \mathbb{N} 
+    \] 首先, 取定 \(  x_0 \in E_{n_0}  \). 对于任意的 \(  k \in \mathbb{Z} _{> 0}  \) , 记 \(  B_{k}= \left( x-\frac{1 }{k },x+ \frac{1 }{k }   \right)   \)  . 若现有两两不同的 \(  x_0,x_1,\cdots ,x_{k-1}  \), 使得 \(  x_{j}\in B_{j}\cap E, j= 0,1,\cdots ,k-1  \).   考虑到 存在 \(  n_{k}  \)使得 \(  B_{k}\supseteq I_{i_1,\cdots ,i_{n_{k}}}  \supseteq E_{n_0,i_1,\cdots ,i_{n_{k}}}\)  . 而 \(  E_{n_0,i_1,\cdots ,i_{n_{k}}}  \) 为无限点集,  故存在其中的异于 \(  x_0,x_1,\cdots ,x_{k-1}  \)的点 \(  x_{k}  \), 且使得 \(  x_{k}\in B_{k}\cap E  \)   . 我们递归地构造了一个两两不同点列 \(  \left\{ x_{n} \right\}  \), 使得 \[
+    \left\{ x_{n} \right\}\subseteq E,\quad \lim _{n\to \infty}x_{k}= x
+    \]这表明 \(  x \in E^{\prime}   \), 因此 \(  E^{\prime} \neq \varnothing  \).   
+\end{proof}
+
+\begin{exercise}{}{}
+设 $F \subset \mathbb{R}$ 是有界集, $f(x)$ 是定义在 $F$ 上的(实值)函数. 若对任意的 $x_0 \in F'$, 均有 $f(x) \to +\infty (x \in F \text{ 且 } x \to x_0)$, 试证明 $F$ 是可数集. ($F = \bigcup_{n=1}^{\infty} \{x: f(x) \le n\}$)
+\end{exercise}
+
+
+
+\begin{proof}
+    由于 \[
+    F=  \bigcup _{n = 1}^{\infty}\left\{ x:f\left( x \right)\le n  \right\}
+    \]记 \(  \left\{ x:f\left( x \right)\le n  \right\}\coloneqq  F_{n}  \), 只需证明对于每个 \(  n  \),  \(  F _{n} \)是可数集.
+    现任取定正整数 \(  n  \).   若 \(  F_{n}^{\prime} \neq \varnothing  \), 则可 取 \(  x \in F_{n}^{\prime}   \subseteq F^{\prime} \), 存在 \(  F_{n}  \) 上两两互异的点列 \(  \left\{ x_{n} \right\}  \), 使得 \[
+    \lim_{n\to \infty}x_{n}= x
+    \] 由题设可知 \[
+    \lim_{n\to \infty}f\left( x_{n} \right)= \infty 
+    \]从而存在 \(  N  \), 使得 \(  f\left( x_{N} \right)>  n  \), 这与 \(  F_{n}  \)的定义矛盾.    因此 \(  F^{\prime}_{n} = \varnothing \).  此时若 \(  F_{n}  \)不可数, 将与Exercise \ref{ex:9-11-1}矛盾. 又 \(  n  \)是任取的,  \(  F  \)作为可数集的可数并也是可数的.
+    
+    \begin{remark}
+        这里借助Exercise \ref{ex:9-11-1}完成了一个不需要 \(  F  \)有界的 该命题的证明.
+        
+        如果不借助Exercise \ref{ex:9-11-1} 并假设 \(  F  \)有界. 此时\(  F_{n}  \)作为 \(  F  \)的子集也是有界的.   可以通过 \(  \mathbb{R}   \)上的Bolzano-Weierstrass定理, 利用 事实``有界无限点集存在极限点''导出更强的结果: \(  F_{n}  \)是一个有限集.
+    \end{remark}
+\end{proof}
+
+\begin{exercise}{}{}
+设 $\{f_\alpha(x)\}_{\alpha \in I}$ 是定义在 $[a,b]$ 上的实值函数族. 若存在 $M > 0$, 使得
+\[\begin{aligned}
+|f_\alpha(x)| \le M, \quad x \in [a,b], \quad \alpha \in I,
+\end{aligned}\]
+试证明对 $[a,b]$ 中任一可数集 $E$, 总有函数列 $\{f_{\alpha_n}(x)\}$, 存在极限
+\[\begin{aligned}
+\lim_{n \to \infty} \{f_{\alpha_n}(x)\}, \quad x \in E.
+\end{aligned}\]
+\end{exercise}
+\begin{remark}
+    或许需要指定 \(  I  \)是无限集, 且要求序列 \(  \left\{ \alpha _{n} \right\}  \) 包含无限多个元素/不允许重复? 否则命题或是平凡的, 或是不成立的.  下面的证明中默认了这种设置.
+\end{remark}
+\begin{proof}
+    记 \(  E= \left\{ x_1,x_2,\cdots  \right\}  \) . 对于 \(  x_1  \), 考虑有界的实数集 \(  \left\{ f_{\alpha }\left( x_1 \right)  \right\}_{\alpha \in I}  \), 可以取出可数的指标序列 \(  \left\{ \alpha _{1,n} \right\}_{n = 1}^{\infty}  \), 使得序列 \(  \left\{ f_{ \alpha _{1,n}}\left( x_1 \right)  \right\}_{n = 1}^{\infty}  \)收敛.  记 \(  I_1  \)为指标序列的值集 . 考虑有界的实数族 \(  \left\{ f_{\alpha }\left( x_2 \right)  \right\}_{\alpha \in I_1}  \). 同样地, 可以取出\(  I_1  \)中 可数的指标序列 \(  \left\{ \alpha _{2,n} \right\}_{n = 1}^{\infty}  \), 使得 它是 \(  \left\{ \alpha _{1,n} \right\}_{n = 1}^{\infty}  \)的子列, 且  序列 \(  \left\{ f_{\alpha _{2,n}}\left( x_2 \right)  \right\}_{n = 1}^{\infty}  \)收敛. 以此类推, 若我们得到收敛的序列 \(  \left\{ f_{\alpha _{j,n}}\left( x_{j} \right)  \right\}_{n = 1}^{\infty}\),以及指标集 \(  I_{j}  \), \(  j= 1,2,\cdots ,k -1 \).  可以从有界实数族 \(  \left\{ f_{\alpha }\left( x_{k} \right)  \right\}_{ \alpha \in I_{k-1}}  \)    中取出可数的指标序列 \(  \left\{ \alpha _{k,n} \right\}_{n = 1}^{\infty}  \) ,它是 \(  \left\{ \alpha _{k-1,n} \right\}_{n = 1}^{\infty}  \)的一个子列,  使得序列 \(  \left\{ f_{\alpha _{k,n}}\left( x_{k} \right)  \right\}_{n = 1}^{\infty}  \)收敛. 现在, 重新定义新的指标序列 \[
+    \left\{ a_{n} \right\}, \quad a_{n}\coloneqq \alpha _{n,n}
+    \]则对于任意的 \(  x_{k } \in E  \), 极限 \[
+    \lim_{n\to \infty}f_{a_{n}}\left( x_{k} \right)= \lim_{n\to \infty}f_{\alpha _{n,n}} \left( x_{k} \right)
+    \]存在. 这是因为序列 \(  \left\{ f_{\alpha _{k,n}}\left( x _{k}\right)  \right\}_{n = 1}^{\infty}  \)  收敛, 且\(  \left\{ \alpha  _{n,n} \right\}_{n = k}^{\infty}  \)是 \(  \left\{ \alpha _{k,n} \right\}_{n = 1}^{\infty}  \)的子列, 而收敛序列的任意子列也是收敛的.   
+\end{proof}
 \end{document}
