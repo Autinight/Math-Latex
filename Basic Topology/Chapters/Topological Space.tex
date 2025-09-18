@@ -95,7 +95,7 @@ Let $(X, \mathcal{T})$ be a topological space. A family $\mathcal{B}$ of open su
 \end{proposition}
 
 \begin{remark}
-    表述``there is a \(  B \in \mathcal{B}  \) such that \(  x \in B\subseteq U  \)  ''就是在说  ``\(  U  \)可以由 \(  \mathcal{B}  \)通过`并'生成  ''. 带入这句话之下, 这个命题几乎就是一句``废话''. 同样的道理也出现在 Proposition \ref{pps:9-6-5}
+    表述``there is a \(  B \in \mathcal{B}  \) such that \(  x \in B\subseteq U  \)  ''就是在说  ``\(  U  \)可以由 \(  \mathcal{B}  \)通过`并'生成  ''的微观讲法 . 带入这句话之下, 这个命题几乎就是一句``废话''. 同样的道理也出现在 Proposition \ref{pps:9-6-5}
 \end{remark}
 
 \begin{note}
@@ -142,4 +142,75 @@ Let $\mathcal{B}_1$ and $\mathcal{B}_2$ be bases for topologies $\mathcal{T}_1$ 
 \begin{proofsketch}
     考虑这句话: 表述``there is a \(  B \in \mathcal{B}  \) such that \(  x \in B\subseteq U  \)  ''就是在说  ``\(  U  \)可以由 \(  \mathcal{B}  \)通过`并'生成 ''. 1.是说 \(  \mathcal{B}_{1}  \)中任意集合可以由 \(  \mathcal{B}_{2}  \)``并''出来. 自然地\(  \mathcal{T}_{1}  \)中任意集合也被 \(  \mathcal{B}_{2}  \)``并出来''. 因此1.就是 \(  \mathcal{T}_{1}\subseteq \mathcal{T}_{2}  \). 同样地,  2.就是 \(  \mathcal{T}_{2}\subseteq \mathcal{T}_{1}  \).      
 \end{proofsketch}
+
+
+\begin{lemma}{}{}
+Let $\mathcal{B}$ and $\mathcal{B}'$ be bases for the topologies $\mathcal{T}$ and $\mathcal{T}'$, respectively, on $X$. Then the following are equivalent:
+\begin{enumerate}
+\item $\mathcal{T}'$ is finer than $\mathcal{T}$.
+\item For each $x \in X$ and each basis element $B \in \mathcal{B}$ containing $x$, there is a basis element $B' \in \mathcal{B}'$ such that $x \in B' \subset B$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proofsketch}
+    同样的, 2.就是在说每个 \(  B  \)可以由一堆 \(  B^{\prime}   \)并出来. 那么显然每个 \(  U\in \mathcal{T}  \)可以由一堆 \(  B^{\prime}   \)并出来, 即 \(  U^{\prime}  \in \mathcal{T}  \).     
+\end{proofsketch}
+
+\section{Closed Sets and Limit Points}
+\begin{definition}{}{}
+A subset $A$ of a topological space $X$ is said to be \dfntxt{closed} if the set $X - A$ is open.
+\end{definition}
+
+\subsection{Closure, Interior}
+
+\begin{definition}{}{}
+    Given a subset $A$ of a topological space $X$
+    \begin{itemize}
+        \item The \dfntxt{interior} of $A$ , denoted by \(  A^{\circ}  \) or by \(  \operatorname{Int}A  \),  is defined as the union of all open sets contained in $A$.
+        \item The \dfntxt{closure} of $A$ , denoted by \( \bar{A}\) or by \(  \operatorname{Cl}A  \),  is defined as the intersection of all closed sets containing $A$.
+    \end{itemize}
+\end{definition}
+
+\begin{theorem}{}{9-16-1}
+Let $A$ be a subset of the topological space $X$.
+\begin{enumerate}
+\item[(a)] Then $x \in \bar{A}$ if and only if every open set $U$ containing $x$ intersects $A$.
+\item[(b)] Supposing the topology of $X$ is given by a basis, then $x \in \bar{A}$ if and only if every basis element $B$ containing $x$ intersects $A$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] Method 1. Note that \[
+        V \text{ is a closed set containing }A \iff V^{c} \text{ is an open set such that  } V^{c} \cap A= \varnothing
+        \]We have \[
+      \begin{aligned}
+        x \not \in \bar{A}&\iff x\not \in \bigcap _{V \text{ is a closed set containing A}}V \\ 
+         & \iff  x \in  \bigcup _{V \text{ is a closed set containing } A}V^{c}\\ 
+          &\iff x \in \bigcup _{U \text{ is an open set such that  } U\cap A= \varnothing}U\\ 
+           &\iff \text{there exists open set } U \text{ such that } x\in U, U\cap A= \varnothing
+      \end{aligned}
+        \]
+
+        Method 2. Suppose that \(  x \in  \bar{A}  \), then \(  x  \)  is contained in any closed set containing \(  A  \) . If there exists open set \(  U  \) containing \(  x  \) dose not intersects \(  A  \). Then \(  U^{c}  \) is a closed set containing \(  A  \), which implies that \(  x \in U^{c}  \), a contradiction. Conversely , if every open set containing \(  x  \) intersects \(  A  \), then every closed  set that \(  x  \) dose not lie  in cannot contain \(  A  \). i.e. \(  x  \) lies in every closed set containing \(  A  \).       
+
+        \item[(b)] If every open set containing \(  x  \) intersets \(  A  \), then every basis \(  B  \) containing \(  x  \) intersects \(  A  \) since \(  B  \) is also an open set . Conversely, if every basis \(  B  \) containing \(  x  \) intersects \(  A  \),    since every open set \(  U  \)  contains a basis contaning \(  x  \) , it intersects with \(  A  \) as well.      Then it follows from (a).
+    \end{enumerate}
+    
+\end{proof}
+
+\subsection{Limit Points}
+
+\begin{definition}{}{}
+    If $A$ is a subset of the topological space $X$ and if $x$ is a point of $X$, we say that $x$ is a \dfntxt{limit point} (or ``cluster point,'' or ``point of accumulation'') of $A$ if every neighborhood of $x$ intersects $A$ in some point \dfntxt{other than x itself}. Said differently, $x$ is a limit point of $A$ if it belongs to the closure of $A - \{x\}$. 
+\end{definition}
+
+\begin{theorem}{}{}
+Let $A$ be a subset of the topological space $X$; let $A'$ be the set of all \dfntxt{limit points} of $A$. Then
+\[ \bar{A} = A \cup A'. \]
+\end{theorem}
+\begin{proofsketch}
+    对于 \(  \bar{A} \subseteq A\cup A^{\prime}   \), \(  A\subseteq \bar{A}  \)显然而  \(  A^{\prime} \subseteq A  \) 是 Theorem \ref{thm:9-16-1}的直接推论. \(  A\cup A^{\prime} \subseteq  \bar{A}  \), 则考虑若 \(  x  \)不在 \(  A  \)里面, 那么 \(  x\in A^{\prime}   \)的定义中的开集一定与 \(  A  \)相交, 从而有 \(  x \in \bar{A}  \) .     
+\end{proofsketch}
+
 \end{document}

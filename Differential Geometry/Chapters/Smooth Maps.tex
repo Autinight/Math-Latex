@@ -25,4 +25,135 @@
     
 \end{remark}
 
+\section{Partitions of Unity}
+\begin{definition}{Support}{}
+    If $f$ is any real-valued or vector-valued function on a topological space $M$, the \dfntxt{support of f}, denoted by $\operatorname{supp} f$, is the closure of the set of points where $f$ is nonzero:
+\[
+\operatorname{supp} f = \overline{\{p \in M : f(p) \neq 0\}}.
+\]\begin{itemize}
+    \item If $\operatorname{supp} f$ is contained in some set $U \subseteq M$, we say that $f$ is \dfntxt{supported in U}. 
+    \item 
+A function $f$ is said to be \dfntxt{compactly supported} if $\operatorname{supp} f$ is a compact set, denoted by \(  f \in C_{0}^{\infty}\left( M \right)   \) . 
+\end{itemize}
+\end{definition}
+
+\begin{remark}
+    Clearly, every function on a compact space is compactly supported.
+\end{remark}
+
+\begin{lemma}{}{}
+The function $f: \mathbb{R} \to \mathbb{R}$ defined by
+\[
+f(t) = \begin{cases}
+e^{-1/t}, & t > 0, \\
+0, & t \le 0,
+\end{cases}
+\]
+is smooth.
+\end{lemma}
+\begin{lemma}{}{}
+Given any real numbers $r_1$ and $r_2$ such that $r_1 < r_2$, there exists a smooth function $h: \mathbb{R} \to \mathbb{R}$ such that $h(t) \equiv 1$ for $t \le r_1$, $0 < h(t) < 1$ for $r_1 < t < r_2$, and $h(t) \equiv 0$ for $t \ge r_2$.
+\end{lemma}
+\begin{proof}
+Let $f$ be the function of the previous lemma, and set
+\[
+h(t) = \frac{f(r_2 - t)}{f(r_2 - t) + f(t - r_1)}.
+\]Note that the denominator is positive for all $t$, because at least one of the expressions $r_2 - t$ and $t - r_1$ is always positive. The desired properties of $h$ follow easily from those of $f$.
+\end{proof}
+
+\begin{lemma}{Bump Function on \(  \mathbb{R} ^{n}  \) }{9-17-1}
+Given any positive real numbers $r_1 < r_2$, there is a smooth function $H : \mathbb{R}^n \to \mathbb{R}$ such that $H \equiv 1$ on $\bar{B}_{r_1}(0)$, $0 < H(x) < 1$ for all $x \in B_{r_2}(0) \setminus \bar{B}_{r_1}(0)$, and $H \equiv 0$ on $\mathbb{R}^n \setminus B_{r_2}(0)$.
+\end{lemma}
+
+\begin{proof}
+Just set $H(x) = h(|x|)$, where $h$ is the function of the preceding lemma. Clearly, $H$ is smooth on $\mathbb{R}^n \setminus \{0\}$, because it is a composition of smooth functions there. Since it is identically equal to 1 on $B_{r_1}(0)$, it is smooth there too. 
+\end{proof}
+
+\begin{theorem}{Existence of Bump Function on Manifold}{}
+    Let \(  M  \) be a smooth manifold, \(  K\subseteq M  \) a compact set. \(  U\subseteq M  \) is a open set such that \(  K\subseteq U  \). Then there exists \(   \varphi  \in C_{0}^{\infty}\left( M \right)   \), such that \(  \operatorname{supp} \varphi \subseteq U  \), \(  0\le  \varphi \le 1  \) and \(   \varphi \equiv 1  \) on \(  K  \).           
+\end{theorem}
+
+\begin{proof}
+    For each \(  x \in K  \), take a chart \(  \left(  \varphi _{x}, U_{x},V_{x} \right)   \) centering \(  x  \). We may assume that \(  V_{x} \subseteq B_{3}\left( 0 \right)   \) and \(  U_{x}\subseteq U  \)  by contracting  when necessary . Let \(  \tilde{U_{x}}  \coloneqq  \varphi _{x}^{-1} \left( B_{1}\left( 0 \right)  \right) \). We define \[
+    f_{x}\left( p \right)\coloneqq \begin{cases} H\circ  \varphi _{x}\left( p \right),&p\in U_{x}\\ 
+     0,& p \not \in U_{x}  \end{cases}  
+    \]   Where \(  H  \) is defined in Lemma \ref{lem:9-17-1}  and we take \(  r_1= 1, r_2= 2  \).   It is straightforward to verify that \(  f_{x}\equiv 1  \) on \(  \tilde{U_{x}}  \) and \(  f_{x}\equiv 0  \) on \(  U_{x}^{c}  \), \(  \operatorname{supp}f_{x}=  \varphi _{x}^{-1} \left( \overline{B_2\left( 0 \right) } \right)  \subseteq U_{x} \). Since the homeomorphism keeps the closure \(   \varphi _{x}^{-1} \left( \overline{B_{2}\left( 0 \right) } \right)= \overline{ \varphi _{x}^{-1} \left( B_{2}\left( 0 \right)  \right) }   \). 
+  
+    Now \(  K  \) has a open cover \(  \left\{ \tilde{U}_{x} \right\}  \). Since \(  K  \) is compact, there are finitely many \(  \tilde{U}_{x_{i}}  \) such that \[
+    \bigcup _{i= 1}^{N} \tilde{U}_{x_{i}}\supseteq K
+    \]    We define \[
+    \psi \coloneqq \sum _{i= 1}^{N}f_{x_{i}}
+    \]Then \(  \psi \ge 1 \) on \(  K  \), \(  \operatorname{supp}\psi \subseteq U  \).    
+
+    Let $\rho: \mathbb{R} \to [0, 1]$ be a smooth function such that
+$$\rho(t) = \begin{cases} 
+0, & t \le 1/2 \\
+1, & t \ge 1
+\end{cases}$$
+and $\rho$ is monotonically increasing on $(1/2, 1)$. 
+Now, we define our final function $\varphi: M \to \mathbb{R}$ as the composition
+$$\varphi \coloneqq \rho \circ \psi $$
+\end{proof}
+
+\begin{definition}{Partitions of Unity}{}
+    Suppose $M$ is a topological space, and let $\mathcal{X} = (X_\alpha)_{\alpha \in A}$ be an arbitrary open cover of $M$, indexed by a set $A$. A \dfntxt{partition of unity subordinate to $\mathcal{X}$} is an indexed family $(\psi_\alpha)_{\alpha \in A}$ of continuous functions $\psi_\alpha: M \to \mathbb{R}$ with the following properties:
+\begin{enumerate}
+\item $0 \le \psi_\alpha(x) \le 1$ for all $\alpha \in A$ and all $x \in M$.
+\item $\text{supp } \psi_\alpha \subseteq X_\alpha$ for each $\alpha \in A$.
+\item The family of supports $(\text{supp } \psi_\alpha)_{\alpha \in A}$ is locally finite, meaning that every point has a neighborhood that intersects $\text{supp } \psi_\alpha$ for only finitely many values of $\alpha$.
+\item $\sum_{\alpha \in A} \psi_\alpha(x) = 1$ for all $x \in M$.
+\end{enumerate}
+
+If $M$ is a smooth manifold with or without boundary, a \dfntxt{smooth partition of unity} is one for which each of the functions $\psi_\alpha$ is smooth.
+\end{definition}
+
+\begin{remark}
+    \begin{itemize}
+    \item 
+Because of the local finiteness condition (3), the sum in (4) actually has only finitely many nonzero terms in a neighborhood of each point, so there is no issue of convergence. 
+\item For a manifold \(  M  \),   \(  M  \) is Lindel\"of Space, we can always assmue that \(  \left( X_{\alpha } \right) _{\alpha \in A}  \) is a countable colletction, thus the \(  \left( \psi _{\alpha } \right)_{\alpha \in A}   \) is as well .  
+    \end{itemize}
+    
+\end{remark}
+
+\begin{theorem}{Existence of Partitions of Unity}{}
+Suppose $M$ is a smooth manifold with or without boundary, and $\mathcal{X} = (X_{\alpha})_{\alpha \in A}$ is any indexed open cover of $M$. Then there exists a smooth partition of unity subordinate to $\mathcal{X}$.
+\end{theorem}
+\subsection*{Applications}
+
+\begin{proposition}{Bump function Support on a Closed Set}{}
+    Let \(  M  \) be a manifold, \(  A\subseteq M  \) be a closed set, \(  U\supseteq A  \) is an open set. Then there exists \(   \varphi  \in C_{0}^{\infty}\left( M \right)   \) such that \(  0\le  \varphi \le 1  \), and  \(   \varphi \equiv 1  \) on \(  A  \)       .
+\end{proposition}
+
+\begin{proof}
+    \(  \left\{ U, M\setminus A \right\}  \) is a open cover of \(  M  \). Then there exists a partition  of unity \(  \left\{ \rho _1 ,\rho _2  \right\}  \) subordinate to it.  Then \(  \rho _1   \) is just the function we need. 
+\end{proof}
+
+
+\begin{theorem}{Stone-Weierstrass}{}
+    Let \(  X  \) be a compact Hausdorff Space. \(  \mathcal{A}\subseteq C\left( X,\mathbb{R}  \right)   \) is a subalgebra . Then \(  \mathcal{A}  \) is dense in \(  C\left( X,\mathbb{R}  \right)   \), if and only if it satisfies  
+    \begin{enumerate}
+        \item Nowhere vanishing: For each \(  x \in X  \), there exists \(  g \in \mathcal{A}  \) such that \(  g\left( x \right)\neq 0   \).
+        \item Separates points: For distinct \(  x,y \in X  \), there exists \(  f\in \mathcal{A}  \) such that \(  f\left( x \right)\neq g\left( x \right)    \).      
+    \end{enumerate}
+    
+\end{theorem}
+\begin{theorem}{Whitney}{}
+    Let \(  M  \) be a smooth manifold. For each continuous function \(  g\in :M\to \mathbb{R}   \), \(   \delta :M\to \mathbb{R} _{+ }  \)   , there exists a smooth function \(  f :M\to \mathbb{R}  \) , such that   \[
+    \left| f\left( p \right)-g\left( p \right)   \right|<  \delta \left( p \right),\quad \forall p\in M  
+    \]
+\end{theorem}
+
+\begin{theorem}{Whitney Extension}{}
+    Let \(  M  \) be a smooth manifold.  \(  A\subseteq M  \) is a closed set. For continuous \(  g: M\to \mathbb{R}   \), \(   \delta :M\to \mathbb{R} _{+ }  \)  , where \(  g  \) is smooth on \(  A  \). Then there exists smooth function \(  f:M\to \mathbb{R}   \), such that
+    \begin{enumerate}
+        \item \[
+        f\left( p \right)= g\left( p \right),\quad \forall p\in A  
+        \]
+        \item \[
+        \left| f\left( p \right)-g\left( p \right)   \right|<  \delta \left( p \right),\quad \forall p \in M  
+        \]
+    \end{enumerate}
+     
+\end{theorem}
 \end{document}

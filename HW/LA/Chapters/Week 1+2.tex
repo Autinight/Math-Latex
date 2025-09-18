@@ -204,4 +204,128 @@ where $I_m$ denotes the identity matrix of rank $m$.
      
 
 \end{proof}
+
+\begin{exercise}{}{}
+Let $L$ be a Lie algebra. Prove that:
+\begin{enumerate}
+\item[(a)] If $\varphi: L \to L'$ is a homomorphism of Lie algebras, then
+\[
+L/\ker\varphi \cong \operatorname{im}\varphi.
+\]
+\item[(b)] If $I$ and $J$ are ideals of $L$ such that $I \subset J$, then $J/I$ is an ideal of $L/I$ and $(L/I)/(J/I)$ is naturally isomorphic to $L/J$.
+\item[(c)] If $I$ is an ideal of $L$ and $J$ is a subalgebra of $L$, then there is a natural isomorphism between $(I+J)/I$ and $J/(I \cap J)$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+     \begin{enumerate}
+          \item[(a)] Define \(   \bar{\varphi} : L/\operatorname{ker}\varphi \to \operatorname{Im}\varphi  \) \[
+        \bar{\varphi}\left( x+ \operatorname{ker}\varphi  \right)\coloneqq  \varphi \left( x \right)  
+          \] First we show that \(   \bar{\varphi}  \) is well-defined. We suppose that \(  x+ \operatorname{ker}\varphi = y+ \operatorname{ker}\varphi   \), then there exists \(  z \in \operatorname{ker}\varphi   \) such that \(  y-x= z  \). We have \[
+           \bar{\varphi}\left( y+ \operatorname{ker} \varphi  \right)=  \varphi \left( y \right)=    \varphi \left( x+ z \right)=  \varphi \left( x \right)+  \varphi \left( z \right)=  \varphi \left( x \right)=  \bar{\varphi}\left( x+ \operatorname{ker} \varphi  \right)     
+          \] Take any \(  x,y\in L  \),  \(  k \in F  \). Then \[
+         \begin{aligned}
+           \bar{\varphi}\left( \left( x+ \operatorname{ker} \varphi  \right)+ k\left( y+ \operatorname{ker} \varphi  \right)  \right) &=   \bar{\varphi}\left( x+ ky+ \operatorname{ker} \varphi  \right)\\ 
+            &=  \varphi \left( x+ ky \right)\\ 
+             &=  \varphi \left( x \right)+ k \varphi \left( y \right)\\ 
+              &=   \bar{\varphi}\left( x+ \operatorname{ker} \varphi  \right)+ k \bar{\varphi} \left( y+ \operatorname{ker} \varphi  \right)       
+         \end{aligned}
+          \]  Thus \(   \bar{\varphi}  \) is a linear transformation. Furthermore, \[
+          \begin{aligned}
+           \bar{\varphi}\left( [x+ \operatorname{ker} \varphi ,y+ \operatorname{ker} \varphi ] \right) &=   \bar{\varphi}\left( [x,y]+ \operatorname{ker} \varphi  \right)\\ 
+            &=  \varphi \left( [x,y] \right)\\ 
+             &=  [\varphi \left( x \right), \varphi \left( y \right)]\\ 
+              &=     [ \bar{\varphi}\left( x+ \operatorname{ker} \varphi  \right), \bar{\varphi}\left( y+ \operatorname{ker} \varphi  \right)  ]
+          \end{aligned}
+          \] Thus \(   \bar{\varphi}  \) is a homomorphism.  We know from the definition of \(   \bar{\varphi}  \) that \(   \bar{\varphi}  \) is an epimorphism.  To show that \(   \bar{\varphi}  \) is a monomorphism, we suppose that \(   \bar{\varphi}\left( x+ \operatorname{ker} \varphi  \right)=  \bar{\varphi}\left( y+ \operatorname{ker} \varphi  \right)    \), then \(   \varphi \left( x \right)=  \varphi \left( y \right)    \). We have \[
+           \varphi \left( y-x \right)=  \varphi  \left( y \right)- \varphi \left( x \right)= 0 \implies   \left( y-x \right)\in \operatorname{ker} \varphi     \implies x+ \operatorname{ker} \varphi = y+ \operatorname{ker} \varphi 
+          \]Thus \(   \bar{\varphi}  \) is a monomorphism. Finally, we know \(   \bar{\varphi}  \) is a isomorphism, then \(  L/\operatorname{ker} \varphi \simeq \operatorname{Im} \varphi   \).      
+          \item[(b)] First we show t hat \(  J /I  \) is a subspace of \(  L / I  \). Take any element \(  x+ I, y+ I  \) in \(  J/I  \), and take any \(  k \in F  \). We have \[
+          \left( x+ I \right)+ k\left( y+ I \right)= \left( x+ ky \right)+ I   \in  J/I
+          \]since \(  J  \) is a subspace of \(  L  \). Then,       take any elment \(  x+ I\in L/I  \) and \(  y+  I \in  J/I  \). Then \[
+          [x+ I,y+ I]= [x,y]+ I \in J / I
+          \]  since \(  J  \) is an ideal of \(  L  \).  We have \(  J/I  \) is an ideal of \(  L/I  \).  Define a map  \(  \psi : \left( L  / I \right)/\left( J / I \right)\to L / J    \) \[
+          \psi \left( \left( x+ I \right)+ \left( J/I \right)   \right)\coloneqq x+ J 
+          \] If \[
+          \left( x+ I \right)+ J/I= \left( y+ I \right)+  J / I  
+          \]Then \[
+          \left( x-y \right)+ I\in J/I\implies  x-y\in J\implies x+ J= y+ J 
+          \]Thus \(  \psi   \) is well-defined. Then take any \(  k \in F  \), we have \[
+         \begin{aligned}
+          \psi \left( \left( \left( x+ I \right)+ J/I  \right)+ k \left( \left( y+ I \right)+ J /I  \right)   \right)&=  \psi \left( \left(\left( x+ ky \right)+ I  \right)+ J/I  \right)  \\ 
+           &= x+ ky+ J\\ 
+            &= \left( x+ J \right)+ k\left( y+ J \right)\\ 
+             &=  \psi \left( \left( x+ I \right)+  J / I  \right)+  k \psi  \left( \left( y+ I \right)+  J / I  \right)    
+         \end{aligned} 
+          \]  Thus \(  \psi   \) is a linear transformation. Furthermore, \[
+          \begin{aligned}
+          \psi \left( [\left( x+ I \right)+ J/I , \left( y+ I \right)+ J /I ] \right)&= \psi \left( \left( [x,y]+ I \right)+ J/I  \right)\\ 
+           &= [x,y]   + J\\ 
+            &= [x+ J, y+ J]\\ 
+             &= [\psi \left( \left( x+ I \right)+ J / I  \right), \psi \left( \left( y+ I \right)+ J / I  \right)  ]
+          \end{aligned}
+          \] Thus \(  \psi   \) is a homomorphism. It is obvious that \(  \psi   \) is a epimorphism by definition. To show \(  \psi   \) is a monomorphism. We see that \[
+          x+ J= 0\iff x \in J\iff x+ I \in J/I\iff \left( x+ I \right)+ \left( J / I \right)= \left( 0+ I \right)+  \left( J / I \right)    
+          \]Thus \(  \operatorname{ker}\psi = 0  \), \(  \psi   \) is a monomorphism.   Finally, we know \(  \psi    \) is a isomorphism between \(  \left( L / I \right)/ \left( J / I \right)    \)  and \(  L/J  \). 
+          \item[(c)] Since \(  [I,J]\subseteq I  \), we have \[
+          [I+ J,I]\subseteq [I,I]+ [J,I]\subseteq I
+          \] Therefore \(  I  \) is an ideal of \(  I+ J  \).   Furthermore,  \[
+          [J, I\cap J]\subseteq [I,J]\cap [J,J]\subseteq I\cap J
+          \]   Thus \(  I\cap J  \) is an ideal of \(  J  \).  We define \(  \psi :\left( I+ J \right)/I\to  J/\left( I\cap J \right)    \) as follows: For each \(  \left( i+ j \right)+  I \in \left( I+ J \right)/ I    \), where \(  i\in I, j \in J  \), we define \[
+          \psi \left( \left( i+ j \right)+ I \right)\coloneqq  j+  \left( I\cap J \right)  
+          \]  If \(  i_1+ j_1+ I= i_2+ j_2  + I\), by substracting \(  j_1+ i_2 + I \) both sides,  then  \(  i_1-i_2= j_2-j_1+ I\implies j_2-j_1\in I \). Since \(  j_2-j_1\in J  \),   \(  j_1+ \left( I\cap J \right)= j_2+ \left( I\cap J \right)    \), which shows that \(  \psi   \) is well-defined. To show \(  \psi   \) is a homomorphism, take any \(  \left( i_1+ j_1 \right)+ I, \left( i_2+ j_2 \right)+ I \in  \left( I+ J \right)+ I     \), \(  k \in F  \). We have \[
+          \begin{aligned}
+          \psi \left( \left( \left( i_1+ j_1 \right)+ I \right)+ k\left( \left( i_2+ j_2 \right)+ I  \right)   \right)  &= \psi \left( \left( \left( i_1+ ki_2 \right)+ \left( j_1+k j_2 \right)   \right)+ I \right)\\ 
+           &= \left( j_1+kj_2 \right)+ I\cap J\\ 
+            &= \left( j_1+ I\cap J \right)+k \left( j_2+ I\cap J \right)\\ 
+             &= \psi \left( \left( i_1+ j_1 \right)+ I  \right)+ k\psi \left( \left( i_2+ j_2 \right)+ I  \right)      
+          \end{aligned}
+          \]Thus \(  \psi   \) is a linear transformation. Furthermore, \[
+          \begin{aligned}
+          \psi \left( [\left( i_1+ j_1 \right)+ I, \left( i_2+ j_2 \right) +  I ] \right)&=   \psi \left( [i_1+ j_1,i_2+ j_2]+ I \right)\\ 
+           &= \psi \left( \left( [i_1,i_2]+ [i_1,j_2]+ [i_2,j_1] \right)+ [j_1,j_2]+ I  \right)\\ 
+            &= [j_1,j_2]+ I\cap J\\ 
+             &= [\psi \left( \left( i_1+ j_1 \right)+ I  \right),\psi \left( i_2+ j_2 \right)+ I  ]
+          \end{aligned}
+          \]        Thus \(  \psi   \) is a homomorphism. It is obvious that \(  \psi   \) is surjective by definition. To show that it is a monomorphism, note that \[
+          \psi \left( \left( i+ j \right)+ I  \right)= 0\iff j + \left( I\cap J \right)= 0\iff  j \in I\cap J\iff \left( i+ j \right)\in I   
+          \]Thus \(  \operatorname{ker}\psi = 0  \),     which shows that \(  \psi   \) is an monomorphism. Finally, we know \(  \psi   \) is a isomorphism between \(  \left( I+ J \right)/I   \) and \(  J/\left( I\cap J \right)   \)    
+     \end{enumerate}
+     
+\end{proof}
+
+
+
+\begin{exercise}{}{}
+Let $L$ be a Lie algebra, $I$ an ideal of $L$, and $\pi : L \to L/I$ the quotient map. Prove that for any Lie homomorphism $\varphi : L \to L'$ satisfying that $I \subset \ker \varphi$, there is a unique homomorphism $\psi: L/I \to L'$ making the diagram
+\[
+\begin{tikzcd}
+L \arrow[r, "\varphi"] \arrow[d, "\pi"] & L' \\
+L/I \arrow[ur, "\psi"] &
+\end{tikzcd}
+\]
+commute.
+\end{exercise}
+
+\begin{proof}
+     Since the diagram commutes, for each \(  x+ I\in L / I  \), the only choic of \(  \psi \left( x+ I \right)   \) is \[
+     \psi \left( x+ I \right)=  \varphi \left( x \right)  
+     \]  Now we show that such \(  \psi : L/I \to L^{\prime}   \) is well-defined and indeed a homomorphism, and thus the unique one. For which , suppose that \(  x_1+ I= x_2+ I  \), then \(  x_1-x_2\in I\subseteq \operatorname{ker} \varphi   \), we have \[
+     \psi \left( x_1+ I \right)=  \varphi \left( x_1 \right)=  \varphi \left( x_1 \right)+  \varphi \left( x_2-x_1 \right)=  \varphi \left( x_1+ \left( x_2-x_1 \right)  \right)=  \varphi \left( x_2 \right)= \psi \left( x_2+ I \right)       
+     \]   Thus \(  \psi   \) is well-defined. Then take any \(  x+ I, y+ I \in L / I, k \in F  \), we have \[
+     \begin{aligned}
+     \psi \left( \left( x+ I \right)+ k\left( y+ I \right)   \right)&= \psi \left( \left( x+ ky \right)+ I  \right)\\ 
+      &=  \varphi \left( x+ ky \right)\\ 
+       &=  \varphi \left( x \right)+ k \varphi \left( y \right)\\ 
+        &= \psi \left( x+ I \right)+ k\psi \left( y+ I \right)        
+     \end{aligned}
+     \]Thus \(  \psi   \) is a linear transformation. Furthermore, \[
+     \begin{aligned}
+     \psi \left( [x+ I,y+ I] \right)&= \psi \left( [x,y]+ I \right)\\ 
+      &=  \varphi \left( [x,y] \right)\\ 
+       &= \left[  \varphi \left( x \right), \varphi \left( y \right)   \right]\\ 
+        &= \left[ \psi \left( x+ I \right),\psi \left( y+ I \right)   \right]     
+     \end{aligned} 
+     \]   Thus \(  \psi   \) is a homomorphism. 
+\end{proof}
+
 \end{document}

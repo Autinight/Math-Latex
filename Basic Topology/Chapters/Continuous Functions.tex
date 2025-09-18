@@ -1,0 +1,44 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+}{}
+
+\chapter{ Continuous Functions }
+
+\section{Continuity of a Function}
+
+
+\begin{definition}{}{}
+Let $X$ and $Y$ be topological spaces. A function $f: X \to Y$ is said to be \dfntxt{continuous} if for each open subset $V$ of $Y$, the set $f^{-1}(V)$ is an open subset of $X$.
+\end{definition}
+
+\begin{theorem}{}{}
+Let $X$ and $Y$ be topological spaces; let $f : X \to Y$. Then the following are equivalent:
+\begin{enumerate}
+    \item $f$ is continuous.
+    \item For every subset $A$ of $X$, one has $f(\bar{A}) \subset \overline{f(A)}$.
+    \item For every closed set $B$ of $Y$, the set $f^{-1}(B)$ is closed in $X$.
+    \item For each $x \in X$ and each neighborhood $V$ of $f(x)$, there is a neighborhood $U$ of $x$ such that $f(U) \subset V$.
+\end{enumerate}
+\end{theorem}
+\begin{remark}
+    
+If the condition in (4) holds for the point $x$ of $X$, we say that $f$ is \dfntxt{continuous at the point x}.
+
+\end{remark}
+
+
+\section{Homeomorphisms}
+
+\begin{definition}{}{}
+    Let $X$ and $Y$ be topological spaces; let $f: X \to Y$ be a bijection. If both the function $f$ and the inverse function
+\[ f^{-1} : Y \to X \]
+are continuous, then $f$ is called a \dfntxt{homeomorphism}.
+\end{definition}
+
+\end{document}

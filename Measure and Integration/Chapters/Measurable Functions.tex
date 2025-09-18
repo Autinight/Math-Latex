@@ -238,5 +238,62 @@ Let $N = \{x : f(x) = g(x)\}$. Then $\mu(\widetilde{N}) = 0$, and thus $\widetil
 &= (\{f > a\} \cap N) \cup (\{g > a\} \cap \widetilde{N}) \in \mathcal{M}.
 \end{aligned}\]
 \end{proof}
+\begin{theorem}{}{}
+Suppose $\varphi$ is an outer measure on a space $X$. Then an extended real-valued function $f$ on $X$ is $\varphi$-measurable if and only if
+\[\begin{aligned}
+\varphi(A) \geq \varphi(A \cap \{f \leq a\}) + \varphi(A \cap \{f \geq b\})
+\end{aligned}\]
+whenever $A \subset X$ and $a < b$ are real numbers.
+\end{theorem}
+
+\begin{proof}
+    The ``only if'' is immediate from \[
+     \varphi \left( A \right)\ge  \varphi \left( A\cap \left\{ f\le a \right\} \right)+  \varphi \left( A\cap \left\{ f> a \right\} \right)\ge  \varphi \left( A\cap \left\{ f\le a \right\} \right)+  \varphi \left( A\cap \left\{ f\ge b \right\} \right)     
+    \]
+    To show the converse, we need to prove that for any \(  r \in \mathbb{R}   \), the set  \[
+    E\coloneqq  \left\{ f\le r \right\}
+    \] satisfies \[
+     \varphi \left( A \right)\ge  \varphi \left( A\cap E \right)+  \varphi \left( A-E \right)   
+    \] for each \(  A\subseteq X  \). We define \[
+    B_{j}\coloneqq A\cap \left\{ r+   \frac{1 }{j + 1 }\le f\le r+  \frac{1 }{j }   \right\}
+    \] We shall show \[
+    \infty>  \varphi \left( A \right)\ge  \varphi \left( \bigcup _{j= 1}^{\infty}B_{2j} \right)=   \sum _{j= 1}^{\infty} \varphi \left( B_{2j} \right)  
+    \]by induction. We fix \(  k  \) and assume \[
+     \varphi \left( \bigcup _{j= 1}^{k}B_{2j} \right)= \sum _{j= 1}^{k} \varphi \left( B_{2j} \right)  
+    \] We set \[
+    A_{k}\coloneqq \bigcup _{j= 1}^{k}B_{2j}
+    \] Then \[
+    \left( A_{k}\cup B_{2\left( k+ 1 \right) } \right)\cap \left\{ f\le r+ \frac{1 }{2\left( k+ 1 \right)  }  \right\} = B_{2\left( k+ 1 \right) }
+    \] \[
+    \left( A_{k}\cup B_{2\left( k+ 1 \right) } \right)\cap \left\{ f\ge r+ \frac{1 }{2k+ 1 }  \right\} = A_{k}
+    \]We have \[
+     \varphi \left( \bigcup _{j= 1}^{k+ 1}B_{2j} \right)=   \varphi \left( A_{k}\cup B_{2\left( k+ 1 \right) } \right) \ge  \varphi \left( B_{2\left( k+ 1 \right) } \right) +  \varphi \left( A_{k} \right)= \sum _{j= 1}^{k+ 1} \varphi \left( B_{2j} \right)  
+    \] Thus we inductively show that \[
+    \varphi \left( A \right)\ge    \varphi \left( \bigcup _{j= 1}^{\infty}B_{2j} \right)= \sum _{j= 1}^{\infty} \varphi \left( B_{2j} \right)  
+    \] Similarly, one can show that \[
+    \varphi \left( A \right)\ge    \varphi \left( \bigcup _{j= 1}^{\infty}B_{2j-1} \right)= \sum _{j= 1}^{\infty} \varphi \left( B_{2j-1} \right)  
+    \] Then the series \[
+    \sum _{j= 1}^{\infty} \varphi \left( B_{j} \right)\le  2 \varphi \left( A \right)< \infty  
+    \]convergents. The tail of the series can be arbitrarily small. For each \(   \varepsilon > 0  \), there exists \(  m \in \mathbb{N}   \) such that \[
+     \varepsilon > \sum _{j= m}^{\infty} \varphi \left( B_{j} \right)\ge  \varphi \left( \bigcup _{j= m}^{\infty}B_{j} \right)  
+    \]Where \[
+    \bigcup _{j = m}^{\infty}B_{j}=  A\cap \left\{ r< f\le r+ \frac{1 }{m }  \right\}
+    \] We define a measure \(  \psi   \) \[
+    \psi \left( F \right)\coloneqq  \varphi \left( A\cap F \right),\quad \forall F\subseteq X
+    \]  Then \[
+     \varepsilon > \psi \left( \left\{ r< f\le r+ \frac{1 }{m }  \right\} \right)
+    \] Thus \[
+    \begin{aligned}
+     \varphi \left( A\cap E \right)+  \varphi \left( A-E \right)&= \psi \left( E \right)+ \psi \left( E^{c} \right)\\ 
+      &= \psi \left( \left\{ f\le r \right\} \right)+ \psi \left( \left\{ f> r \right\} \right)       \\ 
+       &\le  \psi \left( \left\{ f\le r \right\} \right)+ \psi \left( \left\{ f>  r+ \frac{1 }{m } \right\} \right)+ \psi \left( \left\{ r< f\le r+ \frac{1 }{m }  \right\} \right)   \\ 
+        &\le \psi \left( \left\{ f\le r \right\} \right) + \psi \left( \left\{ f\ge r+ \frac{1 }{m }  \right\} \right) +  \varepsilon \\ 
+         &=  \varphi \left( A\cap \left\{ f\le r \right\} \right)+  \varphi \left( A\cap \left\{ f\ge r+ \frac{1 }{m }  \right\} \right)+  \varepsilon   \\ 
+          &\le  \varphi \left( A \right)+  \varepsilon  
+    \end{aligned}
+    \]Since \(   \varepsilon   \) is arbitrary, we have \[
+     \varphi \left( A\cap E \right)+  \varphi \left( A-E \right)\le  \varphi \left( A \right)   
+    \] Thus \(  E  \) is measurable. 
+\end{proof}
 
 \end{document}

@@ -2,7 +2,7 @@
 
 \begin{document}
 
-\chapter{ Week 1 }
+\chapter{ Week 1+2 }
 
 
 代靖涵 25120222201319
@@ -68,13 +68,13 @@
             \item \(   \varphi _{\alpha  \alpha }= \mathrm{Id}  \)
             \item \(   \varphi _{\alpha \beta }= \left(  \varphi _{\beta \alpha } \right)^{-1}    \)   
         \end{enumerate}
-        \item 考虑 \(  \left\{ V_{\alpha } \right\}  \). 对于每一对 $(\alpha, \beta)$, 给定 $V_\alpha$ 中的一个开集\(  V_{\alpha \beta }  \) , 给定一族微分同构$\varphi_{\alpha\beta}: V_{\alpha\beta} \to V_{\beta\alpha}$. 并且, 这一族映射 $\{\varphi_{\alpha\beta}\}$ 满足cocycle条件. 令 \(  \tilde{M}=  \sqcup V_{\alpha }  \). 定义 ``\(  \sim   \) '': \[
+        \item 考虑 \(  \left\{ V_{\alpha } \right\}  \). 对于每一对 $(\alpha, \beta)$, 给定 $V_\alpha$ 中的一个开集\(  V_{\alpha \beta }  \) , 给定一族微分同胚$\varphi_{\alpha\beta}: V_{\alpha\beta} \to V_{\beta\alpha}$. 并且, 这一族映射 $\{\varphi_{\alpha\beta}\}$ 满足cocycle条件. 令 \(  \tilde{M}=  \sqcup V_{\alpha }  \). 定义 ``\(  \sim   \) '': \[
         x\sim y:\iff \exists \alpha ,\beta , s.t. x\in V_{\alpha }, y \in V_{\beta } \text{ 且 } y=  \varphi _{\alpha \beta }\left( x \right) 
         \]  证明:
         \begin{enumerate}
             \item \(  \sim   \)是一个等价关系
             \item \(  \tilde{M}/\sim   \)同胚于 \(  M  \)
-            \item 构造一个\(  \tilde{M}  \)上的光滑结构.    
+            \item 构造一个\(  \tilde{M}/\sim   \)上的光滑结构.    
         \end{enumerate}
         
             
@@ -92,9 +92,9 @@
            &=   \varphi _{\alpha  \gamma }\left( x \right)   
         \end{aligned}
         \]因此在\( x\in  \varphi _{\alpha }\left( U_{\alpha }\cap U_{\beta }\cap U_{ \gamma } \right)   \) 上成立 \(   \varphi _{\beta  \gamma }\circ  \varphi _{\alpha \beta }=  \varphi _{\alpha  \gamma }  \).
-        \item 对于任意的 \(  x \in U_{\alpha }  \), \[
+        \item 对于任意的 \(  x \in V_{\alpha }  \), \[
          \varphi _{\alpha \alpha }\left( x \right) =  \varphi _{\alpha }\circ  \varphi _{\alpha }^{-1} \left( x \right) = x
-        \]    因此 \(   \varphi _{\alpha }= \mathrm{Id}_{U_{\alpha }}  \) 
+        \]    因此 \(   \varphi _{\alpha  \alpha }= \mathrm{Id}_{V_{\alpha }}  \) 
         \item 对于任意的 \( x\in  \varphi _{\alpha }\left( U_{\alpha }\cap U_{\beta }\right)   \) 
     \end{enumerate}
     \[
@@ -121,24 +121,56 @@
          \varphi \left( p\right):=  [ \varphi _{\alpha }\left( p \right) ]_{\sim },\text{ 若 }  p\in U_{\alpha }  . 
         \] 令 \(  x \in  \varphi _{\alpha }\left( p \right)   \). 若还有 \(  p \in U_{\beta }  \), 令 \(  y=  \varphi _{\beta }\left( p \right)   \). 则此时 \[
         x\in V_{\alpha }, y\in V_{\beta },\quad y=   \varphi _{\beta }\circ  \varphi _{\alpha }^{-1} \circ \varphi _{\alpha }\left( p \right)=  \varphi _{\alpha \beta }\left( x \right)  
-        \]  表面 \(  x\sim y  \). 故 \(   \varphi   \)是良定义的.   易见 \(   \varphi \left( M \right)   = [\sqcup   V_{\alpha }]_{\sim }\), \(   \varphi   \)是满射.  为了说明 \(   \varphi   \)是单射, 我们设 \[
+        \]  表明 \(  x\sim y  \). 故 \(   \varphi   \)是良定义的.   易见 \(   \varphi \left( M \right)   = [\sqcup   V_{\alpha }]_{\sim }\), \(   \varphi   \)是满射.  为了说明 \(   \varphi   \)是单射, 我们设 \[
          \varphi \left( p_1 \right)=  \varphi \left( p_2 \right)  
-        \] 设\(  p_1\in U_{\alpha }  \), \(  p_2\in U_{\beta }  \). 则 \(   \varphi _{\alpha }\left( p_1 \right)\in V_{\alpha }   \), \(   \varphi _{\beta }\left( p_2 \right)\in V_{\beta }   \).  由于 \(   \varphi _{\alpha }\left( p_1 \right)\sim  \varphi _{\beta }\left( p_2 \right)    \), 且 \(  \left\{ V_{\alpha } \right\}  \)被认为是两两无交的.  我们有 \[
+        \] 设\(  p_1\in U_{\alpha }  \), \(  p_2\in U_{\beta }  \). 则 \(   \varphi _{\alpha }\left( p_1 \right)\in V_{\alpha }   \), \(   \varphi _{\beta }\left( p_2 \right)\in V_{\beta }   \).  由于 \(   \varphi _{\alpha }\left( p_1 \right)\sim  \varphi _{\beta }\left( p_2 \right)    \), 且 \(  \left\{ V_{\alpha } \right\}  \)在 \(  \tilde{M}  \)上两两无交.  我们有 \[
          \varphi _{\beta }\left( p_2 \right)=  \varphi _{\alpha \beta }\circ  \varphi _{\alpha }\left( p_1 \right)=    \varphi _{\beta }\left( p_1 \right)\implies p_1= p_2 
-        \]   这表面 \(   \varphi   \)是一个单射. 因此 \(   \varphi   \)是双射. 任取 \(  M  \)上的开集 \(  O  \).     则, \[
+        \]   这表明 \(   \varphi   \)是一个单射. 因此 \(   \varphi   \)是双射. 任取 \(  M  \)上的开集 \(  O  \).     则, \[
         O= O\cap M= O\cap \left( \bigcup _{\alpha }U_{\alpha } \right)= \bigcup _{\alpha }\left( O\cap U_{\alpha } \right)= : \bigcup _{\alpha }O_{\alpha }  
-        \]每个 \(  O_{\alpha }  \)是 \(  U_{\alpha }  \)上的一个开子集. 因此 \[
+        \]其中每个 \(  O_{\alpha }  \)是 \(  U_{\alpha }  \)上的一个开子集. 因此 \[
          \varphi \left( O \right)= \bigcup _{\alpha } \varphi \left( O_{\alpha } \right)= \bigcup _{\alpha }[  \varphi _{\alpha }\left( O_{\alpha } \right) ]_{\sim }  
-        \]  由于 \(   \varphi _{\alpha }  \)是同肧, 故 \(   \varphi _{\alpha }\left( O_{\alpha } \right)   \)是一个开集, 进而 \(  [ \varphi _{\alpha }\left( O_{\alpha } \right) ]_{\sim }  \)是一个开集,  \(   \varphi \left( O \right)   \)是一个开集. 以上表明 \(   \varphi   \)是一个开映射. 反过来, 若 \(  [O]_{\sim }  \)是 \(  \tilde{M}/\sim   \)       上的一个开集, 则 \[
-        [O\cap \tilde{M}]_{\sim }= [O\cap \left( \sqcup V_{\alpha } \right) ]_{\sim }= [\sqcup \left( O\cap V_{\alpha } \right) ]_{\sim }= : [ \sqcup  O_{\alpha }]_{\sim }= \bigcup _{\alpha }[O_{\alpha }]_{\sim }
+        \]  由于 \(   \varphi _{\alpha }  \)是同肧, 故 \(   \varphi _{\alpha }\left( O_{\alpha } \right)   \)是一个开集, 进而由商拓扑的定义知 \(  [ \varphi _{\alpha }\left( O_{\alpha } \right) ]_{\sim }  \)是一个开集,  \(   \varphi \left( O \right)   \)是一个开集. 以上表明 \(   \varphi   \)是一个开映射. 反过来, 若 \(  [O]_{\sim }  \)是 \(  \tilde{M}/\sim   \)       上的一个开集, 则 \[
+      [O]_{\sim }=   [O\cap \tilde{M}]_{\sim }= [O\cap \left( \sqcup V_{\alpha } \right) ]_{\sim }= [\sqcup \left( O\cap V_{\alpha } \right) ]_{\sim }= : [ \sqcup  O_{\alpha }]_{\sim }= \bigcup _{\alpha }[O_{\alpha }]_{\sim }
         \]是 \(  \tilde{M}/\sim   \) 上的一个开集. 其中每个 \(  O_{\alpha }  \)都是 \(  V_{\alpha }  \)上的一个开集. 我们有 \[
-         \varphi ^{-1} \left( [O]_{\sim } \right)= \bigcup _{ \alpha }  \varphi ^{-1} \left( [O_{\alpha }]_{\sim } \right)=   \bigcup _{\alpha } \varphi _{\alpha }\left( O_{\alpha } \right) 
+         \varphi ^{-1} \left( [O]_{\sim } \right)= \bigcup _{ \alpha }  \varphi ^{-1} \left( [O_{\alpha }]_{\sim } \right)=\bigcup _{ \alpha } \varphi ^{-1} \left( [ \varphi _{\alpha } \left(  \varphi _{\alpha }^{-1} \left( O_{\alpha } \right)  \right) ] _{\sim }\right)= \bigcup _{\alpha } \varphi _{\alpha }^{-1} \left( O_{\alpha } \right)  
         \]  是 \(  M  \)上的一个开集. 故 \(   \varphi   \)是一个连续映射. 因此, \(   \varphi   \)是一个同肧映射. \(  \tilde{M}/ \sim   \)与 \(  M  \)同肧.
-        \item   由于无交并拓扑保持第二可数和Hausdorff性, 且每个 \(  V_{\alpha }  \)都有欧式空间的子空间拓扑. 因此 \(  \tilde{M}  \)也是Hausdorff且第二可数的.  \(  \left\{ \left( \operatorname{Id}_{V_{\alpha }},V_{\alpha } \right)   \right\} \)   构成 \(  \tilde{M}  \)上的一族覆盖了 \(  \tilde{M}  \)的 坐标卡, 使得 \(  \tilde{M}  \)成为一个拓扑流形.  由于全体 \(  V_{\alpha }  \)在 \(  \tilde{M}  \)上  是两两无交的. 因此光滑相容性平凡地成立. 故 \(  \left\{ \left( \operatorname{Id}_{V_{\alpha }},\alpha  \right)  \right\}  \)构成 \(  \tilde{M}  \)上的一个光滑坐标卡, 从而可以赋予 \(  \tilde{M}  \)一个光滑结构 .  
+        \item 在 \(  V_{\alpha }/ \sim   \)上 按以下方式定义 \(  \psi _{\alpha }  \). 对于每个 \(  x \in V_{\alpha }/\sim   \), 存在唯一的 \(  p \in U_{\alpha }  \)使得 \(  x= [ \varphi _{\alpha }\left( p \right) ]_{\sim }  \).  定义 \(  \psi _{\alpha }\left( x \right)\coloneqq  \varphi _{\alpha }\left( p \right)    \). 即我们定义了 \(  \psi _{\alpha }: V_{\alpha }/\sim \to V_{\alpha }  \) \[
+        \psi _{\alpha }\left( [ \varphi _{\alpha }\left( p \right) ]_{\sim } \right)\coloneqq  \varphi _{\alpha }\left( p \right)  ,\quad p \in U_{\alpha }
+        \] 显然 \(  \psi _{\alpha }  \)是一个同胚映射. 则 \(  \left( V_{\alpha }/\sim , \psi _{\alpha } \right)   \)是 \(  \tilde{M}/\sim   \)上的一个坐标卡.  现在考虑两个坐标卡之间的相容性. 设 \(  \left( V_{\alpha }/ \sim ,\psi _{\alpha } \right)   \) , \(  \left( V_{\beta }/\sim , \psi _{\beta } \right)   \)是按上述方式定义的两个不同的坐标卡. 则对于任意的\(  y \in \psi _{\alpha }\left( \left( V_{\alpha }/\sim  \right)\cap \left( V_{\beta }/\sim  \right)   \right)   \), 存在唯一的  \[
+        x \in \left( V_{\alpha }/\sim  \right)\cap \left( V_{\beta }/\sim  \right)  
+        \]使得 \(  y= \psi _{\alpha }\left( x \right)   \).   分别存在唯一的 \(  p_1\in U_{\alpha }, p_2\in U_{\beta }  \), 使得 \[
+        x= [ \varphi _{\alpha }\left( p_1 \right) ]_{\sim }= [ \varphi _{\beta  }\left( p_2 \right) ]_{\sim }
+        \] 根据 \(  \sim   \)的定义, 由于 \(   \varphi _{\beta }\left( p_2 \right)\in V_{\beta },  \varphi _{\alpha }\left( p_1 \right)\in V_{\alpha }    \), 我们有   \[
+         \varphi _{\beta }\left( p_2 \right)=  \varphi _{\alpha \beta }\circ  \varphi _{\alpha }\left( p_1 \right)  
+        \] 此外 \(  \psi _{\alpha }, \psi _{\beta }  \)的定义给出  \[
+        y= \psi _{\alpha }\left( x \right)=  \varphi _{\alpha }\left( p_1 \right)  ,\quad \psi _{\beta }\left( x \right)=  \varphi _{\beta }\left( p_2 \right)  
+        \] 于是   \[
+        \psi _{\alpha \beta }\left( y \right) = \psi _{\beta }\circ \psi _{\alpha }^{-1} \circ \psi _{\alpha }\left( x \right)= \psi _{\beta }\left( x \right)= \varphi _{\beta }\left( p_2 \right)   =  \varphi _{\alpha \beta }\circ  \varphi _{\alpha }\left( p_1 \right)=  \varphi _{\alpha \beta }\left( y \right)  
+        \]  这表明在\(  \psi _{\alpha }\left( \left( V_{\alpha }/\sim  \right)\cap \left( V_{\beta }/\sim  \right)   \right)   \)上, 成立 \[
+        \psi _{\alpha \beta }=  \varphi _{\alpha \beta }
+        \]而 \(   \varphi _{\alpha \beta }  \)是一个微分同胚, 因此 \(  \psi _{\alpha \beta }  \)也是一个微分同胚. 因此 \(  \left\{ \left( V_{\alpha }/\sim ,\psi _{\alpha } \right)  \right\}  \)   是 \(  \tilde{M}/\sim   \)上的一个光滑图册, 它诱导出其上的一个光滑结构. 
     \end{enumerate}
     
  \end{enumerate}
  
 \end{proof}
+
+\begin{exercise}{}{}
+    证明 \(  T_2  \)空间收敛点的极限点唯一. 
+\end{exercise}
+
+\begin{exercise}{}{}
+    证明 \[
+    \operatorname{GL} \left( n,\mathbb{R}  \right)\coloneqq \left\{ A\in M\left( n,\mathbb{R}  \right):\det A\neq 0  \right\} 
+    \]是光滑流形.
+\end{exercise}
+
+\begin{exercise}{}{}
+     \(   \pi:\mathbb{R} ^{n+ 1}\setminus \left\{ 0 \right\}\to \mathbb{R} P^{2}  \) 是否是光滑映射 ?
+\end{exercise}
+
+\begin{exercise}{}{}
+    设 \(  M,N  \)是光滑流形, 证明 \(  M\times N  \)是光滑流形.  
+\end{exercise}
 
 \end{document}

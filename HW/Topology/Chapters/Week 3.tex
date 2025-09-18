@@ -1,0 +1,92 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+
+\chapter{ Week 3 }
+
+\begin{exercise}{}{}
+设 $X = \{a, b, c\}$. 试判断集合 $X$ 有多少个不同的拓扑, 并列出全部 $X$ 的有 6 个开集的拓扑.
+\end{exercise}
+
+\begin{exercise}{}{}
+设 $\{\mathcal{T}_\lambda \mid \lambda \in \Lambda\}$ 是集合 $X$ 上的一族拓扑. 证明 $\cap \mathcal{T}_\lambda$ 也是 $X$ 上的拓扑. $\cup \mathcal{T}_\lambda$ 是否是 $X$ 上的拓扑?
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 显然 \(  \varnothing, X \in \cap \mathcal{T}_{ \lambda }  \). 任取\(  \cap \mathcal{T}_{ \lambda }  \)上的一族开集 \(  \left\{ U_{i} \right\}_{i \in I}  \),  我们有  \[
+        U_{i}\in \mathcal{T}_{ \lambda },\quad \forall i \in I,  \lambda \in  \Lambda 
+        \] 由于每个 \(  \mathcal{T}_{ \lambda }  \)都是一个拓扑,  \[
+        \bigcup _{i \in I}U_{i} \in \mathcal{T}_{ \lambda },\quad \forall  \lambda \in  \Lambda 
+        \]因此 \[
+        \bigcup _{i \in I}U_{i} \in  \cap \mathcal{T}_{ \lambda }
+        \] 此外, 任取 \( \cap  \mathcal{T}_{ \lambda }  \)上的有限个开集 \(  U_1,U_2,\cdots ,U_{k}  \).   我们有 \[
+        U_{j}\in \mathcal{T}_{ \lambda }, \quad j= 1,2,\cdots ,k,  \lambda \in  \Lambda 
+        \]由于 \(  \mathcal{T}_{ \lambda }  \)是一个拓扑, 它对有限交封闭, 我们有 \[
+        \bigcap _{j= 1}^{k}U_{j} \in \mathcal{T}_{ \lambda },\quad \forall  \lambda \in  \Lambda 
+        \] 因此 \[
+        \bigcap _{j = 1}^{k}U_{j} \in \cap \mathcal{T}_{ \lambda }
+        \]以上表面 \(  \cap \mathcal{T}_{ \lambda }  \)也是 \(  X  \)上的一个拓扑.  
+        \item 不一定. 考虑 \(  X= \left\{ a,b,c \right\}  \)上的拓扑 \[
+     \mathcal{T}_{1}\coloneqq   \left\{ \left\{ a \right\}, \varnothing,X \right\}
+        \]和 另一个拓扑 \[
+    \mathcal{T}_{2}\coloneqq     \left\{ \left\{ b \right\},\varnothing,X \right\}
+        \]这两个拓扑的并是 \[
+       \mathcal{T}_{1}\cup \mathcal{T}_{2}=  \left\{ \left\{ a \right\},\left\{ b \right\}, \varnothing,X \right\}
+        \]但是 \( \left\{ a \right\}\cup \left\{ b \right\}=  \left\{ a,b \right\} \not \in \mathcal{T}_{1}\cup \mathcal{T}_{2}  \), 说明\(  \mathcal{T}_{1}\cup \mathcal{T}_{2}   \) 不是一个拓扑.  
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+设 $\{A_\lambda \mid \lambda \in \Lambda\}$ 是拓扑空间 $X$ 的一族子集. 证明或者举反例否定下列命题:
+\begin{enumerate}
+\item $(\cap A_\lambda)^{\circ} = \cap A_\lambda^{\circ}$.
+\item $\overline{\cup A_\lambda} = \cup \overline{A_\lambda}$.
+\end{enumerate}
+\end{exercise}
+\begin{exercise}{}{}
+将 $\mathbb{R}$ 配以余有限拓扑 $\mathcal{T}_f$. 试求子集 $\mathbb{Q}$ 和 $[0,1]$ 的内部、外部、边界、闭包和导集.
+\end{exercise}
+
+\begin{proof}
+
+
+ 对于任意无限集 \(  A  \), 以及任意的开集 \(  U\in \mathcal{T}_{f}  \), 若 \(  U\subseteq A  \), 则 \(  A^{c}\subseteq U^{c}  \)是一个有限集.  
+
+ 现在考虑任意的集合 \(  B  \), 使得 \(  B  \)和 \(  B^{c} \)均为无限集, 则上面的讨论告诉我们不存在开集 \(  U\in \mathcal{T}_{f}  \)使得 \(  U\subseteq B  \), 也不存在 \(  U\in \mathcal{T}_{f}  \)使得 \(  U\subseteq B^{c}  \). 这表明 \[
+ B^{\circ}=  \mathrm{ext}\left( B \right)=   \left( B^{c} \right)^{\circ }= \varnothing  
+ \]       此时 \[
+  \partial B= \mathbb{R} \setminus \left( B^{\circ}\cup \mathrm{ext}\left( B \right)  \right)= \mathbb{R}   
+ \] \[
+ \bar{B}= B\cup  \partial B= \mathbb{R} 
+ \]最后, 任取 \(  p \in\mathbb{R}   \), 对于任意包含了 \(  p  \)的开集 \(  U  \), 我们有 \[
+ B= \left( U^{c}\cap B \right)\cup \left( U\cap B \right)  
+ \]是一个无限集, 其中 \(  U^{c}\cap B  \)有限, 因此 \(  U\cap B  \)     无限. 进而 \[
+  U\cap \left( B\setminus \left\{ p \right\} \right)= \left( U\cap B \right)\setminus \left\{ p \right\}  \neq \varnothing
+ \]这表明 \(  p  \)是 \(  B  \)的一个极限点. 由于 \(  p  \)是任取的, 因此 \(  B^{\prime} = \mathbb{R}   \). 最终, 我们有 \[
+ B^{\circ} = \mathrm{ext}\,B= \varnothing, \quad  \partial B= \bar{B}= B^{\prime} = \mathbb{R} 
+ \]    
+
+ 由于 \(  \mathbb{Q} , \mathbb{Q} ^{c}, \left[ 0,1 \right], \left[ 0,1 \right]^{c}    \)均为无限集, 套用上面的讨论, 我们得到 
+  
+    \[
+    \mathbb{Q} ^{\circ}= \mathrm{ext}\,\mathbb{Q} = \varnothing, \quad  \partial \mathbb{Q} = \bar{\mathbb{Q}}= \mathbb{Q} ^{\prime} = \mathbb{R} 
+    \]       \[
+    \left[ 0,1 \right]^{\circ}= \mathrm{ext}\left( \left[ 0,1 \right]  \right)= \varnothing,\quad  \partial \left( \left[ 0,1 \right]  \right)= \overline{\left[ 0,1 \right] }=  \left[ 0,1 \right]^{\prime} = \mathbb{R}     
+    \]    
+\end{proof}
+
+\begin{exercise}{}{}
+设 $\mathfrak{B}$ 是拓扑空间 $X$ 的一个拓扑基, $A$ 是 $X$ 的子集, $x \in X$. 证明 $x \in \overline{A}$ 当且仅当对于任何包含 $x$ 的 $\mathfrak{B}$ 中的集合 $B$, 我们有 $B \cap A \neq \varnothing$.
+\end{exercise}
+
+\begin{proof}
+    \(  x \in \bar{A}  \)当且仅当对于任意包含了 \(  x  \)的开集 \(  U  \), 都有 \(  U\cap A \neq  \varnothing  \). 若 \(  x \in \bar{A}  \) , 则对于任意包含了 \(  x  \)的开集 \(  U  \), 都有 \(  U\cap A \neq  \varnothing  \). 特别地, 对于任意的 \(  B\in \mathfrak{B}  \),   \(  B  \)是一个开集. 因此 对于任意包含 \(  x  \)的基 \(  B  \in \mathfrak{B}\), 都有 \(  B\cap A\neq \varnothing  \), 故必要性成立.  反过来, 如果对于任何包含了 \(  x  \)的基 \(  B\in \mathfrak{B}  \), 都有 \(  B\cap A\neq \varnothing  \). 任取包含了 \(  x  \)的开集 \(  U  \), 存在 \(  B \in \mathfrak{B}  \), 使得 \(  x \in B\subseteq U  \).        此时 \(  U\cap A\supseteq B\cap A\neq \varnothing  \). 因此 \(  x \in \bar{A}  \), 充分性成立.  
+\end{proof}
+\begin{exercise}{}{}
+在度量空间中, 我们知道子集的导集和边界都是闭集 (习题 4.16、习题 4.17). 这两个命题在拓扑空间中是否成立?
+\end{exercise}
+
+
+\end{document}

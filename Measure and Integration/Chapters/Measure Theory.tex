@@ -301,9 +301,11 @@ Let \(   \varphi _{ \varepsilon }\left( A \right): =  \varphi \left( A \right)  
 \begin{proofsketch}
     用一列集合近似代替\(  C  \)是标准的想法. 证明的核心要素有: 1.\(  C  \)是闭集, 使得按距离向外逼近的行为是良好的. 2. 距离这个属性与Carath\'odory条件是相适应的.   此外, 将命题转化为极限 \[
     \lim_{i \to \infty}  \varphi \left( A\setminus C_{i} \right)=  \varphi \left( A\setminus C \right)  
-    \]是标准的流程. 要证明该极限成立, 则需要一定的技巧. 这里将 \(  A\setminus C_{i}  \)和 \(  A\setminus C  \)相差的中间部分进行细分量化, 将原极限转化为 \[
-\lim_{i \to \infty}    \sum _{j = i}^{\infty} \varphi \left( T_{j} \right) 
-    \]的极限问题, 从而转化为级数的收敛性问题. 将集合隔一个分组, 变成两组两两相隔正距离的集合, 以便套用Carath\'eodory条件.   
+    \]是标准的流程. 要证明该极限成立, 则需要一定的技巧. 
+
+    Carath\'eodory条件允许我们拆开正距离集. 问题在于分解一个集合出来的东西一定是``粘着的'', 办法就是当我们对常数不敏感时, 把集合拆开的部分每隔一块拿出来成一组. 这两个集合分别拿出来不同的一组, 就拼成了原本的集合. 我们让每一组中的成员分别两两具有正距离就可以了.
+
+    这里就是把集合拆成``主要部分''和``尾巴项'', 利用这种方法说明尾巴项对应的级数是收敛的, 从而证明了尾巴项是可以甩掉的.
 \end{proofsketch}
 \begin{proof}
     Let \(  C \subseteq X  \) be any closed sets. Take \(  A \subseteq X  \), only need to show that \[

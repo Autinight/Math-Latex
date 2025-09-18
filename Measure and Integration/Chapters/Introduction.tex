@@ -306,4 +306,21 @@ $\chi_{\lim_{n \to \infty} A_n}(x) = \lim_{n \to \infty} \chi_{A_n}(x)$
 \begin{proof}
     Let \(  S  \) be the collection of \(  \alpha   \) such that \(  P\left( \alpha  \right)   \) is false. Then if the transfinite indunction is not true, \(  S  \) is nonempty. Since the class of ordinal is well-ordered, there is a smallest ordinal \(   \gamma   \) in \(  S  \). Then for any \(  \beta <  \gamma   \), \(  \beta \not \in S  \) , that is \(  P\left( \beta  \right)   \) is true.   But it contradicts to what we supposed at first.      
 \end{proof}
+
+\section{Meager Sets in Topology}
+\begin{definition}{DEFINITIONS}{}
+\begin{itemize}
+    \item A subset $E$ of a metric space $X$ is said to be \dfntxt{dense in an open set} $U$ if $\overline{E} \supset U$.
+    \item  A set $E$ is defined to be \dfntxt{nowhere dense} if it is not dense in any open subset $U$ of $X$. Alternatively, we could say that $E$ is nowhere dense if $\overline{E}$ does not contain any open set.
+    \item A set $E$ is said to be of \dfntxt{first category} in $X$ if it is the union of a countable collection of nowhere dense sets. 
+    \item  A set that is not of the first category is said to be of the \dfntxt{second category} in $X$.
+\end{itemize}
+
+\end{definition}
+
+\begin{theorem}{Baire category theorem}{}
+A \dfntxt{complete metric space} X is not the union of a \dfntxt{countable collection of nowhere dense sets}. That is, a \dfntxt{complete metric space} is of the \dfntxt{second category}.
+\end{theorem}
+
+
 \end{document}

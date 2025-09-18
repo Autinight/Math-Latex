@@ -1,0 +1,351 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+
+\chapter{ Week 3 }
+
+代靖涵 25120222201319
+
+\begin{exercise}{}{}
+设事件 $A$ 和 $B$ 互不相容, 且 $P(A) = 0.3, P(B) = 0.5$, 求以下事件的概率:
+\begin{enumerate}
+    \item $A$ 与 $B$ 中至少有一个发生;
+    \item $A$ 和 $B$ 都发生;
+    \item $A$ 发生但 $B$ 不发生.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 概率为 \[
+        P\left( A\cup B \right)= P\left( A \right)+ P\left( B \right)= 0.8   
+        \]
+        \item 概率为 \[
+        P\left( AB \right)=0 
+        \]
+        \item 概率为 \[
+        P\left( A  B^{c} \right)= P\left( A \right)-P\left( AB \right)= P\left( A \right)= 0.3   
+        \]
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{exercise}{}{}
+ 某城市中共发行 3 种报纸 A,B,C. 在这城市的居民中有 25\%订阅 A 报、20\%订阅 B 报、15\%订阅 C 报, 10\%同时订阅 A 报 B 报、8\%同时订阅 A 报 C 报、5\%同时订阅 B 报 C 报、3\%同时订阅 A,B,C 报. 求以下事件的概率：
+\begin{enumerate}
+    \item 只订阅 A 报的;
+    \item 只订阅一种报纸的;
+    \item 至少订阅一种报纸的;
+    \item 不订阅任何一种报纸的.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    记居民订阅 \(  A,B,C  \) 报的事件分别为 \(  A,B,C  \). 则已知 \[
+    P\left( A \right)= 0.25,\quad P\left( B \right)= 0.2 ,\quad P\left( C \right)= 0.15, \quad P\left( AB \right)= 0.1    
+    \] \[
+    P\left( AC \right)= 0.08 , \quad P\left( BC \right)= 0.05,  \quad P\left( ABC \right)= 0.03 
+    \]
+    \begin{enumerate}
+        \item 只订阅 \(  A  \)报的概率为 \[
+   \begin{aligned}
+    P\left( AB^{c}C^{c} \right)&= P\left( A \right)-P\left( A\left( B^{c}C^{c}\right)^{c}  \right)     \\ 
+     &= P\left( A \right)-P\left( A\cap \left( B\cup C \right)  \right)\\ 
+      &= P\left( A \right)- P\left( \left( A\cap B \right)\cup \left( A\cap C \right)   \right)\\ 
+       &= P\left( A \right)-\left( P\left( AB \right)+ P\left( AC \right)-P\left( ABC \right)    \right)\\ 
+        &= 0.25-\left( 0.1+ 0.08-0.03 \right)\\ 
+         &= 0.1   
+   \end{aligned}
+    \] 
+    \item 与1.同理可知只订阅 \(  B  \)报的概率为  \[
+   \begin{aligned}
+    P\left( A^{c}BC^{c} \right)&= P\left( B \right)-\left( P\left( AB \right)+ P\left( BC \right)-P\left( ABC \right)    \right)\\ 
+     &= 0.2-\left( 0.1+ 0.05-0.03 \right)\\ 
+      &= 0.08    
+   \end{aligned} 
+    \] 只订阅 \(  C  \)报的概率为 \[
+  \begin{aligned}
+    P\left( A^{c}B^{c}C \right)&= P\left( C \right)-\left( P\left( AC \right)+ P\left( BC \right)-P\left( ABC \right)    \right)\\ 
+     &=    0.15-\left( 0.08+ 0.05-0.03 \right) \\ 
+      &= 0.05
+  \end{aligned} 
+    \] 分别只订阅\(  A,B,C  \)报的事件两两互斥, 因此只订阅一种报的概率为它们的概率之和, 为 \[
+    0.1 +  0.08 +  0.05= 0.23
+    \] 
+    \item 至少订阅一种报纸的概率为\[
+    \begin{aligned}
+    P\left( A\cup B\cup C \right)&= P\left( A \right)+ P\left( B\cup C \right)-P\left( A\cap \left( B\cup C \right)  \right)     \\ 
+     &= P\left( A \right)+ P\left( B \right)+ P\left( C \right)-P\left( BC \right)-P\left( AB\cup AC \right)\\ 
+      &= P\left( A \right)+ P\left( B \right)+ P\left( C \right)-P\left( BC \right)-P\left( AB \right)-P\left( AC \right)+ P\left( ABC \right)\\ 
+       &= 0.25+ 0.2+ 0.15-0.05            -0.1- 0.08+ 0.03\\ 
+        &= 0.4
+    \end{aligned}
+    \]
+    \item 不订阅任何一种报纸的概率为 \[
+    \begin{aligned}
+    P\left( A^{c}B^{c}C^{c} \right)&= 1-P\left( A\cup B\cup C \right)\\ 
+     &= 0.6  
+    \end{aligned} 
+    \]
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{exercise}{}{}
+一赌徒认为掷一颗骰子 4 次至少出现一次 6 点与掷两颗骰子 24 次至少出现一次双 6 点的机会是相等的, 你认为如何?
+\end{exercise}
+\begin{proof}
+    掷一枚骰子4次都不出现6点的概率为 \[
+    \left( \frac{5 }{6 }  \right)^{4} 
+    \]因此至少出现一次6点的概率为 \[
+    1-\frac{5^{4} }{6^{4} } 
+    \]掷两枚骰子24次都不出现双6点的概率为 \[
+    \left( \frac{35 }{36 }  \right)^{24} 
+    \]因此至少出现一次双6点的概率为 \[
+    1- \left( \frac{35 }{ 36}  \right)^{24} = 1-\frac{5^{24}7^{24} }{6^{48} } 
+    \]现在 \(  \frac{5^{4} }{6^{4} }   \)和 \(  \frac{5^{24}7^{24} }{6^{48} }   \)都是既约分数, 它们的  分母和分子均不相等, 因此这两个分数不相等. 故题述两个事件的概率不相等.
+\end{proof}
+\begin{exercise}{}{}
+若 $P(A) = 1$, 证明: 对任一事件 $B$, 有 $P(AB) = P(B)$.
+\end{exercise}
+
+\begin{proof}
+   \[
+   P\left( B \right)= P\left( AB \right)+ P\left( A^{c}B \right)   
+   \]其中 \[
+   P\left( A^{c}B \right)\le P\left( A^{c} \right)= 1-P\left( A \right)   = 0
+   \]因此 \(  P\left( A^{c}B \right)= 0   \), \(  P\left( B \right)= P\left( AB \right)    \).  
+\end{proof}
+\begin{exercise}{}{}
+掷 $2n+1$ 次硬币, 求出现的正面数多于反面数的概率.
+\end{exercise}
+
+\begin{proof}
+    记正面出现的次数为 \(  X  \), 反面出现的次数为 \(  Y  \). \(  X,Y  \)   均为随机变量. 由对称性可知 \[
+    P\left( X>  Y \right)= P\left( Y>  X \right)  
+    \]由可加性可知 \[
+    P\left( X>  Y \right)+ P\left( Y> X \right) + P\left( X= Y \right)= 1 
+    \]因此 \[
+    P\left( X> Y \right) = \frac{1-P\left( X= Y \right)  }{ 2} 
+    \]注意到若 \(  X+ Y= 2n+ 1  \), 因此 \(  2\not\mid \left( X+ Y \right)   \), \(  \left\{ X= Y \right\}  = \varnothing\). 因此 \[
+    P\left( X> Y \right)= \frac{1 }{2 }  
+    \]   
+\end{proof}
+
+\begin{exercise}{}{}
+一间宿舍内住有 5 位同学, 求他们之中至少有 2 个人的生日在同一个月份的概率.
+\end{exercise}
+
+\begin{proof}
+    设 \(  A  \)为两个人生日在同一个月份的事件. 则 \(  A^{c}  \)为所有人生日都不相同的事件. 我们有 \[
+    P\left( A^{c} \right)= \frac{P_{12}^{5} }{12 ^{5} }
+    \]  因此事件 \(  A  \)的概率为 \[
+    P\left( A \right)= 1-P\left( A ^{c}\right)= 1-\frac{P_{12}^{5} }{ 12^{5}}   
+    \] 
+\end{proof}
+\begin{exercise}{}{}
+设 $A, B$ 是两事件, 且 $P(A) = 0.6, P(B) = 0.8$, 问:
+\begin{enumerate}
+    \item 在什么条件下 $P(AB)$ 取到最大值, 最大值是多少?
+    \item 在什么条件下 $P(AB)$ 取得最小值, 最小值是多少?
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item  \(  P\left( AB \right)\le P\left( A\right)    \)恒成立. 当 \(  A\subseteq B  \)时, \(  P\left( AB \right)= P\left( A \right)= 0.6    \) . 因此当 \(  A\subseteq B  \)时,  \(  P\left( AB \right)   \)取最大值 \(  0.6  \).
+        \item  \[
+        P\left( AB \right)+ P\left( A\cup B \right)= P\left( A \right)+ P\left( B \right)=1.4  
+        \]    \[
+        P\left( AB \right)= 1.4- P\left( A\cup B \right)  
+        \]当且仅当  \(  P\left( A\cup B \right) = 1\)时 , \(  P\left( AB \right)   \)取最小值为 \(  1.4-1  = 0.4\)   . 特别地, 当 \(  A\cup B= X  \)时, \(  P\left( AB \right)   \)也有最小值 \(  0.4  \).   
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+已知事件 $A, B$ 满足 $P(AB) = P(\bar{A} \cap \bar{B})$, 记 $P(A) = p$, 试求 $P(B)$.
+\end{exercise}
+
+\begin{proof}
+    若 \(  P\left( A\cap B \right)= P\left( \bar{A}\cap \bar{B} \right)    \). 则 \[
+  \begin{aligned}
+  P\left( A \right)&= P\left( A\cap B \right)+ P\left( A\cap \bar{B} \right)\\ 
+   &= P\left( \bar{A}\cap \bar{B} \right)+ P\left( A\cap \bar{B} \right)\\ 
+    &= P\left( \bar{B}\right)      = 1-P\left( B \right)  
+  \end{aligned}
+    \] 因此 \[
+    P\left( B \right)= 1-P\left( A \right)= 1-p  
+    \]
+\end{proof}
+\begin{exercise}{}{}
+已知 $P(A) = 0.7, P(A-B) = 0.4$, 试求 $P(\overline{AB})$.
+\end{exercise}
+
+\begin{proof}
+    \[
+    \begin{aligned}
+    P\left( \overline{AB} \right)&= 1-P\left( A\cap B \right)\\ 
+     &= 1-\left( P\left( A \right)-P\left( A\cap \bar{B} \right)   \right)\\ 
+      &= 1-\left( P\left( A \right)-P\left( A-B \right)   \right)\\ 
+       &= 1-\left( 0.7-0.4 \right)\\ 
+        &= 0.7      
+    \end{aligned}
+    \]
+\end{proof}
+\begin{exercise}{}{}
+设 $P(A) = \alpha, P(B) = 1-\alpha$, 试证 $P(AB) = P(\bar{A}\cap\bar{B})$.
+\end{exercise}
+\begin{proof}
+    注意到 \(  P\left( A \right)+ P\left( B \right)= 1    \). 我们有 
+ \[
+ \begin{aligned}
+ P\left( AB \right)&= P\left( A \right)-P\left( A\cap \bar{B} \right)\\ 
+  &=     P\left( A \right)-\left( P\left( \bar{B} \right)-P\left( \bar{A}\cap \bar{B} \right)   \right)\\ 
+   &= P\left( A \right) -P\left( \bar{B} \right)+ P\left( \bar{A}\cap \bar{B} \right)     \\ 
+    &= P\left( A \right)-\left( 1-P\left( B \right)  \right)+ P\left( \bar{A}\cap \bar{B} \right)\\ 
+     &= P\left( \bar{A}\cap \bar{B} \right)    
+ \end{aligned}
+ \]
+\end{proof}
+\begin{exercise}{}{}
+对任意的事件 $A, B, C$, 证明:
+\begin{enumerate}
+    \item $P(AB) + P(AC) - P(BC) \le P(A)$;
+    \item $P(AB) + P(AC) + P(BC) \ge P(A) + P(B) + P(C) - 1$.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item \[
+        P\left( AC \right)-P\left( BC \right)\le P\left( A \right)-P\left( AB \right)    
+        \] 由于 \[
+        A\subseteq \left( A\setminus B \right)\cup B\implies AC \subseteq \left( \left( A\setminus B \right)\cap C  \right)  \cup BC
+        \]我们有 \[
+        P\left( AC \right)\le P\left( BC \right)+ P\left( \left( A\setminus B \right)\cap C  \right)   
+        \]即\[
+        P\left( AC \right)-P\left( BC \right)\le P\left( \left( A\setminus B \right)\cap C  \right)   
+        \] 另一方面 \[
+        P\left( A \right)= P\left( AB \right)+ P\left( A\setminus B \right)   
+        \]因此 \[
+        P\left( AC \right)-P\left( BC \right)\le P\left( \left( A\setminus B \right)\cap C  \right)\le P\left( A\setminus B \right)= P\left( A \right)-P\left( AB \right)      
+        \]我们得到不等式 \[
+        P\left( AC \right)-P\left( BC \right)\le P\left( A \right)-P\left( AB \right)    
+        \]移项可知1.中不等式成立.
+        \item  \[
+  \begin{aligned}
+ P\left( A\cup B\cup C \right)&=  P\left( A\cup \left( B\cup C \right)  \right)\\ 
+  &= P\left( A \right)+ P\left( B\cup C \right)    -P\left( A\cap \left( B\cup C \right)  \right) 
+  \end{aligned}
+        \]其中 \[
+        P\left( B\cup C \right)= P\left( B \right)+ P\left( C \right)-P\left( BC \right)    
+        \] \[
+        \begin{aligned}
+        P\left( A\cap \left( B\cup C \right)  \right)&=  P\left( \left( AB \right)\cup \left( AC \right)   \right)\\ 
+         &= P\left( AB \right)+ P\left( AC \right)-P\left( \left( AB \right)\cap \left( AC \right)   \right)\\ 
+          &= P\left( AB \right)+ P\left( AC \right)-P\left( ABC \right)         
+        \end{aligned}
+        \]因此 \[
+        P\left( A\cup B\cup C \right)= P\left( A \right)+ P\left( B \right)+ P\left( C \right)-P\left( BC \right)-P\left( AB \right)-P\left( AC \right)+ P\left( ABC \right)        
+        \]即 \[
+        P\left( BC \right)+ P\left( AB \right)+ P\left( AC \right)= P\left( A \right)+ P\left( B \right)+ P\left( C \right)-\left( P\left( A\cup B\cup C \right)-P\left( ABC \right)   \right)       
+        \]而 \[
+        1\ge P\left( A\cup B\cup C \right)\ge P\left( A\cup B\cup C \right)-P\left( ABC \right)   
+        \]因此 \[
+        P\left( BC \right)+ P\left( AB \right)+ P\left( AC \right)\ge P\left( A \right)+ P\left( B \right)+ P\left( C \right)-1      
+        \]
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+设 $A, B, C$ 为三个事件, 且 $P(A) = a, P(B) = 2a, P(C) = 3a, P(AB) = P(AC) = P(BC) = b$. 证明: $a \le 1/4, b \le 1/4$.
+\end{exercise}
+
+\begin{proof}
+    由 \(  AB \subseteq A  \), 可知 \[
+    b= P\left( AB \right)\le P\left( A \right)= a  
+    \] 故
+  \[
+  1\ge P\left( B\cup C \right)= P\left( B \right)+ P\left( C \right)-P\left( BC \right)= 5a-b    \ge 4a
+  \]从而 \(  a\le \frac{1 }{4 }   \), 进而 \(  b\le a\le \frac{1 }{4 }   \).  
+\end{proof}
+\begin{exercise}{}{}
+设事件 $A, B, C$ 的概率都是 $1/2$, 且 $P(ABC) = P(\bar{A}\cap\bar{B}\cap\bar{C})$, 证明:
+\[\begin{aligned}
+2P(ABC) = P(AB) + P(AC) + P(BC) - \frac{1}{2}.
+\end{aligned}\]
+\end{exercise}
+
+\begin{proof}
+     \[
+     \begin{aligned}
+     P\left( ABC \right)&= P\left( BC \right)-P\left( \bar{A}BC \right)\\ 
+      &=     P\left( BC \right)-P\left( \bar{A}B \right)+ P\left( \bar{A}B \bar{C} \right)   \\ 
+       &= P\left( BC \right)-P\left( B \right)+ P\left( AB \right)     + P\left( \bar{A}\bar{C} \right)-P\left( \bar{A}\bar{B}\bar{C} \right)  \\ 
+        &= P\left( BC \right)-\frac{1 }{2 }+ P\left( AB \right)+ P\left( \bar{A}\bar{C} \right) -P\left( ABC \right)     
+     \end{aligned}
+     \]故 \[
+     2P\left( ABC \right)= P\left( BC \right)+ P\left( AB \right)-\frac{1 }{2 }+ P\left( \bar{A}\bar{C} \right)     
+     \]其中 \[
+     P\left( \bar{A}\bar{C} \right)= P\left( \bar{C} \right)-P\left( A \bar{C} \right)= P\left( \bar{C} \right)-P\left( A \right)+ P\left( AC \right)    = P\left( AC \right) 
+     \]这里最后一个等号是因为 \(  P\left( \bar{C} \right)= P\left( C \right)= P\left( A \right)= \frac{1 }{2 }      \). 因此 \[
+     2P\left( ABC \right)= P\left( AB \right)+ P\left( BC \right)+ P\left( AC \right)-\frac{1 }{2 }     
+     \]
+\end{proof}
+\begin{exercise}{}{}
+证明:
+\begin{enumerate}
+    \item $P(AB) \ge P(A) + P(B) - 1$;
+    \item $P(A_1 A_2 \cdots A_n) \ge P(A_1) + P(A_2) + \cdots + P(A_n) - (n-1)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item \[
+        P\left( A \right)+ P\left( B \right)= P\left( AB \right)+ P\left( A\cup B \right)\le P\left( AB \right)+ 1     
+        \]因此 \[
+        P\left( AB \right)\ge P\left( A \right)+ P\left( B \right)-1   
+        \]
+        \item 我们对 \(  n  \)归纳, \(  n = 1  \)时平凡地成立. 若 \(  n-1  \)   时的不等式成立 \[
+        P\left( A_1A_2\cdots A_{n-1} \right)\ge  P\left( A_1 \right)+ P\left( A_2 \right)+ \cdots + P\left( A_{n-1} \right)-\left( n-2 \right)     
+        \]则利用1.的不等式以及归纳假设 \[
+        \begin{aligned}
+        P\left( A_1A_2\cdots A_{n} \right)&= P\left( \left( A_1\cdots A_{n-1} \right)A_{n}  \right)   \\ 
+         &\ge P\left( A_1\cdots A_{n-1} \right)+ P\left( A_{n} \right)-1  \\ 
+          &\ge P\left( A_1 \right)+ \cdots + P\left( A_{n-1} \right)-\left( n-2 \right) + P\left( A_{n} \right)   -1
+        \end{aligned}
+        \]整理可得 \(  n  \)时的不等式成立. 故归纳可得2.的不等式成立. 
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+证明:
+\[\begin{aligned}
+|P(AB) - P(A)P(B)| \le \frac{1}{4}.
+\end{aligned}\]
+\end{exercise}
+
+\begin{proof}
+   \[
+   \begin{aligned}
+   P\left(  A \bar{B} \right)-P\left( A \right) P\left( \bar{B} \right) &= P\left( A \right)-P\left( AB \right)   -P\left( A \right)P\left( \bar{B} \right)\\ 
+    &=  P\left( A \right)\left( 1-P\left( \bar{B} \right)  \right)-P\left( AB \right)\\ 
+     &= P\left( A \right)P\left( B \right)-P\left( AB \right)      
+   \end{aligned}  \tag{*}
+   \]因此 \[
+   \left| P\left( AB \right)-P\left( A \right)P\left( B \right)    \right|= \left| P\left( A \bar{B} \right)-P\left( A \right)P\left( \bar{B} \right)    \right|  
+   \]由于 \(  A,B  \)对称, 类似地我们可以得到其它形如上的等式. 因此关于 \(  A,B  \)的不等式成立, 当且仅当关于 \(  A,B  \),  关于 \(  A, \bar{B}  \), 关于 \(  \bar{A},B  \), 关于 \(  \bar{A},\bar{B}  \)的不等式成立其一.    因此不妨设\(  P\left( A \right)\le  P\left( B \right)\le  \frac{1 }{2 }      \) . 此时 \[
+   P\left( AB \right)-P\left( A \right)P\left( B \right)\ge -P\left( A \right)P\left( B \right)\ge -\frac{1 }{4 }      
+   \]以及 \[
+   \begin{aligned}
+   P\left( AB \right)-P\left( A \right)P\left( B \right)&\le P\left( A \right)-\left( P\left( A \right)  \right)^{2}\\ 
+    &= P\left( A \right)\left( 1-P\left( A \right)  \right)   \\ 
+     &\le \left( \frac{P\left( A \right)+ \left( 1-P\left( A \right)  \right)   }{2 }  \right)^{2}\\ 
+      &= \frac{1 }{4 }   
+   \end{aligned} 
+   \]其中第三行由算术几何平均不等式得到. 最终, 我们证明了 \[
+   \left| P\left( AB \right)-P\left( A \right)P\left( B \right)    \right|\le \frac{1 }{4 }  
+   \]
+\end{proof}
+\end{document}

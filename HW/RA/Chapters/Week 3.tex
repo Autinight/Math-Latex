@@ -1,0 +1,144 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{ Week 3 }
+
+代靖涵 25120222201319
+
+\begin{exercise}{}{}
+    设 $F \subset \mathbb{R}^n$ 是有界闭集, $E$ 是 $F$ 的一个无限子集, 试证明 $E' \cap F \neq \varnothing$. 反之, 若 $F \subset \mathbb{R}^n$, 且对于 $F$ 中任一无限子集 $E$, 有 $E' \cap F \neq \varnothing$, 试证明 $F$ 是有界闭集.
+\end{exercise}
+
+\begin{proof}
+    \(  E= E\cap F  \), 而 \(  F  \)有界, 故 \(  E  \)有界.   由Bolzano-Weierstrass定理, \(  E  \)存在极限点 \(  x  \).  由于 \(  E  \)是 \(  F  \)的一个子集, 我们有 \(  E^{\prime} \subseteq F^{\prime}   \), 于是 \(  x \in F^{\prime}   \). 又 \(  F  \)是一个闭集, \(  F^{\prime} \subseteq  F  \), 因此 \(  x \in F  \). 于是我们有 \(  x \in E^{\prime} \cap F  \), \(  E^{\prime} \cap F\neq \varnothing  \).
+    
+    反过来, 若 \(  F  \)是有限点集, 则显然 \(  F  \)是有界闭的. 下设 \(  F  \)是无限点集. 不妨设 \(  F^{\prime} \neq \varnothing  \).     任取 \(  x \in F^{\prime}   \). 存在 \(  F  \)上收敛于 \(  x  \)的互不相同的点列 \(  \left\{ x_{n} \right\}  \). 令 \(  E\coloneqq \left\{ x_{n} \right\}  \), 则 \(  E^{\prime} = \left\{ x \right\}  \). 由 \(  E^{\prime} \cap F\neq \varnothing  \), 可知 \(  x\in F  \).       因此 \(  F^{\prime} \subseteq F  \), \(  F  \)是一个闭集.  
+
+
+   若 \(  F  \)是无界集, 对于任意的 \(  n \in \mathbb{Z} _{> 0}  \), 存在 \(  x_{n} \in F  \), 使得 \(  \left\| x_{n} \right\|\ge n  \)     . 令 \[
+   E= \left\{ x_{n} \right\}
+   \]则 \(  E^{\prime} = \varnothing  \), 与 \(  E^{\prime} \cap F\neq \varnothing  \)矛盾. 因此 \(  F  \)是有界集. 综上可知 \(  F  \)是一个有界闭集.    
+\end{proof}
+
+\begin{exercise}{}{}
+    设 $F \subset \mathbb{R}^n$ 是闭集, $r>0$, 试证明点集
+
+$$E = \{t \in \mathbb{R}^n : \text{存在 } x \in F, \text{使得 } |t-x| = r\}$$
+是闭集.
+\end{exercise}
+\begin{proof}
+    任取 \(  E  \)上的收敛点列  \(  \left\{ t_{n} \right\}  \), 设 \(  \lim_{n\to \infty}t_{n}= t  \).  对于每个 \(  n  \), 存在 \(  x_{n}\in F  \), 使得 \[
+    \left| t_{n}-x_{n} \right|= r 
+    \]   注意到 \[
+    \left| x_{n} \right|\le \left| t_{n}-x_{n} \right|+ \left| t _{n}\right|   
+    \]其中由于\(\lim_{n\to \infty}t_{n}= t  \) 极限存在,  \(  \left\{ t_{n}\right\}_{n}  \)是有界点列, 故 \(  \left\{ x_{n} \right\}_{n}  \)亦然.  由Bolzano-Weierstrass定理,  \(  \left\{ x_{n} \right\}  \)有收敛的子列  \(  \left\{ x_{n_{k}} \right\}  \), 设收敛点为 \(  x  \) . 由于 \(  \left\{ x_{n_{k}} \right\}\subseteq F  \), \(  F  \) 是闭集, 故 \(  x \in F  \). \[
+    \left| t-x \right|= \left| \lim_{k\to \infty}t_{n_{k}}-\lim_{k\to \infty}x_{n_{k}} \right|= \lim_{k\to \infty}\left| t_{n_{k}} -x_{n_{k}}\right|= r   
+    \] 这表明 \(  t \in E  \). 因此 \(  E  \)是一个闭集.  
+\end{proof}
+\begin{exercise}{}{}
+设 $E \subset \mathbf{R}^2$, \(   y \in \mathbb{R}   \) , 称 $E_y = \{x \in \mathbf{R} : (x,y) \in E\}$ 为 $E$ 在 $\mathbf{R}$ 上的投影(集). 若 $E \subset \mathbf{R}^2$ 是闭集, 试证明 $E_y$ 也是闭集.
+\end{exercise}
+
+\begin{proof}
+   不妨设 \(  E_{y}  \)非空.  任取 \(  E_{y}  \)上的收敛点列 \(  \left\{ x_{k} \right\}  \)  , 使得 \(  \lim_{k\to \infty}x_{k}= x  \). 则 它诱导出 \(  E  \)上的一个收敛点列 \(  \left\{ \left( x_{k},y \right)  \right\}  \)   , 使得 \[
+    \lim_{k\to \infty}\left( x_{k},y \right)= \left( \lim_{k\to \infty}x_{k},y \right)  = \left( x,y \right) 
+    \]由于 \(  E  \)是闭集, 故 \(  \left( x,y  \right)\in E   \). 因此 \(  x \in E_{y}  \). 这表明 \(  E_{y}  \)是一个闭集.
+    
+    
+    另一种方法是考虑嵌入映射 \(   i: x\mapsto \left( x,y \right)    \), 它是 \(  \mathbb{R} \to \mathbb{R}  ^{2} \)的连续映射.  则任意闭集在 \(i \)下的原像也是闭集. 特别的,  \[
+  E_{y}=  i ^{-1} \left( E \right) 
+    \]是一个闭集. 
+\end{proof}
+\begin{exercise}{}{}
+设 $G \subset \mathbf{R}^n$. 若对任意的 $E \subset \mathbf{R}^n$, 有 $G \cap \overline{E} \subset \overline{G \cap E}$, 试证明 $G$ 是开集.
+\end{exercise}
+
+\begin{proof}
+    若 \(  G  \)不是一个开集, 则存在 \(  x \in G  \), 使得对于任意的 \(   \varepsilon > 0  \), 均有 \(  B_{ \varepsilon }\left( x \right)   \)不含于 \(  G  \). 换句话说,  \[
+    \forall  \varepsilon > 0, \quad B_{ \varepsilon }\left( x \right)\cap G^{c}\neq \varnothing  
+    \]即  \(  x \in  \overline{G^{c}}  \)    .  令 \(  E= G^c  \), 则 \[
+    G\cap  \overline{G^{c}}\subseteq  \overline{G\cap G^{c}}=  \varnothing\implies  G\cap  \overline{G^{c}}= \varnothing
+    \]    但是 \[
+    x \in G\cap  \overline{G^{c}}
+    \]这就导致了一个矛盾. 因此 \(  G  \)是一个开集. 
+\end{proof}
+\begin{exercise}{}{}
+设 $\{F_\alpha\}$ 是 $\mathbf{R}^n$ 中的一族有界闭集. 若任取其中有限个: $F_{\alpha_1}, F_{\alpha_2}, \cdots, F_{\alpha_m}$, 都有
+\[
+\bigcap_{i=1}^m F_{\alpha_i} \neq \varnothing.
+\]
+试证明: $\bigcap_\alpha F_\alpha \neq \varnothing$.
+\end{exercise}
+\begin{proof}
+    由题设, 显然 任意 \(  F_{\alpha }  \)非空. 取定其中的一个, 记作 \(  F_\beta   \). 如果 \[
+    \bigcap _{\alpha }F_{\alpha }= \varnothing
+    \]则特别的, \[
+    F_{\beta }\cap \bigcap _{\alpha \neq \beta }F_{\alpha }= \varnothing\implies F_{\beta }\subseteq \left( \bigcap _{\alpha \neq \beta }F_{\alpha } \right)^{c}= \bigcup _{\alpha \neq \beta }F_{\alpha }^{c} 
+    \]  于是 \(  \left\{ F_{\alpha }^{c} \right\}_{\alpha \neq \beta }  \)构成有界闭集 \(  F_{\beta }  \)的一个开覆盖. 由Heine-Borel 定理, 它存在有限的子覆盖 \(  F_{\alpha _1 }^{c},F_{\alpha _2 }^{c},\cdots ,F_{\alpha _{m}}^{c}  \), 使得 \[
+    F_{\beta }\subseteq \bigcup _{k= 1}^{m}F_{\alpha _{k}}^{c}\implies F_{\beta }\cap \bigcap _{k= 1}^{m}F_{\alpha _{k}}= \varnothing
+    \]   与题设矛盾. 因此 \(  \bigcap _{ \alpha }F_{\alpha }\neq \varnothing  \). 
+\end{proof}
+\begin{exercise}{}{}
+设 $K \subset \mathbf{R}^n$ 是有界闭集, $\{B_k\}$ 是 $K$ 的开球覆盖, 试证明存在 $\varepsilon > 0$, 使得以 $K$ 中任一点为中心, $\varepsilon$ 为半径的球必含于 $\{B_k\}$ 中的一个.
+\end{exercise}
+
+\begin{proof}
+    若不然, 则对于任意的 \( n\in \mathbb{Z} _{> 0}\), 存在 \(  x_{n} \in X  \), 使得 \(  B_{ \frac{1 }{n }  }\left( x_{n} \right)   \)不含于任何 \(  \left\{ B_{k} \right\}  \).    \(  \left\{ x_{n} \right\}  \)上 \(  K  \)上的一个有界点列, 由Bolzano-Weierstrass定理, 它存在一个收敛的子列 \(  \left\{ x_{n_{k}} \right\}  \)   . 设 \(  \lim_{k\to \infty}x_{n_{k}}= x  \). 由于 \(  K  \)是闭集, \(  x \in K  \).  由于 \(  \left\{ B_{k} \right\}  \)是 \(  K  \)的开球覆盖, 存在 \(  B_{k_0}  \), 使得 \(  x \in B_{k_0}  \). 存在 \(  l> 0  \), 使得 \(  B_{l}\left( x \right)\subseteq B_{k_0}   \)  . 由 \(  \lim_{k\to \infty}x_{n_{k}}= x  \), 知存在 \(  N\ge \frac{2 }{l }   \), 使得对于任意的 \(  m\ge N  \), 都有 \[
+    d\left( x, x_{n_{m}} \right)< \frac{l }{2 }  
+    \]        此时对于任意的 \(  y \in B_{\frac{1 }{n_{m} } }\left( x_{n_{m}} \right)   \), 都有 \[
+    d\left( y, x \right) \le d\left( y, x_{n_{m}} \right)+ d\left( x_{n_{m}},x \right)  < \frac{1 }{N }+ \frac{l }{2 }\le l  
+    \] 故 \(  y \in B_{l}\left( x \right)  \subseteq B_{k_0}  \). 以上表明 \(  B_{\frac{1 }{n_{m} } }\left( x_{n_{m}} \right) \subseteq B_{k_0}  \), 矛盾.  因此原命题成立.  
+\end{proof}
+\begin{exercise}{}{}
+设 $f_n \in C([a,b]) (n=1,2,\cdots)$, 且存在极限 $\lim_{n\to\infty} f_n(x) = f(x), x \in [a,b]$, 则对任意的 $t \in \mathbf{R}$, 点集
+\[
+\{x \in [a,b]: f(x) < t\}
+\]
+是 $F_\sigma$ 集.
+\end{exercise}
+
+\begin{proof}
+    \(  \lim_{n\to \infty}f_{n}\left( x \right)= f\left( x \right)    \) .   \(  f\left( x \right)< t    \) , 当且仅当存在 \(  k \in \mathbb{Z} _{> 0}  \), 使得存在 \(  N\in \mathbb{Z} _{> 0}  \), 对于任意的 \(  m\ge N  \), 都有 \(  f_{m}\left( x \right)\le t-\frac{1 }{k }     \)    . 即  \[
+    \left\{ x:\in \left[ a,b \right]:f\left( x \right)< t   \right\}= \bigcup _{k= 1}^{\infty}\bigcup _{N= 1}^{\infty} \bigcap _{m = N}^{\infty}\left\{ f_{m}\left( x \right)\le t-\frac{1 }{k }   \right\}
+    \]其中由于 \(  f_{m}  \)连续, 每个 \(  \left\{ f_{m}\left( x \right)\le t-\frac{1 }{k }   \right\}  \)都是一个闭集, 又闭集的任意交也是闭集, 因此 \(  \bigcap _{m= N}^{\infty}\left\{ f_{m}\left( x \right)\le t-\frac{1 }{k }   \right\}  \)也都是闭集. 因此集合 \(  \left\{ f\left( x \right)< t  \right\}  \)作为闭集的可数并, 是一个\(  F_{ \sigma }  \)集.     
+\end{proof}
+\begin{exercise}{}{}
+设 $f \in C(\mathbf{R})$. 若存在 $a>0$, 使得
+\[ |f(x)-f(y)| \ge a|x-y| \quad (x,y \in \mathbf{R}), \]
+试证明 $R(f)=\mathbf{R}$.
+\end{exercise}
+\begin{proof}
+    注意到 \[
+    f\left( x \right)= f\left( y \right)\implies \left| f\left( x \right)-f\left( y \right)   \right|= 0\implies  a\left| x-y \right|= 0\implies  x= y    
+    \]我们有 \(  f  \)是一个连续的单射, 从而 \(  f  \)单调, 不妨设 \(  f  \)是单增的.   任取 \(  y_0 \in R\left( f \right)   \)  , 设 \(  f\left( x_0 \right)= y_0   \). 我们有 \[
+  f\left( x_0+ 1 \right)-f\left( x_0 \right)=     \left| f\left( x_0+ 1 \right)-f\left( x_0 \right)   \right| \ge a\implies f\left( x_0+ 1 \right)\ge y_0+ a 
+    \] 连续函数的介值性表明 \(  [y_0, y_0+ a) \subseteq R\left( f \right)   \). 此外,  \[
+    f\left( x_0 \right)-f\left( x_0-1 \right)= \left| f\left( x_0 \right)-f\left( x_0-1 \right)   \right|\ge a   \implies f\left( x_0-1 \right)\le y_0-a 
+    \] 连续函数的介值性给出 \(  (y_0-a,y_0]\subseteq R\left( f \right)   \). 因此 \(  \left( y_0-a, y_0+ a \right)\subseteq R\left( f \right)    \), 这表明 \(  R\left( f \right)   \)是一个开集.  另一方面, 任取 \(  R\left( f \right)   \)上的收敛点列 \(  \left\{ y_{k} \right\}  \), 设 \(  f\left( x_{k} \right)= y_{k}   \). 设 \(  y_{k}\to y  \) , 则 \[
+    \left| x_{k+ m}-x_{k} \right|\le \frac{1 }{a }\left| f\left( x_{k+ m} \right)-f\left( x_{k} \right)   \right|= \frac{1 }{a }\left| y_{k+ m}-y_{k} \right|     
+    \]       由于 \(  \left\{ y_{k} \right\}  \)是 Cauchy列, 故 \(  \left\{ x_{k} \right\}  \)亦然. 由于 \(  \mathbb{R}   \)是完备的度量空间,  \(  \left\{ x_{k} \right\}  \)在 \(  \mathbb{R}   \)上收敛于某一点 \(  x  \). 由于 \(  f  \)连续,  \(  f\left( x \right)= f\left( \lim_{k\to \infty}x_{k} \right)= \lim_{k\to \infty}f\left( x_{k} \right)= y     \). 因此 \(  y \in R\left( f \right)   \), 这表明 \(  R\left( f \right)   \)是一个闭集.  由于 \(  \mathbb{R}   \)的既开又闭的非空子集只有 \(  \mathbb{R}   \), 因此 \(  R\left( f \right)= \mathbb{R}    \)       
+\end{proof}
+\begin{exercise}{}{}
+试证明 $\mathbf{R}$ 中可数稠密集不是 $G_\delta$ 集.
+\end{exercise}
+
+\begin{proof}
+   设 \(  G  \)是一个可数稠密集. 若 \(  G  \)是一个 \(  G_{ \delta }  \)集, 我们设 \[
+   G= \bigcap _{k= 1}^{\infty}U_{k}
+   \]   由于 \(  G\subseteq U_{k}  \), 则 \(  \mathbb{R} = \bar{G}\subseteq \bar{U_{k}}  \), \(  U_{k}  \)也是一个稠密集.   于是 \[
+   G^{c}= \bigcup _{k= 1}^{\infty}U_{k}^{c}
+   \]由于 \(  U_{k}^{c}  \)是闭集, 我们有  \( \left(  \overline{U_{k}^{c}}  \right)^{\circ}  = \left( U_{k}^{c} \right)^{\circ}  = \left( \overline{U_{k}} \right)^{c} = \mathbb{R} ^{c}= \varnothing \). 因此 \(  U_{k}^{c}  \)是无处稠密的闭集. 现在,  \[
+   \mathbb{R} = G\cup G^{c}= G \cup \bigcup _{k= 1}^{\infty}U_{k}^{c}
+   \]  我们将 \(  G  \)写作单点集的并 \(  G= \bigcup _{l = 1}^{\infty}\left\{ g_{l} \right\}  \), 注意到每个 \(  \left\{ g_{k} \right\}  \)都是一个无处稠密集, 现在我们有 \[
+   \mathbb{R} = \bigcup _{l = 1}^{\infty}\left\{ g_{l} \right\}\cup \bigcup _{k= 1}^{\infty}U_{k}^{c}
+   \]   是无处稠密集的可数并, 从而是第一纲集. 这与Baire纲定理矛盾.  因此 \(  G  \)不是一个 \(  G_{ \delta }  \)集.   
+\end{proof}
+
+\begin{exercise}{}{}
+设 $E \subset \mathbf{R}$ 是非空可数集. 若 $E$ 无孤立点, 试证明 $\bar{E} \setminus E$ 在 $\bar{E}$ 中稠密.
+\end{exercise}
+\begin{proof}
+ 
+\end{proof}
+\end{document}
