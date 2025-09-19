@@ -294,7 +294,7 @@
 %\newamzbox{environment name}{title}{ref label}{color}[tcolorbox style]
 \newcounter{amzboxcounter}
 \NewDocumentCommand{\newamzbox}{m m m m O{}}{
-    \newtcbtheorem[use counter=amzboxcounter,number within=section,list inside={#3}]{tc#1}{#2}{
+    \newtcbtheorem[use counter=amzboxcounter,number within=chapter,list inside={#3}]{tc#1}{#2}{
         amzdefaultstyle,
         frame style={fill=#4!85!black},
         interior style={fill=#4!5!white},

@@ -1,0 +1,28 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+   % \setcounter{chapter}{}
+}{}
+
+\chapter{ Solvable Lie Algebras }
+
+\section{Solvable Lie Algebras}
+
+\begin{lemma}{}{}
+Suppose that $I$ is an ideal of $L$. Then $L/I$ is abelian if and only if $I$ contains the derived algebra $L'$.
+\end{lemma}
+
+\begin{definition}{}{}
+    This lemma tells us that the derived algebra $L'$ is the smallest ideal of $L$ with an abelian quotient. By the same argument, the derived algebra $L'$ itself has a smallest ideal whose quotient is abelian, namely the derived algebra of $L'$, which we denote $L^{(2)}$, and so on. We define the \dfntxt{derived series} of $L$ to be the series with terms
+\[
+L^{(1)} = L' \quad \text{and} \quad L^{(k)} = [L^{(k-1)}, L^{(k-1)}] \text{ for } k \ge 2.
+\]
+Then $L \supseteq L^{(1)} \supseteq L^{(2)} \supseteq \dots$.
+As the product of ideals is an ideal, $L^{(k)}$ is an ideal of $L$ (and not just an ideal of $L^{(k-1)}$).
+\end{definition}
+\end{document}
