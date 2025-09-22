@@ -139,6 +139,14 @@ $$E = \{t \in \mathbb{R}^n : \text{存在 } x \in F, \text{使得 } |t-x| = r\}$
 设 $E \subset \mathbf{R}$ 是非空可数集. 若 $E$ 无孤立点, 试证明 $\bar{E} \setminus E$ 在 $\bar{E}$ 中稠密.
 \end{exercise}
 \begin{proof}
+ 将 \(  E  \)表示为 \[
+ E= \bigcup _{i= 1}^{\infty}\left\{ x_{i} \right\}
+ \] 为 \(  \bar{E}  \)赋予 \(  \mathbb{R}   \)的子空间拓扑, 则 \(  \bar{E}  \)是Hausdorff的, 每个 \(  \left\{ x_{i} \right\}  \)都是 \(  \bar{E}  \)的闭子集. 并且由于 \(  \bar{E}  \)是闭子集, 且\(  \mathbb{R}   \)是完备的度量空间,  \(  \bar{E}  \)也是完备的度量空间.      接下来考察  \(  \operatorname{int}_{\bar{E}}\left( \left\{ x_{i} \right\} \right)   \),  若它非空, 则存在 \(  \bar{E}  \)的一个开子集 \(  U\cap \bar{E}  \)使得 \(  x_{i}\in U\cap \bar{E}\subseteq \left\{ x_{i} \right\}  \), 其中 \(  U  \)是 \(  \mathbb{R}   \)上的开子集. 但这表明 \( U\cap \bar{E}= \left\{ x_{i} \right\} \implies U\cap E= \left\{ x_{i} \right\}\),   \(  x_{i}  \)是 \(  E  \)孤立点, 矛盾, 因此 \(  \left\{ x_{i} \right\}  \)       在 \(  \bar{E}  \)上具有空的内部. \(  \left\{ x_{i} \right\}  \)是 \(  \bar{E}  \)上的无处稠密集, 进而 \(  E  \)是 \(  \bar{E}  \)     上的第一纲集. 
+
+ 现在, 考虑若 \(  \bar{E}\setminus E  \)在 \(  \bar{E}  \)中不稠密. 则存在 \(  p \in \bar{E} \),   以及 \(  p  \)在 \(  \bar{E}  \)上的开邻域 \(  U\cap \bar{E}  \)( \(  U  \)是 \(  \mathbb{R}   \)的开集  ), 使得   \[
+ \left( U\cap \bar{E} \right)\cap  \left( \bar{E}\setminus E \right)= \left( U\cap \bar{E} \right)\setminus E= \varnothing\implies U\cap \bar{E}\subseteq E   
+ \]因此 \(  U  \cap \bar{E}\)作为 \(  E  \)在 \(  \bar{E}  \)上 的子集, 也是 \(  \bar{E}  \)上的第一纲集.    Baire纲定理的一个推论是, 完备度量空间的任何非空开子集本身也是一个Baire空间, 因而不是第一纲集, 这就与 \(  U\cap \bar{E}  \)是第一纲集 产生了矛盾. 因此 \(  \bar{E}\setminus E  \)在 \(  \bar{E}  \)中稠密,  
+
  
 \end{proof}
 \end{document}

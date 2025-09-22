@@ -9,23 +9,10 @@
 
 
 \begin{exercise}{}{}
-    设 \(  f:\mathbb{R} ^{m}\to \mathbb{R} ^{n}  \)是一个连续函数.  \( U\subseteq \mathbb{R} ^{m}  \),  \( U= B_{1}^{m}\left( 0 \right)   \). 定义 \[
-     \Gamma \left( f \right)= \left\{ \left( x, f\left( x \right)  \right): x \in B_{1}^{m}\left( 0 \right)   \right\} 
-    \]求证: \(   \Gamma \left( f \right)   \)是拓扑流形.  试问 \(   \Gamma \left( f \right)   \)是否是一个光滑流形?     
-\end{exercise}
-
-\begin{proof}
-    \(   \Gamma \left( f \right)   \)是 \(  \mathbb{R} ^{m+ n}  \)的子空间, 由于 \(  \mathbb{R} ^{m+ n}  \)是Hausdorff且第二可数的, 故 \(   \Gamma \left( f \right)   \)也是Hausdorff且第二可数的.    考虑映射 \(   \varphi : \Gamma \left( f \right)\to B_{1}^{m}\left( 0 \right)    \), \[
-     \varphi \left( \left( x,f\left( x \right)  \right)  \right)\coloneqq x 
-    \] 为向第一个分量的投影映射,  \(   \varphi   \)是一个连续映射. 它有逆映射为 \[
- B_{1}^{m}\left( 0 \right)\to  \Gamma \left( f \right),\quad      x\mapsto  \left( x,f\left( x \right)  \right) 
-    \] 也是一个连续映射. 因此 \(   \varphi   \)是 \(   \Gamma \left( f \right)   \)到\(  \mathbb{R} ^{m}  \)上开集 \(  B_{1}^{m}\left( 0 \right)   \)的一个同胚映射. 故 \(   \Gamma \left( f \right)   \)是局部欧的, 它有全局的坐标卡 \(  \left(  \varphi ,  \Gamma \left( f \right)  \right)   \).  这就说明了 \(   \Gamma \left( f \right)   \)是一个拓扑流形.  由于 \(  \left(  \varphi ,  \Gamma \left( f \right), B_{1}^{m}\left( 0 \right)   \right) \)本身构成 \(  M  \)的一个图册, 相容性条件空洞地成立 ,  因此 \(   \Gamma \left( f \right)   \)上存在一个光滑结构, 故 \(   \Gamma \left( f \right)   \)在配备了这个光滑结构下成为一个光滑流形(但不一定是\(  \mathbb{R} ^{m+ n}  \)的子流形 ).   
-\end{proof}
-
-\begin{exercise}{}{}
     \begin{enumerate}
         \item 叙述 \(  n  \)维带边流形 \(  \left( M,  \partial M \right)   \)的定义.
         \item 验证 \(   \partial M  \)是一个 \(  \left( n-1 \right)   \)-维拓扑流形.    
+        \item 求证 $(M, \partial M), (N, \partial N)$ 是两个带边流形, $M \times N$ 也是个带边流形, $(M \times N)$ 的边界是?
     \end{enumerate}
     
 \end{exercise}
@@ -56,6 +43,23 @@
     \]因此 \[
      \varphi _{\beta }\left( V_{\beta } \right)=   \varphi _{\beta }\left( U_{\beta } \right)\cap  \partial \mathbb{H}^{n}  
     \]是 \(   \partial \mathbb{H}^{n} \)上的一个开集.  由于 \(   \partial \mathbb{H}^{n}\simeq \mathbb{R} ^{n-1}  \), \(   \varphi _{\beta }\left( V_{\beta } \right)   \)可以等同于 \(  \mathbb{R} ^{n-1}  \)上的一个开集.  此外,  \(  \psi _{\beta }=  \varphi _{\beta }|_{V_{\beta }}  \),  \(  \psi _{\beta }^{-1} = \left(  \varphi _{\beta } \right)^{-1} |_{ \varphi _{\beta }\left( V_{\beta } \right) }   \)均为连续映射.    故 \(  \psi _{\beta }  \)是同胚映射. 于是我们找到了\(   \partial M  \)上的一个图册 \(  \left\{ \left( V_{\beta }, \psi _{\beta } \right)  \right\}  \). 因此 \(   \partial M  \)是一个 \(  \left( n-1 \right)   \)维拓扑流形.    
+    \item 令 \(  \left\{ \left(  \varphi _{ \lambda } ,U_{ \lambda }\right)  \right\}_{ \lambda \in  \Lambda }  \)是\(  m  \)维带边流形  \(  \left( M, \partial M \right)   \)上的一个光滑图册. 设 \(  \left\{ \left(  \varphi _{ \lambda _\circ },U_{\lambda _\circ } \right)  \right\}_{ \lambda_{\circ} \in  \Lambda _{\circ}}  \)是其上的内部坐标卡,  \(  \left\{ \left(  \varphi _{ \lambda _ \partial }, U_{ \lambda _{ \partial }} \right)  \right\}_{ \lambda _{ \partial }\in  \Lambda _{ \partial }}  \)是其上的边界坐标卡.  令 \(  \left\{ \left( \psi _{ \lambda ^{\prime} }, V_{ \lambda ^{\prime} } \right)  \right\}_{ \lambda ^{\prime} \in  \Lambda ^{\prime} }  \)是 \(  n  \)维带边流形  \(  \left( N, \partial N \right)   \)上的一个光滑坐标卡. 类似地定义 \(  \left\{ \left( \psi _{ \lambda_{\circ} ^{\prime} },U_{ \lambda_{\circ} ^{\prime} } \right)  \right\}_{ \lambda ^{\prime} _{\circ}\in \Lambda _{\circ}^{\prime} }   \)和 \(  \left\{\left(  \psi _{ \lambda _{ \partial }^{\prime} } ,V_{ \lambda ^{\prime} _{ \partial }}\right)  \right\}_{ \lambda _{ \partial }^{\prime} \in  \Lambda _{ \partial }^{\prime} }  \). 对于任意的 \(   \lambda_{\circ} \in  \Lambda _{\circ}  \), \(   \lambda _{ \partial }^{\prime} \in  \Lambda _{ \partial }^{\prime}   \)          ,  以及任意的 \(    \lambda _{\circ}^{\prime} \in  \Lambda _{\circ}^{\prime} , \lambda _{ \partial }\in  \Lambda _{ \partial }  \) \[
+    \left(  \varphi _{ \lambda_{\circ} }\times \psi _{ \lambda ^{\prime} _{ \partial }} \right)\left( U_{ \lambda_{\circ} }\times V_{ \lambda _{ \partial }^{\prime} } \right)=  \varphi  _{ \lambda_{\circ} }\left( U_{ \lambda_{\circ} } \right)\times \psi _{ \lambda _{ \partial }^{\prime} }\left( V_{ \lambda _{ \partial }^{\prime} } \right)    
+    \]是 \(  \mathbb{R} ^{m}\times \mathbb{H}^{n}\simeq \mathbb{H}^{m+ n}  \)上的一个开集.  \[
+    \left(  \varphi _{ \lambda _{ \partial }}\times \psi _{ \lambda _{\circ}^{\prime} } \right)\left( U_{ \lambda _{ \partial }} \times V_{ \lambda _\circ^{\prime} }\right)=  \varphi _{ \lambda _{ \partial }}\left( U_{ \lambda _{ \partial }} \right)\times \psi _{ \lambda _{\circ}^{\prime} }\left( V_{ \lambda _{\circ}^{\prime} } \right)    
+    \] 是 \(\mathbb{H}^{m}\times \mathbb{R} ^{n}\simeq   \mathbb{H}^{m+ n}  \)上的一个开集.  这两个集合嵌入到 \(  \mathbb{R} ^{m+ n}  \)上的边界分别为 \[
+     \varphi _{ \lambda _{\circ}}\left( U_{ \lambda _{\circ}} \right)\times  \partial \left( \psi _{ \lambda _{ \partial }^{\prime} }\left( V_{ \lambda _{ \partial }^{\prime} } \right)  \right),\quad   \partial \left(  \varphi _{ \lambda _{ \partial }}\left( U_{ \lambda _{ \partial }} \right)  \right)\times \psi _{ \lambda _{\circ}^{\prime} }\left( V_{ \lambda _{\circ}^{\prime} } \right)    
+    \]此外,  对于任意的 \(   \lambda_{\circ} \in  \lambda_{\circ} ,  \lambda _{\circ}^{\prime} \in  \Lambda _{\circ}^{\prime}   \), \[
+    \left(  \varphi _{ \lambda_{\circ} }\times \psi _{ \lambda_{\circ} ^{\prime} } \right)\left( U_{ \lambda_{\circ} }\times V_{ \lambda_{\circ} ^{\prime} } \right)=  \varphi _{ \lambda_{\circ} }\left( U_{ \lambda_{\circ} } \right)\times \psi _{ \lambda_{\circ} ^{\prime} }\left( V_{ \lambda_{\circ} ^{\prime} } \right)    
+    \] 是 \(  \mathbb{R} ^{m+ n}  \)上的一个开集. 对于任意的 \(   \lambda _{ \partial }\in  \Lambda _{ \partial },  \lambda _{ \partial }^{\prime} \in  \Lambda _{ \partial }^{\prime}   \), \[
+    \left(  \varphi _{ \lambda _{ \partial }}\times \psi _{ \lambda _{ \partial }^{\prime} } \right)\left( U_{ \lambda _{ \partial }}\times V_{ \lambda _{ \partial }^{\prime} } \right)  =  \varphi _{ \lambda _{ \partial }}\left( U_{ \lambda _{ \partial }} \right)\times \psi _{ \lambda _{ \partial }^{\prime} }\left( V_{ \lambda _{ \partial }^{\prime} } \right)  
+    \]是\(  \mathbb{H}^{m}\times \mathbb{H}^{n}\simeq \mathbb{R} ^{2}_{\ge 0} \times \mathbb{R} ^{m+ n-2}  \)上的一个开集. 它嵌入在 \(  \mathbb{R} ^{m+ n}  \)上的边界为 \[
+     \partial \left(  \varphi _{ \lambda _{ \partial }}\left( U_{ \lambda _{ \partial }} \right)  \right)\times  \partial \left( \psi _{ \lambda _{ \partial }^{\prime} }\left( V_{ \lambda _{ \partial }^{\prime} } \right)   \right) 
+    \]    由于微分同胚的乘积也是微分同胚, 对于任意的 \(   \lambda _1 , \lambda _2 \in  \Lambda ,  \lambda _1 ^{\prime} , \lambda _{2}^{\prime} \in  \Lambda ^{\prime}   \)    \[
+    \left(  \varphi _{ \lambda _1 }\times \psi _{ \lambda_1 ^{\prime} } \right)\circ \left(  \varphi _{ \lambda _2 }\times \psi _{ \lambda _2 ^{\prime}}  \right)^{-1} = \left(  \varphi _{ \lambda _1 }\circ  \varphi _{ \lambda _2 }^{-1}  \right)\times \left( \psi _{ \lambda _1^{\prime}  }\circ \psi _{ \lambda _2 ^{\prime} }^{-1}  \right)   
+    \]也是微分同胚. 由于 \(  \mathbb{H}^{m}\times \mathbb{H}^{n}  \)与 \(  \mathbb{H}^{m+ n}  \)并不同胚.     在采用了之前2.中回答的定义下,  \(  M\times N  \)不能严格地成为一个带边流形, 但是  如果我们允许边界坐标卡的模型空间取在形如$\mathbb{R}_{\ge 0}^2 \times \mathbb{R}^{k}$的空间上(cornor), 则 \(  \left\{ \left(  \varphi _{ \lambda }\times \psi _{ \lambda ^{\prime} } , U_{ \lambda }\times V_{ \lambda ^{\prime} }\right)  \right\}_{\left(  \lambda , \lambda ^{\prime}  \right)\in  \Lambda \times  \Lambda ^{\prime}     }  \)是 \(  M\times N  \)上一族光滑相容的坐标卡. 在这个定义下 \(  M\times N  \)成为一个\(  m+ n  \)维 光滑带边流形(带角流形). 我们可以类似地定义\(  M  \)的边界点为 使得在某个坐标映射下的像落在模型空间的边界上的点, 并利用区域不变性原理说明点是否落在边界上与坐标卡的选取无关. 因此,  \(  M\times N  \)上的点是否落在边界上, 取决于在任意(某一)坐标映射下的像点是否落在模型空间的边界上, 上面对坐标映射像的边界的讨论已经说明了,  \[
+     \partial \left( M\times N \right)= \left(  \partial M\times N \right)\cup \left( M\times  \partial N \right)   
+    \]可以称其中 \(   \partial M\times  \partial N  \)上的点为 \(  M\times N  \)的``角点''. 
    \end{enumerate}
     
 \end{proof}
@@ -155,22 +159,73 @@
  
 \end{proof}
 
+\begin{exercise}{光滑流形的乘积}{}
+\begin{enumerate}
+\item M, N 是两个光滑流形, $\{\varphi_{\alpha}, U_{\alpha}, V_{\alpha}\}$, $\{\psi_{\beta}, X_{\beta}, Y_{\beta}\}$. 求证 $M \times N$ 是一个光滑流形.
+\item 具体构造 $\mathbb{T}^2 = S^1 \times S^1 \subset \mathbb{R}^4$ 上的一个光滑结构.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item  考虑 \(  M\times N  \)上的乘积拓扑, 由于 \(  M,N  \)均是Hausdorff且第二可数的,  根据乘积拓扑的性质,  \(  M\times N  \)是Hausdorff且第二可数的.  并且每个\(   \varphi _{\alpha }\times \psi _{\beta }  \)都是  \(  U_{\alpha }\times X_{\beta }  \)到 \(  V_{\alpha }\times Y_{\beta }  \)的同胚映射. 由于欧式空间上, 映射光滑当且仅当分量映射均光滑, 因此微分同胚的乘积也是微分同胚, 我们有 \[
+        \left(  \varphi _{ \alpha _1 }\times \psi _{\beta _1 } \right)\circ\left(  \varphi _{\alpha _2 }\times \psi _{\beta _2 } \right)^{-1} = \left(  \varphi _{ \alpha _1 }\circ  \varphi _{ \alpha _2 }^{-1}  \right)\times \left( \psi _{ \beta _1 }\circ\psi _{\beta _2 }^{-1}  \right)    
+        \]也是一个微分同胚. 因此全体 \(   \varphi _{\alpha }\times \psi _{\beta }  \)中两两之间的过渡映射也是微分同胚. 并且 由于 \(  \left\{  U_{\alpha }\times X_{\beta }  \right\} \)是 \(  M\times N  \)的覆盖了全空间的一族开集.    
+        
+        因此 \(  \left\{  \varphi _{\alpha }\times \psi _{\beta }, U_{\alpha }\times X_{\beta }, V_{\alpha }\times Y_{\beta } \right\}  \)构成 \(  M\times N  \) 上的一个光滑图册. 故而 \(  M\times N  \)是一个光滑流形.    
+        \item 先来考虑 \(  S^{1}  \)上的光滑结构. 取 \(  S^{1}  \)在 \(  \mathbb{R} ^{2}  \)中的子空间拓扑, 则 \(  S^{1}  \)是第二可数且Hausdorff的. 令 \(  U_1= S^{1}\setminus \left\{ \left( 1,0 \right)  \right\}  \), 定义映射 \(   \varphi _1 :U_1\to \left( 0,2 \pi \right)   \)如下:  由于对于任意的 \(  p \in U_1  \),  存在唯一的 \(   \theta  \in \left( 0,2 \pi \right)   \)使得        \(  p= \left( \cos  \theta ,\sin  \theta  \right)   \), 我们可以定义 \(   \varphi _1 \left( p \right)=  \theta    \), 它的逆映射为 \(   \varphi _1 ^{-1} \left(  \theta  \right)= \left( \cos  \theta , \sin  \theta  \right)    \)  , 易见 \(   \varphi _1   \)是一个同胚映射.  类似地, 令 \(  U_2= S^{1}\setminus \left\{ \left( -1,0 \right)  \right\}  \), 定义 \(   \varphi _2 :U_2\to \left( - \pi, \pi \right)   \)如下: 对于 \(  p\in U_2  \), 存在唯一的 \(  \alpha \in \left( - \pi, \pi \right)   \)使得 \(  p= \left( \cos \alpha ,\sin \alpha  \right)   \), 定义 \(   \varphi _2 \left( p \right)= \alpha    \). 逆映射为 \(   \varphi _2 ^{-1} \left( \alpha  \right)= \left( \cos \alpha ,\sin \alpha  \right)    \), \(   \varphi _2   \)是一个同胚映射.  \(  U_1\cup U_2= S^{1}  \), 只需要验证 \(   \varphi _1 , \varphi _2   \)的光滑相容性.  注意到 \(  U_1\cap U_2  \)是上下开半圆弧的无交并 , 并且 \[
+        \left(  \varphi _2 \circ  \varphi _1 ^{-1}  \right)\left(  \theta  \right)= \begin{cases}  \theta ,&  \theta \in \left( 0, \pi \right)\\ 
+          \theta -2 \pi,&  \theta \in \left(  \pi,2 \pi \right)  \end{cases}   
+        \]       在每个开集上都是微分同胚, 因此 \(  \left(  \varphi _2 \circ  \varphi _1 ^{-1}  \right)\left(  \theta  \right)    \)是一个微分同胚.     故 \(  \left\{ \left( U_1, \varphi _1  \right),\left( U_2, \varphi _2  \right)   \right\}  \)是 \(  S^{1}  \)上的一个光滑图册. 根据1. 的构造, 我们可以给出 \(  S^{1}\times S^{1}  \)的一个光滑图册 \[
+       \mathfrak{M}_{\mathbb{T}^{2}}=  \left\{ \left( U_{i}\times U_{j}, \varphi _{i}\times  \varphi _{j} \right)  \right\}_{i,j= 1,2}
+        \]从而给出 \(  \mathbb{T}^{2}= S^{1}\times S^{1}  \)的一个光滑结构. 
+    \end{enumerate}
+    
+\end{proof}
+
 \begin{exercise}{}{}
-    证明 \(  T_2  \)空间收敛点的极限点唯一. 
+    设 \(  f:\mathbb{R} ^{m}\to \mathbb{R} ^{n}  \)是一个连续函数.  \( U\subseteq \mathbb{R} ^{m}  \),  \( U= B_{1}^{m}\left( 0 \right)   \). 定义 \[
+     \Gamma \left( f \right)= \left\{ \left( x, f\left( x \right)  \right): x \in B_{1}^{m}\left( 0 \right)   \right\} 
+    \]求证: \(   \Gamma \left( f \right)   \)是拓扑流形.  试问 \(   \Gamma \left( f \right)   \)是否是一个光滑流形?     
 \end{exercise}
 
+\begin{proof}
+    \(   \Gamma \left( f \right)   \)是 \(  \mathbb{R} ^{m+ n}  \)的子空间, 由于 \(  \mathbb{R} ^{m+ n}  \)是Hausdorff且第二可数的, 故 \(   \Gamma \left( f \right)   \)也是Hausdorff且第二可数的.    考虑映射 \(   \varphi : \Gamma \left( f \right)\to B_{1}^{m}\left( 0 \right)    \), \[
+     \varphi \left( \left( x,f\left( x \right)  \right)  \right)\coloneqq x 
+    \] 为向第一个分量的投影映射,  \(   \varphi   \)是一个连续映射. 它有逆映射为 \[
+ B_{1}^{m}\left( 0 \right)\to  \Gamma \left( f \right),\quad      x\mapsto  \left( x,f\left( x \right)  \right) 
+    \] 也是一个连续映射. 因此 \(   \varphi   \)是 \(   \Gamma \left( f \right)   \)到\(  \mathbb{R} ^{m}  \)上开集 \(  B_{1}^{m}\left( 0 \right)   \)的一个同胚映射. 故 \(   \Gamma \left( f \right)   \)是局部欧的, 它有全局的坐标卡 \(  \left(  \varphi ,  \Gamma \left( f \right)  \right)   \).  这就说明了 \(   \Gamma \left( f \right)   \)是一个拓扑流形.  由于 \(  \left(  \varphi ,  \Gamma \left( f \right), B_{1}^{m}\left( 0 \right)   \right) \)本身构成 \(  M  \)的一个图册, 相容性条件空洞地成立 ,  因此 \(   \Gamma \left( f \right)   \)上存在一个光滑结构, 故 \(   \Gamma \left( f \right)   \)在配备了这个光滑结构下成为一个光滑流形(但不一定是\(  \mathbb{R} ^{m+ n}  \)的子流形 ).   
+\end{proof}
+
+\begin{exercise}{}{}
+    证明 \(  T_2  \)空间收敛点列的极限点唯一. 
+\end{exercise}
+\begin{proof}
+    设\( X  \)是一个 \(  T_2  \)的空间,  \(  \left\{ x_{n} \right\}  \)是 \(  X  \)上的收敛点列. 若它存在两个极限点 \(  x,y \in X  \), \(  x\neq y  \). \(  T_2  \)性质给出存在 \(  x  \)的开邻域 \(  U  \)和 \(  y  \)的开邻域 \(  V  \), 使得 \(  U\cap V =  \varnothing\). 极限点的定义给出存在 \(  N_1\in \mathbb{Z} _{> 0}  \)使得对于任意的 \(  n\ge N_1  \), \(  x_{n}\in U  \); 存在 \(  N_2 \in \mathbb{Z} _{> 0}  \)使得对于任意的 \(  n\ge N_2  \)   , \(  x_{n}\in V  \). 这表明对于任意的 \(  m\ge \max \left\{ N_1,N_2 \right\}  \), \[
+    x_{m} \in U\cap V= \varnothing
+    \]这是一个矛盾, 因此 \(  \left\{ x_{n} \right\}  \)的极限点唯一.   
+\end{proof}
 \begin{exercise}{}{}
     证明 \[
     \operatorname{GL} \left( n,\mathbb{R}  \right)\coloneqq \left\{ A\in M\left( n,\mathbb{R}  \right):\det A\neq 0  \right\} 
     \]是光滑流形.
 \end{exercise}
+\begin{proof}
+   为 \(  M\left( n,\mathbb{R}  \right)\simeq \mathbb{R} ^{n^{2}}   \) 赋予标准的欧式拓扑.我们知道 \(  \det :M\left( n,\mathbb{R}  \right)\to \mathbb{R}    \)是 \(  M\left( n,\mathbb{R}  \right)   \)上的连续映射, 因此 \(  \operatorname{GL} \left( n,\mathbb{R}  \right)   \)是 \(  M\left( n,\mathbb{R}  \right)   \)的开子集.  为 \(  \operatorname{GL} \left( n,\mathbb{R}  \right)   \)赋予 \(  M\left( n,\mathbb{R}  \right)   \)的子空间拓扑, 则 \(  \operatorname{GL} \left( n,\mathbb{R}  \right)   \)是第二可数且Hausdorff的 . 令 \(   \varphi :M\left( n,\mathbb{R}  \right)\to \mathbb{R} ^{n^{2}}   \)是典范同构, 它也是一个同胚映射. 因此 \(   \varphi \left( \operatorname{GL} \left( n,\mathbb{R}  \right)  \right)   \)也是 \(  \mathbb{R} ^{n^{2}}  \)的一个开子集, 将 \(   \varphi   \)限制在 \(  \operatorname{GL} \left( n,\mathbb{R}  \right)   \)上, 我们得到同胚映射 \[
+    \varphi |_{\operatorname{GL} \left( n,\mathbb{R}  \right) }:\operatorname{GL} \left( n,\mathbb{R}  \right)\to  \varphi \left( \operatorname{GL} \left( n,\mathbb{R}  \right)  \right)  
+   \]因此 \(  \left( \operatorname{GL} \left( n,\mathbb{R}  \right),  \varphi |_{\operatorname{GL} \left( n,\mathbb{R}  \right) }  \right)   \)是 \(  \operatorname{GL} \left( n,\mathbb{R}  \right)   \)上的一个全局的坐标卡, 它本身给出 \(  \operatorname{GL} \left( n,\mathbb{R}  \right)   \)的一个光滑结构, 因此 \(  \operatorname{GL} \left( n,\mathbb{R}  \right)   \)是一个光滑流形.         
+\end{proof}
 
 \begin{exercise}{}{}
-     \(   \pi:\mathbb{R} ^{n+ 1}\setminus \left\{ 0 \right\}\to \mathbb{R} P^{2}  \) 是否是光滑映射 ?
+     \(   \pi:\mathbb{R} ^{n+ 1}\setminus \left\{ 0 \right\}\to \mathbb{R} P^{n}  \) 是否是光滑映射 ?
 \end{exercise}
-
-\begin{exercise}{}{}
-    设 \(  M,N  \)是光滑流形, 证明 \(  M\times N  \)是光滑流形.  
-\end{exercise}
+\begin{proof}
+    考虑\(  \mathbb{R} ^{n+ 1}\setminus \left\{ 0 \right\}  \)的标准的作为 \(  \mathbb{R} ^{n+ 1}  \) 的开子流形的光滑结构 , 其上存在一个全局的坐标卡 \(  \left( \mathbb{R} ^{n+ 1}\setminus \left\{ 0 \right\},\mathrm{Id}_{\mathbb{R}^{n+ 1}\setminus \left\{ 0 \right\}} \right)   \) . 考虑 \(  \mathbb{R} P^{n}  \)的光滑坐标 \(  \left( U_{i}, \varphi _{i} \right) ,i= 0,1,2 ,\cdots ,n\), 其中  \[
+    U_{i}= \left\{ \left[ x_0:\cdots : x_{n} \right]\in \mathbb{R} P^{n}:x_{i}\neq 0  \right\}
+    \] \[
+     \varphi _i :U_i\to \mathbb{R} ^{n}, \quad  \varphi _i \left( \left[ x_0:\cdots :x_{n} \right]  \right)= \left( \frac{x_{0} }{x_{i} },\cdots ,\frac{\hat{x_{i}} }{ x_{i}} ,\cdots , \frac{x_{n} }{x_{i} }   \right) 
+    \] \(  \left[ x_0:\cdots :x_{n} \right]   \) 为齐次坐标. \(  \left\{ \left( U_{i}, \varphi _{i} \right)  \right\}  \)构成 \(  \mathbb{R} P^{n}  \)的一个光滑图册.   在 \(  \mathbb{R} ^{n+ 1}\setminus \left\{ 0 \right\}  \)的全局坐标卡, 和任意的 \(  \mathbb{R} P^{n}  \)的光滑坐标 \(  \left( U_{i}, \varphi _{i} \right)   \)下, \(  \pi  \)的坐标表示为 \[
+    \left( x_0,x_1,\cdots ,x_{n} \right)\mapsto \left( \frac{x_0 }{x_{i} },\cdots ,\frac{\hat{x_{i}} }{x_{i} },\cdots , \frac{x_{n} }{x_{i} }    \right)  
+    \]    是 \(  \pi ^{-1} \left( U_{i} \right) \subseteq \mathbb{R} ^{n+ 1} \)到 \(  \mathbb{R} ^{n}  \)的一个\(  C^{\infty}  \) 映射. 因此 \(   \pi  \)是一个光滑映射.    
+\end{proof}
 
 \end{document}

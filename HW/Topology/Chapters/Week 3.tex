@@ -10,10 +10,39 @@
 }{}
 
 \chapter{ Week 3 }
-
+代靖涵 25120222201319
 \begin{exercise}{}{}
 设 $X = \{a, b, c\}$. 试判断集合 $X$ 有多少个不同的拓扑, 并列出全部 $X$ 的有 6 个开集的拓扑.
 \end{exercise}
+\begin{solution}
+        \begin{enumerate}
+        \item 若 \(  X  \)上的一个拓扑,  它非平凡且没有单点开集, 则只可能为以下几种 \[
+        \left\{ \varnothing,X, \left\{ b,c \right\} \right\},\quad \left\{ \varnothing,X,\left\{ a,b \right\} \right\},\quad \left\{ \varnothing,X, \left\{ a,c \right\} \right\}
+        \]
+        \item 若\(  X  \)上的一个 拓扑, 它单点的开集只有\(  \left\{ a \right\}  \),  则只可能为以下几种 \[
+        \left\{ \varnothing,X, \left\{ a \right\} \right\}
+        \]\[
+        \left\{ \varnothing, X, \left\{ a \right\}, \left\{ a,b \right\} \right\},\quad \left\{ \varnothing,X , \left\{ a \right\}, \left\{ b,c \right\} \right\},\quad \left\{ \varnothing,X,\left\{ a \right\},\left\{ a,c \right\} \right\}
+        \] \[
+        \left\{ \varnothing,X, \left\{ a \right\}, \left\{ a,b \right\},\left\{ a,c \right\} \right\}
+        \]由对称性可知, \(  X  \)上 单点开集只有一个的拓扑一共有 \(  15  \)种.
+        \item 若 \(  X  \)上的一个拓扑, 它单点的开集 只有 \(  \left\{ a \right\}, \left\{ b \right\}  \), 则只可能为以下几种 \[
+        \left\{ \varnothing,X,\left\{ a \right\},\left\{ b \right\},\left\{ a,b \right\} \right\}
+        \]     \[
+         \left\{ \varnothing,X,\left\{ a \right\},\left\{ b \right\},\left\{ a,b \right\}, \left\{ a,c \right\} \right\},\quad  \left\{ \varnothing,X,\left\{ a \right\},\left\{ b \right\},\left\{ a,b \right\} , \left\{ b,c \right\}\right\}
+        \]由对称性可知, \(  X  \)上单点开集有且仅有两个的拓扑一共有9种.
+        \item 此外,  \(  X  \)还有一个平凡拓扑和一个离散拓扑 , 分别为 \[
+        \left\{ \varnothing,X \right\},\quad \left\{ \varnothing,X,\left\{ a \right\},\left\{ b \right\},\left\{ c \right\},\left\{ a,b \right\},\left\{ b,c \right\},\left\{ a,c \right\},\left\{ a,b,c \right\} \right\}
+        \]  
+    \end{enumerate}
+    因此 \(  X  \)上一共有29种拓扑.  其中 \(  X  \)的有六个开集的拓扑有6种, 分别为    \[
+         \left\{ \varnothing,X,\left\{ a \right\},\left\{ b \right\},\left\{ a,b \right\}, \left\{ a,c \right\} \right\},\quad  \left\{ \varnothing,X,\left\{ a \right\},\left\{ b \right\},\left\{ a,b \right\} , \left\{ b,c \right\}\right\}
+        \] \[
+         \left\{ \varnothing,X,\left\{ a \right\},\left\{ c \right\},\left\{ a,c \right\}, \left\{ a,b \right\} \right\},\quad  \left\{ \varnothing,X,\left\{ a \right\},\left\{ c \right\},\left\{ a,c \right\} , \left\{ c,b\right\}\right\}
+        \]  \[
+         \left\{ \varnothing,X,\left\{ b \right\},\left\{ c \right\},\left\{ b,c \right\}, \left\{ b,a \right\} \right\},\quad  \left\{ \varnothing,X,\left\{ b \right\},\left\{ c \right\},\left\{ b,c \right\} , \left\{ c,a \right\}\right\}
+        \]
+\end{solution}
 
 \begin{exercise}{}{}
 设 $\{\mathcal{T}_\lambda \mid \lambda \in \Lambda\}$ 是集合 $X$ 上的一族拓扑. 证明 $\cap \mathcal{T}_\lambda$ 也是 $X$ 上的拓扑. $\cup \mathcal{T}_\lambda$ 是否是 $X$ 上的拓扑?
@@ -51,6 +80,35 @@
 \item $\overline{\cup A_\lambda} = \cup \overline{A_\lambda}$.
 \end{enumerate}
 \end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 考虑 \(  X= \mathbb{R}   \),    \[
+        \left\{ A_{ \lambda }: \lambda \in  \Lambda  \right\}= \left\{ \left(0, 1+ \frac{1 }{n }  \right): n \in \mathbb{Z} _{> 0}  \right\}
+        \] 则 \[
+        \left( \bigcap A_{ \lambda } \right)^{\circ}=  \left( \bigcap_{n = 1}^{\infty} \left( 0,1+ \frac{1 }{ n}  \right)  \right) ^{\circ}= (0,1]^{\circ}= \left( 0,1 \right) 
+        \]而 \[
+        \bigcap A_{ \lambda }^{\circ}= \bigcap \left( 0,1+ \frac{1 }{n }  \right)= (0,1] 
+        \]二者不相等, 因此命题1.不成立.
+        \item 注意到 \[
+        \begin{aligned}
+      \overline{\bigcup A_{ \lambda }}= \bigcup  \overline{A_{ \lambda }}&\iff \left( \overline{\bigcup A_{ \lambda }} \right)^{c}= \left( \bigcup  \overline{A_{ \lambda }} \right)^{c}  \\ 
+       &\iff \left( \left( \bigcup A_{ \lambda } \right)^{c}  \right)^{\circ} =  \bigcap \left( \overline{A_{ \lambda }} \right)^{c} \\ 
+        &\iff \left( \bigcap A_{ \lambda }^{c} \right)^{\circ}=   \bigcap \left( A_{ \lambda }^{c} \right)^{\circ} 
+        \end{aligned}
+        \]由于 \(  A_{ \lambda }  \)是任取的, 因此1.2.等价. 而1. 不成立, 故2.不成立. 或者具体地, 取 \(  X= \mathbb{R}   \) \[
+        \left\{ A_{ \lambda }: \lambda \in  \Lambda  \right\}\coloneqq \left\{ [ \frac{1 }{n },1  ]: n \in \mathbb{Z} _{> 0}\right\}
+        \]  则 \[
+        \begin{aligned}
+        \overline{\bigcup A_{ \lambda }}= \overline{\bigcup _{n = 1}^{\infty}[ \frac{1 }{n },1  ] }=  \overline{(0,1]}= [0,1]
+        \end{aligned}
+        \] 而 \[
+        \bigcup  \overline{A_{ \lambda }}=  \bigcup _{n = 1}^{\infty}\left[ \frac{1 }{n },1  \right]= (0,1] 
+        \]二者不相等. 因此2.不成立.
+    \end{enumerate}
+    
+
+\end{proof}
 \begin{exercise}{}{}
 将 $\mathbb{R}$ 配以余有限拓扑 $\mathcal{T}_f$. 试求子集 $\mathbb{Q}$ 和 $[0,1]$ 的内部、外部、边界、闭包和导集.
 \end{exercise}
@@ -93,6 +151,112 @@
 \begin{exercise}{}{}
 在度量空间中, 我们知道子集的导集和边界都是闭集 (习题 4.16、习题 4.17). 这两个命题在拓扑空间中是否成立?
 \end{exercise}
+
+\begin{proof}
+   \begin{enumerate}
+    \item  存在一个拓扑空间, 其上的一个集合的导集不是闭集. 考虑 \(  X= \left\{ a,b \right\}  \)上的平凡拓扑 \[
+    \left\{ \varnothing,X \right\}
+    \]考虑集合 \(  \left\{ a \right\}  \)的极限点. 包含了 \(  a  \)的唯一开集是 \(  X  \), 它与 \(  \left\{ a \right\}\setminus \left\{ a \right\}  \)交集为空, 因此 \(  a  \)不是 \(  \left\{ a \right\}  \)的极限点.  包含了 \(  b  \)的唯一开集是 \(  X  \), 它与 \(  \left\{ a \right\}\setminus \left\{ b \right\}= \left\{ a \right\}  \)的交集为 \(  \left\{ a \right\}  \)非空, 因此 \(  b  \)是 \(  \left\{ a \right\}  \)的一个极限点. 因此 \[
+    \left\{ a \right\}^{\prime} = \left\{ b \right\}
+    \]而 \(  \left\{ b \right\}  \)不是一个闭集. 
+    \item   设 \(  X  \)是拓扑空间,  \(  A  \)是 \(  X  \)的一个子集.   则 \(   \partial A  \)根据定义写作 \[
+     \partial A=  \overline{A}\cap  \overline{A^{c}}
+    \] 在拓扑空间上, 任意集合的闭包都是一个闭集. 而闭集的有限交也是闭集, 故 \(   \partial A  \)是一个闭集. 
+   \end{enumerate}
+                 
+  
+\end{proof}
+
+\begin{exercise}{}{}
+举例说明, $f: X \to Y$ 的连续性不等价于: 若 $A \subset X$, 则 $(f(A))^\circ \subset f(A^\circ)$.
+\end{exercise}
+
+\begin{proof}
+  考虑 \(  X= \mathbb{R} , Y= \mathbb{R}   \), \(  f:\mathbb{R} \to \mathbb{R}   \)   ,\[
+  f\left( x \right)\coloneqq \begin{cases} 1,&x\in \mathbb{Q} \\ 
+   0,&x\in\mathbb{R} \setminus \mathbb{Q}  \end{cases}  
+  \] 则 \(  f  \)不是连续函数.  但是对于任意的 \(  A\subseteq \mathbb{R}   \)  \(  A\subseteq X  \), \[
+  \left( f\left( A \right)  \right)^{\circ}\subseteq \left\{ 0,1 \right\}^{\circ}= \varnothing 
+  \]  因而 \[
+  \left( f\left( A \right)  \right)^{\circ}\subseteq f\left( A^{\circ} \right)  
+  \]恒成立. 这表明上述条件不蕴含连续性.
+\end{proof}
+\begin{exercise}{}{}
+    
+举例说明, 存在拓扑空间 $X, Y$ 和连续映射 $f: X \to Y$, 同时满足:
+\begin{enumerate}
+    \item 存在 $A \subset X$ 使得 $f(\overline{A}) \neq \overline{f(A)}$.
+    \item 存在 $B \subset Y$ 使得 $\overline{f^{-1}(B)} \neq f^{-1}(\overline{B})$.
+    \item 存在 $D \subset Y$ 使得 $f^{-1}(D^\circ) \neq (f^{-1}(D))^\circ$.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+   考虑到\[
+    \left( f^{-1} \left( D^{\circ} \right)  \right)^c= f^{-1} \left( \left( D^{\circ} \right)^{c}  \right)= f^{-1} \left( \overline{D^{c}} \right)   
+    \] \[
+    \left( \left( f^{-1} \left( D \right)  \right)^{\circ}  \right)^{c}= \overline{\left( f^{-1} \left( D \right)  \right)^{c} }= \overline{f^{-1} \left( D^{c} \right) } 
+    \]若存在 \(  B  \)使得2.成立, 则取 \(  D= B^{c}  \)可知 \(  D  \)使得3.成立. 因此只需要找到连续映射同时满足 1.2.   令 \(  X= Y= \mathbb{R}   \), \(  f:\mathbb{R} \to \mathbb{R}   \), \[
+    f\left( x \right)\coloneqq \begin{cases} \frac{ 2 }{ \pi }\arctan \left( x-1 \right),&x \in \left[ 1,\infty \right)\\ 
+     0,& x \in \left[ -1,1 \right]\\ 
+      \frac{2 }{ \pi }\arctan \left( x+ 1 \right),&x\in (-\infty,-1]       \end{cases}  
+    \]  则 \(  f  \)是连续函数.   令 \(  A= \left(-\infty,\infty\right)   \), 则 \[
+    f\left( \overline{(-\infty,\infty)} \right)= f\left( \left( -\infty,\infty \right)  \right)= \left( -1,1 \right)\neq [-1,1]= \overline{\left( -1,1 \right) }=  \overline{f\left( \left( -\infty,\infty \right)  \right) }
+    \] 令 \(  B  = \left( 0,1 \right) \), 则 \[
+    \overline{f^{-1} \left( \left( 0,1 \right)  \right) }=\overline{ \left( 1,\infty \right) }= [1,\infty)\neq [-1,\infty)= f^{-1} \left( \left[ 0,1 \right]  \right)   = f^{-1} \left(\overline{\left( 0,1 \right) } \right)  
+    \] 故 \(  f  \)即为满足条件的连续映射. 
+\end{proof}
+\begin{exercise}{}{}
+设 $X, Y$ 是拓扑空间. 举出满足下面条件的映射 $f: X \to Y$ 的例子.
+\begin{enumerate}
+\item $f$ 是连续映射, 但既不是闭映射, 也不是开映射.
+\item $f$ 是开映射, 但既不是连续映射, 也不是闭映射.
+\item $f$ 是闭映射, 但既不是连续映射, 也不是开映射.
+\item $f$ 是闭映射, 也是开映射, 但不是连续映射.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+    \begin{enumerate}
+        \item 考虑 \(  f:\mathbb{R} \to \mathbb{R}   \), \[
+        f\left( x \right)= \begin{cases} \frac{2 }{ \pi }\arctan \left( x-1 \right),& x \in [1,\infty)\\ 
+         x^{2}-1,& x\in \left[ -1,1 \right]\\ 
+          \frac{2 }{ \pi }\arctan \left( x+ 1 \right), & x \in \left( -\infty,-1 \right]       \end{cases}  
+        \] 则 \(  f  \)是一个连续映射. 但是闭集 \(  \mathbb{R}   \)在 \(  f  \)下的像   \[
+        f\left( \mathbb{R}  \right)=[-1,1) 
+        \]不是一个闭集, 因此 \(  f  \)不是闭映射. 并且 \[
+        f\left( \left( -1,1 \right)  \right)= [-1,0) 
+        \]  因此 \(  f  \)不是一个开映射. 故 \(  f  \)是连续但既不闭又不开的映射.  
+        \item  令 \(  X= S^{1}\times \mathbb{R}   \), 其中 \(  S^{1}  \)是赋予了\(  \mathbb{R} ^{2}  \) 子空间拓扑的单位圆, \(  X  \)被赋予了乘积拓扑.  \(  Y= [0,2 \pi)  \)被赋予了 \(  \mathbb{R}   \)的子空间拓扑 . 令 \(  f:X\to Y  \) \[
+        f\left( \left( \cos  \theta ,\sin  \theta  \right), x  \right)=  \theta  , \quad  \theta \in [0,2 \pi)
+        \]  令 \(  V= [0, \varepsilon )  , 0<  \varepsilon < 2 \pi\)是  \(  Y  \)上的一个开集. 令 \(  E  \subseteq S^{1}\) 使得 \[
+        f^{-1} \left( V \right)= E\times \mathbb{R}  
+        \] 任取 \(  \left( 1,0 \right)   \)在 \(  S^{1}  \)上的开邻域 \(  U \cap S^{1} \), 存在点 \(  \left( \cos \eta , \sin \eta  \right)\in U\cap S^{1}   \)使得 \(   \varepsilon < \eta < 2 \pi  \).     这表明 \(  \left( 1,0 \right)\in E   \)不是 \(  E  \)的内点. 因此 \(  E  \)不是一个开集. 故而 \(  f^{-1} \left( V \right)   \)不是一个开集. 这表明 \(  f  \)不连续.   另一方面, 注意到形如下的 \(  S^{1}  \)的子集生成了 \(  S^{1}  \)的拓扑 \[
+O_{ab}\coloneqq         \left\{ \left( \cos  \theta , \sin  \theta  \right):  \theta  \in \left( a,b \right)   \right\},\quad a,b\in \mathbb{R} ,a< b
+        \]       并且 \[
+        f\left( O_{ab}\times U  \right)=  \begin{cases} [0,2 \pi),& b-a\ge 2 \pi\\ 
+         ( \delta ,2 \pi),&  \delta -a\in 2 \pi\mathbb{Z} , \; 2 \pi- \delta \le b-a< 2 \pi,\\ 
+          ( \delta , \delta + b-a),&   \delta -a\in 2 \pi\mathbb{Z} , \; b-a< 2 \pi- \delta  \end{cases} 
+        \]总是 \(  Y  \)上的开集, 因此 \(  f  \)是一个开映射.
+        
+     
+      将 \(  S^{1}  \)视为复平面中的 \(  \left\{ z\in \mathbb{C} :\left| z \right|= 1  \right\}  \), 令 \[
+      C\coloneqq \left\{ \left( e^{\frac{i }{n } },n \right)\in S^{1}\times \mathbb{R} :n\in \mathbb{Z} , n\ge 1  \right\}
+      \]  说明 \(  C  \)是一个闭集, 只需要说明它不存在极限点. 事实上任取 \(  C  \)的序列 \(  \left( z_{n_{k}}, n_{k} \right)   \),\(  n_1\le n_2\le \cdots   \).  由于 \(  \lim_{k\to \infty}n_{k}= \infty  \),    \(  \left( z_{n_{k}},n_{k} \right)   \)不收敛于任何 \(  \left( c,q \right)\in S^{1}\times \mathbb{R}   \).  因此 \(  C  \)没有极限点, 从而是一个闭集.  但是 \[
+       f\left( C \right)= \left\{ \frac{1 }{n } :n\in \mathbb{Z} , n\ge 1 \right\} 
+      \] 其上的点构成一个序列 \(  \left( \frac{1 }{n } \right)   \), 收敛于 \(  \lim_{n\to \infty}\frac{1 }{n }   = 0\). 但 \(  0\not \in  f\left( C \right)   \), 这表明 \(   f\left( C \right)   \)不是一个闭集, 因此    \(  f  \)不是一个闭映射.  因此 \(  f  \)是一个开, 但既不连续也不闭的映射.  
+      \item 考虑 \(  f:\mathbb{R} \to \mathbb{R}   \),  \[
+      f\left( x \right) = \lfloor x \rfloor(\text{向下取整})
+      \]则对于任意的 集合 \(  A\subseteq \mathbb{R}   \), \(  f\left( A \right)\subseteq \mathbb{Z}    \) 不存在极限点, 因此 \(  f\left( A \right)   \)是一个闭集.     特别地, 当 \(  A  \)是任意闭集时, \(  f\left( A \right)   \)是一个闭集, 故 \(  f  \)是一个闭映射.  此外,  \[
+      f\left( \left( 0,1 \right)  \right)= \left\{ 0 \right\} 
+      \]不是一个开集, 因此 \(  f  \)不是一个开映射.又注意到 \[
+     f^{-1} \left( \left( -\frac{1 }{2 },\frac{1 }{2 }   \right)  \right)= [0,1) 
+      \]不是一个开集, 因此 \(  f  \)不是一个连续映射. 最终我们得知 \(  f  \)是一个闭, 但既不开又不连续的映射.  
+        \item 令 \(  X= \mathbb{R}   \)配备了余有限拓扑, \(  Y= \mathbb{R}   \)配备了欧式拓扑. 令 \(  f:X\to Y  \), \(  f\left( x \right)= x   \). 则任取 \(  X  \)上的开集 \(  U  \),   则 \(  U  \)是一个余有限集, 根据\(  f  \)的定义,   \(  f\left( U \right)   \)是 \(  Y  \)上的余有限集, 在欧式拓扑下也一个开集. 因此 \(  f  \)是一个开映射.    任取 \(  X  \)上的闭集 \(  V  \), 则 \(  V  \)是一个有限集,  故 \(  f\left( V \right)   \)也是 \(  Y  \)上的有限集. 由于 \(  Y  \)是Hausdorff的, \(  f\left( V \right)   \)是一个闭集. 因此 \(  f  \)是一个闭映射.  最后, 考虑到 \[
+        f^{-1} \left( \left( 0,1 \right)  \right)= \left( 0,1 \right)  
+        \]     \(  \left( 0,1 \right)^{c}   \)不是有限集, 故 \(  \left( 0,1 \right)   \)不是 \(  X  \)上的开集. 这表明 \(  f  \)不是连续映射.  因此 \(  f  \)是既开又闭但不连续的映射.     
+    \end{enumerate}
+    
+\end{solution}
 
 
 \end{document}
