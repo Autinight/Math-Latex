@@ -1,0 +1,68 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{7}
+}{}
+
+\chapter{ HW8 }
+ 代靖涵 25120222201319
+\begin{exercise}{}{}
+设 $y_1, y_2 \in Y$, $f_{y_i}$ 是将 $X$ 映为 $\{y_i\}$ 的常值映射. 证明: $f_{y_1} \simeq f_{y_2} \Longleftrightarrow y_1$ 与 $y_2$ 在 $Y$ 的同一道路分支中.
+\end{exercise}
+\begin{proof}
+    若 \(  f_{y_1}\simeq f_{y_2}  \), 则存在连续映射 \(  H: X\times \mathbb{I}\to Y  \), 满足 \[
+    H\left( x,0 \right)= y_1,\quad H\left( x,1 \right)= y_2,\quad \forall x \in X  
+    \]  则任固定 \(  x \in X  \),  定义映射 \(  f:\mathbb{I}\to Y  \), \(  f\left( t \right)= H\left( x,t \right)    \).  则\(  f  \)是连续映射, 使得 \(  f\left( 0 \right)= y_1   \), \(  f\left( 1 \right)= y_2   \), 故 \(  f  \)为\(  Y  \)上 连接 \(  y_1  \)到 \(  y_2  \)的道路, 从而 \(  y_1  \)与 \(  y_2  \)在   \(  Y  \)的同一道路分支中.
+    
+    
+    反过来, 若 \(  y_1  \)与 \(  y_2  \)在 \(  Y  \)的同一个道路分支中, 则存在连续映射 \(  f:\mathbb{I}\to Y  \)使得 \(  f\left( 0 \right)= y_1   \), \(  f\left( 1 \right)= y_2   \). 定义映射 \(  H: X \times \mathbb{I}\to Y  \), \[
+    H\left( x,t \right)\coloneqq   f\circ  \pi _{\mathbb{I}}\left( x,t \right)  =   f\left( t \right)
+    \]       \(  H  \)为连续映射, 使得 \(  H\left( x,0 \right)= f\left( 0 \right)= y_1    \), \(  H\left( x,1 \right)= f\left( 1 \right)= y_2    \), \(  \forall x \in X  \). 故 \(  H: f_{y_1}\simeq f_{y_2}  \).     
+\end{proof}
+\begin{exercise}{}{}
+证明: 如果连续映射 $f: X \to S^n$ 不满, 则 $f$ 零伦.
+\end{exercise}
+\begin{proof}
+    若\(  f  \)非满, 存在点 \(  x_0\in S^{n}\)  使得 \(  x_0\not \in f\left( X \right)   \), \(  f  \)给出连续映射 \(  \tilde{f}:X\to S^{n}\setminus \left\{ x_0 \right\}  \)使得 \(  f= \iota \circ \tilde{f}  \), 其中 \(  \iota : S^{n}\setminus \left\{ x_0 \right\}\hookrightarrow S^{n}  \)是含入映射.    .  我们知道 \(  S^{n}\setminus \left\{ x_0 \right\}  \)通过球极投影同胚于 \(  \mathbb{R} ^{n}  \), 而 \(  \mathbb{R} ^{n}  \)是可缩的, 故 \(  S^{n}\setminus \left\{ x_0 \right\}  \)是可缩的.   \(  \operatorname{Id}_{S^{n}\setminus \left\{ x_0 \right\}}  \simeq c_{y_0}\), 其中 \(  c_{y_0} : S^{n}\setminus \left\{ x_0 \right\}\to S^{n}\setminus \left\{ x_0 \right\} \)为取常值\(  y_0\in S^{n} \setminus \left\{ x_0 \right\} \)的 映射.  由同伦对复合映射的保持, 我们有 \[
+    \tilde{f}= \operatorname{Id}_{S^{n}\setminus \left\{ x_0 \right\}}\circ \tilde{f}\simeq c_{y_0}\circ \tilde{f}
+    \]记 \(  c^{\prime}_{y_0} = c_{y_0}\circ \tilde{f}  \), 它也是一个常值映射.  \[
+    f= \iota \circ \tilde{f}\simeq  \iota \circ c^{\prime} _{y_0}
+    \]其中 \( \iota \circ c^{\prime} _{y_0}: X\to S^{n}  \)是取常值 \(  y_0  \)的映射, 故 \(  f  \)是零伦. 
+\end{proof}
+\begin{exercise}{}{}
+设 $f: X \to Y$ 连续, $X$ 中道路 $a \simeq_{ \partial \mathbb{I}} b$, 证明 $f \circ a \simeq_{ \partial \mathbb{I}} f \circ b$.
+\end{exercise}
+\begin{proof}
+    存在连续映射 \(  H: \mathbb{I}\times \mathbb{I}\to X  \)使得 \[
+    H\left( x,0 \right)= a\left( x \right),\quad H\left( x,1 \right)= b\left( x \right),
+    \] \[
+    H\left( 0,t \right)= a\left( 0 \right)= b\left( 0 \right),\quad H\left( 1,t \right)= a\left( 1 \right)= b\left( 1 \right)          
+    \]定义 \(  G: \mathbb{I}\times \mathbb{I}\to Y  \), \[
+    G\left( x,t \right)= f\left( H\left( x,t \right)  \right)  
+    \] 则 \(  G= f\circ H  \)是连续映射. 满足 \[
+    G\left( x,0 \right)=f\circ H\left( x,0  \right)= \left( f\circ a \right)\left( x \right),\quad G\left( x,1 \right)= f\circ H\left( x,1  \right)= \left( f\circ b \right)\left( x \right)        
+    \]  \[
+    G\left( 0,t \right)=f\circ H\left( 0,t \right)= \left( f\circ a \right)\left( 0 \right)= \left( f\circ b \right)\left( 0 \right)  ,   
+    \] \[
+    \quad G\left( 1,t \right)= f\circ H\left( 1,t \right)= \left( f\circ a \right)\left( 1 \right)   = \left( f\circ b \right)\left( 1 \right)   
+    \]故 \(  G: f\circ a \simeq_{ \partial \mathbb{I}} f\circ b \) 
+\end{proof}
+\begin{exercise}{}{}
+    
+设 $X$ 是 $E^n$ 中的凸集, 则 $X$ 上有相同起、终点的两条道路必定端同伦.
+\end{exercise}
+\begin{proof}
+    设 \(  a: \mathbb{I}\to X  \), \(  b:\mathbb{I}\to X  \)是道路, 使得 \(  a\left( 0 \right)= b\left( 0 \right)= : p    \), \(  a\left( 1 \right)= b\left( 1 \right)= : q    \).     定义函数 \(  H: \mathbb{I}\times \mathbb{I}\to X  \), \[
+    H\left(s,t \right)= \left( 1-t \right)a\left( s \right)+ tb\left( s \right)     
+    \] 由于 \(  X  \)是凸集, 对于任意的 \(  s   \), \(  a\left( s \right), b\left( s \right) \in X    \), 故 对于任意的 \(  t \in \mathbb{I}  \),  \(  \left( 1-t \right)a\left( s \right)+ tb\left( s \right) \in X     \). 因此\(  H  \)是良定义的连续映射. 此外, 它满足 \[
+    H\left( s,0 \right)= a\left( s \right),\quad H\left( s,1 \right)= b\left( s \right)    
+    \]       \[
+    H\left( 0,t \right)= \left( 1-t \right)p+ tp= p,\quad H\left( 1,t \right)= \left( 1-t \right)q+ tq= q    
+    \]因此 \(  H: a\simeq _{ \partial \mathbb{I}} b  \) .
+\end{proof}
+\end{document}

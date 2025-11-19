@@ -1,0 +1,593 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{6}
+}{}
+
+\chapter{ HW7 }
+ 代靖涵 25120222201319
+
+ \begin{exercise}{}{}
+    设$X$为仅取非负整数的离散随机变量,若其数学期望存在,证明:
+\begin{enumerate}
+\item $E(X) = \sum_{k=1}^{\infty} P(X \geq k);$
+\item $\sum_{k=0}^{\infty} kP(X > k) = \frac{1}{2}(E(X^2) - E(X)).$
+\end{enumerate}
+ \end{exercise}
+
+ \begin{proof}
+    \begin{enumerate}
+        \item  \[
+        \begin{aligned}
+        E\left( X \right)&= \sum _{k= 1}^{\infty}k P\left( X= k \right)  \\ 
+         &= \sum _{k= 1}^{\infty}\sum _{j= 1}^{k}P\left( X= k \right)\\ 
+          &= \sum _{j= 1}^{\infty}\sum _{k= j}^{\infty}P\left( X= k \right) \\ 
+           &= \sum _{j= 1}^{\infty}P\left( X\ge j \right)= \sum _{k= 1}^{\infty}P\left( X\ge k \right)  
+        \end{aligned} 
+        \] 
+        \item  \[
+       \begin{aligned}
+       \sum _{k= 0}^{\infty}kP\left( X> k \right)&=\sum _{k= 1}^{\infty}\sum _{j= k+ 1}^{\infty}kP\left( X= j \right)\\ 
+        &=   \sum _{k= 1}^{\infty}\sum _{j= k}^{\infty}\left( k-1 \right) P\left( X= j \right) \\ 
+        &= \sum _{j= 1}^{\infty}\sum _{k= 1}^{j}\left( k-1 \right)P\left( X= j \right)\\ 
+         &=   \sum _{j= 1}^{\infty} \frac{1 }{2 }j\left( j-1 \right)P\left( X= j \right)   \\ 
+          &= \frac{1}{2}\sum _{j= 1}^{\infty}j^{2}P\left( X= j \right)-\frac{1 }{2 }\sum _{j= 1}^{\infty}jP\left( X= j \right)\\ 
+           &= \frac{1}{2}E\left( X^{2} \right)-\frac{1}{2}E\left( X \right)     
+       \end{aligned}
+        \]
+    \end{enumerate}
+    
+ \end{proof}
+ \begin{exercise}{}{10-20-1}
+    设连续随机变量$X$的分布函数为$F(x)$,且数学期望存在,证明:
+$E(X) = \int_{0}^{\infty} [1 - F(x)] dx - \int_{-\infty}^{0} F(x) dx.$
+ \end{exercise}
+\begin{proof}
+    设 \(  X^{+ }  \)和 \(  X^{-}  \)分别是 \(  X  \)的正部和负部.   注意到 \[
+    X^{+ }\left(  \omega  \right)= \int_{0}^{X^{+ }\left(  \omega  \right) }1\,\mathrm{d} x= \int_{0}^{\infty}\chi _{\left\{ X^{+ }\left(  \omega  \right)>  x  \right\} }\left( x \right)\,\mathrm{d} x  
+    \]对两边取期望, 我们得到 \[
+    E\left( X^{+ } \right)= \int \left( \int_{0}^{\infty}\chi _{\left\{ X^{+ }\left(  \omega  \right)> x  \right\} }\left( x \right)\,\mathrm{d} x  \right)\,\mathrm{d} P  
+    \]它等于在乘积空间\(  \mathbb{R} ^{+ }\times  \Omega   \)上 对非负函数 \(  f\left( x, \omega  \right)= \chi _{\left\{ X^{+ }\left(  \omega  \right)> x  \right\}} \)的积分, 由Tonelli定理 \[
+   \begin{aligned}
+    E\left( X^{+ } \right)&=  \int_{0}^{\infty} \int \chi _{\left\{ X^{+ }\left(  \omega  \right)>  x  \right\} }\,\mathrm{d} P\,\mathrm{d} x   \\ 
+     &= \int_{0}^{\infty} E\left(\chi _{\left\{ X^{+ }>  x \right\}}  \right)\,\mathrm{d} x\\ 
+      &= \int_{0}^{\infty} E\left( 1-\chi _{\left\{ X^{+ }\le x \right\}} \right)\,\mathrm{d} x\\ 
+       &= \int_{0}^{\infty}1- E\left( \chi _{\left\{ X^{+ }\le x \right\}} \right)\,\mathrm{d} x\\ 
+        &= \int_{0}^{\infty}\left( 1- E\left( \chi _{\left\{ X\le x \right\}} \right)  \right)\,\mathrm{d} x    \\ 
+         &= \int_{0}^{\infty}\left( 1-F\left( x \right)  \right)\,\mathrm{d} x 
+   \end{aligned}
+    \] 另一方面 \[
+    X^{-}\left(  \omega  \right)= \int_{0}^{X^{-}\left(  \omega  \right) }1\,\mathrm{d} x= \int_{0}^{\infty}\chi_{ \left\{ X^{-}\left(  \omega  \right)> x  \right\}}\,\mathrm{d} x  
+    \]对两侧取期望, 得到 \[
+    E\left( X^{-} \right)= \int \left( \int_{0}^{\infty}\chi _{\left\{ X^{-}\left(  \omega  \right)> x  \right\}}\,\mathrm{d} x \right)  \,\mathrm{d} P
+    \]由Tonelli定理,  \[
+    \begin{aligned}
+    E\left( X^{-} \right)&=  \int_{0}^{\infty}  \int \chi _{\left\{ X^{-}\left(  \omega  \right)> x  \right\}}\,\mathrm{d} P   \,\mathrm{d} x\\ 
+     &= \int_{0}^{\infty}E\left( \chi _{\left\{ X^{-}\left(  \omega  \right)  > x\right\}} \right)\,\mathrm{d} x\\ 
+      &= \int_{0}^{\infty}E\left( \chi _{\left\{ X\le -x \right\}} \right)\,\mathrm{d} x\\ 
+       &= \int_{0}^{\infty}F\left( -x \right)\,\mathrm{d} x\\ 
+        &= \int_{-\infty}^{0}F\left( x \right)\,\mathrm{d} x     
+    \end{aligned}
+    \]最后, 由期望的线性,  \[
+    \begin{aligned}
+    E\left( X \right)&= E\left( X^{+ }-X^{-} \right)\\ 
+     &= E\left( X^{+ } \right)-E\left( X^{-} \right)\\ 
+      &= \int_{0}^{\infty}\left( 1-F\left( x \right)  \right)\,\mathrm{d} x-\int_{-\infty}^{0}F\left( x \right)\,\mathrm{d} x       
+    \end{aligned}
+    \]
+\end{proof}
+ \begin{exercise}{}{10-21-1}
+    设$X$为非负连续随机变量,若$E(X^n)$存在,试证明:
+\begin{enumerate}
+\item $E(X) = \int_{0}^{\infty} P(X > x) dx;$
+\item $E(X^n) = \int_{0}^{\infty} nx^{n-1} P(X > x) dx.$
+\end{enumerate}
+ \end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item 由Lyapunov's 不等式,  \[
+        E\left( X \right)\le \left( E\left( X^{n} \right)  \right)^{\frac{1 }{n } }< \infty  
+        \]因此期望存在. 由Exercise \ref{ex:10-20-1}, \[
+        E\left( X \right)= \int_{0}^{\infty}\left( 1-F\left( x \right)  \right)\,\mathrm{d} x-\int_{-\infty}^{0}F\left( x \right)\,\mathrm{d} x   
+        \]由于 \(  X  \)非负, 因此 \[
+        F\left( x \right)= P\left( X\le x \right)= 0, \forall x\le 0  
+        \] 从而 \[
+        \int_{-\infty}^{0}F\left( x \right)\,\mathrm{d} x= \int_{-\infty}^{0}0\,\mathrm{d} x= 0 
+        \] 另一方面,  \[
+        1-F\left( x \right)= 1-P\left( X\le x \right)= P\left( X> x \right)   
+        \]故 \[
+        E\left( X \right)=  \int_{0}^{\infty}P\left( X> x \right)\,\mathrm{d} x  
+        \]
+        \item  注意到  \[
+      X^{n}\left(  \omega  \right)= \int_{0}^{X\left(  \omega  \right) }n x^{n-1}\,\mathrm{d} x= \int_{0}^{\infty} \chi _{\left\{ X\left(  \omega  \right)> x  \right\}}n x^{n-1}\,\mathrm{d} x
+        \]对两边取期望, 得到 \[
+        E\left( X^{n} \right)= \int \left( \int_{0}^{\infty} {\chi _{\left\{ X> x \right\}}} n x^{n-1}\,\mathrm{d}x \right)\,\mathrm{d} P  
+        \]由Tonelli定理, \[
+        \begin{aligned}
+        E\left( X^{n} \right)&= \int_{0}^{\infty} \left( \int \chi _{\left\{ X> x \right\}} nx^{n-1}\,\mathrm{d} P\right)\,\mathrm{d} x\\ 
+         & = \int_{0}^{\infty} nx^{n-1} \int  \chi _{\left\{ X> x \right\}}\,\mathrm{d} P\,\mathrm{d} x \\ 
+          &=  \int _{0}^{\infty}nx^{n-1}P\left( X> x \right)\,\mathrm{d} x\\ 
+           &=  \int_{0}^{\infty} nx^{n-1}P\left( X> x \right)\,\mathrm{d} x  
+        \end{aligned}  
+        \]
+    \end{enumerate}
+    
+\end{proof}
+ \begin{exercise}{}{}
+设随机变量$X$满足$E(X) = \text{Var}(X)=\lambda$,已知$E[(X-1) (X-2)] = 1$,试求$\lambda$.
+\end{exercise}
+\begin{proof}
+     \[
+     \lambda =  \mathrm{Var}\left( X \right)= E\left( X^{2} \right)-\left( E\left( X \right)  \right)^{2}= E\left( X^{2} \right)- \lambda ^{2}    
+     \]因此 \[
+     E\left( X^{2} \right)=  \lambda ^{2}+  \lambda  
+     \]由期望的线性性,  \[
+   \begin{aligned}
+     1= E\left[ \left( X-1 \right)\left( X-2 \right)   \right] &= E\left( \left( X^{2}-3X+ 2 \right)  \right)\\ 
+      &= E\left( X^{2} \right)-3E\left( X \right)+ 2\\ 
+       &=  \lambda ^{2}+  \lambda -3 \lambda + 2\\ 
+        &=     \left(  \lambda -1 \right)^{2}+ 1 
+   \end{aligned}
+     \]因此 \[
+     \left(  \lambda -1 \right)^{2}= 0\implies  \lambda = 1 
+     \]
+\end{proof}
+\begin{exercise}{}{}
+假设有10只同种电器元件,其中有两只不合格品,装配仪器时,从这批元件中任取一只,如是不合格品,则扔掉重新任取一只;如仍是不合格品,则扔掉再取一只,试求在取到合格品之前,已取出的不合格品数的方差.
+\end{exercise}
+\begin{proof}
+    设取出不合格品的数量为 \(  X  \). 则 \[
+    P\left( X= 0\right)=  \frac{4 }{5 },\quad P\left( X= 1 \right)= \frac{1 }{5 }\cdot \frac{8 }{9 },\quad P\left( X= 2 \right)= \frac{1 }{5 }\cdot \frac{1 }{9 }       
+    \] 我们有 \[
+    E\left( X \right)= 0\cdot P\left( X= 0 \right)+  P\left( X= 1 \right)+ 2P\left( X= 2 \right)   = \frac{2 }{9 } 
+    \] \[
+    E\left( X^{2} \right)= 0\cdot P\left( X= 0 \right)+ 1\cdot P\left( X= 1 \right)+ 4P\left( X= 2 \right)= \frac{4 }{15 }     
+    \]于是 \[
+    \mathrm{Var}\left( X \right)= E\left( X^{2} \right)- \left( E\left( X \right)  \right)^{2}=   = \frac{88 }{405 } 
+    \]
+\end{proof}
+\begin{exercise}{}{}
+已知 $E(X)=-2$, $E(X^2) = 5$,求 $\text{Var}(1-3X)$.
+\end{exercise}
+\begin{proof}
+    \[
+    \mathrm{Var}\left( X \right)= E\left( X^{2} \right)-\left( E\left( X \right)  \right)^{2}= 1   
+    \] \[
+    \mathrm{Var}\left( 1-3X \right)= \left( -3 \right)^{2}\mathrm{Var}\left( X \right)= 9   
+    \]
+\end{proof}
+\begin{exercise}{}{}
+设$P(X=0)=1-P(X=1)$,如果$E(X)=3\text{Var}(X)$,求$P(X=0)$.
+\end{exercise}
+\begin{proof}
+     我们有 \[
+     P\left( X= 0 \right)+ P\left( X= 1 \right)= 1  
+     \]这表明 \[
+     \left\{ X\neq 0 \right\}\cup \left\{ X\neq 1 \right\}
+     \]是一个零测集. 因此 \[
+     E\left( X \right)=  \int X\,\mathrm{d} P=  \int X\left( \chi _{\left\{ X= 0 \right\}} + \chi _{\left\{ X= 1 \right\}}\right)\,\mathrm{d} P= \int \chi _{\left\{ X= 1 \right\}} \,\mathrm{d} P= P\left( X= 1 \right) 
+     \]此外 \[
+     E\left( X^{2} \right)=  \int X ^{2}\left( \chi _{\left\{ X= 0 \right\}}+ \chi _{\left\{ X= 1 \right\}} \right)\,\mathrm{d} P= \int \chi _{\left\{ X= 1 \right\}}\,\mathrm{d} P= P\left( X= 1 \right)   
+     \]因此\[
+    P\left( X= 1 \right)=   E\left( X \right)=  3 E\left( X^{2} \right)- 3 \left( E\left( X \right)  \right)^{2}   =  3P\left( X= 1 \right)- 3 \left( P\left( X= 1 \right)  \right)^{2}  
+     \]解得 \[
+     P\left( X= 1 \right)= \frac{2 }{3 }  ,\quad \text{或者},\quad P\left( X= 1 \right)= 0 
+     \]从而 \[
+     P\left( X= 0 \right)= \frac{1 }{3 },\quad \text{或者} ,\quad P\left( X= 0 \right)= 1   
+     \]
+\end{proof}
+\begin{exercise}{}{}
+设随机变量 $X$ 的分布函数为
+\[
+F(x) = 1 - e^{-x^2}, \quad x>0,
+\]
+试求 $E(X)$ 和 $\operatorname{Var}(X)$.
+\end{exercise}
+\begin{proof}
+   \(  F\left( 0 \right)= \lim_{x\to 0^{+ }}F\left( x \right)= 0    \), 因此 \(  P\left( X\le 0 \right)= 0   \), 从而 \(  E\left( X^{-} \right)= 0   \).   由Exercise \ref{ex:10-21-1} (1) \[
+    \begin{aligned}
+    E\left( X \right)=   E\left( X ^{+ }\right)&= \int_{0}^{\infty}P\left( X^{+ }> x \right) \,\mathrm{d} x\\ 
+      &= \int_{0}^{\infty}P\left( X> x \right)\,\mathrm{d} x\\  
+       &= \int_{0}^{\infty}\left( 1-F\left( x \right)  \right)\,\mathrm{d} x\\ 
+        &= \int_{0}^{\infty}e^{-x^{2}}\,\mathrm{d} x\\ 
+         &= \frac{\sqrt{ \pi } }{2 }   
+    \end{aligned}
+     \] 由Exercise \ref{ex:10-21-1}  (2) \[
+     \begin{aligned}
+     E\left( X^{2} \right)= E\left( \left( X^{+ } \right)^{2}  \right)&=    \int_{0}^{\infty}2xP\left( X^{+ }> x \right)\,\mathrm{d} x \\ 
+      &= \int_{0}^{\infty}2xP\left( X> x \right)\,\mathrm{d} x\\ 
+       &= \int_{0}^{\infty}2x\left( 1-F\left( x \right)  \right)\,\mathrm{d} x\\ 
+        &= \int_{0}^{\infty}2xe^{-x^{2}}\,\mathrm{d} x\\ 
+         &= \int_{0}^{\infty}e^{-x^{2}}\,\mathrm{d} x^{2}\\ 
+          &= 1  
+     \end{aligned}
+     \]于是 \[
+     \mathrm{Var}\left( X \right)=  E\left( X^{2} \right)-\left( E\left( X \right)  \right)^{2}= 1- \frac{ \pi  }{4 }    
+     \]
+\end{proof}
+\begin{exercise}{}{10-21-2}
+试证:对任意的常数 $c \neq E(X)$, 有
+\[
+\operatorname{Var}(X) =E[\left( X-E\left( X \right)  \right)^{2} ]< E[\left( X-c \right)^{2}  ]
+\]
+\end{exercise}
+ \begin{proof}
+   \[
+   \begin{aligned}
+   E\left[ \left( X-c \right)^{2}  \right]-E\left[ \left( X-E\left( X \right)  \right)^{2}  \right]&= E\left[ \left( X-c \right)^{2}- \left( X-E\left( X \right)  \right)^{2}   \right]\\ 
+    &= E\left[ \left( E\left( X \right)-c  \right)\left( 2X-c-E\left( X \right)  \right)   \right]\\ 
+     &= \left( E\left( X \right)-c  \right)E[\left( 2X-c-E\left( X \right)  \right) ]\\ 
+      &= \left( E\left( X \right)-c  \right)\left( 2E\left( X \right)-c-E\left( X \right)   \right)\\ 
+       &= \left( E\left( X \right)-c  \right)^{2}> 0     
+   \end{aligned}
+   \]
+ \end{proof}
+\begin{exercise}{}{}
+设随机变量 $X$ 仅在区间 $[a,b]$ 上取值, 试证
+\[
+a \le E(X) \le b, \operatorname{Var}(X) \le \left(\frac{b-a}{2}\right)^2.
+\]
+\end{exercise}
+\begin{proof}
+    对于第一个不等式, 易见 \[
+    a= \int a \,\mathrm{d} P\le \int X\,\mathrm{d} P= E\left( X \right)\le \int b\,\mathrm{d} P= b 
+    \]
+   由 Exercise \ref{ex:10-21-2}, 取 \(  c= \frac{a+ b }{2 }   \), 则   \[
+      \mathrm{Var}\left( X \right)\le  E\left[ \left( X-\frac{a+ b }{2 }  \right)^{2}  \right]  
+      \] 由于 \[
+      \left| X-\frac{a+ b }{2 }  \right|\le \max \left\{ \left| b-\frac{a+ b }{2 }  \right|, \left| a-\frac{a+ b }{2 }  \right|   \right\} = \frac{b-a }{2 } 
+      \]我们有 \[
+      \left( X-\frac{a+ b }{2 }  \right)^{2}\le \left( \frac{b-a }{ 2}  \right)^{2}  
+      \]从而 \[
+      \mathrm{Var}\left( X \right)\le E\left[ \left( \frac{b-a }{ 2}  \right)^{2}  \right]= \left( \frac{b-a }{2 }  \right)^{2}   
+      \]
+\end{proof}
+
+\begin{exercise}{}{10-23-1}
+设 $g(x)$ 为随机变量 $X$ 取值的集合上的非负不减函数,且 $E(g(X))$ 存在,证明:对任意的 $\varepsilon>0$,有
+\begin{equation}
+P(X > \varepsilon) \leqslant \frac{E(g(X))}{g(\varepsilon)}.
+\end{equation}
+\end{exercise}
+ \begin{proof}
+    \[
+    \begin{aligned}
+    E\left( g\left( X \right)  \right)&= \int g\left( X \right)\,\mathrm{d} P\\ 
+     &\ge \int_{ X>  \varepsilon } g\left( X \right)\,\mathrm{d} P    \\ 
+      &\ge \int_{X>  \varepsilon }g\left(  \varepsilon  \right) \,\mathrm{d} P\\ 
+       &= g\left(  \varepsilon  \right)\int_{X>  \varepsilon }\,\mathrm{d} P\\ 
+        &= g\left(  \varepsilon  \right)P\left( X>  \varepsilon  \right)   
+    \end{aligned}
+    \]
+ \end{proof}
+\begin{exercise}{}{}
+设 $X$ 为非负随机变量,$a>0$.若 $E(e^{aX})$ 存在,证明:对任意的 $x>0$,有
+\begin{equation}
+P(X \geqslant x) \leqslant \frac{E(e^{aX})}{e^{ax}}.
+\end{equation}
+\end{exercise}
+\begin{proof}
+由于 \(  e^{ay}  \)是不减的, 对于任意的 \(x> 0 \), \(  e^{ay}\ge e^{ax}, \forall y\ge x  \). 于是       \[
+    \begin{aligned}
+  E\left( e^{aX} \right)&= \int e^{aX}\,\mathrm{d} P \\ 
+   &\ge \int_{X\ge x} e^{aX}\,\mathrm{d} P\\ 
+    &\ge  \int_{X\ge x}e^{a x}\,\mathrm{d} P= e^{ax} \int_{X\ge x}\,\mathrm{d} P\\ 
+     &= e^{ax} P\left( X\ge x \right) 
+    \end{aligned}
+    \]
+\end{proof}
+\begin{exercise}{}{}
+已知正常成年男性每升血液中的白细胞数平均是 $7.3\times10^9$,标准差是 $0.7\times10^9$.试利用切比雪夫不等式估计每升血液中的白细胞数在 $5.2\times10^9$ 至 $9.4\times10^9$ 之间的概率的下界.
+\end{exercise}
+\begin{solution}
+       由于 \[
+    7.3\times 10^{9}= \frac{5.2\times 10^{9}+ 9.4\times 10^{9} }{2 } 
+    \]取 \(  \mu = 7.3\times 10^{9}  \), \(   \sigma = 0.7\times 10^{9}  \), \(  X  \)为白细胞数,  由Chebyshev不等式, 所求概率满足   
+    $$P(|X - \mu| \geq k\sigma) \leq \frac{1}{k^2}$$从而 \[
+   P\left( \left| X-\mu  \right|< k  \sigma   \right)\ge 1-\frac{1 }{k^{2} }  
+   \]这里 \[
+   k= \frac{2.1\times 10^{9} }{ \sigma  }= \frac{2.1\times 10^{9} }{0.7\times 10^{9} }= 3  
+   \], 得到下界为 \(  \frac{8 }{9 }   \)  
+\end{solution}
+
+\begin{exercise}{}{}
+一批产品中有10\%的不合格品,现从中任取3件,求其中至多有一件不合格品的概率.
+\end{exercise}
+\begin{solution}
+     设 \(  X  \)为取得的不合格品的件数, 则  \(  X\sim B\left( n,p \right)=   B\left( 3, 0.1 \right)   \) .至多有一件不合格品的概率为 \[
+    P\left( X= 0 \right)+ P\left( X= 1 \right)=  0.9^{3}+ 3 \times 0.1\times 0.9^{2}= 0.972
+    \]
+\end{solution}
+
+\begin{exercise}{}{}
+一条自动化生产线上产品的一级品率为0.8,现检查5件,求至少有2件一级品的概率.
+\end{exercise}
+\begin{solution}
+    设 \(  X  \)为一级品的件数, 则 \(  X\sim  B\left( 5, 0.8 \right)    \). 则 \[
+   \begin{aligned}
+    P\left( X<  2 \right)&=\binom{ 5 }{0  } 0.2^{5}+ \binom{ 5 }{1  }0.8\times 0.2^{4}=0.00672
+   \end{aligned}
+    \]因此至少有两件一级品的概率为 \[
+    P\left( X\ge 2 \right)= 1-P\left( X< 2 \right)= 0.99328
+    \]
+\end{solution}
+
+\begin{exercise}{}{}
+设随机变量 $X \sim b(n,p)$, 已知 $E(X) = 2.4$, $\mathrm{Var}(X) = 1.44$, 求两个参数 $n$ 与 $p$ 各为多少?
+\end{exercise}
+\begin{proof}
+     \[
+    np= E\left( X \right)= 2.4 
+     \] \[
+     np\left( 1-p \right)= \mathrm{Var}\left( X \right)=  1.44 
+     \]从而 \[
+     \left( 1-p \right)= \frac{1.44 }{2.4 }= 0.6\implies p= 0.4  
+     \]进而  \[
+     n = \frac{2.4 }{p }= 6 
+     \]综上 \[
+     n = 6,\quad p= 0.4
+     \]
+\end{proof}
+\begin{exercise}{}{}
+设随机变量 $X$ 服从二项分布 $b(2,p)$, 随机变量 $Y$ 服从二项分布 $b(4,p)$. 若 $P(X \geqslant 1) = 8/9$, 试求 $P(Y \geqslant 1)$.
+\end{exercise}
+\begin{solution}
+      \[
+     \binom{ 2 }{0  }\left( 1-p \right)^{2}= P\left( X= 0 \right)=    P\left( X< 1 \right)= 1-P\left( X\ge  1 \right)= \frac{1 }{9 }   
+     \]得到 \[
+     \left( 1-p \right)^{2}= \frac{1 }{9 }  
+     \]又\[
+     \binom{ 4 }{0  } \left( 1-p \right)^{4}=P\left( Y= 0 \right)=   P\left( Y< 1 \right)= 1-P\left( Y\ge 1 \right)   
+     \] 因此 \[
+     P\left( Y\ge 1 \right)=1- \left( \left( 1-p \right)^{2}  \right)^{2}= 1- \left( \frac{1 }{9 }  \right)^{2}= \frac{80 }{81 }   
+     \]
+\end{solution}
+
+\begin{exercise}{}{}
+一批产品的不合格品率为 $0.02$, 现从中任取 $40$ 件进行检查, 若发现两件或两件以上不合格品就拒收这批产品. 分别用以下方法来拒收的概率:
+\begin{enumerate}
+\item 用二项分布作精确计算;
+\item 用泊松分布作近似计算.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+      \begin{enumerate}
+        \item 设 \(  X  \)为不合格品的数量, 则 \(  X\sim B\left( 40,0.02 \right)   \), \[
+        P\left( X< 2 \right)= \binom{ 40 }{0  }0.02^{0}\times 0.98^{40}+ \binom{ 40 }{1  }0.02\times 0.98^{39}   
+        \]  拒收的概率为 \[
+        P\left( X\ge 2 \right)= 1-P\left( X< 2 \right)\approx  0.1904
+        \]
+        \item 由于$n=40$较大而$p=0.02$较小, \(  np= 0.8  \)  适中. 可以认为 \(  X  \)近似服从\(  \mathrm{Poisson}\left( 0.02 \times 40\right)= \mathrm{Poisson}\left( 0.8 \right)    \),   我们有 \[
+        P\left( X< 2 \right)\approx  e^{-0.8}+ 0.8e^{-0.8} 
+        \]于是 \[
+        P\left( X\ge 2 \right)= 1-P\left( X< 2 \right)\approx   0.1912\]
+    \end{enumerate}
+    
+\end{solution}
+
+\begin{exercise}{}{}
+设 $X$ 服从泊松分布, 且已知 $P(X=1) = P(X=2)$, 求 $P(X=4)$.
+\end{exercise}
+\begin{solution}
+      \[
+     P\left( X= k \right)= \frac{  \lambda ^{k}e^{- \lambda }}{k! }  
+     \]由条件 \[
+      \lambda e^{- \lambda }=  \frac{1 }{2 } \lambda ^{2}e^{- \lambda }
+     \]得到 \[
+      \lambda = 0,\quad \text{or},\quad  \lambda = 2
+     \]由于泊松分布的定义 \(   \lambda > 0  \), 这里只取 \(   \lambda = 2  \), 从而 $$P(X=4) = \frac{\lambda^4 e^{-\lambda}}{4!}= \frac{16e^{-2}}{24} = \frac{2e^{-2}}{3}$$
+\end{solution}
+
+\begin{exercise}{}{}
+已知某商场一天来的顾客数 $X$ 服从参数为 $\lambda$ 的泊松分布, 而每个来到商场的顾客购物的概率为 $p$, 证明: 此商场一天内购物的顾客数服从参数为 $\lambda p$ 的泊松分布.
+\end{exercise}
+\begin{proof}
+   设 \(  Y  \)为一天内购物的顾客数. 则 \[
+   P\left( Y= k \right)= \sum _{j= k}^{\infty}P\left( Y= k| X= j \right)P\left( X= j \right)    ,\quad k= 0,1,2,\cdots 
+   \]  \(  Y|\left( X= j \right)   \)是一个服从 \(  B\left( j,p \right)   \)的随机变量, 我们有 \[
+   P\left( Y= k|X= j \right)= \binom{ j }{k  }p^{k}\left( 1-p \right)^{j-k}   
+   \]由于 \(  X  \)服从参数为 \(   \lambda   \)的泊松分布, 我们有 \[
+   P\left( X= j \right)=  \frac{ \lambda ^{j} e^{- \lambda }}{j! } ,\quad j= 0,1,2,\cdots 
+   \]  因此 \[
+  \begin{aligned}
+   P\left( Y= k \right)= \sum _{j= k}^{\infty}\binom{ j }{k  }p^{k}\left( 1-p \right)^{j-k} \frac{ \lambda ^{j} e^{- \lambda }}{j! }  &  = \sum _{j= k}^{\infty}\frac{ \lambda ^{j}e^{- \lambda }}{k!\left( j-k \right)!  }p^{k}\left( 1-p \right)^{j-k}   \\ 
+    &= \sum _{i= 0}^{\infty}\frac{ \lambda ^{i+ k}e^{- \lambda } }{k! i! }p^{k}\left( 1-p \right)^{i}  \\ 
+     &= \frac{ \lambda ^{k}p^{k}e^{- \lambda } }{k! }\sum _{i= 0}^{\infty}\frac{\left( \lambda \left( 1-p \right) \right)^{i}  }{i! }\\ 
+      &= \frac{ \lambda ^{k}p^{k}e^{- \lambda } }{k! } e^{ \lambda \left( 1-p \right) }   \\ 
+       &= \frac{\left(  \lambda p \right)^{k} e^{- \lambda p}  }{k! } \\ 
+        &,\quad k= 0,1,2,\cdots 
+  \end{aligned}
+   \]即 \(  Y  \)服从 \(  \mathrm{Poisson}\left(  \lambda p\right)   \)  
+\end{proof}
+\begin{exercise}{}{}
+设一个人一年内患感冒的次数服从参数 $\lambda = 5$ 的泊松分布. 现有某种预防感冒的药物对 $75\%$ 的人有效(能将泊松分布的参数减少为 $\lambda = 3$), 对另外的 $25\%$ 的人不起作用. 如果某人服用了此药, 一年内患了两次感冒, 那么该药对他(她)有效的可能性是多少?
+\end{exercise}
+\begin{solution}
+    设该药有效的事件为 \(  A  \), 设一年两次感冒的事件为 \(  B  \), 则药有效的可能性为 \[
+  P\left( A|B \right) = \frac{P\left( B|A \right)P\left( A \right)   }{ P\left( B \right) }=  \frac{P\left( B|A \right)P\left( A \right)   }{P\left( B|A \right)P\left( A \right)+ P\left( B|A^{c} \right)P\left( A^{c} \right)     } 
+    \] 设 \(  X  \)为感冒的次数. 则  \(  X|A  \)服从 \(  \mathrm{Poisson}\left( 3 \right)   \), \(  X|A^{c}  \)服从 \(  \mathrm{Poisson}\left( 5 \right)   \). 我们有 \[
+    P\left( B|A \right)= P\left( X|A= 2 \right)= \frac{3^{2}e^{-3} }{2! }= \frac{9 }{2 }e^{-3}    
+    \] \[
+    P\left( B|A^{c} \right)= P\left( X|A^{c}= 2 \right)= \frac{5^{2}e^{-5} }{2! }= \frac{5^{2} }{2}e^{-5}    
+    \]     此外,  \[
+    P\left( A \right)= \frac{3 }{4 },\quad P\left( A^{c} \right)= \frac{1 }{4 }    
+    \]全部带入后计算得到 \[
+    P\left( A|B \right)= \frac{\frac{27 }{8 }e^{-3}  }{\frac{27 }{8 }e^{-3}+ \frac{5 }{2 }e^{-5}\frac{1 }{4 }    }  =\frac{27e^{2} }{27e^{2}+ 25 } 
+    \]
+\end{solution}
+
+\begin{exercise}{}{}
+从一个装有 $m$ 个白球、$n$ 个黑球的袋中有返回地摸球，直到摸到白球时停止。试求取出黑球数的期望。
+\end{exercise}
+
+\begin{solution}
+        设 \(  X  \)为取出黑球的个数. 则 \(  Y= X+ 1  \)  为第一次摸到白球时, 摸出的球的个数. 单次摸出白球的概率为 \(  p= \frac{m }{m+ n }   \). 因此 \(  Y  \)服从参数为 \(  \frac{m }{m+ n }   \)的几何分布. 我们有 \[
+    E\left( Y \right)= \frac{1 }{p }= \frac{m+ n }{m }   
+    \]由期望的线性, 取出黑球数的期望为 \[
+    E\left( X \right)= E\left( Y-1 \right)= E\left( Y \right)-1=  \frac{n }{m }    
+    \]   
+\end{solution}
+
+\begin{exercise}{}{}
+某种产品上的缺陷数 $X$ 服从下列分布列：
+\[
+P(X = k) = \frac{1}{2^{k+1}}, \quad k = 0, 1, \cdots,
+\]
+求此种产品上的平均缺陷数。
+\end{exercise}
+\begin{solution}
+   令 \(  Y= X+ 1  \), 则 \[
+   P\left( Y= k \right)= P\left( X = k-1\right)=\frac{1 }{2^{k} }=   \left( \frac{1 }{2 } \right)^{k-1} \left( 1-\frac{1 }{2 }  \right)    ,\quad  k= 1,2,\cdots 
+   \]       因此 \(  Y  \)服从参数为 \( p=  \frac{1 }{2 }   \)的几何分布. 我们有 \[
+   E\left( Y \right)= \frac{1 }{p } = 2
+   \]  由期望的线性,  \[
+   E\left( X \right)= E\left( Y-1 \right)= 2-1= 1  
+   \]为平均缺陷数.
+\end{solution}
+
+\begin{exercise}{}{}
+某产品的不合格品率为 0.1,每次随机抽取 10 件进行检验,若发现其中不合格品数多于 1,就去调整设备.若检验员每天检验 4 次,试问每天平均要调整几次设备?
+\end{exercise}
+\begin{solution}
+          设 \(  Y  \)为四次检验中, 不合格品多于1 的次数. 设 \(  X  \)为一次检验中, 不合格品的数量. 则  \(  X\sim B\left( 10, 0.1 \right)   \). 我们有 \[
+    P\left( X\le 1 \right)= \binom{ 10 }{0  }0.1^{0}\times 0.9^{10}+ \binom{ 10 }{1  }0.1\times 0.9^{9}=  0.9^{10}+ 0.9^{9}  
+    \]   从而 \[
+    P\left( X> 1 \right)= 1-0.9^{10}-0.9^{9} 
+    \]我们将上述值记作 \(  p  \), 为不合格品数多于1的概率. 从而 \(  Y\sim B\left( 4,p \right)   \). 平均每天调整设备的次数为 \[
+    E\left( Y \right)=  4p= 4\left( 1-0.9^{10}-0.9^{9} \right) 
+    \]  
+\end{solution}
+
+\begin{exercise}{}{}
+一个系统由多个元件组成,各个元件是否正常工作是相互独立的,且各个元件正常工作的概率为 $p$.若在系统中至少有一半的元件正常工作,那么整个系统就有效.问 $p$ 取何值时,5 个元件的系统比 3 个元件的系统更有可能有效?
+\end{exercise}
+\begin{solution}
+      设 \(  X  \)为5个原件中正常工作的元件个数, \(  Y  \)为 \(  3  \)个原件中正常工作的元件个数. 则 \(  X\sim B\left( 5,p \right)   \), \(  Y\sim B\left( 3,p \right)   \). \[
+   \begin{aligned}
+    P\left( X\ge 3 \right)&= \binom{ 5 }{3  }p^{3}\left( 1-p \right)^{2}+ \binom{ 5 }{4  }p^{4}\left( 1-p \right)+ \binom{ 5 }{5  }p^{5} \\ 
+     &= 10p^{3}\left( 1-p \right)^{2}+ 5p^{4}\left( 1-p \right)+ p^{5}  
+   \end{aligned}      
+    \]     \[
+    P\left( Y\ge 2 \right)= \binom{ 3 }{2  }p^{2}\left( 1-p \right) + \binom{ 3 }{3  }p^{3}=    3p^{2}\left( 1-p \right)+ p^{3} 
+    \], \(  P\left( X\ge 3 \right)   >  P\left( Y\ge 2 \right) \) , 当且仅当 \[
+   \begin{aligned}
+    &10p^{3}\left( 1-p \right)^{2}+ 5p^{4}\left( 1-p \right)+ p^{5}> 3p^{2}\left( 1-p \right)+ p^{3}   \\ 
+     &\iff 10p^{3}\left( 1-p \right)^{2}+ 5p^{4}\left( 1-p \right)>  3p^{2}\left( 1-p \right)+ p^{3}\left( 1-p \right)\left( 1+ p \right)    \\ 
+      &\iff 10p^{3}\left( 1-p \right)+ 5p^{4}>  3p^{2}+ p^{3}\left( 1+ p \right)\\ 
+       &\iff 10p^{3}-10p^{4}+ 5p^{4}>  3p^{2}+ p^{3}+ p^{4}\\ 
+          &\iff 2p^{2}-3p+ 1<  0\\ 
+           &\iff \left( 2p-1 \right)\left( p-1 \right) <  0\\ 
+            &\iff \frac{1 }{2 }< p< 1 
+   \end{aligned}
+    \] 因此当 \(  \frac{1}{2}< p< 1  \)时, 更有可能有效. 
+\end{solution}
+
+\begin{exercise}{}{}
+设随机变量 $X$ 服从参数为 $\lambda$ 的泊松分布,试证明
+\[
+E(X^n) = \lambda E[(X+1)^{n-1}],
+\]
+利用此结果计算 $E(X^3)$.
+\end{exercise}
+\begin{solution}
+   \[
+   \begin{aligned}
+   E\left( X^{n} \right)&= \sum _{k= 0}^{\infty}k^{n}P\left( X= k \right)=  \sum _{k= 0}^{\infty} k^{n}\frac{ \lambda ^{k}e^{- \lambda } }{k! }  \\ 
+    &= \sum _{k= 1}^{\infty}k^{n}\frac{ \lambda ^{k}e^{- \lambda } }{k! }\\ 
+     &= \sum _{ k= 0}^{\infty} \left( k+ 1 \right)^{n}\frac{ \lambda ^{k+ 1}e^{- \lambda } }{\left( k+ 1 \right)!  }   \\ 
+      &=  \lambda \sum _{k= 0}^{\infty}\left( k+ 1 \right)^{n-1}\frac{ \lambda ^{k}e^{- \lambda } }{k! }  \\ 
+       &=  \lambda \sum _{k= 0}^{\infty}\left( k+ 1 \right)^{n-1}P\left( X= k \right)\\ 
+        &=  \lambda E\left( \left( X+ 1 \right)^{n-1}  \right)    
+   \end{aligned}
+   \] \[
+  \begin{aligned}
+   E\left( X^{3} \right)= \lambda E\left( \left( X+ 1 \right)^{2}  \right)&=  \lambda  E\left( X^{2} \right)+ 2 \lambda E\left( X \right)+  \lambda  \\ 
+    &=  \lambda ^{2}E\left( \left( X+ 1 \right)  \right)+ 2 \lambda E\left( X \right)+  \lambda \\ 
+     &= \left(  \lambda ^{2}+ 2 \lambda  \right)E\left( X \right)+  \lambda ^{2}+  \lambda \\ 
+      &= \left(  \lambda ^{2}+ 2 \lambda  \right) \lambda +  \lambda ^{2}+  \lambda \\ 
+       &=  \lambda ^{3}+ 3 \lambda ^{2}+  \lambda      
+  \end{aligned}   
+   \]
+\end{solution}
+
+\begin{exercise}{}{}
+令 $X(n,p)$ 表示服从二项分布 $b(n,p)$ 的随机变量,试证明:
+\[
+P(X(n,p) \leq i) = 1 - P(X(n,1-p) \leq n-i-1).
+\]
+\end{exercise}
+\begin{proof}
+      \[
+  P\left( X\left( n,p \right)\le i  \right)= \sum _{ k= 0}^{i}\binom{ n }{k }p^{k}\left( 1-p \right)^{n-k}   
+  \] \[
+  P\left( X\left( n,1-p \right)\le n-i-1  \right)= \sum _{ j= 0}^{n-i-1}\binom{ n}{j }\left( 1-p \right)^{j}p ^{n-j} 
+  \]做指标替换 \(  k=n-j \) , 则上式化为 \[
+  \sum _{k= i+ 1}^{n}\binom{ n }{n-k  } \left( 1-p \right)^{n-k}p^{k} = \sum _{k= i+ 1}^{n}\binom{ n }{k  }p^{k}\left( 1-p \right)^{n-k}  
+  \]因此 \[
+  \begin{aligned}
+  &P\left( X\left( n,p \right)\le i  \right)+ P\left( X\left( n,1-p \right)\le n-i-1  \right)   \\ 
+   &=  \sum _{k = 0}^{i}\binom{ n }{k  }p^{k}\left( 1-p \right)^{n-k}  + \sum _{k= i+ 1}^{n}\binom{ n }{k  }p^{k}\left( 1-p \right)^{n-k}\\ 
+    &= \sum _{k = 0}^{n}\binom{ n }{k  }p^{k}\left( 1-p \right)^{n-k}\\
+    &= \left( p+ \left( 1-p \right)  \right)^{n}\\ 
+     &= 1     
+  \end{aligned}
+  \]
+\end{proof}
+\begin{exercise}{}{}
+设随机变量 $X$ 服从参数为 $p$ 的几何分布,试证明:
+\[
+E\left(\frac{1}{X}\right) = \frac{-p\ln p}{1-p}.
+\]
+\end{exercise}
+\begin{proof}
+     由于 \(  0< \left( 1-p \right)< 1   \),  由$\ln(1-x)$的Taylor展开,  \[
+      \ln \left( p \right)=\ln \left( 1-\left( 1-p \right)  \right)=   -\sum _{k = 1}^{\infty} \frac{\left( 1-p \right)^{k}  }{k} 
+      \]因此 \[
+     \begin{aligned}
+      E\left( \frac{1 }{X }  \right)&= \sum _{k = 1}^{\infty}\frac{\left( 1-p \right)^{k-1}p  }{k }\\ 
+       &= \frac{-p }{1-p }\left( - \sum _{k= 1}^{\infty}\frac{\left( 1-p \right)^{k}  }{k }  \right)\\ 
+        &= \frac{-p\ln p }{1-p }     
+     \end{aligned} 
+      \]
+\end{proof}
+\begin{exercise}{}{}
+设随机变量 $X \sim b(n,p)$,试证明
+\[
+E\left(\frac{1}{X+1}\right) = \frac{1-(1-p)^{n+1}}{(n+1)p}.
+\]
+\end{exercise}
+\begin{proof}
+    \[
+    E\left( \frac{1 }{X+ 1 }  \right)=  \sum _{k = 0}^{n}\frac{1 }{k+ 1 }\binom{ n }{k  }   p^{k}\left( 1-p \right)^{n-k} 
+    \]注意到 \[
+    \frac{1 }{k+ 1 }\binom{ n }{k  }= \frac{1 }{k+ 1 }\frac{n! }{k!\left( n-k \right)!  }= \frac{1 }{n+ 1 }\frac{\left( n+ 1 \right)!  }{\left( k+ 1 \right)! \left( \left( n+ 1 \right)-\left( k+ 1 \right)   \right)!   }= \frac{1 }{n+ 1 }\binom{ n+ 1 }{k+ 1  }        
+    \]因此 \[
+   \begin{aligned}
+    E\left( \frac{1 }{X+ 1 }  \right)&= \sum _{k = 0}^{n}\frac{1 }{n+ 1 }\binom{ n+ 1 }{k+ 1  }p^{k}\left( 1-p \right)^{n-k}    \\ 
+     &= \frac{1 }{n+ 1 } \frac{1}{p } \sum _{l = 1}^{n+ 1} \binom{ n+ 1 }{l  }p^{l} \left( 1-p \right)^{n+ 1-l} \\ 
+      &= \frac{1 }{n+ 1 }\frac{1 }{p }\left( 1- \left( 1-p \right)^{n+ 1}  \right) 
+   \end{aligned}
+    \]
+\end{proof}
+
+(10分) 在X是连续随机变量的条件下, 证明 $\operatorname{E}(X-a)_+ = \int_a^\infty P(X > x) dx$, 其中 $a$ 是常数,
+$(x-a)_+ = \begin{cases} x-a, & x \ge a, \\ 0, & x < a. \end{cases}$
+\begin{proof}
+$(x-a)_+ = 1_{\{x>a\}}(x-a)$, 称为\dfntxt{非负函数}.
+$\operatorname{E}(X-a)_+ = \int 1_{\{x>a\}}(x-a) dP_X$
+.
+由定义有
+$P(X>x) = \int 1_{\{X: X>x\}} dP_X$
+其中 $1$ 为示性函数. $P_X$ 为 $X$ 的推出测度.
+对上式两侧从 $a$ 到 $\infty$ 积分, 得
+$\int_a^\infty P(X>x) dx = \int_a^\infty \int 1_{\{X>x\}} dP_X dx$
+由 Fubini 定理, 右侧可等于
+$\begin{aligned} & \quad \int \int_a^\infty 1_{\{X:X>x\}} dx dP_X \\ &= \int \left( \int_a^{\left( X-a \right)_{+ }+ a } 1 dx \right) dP_X \\ &= \int (X-a)_+ dP_X \\ &= \operatorname{E}((X-a)_+) \end{aligned}$
+故 $\int_a^\infty P(X>x) dx = \operatorname{E}(X-a)_+$.
+\end{proof}
+\end{document}

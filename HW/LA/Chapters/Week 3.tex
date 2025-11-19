@@ -1,0 +1,76 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{2}
+}{}
+
+\chapter{ Homework 3 }
+代靖涵 25120222201319
+\begin{exercise}{}{}
+Let $n \ge 2$ be a positive integer, and write $M_n(\mathbb{C})$ for the associative algebra consisting of all $n \times n$ complex matrices. Prove that $M_n(\mathbb{C})$ is simple.
+\end{exercise}
+
+\begin{proof}
+    If \(  \mathfrak{h}  \) is a nonzero ideal of \(  M_{n}\left( \mathbb{C}  \right)   \), we shall prove that \(  \mathfrak{h}= M_{n}\left( \mathbb{C}  \right)   \)   . Take a nonzero element \(  A \in \mathfrak{h}  \). Denote \(  A  \) by \(  \left( a_{ij} \right)   \). Since \(    \mathfrak{h}    \) is an ideal,      \( a_{jk}E_{il}=  E_{ij}AE_{kl} \in   \mathfrak{h}  \).   Since \(  A\neq 0  \), there exists \(  j,k \) such that \(  a_{jk}\neq 0  \)  . Then it follows that for each \(  E_{il}  \),  \[
+    E_{il}= \left( a_{jk}^{-1}  \right)\left( a_{jk}E_{il}\right)\in   \mathfrak{h}  
+    \] Finally, since \(  \mathfrak{h} \) is a subalgebra of \(  M_{n}\left( \mathbb{C}  \right)   \) contaning all \(  E_{il}  \), we know that \[
+     \mathfrak{h}\supseteq \operatorname{span}\left( E_{il} \right)_{1\le i,l\le n}\implies \mathfrak{h}\supseteq M_{n}\left( \mathbb{C}  \right)  
+    \]   The above implies that \(  M_{n}\left( \mathbb{C}  \right)    \) is simple. 
+\end{proof}
+\begin{exercise}{}{}
+Let $n \ge 2$ be a positive integer, and write $\mathfrak{sl}_n(\mathbb{C})$ for the Lie algebra consisting of all trace zero $n \times n$ complex matrices. Prove that $\mathfrak{sl}_n(\mathbb{C})$ is simple.
+\end{exercise}
+
+\begin{proof}
+    If \(  \mathfrak{h}  \) is a nonzero ideal of \(  \mathfrak{sl}_{n}\left( \mathbb{C}  \right)   \), we shall prove that \(  \mathfrak{h}= \mathfrak{sl}_{n}\left( \mathbb{C}  \right)   \). Take a nonzero element \(  A \in \mathfrak{h}  \)    . 
+    \begin{itemize}
+        \item If \(  A =\mathrm{diag}\left( a_1,\cdots ,a_{n} \right)   \) is diagonal,   then there exists \(  k,l  \) such that \(a_{k}\neq a_{l} \). Then \[
+        \left[ A,E_{kl} \right]= AE_{kl}-E_{kl}A=  a_{k} E_{kl}-a_{l}E_{kl}= \left( a_{k}-a_{l} \right)E_{kl} \in \mathfrak{h}
+        \]  Thus \[
+        E_{kl}= \left( a_{k}-a_{l} \right)^{-1} \left( \left( a_{k}-a_{l} \right)E_{kl}  \right)\in \mathfrak{h}  
+        \]
+        \item If \(  A  \) is not diagonal. Let \(  H  \) be a nonzero diagonal element of \(  \mathfrak{sl}_{n}\left( \mathbb{C}  \right)   \).  Consider the operator \(  \mathrm{ad}\left( H \right)   \) \[
+        \begin{aligned}
+        \mathrm{ad}\left( H \right): \mathfrak{sl}_{n}\left( \mathbb{C}  \right)&\to \mathfrak{sl}_{n}\left( \mathbb{C}  \right)\\ 
+         Y &\mapsto \left[ H,Y \right]     
+        \end{aligned}
+        \] Since \(  \mathfrak{h}  \) is an ideal, for each \(  X \in \mathfrak{h}  \), we have \[
+        \mathrm{ad}\left( H \right)\left( X \right)= \left[ H,X \right]\in \mathfrak{h}   
+        \]which implies that \(  \mathfrak{h}  \) is an invariant space of \(  \mathrm{ad}\left( H \right)   \). Then there exists an eganvector \(  Y  \) of \(  \mathrm{ad}\left( H \right)   \), such that \(  \mathrm{ad}\left( H \right)\left( Y \right)=  \lambda Y    \).  
+ Suppose that \(  H= \sum _{k= 1}^{n}h_{k}E_{kk}, Y= \sum _{i,j}y_{ij}E_{ij}  \)  \[
+           \begin{aligned}
+          \sum _{k,j} \lambda y_{kj}E_{kj}=    \mathrm{ad}\left( H \right)\left( Y \right)&= \sum _{k= 1}^{n}  \sum _{j= 1}^{n}y_{kj}h_{k}E_{kj}-\sum _{k= 1}^{n}\sum _{i= 1}^{n}y_{ik}h_{k}E_{ik} \\ 
+             &= \sum _{k = 1}^{n}\sum _{j= 1}^{n}y_{kj}\left( h_{k}-h_{j} \right)E_{kj} 
+           \end{aligned}
+            \]  Then for each \(  k,j  \), there must be \[
+            h_{k}-h_{j}=  \lambda ,\quad \text{or },\quad y_{kj}= 0
+            \] Once we take \(  H= \sum _{i = 1}^{n}h_{i}E_{ii}  \), such that \(  h_{i}\neq h_{j},\forall i\neq j  \)   . 
+            \begin{enumerate}
+                \item If \(   \lambda = 0  \), since \(  h_{k}\neq h_{j}  \) for all \(  k\neq j  \), there must be \(  y_{kj}= 0  \). \(  Y  \) is diaganol this situation.     
+                \item If \(   \lambda \neq 0  \), there at most one pair \(  \left( k,j \right)   \) such that \(  h_{k}-h_{j}=  \lambda   \)  , then \(  Y= y_{kj}E_{kj}  \). \[
+                E_{kj}= y_{kj}^{-1} Y\in \mathfrak{h}
+                \]  
+            \end{enumerate}
+            
+    \end{itemize}
+    There always exists some \(  E_{kl} \in \mathfrak{h}  \), where \(  k\neq l  \) .   Since \[
+    \left[ E_{ab},E_{kl} \right]=   \delta _{bk}E_{al}-  \delta _{la}E_{kb}
+    \] Then for each \(  a\neq l  \), we have \[
+    E_{al}= \left[ E_{ak},E_{kl} \right]\in \mathfrak{h} 
+    \] And for each \(  b \neq k  \), we have \[
+    E_{bk}= -\left[ E_{lb},E_{kl} \right]\in \mathfrak{h} 
+    \]  We can repeat this process finite times to generate all \(  E_{mn}  \) satisfying \(  m\neq n  \) .  
+
+    Finally, we have for each \(  E_{kk}-E_{l l }  \), \(  k = l  \), \[
+    E_{k k }-E_{l l }= \left[ E_{kl},E_{lk} \right] \in \mathfrak{h}
+    \]   Thus \[
+    \mathfrak{h}= \operatorname{span}\left\{ E_{mn}, E_{kk}-E_{ll} \right\}_{m\neq n,k \neq l}= \mathfrak{sl}_{n}\left( \mathbb{C}  \right) 
+    \]
+\end{proof}
+
+\end{document}

@@ -1,0 +1,175 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{3}
+}{}
+
+\chapter{ Week 4 }
+
+代靖涵 25120222201319
+
+
+\begin{exercise}{}{}
+设 $G \subset \mathbb{R}^n$ 是开集, F 是 G 内的有界闭集, 试证明存在 $r > 0$, 使得
+\[ \{x: d(x, F) \le r\} \subset G. \]
+\end{exercise}
+
+\begin{proof}
+     不妨设 \(  F,G  \)非空. \(  F  \)和 \(  G^{c}  \)是两个无交闭集. 由于 \(  F  \)有界 , 若 \(  d\left( F,G^{c} \right)= 0   \), 则 存在 \(  x_1\in F  \), \(  x_2\in G^{c} \)使得 \(  \left| x_1-x_2 \right|= 0 \implies x_1= x_2  \), 矛盾. 因此 \(  d\left( F,G^{c} \right)> 0   \). 取 \(  r=\frac{1 }{2 }  d\left( F,G^{c} \right) > 0  \).  则对于任意的 \(  x  \)使得 \(  d\left( x,F \right)\le r   \),  我们有 \[
+     d\left( x,G^{c} \right)\ge d\left( F,G^{c} \right)-d\left( x,F \right)=   r> 0
+     \]这表明 \(  x\not \in G^{c}  \), 因此 \(  x \in G  \). 我们得到 \(  \left\{ x:d\left( x,F \right)\le r  \right\}  \subseteq G\).           
+\end{proof}
+
+\begin{exercise}{}{}
+    试问: 平面中的圆盘 $\{(x, y) : x^2 + y^2 \le 1\}$ 能表示为两个互不相交的非空闭集之并吗?
+\end{exercise}
+
+\begin{proof}
+    若存在互不相交的非空闭集 \(  F_1, F_2  \), 使得 圆盘 \(  D= F_1\cup F_2  \). 则 \(  F_1,F_2  \)均为非空的有界闭集.   存在 \(  x_1\in F_1  \)和 \(  x_2\in F_2  \), 使得 \(  \left| x_1-x_2 \right|= d\left( F_1,F_2 \right)    \)   . 由于 \(  x_1\neq x_2  \), 因此 \(  d\left( F_1,F_2 \right)> 0   \). 一方面, 我们有 \[
+    F_1^{\circ}\cup F_2^{\circ}\subseteq \left( F_1\cup F_2 \right)^{\circ} 
+    \]  另一方面, 任取 \(  x\in \left( F_1\cup F_2 \right)^{\circ}= D^{\circ}   \). 存在以  \(  x  \)为中心的开球 \(  B_{ \varepsilon }\left( x \right)   \), 使得 \(  B_{ \varepsilon }\left( x \right)\subseteq F_1\cup F_2   \). 通过缩小 \(   \varepsilon   \), 可以取 \(   \varepsilon < \frac{1 }{2 }d\left( F_1,F_2 \right)    \). 若 \[
+    B_{ \varepsilon }\left( x \right)\cap F_1\neq \varnothing\text{ 且 } B_{ \varepsilon }\left( x \right)\cap F_2\neq \varnothing  
+    \]  则各取其中一点 \(  y_1,y_2  \), 我们有 \[
+    d\left( y_1,y_2 \right)\le d\left( y_1,x \right)+ d\left( x,y_2 \right)< 2 \varepsilon < d\left( F_1,F_2 \right)    
+    \] 但是 \(  y_1\in F_1, y_2\in F_2  \), 矛盾. 因此 \(  B_{ \varepsilon }\left( x \right)   \)包含于 \(  F_1,F_2  \)中的一个, 我们有 \(  x \in F_1^{\circ}  \)或 \(  x\in F_2^{\circ}  \), 即 \(  x \in F_1^{\circ}\cup F_2^{\circ}  \).   我们得到 \[
+    \left( F_1\cup F_2 \right)^{\circ}\subseteq F_1^{\circ}\cup F_2^{\circ} 
+    \]  因此 \[
+    D^{\circ}= \left( F_1\cup F_2 \right)^{\circ}= F_1^{\circ}\cup F_2^{\circ} 
+    \]但是 \(  D^{\circ}  \)是连通的, 不能写成非空开集的无交并, 因此可以不妨设 \(  F_1^{\circ}= D^{\circ}  \), \(  F_2^{\circ}= \varnothing  \). 现在 \[
+    F_1\cup F_2= \overline{D^{\circ}}= \overline{F_1^{\circ}}\subseteq  F_1\implies F_2\subseteq F_1\implies F_2= \varnothing
+    \]   矛盾. 故不存在互不相交的非空闭集 \(  F_1,F_2  \)使得 \(  D= F_1\cup F_2  \)  
+\end{proof}
+
+\begin{exercise}{}{}
+设 $E \subset \mathbf{R}^n$. 若 $E \neq \varnothing$, 且 $E \neq \mathbf{R}^n$, 试证明 $E$ 的边界点集非空 (即 $\partial E \neq \varnothing$).
+\end{exercise}
+\begin{proof}
+    若 \(  E  \)的边界点为空集, 则 \[
+    \mathbb{R} ^{n}= E^{\circ}\cup  \partial E\cup  \mathrm{ext}\left( E \right)= E^{\circ}\cup \mathrm{ext}\left( E \right)= E^{\circ}\cup \left( E^{c} \right)^{\circ}   
+    \] 注意到\[
+    E^{\circ}\cap \left( E^{c} \right)^{\circ}\subseteq E\cap E^{c}= \varnothing 
+    \]由于 \(  \mathbb{R} ^{n}  \)是连通的, 不能写作两个非空开集的并, 因此要么 \(  E^{\circ}= \varnothing\implies E= E^{\circ}\cup  \partial E= \varnothing  \), 要么 \(  E^{\circ}= \mathbb{R} ^{n}\implies E= \mathbb{R} ^{n}   \), 均会导致矛盾. 因此 \(  E  \)的边界点非空.    
+\end{proof}
+\begin{exercise}{}{}
+试证明 $\mathbf{R}^n$ 中任一闭集皆为 $G_\delta$ 集, 任一开集皆为 $F_\sigma$ 集.
+    \end{exercise}
+
+    \begin{proof}
+        任取开矩体 \[
+    \prod _{i= 1}^{n} \left( x_{i},y_{i} \right) 
+        \]我们有 \[
+    \prod _{i= 1}^{n}\left( x_{i},y_{i} \right)= \bigcup _{k= 1}^{\infty}\left( \prod _{i= 1}^{n}\left[ x_{i}+ \frac{1 }{k },y_{i}-\frac{1 }{k }   \right] \right) 
+        \]是一个 \( F_{ \sigma }  \)集. 我们知道\(  F_{ \sigma }\)集的可数并也是一个\(  F_{ \sigma }\)集. 而 \(  \mathbb{R} ^{n}  \)上任意开集写作 开矩体的可数并, 因此任一开集作为 \(  F_{ \sigma }  \)集的可数并也是一个\(   F_{ \sigma }  \)集.
+        
+    由于开集的补集是一个闭集,  \(  F_{ \sigma }  \)集的补集是一个 \(  G_{ \delta }  \)集. 因此由上面的讨论立即得到任意闭集均为\( G_{ \delta }\)集 .
+
+
+    另一种适用于任意度量空间的方法是注意到对于任意的开集 \(  U  \),  \[
+    \begin{aligned}
+    U= \left\{ x \in X:d\left( x, U^{c} \right)> 0  \right\} &=  \bigcup _{k= 1}^{\infty}\left\{ x\in X: d\left( x,U^{c} \right)\ge \frac{1 }{k }   \right\}
+    \end{aligned}
+    \]由于函数 \(  x\mapsto d\left( x,U^{c} \right)   \)是一个连续函数, 因此集合 \(  \left\{ x \in X:d\left( x,U^{c} \right)\ge \frac{1 }{k }   \right\}  \)是一个闭集. 因此 \(  U  \)写作可数个闭集的并, 是一个 \(  F_{ \sigma }  \)集.    
+    \end{proof}
+
+\begin{exercise}{}{}
+设 $A,B \subset \mathbf{R}^n$, 且 $\bar{A} \cap B = \bar{B} \cap A = \emptyset$, 试证明存在开集 $G_A, G_B: G_A \cap G_B = \emptyset, G_A \supset A, G_B \supset B$.
+\end{exercise}
+
+\begin{proof}
+   任取 \(  x \in A  \),  由于 \(  \bar{B}\cap A= \varnothing  \), 我们有 \[
+   d\left( x, B \right)> 0 
+   \]  若不然, \(  d\left( x, \bar{B} \right)\le d\left( x,B \right)= 0    \implies x \in \bar{B}\)矛盾. 我们定义 \[
+   G_{A}\coloneqq \bigcup _{x \in A} B_{\frac{1 }{2 } d\left( x,B \right) }\left( x \right) 
+   \]   类似地, 对于任意的 \(  y \in B  \), 我们有 \(  d\left( y,A \right)> 0   \), 从而定义 \[
+   G_{B}\coloneqq \bigcup _{ y \in B} B_{\frac{1 }{2 }d\left( y,A \right)  }\left( y \right) 
+   \]  根据定义,  \(  G_{A}\supseteq A, G_{B}\supseteq B  \). 若存在 \(  z  \)使得 \(  z \in G_{A}\cap G_{B}  \), 则  \[
+   z \in \bigcup _{x\in A,y\in B} \left( B_{\frac{1 }{2 }d\left( x,B \right)  }\left( x \right)\cap B_{\frac{1 }{2 }d\left( y,A \right)  }\left( y \right)   \right) 
+   \]存在 \(  x \in A, y \in B  \)使得  \(  z \in B_{\frac{1 }{2 }d\left( x,B \right)  }\left( x \right)\cap  B_{\frac{1 }{2 }d\left( y,A \right)  }\left( y \right)    \)   \[
+  \begin{aligned}
+   d\left( x,y \right)\le d\left( x,z \right)+ d\left( y,z \right)&<  \frac{1 }{2 }d\left( x,B \right)+ \frac{1 }{2 }d\left( y,A \right)      \\ 
+    &\le \frac{1 }{2 }d\left( x,y \right)+ \frac{1 }{2 }d\left( x,y \right)\\ 
+     &= d\left( x,y \right)     
+  \end{aligned}  
+   \]从而 \(  d\left( x,y \right)< d\left( x,y \right)    \), 矛盾. 因此 \(  G_{A}\cap G_{B}= \varnothing  \).  
+\end{proof}
+\begin{exercise}{}{}
+设 $F_1, F_2, F_3$ 是 $\mathbf{R}^n$ 中三个互不相交的闭集, 试作 $f \in C(\mathbf{R}^n)$, 使得
+\begin{enumerate}
+\item[(i)] $0 \le f(x) \le 1$;
+\item[(ii)] $f(x)=0(x \in F_1), f(x)=1/2(x \in F_2), f(x)=1(x \in F_3)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+   \(  F_2\cup F_3  \)和 \(  F_1  \)是两个无交的闭集,    由Uryshon引理, 存在 \(  f_1\in C\left( \mathbb{R} ^{n} \right)   \), 使得 
+    \begin{enumerate}
+        \item \(  0\le f_1\left( x \right)\le 1   \) ;
+        \item \[
+        F_2\cup F_3= \left\{ x: f_1\left( x \right)= 1  \right\},\quad F_1= \left\{ x:f_1\left( x \right)= 0  \right\}
+        \]
+    \end{enumerate}
+
+    \(  F_1\cup F_2  \)和 \(  F_3  \)是两个无交的闭集,  再由Usyshon引理, 存在 \(  f_2\in C\left( \mathbb{R} ^{n} \right)   \), 使得
+    \begin{enumerate}
+        \item \(  0\le f_2\left( x \right)\le 1   \) ;
+        \item \[
+        F_1\cup F_2= \left\{ x:f_2\left( x \right)= 0  \right\},  \quad F_3= \left\{ x:f_2\left( x \right)= 1  \right\}
+        \]令 \(  f=\frac{1}{2} f_1+ \frac{1}{2}f_2  \), 则 \(  f  \)是连续函数, 并且 \[
+        f\left( x \right)= 0\left( x\in F_1 \right), \quad f\left( x \right)=    \frac{1}{2}\left( x\in F_2 \right),\quad f\left( x \right)= 1\left( x\in F_3 \right)  
+        \]  
+        
+    \end{enumerate}
+     
+     
+    
+        
+        另一种方法是直接考虑 函数 \[
+        f(x) = \frac{0 \cdot g_2(x)g_3(x) + \frac{1}{2} \cdot g_1(x)g_3(x) + 1 \cdot g_1(x)g_2(x)}{g_2(x)g_3(x) + g_1(x)g_3(x) + g_1(x)g_2(x)}
+        \]其中 \(  g_{i}\left( x \right)= d\left( x,F_{i} \right)    \). 由于三个集合互不相交, 上面的分式中分母恒非零. 因此 \(  f  \)是良定义的连续函数, 且满足性质(ii).  
+\end{proof}
+\begin{exercise}{}{}
+设 $A \subset \mathbb{R}^n$ 且 $m^*(A)=0$, 试证明对任意的 $B \subset \mathbb{R}^n$, 有
+\[
+m^*(A \cup B) = m^*(B) = m^*(B \setminus A).
+\]
+\end{exercise}
+
+\begin{proof}
+    任取 \(   \varepsilon > 0  \). 由 \(  m^{*}\left( A \right)   = 0\), 可知存在一列区间 \(  I_1,I_2,\cdots   \)使得 \[
+    A\subseteq \bigcup _{k= 1}^{\infty}I_{k},\quad \sum _{k= 1}^{\infty}\left| I_{k} \right|< m^{*}\left( A \right)+ \frac{ \varepsilon  }{2 }= \frac{ \varepsilon  }{2 }    
+    \]由 \(  m^{*}\left( B \right)   \)的定义, 存在一列区间 \(  I_1^{\prime} ,I_2^{\prime} ,\cdots   \) 使得 \[
+    B\subseteq \bigcup _{k= 1}^{\infty}I_{k}^{\prime} ,\quad \sum _{k= 1}^{\infty}\left| I_{k}^{\prime}  \right|< m^{*}\left( B \right)  +  \frac{ \varepsilon  }{2 } 
+    \]    于是考虑区间列 \(  J_1,J_2,\cdots   \), 按以下方式定义\[
+   J_{2k-1}= I_{k}, \quad J_{2k}= I_{k}^{\prime} ,\quad k= 1,2,\cdots 
+    \] 则我们有 \[
+    \left( A\cup B \right)\subseteq \bigcup _{k= 1}^{\infty}J_{k} ,\quad \sum _{k= 1}^{\infty}\left| J_{k} \right| = \sum _{k= 1}^{\infty}\left| I_{k} \right| + \sum _{k= 1}^{\infty}\left| I_{k}^{\prime}  \right|< m^{*}\left( B \right)+  \varepsilon   
+    \]由于 \(   \varepsilon   \)是任取的, 于是我们根据定义证明了 \[
+    m^{*}\left( A\cup B \right)\le m^{*}\left( B \right)  
+    \]由单调性我们有 \(  m^{*}\left( A\cup B \right)\ge m^{*}\left( B \right)    \), 因此 \(  m^{*}\left( A\cup B \right)= m^{*}\left( B \right)    \).  对于另一个等式, 只需要注意到 \(  B\subseteq \mathbb{R} ^{n}  \)是任取的, 我们用 \(  B\setminus A  \)代替 \(  B  \), 利用刚刚证明的结论 得到 \[
+    m^{*}\left( B \right)= m^{*}\left( \left( B\setminus A \right)  \cup A\right)= m^{*}\left( B\setminus A \right)   
+    \]      
+\end{proof}
+
+\begin{exercise}{}{}
+设 $E \subset \mathbf{R}^n$. 若对任意的 $x \in E$, 存在开球 $B(x, \delta_x)$, 使得 $m^*(E \cap B(x, \delta_x)) = 0$, 试证明 $m^*(E) = 0$.
+\end{exercise}
+
+
+\begin{proof}
+    注意到 \[
+    E\subseteq \bigcup _{x \in E} B\left( x, \delta _{x} \right) 
+    \]在 \(  E  \)的子空间拓扑下,  \(  \left\{E\cap  B\left( x, \delta _{x} \right)  \right\}_{x \in E}  \)构成  \(  E  \)的一个开覆盖. 注意到 \(  E  \)作为Lindel\"of空间 \(  \mathbb{R} ^{n}  \)的子空间    也是 Lindel\"of的.
+    
+    因此存在可数子覆盖 \(  \left\{ E\cap B\left( x_1, \delta _{x_1} \right),E\cap B\left( x_2, \delta _{x_2} \right),\cdots    \right\}  \) 使得 \[
+    E\subseteq \bigcup _{k= 1}^{\infty}\left( E\cap B\left( x_{k}, \delta _{x_{k}} \right)  \right) 
+    \]由外测度的可数次可加性, 我们有 \[
+    m^{*}\left( E \right)\le \sum _{k= 1}^{\infty}m^{*}\left( E\cap B\left( x_{k}, \delta _{x_{k}} \right)  \right)= 0  
+    \]
+\end{proof}
+
+\end{document}

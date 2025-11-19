@@ -1,0 +1,127 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{3}
+}{}
+
+\chapter{ Ch4-2 }
+代靖涵 25120222201319
+
+\begin{exercise}{}{11-16-2}
+    设 $\{f_k(x)\}$ 是 E 上的非负可测函数列. 若有
+\[
+\lim_{k \to \infty} f_k(x) = f(x), \quad f_k(x) \le f(x) \quad (x \in E; k = 1, 2, \dots),
+\]
+则对 E 的任一可测子集 e, 有
+\[
+\lim_{k \to \infty} \int_e f_k(x) \, dx = \int_e f(x) \, dx.
+\]
+\end{exercise}
+\begin{proof}
+    任取可测集 \(  e  \), 由Fatou's Lemma, \[
+    \int \liminf_{k\to \infty}\left( \chi _{e}f_{k} \right) \,\mathrm{d} \mu \le \liminf_{k\to \infty}\int \chi _{e}f_{k}\,\mathrm{d} \mu 
+    \] 即 \[
+    \int _{e}f\,\mathrm{d} \mu \le \liminf_{k\to \infty} \int_{e}f_{k}\,\mathrm{d} \mu 
+    \]另一方面, 由于 \(  f_{k}\le f  ,\forall k\in \mathbb{Z} _{> 0}\), 我们有 \[
+    \int_{e}f_{k}\,\mathrm{d} \mu \le \int_{e}f\,\mathrm{d} \mu ,\quad \forall k \in \mathbb{Z} _{> 0}
+    \] 两边关于 \(  k  \)取上极限, 得到 \[
+    \limsup_{k\to \infty}\int_{e}f_{k}\,\mathrm{d} \mu \le \int_{e}f\,\mathrm{d} \mu 
+    \] 综上, 我们有 \[
+    \int_{e}f\,\mathrm{d} \mu \le \liminf_{k\to \infty}\int_{e}f_{k}\,\mathrm{d} \mu \le \limsup_{k\to \infty}\int_{e}f_{k}\,\mathrm{d} \mu \le \int_{e}f\,\mathrm{d} \mu 
+    \]因此极限 \(  \lim_{k\to \infty}\int_{e}f_{k}\,\mathrm{d} \mu   \) 存在, 且 \[
+    \lim_{k\to \infty}\int_{e}f_{k}\,\mathrm{d} \mu = \int_{e}f\,\mathrm{d} \mu 
+    \]
+\end{proof}
+\begin{exercise}{}{}
+    设有定义在$[0,1]\times[0,1]$的二元函数:
+\[
+f(x,y) = \begin{cases} 1, & xy \text{ 为无理数}, \\ 2, & xy \text{ 为有理数}, \end{cases}
+\]
+则
+\[
+\iint_{[0,1]^2} f(x,y) \mathrm{d}x\mathrm{d}y = 1.
+\]
+\end{exercise}
+\begin{proof}
+     
+    设 \[
+    \mathbb{Q} = \left\{ q_1,q_2,\cdots  \right\}
+    \]令 \[
+    E_{k}= \left\{ \left( x,y \right)\in \left[ 0,1 \right]^{2}: xy=  q _{k}   \right\}
+    \]则 \(  E_{k}  \)是 2维Lebesgue-零测的, 进而 \[
+    E\coloneqq \bigcup _{k= 1}^{\infty}E_{k}= \left\{ \left( x,y \right)\in \left[ 0,1 \right]^{2}:xy\in \mathbb{Q}    \right\}
+    \]也是2维Lebesgue-零测的. 我们有 \[
+    f= \chi _{E}f+ \chi _{[0,1]^{2}\setminus E}f
+    \] \begin{equation}
+        \begin{aligned}
+              \iint_{[0,1]^{2}}f\left( x,y \right)\,\mathrm{d} x\,\mathrm{d} y&= \iint_{E}f\,\mathrm{d} x\,\mathrm{d} y + \iint_{[0,1]^{2}\setminus E}f\,\mathrm{d} x\,\mathrm{d} y\\ 
+               &= \iint_{E}2\,\mathrm{d} x\,\mathrm{d} y+ \iint_{[0,1]^{2}\setminus E}1\,\mathrm{d} x\,\mathrm{d} y\\ 
+                &= 2m\left( E \right)+ m\left( [0,1]^{2}\setminus E \right)\\ 
+                 &= m\left( [0,1]^{2} \right)+ m\left( E \right)\\ 
+                  &= 1+ 0= 1    
+        \end{aligned}
+    \end{equation}
+\end{proof}
+\begin{exercise}{}{}
+设 $f(x)$ 是 $E \subset \dfntxt{R}^n$ 上的非负可测函数. 若存在 $E_k \subset E$,
+\[
+m(E \setminus E_k) < 1/k \ (k=1,2,\dots),
+\]
+使得极限
+\[
+\lim_{k \to \infty} \int_{E_k} f(x) dx
+\]
+存在, 试证明 $f(x)$ 在 $E$ 上可积.
+\end{exercise}
+\begin{proof}
+任取简单函数 \(   \varphi   \)使得 \(  0\le  \varphi \le f  \). \(   \varphi   \)是有界的, 存在正整数 \(  N  \), 使得   \(   \varphi \le N  \). 对于任意的 \(  k\ge N  \), 我们有\begin{equation}
+    \begin{aligned}
+        \int _{E} \varphi \,\mathrm{d} x&= \int_{E_{k}} \varphi \,\mathrm{d} x+ \int_{E\setminus E_{k}} \varphi \,\mathrm{d} x\\ 
+         \\ 
+          &\le \int_{E_{k}}f\,\mathrm{d} x+ \mu \left( E\setminus E_{k} \right)N\\ 
+           &< \int_{E_{k}}f\,\mathrm{d} x+ 1
+    \end{aligned}
+\end{equation} 
+于是 \[
+\int_{E} \varphi \,\mathrm{d} x\le \lim_{k\to \infty}\int_{E_{k}}f\,\mathrm{d} x+ 1
+\]由于 \(   \varphi , 0\le  \varphi \le f  \)是任取的, 根据积分的定义 我们有 \[
+\int_{E}f\,\mathrm{d} x\le \lim_{k\to \infty}\int_{E_{k}}f\,\mathrm{d} x+ 1< \infty
+\]故 \(  f  \)在 \(  E  \)上可积.  
+\end{proof}
+\begin{exercise}{}{}
+设 $f(x)$ 是 $\dfntxt{R}$ 上非负可积函数, 令
+\[
+F(x) = \int_{(-\infty, x]} f(t) dt, \quad x \in \dfntxt{R}.
+\]
+若 $F \in L(\dfntxt{R})$, 试证明 $\int_{\dfntxt{R}} f(x) dx = 0.$
+\end{exercise}
+\begin{proof}
+ 易见 \(  F  \)是非负单调递增的. 极限 \(  \lim_{N\to \infty}F\left( N \right)   \)存在或等于\(  \infty  \). 若 \(  \lim_{N\to \infty}F\left( N \right)> 0   \) , 取 \(   \delta > 0  \)使得 \(  \lim_{N\to \infty}F\left( N \right)\ge   \delta    \). 则存在 \(  x_{N}  \), 使得 对于任意的 \(  x\ge  x_{N} \), 我们有 \(  F\left( x \right)\ge   \delta    \), 此时 \[
+ \int_{\mathbf{R}}F\,\mathrm{d} x\ge \mu \left( [x_{N},\infty] \right) \delta = \infty 
+ \]与 \(  F  \in L\left( \mathbf{R} \right) \)矛盾 . 因此 \(  \lim_{N\to \infty}F\left( N \right)= 0   \).          根据单调收敛定理, 我们有 \[
+ \int_{\mathbf{R}}f\left( x \right)\,\mathrm{d} x=\int_{\mathbf{R}}\lim_{N\to \infty}\chi _{\left\{ x\le N \right\}}f\,\mathrm{d} x = \lim_{N\to \infty}\int_{\mathbf{R}}\chi _{x\le N}f\,\mathrm{d} x= \lim_{N\to \infty}F\left( N \right)= 0 
+ \]
+\end{proof}
+
+\begin{exercise}{}
+设 $f \in L(\mathbf{R}^n), E \subset \mathbf{R}^n$ 是紧集, 试证明
+\[
+\lim_{|y| \to \infty} \int_{E+\{y\}} |f(x)| \, dx = 0.
+\]
+\end{exercise}
+
+\begin{proof}
+   任取 序列 \(  \left\{ y_{k} \right\}  \)使得 \(  \lim_{k\to \infty}\left| y_{k} \right|= \infty   \). 令 \(  g_{k}=  \chi _{E+ \left\{ y_{k} \right\}}\left| f \right|   \). 则 \[
+   \lim_{k\to \infty}g_{k}= 0\cdot \left| f \right|= 0 
+   \]  注意到 \(  g_{k}\le \left| f \right|   ,\forall k\),    \(  \left| f \right|   \)构成 \(  \left\{ g_{k} \right\}  \)的控制函数  . 由控制收敛定理 \[
+   \lim_{k\to \infty}\int_{E+ \left\{ y_{k} \right\}}\left| f \right|\,\mathrm{d} x= \lim_{k\to \infty}\int g_{k}\,\mathrm{d} x= \int \lim_{k\to \infty}g_{k}\,\mathrm{d} x= 0 
+   \]由 \(  \left\{ y_{k} \right\}  \)选取的任意性, 可得 \[
+   \lim_{\left| y \right|\to \infty }\int_{E+ \left\{ y \right\}}\left| f \right|\,\mathrm{d} x= 0 
+   \] 
+\end{proof}
+\end{document}

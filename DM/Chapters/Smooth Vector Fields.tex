@@ -1,0 +1,72 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Smooth Vector Fields }
+% 代靖涵 25120222201319
+
+\section{ Vector Fields on Manifold}
+\begin{definition}{}{}
+    If $M$ is a smooth manifold with or without boundary, a \dfntxt{vector field on $M$} is a section of the map $\pi : TM \to M$. More concretely, a vector field is a continuous map $X : M \to TM$, usually written $p \mapsto X_p$, with the property that
+\begin{equation}
+\pi \circ X = \text{Id}_M,
+\end{equation}
+or equivalently, $X_p \in T_p M$ for each $p \in M$.
+\end{definition}
+
+\begin{remark}
+   \begin{itemize}
+    \item For a  ``vector field'' that may be not contiuous, we call it \dfntxt{ rough vector field on \(  M  \) }.
+    \item  Under the canonical smooth structure of \(  M  \) and \(  TM  \) , we can define  the smoothness of \(  X  \). 
+   \end{itemize}
+   
+\end{remark}
+\begin{definition}{component functions of a vector field}{}
+    Suppose $M$ is a smooth $n$-manifold (with or without boundary). If $X: M \to TM$ is a rough vector field and $(U, (x^i))$ is any smooth coordinate chart for $M$, we can write the value of $X$ at any point $p \in U$ in terms of the coordinate basis vectors:
+\begin{equation}
+X_p = X^i(p) \frac{\partial}{\partial x^i}\bigg|_p .
+\end{equation}
+This defines $n$ functions $X^i: U \to \mathbb{R}$, called the \dfntxt{component functions of  \(  X  \) } in the given chart.
+\end{definition}
+
+\begin{proposition}{Smoothness Criterion for Vector Fields}{}
+Let $M$ be a smooth manifold with or without boundary, and let $X: M \to TM$ be a rough vector field. If $(U, (x^i))$ is any smooth coordinate chart on $M$, then the restriction of $X$ to $U$ is smooth if and only if its component functions with respect to this chart are smooth.
+\end{proposition}
+
+\begin{proposition}{}{}
+Let $M$ be a smooth manifold with or without boundary, and let $X : M \to TM$ be a rough vector field. The following are equivalent:
+\begin{enumerate}
+\item[(a)] $X$ is smooth.
+\item[(b)] For every $f \in C^\infty(M)$, the function $Xf$ is smooth on $M$.
+\item[(c)] For every open subset $U \subseteq M$ and every $f \in C^\infty(U)$, the function $Xf$ is smooth on $U$.
+\end{enumerate}
+\end{proposition}
+\begin{definition}{Vector Field as a Derivation}{}
+    A smooth vector field \(  X \in \mathfrak{X}\left( M \right)   \) defines a map  \[
+    \begin{aligned}
+    X:C^{\infty}\left( M \right) & \to C^{\infty}\left( M \right)\\ 
+     f & \mapsto  Xf   
+    \end{aligned}
+    \] which is linear over \(  \mathbb{R}   \) and following the product rule for vector fields \[
+    X\left( fg \right)= f Xg+ gXf 
+    \] We call this map a \dfntxt{Derivation on \(  C^{\infty}\left( M \right)   \) }.    
+\end{definition}
+
+\begin{proposition}{}{}
+Let $M$ be a smooth manifold with or without boundary. A map $D: C^{\infty}(M) \to C^{\infty}(M)$ is a derivation if and only if it is of the form $Df = Xf$ for some smooth vector field $X \in \mathfrak{X}(M)$.
+\end{proposition}
+\section{Lie Brackets}
+
+\begin{definition}{Lie Barckets}{}
+    The operator $[X, Y]: C^{\infty}(M) \to C^{\infty}(M)$, called the \dfntxt{Lie bracket} \dfntxt{of $X$ and $Y$}, defined by
+$$[X, Y]f = XYf - YXf.$$
+is a vector field.
+\end{definition}
+\end{document}

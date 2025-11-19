@@ -1,0 +1,122 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Test 1 2023 }
+% 代靖涵 25120222201319
+\begin{exercise}{}{}
+\begin{enumerate}
+    \item 证明 $\mathbb{R}^1$ 上所有开区间形成的集合基数为 $c$.
+    \item 证明 $\mathbb{R}^1$ 上所有开集形成的集合基数为 $c$, $\mathbb{R}^1$ 上所有闭集形成的集合基数也为 $c$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item 设 \(  \mathcal{S}  \)为 \(  \mathbb{R} ^{1}  \)上的开区间的全体, 考虑一个映射 \(   \varphi :\mathcal{S}\to \mathbb{R} ^{3}  \), \[
+         \varphi \left( \left( a,b \right)  \right)= \left( a,b,0 \right),\quad \forall a,b\in \mathbb{R}   
+        \]    \[
+         \varphi \left( \left( -\infty,a  \right) \right)= \left( 0, a,-1 \right),\quad \forall a \in \mathbb{R}   
+        \] \[
+         \varphi \left(\left(  a, \infty \right)  \right)= \left( a,0 ,1 \right) ,\quad \forall  a \in \mathbb{R}  
+        \]易见 \(   \varphi   \)是一个单射, 故 \[
+        \left| \mathbb{R} ^{1} \right|\le \left| \mathbb{R} ^{3} \right|= c^{3}= c  
+        \] 另一方面,  \[
+        a\mapsto  \left( -\infty,a \right),\quad a\in \mathbb{R}  
+        \]是 \(  \mathbb{R} ^{1}  \)到 \(  \mathcal{S}  \)的一个单射, 故 \[
+        \left| \mathbb{R} ^{1} \right|\ge \left| \mathbb{R} ^{1}\right|= c  
+        \]  由Schoner-Bernstein定理, \(  \left| \mathcal{S} \right|= c   \).
+        
+        \item 设 \(  \mathcal{S}  \)为\(  \mathbb{R} ^{1}  \)上的全体开集,    由于\(  \mathbb{R} ^{1}  \)上的任意开集都能写作之多可数多个无交开区间的并, 定义映射 \(   \varphi :   \mathcal{S}\to \mathbf{R} ^{\mathbb{N} }\),  对于开集\(  U= \bigcup _{k= 1}^{\infty} \left( a_{k}, b_{k} \right)  \), \(  a_{k},b_{k}\in \mathbf{R}= \left( \mathbb{R} \cup \left\{ -\infty,\infty \right\} \right)   \)  通过排序, 令 \[
+        a_1< b_1< a_2< b_2< \cdots 
+        \]由于这些开区间是无交的, 此时 \(  U  \)有唯一的表示. 我们定义 \[
+         \varphi \left( U \right)= \left( a_1,b_1, a_2,b_2,\cdots   \right)  
+        \]    若 \(  V  \)是有限多个无交开区间的并 \(  V= \bigcup _{k= 1}^{m}\left( a_{k},b_{k} \right)   \), 则定义 \[
+         \varphi \left( V \right)= \left( a_1,b_1, a_2,b_2,\cdots  a_{m},b_{m},0,0,\cdots \right)  
+        \]  易见 \(   \varphi   \)是一个单射. 故 \[
+        \left| \mathcal{S} \right|\le  \left| \mathbf{R}^{\mathbb{N} } \right|= \left| \mathbf{R} \right|^{\mathbb{N} }= \left| \mathbb{R}  \right|^{\mathbb{N} }= c^{\mathbb{N} }= c    
+        \] 另一方面,  \(  a\mapsto  \left( -\infty,a \right), \forall a \in \mathbb{R}    \)给出一个从 \(  \mathbb{R}   \)到 \(  \mathcal{S}  \)的单射, 故 \[
+        \left| \mathcal{S} \right|\ge \left| \mathbb{R}  \right|= c  
+        \]   有Schoner-Bernsetein定理, \(  \left| \mathcal{S} \right|= c   \). 
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+对任意 $\varepsilon > 0$, 构造 $\mathbb{R}^1$ 上的一个稠密开集使得它的长度小于 $\varepsilon$.
+\end{exercise}
+\begin{proof}
+  令 \[
+  I_{0}= \left[ \frac{1 }{3 },   \right] 
+  \]
+\end{proof}
+\begin{exercise}{}{}
+证明 $\mathbb{R}^1$ 中的闭集是 $G_\delta$ 集, 并用开区间可数运算表示 $[a, b]$.
+\end{exercise}
+\begin{proof}
+
+    任取闭集 \(  F  \), 定义 \[
+    F_{k}= \left\{ x \in \mathbb{R} : d\left( x,F \right)<  \frac{1 }{k }   \right\}
+    \] 由于 \(  d\left( \cdot ,F \right)   \) 是一个连续函数,  \(  F_{k}  \)是一个开集. 我们有 \[
+    F= \left\{ x: d\left( x,F \right)= 0  \right\}= \bigcap _{k= 1}^{\infty}F_{k}
+    \]是一个 \(  G_{ \delta }  \)集.  
+       \[
+       [a,b]= \bigcap _{k= 1}^{\infty}\left( a-\frac{1 }{k },b+ \frac{1 }{k }   \right) 
+       \]对于所有的 \(  a,b\in  \overline{\mathbb{R} }  \)成立(因为\(  -\infty-\frac{1 }{k }= -\infty, \infty+ \frac{1 }{k }= \infty    \) ). 
+\end{proof}
+\begin{exercise}{}{}
+设 $F \subset \mathbb{R}^n$ 为闭集, 试构造一列连续函数 $\{f_k\}_{k=1}^\infty$, 使得 $f_k(x) \to \chi_F(x), \forall x \in \mathbb{R}^n$.
+\end{exercise}
+\begin{solution}
+     定义 \[
+     f_{k}\left( x \right)= \frac{1 }{1+ k d\left( x,F \right)  }  
+     \] 对于 \(  x \in F  \), 则 \(  d\left( x,F \right)= 0   \), 我们有 \[
+     \lim_{k\to \infty}f_{k}\left( x \right)= 1
+     \]  对于 \(  x\not \in F  \), \(  d\left( x,F \right)> 0   \), 我们有 \[
+     \lim_{k\to \infty}f_{k}\left( x \right)= \lim_{k\to \infty}\frac{1 }{1+kd\left( x,F \right)  }= 0  
+     \]  故 \[
+     \lim_{k\to \infty}f= \chi _{F}
+     \]
+\end{solution}
+
+\begin{exercise}{}{}
+设 $E$ 为 Cantor 集在 $[0, 1]$ 中的补集的构成区间的中点形成的集合, 求 $E'$.
+\end{exercise}
+\begin{proof}
+    \[
+    C= \bigcap _{n = 1}^{\infty}\bigcup _{i= 1}^{2^{n}}I_{n, i}
+    \]任取 \(  x \in C  \), 对于任意的 \(  n  \), 存在 \(  I_{n, i_{n}}  \)使得 \[
+    x \in I_{n,i_{n}}
+    \]存在 \(  y_{n}\in E  \), 使得 \[
+    d\left( x,y_{n} \right)\le 2  \ell\left( I_{n, i_{n}} \right)= \frac{2 }{3^{n} }   
+    \] . 任取 \(  x\in \left( a,b \right)   \),     存在 \(  y_{n}  \), 使得 \(  d\left( x,y_{n} \right)= \frac{2 }{3^{n} }< \min \left\{ x-a, b-x \right\}    \) . 不妨设 \(  y_{n}> x  \), 则 \[
+    y_{n}-a\le d\left( x,y_{n} \right)+ \left( x-a \right)< b-x+ x-a= b-a  
+    \]故 \(  y_{n}\in \left( a,b \right)   \), 从而 \( \left( a,b \right)\setminus \left\{ x \right\}\cap E= n\varnothing   \), 这表明 \[
+    C\subseteq E^{\prime} 
+    \]   若 \(  x\not \in C  \), 设 \(  x  \)位于某个被移除的开区间 \(  J_{k}  \). \(  J_{k}\cap E= \left\{ m_{k} \right\}  \) 
+    \begin{enumerate}
+        \item 若 \(  x= m_{k}  \) , 则 \[
+        \left( J_{k}\setminus \left\{ x \right\} \right)\cap E= \varnothing 
+        \]\(  x  \not \in E^{\prime} \)
+        \item 若 \(  x\neq m_{k}  \), 则 存在 \(   \delta   \)使得 \(  \left( x- \delta ,x+  \delta  \right)\subseteq J_{k}   \), \(  m_{k}\not \in \left( x- \delta ,x+  \delta  \right)   \),     也有 \(  \left( x- \delta ,x+  \delta  \right)\setminus \left\{ x \right\} \cap E= \varnothing   \) . \(  x\not \in E^{\prime}   \) .
+    \end{enumerate}
+      
+\end{proof}
+\begin{exercise}{}{}
+设 $F_1, F_2, F_3, F_4$ 为 $\mathbb{R}^n$ 中四个互不相交的闭集, 构造连续函数 $f$, 使得
+\begin{itemize}
+    \item $0 \le f \le 1$
+    \item $f(x) = 0, x \in F_1; f(x) = \frac{1}{2}, x \in F_2; f(x) = \frac{1}{2}, x \in F_3; f(x) = 1, x \in F_4$.
+\end{itemize}
+\end{exercise}
+\begin{proof}
+  \[
+  f\left( x \right)= \frac{\frac{1}{2}d\left( x,F_1 \right)d\left( x,F_2 \right)d\left( x,F_3 \right)    }{ }  
+  \]
+\end{proof}
+\end{document}

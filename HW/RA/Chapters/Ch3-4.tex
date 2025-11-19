@@ -1,0 +1,27 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{2}
+}{}
+
+\chapter{ Ch3-4 }
+ 代靖涵 25120222201319
+
+\begin{exercise}{}{}
+    设有定义在可测集 $E \subset \mathbb{R}^n$ 上的函数 $f(x)$, 且对任给的 $\delta > 0$, 存在 $E$ 中的闭集 $F$, $m(E \backslash F) < \delta$, 使得 $f(x)$ 在 $F$ 上连续, 证明 $f(x)$ 是 $E$ 上的可测函数.
+\end{exercise}
+\begin{proof}
+     任取 \(  k \in \mathbb{Z} _{> 0}  \), 存在 \(  E  \)上的闭集 \(  F_{k}  \), 使得 \(  m\left( E\setminus F_{k} \right)< \frac{1 }{k }    \)    , \(  f  \)在 \(  F_{k}  \)上连续. 令 \(  F= \bigcup _{k= 1}^{\infty} F_{k}\). 任取 \(  \mathbf{R}  \)闭集 \(  V  \),     我们有 \(  f^{-1} \left( V \right)\cap F_{k}   \)是 闭集  ,  于是 \[
+     f^{-1} \left( V \right)\cap F= \bigcup _{k= 1}^{\infty}\left( f^{-1} \left( V \right)\cap F_{k}  \right)
+     \]是一个 \(  F_{ \sigma }  \)集, 故为可测的. 另一方面,  \[
+     m\left( E\setminus F \right)= m\left( \bigcap _{k= 1}^{\infty}E\setminus F_{k} \right)< \frac{1 }{j}, \forall j\in \mathbb{Z} _{> 0}\implies  m\left( E\setminus F \right)= 0    
+     \] 进而 \(  f^{-1} \left( V \right)\cap \left( E\setminus F \right)    \)也是一个零测集, 它是可测的. 我们有 \[
+     f^{-1} \left( V \right)= \left( f^{-1} \left( V \right)\cap F  \right)\cup \left( f^{-1} \left( V \right)\cap \left( E\setminus F \right)   \right)   
+     \] 是一个可测集. 这表明 \(  f  \)是 \(  E  \)上的可测函数.  
+\end{proof}
+\end{document}

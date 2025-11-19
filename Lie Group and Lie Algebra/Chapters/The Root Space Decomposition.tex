@@ -1,0 +1,253 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ The Root Space Decomposition }
+% 代靖涵 25120222201319
+\section{Preliminary Results}
+
+\begin{proposition}{}{}
+    Supposet that \(  L  \) is a complex semisimple Lie algebra containing an abelian subalgebra \(  H  \) consisting of semisiple elements. 
+    
+    For each \(  \alpha  \in H^{*}  \), let \[
+    L_{\alpha }\coloneqq \left\{ x \in L: \left[ h,x \right]= \alpha \left( h \right)x,\quad \forall h\in H   \right\}
+    \] 
+    
+    Let $\Phi$ denote the set of non-zero $\alpha \in L^*$ for which $L_\alpha$ is non-zero. We can write the decomposition of $L$ into weight spaces for $H$ as
+\begin{equation}
+L = L_0 \oplus \bigoplus_{\alpha \in \Phi} L_\alpha. \tag{\(\star\)}
+\end{equation}
+Since $L$ is finite-dimensional, this implies that $\Phi$ is finite.
+
+\end{proposition}
+
+\begin{lemma}{}{}
+    Suppose \(  \alpha , \beta \in H^{*}  \), then
+    \begin{enumerate}
+        \item \(  \left[ L_{\alpha },L_{\beta } \right]= L_{\alpha + \beta }   \)
+        \item If \(  \alpha + \beta \neq 0  \), then \(   \kappa \left( L_{\alpha },L_{\beta } \right)= 0   \).
+        \item The restrition of \(   \kappa   \) to \(  L_0  \) is non-degenerate.     
+    \end{enumerate}
+     
+\end{lemma}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Take \(  x\in L_{\alpha }, y \in L_{\beta }  \), then \[
+        \begin{aligned}
+        \left[ h,\left[ x,y \right]  \right]&= -\left[ y,\left[ h,x \right]  \right]-\left[ x,\left[ y,h \right]  \right]\\ 
+            &= -\left[ y, \alpha  x \right] -\left[ x, -\beta y \right]\\ 
+             &=  \left( \alpha + \beta  \right) [x,y]
+        \end{aligned}   
+        \]
+        \item If \(  \alpha + \beta \neq 0  \), then \( \alpha + \beta \neq 0   \).  Take \(  x \in L_{\alpha }, y \in L_{\beta }  \) \[
+      \begin{aligned}
+        \alpha \left( h \right)  \kappa \left( x,y \right)&=  \kappa \left( \alpha \left( h \right)x,y  \right)\\ 
+         &=  \kappa \left( \left[ h,x \right],y  \right)\\ 
+          &=  - \kappa \left( \left[ x,h \right],y  \right)\\ 
+           &= - \kappa \left( x,\left[ h.y \right]  \right)\\ 
+            &= - \kappa \left( x, \beta \left( h \right)y  \right)\\ 
+             &= -\beta \left( h \right) \kappa \left( x,y \right)     
+      \end{aligned}   
+        \] Thus  \[
+        \left( \alpha \left( h \right)+ \beta \left( h \right)   \right) \kappa \left( x,y \right)= 0  
+        \]Then it follows that \(   \kappa \left( x,y \right)= 0  \) since \(  \alpha \left( h \right)+ \beta \left( h \right)\neq 0     \)  
+        \item Suppose that \(  z \in L_0  \), \(   \kappa \left( z,x_0 \right)= 0   \) for all \(  x_0 \in L_0  \). From 2.,for each \(  \alpha \neq 0  \), we have \(   \kappa \left( z, x_{\alpha } \right)= 0   \) for all \(  x_{\alpha }\in L_{\alpha }  \). Then for each element of       \(  x  \), we write \[
+        x= x_0+ \sum _{\alpha  \in \Phi }x_{\alpha }
+        \]there is \[
+         \kappa \left( z,x \right)=  \kappa \left( z,x_0 \right)+ \sum _{\alpha \in \Phi } \kappa \left( z,x_{\alpha } \right)   = 0
+        \] Since \(  L  \) is semisimple, \(   \kappa   \) is non-degenerate(Cartan second Cretria). It follows that \(  z= 0  \).   
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{exercise}{}{}
+    Show that if \(  x \in L_{\alpha }  \), where \(  \alpha \neq 0  \), then \(  \operatorname{ad}_{x}  \) is nilpotent.   
+\end{exercise}
+
+\begin{proof}
+ 
+
+   Suppose that \(  \Phi = \left\{ \alpha _0 \coloneqq \alpha , \alpha _1 ,\cdots ,\alpha _{k} \right\}  \), then for each \(  j= 0, 1,\cdots,k   \), since \(  \alpha _{j}\neq 0  \) , there exists \(  m_{j}\in \mathbb{Z} _{> 0}  \) such that \(  \alpha _{j}+ m_{j}\alpha   \) is different from any element of \(  \Phi \cup \left\{ 0 \right\}  \). Then \[
+   \left( \operatorname{ad}_{x} \right)^{m_{j}}\left( x_{\alpha _{j}} \right)= 0, \quad \forall j = 0, 1,\cdots,k ,  \quad \forall x_{\alpha _{j}}\in L_{\alpha _{j}}  
+   \]      Further more,  \[
+   \left( \operatorname{ad}_{x} \right)^{m_{0}+ 1}\left( x_0 \right)= \left( \operatorname{ad}_{x} \right)^{m_0}   \left( \left[ x,x_0 \right]  \right)= 0, \quad \forall x_0 \in L_{0} 
+   \]since \(  [x,x_0]\in L_{\alpha }  \). Set \(  N= \max \left\{ m_0+ 1,m_1,\cdots ,m_{k} \right\}  \). Then \[
+   \left( \operatorname{ad}_{x} \right)^{N}\left( L \right)= \left( \operatorname{ad}_{x} \right)^{N}\left( L_0+ \oplus _{\alpha _{j}\in \Phi  }L_{\alpha _{j}} \right)= 0    
+   \]   
+\(  \operatorname{ad}_{x}  \) is nilpotent .
+\end{proof}
+\begin{remark}
+If $H$ is small, then the decomposition $(\star)$ is likely to be rather coarse, with few non-zero weight spaces other than $L_0$. Furthermore, if $H$ is properly contained in $L_0$, then we get little information about how the elements in $L_0$ that are not in $H$ act on $L$. This is illustrated by the following exercise.
+\end{remark}
+\begin{exercise}{}{}
+Let $L = \operatorname{sl}(n, \mathbb{C})$, where $n \ge 2$, and let $H = \operatorname{Span}\{h\}$, where $h = e_{11}-e_{22}$. Find $L_0 = C_L(H)$, and determine the direct sum decomposition $(\star)$ with respect to $H$.
+\end{exercise}
+\begin{solution}
+   Take \(  x\in \mathfrak{sl}\left( n,\mathbb{C}  \right)   \), suppose \(  x=\sum _{i\neq j,\text{and }i, j\neq 1,2}x^{ij}x_{ij}+  x^{12}e_{12}+ x^{21}e_{21} + y^{k}\sum _{k= 2}^{n}\left( e_{11}-e_{kk} \right)  \) .  For each \(  1\le i\neq j\le  n  \) 
+   If \(  i,j \neq 1,2  \), then \[
+   \left[ e_{11},e_{ij} \right]= e_{11}e_{ij}-e_{ij}e_{11}= 0 
+   \] \[
+   \left[ e_{22},e_{ij} \right]= e_{22}e_{ij}-e_{22}e_{ij}= 0 
+   \] \[
+   [h,x^{12}e_{12}]= x^{12}\left[ h,e_{12} \right]= x^{12}\left( e_{11}e_{12}-e_{12}e_{11}-e_{22}e_{12}+ e_{12}e_{22} \right)  = 2x^{12}e_{12}
+   \] \[
+   \left[ h, x^{21}e_{21} \right]= x^{21}\left[ h,e_{21} \right]= x^{21}\left( e_{11}e_{21}-e_{21}e_{11}-e_{22}e_{21}+ e_{21}e_{22} \right)   =- 2x^{21}e_{21}
+   \] \[
+   \left[ h, e_{11}-e_{kk} \right]= [e_{22},e_{kk}]= 0 
+   \]Then \(  x \in L_0\iff x^{12}= x^{21}   \).  \[
+   L_0= \operatorname{span}\left( \left\{ e_{ij}, i\neq j, \text{and } i,j\neq 1,2 \right\}\cup \left\{ e_{12}-e_{21} \right\}\cup \left\{ e_{11}-e_{kk}: k= 2,3,\cdots ,n \right\} \right) 
+   \]
+\end{solution}
+
+\section{Cartan Subalgebras}
+
+\begin{definition}{}{}
+A Lie subalgebra $H$ of a Lie algebra $L$ is said to be a \dfntxt{Cartan subalgebra} (or CSA) if $H$ is abelian and every element $h \in H$ is semisimple, and moreover $H$ is maximal with these properties.
+\end{definition}
+
+\begin{lemma}{}{}
+Let $H$ be a Cartan subalgebra of $L$. Suppose that $h \in H$ is such that the dimension of $C_L(h)$ is minimal. Then every $s \in H$ is central in $C_L(h)$, and so $C_L(h) \subseteq C_L(s)$. Hence $C_L(h) = C_L(H)$.
+\end{lemma}
+
+\begin{theorem}{}{}
+If $H$ is a Cartan subalgebra of $L$ and $h \in H$ is such that $C_L(h) = C_L(H)$, then $C_L(h) = H$. Hence $H$ is self-centralising.
+\end{theorem}
+
+\section{Definition of the Root Space Decomposition}
+
+
+\begin{definition}{}{}
+    Let $H$ be a Cartan subalgebra of our semisimple Lie algebra $L$. As $H = C_L(H)$, the direct sum decomposition of $L$ into weight spaces for $H$ considered in $\S 10.1$ may be written as
+\[
+L = H \oplus \bigoplus_{\alpha \in \Phi} L_\alpha,
+\]
+where $\Phi$ is the set of $\alpha \in H^*$ such that $\alpha \neq 0$ and $L_\alpha \neq 0$. Since $L$ is finite-dimensional, $\Phi$ is finite.
+\begin{itemize}
+    \item 
+If $\alpha \in \Phi$, then we say that $\alpha$ is a \dfntxt{root} of $L$ and $L_\alpha$ is the associated \dfntxt{root space}. 
+\item The direct sum decomposition above is the \dfntxt{root space decomposition}. 
+\end{itemize}
+
+\end{definition}
+
+\begin{remark}
+    It should be noted that the roots and root spaces depend on the choice of Cartan subalgebra $H$.
+\end{remark}
+
+
+\begin{lemma}{}{}
+    Let \(  x,y:V\to V  \) be a linear maps from a complex vector space \(  V  \) to itself. Suppose that \(  x  \) and \(  y  \) both commute with \(  \left[ x,y \right]   \). Then \(  \left[ x,y \right]   \) is a nilpotent map.      
+\end{lemma}
+\begin{proof}
+    Let \(  S= \operatorname{span}\left\{ x,y \right\}  \), then \[
+    S^{\prime} = \operatorname{span}\left\{ [x,y] \right\}
+    \] commuts with all element of \(  S  \), that is \(  [S^{\prime} ,S]= 0  \), it follows that \(  S  \) is nilpotent, thus it is solvable. From Lie's theorem, there is a basis of \(  V  \) in which \(  x,y  \) is represented upper triangular. Let \(  L_{i}= \operatorname{span}\left\{  e_1,\cdots,e_i  \right\}  \), then \(  L_{i}  \) is \(  x  \)-invariant and \(  y  \)-invariant, \(  i=  1,\cdots,n   \)    . There is \(  x^{ii}   \) , \(  y_{ii}  \), \(  i=  1,\cdots,n   \)  such that   \[
+    x\left( e_{i} \right)+ L_{i-1}= x^{ii}e_{i},\quad y\left( e_{i} \right)+ L_{i-1}=  y^{ii}e_{i}. 
+    \]     Then \[
+    [x,y]\left( e_{i} \right)+ L_{i-1}= x^{ii}y^{ii}e_{i}-y^{ii}x^{ii}e_{i}+ L_{i-1}= 0+ L_{i-1} 
+    \] Thus \(  \left[ x,y \right]\left( e_{i} \right)\in L_{i-1}    \). Thus \(  \left[ x,y \right]   \) is nilpotent. 
+\end{proof}
+\begin{lemma}{}{}
+Suppose that $\alpha \in \Phi$ and that $x$ is a non-zero element in $L_{\alpha}$. Then $-\alpha$ is a root and there exists $y \in L_{-\alpha}$ such that $\operatorname{Span}\{x, y, [x, y]\}$ is a Lie subalgebra of $L$ isomorphic to $\operatorname{sl}(2, \mathbb{C})$.
+\end{lemma}
+
+\begin{proof}
+    \(   \kappa   \) is non-degenerate, there exists \(  w = y_0+ \sum _{\beta  \in \Phi }y_{\beta }  \) such that \(   \kappa \left( x,w \right)\neq 0   \). But for each \(  \beta \neq \alpha   \), \(   \kappa \left( x,y_{\beta } \right)= 0   \), there must be \(  -\alpha \in \Phi   \), \(   \kappa \left( x,y_{- \alpha } \right)=  \kappa \left( x,w \right)\neq 0    \). We take \(  y= y_{-\alpha }  \).  Since \(  \alpha \neq 0  \), there exists \(  t\in H  \) such that \(  \alpha \left( t \right)  \neq 0 \). Then \[
+     \kappa \left( t,[x,y] \right)=  \kappa \left( [t,x],y \right)= \alpha \left( t \right) \kappa \left( x,y \right)\neq 0    
+    \]   thus \(  [x,y]  \neq 0\). 
+
+    Let \(  S\coloneqq \operatorname{span}\left\{ x,y,[x,y] \right\}  \), \(  \left[ x,y \right]   \) lies in \(  L_0= H  \). As \(  x  \) and \(  y  \) are simultaneuous eigenvectors for all elements of \(  \operatorname{ad}H  \), and so in particular for \(  \operatorname{ad}[x,y]  \), this shows that \(  S  \) is a Lie subalgebra of \(  L  \). It remains to show that \(  S  \) is isomorphic to \(  \mathfrak{sl}\left( 2,\mathbb{C}  \right)   \)   .
+    
+    
+    Let \(  h\coloneqq \left[ x,y \right]\in S   \). We claim that \(  \alpha \left( h \right)\neq 0   \). If not , then \(  \left[ h,x \right]= \alpha \left( h \right)x= 0    \); similarly \(  \left[ x,y \right]= -\alpha \left( h \right)x= 0    \), so \(  \operatorname{ad}h:L\to L  \) commutes     with \(  \operatorname{ad}x  \) and \(  \operatorname{ad}y  \) , thus is nilpotent. The other hand, because \(  H  \) is a Cartan subslagebra, \(  h  \) is semisimple  . But the only element of \(  L  \) that is both semisimple and nilpotent is \(  0  \), so \(  h= 0  \), a contradiction.
+    
+    Thus \(  S  \) is a 3-dimensional complex Lie algebra with \(  S^{\prime} = S  \). \(  S  \) is isomorphic to \(  \mathfrak{sl}\left( 2,\mathbb{C}  \right)   \).    
+\end{proof}
+
+\begin{exercise}{}{}
+    Show that for each \(  \alpha \in \Phi   \) , \(  S_{\alpha }  \)  has a basis \(  \left\{ e_{\alpha },f_{\alpha },h_{\alpha } \right\}  \) such that 
+    \begin{enumerate}
+        \item \(  e_{\alpha }\in L_{\alpha }, f_{\alpha }\in L_{-\alpha },h_{\alpha }\in H  \) and \(   \alpha \left( h_{\alpha } \right)= 2   \).
+        \item The map \(   \theta :S_{\alpha }\to \mathfrak{sl}\left( 2,\mathbb{C}  \right)   \), defined by \(   \theta \left( e_{\alpha } \right)= e   \), \(   \theta \left( f_{\alpha } \right)= f   \), \(   \theta \left( h_{\alpha } \right)= h   \) is a Lie algebra isomorphism.      
+    \end{enumerate}
+       
+\end{exercise}
+\begin{proof}
+    Let \(  x\in L_{\alpha }  \). Since \(   \kappa   \) is non-degenerate, there exists \(  w= y_0+ \sum _{\alpha \in \Phi }y_{\alpha }  \) such that \(   \kappa \left( x,w \right)\neq 0   \), then  \[
+     \kappa \left( x,w \right)=  \kappa \left( x, y_0+ \sum _{\alpha \in \Phi }y_{\alpha } \right)=  \kappa \left( x, y_{-\alpha } \right)   \neq 0
+    \]  Denote \(  y= y_{-\alpha }  \). 
+    
+  \(  [x,y]\in L_{\alpha + \left( -\alpha  \right) }= L_0= H  \).  Take \(  h= \left[ x,y \right]   \). \(  h\left( x \right)= \alpha \left( h \right)x    \) \[
+   \kappa \left( h\left( x \right),y  \right)= \alpha \left( h \right) \kappa \left( x,y \right)\neq 0   
+  \]  Then \(  \alpha \left( h \right)\neq 0   \). Take \(  e_{\alpha }= x  \), \(  f_{\alpha }= \frac{2 }{\alpha \left( h \right)  }   y\). \(  h_{\alpha }= [e_{\alpha },f_{\alpha }]\). Then \[
+  h_{\alpha }\left( e_{\alpha } \right)= \frac{2 }{\alpha \left( h \right)  }h\left( x \right)= 2x= 2e_{\alpha }   
+  \]   Let \(  S_{\alpha }= \operatorname{span}\left\{ e_{\alpha },f_{\alpha },h_{\alpha } \right\}  \). Then \(  S^{\prime}_{\alpha } = S _{\alpha } \). \(  S  \) is isomorphic to    \(  \mathfrak{sl}\left( 2,\mathbb{C}  \right)   \). 
+
+  \[
+  [e_{\alpha },f_{\alpha }]= h_{\alpha },\quad [h_{\alpha },e_{\alpha }]= 2e_{\alpha },\quad [h_{\alpha },f_{\alpha }]= 2f_{\alpha }
+  \]
+\end{proof}
+
+\section{Root Strings and Eigenvalues}
+
+\begin{lemma}{}{}
+    Given \(  h \in H  \), let \(   \theta _{h}  \) denote the map \(   \theta _{h}\in H^{*}  \) defined by \[
+     \theta _{h}\left( k \right)=  \kappa \left( h,k \right),\quad \forall k \in H  
+    \]   
+ Then it is a isomorphism since \(   \kappa |_{H}  \) is non-degenerate. 
+    In particular , for \(  \alpha \in H^{*}  \), there is a unique element \(  t_{\alpha }\in H  \) such that  \[
+     \kappa \left( t_{\alpha },k \right)= \alpha \left( k \right),\quad \forall k\in H  
+    \]  
+\end{lemma}
+
+\begin{lemma}{}{}
+    Let \(  \alpha \in \Phi   \). If \(  x \in L_{\alpha }  \), \(  y\in L_{-\alpha }  \), then \(  \left[ x,y \right]=  \kappa \left( x,y \right)t_{\alpha }    \). In particular \(  h_{\alpha }= \left[ e_{\alpha },f_{\alpha } \right]\in \operatorname{span}\left\{ t_{\alpha } \right\}   \).     
+\end{lemma}
+
+\begin{proof}
+    For \(  h \in H  \), we have \[
+     \kappa \left( h,\left[ x,y \right]  \right)= \alpha \left( h \right) \kappa \left( x,y \right)=  \kappa \left( t_{\alpha },h \right) \kappa \left( x,y \right)  =  \kappa \left( h,  \kappa \left( x,y \right)t_{\alpha }  \right)    
+    \] This shows that \(  \left[ x,y \right]- \kappa \left( x,y \right)t_{\alpha } \in H^{\perp}= 0    \) . Thus \(  \left[ x,y \right]=  \kappa \left( x,y \right)t_{\alpha }    \) 
+\end{proof}
+
+\begin{definition}{}{}
+    Let \(  \alpha   \) be a root. We may regard \(  L  \) as an \(  \mathfrak{sl}\left(  \alpha  \right)   \)-modul via restriction of the adjoint representation. Thus if \(  \alpha \in \mathfrak{sl}\left( \alpha  \right)   \) and \(  y \in L  \), then the action is given by \[
+    a\cdot y= \left( \operatorname{ad}a \right)\left( y \right)= \left[ a,y \right]   
+    \]     
+\end{definition}
+
+\begin{remark}
+    \begin{itemize}
+        \item The \(  \mathfrak{sl}\left(  \alpha  \right)   \)-submodules of \(  L  \) are precisely the vector subspaces \(  M  \) of \(  L  \) such that \(  [s,m]\in M  \) for all \(  s \in \mathfrak{sl}\left( \alpha  \right)   \) and \(  m \in M  \).       
+    \end{itemize}
+    
+\end{remark}
+
+\begin{lemma}{}{}
+    If \(  M  \) is a \(  \mathfrak{sl}\left( \alpha  \right)   \)-submodule of \(  L  \), then the eigenvalues of \(  h_{\alpha }  \) acting on \(  M  \) are intergers.     
+\end{lemma}
+
+\begin{proof}
+    Since \(  M  \) is finite-dimensional, by Wely's Theorem, \(  M  \) may be decomposed into a direct sum of irreducible \(  \mathfrak{sl}\left( \alpha  \right)   \)  -modules; for irreducible \(  \mathfrak{sl}\left( 2,\mathbb{C}  \right)   \)-modules, the eigenvalues of \(  h  \) acting on \(  M  \) are integers. The the lemma follows from the isomorphism between \(  \mathfrak{sl}\left( \alpha  \right)   \) and \(  \mathfrak{sl}\left( 2,\mathbb{C}  \right)   \).     
+\end{proof}
+
+\begin{definition}{}{}
+    If \(  \beta \in \Phi   \) or \(  \beta = 0  \), let \[
+    M\coloneqq \oplus _{c}L_{\beta + c\alpha }
+    \]where the sum is over all \(  c \in \mathbb{C}   \) such that \(  \beta + c\alpha \in \Phi   \).  \(  M  \) is an \(  \mathfrak{sl}\left( \alpha  \right)   \)-submodule of \(  L  \). THis module is said to be the \dfntxt{\(  \alpha   \)-root string through m\(  \beta   \)  }.       
+\end{definition}
+\begin{proof}
+    For each \(  c_1,c_2\in \mathbb{C}   \). If \(  \beta \neq 0  \), then  \(  \left[ L_{\beta + c_1\alpha },L_{\beta + c_2\alpha } \right]\in L_{\beta + \left( \beta ^{-1} \alpha + c_1+ c_2 \right)\alpha  }   \) . If \(  \beta = 0  \), then \(  \left[ L_{\beta + c_1\alpha },L_{\beta + c_2\alpha } \right]\in L_{\beta + \left( c_1+ c_2 \right)\alpha  }   \)   
+\end{proof}
+\begin{proposition}{}{}
+    Let \(  \alpha \in \Phi   \). The root spaces \(  L_{\pm \alpha }  \) are \(  1  \)-dimensional. Moreover, the only multiples of \(  \alpha   \) which lie in \(  \Phi   \) are \(  \pm \alpha   \).      
+\end{proposition}
+\end{document} 

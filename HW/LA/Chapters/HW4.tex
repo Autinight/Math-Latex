@@ -1,0 +1,142 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{3}
+}{}
+
+\chapter{ HW4 }
+代靖涵 25120222201319
+
+
+
+
+In the following, let $\mathbb{F}$ be a field, which satisfies char$\mathbb{F} = 0$ and $\overline{\mathbb{F}} = \mathbb{F}$ in Exercises 3 and 4.
+
+\begin{exercise}{}{10-30-2}
+Let $L$ be a nilpotent Lie algebra over $\mathbb{F}$. Prove that the Killing form of $L$ is identically zero.
+\end{exercise}
+\begin{proof}
+    From Engel's Theorem, there is a basis of  \(  L  \) , say \(  \left\{  e_1,\cdots,e_n  \right\}  \),  in which every element of \(  \mathfrak{gl}\left( L \right)   \) is represented strictly upper triangular. For each \(  x ,y \in L  \)   
+\end{proof}
+\begin{proof}
+\(  \operatorname{ad}\left( L \right)   \)  is a Lie subalgebra of \(  \mathfrak{gl}\left( L \right)   \) in which every element is nilpotent. It follows from Engel's Theorem that  there is a basis \(  \left\{ e_1,\cdots ,e_{n} \right\}  \)   of \(  L  \) in which  every element of \(  \operatorname{ad}\left( L \right)   \) is represented by a strictly upper triangular matrix. Take any \(  x,y \in L  \). Suppose \(  \operatorname{ad}\left( x \right)   , \operatorname{ad}\left( y \right) \) are represented by  strictly upper triangular matrix \(  A= \left( a_{ij} \right), B= \left( b_{ij} \right)    \) respectively. Then for each \(  i\ge  k  \), we have \(  a_{ik}= 0  \), and for each \(  i \le k \),  \(  b_{ki}= 0  \), thus \[
+ \kappa \left( x,y \right)= \operatorname{tr}\left( AB \right)=\sum _{i= 1}^{n} \sum _{k= 1}^{n}a_{ik}b_{ki}  = 0
+\]    The Killing form of \(  L  \) is identically zero since \(  x,y  \) are arbitrary . 
+\end{proof}
+\begin{exercise}{}{}
+Classify the 2-dimensional Lie algebras over $\mathbb{F}$, and compute their Killing form.
+\end{exercise}
+
+\begin{proof}
+\begin{itemize}
+    \item The first kind of 2-dimensional Lie algebra over \(  \mathbb{F}  \) consists of ableian Lie algebras, which are unique in the meaning of  Lie isomorphism. Since they are specifically nilpotent, it follows from Exercise \ref{ex:10-30-2} that their Killing form are identically zero.
+    \item Now suppose \(  L  \) is a non-abelian Lie algebra of dimension 2 over the field \(  \mathbb{F}  \).  The derived algebra of \(  L  \)  cannot be more than 1-dimension since \(  \left\{ x,y \right\}  \) is a basis of \(  L  \) , and \(  L^{\prime}   \) is spanned by \(  \left[ x,y \right]   \). The other hand, \(  L^{\prime}   \) is nonzero otherwise \(  L  \) is abelian.      Therefore \(  L^{\prime}   \) must be 1-dimensional. Take a non-zero element \(  x \in L^{\prime}   \) and extend it to a basis \(  \left\{ x, \tilde{y} \right\}  \) of \(  L  \). Then \(  \left[ x, \tilde{y} \right]\in L^{\prime}    \) and is nonzero. There is a nonzero scalar \(  \alpha \in F  \) such that \(  \left[ x, \tilde{y} \right]= \alpha x   \)     . By replacing \(  \tilde{y}  \) by \(  y\coloneqq \alpha ^{-1} \tilde{y}  \), we get \[
+    \left[ x,y \right]= x 
+    \]  
+    The above shows that every 2-dimensional non-abelian Lie algebra is isomorphic to the Lie algebra defined by \(  \left[ x,y \right]= x   \).  To caculate the Killing form, \[
+    \operatorname{ad}_{x}\left( x \right)= 0, \quad \operatorname{ad}_{x}\left( y \right)= x  
+    \] The \(  \mathrm{ad}_{x}  \) is represented by \[
+    \begin{pmatrix} 
+        0&1\\ 
+         0&0 
+    \end{pmatrix} 
+    \] And \[
+    \operatorname{ad}_{y}\left( x \right)= -x,\quad \operatorname{ad}_{y}\left( y \right)= 0  
+    \]The \(  \operatorname{ad}_{y}  \) is represented by \[
+    \begin{pmatrix} 
+        -1&0\\ 
+         0&0 
+    \end{pmatrix} 
+    \]  It is straightforward to check that \[
+     \kappa \left( x,x\right)= 0,\quad  \kappa \left( y,y \right)= 1,\quad  \kappa \left( x,y \right)= 0   
+    \]Thus \(   \kappa   \) is represented by \[
+    \begin{pmatrix} 
+        0&0\\ 
+         0&1 
+    \end{pmatrix} 
+    \] under the basis \(  \left\{ x,y \right\}  \).  
+\end{itemize}
+
+\end{proof}
+
+\begin{exercise}{}{}
+Let $L$ be a Lie algebra over $\mathbb{F}$. Prove that $L$ is solvable if and only if $[LL]$ lies in the radical of the Killing form of $L$.
+\end{exercise}
+\begin{proof}
+If \(  L   \) is solvable , then it follows from Lie's Theorem that there is a basis \(  \left\{ e_1,\cdots ,e_{n} \right\}  \) of \(  L  \) in which every element of \(  \operatorname{ad}\left( L \right)   \) is represented by an upper triangular matrix. 
+
+\begin{itemize}
+    \item Every element of \(  \operatorname{ad}\left( L^{\prime}  \right)   \)  is represented by a strictly upper triangular matrix: 
+    
+
+    Since \(  e_1  \) is simultaneous an eigenvector of \( x   \) and \(  y  \). Let \(  L_{k}= \operatorname{span}\left\{ e_1,\cdots ,e_{k} \right\}  \) , then \[
+  z\left( e_{k} \right)= x\left( y\left( e_{k} \right)  \right)-y\left( x\left( e_{k} \right)  \right)   
+    \]    Suppose , \[
+    y\left( e_{k} \right)= \sum _{j= 1}^{k}y_{i}e_{j},\quad x\left( e_{k} \right)= \sum _{j= 1}^{k}x_{i}e_{j}  
+    \]then \[
+  \begin{aligned}
+    x\left( y\left( e_{k} \right)  \right)+ L_{k-1}&= x\left( y_{i}e_{k} \right)+L_{k-1} \\ 
+     &= x_{i}y_{i}e_{k}+ L_{k-1}
+  \end{aligned}  
+    \] Similarly, \[
+    y\left( x\left( e_{k} \right)  \right)+L_{k-1}= x_{i}y_{i}e_{k}+ L_{k-1}
+    \]Thus \[
+    z\left( e_{k} \right)\in L_{k-1}
+    \]It follows that \(  z  \) is  nilpotent. Thus every element of \(  L^{\prime}   \) is represented by a strictly upper triangular matrix.
+    \item Take any \(  x \in L  \), \(  y \in L^{\prime}   \), The matrix of \(  x  \) and \(  y  \) under the basis \(  \left\{  e_1,\cdots,e_n  \right\}  \) are upper triangular matrix and strictly upper triangular matrix , repectively  , say \(  A  \), \(  B  \). Then \[
+    \kappa \left( x,y \right) = \operatorname{tr}\left( AB \right)=\sum _{i= 1}^{n} \sum _{k= 1}^{n}a_{ik}b_{ki}= 0 
+    \] Since for each \(  i> k  \), \(  a_{ik}= 0  \), and for each \(  i\le k  \), \(  b_{ki}\le 0  \). That is \(  \left[ LL \right]   \)         lies in the radical of the Killing form of \(  L  \). 
+\end{itemize}
+
+
+Conversely , if \(  \left[ LL \right]   \) lies in the radical of the Killing form. We only need to shows that \(  \mathrm{ad}\left( x \right)   \) is nilpotent for each \(  x\in L^{\prime}   \)          , then it follows from the Engel's Theorem (second version) that \(  L  \) is nilpotent, thus is sovable. 
+
+For which , let \(  \operatorname{ad}\left( x \right)= s+ n   \) , where \(  s  \) is semisimple and \(  n  \) is nilpotent, \(  \left[ s,n \right]= 0   \). We aim to show that \(  s= 0  \).  
+We fix a basis in which \(  s  \) is represented diagonal and \(  n  \) is represented trictly upper triangular. Note that   
+\[
+\begin{aligned}
+\operatorname{tr}\left( \operatorname{ad}\left( x \right)\circ S  \right)= \operatorname{tr}\left( S^{2} \right)+ \operatorname{tr}\left( NS \right)= \operatorname{tr}\left( S^{2} \right)     = \sum _{i} \lambda _{i}^{2}
+\end{aligned}
+\]where \(   \lambda _{i}  \)s are the diagonal entries of \(  S  \).  
+
+There other hand , there are \(  a_{j},b_{j} \in L  \) such that \[
+x= \sum _{j}\left[ a_{j},b_{j} \right] 
+\] We have \[
+\mathrm{tr}\left( \operatorname{ad}\left( x \right)  \circ S\right)= \sum _{j}\mathrm{tr}\left( \left[ \operatorname{ad}\left( a_{j} \right), \operatorname{ad}\left( b_{j} \right)   \right]\circ S  \right)  = \sum _{j}\operatorname{tr}\left( \operatorname{ad}\left( a_{j} \right)\circ \left[ \operatorname{ad}\left( b_{j} \right),S  \right]   \right) 
+\] Since \(  S  \) is a derivation, \[
+\left[ \operatorname{ad}\left( b_{j} \right),S  \right]= - \operatorname{ad}\left( S\left( b_{j} \right)  \right)  
+\]  \[
+\operatorname{tr}\left( \operatorname{ad}\left( x \right)\circ S  \right)= -\sum _{j} \kappa \left( a_{j},S\left( b_{j} \right)  \right)  
+\]Furthermore, \(  S\left( b_{j} \right)\in L^{\prime}    \). We have from hypothesis that \[
+ \kappa \left( a_{j},S\left( b_{j} \right)  \right)= 0,\quad \forall a_{j}\in L, S\left( b_{j} \right)\in L^{\prime}   
+\]Thus \[
+\operatorname{tr}\left( \operatorname{ad}\left( x \right)\circ S  \right)= 0 
+\] There must be \(  \sum _{i} \lambda _{i}^{2}= 0  \), \(  S= 0  \). Thus \(  \operatorname{ad}\left( x \right)   \)is nilpotent, which completes the proof.
+\end{proof}
+\begin{exercise}{}{}
+Let $V$ be a finite dimensional vector space over $\mathbb{F}$, equipped with a non-degenerate symmetric bilinear form $\langle \cdot, \cdot \rangle$. Let $W$ be a vector subspace of $V$, and set
+\[
+W^{\perp} = \{v \in V \mid \langle v, w \rangle = 0 \text{ for all } w \in W\}.
+\]
+Prove that
+\[
+\dim W + \dim W^{\perp} = \dim V.
+\]
+\end{exercise}
+\begin{proof}
+    We define a linear map $\Phi: V \to V^*$, where $V^*$ is the dual space of $V$, using the non-degenerate bilinear form $\langle \cdot, \cdot \rangle$. For any $v \in V$, $\Phi(v)$ is the linear functional defined by:
+$$(\Phi(v))(u) = \langle v, u \rangle \quad \text{for all } u \in V.$$
+Since the form $\langle \cdot, \cdot \rangle$ is non-degenerate, the kernel of $\Phi$ is $\{0\}$. As $V$ is finite-dimensional, we have $\dim V = \dim V^*$, which implies that the injective map $\Phi$ is a linear isomorphism.
+By the definitions of $W^{\perp}$ and $W^0 = \{f \in V^* \mid f(w) = 0 \text{ for all } w \in W\}$, we have the following equivalence:
+$$v \in W^{\perp} \iff \langle v, w \rangle = 0, \forall w \in W \iff (\Phi(v))(w) = 0, \forall w \in W \iff \Phi(v) \in W^0.$$
+This shows that $\Phi$ maps $W^{\perp}$ isomorphically onto $W^0$. Consequently, $\dim W^{\perp} = \dim W^0$.
+Using  $\dim W + \dim W^0 = \dim V^*$, and the fact that $\dim V = \dim V^*$, we immediately obtain:
+$$\dim W + \dim W^{\perp} = \dim V.$$
+This completes the proof.
+\end{proof}
+\end{document}

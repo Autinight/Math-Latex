@@ -1,0 +1,99 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{3}
+}{}
+
+\chapter{ Ch4-1 }
+ 代靖涵 25120222201319
+
+ \begin{exercise}{}{10-28-1}
+    设 $\{E_k\}$ 是 $\mathbf{R}^n$ 中递增可测集列, 且 $E_k \to E(k \to \infty)$. 若 $f(x)$ 是 $E$ 上的非负可测函数, 则
+ 
+\[
+\int_E f(x) \mathrm{d}x = \lim_{k \to \infty} \int_{E_k} f(x) \mathrm{d}x.
+\]
+ \end{exercise}
+ \begin{proof}
+    对于所有的\(  k  \),  令\(  f_{k}= \chi _{E_{k}}f  \). 则 \(  f_{k}  \)是可测函数, 使得 \[
+    \int_{E_{k}}f\left( x \right)\,\mathrm{d} x=  \int_{E} f_{k}\left( x \right)\,\mathrm{d} x  
+    \]由于 \(  E_{k}\to E  \), 即  \(  E= \bigcup _{k= 1}^{\infty}E_{k}  \), 对于任意的 \(  x \in E  \), 我们有 \(  \lim_{k\to \infty}\chi _{E_{k}}\left( x \right)= 1   \), 从而 \(  \lim_{k\to \infty}f_{k}\left( x \right)= f\left( x \right)    \).  \(  \left\{ f_{k} \right\}  \)处处收敛于 \(  f  \).       又 \(  f_{1}\left( x \right)\le f_2 \left( x \right)\le \cdots    \). 由Levi单调收敛定理, 我们有 \[
+\int_{E}f\left( x \right)\,\mathrm{d} x= \lim_{k\to \infty}\int_{E}f_{k}\left( x \right)\,\mathrm{d} x= \lim_{k\to \infty}\int_{E_{k}}  f\left( x \right)\,\mathrm{d} x 
+    \] 
+ \end{proof}
+
+ \begin{exercise}{}{}
+设 $f(x)$ 是 $E$ 上的非负可积函数, 则对任给 $\varepsilon>0$, 存在 $N>0$,
+使得
+\[
+\int_{E}\chi_{\{x \in E; f(x)>N\}}\left( x \right) f(x) \mathrm{d} x < \varepsilon.
+\]
+ \end{exercise}
+\begin{proof}
+    由于 \(  f\left( x \right)   \)是非负可积的, 它是a.e.有限的. 令 \(  F  \)是使得 \(  f  \)有限的点集, 则 \(  E\setminus F  \)是零测集 .  对于每个 \(  k \in \mathbb{Z} _{> 0}  \), 定义 \(  f_{k}\left( x \right)= \chi _{F\cap \left\{ f\le k \right\}}f\left( x \right)    \). 由于 \( F\cap  \left\{ f\le k \right\}, k= 1,2,\cdots \cdots   \)是一列单调递增的可测集, 我们有 \(  \chi _{F\cap \left\{ f\le k \right\}}, k= 1,2,\cdots   \)     是一列单调递增的可测函数, 进而 \(  f_{k},k= 1,2,\cdots   \)是一列单调递增的可测函数. 又  \[
+    \lim_{k\to \infty}\chi _{F\cap \left\{ f\le k \right\}}\left( x \right) = \chi _{F}\left( x \right) 
+    \]从而 \[
+    \lim_{k\to \infty}f_{k}\left( x \right)= \chi _{F}\left( x \right)f\left( x \right)   
+    \]由Levi单调收敛定理, 我们有 \[
+    \lim_{k\to \infty}\int_{E}f_{k}\left( x \right)\,\mathrm{d} x=  \int_{E}\chi _{F}\left( x \right) f\left( x \right)\,\mathrm{d} x  
+    \]从而对于任意的 \(   \varepsilon > 0  \), 存在 正整数\(  N  \), 使得 \[
+    \int_{E}\chi _{F}\left( x \right)f\left( x \right)\,\mathrm{d} x-\int_{E}f_{N}\left( x \right)\,\mathrm{d} x<  \varepsilon    
+    \]  即 \[
+\int_{F}\chi _{\left\{ x\in E: f\left( x \right)> N  \right\}}f\left( x \right)\,\mathrm{d} x= \int_{E}\chi _{F\cap \left\{ f> N \right\}}f\,\mathrm{d} x= \int_{E}\chi _{F\setminus \left( F\cap \left\{ f\le N \right\} \right) }f\,\mathrm{d} x<  \varepsilon  
+    \]最后, 由于 \(  E\setminus F  \)是零测的, 我们有 \[
+\int_{E}\chi _{\left\{ x\in E: f\left( x \right)> N  \right\}}f\left( x \right)\,\mathrm{d} x= \int_{F} \chi _{\left\{ x\in E:f\left( x \right)> N  \right\}}f\left( x \right)\,\mathrm{d} x<  \varepsilon  
+\] 因此命题成立.
+\end{proof}
+ \begin{exercise}{}{}
+设 $f(x)$ 是 $E \subset \mathbf{R}^n$ 上几乎处处大于零的非负可测函数,且满足
+\[
+\int_E f(x) \mathrm{d}x = 0,
+\]
+试证明 $m(E) = 0$.
+\end{exercise}
+\begin{proof}
+    由于 \(  f  \)是a.e.大于零的, 任取 \(  k \in \mathbb{Z} _{> 0}  \), 我们有    \[
+    \bigcup _{k= 1}^{\infty}\left( E\cap \left\{ f\ge \frac{1 }{k }  \right\} \right) = E\cap \left\{ f> 0 \right\}
+    \]其中 \(  E\cap \left\{ f\ge \frac{1 }{k }  \right\},k = 1,2,\cdots   \)是一列递增的集合列, 它们的极限是 \(  E\cap \left\{ f> 0 \right\}  \). 
+    
+    由于 \(  E\setminus \left( E\cap \left\{ f> 0 \right\} \right)= E\cap \left\{ f= 0 \right\}   \)是一个零测集, 我们有 \[
+    \int_{E\cap \left\{ f> 0 \right\}}f\left( x \right)\,\mathrm{d} x= \int_{E}f\left( x \right)\,\mathrm{d} x= 0  
+    \] 若 \(  m\left( E \right)> 0   \), 则由可测集的自下连续性,  \[
+    \lim_{k\to \infty}m\left( E\cap \left\{ f\ge \frac{1 }{k }  \right\} \right) = m\left( E \cap \left\{ f> 0 \right\}\right)=  m\left( E \right)-m\left( E\setminus \left\{ f> 0 \right\}\right)  = m\left( E \right)> 0 
+    \] 从而存在 \(  k_0  \), 使得 \[
+    m\left( E\cap \left\{ f\ge \frac{1 }{k_0 }  \right\} \right)> 0 
+    \] 但此时 \[
+    0= \int_{E}f\left( x \right)\,\mathrm{d} x \ge \int_{E\cap \left\{ f\ge \frac{1 }{k_0 }  \right\}} f\left( x \right)\,\mathrm{d} x\ge  m\left( E\cap \left\{ f\ge \frac{1 }{k_0 }  \right\} \right)\frac{1 }{k_0 }> 0   
+    \]矛盾. 因此 \(  m\left( E \right)= 0   \). 
+\end{proof}
+
+\begin{exercise}{}{}
+ 设 $f(x)$ 在 $[0,+\infty)$ 上非负可积,$f(0)=0$,且 $f'(0)$ 存在,试证明存在积分
+\[
+\int_{[0,+\infty)} \frac{f(x)}{x} \mathrm{d}x.
+\]
+
+\end{exercise}
+\begin{proof}
+    由于 \(  f\left( 0 \right)= 0   \), \(  f^{\prime} \left( 0 \right)   \)存在, 我们有极限 \(  \lim_{x\to 0}\frac{f\left( x \right)  }{x }   \)存在, 设   
+     \[
+     \lim_{x\to 0}\frac{f\left( x \right)  }{x } = k< \infty
+     \]则存在\(   \varepsilon > 0  \), 使得 \[
+     \forall x\in (0, \varepsilon ),  \left|  \frac{f\left( x \right)  }{x }-k \right|\le 1  
+     \] 从而 \[
+     \int_{(0, \varepsilon )}\frac{f\left( x \right)  }{x }\,\mathrm{d} x\le   \varepsilon \cdot \left( \left| k \right|+ 1  \right)  < \infty
+     \]于是 \[
+  \begin{aligned}
+     \int_{[0,+ \infty)}\frac{f\left( x \right)  }{x }\,\mathrm{d} x&=  \int_{\left( 0, \varepsilon  \right) }\frac{f\left( x \right)  }{x }\,\mathrm{d} x+  \int_{[ \varepsilon ,\infty)}\frac{f\left( x \right)  }{x }\,\mathrm{d} x   \\ 
+      &\le  \varepsilon \cdot \left( \left| k \right|+ 1  \right)+ \frac{1 }{ \varepsilon  }  \int _{[ \varepsilon ,+ \infty)}f\left( x \right)\,\mathrm{d} x\\ \\ 
+       &\le  \varepsilon \cdot \left( \left| k \right|+ 1  \right)+ \frac{1 }{ \varepsilon  }\int_{[0,+ \infty)}f\left( x \right)\,\mathrm{d} x   
+       &< \infty   
+  \end{aligned}
+     \]故积分 \(  \int_{[0,+ \infty)}\frac{f\left( x \right)  }{x }\,\mathrm{d} x   \)存在. 
+\end{proof}
+\end{document}

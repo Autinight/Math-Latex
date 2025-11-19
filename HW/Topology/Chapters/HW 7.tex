@@ -1,0 +1,131 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{6}
+}{}
+
+\chapter{ HW 7 }
+ 代靖涵 25120222201319
+\begin{exercise}{}{}
+    设 $X$ 是不可数集, 配以余有限拓扑. 证明 $X$ 是可分空间, 但 $X$ 不满足第二可数性公理.
+\end{exercise}
+
+\begin{proof}
+   \begin{enumerate}
+    \item 取 \(  X  \)的一个可数子集 \(  \left\{ x_1,x_2,\cdots  \right\}  \). 任取 \(  y \in X  \), 以及 \(  y  \)的一个邻域 \(  U  \). 则 \(  X\setminus U  \)是一个有限集, 从而存在某个 \(  x_{k}  \), 使得 \(  x_{k}\not \in \left( X\setminus U \right)   \)        , 即 \(  x_{k}\in U  \).  因此 \(  \left\{ x_1,x_2,\cdots  \right\}\cap U\neq \varnothing  \). 这表明 \(  \overline{\left\{ x_1,x_2,\cdots  \right\}}  = X\). 从而 \(  X  \)的任意可数无限子集都是稠密的, 特别地, \(  X  \)是可分的.    
+    \item 如果 \(  X  \)存在一个可数的基 \(  \left\{ B_{k} \right\}_{k \in \mathbb{N} }  \), 设每个 \(  B_{k}  \)都是非空的 . 任取 \(  x \in X  \), \(  X\setminus \left\{ x \right\}  \)是一个开集, 存在某个基 \(  B_{x}  \in \left\{ B_{k} \right\}_{k \in \mathbb{N} }\) , 使得 \(  B_{x}\subseteq X\setminus \left\{ x \right\}  \). 于是 \[
+   \varnothing =  \bigcap _{x \in X}\left( X\setminus \left\{ x \right\} \right)\supseteq \bigcap _{x \in X}B_{x}
+    \]    从而 \[
+    \bigcap _{k = 1}^{\infty}B_{k}\subseteq \bigcap _{x \in X}B_{x}= \varnothing\implies \bigcap _{k= 1}^{\infty}B_{k}= \varnothing
+    \]但是 \[
+    X= \varnothing^{c}= \left( \bigcap _{k= 1}^{\infty}B_{k} \right)^{c}= \bigcup _{k= 1}^{\infty}\left( X\setminus B_{k} \right)  
+    \]是一个可数集, 与 \(  X  \)不可数的假设矛盾. 因此不存在 \(  X  \)的可数基, 即 \(  X  \)不是第二可数的.   
+   \end{enumerate}
+
+\end{proof}
+\begin{exercise}{}{}
+设 $f: X \to Y$ 是连续满射, 若 $X$ 是可分的, 证明 $Y$ 也是可分的.
+\end{exercise}
+
+\begin{proof}
+    若 \(  X  \)是可分的, 设 \(  S= \left\{ x_1,x_2 ,\cdots \right\}  \)是 \(  X  \)的一个可数稠密子集. 考虑集合 \(  f\left( S \right)   \). 对于任意的 \(  y \in Y  \), 由于\(  f  \)是满射, 存在 \(  x \in X  \)使得 \(  f\left( x \right)= y   \). 任取 \(  y  \)在 \(  Y  \)上的开邻域 \(  U  \), 由于 \(  f  \)是连续的,  \(  f^{-1} \left( U \right)   \)是 \(  x  \)在 \(  X  \)上的一个开邻域. 根据假设, \(  \bar{S}= X  \), 从而 \(  x \in \bar{S}  \), \(  f^{-1} \left( U \right)\cap S\neq \varnothing   \).                 我们有集合的恒等式 \[
+    f\left( f^{-1} \left( U \right)\cap S  \right)= U\cap f\left( S \right)  
+    \]从而 \(  U\cap f\left( S \right)\neq \varnothing   \) , 这表明 \(  y \in  \overline{f\left( S \right) }  \). 由于 \(  y  \)是任意的,  \(  Y=  \overline{f\left( S \right) }  \), 即 \(  \overline{f\left( S \right) }  \)是 \(  Y  \)的稠密子集. 由于 \(  S  \)是可数的,  \(  f\left( S \right)   \)也是可数的, 因此 \(  Y  \)是可分的.        
+\end{proof}
+
+
+\begin{exercise}{}{}
+设拓扑空间 $X$ 是第一可数的, $A \subset X, p \in X$. 证明 $p \in \bar{A}$ 当且仅当存在 $A$ 中序列, 它收敛于 $p$.
+\end{exercise}
+\begin{proof}
+    若 \(  X  \)是第一可数的, 则存在 \(  p  \)的一个可数的邻域基 \(  \left\{ B_{k}\left( p \right)  \right\}_{k= 1}^{\infty}  \). 注意到 \(  \left\{ \bigcap _{k= 1}^{k}B_{j}\left( p \right)  \right\}_{k= 1}^{\infty}  \)也是 \(  p  \)的一个可数的邻域基. 不妨就将 \(  \bigcap _{j= 1}^{k}B_{j}\left( p \right)   \)记作 \(  B_{k}\left( p \right)   \), 并假设 \(  B_1\left( p \right)\supseteq B_2\left( p \right)\supseteq \cdots     \). 
+
+    若 \(  p \in \bar{A}  \), 则对于任意的 \(  B_{k}\left( p \right)   \), 都有 \(  B_{k}\left( p \right)\cap A\neq \varnothing   \), 我们取一点 \(  p_{k}\in B_{k}\left( p \right)\cap A   \)    . 得到 \(  A  \)中序列的 \(  \left\{ p_{k} \right\}_{k= 1}^{\infty}  \).       现在, 任取 \(  p  \)的开邻域 \(  U  \), 存在某个 \(  B_{j}\left( p \right)   \)使得 \(  B_{j}\left( p \right)\subseteq U   \), 从而 \(  \forall k\ge j  \), \(  B_{k}\left( p \right)\subseteq U   \), 进而 \(  \forall k\ge j  ,p_{k}\in U\).    这表明 \(  \left\{ p_{k} \right\}_{k= 1}^{\infty}  \)收敛于 \(  p  \).  
+
+
+    反之, 若存在 \(  A  \)中的序列 \(  \left\{ p_{k} \right\}  \)收敛于 \(  p  \). 则 对于任意\(  p  \)的开邻域 \(  U  \), 存在某个 \(  p_{k}  \)使得 \(  p_{k}\in U  \), 从而 \(  U\cap A\supseteq \left\{ p_{k} \right\}\neq \varnothing  \).   这表明 \(  p \in \bar{A}  \).       
+\end{proof}
+
+\begin{exercise}{}{}
+设拓扑空间 $X$ 是第一可数的, $Y$ 是拓扑空间, $f: X \to Y$. 证明 $f$ 是连续的当且仅当每一个收敛于 $p \in X$ 的序列 $(p_n)$, 都有 $(f(p_n))$ 在 $Y$ 中收敛于 $f(p)$.
+\end{exercise}
+\begin{proof}
+    存在 \(  p  \)的一个可数的邻域基 \(  \left\{ B_{k} \right\}_{k= 1}^{\infty}  \)使得 \(  B_1\supseteq B_2\supseteq \cdots   \). 
+
+
+    若 \(  f  \)是连续的, 任取收敛于 \(  p  \)的序列 \(  \left( p_{n} \right)   \). 任取 \(  f\left( p \right)   \)的邻域 \(  U  \), 则 \(  f^{-1} \left( U \right)   \)是 \(  p  \)的一个邻域. 存在\(  N  \)使得 \(  \forall n\ge N  \)都有 \(  p_{n}\in f^{-1} \left( U \right)   \). 从而 \[
+    f\left( p_{n} \right)\in U ,\quad \forall n\ge N
+    \]这表明 \(  \left( f\left( p_{n} \right)  \right)   \)是收敛于 \(  f\left( p \right)   \) 的.         
+
+    反过来, 若 \(  f  \)不是连续的,      则存在 \(  f\left( p \right)   \)的开邻域 \(  V  \), 使得 对于任意 \(  p  \)的开邻域 \(  U  \), 都有 \(  f\left( U \right)\cap V^{c}\neq \varnothing   \). 这里对于每个 \(  k  \), 我们取 \(  U= B_{k}  \), 并取 一点 \(  y_{k}\in f\left( B_{k} \right)\cap V^{c}   \), 则存在 \(  p_{k}  \in B_{k}\) , 使得 \(  f\left( p_{k} \right)\not \in V   \). 断言 \(  \left( p_{k} \right)   \)收敛于 \(  p  \). 事实上, 对于任意 \(  p  \)的开邻域\( W  \), 都存在 \(  N  \), 使得 \(  p_{k}\in B_{k}\subseteq W, \forall k\ge N  \). 因此 \(  \left( p_{k} \right)   \)是收敛于 \(  p  \)的, 而 \(  \left( f\left( p_{k} \right)  \right)   \)不收敛于 \(  f\left( p \right)   \). 这就说明了充分性的逆否成立, 故充分性成立.    
+\end{proof}
+\begin{exercise}{}{}
+证明 $X/\sim$ 是 $T_1$-空间当且仅当 $\sim$ 的每一个等价类都是 $X$ 的闭集.
+\end{exercise}
+\begin{proof}
+    设 \(   \pi :X\to X/\sim   \)是商映射. 
+
+若 \(  \sim   \)的每一个等价类 \(  C  \)都是闭集. 则任取 \(  y \in X/ \sim   \), \(   \pi ^{-1} \left( y \right)   \)是 \(  \sim   \)的一个等价类, 它是闭集  , 从而由商映射的性质, \(  \left\{ y \right\}  \)也是闭的. 从而 \(  X / \sim   \)上的每个单点集都是闭的,  \(  X /\sim   \)是\(  T_1  \)的.         
+
+反过来, 若 \(  X / \sim   \)上的每个单点集都是闭的. 任取 \(  \sim   \)的等价类 \(  C  \), 则 \(   \pi \left( C \right)   \)是一个单点集, 它是 \(  X / \sim   \)上的一个闭集. 从而  \[
+C=  \pi ^{-1} \left(  \pi \left( C \right)  \right) 
+\]     是 \(  X  \)上的一个闭集. 
+\end{proof}
+\begin{exercise}{}{}
+设 $X$ 是正则空间, $A$ 是 $X$ 的闭集, $X$ 的等价关系 $\sim$ 是由 "$x \sim y$ 当且仅当 $x = y$ 或者 $x, y \in A$" 来定义的. 证明 $X/\sim$ 是 Hausdorff 空间. (这个等价关系将整个 $A$ 粘合为一点, 所以 $X/\sim$ 也常记为 $X/A$.)
+\end{exercise}
+
+\begin{proof}
+    设 \(   \pi : X\to X/ \sim   \)是商映射. 任取 \(   \pi \left( x \right),  \pi \left( y \right) \in X / \sim     \), \(   \pi \left( x \right)\neq  \pi \left( y \right)    \). 则 \(  x\neq y  \), 且 \(  x,y  \)不同时属于 \(  A  \). 根据 \(  \sim   \)的定义 , 若 \( W\subseteq X  \)满足 \( W\cap A = \varnothing \), 则 \(  W=  \pi ^{-1} \left(  \pi \left( W \right)  \right)   \).   
+    
+    \begin{enumerate}
+        \item 若 \(  x\not \in A  \), \(  y \not \in A  \).  由于 \(  X  \)是 \(  T_1  \)的 \(  \left\{ x \right\}  \)是一个闭集, 存在 \(  \left\{ x \right\}  \)的开邻域 \(  U  \)和 \(  y  \)的开邻域 \(  V  \), 使得 \(  U\cap V= \varnothing  \).        令 \(  U_1= U\setminus A  \), \(  V_1= V\setminus A  \), 则 \(  U_1,V_1  \)分别为 \(  x  \)和 \(  y  \)的开邻域, 使得 \(  U_1\cap V_1= \varnothing  \), 并且 \[
+        U_1=  \pi ^{-1} \left(  \pi \left( U_1 \right)  \right) ,\quad V_1=  \pi ^{-1} \left(  \pi \left( V_1 \right)  \right) 
+        \]      根据商映射的性质,  \(   \pi \left( U_1 \right)   \)和 \(   \pi \left( V_1 \right)   \)均为开集. 并且 \[
+         \pi ^{-1} \left(  \pi \left( U_1 \right)\cap  \pi \left( V_1 \right)   \right)=  U_1\cap V_1= \varnothing 
+        \]  由于 \(   \pi   \)是满射, 只能有 \(   \pi \left( U_1 \right)\cap  \pi \left( V_1 \right)= \varnothing    \). 因此 \(   \pi \left( U_1 \right)   \), \(   \pi \left( V_1 \right)   \)分别为 \(   \pi \left( x \right),  \pi \left( y \right)    \)的开邻域 , 使得 \(   \pi \left( U_1 \right)\cap  \pi \left( V_1 \right)= \varnothing    \).      
+        \item 若 \(  x,y  \)中有一个属于 \(  A  \), 不妨设 \(  x \in A  \), \(  y\not \in A  \). 由于 \(  X  \)是\(  T_3  \) 的, 存在 \(  A  \)的开邻域 \(  U  \)和 \(  y  \)的开邻域 \(  V  \), 使得 \(  U\cap V=  \varnothing  \).    由于 \(  V\cap A  \subseteq V\cap U= \varnothing\), \(  V=   \pi ^{-1} \left(  \pi \left( V \right)  \right)   \).   由于 \(  A\subseteq U  \), 任取 \(  p \in  \pi ^{-1} \left(  \pi \left( U \right)  \right)   \), 设 \(   \pi \left( p \right)=  \pi \left( q \right)    \), \(  q \in U  \) . 若 \(  q \in A  \), 则 \(  p \in A\subseteq U  \). 若 \(  q\not \in A  \), 则 \(  p =  q \in U  \).  因此      我们也有 \( U\supseteq   \pi ^{-1} \left(  \pi \left( U \right)  \right)   \), 进而 \(  U=  \pi ^{-1} \left(  \pi \left( U \right)  \right)   \) . 根据商映射的性质,  \(   \pi \left( U \right),  \pi \left( V \right)    \)均为开集. 因此 \(   \pi \left( U \right),  \pi \left( V \right)    \)分别是 \(   \pi \left( x \right),  \pi \left( y \right)    \)的开邻域, 使得    \(   \pi \left( U \right)\cap  \pi \left( V \right)= \varnothing    \). 
+    \end{enumerate}
+    综上可知,  \(  X / \sim   \)是Hausdorff的. 
+\end{proof}
+\begin{exercise}{}{}
+设 $X$ 是 $T_4$-空间, $F$ 是 $X$ 的闭集. 证明:
+
+\begin{enumerate}
+\item 任何连续的 $f: F \to \mathbb{R}$ 都可以连续延拓到 $X$.
+
+\item 任何连续的 $f: F \to \mathbb{R}^n$ 都可以连续延拓到 $X$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item 考虑同胚映射 \(  h:\left( -1,1 \right)\to \mathbb{R}    \), \(  h\left( x \right)= \frac{x }{1-\left| x \right|  }     \)   , 它有逆映射 \(  h^{-1} :\mathbb{R} \to \left( -1,1 \right), h^{-1} \left( y \right)= \frac{y }{1+ \left| y \right|  }     \) . 则 \( h^{-1} \circ f : F\to \left( -1,1 \right)   \)是连续的. 由Tietze延拓定理, 存在\(   h^{-1} \circ f   \)的连续延拓 \(  G: X\to \left[ -1,1 \right]   \), 使得 \(  G|_{F}=  h^{-1} \circ f \).  \( A\coloneqq  G^{-1} \left( \left\{ -1,1 \right\} \right)   \)是一个闭集, 且与 \(  F\subseteq  G^{-1} \left( \left( -1,1 \right)  \right)   \)无交.  由Urysohn引理, 存在一个连续函数 \(   \lambda : X\to \left[0,1 \right]  \), 使得   \(   \lambda \left( A \right)= \left\{ 0 \right\}   \),  \(   \lambda \left( F \right)= \left\{ 1 \right\}   \). 令\[
+        \begin{aligned}
+        H: X&\to \left( -1,1 \right)\\ 
+         x&\mapsto  \lambda \left( x \right)\cdot G\left( x \right)    
+        \end{aligned}
+        \] 则 \(  H  \)是连续映射, 使得 \(  H|_{F}=  \lambda |_{F}G|_{F}=  h^{-1} \circ f  \)  . 从而 \(  h\circ H:X\to \mathbb{R}   \) 是 \(  f  \)的到 \(  X  \)的一个连续延拓, 使得 \(  \left( h\circ H \right)|_{F}= f   \).
+        \item    令 \(  f_{i}=  \pi _{i}\circ f:F\to \mathbb{R}   \). 由1. 存在连续映射 \(  \tilde{f}_{i}:X\to \mathbb{R}   \), 使得 \(  \tilde{f}_{i}|_{F}  = f_{i}\). 令 \[
+        \tilde{f}\coloneqq \left( \tilde{f}_{1},\cdots ,\tilde{f}_{n} \right) 
+        \]   则 \(  \tilde{f}  \)是一个连续映射, 使得 \[
+        \tilde{f}|_{F}= \left( \tilde{f}_{1}|_{F},\cdots ,\tilde{f}_{n}|_{F} \right)= \left( f_1,\cdots ,f_{n} \right)= f  
+        \] 
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+令 $A = \{(x,y) \in \mathbb{R}^2 \mid y = \frac{1}{x}, x \neq 0\}$, $B = \{(x,y) \in \mathbb{R}^2 \mid x = 0$ 或 $y = 0\}$, 分别是双曲线与它的渐近线. 是否存在连续的 $f: \mathbb{R}^2 \to [0,1]$ 使得 $f^{-1}(0) = A, f^{-1}(1) = B$? 如果存在, 试给出一个具体的连续映射 $f$.
+\end{exercise}
+\begin{proof}
+    考虑连续映射 \(  f:\mathbb{R} ^{2}\to \mathbb{R}   \) \[
+    f\left( x ,y\right)= \frac{\left| 1-xy \right|  }{\left| 1-xy \right| + \left| xy \right|  } 
+    \]在 \(  A  \)上, \(  xy= 1  \), 则 \(  f|_{A}= 0  \). 在 \(  B  \)上,  \(  f\left( x,y \right)= \frac{1 }{1+ 0 }= 1    \).     并且对于 任意的 \(  \left( x,y \right)\not \in \left( A\cup B \right)    \), 我们有 \(  xy\neq 0  \) 且 \(  xy\neq 1  \), 从而\(  0< \left| 1-xy \right|<  \left| 1-xy \right|+ \left| xy \right|     \)   . 因此在 \(  \mathbb{R} ^{2}\setminus \left( A\cup B \right)   \)上, \(  0< f\left( x \right)< 1   \). 因此  \[
+    f^{-1} \left( 0 \right)= A,\quad f^{-1} \left( 1 \right)= B  
+    \] 
+\end{proof}
+\end{document}

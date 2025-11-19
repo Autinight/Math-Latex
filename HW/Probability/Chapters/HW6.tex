@@ -1,0 +1,553 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{5}
+}{}
+
+\chapter{ HW6 }
+代靖涵 25120222201319
+\begin{exercise}{}{}
+    一实习生用同一台机器接连独立地制造 3 个同种零件, 第 i 个零件是不合格品的概率为 $p_i = 1/(i+1), i=1,2,3$, 以 $X$ 表示 3 个零件中合格品的个数, 求 $P(X \le 2)$.
+\end{exercise}
+\begin{solution}
+    \[
+   \begin{aligned}
+   P\left( X\le 2 \right)&= 1-P\left( X= 3 \right)\\ 
+    &= \left( 1-p_1 \right)\left( 1-p_2 \right)\left( 1-p_3 \right)\\ 
+     &=1-\frac{1 }{2 }\times \frac{2 }{3 }\times \frac{3 }{4 }\\ 
+      &= \frac{3 }{4 }      
+   \end{aligned}     
+    \]
+\end{solution}
+
+\begin{exercise}{}{}
+每门高射炮击中飞机的概率为 0.3, 独立同时射击时, 要以 99\% 的把握击中飞机, 需要几门高射炮?
+\end{exercise}
+\begin{proof}
+    设需要 \(  n  \)门高射炮, 以 \(  X  \)表示击中飞机的次数, 则 \[
+    \begin{aligned}
+    P\left( X\ge 1 \right)&= 1-P\left( X= 0 \right)\\ 
+     &= 1- \left( 0.7 \right)    ^{n}
+    \end{aligned}
+    \]对于 整数 \(  n  \), \[
+    1-\left( 0.7 \right)^{n}\ge  0.99\iff 0.7^{n}\le  0.01\iff  n\ge 13
+    \] 因此至少需要13门高射炮.
+\end{proof}
+\begin{exercise}{}{}
+    一射手对同一目标独立地进行四次射击,若至少命中一次的概率为$\frac{80}{81}$,试求该射手进行一次射击的命中率.
+\end{exercise}
+\begin{proof}
+    设射击的命中率为 \(  p  \), 设 \(  X  \)为四次射击命中的次数.  则 \[
+    \begin{aligned}
+    P\left( X\ge 1 \right)&= 1-P\left( X= 0 \right)\\ 
+     &= 1-\left( 1-p \right)^{4}\\ 
+      &= \frac{80 }{81 }     
+    \end{aligned}
+    \]解得 \[
+    p= \frac{2 }{3 } 
+    \]
+\end{proof}
+\begin{exercise}{}{}
+设猎人在距离猎物 100 米处对猎物打第一枪,命中猎物的概率为 0.5.若第一枪未命中,则猎人继续打第二枪,此时猎物与猎人已相距 150 米.若第二枪仍未命中,则猎人继续打第三枪,此时猎物与猎人已相距 200 米.若第三枪还未命中,则猎物逃脱.假如该猎人命中猎物的概率与距离成反比,试求该猎物被击中的概率.
+\end{exercise}
+\begin{proof}
+    设猎物与猎刃的距离为 \(  d  \), 设 \(  p\left( \cdot \right)   \)为  猎人开枪命中的概率, 则 \[
+    p\left( d \right)\cdot d= 100\times 0.5\implies p\left( d \right)= \frac{50 }{d }   
+    \]猎物未被击中的概率为 \[
+    \left( 1-p\left( 100 \right)  \right)\left( 1-p\left( 150\right)  \right)\left( 1-p\left( 200 \right)  \right)   = \frac{1 }{2 }\times \frac{2 }{3 }\times \frac{3 }{4 }= \frac{1 }{4 }    
+    \]因此猎物被击中的概率为 \[
+    1-\frac{1 }{4 }= \frac{3 }{4 }  
+    \]
+\end{proof}
+
+\begin{exercise}{}{}
+一颗骰子抛两次, 求以下随机变量的分布列.
+\begin{enumerate}
+    \item $X$ 表示两次所得的最小点数;
+    \item $Y$ 表示两次所得的点数之差的绝对值.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    设 \(  T_1,T_2  \)为两枚骰子的点数, 则 \(  T_1,T_2  \)是独立的随机变量 
+    \begin{enumerate}
+        \item  \(  X= \min \left\{ T_1,T_2 \right\}  \).  \[
+        \begin{aligned}
+        P\left( X= k \right)&= P\left( T_1= k, T_2\ge k \right)+ P\left( T_1\ge k, T_2= k \right)-P\left( T_1,T_2= k \right)    \\ 
+         &= P\left( T_1= k \right)P\left( T_2\ge k \right)+ P\left( T_1\ge k \right)P\left( T_2= k \right)-P\left( T_1= k \right)     P\left( T_2= k \right)\\ 
+          &= 2\times \frac{1 }{6 }\frac{6-k + 1}{6 }   -\frac{1 }{36 }\\ 
+           &= \frac{13-2k }{36 }  
+        \end{aligned} 
+        \]故 \[
+        P\left( X= k \right)= \frac{9-2k }{36 },\quad k= 1,2,\cdots ,6  
+        \]
+        \item \(  Y= \left| T_1-T_2 \right|   \), 则 \(  0\le Y\le 5  \).  \[
+        P\left( Y= 0 \right)= P\left( T_1= T_2 \right)= 6P\left( T_1= T_2= 1 \right)= \frac{1 }{6 }    
+        \] 对于 \(  k= 1,2,3,4,5 \), \[
+        P\left( Y= k \right)= P\left( T_1-T_2= k, T_2-T_1= k \right)= 2P\left( T_2-T_1= k \right)   
+        \]其中 \[
+        P\left( T_2-T_1= k \right)= \sum _{j = 1}^{6-k}P\left( T_1= j \right)  P\left( T_2= k+ j \right)= \frac{6-k }{36 }  
+        \]于是 \[
+       P\left( Y= 0 \right)= \frac{1 }{6 },\quad    P\left( Y= k \right)= \frac{6-k }{18 }   , k = 1,2,3,4,5
+        \]
+    \end{enumerate}
+      
+\end{proof}
+\begin{exercise}{}{}
+    有 3 个盒子, 第一个盒子装有 1 个白球, 4 个黑球; 第二个盒子装有 2 个白球, 3 个黑球; 第三个盒子装有 3 个白球, 2 个黑球. 现任取一个盒子, 从中任取 3 个球. 以 $X$ 表示所取到的白球数.
+\begin{enumerate}
+\item 试求 $X$ 的概率分布列;
+\item 取到的白球数不少于 2 个的概率是多少?
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    如果一个盒子总共有 $N$ 个球, 其中有 $K$ 个白球, 从中抽取 $n$ 个球, 则抽到 $k$ 个白球的概率为:
+$$P(\text{抽到k个白球}) = \frac{\binom{K}{k} \binom{N-K}{n-k}}{\binom{N}{n}}$$
+   
+设 \(  B_{i}  \)是取到第 \(  i  \)个盒子的事件,  \(  i= 1,2,3  \). 
+
+    \begin{enumerate}
+        \item  \[
+        \begin{aligned}
+        P\left( X= 0 \right)&= \frac{1 }{3 }\sum _{i= 1}^{3}P\left( \left( X= 0 \right)|B_{i}  \right)\\ 
+         &= \frac{1 }{3 }\left( \frac{ C_{4}^{3}}{C_{5}^{3} }+ \frac{C_{3}^{3} }{C_{5}^{3} }+ 0   \right)      \\ 
+          &= \frac{1 }{6 } 
+        \end{aligned}
+        \] \[
+        \begin{aligned}
+        P\left( X = 1\right)&=\frac{1 }{3 }\sum _{i= 1}^{3}  P\left( \left( X= 1 \right)|B_i  \right)  \\ 
+         &=  \frac{1 }{3 }\frac{ C_{1}^{1}C_{4}^{2}}{C_{5}^{3} }    + \frac{1 }{3 }\frac{C_{2}^{1}C_{3}^{2} }{C_{5}^{3} }+ \frac{1 }{3 }\frac{C_{3}^{1}C_{2}^{2} }{C_{5}^{3} }\\ 
+          &=\frac{1 }{2 } 
+        \end{aligned}
+        \] \[
+       \begin{aligned}
+        P\left( X= 2 \right)&= 0+ \frac{1 }{3 } P\left( \left( X= 2 \right)|B_2  \right)+\frac{1 }{3 }  P\left( \left( X= 2 \right)|B_3  \right) \\ 
+         &= \frac{1 }{3 }\frac{C_{2}^{2}C_{3}^{1} }{C_{5}^{3} }+ \frac{1 }{3 }   \frac{C_{3}^{2}C_{2}^{1} }{C_{5}^{3} }\\ 
+          &=\frac{3 }{10 } 
+       \end{aligned}   
+        \] \[
+        \begin{aligned}
+        P\left( X= 3 \right)&= P\left( \left( X= 3 \right)|B_3  \right)\\ 
+         &= \frac{1 }{3 }\frac{C_{3}^{3} }{C_{5}^{3} }= \frac{1 }{30 }      
+        \end{aligned}
+        \]
+分布列为
+        \begin{center}
+            \begin{tabular}{l|cccc}
+X & 0 & 1 & 2 & 3 \\
+\hline
+$P(X)$ & $\frac{1}{6}$ & $\frac{1}{2}$ & $\frac{3}{10}$ & $\frac{1}{30}$ \\
+\end{tabular}
+        \end{center}
+
+        \item 取到的白球不少于两个的概率为 \[
+        P\left( X\ge 2 \right)= P\left( X= 2 \right)+ P\left( X= 3 \right)= \frac{1 }{3 }    
+        \]
+    \end{enumerate}
+       
+\end{proof}
+
+\begin{exercise}{}{}
+一批产品共有 100 件, 其中 10 件是不合格品. 根据验收规则, 从中任取 5 件产品进行质量检验, 假如 5 件中无不合格品, 则这批产品被接收, 否则就要重新对这批产品逐个检验.
+\begin{enumerate}
+    \item 试求 5 件中不合格品数 $X$ 的分布列;
+    \item 需要对这批产品进行逐个检验的概率是多少?
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item  \[
+        P\left( X= k \right)= \frac{ C_{10}^{k}C_{90}^{5-k}}{C_{100}^{5} }  ,\quad k= 0,1,2,3,4,5
+        \]
+        \item 需要逐个检查的概率为 \[
+      P\left( X\ge 1 \right)= 1-   P\left( X= 0 \right)= 1- \frac{C_{90}^{5} }{C_{100}^{5} } 
+        \]
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+设随机变量 $X$ 的分布函数为
+\[
+F(x) = \begin{cases} 0, & x < 0, \\ 1/4, & 0 \le x < 1, \\ 1/3, & 1 \le x < 3, \\ 1/2, & 3 \le x < 6, \\ 1, & x \ge 6. \end{cases}
+\]
+试求 $X$ 的概率分布列及 $P(X < 3), P(X \le 3), P(X > 1), P(X \ge 1)$.
+\end{exercise}
+\begin{proof}
+由于 \(  F  \)是阶梯的,  \(  X  \)是一个离散随机变量, 它的所有取值的可能为 \(  F  \)跳跃的点. 为 \(  0,1,3,6  \), 注意到\[
+P(X = x_i) = F(x_i) - \lim_{x \to x_i^-} F(x) = F(x_i) - F(x_i^-) 
+\]计算可得   \begin{tabular}{|c|c|c|c|c|}
+
+\(X\) & 0 & 1 & 3 & 6 \\
+\hline
+\(P\) & \(1/4\) & \(1/12\) & \(1/6\) & \(1/2\) \\
+
+\end{tabular}
+     \[
+    P\left( X\le 3 \right)= F\left( 3 \right)= \frac{1 }{2 }   
+    \] \[
+    P\left( X< 3 \right)= \lim_{x\to 3^{-}}P\left( X\le x \right)  = \frac{1 }{3 } 
+    \] \[
+    P\left( X> 1 \right)= 1-P\left( X\le 1 \right)= 1-F\left( 1 \right)= \frac{2 }{3 }    
+    \] \[
+    P\left( X\ge 1 \right)= 1-P\left( X< 1 \right)= 1-\lim_{x\to 2^{-}}P\left( X\le x \right)= \frac{3 }{4 }    
+    \]
+\end{proof}
+\begin{exercise}{}{}
+设随机变量 $X$ 的分布函数为
+\[
+F(x) = \begin{cases} 0, & x < 1, \\ \ln x, & 1 \le x < e, \\ 1, & x \ge e. \end{cases}
+\]
+试求 $P(X < 2), P(0 < X \le 3), P(2 < X < 2.5)$.
+\end{exercise}
+\begin{proof}
+     \[
+     P\left( X< 2 \right)= F\left( 2 - \right)= \ln 2  
+     \] \[
+     P\left( 0< X\le 3 \right)= P\left( X\le 3 \right)-P\left( X\le 0 \right)=F\left( 3 \right)-F\left( 0 \right)=    1   
+     \] \[
+     \begin{aligned}
+     P\left( 2< X< 2.5 \right)&= P\left( X< 2.5 \right)-P\left( X\le 2 \right)\\ 
+      &= F\left( 2.5- \right)-F\left( 2 \right)\\ 
+       &= \ln 5-\ln 2-\ln 2\\ 
+        &= \ln 5-2\ln 2 
+     \end{aligned}
+     \]
+\end{proof}
+\begin{exercise}{}{}
+若 $P(X \ge x_1) = 1-\alpha, P(X \le x_2) = 1-\beta$, 其中 $x_1 < x_2$, 试求 $P(x_1 < X < x_2)$.
+\end{exercise}
+\begin{solution}
+    \[
+    \begin{aligned}
+    P\left( x_1< X< x_2 \right)&= P\left( X< x_2 \right)-P\left( X\le x_1 \right)\\ 
+     &=     P\left( X\le x_2 \right)-P\left( X= x_2 \right)-1+ P\left( X\ge  x_1 \right)   -P\left( X= x_1 \right) \\ 
+      &= 1-\alpha -\beta -P\left( X= x_1 \right)-P\left( X= x_2 \right)  
+    \end{aligned}
+    \]
+\end{solution}
+
+\begin{exercise}{}{}
+从 $1, 2, 3, 4, 5$ 五个数中任取三个, 按大小排列记为 $x_1 < x_2 < x_3$, 令 $X = x_2$, 试求:
+\begin{enumerate}
+    \item $X$ 的分布函数;
+    \item $P(X < 2)$ 及 $P(X > 4)$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item  \[
+     P\left( X= 1 \right)= P\left( X= 5 \right)= 0  
+     \]
+    \[
+    P\left( X= k \right)=\frac{ C_{k-1}^{1}C_{5-k}^{1}  }{C_{5}^{3} }=  \frac{\left( k-1 \right)\left( 5-k \right)   }{10 }  ,\quad k= 2,3,4
+    \] \[
+    P\left( X= 2 \right)= \frac{3 }{10 },\quad P\left( X= 3 \right)= \frac{2 }{5 },\quad P\left( X= 4 \right)= \frac{3 }{10 }     
+    \]故 \begin{tabular}{|c|c|c|c|c|c|}
+
+\(X\) & 1 & 2 & 3 & 4 & 5 \\
+\hline
+\(P\) & \(0\) & \(\frac{3 }{10 } \) & \(\frac{2 }{5 } \) & \(\frac{3 }{10 } \) & 0 \\
+
+\end{tabular}
+    \end{enumerate}
+    于是分布函数为$$F_X(x) = P(X \le x) = 
+\begin{cases}
+0, & x < 2 \\
+\frac{3}{10}, & 2 \le x < 3 \\
+\frac{7}{10}, & 3 \le x < 4 \\
+1, & x \ge 4
+\end{cases}$$
+\item \[
+P\left( X< 2 \right)= F\left( 2^{-} \right)= 0  
+\] \[
+P\left( X> 4 \right)= 1-P\left( x\le 4 \right)= 1-F\left( 4 \right)= 0   
+\]
+\end{proof}
+\begin{exercise}{}{}
+学生完成一道作业的时间$X$是一个随机变量,单位为小时,它的密度函数为
+\[ p(x) = \begin{cases} cx^2 + x, & 0 \le x \le 0.5, \\ 0, & \text{其他}. \end{cases} \]
+\begin{enumerate}
+\item[(1)] 确定常数 $c$;
+\item[(2)] 写出 $X$ 的分布函数;
+\item[(3)] 试求在 20 min 内完成一道作业的概率;
+\item[(4)] 试求 10 min 以上完成一道作业的概率.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+     \begin{enumerate}
+        \item \[
+     1= \int_{-\infty}^{\infty}p\left( x \right)= \int_{0}^{0,5}\left( cx^{2}+ x \right)= \frac{c }{24 }+ \frac{1 }{8 }  
+     \]得到 \(  c= 21  \) 
+     \item  \[
+     F\left( x \right)= \int_{-\infty}^{x}p\left( x \right)\,\mathrm{d} x= \begin{cases} 0,&x\le 0\\ 
+      \int_{0}^{x}p\left( x \right)= 7x^{3}+ \frac{1 }{2 }x^{2} ,& 0< x\le 0.5\\ 
+       1,& x> 0.5  \end{cases}   
+     \]
+     \item 概率为 \[
+     F\left( \frac{1 }{3 }  \right)= \frac{17 }{54 }  
+     \]
+     \item 概率为 \[
+     1-F\left( \frac{1 }{6 }  \right)=  \frac{103 }{108 } 
+     \]
+     \end{enumerate}
+     
+\end{proof}
+\begin{exercise}{}{}
+某加油站每周补给一次油.如果这个加油站每周的销售量(单位:千升)为一随机变量,其密度函数为
+\[ p(x) = \begin{cases} 0.05\left(1-\frac{x}{100}\right)^4, & 0<x<100, \\ 0, & \text{其他}. \end{cases} \]
+试问该油站的储油罐需要多大,才能把一周内断油的概率控制在5\%以下?
+\end{exercise}
+\begin{solution}
+    设储油罐的容量为 \(  y  \), 设销售量为 \(  X  \). 则 \[
+  \begin{aligned}
+    P\left( X> y \right)&=  1-P\left( X\le y \right) 
+  \end{aligned} 
+    \]   \[
+    P\left( X\le y \right)= \begin{cases} \int_{0}^{y}p \left( x \right)\,\mathrm{d} x,& 0< y< 100  \\ 
+      \int_{0}^{100}p\left( x \right)\,\mathrm{d} x,&y\ge 100 \end{cases}  
+    \] 其中\[
+    \int_{0}^{y}p\left( x \right)\,\mathrm{d} x = 1-\left( 1-\frac{y }{100 }  \right)^{5}, 0< y< 100
+    \] \[
+    \int_{0}^{100}p\left( x \right)\,\mathrm{d} x=1 
+    \]因此 \[
+    \begin{aligned}
+    P\left( X> y \right)< 0.05&\iff P\left( X\le y \right)> 0.95 \\ 
+     &\iff \left( 1-\frac{y }{100 }  \right)^{5}< 0.05\\ 
+      &\iff y> 95 
+    \end{aligned}
+    \]因此储油罐需要95千升.
+\end{solution}
+
+\begin{exercise}{}{}
+设随机变量$X$和$Y$同分布,$X$的密度函数为
+\[ p(x) = \begin{cases} \frac{3}{8}x^2, & 0 < x < 2, \\ 0, & \text{其他}. \end{cases} \]
+已知事件 $A = \{X>a\}$ 和 $B=\{Y>a\}$ 独立, 且 $P(A \cup B) = 3/4$, 求常数 $a$.
+\end{exercise}
+\begin{solution}
+     由于 \(  A,B  \)独立, 故 \(  A^{c},B^{c}  \)独立, 并且  \[
+   P\left( A^{c} \right)P\left( B^{c} \right)    = P\left( A^{c}\cap B^{c} \right)= 1-P\left( A\cup B \right)= \frac{1 }{4 }   
+     \]其中 \[
+     P\left( A^{c} \right)= P\left( X\le a \right),\quad P\left( B^{c} \right)= P\left( Y\le a \right)    
+     \]由于 \(  X,Y  \)同分布,  \(  P\left( Y\le a \right)= P\left( X\le a \right)    \), 设 \(  X  \)的CDF为 \(  F\left( x \right)   \), 则以上表明 \[
+     \left( F\left( a \right) \right)^{2} = \frac{1 }{4 } \implies F\left( a \right)= \frac{1 }{2 }   
+     \]   注意到 \[
+    F\left( y \right)=   \int_{0}^{y}\frac{3 }{8 }x^{2}\,\mathrm{d} x= \frac{1 }{8 }y^{3},\quad 0\le y\le 2,\quad F\left( y \right)=  1 ,\quad y> 2
+     \]因此  \[
+     a= \left( 4 \right)^{\frac{1 }{3 } } 
+     \]
+\end{solution}
+
+\begin{exercise}{}{}
+设连续随机变量$X$的密度函数$p(x)$是一个偶函数,$F(x)$为$X$的分布函数,求证对任意实数 $a>0$,有
+\begin{enumerate}
+\item[(1)] $F(-a) = 1 - F(a) = 0.5 - \int_0^a p(x) dx$;
+\item[(2)] $P(|X|<a) = 2F(a)-1$;
+\item[(3)] $P(|X|>a) = 2[1-F(a)]$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    
+\end{proof}
+\begin{exercise}{}{}
+    设离散型随机变量 $X$ 的分布列为
+    \[
+    \begin{array}{c|ccc}
+    X & -2 & 0 & 2 \\
+    \hline
+    P & 0.4 & 0.3 & 0.3
+    \end{array}
+    \]
+    试求 $E(X)$ 和 $E(3X+5)$.
+\end{exercise}
+\begin{proof}
+     \[
+     E\left( X \right)= \int X dP= \left( -2 \right)\cdot 0.4+ 0\cdot \left( 0.3 \right)+ 2\cdot \left( 0.3 \right)= -0.2   
+     \]由期望的线性,  \[
+     E\left( 3X+ 5 \right)= 3 E\left( X \right)+ 5= 4.4  
+     \]
+\end{proof}
+\begin{exercise}{}{}
+用天平称某种物品的质量(砝码仅允许放在一个盘中),现有三组砝码(单位:g):
+\begin{enumerate}
+\item[(甲)] 1,2,2,5,10;
+\item[(乙)] 1,2,3,4,10;
+\item[(丙)] 1,1,2,5,10,
+\end{enumerate}
+称重时只能使用一组砝码,问:若物品的质量为$1\,\mathrm{g}, 2\,\mathrm{g}, \dots, 10\,\mathrm{g}$的概率是相同的,用哪一组砝码称重所用的平均砝码数最少?
+\end{exercise}
+\begin{proof}
+    设 \(  X,Y,Z  \)分别为 甲, 乙, 丙称重所需要发码数的随机变量, 则其取值如下    \[
+    \begin{array}{c|ccccccccccc}
+     & 1 & 2 & 3& 4& 5& 6& 7& 8& 9 & 10 \\
+    \hline
+    X & 1& 1& 2& 2& 1& 2& 2& 3& 3& 1
+    \end{array}
+    \]\[
+    \begin{array}{c|ccccccccccc}
+    & 1 & 2 & 3& 4& 5& 6& 7& 8& 9 & 10 \\
+    \hline
+    Y & 1& 1& 1& 1& 2& 2& 2& 3& 3& 1
+    \end{array}
+    \]\[
+    \begin{array}{c|ccccccccccc}
+     & 1 & 2 & 3& 4& 5& 6& 7& 8& 9 & 10 \\
+    \hline
+    Z & 1& 1& 2& 3& 1& 2& 2& 3& 4& 1
+    \end{array}
+    \]由于概率是相同的,  \(  E\left( X \right), E\left( Y \right), E\left( Z \right)     \)分别为取值的算术平均, 计算可得 \[
+    E\left( X \right)=  1.8\quad E\left( Y \right)= 1.7\quad E\left( Z \right)= 2  
+    \] 故乙组所需平均法码数最少, 为1.7.
+\end{proof}
+\begin{exercise}{}{}
+对一批产品进行检查,如查到第$a$件全为合格品,就认为这批产品合格;若在前$a$件中发现不合格品即停止检查,且认为这批产品不合格,设产品的数量很大,可认为每次查到不合格品的概率都是$p$.问每批产品平均要查多少件?
+\end{exercise}
+\begin{proof}
+    设 \(  X  \)为一批产品需要查的次数的随机变量. 则 \[
+    P\left( X\ge k \right)= \left( 1-p \right)^{k-1},\quad k=  1,\cdots,a   
+    \] \[
+    P\left( X\ge k \right)= 0,\quad k> a 
+    \]于是 \[
+   \begin{aligned}
+    E\left( X \right)&= \sum _{k= 1}^{\infty} k P\left( X= k \right)   \\ 
+     &=\sum _{k= 1}^{\infty}\sum _{j= 1}^{k}P\left( X= j \right)\\ 
+      &= \sum _{j= 1}^{\infty}\sum _{k= j}^{\infty}P\left( X= k \right) \\ 
+       &= \sum _{j= 1}^{a}P\left( X\ge k \right)= \sum _{j= 1}^{a}\left( 1-p \right)^{j}  \\ 
+        &= \frac{1-\left( 1-p \right)^{a}  }{p } 
+   \end{aligned}
+    \]为平均要查的件数.
+\end{proof}
+\begin{exercise}{}{}
+某人参加“答题秀”,一共有问题1和问题2两个问题,他可以自行决定回答这两个问题的顺序,如果他先回答问题$i(i=1,2)$,那么只有回答正确,他才被允许回答另一题,如果他有60\%的把握答对问题1,而答对问题1将获得200元奖励;有80\%的把握答对问题2,而答对问题2将获得100元奖励,问他应该先回答哪个问题,才能使获得奖励的期望值最大?
+\end{exercise}
+\begin{proof}
+    设 \(  X_{i}  \)为先回答问题 \(  i  \)获得的奖金. 则 \[
+    P\left( X_{1}= 200 \right)=  0.12,\quad P\left( X_1= 300 \right)= 0.48,\quad P\left( X_1= 0 \right)=   0.4
+    \]   \[
+    P\left( X_2= 100 \right)= 0.32,\quad P\left( X_2= 300 \right)= 0.48, \quad P\left( X_2= 0 \right)= 0.2   
+    \]计算得到 \[
+    E\left( X_1 \right)= 168,  \quad E\left( X_2 \right)= 176 
+    \]因此应该先回答第二个问题.
+\end{proof}
+\begin{exercise}{}{}
+某人想用10 000元投资于某股票,该股票当前的价格是2元/股,假设一年后该股票等可能地为1元/股和4元/股,而理财顾问给他的建议是:若期望一年后所拥有的股票市值达到最大,则现在就购买;若期望一年后所拥有的股票数量达到最大,则一年以后购买,试问理财顾问的建议是否正确?为什么?
+\end{exercise}
+\begin{proof}
+    如果现在购买, 则购买数量为 5000. 一年后的期望市值为 \[
+    5000\left( 1\times \frac{1 }{2 }+ 4\times \frac{1 }{2 }   \right)=  12500
+    \]因此顾问的前半句是对的.
+
+    如果未来购买, 购买数量的期望为 \[
+    \frac{1 }{2 }\left( 10000/1 \right)+ \frac{1 }{2 }\left( 10000 /4 \right)= 6250    
+    \]多余现在购买的数量. 因此建议是正确的.
+\end{proof}
+\begin{exercise}{}{}
+    某新产品在未来市场上的占有率$X$是在区间$(0,1)$上取值的随机变量,它的密度函数为
+$$p(x) = \begin{cases} 4(1-x)^3, & 0 < x < 1, \\ 0, & \text{其他}, \end{cases}$$
+试求平均市场占有率.
+\end{exercise}
+\begin{proof}
+    平均占有率为 \[
+    \begin{aligned}
+    E\left( x \right)&=  \int_{-\infty}^{\infty}xp\left( x \right)\,\mathrm{d} x\\ 
+     &=  \int_{0}^{1}4\left( 1-x \right)^{3}x\,\mathrm{d} x\\ 
+      &= \frac{1 }{5 } 
+    \end{aligned}
+    \]
+\end{proof}
+\begin{exercise}{}{}
+    设随机变量$X$的密度函数如下,试求$E(2X+5)$.
+$$p(x) = \begin{cases} e^{-x}, & x > 0, \\ 0, & x \le 0. \end{cases}$$
+\end{exercise}
+\begin{proof}
+    设 \(  P_{X}  \)是 \(  X  \)的推出测度, 则  \[
+p\left( x \right)\,\mathrm{d} x= dP_{X} 
+\] 于是\[
+\begin{aligned}
+E\left( X \right)=  \int_{-\infty}^{\infty}XdP= \int_{-\infty}^{\infty}x dP_{X}&= \int_{-\infty}^{\infty}xp\left( x \right)\,\mathrm{d} x   \\ 
+ &=  \int_{0}^{\infty}xe^{-x}\,\mathrm{d} x\\ 
+    &=  \Gamma \left( 2 \right)= 1 
+\end{aligned}
+\]于是 \[
+E\left( 2X+ 5 \right)= 2E\left( X \right)+ 5  = 7
+\]
+\end{proof}
+\begin{exercise}{}{}
+    设随机变量$X$的分布函数如下,试求$E(X)$.
+$$F(x) = \begin{cases} \frac{e^x}{2}, & x < 0, \\ \frac{1}{2}, & 0 \le x < 1, \\ 1 - \frac{1}{2}e^{-\frac{1}{2}(x-1)}, & x \ge 1. \end{cases}$$
+\end{exercise}
+\begin{proof}
+    \(  X  \) 的PDF, 记作 \(  f\left( x \right)   \) , 为 \(  \frac{\mathrm{d}}{\mathrm{d}x} F\left( x \right)   \) \[
+    f\left( x \right)= \begin{cases} \frac{e^{x} }{2 },&x< 0\\ 
+     0,&0\le x< 1\\ 
+      \frac{1 }{4 }e^{-\frac{1 }{2 }\left( x-1 \right)  }  ,&x\ge 1 \end{cases}  
+    \]则 \[
+    \int_{-\infty}^{0}xf\left( x \right)\,\mathrm{d} x= \int_{-\infty}^{0}\frac{xe^{x} }{2 }\,\mathrm{d} x= -\frac{1 }{2 }    
+    \] \[
+    \int_{0}^{1}f\left( x \right)\,\mathrm{d} x= 0 
+    \] \[
+   \begin{aligned}
+    \int_{1}^{\infty}xf\left( x \right)\,\mathrm{d} x&= \int_{0}^{\infty}\frac{1 }{4 }\left( x+ 1 \right) e^{-\frac{1 }{2 }x }\,\mathrm{d} x   \\ 
+     &=  \int_{0}^{\infty}\left( t+ \frac{1 }{2 }  \right)e^{-t}\,\mathrm{d} t\\ 
+      &=   \Gamma \left( 2 \right)+ \frac{1 }{2 } \Gamma \left( 1 \right)\\ 
+       &= \frac{3 }{2 }    
+   \end{aligned}
+    \]因此 \[
+    E\left( X \right)= \int_{\mathbb{R} }xf\left( x \right)\,\mathrm{d} x= 1
+    \]
+\end{proof}
+\begin{exercise}{}{}
+    设随机变量$X$的密度函数为
+$$p(x) = \begin{cases} a+bx^2, & 0 \le x \le 1, \\ 0, & \text{其他}, \end{cases}$$
+如果$E(X)=\frac{2}{3}$,求$a$和$b$.
+\end{exercise}
+\begin{proof}
+      \[
+      \begin{aligned}
+      \frac{2 }{3 }= E\left( X \right)&=  \int_{-\infty}^{\infty}xp\left( x \right)\,\mathrm{d} x   \\ 
+       &= \int_{0}^{1}\left( ax+ bx^{3} \right) \,\mathrm{d} x \\ 
+        &= \frac{1}{2}a+ \frac{1}{4}b
+      \end{aligned}
+      \]另一方面 \[
+   1=    \int_{-\infty}^{\infty}p\left( x \right)\,\mathrm{d} x= \int_{0}^{1}\left( a+ bx^{2} \right)\,\mathrm{d} x= a+ \frac{1 }{3 }b  
+      \]两式联立得到\(  a= \frac{1 }{3 }   \), \(  b= 2  \).  
+\end{proof}
+\begin{exercise}{}{}
+    设随机变量 $X$ 的概率密度函数为
+$$p(x) = \begin{cases} \frac{1}{2}\cos\frac{x}{2}, & 0 \le x \le \pi, \\ 0, & \text{其他}, \end{cases}$$
+对 $X$ 独立重复观察 4 次, $Y$ 表示观察值大于 $\pi/3$ 的次数, 求 $Y^2$ 的数学期望.
+\end{exercise}
+
+\begin{proof}
+  \[
+    P\left( X\le \frac{ \pi  }{3 }  \right)= \int_{0}^{\frac{ \pi  }{3 } }\frac{1 }{2 }\cos \frac{x }{2 }\,\mathrm{d} x=   \frac{1 }{2 } 
+    \]因此 \[
+    Y\sim B\left( n = 4, p= \frac{1 }{2 }  \right) 
+    \] 故 \[
+    E\left( Y \right)= np= 2,\quad \mathrm{Var}\left( Y \right)= np\left( 1-p \right)= 1   
+    \]于是 \[
+    E\left( Y^{2} \right)=  \mathrm{Var}\left( Y \right)+  \left( E\left( Y \right)  \right)^{2}   = 5
+    \]
+\end{proof}
+\begin{exercise}{}{}
+    设随机变量 $X$ 的密度函数为
+$$p(x) = \begin{cases} \frac{3}{8}x^2, & 0 < x < 2, \\ 0, & \text{其他}, \end{cases}$$
+试求 $\frac{1}{X^2}$ 的数学期望.
+\end{exercise}
+
+\begin{proof}
+    \[
+    \begin{aligned}
+      E\left( \frac{1 }{X^{2} }  \right)&= \int \frac{1 }{X^{2} }\,\mathrm{d} P \\ 
+       &= \int \frac{1 }{x^{2} } d P_{X}\\ 
+        &= \int \frac{1 }{x^{2} }p\left( x \right)\,\mathrm{d} x \\ 
+         &= \int_{0}^{2}\frac{3 }{8 }\,\mathrm{d} x= \frac{3 }{4 }    
+    \end{aligned}  
+      \]
+\end{proof}
+\end{document}

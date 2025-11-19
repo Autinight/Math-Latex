@@ -1,0 +1,255 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{3}
+}{}
+
+\chapter{ Week 4 }
+代靖涵 25120222201319
+
+\begin{exercise}{}{9-27-1}
+设 $p$ 是 $n$ 维单位球面 $S^n$ 上的一点. 证明 $S^n - \{p\}$ 与 $\mathbb{R}^n$ 同胚.
+\end{exercise}
+
+\begin{proof}
+    将 \(  S^{n}\setminus \left\{ p \right\}  \)视为\(  \mathbb{R} ^{n+ 1}  \)的子空间, 用标准坐标表示, 不妨设 \(  p= \left( 0,\cdots ,1 \right)   \), 且 \(  S^{n}  \)的中心与\(  \mathbb{R} ^{n+ 1}  \)的原点重合.    取球面任意 \(  p  \)外一点 \(  q = \left( x_1,\cdots ,x_{n+ 1} \right)  \), 考虑 连接 \(  p,q  \)的直线,   该直线与平面 \(  \mathbb{R} ^{n}\times \left\{ 0 \right\}\)有唯一的交点 \(  \left( y_1,\cdots ,y_{n} ,0\right)\in  \mathbb{R} ^{n+ 1}\times \left\{ 0 \right\}   \) ,   存在 \(  k \in \mathbb{R}   \), 使得   \[
+    \left( 0,\cdots ,1 \right)-\left( x_1,\cdots ,x_{n+ 1} \right) = k \left( \left( 0,\cdots ,1 \right) -\left( y_1,\cdots ,y_{n} ,0\right)  \right)  
+    \]按分量写作 \[
+   x_{k}= ky_{k},\quad k= 1,2,\cdots ,n
+    \] \[
+    1-x_{n+ 1}= k
+    \] \[
+    y_{k}= \frac{x_{k} }{1-x_{n+ 1} }, k= 1,2,\cdots ,n 
+    \] 其中由于 \(  q\neq p  \), 可知\(  x_{n+ 1}\neq 1  \).  此外, 由于 \(  x_1^{2}+ x_2^{2}+ \cdots + x_{n+ 1}^{2}= \left| x \right|^{2}= 1   \), 我们有 \[
+    \begin{aligned}
+    & \left( 1-k \right)^{2}+ k^{2}y_1^{2}+ \cdots + k^{2}y_{n}^{2}= 1 \\ 
+     &\implies k^{2}\left( \left| y \right|^{2}+ 1  \right)-2k = 0 \\ 
+      &\implies k= \frac{2 }{\left| y \right|^{2}+ 1  } 
+    \end{aligned}
+    \]  所以 \[
+    \left( y_1,\cdots ,y_{n} \right)= \left( \frac{x_1 }{1-x_{n+ 1} },\cdots ,\frac{x_{n} }{1-x_{n+ 1} }   \right)  
+    \] \[
+    \left( x_1,\cdots ,x_{n+ 1} \right)= \left( \frac{2y_1 }{\left| y^{2} \right|+ 1  }  ,\cdots ,\frac{2y_{n} }{\left| y \right|^{2}+ 1  }, \frac{\left| y \right|^{2} -1 }{\left| y \right|^{2}+ 1  }  \right)  
+    \]此外, 注意到对于任意的 \(  \left( y_1,\cdots ,y_{n} \right)\in \mathbb{R} ^{n}   \), 我们有 \[
+    \begin{aligned}
+    &\left| \left( \frac{2y_1 }{ \left| y \right|^{2}+ 1 },\cdots ,\frac{2y_{n} }{\left| y \right|^{2}+ 1  },\frac{\left| y \right|^{2}- 1  }{ \left| y \right|^{2}+  1 }    \right)  \right|^{2} \\ 
+     &= \frac{4y_1^{2}+ \cdots + 4y_{n}^{2}+ \left( \left| y \right|^{2}-1  \right)^{2}  }{ \left( \left| y \right|^{2}+ 1  \right)^{2} }\\ 
+      &= \frac{4\left| y \right|^{2}+ \left| y \right|^{4}-2\left| y \right|^{2}   + 1 }{\left( \left| y \right|^{2}+ 1  \right)^{2}  }= 1   
+    \end{aligned}
+    \]  又 \(  \frac{\left| y \right|^{2}-1  }{\left| y \right|^{2}+ 1  }\neq 1   \). 因此 \[
+     \left( \frac{2y_1 }{\left| y^{2} \right|+ 1  }  ,\cdots ,\frac{2y_{n} }{\left| y \right|^{2}+ 1  }, \frac{\left| y \right|^{2} -1 }{\left| y \right|^{2}+ 1  }  \right)  \in \mathbb{S}^{n}\setminus \left\{ p \right\}
+    \]由此可知, 映射 \(   \varphi : S^{n}\setminus \left\{ p \right\}\to \mathbb{R} ^{n}\simeq \mathbb{R} ^{n}\times \left\{ 0 \right\}  \) \[
+     \varphi \left( x_1,x_2,\cdots ,x_{n+ 1} \right)= \left( \frac{x_1 }{1-x_{n+ 1} },\cdots ,\frac{x_{n} }{1-x_{n+ 1} }   \right)  
+    \] 和映射 \(  \psi :\mathbb{R} ^{n}\times \left\{ 0 \right\}\simeq \mathbb{R} ^{n}\to S^{n}\setminus \left\{ p \right\}\subseteq \mathbb{R} ^{n+ 1}  \) \[
+    \psi \left( y_1,\cdots ,y_{n} \right) = \left( \frac{2y_1 }{\left| y \right|^{2}+ 1  },\cdots ,\frac{2y_{n} }{\left| y \right|^{2}+ 1  },\frac{\left| y \right|^{2}-1  }{\left| y \right|^{2}+ 1  }    \right) 
+    \] 是互逆的映射. 并且由于 \(   \varphi   \)和 \(  \psi   \)的分量均为连续映射, 因此 \(   \varphi   \)和 \(  \psi   \)是连续映射, 进而 \(   \varphi   \)是一个同胚映射,  \(  S^{n}\setminus \left\{ p \right\}  \)与 \(  \mathbb{R} ^{n}  \)同胚.       
+\end{proof}
+
+\begin{exercise}{}{}
+设 $\{X_\lambda \mid \lambda \in \Lambda\}$, $\{Y_\lambda \mid \lambda \in \Lambda\}$ 是有相同指标集的两族拓扑空间, $\{f_\lambda: X_\lambda \to Y_\lambda\}$ 是它们之间的一族映射. 证明映射的直积
+\[
+f = \prod f_\lambda: \prod_{\lambda \in \Lambda} X_\lambda \to \prod_{\lambda \in \Lambda} Y_\lambda, \quad f((x_\lambda)) = (f_\lambda(x_\lambda))
+\]
+是连续的当且仅当每个 $f_\lambda$ 都是连续的.
+\end{exercise}
+
+\begin{proof}
+    令 \(   \pi_{j}:\prod _{ \lambda \in  \Lambda }Y_{ \lambda }\to Y_{j}  \)和 \(  p_{j}:\prod _{ \lambda \in  \Lambda }X_{ \lambda }\to X_{j}  \)均为投影映射, 它们是连续而开的.  
+    若每个 \(  f_{ \lambda }  \)都是连续的. 
+    \(  \prod _{ \lambda \in  \Lambda }Y_{ \lambda }  \)上的一个子基是 \[
+    \mathcal{S}\coloneqq \left\{  \pi_{j}^{-1} \left( U_{j} \right): j \in  \Lambda , U_{j}\text{ 是} Y_{j}\text{上的一个开集} \right\}
+    \] 任取 \(   \pi_{j}^{-1} \left( U_{j} \right)\in \mathcal{S}   \), 利用恒等式 \(   \pi_{j}\circ f = f_{j}\circ p_{j}  \),  我们有 \[
+    f^{-1} \left(  \pi_{j}^{-1} \left( U_{j} \right)  \right)= \left(  \pi_{j}\circ f \right)^{-1} \left( U_{j} \right)= \left( f_{j}\circ  p_{j} \right) ^{-1} \left( U_{j} \right) 
+    \] 是一个开集. 这表明 \(  f  \)是一个连续映射. 
+
+    反之, 若 \(  f  \)是连续映射. 任取 \(  Y_{ j }  \)上的开集 \(  U_{ j}  \), 我们有 \[
+   p_{j}^{-1} \left( f_{j}^{-1} \left( U_{j} \right)  \right)   = \left( f_{j}\circ p_{j} \right)^{-1} \left( U_{j} \right)=\left(  \pi_{j}\circ f \right)^{-1} \left( U_{j} \right)  
+    \]   是一个开集. 由于 \(  p_{j}  \)  也是一个开映射, 我们有 \[
+    f_{j}^{-1} \left( U_{j} \right)= p_{j}\left( p_{j}^{-1} \left( f_{j}^{-1} \left( U_{j} \right)  \right)  \right)  
+    \]也是一个开集. 这表明 \(  f_{j}  \)是一个连续映射.  
+\end{proof}
+
+\begin{exercise}{}{}
+设 $\{X_\lambda \mid \lambda \in \Lambda\}$ 是一族拓扑空间, 对于每个 $\lambda \in \Lambda, A_\lambda$ 是 $X_\lambda$ 的子集. 我们有两种合理的方法为 $A = \prod A_\lambda$ 赋予拓扑. 一种方法是先给 $A_\lambda$ 配上 $X_\lambda$ 的子空间拓扑, 然后给 $A$ 配以 $\{A_\lambda\}$ 的积拓扑; 另一种方法是给 $A$ 配以积空间 $\prod X_\lambda$ 的子空间拓扑. 证明这两个拓扑是一样的.
+\end{exercise}
+\begin{proof}
+记两种拓扑空间分别为 \(  \left( A,\mathcal{T}_{1} \right), \left( A,\mathcal{T}_{2} \right)    \), 只需要证明恒等映射 \(  \mathrm{Id}:\left( A,\mathcal{T}_{1} \right)\to \left( A,\mathcal{T}_{2} \right)    \)和它的逆 \(\mathrm{Id}:  \left( A, \mathcal{T}_{2} \right)\to \left( A,\mathcal{T}_{1} \right)    \)均连续.   
+采用以下记号: \begin{itemize}
+    \item \(  i_{ \lambda }:A_{ \lambda }\hookrightarrow X_{ \lambda }  \)是含入映射.
+    \item \(  I:A\hookrightarrow X  \)是含入映射. 
+    \item \(   \pi_{ \lambda }:A\to A_{ \lambda }  \)是投影映射.
+    \item \(  p_{ \lambda }:X\to X_{ \lambda }  \)是投影映射.    
+\end{itemize}
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzIsMCwiWCJdLFswLDIsIkFfXFxsYW1iZGEiXSxbMiwyLCJYX1xcbGFtYmRhIl0sWzAsMSwiSSJdLFsxLDMsInBfXFxsYW1iZGEiXSxbMCwyLCJcXHBpX1xcbGFtYmRhIiwyXSxbMiwzLCJpX1xcbGFtYmRhIiwyXV0=
+我们有交换图
+\[\begin{tikzcd}
+	A && X \\
+	\\
+	{A_\lambda} && {X_\lambda}
+	\arrow["I", from=1-1, to=1-3]
+	\arrow["{\pi_\lambda}"', from=1-1, to=3-1]
+	\arrow["{p_\lambda}", from=1-3, to=3-3]
+	\arrow["{i_\lambda}"', from=3-1, to=3-3]
+\end{tikzcd}\]
+由子空间拓扑的泛性质, 映射 \(  f:Y\to \left( A,\mathcal{T}_{2} \right)   \)连续, 当且仅当映射 \(  I\circ f: Y\to X  \)连续.  因此要说明 \(  \mathrm{Id} :\left( A,\mathcal{T}_{1} \right)\to \left( A,\mathcal{T}_{2} \right)    \)连续, 只需要说明 \(  I: \left( A,\mathcal{T}_{1} \right)\to X   \)连续.  由积拓扑的泛性质, 映射 \(  I:\left( A,\mathcal{T}_{1} \right)\to X= \prod X_{ \lambda }   \)连续, 当且仅当对于所有的 \(   \lambda \in  \Lambda   \), 映射 \(  p_{ \lambda }\circ I:\left( A,\mathcal{T}_{1} \right)\to X_{ \lambda }   \)连续.   由交换图, 我们有 \(  p_{ \lambda }\circ I= i_{ \lambda }\circ  \pi_{ \lambda }  \). 根据 \(  \mathcal{T}_{1}  \)的定义 ,  
+\begin{itemize}
+    \item \(   \pi_{ \lambda }:\left( A,\mathcal{T}_{1} \right)\to A_{ \lambda }   \)连续, 
+    \item \(  i_{ \lambda }:A_{ \lambda }\to X_{ \lambda }  \)连续.  
+\end{itemize}
+我们有 \(  i_{ \lambda }\circ  \pi_{ \lambda }  \)连续.  这就说明 \(  \mathrm{Id}:\left( A,\mathcal{T}_{1} \right)\to \left( A,\mathcal{T}_{2} \right)    \)连续. 
+
+另一方面, 根据积拓扑的泛性质, 映射 \(  g:Y\to \left( A,\mathcal{T}_{1} \right)   \)连续, 当且仅当对于所有的 \(   \lambda \in  \Lambda   \), \(   \pi_{ \lambda }\circ g:Y\to A_{ \lambda }  \)连续.  因此说明 \(  \mathrm{Id}:\left( A,\mathcal{T}_{2} \right)\to \left( A,\mathcal{T}_{1} \right)    \)连续, 只需要说明对于所有的 \(   \lambda \in  \Lambda   \), \(  \pi_{ \lambda }=   \pi_{ \lambda }\circ \mathrm{Id}:\left( A,\mathcal{T}_{2} \right)\to A_{ \lambda }   \)连续. 此外, 由子空间拓扑的泛性质, 映射 \(  h:Y\to A_{ \lambda }  \)连续, 当且仅当 \(  i_{ \lambda }\circ h:Y\to X_{ \lambda }  \)连续. 因此, 说明 \(   \pi_{\lambda }:\left( A,\mathcal{T}_{2} \right)\to A_{ \lambda }   \)连续, 只需要说明 \(  i_{ \lambda }\circ  \pi_{ \lambda }:\left( A,\mathcal{T}_{2} \right)\to X_{ \lambda }   \)连续.         由交换图, 我们有 \(  i_{ \lambda }\circ  \pi_{ \lambda }= p_{ \lambda }\circ I  \), 根据 \(  \mathcal{T}_{2}  \)的定义, 我们有 
+\begin{itemize}
+    \item \(  p_{ \lambda }: X\to X_{ \lambda }  \)连续.
+    \item \(  I: \left( A,\mathcal{T}_{2} \right) \to X  \)连续.  
+\end{itemize}
+因此 \(  p_{\lambda }\circ I  \)连续, 从而 \(  i_{ \lambda }\circ  \pi_{ \lambda }  \)连续. 这就说明了 \(  \mathrm{Id}: \left( A,\mathcal{T}_{2} \right)\to \left( A,\mathcal{T}_{1} \right)    \)连续.   
+\end{proof}
+
+\begin{exercise}{}{}
+证明 $X$ 是 Hausdorff 空间 (定义 7.3.8) 当且仅当
+\[
+\Delta_X = \{(x_1, x_2) \in X \times X | x_1 = x_2\}
+\]
+是 $X \times X$ 的闭集.
+\end{exercise}
+
+\begin{proof}
+    若 \(  X  \)是Hausdorff  . 说明 \(   \Delta _{X}  \)是闭集, 只需要说明 \[
+     \Delta _{X}^{c}= \left\{ \left( x_1,x_2 \right)\in X\times X:x_1\neq x_2  \right\}
+    \]        是开的. 对于任意的 \( \left( x_1,x_2 \right)\in  \Delta _{X}^{c} \), \(  x_1\neq x_2  \),   存在 \(  x_1  \)的开邻域 \(  U_1  \)和 \(  x_2  \)的开邻域 \(  U_2  \) , 使得 \(  U_1\cap U_2= \varnothing  \), 这相当于 \(  U_1\times U_2\subseteq  \Delta _{X}^{c}  \) . 而 \(  U_1\times U_2  \)是 \(  X\times X  \)上的开子集,    因此 \(   \Delta _{X}^{c}  \)是一个开集.
+    
+    反之, 若 \(   \Delta _{X}  \)是闭集, 则 \(   \Delta _{X}^{c}  \)是开的. 对于任意的 \(  \left( x_1,x_2 \right)\in  \Delta _{X}^{c}   \)   , 存在 \(  X\times X  \)的开集 \(  W  \), 使得 \(  \left( x_1,x_2 \right)\in W   \). 由于一下集合构成 \(  X\times X  \)的一个拓扑基  \[
+    \mathcal{S}= \left\{ U\times V: U,V\text{是}X \text{的开集} \right\}
+    \]   我们知道存在基元素 \(  U\times V  \in \mathcal{S}\)使得 \(  \left( x_1,x_2 \right)\in U\times V\subseteq W \subseteq  \Delta _{X}^{c}  \). 此时 \(  U  \)是 \(  x_1  \)的开邻域 , \(  V  \)是 \(  x_2  \)的开邻域, 使得 \(  U\cap V= \varnothing  \).       这表明 \(  X  \)是 Hausdorff的.  
+\end{proof}
+
+\begin{exercise}{}{}
+设 $f: X \to Y$ 是连续映射. 证明如果 $Y$ 是 Hausdorff 空间, 则
+\[
+X \times_Y X = \{(x_1, x_2) \in X \times X | f(x_1) = f(x_2)\}
+\]
+是 $X \times X$ 的闭集.
+\end{exercise}
+
+\begin{proof}
+    只需证明 \[
+    \left\{ \left( x_1,x_2 \right)\in X\times X: f\left( x_1 \right)\neq f\left( x_2 \right)    \right\}
+    \]是开集. 任取 \(  \left( x_1,x_2 \right)\in X\times X   \)使得 \(  f\left( x_1 \right)\neq f\left( x_2 \right)    \), 由于 \(  Y  \)是Hausdorff的, 存在 \(  Y  \)上的开集 \(  W_1 , W_2  \), 使得 \[
+    f\left( x_1 \right)\in W_1,\quad f\left( x_2 \right)\in W_2,\quad W_1\cap W_2= \varnothing  
+    \]    由于 \(  f  \)连续,  \(  f^{-1} \left( W_1 \right)   \)和 \(  f^{-1} \left( W_2 \right)   \)均为 \(  X  \)上的开集, 使得 \(  x_1\in f^{-1} \left( W_1 \right), x_2 \in f^{-1} \left( W_2 \right)    \) . 且由于 \(  W_1\cap W_2= \varnothing  \), \(  f^{-1} \left( W_1 \right)\cap f^{-1} \left( W_2 \right)= \varnothing    \)      . 此时 \[
+    \left( x_1,x_2 \right) \in f^{-1} \left( W_1 \right)\times f^{-1} \left( W_2 \right)\subseteq \left( X \times _{Y}\times  \right)^{c}    
+    \]这表明 \(  \left( X \times _{Y}X \right)^{c}   \)是开的, 从而 \(  X\times _{Y}X  \)是闭的.   
+\end{proof}
+
+\begin{exercise}{}{}
+在 $\mathbb{R}$ 中定义关系: $x \sim x'$, 即满足 $x - x' \in \mathbb{Z}$. 证明 $\sim$ 是等价关系.
+若赋予 $\mathbb{R}$ 标准拓扑, 商空间 $\mathbb{R}/\sim$ 是什么?
+\end{exercise}
+\begin{proof}
+    \begin{itemize}
+        \item 对称性: 若 \(  x\sim x^{\prime}   \), 则  \(  x-x^{\prime} \in \mathbb{Z}   \), 从而 \(  x^{\prime} -x= -\left( x-x^{\prime}  \right)\in \mathbb{Z}    \), \(  x^{\prime} \sim x  \)
+        \item 自反性 : \(  x-x=  0 \in \mathbb{Z}   \), 故 \(  x \sim x   \).
+        \item 传递性: 若 \(  x\sim y, y \sim z  \), 则 \(  x-y \in \mathbb{Z}   \), \(  y-z \in \mathbb{Z}   \), 从而 \(  x-z= \left( x-y \right)+ \left( y-z \right)\in \mathbb{Z}     \). 得到 \(  x \sim z  \)       
+    \end{itemize}故 \(  \sim   \)是一个等价关系.
+    
+    事实上,  \(  \mathbb{R} / \sim   \)同胚于 \(  S^{1}  \). 具体地, 考虑连续满射 \[
+    f: \mathbb{R} \to S^{1},\quad f\left( x \right)= e^{2 \pi i x} 
+    \]  对于任意的 \(  x, x^{\prime}   \)使得 \(  x \sim x^{\prime}   \), 我们有 \(  x- x^{\prime} \in \mathbb{Z}   \), 设 \(  x-x^{\prime} = k  \). 则 \[
+    f\left( x^{\prime}  \right)= e^{2 \pi i x^{\prime} }= e^{2 \pi i x^{\prime}  }e^{ 2\pi i \left( x-x^{\prime} \right) }=  e^{2 \pi i x }= f\left( x \right) 
+    \]    从而商空间的泛性质给出, 存在唯一的 连续满射 \(  \tilde{f}  : \mathbb{R} / \sim \to S^{1}\) 使得 \(  f= \tilde{f}\circ  \pi  \). 此外, 注意到  若  \[
+    \tilde{f}\left( [x_1] \right)= \tilde{f}\left( [x_2]\right)  
+    \]则 \[
+    f\left( x_1 \right)= f\left( x_2 \right)\implies  e^{2 \pi i x_1}= e^{2 \pi i x_2}\implies x_1-x_2\in \mathbb{Z} \implies [x_1]= [x_2]  
+    \]这表明 \(  \tilde{f}  \)是单射, 故 \(  \tilde{f}  \)是一个双射.  任取 \(  \mathbb{R} / \sim   \)上的一个开集 \(  \tilde{U}  \), 则 \[
+    \tilde{f}\left( \tilde{U} \right)= \tilde{f}\left(  \pi \left(  \pi ^{-1} \left( \tilde{U} \right)  \right)  \right)= f\left(  \pi ^{-1} \left( \tilde{U} \right)  \right)   
+    \]  因此想要证明 \(  \tilde{f}  \)是开映射, 只需证明 \(  f  \)是一个开映射.    为此, 任取开区间 \(  \left( a,b \right)   \), 则 \[
+    f\left( a,b \right)= \left\{ e^{2 \pi ix}: x\in \left( a,b \right)  \right\} 
+    \]当 \(  b-a< 1  \)时, 它是\(  S^{1}  \)上的一个开弧, 当 \(  b-a\ge 1  \)是, 它是 \(  S^{1}  \)本身. 无论如何, 均为 \(  S^{1}  \)上的一个开集.     至此, 我们证明了 \(  \tilde{f}  \)是一个连续而开的双射, 从而是一个同胚映射, 故 \(  \mathbb{R} / \sim   \)同胚于 \(  S^{1}  \).      
+\end{proof}
+\begin{exercise}{}{}
+ 证明 $\mathbb{R}\mathrm{P}^1$ 与 $S^1$ 是同胚的, $\mathbb{C}\mathrm{P}^1$ 与 $S^2$ 是同胚的.
+\end{exercise}
+
+\begin{proof}
+   \begin{enumerate}
+    \item  \(  \mathbb{R} P^{1}  \)等同于 \(  S^{1} / \left\{ x \sim -x \right\}  \).  商映射记作 \(   \pi: S^{1}\to S^{1}/ \left\{ x\sim -x \right\}  \). 
+
+    考虑连续满射 \(  f:S^{1}\to S^{1}  \) \[
+    f\left( e^{ix} \right)=  e^{ 2ix },\quad x \in \left[ 0,2 \pi\right)  
+    \] 则如果 \(  e^{ix_1}= -e^{ix_2}= e^{i\left( x_2+  \pi \right) }  \), 我们有 \[
+    x_1-x_2= \left( 2k+ 1 \right)  \pi ,  k \in \mathbb{Z} \implies e^{2ix_1}-e^{2ix_2}= e^{2ix_1}\left( 1-e^{2i\left( x_1-x_2 \right) } \right)=  0
+    \] 商空间的泛性质给出, \(  f  \) 诱导出唯一的连续满射 \(  \tilde{f}: S^{1}/ \left\{ x\sim -x \right\}\to S^{1}  \), 使得 \[
+  f= \tilde{f}\circ  \pi,\quad \tilde{f}\left( [e^{ix}] \right)= e^{2ix} 
+    \] 为了说明 \(  \tilde{f}  \)是单的, 注意到对于 \(  x_1,x_2\in [0, 2 \pi)  \)  \[
+    \tilde{f}\left( [e^{ix_1}] \right)= \tilde{f}\left( [e^{ix_2}] \right)\implies e^{2ix_1}= e^{2ix_2}\implies x_1-x_2= k \pi \implies [e^{ix_1}]= [e^{ix_2}]
+    \] 易见 \(  f  \)是一个开映射, 并且由于对于任意的 \(  S^{1}/\left\{ x\sim -x \right\}  \)上的开集 \(  \tilde{U}  \),    \[
+   \tilde{f}\left( \tilde{U} \right)= \tilde{f}\left(  \pi\left(  \ \pi ^{-1} \left( \tilde{U} \right)  \right)  \right)= f\left(  \pi ^{-1} \left( \tilde{U} \right)  \right)   
+    \]也是一个开集, 因此 \(  \tilde{f}  \)是一个连续而开的双射, 进而是一个同胚. 
+ \item 我们依次证明 \(  S^{2}\simeq \mathbb{C} \cup \left\{ \infty \right\}  \)和 \(  \mathbb{C} P^{1}\simeq \mathbb{C} \cup \left\{ \infty \right\}  \).  对于前者, 我们考虑球极投影( 类似Exercise \ref{ex:9-27-1}, 只不过将 \(  \mathbb{R} ^{2}  \)换作 \(  \mathbb{C}  \), 并将北极点映到 \(  \infty  \).    )\(  f: S^{2}\to \mathbb{C} \cup \left\{ \infty \right\}  \) \[
+ f\left( x,y,z \right)= \begin{cases} \frac{x }{1-z } +  i \frac{y }{1-z } ,& z\neq 1\\ 
+  \infty,&z= 1    \end{cases}  
+ \] 由 Exercise \ref{ex:9-27-1} , 并考虑 \(  f  \)在 \(  \left( 0,0,1 \right)   \)处的取值和像点, 可知   \(  f  \)有逆映射  \(  g: \mathbb{C} \cup \left\{ \infty \right\}\to S^{2}  \) \[
+ g\left( u+ iv\right)= \begin{cases} \left( \frac{2u }{\left| z\right|^{2} + 1  }, \frac{2v }{\left| z \right|^{2}+ 1  } , \frac{\left| z \right|^{2}-1  }{\left| z \right|^{2}+ 1  }   \right) , & z = u+ iv \neq \infty\\ 
+  \left( 0,0,1 \right),& z = \infty  \end{cases}  
+ \] Exercise \ref{ex:9-27-1} 已经告诉我们 \(  f  \)在 \(  S^{2}\setminus \left( \left\{ 0,0,1 \right\} \right)   \)连续,  \(  g  \)在 \(  \mathbb{C}   \)上连续. 因此证明 \(  f  \)是同胚, 只需要说明 \(  f  \)在 \(  \left( 0,0,1 \right)   \)处和 \(  g  \)在 \(  \infty  \)处的连续性.          由于 \[
+ \lim_{\left( x,y,z \right)\to \left( 0,0,1 \right)  }\left| f\left( x,y,z \right)  \right|^{2}= \lim_{\left( x,y,z \right)\to \left( 0,0,1 \right)  }\frac{x^{2}+ y^{2}  }{ \left( 1-z \right)^{2} }  = \infty
+ \]因此 \(  \lim_{\left( x,y,z \right)\to \left( 0,0,1 \right)  }f\left( x,y,z \right)= \infty   \) , 故 \(  f  \)在 \(  \left( 0,0,1 \right)   \)处连续.  此外,  \[
+ \lim_{z\to \infty} \left| \frac{2u  }{\left| z \right|^{2}+ 1  } \right|= \lim_{z\to \infty}\left| \frac{2v }{\left| z \right|^{2}+ 1  }  \right|  \le \lim_{z\to \infty}\frac{ 2\left| z \right| }{\left| z \right|^{2}+ 1  }= 0 
+ \] \[
+ \lim_{z\to \infty}\frac{\left| z \right|^{2}-1  }{\left| z \right|^{2}+ 1  }=  1 
+ \]因此 \(  \lim_{z\to \infty}g\left( z \right)= \left( 0,0,1 \right)    \), \(  g  \)在 \(  \infty  \)处连续. 
+ 
+ 接下来说明 \(  \mathbb{C} P^{1}\simeq \mathbb{C} \cup \left\{ \infty \right\}  \). 考虑 \[
+ \mathbb{C} P^{1}=\left( \mathbb{C} ^{2}\setminus \left\{ 0 \right\}  \right) / \sim 
+ \] 其中 \[
+ z\sim z^{\prime} \iff  \exists c \in \mathbb{C}\setminus \left\{ 0 \right\}, z^{\prime} = cz
+ \]考虑满射 \(   \varphi :\mathbb{C} ^{2}\setminus \left\{ 0 \right\}\to \mathbb{C} \cup \left\{ \infty \right\}  \) \[
+ \begin{aligned}
+  \varphi \left( z_1,z_2 \right)= \begin{cases} \frac{z_1 }{z_2 },&z_2\neq 0\\ 
+   \infty,& z_2= 0  \end{cases}   
+ \end{aligned}
+ \] 则 由定义\(   \varphi   \)在 \(  z_2\neq 0  \)处连续  , 并且由于对于 \(  0\neq z\in \mathbb{C}   \),   \[
+ \lim_{\left( z_1,z_2 \right)\to \left( z,0 \right)  } \varphi \left( z_1,z_2 \right)= \lim_{\left( z_1,z_2 \right)\to \left( z,0 \right)  }\frac{z_1 }{z_2 }= \infty  
+ \] \(   \varphi   \)在任意 \(  \left( z,0 \right) , z\neq 0   \)处连续, 因此 \(   \varphi   \)是连续映射.    对于任意的 \(  z= \left( z_1,z_2 \right)\sim z^{\prime} = \left( z_1^{\prime} ,z_2^{\prime}  \right)    \), 设 \(  z^{\prime} = cz  \), 若 \(  z_2\neq 0  \),   我们有 \[
+  \varphi \left( z_1,z_2 \right) = \frac{z_1 }{z_2 }= \frac{cz_1 }{cz_2 }= \frac{z_1^{\prime}  }{z_2^{\prime}  }=  \varphi \left( z_1^{\prime} ,z_2^{\prime}  \right)    
+ \]若 \(  z_2= 0  \), 则 \[
+  \varphi \left( z_1,z_2 \right)=  \varphi \left( z_1^{\prime} ,z_2^{\prime}  \right)= \infty  
+ \]由商空间的泛性质,  \(   \varphi   \)诱导出唯一的连续满射 \(   \tilde{\varphi} :\mathbb{C} P^{1}\to \mathbb{C} \cup \left\{ \infty \right\}  \)使得 \(   \varphi =  \tilde{\varphi} \circ \pi  \)   \[
+  \tilde{\varphi} \left( [\left( z_1,z_2 \right) ] \right)= \begin{cases} \frac{z_1 }{z_2 }  ,& z_2\neq 0\\ 
+   \infty,&z_2= 0 \end{cases} 
+ \]   注意到 \(   \tilde{\varphi}   \)有逆映射 \(  \psi :\mathbb{C} \cup \left\{ \infty \right\}\to \mathbb{C} P^{1}  \) \[
+ \psi \left( z \right)= \begin{cases} \left[ z,1 \right],& z\neq \infty\\ 
+  \left[ 1,0 \right],&z = \infty   \end{cases}  
+ \] 易见 \(  \psi   \)在 \(  z\neq \infty  \)处均连续. 此外,  \[
+ \lim_{z\to \infty}\psi \left( z \right)= \lim_{z\to \infty}\left[ z,1 \right]= \lim_{z\to \infty}\left[ 1, \frac{1 }{z }  \right]= \left[ 1,0 \right]    
+ \] \(  \psi   \)在 \(  \infty  \)处连续. 因此 \(  \psi   \)也是连续的, 这说明 \(   \tilde{\varphi}   \)是一个同胚映射. 综上所述, 我们有 \[
+ S^{2}\simeq \mathbb{C} \cup \left\{ \infty \right\}\simeq \mathbb{C} P^{1}
+ \]      
+
+   \end{enumerate}
+   
+
+\end{proof}
+
+
+\begin{exercise}{}{}
+ 证明 $\mathbb{R}^2 - \{0\}$ 与 $S^1 \times \mathbb{R}$ 是同胚的. 更一般地, 证明 $\mathbb{R}^n - \{0\}$ 与 $S^{n-1} \times \mathbb{R}$ 是同胚的.
+\end{exercise}
+\begin{proof}
+    考虑映射\(   \varphi :\mathbb{R} ^{n}\setminus \left\{ 0 \right\}\to S^{n-1}\times \mathbb{R}_{> 0}   \), \[
+     \varphi \left( x \right)\coloneqq \left( \frac{x }{\left| x \right|  },  \left| x \right|   \right) 
+    \] 易见 \(  \varphi    \)是连续映射. 它有逆映射 \(  \psi :S^{n-1}\times \mathbb{R}_{> 0} \to \mathbb{R} ^{n}\setminus \left\{ 0 \right\}  \)也是连续的, 因此 \(  \mathbb{R} ^{n}\setminus \left\{ 0 \right\}  \)与 \(  S^{n-1}\times \mathbb{R} _{> 0}  \)同胚.  此外, \(  \mathbb{R} _{> 0}  \)和 \(  \mathbb{R}   \)之间有一对同胚映射 \[
+    f:\mathbb{R} _{> 0}\to \mathbb{R} ,f\left( x \right)= \ln x,\quad g:\mathbb{R} \to \mathbb{R} _{> 0},g\left( y \right)= e^{y}  
+    \]  因此 \[
+    \left( \mathrm{Id}_{S^{n-1}}\times f  \right): S^{n-1}\times \mathbb{R} _{> 0}\to S^{n-1}\times \mathbb{R}  
+    \]是同胚映射, 故我们有以下同胚关系成立 \[
+    \mathbb{R} ^{n}\setminus \left\{ 0 \right\}\simeq S^{n-1}\times \mathbb{R} _{> 0}\simeq  S^{n-1}\times \mathbb{R} 
+    \]命题得证.
+\end{proof}
+\end{document}

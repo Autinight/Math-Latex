@@ -1,0 +1,186 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{7}
+}{}
+
+\chapter{ HW8 }
+ 代靖涵 25120222201319
+
+\begin{exercise}{}{}
+\begin{enumerate}
+\item 设 $X_1, \dots, X_k \in \Gamma(TM)$, 若对任意 $i \neq j$, 有 $[X_i, X_j] = 0$, 且 $\{X_1, \dots, X_k\}$ 线性无关, 求证对 $\forall p \in M$, 存在含 $p$ 的坐标卡 $(U, x^i)$, 使得对 $\forall q \in U$, $X_i(q) = \partial_i|_q$, $i=1, \dots, k$.
+
+\item 找出 $\mathbb{R}^3 \setminus \{(0,0,z)|z \in \mathbb{R}\}$ 上的坐标卡使得
+\[\begin{aligned}
+\partial_1 &= x\frac{\partial}{\partial x} + y\frac{\partial}{\partial y}, \\
+\partial_2 &= x\frac{\partial}{\partial y} - y\frac{\partial}{\partial x}, \\
+\partial_3 &= \frac{\partial}{\partial z}
+\end{aligned}\]
+
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item  令\(  S\subseteq M  \)为嵌入子流形, 使得 \(  T_{p}S  \)与 \(  \operatorname{span}\left\{ X_1|_{p},\cdots ,X_{k}|_{p} \right\}  \)正交. 我们选取\(  p  \)的坐标卡 \(  \left( U,x^{i} \right)   \), 使得 \(  S  \)为 \(  U  \)中前 \(  k  \) 个坐标为零的点集. 则 \[
+        T_{p}M= \operatorname{span}\left\{ X_1|_{p},\cdots , X_{k}|_{p},\frac{\partial }{\partial x^{k+ 1}}|_{p},\cdots , \frac{\partial }{\partial x^{n}}|_{p} \right\}
+        \] 则由于定理是局部的, 我们不妨就认为 \(  U\subseteq \mathbb{R} ^{n}  \).    \(  S \cap U= \left\{ x\in U:x^{1}= \cdots = x^{k}= 0 \right\} \). 
+        
+        令 \(   \theta _{i}  \)为 \(  X_{i}  \)的流.  
+        存在 \(  p  \)的开邻域 \(  V  \), 和 \(   \varepsilon > 0  \), 使得    只要 \(  \left| t_{i} \right|<  \varepsilon ,\forall i   \), 就有 复合映射 \(   \left(  \theta _1  \right)_{t_1}\circ \cdots \circ \left(  \theta _{k} \right)_{t_{k}}    \)在 \(  V  \)上有定义, 且映到 \(  U  \).
+        
+        定义 \(   \Omega \subseteq \mathbb{R} ^{n-k}  \), \[
+         \Omega = \left\{ \left( t^{k+ 1},\cdots ,t^{n} \right): \left( 0,\cdots ,0, t^{k+ 1},\cdots ,t^{n} \right)\in V   \right\}
+        \] 定义 \(  \Phi :\left( - \varepsilon , \varepsilon  \right)^{k}\times  \Omega \to U   \),  \[
+        \Phi \left( s^{1},\cdots ,s^{n}\right)= \left(  \theta _1  \right)_{t_1}\circ \cdots \left(  \theta _{k} \right)_{t_{k}}\left( 0,\cdots ,0,s^{k+ 1},\cdots ,s^{n} \right)    
+        \] 由于\(  X_{i}  \)是可交换的, 它们的流 \(   \theta _{i}  \)可交换, 故 对于每个 \(  i  \), 以及 \(  s_0= \left( s^{1},\cdots ,s^{n} \right) \in \left( - \varepsilon , \varepsilon  \right)^{k}\times  \Omega    \) \begin{equation}
+            \begin{aligned}
+               \,\mathrm{d} \Phi \left( \frac{\partial }{\partial s^{i}}|_{s_0} \right)f &= \left. \frac{\partial }{\partial s^{i}} \right|_{s_0}\left( f\left( \Phi \left( s^{1},\cdots ,s^{n} \right)  \right)  \right)\\ 
+                &= \left. \frac{\partial }{\partial s^{i}} \right|_{s_0}\left( f \circ \left(  \theta _1  \right)_{s^{1}}\circ \cdots \circ \left(  \theta _{k} \right)_{s^{k}}\left( s^{1},\cdots ,s^{n} \right)    \right)\\ 
+                 &= \left. \frac{\partial }{\partial s^{i}} \right|_{s_0}\left( \left( f\left(  \theta _{i} \right)_{s^{i}}  \right)\circ \left(  \theta _1  \right)_{t_1}   \circ \cdots \circ \left(  \theta _{i-1} \right)_{s^{i-1}}\circ\left(  \theta _{i+ 1} \right)_{s^{i+ 1}}\circ \cdots \circ \left(  \theta _{n} \right)_{s^{n}}   \left( s_0 \right) \right)    
+            \end{aligned}
+        \end{equation}   
+        由于 \(  s^{i}\mapsto \left(  \theta _{i} \right)_{s^{i}}\left( q \right)    \)是 \( V_{i}   \)  的积分曲线, 最后一个表达式等于 \(  V_{i}|_{\Phi \left( s_0 \right) }f  \).
+        
+        上面的计算说明了 \[
+        \,\mathrm{d} \Phi _0 \left( \frac{\partial }{\partial s^{i}}|_{0} \right) = \left. V_{i} \right|_{p},\quad i=  1,\cdots,k 
+        \]另一方面 \[
+        \Phi \left( 0,\cdots ,0,s^{k+ 1},\cdots ,s^{n} \right)= \left( 0,\cdots ,0,s^{k+ 1},\cdots ,s^{n} \right)  
+        \]我们有 \[
+        \,\mathrm{d} \Phi _0 \left( \left. \frac{\partial }{\partial s^{i}} \right|_{0} \right)= \left. \frac{\partial }{\partial x^{i}} \right|_{p},\quad i= k+ 1,\cdots ,n 
+        \]由反函数定理, \(  \Phi   \)是 \(  0  \)附近的微分同胚.  \(   \varphi = \Phi ^{-1}   \) 是将\(  \frac{\partial }{\partial s^{i}}  \)映到\(  V_{i},i=  1,\cdots,k   \)的光滑坐标映射.  
+
+        \item 解 \[
+        \frac{\mathrm{d}}{\mathrm{d}t}\left( x,y,z \right)= \left( x,y \right)  
+        \]得到流\[
+        \left(  \theta _1  \right)_{t}\left( x,y,z \right)= \left( e^{t}x,e^{t}y,z \right)   
+        \] 类似地,\[
+        \left(  \theta _2  \right)_{t}\left( x,y,z \right)= \left( x\cos t-y\sin t, x\sin t+ y\cos t \right)   
+        \] \[
+        \left(  \theta _3  \right)_{t}\left( x,y,z \right)= \left( x,y,z+ t \right)   
+        \]
+        直接计算可以验证这些流是交换的. 定义 \[
+        \Phi \left( u^{1},u^{2},u^{3} \right)= \left(  \theta _3  \right)_{u^{3}}\circ \left(  \theta _2  \right)_{u^{2}}\circ \left(  \theta _1  \right)_{u^{1}}\left( p_0 \right)     
+        \]其中 \(  p_0= \left( 1,0,0 \right)   \) 
+        计算可得 \[
+        \left(  \theta _1  \right)_{u^{1}}\left( 1,0,0 \right)= \left( e^{u^{1}},0,0 \right)   
+        \] \[
+        \left(  \theta _2  \right)_{u^{2}}\left( e^{u^{1}},0,0 \right)= \left( e^{u^{1}}\cos u^{2},e^{u^{1}}\sin u^{2},0 \right)   
+        \] \[
+        \left(  \theta _3  \right)_{u^{3}}\left( \cdots  \right)= \left( e^{u^{1}}\cos u^{2},e^{u^{1}}\sin u^{2},u^{3} \right)   
+        \]得到坐标变换 \[
+        \left( x,y,z \right)= \Phi \left( u^{1},u^{2},u^{3} \right)= \left( e^{u^{1}}\cos u^{2},e^{u^{1}}\sin u^{2},u^{3} \right)   
+        \] 因此 \(  \left( u^{1},u^{2},u^{3} \right)  = \Phi ^{-1} \left( x,y,z \right)  \)即为满足条件的坐标卡. 
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{exercise}{}{}
+设 $\varphi: M \to N$ 光滑. 若 $\forall p \in M$, 有 $d\varphi_p(X_p) = Y_{\varphi(p)}$, 则称 $X \in \Gamma(TM), Y \in \Gamma(TN)$ 是 $\varphi$-相关的. 求证:
+\begin{enumerate}
+\item[a).] 对任意 $g \in C^\infty(N)$, 有 $X(\varphi^*g) = \varphi^*(Yg)$;
+\item[b).] 若 $X_i, Y_i$ 是 $\varphi$-相关的, $i=1,2$, 则 $[X_1, X_2], [Y_1, Y_2]$ 是 $\varphi$-相关的;
+\item[c).] 若 $\gamma: I \to M$ 是 $X$ 的积分曲线, 则 $\varphi \circ \gamma: I \to N$ 是 $Y$ 的积分曲线.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item \(   \varphi ^{*}\ge g\circ  \varphi   \), \(   \varphi ^{*}\left( Yg \right)= \left( Yg \right)\circ  \varphi     \)  , 因此只需要证明 \[
+        X_{p}\left( g\circ  \varphi  \right)= Y_{ \varphi \left( p \right) }g 
+        \]由链式法则 \[
+        X_{p}\left( g\circ  \varphi  \right)= d\left( g\circ  \varphi  \right)_{p}\left( X_{p} \right)= dg_{ \varphi \left( p \right) }\left( d \varphi _{p}\left( X_{p} \right)  \right)    
+        \]由 \(   \varphi   \)-相关性 \(  d \varphi _{p}\left( X_{p} \right)= Y_{ \varphi \left( p \right) }   \), 得到 \[
+        X_{p}\left( g\circ  \varphi  \right)= Y_{ \varphi \left( p \right) }g 
+        \]  
+        \item 注意到上面的推导事实上给出了\(   \varphi   \)- 相关性的等价形式, 我们只需要$$[X_1,X_2](\varphi^*g)=\varphi^*\big([Y_1,Y_2]g\big).$$ 对于任意的 \(  g\in C^{\infty}\left( N \right)   \)成立. 事实上  \[
+       \begin{aligned}
+        [X_1,X_2]\left(  \varphi ^{*}g \right) &= X_1\left( X_2\left(  \varphi ^{*}g \right)  \right)-X_2\left( X_1\left(  \varphi ^{*}g \right)  \right)\\ 
+         &= X_1\left(  \varphi ^{*}\left( Y_2g \right)  \right)-X_2\left(  \varphi ^{*}\left( Y_1g \right)  \right)\\ 
+          &=  \varphi ^{*}\left( Y_1\left( Y_2g \right)  \right)- \varphi ^{*}\left( Y_2\left( Y_1g \right)  \right)    \\ 
+           &=  \varphi ^{*}\left( Y_1\left( Y_2g \right)-Y_2\left( Y_1g \right)   \right)\\ 
+            &=  \varphi ^{*}\left( [Y_1,Y_2]g \right)     
+       \end{aligned}
+        \]因此\(  [X_1,X_2],[Y_1,Y_2]  \)是 \(   \varphi   \)-相关的.
+        \item 设 \(   \gamma :I\to M  \)是 \(  X  \)的积分曲线, 则 \[
+         \gamma ^{\prime} \left( t \right)= X_{ \gamma \left( t \right) } 
+        \]   由链式法则 \[
+        \left(  \varphi \circ  \gamma  \right)^{\prime} \left( t \right)= d  \varphi _{ \gamma \left( t \right) }\left(  \gamma ^{\prime} \left( t \right)  \right)= d  \varphi _{ \gamma \left( t \right) }\left( X_{ \gamma \left( t \right) }\right)    = Y_{ \varphi \left(  \gamma \left( t \right)  \right) } 
+        \]因此 \(   \varphi \circ  \gamma   \)是 \(  Y  \)的积分曲线.  
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+关于 Foliation 求证:
+\begin{enumerate}
+\item 若 $\mathcal{F}$ 是一个叶状结构, 则 $\mathcal{F}$ 的叶的切空间在流形 $M$ 上构成一个对合分布 $\mathcal{D}$;
+\item 反之, 若 $\mathcal{D}$ 是一个可积分布, 则 $\mathcal{D}$ 的极大连通积分子流形在 $M$ 上构成一个叶状结构;
+\item 设 $M$ 和 $N$ 均为光滑流形, 且 $F: M \to N$ 是一个光滑淹没, 证明: $M$ 的非空水平集的连通分支构成 $M$ 的一个叶状结构.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item 任取 \(  \mathcal{F}  \)的叶\(  L  \). 任取 \(  X,Y \in  \Gamma \left( TL \right)   \). 任取 \(  p\in L  \), 存在 \(  p  \)附近的一个 \(  \mathcal{F}  \)的flat chart \(  \left( U, \varphi  \right)   \).  使得 \(   \varphi \left( U \right)   \)是 \(  \mathbb{R} ^{n}  \)上的cube,    \(  L\cap U  \)是形如  \(  x^{k+ 1}= c^{k+ 1},\cdots ,x^{n}= c^{n}  \) 的\(  k  \)-slices的可数并. 从而  \[
+     T\left( L\cap U \right)= \operatorname{span}\left\{ \frac{\partial }{\partial x^{1}},\cdots ,\frac{\partial }{\partial x^{k}} \right\} 
+        \]由于 \[
+        [\frac{\partial }{\partial x^{i}},\frac{\partial }{\partial x^{j}}]= 0
+        \]故 \[
+        [T\left( L\cap U \right) ,T\left( L\cap U \right) ]\subseteq T\left( L\cap U \right) 
+        \]由于 \(  p  \)是任取的, 且李括号是局部的算子, 故\(  [TL,TL]\subseteq TL  \). \(  TL  \)是对合的. 因此 \(  \mathcal{F}  \)的叶的切空间在 \(  M  \)上构成对合分布.
+        \item     若 \(  \mathcal{D}  \)是 \(  M  \)上一个 \(  k  \)维可积分布. 由Frobenius定理 ,  \(  D  \)是完全可积的. 即对于每个 \(  p \in M  \), 存在一个对 \(  D  \)的flat chart \(  \left( U, \varphi  \right)   \), 使得 \[
+        D_{q}= \operatorname{span}\left\{ \frac{\partial }{\partial x^{1}},\cdots ,\frac{\partial }{\partial x^{k}} \right\}_{q},\quad \forall q\in U
+        \]    根据常微分方程解的存在唯一性, 对于任意的 \(  q \in U  \), \(  U  \)中存在唯一的 \(  k  \)维积分子流形, 它是坐标形如 \[
+        \left\{ x^{k+ 1}= c^{k+ 1},\cdots ,x^{n}= c^{n} \right\}\cap  \varphi \left( U \right) 
+        \]   的集合的一个连通分支. 取遍 \(  D  \)的这样的极大连通积分子流形,  记作 \(  \mathcal{F}  \). 则 \(  \mathcal{F}  \)中的积分子流形两两不相交, 且并为 \(  M  \). 并且上述的\(  \left( U, \varphi  \right)   \)    也是 flat chart for \(  \mathcal{F}  \).  故 \(  \mathcal{F}  \)是 \(  M  \)上的一个叶状结构.
+        \item   由于 \(  F  \)是淹没, 对于每个 \(  q\in N  \), \(  F^{-1} \left( q \right)   \)都是 \(  M  \)的 \( k\coloneqq  m-n  \)维浸入子流形, 进而它们的连通分支也是. 任取 \(  p \in M  \), 存在 \(  M  \)上\(  p  \)附近 的坐标卡 \(  \left( U, \varphi  \right)   \), 和 \(   F\left( p \right)   \)附近的坐标卡 \(  \left( V,\psi  \right)   \), 使得 \(  F\left( U \right)\subseteq V   \), 且\(  F  \)有坐标表示 \[
+        \hat{F}\left( x^{1},\cdots ,x^{m} \right)\to \left( x^{k+ 1},\cdots ,x^{m}\right)  
+        \]        对于每个 \(  F^{-1} \left( q \right)   \)使得  \(  F^{-1} \left( q \right)\cap U\neq \varnothing   \), 有\(  q\in F\left( U \right)   \).   设 \(  \psi \left( q \right)=  q ^{1},\cdots , q^{n}   \). 则 \(  F^{-1} \left( q \right)   \)的坐标集为  \[
+        \left\{x^{k+ 1}=  q^1,\cdots ,x^{m}=  q^{n} \right\} \cap  \varphi \left( U \right) 
+        \]   \(  F^{-1} \left( q \right)   \)的每个连通分支 都是上述集合的一个连通分支. 将所有 非空的 \(  F^{-1} \left( q \right)   \)的连通分支的全体记作\(  \mathcal{F}  \), 则以上表明 \(  \left( U, \varphi  \right)   \)是 \(  \mathcal{F}  \)一个 flat chart. 至此, 我们说明了对于每个 \(  p\in M  \), 都存在 \(  p  \)附近的对 \(  \mathcal{F}  \)的flat chart, 故 \(  \mathcal{F}  \)是 \(  M  \)的一个叶状结构.         
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+设 $\mathcal{D}$ 是 $\mathbb{R}^3$ 上由向量场
+\[
+X = \frac{\partial}{\partial x} + yz\frac{\partial}{\partial z}, \quad Y = \frac{\partial}{\partial y}
+\]
+生成的光滑分布.
+\begin{enumerate}
+\item[a).] 找出 $\mathcal{D}$ 的经过原点的积分流形;
+\item[b).] $\mathcal{D}$ 是对合的吗? 由上题结果解释为何有这种现象.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 若 \(  S  \)是\(  \mathcal{D}  \)的一个积分子流形, 则在 \(  S  \)上  
+         \[
+         [X|_{S},Y|_{S}] _{p}\in T_{p}S= \mathcal{D}_{p}= \operatorname{span}\left\{ X_{p},Y_{p} \right\},\quad \forall p\in S
+         \]另一方面, 在 \(  \mathbb{R} ^{3}  \)上计算 \[
+         [X,Y]= [ \partial _{x}+ yz \partial _{z}, \partial _{y}]= -z \partial _{z}
+         \] \(  X,Y  \)在 \(  S  \)上处处切向, 故   \[
+         [X,Y]|_{S}= [X|_{S},Y|_{S}]
+         \]\(  S  \)上每个点\(  \left( x,y,z \right)   \)处总存在 \(  a,b  \)  使得 \[
+       -z \partial _{z}= a\left(  \partial _{x}+ yz \partial _{z} \right)+ b \partial _{y} 
+         \] 此时只能有 \(  z= 0  \). 因此 \(  S\subseteq \left\{ z= 0 \right\}  \) . 
+        事实上, 如果令 \(  S= \left\{ z= 0 \right\}  \), 就有 \[
+        TS= \operatorname{span}\left\{  \partial _{x}, \partial _{y} \right\}
+        \] 而在 \(  S  \)上,  \(  X=  \partial _{x}+ y\cdot 0 \partial _{z}=  \partial _{x}  \), \(  Y=  \partial _{y}  \). \[
+        TS= \operatorname{span}\left\{ X,Y \right\}
+        \]这表明 \(  S= \left\{ z= 0 \right\}  \)就是 \(  \mathcal{D}  \)的经过原点的积分子流形.     
+        \item  \[
+      [X,Y]= [\partial _{x}+ yz \partial _{z} , \partial _{y}] = -z \partial _{z}
+        \]    在 \(  z\neq 0  \)上,  \(  [X,Y]\not \in \mathcal{D}  \). 故 \(  \mathcal{D}  \)不是对合的.     
+
+        上面的结果展示了,  \(  [X,Y]  \)在 \(  z\neq 0  \)时会产生一个 纯 \(   \partial _{z}  \)方向的向量场. 而 \(  X,Y  \)的任意线性组合都无法    产生这样一个方程的向量场.
+    \end{enumerate}
+    
+\end{proof}
+\end{document}

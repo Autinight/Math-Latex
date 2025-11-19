@@ -17,6 +17,12 @@
 Suppose that $I$ is an ideal of $L$. Then $L/I$ is abelian if and only if $I$ contains the derived algebra $L'$.
 \end{lemma}
 
+\begin{proof}
+     \(  L/I  \) is abelian, if and only if for each \(  x,y \in L  \), \[
+    \left[ x+ I,y+ I \right]= \left[ x,y \right]+ I= 0+ I\iff  \left[ x,y \right]\in I   
+    \] That is \(  L/I  \) is abelian, if and only if \(  L^{\prime} = \left[ L,L \right]\subseteq I   \)  .
+\end{proof}
+
 \begin{definition}{}{}
     This lemma tells us that the derived algebra $L'$ is the smallest ideal of $L$ with an abelian quotient. By the same argument, the derived algebra $L'$ itself has a smallest ideal whose quotient is abelian, namely the derived algebra of $L'$, which we denote $L^{(2)}$, and so on. We define the \dfntxt{derived series} of $L$ to be the series with terms
 \[
@@ -25,4 +31,77 @@ L^{(1)} = L' \quad \text{and} \quad L^{(k)} = [L^{(k-1)}, L^{(k-1)}] \text{ for 
 Then $L \supseteq L^{(1)} \supseteq L^{(2)} \supseteq \dots$.
 As the product of ideals is an ideal, $L^{(k)}$ is an ideal of $L$ (and not just an ideal of $L^{(k-1)}$).
 \end{definition}
+
+\begin{definition}{}{}
+The Lie algebra $L$ is said to be \dfntxt{solvable} if for some $m \geq 1$ we have $L^{(m)} = 0$.
+\end{definition}
+\begin{lemma}{}{}
+If $L$ is a Lie algebra with ideals
+\[
+L = I_0 \supseteq I_1 \supseteq \ldots \supseteq I_{m-1} \supseteq I_m = 0
+\]
+such that $I_{k-1}/I_k$ is abelian for $1 \leq k \leq m$, then $L$ is solvable. 
+\end{lemma}
+\begin{note}
+    \begin{itemize}
+        \item 我们把这样的理想链视作过滤掉非交换性的多层滤网, 每次都把可交换的元(相当于粗颗粒)保留, 将不能交换的程度(细颗粒)过滤下去.
+        \item 导出列实现对不可交换性的精准过滤和采集.
+        \item 普通的理想链是可能更粗的滤网, 它能承载所有上一层级的非交换性, 但是可能混入可交换性的细颗粒.
+        \item 这个引理相当于是说, 如果我们通过可能更不精细的手法将所有的非交换性过滤干净, 那么原有的精确过滤也一定能过滤干净.
+    \end{itemize}
+    
+\end{note}
+\begin{proof}
+    We shall inductively shows that \(  L^{\left( k \right) }  \) is contained in \(  I_{k}  \), then by taking \(  k= m  \), we get \(  L^{\left( m \right) }= 0  \).
+    
+    
+    Since \(  L/I_1= I_0/I_1  \) is abelian, \(  I_1\supseteq L^{\prime}   \).  
+     From inductive hypothesis, we know that \(  L^{\left( k -1\right) }\subseteq I_{k-1}  \), since \(  I_{k-1}/ I_{k}  \) is abelian, that is \[
+     [I_{k-1}/I_{k},I_{k-1}/I_{k}]= 0
+     \] which is equivalent to \[
+     [I_{k-1},I_{k-1}]\subseteq I_{k}
+     \]Since \(  L^{\left( k-1 \right) }\subseteq I_{k-1}  \), we have \[
+     L^{\left( k \right) }= [L^{\left( k-1 \right) }]
+     \] 
+\end{proof}
+
+\begin{proposition}{}{}
+    Suppose that $\varphi : L_1 \to L_2$ is a surjective homomorphism of Lie algebras. Show that
+\[
+\varphi(L_1^{(k)}) = (L_2)^{(k)}.
+\]
+\end{proposition}
+
+\begin{proof}
+   For \(  k= 0  \),  \[
+    \varphi \left( L_1 \right)= L_2 
+   \] Inductively,  \[
+    \varphi \left( L_{1}^{\left( k \right) } \right)=  \varphi \left( \left[ L_1^{\left( k-1 \right) },L_1^{\left( k-1 \right) } \right]  \right)= \left[  \varphi \left( L_1^{\left( k-1 \right) } \right),  \varphi \left( L_1^{\left( k-1 \right) } \right)   \right]   = \left[ L_2^{\left( k-1 \right) },L_2^{\left( k-1 \right) } \right]= L_2^{\left( k \right) } 
+     \]
+\end{proof}
+
+\begin{lemma}{}{}
+Let $L$ be a Lie algebra.
+
+\begin{enumerate}
+\item[(a)] If $L$ is solvable, then every subalgebra and every homomorphic image of $L$ are solvable.
+
+\item[(b)] Suppose that $L$ has an ideal $I$ such that $I$ and $L/I$ are solvable. Then $L$ is solvable.
+
+\item[(c)] If $I$ and $J$ are solvable ideals of $L$, then $I + J$ is a solvable ideal of $L$.
+\end{enumerate}
+\end{lemma}
+\begin{enumerate}
+    \item [(a)] Omitted.
+    \item [(b)] 
+    \begin{note}
+        商去 \(  I  \)是可解的, 当且仅当各层级的非交换性可以被 \(  I  \)给兜住. 
+    \end{note}From the above proposition, we have \(  \left( L/I \right)^{\left( k \right) }= \left( L^{\left( k \right) }+ I \right)/I   \) . If \(  L/I  \) is solvable, then \(  L^{\left( m \right) }\subseteq I  \) for some \(  m  \).  We have for some \(  k  \), \[
+    \left( L^{\left( m \right) } \right)^{\left( k \right) }\subseteq I^{\left( k \right) }= 0 
+    \]  Alternatively, it follows from (a) that \(  L^{\left( m \right) }  \) is sovable. \[
+  L^{\left( m+ k \right) }=   \left( L^{\left( m \right) } \right)^{\left( k \right) }=  0
+    \]
+    \item [(c)] \(  \left( I+ J \right)/I\simeq  J/I\cap J   \) is sovable by (a). And since \(  I  \) is sovable  , \(  I+ J  \) is sovable by (b). 
+\end{enumerate}
+
 \end{document}

@@ -1,0 +1,203 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Integration }
+% 代靖涵 25120222201319
+
+\section{Integration Respect to a Measure}
+\begin{theorem}{Monotone Convergence Theorem}{}
+    Suppose $(X, \mathcal{S}, \mu)$ is a measure space and $0 \leq f_1 \leq f_2 \leq \cdots$ is an increasing sequence of $\mathcal{S}$-measurable functions. Define $f: X \to [0, \infty)$ by
+
+\[
+f(x) = \lim_{k \to \infty} f_k(x).
+\]
+
+Then
+
+\[
+\lim_{k \to \infty} \int f_k d\mu = \int f d\mu.
+\]
+\end{theorem}
+
+\begin{proof}
+    \(  f  \) is \(  \mathcal{S}  \)-measurable as the pointwise limitation of \(  \left\{ f_{k} \right\}  \). Since \(  f_{k}\le f  \) for all \(  k  \), we have \(  \int f_{k}\,\mathrm{d} \mu \le \int f\,\mathrm{d} \mu   \). Thus \[
+    \lim_{k\to \infty}\int f_{k}\,\mathrm{d} \mu \le \int f\,\mathrm{d} \mu 
+    \]      
+    To show the converse, take arbitrary simple function \(s=   \sum _{j= 1}^{n}c_{j} \chi _{A_{j}}  \) with standard representation such that \(  f\ge s \) . We fix a \(  t \in \left( 0,1 \right)   \),  and define \[
+    E_{k}\coloneqq \left\{ x \in X: f_{k}\left( x \right)\ge   t \sum _{j= 1}^{n}c_{j}\chi _{A_{j}}\left( x \right) \right\}
+    \]  Then \(  E_{k}  \) s are measurable and \[
+    E_1\subseteq E_2\subseteq \cdots ,\quad \bigcup _{k= 1}^{\infty}E_{k}= X
+    \] Then it follows that \(  \mu \left( A_{j} \right)= \lim_{k\to \infty}\mu \left( A_{j}\cap E_{k} \right)    \) for each \(  j  \). We have \[
+    \int f_{k}\,\mathrm{d} \mu \ge \int t \sum _{j= 1}^{n}c_{j}\chi _{A_{j}\cap E_{k}}\,\mathrm{d} \mu \ge   t \sum _{j= 1}^{n}c_{j}\mu \left( A_{j}\cap E_{k} \right) 
+    \]  By taking \(  k\to \infty  \), we get \[
+    \lim_{k\to \infty}\int f_{k}\,\mathrm{d} \mu\ge   t \sum _{j= 1}^{n}c_{j}\mu \left( A_{j} \right)  
+    \] Taking the suprerum of the inequality above over all simple functions \(  s  \)  , we get \[
+    \lim_{k\to \infty} \int f_{k}\,\mathrm{d} \mu \ge   t \int f\,\mathrm{d} \mu 
+    \]Finally , taking the limit of \(  t  \) increasing to \(  1  \) shows that  \[
+    \lim_{k\to \infty}\int f_{k} \,\mathrm{d} \mu \ge \int f\,\mathrm{d} \mu 
+    \]
+\end{proof}
+\begin{lemma}{Fatou's lemma}{}
+If $\{f_k\}_{k=1}^\infty$ is a sequence of nonnegative $\mu$-measurable functions, then
+\[
+\int_X \liminf_{k\to\infty} f_k d\mu \leq \liminf_{k\to\infty} \int_X f_k d\mu.
+\]
+\end{lemma}
+
+\begin{proof}
+    Let \(  g_{k}\left( x \right) = \inf _{n\ge k}f_{n}\left( x \right)   \) . Then \(  0\le g_1\le g_2\le \cdots   \) is an increasing suquence of \(  \mathcal{S}  \)-measurable functions.Then \[
+    g\left( x \right)= \liminf_{k\to \infty}f_{k} 
+    \]  It follows from Monotone Convergence Theorem that \[
+  \int _{X}\liminf_{k\to \infty}f_{k}  \,\mathrm{d} \mu = \lim _{k\to \infty}\int_{X}g_{k}\,\mathrm{d} \mu = \lim_{k\to \infty} \int_{X} g_{k}\,\mathrm{d} \mu 
+    \] Since for each \(  g_{k}  \), we have \[
+    g_{k}\left( x \right)= \inf _{n\ge k}f_{n}\left( x \right)\le f_{k}\left( x \right)   
+    \] then \[
+    \int_{X}g_{k}\,\mathrm{d} \mu \le \int_{X}f_{k}\,\mathrm{d} \mu ,\quad \forall k\ge 1
+    \] By taking the \(  \liminf   \) relative to \(  k  \) both sides, we have \[
+    \lim_{k\to \infty}\int_{X}g_{k}\,\mathrm{d} \mu = \liminf_{k\to \infty}\int_{X}g_{k}\,\mathrm{d} \mu \le \liminf_{k\to \infty}f_{k}\,\mathrm{d} \mu .
+    \] Thus \[
+    \int_{X}\liminf_{k\to \infty}f_{k}\,\mathrm{d} \mu \le \liminf_{k\to \infty}\int_{X}f_{k}\,\mathrm{d} \mu 
+    \]  
+\end{proof}
+\section{Limits of Integrations}
+
+\subsection{Bounded Convergence Theorem}
+
+\begin{proposition}{bounding an integral}{}
+ 
+Suppose $(X, \mathcal{S}, \mu)$ is a measure space, $E \in \mathcal{S}$, and $f: X \to [-\infty, \infty]$ is a function such that $\int_E f \, d\mu$ is defined. Then
+ 
+\[
+\left| \int_E f \, d\mu \right| \leq \mu(E) \sup_E |f|.
+\]
+ 
+\end{proposition}
+\begin{proof}
+    Let \(  c= \sup _{E}\left| f \right|   \), then \[
+    \begin{aligned}
+    \left| \int_{E}f\,\mathrm{d} \mu  \right|&= \left|  \int \chi _{E}f \,\mathrm{d} \mu  \right|\\ 
+     &\le \int \left| \chi _{E}f \right|\,\mathrm{d} \mu \\ 
+      &\le  \int \chi _{E}c\,\mathrm{d} \mu \\ 
+       &= \mu \left( E \right)c= \mu \left( E \right)\sup _{E}\left| f \right|       
+    \end{aligned}
+    \] 
+\end{proof}
+\subsection{Dominated Convergence Theorem}
+\begin{proposition}{integrals on small sets are small}{11-6-3}
+Suppose $(X, \mathcal{S}, \mu)$ is a measure space, $g: X \to [0, \infty]$ is $\mathcal{S}$-measurable, and $\int g d\mu < \infty$. Then for every $\varepsilon > 0$, there exists $\delta > 0$ such that
+
+\[
+\int_B g d\mu < \varepsilon
+\]
+
+for every set $B \in \mathcal{S}$ such that $\mu(B) < \delta$.
+\end{proposition}
+
+\begin{remark}
+    \begin{itemize}
+        \item \(  g\in L^{1}\left( \mu  \right)   \) induces a finite measure \[
+        \nu \left( B \right)=  \int_{B}g \,\mathrm{d} \mu ,\quad B\in \mathcal{S}
+        \] 
+        \item For each \(   \varepsilon > 0  \) , there exists \(   \delta > 0  \) such that \(  \nu \left( B \right)<  \varepsilon    \) whenever \(  \mu \left( B \right)<  \delta    \).    
+    \end{itemize}
+    
+\end{remark}
+\begin{proof}
+    Since \(  \int g\,\mathrm{d} \mu   < \infty\), for each \(   \varepsilon > 0  \) , there exists a simple function \(  h:X\to \left[ 0,\infty \right]   \) such that \(  h\le g  \),   \[
+    0\le \int g\,\mathrm{d} \mu - \int h \,\mathrm{d} \mu < \frac{ \varepsilon  }{2 } 
+    \] Suppose that \(  c= \sup _{X}h  \)    , which is finite. Then for \(   \delta = \frac{ \varepsilon  }{2c }   \), we have for each \(  B\in \mathcal{S}  \) such that \(  \mu \left( B \right)<  \delta    \), there is  \[
+    \int_{B} h \,\mathrm{d} \mu < \mu \left( B \right)c < \frac{ \varepsilon  }{2 } 
+    \]  \[
+    \int_{B}g\,\mathrm{d} \mu \le  \int _{B} h \,\mathrm{d} \mu + \frac{ \varepsilon  }{2 } <  \varepsilon 
+    \]
+\end{proof}
+
+\begin{proposition}{integrable functions live mostly on sets of finite measure}{11-6-1}
+Suppose $(X, \mathcal{S}, \mu)$ is a measure space, $g: X \to [0, \infty]$ is $\mathcal{S}$-measurable, and $\int g d\mu < \infty$. Then for every $\varepsilon > 0$, there exists $E \in \mathcal{S}$ such that $\mu(E) < \infty$ and
+
+\[
+\int_{X \backslash E} g d\mu < \varepsilon.
+\]
+\end{proposition}
+\begin{proof}
+   Let \(  h :X\to \left[ 0,\infty \right]  \) be a simple function such that \(  0\le h\le g  \), \[
+   \int g\,\mathrm{d} \mu - \int h\,\mathrm{d} \mu < \frac{ \varepsilon  }{2 } 
+   \] Define \[
+   E=  h^{-1} \left( \left( 0,\infty \right)  \right) 
+   \]  It follows from the definition of the simple function and its integrability that \(  \mu \left( E \right)< \infty   \). Furthermore, \[
+   \int_{X\setminus E}h \,\mathrm{d} \mu = \int_{X\setminus E} 0\cdot  \,\mathrm{d} \mu = 0
+   \] Thus \[
+   \int_{X\setminus E}g\,\mathrm{d} \mu\le \frac{ \varepsilon  }{2 }+ \int_{ X\setminus E} h \,\mathrm{d} \mu <  \varepsilon 
+   \]
+\end{proof}
+\begin{theorem}{Dominated Convergence Theorem}{}
+Suppose $(X, \mathcal{S}, \mu)$ is a measure space, $f: X \to [-\infty, \infty]$ is $\mathcal{S}$-measurable, and $f_1, f_2, \ldots$ are $\mathcal{S}$-measurable functions from $X$ to $[-\infty, \infty]$ such that
+
+\[
+\lim_{k \to \infty} f_k(x) = f(x)
+\]
+
+for almost every $x \in X$. If there exists an $\mathcal{S}$-measurable function $g: X \to [0, \infty]$ such that
+
+\[
+\int g d\mu < \infty \quad \text{and} \quad |f_k(x)| \leq g(x)
+\]
+
+for every $k \in \mathbb{Z}^+$ and almost every $x \in X$, then
+
+\[
+\lim_{k \to \infty} \int f_k d\mu = \int f d\mu.
+\]
+\end{theorem}
+\begin{proofsketch}
+   将积分差先控制在  \(  g  \)几乎落在其上的有限测度集 \(  E  \),    在将 \(  E  \)上的积分分别控制在一个小测度集 \(  B_{ \varepsilon }  \)和使得  \(  f_{k}  \)一致收敛的大测度集 \(  E\setminus B_{ \varepsilon }  \)上.  
+\end{proofsketch}
+\begin{proof}
+   For each \(  E\in \mathcal{S}  \), and \(  k\in \mathbb{Z} ^{+ }  \),    \[
+    \begin{aligned}
+    \left| \int f_{k}\,\mathrm{d} \mu -\int f\,\mathrm{d} \mu  \right|&\le  \int_{E} \left| f_{k}-f \right|\,\mathrm{d} \mu     + \left|  \int_{X\setminus E}f_{k}\,\mathrm{d} \mu  \right| +  \left| \int_{X\setminus E}f\,\mathrm{d} \mu  \right| \\ 
+     &\le \int_{E}\left| f_{k}-f \right|\,\mathrm{d} \mu + 2 \int_{X\setminus E} g\,\mathrm{d} \mu  
+    \end{aligned}
+    \]  From proposition \ref{pps:11-6-1}, for every \(   \varepsilon > 0  \), there exists \(  E_{ \varepsilon }\in \mathcal{S}  \) such that \(  \mu \left( E_{ \varepsilon } \right)< \infty   \) and \[
+    \int_{X\setminus E_{ \varepsilon }} g\,\mathrm{d} \mu < \frac{ \varepsilon  }{4 } 
+    \] From proposition \ref{pps:11-6-3}, there exists \(   \delta > 0  \) such that for each \(  F\in \mathcal{S}  \), \(  \mu \left( F \right)<  \delta    \), we have \[
+    \int_{F}g\,\mathrm{d} \mu < \frac{ \varepsilon  }{8 } 
+    \]     The Egorov's theorem implise that there exists measurable set \(  B_{ \varepsilon }\in \mathcal{S}  \) with \(  \mu \left( E_{ \varepsilon }\setminus B_{ \varepsilon } \right)<  \delta  \) such that  \(  f_{k}  \) converges uniformly to \(  f  \) on \(  B_{ \varepsilon }  \). Then we have \[
+\lim_{k\to \infty}    \int_{B_{ \varepsilon }}\left| f_{k}-f \right| \,\mathrm{d} \mu \le \lim_{k\to \infty}\mu \left( B_{ \varepsilon } \right)\sup \left| f_{k}-f \right|= 0  
+    \]  Then there exists \(  N  \) such that  \[
+    \int_{B_{ \varepsilon }}\left| f_{k}-f \right|\,\mathrm{d} \mu < \frac{ \varepsilon  }{4 }  ,\quad k\ge N
+    \]Furthermore   , for each \(  k  \) we have   \[
+    \int_{E_{ \varepsilon }\setminus B_{ \varepsilon }}\left| f_{k} -f\right|\,\mathrm{d} \mu \le 2 \int_{E_{ \varepsilon }\setminus B_{ \varepsilon }}g\,\mathrm{d} \mu< \frac{ \varepsilon  }{4 }   
+    \] Therefore \[
+   \begin{aligned}
+    \int_{E_{ \varepsilon }}\left| f_{k}-f \right|&\le \int_{E_{ \varepsilon }\setminus B_{ \varepsilon }}\left| f_{k}-f \right|\,\mathrm{d} \mu +  \int_{B_{ \varepsilon }}\left| f_{k}-f \right|\,\mathrm{d} \mu < \frac{ \varepsilon  }{2 }    ,\quad k\ge N
+   \end{aligned} 
+    \] then it follows that \[
+    \left| \int f_{k}\,\mathrm{d} \mu -\int f\,\mathrm{d} \mu  \right| \le \int_{E_{ \varepsilon }}\left| f_{k}-f \right|\,\mathrm{d} \mu + 2\int_{X\setminus E_{ \varepsilon }}g\,\mathrm{d} \mu < \frac{ \varepsilon  }{2 }+ \frac{ \varepsilon  }{2 }=  \varepsilon,\quad k\ge N   
+    \]That is \[
+    \lim_{k\to \infty} \int f_{k}\,\mathrm{d} \mu =  \int f\,\mathrm{d} \mu 
+    \]
+\end{proof}
+
+
+\section{Integrable Functions and Continuous Functions}
+
+\begin{definition}{}{}
+    Denote \(  C_{c}\left( \mathbb{R} ^{n} \right)   \) by the collection of compactly supported continuous functions.
+\end{definition}
+
+
+\begin{theorem}{}{}
+    Let \(  E  \) be a measurable set.  \(  C_{c}\left( \mathbb{R}^{n} \right)   \) is dense in \(  L\left( E \right)   \)  . That is if \(  f\in L\left( E \right)   \), then for each \(   \varepsilon > 0  \), there exists \(  g\in C_{c}\left( \mathbb{R}^{n} \right)   \) such that \[
+    \int_{E}\left| f-g \right|\,\mathrm{d} \mu <  \varepsilon  
+    \]   
+\end{theorem}
+\end{document}

@@ -57,4 +57,48 @@ Let $(X,d)$ be a metric space, $Y$ a subset of $X$, and $d_1$ the metric induced
 \end{proposition}
 
 
+\section{The Metric Topology}
+\begin{theorem}{standard bounded metric}{}
+Let $X$ be a metric space with metric $d$. Define $\bar{d}: X \times X \to \mathbb{R}$ by the equation
+
+\[
+\bar{d}(x, y) = \min\{d(x, y), 1\}.
+\]
+
+Then $\bar{d}$ is a metric that induces the same topology as $d$.
+\end{theorem}
+
+\begin{remark}
+    
+The metric $\bar{d}$ is called the \dfntxt{standard bounded metric} corresponding to $d$.
+\end{remark}
+\begin{proof}
+    In any metric space, the collection of \(   \varepsilon   \)-balls with \(   \varepsilon < 1  \) forms a basis for the metri topology. \(  d  \) and \(  \bar{d}  \) induce the same topology on \(  X  \) since there \(   \varepsilon   \)- balls with \(   \varepsilon < 1  \) under these two metrics are the same collection.       
+\end{proof}
+
+\begin{theorem}{}{}
+Let $\bar{d}(a,b) = \min\{|a-b|, 1\}$ be the standard bounded metric on $\mathbb{R}$. If $\mathbf{x}$ and $\mathbf{y}$ are two points of $\mathbb{R}^{\omega}$, define
+
+\[
+D(\mathbf{x}, \mathbf{y}) = \sup\left\{\frac{\bar{d}(x_i, y_i)}{i}\right\}.
+\]
+
+Then $D$ is a metric that induces the product topology on $\mathbb{R}^{\omega}$.
+\end{theorem}
+
+
+\begin{definition}{}{}
+Given an index set $J$, and given points $\mathbf{x} = (x_\alpha)_{\alpha \in J}$ and $\mathbf{y} = (y_\alpha)_{\alpha \in J}$ of $\mathbb{R}^J$, let us define a metric $\bar{\rho}$ on $\mathbb{R}^J$ by the equation
+
+\[
+\bar{\rho}(\mathbf{x}, \mathbf{y}) = \sup\{\bar{d}(x_\alpha, y_\alpha) \mid \alpha \in J\},
+\]
+
+where $\bar{d}$ is the standard bounded metric on $\mathbb{R}$. It is easy to check that $\bar{\rho}$ is indeed a metric; it is called the \dfntxt{uniform metric} on $\mathbb{R}^J$, and the topology it induces is called the \dfntxt{uniform topology}.
+\end{definition}
+
+\begin{theorem}{}{}
+The uniform topology on $\mathbb{R}^J$ is finer than the product topology and coarser than the box topology; these three topologies are all different if $J$ is infinite.
+\end{theorem}
+
 \end{document}

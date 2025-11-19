@@ -1,0 +1,69 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{2}
+}{}
+
+\chapter{ Ch3-2 }
+ 代靖涵 25120222201319
+\begin{exercise}{}{}
+设 $f(x)$ 以及 $f_n(x) (n=1,2,\cdots)$ 都是 $A \subset \mathbf{R}$ 上几乎处处有限的可测函数. 若对任给的 $\varepsilon>0$, 存在 $A$ 的可测子集 $B$, $m(A \setminus B) < \varepsilon$, 使得 $f_n(x)$ 在 $B$ 上一致收敛于 $f(x)$, 试证明 $f_n(x)$ 在 $A$ 上几乎处处收敛于 $f(x)$.
+\end{exercise}
+
+\begin{proof}
+
+ 若 \(  f_{n}\left( x \right)   \)在 \(  A  \)上不几乎处处收敛于 \(  f\left( x \right)   \), 则\(  \left\{ f_{n} \right\}  \)在 \(  A  \)上 不收敛于 \(  f  \)的点集 \(  E ^{\prime}  \)是一个正测度集, 它有一个正有限测度的子集 \(  E  \) . 取 \(   \varepsilon =m \left( E \right)   \), 则存在 \(  A  \)的可测子集 \(  B  \), 使得 \(  m\left( A\setminus B \right)< m\left( E \right)    \).  由于 \(  \left\{ f_{n} \right\}  \)在 \(  B  \)上一致收敛于 \(  f  \), 它在 \(  B  \)上也逐点收敛于 \(  f  \)   , 从而 \(  B\cap E= \varnothing  \). 此时 \(  B,E  \)是 \(  A  \)的无交的子集,  我们有 \[
+E\subseteq \left( A\setminus B \right) 
+ \]         
+但此时 \[
+m\left( \left( A\setminus B \right)\setminus E  \right)= m\left( A\setminus B \right)-m\left( E \right)< 0   
+\]矛盾. 因此 \(  f_{n}  \)在 \(  A  \)上几乎处处收敛于 \(  f  \)   
+\end{proof}
+\begin{exercise}{}{}
+设 $f(x), f_1(x), \dots, f_k(x), \dots$ 是 $[a,b]$ 上几乎处处有限的可测函数, 且有 $\lim_{k\to\infty} f_k(x) = f(x) (\text{a.e. } x \in [a,b])$, 试证明存在 $E_n \subset [a,b] (n=1,2,\dots)$, 使得
+\[
+m\left([a,b] \setminus \bigcup_{n=1}^{\infty} E_n\right) = 0,
+\]
+而 $\{f_k(x)\}$ 在每个 $E_n$ 上一致收敛于 $f(x)$.
+\end{exercise}
+
+\begin{proof}
+    对于任意的 \(  n \in \mathbb{Z} _{+ }  \), 由于 \(  m\left( [a,b] \right)< \infty   \), 由Egorov定理,  存在 \(  E_{n}\subseteq \left[ a,b \right]   \) , 使得 \(  m\left( \left[ a,b \right]\setminus E_{n}  \right)  < \frac{1 }{n }  \) , 且 \(  \left\{ f_{k}\left( x \right)  \right\}  \)在 \(  E_{n}  \)上一致收敛于 \(  f\left( x \right)   \). 此时 \[
+    m\left( \left[ a,b \right]\setminus \bigcup _{n = 1}^{\infty}E_{n}  \right)\le m\left( \left[ a,b \right]\setminus E_{n}  \right)< \frac{1 }{n }   
+    \]由于 \(  n  \)是任意的, 这迫使\[
+    m\left( \left[ a,b \right]\setminus \bigcup _{n = 1}^{\infty}E_{n}  \right)= 0 
+    \]    因此上述给出的 \(  E_{n}  \)即为命题所需. 
+\end{proof}
+\begin{exercise}{}{}
+    设 $f(x), f_k(x) (k=1,2,\cdots)$ 是 $E \subset \mathbf{R}$ 上实值可测函数. 若对任给 $\epsilon>0$, 必有
+
+$$\lim_{j \to \infty} m\left(\bigcup_{k=j}^{\infty} \{x: |f_k(x) - f(x)| > \epsilon\}\right) = 0.$$
+试证明对任给 $\delta>0$, 存在 $e \subset E$ 且 $m(e) < \delta$, 使得 $f_k(x)$ 在 $E \setminus e$ 上一致收敛于 $f(x)$.
+\end{exercise}
+\begin{proof}
+    由自下连续性和题设可知,  令 \[
+    A_{j,k}= \bigcup _{i= j}^{\infty}\left\{ x\in E:\left| f_{i}\left( x \right)-f\left( x \right)   \right|>  \frac{1 }{k }  \right\}
+    \]则 \[
+    A_{1,k}\supseteq A_{2,k}\supseteq \cdots ,\quad \lim_{j\to \infty}m\left( A_{j,k} \right)= 0 
+    \]任取 \(   \delta > 0  \). 对于任意的 \(  k \in \mathbb{Z} _{> 0}  \), 存在 \(  j_{k}  \), 使得    \[
+    m\left( A_{j_{k},k} \right)< \frac{  \delta  }{2^{k} }  
+    \] 令 \[
+    e= \bigcup _{k = 1}^{\infty}A_{j_{k},k}
+    \]则 \[
+    m\left( e \right)\le \sum _{k= 1}^{\infty}m\left( A_{j_{k},k} \right)  <   \delta 
+    \]注意到 \[
+    E\setminus e=  E\setminus \left( \bigcup _{k = 1}^{\infty}A_{j_{k},k} \right)= \bigcap _{k = 1}^{\infty}\left( E\setminus A_{j_{k},k} \right)  
+    \]这里 \[
+    E\setminus e\subseteq E\setminus A_{j_{k},k}= \bigcap _{i = j_{k}}^{\infty}\left\{ x\in E: \left| f_{i}\left( x \right)-f\left( x \right)   \right|\le \frac{1 }{k }   \right\}
+    \]这表明对于任意的 \(  k \in \mathbb{Z} _{+ }  \), 都存在 \(  j_{k}  \), 使得对于任意的 \(  i\ge j_{k}  \), 都有   \[
+    \sup _{ x \in E\setminus e}\left| f_{i}\left( x \right)-f\left( x \right)   \right|\le \frac{1 }{k }  
+    \] 即\[
+    \lim_{j\to \infty}\sup _{x \in E\setminus e}\left| f_{j}\left( x \right)-f\left( x \right)   \right|= 0 
+    \]
+\end{proof}
+\end{document}

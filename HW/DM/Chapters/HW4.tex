@@ -1,0 +1,163 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ HW4 }
+ 代靖涵 25120222201319
+\begin{exercise}{光滑流形的切丛}{}
+光滑流形 $M$ 的切丛定义为
+\[
+TM = \sqcup_{p \in M} T_p M,
+\]
+其上有自然投影映射
+\[\begin{aligned}
+ \pi: TM &\to M \\
+(p, X_p) &\mapsto p
+\end{aligned}\]
+\begin{enumerate}
+    \item[a).] 求证 $\pi: TM \to M$ 光滑且对任意的 $p \in M$ 和 $X_p \in T_p M$, $(d\pi)_{(p,X_p)}$ 为满射;
+    \item[b).] 求证 $TS^1 \cong S^1 \times \mathbb{R}$;
+    \item[c).] 求证 $TM$ 是可定向的.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item [a).] 任取 \(  p \in M  \), 取\(  p  \)附近的坐标卡 \(  \left( U, \psi  \right)   \), 它诱导了 \(  TM  \)上的坐标卡 \(  \left(  \pi ^{-1} \left( U \right),  \tilde{\psi}   \right)   \). 在这两组坐标卡下, \(   \pi  \)的坐标表示为 \[
+         \psi \circ  \pi  \circ \tilde{\psi} ^{-1} : \left( u, \left( v^{1},\cdots ,v^{m} \right)  \right)\to u 
+        \] 是一个光滑映射, 故 \(   \pi  \)是光滑的. 此外,    它的Jacobi在任一点处均为 \[
+        \left( I_{m\times m},O_{m\times m} \right) 
+        \]是满的矩阵. 由于 \(  \left( p,X_{p} \right)\in  \pi ^{-1} \left( U \right)    \) , 故 \(  \left( d  \pi \right)_{\left( p,X_{p} \right) }   \)也是满射. 
+      \item [b).] 对于 \(  \left( x,y \right)\in S^{1}\subseteq \mathbb{R} ^{2}   \),将  \(  T_{\left( x,y \right) }S^{1}  \)视为它的几何切向量空间 \[
+     T_{\left( x,y \right) }S^{1}\simeq \left\{ \left( x,y \right)  \right\}\times \left\{ k \left( -y,x \right) : k \in \mathbb{R} \right\}
+      \] 考虑向量场 \(  V:S^{1}\to  TS^{1} \) \[
+      p= \left( x,y \right)\mapsto V_{p}= \left( p,\left( -y,x \right)  \right)  
+      \]  由于 \(  V  \)关于 \(  x,y  \)是光滑的, 故\(  V  \)是光滑的向量场.   定义映射 \(   \psi :S^{1}\times \mathbb{R} \to TS^{1}  \) \[
+       \psi \left( p,c \right)= \left( p, c\cdot V_{p} \right)  
+      \] 在角度参数化下,  \(   \psi   \)表示为 \[
+      \left(  \theta ,c \right)\mapsto  \left( \left( \cos  \theta , \sin  \theta  \right), c \left( -\sin  \theta , \cos  \theta  \right)   \right)  
+      \] 是光滑的, 因此 \(   \psi   \)是光滑映射. 对于 \(  TS^{1}  \)上任一点 \(  \left( p,X_{p} \right)   \), 存在唯一的 \(  c\in \mathbb{R}   \), 使得 \(  X_{p}= c\cdot V_{p}  \), 因此 \[
+       \psi ^{-1} \left( p,X_{p} \right)= \left( p,c \right),\quad X_{p}= c\cdot V_{p}  
+      \]    是一个逆映射. 这里 \(  c= \left<X_{p},V_{p} \right>/ \left\| V_{p} \right\|^{2}  \)关于 \(  X_{p}  \)是光滑的. 故 \(   \psi   \)是一个微分同胚,  从而 \(  TS^{1}\simeq S^{1}\times \mathbb{R}   \).    
+      \item [c).] 设 \(  \left\{ \left( U_{\alpha }, \varphi _{\alpha } \right)  \right\}  \)是 \(  M  \)的一个光滑图册, 它给出 \(  TM  \)的一个光滑图册 \(  \left\{ \left(  \pi ^{-1} \left( U_{\alpha } \right),  \tilde{\varphi} _{\alpha }  \right)  \right\}  \)  转移函数为 \[
+       \tilde{\varphi} _{\alpha \beta }\left( x_{\alpha },v_{\alpha } \right)= \left(  \varphi _{\alpha \beta }\left( x_{\alpha } \right), \left( d  \varphi _{\alpha \beta } \right)_{x_{\alpha }}\left( v_{\alpha } \right)    \right)  = \left( x_{\beta }\left( x_{\alpha } \right) , v_{\beta }  \left( x_{\alpha },v_{\alpha } \right) \right) 
+      \]  它的Jacobi为 \[
+    d  \tilde{\varphi} _{\alpha \beta }=   \begin{pmatrix} 
+            \frac{\partial x_{\beta     }}{\partial x_{\alpha }}&\frac{\partial x_{\beta }}{\partial v_{\alpha }}\\ 
+             \frac{\partial v_{\beta }}{\partial x_{\alpha }}& \frac{\partial v_{\beta }}{\partial v_{\alpha }}
+      \end{pmatrix} 
+      \]由于 \(  v_{\beta }  \)关于 \(  v_{\alpha }  \)是线性的, 故 \(  \frac{\partial v_{\beta }}{\partial v_{\alpha }}= \left( d \varphi _{\alpha \beta } \right)_{x_{\alpha }}   \) .  \(  \frac{\partial x_{\beta }}{\partial x_{\alpha }}=  \left( d \varphi _{\alpha \beta } \right)_{x_{\alpha }}   \)    . 由于 \(  x_{\beta }  \)不依赖 \(  v_{\alpha }  \),  \(  \frac{\partial x_{\beta }}{\partial v_{\alpha }}= 0  \). 因此 \[
+      \det \left( d \tilde{\varphi} _{\alpha \beta } \right)_{\left( x_{\alpha },v_{\alpha } \right) }= \left( \left( \det d \varphi _{\alpha \beta } \right)  _{x_{\alpha }} \right) ^{2}> 0
+      \]   故 \(  TM  \)是可定向的. 
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+\begin{enumerate}
+    \item[a).] 求证 $\det: \mathrm{Gl}(n, \mathbb{R}) \to \mathbb{R}$ 是淹没;
+    \item[b).] 求证映射 $f(X) = X^T X$ 是常秩映射.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item [a).]上次作业中证明了 \[
+      \left( d \det \right)_{A}\left( B \right)= \det A   \;\mathrm{tr}\left( A^{-1} B \right)   
+      \]  在任一点 \(  A  \)处, 我们取 \(  B= A  \) ,则 \[
+      \left( d \det  \right)_{A}\left( A \right)= \det A \mathrm{tr}\left( \mathrm{Id} \right)= n \det A\neq 0   
+      \]这表明 \(  \left( d \det  \right)_{A}   \)在任一点处不是零映射, 从而只能是满秩的. 故 \(  \det   \)是淹没.
+      \item [b).]   由于 \( M\left( n,\mathbb{R}  \right)   \)和 \(  S\left( n,\mathbb{R}  \right)   \)是线性空间 , \(  \mathrm{Gl}\left( n,\mathbb{R}  \right)   \)是 \(  M\left( n,\mathbb{R}  \right)   \)的开子流形   . \(  df_{A}  \)等同于映射 \[
+      \begin{aligned}
+      T_{A}\mathrm{Gl}\left( n,\mathbb{R}  \right)\simeq M\left( n,\mathbb{R}  \right)&\to    S\left( n,\mathbb{R}  \right)\simeq T_{f\left( A \right) }S\left( n,\mathbb{R}  \right)\\ 
+       H&\mapsto \left. \frac{\mathrm{d}}{\mathrm{d}t} \right|_{t= 0}f\left( A+ tH \right)   = A^{\top}H+ H^{\top}A
+      \end{aligned}
+      \]  对于任意的 \(  S\in S\left( n,\mathbb{R}  \right)   \), 取 \(  H=\frac{1}{2} \left( A^{\top} \right)^{-1} S   \), 则 \(  A^{\top}H+ H^{\top}A  \)  化为\[
+      A^{\top}\left(  \frac{1}{2}\left( A^{\top} \right)^{-1} S \right) +\left(\frac{1}{2} \left( A^{\top} \right)^{-1} S  \right)^{\top}A  =\frac{1}{2}S+\frac{1}{2} S^{\top}= S
+      \]  这表明对于任意的 \(  A \in \mathrm{Gl}\left( n,\mathbb{R}  \right)   \), \(  df_{A}  \)都是满射. 故 \(  f  \)有常秩 \(  \operatorname{dim}S\left( n,\mathbb{R}  \right)= \frac{n\left( n+ 1 \right)  }{2 }    \)   . 
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{光滑流形的乘积}{}
+设 $M_i, N_i \ (i=1,2)$ 是光滑流形.
+\begin{enumerate}
+    \item[a).] 求证 $M_1 \times M_2$ 可由 $M_1, M_2$ 的光滑结构诱导成一个光滑流形;
+    \item[b).] 计算切空间 $T_{(p_1, p_2)}(M_1 \times M_2)$;
+    \item[c).] $f_1: M_1 \to N_1, f_2: M_2 \to N_2$ 是两个光滑映射, 计算 $d_{(p_1, p_2)}(f_1 \times f_2)$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item[a).] 取 \(  M_1  \)的一个光滑图册 \(  \left\{ \left( U_{\alpha },  \varphi _{\alpha } \right)  \right\}  \), 取 \(  M_2  \)的一个光滑图册 \(  \left\{ \left( V_{\beta },\psi _{\beta } \right)  \right\}  \). 则所有 \(  U_{\alpha }\times V_{\beta }  \)     都是开集, 它在连续映射 \(   \varphi _{\alpha }\times \psi _{\beta }  \)下的像 为 \(   \varphi _{\alpha }\left( U_{\alpha } \right)\times \psi _{\beta }\left( V_{\beta } \right)    \)也是开集. 并且过渡映射为  \[
+        \left(  \varphi _{\alpha _1 }\times \psi _{\beta _1 } \right) \circ\left(  \varphi _{\alpha _2 }\times \psi _{\beta _2 } \right) ^{-1} = \left(  \varphi _{\alpha _1 }\circ \varphi _{\alpha _2 }^{-1}  \right)\times \left( \psi _{\beta _1 }\times \psi _{\beta _2 }^{-1}  \right)   
+        \]为两个光滑映射的乘积, 也是光滑的. 这表明 \(  \left\{ \left( U_{\alpha }\times V_{\beta } ,  \varphi _{\alpha }\times \psi _{\beta } \right) \right\}  \)构成 \(  M_1\times M_2  \)上的一个光滑图册. 故 \(  M_1\times M_2  \)上有一个光滑结构.
+        \item[b).]   取 \(  p_1  \)在 \(  M_1  \)上 的一个局部坐标 \(  \left( U_{\alpha },  \varphi _{\alpha } \right)   \), 取 \(  p_2  \)在 \(  M_2  \)上的一个局部 坐标 \(  \left( V_{\beta },\psi _{\beta } \right)   \). 则 \(  \left( U_{\alpha }\times V_{\beta },  \varphi _{\alpha }\times \psi _{\beta } \right)   \)是 \(  \left( p_1,p_2 \right)   \)在 \(  M_1\times M_2  \)上的一个局部坐标.    设 \(  M_1  \)在 \(  U_{\alpha }  \)上的坐标向量场为 \[
+         \partial^{\alpha }_{1},\cdots , \partial ^{\alpha }_{m_1}
+        \]设 \(  M_2  \)在 \(  V_{\beta }  \)上的坐标向量场为 \[
+         \partial ^{\beta }_{1},\cdots , \partial ^{\beta }_{m_2}
+        \]   对于 \(  M_1\times M_2  \)上的光滑函数 \(  f  \), \(  f|_{M_1\times \left\{ p_2 \right\}}  \), \( f|_{\left\{ p_1 \right\}\times M_2 }  \)    分别给出 \(  M_1  \)和\(  M_2  \)上的光滑函数. 具体地, \[
+        f|_{M_1\times \left\{ p_2 \right\}}\in C^{\infty}\left( M_1 \right),\quad p\mapsto f\left( p,p_2 \right)  
+        \]   于是对于 \(  f\in C^{\infty}\left( M_1\times M_2 \right)   \), 定义 \(   \partial _{i}^{\alpha }  \)诱导出 \(  T_{\left( p_1,p_2 \right) }\left( M_1\times M_2 \right)   \)上的一个切向量, 记作 \(  \left.  \partial _{i}^{\alpha } \right|_{\left( p_1,p_2 \right) }  \), 定义为    \[
+        \left.  \partial _{i}^{\alpha  } \right|_{\left( p_1,p_2 \right) }\left( f \right)= \left.  \partial _{i}^{\alpha } \right|_{p_1} \left( f|_{M_1\times \left\{ p_2 \right\}}   \right) 
+        \] 不难验证这样定义的 \(  \left.  \partial _{i}^{\alpha } \right|_{\left( p_1,p_2 \right) }  \)满足线性和Lebniz律, 从而确实是一个切向量. 类似地, 我们定义 \(  \left.  \partial _{i}^{\beta } \right|_{\left( p_1,p_2 \right) }  \).  为了说明 \(  \left\{ \left.  \partial _{i}^{\alpha } \right|_{\left( p_1,p_2 \right) } \right\},\left\{  \left.  \partial _{j}^{\beta } \right|_{\left( p_1,p_2 \right) } \right\}  \)是线性无关的,   设 \(  U_{\alpha }\times V_{\beta }  \)上的坐标为 \[
+        \left( x_{\alpha }^{1},\cdots ,x_{\alpha }^{m_1}, x_{\beta }^{1},\cdots ,x_{\beta }^{m_2} \right) 
+        \]  对于任意的 实数 \(  k_1^{\alpha },\cdots ,k_{m_1}^{\alpha }, k_1^{\beta },\cdots ,k_{m_2}^{\beta }  \), 我们有如果\[
+         \left( \sum _{i= 1}^{m_1} k_{i}^{\alpha } \partial _{i}^{\alpha }+ \sum _{j= 1}^{m_2} k_{j}^{\beta }\partial _{j}^{\beta }  \right)\left( f \right)= 0, \forall f\in C^{\infty}\left( M_1\times M_2 \right)  
+        \] 则  \[
+        \begin{aligned}
+      0= \left(  \sum _{i= 1}^{m_1} k_{i}^{\alpha } \partial _{i}^{\alpha }+ \sum _{j= 1}^{m_2} k_{j}^{\beta }\partial _{j}^{\beta }  \right)\left(x_{\alpha }^{j}\right)= k_{j}^{\alpha }  
+        \end{aligned}
+        \]  \[
+        \begin{aligned}
+      0= \left(  \sum _{i= 1}^{m_1} k_{i}^{\alpha } \partial _{i}^{\alpha }+ \sum _{j= 1}^{m_2} k_{j}^{\beta }\partial _{j}^{\beta }  \right)\left(x_{\beta }^{i}\right)= k_{i}^{\beta }  
+        \end{aligned}
+        \] 这就说明了线性无关性. 因此 \[
+       \begin{aligned}
+        T_{\left( p_1,p_2 \right) }\left( M_1\times M_2 \right)&= \operatorname{span}\left\{ \left.  \partial _{1}^{\alpha } \right|_{\left( p_1,p_2 \right) },\cdots ,\left.  \partial _{m_1}^{\alpha } \right|_{\left( p_1,p_2 \right) },\left.  \partial _{1}^{\beta } \right|_{\left( p_1,p_2 \right) },\cdots , \left.  \partial _{m_2}^{\beta } \right|_{\left( p_1,p_2 \right) } \right\}  \\ 
+        &\simeq T_{p_1}M_1\oplus  T_{p_2}M_2
+       \end{aligned}
+        \]
+        \item[c).] 沿用上面的记号和坐标表示, 根据上面的定义 对于任意的 \(  v\in T_{\left( p_1,p_2 \right) }\left( M_1\times M_2 \right)   \), 存在唯一的 \(  v_1\in T_{p_1}M_1, v_2\in T_{p_2}M_2  \), 使得 \(  v= v_1+ v_2  \) .   \[
+        \begin{aligned}
+       \left(  d _{\left( p_1,p_2 \right) }\left( f_1\times f_2 \right) \right)\left( v_1 \right)\left( g \right)&=      v_1\left( g\circ \left( f_1\times f_2 \right)  \right) \\ 
+        &= v_1\left( \left( g\circ \left( f_1\times f_2 \right)  \right)|_{M_1\times \left\{ p_2 \right\}}  \right) \\ 
+         &= v_1\left( g|_{N_1\times \left\{ f_2\left( p_2 \right)  \right\}} \circ f_1\right) \\ 
+          &= \left( \left( d _{p_1}f_1 \right)\left( v_1 \right)   \right)\left( g|_{N_1\times \left\{ f_2\left( p_2 \right)  \right\}} \right)  
+        \end{aligned}
+        \]类似地 \[
+        \left( \,\mathrm{d}  _{\left( p_1,p_2 \right) }\left( f_1\times f_2 \right)  \right) \left( v_2 \right)\left( g \right)= \left( \left( d _{p_2}f_2 \right)\left( v_2 \right)   \right)\left( g| _{\left\{ f_1\left( p_1 \right)  \right\}\times N_2} \right)    
+        \]由于微分映射是线性的, 因此对于任意的 \(  \left( v_1,v_2 \right)\in T_{p_1}M_1\oplus T_{p_2}M_2   \), \[
+        \left( d _{\left( p_1,p_2 \right) }\left( f_1\times f_2 \right)  \right)\left( v_1, v_2 \right)= \left( \left( d _{p_1}f_1 \right)\left( v_1 \right),  \left( d _{p_2}f_2 \right)\left( v_2 \right)       \right) 
+        \] 即 \[
+        d _{\left( p_1,p_2 \right) }\left( f_1\times f_2 \right)=  d _{p_1}f_1\times  d _{p_2}f_2 
+        \]或者用 Jacobi表示为 \[
+        J\left( f_1\times f_2 \right)= \begin{pmatrix} 
+            J\left( f_1 \right)&0\\ 
+             0&J\left( f_2 \right)   
+        \end{pmatrix}  
+        \]
+    \end{enumerate}
+    
+\end{proof}
+%%\begin{exercise}{(可不做)}{}
+%$M$ 是一个光滑流形, $T_p^*M$ 是 $T_pM$ 的对偶空间, $\{dx^1, \dots, dx^n\}, \{\partial_1, \dots, \partial_n\}$ 是对偶基, 令
+%\[
+%T^*M = \sqcup_{p \in M} T_p^*M.
+%\]
+%\begin{enumerate}
+%    \item[a).] 求证 $T^*M$ 是一个 $2n$ 维的光滑流形;
+ %   \item[b).] 求证 $T^*M$ 可定向, 并计算 $T_{(p, X_p^*)}T^*M$
+  %  \item[c).] $f$ 是 $M$ 上的光滑函数, 求证
+%\end{enumerate}
+%\[\begin{aligned}
+%S_f: M &\to T^*M \\
+%p &\mapsto (p, df_p)
+%\end{aligned}\]
+%是单的浸入.
+%\end{exercise}
+
+\end{document}

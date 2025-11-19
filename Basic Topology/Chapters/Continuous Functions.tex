@@ -46,4 +46,18 @@ If the condition in (4) holds for the point $x$ of $X$, we say that $f$ is \dfnt
 are continuous, then $f$ is called a \dfntxt{homeomorphism}.
 \end{definition}
 
+\section{Constructing Continuous Functions}
+
+\begin{theorem}{Rules for constructing continuous functions}{}
+Let $X, Y$, and $Z$ be topological spaces.
+\begin{enumerate}
+\item[(a)] (Constant function) If $f: X \to Y$ maps all of $X$ into the single point $y_0$ of $Y$, then $f$ is continuous.
+\item[(b)] (Inclusion) If $A$ is a subspace of $X$, the inclusion function $j: A \to X$ is continuous.
+\item[(c)] (Composites) If $f: X \to Y$ and $g: Y \to Z$ are continuous, then the map $g \circ f: X \to Z$ is continuous.
+\item[(d)] (Restricting the domain) If $f: X \to Y$ is continuous, and if $A$ is a subspace of $X$, then the restricted function $f|A: A \to Y$ is continuous.
+\item[(e)] (Restricting or expanding the range) Let $f: X \to Y$ be continuous. If $Z$ is a subspace of $Y$ containing the image set $f(X)$, then the function $g: X \to Z$ obtained by restricting the range of $f$ is continuous. If $Z$ is a space having $Y$ as a subspace, then the function $h: X \to Z$ obtained by expanding the range of $f$ is continuous.
+\item[(f)] (Local formulation of continuity) The map $f: X \to Y$ is continuous if $X$ can be written as the union of open sets $U_\alpha$ such that $f|U_\alpha$ is continuous for each $\alpha$.
+\end{enumerate}
+\end{theorem}
+
 \end{document}

@@ -1,0 +1,63 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Distributions and Foliations }
+% 代靖涵 25120222201319
+\section{Distributions and Involutivity}
+\begin{definition}{}{}
+    Let $M$ be a smooth manifold.
+    \begin{itemize}
+        \item  A \dfntxt{distribution on $M$ of rank $k$} is a rank-$k$ subbundle of $TM$. It is called a \dfntxt{smooth distribution} if it is a smooth subbundle. 
+        \item Often a rank-$k$ distribution is described by specifying for each $p \in M$ a linear subspace $D_p \subseteq T_p M$ of dimension $k$, and letting $D = \bigcup_{p \in M} D_p$. It then follows from the local frame criterion for subbundles (Lemma 10.32) that $D$ is a smooth distribution if and only if each point of $M$ has a neighborhood $U$ on which there are smooth vector fields $X_1, \dots, X_k: U \to TM$ such that $X_1|_q, \dots, X_k|_q$ form a basis for $D_q$ at each $q \in U$. In this case, we say that $D$ is the distribution (locally) \dfntxt{spanned by the vector fields} $X_1, \dots, X_k$.
+
+
+    \end{itemize}
+    
+\end{definition}
+
+\subsection{Integral Manifolds and Involutivity}
+
+\begin{definition}{}{}
+    Suppose $D \subseteq TM$ is a smooth distribution. A nonempty immersed submanifold $N \subseteq M$ is called an \dfntxt{integral manifold of D} if $T_p N = D_p$ at each point $p \in N$. 
+\end{definition}
+
+\begin{definition}{}{}
+    Suppose $D$ is a smooth distribution on $M$. We say that $D$ is \dfntxt{involutive} if given any pair of smooth local sections of $D$ \footnote{(i.e., smooth vector fields $X, Y$ defined on an open subset of $M$ such that $X_p, Y_p \in D_p$ for each $p$)}, their Lie bracket is also a local section of $D$.
+\end{definition}
+
+\section{ The Frobenius Theorem}
+
+\begin{definition}{}{}
+     Given a rank-$k$ distribution $D \subseteq TM$, let us say that a smooth coordinate chart $(U, \varphi)$ on $M$ is \dfntxt{flat for D} if $\varphi(U)$ is a cube in $\mathbb{R}^n$, and at points of $U$, $D$ is spanned by the first $k$ coordinate vector fields $\partial/\partial x^1, \dots, \partial/\partial x^k$ .
+
+\end{definition}
+
+\begin{definition}{}{}
+    We say that a distribution $D \subseteq TM$ is \dfntxt{completely integrable} if there exists a flat chart for $D$ in a neighborhood of each point of $M$. Obviously, every completely
+\end{definition}
+
+\begin{theorem}{Frobenius}{}
+Every \dfntxt{involutive distribution} is \dfntxt{completely integrable}.
+\end{theorem}
+
+\section{Foliations}
+
+\begin{definition}{}{}
+   Let \(  M  \) be a smooth \(  n  \)-manifold, and let \(  \mathscr{F}  \) be any collection of \(  k  \)-dimensional submanifolds of \(  M  \). 
+   \begin{itemize}
+    \item  A smooth chart $(U,\varphi)$ for $M$ is said to be \dfntxt{flat for $\mathcal{F}$} if $\varphi(U)$ is a cube in $\mathbb{R}^n$, and each submanifold in $\mathcal{F}$ intersects $U$ in either the empty set or a countable union of $k$-dimensional slices of the form $x^{k+1} = c^{k+1}, \dots, x^n = c^n$.
+    \item We define a \dfntxt{foliation of dimension k on M} to be a collection $\mathcal{F}$ of disjoint, connected, nonempty, immersed $k$-dimensional submanifolds of $M$ (called the \dfntxt{leaves of the foliation}), whose union is $M$, and such that in a neighborhood of each point $p \in M$ there exists a flat chart for $\mathcal{F}$.
+   \end{itemize}
+    
+\end{definition}
+
+
+\end{document}

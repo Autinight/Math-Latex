@@ -1,0 +1,201 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{5}
+}{}
+
+\chapter{ HW 6 }
+代靖涵 25120222201319
+\begin{exercise}{}{}
+设 $\mathcal{T}$ 和 $\mathcal{T}'$ 是 $X$ 的两个拓扑.
+\begin{enumerate}
+    \item 如果 $\mathcal{T}' \subset \mathcal{T}$, $(X, \mathcal{T})$ 和 $(X, \mathcal{T}')$ 的紧性之间有什么关系?
+    \item 如果 $(X, \mathcal{T})$ 和 $(X, \mathcal{T}')$ 都是紧的 Hausdorff 空间, 证明要么 $\mathcal{T} = \mathcal{T}'$, 要么 $\mathcal{T}$ 与 $\mathcal{T}'$ 不能比较粗细.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 若 \(  \left( X,\mathcal{T} \right)   \)是紧的, 则 \(  \left( X, \mathcal{T}^{\prime}  \right)   \)亦然. 事实上, 任取 \(  \left( X,\mathcal{T}^{\prime}  \right)   \)的开覆盖 \(  \left\{ U_{\alpha } \right\}_{\alpha \in  \Lambda }\subseteq \mathcal{T}^{\prime}   \).  则 \(  \left\{ U_{\alpha } \right\}_{\alpha \in  \Lambda }\subseteq \mathcal{T}  \), 也是 \(  \left( X,\mathcal{T} \right)   \)的一个开覆盖. 它存在 一个\(  \left( X,\mathcal{T} \right)   \)的 有限子覆盖 \(  \left\{ U_1,\cdots ,U_{k} \right\} \)  . 每个 \(  U_{\alpha }  \in \mathcal{T}^{\prime} \), 故 \(  U_{i}\in \mathcal{T}^{\prime} , i= 1,2,\cdots ,k  \). 因此 \(  \left\{ U_1,\cdots ,U_{k} \right\}  \)也是 \(  \left( X,\mathcal{T}^{\prime}  \right)   \)的一个子覆盖. 这表明 \(  \left( X,\mathcal{T}^{\prime}  \right)   \)是紧的.   
+        
+
+        反过来未必, 考虑 配备标准拓扑的 \(  \mathbb{R}   \), 它是非紧的. 但考虑配备了平凡拓扑的 \(  \mathbb{R}   \), 由于任意开覆盖都只能是 \(  \left\{ \mathbb{R}  \right\}  \), 故它是紧的.   
+        \item 如果 \(  \mathcal{T}\subseteq \mathcal{T}^{\prime}   \),  任取 \(  U\in \mathcal{T}^{\prime}   \), 则 \(  U^{c}  \)     是 \(  \left( X,\mathcal{T}^{\prime}  \right)   \)的闭子集. 由于紧空间的闭子集是紧的, 故 \(  U^{c}  \)是 \(  \left( X,\mathcal{T}^{\prime}  \right)   \)的紧子集. 由1.可知, \(  U^{c}  \)是 \(  \left( X,\mathcal{T} \right)   \)的紧子集. Hausdorff空间的紧子集是闭的, 故 \(  U^{c}  \)在 \(  \left( X,\mathcal{T} \right)   \)上   是闭的, 从而 \(  U\in \mathcal{T}  \). 这表明 \(  \mathcal{T}= \mathcal{T}^{\prime}   \).  由对称性可知,  \(  \mathcal{T}^{\prime} \subseteq \mathcal{T}  \)蕴含 \(  \mathcal{T}= \mathcal{T}^{\prime}   \)       . 因此要么 $\mathcal{T} = \mathcal{T}'$, 要么 $\mathcal{T}$ 与 $\mathcal{T}'$ 不能比较粗细.
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+设 $A, B$ 是 Hausdorff 空间 $X$ 中的两个互不相交的紧集, 证明存在互不相交的开集 $U$ 和 $V$ 分别包含 $A$ 和 $B$.
+\end{exercise}
+\begin{proof}
+   任取 \(  x \in A  \), 则 \(  x\not \in B  \). 由于 \(  X  \)是Hausdorff的, 对于任意的 \(  b\in B  \), 存在开集 \(  U_{a,b},V_{a,b}  \), 使得 \[
+   x\in U_{a,b},\quad b \in V_{a,b},\quad U_{a,b}\cap V_{a,b}= \varnothing
+   \]     于是 \[
+   \left\{ V_{a,b} \right\}_{b\in B}
+   \]构成 \(  B  \)的一个开覆盖, 存在一个有限子覆盖, 记作 \( \left\{  V_{a,b_1},\cdots ,V_{a,b_{n_{a}}} \right\}  \). 令 \(  V_{a}= \bigcup _{k= 1}^{n_{a}}V_{a,b_{k}}  \), \(  U_{a}= \bigcap _{k= 1}^{n_{a}}{U_{a,b_{k}}}  \) ,则 \(  U_{a}, V_{a}  \)是开集. 使得  \[
+   x\in U_{a},\quad B\subseteq V_{a},\quad U_{a}\cap V_{a}= \varnothing
+   \]   对于每个 \(  a \in A  \), 我们都给出这样的开集 \(  U_{a},V_{a}  \), 则此时 \[
+   \left\{ U_{a} \right\}_{a \in A}
+   \]  构成 \(  A  \)的一个开覆盖. 存在有限的子覆盖, 记作\(  \left\{ U_{a_1},\cdots ,U_{a_{m}} \right\}  \), 此时令 \[
+   U= \bigcup _{k = 1}^{m}U_{a_{k}},\quad  V= \bigcap _{k = 1}^{m}V_{a_{k}}
+   \]则 \(  U,V  \)是开集, 使得 \[
+   A\subseteq U, B\subseteq V,\quad U\cap V= \varnothing
+   \]   
+\end{proof}
+\begin{exercise}{}{}
+    设 $X$ 是紧空间, $f : X \to \mathbb{R}$ 是连续映射, 证明存在 $c, d \in X$, 使得对于任何 $x \in X$, 有 $f(c) \le f(x) \le f(d)$.
+\end{exercise}
+
+\begin{proof}
+    任取 \(  k \in \mathbb{Z} _{> 0}  \), 则由于 \(  f  \)连续, \(  f^{-1} \left( \left( -k,k \right)  \right)   \)是一个开集. 注意到 \[
+    X\subseteq f^{-1} \left( \left( -\infty,\infty \right)  \right)=  \bigcup _{k = 1}^{\infty}f^{-1} \left( \left( -k,k \right)  \right)  
+    \] \[
+    \left\{ f^{-1} \left( \left( -k,k \right)  \right)  \right\}_{k\in \mathbb{Z} _{> 0}}
+    \]   构成 \(  X  \)的一个开覆盖.  由于 \(  X  \)是紧的, 它存在有限的子覆盖,
+    
+    \(  \left\{ f^{-1} \left( \left( -k_1,k_1\right)  \right),\cdots ,f^{-1} \left( \left( -k_{m},k_{m} \right)  \right)   \right\}  \)   . 不妨设 \(  k_{m}  \)是 \(  k_1,\cdots ,k_{m}  \)  中最大的. 则 \[
+    X\subseteq f^{-1} \left( \left( -k_{m},k_{m} \right)  \right) 
+    \]这表明 \(  f  \)在 \(  X  \)上有界.
+
+    现在令 \(  M= \sup _{x\in X}f\left( x \right)   \), 则 \(  M< \infty  \) . 若存在 \(  d \in X  \)使得 \(  f\left( d \right)= M   \). 则对于任意的 \(  x \in X  \)都有 \(  f\left( x \right)\le f\left( d \right)    \). 若不存在,     则对于任意的 \(  x \in X  \), 存在 \(  x_{ \varepsilon }> 0  \), 使得 \(  f\left( x \right)< M-x_{ \varepsilon }   \), 于是 \[
+     x\in f^{-1} \left( \left( -\infty, M-x_{ \varepsilon } \right)  \right) 
+    \]  因此 \[
+    \left\{ f^{-1} \left( \left( -\infty,M-x_{ \varepsilon } \right)  \right)  \right\}_{x\in X}
+    \]构成 \(  X  \)的一个开覆盖. 存在有限的子覆盖 \[
+    \left\{ f^{-1} \left( \left( -\infty,M-x_1 \right)  \right),\cdots ,f^{-1} \left( \left( -\infty,M-x_{n} \right)  \right)   \right\}
+    \] 不妨设 \(  x_1  \)是 \(  x_1,\cdots ,x_{n}  \)中最小的, 则 \[
+    X= f^{-1} \left( \left( -\infty,M-x_1 \right)  \right) 
+    \]即 \[
+    f\left( x \right)< M-x_1,\forall x \in X 
+    \]  但是 \(  M= \sup _{x\in X}f\left( x \right)   \), 矛盾. 因此存在\( d \in X  \), 使得 \(  f\left( x \right)\le f\left( d \right), \forall x\in X    \). 类似地, 可以说明存在 \(  c\in X  \), 使得 \(  f\left( x \right)\ge f\left( c \right), \forall x \in X    \).     
+\end{proof}
+\begin{exercise}{}{}
+设 $X, Y$ 是拓扑空间, $\pi_1: X \times Y \to X$ 是投影映射. 若 $Y$ 是紧的, 证明 $\pi_1$ 是闭映射.
+\end{exercise}
+\begin{proof}
+   任取 \(  X\times Y  \)上的闭集 \(  C  \).  任取 \(  x_0 \in X\setminus \left(  \pi _1 \left( C \right)  \right)   \). 则 \(  \left( x_0,y \right)\not \in C   \). 由于 \(  C^{c}  \)是开的, 存在 \(  x_0  \)的开邻域 \(  U_{x_0,y}  \)和 \(  y  \)的开邻域 \(  V_{y}  \), 使得 \(  \left( x_0,y \right)\in U_{x_0,y}\times V_{y}  \subseteq C^{c}\)          . \[
+   \left\{  V_{y} \right\}_{y \in Y}
+   \]构成 \(  Y  \)的一个开覆盖, 取一个有限子覆盖 \(V_{y_1},\cdots ,V_{y_{k}} \), 考虑对应的\(  x_0  \)的开邻域 \(  U_{x_0,y_1},\cdots ,U_{x_0,y_{k}}  \)  .  令 \[
+   U= \bigcap _{i= 1}^{k}U_{x_0,y_{i}}
+   \]则 \(  U  \)是 \(  x_0  \)在 \(  X  \)上的一个开邻域. 对于任意的 \(  x_0 \in U  \),我们有 \[
+    \left( x_0,y \right)\in \bigcup _{i = 1}^{k}\left( U\times V_{y_{k}} \right)\subseteq \bigcup _{i = 1}^{k}\left( U_{x_0,y_{k}}\times V_{y_{k}} \right)\subseteq C^{c} 
+   \] 因此 \[
+    \pi_1 ^{-1} \left( x_0 \right)\cap C= \varnothing\implies x_0\not \in  \pi _1 \left( C \right) 
+   \]由于 \(  x_0  \)是任意的, 因此 \(  U\cap  \pi _1 \left( C \right)= \varnothing   \). 即 \(  U  \)是 \(  x_0  \)在 \(  X\setminus  \pi _1 \left( C \right)   \)上的开邻域. 这表明 \(   \pi _1 \left( C \right)   \)是闭的. 因此 \(   \pi _1   \)是闭映射.       
+\end{proof}
+
+\begin{exercise}{}{}
+设 $X = \{a, b\}$, 配以平凡拓扑. 证明 $X \times \mathbb{N}$ 是极限点紧的, 但不是紧的.
+\end{exercise}
+\begin{proof}
+    任取 \(  X\times \mathbb{N}   \)的无限子集 \(  A  \), 定义 \[
+    A_{a}= \left( \left\{ a \right\}\times \mathbb{N}  \right)\cap A ,\quad A_{b}= \left( \left\{ b \right\}\times \mathbb{N}  \right)\cap A 
+    \]  则 \(  A_{a}  \)和 \(  A_{b}  \)至少有一个为无限子集, 不妨设 \(  A_{a}  \)无限, 则它非空. 取 \(  \left( a,m \right)\in A_{a}   \)   . 断言 \(  \left( b,m \right)   \)是 \(  A  \)的极限点. 事实上, 任取 \(  \left( b,m \right)   \)的开邻域 \(  U  \), 根据积拓扑的定义, \(  U  \)包含了开集 \(  X\times \left\{ m \right\}  \). 因此总有 \[
+    U\cap A\supseteq \left( X\times \left\{ m \right\} \right)\cap A\supseteq \left\{ \left( a,m \right)  \right\}
+    \]      因此 \[
+    \left( U\cap A \right)\setminus \left\{ \left( b,m \right)  \right\}\supseteq \left\{ \left( a,m \right)  \right\}\neq \varnothing 
+    \]这表明 \(  \left( b,m \right)   \)是 \(  A  \)的极限点.   因此 \(  X\times \mathbb{N}   \)是极限点紧的.
+    
+    为了说明 \(  X\times \mathbb{N}   \)是不紧的, 考虑开覆盖 \[
+    \left\{ X\times \left\{ k \right\} \right\}_{k \in \mathbb{N} }
+    \] 而任意有限多个 \(  X\times \left\{ k \right\}  \)都不能覆盖 \(  X\times \mathbb{N}   \), 故 \(  X\times \mathbb{N}   \)不是紧的.   
+\end{proof}
+\begin{exercise}{}{}
+我们说空间 $X$ 是\dfntxt{可数紧的}, 是指 $X$ 的任何可数开覆盖都有有限的子覆盖.
+\begin{enumerate}
+\item 证明如果 $X$ 是可数紧的, 则 $X$ 是极限点紧的.
+\item 若 $X$ 是 Hausdorff 空间, 证明 (1) 的逆命题.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 如果 \(  X  \)是可数紧的. 任取 \(  X  \)的无限子集 \(  A  \). 取 \(  A  \)的一个可数无限子集 \(  S= \left\{ x_1,x_2,\cdots  \right\}  \). 如果 \(  A  \)没有极限点, 则 \(  A^{\prime} = \varnothing  \), 那么由于 \(  S^{\prime} \subseteq A^{\prime}   \), \(  S^{\prime} = \varnothing  \), 特别地 \(  S^{\prime} \subseteq S  \), \(  S  \)是一个闭集.   由于 \(  x_{k}\not \in S^{\prime}   \), 存在 \(  x_{k}  \)的开邻域 \(  U_{k}  \), 使得 \[
+        U_{k}\cap S= \left\{ x_{k} \right\}
+        \]   令 \(  U_0= X\setminus S  \), 由于 \(  S  \)是闭的, \(  U_0  \)是开的. 现在 \[
+        \mathcal{C}= \left\{ U_0,U_1,\cdots  \right\}
+        \]   是 \(  X  \)的一个可数开覆盖, 任取它的有限子集族 \(  \left\{ U_{k_1},U_{k_2},\cdots ,U_{k_{m}} \right\}  \), 不妨设 \(  k_{m}  \)是 \(  k_1,k_2,\cdots ,k_{m}  \)中最大的, 则 \[
+        x_{k_{m}+ 1}\not \in \bigcup _{i= 1}^{m}U_{k_{i}}
+        \]    因此 \(  \mathcal{C}  \)不存在\(  X  \)的有限子覆盖, 矛盾. 故 \(  A  \)一定有极限点. 因此\(  X  \)是极限点紧的.
+        \item 如果 \(  X  \)是Hausdorff且极限点紧的. 任取 \(  X  \)的可数开覆盖 \[
+        \mathcal{C}= \left\{ U_1,U_2,\cdots  \right\}
+        \]   不妨设 \(  U_{k}  \)均非空. 如果 \(  X\setminus U_1  \)是空间, 则 \(  \left\{ U_1 \right\}  \)就是 \(  X  \)的有限子覆盖. 若不然, 存在 \(  x_2 \in X\setminus U_1  \). 以此类推, 假设我们得到了\(  x_1,\cdots ,x_{k}  \), 使得 \(  x_{i}\in X\setminus \left( \bigcup _{j= 1}^{i}U_{j} \right)   \).       如果 \(  X\setminus \left( \bigcup _{j= 1}^{k+ 1}U_{j} \right)   = \varnothing\), 则 \(  \left\{ U_1,\cdots ,U_{k+ 1} \right\}  \)就是一个有限子覆盖. 若不然, 我们取 \(  x_{k+ 1}\in X\setminus \left( \bigcup _{j= 1}^{k+ 1}U_{j} \right)   \)   . 
+
+        归纳可知, 要么上述过程在某一步停下, 此时我们得到一个有限子覆盖. 要么我们取出一个点列 \[
+      S=   \left\{ x_1,x_2,\cdots  \right\}, \quad s.t. x_{i}\in X\setminus \left( \bigcup _{j= 1}^{i}U_{j} \right) 
+        \]现在考虑后一种情况, 由于 \(  X  \)是极限点紧的, 点列 \(  \left\{ x_1,x_2,\cdots  \right\}  \)存在一个极限点 \(  x  \). 则 断言\(  x\not \in S  \), 若不然, 设 \(  x= x_{k}  \), 则考虑 \(  x  \)的邻域 \(  U_{k}  \). 我们有 \(  x_{j}\not \in U_{k}, \forall j> k  \). 另一方面, 根据定义 \(  S  \)中的点两两不同. 由于 \(  X  \)是Hausdorff的, 对于任意的 \(  i< k  \), 存在 \(  x_{i}  \)的开邻域 \(  W_{i}  \), 和 \(  x  \)的开邻域 \(  V_{i}  \), 使得 \(  W_{i}\cap V_{i}= \varnothing  \), 令 \[
+        V= U_{k}\cap  \bigcap _{i= 1}^{k-1}V_{i}
+        \]     则 \(  V  \)是 \(  x  \)的开邻域. 但是 \[
+        x_{j}\in U_{k}^{c}\subseteq V^{c}, \forall j> k,\quad  x_{i}\in W_{i}\subseteq V_{i}^{c}\subseteq V^{c}, \forall i< k
+        \]这表明 \[
+        \left( V\cap S \right)\setminus \left\{ x\right\}= \varnothing 
+        \]     与 \(  x  \)是极限点矛盾, 因此 \(  x\not \in S  \).       此时, 我们再断言 \(  x\not \in  \bigcup _{j= 1}^{\infty}U_{j}  \) . 若不然, 存在 \(  k  \)使得 \(  x \in U_{k}  \). 由于 \(  x\not \in S  \), \(  x_1,\cdots ,x_{k-1}  \)与   \(  x  \)均不同, 对于每个 \(  i< k  \), 存在 \(  x_{i}  \)的开邻域 \(  W_{i}  \)和 \(  x  \)的开邻域 \(  V_{i}  \), 使得 \(  W_{i}\cap V_{i}= \varnothing  \)       , 此时再令 \[
+        V= U_{k}\cap \bigcap _{i= 1}^{k-1}V_{i}
+        \]则\[
+        x_{j}\in U_{k}^{c}\subseteq V^{c}, \forall j> k,\quad  x_{i}\in W_{i}\subseteq V_{i}^{c}\subseteq V^{c}, \forall i< k
+        \]矛盾. 因此 \(  x \not \in \bigcup _{j= 1}^{\infty}U_{j}  \) , 而这与\(  \mathcal{C}  \)是一个开覆盖矛盾. 从而选取 \(  x_{k}  \)的过程在一定在某一步停下, 此时我们得到有限子覆盖. 
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+设 $(X, d)$ 是度量空间, 映射 $f : (X, d) \to (X, d)$ 满足
+\[d(f(x), f(y)) = d(x, y).\]
+\begin{enumerate}
+\item 证明映射 $f$ 是连续的.
+\item 证明 $f$ 是单射.
+\item 举一例子说明, $f$ 不一定是满射.
+\item 当 $X$ 是紧的度量空间时, 证明 $f$ 是满射.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 对于任意的 \(  x_0\in X \) . 任取 \(   \varepsilon > 0  \), 则 对于任意的 \( x \in B_{ \varepsilon }\left( x_0 \right)   \), 有 \[
+    d\left( f\left( x \right),f\left( x_0 \right)    \right)= d\left( x,x_0\right)<  \varepsilon   
+    \]这表明 \[
+    f\left( B_{ \varepsilon }\left( x_0\right)  \right)\subseteq B_{ \varepsilon }\left( f\left( x_0 \right)  \right)  
+    \]由于 \(   \varepsilon   \)是任意的, 这表明 \(  f  \)在 \(  x_0  \)处连续.    由于 \(  x_0  \)是任意的, \(  f  \)是连续的.
+    \item  \[
+    f\left( x \right)= f\left( y \right)\iff d\left( f\left( x \right),f\left( y \right)   \right)= 0\iff d\left( x,y \right)= 0\iff x= y    
+    \]这表明 \(  f  \)是单射.
+    \item  设 \(  X= D^2 \)是圆盘, \(  d  \)是离散度量, 令 \(    f: \left( X,d \right)\to \left( X,d \right)  \), \(  f\left( x \right)= \frac{1 }{2 }x    \). 则 \[
+    d\left( f\left( x \right),f\left( y \right)   \right)= d\left( \frac{1 }{2 }x, \frac{1 }{2 }y   \right)= \begin{cases} 0,&x= y\\ 
+     1,& x\neq  y   \end{cases}   = d\left( x,y \right) 
+    \]     \(  f  \)满足条件. 但是 \(  f\left( D^{2} \right)= \frac{1 }{2 }D^{2}\neq D^{2}    \). 故 \(  f  \)不是满射.
+    \item 如果 \(  f  \)不是满的, 存在 \(  y_0 \in X  \), 使得 \(  y_0\not \in f\left( X \right)   \). 递归地定义 \(  y_{n+ 1}= f\left( y_{n} \right)   \). 由于 \(  X  \)是紧的度量空间,  则\(  X  \)也是列紧的, 即 \(  \left\{ y_{k} \right\}  \)存在收敛的子列, 记作 \(  \left\{ y_{n_{k}} \right\}  _{k\ge 1}\). 设 \(  y= \lim_{k\to \infty}y_{n_{k}}  \)      . 由于 \(  \left\{ y_{n_{k}} \right\}  \)是Cauchy列, 对于任意的 \(   \varepsilon > 0  \), 存在  \(  n_{k}> n_{j}  \)使得    \[
+     \varepsilon > d\left( y_{n_{k}},y_{n_{j}} \right)= d\left( f^{\left( n_{k} \right) }\left( y_0 \right), f^{\left( n_{j} \right) }\left( y_0 \right)   \right)  = d\left( y_0, y_{n_{j}-n_{k}} \right) 
+    \]由于 \(   \varepsilon   \)是任意的, 且 \(  \left\{ y_{k} \right\}_{k\ge 1}\subseteq f\left( X \right)   \).   这表明 \(  y_0  \)是 \(  f\left( X \right)   \)上的一个极限点.  由于 \(  X  \)是紧的,  \(  f\left( X \right)   \)也是紧的. 而 \(  X  \)是一个度量空间, 特别地它是Hausdorff的, 而Hausdorff空间中的紧子集是闭的, 故 \(  f\left( X \right)   \)是 \(  X  \)上的闭集.     因此 \(  y_0\in f\left( X \right)   \)    , 与 \(  y_0\not \in f\left( X \right)   \)矛盾. 因此 \(  f  \)是满的.  
+    \end{enumerate}
+      
+\end{proof}
+\begin{exercise}{}{}
+证明 $\mathbb{Z}_+$ 的一点紧化同胚于 $\mathbb{R}$ 的子空间 $\{0\} \cup \{\frac{1}{n} \mid n \in \mathbb{Z}_+\}$。
+\end{exercise}
+\begin{proof}
+    任取 \(  k \in \mathbb{Z} _{+ }  \), \(  \left\{ k \right\}  \)就是 \(  k  \)的一个紧邻域. 因此 \(  \mathbb{Z} _{+ }  \)是局部紧的.    考虑映射 \[
+    f:\mathbb{Z} _{+ }\cup \left\{ \infty \right\}\to \left\{ 0 \right\}\cup \left\{ \frac{1 }{n }: n\in \mathbb{Z} _{+ }  \right\}
+    \] \[
+    f\left( n \right)= \frac{1 }{n }, \forall n\in \mathbb{Z} _{+ },\quad f\left( \infty \right)=    0
+    \]由于 \(  \mathbb{R}   \)是Hausdorff的,  \(  \left\{ 0 \right\}\cup \left\{ \frac{1 }{n }:n\in \mathbb{Z} _{+ }  \right\}  \)也是Hausdorff的.   故 \(  f  \)是紧空间到Hausdorff空间的映射. 说明 \(  f  \)是一个同胚映射, 只需要说明它是一个连续的双射. 
+    
+    双射: 不难看出 \(  f  \)有逆映射 \[
+    g\left( \frac{1 }{n }  \right)= n, \quad g\left( 0 \right)= \infty  
+    \]因此 \(  f  \)是一个双射. 
+    
+    连续性: 任取 \(  \left\{ 0 \right\}\cup \left\{ \frac{1 }{n }: n\in \mathbb{Z} _{+ }  \right\}  \)上的开集 \(  U  \),
+    \begin{itemize}
+        \item 如果 \(  0\not \in U  \) ,由于 \(  \mathbb{Z} _{+ }  \)上有离散拓扑, 则由 \(  f^{-1} \left( U \right)\subseteq \mathbb{Z} _{+ }   \), \(  f^{-1} \left( U \right)   \) 是一个开集.
+        \item   如果 \(  0 \in U  \),  \(  f^{-1} \left( U \right)   \)是一个开集当且仅当存在 \(  \mathbb{Z} _{+ }  \)上的紧集 \(  K  \), 使得 \[
+    f^{-1} \left( U \right)= \left( \mathbb{Z} _{+ }\setminus K \right) \cup \left\{ \infty \right\} 
+    \]   由于 \(  \mathbb{Z} _{+ }  \)上任意有限集都是紧的, 只需要说明 \(  f^{-1} \left( U \right)  \setminus \left\{ \infty \right\} \)在 \(  \mathbb{Z} _{+ }  \)上是 余有限的, 由于 \(  f  \)是双射, 这等价于 \(  U\setminus\left\{ 0 \right\}  \)在 \( \left\{ \frac{1 }{n }  \right\}  \) 上是余有限的  . 事实上, 由于 \(  U  \)是 \(  0  \)的开邻域, 考虑在 \(  \mathbb{R}   \)上的子空间拓扑,  存在包含了\(  0  \)的开区间\(  \left( a,b \right)   \) , 使得 \[
+    U= \left( a,b \right)\cap \left( \left\{ 0 \right\}\cup \left\{ \frac{1 }{n }  : n\in \mathbb{Z} _{+ }\right\} \right)  \implies U\setminus \left\{ 0 \right\}= \left( a,b \right)\cap \left\{ \frac{1 }{n }:n\in \mathbb{Z} _{+ }  \right\} 
+    \]     由于存在 \(  N  \), 使得 \(  \frac{1 }{n }< b, \forall n\ge N   \). 因此\(  \left\{ \frac{1 }{n }:n\in \mathbb{Z} _{+ }  \right\}  \)   中至多只有有限多个点落在 \(  \left( a,b \right)   \)之外, 进而只有有限多个点落在 \(  U \setminus \left\{ 0 \right\} \)之外. 这表明 \(U\setminus \left\{ 0 \right\}    \)在 \(  \left\{ \frac{1 }{n }  \right\}  \)上是余有限的. 根据前面的讨论,  \(  f^{-1} \left( U \right)   \)是\(  \mathbb{Z} _{+ }  \)的一点紧化空间上的开集. 
+    \end{itemize}
+   这就说明了 \(  f  \)是连续映射.       最终,  \(  f  \)是紧空间到Hausdorff空间的连续双射, 故为同胚映射. 
+\end{proof}
+\end{document} 

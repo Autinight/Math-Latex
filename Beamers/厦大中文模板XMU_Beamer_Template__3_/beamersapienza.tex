@@ -1,0 +1,221 @@
+\documentclass{beamer}
+\usepackage{amsfonts,amsmath,oldgerm}
+\usetheme{sintef}
+\usepackage{xeCJK}
+
+\newcommand{\testcolor}[1]{\colorbox{#1}{\textcolor{#1}{test}}~\texttt{#1}}
+
+\usefonttheme[onlymath]{serif}
+
+\titlebackground*{XMU-assets/XMU-logo-negative.png}
+
+\newcommand{\hrefcol}[2]{\textcolor{cyan}{\href{#1}{#2}}}
+
+\title{实变小组汇报}
+%\subtitle{报告副标题}
+% \course{Master's Degree in Computer Science}
+\author{第五小组}
+% \IDnumber{1234567}
+\date{2025年10月12日}
+
+\begin{document}
+\maketitle
+
+%\section{Introduction}
+
+
+\begin{frame}[fragile]{第一题}
+\framesubtitle{周民强第二版P112第二组Ex.6 }
+
+\begin{block}{Exercise}
+设 $A,B \subset \mathbf{R}^n$, $A \cup B$ 是可测集, 且 $m(A \cup B) < \infty$. 若
+\[m(A \cup B) = m^*(A) + m^*(B),\]
+试证明 $A,B$ 皆为可测集.
+\end{block}
+Proof.    存在 \(  G_{ \delta }  \)集 \(  G^{\prime}   \), 使得 \(  A\subseteq G^{\prime}   \)  , \(  m  \left( G^{\prime}  \right)= m^{*}\left( A \right)  \). 定义 \[
+    G:= G^{\prime} \cap \left( A\cup B \right) 
+    \]则 \(  G  \)可测, 并且  \[
+    A\subseteq G\subseteq G^{\prime} 
+    \]   于是 \[
+    m^{*}\left( A \right)\le  m\left( G \right)\le m \left( G^{\prime}  \right)= m^{*}\left( A \right)\implies m\left( G \right)= m^{*}\left( A \right)    
+    \]
+    
+\end{frame}
+
+
+\begin{frame}[fragile]{第一题}
+\framesubtitle{周民强第二版P112第二组Ex.6 }
+
+    由 \(  G  \)的可测性, 我们有 \[
+  \begin{aligned}
+  m\left( A\cup B \right)&= m^{*}\left( \left( A\cup B \right)\cap G  \right)+ m^{*}\left( \left( A\cup B \right)\setminus G  \right)  \\ 
+   &=  m^{*}\left( G \right)+ m^{*}\left( B\setminus G \right)  
+  \end{aligned}  
+    \] 以及 \[
+    m^{*}\left( B \right)= m^{*}\left( B\cap G\right)+ m^{*}\left( B\setminus G \right)   \implies m^{*}\left( B\setminus G \right)= m^{*}\left( B \right)-m^{*}\left( B\cap G \right)   
+    \]此外 \[
+    m\left( A\cup B \right)= m^{*}\left( A \right)+ m^{*}\left( B \right)= m^{*}\left( G \right)+ m^{*}\left( B \right)     
+    \]于是我们得到 \[
+    \begin{aligned}
+   & m^{*}\left( G \right)+ m^{*}\left( B \right)= m^{*}\left( G \right)+ m^{*}\left( B \right)-m^{*}\left( B\cap G \right)    \\ 
+    &\implies m^{*}\left( B\cap G \right)= 0 
+    \end{aligned}
+    \]于是 \(  B\cap G  \)可测. 
+\end{frame}
+
+
+
+\begin{frame}[fragile]{第一题}
+\framesubtitle{周民强第二版P112第二组Ex.6}
+又 \[
+    B\setminus G= \left( A\cup B \right)\setminus G 
+    \]是可测的, 我们有 \[
+    B= \left( B\cap G \right)\cup \left( B\setminus G \right)  
+    \] 可测. 类似地可以说明 \(  A  \)是可测的. 
+\end{frame}
+
+
+\begin{frame}[fragile]{第二题}
+\framesubtitle{周民强第二版P112第二组Ex.11 }
+
+\begin{block}{Exercise}
+
+设 $E \subset \mathbf{R}^1$ 且 $m(E) > 0$, 试证明存在 $E$ 中不可测集 $W$.
+\end{block}
+Proof.    
+     定义 \(  \mathbb{R}   \)上的等价关系 \[
+    x\sim y:\iff x-y\in \mathbb{Q} 
+    \] 由选择公理, 存在一个集合 \(  S  \), 他通过在每个等价类中 选取一个代表元得到. 则 \[
+    \mathbb{R} = S+ \mathbb{Q} = \bigcup _{r\in \mathbb{Q} }\left( S+ r \right) 
+    \]从而 \[
+    E= E\cap \mathbb{R} = E\cap \left( \bigcup _{r\in \mathbb{Q} }\left( S+ r \right)  \right)= \bigcup _{r\in \mathbb{Q} }\left( E\cap \left( S+ r \right)  \right)  
+    \]
+\end{frame}
+
+
+\begin{frame}[fragile]{第二题}
+\framesubtitle{周民强第二版P112第二组Ex.11}
+我们有 \[
+    0< m\left( E \right)\le \sum _{r \in \mathbb{Q} }m^{*}\left( E\cap \left( S+ r \right)  \right)  
+    \]存在 \(  r_0\in \mathbb{Q}   \), 使得 \[
+    m^{*}\left( E\cap \left( S+ r_0 \right)  \right)> 0 
+    \] 记 \(  E^{\prime} := E\cap \left( S+ r_0 \right)   \). 如果 \(  E^{\prime}   \)是可测的, 由Steinhause, 存在某个非空开区间 \(  I  \), 使得 \[
+    I\subseteq \left( E^{\prime} -E^{\prime}  \right) 
+    \]   但是 \[
+    E^{\prime} -E^{\prime} \subseteq \left( \left( S+ r_0 \right)-\left( S+ r_0 \right)   \right)=\left( S- S \right) 
+    \]根据 \(  S  \)的定义, \(  \left( S-S \right)\subseteq \left\{ 0 \right\}\cup \left( \mathbb{R} \setminus \mathbb{Q}  \right)    \), 而 \(  I\subseteq \left( \left\{ 0 \right\}\cup \mathbb{R} \setminus \mathbb{Q}  \right)   \)  是不可能的, 这就产生了一个矛盾.
+\end{frame}
+\begin{frame}[fragile]{第三题}
+\framesubtitle{周民强第二版P112第二组Ex.7 }
+
+\begin{block}{Exercise}
+
+设有 $f:[a,b] \to \mathbf{R}^1$, 若对于 $[a,b]$ 中任一可测集 $E, f(E)$ 必为 $\mathbf{R}^1$ 中的可测集; 试证明: 对于 $[a,b]$ 中任一零测集 $Z$, 必有 $m(f(Z)) = 0$.
+\end{block}
+
+Proof. 
+ 如果存在零测集 \(  Z  \subseteq \left[ a,b \right] \), 使得 \(  m\left( f\left( Z \right)  \right)> 0   \). 由于每个 \(  \mathbb{R}   \)的具有正测度的可测集, 都包含一个不可测集, 于是存在不可测集 \(  E  \), 使得 \(  E\subseteq f\left( Z \right)   \). 令 \(  A= f^{-1} \left( E \right)\cap Z   \), 则 \(  A  \)    是一个零测集. 注意到 \[
+    f\left( A \right)\subseteq f\left( f^{-1} \left( E \right)  \right)= E  
+    \] 另一方面, 任取 \(  x\in E  \), 由于 \(  E\subseteq f\left( Z \right)   \), \(  x \in f\left( Z \right)   \).  存在 \(  y \in Z  \)使得 \(  f\left( y \right)= x   \)    , 这又告诉我们 \(  y \in f^{-1} \left( E \right)   \), 故 \(  y \in f^{-1} \left( E \right)\cap Z= A   \),   这表明 \[
+    E\subseteq f\left( A \right) 
+    \]  . 因此 \(  E= f\left( A \right)   \), 由题设可知\(  f\left( A \right)   \)是可测的, 故 \(  E  \)是可测的, 矛盾.   
+\end{frame}
+
+
+\begin{frame}[fragile]{第四题}
+\framesubtitle{周民强第二版P112第二组Ex.9 }
+
+\begin{block}{Exercise}
+
+设 $\alpha>2$, 作 $\mathbf{R}^1$ 中点集:
+\[
+E = \{x: \text{存在无限个分数 } p/q, p \text{ 与 } q \text{ 是互素的自然数, 使得 } |x - p/q| < 1/q^\alpha\},
+\]
+试证明 $m(E)=0$.
+\end{block}
+Proof.  若 \(  x< 0  \), 则若存在互素的 \(  p,q  \),使得 \(  \left| x-\frac{p }{q }  \right|< \frac{1 }{q^{\alpha } }    \), 则 \[
+    x> \frac{p }{q }-\frac{1 }{q^{\alpha } }> \frac{p-1 }{q }   
+    \]只能有 \(  p = 0, q=  1  \)     , 故 \(  x\not \in E  \), 这表明 \[
+    E\subseteq [0,\infty)
+    \] 
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{第四题}
+\framesubtitle{周民强第二版P112第二组Ex.9 }
+
+    令 \(  E_0= E\cap \left[ 0,1 \right]   \), 对于每个 互素的自然数 \(  p,q  \), 定义 \[
+    I_{p,q}:= \left( \frac{p }{q }-\frac{1 }{q^{\alpha } }, \frac{p }{q }+ \frac{1 }{q^{\alpha } }     \right) 
+    \]  定义 \[
+    A_{q}:= \bigcup _{0\le p\le q, p,q\text{互素}  }I_{p,q}
+    \]  若\(  x\in E  \cap \left[ 0,1 \right] \), 则 \(  x  \)属于无限多个 \(  I_{p,q}  \), \(  p\le q  \) , 这当且仅当 \(  x  \)属于无限多个 \(  A_{q}  \), 当且仅当 \[
+    x \in \limsup_{q\to \infty}A_{q}= \bigcap _{q = 1}^{\infty}\bigcup _{r= q}^{\infty}A_{r}
+    \]   因此 \[
+    E_0\subseteq \limsup_{q\to \infty}A_{q}
+    \]
+\end{frame}
+
+
+\begin{frame}[fragile]{第四题}
+\framesubtitle{周民强第二版P112第二组Ex.9 }
+  考虑到 \[
+    m\left( I_{p,q} \right)= \frac{2 }{q^{\alpha } }  
+    \] \[
+    m\left( A_{q} \right)\le q\frac{2 }{q^{\alpha } }= \frac{2 }{q^{\alpha -1} }   
+    \] 由于 \(  \alpha -1> 1  \), 级数 \[
+    \sum _{ q = 1}^{\infty}\frac{2 }{q^{\alpha -1} } 
+    \]收敛, 进而级数 \(  \sum _{q = 1}^{\infty}m\left( A_{q} \right)   \)收敛.  于是 \[
+    \lim_{q\to \infty}m\left( \bigcup _{r = q}^{\infty}A_{r} \right)\le \lim_{q\to \infty} \sum _{ r = q}^{\infty}m\left( A_{q} \right)  = 0
+    \]
+\end{frame}
+
+
+\begin{frame}[fragile]{第四题}
+\framesubtitle{周民强第二版P112第二组Ex.9 }
+ 故 \[
+  m\left( E_0 \right)\le    m\left( \limsup_{q\to \infty}A_{q}\right)= \lim_{q\to \infty}m\left( \bigcup _{r=  q }^{\infty}A_{r} \right)=  0 
+    \]
+
+    更一般地, 对于任意的 \(  k \in \mathbb{Z}_{> 0} \), 类似地过程可以说明 \(  E_{k}:=  E\cap \left[ k,k+ 1 \right]   \)是零测集, 只需要将 \(  A_{q}  \)的定义改为 \[
+    A_{q}:= \bigcup _{kq\le p\le \left( k+ 1 \right)q ,  p,q\text{互素}}I_{p,q}
+    \]   然后重复上述过程即可. 最终, 我们有 \[
+   m\left( E \right)= m\left( \bigcup _{k = 0}^{\infty}\left( E\cap \left[ k,k+ 1 \right]  \right)  \right)  \le \sum _{k = 0}^{\infty}m\left( E\cap \left[ k,k+ 1 \right]  \right)= 0 
+    \]
+\end{frame}
+
+
+
+\begin{frame}[fragile]{第五题}
+\framesubtitle{周民强第二版P112第二组Ex.8 }
+
+\begin{block}{Exercise}
+
+
+设 $T: \mathbf{R}^n \to \mathbf{R}^n$ 是一一映射, 且保持点集的外测度不变, 试证明对于可测集 $E, T(E)$ 必是可测集.
+
+\end{block}
+Proof.  要证 \(  T\left( E \right)   \)可测, 只需要证明 对于 \(  \mathbb{R} ^{n}  \)中任意的点集 \(  S  \), 都有 \[
+m^{*}\left( S \right)= m^{*}\left( S\cap T\left( E \right)  \right)+ m^{*}\left( S\cap T\left( E \right)^{c}   \right)   
+\]   由 \(  T  \)为一一映射可知,  存在 \(  S^{\prime}   \subseteq \mathbb{R} ^{n}\), 使得 \(  T\left( S^{\prime}  \right)= S   \). 故等式转化为 \[
+m^{*}\left( T\left( S^{\prime}  \right)  \right)= m^{*}\left( T\left( S^{\prime}  \right)\cap T\left( E \right)   \right)+ m^{*}\left( T\left( S^{\prime}  \right)\cap T\left( E \right)^{c}  \right)   
+\]由 \(  T  \)为一一映射: \[
+\begin{aligned}
+T\left( S^{\prime}  \right)\cap T\left( E \right)&= T\left( S^{\prime} \cap E \right)\\ 
+ T\left( S^{\prime}  \right)\cap T\left( E \right)^{c} &= T\left( S^{\prime} \cap E^{c} \right)       
+\end{aligned}
+\] 
+\end{frame}    
+
+
+\begin{frame}[fragile]{第五题}
+\framesubtitle{周民强第二版P112第二组Ex.8 }
+  再根据 \(  T  \)保持外测度不变, 最终只要证明: \[
+m^{*}\left( S^{\prime}  \right)= m^{*}\left( S^{\prime} \cap E \right)+ m^{*}\left( S^{\prime} \cap E^{c} \right)   
+\]由 \(  E  \)为可测集, 立即知道其成立. 于是可知对于任意的 \(  S\subseteq \mathbb{R} ^{n}  \), \[
+m^{*}\left( S \right)= m^{*}\left( S\cap T\left( E \right)  \right)+ m^{*}\left( S\cap T\left( E \right)^{c} \right)   .
+\]即 \(  T\left( E \right)   \)可测.   
+\end{frame}    
+\backmatter
+\end{document}

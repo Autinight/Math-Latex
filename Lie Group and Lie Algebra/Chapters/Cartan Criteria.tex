@@ -1,0 +1,323 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Cartan Criteria }
+% 代靖涵 25120222201319
+
+\section{Jordan Decomposition}
+
+\begin{lemma}{}{11-5-2}
+Let $x$ be a linear transformation of the complex vector space $V$. Suppose that $x$ has Jordan decomposition $x = d + n$, where $d$ is diagonalisable, $n$ is nilpotent, and $d$ and $n$ commute.
+
+\begin{enumerate}
+\item[(a)] There is a polynomial $p(X) \in \mathbb{C}[X]$ such that $p(x) = d$.
+
+\item[(b)] Fix a basis of $V$ in which $d$ is diagonal. Let $\bar{d}$ be the linear map whose matrix with respect to this basis is the complex conjugate of the matrix of $d$. There is a polynomial $q(X) \in \mathbb{C}[X]$ such that $q(x) = \bar{d}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{exercise}{}{}
+    Let $V$ be a vector space, and suppose that $x \in \mathfrak{gl}(V)$ has Jordan decomposition $d+n$. Show that $\operatorname{ad} x : \mathfrak{gl}(V) \to \mathfrak{gl}(V)$ has Jordan decomposition $\operatorname{ad} d + \operatorname{ad} n$.
+\end{exercise}
+\begin{proof}
+    Only need to show that \(  \operatorname{ad}d  \) is semisimple and \(  \operatorname{ad}n  \) is nilpotent, then the proposition follows from the linearity of \(  \operatorname{ad}  \) and the uniqness of Jordan decomposition. 
+
+    \begin{itemize}
+        \item Suppose that \(   e_1,\cdots,e_n   \) is the basis in which \(  d  \) is represented diagonal, say \(  \operatorname{diag} \left(  \lambda _1 ,\cdots , \lambda _{n} \right)    \) .  Let \(  E_{ij} \in \mathfrak{gl}\left( V \right)   \) be the maps that  mapping \(  e_{j}  \) to \(  e_{i}  \), that is \(  E_{ij}\left( e_{k} \right)=  \delta _{j}^{k}e_{i}   \) , \(  k=  1,\cdots,n   \) . Then \[
+      \begin{aligned}
+        \operatorname{ad}\left( d \right)\left( E_{ij} \right)\left( e_{k} \right)&= \left[ d,E_{ij} \right]\left( e_{k} \right)    \\ 
+         &= \left( dE_{ij}-E_{ij}d \right)\left( e_{k} \right)\\ 
+          &=   d\left( E_{ij}e_{k} \right)- E_{ij}\left( de_{k} \right)\\ 
+           &= d\left(  \delta _{j}^{k}e_{i} \right)- E_{ij}\left(  \lambda _{k}e_{k} \right)\\ 
+            &=  \delta _{j}^{k} \lambda _{i}e_{i}-  \lambda _{k} \delta _{j}^{k}e_{i}\\ 
+             &= \left(  \lambda _{i}- \lambda _{k} \right) \delta _{j}^{k}e_{i}= \left(  \lambda _{i}- \lambda _{j} \right)E_{ij} 
+      \end{aligned}  
+        \] Which implies that \(  E_{ij}  \) is a eigenvector for \(  \operatorname{ad}\left( d \right)   \) for each \(  i,j=  1,\cdots,n   \). \(  \operatorname{ad}n  \) is diagonal under the basis \(  E_{ij}, i,j=  1,\cdots,n   \)     
+        \item Since \(  n  \) is nilpotent, it follows that \(  \operatorname{ad}n  \) is nilpotent. 
+        \item  It follows from Jacobi identity that \[
+       \begin{aligned}
+        \left( \operatorname{ad}d \right)\circ \left( \operatorname{ad}n \right)\left( y \right)&= \left[ d, \left[ n,y \right]  \right]= -\left[ y,\left[ d,n \right]  \right]-\left[ n,\left[ y,d \right]  \right]  
+       \end{aligned}     
+        \]Since \(  d,n  \) commutes,  \(  \left[ d,n \right]= 0   \).  Thus \(  \operatorname{ad}n  \) and \(  \operatorname{ad}d  \) commute.  
+    \end{itemize}
+    
+\end{proof}
+\section{Testing for Solvability}
+
+\begin{exercise}{}{11-5-4}
+    Let \(  V  \) be a complex vector space, \(  L  \) be a Lie subalgebra of \(  \mathfrak{gl}\left( V \right)   \).   Suppose that $L$ is solvable. Use Lie's Theorem to show that there is a basis of $V$ in which every element of $L'$ is represented by a strictly upper triangular matrix. Conclude that $\operatorname{tr} xy = 0$ for all $x \in L$ and $y \in L'$.
+\end{exercise}
+\begin{remark}
+    \(  \mathbb{C}   \) can replaced by \(  \mathbb{F}  \) such that \(  \operatorname{char}\mathbb{F}= 0  \), \(  \bar{\mathbb{F}}= \mathbb{F}  \).    
+\end{remark}
+\begin{proof}
+    From Lie's Theorem ,there is a basis of \(  V  \) in which every element of \(  L  \) is upper triangular  , say  \(  \left\{ e_1,\cdots ,e_{n} \right\}  \). Take \(  z \in L^{\prime}   \), \(  z= \left[ x,y \right], x,y \in L   \). Then \[
+    z\left( e_{1} \right)= [x,y]\left( e_1 \right)= x\left( y\left( e_1 \right)  \right)-y\left( x\left( e_1 \right)  \right)= 0    
+    \]Since \(  e_1  \) is simultaneous an eigenvector of \( x   \) and \(  y  \). Let \(  L_{k}= \operatorname{span}\left\{ e_1,\cdots ,e_{k} \right\}  \) , then \[
+  z\left( e_{k} \right)= x\left( y\left( e_{k} \right)  \right)-y\left( x\left( e_{k} \right)  \right)   
+    \]    Suppose , \[
+    y\left( e_{k} \right)= \sum _{j= 1}^{k}y_{i}e_{j},\quad x\left( e_{k} \right)= \sum _{j= 1}^{k}x_{i}e_{j}  
+    \]then \[
+  \begin{aligned}
+    x\left( y\left( e_{k} \right)  \right)+ \operatorname{span}\left\{ e_1,\cdots ,e_{k-1} \right\}&= x\left( y_{i}e_{k} \right)+ \operatorname{span}\left\{ e_1,\cdots ,e_{k-1} \right\} \\ 
+     &= x_{i}y_{i}e_{k}+ \operatorname{span}\left\{ e_1,\cdots ,e_{k-1} \right\}
+  \end{aligned}  
+    \] Similarly, \[
+    y\left( x\left( e_{k} \right)  \right)+ \operatorname{span}\left\{ e_1,\cdots ,e_{k-1} \right\}= x_{i}y_{i}e_{k}+ \operatorname{span}\left\{ e_1,\cdots ,e_{k-1} \right\} 
+    \]Thus \[
+    z\left( e_{k} \right)\in \operatorname{span}\left\{ e_1,\cdots ,e_{k-1} \right\} 
+    \]It follows that \(  z  \) is  nilpotent. Thus every element of \(  L^{\prime}   \) is represented by a strictly upper triangular matrix. 
+
+    The matrix of \(  x  \) and \(  y  \) under the basis \(  \left\{  e_1,\cdots,e_n  \right\}  \) are upper triangular matrix and strictly upper triangular matrix , repectively  , say \(  A  \), \(  B  \). Then \[
+    \mathrm{tr}xy= \operatorname{tr}\left( AB \right)= \sum _{k= 1}^{n}a_{ik}b_{kj}= 0 
+    \] Since for each \(  i> k  \), \(  a_{ik}= 0  \), and for each \(  i\le k  \), \(  b_{kj}\le 0  \).       
+\end{proof}
+
+\begin{proposition}{}{11-5-3}
+Let $V$ be a complex vector space and let $L$ be a Lie subalgebra of $\mathfrak{gl}(V)$. If $\mathrm{tr}\,xy = 0$ for all $x, y \in L$, then $L$ is solvable.
+\end{proposition}
+\begin{proof}
+    We shall show that every element of \(  L^{\prime}   \) is nilpotent, then it follows from Engel's Theorem that \(  L^{\prime}   \) is nilpotent, thus \(  L  \) is solvable.
+    
+    Take any element \(  x \in L^{\prime}   \). Suppose that \(  x  \) has a Jordan decomposition \(  x= d+ n  \). We choose a basis in which \(  d  \) is diagonal \(  d= \operatorname{diag} \left(  \lambda _1 ,\cdots , \lambda _{n} \right)    \) and \(  n  \) is strictly upper triangular. We only need to show that \[
+    \sum _{i= 1}^{n}  \lambda _{i}  \bar{\lambda}_{i}= 0
+    \]    \[
+   \begin{aligned}
+    \operatorname{tr}\left( \bar{d}x \right) &= \operatorname{tr}\left( \bar{d} d+  \bar{d}n \right)= \operatorname{tr}\left( \bar{d}d+ \bar{d}n \right)\\ 
+     &= \operatorname{tr}\left( \bar{d}d \right)+ 0\\ 
+      &= \sum _{i= 1}^{n} \lambda _{i}  \bar{\lambda}_{i}    
+   \end{aligned}
+    \] Since \(  x\in L^{\prime}   \) ,we write \(  x= \left[ y,z \right]   \), \(  y,z\in L^{\prime}   \). \[
+   \begin{aligned}
+   \operatorname{tr} \left( \bar{d}x \right) &= \operatorname{tr}\left( \bar{d}\left[ y,z \right]  \right)\\ 
+    &= \operatorname{tr}\left( \bar{d}yz- \bar{d}zy \right)= \operatorname{tr}\left( \bar{d}yz- y \bar{d}z\right)   \\ 
+     &= \operatorname{tr}\left( \left[ \bar{d},y \right]z   \right) 
+   \end{aligned}
+    \]  
+    
+    \begin{note}
+        这里我们折腾 \(  \operatorname{ad} \bar{d}  \)而非 \(  \bar{d}  \)的意义在于, 多项式对不变性的保持需要我们对结合代数封闭, 而李代数不一定保持结合代数的封闭性.  
+    \end{note}
+    Thus to show \(  d= 0  \), we only need to show that \(  \left[ \bar{d},y \right]\in L   \), that is \(  \operatorname{ad}_{\bar{d}}\left( y \right)\in L   \).   \(  \operatorname{ad}x  \) has Jordan decomposition, \(  \operatorname{ad}x= \operatorname{ad}d+ \operatorname{ad} n \). Then from Lemma \ref{lem:11-5-2}  , there exists  \(  q\left( X \right)\in \mathbb{C}\left[ X \right]    \) such that  \[
+    q\left( \operatorname{ad}x \right) = \operatorname{ad} \bar{d}
+    \]  Since \(  L  \) is \(  \operatorname{ad}x  \)-   invariant, so dose \(  q\left( \operatorname{ad}x \right)   \) and \(  \operatorname{ad}\bar{d}  \), which completes the proof.    
+\end{proof}
+
+\begin{theorem}{}{11-5-4}
+Let $L$ be a complex Lie algebra. Then $L$ is solvable if and only if $\operatorname{tr}(\operatorname{ad} x \circ \operatorname{ad} y) = 0$ for all $x \in L$ and all $y \in L'$.
+\end{theorem}
+
+\begin{note}
+    由于\(  L  \)的 sovability等价于任意阶导出子代数\(  L^{\left( k \right) }  \) 的sovability, 因此命题中的 \[
+    x \in L,\quad y \in L^{\prime} 
+    \]对于任意固定的 \(  k\ge 1,l\ge 0  \) 可以替换为  \[
+    x\in L^{\left( k \right) },\quad y \in L^{\left( l \right) },\quad 
+    \]
+\end{note}
+
+\begin{proof}
+    Suppose \(  L  \) is sovable. Then \(  \operatorname{ad}\left( L \right) \subseteq \mathfrak{gl}\left( L \right)    \) is sovable.  Then it follows from exercise \ref{ex:11-5-4} that  \(  \operatorname{tr}\left( \operatorname{ad}x\circ \operatorname{ad}y \right)= 0   \) for all \(   x \in L, y \in L^{\prime}   \).
+    
+    Conversly, it follows from proposition \ref{pps:11-5-3} that \(  \operatorname{ad}\left( L^{\prime}  \right)   \) is sovable, then so dose \(  L^{\prime}   \) and   \(  L  \). 
+\end{proof}
+
+\section{Killing Form}
+\begin{definition}{}{}
+    Let $L$ be a complex Lie algebra. The Killing form on $L$ is the symmetric bilinear form defined by
+$$\kappa(x, y) := \operatorname{tr}(\operatorname{ad} x \circ \operatorname{ad} y) ,\quad \text{for } x, y \in L$$
+\end{definition}
+\begin{proposition}{}{}
+    \[
+\kappa([x, y], z) = \kappa(x, [y, z]).
+\]
+
+\end{proposition}
+\begin{theorem}{Cartan's First Criterion}{}
+The complex Lie algebra $L$ is solvable if and only if $\kappa(x,y) = 0$ for all $x \in L$ and $y \in L'$.
+\end{theorem}
+
+\begin{proof}
+    Just a restatement of theorem \ref{thm:11-5-4}    . 
+\end{proof}
+
+\begin{lemma}{}{}
+    Suppose that $L$ is a Lie algebra and $I$ is an ideal of $L$. We write $\kappa$ for the Killing form on $L$ and $\kappa_I$ for the Killing form on $I$, considered as a Lie algebra in its own right.
+If $x, y \in I$, then $\kappa_I(x,y) = \kappa(x,y)$.
+\end{lemma}{}{}
+
+\begin{proof}
+   We expand a basis of \(  I  \) to a basis of \(  L  \). Since \[
+   \operatorname{ad}x\left( L\right)\subseteq \left[ x,L\right]\subseteq I  
+   \] Then \(  \operatorname{ad}x  \) is represented of the form  \[
+   \begin{pmatrix} 
+       A_{x}&B_{x}\\ 
+        O&O 
+   \end{pmatrix} 
+   \]  \(  \operatorname{ad}y  \) is represented of the form \[
+   \begin{pmatrix} 
+       A_{y}&B_{y}\\ 
+        O& O
+   \end{pmatrix} 
+   \] We have \[
+   \begin{aligned}
+    \kappa \left( x,y \right)&=  \operatorname{tr} \left( \begin{pmatrix} 
+        A_{x}&B_{x}\\ 
+         O&O 
+    \end{pmatrix}\begin{pmatrix} 
+        A_{y}&B_{y}\\ 
+         O&O 
+    \end{pmatrix}   \right)   \\ 
+     &= \operatorname{tr}\left( \begin{pmatrix} 
+         A_{x}A_{y}&A_{x}B_{Y}\\ 
+          O&O 
+     \end{pmatrix}  \right) \\ 
+      &= \operatorname{tr}\left( A_{x}A_{y} \right)\\ 
+       &=  \kappa _{I}\left( x,y \right)  
+   \end{aligned}
+   \]
+
+\end{proof}
+
+\subsection{Testing for Semisimplicity}
+
+\begin{definition}{perpendicular space}{}
+    \begin{itemize}
+        \item Let $\beta$ be a symmetric bilinear form on a finite-dimensional complex vector space $V$. If $S$ is a subset of $V$, we define the \dfntxt{perpendicular space} to $S$ by
+$$S^{\perp} = \{x \in V : \beta(x, s) = 0 \text{ for all } s \in S\}.$$
+\item  We say that $\beta$ is \dfntxt{non-degenerate} if $V^{\perp} = 0$; that is, there is no non-zero vector $v \in V$ such that $\beta(v, x) = 0$ for all $x \in V$.
+
+    \end{itemize}
+    
+\end{definition}
+
+\begin{proposition}{}{}
+    If $\beta$ is non-degenerate and $W$ is a vector subspace of $V$, then
+
+\[
+\dim W + \dim W^{\perp} = \dim V.
+\]
+\end{proposition}
+\begin{proof}
+     Define a linear map \(   \varphi :V\to V^{*}  \), \[
+      \varphi \left( v \right)\mapsto  \left( u\mapsto \beta \left( u,v \right)  \right)  
+     \] Then \[
+     \operatorname{ker} \varphi = \left\{ v\in V: \beta \left( u,v \right)= 0 ,\forall u \in V  \right\}= V^{\perp}= 0
+     \]Since \(  V  \) is finite-dimensional , we have \(  \operatorname{dim}V= \operatorname{dim}V^{*}  \). Then \(   \varphi   \) is a isomorphism.   Define \(  W^{0}\subseteq V^{*}  \): \[
+     W^{0}= \left\{  \lambda \in V^{*}:  \lambda \left( w \right)= 0, \forall w \in W  \right\}
+     \]  We have \[
+      \varphi \left( W^{\perp} \right)=  W^{0} ,\quad \operatorname{dim}W^{\perp}= \operatorname{dim}W^{0}
+     \] Let \(  i: W\hookrightarrow V  \) the inclusion map , for each \(   \lambda ^{*}\in V^{*}  \),  we define a map \(  i ^{*}: V ^{*}\to W^{*}   \) \[
+     i ^{*} \left(  \lambda  \right)\left( w \right)=   \lambda \left( i\left( w \right)  \right) 
+     \]   Then \(  \operatorname{Im} i ^{*}= W^{*}  \), \(  \operatorname{ker} i ^{*}= W^{0}  \), we have \[
+     \operatorname{dim}W^{0}+ \operatorname{dim}W^{*}= \operatorname{dim}V^{*}
+     \]  Then it follows that \[
+     \operatorname{dim}W^{\top}+ \operatorname{dim}W^{*}= \operatorname{dim}V^{*}\implies  \operatorname{dim}W^{\perp}+ \operatorname{dim}W = \operatorname{dim}V
+     \]Since \(  W,V  \) have finite dimension. 
+\end{proof}
+
+\begin{exercise}{}{}
+    Suppose \(  I  \) is an ideal of \(  L  \). Shows that \(  I^{\perp} \) is an ideal of \(  L  \).   
+\end{exercise}
+
+\begin{proof}
+      \[
+      I^{\perp}= \left\{ x \in L:   \kappa \left( i,x  \right)= 0, \forall i \in I  \right\}
+      \]Take \(  x \in I^{\perp}  \),   \(  y \in L  \),  note that \[
+      \left[ y,x \right]\in I^{\perp}\iff  \kappa \left( \left[ x,y \right], i  \right), \quad \forall i \in I  
+      \] Since we have \[
+      \kappa \left( x,\left[ y, i \right]  \right)= 0 , \forall y \in L, i \in I 
+      \] Then  \[
+       \kappa \left( [x,y],i \right)= \operatorname{tr} \left( \left[ \operatorname{ad}_{x}, \operatorname{ad}_{y} \right]  \circ \operatorname{ad}_{i}\right)= \operatorname{tr}\left( \operatorname{ad}_{x}\circ \left[ \operatorname{ad}_{y}\circ \operatorname{ad}_{i} \right]  \right)=  \kappa \left( x,\left[ y,i \right]  \right)= 0    
+      \] For all \(  i \in I  \). That is \(  \left[ x,y \right]\in I^{\perp}   \). \(  \left[ L, I^{\perp} \right]\subseteq I^{\perp}   \).   
+\end{proof}
+
+\begin{corollary}{}{}
+    If  \(  L  \)  is semisimple, then \(   \kappa   \) is non-degenerate. 
+\end{corollary}
+
+\begin{proof}
+    Other wise , \(  L^{\perp}  \) is an nonzero ideal of \(  L  \). Since \(  \left( L^{\perp} \right)^{\prime} \subseteq  L  \)   , we have \[
+     \kappa \left( L^{\perp}, \left( L^{\perp} \right)^{\prime}   \right)\subseteq  \kappa \left( L^{\perp}, L \right)= 0  
+    \] Then it follows from the Cartan First Criteria that \(  L^{\top}  \) is solvable. Then \(  L^{\perp}  \) is a nonzero solvable   ideal of \(  L  \), which is a contradiction to the Semisimplicity of \(  L  \).  
+\end{proof}
+
+\begin{theorem}{Cartan's Second Criterion}{}
+The complex Lie algebra $L$ is semisimple if and only if the Killing form $\kappa$ of $L$ is non-degenerate.
+\end{theorem}
+
+\section{Derivations of Semisimple Lie Algebras}
+
+\begin{proposition}{}{}
+    If \(  L  \) is a finite-dimensional complex semisimple Lie algebra, then \(  \operatorname{ad}L= \operatorname{Der}L  \).  
+\end{proposition}
+\begin{proof}
+ For each \(  x \in L  \), \[
+ \begin{aligned}
+ \operatorname{ad}x\left[ y,z \right]&= \left[ x,\left[ y,z \right]  \right]\\ 
+  &=-[z,[x,y]]-[y,[z,x]]\\ 
+   &= [\operatorname{ad}x\left( y \right),z ]+ \left[ y, \operatorname{ad}x\left( z \right)  \right]    
+ \end{aligned}
+ \] \(  \operatorname{ad}x  \) is a derivation. \(  \operatorname{ad}  \) is a Lie algebra homomorphism from \(  L  \) to \(  \operatorname{Der}L  \).
+ For each \(   \delta \in \operatorname{Der}L  \), 
+ \[
+ \begin{aligned}
+ [ \delta , \operatorname{ad}x]y&=  \delta \left[ x,y \right]-\operatorname{ad}x\left(  \delta y \right)\\ 
+  &=    [ \delta x,y]+ [x, \delta y]-[x,  \delta y]\\ 
+   &= \operatorname{ad}\left(  \delta x \right)\left( y \right)  
+ \end{aligned}
+ \]Thus \(  [ \delta ,\operatorname{ad}x]= \operatorname{ad}\left(  \delta x \right)   \), the image of \(  \operatorname{ad}  \) is an ideal of \(  \operatorname{Der}L  \).   
+
+ Now we bring in our assumption that \(  L  \) is complex and semisimple. First , note that \(  \operatorname{ad}: L\to \operatorname{Der}L  \) is one-to-one , as \(  \operatorname{ker}\operatorname{ad}= Z\left( L \right)= 0   \), so the lie algebra \(  M\coloneqq \operatorname{ad}L  \) is isomorphic to \(  L  \), therefore it is semisimple as well. We have \[
+ \operatorname{dim}M+ \operatorname{dim}M^{\perp}= \operatorname{dim}\operatorname{Der}L
+ \]  so our aim is to show that \(  \operatorname{dim}M^{\perp}= 0  \). As \(  M  \) is an  ideal of \(  \operatorname{Der}L  \), the  Killing form \(   \kappa _{M}  \) ofr \(  M  \) is the restriction of the Killing form on \(  \operatorname{Der}L  \). By Cartan's Second Criterion, \(   \kappa _{M}  \) is non-degenerate, so \(  M^{\perp}\cap M= 0  \), and hence \(  \left[ M^{\top},M \right]= 0   \). Thus if \(   \delta \in M^{\perp}  \), and \(  \operatorname{ad}x\in M  \), then \(  \left[  \delta , \operatorname{ad}x \right]= 0   \) for \(  M, M^{\perp}  \) are ideals .     But we saw above that \[
+ \left[  \delta , \operatorname{ad}x \right] = \operatorname{ad}\left(  \delta x \right) 
+ \]so, for all \(  x \in L  \), we have \(   \delta \left( x \right)= 0   \); in other words, \(   \delta = 0  \).   
+\end{proof}
+
+\section{Abstract Jordan Decomposition }
+
+\begin{proposition}{}{}
+Let $L$ be a complex Lie algebra. Suppose that $\delta$ is a derivation of $L$ with Jordan decomposition $\delta = \sigma + \nu$, where $\sigma$ is diagonalisable and $\nu$ is nilpotent. Then $\sigma$ and $\nu$ are also derivations of $L$.
+\end{proposition}
+
+\begin{proof}
+    For \(   \lambda \in \mathbb{C}   \), let \[
+    L_{ \lambda }= \left\{ x \in L:\left(  \delta - \lambda  \right)  \right\}
+    \] \(  L  \) decomposes as a direct sum of generalised eigenspaces \[
+    L= \oplus _{ \lambda }L_{ \lambda }
+    \] As \(   \sigma   \) acts diagonalisably, then \(   \lambda   \)-eigenspace of \(   \sigma   \) is   \(  L_{ \lambda }  \)  . Take \(  x \in L_{ \lambda }  \), \(  y\in L_{\mu }  \), then \[
+   \begin{aligned}
+    \left(  \delta - \left(  \lambda + \mu  \right)   1_{L} \right)[x,y]&= [ \delta x,y]+ [x, \delta y]-  [\lambda x,y]-\left[ x,\mu y \right]  \\ 
+     &= [\left(  \delta -  \lambda   1_{L} \right)x,y ]+ [x, \left(  \delta -\mu  1_{L}y \right) ]
+   \end{aligned}
+    \]\(  \left(  \delta - \lambda  1_{L} \right)^{m+ n}[x,y]   \) is the linear combination of the form \(  [\left(  \delta - \lambda  1_{L} \right)^{i}x, \left(  \delta -\mu  1_{L}y \right)^{j}y ]   \)  , which is zero. Thus \(  \left[ x,y \right]\in L_{ \lambda + \mu }   \) , so \[
+     \sigma \left( \left[ x,y \right]  \right)= \left(  \lambda + \mu  \right)\left[ x,y \right]   
+    \] which is the same as \[
+    \left[  \sigma \left( x \right),y  \right] + \left[ x, \sigma \left( y \right)  \right]= \left[  \lambda x,y \right]+ \left[ x, \mu y \right]   
+    \] Thus \(   \sigma   \) is a derivation, and so is  \(   \delta = \sigma = \nu   \).  
+\end{proof}
+
+\begin{theorem}{}{}
+    Let $L$ be a complex semisimple Lie algebra. Each $x \in L$ can be written uniquely as $x = d+n$, where $d,n \in L$ are such that $\operatorname{ad} d$ is diagonalisable, $\operatorname{ad} n$ is nilpotent, and $[d, n] = 0$. Furthermore, if $y \in L$ commutes with $x$, then $[d, y] = 0$ and $[n, y] = 0$.
+\end{theorem}
+
+\begin{proof}
+    Let \(  \operatorname{ad}x=  \sigma + \nu   \), where \(   \sigma \in \mathfrak{gl}\left( L \right)   \) is diagonalisable, \(  \nu \in \mathfrak{gl}\left( L \right)   \) is niplpotent, and \(  \left[  \sigma ,\nu  \right]= 0   \). We know that \(   \sigma   \) and \(  \nu   \) are derivations of the semisimple Lie algebra \(  L  \).  And we know that \(  \operatorname{ad}L= \operatorname{Der}L  \), so there exsists   \(  d, n \in L  \) such that \(  \operatorname{ad}d=  \sigma   \) and \(  \operatorname{ad}n = \nu   \). As \(  \operatorname{ad}  \) is injective and \[
+    \operatorname{ad}x=  \sigma + \nu = \operatorname{ad}\left( d+ n \right) 
+    \] we get that \(  x= d+ n  \).Moreover, \(  \operatorname{ad}\left[ d,n \right]= \left[ \operatorname{ad}d,\operatorname{ad}n \right]= 0    \). The uniqueness of \(  d  \) and \(  n  \) follows from the uniqueness of the Jordan decomposition of \(  \operatorname{ad}x  \). Suppose that \(  y\in L  \) and that \(  \left( \operatorname{ad}x \right)y= 0   \). Since \(   \sigma   \) and \(  \nu   \)              may be expressed as polynomials in \(  \operatorname{ad}x  \). Let \[
+    \nu = c_0 1_{L}+ c_1 \operatorname{ad}x+ \cdots + c_{r}\left( \operatorname{ad}x \right)^{r} 
+    \] Applying \(  \nu   \) to \(  y  \) we see that \(  \nu \left( y \right)= c_0y   \). But \(  \nu   \) is nilpotent and \(  \nu \left( x \right)= c_0x   \), so \(  c_0= x  \). Thus \(  \nu \left( y \right)= 0   \), and so \(   \sigma \left( y \right)= \left( \operatorname{ad}x-\nu  \right)y= 0    \) also.             
+\end{proof}
+
+\begin{definition}{}{}
+    Let $L$ be a semisimple Lie algebra and let $\theta: L \to \operatorname{gl}(V)$ be a representation of $L$. Suppose that $x \in L$ has abstract Jordan decomposition $x = d+n$. Then the Jordan decomposition of $\theta(x) \in \operatorname{gl}(V)$ is $\theta(x) = \theta(d) + \theta(n)$.
+\end{definition}
+\end{document}

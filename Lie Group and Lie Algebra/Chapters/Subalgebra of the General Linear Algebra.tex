@@ -1,0 +1,75 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Subalgebra of the General Linear Algebra }
+% 代靖涵 25120222201319
+
+\section{Nilpotent Maps}
+
+\begin{lemma}{}{}
+Let $x \in L$. If the linear map $x : V \to V$ is nilpotent, then ad $x : L \to L$ is also nilpotent.
+\end{lemma}
+
+\begin{proof}
+    Take any \(  y\in L  \), and expand \[
+    \left( \operatorname{ad}x \right) ^{m}\left( y \right)= \left[ x,\left[ x,\cdots \left[ x,y \right]  \cdots \right]  \right]  
+    \] which is of the form \[
+    x^{i}yx^{j},\quad i+ j= m
+    \] Suppose that \(  x^{r}= 0  \), taking \(  m= 2r  \), we have \(  \left( \operatorname{ad}x \right)^{m}\left( y \right)= 0    \) for all \(  y \in L  \).    
+\end{proof}
+
+\begin{lemma}{}{}
+   Suppose that $A$ is an ideal of a Lie subalgebra $L$ of $\mathfrak{gl}(V)$. Let
+
+\[
+W = \{v \in V : a(v) = 0 \text{ for all } a \in A\}.
+\]
+
+Then $W$ is an $L$-invariant subspace of $V$.
+\end{lemma}
+\begin{remark}
+   我们熟知, 如果每个 \(  a  \)和 \(  y  \)可交换, 则  \(  W  \)一定是 \(  L  \)不变的. 因此 \(  W  \)距离成为 \(  L  \)不变子空间, 只在于是否在\(  \left[ a,y \right]   \)下保持, 这也是为什么我们要假设 \(  A  \)是一个理想.     
+\end{remark}
+\begin{proof}
+   Take \(  w\in W  \) and \(  y \in L  \), we must show that \(  a\left( yw \right)= 0   \) for all \(  a  \) . But \(  ay= ya+ \left[ a,y \right]   \), we have \[
+   \begin{aligned}
+   a\left( yw \right)&= y\left( aw \right)+ \left[ a,y \right]\left( w \right)   
+   \end{aligned}
+   \]    And \(  y\left( aw \right)= 0   \) for \(  aw= 0  \); \(  \left[ a,y \right]\left( w \right)= 0     \) for \(  \left[ a,y \right]\in A   \)   . 
+\end{proof}
+
+\section{Weights}
+\begin{definition}{}{}
+A \dfntxt{weight} for a Lie subalgebra $A$ of $\mathfrak{gl}(V)$ is a linear map $\lambda : A \to F$ such that
+\[
+V_\lambda := \{v \in V : a(v) = \lambda(a)v \text{ for all } a \in A\}
+\]
+is a non-zero subspace of $V$.
+\end{definition}
+
+
+\section{Invariance Lemma}
+\begin{lemma}{}{}
+Suppose that $A$ is an ideal of a Lie subalgebra $L$ of $\mathfrak{gl}(V)$. Let
+\[
+W = \{v \in V : a(v) = 0 \text{ for all } a \in A\}.
+\]
+Then $W$ is an $L$-invariant subspace of $V$.
+\end{lemma}
+\begin{lemma}{Invariance Lemma}{}
+Assume that $F$ has characteristic zero. Let $L$ be a Lie subalgebra of $\mathfrak{gl}(V)$ and let $A$ be an ideal of $L$. Let $\lambda: A \to F$ be a weight of $A$. The associated weight space
+\[
+V_\lambda = \{v \in V : av = \lambda(a)v \text{ for all } a \in A\}
+\]
+is an $L$-invariant subspace of $V$.
+\end{lemma}
+
+\end{document}

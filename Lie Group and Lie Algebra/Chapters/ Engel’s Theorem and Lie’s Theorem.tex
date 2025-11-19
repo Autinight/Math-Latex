@@ -1,0 +1,122 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{  Engel’s Theorem and Lie’s Theorem }
+% 代靖涵 25120222201319
+
+\section{Engel's Theorem}
+\begin{lemma}{}{10-29-1}
+    Suppose that $L$ is a Lie subalgebra of $\mathfrak{gl}(V)$, where $V$ is non-zero, such that every element of $L$ is a nilpotent linear transformation. Then there is some non-zero $v \in V$ such that $xv = 0$ for all $x \in L$.
+\end{lemma}
+\begin{proofsketch}
+
+    对维数归纳
+
+
+    对于任意 \(  L  \)的真子代数 \(  A  \), 模 \(  A  \)的伴随: \[
+  \begin{aligned}
+    \varphi : A&\to \mathfrak{gl}\left( L/A \right)  \\ 
+     a & \mapsto \left( x+ A\mapsto [a,x]+ A \right) 
+  \end{aligned}
+    \]   
+
+    我们看到 \(   \varphi \left( A \right)   \)的公共 \(  0  \)-特征向量, 就是关于 \(  A  \)代数封闭的向量.   
+
+    根据归纳假设,  \(   \varphi \left( A \right)   \)有非零公共 \(  0  \)-特征向量 \(  y  \), 从而 \(  y\not \in A  \)且 \(  y  \)是关于 \(  A  \)代数封闭的.     这就意味着 \(  A  \)可以成为一个更大的代数 \(  \tilde{A}= A\oplus \operatorname{span}\left\{ y \right\}  \)的理想. 如果我们取 \(  A  \)是极大的, 那么 \(  \tilde{A}= L  \). 从而 \(  A  \)成为 \(  L  \)的一个余维数为 \(  1  \)的理想.
+    
+    一个引理是, \(  L  \)的理想 \(  A  \)的零子空间 \(  W  \)是 \(  L  \)不变的子空间.     这就意味着当我们寻找 \(L=   A\oplus \operatorname{span}\left\{ y \right\}  \) 的公共零特征向量时, 可以从 \(  A  \)的零子空间 \(  W  \)中, 寻找 \(  \operatorname{span}\left\{ y \right\}  \)的公共零特征向量, 这是可行的, 因为 \(  \operatorname{span}\left\{ y \right\}  \)也是一组幂零的线性变换.    
+\end{proofsketch}
+
+\begin{proof}
+    We induct on the dimension of \(  L  \).  Let \(  A  \) be a maximal subalgebra of \(  L  \). Define a map  \[
+  \begin{aligned}
+    \varphi : A&\to \mathfrak{gl}\left( L/A \right)  \\ 
+     a & \mapsto \left( x+ A\mapsto [a,x]+ A \right) 
+  \end{aligned}
+    \]    It is straightforward to verify that \(   \varphi   \) is a Lie algebra homomorphism. Thus \(   \varphi \left( A \right)   \) is a Lie algebra . For each \(  a \in A  \), since \(  a   \) is nilpotent,   \(  \operatorname{ad}a  \) is as well, hence \(   \varphi \left( a \right)   \) is nilpotent. We know from inductive hypothesis that   there exists nonzero \(  y+ A\in L/A  \) such that  \( 0=    \varphi \left( a \right) \left( y+ A \right) , \forall a\in A  \). That is \(  y\not \in A  \) and  \(  [A,y]\subseteq A  \). By defining \(  \tilde{A}\coloneqq A\oplus \operatorname{span}\left\{ y \right\}   \), we know \(  A  \) is an ideal of \(  \tilde{A}  \). Since \(  A  \) is maximal, there must be \(  \tilde{A}= L  \), \(  A  \) is an ideal of \(  L  \) with codimension \(  1  \).
+    
+    A lemma gives that the space \(  W  \) \[
+    W= \left\{ v\in V: a\left( v \right)= 0,\forall a\in A \right\}
+    \] is \(  L  \)-invariant. Specifically, \(  y\left( W \right)\subseteq W   \). \(  y|_{W}  \) is nilpotent, there exist nonzero \(  v \in W  \) such that \(  y\left( v \right)= y|_{W}\left( v \right)= 0    \).     Then for each element of \(  L  \), we can write it as \(  a+ ky  \) for some \(  k \in F  \). Then \[
+    \left( a+ ky \right)\left( v \right)= a\left( v \right)+ ky\left( v \right)    = 0
+    \] which completes the proof.   
+\end{proof}
+
+\begin{theorem}{Engel's Theorem}{}
+Let $V$ be a vector space. Suppose that $L$ is a Lie subalgebra of $\mathfrak{gl}(V)$ such that every element of $L$ is a nilpotent linear transformation of $V$. Then there is a basis of $V$ in which every element of $L$ is represented by a strictly upper triangular matrix.
+\end{theorem}
+
+\begin{proof}
+  We induct on the dimension of \(  V  \).  By Lemma \ref{lem:10-29-1}, there exists  \(  w \in V  \) such that \( x\left( w \right)= 0, \forall x \in L   \).  Let \(  W= \operatorname{span}\left\{ w \right\}  \). Then every \(  x  \) induces a linear transformation \(  \bar{x}: V/W  \to V/W\) , \(  \bar{x}\left( v+ W  \right)= x\left( v \right)+ W    \)   . It is easily to check that the map \[
+    L\to \mathfrak{gl}\left( V / W \right),\quad x\mapsto  \bar{x}
+    \] is a Lie homomorphism.
+
+    The image of \(  L  \) under this homomorphism is a subalgebra of \(  \mathfrak{gl}\left( V/W \right)   \), which satisfies the hypothesis of Engel's Theorem. Moreover \(  \operatorname{dim}\left( V /W\right)= \operatorname{dim}V-1    \). We know from inductive hypothesis that there is a basis of \( V/W  \), say \(  \left\{ v_{i}+ W \right\}_{2\le i\le n}  \) in which every element of \(  L  \) is represented by a strictly upper triangular matrix. That is equivalent to for each \(  x\in L  \),  \[
+    \bar{x}\left( v_{j} + W\right)\in \operatorname{span}\left\{ v_2+ W ,\cdots ,v_{j-1}+ W\right\}, \quad \forall 3\le j\le n, 
+    \]    and \[
+    \bar{x}\left( v_2+ W \right)= 0+ W
+    \]By taking \(  v_1= w,  \), it follows that \[
+    x\left( v_1 \right)= 0,\quad  x\left( v_2 \right)\in \operatorname{span}\left\{ v_1 \right\} 
+    \] \[
+    x\left( v_{j} \right)\in \operatorname{span}\left\{ v_1,v_2,\cdots ,v_{j-1} \right\} ,\quad \forall 3\le j\le n
+    \] That is every element of \(  L  \) is represented by a strictly upper triangular matrix under the basis \(  \left\{ v_1,v_2,\cdots ,v_{n} \right\}  \).  
+\end{proof}
+
+\begin{definition}{}{}
+    Recall that a Lie algebra is said to be nilpotent if for some $m \geq 1$ we have $L^m = 0$ or, equivalently, if for all $x_0, x_1, \ldots, x_m \in V$ we have
+$$[x_0, [x_1, \ldots, [x_{m-1}, x_m] \ldots]] = 0.$$
+\end{definition}
+
+\begin{theorem}{Engel's Theorem, second version}{}
+A Lie algebra $L$ is nilpotent if and only if for all $x \in L$ the linear map $\text{ad } x : L \to L$ is nilpotent.
+\end{theorem}
+\begin{proof}
+    The `only if ' is straightforward. 
+    For the `if' part , if all \(  \operatorname{ad}x  \) is nilpotent, the algebra  \[
+    \operatorname{ad}\left( L \right)= \left\{ \operatorname{ad}x: x\in L \right\} 
+    \] is a subalgebra of \(  \mathfrak{gl}\left( L \right)  \) satisfying the hypothesis of Engel's Theorem.  it follows from Engel's Theorem that  there exists a basis of \( L  \) say \(  \left\{ e_1,\cdots ,e_{n} \right\}  \) , such that  \[
+    [L, e_{i}]\subseteq \operatorname{span}\left\{ e_1,\cdots ,e_{i-1} \right\}
+    \]   Denote \(  L_{j}  \) by \(  \operatorname{span}\left\{ e_1,\cdots ,e_{j} \right\}  \), then  \[
+    [L, L_{j}]\subseteq L_{j-1}, j\ge 2,\quad \left[ L,L_1 \right]= 0 
+    \]  We have \[
+    L^{0}= L= L_{n}
+    \] \[
+    L^{1}= \left[ L, L \right]\subseteq L_{n-1}
+    \] Inductively, we have \[
+    L^{k}= [L, L^{k-1}]\subseteq [L,L_{n-k+ 1}]\subseteq L_{n-k}
+    \]Finally ,we have \[
+    L^{n}= 0
+    \] \(  L  \) is nilpotent. 
+\end{proof}
+
+\section{Lie's Theorem}
+
+\begin{proposition}{}{}
+    Let $V$ be a non-zero complex vector space. Suppose that $L$ is a solvable Lie subalgebra of $\mathfrak{gl}(V)$. Then there is some non-zero $v \in V$ which is a simultaneous eigenvector for all $x \in L$
+\end{proposition}
+\begin{proofsketch}
+  \begin{itemize}
+    \item 一个李代数\(  L  \)的子代数 \(  A  \)如果包含了 \(  L^{\prime}   \), 则 \(  A  \)是 \(  L  \)的一个理想.
+    \item 如果 \(  L  \)是可解的, 则 \(  L^{\prime}   \)是真子空间, 这意味着我们可以构造 \(  L  \)的余一维的理想.
+    \item 归纳假设给出 \(  A  \)的一个特征向量, 从而对应的weight子空间非空.
+    \item  理想的Weight子空间是\(  L  \)-不变的, 特别地是 \(  v  \)-不变的.
+    \item 由于空间是 \(  \mathbb{C}   \)上的,  在Weight子空间上存在特征向量 \(  v  \), 它就是公共的特征向量.        
+  \end{itemize}
+  
+\end{proofsketch}
+
+\begin{theorem}{Lie's Theorem}{}
+Let $V$ be an $n$-dimensional complex vector space and let $L$ be a solvable Lie subalgebra of $\mathfrak{gl}(V)$. Then there is a basis of $V$ in which every element of $L$ is represented by an upper triangular matrix.
+\end{theorem}
+\begin{proofsketch}
+  证明完全类似于Engel定理的证明.
+\end{proofsketch}
+\end{document}

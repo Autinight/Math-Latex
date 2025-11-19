@@ -1,0 +1,135 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ HW5 }
+ 代靖涵 25120222201319
+
+\begin{exercise}{}{}
+$M$ 是\(  m  \)维 光滑流形, 称子集 $A \subset M$ 在 \(  M  \)中是 零测的, 若对于每个\(  M  \)的 光滑坐标卡 \(  \left( U,   \varphi \right)   \), 集合 \(   \varphi \left( A\cap U \right)\subseteq \mathbb{R} ^{m}   \)都是\(  m  \)-维 Lebesgue零测的.  
+\begin{enumerate}
+    \item[a).] 求证零测集是良好定义的; 
+    \item[b).] $f: U \subset \mathbb{R}^m \to \mathbb{R}^n$ 是光滑的, 设
+    \[
+    C_j = \left\{ x \in u \bigg| \frac{\partial^\alpha f}{\partial x^\alpha}(x) = 0, \forall |\alpha| \le j \right\}.
+    \]
+    求证 $f(C_j \setminus C_{j+1})$ 是零测的.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item [a).] 我们说明若存在图册 \(  \mathcal{A}= \left\{ \left( U_{\alpha }, \varphi _{ \alpha } \right)  \right\}  \), 使得 对于所有的 \(   \alpha   \), \(   \varphi _{\alpha }\left( A\cap U_{\alpha } \right)   \)是零测的, 则对于任何\(  M  \)上的坐标卡 \(  \left( V,\psi  \right)   \), \(  \psi \left( A\cap V \right)   \)也是零测的.    
+        存在 \(  \mathcal{A}  \)中的至多可数多个坐标卡, 记作\(  \left\{ \left( U_{k}, \varphi _{k} \right)  \right\}  \), 构成 \(  M  \)的一个图册.   若只有 有限多个, 设它们的数量为 \(  N  \), 则对于所有的 \(  k> N  \)记 \(  U_{k}= \varnothing  \), \(   \varphi _{k}  \)为空的映射 .    此时 \[
+        V= M\cap V=  \bigcup _{k= 1}^{\infty}\left( U_{k}\cap V \right)= : \bigcup _{k= 1}^{\infty}V_{k} 
+        \]这里记 \(  V_{k}= U_{k}\cap V  \) . 则对于每个 \(  k  \), 集合 \[
+          \varphi _{k}\left( A\cap V_{k} \right)\subseteq  \varphi _{k}\left( A\cap U_{k} \right) 
+        \]是\(  m  \)-Lebesgue零测的. 注意到每个 \(  \psi \circ  \varphi ^{-1}   \)都是\(  \mathbb{R} ^{m}  \)上的 光滑映射, 光滑映射将\(  m  \)- Lebesgue零测集映到\(  m  \)-Lebesgue零测集, 因此 \[
+        \psi \left( A\cap V_{k} \right)= \left( \psi \circ  \varphi _{k} ^{-1} \right)\left(  \varphi_{k} \left(A\cap V_{k}\right)  \right)    
+        \]是零测集. 由于\(  \psi   \)是双射, 我们有 \[
+        \psi \left( A\cap V \right)= \bigcup _{k= 1}^{\infty}\psi \left( A\cap V_{k} \right)  
+        \] 由于零测集的可数并也是零测的, 因此 \(  \psi \left( A\cap V \right)   \)是 \(  m  \)-Lebesgue零测的.  
+        \item [b).] 本练习是对Sard定理证明的补全, 此前, 我们对 \(  m  \)归纳, 假设Sard定理对 于 \(  M  \)是 \(  \left( m-1 \right)   \)维流形时成立.    现在, 任取 \(  p \in C_{j}\setminus C_{j + 1}  \), 存在 \(  f  \)的某个分量 \(  i  \),   一个 \(  k \in \left\{  1,\cdots,m  \right\}  \)和一个多重指标 \(  \alpha   \)   , \(  \left| \alpha  \right|= j   \), 使得 \[
+        \frac{\partial ^{\alpha }f_{i}}{\partial x^{ \alpha }}\left( p \right)= 0,\quad \frac{\partial }{\partial x^{k}}\left( \frac{\partial ^{\alpha }f_{i}}{\partial x^{\alpha }} \right)\left( p \right)\neq 0  
+        \] 通过重排指标, 不妨设 \(  k= 1  \), \(  i= 1  \) . 令 \(   \varphi :U\to \mathbb{R}   \), \(   \varphi \left( x \right)= \frac{\partial ^{\alpha }f_1}{\partial x^{\alpha }}  \left( x \right)  \), 则 \(   \varphi \left( p \right)= 0   \),    \(  \left( d \varphi  \right)_{p} \neq 0  \). 由正则水平集定理, 存在 \(  p  \)的一个邻域 \(  V\subseteq U  \), 使得 \[
+        S= \left\{ x\in V:  \varphi \left( x \right)= 0  \right\}
+        \]   成为一个余维数为 \(  1  \)的嵌入子流形. 由归纳假设, \(  f|_{S} :S\to \mathbb{R} ^{n} \) 的临界值集是零测的. 此外, 根据\(   \varphi   \)的定义,   \(  \forall x \in C_{j}  \), \(   \varphi \left( x \right)= 0   \), 我们有 \[
+        C_{j}\cap V\subseteq S
+        \]  
+
+        对于任意的 \(  q \in V\cap C_{j}  \), 也有 \(  q\in C_1  \), 从而 \(  \left( df \right)_{q}   \)是一个零映射. \[
+        \left( df|_{S} \right)_{q}= \left( df \right)_{q}|_{T_{q}S}  
+        \]也是一个零映射, 故 \(  q  \)是\(  f|_{S}  \) 的临界点. 于是 \(  V\cap C_{j}  \)含于 \(  f|_{S}  \)的临界点集, 故 \(  f\left( V\cap C_{j} \right)   \)含于 \(  f|_{S}  \)的临界值集, 是零测的. 由于 \(  p  \)是任取的, 每个 \(  p  \)都有满足上述性质的一个邻域 \(  V  \), 为了区分, 我们记作 \(  V_{p}  \), 则 \(  \left\{ V_{p} \right\}_{p \in C_{j}\setminus C_{+ 1}} \)构成    \(  C_{j}\setminus C_{j + 1}  \)的一个开覆盖,   它存在一个可数的子覆盖, 记作 \(  V_{k}  \). 则 \[
+        f\left( C_{j}\setminus C_{j + 1} \right)\subseteq \bigcup _{k = 1}^{\infty}f\left( V_{k}\cap C_{j} \right)  
+        \]每个 \(  f\left( V_{k}\cap C_{j} \right)   \)都是零测集, 故 \(  \bigcup _{k= 1}^{\infty}f\left( V_{k}\cap C_{j} \right)   \)是零测的, 从而 \(  f\left( C_{j}\setminus C_{j + 1} \right)   \)亦然.    
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+$f: U \subset \mathbb{R}^n \to \mathbb{R}$ 是光滑的, $f$ 的临界点 $p$ 称为非退化临界点, 若: $p$ 的 Hessian 矩阵
+\[
+Hess f(p) = \left( \frac{\partial^2 f}{\partial x^i \partial x^j} |_p \right)_{n \times n}
+\]
+是非退化的. 任意临界点均非退化的函数称为 Morse 函数.
+\begin{enumerate}
+    \item[a).] 求证非退化临界点是孤立的;
+    \item[b).] 给定任意 $f \in C^\infty(U)$, 求证对几乎处处 $a \in \mathbb{R}^n$,
+    \[
+    \begin{aligned}
+    f_a: U &\to \mathbb{R} \\
+    x &\mapsto f(x) + a_1x^{1} + \dots + a_nx^n
+    \end{aligned}
+    \]
+    是 Morse 函数.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item [a).]  \[
+        \begin{aligned}
+         \nabla f: U&\to \mathbb{R} ^{n}\\ 
+          q&\mapsto  \left( \frac{\partial f}{\partial x^{1}}|_{q},\cdots ,\frac{\partial f}{\partial x^{n}}|_{q} \right)  
+        \end{aligned}
+        \]是一个光滑映射, 使得 \(   \nabla f\left( p \right)= 0   \). 考虑它在 \(  p  \)点的 微分映射 \[
+        d\left(  \nabla f \right)_{p} : T_{p}U\to T_{\nabla f(p)} \mathbb{R}^n \cong \mathbb{R}^n 
+        \]  设 像空间 \(  \mathbb{R} ^{n}  \)的坐标为 \(  \left( y^{1},\cdots ,y^{n} \right)   \). 则 \[
+        \begin{aligned}
+        d\left(  \nabla f \right)_{p}\left( \frac{\partial }{\partial x^{i}}|_{p} \right)&= \sum _{j = 1}^{n} \left( \frac{\partial }{\partial x^{i}}|_{p} \left( y^{j}\circ  \nabla f \right)  \right) \frac{\partial }{\partial y^{j}}|_{ \nabla f\left( p \right) }   \\ 
+         &= \sum _{j = 1}^{n}\left( \frac{\partial }{\partial x^{i}}|_{p}\left( \frac{\partial f}{\partial x^{j}} \right)  \right) \frac{\partial }{\partial y^{j}}|_{ \nabla f\left( p \right) }  \\ 
+         &= \sum _{j = 1}^{n} \left( \frac{\partial ^{2}}{\partial x^{i} \partial x^{j}}|_{p} \right) \frac{\partial }{\partial y^{j}}|_{ \nabla f\left( p \right) } 
+        \end{aligned}
+        \] 因此 \(  d\left(  \nabla f \right)_{p}   \)的Jacobian矩阵就是 \(  Hess f\left( p \right)   \), 它是可逆, 从而 \(  p  \)是 \(   \nabla f  \)的正则点  . 因此由反函数定理, 存在 \(  p  \)在 \(  U  \)上的邻域 \(  W  \), 和 \(   \nabla f\left( p \right)   \)在 \(  \mathbb{R} ^{n}  \)上的邻域 \(  V  \), 使得 \(   \nabla f|_{W}: W\to V  \)是一个微分同胚. 由于 \(   \nabla f\left( p \right)= 0   \), 因此 \(   \nabla f  \)在 \(  W\setminus p  \)上恒不为零, 从而 \(  W  \)上的非退化临界点只有 \(  p  \). 由于 \(  p  \)是任意的, 非退化临界点是孤立的.        
+        \item [b).]  对于每个 \(  a  \),  定义 \(  G_{a}:U\to \mathbb{R} ^{n}  \), \[
+        G_{a}\left( x \right)=  \nabla f_{a}\left( x \right)=  \nabla f\left( x \right)+ a   
+        \] 特别地, 我们记 \(  G_{0}= G  \).   设 \(  S  \)是 \(  G  \)的临界值集, 则由Sard's Theorem,  \(  S  \)是零测集 ,    从而\(  -S  \)也是零测的.    任取 \(  a \in \mathbb{R} ^{n}\setminus \left( -S \right)   \), 则 \(  -a \not \in S  \).  \(  p  \)是 \(  f_{a}  \)的临界点, 当且仅当\[
+         G_{a}\left( p \right)= 0\iff G\left( p \right)= -a   
+        \]    由于 \(  -a \not \in S  \), \(  p  \)是 \(  G  \)的正则点, 即 \(  dG_{p}  \)是可逆的,  由于 \( G_{a}= G+ a \), \(  \left( dG \right)_{p} = \left(  dG_{a} \right)_{p}     \), 从而 \(  p  \)是 \(G_{a}  \)的正则点  . 由a).可知, 这当且仅当 \(  Hess f_{a}\left( p \right)   \)是非退化的. 因此 \(  p  \)是 \(  f_{a}  \)的非退化临界点. 由于 \(  p  \)是任取的,  \(  f_{a}  \)是Morse函数. 因此对于任意的 \(  a \in \mathbb{R} ^{n}\setminus \left( -S \right)   \), \(  f_{a}  \)都是 Morse函数, 由于\(  -S  \)是零测集, 命题得证.       
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+Proper 映射: $f: M \to N$ 是 Proper 映射, 若: 对任意紧集 $K \subset N, f^{-1}(K)$ 是紧的.
+\begin{enumerate}
+    \item[a).] 求证若单浸入 $f$ 是 Proper 映射, 则 $f$ 是嵌入;
+    \item[b).] 若 $\dim M = \dim N, q \in f(M)$ 是正则值.
+    \begin{enumerate}
+        \item[1).] 求证 $f^{-1}(q)$ 是有限多个离散点构成的集合, 即 $f^{-1}(q) = \{p_1, \dots, p_k\}$;
+        \item[2).] 求证存在 \(  q  \)的一个开邻域 \(  V  \) , 和 $p_1, \dots, p_k$ 的互不相交的邻域 $U_1, \dots, U_k$ 使得 $f^{-1}(V) = \cup_{i=1}^k U_i$;
+        \item[3).] 对任意 $1 \le i \le k, f$ 在上述 $U_i$ 上的限制 $f: U_i \to V$ 是微分同胚.
+    \end{enumerate}
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    
+\begin{enumerate}
+    \item[a).] 只需要证明 \(  f  \)还是一个拓扑的嵌入, 由于\(  f  \)是 连续单射的, 只需要证明 \(  f  \)还是一个闭映射. 任取闭集 \(  C\subseteq M  \), 我们希望证明 \(  f\left( C \right)   \)是闭集. 任取 \(  y \in N\setminus f\left( C \right)   \), 由于流形是局部紧的Hausdorff空间, 存在 \(  y  \)的一个开邻域 \(  U  \), 使得 \(  \bar{U}  \)是紧的.    由于 \(  f  \)是Proper的,  \(  f^{-1} \left( \bar{U} \right)   \)是紧的. 而紧集的闭子集也是紧的, 因此 \(  f^{-1} \left( \bar{U} \right)\cap C   \)也是一个紧集, 进而 \[
+    f\left( f^{-1} \left( \bar{U} \right)\cap C  \right)= \bar{U}\cap f\left( C \right) 
+    \] 也是紧的. 由于 \(  y\not \in \bar{U}\cap f\left( C \right)   \), 存在 \(  y  \)在 \(  \bar{U}  \)上的一个开邻域 \(  W  \), 和 \(  \bar{U}\cap f\left( C \right)   \)在 \(  \bar{U}  \)上的一个开邻域 \(  V  \), 使得 \(  W\cap V= \varnothing  \).于是 \(  y\in W\subseteq N\setminus f\left( C \right)   \). 这表明 \(  N\setminus f\left( C \right)   \)是一个开集 ,  \(  f\left( C \right)   \)是一个闭集. 因此 \(  f  \)是一个闭映射, 进而是一个拓扑嵌入. 此时,  \(  f  \)是一个光滑浸入的同时也是一个拓扑嵌入, 从而\(  f  \)是一个光滑嵌入.              
+    
+    \item[b).] \begin{enumerate}
+        \item[1).] 由正则水平集定理,  \(  f^{-1} \left( q \right)   \)是一个零维流形, 是一个离散点集, 记作 \(  S  \). 由于 \(  \left\{ q \right\}  \) 是 \(  N  \)上的紧集, 且 \(  f  \)是Proper的,  \(  f^{-1} \left( q \right)= S   \)也是一个紧集.    断言 \(  S  \)是有限的, 若不然,  因为 $S$ 是一个离散空间, 所以对于每一个点 $p \in S$, 单点集 $\{p\}$ 在 $S$ 的子空间拓扑中是开集.考虑集族 $\mathcal{U} = \{\{p\} \mid p \in S\}$. 显然, $\mathcal{U}$ 是 $S$ 的一个开覆盖. 但是 \(  \mathcal{U}  \)的任意子集族只能覆盖有限多个元素, 从而无法覆盖 \(  S  \), 与紧性矛盾.  
+        \item[2). 3).] 存在开集\(  \tilde{U}_{i}  \),   使得 \(  p_{i}\in \tilde{U}_{i}  \), \(  \tilde{U}_{i}\cap \tilde{U}_{j}= \varnothing  \), \(  1\le i\neq j\le k  \). 由于 \(  p_{i}  \)是\(  M  \)的正则点, 存在开集 \(  W_{i}\subseteq M  \)和开集 \(  V_{i}\subseteq N  \), 使得 \(  f_{i}|_{W_{i}}: W_{i}\to V_{i}  \)是微分同胚.      由于流形是局部紧的,  存在 \(  q  \)的邻域 \(  V  \), 使得 \(  \bar{V}  \)  是紧集, 且\(  \bar{V}\subseteq \bigcap _{i= 1}^{k}V_{i}  \). 从而 \(  f^{-1} \left( \bar{V} \right)   \)也是紧的. 令 \(  C= M\setminus \left( \bigcup _{i= 1}^{k}W_{i} \right)   \), 则 \(  C  \)是一个闭集, 使得 \(  f^{-1} \left( q \right)\cap C   \) . 由于 \(  f  \)是Proper的, \(  f^{-1} \left( \bar{V} \right)   \)是紧的, 从而 \(  f^{-1} \left( \bar{V} \right)\cap C   \)        也是紧的. 现在 \(  f\left( f^{-1} \left( \bar{V} \right)\cap C  \right)   \)是一个紧集,  由Hausdorff性, 存在\(  q  \)的开邻域 \(  V^{\prime}   \), 使得 \[
+        V^{\prime} \cap f\left( f^{-1} \left( \bar{V} \right)\cap C  \right) = \varnothing \tag{*}
+        \]   令\(  V^{\prime \prime} = V\cap V^{\prime}   \), 令  \[
+        U_{i}= W_{i}\cap f^{-1} \left(V^{\prime \prime} \right) 
+        \]
+        \begin{itemize}
+            \item 断言 \(  f^{-1} \left( V^{\prime \prime}  \right)= \bigcup _{i= 1}^{k}U_{i}   \), 由于 \(  U_{i}\subseteq f^{-1} \left( V^{\prime \prime}  \right)   \), \(  \bigcup _{i= 1}^{k}U_{i}\subseteq f^{-1} \left( V^{\prime \prime}  \right)   \). 另一方面, 任取 \(  x \in f^{-1} \left( V^{\prime \prime}  \right)   \), 则 \(  f\left( x \right)\in V^{\prime}    \), 从而 (*)式可知 \[
+            x\not \in f^{-1} \left( \bar{V} \right) \cap C\implies x\not \in C\implies x \in \bigcup _{i= 1}^{k}W_{i}
+            \]    于是存在某个 \(  j  \)使得 \(  x \in W_{j}  \), 进而 \(  x \in U_{j}  \). 这表明 \(  f^{-1} \left( V^{\prime \prime}  \right)\subseteq \bigcup _{i= 1}^{k}U_{i}   \).
+            \item 断言 \(  f\left( U_{i} \right)= V^{\prime \prime}    \). 事实上,  \[
+          f\left( U_{i} \right)= f\left( W_{i}\cap f^{-1} \left( V^{\prime \prime}  \right)   \right)= f\left( W_{i} \right)\cap V^{\prime \prime}= V_{i}\cap V^{\prime \prime}     = V\cap V^{\prime \prime} = V^{\prime \prime} 
+            \]由于 \(  f:W_{i}\to V_{i}  \)是微分同胚, 我们有 \(  f: U_{i}\to f\left( U_{i} \right)= V^{\prime \prime}    \)  是微分同胚.
+        \end{itemize}
+        因此\(  U_1,\cdots ,U_{k}  \)和 \(  V^{\prime \prime}   \)即为满足条件的邻域.  
+    \end{enumerate}
+    
+\end{enumerate}
+\end{proof}
+\end{document}

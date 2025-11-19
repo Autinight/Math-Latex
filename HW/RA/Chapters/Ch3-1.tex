@@ -1,0 +1,131 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{2}
+}{}
+
+\chapter{Ch3-1}
+ 代靖涵 25120222201319
+\begin{exercise}{}{}
+    设 $f(x)$ 定义在可测集 $E \subset \mathbb{R}^n$ 上. 若 $f^2(x)$ 在 $E$ 上可测, 且 $\{x \in E: f(x) > 0\}$ 是可测集, 则 $f(x)$ 在 $E$ 上可测.
+\end{exercise}
+\begin{proof}
+    我们将 \(  \left\{ x\in E:f\left( x \right)> 0  \right\}  \)简记作 \(\left\{ f> 0 \right\}  \), 对于其他集合采用类似地记法.  注意到对于任意的 \(  a> 0  \),  
+\[
+\left\{ 0< f<a \right\}= \left\{ 0< f^{2}<a^{2} \right\}\cap \left\{ f> 0 \right\}
+\]由于 \(  f^{2}  \)是可测的, 故 \(  \left\{ 0< f^{2}< a^{2}\right\}  \)是可测的, 又由题设,  \(  \left\{ f> 0 \right\}  \)可测, 故 \(  \left\{ 0< f< a \right\}  \)是可测的.
+
+注意到 \[
+\left\{ f= 0 \right\}= \left\{ f^{2}= 0 \right\}
+\]是可测的, 故 \[
+\left\{ f< 0 \right\}= E \setminus \left( \left\{ f> 0 \right\}\cup \left\{ f= 0 \right\} \right) 
+\]是可测的. 又对于任意的 \(  b< 0  \), 我们有\[
+\left\{ f< b \right\}= \left\{ f^{2}> b^{2}\right\}\cap \left\{ f< 0 \right\}
+\] 故 \(  \left\{ f< b \right\}  \)是可测的. 从而对于 \(  a> 0  \), 也有 \[
+\left\{ f< a \right\}= \left( \bigcup _{k = 1}^{\infty}\left\{ f< -\frac{1 }{k }   \right\} \right) \cup \left\{ f= 0 \right\}\cup \left\{ 0< f< a \right\}
+\]  是可测的. 至此, 我们说明了对于所有的 \(  x \in \mathbb{R}   \), 都有 \(  \left\{ f< x \right\}  \)是可测的, 因此 \(  f  \)是 \(  E  \)上的可测函数.    
+\end{proof}
+\begin{exercise}{}{}
+    记 $\mathcal{F}$ 为 $(0,1)$ 上的一个连续函数族, 则函数
+\[
+g(x) = \sup_{f \in \mathcal{F}} \{f(x)\}, \quad h(x) = \inf_{f \in \mathcal{F}} \{f(x)\}
+\]
+是 $(0,1)$ 上的可测函数.
+\end{exercise}
+\begin{proof}
+
+    若 \[
+    \forall f\in \mathcal{F}, f\left( x \right)\le  a\iff   g\left( x \right)\le a  
+    \] 即 \[
+    g^{-1} \left( (-\infty,a] \right)= \bigcap _{f \in \mathcal{F}}f^{-1} \left( (-\infty,a] \right)  
+    \]由于 \(  f  \)是连续的, 故 \(  f^{-1} \left( \left( -\infty,a \right]  \right)   \)  是\(  \left( 0,1 \right)   \)的在子空间拓扑下的闭集. 又闭集的任意交也是闭集, 故 \(  g^{-1} \left( (-\infty,a] \right)   \)是\(  \left( 0,1 \right)   \)在子空间拓扑下的 闭集, 从而是\(  \left( 0,1 \right)   \)上的Borel集,   是可测的.  又 \(  a  \)是任意的, 故 \(  g  \)是 \(  \left( 0,1 \right)   \)上的可测函数. 
+    
+    注意到 \[
+    -h\left( x \right)= \sup  _{f \in \mathcal{F}}\left\{ -f\left( x \right)  \right\} 
+    \]根据前面的讨论, 由于 \(  \left\{ -f \right\}  _{f\in \mathcal{F}}\)是一族连续函数, 故  \(  -h  \)是\(  \left( 0,1 \right)   \)上的可测函数, 从而 \(  h  \)亦然.   
+\end{proof}
+\begin{exercise}{}{}
+    设 $f(x)$ 在 $E \subset \mathbf{R}$ 上可测, $G$ 和 $F$ 各为 $\mathbf{R}$ 中的开集和闭集, 则
+点集
+\[
+E_1 = \{x \in E: f(x) \in G\}, \quad E_2 = \{x \in E: f(x) \in F\}
+\]
+是可测集.
+\end{exercise}
+
+\begin{proof}
+    \(  G  \)是 \(  \mathbb{R}   \)上的开集, 则 \(  G  \)写作可数多个开区间的并 \[
+    G= \bigcup _{k = 1}^{\infty}I_{k}
+    \]那么 \[
+    E_1= \left\{ x\in E: f\left( x \right)\in \bigcup _{k = 1}^{\infty}I_{k}  \right\}= \bigcup _{k = 1}^{\infty}\left\{ x \in E:f\left( x \right)\in I_{k}  \right\}
+    \]   其中 \(  \left\{ x\in E: f\left( x \right)\in I_{k}  \right\}  \)是可测的, 故 \(  E_1  \)可测. 由于 \(  F  \)的补集 \(  F^{c}  \)是一个开集, 故 \[
+    E_2= \left\{ x\in E: f\left( x \right)\in F^{c}  \right\}^{c}
+    \]    是可测的.
+\end{proof}
+\begin{exercise}{}{}
+    设有指标集 $I, \{f_\alpha(x): \alpha \in I\}$ 是 $\mathbf{R}^n$ 上可测函数族, 试问: 函数 $S(x)=\sup\{f_\alpha(x): \alpha \in I\}$ 在 $\mathbf{R}^n$ 上是可测的吗?
+\end{exercise}
+\begin{proof}
+    不一定, 我们用一个不可测集 \(  I\subseteq \mathbb{R} ^{n}  \)作为指标集. 并对每个 \(  \alpha \in I  \), 定义 \(  f_{\alpha }:  \mathbb{R} ^{n}\to \mathbb{R} \)  \[
+    f_{\alpha }\left( x \right)= \chi _{\left\{ \alpha  \right\}}\left( x \right)  
+    \]由于 \(  \left\{ \alpha  \right\}  \)是可测的, 故 \(  f_{\alpha }\left( x \right)   \)是可测的函数. 但是 \[
+ S\left( x \right)    = \sup \left\{ f_{\alpha }\left( x \right):\alpha \in I  \right\}=  \chi _{I}\left( x \right) 
+    \]    是不可测的.
+\end{proof}
+\begin{exercise}{}{}
+    设 $f(x)$ 在 $[a,b)$ 上存在右导数, 试证明右导函数 $f_+'(x)$ 是 $[a,b)$ 上的可测函数.
+\end{exercise}
+\begin{proof}
+   由于 \(  f  \)在 \(  [a,b)  \)上存在右导数,  \(  f  \)在其上每一点处都是右连续的.  对于每个 \(  n \in \mathbb{Z} _{> 0}  \), 定义 \(  f_{n}:[a,b)\to \mathbb{R}   \) \[
+   f_{n}\left( x \right)=\sum _{k= 1}^{2^{n}-1}\chi _{[a+ \frac{\left( k-1 \right)\left( b-a \right)   }{2^{n} }, a+ \frac{k\left( b-a \right)  }{2^{n}}  )}f\left( a+ \frac{k\left( b-a \right)  }{2^{n} } \right) 
+   \] 则 \(  f_{n}  \)是可测函数. 任取 \(  x \in [a,b)  \), 存在充分大的 \(  N\) , 使得 对于每个 \(  n \ge N \), 存在唯一的 \(  k_{n} \in \mathbb{Z} _{> 0}  \), 使得 \[
+   a+ \frac{\left( k_{n}-1 \right)  \left( b-a \right) }{2^{n} } \le x< a+ \frac{k_{n}\left( b-a \right)  }{2^{n} } 
+   \]  即 \[
+   \frac{k_{n}-1 }{ 2^{n}}\le \frac{x-a }{b-a }<  \frac{k_{n} }{2^{n} },\quad \forall n\ge  N
+   \] 注意到 \[
+   \frac{2\left( k_{n-1}-1 \right)  }{2^{n} }\le \frac{x-a }{b-a }<  \frac{2k_{n-1} }{2^{n} }   ,\quad \forall n> N
+   \]断言 \(  k_{n}\le 2k_{n-1}  \).若不然,  \[
+   \frac{x-a }{b-a }< \frac{2k_{n-1} }{2^{n} }< \frac{k_{n} }{2^{n} }  
+   \] 与 \(  k_{n}  \)的唯一性矛盾.  因此 \[
+ x<  a+ \frac{k_{n} \left( b-a \right) }{2^{n} }\le a+  \frac{k_{n-1}\left( b-a \right)  }{2^{n-1} }  ,\quad \forall n > N
+   \]因此位于\(  x  \)右侧的 序列 \(  \left\{ a+ \frac{k_{n} \left( b-a \right) }{2^{n} }  \right\}  \) 单调递减, 又 \[
+   a+ \frac{k_{n} \left( b-a \right) }{2^{n} }-x\le  \left( \frac{k_{n}\left( b-a \right) }{2^{n} }-\frac{\left( k_{n}-1 \right) \left( b-a \right) }{2^{n} }   \right)= \frac{b-a }{2^{n} }\to 0
+   \]  从而由于 \( f\left( x \right)   \)右连续, 我们有 \[
+   \lim_{y\to x^{+ }}f\left( y \right)= \lim_{n\to \infty}f\left(a+  \frac{k_{n} \left( b-a \right) }{2^{n} }  \right)  = \lim_{n\to \infty}f_{n}\left( x \right) 
+   \]故 \(  f  \)作为 \(  \left\{ f_{n} \right\}  \)的逐点极限, 也是可测的.   注意到\[
+    f_{+ }^{\prime} \left( x \right)= \lim_{k\to \infty}k\left( f\left( x+ \frac{1 }{k }  \right)-f\left( x \right) \right) \]
+    对于每个 \(  n \in \mathbb{Z} _{> 0}  \), 定义  \[
+    F_{n}\left( x \right)= \chi _{[a,b-\frac{1 }{n } )} \left( x \right) n \left( f\left( x+ \frac{1 }{n }  \right)-f\left( x \right)   \right)  
+    \]则由于\(  f  \)可测, 且\(  f  \)的平移 \(  f\left( x+ \frac{1 }{n }  \right)   \)可测, 故   每个 \(  F_{n}  \)都是可测的. 现在, 任取 \(  y\in [a,b)  \). 存在重复大的 \(  N  \), 使得对于任意的 \(  n\ge N  \), \(  y\in [a,b-\frac{1 }{n } ]  \). 此时 \[
+    F_{n}\left( y \right)= n \left( f\left( y+ \frac{1 }{n }  \right)-f\left( y \right)   \right)  = \frac{f\left( y+ \frac{1 }{n }  \right)-f\left( y \right)   }{ \frac{1 }{n } } 
+    \]    由于右导数存在, 我们有 \[
+    \lim_{n\to \infty}F_{n}\left( y \right)= f^{\prime} _{+ }\left( y \right)  
+    \]由于 \(  y  \)是任意的, 故 \(  f_{+ }^{\prime}   \)是 \(  \left\{ F_{n} \right\}  \)的逐点极限, 故 \(  f_{+ }^{\prime}   \)可测.    
+\end{proof}
+\begin{exercise}{}{}
+    设 $f(x)$ 是 $E \subset \mathbb{R}^n$ 上几乎处处有限的可测函数, $m(E) < +\infty$, 试证明对任意的 $\varepsilon >0$, 存在 $E$ 上的有界可测函数 $g(x)$, 使得
+$m(\{x \in E: |f(x)-g(x)|>0\}) < \varepsilon.$
+\end{exercise}
+\begin{proof}
+    我们有 \[
+    m\left( \left\{ f= \infty \right\} \right)= 0 
+    \]由于 \(  m\left( E \right)< \infty   \), 由自上连续性, \[
+    0= m\left( \left\{ f= \infty \right\} \right)= m\left( \bigcap _{k = 1}^{\infty}\left\{ f\ge k \right\} \right)=   \lim_{k\to \infty}m\left( \left\{ f\ge k \right\} \right) 
+    \]因此对于任意的 \(   \varepsilon > 0  \), 存在 \(  k_0  \)使得 \[
+   m\left( \left\{ f\ge k_0 \right\} \right)<  \varepsilon  
+    \]  定义 \[
+    g\left( x \right)= \chi _{\left\{ f< k_0 \right\}} \left( x \right) f\left( x \right) 
+    \]则由于\(  f  \)是可测函数,   \(  \left\{ f< k_0 \right\}  \)是可测集从而 \(  g  \)是可测函数. 此外   \[
+    \left| g\left( x \right)  \right|\le k_0 
+    \] \(  g  \)是有界的可测函数 . 注意到 \[
+   \left\{  \left| f\left( x \right)-g\left( x \right)   \right|> 0 \right\}= \left\{ \left| \chi _{\left\{ f\ge k_0 \right\}} f\right| > 0  \right\}\subseteq \left\{ f\ge k_0 \right\}
+    \]因此 \[
+    m\left( \left\{ \left| f\left( x \right)-g\left( x \right)   \right|> 0  \right\} \right) \le m\left( \left\{ f\ge k_0 \right\} \right)<  \varepsilon  
+    \]
+\end{proof}
+\end{document}

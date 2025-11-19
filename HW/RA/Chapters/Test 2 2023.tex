@@ -1,0 +1,178 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Test 2 2023 }
+% 代靖涵 25120222201319
+\begin{exercise}{}{}
+设 $E$ 为 $\mathbb{R}$ 的可测子集, $f$ 为 $E$ 上的广义实值函数.
+\begin{enumerate}
+    \item[(i)] 叙述 $f$ 为可测函数的定义.
+    \item[(ii)] 设 $f$ 为 $E$ 上实值函数. 请写出四个 $f$ 为 $E$ 上可测函数的充分必要条件.
+    \item[(iii)] 设 $f$ 为 $E$ 上的单调实值函数, 证明: $f$ 为 $E$ 上可测函数.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+    \begin{enumerate}
+        \item 称 \(  f  \)是可测的, 若对于任意的 \(  a \in \mathbb{R}   \), 集合 \[
+        \left\{ x: f\left( x \right)< a  \right\}
+        \]是一个可测集
+        \item \begin{itemize}
+            \item  \(  f  \)在 \(  E  \)上可测, 当且仅当对于\(  \mathbb{R}   \)上的Borel集 \(  B  \), 都有 \[
+        f^{-1} \left( B \right)\cap E 
+        \]是 \(  \mathbb{R}   \)上的一个可测集.     
+            \item \(  f  \)是可测的, 当且仅当对于任意的开集 \(  U\subseteq \mathbb{R}   \), 都有 \[
+            f^{-1} \left( U \right)\cap E 
+            \]是一个可测集.
+            \item \(  f  \)是可测的, 当且仅当存在一列可测简单函数 \(   \varphi _{k}  \), 使得 \( \varphi _{k}\to f\).     
+        \end{itemize}
+          \item 不妨设 \(  f  \)是单调递增的, 则对于任意的 \(  a \in \mathbb{R}   \), 令 \[
+          t= \sup \left\{ x: f\left( x \right)<   a  \right\}
+          \]  则对于任意的 \(  x\in f^{-1} \left( \left( -\infty,a \right)  \right)   \), 都有 \(  x\le t  \), 于是 \[
+          \left( f^{-1} \left( \left( -\infty,a \right)  \right)  \right)\subseteq \left( -\infty,t \right]
+          \]    另一方面, 对于任意的 \(  x<  t  \), 都存在 \(  x_0\in \left\{ x:f\left( x \right)< a  \right\}  \)使得 \(  x< x_0< t  \), 于是 \[
+          f\left( x \right)\le f\left( x_0 \right)< a,   
+          \]  这表明 \[
+          f^{-1} \left( \left( -\infty,a \right)  \right)\supseteq \left( -\infty,t \right)  
+          \]因此, 要么 \(  \left\{ f< a \right\}= \left( -\infty,t \right)   \), 要么 \(  \left\{ f< a \right\}= \left( -\infty,t \right]   \)  , 都有 \(  \left\{ f< a \right\}  \)是可测的. 由于 \(  a  \)是任意的 \(  f  \)是一个可测函数.   
+    \end{enumerate}
+    
+\end{solution}
+
+\begin{exercise}{}{}
+设 $\{f_k\}$ 为 $E$ 上可测函数渐升列且依测度收敛于函数 $f$. 证明: 对任意 $\delta > 0$, 存在 $E_\delta \subseteq E$, 使得 $m(E_\delta) \le \delta$ 且在 $E \setminus E_\delta$ 上一致地有 $\lim_{k\to\infty} f_k(x) = f(x)$.
+\end{exercise}
+\begin{proof}
+    存在 \(  i_1  \), 使得 \[
+    m\left( \left\{ x\in E: \left| f-f_{i_1} \right|\ge 1 \right\} \right) < \frac{1 }{2 } 
+    \]  若我们已经取出 \(  i_1,i_2,\cdots ,i_{k}  \), 则取 \(  i_{k+ 1}> i_{k}  \), 使得 \[
+    m\left( \left\{ x \in E: \left| f-f_{i_{k+ 1}} \right|\ge \frac{1 }{k+ 1 }   \right\} \right)< \frac{1 }{2^{k+ 1} }  
+    \]  我们得到一个子列 \(  \left\{ f_{k_{i}} \right\}  \) 
+    记 \[
+    A_{j}= \bigcup _{k= j}^{\infty} \left\{ x\in E: \left| f-f_{i_{k}} \right|\ge \frac{1 }{k }   \right\}
+    \]则 \[
+    \mu \left( A_{j} \right)\le \sum _{ k= j}^{\infty}\frac{1 }{2^{k} }=  \frac{1 }{2^{j-1} }   
+    \]对于任意的 \(   \delta > 0  \), 存在 \(  j_0  \)使得 \(  \frac{1 }{2^{j_0-1} }<  \delta    \)  , 令 \(  E_{ \delta }= A_{j_0}  \). 则对于任意的 \(  x \in A_{j_0}^{c}  \), 我们有 \[
+    x \in \bigcap _{k= j}^{\infty}\left\{ x\in E: \left| f-f_{i_{k}} \right|< \frac{1 }{k }   \right\}
+    \]   从而对于任意的 \(  k\ge j  \), 都有 \[
+    \left| f\left( x \right)-f_{i_{k}}\left( x \right)   \right|< \frac{1 }{k }  
+    \] 对于任意的 \(   \varepsilon > 0  \) , 存在 \(  N \in \mathbb{Z} _{> 0} \), 使得 \(  \frac{3 }{N }<  \varepsilon    \), 由于函数列是递增的 , 对于任意的 \(  k \ge i_{N}  \), 则存在 \(  i_{N_{k}}  \)使得 \(  i_{N_{k}}\ge k  \), 从而   我们有   \[
+    \begin{aligned}
+    \left| f_{k}\left( x \right)-f_{i_{N}}\left( x \right)   \right|= f_{k}\left( x \right)-f_{i_{N}}\left( x \right)&\le f_{i_{N _{k}}}\left( x \right)-f_{i_{N}\left( x \right) }  \\ 
+     &\le \left| f_{i_{N_{k}}} -f\right|+ \left| f-f_{i_{N}} \right|\\ 
+      &\le \frac{1 }{N_{k} }+ \frac{1 }{N }< \frac{2 }{N }     
+    \end{aligned}
+    \]从而\[
+    \left| f_{k}\left( x \right)-f\left( x \right)   \right|\le \left| f_{k}\left( x \right)-f_{i_{N}}\left( x \right)   \right|+ \left| f_{i_{N}}\left( x \right)-f\left( x \right)   \right|   < \frac{2 }{N }+ \frac{1 }{N }< \frac{3 }{N }<  \varepsilon    
+    \]这表明在 \(E_{ \delta }^{c}=   A_{j_0}^{c}  \)上 , \(  \lim_{k\to \infty}f_{k}\left( x \right)= f\left( x \right)    \) 一致地成立.
+\end{proof}
+\begin{exercise}{}{}
+设 $E$ 为 $\mathbb{R}$ 的可测子集且 $\alpha \in (0, m(E))$, 证明: 存在 $E$ 中的有界闭集 $F$, 使得 $m(F) = \alpha$.
+\end{exercise}
+\begin{proof}
+  对于任意的 \(  \alpha \in \left( 0,m\left( E \right)  \right)   \), 存在闭集 \(  K\subseteq E  \), 使得 \(  m\left( E\setminus K \right)< m\left( E \right)-\alpha     \), 于是 \[
+  \alpha < m\left( E \right)- m\left( E\setminus K \right)= m\left( E\cap K \right)= m\left( K \right)    
+  \]即 \(  \alpha \in \left( 0,m\left( K \right)  \right)   \). 对于任意的 \(  x \in \mathbb{R}   \), 定义   \[
+  f\left( x \right)= m\left( [-x,x]\cap K \right)  
+  \]我们说明 \(  f  \)是一个连续函数. 事实上, 对于任意的 \(   \varepsilon > 0  \), 取 \(   \delta < \frac{ \varepsilon  }{2 }   \), 则  \[
+  \begin{aligned}
+  0\le f\left( x+  \delta  \right)-f\left( x \right)&= m\left( [-x- \delta , x+  \delta ]\cap K \right)-m\left( [-x,x]\cap K \right) \\ 
+   &\le m\left( [-x- \delta ,x)\cap K \right)+ m\left( (x, x+  \delta ]\cap K \right)\\ 
+    &\le 2 \delta <  \varepsilon   
+  \end{aligned}    
+  \]  因此 \(  f  \)是一个连续函数. 注意到对于 \(  k \in \mathbb{Z} _{+ }  \)  \[
+  \lim_{k\to \infty} f\left( k \right)=  \lim_{k\to \infty}m\left( [-k,k]\cap K \right)=m\left(  \bigcup _{k= 1}^{\infty} [-k,k]\cap K \right)= m\left( K \right)  
+  \]  且 \(  f\left( 0 \right)= 0   \). 由连续函数的介值性, 对于 \(  \alpha \in \left( 0,m\left( K \right)  \right)   \), 存在 \(  x_{\alpha }  \), 使得 \(  f\left( x_{\alpha } \right)= \alpha    \)    . 此时令 \(  F= [-x_{ \alpha },x_{\alpha }]\cap K  \), 则 \(  F  \)是一个有界闭集, 使得 \[
+  m\left( F \right)= \alpha  
+  \]  
+\end{proof}
+\begin{exercise}{}{}
+设 $E$ 为可测集且 $0 < m(E) < +\infty$, $E_1, \dots, E_k$ 为 $E$ 中的可测集, 且有 $\alpha \in [k-1, k)$ 使得
+\[
+    \sum_{i=1}^k m(E_i) > \alpha m(E)
+\]
+证明: $m\left(\bigcap_{i=1}^k E_i\right) > 0$.
+\end{exercise}
+\begin{proof}
+  \[
+ \begin{aligned}
+  m\left( E \right)-m\left( \bigcap _{i= 1}^{k}E_{i} \right)=    m\left( E\setminus \bigcap _{i= 1}^{k}E_{i} \right)&= m\left( \bigcup _{i= 1}^{k}\left( E\setminus E_{i} \right)  \right)  \\ 
+    &\le \sum _{i= 1}^{k}m\left( E\setminus E_{i} \right)\\ 
+     &\le k m\left( E \right)- \sum _{i= 1}^{k}m\left( E_{i} \right)\\ 
+      &< \left( k-\alpha  \right)m\left( E \right)     
+ \end{aligned}
+   \]故 \[
+   m\left( \bigcap _{i= 1}^{k}E_{i} \right)> \left( \alpha -k-1 \right)m\left( E \right)   \ge 0
+   \]
+\end{proof}
+\begin{exercise}{}{}
+设 $\{A_n\}$ 为互不相交的可测集列, $B_n \subseteq A_n, n=1, \dots$, 证明
+\[
+    m^*\left(\bigcup_{n=1}^\infty B_n\right) = \sum_{n=1}^\infty m^*(B_n)
+\]
+\end{exercise}
+\begin{proof}
+    
+   对于任意的 \(  n  \), 存在一列开区间 \(  I_{n,1},I_{n,2},\cdots   \), 使得 \[
+   B_{n}\subseteq \bigcup _{n = 1}^{\infty}I_{n,i},\quad  m^{*}\left( B_{n} \right)\ge \sum _{n = 1}^{\infty}I_{n,i}- \frac{ \varepsilon  }{2^{n} }  
+   \]  由于 \(  B_{n}\subseteq A_{n}  \), 我们有 \[
+   B_{n}\subseteq \bigcup _{k = 1}^{\infty}\left( I_{n,k}\cap A_{n} \right),\quad m^{*}\left( B_{n} \right)\ge \sum _{k = 1}^{\infty}m\left( I_{n,k}\cap A_{n} \right)-\frac{ \varepsilon  }{2^{n} }    
+   \]  对于不同的 \(  m,n  \), \[
+   \left( I_{m,i}\cap A_{m} \right)\cap \left( I_{n,j}\cap A_{n} \right) = \varnothing ,\forall i,j 
+   \] 于是 \[
+ \begin{aligned}
+  \sum _{n = 1}^{\infty}m^{*}\left( B_{n} \right)+  \varepsilon &\ge   \sum _{n = 1}^{\infty}\sum _{k= 1}^{\infty}m\left( I_{n,k}\cap A_{n} \right)\\ 
+   &\ge \sum _{n = 1}^{\infty}m\left( \bigcup _{k= 1}^{\infty}\left( I_{n,k}\cap A_{n} \right)  \right)   \\ 
+    &= m\left( \bigcup _{n = 1}^{\infty}\bigcup _{k= 1}^{\infty}I_{n,k}\cap A_{n} \right)\\ 
+     &\ge m^{*}\left( \bigcup _{n = 1}^{\infty}B_{n} \right)  
+ \end{aligned} 
+   \]令 \(   \varepsilon\to 0^{+ }  \), 我们得到一个方向的不等式. 另一个方向的不等式由外测度的可数次可加性立即得到. 
+\end{proof}
+\begin{exercise}{}{}
+设 $\{f_k\}$ 为可测集 $E$ 上的可测函数列, $f$ 为 $E$ 上的实值函数, 且满足: 对任意 $\epsilon > 0$, 都有
+\[
+    \lim_{k\to\infty} m^*(\{x \in E : |f_k(x) - f(x)| > \epsilon\}) = 0
+\]
+证明: $f$ 在 $E$ 上可测.
+\end{exercise}
+\begin{proof}
+     存在 \(  i_1  \), 使得 \[
+     m^{*}\left( \left\{ x \in E: \left| f_{i_1}-f \right|> 1  \right\} \right)< \frac{1 }{2 }  
+     \] 假设我们选取了 \(  i_1,i_2,\cdots ,i_{k}  \), 则选取 \(  i_{k+ 1}> i_{k}  \)使得 \[
+     m^{*}\left( \left\{ x \in E: \left| f_{i_{k+ 1}}-f \right|  > \frac{1 }{k+ 1 } \right\} \right)< \frac{1 }{2^{k+ 1} }  
+     \]  于是我们取出了 \(  \left\{ f_{k} \right\}  \)的一个子列 \(  \left\{ f_{k_{i}} \right\}  \). 令 \[
+     A_{j}= \bigcup _{k= j}^{\infty}\left\{ x \in E: \left| f_{i_{k}}-f \right|  > \frac{1 }{k } \right\}
+     \]  则 \[
+     A_1\supseteq A_2\supseteq \cdots 
+     \]令 \[
+     A= \bigcap _{j = 1}^{\infty}A_{j}
+     \]由于 \[
+     \mu \left( A_{j} \right)\le \sum _{k= j}^{\infty} \frac{1 }{2^{k} }= \frac{1 }{2^{j-1} }   
+     \]特别地, \(  \mu \left( A_1 \right)< \infty   \), 我们有 \[
+     \mu \left( A \right)= \lim_{j\to \infty}\mu \left( A_{j} \right)= 0  
+     \] 于是 \(  A  \)是一个零测集, 对于任意的 \(  x\in A^{c}  \), 我们有 \[
+     x \in \bigcup _{j = 1}^{\infty}\bigcap _{k = j}^{\infty}\left\{ x \in E: \left| f_{i_{k}}-f \right|\le \frac{1 }{k }   \right\}
+     \]  这表明对于任意的 \(  j \), 存在 \( k \), 使得对于任意的 \(  k\ge j  \), 都有    \[
+     \left| f_{i_{k}}\left( x \right)-f\left( x \right)   \right|< \frac{1 }{k }  
+     \]这表明 \[
+     \lim_{k\to \infty}f_{i_{k}}\left( x \right)= f\left( x \right)  
+     \] 由于 \(  x  \)是任取的, 故 \(  \left\{ f_{i_{k}} \right\}  \)在 \(  A^{c}  \)上逐点收敛于 \(  f  \)    . 而可测函数列的a.e.极限是可测的, 故 \(  f  \)在 \(  E  \)上可测.  
+\end{proof}
+\begin{exercise}{}{}
+设 $E \subset \mathbb{R}$ 且 $m(E) > 0$, 证明: 存在互异的两点 $x_1, x_2 \in E$ 使得 $|x_1 - x_2|$ 是有理数.
+\end{exercise}
+ \begin{proof}
+    有SteinHause定理, 存在一个区间 \(  I  \), 使得 \[
+    I\subseteq E-E
+    \] 即 \(  I  \) 中一定包含一个有理数, 故存在 \(  q \in \mathbb{Q} , q \in I, q\neq 0  \), 使得 \[
+    q= x_1-x_2, \quad x_1,x_2\in E
+    \]  
+ \end{proof}
+\end{document}

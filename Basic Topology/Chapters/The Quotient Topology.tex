@@ -1,0 +1,26 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ The Quotient Topology }
+\begin{definition}{Quotient Topology}{}
+Let $(X, \mathcal{T})$ and $(Y, \mathcal{T}_1)$ be topological spaces. Then $(Y, \mathcal{T}_1)$ is said to be a \dfntxt{quotient space} of $(X, \mathcal{T})$ if there exists a surjective mapping $f:(X, \mathcal{T}) \to (Y, \mathcal{T}_1)$ with the property (*).
+\begin{equation}
+\text{For each subset } U \text{ of } Y, \ U \in \mathcal{T}_1 \iff f^{-1}(U) \in \mathcal{T}. \tag{*}
+\end{equation}
+A surjective mapping $f$ with the property(*) is said to be a \dfntxt{quotient mapping}.
+\end{definition}
+
+\begin{note}
+   Trade-off:  陪域上的拓扑越精细, 函数连续越困难; 定义域越精细, 函数连续越简单. 我们为 \(  f  \) ``施加压力'' , 使得它马上就变得不连续了, 为的就是让 连续函数 \( g :X\to Z\)可以安全且准确地下降为连续函数 \( h :Y\to Z\), 使得 \(  g = h\circ f  \). 
+
+\end{note}
+
+\end{document}

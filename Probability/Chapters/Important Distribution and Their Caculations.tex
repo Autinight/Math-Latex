@@ -1,0 +1,342 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Important Distribution and Their Calculations }
+% 代靖涵 25120222201319
+\section{Discrete Distributions}
+\begin{proposition}{Bernoulli Distribution}{}
+Let $p \in [0,1]$. If a random variable $X$ takes values in $\{0,1\}$ and satisfies $P(X=1)=p, P(X=0)=1-p$, then $X$ is said to follow a \dfntxt{Bernoulli distribution} with parameter $p$, denoted as $X \sim \text{Bernoulli}(p)$. In this case:
+
+\begin{enumerate}
+\item The probability mass function is 
+\[P(X=k) = p^k(1-p)^{1-k}, \quad k \in \{0,1\};\]
+
+\item $E[X] = p$;
+
+\item $\text{Var}(X) = p(1-p)$;
+
+\item The moment generating function is 
+\[M_X(t) = 1-p+pe^t.\]
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition}{Binomial Distribution}{}
+Let $n \in \mathbb{N}^+, p \in [0,1]$. If a random variable $X$ represents the number of successes in $n$ independent repeated Bernoulli trials, then $X$ is said to follow a \dfntxt{binomial distribution} with parameters $(n,p)$, denoted as $X \sim B(n,p)$. In this case:
+
+\begin{enumerate}
+\item The probability mass function is 
+\[P(X=k) = \binom{n}{k}p^k(1-p)^{n-k}, \quad k=0,1,\ldots,n;\]
+
+\item $E[X] = np$;
+
+\item $\text{Var}(X) = np(1-p)$;
+
+\item The moment generating function is 
+\[M_X(t) = (1-p+pe^t)^n;\]
+
+\item If $X \sim B(n_1,p), Y \sim B(n_2,p)$ and $X,Y$ are independent, then 
+\[X+Y \sim B(n_1+n_2,p).\]
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition}{Geometric Distribution}{}
+Let $p \in (0,1]$. If a random variable $X$ represents the number of trials needed to obtain the first success in independent repeated Bernoulli trials, then $X$ is said to follow a \dfntxt{geometric distribution} with parameter $p$. In this case:
+
+\begin{enumerate}
+\item The probability mass function is 
+\[P(X=k) = (1-p)^{k-1}p, \quad k=1,2,3,\ldots;\]
+
+\item \[E[X] = \frac{1}{p};\]
+
+\item \[\text{Var}(X) = \frac{1-p}{p^2};\]
+
+\item Memoryless property: for any $m,n \in \mathbb{N}^+$, we have 
+\[P(X>m+n|X>m) = P(X>n);\]
+
+\item The moment generating function is 
+\[M_X(t) = \frac{pe^t}{1-(1-p)e^t}, \quad t < -\ln(1-p).\]
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+     \[
+     \begin{aligned}
+     P\left( X> m+ n|X> m \right) = \frac{P\left( X> m+ n \right)  }{P\left( X> m \right)  }= \frac{\sum _{i= m+ n+ 1}^{\infty}\left( 1-p \right)^{i-1}p  }{ \sum _{i= m+ 1}^{\infty}\left( 1-p \right)^{i-1}p }  &= \frac{\frac{\left( 1-p \right)^{m+ n}  }{p }  }{\frac{\left( 1-p \right)^{m}  }{ p}  }  \\ 
+      &= \frac{\left( 1-p \right)^{n}  }{p }p\\ 
+       &=  \sum _{i= n+ 1}^{\infty}\left( 1-p \right)^{i-1}p\\ 
+        &= P\left( X> n \right)  
+     \end{aligned}
+     \]
+\end{proof}
+\begin{proposition}{Negative Binomial Distribution}{}
+Let $r \in \mathbb{N}^+, p \in (0,1]$. If a random variable $X$ represents the number of trials needed to obtain the $r$-th success in independent repeated Bernoulli trials, then $X$ is said to follow a \dfntxt{negative binomial distribution} with parameters $(r,p)$, denoted as $X \sim NB(r,p)$. In this case:
+
+\begin{enumerate}
+\item The probability mass function is 
+\[P(X=k) = \binom{k-1}{r-1}p^r(1-p)^{k-r}, \quad k=r,r+1,\ldots;\]
+
+\item \[E[X] = \frac{r}{p};\]
+
+\item \[\text{Var}(X) = \frac{r(1-p)}{p^2};\]
+
+\item When $r=1$, the negative binomial distribution reduces to the geometric distribution;
+
+\item If $X \sim NB(r_1,p), Y \sim NB(r_2,p)$ and $X,Y$ are independent, then 
+\[X+Y \sim NB(r_1+r_2,p).\]
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition}{Poisson Distribution}{}
+Let $\lambda > 0$. If a random variable $X$ takes values in $\mathbb{N} \cup \{0\}$ with probability mass function 
+\[P(X=k) = \frac{\lambda^k e^{-\lambda}}{k!},\]
+then $X$ is said to follow a \dfntxt{Poisson distribution} with parameter $\lambda$, denoted as $X \sim \text{Poisson}(\lambda)$. In this case:
+
+\begin{enumerate}
+\item $E[X] = \lambda$;
+
+\item $\text{Var}(X) = \lambda$;
+
+\item The moment generating function is 
+\[M_X(t) = e^{\lambda(e^t-1)};\]
+
+\item If $X \sim \text{Poisson}(\lambda_1), Y \sim \text{Poisson}(\lambda_2)$ and $X,Y$ are independent, then 
+\[X+Y \sim \text{Poisson}(\lambda_1+\lambda_2).\]
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition}{Poisson Limit Theorem}{}
+Let $X_n \sim B(n,p_n)$, where $np_n \to \lambda > 0$ as $n \to \infty$. Then for any $k \in \mathbb{N} \cup \{0\}$, we have
+\[\lim_{n \to \infty} P(X_n = k) = \frac{\lambda^k e^{-\lambda}}{k!}.\]
+\end{proposition}
+
+\begin{proposition}{Hypergeometric Distribution}{}
+Let $N,M,n \in \mathbb{N}^+$ with $M \leq N, n \leq N$. If a random variable $X$ represents the number of success elements when drawing $n$ elements without replacement from a population containing $M$ success elements and $N-M$ failure elements, then $X$ is said to follow a \dfntxt{hypergeometric distribution} with parameters $(N,M,n)$, denoted as $X \sim H(N,M,n)$. In this case:
+
+\begin{enumerate}
+\item The probability mass function is 
+\[P(X=k) = \frac{\binom{M}{k}\binom{N-M}{n-k}}{\binom{N}{n}}, \quad k=\max(0,n-N+M),\ldots,\min(n,M);\]
+
+\item \[E[X] = n\frac{M}{N};\]
+
+\item \[\text{Var}(X) = n\frac{M}{N}\cdot\frac{N-M}{N}\cdot\frac{N-n}{N-1};\]
+
+\item As $N \to \infty$ and $\frac{M}{N} \to p$, the hypergeometric distribution converges in distribution to the binomial distribution $B(n,p)$.
+\end{enumerate}
+\end{proposition}
+\section{Continuous Distribution}
+\begin{proposition}{Uniform Distribution}{均匀分布}
+Let $a, b \in \mathbb{R}$ with $a < b$. If a random variable $X$ has a probability density function (PDF) that is constant over the interval $[a,b]$, then $X$ is said to follow a \dfntxt{uniform distribution} on $[a,b]$, denoted as $X \sim U(a,b)$. In this case:
+\begin{enumerate}
+\item The probability density function is
+$$\begin{cases} 
+\frac{1}{b-a} & \text{if } a \le x \le b, \\
+0 & \text{otherwise}.
+\end{cases}$$
+\item $E[X] = \frac{a+b}{2}$;
+\item $\text{Var}(X) = \frac{(b-a)^2}{12}$;
+\item The moment generating function is
+$M_X(t) = \frac{e^{tb}-e^{ta}}{t(b-a)}, \quad \text{for } t \neq 0.$
+\end{enumerate}
+\end{proposition}
+\begin{proposition}{Exponential Distribution}{指数分布}
+Let $\lambda > 0$. If a random variable $X$ represents the waiting time for an event to occur in a Poisson process, it is said to follow an \dfntxt{exponential distribution} with rate parameter $\lambda$, denoted as $X \sim \text{Exp}(\lambda)$. In this case:
+\begin{enumerate}
+\item The probability density function is
+$$\begin{cases} 
+\lambda e^{-\lambda x} & \text{if } x \ge 0, \\
+0 & \text{otherwise}.
+\end{cases}$$
+\item $E[X] = \frac{1}{\lambda}$;
+\item $\text{Var}(X) = \frac{1}{\lambda^2}$;
+\item Memoryless property: for any $s, t \ge 0$, we have
+$P(X > s+t | X > s) = P(X > t);$
+\item The moment generating function is
+$M_X(t) = \frac{\lambda}{\lambda-t}, \quad t < \lambda.$
+\end{enumerate}
+\end{proposition}
+\begin{proposition}{Normal Distribution}{正态分布}
+Let $\mu \in \mathbb{R}$ and $\sigma^2 > 0$. A random variable $X$ is said to follow a \dfntxt{normal distribution} (or \dfntxt{Gaussian distribution}) with parameters $(\mu, \sigma^2)$, denoted as $X \sim N(\mu, \sigma^2)$. In this case:
+\begin{enumerate}
+\item The probability density function is
+$f_X(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \quad x \in \mathbb{R};$
+\item $E[X] = \mu$;
+\item $\text{Var}(X) = \sigma^2$;
+\item The moment generating function is
+$M_X(t) = e^{\mu t + \frac{1}{2}\sigma^2 t^2};$
+\item If $X \sim N(\mu, \sigma^2)$, then the standardized variable $Z = \frac{X-\mu}{\sigma}$ follows the \dfntxt{standard normal distribution} $N(0,1)$;
+\item If $X \sim N(\mu_1, \sigma_1^2)$, $Y \sim N(\mu_2, \sigma_2^2)$ and $X,Y$ are independent, then for any constants $a,b \in \mathbb{R}$,
+$aX+bY \sim N(a\mu_1+b\mu_2, a^2\sigma_1^2+b^2\sigma_2^2).$
+\end{enumerate}
+\end{proposition}
+\begin{proposition}{Lognormal Distribution}{对数正态分布}
+Let $Y$ be a positive random variable. If the new random variable $X = \ln(Y)$ follows a normal distribution with parameters $(\mu, \sigma^2)$, then $Y$ is said to follow a \dfntxt{lognormal distribution}, denoted as $Y \sim LN(\mu, \sigma^2)$. Note that $\mu$ and $\sigma^2$ are the mean and variance of the logarithm of the variable, not of the variable itself.
+\begin{enumerate}
+\item The probability density function is
+$$f_Y(y) = 
+\begin{cases} 
+\frac{1}{y\sigma\sqrt{2\pi}} \exp\left(-\frac{(\ln y - \mu)^2}{2\sigma^2}\right) & \text{if } y > 0, \\
+0 & \text{otherwise}.
+\end{cases}$$
+\item $E[Y] = e^{\mu + \frac{1}{2}\sigma^2}$;
+\item $\text{Var}(Y) = (e^{\sigma^2}-1)e^{2\mu + \sigma^2}$;
+\item The key relationship for problem-solving: If $Y \sim LN(\mu, \sigma^2)$, then $\ln(Y) \sim N(\mu, \sigma^2)$. This allows us to transform problems about lognormal variables into problems about normal variables.
+\item The lognormal distribution arises from the multiplicative version of the Central Limit Theorem. The product of many independent, identically distributed positive random variables will be approximately log-normally distributed.
+\end{enumerate}
+\end{proposition}
+\begin{proposition}{Gamma Distribution}{伽玛分布}
+Let $\alpha > 0$ (shape parameter) and $\lambda > 0$ (rate parameter). A random variable $X$ is said to follow a \dfntxt{Gamma distribution} with parameters $(\alpha, \lambda)$, denoted as $X \sim \Gamma(\alpha, \lambda)$. In this case:
+\begin{enumerate}
+\item The probability density function is
+$$\begin{cases} 
+\frac{\lambda^\alpha}{\Gamma(\alpha)} x^{\alpha-1} e^{-\lambda x} & \text{if } x > 0, \\
+0 & \text{otherwise},
+\end{cases}$$
+where $\Gamma(\alpha) = \int_0^\infty z^{\alpha-1}e^{-z}dz$ is the Gamma function.
+\item $E[X] = \frac{\alpha}{\lambda}$;
+\item $\text{Var}(X) = \frac{\alpha}{\lambda^2}$;
+\item The moment generating function is
+$M_X(t) = \left(\frac{\lambda}{\lambda-t}\right)^\alpha, \quad t < \lambda;$
+\item If $X \sim \Gamma(\alpha_1, \lambda)$, $Y \sim \Gamma(\alpha_2, \lambda)$ and $X,Y$ are independent, then
+$X+Y \sim \Gamma(\alpha_1+\alpha_2, \lambda);$
+\item The exponential distribution is a special case: $\text{Exp}(\lambda) \equiv \Gamma(1, \lambda)$;
+\item The \dfntxt{Chi-squared distribution} (卡方分布) with $k$ degrees of freedom, denoted $\chi^2_k$, is a special case: $\chi^2_k \equiv \Gamma(k/2, 1/2)$.
+\end{enumerate}
+\end{proposition}
+\begin{proposition}{Central Limit Theorem}{中心极限定理}
+Let $X_1, X_2, \ldots$ be a sequence of independent and identically distributed (i.i.d.) random variables with finite mean $E[X_i] = \mu$ and finite variance $\text{Var}(X_i) = \sigma^2 > 0$. Let $S_n = \sum_{i=1}^n X_i$. Then the standardized sample mean converges in distribution to a standard normal distribution:
+$\frac{\bar{X}_n - \mu}{\sigma/\sqrt{n}} = \frac{S_n - n\mu}{\sigma\sqrt{n}} \xrightarrow{d} N(0,1) \quad \text{as } n \to \infty.$
+\end{proposition}
+
+\begin{proposition}{Beta Distribution}{贝塔分布}
+Let $\alpha > 0$ and $\beta > 0$ be shape parameters. A random variable $X$ is said to follow a \dfntxt{Beta distribution} with parameters $(\alpha, \beta)$, denoted as $X \sim \text{Beta}(\alpha, \beta)$, if its support is the interval $(0,1)$. This distribution is commonly used to model probabilities or proportions.
+\begin{enumerate}
+\item The probability density function is
+$$f_X(x) = 
+\begin{cases} 
+\frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha, \beta)} & \text{if } 0 < x < 1, \\
+0 & \text{otherwise},
+\end{cases}$$
+where $B(\alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}$ is the Beta function.
+\item $E[X] = \frac{\alpha}{\alpha+\beta}$;
+\item $\text{Var}(X) = \frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}$;
+\item The $k$-th moment is $E[X^k] = \frac{\Gamma(\alpha+k)\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\alpha+\beta+k)}$ for any $k > -\alpha$;
+\item The moment generating function does not have a simple closed form.
+\item If $U \sim \Gamma(\alpha, \lambda)$ and $V \sim \Gamma(\beta, \lambda)$ are independent, then the random variable $X = \frac{U}{U+V}$ follows a Beta distribution, $X \sim \text{Beta}(\alpha, \beta)$.
+\end{enumerate}
+\end{proposition}
+
+\begin{note}
+    Beta分布是在我们相信一个观测结果是由二项分布产生的情况下, 导致这个观测结果的 \(  p  \)的分布, \(  p  \)是我们认为的二项分布的参数.  
+\end{note}
+
+\begin{proposition}{Cauchy Distribution}{柯西分布}
+Let $x_0 \in \mathbb{R}$ be the location parameter (median) and $\gamma > 0$ be the scale parameter. A random variable $X$ is said to follow a \dfntxt{Cauchy distribution}, denoted as $X \sim \text{Cauchy}(x_0, \gamma)$. It is a classic example of a distribution for which the moments (like mean and variance) are undefined. The case with $x_0=0, \gamma=1$ is called the \dfntxt{standard Cauchy distribution}.
+\begin{enumerate}
+\item The probability density function is
+$$f_X(x) = \frac{1}{\pi\gamma \left[1 + \left(\frac{x-x_0}{\gamma}\right)^2\right]}, \quad x \in \mathbb{R};$$
+\item $E[X]$ is undefined;
+\item $\text{Var}(X)$ is undefined;
+\item The moment generating function is undefined. However, its characteristic function is well-defined: $\phi_X(t) = E[e^{itX}] = e^{ix_0 t - \gamma|t|}$;
+\item If $U, V \sim N(0,1)$ are independent standard normal variables, then their ratio $U/V$ follows the standard Cauchy distribution, $\text{Cauchy}(0,1)$;
+\item The Cauchy distribution is a special case of the Student's t-distribution with one degree of freedom.
+\item If $X_1, \ldots, X_n$ are i.i.d. from $\text{Cauchy}(x_0, \gamma)$, their sample mean $\bar{X}_n$ has the same distribution, $\bar{X}_n \sim \text{Cauchy}(x_0, \gamma)$. This shows it does not obey the Law of Large Numbers.
+\end{enumerate}
+\end{proposition}
+\begin{proposition}{Student's t-Distribution}{学生t-分布}
+Let $\nu > 0$ be the degrees of freedom. A random variable $T$ is said to follow a \dfntxt{Student's t-distribution} with $\nu$ degrees of freedom, denoted as $T \sim t_\nu$. This distribution arises when estimating the mean of a normally distributed population in situations where the sample size is small and the population standard deviation is unknown.
+\begin{enumerate}
+\item The probability density function is
+$$f_T(t) = \frac{\Gamma((\nu+1)/2)}{\sqrt{\nu\pi}\Gamma(\nu/2)} \left(1 + \frac{t^2}{\nu}\right)^{-\frac{\nu+1}{2}}, \quad t \in \mathbb{R};$$
+\item $E[T] = 0$ for $\nu > 1$. It is undefined for $\nu \le 1$;
+\item $\text{Var}(T) = \frac{\nu}{\nu-2}$ for $\nu > 2$. It is infinite for $1 < \nu \le 2$ and undefined for $\nu \le 1$;
+\item If $Z \sim N(0,1)$ and $V \sim \chi^2_\nu$ are independent, then $T = \frac{Z}{\sqrt{V/\nu}} \sim t_\nu$;
+\item As $\nu \to \infty$, the t-distribution converges in distribution to the standard normal distribution $N(0,1)$.
+\end{enumerate}
+\end{proposition}
+\begin{proposition}{F-Distribution}{F-分布}
+Let $d_1 > 0$ and $d_2 > 0$ be the numerator and denominator degrees of freedom, respectively. A random variable $X$ is said to follow an \dfntxt{F-distribution}, denoted as $X \sim F(d_1, d_2)$. It is most commonly used in the analysis of variance (ANOVA).
+\begin{enumerate}
+\item The probability density function is
+$$f_X(x) = 
+\begin{cases} 
+\frac{1}{B(d_1/2, d_2/2)} \left(\frac{d_1}{d_2}\right)^{d_1/2} x^{d_1/2 - 1} \left(1 + \frac{d_1}{d_2}x\right)^{-(d_1+d_2)/2} & \text{if } x > 0, \\
+0 & \text{otherwise};
+\end{cases}$$
+\item $E[X] = \frac{d_2}{d_2-2}$ for $d_2 > 2$;
+\item $\text{Var}(X) = \frac{2d_2^2(d_1+d_2-2)}{d_1(d_2-2)^2(d_2-4)}$ for $d_2 > 4$;
+\item If $U_1 \sim \chi^2_{d_1}$ and $U_2 \sim \chi^2_{d_2}$ are independent, then the ratio of the scaled variables $X = \frac{U_1/d_1}{U_2/d_2}$ follows an F-distribution, $X \sim F(d_1, d_2)$;
+\item If $T \sim t_{d_2}$, then $T^2 \sim F(1, d_2)$.
+\end{enumerate}
+\end{proposition}
+
+\section{Mutivariable Distributions}
+
+\begin{proposition}{Multivariate Normal Distribution}{多元正态分布}
+Let $\boldsymbol{\mu} \in \mathbb{R}^k$ be a mean vector and $\boldsymbol{\Sigma}$ be a $k \times k$ symmetric, positive-definite covariance matrix. A random vector $\mathbf{X} = (X_1, \ldots, X_k)^T$ is said to follow a \dfntxt{multivariate normal distribution}, denoted as $\mathbf{X} \sim N_k(\boldsymbol{\mu}, \boldsymbol{\Sigma})$.
+\begin{enumerate}
+\item The probability density function is
+$f_{\mathbf{X}}(\mathbf{x}) = \frac{1}{(2\pi)^{k/2} |\boldsymbol{\Sigma}|^{1/2}} \exp\left(-\frac{1}{2}(\mathbf{x}-\boldsymbol{\mu})^T \boldsymbol{\Sigma}^{-1}(\mathbf{x}-\boldsymbol{\mu})\right), \quad \mathbf{x} \in \mathbb{R}^k;$
+where $|\boldsymbol{\Sigma}|$ is the determinant of $\boldsymbol{\Sigma}$. The term $(\mathbf{x}-\boldsymbol{\mu})^T \boldsymbol{\Sigma}^{-1}(\mathbf{x}-\boldsymbol{\mu})$ is the Mahalanobis distance squared.
+\item $E[\mathbf{X}] = \boldsymbol{\mu}$;
+\item $\text{Cov}(\mathbf{X}) = E[(\mathbf{X}-\boldsymbol{\mu})(\mathbf{X}-\boldsymbol{\mu})^T] = \boldsymbol{\Sigma}$;
+\item The moment generating function is
+$M_{\mathbf{X}}(\mathbf{t}) = E[e^{\mathbf{t}^T\mathbf{X}}] = e^{\mathbf{t}^T\boldsymbol{\mu} + \frac{1}{2}\mathbf{t}^T\boldsymbol{\Sigma}\mathbf{t}};$
+\item \textbf{Marginal Distributions}: Any subset of the components of $\mathbf{X}$ also follows a multivariate normal distribution.
+\item \textbf{Linear Transformations}: If $\mathbf{Y} = \mathbf{A}\mathbf{X} + \mathbf{b}$ for a matrix $\mathbf{A}$ of size $m \times k$ and vector $\mathbf{b} \in \mathbb{R}^m$, then $\mathbf{Y} \sim N_m(\mathbf{A}\boldsymbol{\mu}+\mathbf{b}, \mathbf{A}\boldsymbol{\Sigma}\mathbf{A}^T)$.
+\item Two components $X_i$ and $X_j$ are independent if and only if their covariance $\boldsymbol{\Sigma}_{ij} = 0$. This is a special and powerful property of the normal distribution.
+\end{enumerate}
+\end{proposition}
+\begin{proposition}{Multinomial Distribution}{多项分布}
+Let $n \in \mathbb{N}^+$ be the number of trials, and $\mathbf{p} = (p_1, \ldots, p_k)$ be a vector of probabilities such that $p_i \ge 0$ for all $i$ and $\sum_{i=1}^k p_i = 1$. If a random vector $\mathbf{X} = (X_1, \ldots, X_k)$ represents the number of times each of the $k$ possible outcomes occurs in $n$ independent trials, then $\mathbf{X}$ follows a \dfntxt{multinomial distribution}, denoted as $\mathbf{X} \sim \text{Mult}(n, \mathbf{p})$.
+\begin{enumerate}
+\item The probability mass function is
+$P(X_1=n_1, \ldots, X_k=n_k) = \frac{n!}{n_1! n_2! \cdots n_k!} p_1^{n_1} p_2^{n_2} \cdots p_k^{n_k},$
+where $n_i \in \{0, 1, \ldots, n\}$ and $\sum_{i=1}^k n_i = n$.
+\item $E[X_i] = np_i$;
+\item $\text{Var}(X_i) = np_i(1-p_i)$;
+\item $\text{Cov}(X_i, X_j) = -np_i p_j$ for $i \neq j$. The negative covariance reflects the constraint that $\sum X_i = n$.
+\item The binomial distribution is a special case where $k=2$.
+\end{enumerate}
+\end{proposition}
+\begin{proposition}{Dirichlet Distribution}{狄利克雷分布}
+Let $\boldsymbol{\alpha} = (\alpha_1, \ldots, \alpha_k)$ be a vector of concentration parameters with $\alpha_i > 0$. A random vector $\mathbf{X} = (X_1, \ldots, X_k)$ is said to follow a \dfntxt{Dirichlet distribution}, denoted as $\mathbf{X} \sim \text{Dir}(\boldsymbol{\alpha})$. Its support is the standard $(k-1)$-simplex, i.e., $S_{k-1} = \{\mathbf{x} \in \mathbb{R}^k : x_i > 0, \sum_{i=1}^k x_i = 1\}$. It is the multivariate generalization of the Beta distribution.
+\begin{enumerate}
+\item The probability density function is
+$f(\mathbf{x}; \boldsymbol{\alpha}) = \frac{1}{B(\boldsymbol{\alpha})} \prod_{i=1}^k x_i^{\alpha_i - 1},$
+where $B(\boldsymbol{\alpha}) = \frac{\prod_{i=1}^k \Gamma(\alpha_i)}{\Gamma(\sum_{i=1}^k \alpha_i)}$ is the multivariate Beta function.
+\item Let $\alpha_0 = \sum_{i=1}^k \alpha_i$.
+\item $E[X_i] = \frac{\alpha_i}{\alpha_0}$;
+\item $\text{Var}(X_i) = \frac{\alpha_i(\alpha_0 - \alpha_i)}{\alpha_0^2(\alpha_0+1)}$;
+\item $\text{Cov}(X_i, X_j) = \frac{-\alpha_i \alpha_j}{\alpha_0^2(\alpha_0+1)}$ for $i \neq j$;
+\item The Dirichlet distribution is the conjugate prior for the parameter vector $\mathbf{p}$ of the multinomial distribution.
+\end{enumerate}
+\end{proposition}
+\begin{proposition}{Wishart Distribution}{威沙特分布}
+Let $\mathbf{V}$ be a $p \times p$ symmetric positive-definite scale matrix and let $n \ge p$ be the degrees of freedom. A random matrix $\mathbf{W}$ is said to follow a \dfntxt{Wishart distribution}, denoted $\mathbf{W} \sim W_p(n, \mathbf{V})$, if it is the distribution of the sample covariance matrix. Specifically, if $\mathbf{X}_1, \ldots, \mathbf{X}_n$ are i.i.d. samples from $N_p(\mathbf{0}, \mathbf{V})$, then $\mathbf{W} = \sum_{i=1}^n \mathbf{X}_i \mathbf{X}_i^T \sim W_p(n, \mathbf{V})$.
+\begin{enumerate}
+\item The probability density function for a symmetric positive-definite matrix $\mathbf{X}$ is
+$f(\mathbf{X}) = \frac{|\mathbf{X}|^{(n-p-1)/2} \exp\left(-\frac{1}{2}\text{tr}(\mathbf{V}^{-1}\mathbf{X})\right)}{2^{np/2} |\mathbf{V}|^{n/2} \Gamma_p(n/2)},$
+where $\Gamma_p(\cdot)$ is the multivariate Gamma function.
+\item $E[\mathbf{W}] = n\mathbf{V}$;
+\item The Wishart distribution is the multivariate generalization of the Chi-squared distribution. If $p=1$ and $\mathbf{V}=1$, then $W_1(n,1)$ is the $\chi^2_n$ distribution.
+\item \textbf{Additive Property}: If $\mathbf{W}_1 \sim W_p(n_1, \mathbf{V})$ and $\mathbf{W}_2 \sim W_p(n_2, \mathbf{V})$ are independent, then $\mathbf{W}_1 + \mathbf{W}_2 \sim W_p(n_1+n_2, \mathbf{V})$.
+\end{enumerate}
+\end{proposition}
+\begin{proposition}{Uniform Distribution on the Sphere}{球面上均匀分布}
+This distribution describes a point chosen at random from the surface of a unit sphere in $\mathbb{R}^n$. Let $S^{n-1} = \{\mathbf{x} \in \mathbb{R}^n : ||\mathbf{x}||_2 = 1\}$ be the unit sphere. A random vector $\mathbf{X}$ is uniformly distributed on $S^{n-1}$. This is a foundational example of a distribution on a Riemannian manifold.
+\begin{enumerate}
+\item The probability density function is constant with respect to the surface area measure (the canonical volume form on the sphere). If $A_{n-1}$ is the surface area of $S^{n-1}$, the density is $f(\mathbf{x}) = 1/A_{n-1}$.
+\item The surface area of $S^{n-1}$ is given by $A_{n-1} = \frac{2\pi^{n/2}}{\Gamma(n/2)}$.
+\item \textbf{Generation}: If $\mathbf{Z} = (Z_1, \ldots, Z_n)^T$ where $Z_i \sim N(0,1)$ are i.i.d., then the vector $\mathbf{X} = \frac{\mathbf{Z}}{||\mathbf{Z}||_2}$ is uniformly distributed on $S^{n-1}$. This is a consequence of the rotational symmetry of the multivariate normal distribution.
+\item $E[\mathbf{X}] = \mathbf{0}$ due to symmetry.
+\item $\text{Cov}(\mathbf{X}) = E[\mathbf{X}\mathbf{X}^T] = \frac{1}{n}\mathbf{I}_n$, where $\mathbf{I}_n$ is the $n \times n$ identity matrix.
+\end{enumerate}
+\end{proposition}
+\end{document}

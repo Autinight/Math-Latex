@@ -1,0 +1,87 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Compatctness }
+% 代靖涵 25120222201319
+
+\section{Basic Definition and Properties}
+\begin{definition}{}{}
+A collection $\mathcal{U}$ of open subsets of a space $X$ is called an \dfntxt{open cover} for $X$ if and only if the union of sets in $\mathcal{U}$ contains $X$. The space $X$ is \dfntxt{compact} if and only if every open cover of $X$ has a finite subcover.
+\end{definition}
+
+\begin{theorem}{}{}
+If $X$ is compact and $f: X \to Y$ is continuous, then $fX$ is compact.
+\end{theorem}
+
+\begin{theorem}{Bolzano-Weierstrass}{}
+Every infinite set in a compact space has a limit point.
+\end{theorem}
+
+\section{FIP ,  a dual description}
+There is a dual description.
+\begin{definition}{}{}
+Let $S$ be a collection of sets. We say that $S$ has the \dfntxt{finite intersection property} if and only if for every finite subcollection $A_1, \dots, A_n \subseteq S$, the intersection $A_1 \cap \cdots \cap A_n \neq \emptyset$. We abbreviate the finite intersection property by FIP.
+\end{definition}
+
+\begin{theorem}{}{}
+A space $X$ is compact if and only if every collection of closed subsets of $X$ with the FIP has nonempty intersection.
+\end{theorem}
+\begin{proof}
+    Let \(  \left\{ F_{\alpha } \right\}_{\alpha \in A}  \) be any collection of closed subsets of \(  X  \) with the FIP. If \(  \bigcap _{\alpha }F_{\alpha }= \varnothing  \), then \(  \left\{ F_{\alpha }^{c} \right\}_{\alpha \in A}  \) is an open cover of \(  X  \), which has a subcover \(  F_1^{c},F_2^{c},\cdots ,F_{m}^{c}  \), such that  \[
+    \bigcap _{k= 1}^{m}F_{m}= \left( \bigcup _{k= 1}^{m}F_{k}^{c} \right)^{c}= X^{c}= \varnothing 
+    \]a contradiction.
+    
+    
+    Conversely, if every closed collection is with FIP. Then, for each open cover \(  \left\{ U_{\alpha } \right\}_{\alpha \in A}  \) of \(  X  \), if \(  \left\{ U_{\alpha } \right\}_{\alpha \in A}   \) dose not have a finite subcover of \(  F_{\alpha }  \), \(  \left\{ U_{\alpha }^{c} \right\}_{\alpha \in A}  \) is  a closed collection of \(  X  \) with the FIP, which imlies that \(  \bigcap U_{\alpha }^{c}\neq \varnothing  \), which is a contradiction to \(  \bigcup U_{\alpha }= X  \).  
+\end{proof}
+\begin{theorem}{}{}
+Closed subsets of compact spaces are compact.
+\end{theorem}
+
+\section{Compactness and Hausdorff}
+
+\begin{theorem}{Seperate a point and a compact set}{}
+Let $X$ be Hausdorff. For any point $x \in X$ and any compact set $K \subseteq X \setminus \{x\}$ there exist disjoint open sets $U$ and $V$ with $x \in U$ and $K \subseteq V$.
+\end{theorem}
+\begin{proof}
+    
+\end{proof}
+
+\begin{corollary}{Compact subsets of Hausdorff spaces are closed}{}
+Compact subsets of Hausdorff spaces are closed.
+\end{corollary}
+\begin{corollary}{A map from compact to Hausdorff spaces is closed}{}
+If $X$ is compact and $Y$ is Hausdorff, then every map $f: X \to Y$ is closed.$^1$ In particular,
+\begin{itemize}
+    \item if $f$ is injective, then it is an embedding;
+    \item if $f$ is surjective, then it is a quotient map;
+    \item if $f$ is bijective, then it is a homeomorphism.
+\end{itemize}
+\end{corollary}
+
+\section{Local Compactness}
+
+\begin{definition}{}{}
+A space $X$ is said to be \dfntxt{locally compact at x} if there is some compact subspace $C$ of $X$ that contains a neighborhood of $x$. If $X$ is locally compact at each of its points, $X$ is said simply to be \dfntxt{locally compact}.
+\end{definition}
+\begin{theorem}{}{}
+Let $X$ be a space. Then $X$ is \dfntxt{locally compact Hausdorff} if and only if there exists a space $Y$ satisfying the following conditions:
+\begin{enumerate}
+    \item $X$ is a subspace of $Y$.
+    \item The set $Y - X$ consists of a single point.
+    \item $Y$ is a compact Hausdorff space.
+\end{enumerate}
+If $Y$ and $Y'$ are two spaces satisfying these conditions, then there is a homeomorphism of $Y$ with $Y'$ that equals the identity map on $X$.
+\end{theorem}
+\begin{proof}
+    
+\end{proof}
+\end{document}

@@ -1,0 +1,223 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{3}
+}{}
+
+\chapter{ Ch4-3 }
+ 代靖涵 25120222201319
+\begin{exercise}{}{}
+设 $f, g \in L(E), f_k, g_k \in L(E), |f_k(x)| \le M (k=1,2,\cdots)$,
+\[
+\int_E |f_k(x) - f(x)| dx \to 0, (k \to \infty),
+\]
+\[
+\int_E |g_k(x) - g(x)| dx \to 0 \quad (k \to \infty),
+\]
+试证明
+\[
+\int_E |f_k(x)g_k(x) - f(x)g(x)| dx \to 0 \quad (k \to \infty).
+\]
+\end{exercise}
+\begin{proof}
+    \begin{equation}
+        \begin{aligned}
+            \left| f_{k}g_{k}-fg \right|&=  \left| f_{k}g_{k}-f_{k}g+  f_{k}g-fg\right|\\ 
+             &\le \left| f_{k} \right|\left| g_{k}-g \right|+ \left| g \right|\left| f_{k}-f \right|\\ 
+              &\le M\left| g_{k}-g \right|+ \left| g \right|\left| f_{k}-f \right|         
+        \end{aligned}
+    \end{equation}
+\[
+\lim_{k\to \infty}\int _{E}M\left| g_{k}-g \right|\,\mathrm{d} x= 0 
+\]
+由于 \(  f_{k}  \) 是\(  L^{1}  \)收敛于 \(  f  \), 我们有  \(  f_{k}  \)也是依测度收敛于 \(  f  \)的. 进而存在子列 \(  f_{k_{j}}  \), 使得 \(  \lim_{j\to \infty}f_{k_{j}}= f   \) a.e. 由于 \(  \left| f_{k_{j}} \right|\le M   \), 我们有 \(  \left| f \right|\le M,  a.e.   \).  现在, 令 \(  E_{m}= \left\{ \left| g \right|  > m\right\}  \)      , 则由单调收敛定理 \begin{equation}
+    \begin{aligned}
+        \int _{E} \left| g \right|\left| f_{k}-f \right|&  = \int_{E\setminus E_{m}}\left| g \right|\left| f_{k}-f \right|\,\mathrm{d} x+  \int_{E_{m}}\left| g \right|\left| f_{k}-f \right|\,\mathrm{d} x  \\ 
+         &\le m \int_{E\setminus E_{m}}\left| f_{k}-f \right|\,\mathrm{d} x+ \int_{E_{m}}\left| g \right|\left| f_{k}-f \right|\,\mathrm{d} x     
+    \end{aligned}
+\end{equation}
+其中 \[
+\int_{E_{m}}\left| g \right|\left| f_{k}-f \right|\,\mathrm{d} x\le 2M\int_{E_{m}}\left| g \right|\,\mathrm{d} x
+\] 
+ 任取\(   \varepsilon > 0  \),由于 \(  g\in L\left( E \right)   \), 存在 \(   \delta > 0  \), 使得对于任意的可测集\(  B  \)满足 \(  m\left( B \right)<  \delta    \), 都有 \(  \int_{B}\left| g \right|\,\mathrm{d} x< \frac{ \varepsilon  }{2M }    \)   . 此外, \(  g\in L\left( E \right)   \)保证了 \[
+ \lim_{k\to \infty}km\left( E_{m} \right) \le  \lim_{k\to \infty}\int_{E_{k}}\left| g \right| \,\mathrm{d} x=  \int \left| g \right|\,\mathrm{d} x< \infty\implies \lim_{k\to \infty}m\left( E_{m} \right)= 0  
+ \] 于是我们可以选取合适的 \(  m  \),  使得 \(  m\left( E_{m} \right)<  \delta    \), 进而 \[
+ \int_{E_{m}}\left| g \right|\left| f_{k}-f \right|\,\mathrm{d} x\le 2M \frac{ \varepsilon  }{2M }= \varepsilon  
+ \]   因此 \[
+ \int_{E}\left| g \right|\left| f_{k}-f \right|\,\mathrm{d} x\le m \int_{E}\left| f_{k}-f \right|\,\mathrm{d} x+  \varepsilon    
+ \]令 \(  k\to \infty  \), 得到 \[
+ \int_{E}\left| g \right|\left| f_{k}-f \right|\,\mathrm{d} x\le   \varepsilon   
+ \] 由于 \(   \varepsilon > 0  \)是任取的, 我们得到 \[
+ \lim_{k\to \infty}\int_{E}\left| g \right|\left| f_{k}-f \right|\,\mathrm{d} x= 0  
+ \] 最终, 我们得到 \[
+ \int_{E}\left| f_{k}g_{k}-fg \right|\,\mathrm{d} x\le \lim_{k\to \infty}\int_{E}M\left| g_{k}-g \right|\,\mathrm{d} x+ \lim_{k\to \infty} \int_{E}\left| g \right|\left| f_{k}-f \right|\,\mathrm{d} x= 0    
+ \]
+\end{proof}
+\begin{exercise}{}{}
+设 $f_k \in L(E) (k=1,2,\cdots)$, 且 $f_k(x)$ 在 $E$ 上一致收敛于 $f(x)$. 若 $m(E) < +\infty$, 试证明
+\[
+\lim_{k \to \infty} \int_E f_k(x) dx = \int_E f(x).
+\]
+\end{exercise}
+
+\begin{proof}
+    \[
+    \int_{E}\left| f_{k}-f \right| \,\mathrm{d} x\le \mu \left( E \right)\sup _{E}\left| f_{k}-f \right|   
+    \]令 \(  k\to \infty  \), 得到 \[
+    \lim_{k\to \infty}\int_{E}\left| f_{k}-f \right| \,\mathrm{d} x\le  m \left( E \right)   \lim_{k\to \infty}\sup _{E}\left| f_{k}-f \right| = 0
+    \] 从而 存在 \(  N  \), 使得 \(  \forall k\ge N  \), \( \left(  f_{k}-f \right) \in L\left( E \right)   \)  , 并且 \[
+   \lim_{k\to \infty} \int_{E}\left( f_{k}-f \right)\,\mathrm{d} x=  0
+    \]由于 \(  f_{k}\in L\left( E \right)\left( k= 1,2,\cdots  \right)    \), 我们有 \(  f= f_{k}-\left( f_{k}-f \right) \in L\left( E \right)    \), 并且 \[
+    \int_{E}f\left( x \right)\,\mathrm{d} x=  \int_{E}\left( f_{k}-f \right)\,\mathrm{d} x+ \int_{E}f_{k}\,\mathrm{d} x  ,\quad \forall k\ge N
+    \] 令 \(  k\to \infty  \), 得到 \[
+    \int_{E}f\left( x \right)\,\mathrm{d} x=  \lim_{k\to \infty}\int_{E}f_{k}\,\mathrm{d} x 
+    \] 
+\end{proof}
+\begin{exercise}{}{}
+设 $f \in L(\mathbf{R}), f_n \in L(\mathbf{R}) (n=1,2,\cdots)$, 且有
+\[
+\int_{\mathbf{R}} |f_n(x) - f(x)| \mathrm{d}x \le \frac{1}{n^2} \quad (n=1,2,\cdots),
+\]
+则
+\[
+f_n(x) \to f(x), \quad \text{a.e. } x \in \mathbf{R}.
+\]
+\end{exercise}
+\begin{proof}
+     由单调收敛定理,  \[
+    \int_{\mathbf{R}}\sum _{n = 1}^{\infty}\left| f_{n}-f \right|\,\mathrm{d} x= \sum _{n = 1}^{\infty}\int_{\mathbf{R}}\left| f_{n}-f \right|\le \sum _{n = 1}^{\infty}\frac{1 }{n^{2} }   < \infty
+    \]因此 \(  \sum _{n = 1}^{\infty}\left| f_{n} -f\right|   \)是几乎处处有限的, 即级数是几乎处处收敛的. 从而级数的尾项趋于零 \[
+    \lim_{n\to \infty}\left| f_{n}-f \right|= 0,\quad a.e. 
+    \] 
+\end{proof}
+
+\begin{exercise}{}{}
+假设有定义在 $\mathbf{R}^n$ 上的函数 $f(x)$. 如果对于任意的 $\varepsilon > 0$, 存在 $g, h \in L(\mathbf{R}^n)$, 满足 $g(x) \le f(x) \le h(x)$ ($x \in \mathbf{R}^n$), 并且使得
+\[
+\int_{\mathbf{R}^n} (h(x) - g(x)) dx < \varepsilon,
+\]
+试证明 $f \in L(\mathbf{R}^n)$.
+\end{exercise}
+
+\begin{proof}
+    对于任意的 \(  k \in \mathbb{Z} _{> 0}  \), 存在 \(  g_{k},h_{k}\in L\left( \mathbf{R}^{n} \right)   \), 满足 \(  g_{k}\le f\le h_{k}  \), 且 \[
+    \int_{\mathbf{R}^{n}}\left( h_{k}-g_{k} \right)\,\mathrm{d} x< \frac{1 }{k }  
+    \]   \(  G\left( x \right)= \sup _{k\ge 1}g_{k}\left( x \right)    \), \(  H\left( x \right)= \inf _{k\ge 1}h_{k}\left( x \right)    \). 则 \(  G,H  \)可测, 且满足 \(  G\le f\le H  \), 由于 \(  g_{k}\le G\le H\le h_{k}  \), 我们有 \[
+   \begin{aligned}
+   \int_{\mathbf{R}^{n}}\left( H-G \right)\,\mathrm{d} x &\le   
+     \int_{\mathbf{R}^{n}}\left( h_{k}-g_{k} \right)\,\mathrm{d} x< \frac{1 }{k },\quad \forall k\in \mathbb{Z} _{> 0}  
+   \end{aligned}   
+    \]    因此 \[
+    \int_{\mathbf{R}^{n}}\left(  H-G  \right)\,\mathrm{d} x= 0 
+    \]由于 \(  H-G   \ge 0\), 我们有 \(  G= H, a.e.  \). 进而由 \(  G\le f\le H  \)可知 \(  f= G  \),a.e. 由于 \(  G  \)可测,  \(  f  \)是可测的.      
+
+   接下来, 我们取 \(   \varepsilon = 1  \), \(  g,h\in L\left( \mathbf{R}^{n} \right)   \)满足 \(  g\le f\le h  \)且 \(  \int_{\mathbf{R}^{n}}\left( h-g \right)\,\mathrm{d} x<  1  \).    
+    由于 \(  \left( f-g \right)\ge 0   \) , 我们有 \[
+    \left( f-g \right)= \left| f-g \right|  
+    \]注意到 \(  0\le \left( f-g \right)\le \left( h-g \right)    \), 我们有 \[
+    \int_{\mathbf{R}^{n}}\left| f-g \right|\,\mathrm{d} x= \int_{\mathbf{R}^{n}}\left( f-g \right)\,\mathrm{d} x\le \int_{\mathbf{R}^{n}}\left( h-g \right)\,\mathrm{d} x<  1   
+    \]考虑 \[
+    \left| f \right|\le \left| f-g \right|+ \left| g \right|   
+    \] 由于 \(  g\in L\left( \mathbf{R}^{n} \right)   \), 对上式两 边积分, 得到 \[
+     \int_{\mathbf{R}^{n}}\left| f \right|\,\mathrm{d} x\le \int_{\mathbf{R}^{n}}\left| f-g \right|\,\mathrm{d} x+ \int_{\mathbf{R}^{n}}\left| g \right|   \,\mathrm{d} x<  1 + \int_{\mathbf{R}^{n}}\left| g \right|\,\mathrm{d} x< \infty 
+     \]故 \(  f \in L\left( \mathbf{R}^{n} \right)   \) 
+\end{proof}
+
+\begin{exercise}{}{}
+设 $f \in L(\mathbf{R}), p>0$, 试证明
+\[
+\lim_{n \to \infty} n^{-p} f(nx) = 0, \quad \text{a. e. } x \in \mathbf{R}.
+\]
+\end{exercise}
+\begin{proof}
+   记 \[
+   L= \int_{\mathbf{R}}\left| f \right|\,\mathrm{d} x< \infty 
+   \] 定义 \[
+    A_{n,k}= \left\{ x: \left| n^{-p}f\left( nx \right) \right|  \le  \frac{1 }{k }  \right\}
+    \]则 
+   \begin{equation}
+    \begin{aligned}
+        m\left( A_{n,k}^{c} \right)&= \int_{\left\{ \left| n^{-p}f\left( nx \right)  \right|\ge \frac{1 }{k }   \right\}} \,\mathrm{d} x\\ 
+         &=  \frac{1 }{n } \int_{\left\{ \left| n^{-p}f\left( x \right)  \right|\ge \frac{1 }{k }   \right\}}\,\mathrm{d} x\\ 
+          &\le   \frac{1 }{n }  \frac{k }{n^{p} } \int _{\left\{ \left| n^{-p}f\left( x \right)  \right|\ge  \frac{1 }{k }   \right\}}  \left| f\left( x \right)  \right|\,\mathrm{d} x\le   \frac{k }{n^{p+ 1} }L  
+    \end{aligned}
+   \end{equation}
+   
+于是由于级数 \(  \sum _{n = 1}^{\infty}\frac{kL }{n^{p+ 1} }   \)收敛,   \[
+\lim_{m\to \infty}\sum _{n = m}^{\infty}m\left( A_{n,k}^{c} \right)\le \lim_{m\to \infty}\sum _{n = m}^{\infty}\frac{kL }{n^{p+ 1} }= 0  
+\]故 \[
+m\left( \bigcap _{m = 1}^{\infty}\bigcup _{n = m}^{\infty}A_{n,k}^{c} \right)= \lim_{m \to \infty}m\left( \bigcup _{n = m}^{\infty}A_{n,k}^{c} \right)  \le \lim_{m\to \infty}\sum _{n = m}^{\infty}m\left( A_{n,k}^{c} \right)= 0 
+\]进而 \[
+m\left( \bigcup _{k = 1}^{\infty}\bigcap _{m = 1}^{\infty}\bigcup _{n = m}^{\infty}A_{n,k}^{c} \right)= 0 
+\]我们有 \[
+x\in \bigcap _{k = 1}^{\infty}\bigcup _{m = 1}^{\infty}\bigcap _{n = m}^{\infty}A_{n,k},\quad a.e.
+\]对于几乎所有的 \(  x  \), 都对于任意的 \(  k\ge 1  \), 存在 \(  m  \), 使得对于任意的 \(  n\ge m  \), 都有 \(  \left| n^{-p}f\left( nx \right)  \right|\le \frac{1 }{k }    \)    , 这表明  \[
+\lim_{n\to \infty}n^{-p}f\left( nx \right)= 0,\quad a.e. x \in \mathbf{R} 
+\]
+\end{proof}
+\begin{exercise}{}{}
+设 $x^s f(x), x^t f(x)$ 在 $(0, +\infty)$ 上可积, 其中 $s<t$, 试证明积分
+\[
+\int_{[0, +\infty)} x^u f(x) dx, \quad u \in (s, t)
+\]
+存在且是 $u \in (s, t)$ 的连续函数.
+\end{exercise}
+\begin{proof}
+
+    由于 \(  x^{s}f\left( x \right)   \)在 \(  \left( 0,+ \infty \right)   \)上 可积, \(  f  \)是在 \(  [0,+ \infty)  \)上 可测的.  
+    注意到  \[
+    \left| x^{u}f\left( x \right)  \right|\le \left( \left| x^{s} \right|+ \left| x^{t} \right|   \right)\left| f\left( x \right)  \right|   
+    \]由于 \(  x^{s}f\left( x \right)   \)和 \(  x^{t}f\left( x \right)   \)在 \(  \left( 0,+ \infty \right)   \)上均可积, 它们的绝对值函数也可积, 进而 \(  \left( \left| x ^{s}\right|+ \left| x^{t} \right|\left| f \right|    \right)   \)也可积. 故 \[
+    \int_{[0,+ \infty)}\left| x^{u}f\left( x \right) \right| \,\mathrm{d} x \le \int_{[0,+ \infty)}\left| x^{s} \right|\left| f\left( x \right)  \right|\,\mathrm{d} x+ \int_{[0,+ \infty)} \left| x^{t} \right|\left| f\left( x \right)  \right|\,\mathrm{d} x< \infty    
+    \]故 \(  x^{u}f\left( x \right)   \)在 \(  \left( 0,+ \infty \right)   \)上可积. 
+    
+    为了说明关于 \(  u  \)的连续性, 任取 \(  u\in \left( s,t \right)   \), 以及 序列 \(  \left\{  \delta _{k} \right\}  \)使得 \(  u- \delta _{k}\in \left( s,t \right)   \), \(  \lim_{k\to \infty} \delta _{k}= 0  \).     则 \(  x^{u+  \delta _{k}}f\left( x \right)   \)在 \(  \left( 0,+ \infty \right)   \)上可积, 令 \(  g_{k}= \left( x^{u+  \delta _{k}} -x^{u}\right)f\left( x \right)    \) . 则 \[
+    \left| g_{k} \right|\le 2\left( \left| x \right|^{s}+ \left| x \right|^{t}   \right)\left| f\left( x \right)  \right|   ,\quad k
+    \]又 \(  2\left( \left| x \right|^{s}+ \left| x \right|^{t}   \right)\left| f\left( x \right)  \right|    \)是可积的, 故它构成 \(  \left\{ g_{k} \right\}  \)的一个控制函数, 由控制收敛定理 \[
+    \lim_{k\to \infty}\int \left| g_{k} \right|\,\mathrm{d} x= \int \lim_{k\to \infty}\left| \left( x^{u+  \delta _{k}} -x^{u}\right)f\left( x \right) \right|    \,\mathrm{d} x= \int 0 \,\mathrm{d} x= 0
+    \]  故 \[
+    \lim_{k\to \infty}\int x^{u+  \delta _{k}}f\left( x \right)\,\mathrm{d} x= \int x^{u}f\left( x \right)\,\mathrm{d} x  
+    \]故积分关于 \(  u\in \left( s,t \right)   \)是连续的. 
+\end{proof}
+\begin{exercise}{}{}
+设 $E_1 \supset E_2 \supset \cdots \supset E_k \supset \cdots, E = \bigcap_{k=1}^{\infty} E_k, f \in L(E_k) \ (k=1, 2, \cdots)$. 试证明
+\[
+\lim_{k \to \infty} \int_{E_k} f(x) dx = \int_{E} f(x) dx.
+\]
+\end{exercise}
+
+\begin{proof}
+    令 \(  f_{k}= \chi _{E_{k}}f  \). 则在 \(  E_1  \)上恒有  \[
+    \left| f_{k} \right|= \left| \chi _{E_{k}}f \right|\le \left| f \right|   
+    \]由于 \(  f\in L\left( E_{1} \right)   \), \(  \left| f \right|\in L\left( E_{1} \right)    \). 由于 \(  \left| f \right|\in L\left( E_1 \right)    \) 故 \(  \left| f \right|   \)是 \(  \left\{ f_{k} \right\}  \)的在 \(  E_1  \)上的 控制函数. 由控制收敛定理, \[
+   \begin{aligned}
+    \lim_{k\to \infty}\int_{E_{k}}f\left( x \right)\,\mathrm{d} x=  \lim_{k\to \infty}\int \chi _{E_{k}}f\left( x \right)\,\mathrm{d} x&= \int \lim_{k\to \infty}\chi _{E_{k}}f\left( x \right)\,\mathrm{d} x \\ 
+     &= \int \chi _{\lim_{k\to \infty}E_{k}}f\left( x \right)\,\mathrm{d} x\\ 
+      &= \int \chi _{E}f\left( x \right)\,\mathrm{d} x\\ 
+       &= \int_{E}f\left( x \right)\,\mathrm{d} x   
+   \end{aligned}   
+    \]     
+\end{proof}
+\begin{exercise}{}{}
+    设 $\{f_k(x)\}$ 是 $E$ 上的非负可积函数列, 且 $f_k(x)$ 在 $E$ 上几乎处处收敛于 $f(x) \equiv 0$. 若有
+\[
+\int_E \max\{f_1(x), f_2(x), \cdots, f_k(x)\} dx \le M \quad (k=1,2,\cdots),
+\]
+试证明
+\[
+\lim_{k \to \infty} \int_E f_k(x) dx = 0.
+\]
+\end{exercise}
+\begin{proof}
+    令 \(  g_{k}= \max \left\{ f_1,f_2,\cdots ,f_{k} \right\}  \). 则 \(  \left\{ g_{k} \right\}  \)是一列非负递增的可测函数. 它的极限函数 \(  g = \lim_{k\to \infty}g_{k}  \)存在且是可测的. 由单调收敛定理, 我们有 \[
+    \int_{E}g\,\mathrm{d} x= \lim_{k\to \infty}\int_{E}g_{k}\,\mathrm{d} x= \lim_{k\to \infty} \int_{E}\max \left\{ f_1,\cdots ,f_{k} \right\}\,\mathrm{d} x\le M
+    \] 故 \(  g\in L\left( E \right)   \). \(  \left| f_{k}\left( x \right)  \right|= f_{k}\left( x \right)\le  g    ,\forall k\). 故 \(  g  \)是 \(  \left\{ f_{k} \right\}  \)的控制函数. 我们有 \[
+    \lim_{k\to \infty}\int_{E}f_{k}\left( x \right)\,\mathrm{d} x=  \int_{E}\lim_{k\to \infty}f_{k}\left( x \right) \,\mathrm{d} x
+    \]  由于 \(  f_{k}  \)在 \(  E  \)上几乎处处收敛到 \(  0  \), 故右侧积分式为零.   
+\end{proof}
+\end{document}

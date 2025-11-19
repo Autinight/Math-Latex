@@ -1,0 +1,61 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Medium Test 2022 }
+% 代靖涵 25120222201319
+
+\begin{exercise}{}{}
+设 $A, B, C$ 是两两独立的等概率事件, 且 $A \cap B \cap C = \emptyset$, 证明概率 $P(A) \le \frac{1}{2}$.
+\end{exercise}
+
+\begin{exercise}{}{}
+考虑方程 $n_1 + n_2 + \dots + n_r = n (n \ge r \ge 1)$ 的解, 假设每个 $n_i$ 独立地在 $0, 1, \dots, n$ 中随机取值, 求:
+\begin{enumerate}
+    \item[(a)] 随机得到的数组恰好是该方程的非负整数解的概率是多少?
+    \item[(b)] 随机得到的数组恰好是该方程的正整数解的概率是多少?
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{}{}
+甲袋中有 $N-1$ 个白球和 $1$ 个黑球, 乙袋中有 $N$ 个白球. 每次从甲、乙两袋中分别取出一个球并交换放入另一袋中去. 这样经过 $n$ 次, 问黑球出现在甲袋中的概率是多少?
+\end{exercise}
+
+\begin{exercise}{}{}
+甲、乙、丙三人进行某项比赛, 若三人胜每局的概率相等, 比赛规定先胜三局者为整场比赛的优胜者, 若甲胜了第一、三局, 乙胜了第二局, 问丙成为整场比赛优胜者的概率是多少?
+\end{exercise}
+
+\begin{exercise}{}{}
+设 $f(x) (0 \le x < \infty)$ 是单调非降函数, 且 $f(x) > 0$. 对随机变量 $\xi$, 若 $E(f(|\xi|)) < \infty$, 则对任意 $x > 0, P(|\xi| \ge x) \le \frac{1}{f(x)}E(f(|\xi|))$.
+\end{exercise}
+
+\begin{exercise}{}{}
+一道单选题有 $m$ 个选项, 作答的学生有 $p$ 的概率知道正确答案, 不知道答案的话就在所有选项中随机选择一个作答. 如果一名学生答对了该问题, 那么有多大概率这名学生是知道正确答案的?
+\end{exercise}
+
+\begin{exercise}{}{}
+一民航客车载有 20 位旅客自机场开出, 旅客有 10 个车站可以下车, 如到达一个车站没有旅客下车就不停车. 用 $X$ 表示停车的次数, 求 $E(X)$. (设每位旅客在各个车站下车是等可能的, 并设各旅客是否下车相互独立)
+\end{exercise}
+
+\begin{exercise}{}{}
+对任一实数 $y$, 定义
+\[
+y^+ = \begin{cases}
+y, & y \ge 0 \\
+0, & y < 0
+\end{cases}
+\]
+令 $c$ 是某常数.
+\begin{enumerate}
+    \item[(a)] 证明: $E[(Z-c)^+] = \frac{1}{\sqrt{2\pi}}e^{-c^2/2} - c(1-\Phi(c))$, 其中 $Z$ 是标准正态随机变量.
+    \item[(b)] 求出 $E[(X-c)^+]$ 的表达式, 其中 $X \sim N(\mu, \sigma^2)$.
+\end{enumerate}
+\end{exercise}
+\end{document}

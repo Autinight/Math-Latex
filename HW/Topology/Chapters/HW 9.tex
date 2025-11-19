@@ -1,0 +1,132 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{8}
+}{}
+
+\chapter{ HW 9 }
+代靖涵 25120222201319
+
+\begin{exercise}{}{}
+设 $f:X\rightarrow Y$ 连续, $x_{i}\in X, y_{i}=f(x_{i}), i=0,1$. 记 $\omega$ 是从 $x_{0}$ 到 $x_{1}$ 的道路类. 证明下面的同态图表可交换:
+\[\begin{tikzcd}
+\pi_1(X, x_0) \arrow[r, "f_ \pi "] \arrow[d, "\omega_\#"] & \pi_1(Y, y_0) \arrow[d, "(f _{ \pi }\circ \omega)_\#"] \\
+\pi_1(X, x_1) \arrow[r, "f_ \pi "] & \pi_1(Y, y_1)
+\end{tikzcd}\]
+\end{exercise}
+
+\begin{proof}
+    任取 \(  \tau \in  \pi _1 \left( X,x_0 \right)   \), 由于 \(  f_{ \pi }  \)是群同态, 我们有 \[
+   \begin{aligned}
+    \left( f_{ \pi }\circ  \omega  \right)_{\sharp }\circ f_{ \pi }\left( \tau  \right)= \left( f_{ \pi }\circ  \omega  \right)^{-1}\cdot   f_{ \pi }\left( \tau  \right)    \cdot \left( f_{ \pi }\circ  \omega  \right) & = \left( f_{ \pi }\left(  \omega ^{-1}  \right)  \right)\cdot  f_{ \pi }\left( \tau  \right)\cdot  f_{ \pi }\left(  \omega  \right)\\ 
+     &= f_{ \pi }\left(   \omega ^{-1} \cdot \tau \cdot  \omega   \right)\\ 
+      &=  f_{ \pi }\left(  \omega _{\sharp }\left( \tau  \right)  \right)  
+   \end{aligned}   
+    \] 这就说明了 \(  \left( f_{ \pi }\circ  \omega  \right)_{\sharp }\circ f_{ \pi }= f_{ \pi }\circ  \omega _{\sharp }   \). 即 图表是交换的. 
+\end{proof}
+
+\begin{exercise}{}{}
+设 $A$ 是 $X$ 的收缩核, $i:A\rightarrow X$ 是包含映射, $r:X\rightarrow A$ 是收缩映射. 证明 $\forall x_{0}\in A, i_{ \pi }:\pi_{1}(A,x_{0})\rightarrow\pi_{1}(X,x_{0})$ 是单同态, $r_{ \pi }:\pi_{1}(X,x_{0})\rightarrow\pi_{1}(A,x_{0})$ 是满同态.
+\end{exercise}
+
+\begin{proof}
+    根据收缩的定义, 我们有 \(  r\circ i= \operatorname{Id}_{A}  \). 将函子 \(   {}_{ \pi }  \)作用在两边, 得到 \[
+    \left( r\circ i \right)_{ \pi }= r_{ \pi }\circ i_{ \pi }= \operatorname{Id}_{ \pi _1 \left( A,x_0 \right) } 
+    \]  由于 \(  r_{ \pi }\circ i_{ \pi }  \)是单同态, 我们有 \(  i_{ \pi }  \)是单同态. 由于 \(  r_{ \pi }  \circ i_{ \pi }\)是满同态, 我们有 \(  r_{ \pi }  \)是满同态.    
+\end{proof}
+
+\begin{exercise}{}{}
+设 $X$ 单连通, $a,b$ 是 $X$ 中有相同起、终点的道路, 证明 $a\simeq b$.
+\end{exercise}
+
+\begin{proof}
+    设 \(  a\left( 0 \right)= b\left( 0 \right)= p    \), \(  a\left( 1 \right)= b\left( 1 \right)= q    \). 则 \(  a^{-1} \left( 0 \right)= q   \), \(  a^{-1} \left( 1 \right) =  p   \). 从而 \[
+   [a]^{-1} [b]=  [a^{-1} *b ] \in  \pi _{1}\left( X,q \right) 
+    \]    由于 \(  X  \)是单连通的,  \(   \pi _1 \left( X,q \right)\)  是平凡群, 于是 \[
+    [a]^{-1} [b]= 1\implies [a]= [b]
+    \]即 \(  a\simeq b  \). 
+\end{proof}
+
+\begin{exercise}{}{11-15-1}
+设 $\omega_{\#}, \omega'_{\#}$ 是 $x_{0}$ 到 $x_{1}$ 的两个道路类. 证明 $\omega_{\#}=\omega'_{\#}:\pi_{1}(X,x_{0})\rightarrow\pi_{1}(X,x_{1})\iff\omega\omega'^{-1}$ 在 $\pi_{1}(X,x_{0})$ 的中心里(即 $\omega\omega'^{-1}$ 与任一 $\alpha\in\pi_{1}(X,x_{0})$ 都可交换: $\omega\omega'^{-1}\alpha=\alpha\omega\omega'^{-1}$).
+\end{exercise}
+\begin{proof}
+     \[
+     \begin{aligned}
+      \omega _{\sharp }=  \omega _{\sharp }^{\prime} &\iff  \forall \tau \in  \pi _1 \left( X,x_0 \right),   \omega ^{-1}  \tau  \omega =  \left(  \omega ^{\prime}  \right)^{-1} \tau    \omega ^{\prime} 
+     \end{aligned}
+     \]对 \(   \omega ^{-1}  \tau  \omega =  \left(  \omega ^{\prime}  \right)^{-1} \tau    \omega ^{\prime}    \)两边左乘 \(  \omega     \), 右乘 \(  { \omega ^{\prime} }^{-1}   \), 得到 \[
+    \tau  \omega \left(  \omega ^{\prime}  \right)^{-1} =  \omega \left(  \omega ^{\prime}  \right)^{-1} \tau   
+     \]   因此 \[
+  \begin{aligned}
+      \omega _{\sharp }=  \omega _{\sharp }^{\prime}& \iff \forall \tau \in  \pi _1 \left( X,x_0 \right),  \tau  \omega \left(  \omega ^{\prime}  \right)^{-1} =  \omega \left(  \omega ^{\prime}  \right)^{-1} \tau     \\ 
+        &\iff  \omega \left(  \omega ^{\prime}  \right)^{-1} \in Z[ \pi _1 \left( X,x_0 \right) ] 
+  \end{aligned}   
+     \]
+\end{proof}
+\begin{exercise}{}{}
+空间X称作可缩的若恒等映射$\operatorname{id}_X$是零伦的.
+\begin{enumerate}
+    \item 证明单位区间$[0,1]$和单位闭圆盘$D^2=\{(x,y) \mid x^2+y^2 \le 1\}$都是可缩的.
+    \item 设Y是可缩空间, 证明映射类$[X, Y]$只有一个等价类.
+    \item 设X是可缩空间, Y是路径连通空间, 证明映射类$[X, Y]$只有一个等价类.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 定义映射 \(  H: [0,1]\times [0,1]\to [0,1]  \), \[
+        H\left( x,t \right)= \left( 1-t \right)x  
+        \] 则 \(  H  \)是连续映射, 使得 \[
+        H\left( \cdot ,0 \right)= \operatorname{Id}_{[0,1]},\quad H\left( \cdot ,1 \right)= 0  
+        \] 则 \(  H: \operatorname{Id}_{[0,1]}\simeq c_{0}  \). \(  \operatorname{Id}_{[0,1]}  \)是零伦的. 因此 \(  \left[ 0,1 \right]   \)可缩.
+        
+    定义映射 \(  G: D^{2}\times \mathbb{I}\to D^{2}  \), \[
+        G\left( \mathbf{x},t \right)= \left( 1-t \right)\mathbf{x}  
+        \] 则 \(  G  \)是连续映射,  使得 \[
+        G\left( \cdot ,0 \right)= \operatorname{Id}_{D^{2}} ,\quad G\left( \cdot ,1 \right)= 0 
+        \]故 \(  G  : \operatorname{Id}_{D^{2}}\simeq c_0\).  \(  \operatorname{Id}_{D^{2}}  \)是零伦, \(  D^{2}  \)可缩.
+        \item 若 \(  Y  \)是可缩的, 设 \(  \operatorname{Id}_{Y}\simeq c_{y_0}  \), 其中 \(  c_{y_0}  \)是 \(  Y  \)上取常值 \(  y_0  \)的映射.    则对于任意的 \(  f\in C\left( X,Y \right)   \), 我们有 \[
+        f= \operatorname{Id}_{Y}\circ f\simeq c_{y_0}\circ f
+        \]其中 \(  c_{y_0}\circ f  \)是\(  X  \)上的常值映射.  因此 \(  f  \)是零伦的. 这表明 \(  C\left( X,Y \right)   \)中任意映射皆零伦, 从而\(  [X,Y]  \)只有一个等价类.
+        \item 设 \(  \operatorname{Id}_{X}\simeq c_{x_0}  \), 其中 \(  c_{x_0} :X\to X \)是 取常值 \(  x_0  \)的映射.    任取 \(  f ,g\in C\left( X,Y \right)   \), 则 \[
+        f= f\circ \operatorname{Id}_{X}\simeq f\circ c_{x_0}= c^{\prime} _{f\left( x_0 \right) }
+        \]  \(  c^{\prime} _{f\left( x_0 \right) } :X\to Y \)是 取常值 \(  f\left( x_0 \right)   \) 的映射.      类似地, 我们有 \[
+        g\simeq c^{\prime} _{g\left( x_0 \right) }
+        \]由于\(  Y  \)道路连通, 存在 \(  f\left( x_0 \right)   \)到 \(  g\left( x_0 \right)   \)的道路 \(  a  \). 则 定义 \(  H: X\times \mathbb{I}\to Y  \) ,  \[
+        H\left( x,t \right)= a\left( t \right)  
+        \] 我们有 \[
+        H\left( \cdot ,0 \right)= c^{\prime} _{f\left( x_0 \right) },\quad H\left( \cdot ,1 \right)= c^{\prime} _{g\left( x_0 \right) }  
+        \]从而 \(  c^{\prime} _{f\left( x_0 \right) }\simeq c^{\prime} _{g\left( x_0 \right) }  \), 进而 \(  f\simeq g  \). 由于 \(  f,g\in C\left( X,Y \right)   \)是任取的,  这表明 \(  [X,Y]  \)只有一个等价类.   
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{exercise}{挑战题}{}
+设X是路径连通空间, $x_0, x_1$是X中任意两点, 证明基本群$\pi_1(X, x_0)$是阿贝尔群(交换群)当且仅当$x_0$和$x_1$之间的任意两个道路类$a, b$各自诱导的基本群之间的群态射相同, 即
+\[
+a_\# = b_\#: \pi_1(X, x_0) \longrightarrow \pi_1(X, x_1)
+\]
+\end{exercise}
+
+\begin{proof}
+   
+r任取 \(  X  \)上两点 \(  x_0,x_1  \).   由于 \(  X  \)是路径连通的, \(   x_0  \)和 \(  x_1  \)之间的道路类集非空. 
+   \begin{itemize}
+    \item \(  \implies   \) : 若 \(   \pi _1 \left( X,x_0 \right)   \)是阿贝尔的, 则 \(  Z[ \pi _1 \left( X,x_0 \right) ] =  \pi _1 \left( X,x_0 \right)  \).   任取 \(  x_0  \)到 \(  x_1  \)之间的两个道路类 \(  a,b  \), 我们有 \(  ab^{-1}   \in  \pi _1 \left( X,x_0 \right) \)从而     \[
+    ab^{-1} \in Z[ \pi _1 \left( X,x_0 \right) ]
+    \]   由Exercise \ref{ex:11-15-1}的充分性, 我们有 \(  a_{\sharp }= b_{\sharp }  \). 故命题的必要性成立. 
+    \item \(  \impliedby   \): 若条件成立, 则 由Exercise \ref{ex:11-15-1}的必要性,   \[
+    a b ^{-1} \in Z[ \pi _1 \left( X,x_0 \right) ],\quad \forall a,b\in  \pi _1 \left( X,\left( x_0,x_1 \right)  \right) 
+   \]由于 \(  X  \)是道路连通的, 存在 \(  x_0\)到 \(  x_1  \)的道路类 \(   \gamma   \).    则对于任意的 \(   \omega \in  \pi _1 \left( X,x_0 \right)   \),  \(   \omega  \gamma   \)也是 \(  x_0  \)到 \(  x_1  \)的道路类.    于是 取 \(  a=  \omega  \gamma   \), \(  b=  \gamma   \),我们得到 \[
+   ab^{-1} = \left(  \omega  \gamma  \right) \gamma ^{-1} =  \omega \in Z[ \pi _1 \left( X,x_0 \right) ] 
+   \]  因此 \(  Z[ \pi _1 \left( X,x_0 \right) ]=  \pi _1 \left( X,x_0 \right)   \), \(   \pi _1 \left( X,x_0 \right)   \)是阿贝尔群.  
+   \end{itemize}
+   
+\end{proof}
+\end{document}

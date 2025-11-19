@@ -1,0 +1,667 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{7}
+}{}
+
+\chapter{ HW8 }
+ 代靖涵 25120222201319
+\begin{exercise}{}{}
+在$(0,1)$上任取一点记为$X$,试求$P\left(X^2-\frac{3}{4}X+\frac{1}{8}\geq 0\right)$.
+\end{exercise}
+\begin{solution}
+      \(  X  \sim U\left( 0,1 \right) \), 则密度函数为 \(  f_{X}\equiv  1  \).  \[
+    \left\{ X^{2}-\frac{3 }{4 }X+ \frac{1 }{8 }  \right\}\cap \left( 0,1 \right)= \left( 0,\frac{1 }{4 }  \right]\cup  \left[ \frac{1 }{2 }  ,1\right)    
+    \] \[
+    \begin{aligned}
+    P\left( X^{2}-\frac{3 }{4 }X+ \frac{1 }{8 }\ge 0   \right)&= P\left( X \in \left( 0,\frac{1 }{4 }  \right]  \right)+ P\left( X \in \left[ \frac{1 }{2 },1  \right)  \right)  \\ 
+     &= \int_{\left( 0,\frac{1 }{4 }  \right] } 1\,\mathrm{d} x+ \int_{\left[ \frac{1 }{2 },1  \right) }1\,\mathrm{d} x\\ 
+      &= \frac{3 }{4 } 
+    \end{aligned}   
+    \]
+\end{solution}
+
+
+\begin{exercise}{}{}
+设$K$服从$(1,6)$上的均匀分布,求方程$x^{2}+Kx+1=0$有实根的概率.
+\end{exercise}
+
+\begin{solution}
+      我们有\(  f_{K}\equiv \frac{1 }{5 }   \).  方程在以下集合上存在实根: \[
+    \left\{ K^{2}-4\ge 0 \right\}\cap \left\{ K \in \left( 1,6 \right)  \right\}= \left\{ K\in [2,6) \right\}
+    \]设方程有实根的概率为 \(  p  \), 则  \[
+    p= P\left( K\in [2,6) \right) = \int_{[2,6)}\frac{1 }{5 }\,\mathrm{d}  \lambda = \frac{4 }{5 }  
+    \]
+\end{solution}
+
+\begin{exercise}{}{}
+若随机变量$K\sim N(\mu,\sigma^2)$,而方程$x^2+4x+K=0$无实根的概率为$0.5$,试求$\mu$.
+\end{exercise}
+
+\begin{solution}
+         \(  f_{K}\left( x \right)=  \frac{1 }{ \sigma \sqrt{2 \pi } }e^{-\frac{\left( x-\mu  \right)^{2}  }{2 \sigma ^{2} } }   \).  方程无实根, 当且仅当 \[
+    16-4K< 0\iff K> 4
+    \] 于是 \[
+    \frac{1 }{2 }= P\left( K> 4 \right)= \int_{4}^{\infty}\frac{1 }{ \sigma \sqrt{2 \pi } }e^{-\frac{\left( x-\mu  \right)^{2}  }{ 2 \sigma ^{2}} }\,\mathrm{d} x   
+    \]通过做变量替换 \(  \left( x-\mu  \right)= \mu -t   \), 我们得到 \[
+     \int_{-\infty}^{2\mu -4}\frac{1 }{ \sigma \sqrt{2 \pi } }e^{-\frac{\left( t-\mu  \right)^{2}  }{ 2 \sigma ^{2}} }\,\mathrm{d} t = \frac{1 }{2 } 
+    \] 从而 \[
+    \int_{2\mu -4}^{4}f_{K}\left( x \right)\,\mathrm{d} x= 0 
+    \]由于 \(  f_{K}  \)非负连续, 我们知道 \(  2\mu -4= 4\implies \mu = 4  \).  
+\end{solution}
+
+\begin{exercise}{}{}
+某种圆盘的直径在区间$(a,b)$上服从均匀分布,试求此种圆盘的平均面积.
+\end{exercise}
+
+\begin{solution}
+      设圆盘的直径为 \(  X  \), 则 \(  X\sim U\left( a,b \right)   \), \(  E\left( X \right)= \frac{a+ b }{2 }, \mathrm{Var}\left( X \right)= \frac{\left( b-a \right)^{2}  }{12 }      \)  . 圆盘的面积为 \(  \frac{  \pi  X^{2}}{4 }   \).   圆盘的平均面积为 \[
+    \begin{aligned}
+    E\left( \frac{ \pi X^{2} }{4 }  \right)= \frac{ \pi  }{4 }E\left( X^{2} \right)    &= \frac{ \pi  }{4 }\left( \mathrm{Var}\left( X \right)+ \left( E\left( X \right)  \right)^{2}   \right)\\ 
+     &=  \frac{ \pi  }{4 }\left( \frac{\left( b-a \right)^{2}  }{12 }+ \frac{\left( a+ b \right)^{2}  }{4 }   \right) \\ 
+      & = \frac{ \pi  }{12 }\left( a^{2}+ b^{2}+ ab \right)   
+    \end{aligned}
+    \]
+\end{solution}
+
+\begin{exercise}{}{}
+设某种商品每周的需求量$X$服从区间$(10,30)$上均匀分布,而商店进货数为区间$(10,30)$中的某一整数,商店每销售1单位商品可获利500元;若供大于求则降价处理,每处理1单位商品亏损100元;若供不应求,则可从外部调剂供应,此时每1单位商品仅获利300元.为使商店所获利润期望值不少于9280元,试确定最少进货量.
+\end{exercise}
+\begin{solution}
+          \(  X \sim U\left( 10,30 \right)   \), \(  f_{X}\equiv \frac{1 }{20 }   \)  . 设 \(  k \)为进货数,   \(  Y  \)为利润值, 则 \[
+   \begin{aligned}
+    Y&= \chi _{\left\{ k\ge X \right\}}\left(  500X-100\left( k-X \right)  \right)+ \chi _{\left\{ k\le X \right\}}\left( 500k+ 300\left( X-k \right)  \right)   \\ 
+     &= \chi _{\left\{ k\ge X \right\}}\left( 600X-100k \right)+ \chi _{\left\{ k\le X \right\}}\left( 300X+ 200k \right)  
+   \end{aligned}
+    \]期望为 \[
+\begin{aligned}
+    E\left( Y \right)&= \int_{10}^{k} \left( 600x-100k \right)\frac{1 }{20 }\,\mathrm{d} x+ \int_{k}^{30}\left( 300x+ 200k \right)   \frac{1 }{20 }\,\mathrm{d} x \\ 
+     &= \int_{10}^{k}\left( 30x-5k \right)\,\mathrm{d} x+ \int_{k}^{30}\left( 15x+ 10k \right)\,\mathrm{d} x\\ 
+      &= 15\left( k^{2}-100 \right)-5k\left( k-10 \right)+ \frac{15 }{2 }\left( 900-k^{2} \right)+ 10k\left( 30-k \right)       \\ 
+       &= -7.5k^{2}+ 350k+ 5250
+\end{aligned}    \] 
+则 \[
+E\left( Y \right)\ge 9280\iff 3k^{2}-140k+ 1612\le 0\iff \frac{62 }{3 } \le k\le 26
+\]最少进货量为\(  21  \). 
+\end{solution}
+
+
+\begin{exercise}{}{}
+统计调查表明,英格兰1875年至1951年期间在矿山发生10人或10人以上死亡的两次事故之间的时间$T$(以日计)服从均值为241的指数分布.试求$P(50<T<100)$.
+\end{exercise}
+
+\begin{solution}
+       \(  T\sim \mathrm{Exp}\frac{1 }{241 }   \). 于是 \[
+    f_{T}\left( x \right)= \begin{cases} \frac{1 }{241 }e^{-\frac{x }{241 } }  ,&x\ge 0\\ 
+     0,&x< 0\end{cases}  
+    \]则 \[
+    \begin{aligned}
+    P\left( 50< T< 100 \right)= \int_{50}^{100}\frac{1 }{241 }e^{-\frac{x }{241 } }   \,\mathrm{d} x=e^{-\frac{50 }{241 } }-e^{-\frac{100 }{241 } }
+    \end{aligned}
+    \]
+\end{solution}
+
+\begin{exercise}{}{}
+某种设备的使用寿命$X$(以年计)服从指数分布,其平均寿命为4年.制造此种设备的厂家规定,若设备在使用一年之内损坏,则可以予以调换.如果设备制造厂每售出一台设备可赢利100元,而调换一台设备制造厂需花费300元.试求每台设备的平均利润.
+\end{exercise}
+\begin{solution}
+    \(  X\sim \mathrm{Exp}\left( \frac{1 }{4 }  \right)   \). 设 \(  Y  \)为一台设备的利润, 则 \[
+  \begin{aligned}
+    Y&=  100-300\chi _{\left\{ X\le 1 \right\}} 
+  \end{aligned}
+    \]  我们有 \[
+ \begin{aligned}
+    E\left( Y \right)
+     &= 100-300 \int_{-\infty}^{1}f_{X}\left( x \right)\,\mathrm{d} x\\ 
+      &=100-300 \int_{0}^{1}\frac{1 }{4 }e^{-\frac{1 }{4 }x }\,\mathrm{d} x\\ 
+       &= 300e^{-\frac{1 }{4 } }-200
+ \end{aligned}   
+    \]为每台的平均利润.
+\end{solution}
+
+\begin{exercise}{}{}
+设顾客在某银行的窗口等待服务的时间$X$(以min计)服从指数分布,其密度函数为
+\[
+p(x) = \begin{cases}
+\frac{1}{5}e^{-\frac{x}{5}}, & x > 0, \\
+0, & \text{其他}.
+\end{cases}
+\]
+某顾客在窗口等待服务,若超过10 min他就离开.他一年要到银行5次,以$Y$表示一年内他未等到服务而离开窗口的次数,试求$P(Y\geq 1)$.
+\end{exercise}
+\begin{solution}
+    \[
+    \begin{aligned}
+    P\left( X\ge 10 \right)= \int_{10}^{\infty}\frac{1 }{5 }e^{-\frac{x }{5 } }\,\mathrm{d} x= e^{-2}   
+    \end{aligned}
+    \]于是 \(  Y\sim B\left( 5,e^{-2} \right)   \). \[
+    P\left( Y< 1 \right)= P\left( Y= 0 \right)=   \left( 1-e^{-2} \right)^{5} 
+    \]因此 \[
+    P\left( Y\ge 1 \right)= 1-\left( 1-e^{-2} \right)^{5}  
+    \] 
+\end{solution}
+
+\begin{exercise}{}{}
+设随机变量 $X$ 的密度函数为
+\[
+p(x) = \begin{cases}
+\lambda e^{-\lambda x}, & x > 0, \\
+0, & x \leqslant 0
+\end{cases}
+\quad (\lambda > 0).
+\]
+试求 $k$, 使得 $P(X > k) = 0.5$.
+\end{exercise}
+
+\begin{solution}
+     当 \(  k\le 0  \)时, \(  P\left( X> k \right)= P\left( X\ge 0 \right)= 1    \). 因此 \(  k> 0  \). 此时 \[
+    0.5= P\left( X> k \right)= \int_{k}^{\infty} \lambda e^{- \lambda x}\,\mathrm{d} x= e^{- \lambda k} 
+    \]因此 \[
+    k= \frac{\ln 2 }{ \lambda  } 
+    \]   
+\end{solution}
+
+\begin{exercise}{}{}
+设随机变量 $X$ 的密度函数为
+\[
+p(x) = \begin{cases}
+1/3, & 0 \leqslant x \leqslant 1, \\
+2/9, & 3 \leqslant x \leqslant 6, \\
+0, & \text{其他}.
+\end{cases}
+\]
+若 $P(X \geqslant k) = 2/3$, 试求 $k$ 的取值范围.
+\end{exercise}
+\begin{solution}
+    显然 \( 0< k\le 6  \). 若 \(  k\in \left( 0,1\right) \) , 则 \[
+    P\left( X\ge k \right)= \int_{k}^{1}\frac{1 }{3 }\,\mathrm{d} x+ \int_{3}^{6}\frac{2 }{9 }= 1-\frac{k }{3 }= \frac{2 }{3 }\implies k= 1     
+    \]矛盾, 因此 \(  k\ge  1  \). 
+    对于任意的 \(  1\le k\le 3  \), 我们有 \[
+    P\left( X\ge k \right)= P\left( X\ge 1 \right)-P\left( 1\le X< k \right)= \frac{2 }{3 }-0= \frac{2 }{3 }    
+    \]因此 \(  k  \)可以取 \(  \left[ 1,3 \right]   \)上的任何值.
+    若 \(  k> 3  \), 则 \[
+    P\left( X\ge k \right)= 1-P\left( X< k \right)= \frac{2 }{3 }-P\left( 3\le x< k \right)     < \frac{2 }{3 } 
+    \]因此 \(  k  \)不取任何大于3的值. 综上, 我们有 \[
+    k\in \left[ 1,3 \right] 
+    \]     
+\end{solution}
+
+\begin{exercise}{}{}
+某地区 18 岁女青年的血压 $X$ (收缩压, 以 mmHg 计) 服从 $N(110, 12^2)$. 试求该地区 18 岁女青年的血压在 100 至 120 的可能性有多大?
+\end{exercise}
+
+\begin{solution}
+令 \(  Z= \frac{X-\mu  }{12 }   \) , 则  \(  Z\sim N\left( 0,1 \right).   \) \[
+P\left( 100\le X\le 120 \right)= P\left(-\frac{5 }{6 }\le Z\le \frac{5 }{6 }    \right)  = 2\Phi \left( \frac{5 }{6 }  \right)-1 \approx 0.5934
+\]因此可能性为 \(  59.34\%  \) 
+\end{solution}
+
+\begin{exercise}{}{}
+某地抽样调查结果表明,考生的外语成绩(以百分制计)近似地服从$\mu=72$的正态分布,已知96分以上的人数占总数的2.3\%,试求考生的成绩大于等于60分的概率.
+\end{exercise}
+\begin{solution}
+    设 \(  Z= \frac{X-\mu  }{ \sigma  }   \), 则\(  Z\sim N\left( 0,1 \right)   \),  \[
+    P\left( X\ge 96 \right)= P\left( Z\ge \frac{24 }{ \sigma  }  \right)= 0.023  \iff P\left( Z\le \frac{24 }{ \sigma  }  \right)= 0.977 
+    \]由于 \(  \Phi \left( 2 \right)\approx 0.9772   \), 我们可以合理地取 \(  \frac{24 }{ \sigma  }= 2   \), 从而 \(   \sigma = 12  \). 从而 \[
+    P\left( X\ge 60 \right)=  P\left( Z\ge \frac{-12 }{12 }  \right)= P\left( Z\ge -1 \right)=   P\left( Z\le 1 \right)= \Phi \left( 1 \right)  \approx 0.84
+    \]
+\end{solution}
+
+\begin{exercise}{}{}
+设随机变量$X \sim N(3,2^2)$.
+
+\begin{enumerate}
+\item 求$P(2<X\leqslant 5)$;
+\item 求$P(|X|>2)$;
+\item 确定$c$使得$P(X>c)=P(X<c)$.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+  \begin{enumerate}
+    \item 令 \(  Z= \frac{X-3 }{2 }   \), 则 \(  Z\sim N\left( 0,1 \right)   \) \[
+    \begin{aligned}
+    P\left( 2< X\le 5 \right)&=  P\left( -\frac{1 }{2 }< Z\le 1  \right) \\ 
+     &= \Phi \left( 1 \right)-\Phi \left(-\frac{1 }{2 }  \right)\\ 
+      &= \Phi \left( 1 \right)+ \Phi \left( \frac{1 }{2 }  \right)-1 \\ 
+       &\approx 0.8413 + 0.6915 - 1 = 0.5328
+    \end{aligned}    
+    \] 
+    \item \[
+   \begin{aligned}
+    P\left( \left| X \right|> 2  \right)&= P\left( X< -2 \right)+ P\left( X> 2 \right)\\ 
+     &= P\left( Z< -\frac{5 }{2 }  \right)+ P\left( Z>  -\frac{1 }{2 }  \right)     \\ 
+      &=  \Phi \left( -\frac{5 }{2 }  \right)+ \Phi \left( \frac{1 }{2 }  \right)\\ 
+       &= 1-\Phi \left( \frac{5 }{2 }  \right)+ \Phi \left( \frac{1 }{2 }  \right)    \\ 
+        &\approx 1 - 0.9938 + 0.6915 = 0.6977.
+   \end{aligned}
+    \]
+    \item  \(  P\left( X> c \right)= P\left( X< c \right)    \)当且仅当 \[
+    P\left( Z> \frac{c-3 }{2 }  \right)= P\left( Z< \frac{c-3 }{2 }  \right)  
+    \] 使得这样的点 \(  \frac{c-3 }{2 }   \)只有 \(  \frac{c-3 }{2 }= 0   \), 从而 \(  c= 3  \).   
+  \end{enumerate}
+  
+\end{solution}
+
+\begin{exercise}{}{}
+在某场招聘人员的考试中,共有 10 000 人报考.假设考试成绩服从正态分布,且已知 90 分以上有 359 人,60 分以下有 1 151 人.现按考试成绩从高分到低分依次录用 2 500 人,试问被录用者中最低分为多少?
+\end{exercise}
+\begin{solution}
+  设 \(  X  \)为考试成绩,  设 \(  X\sim N\left( \mu , \sigma ^{2} \right)   \). 令 \(  Z= \frac{X-\mu  }{ \sigma  }   \) 则 \[
+ P\left( Z\le \frac{90-\mu  }{ \sigma  }  \right)=   P\left( X\le  90 \right)=1- 0.0359= 0.9641\approx \Phi \left( 1.8\right) 
+  \]  \[
+  P\left( Z\le  \frac{60-\mu  }{ \sigma  }  \right) = P\left( X\le 60 \right)\approx \Phi \left( -1.2 \right) 
+  \]于是 \[
+  \frac{90-\mu  }{ \sigma  }= 1.8,\quad \frac{60-\mu  }{ \sigma  }= -1.2\implies  \sigma = 10, \mu = 72  
+  \] 设最低分为 \(  k  \), 则 \[
+ P\left( Z\ge \frac{k-72 }{10 }  \right)=   P\left( X\ge k \right)= 0.25 
+  \] 于是 \[
+  P\left( Z< \frac{k-72 }{10 }  \right)= 0.75\approx \Phi \left( 0.67 \right) 
+  \]于是 \[
+  k\approx 78.7
+  \]最低分应为\(  k=78.7  \).
+\end{solution}
+
+\begin{exercise}{}{}
+设随机变量 $X$ 服从正态分布 $N(60,3^2)$,试求实数 $a,b,c,d$ 使得 $X$ 落在如下五个区间中的概率之比为 $7:24:38:24:7$.
+$$(-\infty,a], \quad (a,b], \quad (b,c], \quad (c,d], \quad (d,\infty).$$
+\end{exercise}
+\begin{solution}
+   令 \(  Z= \frac{X-60 }{3 }   \), 则 \(  Z\sim N\left( 0,1 \right)   \).  \[
+  7+ 24+ 38+ 24+ 7= 100
+  \]  则 \[
+  \Phi \left( \frac{a-60 }{3 }  \right)=  P\left( Z\le \frac{a-60 }{3 }  \right)= 0.07 \approx \Phi \left( -1.476 \right) 
+  \] \[
+  \Phi \left( \frac{b-60 }{3 }  \right)= P\left( Z\le \frac{b-60 }{3 }  \right)= 0.31 \approx \Phi \left( -0.496 \right) 
+  \] \[
+  \Phi \left( \frac{c-60 }{3 }  \right)= P\left( Z\le \frac{c-60 }{3 }  \right)=  0.69\approx \Phi \left( 0.496 \right) 
+  \] \[
+  \Phi \left( \frac{d-60 }{3 }  \right)= P\left( Z\le \frac{d-60 }{3 }  \right)= \Phi \left( 1.476 \right) 
+  \]解得 \[
+  a \approx 55.572, b \approx 58.512, c \approx 61.488, d \approx 64.428.
+  \]
+\end{solution}
+
+\begin{exercise}{}{}
+设随机变量 $X$ 与 $Y$ 均服从正态分布,$X$ 服从正态分布 $N(\mu,4^2)$,$Y$ 服从正态分布 $N(\mu,5^2)$,试比较以下 $p_1$ 和 $p_2$ 的大小.
+$$p_1 = P\{X \leqslant \mu - 4\}, \quad p_2 = P\{Y \geqslant \mu + 5\}.$$
+\end{exercise}
+
+\begin{solution}
+   设 \(  Z_1= \frac{X-\mu  }{4 }   \), \(  Z_2= \frac{X-\mu  }{5 }   \), 则 \(  Z_1,Z_2\sim N\left( 0,1 \right)   \). \[
+  p_1= P\left( Z_1\le -1 \right)= \Phi \left( -1 \right),\quad p_2= P\left( Z_2\ge 1 \right)= 1-\Phi \left( 1 \right)= \Phi \left( -1 \right)    
+  \]   因此 \[
+  p_1= p_2
+  \]
+\end{solution}
+
+\begin{exercise}{}{}
+设随机变量 $X$ 服从正态分布 $N(0,\sigma^2)$,若 $P(|X|>k) = 0.1$,试求 $P(X<k)$.
+\end{exercise}
+\begin{solution}
+   由对称性, 我们有 \[
+ 0.1=  P\left( \left| X \right|> k  \right)= 2P\left( X> k \right)= 2\left( 1-P\left( X< k \right)  \right)   
+  \]从而 \[
+  P\left( X< k \right)= 0.95 
+  \]
+\end{solution}
+
+\begin{exercise}{}{}
+设随机变量 $X$ 服从参数为 $\mu = 160$ 和 $\sigma$ 的正态分布，若要求 $P(120 < X \leq 200) \geq 0.90$，允许 $\sigma$ 最大为多少?
+\end{exercise}
+\begin{solution}
+  设 \(  Z= \frac{X-\mu  }{ \sigma  }   \), 则 \(  Z\sim N\left( 0,1 \right)   \). \[
+  \begin{aligned}
+  P\left( 120< X< 200 \right)= P\left( -\frac{40 }{ \sigma  }< Z\le \frac{40 }{ \sigma  }   \right)&= P\left( Z\le \frac{40 }{ \sigma  }  \right)-P\left( Z\le -\frac{40 }{ \sigma  }  \right)    \\ 
+   &= \Phi \left( \frac{40 }{ \sigma  }  \right)-\left( 1-\Phi \left( \frac{40 }{ \sigma  }  \right)  \right)\\ 
+    &= 2\Phi \left( \frac{40 }{ \sigma  }  \right)-1   \ge 0.9
+  \end{aligned} 
+  \]\[
+  \Phi \left( \frac{40 }{ \sigma  }  \right)\ge 0.95 \implies \frac{40 }{ \sigma  }\ge 1.645\implies  \sigma \le \frac{40 }{1.645 } \approx 24.3
+  \] \(   \sigma   \)最大为 \(40/  \Phi ^{-1} \left( 0.95 \right)   \)  , 约为 \(  24.3  \) 
+\end{solution}
+
+\begin{exercise}{}{}
+设随机变量 $X$ 服从伽马分布 $Ga(2, 0.5)$，试求 $P(X < 4)$.
+\end{exercise}
+\begin{solution}
+   \[
+  f_{X}\left( x \right)= \begin{cases} \frac{ \frac{1 }{2^{2} }  }{ \Gamma \left( 2 \right)  } x e^{-\frac{1 }{2 }x },&x> 0\\ 
+   0, &\text{otherwise} \end{cases}  
+  \]于是 \[
+  \begin{aligned}
+  P\left( X< 4 \right)=  \int_{0}^{4}f_{X}\left( x \right)\,\mathrm{d} x=\frac{1 }{ 4}   \int_{0}^{4}xe^{-\frac{1 }{2 }x }\,\mathrm{d} x=1-3e^{-2}
+  \end{aligned}
+  \] 
+\end{solution}
+
+
+\begin{exercise}{}{}
+若一次电话通话时间 $X$ (以 min 计) 服从参数为 0.25 的指数分布, 试求一次通话的平均时间.
+\end{exercise}
+\begin{solution}
+   \(  X\sim  \mathrm{Exp}\left( 0.25 \right) \),  \[
+  E\left( X \right)= \frac{1 }{ \lambda  }= \frac{1 }{0.25 }= 4   
+  \]因此一次通话平均时间为4分钟. 
+\end{solution}
+
+\begin{exercise}{}{}
+写出以下正态分布的均值和标准差:
+\[
+p_1(x) = \frac{1}{\sqrt{\pi}} e^{-(x^2 + 4x + 4)}, \quad p_2(x) = \sqrt{\frac{2}{\pi}} e^{-2x^2}, \quad p_3(x) = \frac{1}{\sqrt{\pi}} e^{-x^2}.
+\]
+\end{exercise}
+\begin{solution}
+ 服从 \(  N\left( \mu ,  \sigma^{2}  \right)   \)的随机变量的概率密度函数为  \[
+ \frac{1 }{\sqrt{2 \pi } \sigma  }e^{-\frac{\left( x-\mu  \right)^{2}  }{2 \sigma ^{2} } } 
+ \]其中 \(  \mu   \)为均值,  \(   \sigma   \)为标准差.  
+ \begin{enumerate}
+  \item  \[
+  p_1\left( x \right)= \frac{1 }{\sqrt{2 \pi } \frac{1 }{\sqrt{2} }  }e^{- \frac{\left( x+ 2 \right)^{2}  }{ 2\cdot  \left( \frac{1 }{\sqrt{2} }  \right)^{2} } }  
+  \] 这里 \(  \mu = -2  \), \(   \sigma = \frac{1 }{\sqrt{2} }   \)  
+  \item \[
+  p_2\left( x \right)= \frac{1 }{\sqrt{2 \pi } \frac{1 }{2 }  }e^{-\frac{x^{2} }{2\cdot \left( \frac{1 }{2 }  \right)^{2}   } }  
+  \]这里 \(  \mu = 0  \), \(   \sigma = \frac{1 }{2 }   \)\
+  \item \[
+  p_3\left( x \right)= \frac{1 }{\sqrt{2 \pi } \frac{1 }{\sqrt{2} }  }e^{-\frac{x^{2} }{2 \left( \frac{1 }{\sqrt{2} }  \right)^{2}  } }  
+  \]  这里 \(  \mu = 0  \), \(   \sigma = \frac{1 }{\sqrt{2} }   \)  
+ \end{enumerate}
+ 
+\end{solution}
+
+\begin{exercise}{}{}
+设随机变量 $X \sim N(\mu, \sigma^2)$, 求 $E(|X-\mu|)$.
+\end{exercise}
+\begin{solution}
+   \[
+   E\left(\left| X-\mu  \right|  \right)= E\left( \left( X-\mu  \right)^{+ }  \right)+ E\left( \left( X-\mu  \right)^{-}  \right)
+   \]由正态分布的对称性,  \[
+   E\left( \left( X-\mu  \right)^{+ }  \right)= E \left( \left( X-\mu  \right)^{-}  \right) 
+   \]而 \[
+   \begin{aligned}
+   E\left( \left( X-\mu  \right)^{+ }  \right)&= E\left( \chi _{X\ge \mu }\left( X-\mu  \right)  \right)   \\ 
+    &=  \int \chi _{X\ge \mu }\left( X-\mu  \right)\,\mathrm{d} P\\ 
+     &= \int_{\mu }^{\infty} \left( x-\mu  \right) \frac{1 }{\sqrt{2 \pi  } \sigma }e^{-\frac{\left( x-\mu  \right)^{2}  }{2  \sigma ^{2} } }\,\mathrm{d} x\\ 
+      &= \int_{0}^{\infty} x\frac{1 }{\sqrt{2 \pi } \sigma  }  e^{-\frac{x^{2} }{2 \sigma ^{2} } }\,\mathrm{d} x\\ 
+       &= \frac{ \sigma  }{\sqrt{2 \pi } } \int_{0}^{\infty} e^{-\left( \frac{x }{\sqrt{2} \sigma  }  \right)^{2} } \,\mathrm{d} \left( \left( \frac{x }{\sqrt{2} \sigma  }  \right)^{2}  \right)   \\ 
+        &= \frac{ \sigma  }{\sqrt{2 \pi } } 
+   \end{aligned}
+   \]于是 \[
+   E\left( \left| X-\mu  \right|  \right)=  \frac{\sqrt{2} \sigma  }{\sqrt{ \pi }  }  
+   \]
+\end{solution}
+
+\begin{exercise}{}{}
+某地区漏缴税款的比例 $X$ 服从参数 $a=2, b=9$ 的贝塔分布, 试求此比例小于 10\% 的概率及平均漏缴税款的比例.
+\end{exercise}
+\begin{solution}
+  \(  X\sim Beta \left( 2,9 \right)   \), \[
+  P\left( X\le 0.1 \right)=  \int_{0}^{0.1}\frac{x \left( 1-x \right)^{8} }{Beta \left( 2,9 \right)  }\,\mathrm{d} x 
+  \] 其中 \[
+  Beta\left( 2,9 \right)= \frac{ \Gamma \left( 2 \right) \Gamma \left( 9 \right)   }{ \Gamma \left( 11 \right)  }= \frac{8! }{10! }= \frac{1 }{90 }    
+  \] \[
+  \begin{aligned}
+  \int_{0}^{0.1}x\left( 1-x \right)^{8}\,\mathrm{d} x = \int_{0.9}^{1}\left( 1-x \right)x^{8}\,\mathrm{d} x=  \frac{1 - 1.9 \cdot 0.9^9}{90}
+  \end{aligned}        
+  \]于是 \[
+  P\left( X\le 0.1 \right)= 1-1.9\cdot 0.9^{9}\approx 0.26
+  \]平均漏税比例为 \[
+  E\left( X \right)=  \frac{\alpha  }{\alpha + \beta  }= \frac{2 }{2+ 9 }= \frac{2 }{11 }   
+  \]
+\end{solution}
+
+\begin{exercise}{}{}
+某班级学生中数学成绩不及格的比率 $X$ 服从 $a=1, b=4$ 的贝塔分布, 试求 $P(X>E(X))$.
+\end{exercise}
+\begin{solution}
+  \(  X\sim Beta\left( 1,4 \right)   \) \[
+  E\left( X \right)= \frac{a }{a+ b }= 0.2  
+  \] \[
+\begin{aligned}
+  P\left( X> E\left( X \right)  \right)&= 1-P\left( X\le E\left( X \right)  \right)   \\ 
+   &= 1-4\int_{0}^{0.2} \frac{x^{0}\left( 1-x \right)^{3}  }{Beta\left( 1,4 \right)  }=1-4 \int_{0}^{0.2}\left( 1-x \right)^{3}=1-4 \int_{0.8}^{1}x^{3}\,\mathrm{d} x\\ 
+    &= 0.8^{4}
+\end{aligned}
+  \] 
+\end{solution}
+
+\begin{exercise}{}{}
+已知离散随机变量 $X$ 的分布列为
+\begin{center}
+\begin{tabular}{c|ccccc}
+$X$ & $-2$ & $-1$ & $0$ & $1$ & $3$ \\
+\hline
+$P$ & $\frac{1}{5}$ & $\frac{1}{6}$ & $\frac{1}{5}$ & $\frac{1}{15}$ & $\frac{11}{30}$
+\end{tabular}
+\end{center}
+试求 $Y = X^2$ 与 $Z = |X|$ 的分布列.
+\end{exercise}
+\begin{proof}
+
+
+\begin{tabular}{c|ccccc}
+$Y$ & $0$ & $1$ & $4$ & $9$ \\
+\hline
+$P$ & $\frac{1}{5}$ & $\frac{7}{30}$ & $\frac{1}{5}$ &\(  \frac{11 }{30 }   \) 
+\end{tabular}
+
+  
+ 
+\begin{tabular}{c|ccccc}
+$Z$ & $0$ & $1$ & $2$ & $3$ \\
+\hline
+$P$ & $\frac{1}{5}$ & $\frac{7}{30}$ & $\frac{1}{5}$ &\(  \frac{11 }{30 }   \) 
+\end{tabular}
+
+\end{proof}
+\begin{exercise}{}{}
+已知随机变量 $X$ 的密度函数为
+$$p(x) = \dfrac{2}{\pi} \cdot \dfrac{1}{e^x + e^{-x}}, \quad -\infty < x < \infty.$$
+试求随机变量 $Y = g(X)$ 的概率分布, 其中
+$$g(x) = \begin{cases}
+-1, & \text{当 } x < 0, \\
+1, & \text{当 } x \geq 0.
+\end{cases}$$
+\end{exercise}
+\begin{solution}
+  \[
+  P\left( Y= -1 \right)= P\left( X< 0 \right)= \int_{-\infty}^{0}p\left( x \right)\,\mathrm{d} x
+  \] \[
+  P\left( Y= 1 \right)= P\left( X\ge 0 \right)= \int_{0}^{\infty}p\left( x \right)\,\mathrm{d} x
+  \]注意到 \(  p\left( x \right)   \)是偶函数, 我们有 \[
+  P\left( Y= -1 \right)= \int_{-\infty}^{0}p\left( x \right)\,\mathrm{d} x= \int_{0}^{\infty}p\left( x \right)\,\mathrm{d} x= P\left( Y= 1 \right)    
+  \]又 \[
+  P\left( Y= -1 \right)+ P\left( Y= 1 \right)= 1  
+  \]我们有 \[
+  P\left( Y= -1 \right)= P\left( Y= 1 \right)= 0.5  
+  \] 即为 \(  Y  \)的概率分布. 
+\end{solution}
+
+\begin{exercise}{}{}
+设随机变量 $X \sim U(0,1)$, 试求 $1-X$ 的分布.
+\end{exercise}
+\begin{solution}
+   设 \(  F_{X}  \)是\(  X  \)的分布函数\[
+   F_{X}\left( x \right)= \begin{cases} 0,& x \le 0\\ 
+    x,& 0\le x\le 1\\ 
+     1,& x\ge 1 \end{cases}  
+   \] 则   \[
+ F_{1-X}\left( x \right)=   P\left( \left( 1-X \right)\le x  \right)= P\left( X\ge 1-x \right)= 1-P\left( X< 1-x \right)   
+  \]由于 \( F_{X}  \)是连续的, \[
+  F_{1-X}\left( x \right)= 1- F_{X}\left( 1-x \right)  = \begin{cases} 1-1= 0,&x\le 0\\ 
+   1-\left( 1-x \right)= x,& 0\le x\le 1\\ 
+    1-0=  1,& x\ge 1  \end{cases} 
+  \]
+\end{solution}
+
+\begin{exercise}{}{}
+设圆的直径服从区间$(0,1)$上的均匀分布, 求圆的面积的密度函数.
+\end{exercise}
+\begin{solution}
+  设\(  X  \)为圆的直径, 设 \(  Y  \)为圆的面积, 则 \(  Y= \frac{ \pi X^{2} }{4 }   \).  \(  Y  \)的取值为 \(  \left( 0, \frac{ \pi  }{4 }  \right)   \), 因此 \[
+  F\left( x \right)= 0, \forall  x\in \left( -\infty,0 \right)  ,\quad F\left( x \right)= 1, \forall x \in \left( \frac{ \pi  }{4 },\infty  \right)  
+  \] 对于任意的 \(  x\in [0,\frac{ \pi  }{4 } ]  \)  \[
+ \begin{aligned}
+  F_{Y}\left( x \right)= P\left( Y\le x \right)&= P\left( \frac{ \pi X^{2} }{4 }\le x  \right)   \\ 
+   &= P\left( X\le \sqrt{\frac{4x }{ \pi  } } \right) \\ 
+    &= F_{X}\left( \frac{\sqrt{4x} }{\sqrt{ \pi }  }  \right) \\ 
+     &= \frac{\sqrt{4x} }{ \sqrt{ \pi }  } = \frac{2 \sqrt{x} }{ \sqrt{ \pi }  } 
+ \end{aligned}
+  \]   于是 \[
+  p_{Y}\left( x \right)= \frac{\mathrm{d}}{\mathrm{d}x} F_{Y}= \frac{1 }{\sqrt{ \pi x} },\forall x\in \left( 0,\frac{ \pi  }{4 }  \right)  
+  \] 因此 \[
+  p_{Y}\left( x \right)= \begin{cases} \frac{1 }{\sqrt{ \pi x} }, &x\in \left( 0,\frac{ \pi  }{4 }  \right)   \\ 
+   0,& \text{otherwise}\end{cases}  
+  \]是 \(  Y  \)的一个概率密度函数. 
+\end{solution}
+
+\begin{exercise}{}{}
+设随机变量 $X$ 的密度函数为
+
+\[
+p_X(x) = \begin{cases}
+\dfrac{3}{2}x^2, & -1 < x < 1, \\
+0, & \text{其他}.
+\end{cases}
+\]
+
+试求下列随机变量的分布:
+
+\begin{enumerate}
+    \item[(1)] $Y_1 = 3X$;
+    \item[(2)] $Y_2 = 3 - X$;
+    \item[(3)] $Y_3 = X^2$.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+  \[
+    P\left( X\le t \right)= \int_{-1}^{t}\frac{3 }{2 }x^{2}\,\mathrm{d} x = \frac{1 }{2 }t^{3}+ \frac{1 }{2 }  ,\forall t\ge -1  
+    \] \[
+    P\left( X\le t \right)= 0, \forall t< -1 
+    \]于是 \[
+    F_{X}\left( t \right)= \begin{cases} 1,& t> 1\\ 
+     \frac{1 }{2 }t^{3}+ \frac{1 }{2 }, &-1\le t\le 1\\ 
+     0,&t< -1   \end{cases}  
+    \]
+  \begin{enumerate}
+    \item  \[
+    F_{Y_1}\left( t \right)= P\left( 3X\le t \right)= P\left( X\le \frac{1 }{3 }t  \right)= F_{X}\left( \frac{1 }{3 }t  \right)= \begin{cases} 1,&t> 3\\ 
+     \frac{1 }{54 }t^{3}+ \frac{1 }{2 }, &-3\le t\le 3\\ 
+     0,&t< -3    \end{cases}     
+    \]
+    \item \[
+    \begin{aligned}
+    F_{Y_2}\left( t \right)&= P\left( 3-X\le t \right)= P\left( X\ge 3-t \right)\\ 
+     &= 1-P\left( X< 3-t \right)\\ 
+      &= 1-F_{X}\left( 3-t \right)\\ 
+       &= \begin{cases} 1,&t>  4\\ 
+        \frac{1 }{2 } -\frac{1 }{2 }\left( 3-t \right)^{3}, & 2\le t\le 4  \\ 
+         0,&t< 2  \end{cases}    
+    \end{aligned}  
+    \]
+    \item \[
+    \begin{aligned}
+    F_{Y_3}\left( t \right)= P\left( X^{2}\le t \right) & = \begin{cases} P\left( -\sqrt{t}\le X\le \sqrt{t} \right),&t> 0\\ 
+     0,&t\le 0  \end{cases} \\ 
+      &= \begin{cases} F_{X}\left( \sqrt{t} \right)-F_{X}\left( -\sqrt{t} \right),&t> 0\\ 
+       0,& t\le 0   \end{cases}\\ 
+        &= \begin{cases} 1,& t> 1\\ 
+         t^{\frac{3}{2}},& 0< t\le 1\\ 
+          0,&t\le 0 \end{cases}  
+    \end{aligned}
+    \]
+  \end{enumerate}
+  
+\end{solution}
+
+\begin{exercise}{}{}
+设随机变量 $X \sim N(0, \sigma^2)$, 求 $Y = X^2$ 的分布.
+\end{exercise}
+\begin{proof}
+  \[
+  P\left( Y\le t \right)= \begin{cases} 0,& t\le 0\\ 
+   P\left(-\sqrt{t}\le  X\le \sqrt{t} \right),& t> 0  \end{cases}  
+  \]其中 \[
+  \begin{aligned}
+  P\left( -\sqrt{t}\le X\le \sqrt{t} \right)= \int_{-\sqrt{t}}^{\sqrt{t}}\frac{1 }{\sqrt{2 \pi } \sigma  }e^{-\frac{x^{2} }{2 \sigma ^{2} } }   \,\mathrm{d} x&= 2\int_{0}^{\sqrt{t}}\frac{1 }{\sqrt{2 \pi } \sigma  }e^{-\frac{x^{2} }{2 \sigma ^{2} } }\,\mathrm{d} x \\ 
+   &= \int_{0}^{t} \frac{1 }{\sqrt{2 \pi } \sigma  }x^{-\frac{1 }{2 } }e^{-\frac{x }{2 \sigma ^{2} } } \,\mathrm{d}x\\ 
+    &= \int_{0}^{t}\frac{\left( \frac{1 }{2 \sigma ^{2} }  \right)^{\frac{1 }{2 } }  }{  \Gamma \left( \frac{1 }{2 }  \right) }x^{\left( \frac{1 }{2 }-1  \right) }e^{-\frac{1 }{2 \sigma ^{2} }x } 
+  \end{aligned}
+  \]这表明 \[
+  Y\sim Gamma(\frac{1 }{2 }, \frac{1 }{2 \sigma ^{2} }  )
+  \]\(  Y  \)的概率密度函数为  \[
+  f_{Y}\left( x \right)= \begin{cases} \frac{1 }{\sqrt{2 \pi } \sigma } x^{-\frac{1 }{2 } }e^{-\frac{x }{2 \sigma ^{2} } },& x> 0\\ 
+   0,& x\le 0 \end{cases}  
+  \]
+\end{proof}
+\begin{exercise}{}{}
+设随机变量 $X \sim N(\mu, \sigma^2)$, 求 $Y = e^X$ 的数学期望与方差.
+\end{exercise}
+
+\begin{proof}
+  \[
+ \begin{aligned}
+  E\left( Y \right)&=  \int e^{X}\,\mathrm{d} P\\ 
+   &= \int e^{x} \,\mathrm{d} P_{X}\\ 
+    &=  \int_{-\infty}^{\infty}\frac{1 }{ \sigma \sqrt{2 \pi } }e^{-\frac{\left( x-\mu  \right) ^{2} }{2  \sigma ^{2}} }e^{x}\,\mathrm{d} x\\ 
+     &= \int_{-\infty}^{\infty}\frac{1 }{ \sigma \sqrt{2 \pi } }e^{-\frac{\left( x-\left( \mu +  \sigma ^{2} \right)  \right)^{2}  }{2 \sigma ^{2} } }e^{\mu + \frac{ \sigma ^{2} }{2 } } \,\mathrm{d} x\\ 
+      &= e^{\mu + \frac{ \sigma ^{2} }{2 } } 
+ \end{aligned}  
+  \] \[
+  \mathrm{Var}\left( Y \right)= E\left( Y^{2} \right)-\left( E\left( Y \right)  \right)^{2}   
+  \]其中 \[
+  \begin{aligned}
+  E\left( Y^{2} \right)&= \int e^{2x}\,\mathrm{d} P_{X}  \\ 
+   &=  \int_{-\infty}^{\infty}\frac{1 }{ \sigma \sqrt{2 \pi } }e^{-\frac{\left( x-\mu  \right)^{2}  }{2 \sigma ^{2} } }e^{2x}\,\mathrm{d} x\\ 
+    &= \int_{-\infty}^{\infty}\frac{1 }{ \sigma \sqrt{2 \pi } }e^{-\frac{\left( x-\left( \mu + 2 \sigma ^{2} \right)  \right)^{2}  }{2 \sigma ^{2} } }e^{2\mu + 2 \sigma ^{2}}\,\mathrm{d} x\\ 
+     &= e^{2\mu + 2 \sigma ^{2}}  
+  \end{aligned}
+  \]于是 \[
+  \mathrm{Var}\left( Y \right)= e^{2\mu + 2 \sigma ^{2}}- e^{2\mu +  \sigma ^{2}}= e^{2\mu +  \sigma ^{2}}\left( e^{ \sigma ^{2}}-1 \right)  
+  \]
+\end{proof}
+\begin{exercise}{}{}
+设随机变量 $X$ 服从参数为 2 的指数分布, 试证 $Y_1 = e^{-2X}$ 和 $Y_2 = 1 - e^{-2X}$ 都服从区间 $(0,1)$ 上的均匀分布.
+\end{exercise}
+
+\begin{proof}
+  \(  X\sim exp\left( 2 \right)   \), 于是 \[
+  p_{X}\left( x \right)= \begin{cases}  2e^{- 2 x},&x\ge 0\\ 
+   0,&x< 0 \end{cases}  ,\quad F_{X}\left( x \right)= \begin{cases} 0,&x< 0\\ 
+    1-e^{-2x},&x> 0 \end{cases}  
+  \] \[
+  P\left( Y_1\le t \right)= 0,\quad t< 0 
+  \]   \[
+  P\left( Y_1\le t \right)= P\left( e^{-2X}\le t \right)= P\left( -2X\le \ln t \right)= P\left( X\ge \frac{\ln t }{-2 }  \right)  = 1- F_{X}\left( \frac{\ln t }{-2 }  \right)   
+  \]于是 \[
+  F_{Y_1}\left( x \right)= \begin{cases} 1,&t> 1\\ 
+ t,&0< t\le 1\\ 
+  0,&t\le 0 \end{cases}  ,\quad f_{Y_1}\left( x \right) = \begin{cases} 1,& t\in \left( 0,1 \right)\\ 
+   0, \text{otherwise}  \end{cases} 
+  \]这表明 \(  Y_1  \)服从均匀分布. 
+  
+  注意到 \(  Y_2= 1-Y_1  \),  \[
+  P\left( Y_2\le t \right)= P\left( 1-Y_1\le t \right)= 1-P\left( Y_1\le 1-t \right)   
+  \] 于是 \[
+  F_{Y_2}\left( t \right)= 1-F_{Y_1}\left( 1-t \right)  
+  \]从而 \[
+  f_{Y_2}\left( t \right)= \frac{\mathrm{d}}{\mathrm{d}t}\left( 1-F_{Y_1}\left( 1-t \right)  \right)=  f_{Y_1}\left( 1-t \right) = \begin{cases} 1,&t\in \left( 0,1 \right)\\ 
+   0,&\text{otherwise}  \end{cases}   
+  \]\(  Y_2  \)也服从均匀分布. 
+\end{proof}
+\begin{exercise}{}{}
+设随机变量 $Y \sim LN(5, 0.12^2)$, 试求 $P(Y < 188.7)$.
+\end{exercise}
+\begin{solution}
+  $P(Y < 188.7) = P(\ln(Y) < \ln(188.7))$令 $Z = \frac{\ln(Y) - \mu}{\sigma}$,则 $$P(Y < 188.7) = P\left(\frac{\ln(Y) - 5}{0.12} < \frac{\ln(188.7) - 5}{0.12}\right) = P\left(Z < \frac{\ln(188.7) - 5}{0.12}\right)$$
+\end{solution}
+其中 \[
+\frac{\ln(188.7) - 5}{0.12} \approx 2
+\]于是 \[
+P(Y < 188.7) \approx \Phi \left( 2 \right)  \approx 0.9772
+\]
+\end{document}

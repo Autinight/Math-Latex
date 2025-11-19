@@ -1,0 +1,577 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{8}
+}{}
+
+\chapter{ HW9 }
+ 代靖涵 25120222201319
+\begin{exercise}{}{}
+设随机变量 $X \sim U(a,b)$, 对 $k=1,2,3,4$, 求 $\mu_k = E(X^k)$ 与 $\nu_k = E(X - E(X))^k$. 进一步求此分布的偏度系数和峰度系数.
+\end{exercise}
+
+\begin{proof}
+对于任意的  \(  k\in \mathbb{Z} _{+ }  \),       \[
+  \begin{aligned}
+   \mu _{k}=   E\left( X^{k} \right)&=  \int X^{k}\,\mathrm{d} P \\ 
+      &= \int x^{k}\,\mathrm{d} P_{X}\\ 
+       &=  \int_{a}^{b} x^{k} \frac{1 }{b-a }\,\mathrm{d} x \\ 
+        &= \frac{1 }{k+ 1 } \left( b^{k+ 1}-a^{k+ 1} \right) \frac{1 }{b-a }\\ 
+         &=\frac{1 }{k+ 1 }\frac{b^{k+ 1}-a^{k+ 1} }{\left( b-a \right)  }   
+  \end{aligned} 
+     \]  \[
+     \nu _{k}= \left( E\left( X-E\left( X \right)  \right)^{k}  \right) 
+     \] \[
+     E\left( X \right)= \frac{1 }{2 }\left( b+ a \right),\quad Y= X-E\left( X \right)\sim     U\left( \frac{1 }{2 }\left( a-b \right),\frac{1 }{2 } \left( b-a \right)    \right)  
+     \]于是 \[
+     \nu _{k}= \frac{1 }{k+ 1 } \frac{1 }{2^{k+ 1} }\frac{\left( b-a \right)^{k+ 1}+ \left( -1 \right)^{k}\left( b-a \right)^{k+ 1}    }{ b-a}   = \frac{1+ \left( -1 \right)^{k}  }{2^{k+ 1}\left( k+ 1 \right)   } \left( b-a \right)^{k}  
+     \]带入 \(  k= 1,2,3,4  \)即可.
+     
+     偏度系数为 \[
+      \beta _{s} = \frac{\nu_3 }{ \left( \nu _2  \right)^{\frac{3 }{2 } }  }= 0
+     \]峰度系数为 \[
+     \beta _k = \frac{\nu _4  }{\left( \nu _2  \right)^{2}  }=\frac{ \frac{1 }{2^{4}5 }\left( b-a \right)^{4}    }{\left( \frac{1 }{12 }\left( b-a \right)^{2}   \right)^{2}  }= \frac{2^{4}3^{2} }{2^{4}5 }= \frac{9 }{5 } 
+     \]
+\end{proof}
+\begin{exercise}{}{}
+求以下分布的中位数:
+
+\begin{enumerate}
+    \item 区间$(a,b)$上的均匀分布;
+    \item 正态分布$N(\mu,\sigma^2)$;
+    \item 对数正态分布$LN(\mu,\sigma^2)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+     \begin{enumerate}
+        \item  由\[
+        F\left( x_{0.5} \right)= \int_{a}^{x_{0.5}}\frac{1 }{b-a }\,\mathrm{d} x= 0.5  
+        \]可得 \[
+        \frac{x_{0.5}-a }{b-a }= \frac{1 }{2 }\implies x_{0.5}= \frac{1 }{2 }\left( a+ b \right)    
+        \]
+        \item 由正态分布的对称性,  \[
+        P\left( X\le \mu  \right)= P\left( X\ge \mu  \right)= 0.5  
+        \]因此 \[
+        x_{0.5}= \mu 
+        \]
+        \item 设 \(  Z \in \operatorname{LN}\left( \mu , \sigma ^{2} \right)   \) , 则 \(  Y= \log Z\sim N\left( \mu , \sigma ^{2} \right)   \)  \[
+        P\left( Z\le x_{0.5} \right)= 0.5\implies P\left( Y\le \log x_{0.5} \right)= 0.5\implies \log x_{0.5}= \mu   
+        \]因此 \[
+        x_{0.5}= e^{\mu }
+        \]
+     \end{enumerate}
+     
+\end{proof}
+ 
+\begin{exercise}{}{}
+设随机变量 $X \sim Exp(\lambda)$, 对 $k=1,2,3,4$, 求 $\mu_k = E(X^k)$ 与 $\nu_k = E(X - E(X))^k$. 进一步求此分布的变异系数, 偏度系数和峰度系数.
+\end{exercise}
+ \begin{solution}
+    \[
+ \mu _{k}=  \int_{0}^{\infty}x^{k}  \lambda e^{-\lambda x}\,\mathrm{d} x= \frac{1 }{ \lambda ^{k} } \int_{0}^{\infty}\left(  \lambda x \right)^{k}e^{- \lambda x}\,\mathrm{d}  \lambda x=  \frac{ \Gamma \left( k+ 1 \right)  }{  \lambda ^{k}}   
+ \]于是 \[
+ \mu _1 = \frac{1 }{ \lambda  },\quad \mu _2 = \frac{2 }{ \lambda ^{2} },\quad \mu _3 = \frac{6 }{ \lambda ^{3} },\quad \mu _4 = \frac{24 }{ \lambda ^{4} }    
+ \] \[
+ \nu _1 = 0,\quad \nu _2 = E\left( X^{2} \right)-\left( E\left( X \right)  \right)^{2}= \mu _2 -\mu _1 ^{2}= \frac{1 }{ \lambda ^{2} }   
+ \] \[
+\begin{aligned}
+ \nu  _3& = E\left( \left( X-\mu _1  \right)^{3}  \right) \\ 
+  &= E\left( X^{3}-3\mu _1 X^{2}+ 3\mu _1 ^{2}X - \mu _1 ^{3}\right)\\ 
+   &= \mu _3 -3\mu _1 \mu _2 + 3\mu _1 ^{3} -\mu _1 ^{3}\\ 
+    &= \frac{6 }{ \lambda ^{3} }- \frac{6 }{ \lambda ^{3} }  + \frac{2 }{ \lambda ^{3} }\\ 
+     &= \frac{2 }{ \lambda ^{3} } 
+\end{aligned}
+ \] \[
+ \begin{aligned}
+ \nu _4 &= E\left[ \left( X-\mu _1  \right)^{4}  \right] \\ 
+  &= E\left( X^{4}- 4\mu _1 X^{3}+ 6\mu _1 ^{2}X^{2} - 4\mu _1 ^{3}X+ \mu _1 ^{4}\right)\\ 
+   &= \mu _4 -4\mu _1 \mu _3 + 6\mu _1 ^{2}\mu _2 -4\mu _1 ^{4}+ \mu _1 ^{4}\\ 
+    &= \frac{24 }{ \lambda ^{4} }-\frac{24 }{ \lambda ^{4} }+ \frac{12 }{ \lambda ^{4} }-\frac{3 }{ \lambda ^{4} }\\ 
+     &= \frac{9 }{ \lambda ^{4} }      
+ \end{aligned} 
+ \]变异系数为 \[
+ C_{v}\left( X \right)= \frac{\sqrt{\nu _2 } }{\mu _1  }= 1  
+ \]偏度系数为 \[
+ \beta _{s} = \frac{ \nu _3 }{\left( \nu _2  \right)^{\frac{3 }{2 } }  }= 2 
+ \]峰度系数为 \[
+ \beta _k = \frac{\nu _4  }{\left( \nu _2  \right)^{2}  }= 9
+ \]
+ \end{solution}
+ 
+\begin{exercise}{}{}
+设随机变量 $X$ 服从正态分布 $N(10,9)$, 试求 $x_{0.1}$ 和 $x_{0.9}$.
+\end{exercise}
+\begin{solution}
+      令 \(  Y= \frac{X-10 }{3 }   \), 则 \(  Y\sim N\left( 0,1 \right)   \). \[
+    0.1= P\left( X\le x_{0.1} \right)=  P\left( Y\le \frac{x_{0.1}-10 }{3 }  \right) 
+    \]  于是 \[
+  \frac{  x_{0.1}-10 }{3 }= \Phi ^{-1} \left( 0.1 \right)\implies x_{0.1}= 3\Phi ^{-1} \left( 0.1 \right)+ 10   \approx 6.1552
+    \]类似地, \[
+    x_{0.9}= 3 \Phi  ^{-1} \left( 0.9 \right)+ 10 \approx 13.8448
+    \]
+\end{solution}
+
+\begin{exercise}{}{}
+设随机变量 $X$ 服从双参数韦布尔分布, 其分布函数为
+\[
+F(x) = 1 - \exp\left\{-\left(\frac{x}{\eta}\right)^m\right\}, \quad x > 0,
+\]
+其中 $\eta>0, m>0$. 试写出该分布的 $p$ 分位数 $x_p$ 的表达式, 且求出当 $m=1.5, \eta=1000$ 时的 $x_{0.1}, x_{0.5}, x_{0.8}$ 的值.
+\end{exercise}
+\begin{solution}
+     根据分位数的定义 \[
+    F\left( x_{p}\right)= p 
+    \]具体地 \[
+    1-\exp \left( - \left( \frac{x_{p} }{\eta  }  \right)^{m}  \right) = p
+    \]得到 \[
+    \exp \left( -\left( \frac{x_{p} }{\eta  }  \right)^{m}  \right)= 1-p \implies  x_{p}=  \eta  \left(- \log\left( 1-p \right)  \right)^{\frac{1 }{m } }    
+    \]当 \(  m= 1.5  \), \(  \eta = 1000  \)时,  \[
+    x_{p}= 1000\left( -\log\left( 1-p \right)  \right)^{\frac{2 }{3 } } 
+    \]  带入数值, 得到 \[
+    x_{0.1}\approx 223.14 \quad x_{0.5} \approx 781.80, \quad x_{0.8} \approx  1373.74
+    \]
+\end{solution}
+
+\begin{exercise}{}{} 
+设随机变量 $X$ 的分布密度函数 $p(x)$ 关于直线 $x=c$ 是对称的, 且 $E(X)$ 存在, 试证:
+
+\begin{enumerate}
+\item 这个对称点 $c$ 既是均值又是中位数, 即 $E(X) = x_{0.5} = c$;
+
+\item 如果 $c=0$, 则 $x_{\alpha} = -x_{1-\alpha}$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+  \begin{enumerate}
+    \item   我们有 \[
+    p\left( x \right)= p\left( 2c-x \right)  
+    \]于是 \[
+    \int_{-\infty}^{c}p\left( x \right)\,\mathrm{d} x=  \int_{-\infty}^{c}p\left( 2c-x \right)\,\mathrm{d} x= \int_{c}^{\infty}p\left( x \right)\,\mathrm{d} x   
+    \]又 \[
+    1= \int_{-\infty}^{\infty}p\left( x \right)\,\mathrm{d} x= \int_{-\infty}^{c}p\left( x \right)\,\mathrm{d} x+ \int_{c}^{\infty}p\left( x \right)\,\mathrm{d} x   
+    \]故 \[
+    F\left( c \right)= 0.5 , \quad c= x_{0.5}
+    \] 此外,  \[
+  \begin{aligned}
+    E\left( X-c \right)&=  \int_{ -\infty}^{\infty}\left( x-c \right)p\left( x \right)\,\mathrm{d} x\\ 
+     &=  \int_{-\infty}^{\infty}\left( x-c \right)p\left( 2c-x \right)\,\mathrm{d} x\\ 
+      &=  \int_{-\infty}^{\infty}\left( c-x \right)p\left( x \right)\,\mathrm{d} x        \\ 
+       &= -\int_{-\infty}^{\infty}\left( x-c \right)p\left( x \right)\,\mathrm{d} x= -E\left( X-c \right)   
+  \end{aligned}
+    \]故 \(  E\left( X-c \right)= 0   \), \(  E\left( X \right)= c   \).
+    \item 若 \(  c= 0  \), 则 \(  p\left( x \right)= p\left( -x \right)    \),  \[
+    \begin{aligned}
+ \alpha = F\left( x_{\alpha } \right)&=  \int_{-\infty}^{x_{\alpha }}p\left( x \right)\,\mathrm{d} x \\ 
+     &= \int_{-\infty}^{x_{\alpha }}p\left( -x \right)\,\mathrm{d} x\\ 
+      &=   \int_{-x_{\alpha }}^{\infty}p\left( x \right)\,\mathrm{d} x\\ 
+       &= 1- F\left( -x_{\alpha } \right)     
+    \end{aligned}  
+    \]于是 \[
+ F\left(    -x_{\alpha } \right) = 1-\alpha \implies -x_{\alpha }= x_{1-\alpha }
+    \]即 \(  x_{\alpha }= -x_{1-\alpha }  \) 
+  \end{enumerate}
+    
+\end{proof} 
+\begin{exercise}{}{}
+试证随机变量 $X$ 的偏度系数与峰度系数对位移和改变比例尺是不变的, 即对任意的实数 $a$, $b(b \neq 0)$, $Y=a+bX$ 与 $X$ 有相同的偏度系数与峰度系数.
+\end{exercise}
+
+\begin{proof}
+ 设\(  \mu _{k}= E\left( X^{k} \right), \nu _{k}= E\left[ \left( X-E\left( X \right)  \right)^{k}  \right]    \)  , \(  \mu ^{\prime} _{k}= E\left( Y^{k} \right)   \), \(  \nu ^{\prime} _{k}= E\left[ \left( Y-E\left( Y \right)  \right)  ^{k}\right]   \)  .  则 \[
+ \mu _1 ^{\prime} = E\left( a+ bX \right) = a+ b\mu _1  ,\quad \nu _1 ^{\prime} = E\left( \left( Y-\mu _1  \right)^{2}  \right)= b^{2}\nu _1  
+ \] \[
+ \nu _k ^{\prime} = E\left[ \left( Y-E\left( Y \right)  \right)^{k}  \right]= E\left[ \left( \left( a+ bX \right)-\left( a+ b\mu _1  \right)   \right)^{k}  \right]   = E\left[ b^{k} \left( X-\mu _1  \right)^{k}  \right]= b^{k}\nu _{k}
+ \] 设 \(  \beta _{s}, \beta _{k}  \)为 \(  X  \)的偏度系数和峰度系数,  \(  \beta _{s}^{\prime} , \beta _{k}^{\prime}   \)为 \(  Y  \)的偏度系数和峰度系数.  则 \[
+ \beta _{s}^{\prime} = \frac{\nu _{3}^{\prime}  }{\left( \nu _2 ^{\prime}  \right)^{\frac{3 }{2 } }  }= \frac{b^{3}\nu _3 }{ \left( b^{2}\nu _1  \right)^{\frac{3 }{2 } } }= \frac{\nu _3  }{\nu _1  }= \beta _{s}   
+ \]     \[
+ \beta _{k}^{\prime} =  \frac{\nu _4 ^{\prime}  }{\left( \nu _2 ^{\prime}  \right)^{2}  }= \frac{b^{4}\nu _4  }{\left( b^{2}\nu _2  \right)^{2}  }= \frac{\nu _4  }{\left( \nu _2  \right)^{2}  }= \beta _{k}   
+ \]
+\end{proof}
+\begin{exercise}{}{}
+某种绝缘材料的使用寿命 $T$ (单位: 小时) 服从对数正态分布 $LN(\mu, \sigma^2)$. 若已知分位数 $t_{0.2} = 5\,000$ 小时, $t_{0.8} = 65\,000$ 小时, 求 $\mu$ 和 $\sigma$.
+\end{exercise}
+\begin{solution}
+    设 \(  X=\log T \) , 则 \(  X\sim N\left( \mu , \sigma ^{2} \right)   \)  令 \(  Y= \frac{X-\mu  }{ \sigma  }   \) , 则 \(  Y\sim N\left( 0,1 \right)   \).  我们有 \[
+    0.2= P\left( T\le 5000 \right)= P\left( X\le \log 5000 \right) = P\left( Y\le \frac{\log 5000 - \mu  }{ \sigma  }  \right)  
+    \]于是 \[
+    \Phi ^{-1} \left( 0.2 \right)= \frac{\log 5000 - \mu  }{ \sigma  }  
+    \]类似地,  \[
+    \Phi ^{-1} \left( 0.8 \right)=  \frac{\log 65000 -\mu  }{ \sigma  }  
+    \]两式相减, 得到 \[
+    \Phi ^{-1} \left( 0.8 \right)-\Phi ^{-1} \left( 0.2 \right)= \frac{\log 13 }{ \sigma  }   
+    \]于是 \[
+     \sigma = \frac{\log 13 }{\Phi ^{-1} \left( 0.8 \right)- \Phi ^{-1} \left( 0.2 \right)   } \approx 1.52381
+    \]进而 \[
+    \mu = \log 5000 - \Phi ^{-1} \left( 0.2 \right) \sigma = \log 5000 - \Phi ^{-1} \left( 0.2 \right)\frac{\log 13 }{\Phi ^{-1} \left( 0.8 \right)- \Phi ^{-1} \left( 0.2 \right)   }   \approx 9.79967
+    \]
+\end{solution}
+
+\begin{exercise}{}{}
+某厂决定按过去生产状况对月生产额最高的 5\% 的工人发放高产奖. 已知过去每人每月生产额 $X$ (单位: 千克) 服从正态分布 $N(4\,000, 60^2)$, 试问高产奖发放标准应把生产额定为多少?
+\end{exercise}
+\begin{solution}
+    应该把生产额定为 \(  x_{0.95} \) . 令 \(  Y= \frac{X-4000 }{60 }   \), 则 \(  Y\sim N\left( 0,1 \right)   \).  \[
+    0.95= P\left( X\le x_{0.95} \right)=  P\left( Y\le \frac{x_{0.95}-4000 }{60 }  \right) 
+    \]于是 \[
+    \frac{x_{0.95}-4000 }{60 }= \Phi ^{-1} \left( 0.95 \right)  
+    \] 从而生产额应定为 \[
+    x_{0.95}= 60 \Phi ^{-1} \left( 0.95 \right)+ 4000\approx 4000+ 60\times 1.645= 4098.7
+    \]
+\end{solution}
+\begin{exercise}{}{}
+100 件产品中有 50 件一等品, 30 件二等品, 20 件三等品. 从中任取 5 件, 以 $X$, $Y$ 分别表示取出的 5 件中一等品、二等品的件数, 在以下情况下求 $(X, Y)$ 的联合分布列:
+
+\begin{enumerate}
+    \item 不放回抽取;
+    \item 有放回抽取.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+  \begin{enumerate}
+    \item 当进行不放回抽样时, 对于 \(  k,l \in \mathbb{Z} _{\ge 0 }  \)使得 \(  k+ l  \le 5  \), 我们有    \[
+  P\left( \left( X,Y \right)= \left( k,l \right)   \right)  = \frac{C_{50}^{k}\cdot C_{30}^{l}\cdot C_{20}^{5-k-l} }{C_{100}^{5} } 
+    \]计算得到  \begin{tabular}{c|cccccc}
+\hline
+k \textbackslash l & 0 & 1 & 2 & 3 & 4 & 5 \\
+\hline
+\textbf{0} & 0.00021 & 0.00193 & 0.00659 & 0.01025 & 0.00728 & 0.00189 \\
+\textbf{1} & 0.00322 & 0.02271 & 0.05489 & 0.05393 & 0.01820 & 0.00000 \\
+\textbf{2} & 0.01855 & 0.09274 & 0.14155 & 0.06606 & 0.00000 & 0.00000 \\
+\textbf{3} & 0.04946 & 0.15620 & 0.11325 & 0.00000 & 0.00000 & 0.00000 \\
+\textbf{4} & 0.06118 & 0.09177 & 0.00000 & 0.00000 & 0.00000 & 0.00000 \\
+\textbf{5} & 0.02814 & 0.00000 & 0.00000 & 0.00000 & 0.00000 & 0.00000 \\
+\hline
+\end{tabular}
+    \item 当进行放回抽样时, 对于 \(  k,l \in \mathbb{Z} _{\ge 0 }  \)使得 \(  k+  l  \le 5  \),我们有 \[
+   \begin{aligned}
+    P\left( \left( X,Y \right)= \left( k,l \right)   \right)&= C_{5}^{k+ l}C_{k+ l}^{k}\frac{1 }{2^{k} }\left( \frac{3 }{10 }  \right)^{l} \left( \frac{1 }{5 }  \right)^{5-k-l}\\ 
+     &   = \frac{5! }{k!l!\left( 5-k-l \right)!  } \frac{1 }{2^{k} }\left( \frac{3 }{10 }  \right)^{l}\left( \frac{1 }{5 }  \right)^{5-k-l}    
+   \end{aligned}
+    \]计算得到\begin{tabular}{c|cccccc}
+\hline
+k \textbackslash l & 0 & 1 & 2 & 3 & 4 & 5 \\
+\hline
+\textbf{0} & 0.00032 & 0.00240 & 0.00720 & 0.01080 & 0.00810 & 0.00243 \\
+\textbf{1} & 0.00400 & 0.02400 & 0.05760 & 0.05400 & 0.02025 & 0.00000 \\
+\textbf{2} & 0.02000 & 0.09000 & 0.13500 & 0.08100 & 0.00000 & 0.00000 \\
+\textbf{3} & 0.05000 & 0.15000 & 0.11250 & 0.00000 & 0.00000 & 0.00000 \\
+\textbf{4} & 0.06250 & 0.09375 & 0.00000 & 0.00000 & 0.00000 & 0.00000 \\
+\textbf{5} & 0.03125 & 0.00000 & 0.00000 & 0.00000 & 0.00000 & 0.00000 \\
+\hline
+\end{tabular}
+  \end{enumerate}
+  
+\end{solution}
+
+\begin{exercise}{}{}
+盒子里装有 3 个黑球, 2 个红球, 2 个白球, 从中任取 4 个, 以 $X$ 表示取到黑球的个数, 以 $Y$ 表示取到红球的个数, 试求 $P(X = Y)$.
+\end{exercise}
+
+\begin{solution}
+   \[
+   P\left( \left( X,Y \right)= \left( k,k \right)   \right)= \frac{C_{3}^{k} C_{2}^{k} C_{2}^{4-2k} }{C_{7}^{4} },\quad k= 1,2  
+   \]当 \(  k  \)为其他整数时,  \(  P\left( \left( X,Y \right)= \left( k,k \right)   \right)= 0   \). 于是 \[
+   \begin{aligned}
+   P\left( X= Y \right)&= P\left( \left( X,Y \right)= \left( 1,1 \right)   \right)+ P\left( \left( X,Y \right)= \left( 2,2 \right)   \right) \\ 
+    &=  \frac{ 6}{35 }+ \frac{ 3}{35 }\\ 
+     &= \frac{9 }{35 }   
+   \end{aligned}  
+   \]  
+\end{solution}
+
+\begin{exercise}{}{}
+设随机变量 $X_i, i=1,2$, 的分布列如下, 且满足 $P(X_1X_2=0)=1$, 试求 $P(X_1=X_2)$.
+
+\begin{center}
+\begin{tabular}{c|ccc}
+$X_i$ & $-1$ & $0$ & $1$ \\
+\hline
+$P$ & $0.25$ & $0.5$ & $0.25$
+\end{tabular}
+\end{center}
+\end{exercise}
+\begin{proof}
+  由于 \(  P\left( X_1X_2= 0 \right)= 1   \), 我们有 \[
+  P\left( X_1X_2= 0 \right)= P\left( X_1= 0 \right)+ P\left( X_2= 0 \right)   -P\left( X_1= X_2= 0 \right) 
+  \]因此 \[
+  P\left( X_1= X_2= 0 \right)= 1-0.5-0.5= 0 
+  \]从而 \[
+  P\left( X_1= X_2 \right)= P\left( X_1= X_2= -1 \right)+ P\left( X_1= X_2= 1 \right)   
+  \]但是 \[
+  \left\{ X_1= X_2= -1 \right\}\subseteq \left\{ X_1X_2\neq 0 \right\},\quad \left\{ X_1= X_2= 1 \right\}\subseteq \left\{ X_1X_2\neq 0 \right\}
+  \]因此 \[
+  P\left( X_1= X_2 \right)\le 2 P\left( X_1X_2\neq 0 \right)= 2\left( 1-P\left( X_1X_2= 0 \right)  \right)= 0  
+  \]故 \(  P\left( X_1= X_2 \right)= 0   \). 
+\end{proof}
+\begin{exercise}{}{}
+设随机变量 $(X,Y)$ 的联合密度函数为
+
+\[
+p(x,y) = \begin{cases}
+k(6-x-y), & 0 < x < 2, \quad 2 < y < 4, \\
+0, & \text{其他}.
+\end{cases}
+\]
+
+试求:
+
+\begin{enumerate}
+\item 常数 $k$;
+\item $P(X<1, Y<3)$;
+\item $P(X<1.5)$;
+\item $P(X+Y \leqslant 4)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+  \begin{enumerate}
+    \item 我们有 \[
+    \int_{\mathbb{R} ^{2}}p\left( x,y \right)\,\mathrm{d} x\,\mathrm{d} y= 1 
+    \]从而 \[
+ 1=  k \int_{0}^{2} \int_{2}^{4}\left( 6-x-y \right)\,\mathrm{d} y\,\mathrm{d} x=  k \int_{0}^{2}6-2x\,\mathrm{d} x= 8k
+    \]故 \(  k= \frac{1 }{8 }   \) 
+    \item \[
+    P\left( X< 1,Y< 3 \right)=  \int_{0}^{1} \int_{2}^{3} \frac{1 }{8 }\left( 6-x-y \right)  \mathrm{d} x\,\mathrm{d} y  = \frac{1 }{8 } \int_{0}^{1}\frac{7 }{2 }-x\,\mathrm{d} x= \frac{3 }{8 }    
+    \]
+    \item \[
+    P\left( X< 1.5 \right)= \int_{0}^{1.5}\int_{2}^{4}\frac{1 }{8 }\left( 6-x-y \right)\,\mathrm{d} x\,\mathrm{d} y= \frac{1 }{8 } \int_{0}^{1.5}\left( 6-2x \right)\,\mathrm{d} x= \frac{27 }{32 }      
+    \]
+    \item \[
+   \begin{aligned}
+    P\left( X+ Y\le 4 \right)&= \int_{0}^{2} \int_{2}^{4-x}\frac{1 }{8 }\left( 6-x-y \right)\,\mathrm{d} y\,\mathrm{d} x\\ 
+     &= \frac{1 }{8 } \int_{0}^{2}\left( 6-x \right)\left( 2-x \right)-\frac{1 }{2 }\left( \left( 4-x \right)^{2}-4  \right)    \,\mathrm{d} x\\ 
+      &= \frac{1 }{8 }\int_{0}^{2}\left( 6-4x+ \frac{x^{2} }{2 }  \right)\,\mathrm{d} x\\ 
+       &= \frac{2 }{3 }   
+   \end{aligned}       
+    \]
+  \end{enumerate}
+  
+\end{proof}
+\begin{exercise}{}{}
+设二维随机变量$(X,Y)$的联合密度函数为
+\[
+p(x,y) = \begin{cases}
+4xy, & 0 < x < 1, \quad 0 < y < 1, \\
+0, & \text{其他}.
+\end{cases}
+\]
+试求:
+
+\begin{enumerate}
+\item $P(0<X<0.5, 0.25<Y<1)$;
+\item $P(X=Y)$;
+\item $P(X<Y)$;
+\item $(X,Y)$的联合分布函数.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+  \begin{enumerate}
+    \item  \[
+    \begin{aligned}
+    &P\left( 0< X< 0.5, 0.25< Y< 1 \right)\\ 
+     &=  \int_{0}^{0.5}\int_{0.25}^{1}4xy\,\mathrm{d} y\,\mathrm{d} x\\ 
+      &= \int_{0}^{\frac{1 }{2 } }\frac{15 }{8 }x\,\mathrm{d} x\\ 
+       &= \frac{15 }{64 }    
+    \end{aligned}
+    \]
+    \item \[
+    \begin{aligned}
+    P\left( X= Y \right)&= \int \chi _{\left\{ X= Y \right\}} \,\mathrm{d} P\\ 
+     &=  \int _{\left( 0,1 \right)^{2} }\chi _{\left\{ x= y \right\}}\left( \,\mathrm{d} x \times \,\mathrm{d} y \right)\\ 
+      &=  \lambda \left( \left\{ \left( x,y \right)\in \left( 0,1 \right)^{2}: x= y   \right\} \right)  
+    \end{aligned}
+    \]其中 \(   \lambda   \)表示 2维Lebesgue测度. 由于集合 \(  \left\{ \left( x,y \right)\in \left( 0,1 \right)^{2}:x= y   \right\}  \)是一个2-Lebegsue零测集, 我们有 \[
+    P\left( X= Y \right) = 0
+    \]  
+    \item \[
+    \begin{aligned}
+    P\left( X< Y \right)&=  \int_{0}^{1} \int_{0}^{y}4xy \,\mathrm{d} x\,\mathrm{d} y  = \int_{0}^{1}2y^{3}\,\mathrm{d} y= \frac{1 }{2 } 
+    \end{aligned}
+    \]
+    \item  若 \(  s\le 0 \) 或 \(  t\le 0  \) , 则 \(  F_{\left( X,Y \right) } \left( s,t \right)= 0  \), 若 \(  s,t\ge 1  \), 则 \(  F_{\left( X,Y \right) }= 1  \). 若 \(  0< s< 1  \),  \(  t\ge 1  \), 则 \[
+   \begin{aligned}
+    F_{\left( X,Y \right) }\left( s,t \right)&=  \int_{0}^{s}\int_{0}^{1}4xy \,\mathrm{d} y\,\mathrm{d} x\\ 
+     &=  \int_{0}^{s}2x\,\mathrm{d} x\\ 
+      &= s^{2}
+   \end{aligned} 
+    \]若 \(  0< t< 1, s\ge 1  \), 则 \[
+    F_{\left( X,Y \right) }\left( s,t \right)= \int_{0}^{1}\int_{0}^{t}4xy\,\mathrm{d} y\,\mathrm{d} x= t^{2} 
+    \]  若 \(  0< t,s< 1  \), 则        \[
+    \begin{aligned}
+    F_{\left( X,Y \right) }\left( s,t \right)&= \int_{0}^{s}\int_{0}^{t}4xy \,\mathrm{d} y\,\mathrm{d} x\\ 
+     &=  \int_{0}^{s} 2xt^{2}\,\mathrm{d} x\\ 
+      &= s^{2}t^{2} 
+    \end{aligned}
+    \]综上所述 \[
+    F_{\left( X,Y \right) }\left( s,t \right)= \begin{cases} 0, &s\le 0\text{ or }t\le 0\\ 
+     s^{2}t^{2}, &  0< s,t< 1\\ 
+    s^{2},&  0< s< 1, t\ge 1\\ 
+     t^{2},& 0< t< 1, s\ge 1\\ 
+      1,& s,t\ge 1   \end{cases}  
+    \]
+  \end{enumerate}
+  
+\end{solution}
+
+\begin{exercise}{}{}
+设二维随机变量$(X,Y)$在边长为2, 中心为$(0,0)$的正方形区域内服从均匀分布, 试求$P(X^2+Y^2 \leq 1)$.
+\end{exercise}
+\begin{solution}
+  我们有 \[
+p_{\left( X,Y \right) }= \begin{cases} \frac{1 }{4 }, & -1< x< 1,\quad -1< y< 1\\ 
+ 0,& \text{otherwise}  \end{cases} 
+\] \[
+\begin{aligned}
+P\left( X^{2}+ Y^{2}\le 1 \right)&= \int \chi _{\left\{ X^{2}+ Y^{2}\le 1 \right\}}\,\mathrm{d} P\\ 
+ &= \int \chi _{\left\{ x^{2}+ y^{2}\le 1 \right\}}  p_{\left( X,Y \right) }\,\mathrm{d}  \lambda \\ 
+  &= \frac{1 }{4 } \int _{\mathbb{R} ^{2}}\chi _{\left\{ x^{2}+ y^{2}\le 1 \right\}} \,\mathrm{d}  \lambda \\ 
+   &= \frac{ \pi  }{4 }  
+\end{aligned}
+\]
+\end{solution}
+
+\begin{exercise}{}{}
+设二维随机变量$(X,Y)$的联合密度函数为
+\[
+p(x,y) = \begin{cases}
+k, & 0 < x^2 < y < x < 1, \\
+0, & \text{其他}.
+\end{cases}
+\]
+
+\begin{enumerate}
+\item 试求常数$k$;
+\item 求$P(X>0.5)$和$P(Y<0.5)$.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+  \begin{enumerate}
+    \item  \[
+   \begin{aligned}
+    1&=  \int _{\mathbb{R} ^{2}}k \chi _{\left\{ 0< x^{2}< y< x< 1 \right\}}\,\mathrm{d}  \lambda  \\ 
+     &=  \int_{0}^{1} \int_{0}^{1}k  \chi _{\left\{ 0< x^{2}< y< x< 1 \right\}}\,\mathrm{d} y\,\mathrm{d} x\\ 
+      &=  \int_{0}^{1} \int_{x^{2}}^{x}k \,\mathrm{d} y\,\mathrm{d} x\\ 
+       &=  \int_{0}^{1}k\left( x-x^{2} \right)\,\mathrm{d} x \\ 
+        &= k\left( \frac{1 }{2 }-\frac{1 }{3 }   \right)= \frac{k }{6 } 
+   \end{aligned}
+    \]故 \(  k= 6  \)
+  \item      \[
+  \begin{aligned}
+  P\left( X> 0.5 \right)=  \int_{0.5}^{1} \int_{x^{2}}^{x} 6 \,\mathrm{d} y\,\mathrm{d} x= 6 \int_{0.5}^{1} \left( x-x^{2} \right)\,\mathrm{d} x=\frac{1 }{2 } 
+  \end{aligned}
+  \]
+  \[
+  \begin{aligned}
+  P\left( Y< 0.5 \right)&=  \int_{0}^{1} \int_{0}^{0.5} 6 \chi _{\left\{ 0< x^{2}< y< x< 1 \right\}}\,\mathrm{d} y\,\mathrm{d} x\\ 
+   &=  \int_{0}^{0.5} \int_{0}^{1} 6 \chi _{\left\{ 0< y< x< \sqrt{y}< 1 \right\}}\,\mathrm{d} x\,\mathrm{d} y\\ 
+    &=  \int_{0}^{0.5} \int_{y}^{\sqrt{y}}  6\,\mathrm{d} x\,\mathrm{d} y\\ 
+     &= \int_{0}^{\frac{1 }{2 } } 6\left( \sqrt{y}-y \right)\,\mathrm{d} y\\ 
+      &= 6 \left[ \frac{2 }{3 } y^{\frac{3 }{2 } }- \frac{1 }{2 }y^{2}   \right]_{0}^{\frac{1 }{2 } }\\ 
+       &= 6\left( \frac{2 }{3 } \frac{1 }{2\sqrt{2} }- \frac{1 }{8 }    \right)\\ 
+        &= \sqrt{2}-\frac{3 }{4 }    
+  \end{aligned}
+  \]
+  \end{enumerate}
+  
+\end{solution}
+
+\begin{exercise}{}{}
+设随机变量 $Y$ 服从参数为 $\lambda = 1$ 的指数分布, 定义随机变量 $X_k$ 如下:
+\[
+X_k = \begin{cases}
+0, & Y \leqslant k, \\
+1, & Y > k,
+\end{cases}
+\quad k = 1, 2.
+\]
+求 $X_1$ 和 $X_2$ 的联合分布列.
+\end{exercise} 
+\begin{solution}
+  \[
+  P\left( \left( X_1,X_2 \right)= \left( 0,0 \right)   \right)= P\left( Y\le 1, Y\le 2 \right)= P\left( Y\le 1 \right)= \int_{0}^{1} \lambda e^{- \lambda x }\,\mathrm{d} x= 1-e^{- 1 }
+  \] \[
+  P\left( \left( X_1,X_2 \right)= \left( 0,1 \right)   \right)= P\left( Y\le 0, Y> 2 \right)= 0  
+  \] \[
+  P\left( \left( X_1,X_2 \right)= \left( 1,0 \right)   \right)= P\left( Y> 1, Y\le 2 \right)=\int_{1}^{2} \lambda e^{- \lambda x}\,\mathrm{d} x= e^{- 1 }-e^{-2  }
+  \] \[
+ \begin{aligned}
+  P\left( \left( X_1,X_2 \right)= \left( 1,1 \right)   \right)= P\left( Y> 1, Y> 2 \right)&= P\left( Y> 2 \right) \\ 
+   &=  1-P\left( Y\le 2 \right)\\ 
+    &= 1-P\left( Y\le 1 \right)-P\left( 1\le Y\le 2 \right)\\ 
+     &=e^{-2}
+ \end{aligned}   
+  \]\begin{tabular}{c|cc}
+\hline
+$X_1 \backslash X_2$ & $X_2=0$ & $X_2=1$ \\
+\hline
+$X_1=0$ & $1 - e^{-1}$ & $0$ \\
+$X_1=1$ & $e^{-1} - e^{-2}$ & $e^{-2}$ \\
+\hline
+\end{tabular}
+\end{solution}
+
+\begin{exercise}{}{}
+设二维随机变量$(X,Y)$的联合密度函数为
+\[
+p(x,y) = \begin{cases}
+e^{-y}, & 0 < x < y, \\
+0, & \text{otherwise}.
+\end{cases}
+\]
+试求$P(X+Y\leqslant 1)$.
+\end{exercise}
+\begin{solution}
+   \[
+  \begin{aligned}
+   P\left( X+ Y\le 1 \right)&=  \int_{0}^{\infty} \int_{0}^{\infty}\chi _{\left\{ x+ y\le  1 , x< y\right\}}e^{-y}\,\mathrm{d} y\,\mathrm{d} x  \\ 
+    &=  \int_{0}^{\frac{1 }{2 } } \int_{x}^{1-x}e^{-y}\,\mathrm{d} y\,\mathrm{d} x\\ 
+     &=  \int_{0}^{\frac{1 }{2 }  }e^{-x}-e^{x-1}\,\mathrm{d} x\\ 
+      &=  1-e^{-\frac{1 }{2 } }- e^{-\frac{1 }{2 } }+ e^{-1}\\ 
+       &= 1-2e^{-\frac{1 }{2 } }+ e^{-1}
+  \end{aligned}
+   \]
+\end{solution}
+
+\begin{exercise}{}{}
+设二维随机变量$(X,Y)$的联合密度函数为
+\[
+p(x,y) = \begin{cases}
+1/2, & 0 < x < 1, \quad 0 < y < 2, \\
+0, & \text{otherwise}.
+\end{cases}
+\]
+求$X$与$Y$中至少有一个小于$0.5$的概率.
+\end{exercise}
+\begin{proof}
+  \[
+  \begin{aligned}
+  P\left( X, Y>  0.5 \right)&= \int_{0.5}^{1} \int_{0.5}^{2}\frac{1 }{2 }\,\mathrm{d} y\,\mathrm{d} x\\ 
+   &=   \frac{3 }{8 } 
+  \end{aligned} 
+  \]故 \(  X,Y  \)中至少有一个小于0.5的概率为 \[
+  P\left( \left\{ X\le 0.5 \right\}\cup \left\{ Y\le 0.5 \right\} \right)= 1-P\left( X,Y> 0.5 \right)= \frac{5 }{8 }   
+  \] 
+\end{proof}
+\begin{exercise}{}{}
+从$(0,1)$中随机地取两个数, 求其积不小于$3/16$, 且其和不大于$1$的概率.
+\end{exercise}
+\begin{proof}
+  在 \(  \left( 0,1 \right)   \)上,  \[
+  1-x>  \frac{3 }{16x }\iff   \left( 4x-1\right)\left( 4x-3 \right)  <  0\iff x\in \left( \frac{1 }{4 }, \frac{3 }{4 }   \right) 
+  \] \[
+  \begin{aligned}
+  \int _{\left( 0,1 \right)^{2} } \chi _{\left\{ xy\ge \frac{3 }{16 }, x+ y\le 1  \right\}}\,\mathrm{d}  \lambda  &=   \int_{\frac{1 }{4 } }^{\frac{3 }{4 } } \int_{\frac{3 }{16x } }^{1-x}1 \,\mathrm{d} y\,\mathrm{d} x\\ 
+   &=  \int_{\frac{1 }{4 } }^{\frac{3 }{4 } }1-x-\frac{3 }{16x }\,\mathrm{d} x\\ 
+    &= \frac{1 }{4 } -\frac{3 }{16 } \ln 3     
+  \end{aligned}
+  \] 
+\end{proof}
+\end{document}
+

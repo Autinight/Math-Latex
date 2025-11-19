@@ -29,6 +29,21 @@ A vector space $L$ over a field $\mathbb{F}$, with an operation $L \times L \to 
      
 \end{remark}
 
+\begin{definition}{}{}
+   We  define a \dfntxt{Lie subalgebra} of $L$ to be a vector subspace $K \subseteq L$ such that
+$$[x, y] \in K \quad \text{for all } x, y \in K.$$
+\end{definition}
+
+\begin{example}{}{}
+   Suppose that $V$ is a finite-dimensional vector space over $F$. Write $\mathfrak{gl}(V)$ for the set of all linear maps from $V$ to $V$. This is again a vector space over $F$, and it becomes a Lie algebra, known as the \dfntxt{general linear algebra}, if we define the Lie bracket $[-,-]$ by
+
+\[
+[x,y] := x \circ y - y \circ x \quad \text{for } x, y \in \mathfrak{gl}(V),
+\]
+
+where $\circ$ denotes the composition of maps.
+\end{example}
+
 \section{Lie algebras of derivations}
 
 \begin{definition}{}{}
@@ -45,6 +60,10 @@ A vector space $L$ over a field $\mathbb{F}$, with an operation $L \times L \to 
 \begin{definition}{}{}
    A subspace $I$ of a Lie algebra $L$ is called an \dfntxt{ideal} of $L$ if $x \in L, y \in I$ together imply $[xy] \in I$.
 \end{definition}
+
+\begin{remark}
+   由于 \(  \left[ x,y \right]= -\left[ y,x \right]    \), 理想不分左右. 
+\end{remark}
 \subsection{Homomorphisms and representations}
 \begin{definition}{}{}
  \begin{itemize}
@@ -55,5 +74,37 @@ A vector space $L$ over a field $\mathbb{F}$, with an operation $L \times L \to 
  
 \end{definition}
 
+\begin{definition}{}{}
+   If $L_1$ and $L_2$ are Lie algebras over a field $F$, then we say that a map $\varphi : L_1 \to L_2$ is a \dfntxt{homomorphism} if $\varphi$ is a linear map and
 
+\[
+\varphi([x,y]) = [\varphi(x), \varphi(y)] \quad \text{for all } x, y \in L_1.
+\]
+
+Notice that in this equation the first Lie bracket is taken in $L_1$ and the second Lie bracket is taken in $L_2$. We say that $\varphi$ is an \dfntxt{isomorphism} if $\varphi$ is also bijective.
+\end{definition}
+
+\begin{example}{}{}
+     An extremely important homomorphism is the \dfntxt{adjoint homomorphism}. If $L$ is a Lie algebra, we define
+\[
+\operatorname{ad}: L \to \mathfrak{gl}(L)
+\]
+by $(\operatorname{ad} x)(y) := [x, y]$ for $x, y \in L$. It follows from the bilinearity of the Lie bracket that the map $\operatorname{ad} x$ is linear for each $x \in L$. For the same reason, the map $x \mapsto \operatorname{ad} x$ is itself linear. So to show that ad is a homomorphism, all we need to check is that
+\[
+\operatorname{ad}([x, y]) = \operatorname{ad} x \circ \operatorname{ad} y - \operatorname{ad} y \circ \operatorname{ad} x \quad \text{for all } x, y \in L;
+\]
+
+this turns out to be equivalent to the Jacobi identity. The kernel of ad is the centre of $L$.
+
+\end{example}
+\begin{proof}
+    We have from Jacobi identity that \[
+    \begin{aligned}
+    \mathrm{ad}\left( \left[ x,y \right]  \right)\left( z \right)&=  \left[ \left[ x,y \right],z  \right]\\ 
+     &= \left[ x,\left[ y,z \right]  \right]+ \left[ y,\left[ z,x \right]  \right]      \\ 
+      &=\left[ x, \operatorname{ad}y\left( z \right)  \right]-\left[ y, \operatorname{ad}x\left( z \right)  \right]\\ 
+       &= \operatorname{ad}x\circ \operatorname{ad}y\left( z \right)-\operatorname{ad}y\circ \operatorname{ad}x\left( z \right)      
+    \end{aligned}
+    \]
+\end{proof}
 \end{document}

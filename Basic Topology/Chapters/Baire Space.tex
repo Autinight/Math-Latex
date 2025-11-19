@@ -1,0 +1,26 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Baire Space }
+
+\begin{definition}{}{}
+A space $X$ is said to be a \dfntxt{Baire space} if the following condition holds:
+Given any countable collection $\{A_n\}$ of closed sets of $X$ each of which has empty interior in $X$, their union $\bigcup A_n$ also has empty interior in $X$.
+\end{definition}
+
+\begin{definition}{}{}
+  A subset $A$ of a space $X$ was said to be of the \dfntxt{first category} in $X$ if it was contained in the union of a countable collection of closed sets of $X$ having empty interiors in $X$; otherwise, it was said to be of the \dfntxt{second category} in $X$. 
+\end{definition}
+
+\begin{theorem}{}{}
+    A space $X$ is a \dfntxt{Baire space} if and only if every nonempty open set in $X$ is of the \dfntxt{second category}.
+\end{theorem}
+\end{document}

@@ -1,0 +1,218 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{5}
+}{}
+
+\chapter{ HW6 }
+ 代靖涵 25120222201319
+\begin{exercise}{}{}
+设 $\iota: M^r \hookrightarrow \mathbb{R}^K$ 为包含映射, 即对任意 $x \in M$, $d\iota_x: T_xM \to T_x\mathbb{R}^K \cong \mathbb{R}^K$, 若
+$$N_x(M,\mathbb{R}^K) = T_xM^\perp = \{v \in \mathbb{R}^K \mid v \perp T_xM\},$$
+$$N(M,\mathbb{R}^K) = \{(x,v) \mid x \in M, v \in T_xM^\perp\},$$
+$N(M,\mathbb{R}^K)$ 称为 $M$ 在 $\mathbb{R}^K$ 中的法丛.
+\begin{enumerate}
+\item 求证 $N(M,\mathbb{R}^K)$ 是流形;
+\item 设
+$$\pi: N(M,\mathbb{R}^K) \to M$$
+$$(x,v) \mapsto x$$
+求证 $\pi$ 是一个淹没.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+  \begin{enumerate}
+    \item 我们将 \(  M  \)等同于 \(  \iota   \left( M \right) \), 将 \(  N\left( M,\mathbb{R} ^{K} \right)   \)等同于 \(  N\left( \iota \left( M \right),\mathbb{R} ^{K}  \right)\subseteq \mathbb{R} ^{K}\times \mathbb{R} ^{K}  \), 并赋予 \(  N\left( \iota\left( M \right),\mathbb{R} ^{K}  \right)   \)以 \(  \mathbb{R} ^{K}\times \mathbb{R} ^{K}  \)的子空间拓扑. 此时 \(  N\left( M,\mathbb{R} ^{K} \right)   \)是一个第二可数的Hausdorff空间.         取 \(  M  \)的一个光滑图册 \(  \left\{ \left( U_{\alpha }, \varphi _{\alpha } \right)  \right\}  \)  . 取其中的一个坐标卡 \(  \left( U_\alpha , \varphi _\alpha  \right)   \), 设 \( \left. X_{i} \right|_{q}\coloneqq \,\mathrm{d} \iota _{q}\left( \left. \frac{\partial }{\partial x^{i}} \right|_{q} \right)    \), \(  i= 1,2,\cdots ,r  \)是 \(  U_\alpha  \)上的坐标向量场. 固定一点 \(  p \in U_\alpha  \), 则 \(\left. X_1 \right|_{p},\cdots ,\left. X_{r} \right|_{p} \)     是\(  T_{p}M  \)上的 一组线性无关的向量. 设 \(  \mathbb{R} ^{K}  \)上的标准坐标向量场为 \(   \partial _{1}  ,\cdots , \partial _{K}\). 通过重排序号, 我们可以使以下成立 \[
+    T_{p}\mathbb{R} ^{K}= \operatorname{span}\left( X_1|_{p},\cdots ,X_{r}|_{p}, \left.  \partial _{r+ 1} \right|_{p}, \cdots , \left.  \partial _{K} \right|_{p}\right) 
+    \]  在标准基 \(   \partial_1,\cdots , \partial _{K}  \)的表示下, 我们有 \[
+    \det \left( \left. X_1 \right|_{p},\cdots ,\left. X_{r} \right|_{p}, \left.  \partial _{r+ 1} \right|_{p},\cdots , \left.  \partial _{K} \right|_{p} \right)\neq 0 
+    \] 由于 \(  \det   \)是连续的, 存在 \(  p  \)在 \(  U_\alpha   \)上的一个   开邻域 \(  U_{p}  \), 使得 上述 \(  \det   \)在 \(  U_{p}  \)上恒非零, 从而 \(   X_1,\cdots,X_r ,  \partial _{r+ 1},\cdots , \partial _{K}  \)是 \(  U_{p}  \)上的一组光滑局部标价.     通过Gram Schmidt正交化, 我们可以这组标价正交化为 \(  E_1,\cdots ,E_{K}  \), \[
+    T_{q}M= \operatorname{span}\left( \left. E_1 \right|_{q},\cdots ,\left. E_{r} \right|_{q} \right) ,\quad N_{q}\left( M,\mathbb{R} ^{K} \right)= \operatorname{span}\left( \left. E_{r+ 1} \right|_{q},\cdots , \left. E_{K} \right|_{q} \right),\quad \forall q \in U_{p}  
+    \] 由于所有这样的 \(  U_{p}  \) 构成 \(  M  \)的一族覆盖, 并且 \(  \left( U_{p_1}, \left.  \varphi _{\alpha _1 } \right|_{U_{p_1}} \right)   \)和 \(  \left(U_{p_2},\left.  \varphi _{\alpha _2 } \right|_{U_{p_2}} \right)   \)之间的过渡映射 无非是原图册的某个过渡映射的限制, 也是光滑的. 因此不失一般性, 我们可以假设每个 \(  U_{\alpha }  \)上都存在满足上述性质的局部正交标价, 记作 \(  E^{\alpha }_{1},\cdots ,E^{\alpha }_{K}  \). 取一 \(  M  \)上的坐标卡 \(  \left( U_{\alpha }, \varphi _{\alpha } \right)   \), 我们定义 \[
+   \begin{aligned}
+     \tilde{\varphi} _{ \alpha }: N\left( U_{\alpha }, \mathbb{R} ^{K} \right)&\to  \varphi _{\alpha }\left( U_{\alpha } \right)\times \mathbb{R} ^{K-r}   \\ 
+      \left( p, v_{p} \right)&\mapsto \left(  \varphi _{\alpha }\left( p \right), \left( \left<v_{p}, \left. E^{\alpha }_{r+ 1} \right|_{p} \right> ,\cdots , \left<v_{p},\left. E^{\alpha }_{K} \right|_{p} \right>\right)   \right)  
+   \end{aligned}
+    \]   它是一个连续的双射. 这样 \(  \left\{ \left( N\left( U_{\alpha }, \mathbb{R} ^{K} \right),  \tilde{\varphi} _{\alpha }  \right) \right\}   \) 构成 \(  N\left( M,\mathbb{R} ^{K} \right)   \)上的一族坐标卡. 最后, 我们来考虑这族坐标卡的过渡映射. 设 \(  \left( N\left( U_{\beta }, \mathbb{R} ^{K} \right),  \tilde{\varphi} _{\beta }  \right)   \)是另一个坐标卡, 则 过渡映射为\[
+   \tilde{\varphi}_\beta \circ \tilde{\varphi}_\alpha^{-1}(x, c) = \left( (\varphi_\beta \circ \varphi_\alpha^{-1})(x), A(\varphi_\alpha^{-1}(x)) \cdot c \right)
+    \] 其中  \(  A  \)是一个矩阵函数使得 $A_{ji}(p) = \langle E_i^\alpha(p), E_j^\beta(p) \rangle$, 是光滑的 . 又\(   \varphi _{\beta }\circ  \varphi _{\alpha }^{-1}   \)光滑,  因此 \(   \tilde{\varphi} _{\beta }\circ  \tilde{\varphi} _{\alpha }^{-1}   \)是光滑的. 因此 \(  \left\{ \left( N\left( U_{\alpha },\mathbb{R} ^{K} \right)   , \tilde{\varphi} _{\alpha } \right)  \right\}\)   构成 \(  N\left( M,\mathbb{R} ^{K} \right)   \)的一个光滑图册, 从而使得 其成为一个光滑流形. 
+
+    \item 任取 \(  \left( x,v \right)\in N\left( M,\mathbb{R} ^{K} \right)    \), 取 \(  \left( x,v \right)   \)附近的一个坐标卡 \(  \left( N\left( U_{\alpha },\mathbb{R} ^{K} \right),  \tilde{\varphi} _{\alpha }  \right)   \), 则 \(  \left( U_{\alpha },  \varphi _{\alpha } \right)   \)是 \(  x  \)附近的一个坐标卡, 在这组坐标下,  \(   \pi   \)的坐标表示形如下 \[
+    \left( x^{1},\cdots ,x^{r}, v^{r+ 1},\cdots ,v^{K} \right)\to \left( x^{1},\cdots ,x^{r} \right)  
+    \]      从而 对应的Jacobi矩阵形如  \[
+    \begin{pmatrix} 
+        I&* 
+    \end{pmatrix} 
+    \]是满秩的. 这表明 \(   \pi   \)在 \(  \left( x,v \right)   \)处是一个淹没, 由于 \(  \left( x,v \right)   \)是任取的, 因此 \(   \pi   \)是一个淹没.    
+  \end{enumerate}
+\end{proof}
+\begin{exercise}{}{}
+$$\mathbb{T}^2 = S^1 \times S^1 = \{(x^1, x^2, x^3, x^4) \mid (x^1)^2 + (x^2)^2 = 1, (x^3)^2 + (x^4)^2 = 1\}.$$
+设 $\iota: \mathbb{T}^2 \hookrightarrow \mathbb{R}^4$ 是典范嵌入, 设
+$$g: \mathbb{R}^4 \to \mathbb{R}^3$$
+$$(x^1, x^2, x^3, x^4) \mapsto (x^1(2+x^3), x^2(2+x^3), x^4)$$
+\begin{enumerate}
+\item 计算 $dg$;
+\item 求证 $f = g \circ \iota$ 是一个嵌入.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+  \begin{enumerate}
+    \item 在标准坐标下,  \(  \,\mathrm{d} g_{\left( x^{1},x^{2},x^{3},x^{4} \right) }  \)就是它这一点的Jacobi矩阵的左乘映射. 矩阵为 \[
+    \begin{pmatrix} 
+        2+ x^{3}&0&x^{1}&0\\ 
+         0&2+ x^{3}& x^{2}&0\\ 
+          0&0&0&1
+    \end{pmatrix} 
+    \] 
+    \item 
+    \begin{itemize}
+      \item  \(  f  \)是单射:  若 \[
+      f\left( x^{1},x^{2},x^{3},x^{4} \right)= f\left( y^{1},y^{2},y^{3},y^{4} \right)  
+      \]则 \(  x^{4}= y^{4}  \), 从而  \[
+    \left( x^{3} \right)^{2}= \left( y^{3} \right)^{2}\implies x^{3}= \pm y^{3}  
+      \] 若 \(  x^{3}= -y^{3}  \), 则 \[
+      x^{1}\left( 2-y^{3} \right)= y^{1}\left( 2+ y^{3} \right),\quad x^{2}\left( 2-y^{3} \right)= y^{2}\left( 2+ y^{3} \right)    
+      \] 两式两端平方相加, 得到 \[
+      \left( 2-y^{3} \right)^{2}= \left( 2+ y^{3} \right)^{2}\implies y^{3}= 0
+      \]从而 \(  x^{3}= -y^{3}= 0  \). 因此, 总有 \(  x^{3}= y^{3}  \).  
+      由于 \(  \left| x^{3} \right|\le 1   \), 我们有 \(  2+ x^{3}\neq 0  \), 因此 \[
+      x^{1}\left( 2+ x^{3} \right)= y^{1}\left( 2+ y^{3} \right), x^{2}\left( 2+ x^{3} \right)= y^{2}\left( 2+ y^{3} \right)\implies x^{1}= y^{1}, x^{2}= y^{2}    
+      \]  因此 \(  f  \)是一个单射.
+      \item \(  f  \)是一个浸入:    考虑映射 \(  F: \mathbb{R} ^{4}\to \mathbb{R} ^{2}  \) \[
+    F\left( x_1,x_2,x_3,x_4 \right)= \left( \left( x^{1} \right)^{2}+ \left( x^{2} \right)^{2}, \left( x^{3} \right)^{2}+ \left( x^{4} \right)^{2}     \right)  
+    \] 则 \[
+    \mathbb{T}^{2}= F^{-1} \left( 1,1 \right) 
+    \] 我们有  \[
+    T_{p}\mathbb{T}^{2}=  \operatorname{ker} \left( d F_{p} \right) 
+    \] \[
+    JF\left( x^{1},x^{2},x^{3},x^{4} \right) = \begin{pmatrix} 
+        2x^{1}&2x^{2} &0&0\\ 
+         0&0&2x^{3}&2x^{4} 
+    \end{pmatrix} 
+    \] \(  r= \left( r^{1}, r^{2},r^{3},r^{4} \right)   \)是  \( p= \left( x^{1},x^{2},x^{3},x^{4} \right)   \)处的一个切向量, 当且仅当     \[
+    x^{1}r^{1}+ x^{2}r^{2}= 0,\quad x^{3}r^{3}+ x^{4}r^{4}= 0
+    \] \[
+    \,\mathrm{d} f_{p}=  \,\mathrm{d} g_{p}\circ \,\mathrm{d} \iota _{p}
+    \] 若\(  \,\mathrm{d} f_{p}\left( r \right)= 0   \), 则 \[
+    \,\mathrm{d} g_{p}\circ \,\mathrm{d} \iota _{p}\left( r \right)= \begin{pmatrix} 
+        \left( 2+ x^{3} \right)r^{1}+ x^{1}r^{3}\\ 
+         \left( 2+ x^{3} \right)r^{2}+ x^{2}  r^{3}\\ 
+          r^{4} 
+    \end{pmatrix}  = 0 \tag{*}
+    \]此时 \(  r^{4}= 0  \), 从而 \(  x^{3}r^{3}= -x^{4}r^{4}= 0  \).
+    \begin{itemize}
+      \item 若 \(  x^{3}\neq 0  \) ,则 \(  r^{3}= 0  \), 此时我们得到 \[
+      \left( 2+ x^{3} \right)r^{1}= 0, \left( 2+ x^{3} \right)r^{2}= 0  
+      \] 由于 \(  \left( x^{3} \right)^{2} < 1\), 从而 \(  2+ x^{3}\neq 0  \), 得到 \(  r^{1}= r^{2}= 0  \).  这表明 当 \(  x^{3}\neq 0  \)时, 我们有 \[
+      \,\mathrm{d} f_{p}\left( r \right)= 0\iff r= 0 
+      \]即 \(  \,\mathrm{d} f_{p}  \)是一个单射, 从而 \(  f  \)在 \(  p  \)处是一个浸入.    
+      \item 若 \(  x^{3}= 0  \), 则 \[
+      x^{1}r^{3}= -2r^{1},\quad x^{2}r^{3}= -2r^{2} \implies x^{1}r^{1}r^{3}= -2 \left( r^{1} \right)^{2},  x^{2}r^{2}r^{3}= -2 \left( r^{2} \right)^{2}  
+      \] 右侧两式相加, 得到 \[
+      0= -2\left( \left( r^{1} \right)^{2}+ \left( r^{2} \right)^{2}   \right) \implies r^{1}= r^{2}= 0
+      \]进而 由于 \(  x^{1}  \)和 \(  x^{2}  \)不可能同时为零, 由(*)可知总有 \(  r^{3}= 0  \). 这表明当 \(  x^{3}= 0  \)时, 也有 \[
+      \,\mathrm{d} f_{p}\left( r \right)= 0\iff r= 0 
+      \]   故 此时 \(  f  \)在 \(  p  \)处也是一个浸入.   
+    \end{itemize}
+    综上可知, \(  f  \)是一个浸入. 
+    \item \(  f  \)是一个拓扑嵌入: \(  \iota \left( \mathbb{T}^{2} \right)   \)是 \(  \mathbb{R} ^{4}  \)的一个有界闭集, 从而是紧的. 故 \(  \mathbb{T}^{2}  \)同胚于 \(  \iota \left( \mathbb{T}^{2} \right)   \)也是紧的. 此时 \(  f: \mathbb{T}^{2}\to \mathbb{R} ^{3}  \)是紧空间到Hausdorff空间上的一个连续单射, 它是 一个拓扑嵌入.  
+    \end{itemize}
+    因此 , \(  f  \)是一个单的浸入且是拓扑嵌入, 它是一个光滑嵌入. 
+  \end{enumerate}
+  
+\end{proof}
+\begin{exercise}{}{}
+\begin{enumerate}
+\item 设
+$$f: \mathbb{S}^2 \to \mathbb{R}^3$$
+$$(x,y,z) \mapsto (yz, zx, xy)$$
+确定在 $\mathbb{RP}^2$ 中的哪些点上, 由 $f$ 诱导的映射不是一个浸入.
+\item 设
+$$f: \mathbb{S}^2 \to \mathbb{R}^4$$
+$$(x,y,z) \mapsto (x^2-y^2, yz, zx, xy)$$
+求证 $f$ 诱导了 $\mathbb{RP}^2$ 到 $\mathbb{R}^4$ 的嵌入.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+  \begin{enumerate}
+    \item    设 \(   \pi : \mathbb{S}^{2}\to \mathbb{RP}^{2}  \)是投影映射, 设 \( \bar{f}  \)是 \(  f  \)诱导的映射, 使得 \( f= \bar{f}\circ \pi  \). 则 \[
+    d f_{p}=  d \bar{f}_{[p]}\circ d  \pi _{p}
+    \]   .任取\(  \left( x_0,y_0,z_0 \right)\in \mathbb{S}^{2}   \)  , 使得\(  z_0> 0  \), 则 \(  [x_0:y_0:z_0]\in \mathbb{RP}^{2}  \)附近的一个坐标卡为 \(  \left( V,\psi  \right)   \), 其中 \(  V  = \left\{ [x:y:z]\in \mathbb{RP}^{2}: z\neq 0 \right\}\)  , 坐标映射    \[
+   \psi \left( [x:y:z] \right)=  \left( \frac{x }{z }, \frac{y }{z }   \right)  
+   \]考虑 \(\left( x_0,y_0,z_0 \right)\in    \mathbb{S}^{2}  \)附近的一个坐标卡为 \(  \left( U,  \varphi  \right)   \), 其中 \(  U= \left\{ \left( x,y,z \right)\in \mathbb{S}^{2}: z> 0  \right\}  \), 坐标映射  \[
+    \varphi \left( x,y, \sqrt{1-x^{2}-y^{2}} \right)= \left( x,y \right) 
+   \] 则在这一组坐标下 \(   \pi   \)表示为 \[
+    \left( x,y\right)\mapsto \left( \frac{x }{z },\frac{y }{z }   \right)=   \left( \frac{x }{\sqrt{1-x^{2}-y^{2}}}, \frac{y }{\sqrt{1-x^{2}-y^{2}} }   \right)  
+   \] 它的Jacobi的det为 \[
+ \det  \begin{pmatrix} 
+         \frac{z-x\frac{\partial z}{\partial x} }{z^{2} }& -\frac{x\frac{\partial z}{\partial y} }{z^{2} }\\ 
+          -\frac{y\frac{\partial z}{\partial x} }{z^{2} }& \frac{z-y\frac{\partial z}{\partial y} }{z^{2} }    
+   \end{pmatrix} = \frac{z^{2}-z\left( x\frac{\partial z}{\partial x}+ y\frac{\partial z}{\partial y} \right)+ xy\frac{\partial z}{\partial x}\frac{\partial z}{\partial y}  -xy\frac{\partial z}{\partial y}\frac{\partial z}{\partial x}}{z^{4} } = \frac{z- x\frac{\partial z}{\partial x}-y\frac{\partial z}{\partial y} }{z^{3} } 
+   \]其中\[
+   \frac{\partial z}{\partial x}= \frac{-x }{z },\quad \frac{\partial z}{\partial y}= \frac{-y }{z }  
+   \]于是 \[
+   \det J \hat{ \pi } _{\left( x,y \right) }= \frac{z+  \frac{1-z^{2} }{z }  }{ z^{3}}= \frac{1 }{z^{4} }> 0  
+   \]故 \(  \,\mathrm{d}  \pi _{\left( x_0,y_0,z_0 \right) }  \)是双射, 由对称性可知, 只要 \(  x_0,y_0,z_0  \)不全为零, 我们都可以选取一组坐标, 使得\(  \,\mathrm{d}  \pi   \)的Jacobi有类似上述的表示, 从而 \(  d \pi   \)在这一点是一个双射, 而 \(  0\not \in   \mathbb{S}^{2}\), 故 \(  \,\mathrm{d}  \pi   \)在 \(  \mathbb{S}^{2}  \)上任一点都是一个双射. 因此 \(  \,\mathrm{d} \bar{f}_{[p]}  \) 是单射, 当且仅当 \(  \,\mathrm{d} f_{p}  \)是单射. 
+   设\(  \iota : \mathbb{S}^{2}\to \mathbb{R} ^{3}  \)是含入映射, 设 \(  \tilde{f}:\mathbb{R} ^{3}\to \mathbb{R} ^{3}  \)是使得 \(  f= \tilde{f}\circ \iota   \)的映射.    \[
+    J \tilde{f}_{\left( x,y,z \right) }= \begin{pmatrix} 
+          0&z&y\\ 
+           z&0&x\\ 
+            y&x&0
+    \end{pmatrix} 
+   \]由于 \[
+    d f_{p}=  d \tilde{f}_{\iota \left( p \right) } \circ d \iota _{p}
+   \]于是 \(  f  \)在 \(  p  \)点不是一个浸入, 当且仅当 \[
+   \left\{ 0 \right\}\neq  \operatorname{ker} df_{p}= \operatorname{ker} d \tilde{f}_{\iota \left( p \right) }\cap  \operatorname{Im}\left( d \iota _{p} \right) = \operatorname{ker}d \tilde{f}_{\iota \left( p \right) }\cap T_{p}\mathbb{S}^{2}
+   \]  \begin{itemize}
+    \item 当 \(  p  \)有两个坐标为零时, 不妨设 \(  p= \left( 0,0,1 \right)   \), 则    上述集合为 \[
+    \operatorname{span}\left\{ \left( 0,0,1 \right)  \right\}\cap \left\{ v: v\cdot \left( 0,0,1 \right)= 0  \right\}= \left\{ 0 \right\}
+    \]
+    \item 当 \(  p  \)恰有一个坐标为零时,  不妨考虑 \(  z= 0  \), 此时上述集合为 \[
+    \begin{aligned}
+   & \operatorname{span}\left\{ \left( x,-y,0 \right)  \right\}\cap \left\{ v: v\cdot \left( x,y,0 \right)= 0  \right\}\\ 
+    &= \left\{ k\left( x,-y \right): x^{2}+ y^{2}= 1, x^{2}-y^{2}= 0  \right\} 
+    \end{aligned}
+    \] 集合不为 \(  \left\{ 0 \right\}  \), 当且仅当 \(  \left( x,-y \right)   \)是方程 \(  x^{2}+ y^{2}= 1, x^{2}-y^{2}= 0  \)的解, 这给出了四个点 \[
+    \left( \pm \frac{1 }{\sqrt{2} },\pm \frac{1 }{\sqrt{2} }   \right) 
+    \] 
+   \end{itemize}
+   由对称性, 我们可以给出使得 \(  f  \)不是浸入的所有 \(  \mathbb{S}^{2}  \)上的点 \[
+   (\pm \frac{1}{\sqrt{2}}, \pm \frac{1}{\sqrt{2}}, 0), (\pm \frac{1}{\sqrt{2}}, 0, \pm \frac{1}{\sqrt{2}}), (0, \pm \frac{1}{\sqrt{2}}, \pm \frac{1}{\sqrt{2}})
+   \]  这些点在 \(   \pi   \)下最终映到6个点 \[
+   [1:1:0], [1:-1:0], [1:0:1], [1:0:-1], [0:1:1], [0:1:-1]
+   \] 为所有使得 \(  \tilde{f}  \)不是浸入的点.
+   
+   \item 设 \(   \pi : \mathbb{S}^{2}\to \mathbb{RP}^{2}  \)仍为投影映射, 由1.可知, mk \(  \bar{f}  \)为 \(  f  \)诱导的映射, \(  \tilde{f}  \)使得 \(  f= \tilde{f}\circ \iota   \).   由1.可知, \(  \bar{f}  \)是浸入, 当且仅当 \(  f  \)是浸入. 当且仅当  \[
+   \operatorname{ker} d \tilde{f}_{\iota \left( p \right) }\cap T_{p}\mathbb{S}^{2}= \left\{ 0 \right\},\quad \forall p \in \mathbb{S}^{2}
+   \]    其中对于 \(  p= \left( x,y,z \right)   \),   \[
+   J \tilde{f}_{\left( x,y,z \right) }= \begin{pmatrix} 
+       2x&-2y&0\\ 
+        0&z&y\\ 
+         z&0&x\\ 
+          y&x&0 
+   \end{pmatrix} 
+   \] 后三行的\(  \det   \)为 \(  2xyz  \) 故当 \(  x,y,z  \)均非零时,  \(  \operatorname{ker}\,\mathrm{d} \tilde{f}_{\iota \left( p \right) }= 0  \). 
+   
+   考虑至少有一个不为零的情况, 设 \(  x\neq 0  \), 则 \(  J \tilde{f}_{p}  \)去掉第二行的行列式为 \(  -2x\left( x^{2}+ y^{2} \right)   \), 如果 \(  \det J_{\tilde{f}}\left( x,y,z \right)= 0   \), 只能有 \(  z= 1  \)此时 \[
+   \operatorname{ker}\left( \,\mathrm{d}  \tilde{f}_{p} \right)\cap T_{p}\mathbb{S}^{2}= \operatorname{span}\left\{ \left( 0,0,1 \right)  \right\}\cap \left\{ v:v\cdot \left( 0,0,1 \right)= 0  \right\}= \left\{ 0 \right\} 
+   \]     由此可知 \(  f  \)是 \(  \mathbb{S}^{2}  \)上的浸入, 从而 \(  \bar{f}  \)是 \(  \mathbb{RP}^{2}  \)上的浸入.  
+   
+   接下来说明 \(  \bar{f}  \)是单射, 我们证明如果 \(  f\left( p_1 \right)= f\left( p_2 \right)    \), 则 \(  p_1= \pm p_2  \). 设 \(  p_{i}= \left( x_{i},y_{i},z_{i} \right)   \), 则 由 \[
+   y_1z_1= y_2z_2, z_1x_2= z_2x_2, x_1y_2= x_2y_2,\quad x_{i}^{2}+ y_{i}^{2}+ z_{i}^{2}= 1
+   \]可以导出 \[
+   x_1^{2}\left( 1-x_1^{2} \right)= x_2^{2}\left( 1-x_2^{2} \right)  \implies \left( x_1^{2}-x_2^{2} \right)\left( 1-\left( x_1^{2}+ x_2 ^{2}\right)  \right)= 0  
+   \]    结合 \(  x_1^{2}-y_1^{2}= x_2^{2}-y_2^{2}  \) , 并由对称性, 我们得到 \[
+   x_1^{2}= x_2^{2}, \quad y_1^{2}= y_2^{2},\quad z_1^{2}= z_2^{2}
+   \]代回 \(  y_1z_1= y_2z_2  \)等方程, 可知分量的符号关系一致, 从而 \(  p_1= p_2  \)或 \(  p_1= -p_2  \), \(  \bar{f}  \)是单射.
+   最后, 由于 \(  \bar{f}  \)是紧空间 \(  \mathbb{RP}^{2}  \)到 \(  \mathbb{R} ^{4}  \)的光滑浸入, 且 \(  \bar{f}  \)是单 的, 故 \(  \bar{f}  \)为光滑嵌入.        
+  \end{enumerate}
+ 
+\end{proof}
+
+\end{document}

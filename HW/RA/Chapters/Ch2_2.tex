@@ -1,0 +1,131 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{1}
+    \setcounter{section}{2}
+}{}
+
+\chapter{ }
+\section{}
+ 代靖涵 25120222201319
+\begin{exercise}{}{}
+设 $A_1,A_2\subset\mathbb{R}^n,A_1\subset A_2,A_1$ 是可测集,且 $m(A_1)=m^*(A_2)<+\infty$. 试证明 $A_2$ 是可测集.
+\end{exercise}
+
+\begin{proof}
+  由于 \(  A_1  \)可测, 对于试验集 \(  A_2 \), 我们有 \[
+  \begin{aligned}
+  m^{*}\left( A_2 \right)&= m^{*}\left(  A_2 \cap A_1\right)+ m^{*}\left(  A_2\setminus A_1\right)\\ 
+   &= m^{*}\left( A_1 \right)+ m^{*}\left( A_2\setminus A_1 \right)\\ 
+    &= m^{*}\left( A_2 \right)+ m^{*}\left( A_2\setminus A_1 \right)    
+  \end{aligned}
+  \]因此 \(  m^{*}\left( A_2\setminus A_1 \right)= 0   \), \(  A_2\setminus A_1  \)是可测集, 从而 \[
+  A_2= \left( A_2\setminus A_1 \right)\cup A_1 
+  \]也是可测的.    
+\end{proof}
+\begin{exercise}{}{}
+设 $A,B\subset\mathbb{R}^n$ , \(  B  \) 是可测集,试证明
+\[m^*(A\cup B)+m^*(A\cap B)=m^*(A)+m^*(B)\]
+(用 $A,A\cup B$ 做试验集).
+\end{exercise}
+\begin{proof}
+    由于 \( B  \)可测, 对于试验集 \(  A  \), 我们有 \[
+    m^{*}\left( A \right)= m^{*}\left( A\cap B \right)+ m^{*}\left( A\setminus B \right)   
+    \]对于试验集 \(  A\cup B  \), 我们有 \[
+   \begin{aligned}
+    m^{*}\left( A\cup B \right)&= m^{*}\left( \left( A\cup B \right)\cap B  \right)+ m^{*}\left( \left( A\cup B \right)\setminus B  \right)    \\ 
+     &= m^{*}\left( B \right)+ m^{*}\left( A\setminus B \right)  
+   \end{aligned}
+    \]   两式相减, 得到 \[
+    m^{*}\left( A\cup B \right)-m^{*}\left( A \right)= m^{*}\left( B \right)-m^{*}\left( A\cap B \right)    
+    \]移项即可.
+\end{proof}
+\begin{exercise}{}{}
+试问:是否存在闭集 $F,F\subset [a,b]$ 且 $F\neq [a,b]$,而
+\[m(F)=b-a?\]
+\end{exercise}
+\begin{proof}
+    若存在这样的闭集\(  F  \) ,  由测度的可加性 \[
+    m\left(\left( a,b \right)\setminus F  \right)\le m\left( \left[ a,b \right]\setminus F  \right)  = m\left( [a,b] \right)-m\left( F \right)   = 0 
+    \] 由于 \(  F  \)是一个闭集, 因此 \(  \left( a,b \right)\setminus F   \)是开集. 此外, 若 \(  \left( a,b \right)\setminus F   = \varnothing\), 则 \( \left[ a,b \right]=   \overline{\left( a,b \right) }\subseteq F  \)矛盾,  因此 \(  \left( a,b \right)\setminus F   \)是一个非空开集.    存在非空开区间 \(  \left( c,d \right)\subseteq \left( a,b \right)\setminus F   \), 从而由测度的单调性  \[
+    m\left(\left( a,b \right)\setminus F  \right) \ge m\left( \left( c,d \right)  \right)= d-c> 0 
+    \]矛盾. 因此不存在这样的闭集 \(  F  \). 
+\end{proof}
+\begin{exercise}{}{}
+设 $I=[0,1]\times[0,1]$, 令
+\[
+E = \left\{ (x,y) \in I: \sin x < \frac{1}{2}, \cos(x+y) \text{ 是无理数} \right\},
+\]
+试求 $m(E)$. (答: $\pi/6$)
+
+\end{exercise}
+\begin{proof}
+    令 \[
+    E_1= \left\{ \left( x,y \right)\in I: \sin x< \frac{1 }{2 }   \right\} ,\quad E_2\coloneqq \left\{ \left( x,y \right)\in I:\cos \left( x+ y \right)\in \left( \mathbb{R} \setminus \mathbb{Q}  \right)    \right\}
+    \]则 \(  E= E_1\cap E_2  \),  \[
+    I\setminus E_2= \left\{ \left( x,y \right)\in I : \cos \left( x+ y \right)\in \mathbb{Q}    \right\}= \bigcup _{r \in \mathbb{Q} }\left\{ \left( x,y \right)  \in I:\cos \left( x+ y \right)= r \right\}
+    \]其中每个\[
+    \left\{ \left( x,y \right)\in I: \cos \left( x+ y \right)= r   \right\}
+    \]都是有线条线段的并, 它是零测的. 由外测度的可数次可加性,  \[
+    m^{*}\left( I\setminus E_2 \right)\le \sum _{r \in \mathbb{Q} }m\left( \left\{ \left( x,y \right)\in I: x+ y= \arccos r  \right\} \right)= 0  
+    \]
+     因此 \(  I\setminus E_2, E_2  \)均可测, 并且  \[
+     m^{*}\left( E_1\setminus E_2 \right)\le m^{*}\left( I\setminus E_2  \right)= 0  
+     \]
+     \(  E_1\setminus E_2  \)可测.  注意到 \[
+     E_1= [0,\frac{ \pi }{6 } )\times \left[ 0,1 \right]\implies E_1\text{可测 , 并且 }m\left( E_1 \right)= \frac{ \pi }{6 }   
+     \] 从而 \(  E= E_1\cap E_2  \)可测, 并且   \[
+     m\left( E \right)=  m\left( E_1\cap E_2 \right)= m\left( E_1 \right)-m\left( E_1\setminus E_2 \right)  = \frac{ \pi }{6 }  
+     \]
+\end{proof}
+
+\begin{exercise}{}{}
+设 $\{E_k\}$ 是 $[0,1]$ 中的可测集列, $m(E_k)=1 (k=1,2,\cdots)$, 试证明
+\[m\left(\bigcap_{k=1}^{\infty} E_k\right) = 1.\]
+\end{exercise}
+\begin{proof}
+   对于所有的 \(  k= 1,2,\cdots   \)  令 \[
+    B_{k}= \bigcap _{n = 1}^{k}E_{n}
+    \]是可测集 , 则 \[
+    B_{1}\supseteq B_2\supseteq \cdots 
+    \]. 则 \[
+   \begin{aligned}
+    m\left( \left[ 0,1 \right]\setminus B_{k}  \right)&= m\left( \left[ 0,1 \right]\setminus \bigcap _{n = 1}^{k}E_{n}  \right)\\ 
+     &= m\left( \bigcup _{n = 1}^{k}\left( \left[ 0,1 \right]\setminus E_{n}  \right)  \right)\\ 
+      &\le \sum _{n = 1}^{k}m\left( \left[ 0,1 \right]\setminus E_{n}  \right)\\ 
+       &= \sum _{n = 1}^{k}\left( 1-m\left( E_{n} \right)  \right)\\ 
+        &= 0      
+   \end{aligned}
+    \]因此 \[
+    m\left( B_{k} \right)= m\left( \left[ 0,1 \right]  \right)-m\left( \left[ 0,1 \right]\setminus B_{k}  \right)= 1   
+    \]特别地, \(  m\left( B_{1} \right)= 1< \infty   \), 由测度的自上连续性,  \[
+    m\left(\bigcap _{k = 1}^{\infty}E_{k} \right)= m\left( \bigcap _{k = 1}^{\infty}B_{k} \right)  = \lim_{k\to \infty}m\left( B_{k} \right)= 1 
+    \] 
+\end{proof}
+\begin{exercise}{}{}
+设 $E_1, E_2, \cdots, E_k$ 是 $[0,1]$ 中的可测集, 且有
+\[\sum_{i=1}^{k} m(E_i) > k-1,\]
+试证明 \[
+m\left( \bigcap _{i= 1}^{k}E_{i} \right)> 0 
+\]
+\end{exercise}
+\begin{proof}
+
+ \[
+    \begin{aligned}
+    m\left( \left[ 0,1 \right]\setminus \left( \bigcap _{i= 1}^{k}E_{i} \right)   \right)&= m\left( \bigcup _{i= 1}^{k}\left( \left[ 0,1 \right]\setminus E_{i}  \right)  \right)   \\ 
+     &\le \sum _{i= 1}^{k}m\left( \left[ 0,1 \right]\setminus E_{i}  \right) \\ 
+      &= \sum _{i= 1}^{k}\left( m\left( \left[ 0,1 \right]  \right) -m\left( E_{i} \right)  \right) \\ 
+       &= k-\sum _{i= 1}^{k}m\left( E_{i} \right) < 1
+    \end{aligned}
+    \]因此 \[
+    m\left( \bigcap _{i= 1}^{k}E_{i} \right)= m\left( \left[ 0,1 \right]  \right)-m\left( \left[ 0,1 \right]\setminus \left( \bigcap _{i= 1}^{k}E_{i} \right)   \right)> 1-1= 0   
+    \]
+\end{proof}
+
+\end{document}

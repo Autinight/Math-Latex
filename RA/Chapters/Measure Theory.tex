@@ -1,0 +1,2061 @@
+\documentclass[../main.tex]{subfiles}
+
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+}{}
+
+\chapter{Measure Theory}
+
+\section{Outer Measure}
+\begin{definition}{Outer Measure}{}
+A function $\varphi$ defined for every subset $A$ of an arbitrary set $X$ is called an \dfntxt{outer measure} on $X$ if the following conditions are satisfied:
+\begin{enumerate}
+    \item[(i)] $\varphi(\emptyset) = 0$,
+    \item[(ii)] $0 \leq \varphi(A) \leq \infty$ whenever $A \subset X$,
+    \item[(iii)] $\varphi(A_1) \leq \varphi(A_2)$ whenever $A_1 \subset A_2$,
+    \item[(iv)] $\varphi(\bigcup_{i=1}^{\infty} A_i) \leq \sum_{i=1}^{\infty} \varphi(A_i)$ for every countable collection of sets $\{A_i\}$ in $X$.
+\end{enumerate}
+\end{definition}
+
+\begin{example}{Outer Measure}{}
+\begin{enumerate}
+\item[(i)] In an arbitrary set $X$, define $\varphi(A) = 1$ if $A$ is nonempty and $\varphi(\emptyset) = 0$.
+\item[(ii)] Let $\varphi(A)$ be the number (possibly infinite) of points in $A$.
+\item[(iii)] Let $\varphi(A)=\left\{\begin{array}{ll} 0 & \text { if card } A \leq \aleph_{0}, \\ 1 & \text { if card } A > \aleph_{0} . \end{array}\right.$
+\item[(iv)] If $X$ is a metric space, fix $\varepsilon > 0$. Let $\varphi(A)$ be the smallest number of balls of radius $\varepsilon$ that cover $A$.
+\item[(v)] Select a fixed $x_0$ in an arbitrary set $X$, and let
+\[
+\varphi(A)=\left\{\begin{array}{ll}
+0 & \text { if } x_{0} \notin A, \\
+1 & \text { if } x_{0} \in A;
+\end{array}\right.
+\]
+$\varphi$ is called the \dfntxt{Dirac measure} concentrated at $x_0$.
+\end{enumerate}
+\end{example}
+
+\begin{definition}{}{}
+Let $\varphi$ be an outer measure on a set $X$. A set $E \subset X$ is called \dfntxt{$\varphi$-measurable} if
+\[
+\varphi(A) = \varphi(A \cap E) + \varphi(A - E)
+\]
+for every set $A \subset X$. In view of property (iv) above, observe that $\varphi$-measurability requires only
+\[
+\varphi(A) \ge \varphi(A \cap E) + \varphi(A - E).
+\]
+\end{definition}
+
+\begin{note}
+    也就是说, \(  E  \)是可测的, 当且仅当任意集合 \(  A  \)都可以被 \(  E  \)按外测度被良好地拆解为 \(  A\cap E  \)和 \(  A\setminus E  \).      
+\end{note}
+
+\begin{lemma}{}{7-23-1}
+A set $E \subset X$ is $\varphi$-measurable if and only if
+\[
+\varphi(P \cup Q) = \varphi(P) + \varphi(Q)
+\]
+for all sets $P$ and $Q$ such that $P \subset E$ and $Q \subset E^{c}$.
+\end{lemma}
+
+\begin{note}
+    也就是说 \(  E  \)可测, 当且仅当 落在\(  E  \)的内, 外的集合 在外测度意义下是无关的. 
+\end{note}
+
+\begin{proof}
+   For Necessity, if \(  E   \) is \(   \varphi   \)-measurable , then for all such \(  P,Q  \),  \[
+     \varphi \left( P\cup Q \right)=  \varphi \left( \left( P\cup Q \right)\cap E  \right) +  \varphi \left( \left( P\cup Q \right)-E  \right)=  \varphi \left( P \right)+  \varphi \left( Q \right)     
+    \]  
+
+    For sufficiency ,  let \(  P= A\cap E  \) , \(  Q= A\cap E^{c}= A\setminus  E  \) .     Then \[
+       \varphi \left( A \right)=  \varphi \left( P\cup Q \right)=   \varphi \left( P \right)+  \varphi \left( Q \right)    =\varphi \left( A\cap E \right)+  \varphi \left( A\setminus E \right)  
+    \]
+    
+    
+\end{proof}
+
+\begin{theorem}{}{7-24-1}
+Suppose $\varphi$ is an outer measure on an arbitrary set $X$.
+Then the following four statements hold:
+\begin{enumerate}
+\item[(i)] $E$ is $\varphi$-measurable whenever $\varphi(E) = 0$.
+\item[(ii)] $\emptyset$ and $X$ are $\varphi$-measurable.
+\item[(iii)] $E_1 - E_2$ is $\varphi$-measurable whenever $E_1$ and $E_2$ are $\varphi$-measurable.
+\item[(iv)] If $\{E_i\}$ is a \dfntxt{countable collection of disjoint $\varphi$-measurable sets}, then $\bigcup_{i=1}^\infty E_i$ is $\varphi$-measurable and
+\[
+\varphi\left(\bigcup_{i=1}^\infty E_i\right) = \sum_{i=1}^\infty \varphi(E_i).
+\]
+\end{enumerate}
+More generally, if $A \subset X$ is an arbitrary set, then
+\[
+\varphi(A) = \sum_{i=1}^\infty \varphi(A \cap E_i) + \varphi(A \cap S^{c}),
+\]
+where
+\[
+S = \bigcup_{i=1}^\infty E_i.
+\]
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item Take any \(  A\subseteq X  \) . Since \(  A\cap E\subseteq E  \) , \(   \varphi \left( A\cap E \right)= 0   \) .  Thus \[
+         \varphi \left( A\cap E \right)+   \varphi \left( A\cap E^{c} \right)=  \varphi \left( A\cap E^{c} \right)\le  \varphi \left( A \right)    
+        \]   
+        \item Follows immediately frome lemma \ref{lem:7-23-1}.
+        \item Take any \(  P,Q  \) such that \(  P\subseteq \left( E_1\setminus E_2 \right) = E_1\cap  E_2^{c}  \) , \(  Q\subseteq \left( E_1\setminus E_2 \right)^{c}= E_1^{c}\cup E_2   \) .   \[
+        \begin{aligned}
+         \varphi \left( Q \right)&=  \varphi \left( Q\cap E_2 \right)+  \varphi \left( Q-  E_2 \right)
+        \end{aligned}   
+        \] Note that \(  Q-E_2 \subseteq E_1^{c}  \) , \(  Q\cap E_2\subseteq E_2  \) . Since \(  P\subseteq E_1  \) , the measurability of \(  E_1  \) implis that  \[
+         \varphi \left( P \right)+  \varphi \left( Q-E_2 \right)=  \varphi \left( P\cup \left( Q-E_2 \right)  \right)   
+        \]  Note that \(  P\cup \left( Q-E_2 \right)\subseteq E_2^{c}   \)  . Since \(  Q\cap E_2\subseteq E_2  \) , we have \[
+         \varphi \left( P\cup \left( Q-E_2 \right) \right)+  \varphi \left( Q\cap E_2 \right)=  \varphi \left( P\cup Q \right)   
+        \]  Finally , we have \[
+        \begin{aligned}
+         \varphi \left( P \right)+  \varphi \left( Q \right)&=   \varphi \left( P \right)+  \varphi \left( Q\cap E_2 \right)+  \varphi \left( Q- E_2 \right)\\ 
+          &=        \varphi \left( P\cup \left( Q-E_2 \right)  \right)+  \varphi \left( Q\cap E_2 \right)\\ 
+           &=  \varphi \left( P\cup Q \right)    
+        \end{aligned}
+        \]
+        \item  Let \(  S_{k} = \bigcup _{i= 1}^{k}E_{i}  \).  We proceed by finite induction and first note that the result is obviously true for \(  k= 1  \) . For \(  k> 1  \) assume that \(  S_{k}  \) is \(   \varphi   \)-measurable and that \[
+         \varphi \left( A \right)\ge  \sum _{i = 1}^{k} \varphi \left( A\cap E_{i} \right)+  \varphi \left( A\cap S_{k}^{c} \right)   ,\quad \forall A\subseteq X
+        \]   Then \[
+        \begin{aligned}
+         \varphi \left( A \right)&=  \varphi \left( A\cap E_{k+ 1} \right)+  \varphi \left( A\cap E_{k+ 1}^{c} \right)\\ 
+          &=  \varphi \left( A\cap E_{k+ 1} \right)+  \varphi \left( A\cap E_{k+ 1}^{c}\cap S_{k}^{c} \right)+  \varphi \left( A\cap E_{k+ 1}^{c}\cap S_{k} \right)\\ 
+           &=  \varphi \left( A\cap E_{k+ 1} \right)+  \varphi \left( A\cap S_{k+ 1}^{c} \right)+  \varphi \left( A\cap S_{k} \right)        
+        \end{aligned}
+        \]  Replace \(  A  \) by \(  A\cap S_{k}  \) , we have \[
+         \varphi \left( A\cap S_{k} \right)\ge \sum _{i = 1}^{k} \varphi \left( A\cap S_{k}\cap E_{i} \right)+  \varphi \left( A\cap S_{k}\cap S_{k}^{c} \right)=     \sum _{i = 1}^{k} \varphi \left( A\cap E_{i} \right) 
+        \]   Thus \[
+         \varphi \left( A \right) \ge \sum _{i = 1}^{k+ 1} \varphi \left( A\cap E_{k+ 1} \right)+  \varphi \left( A\cap S_{k+ 1}^{c} \right)  
+        \] Then the subadditivity gives that \[
+         \varphi \left( A \right)\ge   \varphi \left( A\cap S_{k+ 1} \right)+  \varphi \left( A\cap S_{k+ 1}^{c} \right)   
+        \] this , in turn , implies that \(  S_{k+ 1}  \) is \(   \varphi   \)-measurable. Since we now know  for every set \(  A\subseteq X  \) and for all positive integers \(  k  \) \[
+         \varphi \left( A \right)\ge \sum _{i = 1}^{k} \varphi \left( A\cap E_{i} \right)+  \varphi \left( A\cap S_{k}^{c} \right)   
+        \]     We have \[
+         \varphi \left( A \right)\ge \sum _{i = 1}^{\infty} \varphi \left( A\cap E_{i} \right)+  \varphi \left( A\cap S^{c} \right)  \ge  \varphi \left( A\cap S \right)+  \varphi \left( A\cap S^{c} \right)   
+        \] where \(  S= \bigcup _{i = 1}^{\infty}E_{k}  \) .  Thus \(  S  \) is measurable.   The subadditivity gives that \[
+         \varphi \left( A \right)\le \sum _{i= 1}^{\infty} \varphi \left( A\cap E_{i} \right)+  \varphi \left( A\cap S^{c} \right)   
+        \]Finally, we have \[
+         \varphi \left( A \right)= \sum _{i= 1}^{\infty} \varphi \left( A\cap E_{i} \right)+  \varphi \left( A\cap S^{c} \right)   
+        \] Replace \(  A  \) by \(  S  \) , we can get \[
+         \varphi \left( S \right)= \sum _{i= 1}^{\infty} \varphi \left( E_{i} \right)  
+        \]  
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{lemma}{}{}
+Let $\{E_i\}$ be a sequence of arbitrary sets. Then there exists a sequence of disjoint sets $\{A_i\}$ such that each $A_i \subset E_i$ and
+\[
+\bigcup_{i=1}^{\infty} E_i = \bigcup_{i=1}^{\infty} A_i.
+\]
+If each $E_i$ is $\varphi$-measurable, and so is $A_i$.
+\end{lemma}
+\begin{proof}
+    Let \(  S_{k}= \bigcup _{i= 1}^{k}E_{i}  \) .  Let  \(  A_{k}= S_{k}\setminus S_{k-1} ,k \ge 1  \) , where \(  S_0   = \varnothing\) .  Then \[
+    \bigcup _{i = 1}^{\infty}E_{i}= \bigcup _{i = 1}^{\infty}\left( S_{k}\setminus S_{k-1} \right)  = \bigcup _{i = 1}^{\infty}A_{i} .
+    \]  If each \(  E_{i}  \) is \(   \varphi   \)-measurable.   \(  E_{i+ 1}\cup E_{i}= \left( E_{i+ 1}-E_{i} \right)\cup E_{i}    \) is measurable follows from the (ii), (iii) of the above theorem . Inductively , every \(  S_{k}=  \left( S_{k-1}\setminus E_{k} \right)\cup E_{k}   \)  is measurable.  Then  each \(  A_{k}   \) is measurable .  
+\end{proof}
+
+\begin{theorem}{}{7-24-2}
+If $\{E_i\}$ is a sequence of \dfntxt{$\varphi$-measurable} sets in X, then $\cup_{i=1}^{\infty} E_i$ and $\cap_{i=1}^{\infty} E_i$ are \dfntxt{$\varphi$-measurable}.
+\end{theorem}
+
+\begin{proof}
+    By the lemma above, there exists a sequence of disjoint \(   \varphi   \) - measurable sets \(  \left\{ A_{i} \right\}  \) such that each \(  A_{i}\subseteq E_{i}  \) , and \[
+    \bigcup _{i = 1}^{\infty}E_{i}= \bigcup _{i = 1}^{\infty}A_{i}
+    \]  It follows from Theorem \ref{thm:7-24-1} that \(  \bigcup _{i = 1}^{\infty}A_{i}  \) is measurable , then \(  \bigcup _{i = 1}^{\infty}E_{i}  \) is as well .   Since \(  X   \) is measurable , \(  E_{i}^{c}= X\setminus E_{i}  \) is measurable , then   \(  \bigcup _{i = 1}^{\infty}E_{i}^{c}  \) is measurable .  Thus \[
+    \bigcap_{i= 1}^{\infty}E_{i}=  X\setminus \bigcup _{i= 1}^{\infty}E_{i}^{c} 
+    \] is measurable . 
+\end{proof}
+
+\begin{definition}{}{}
+A nonempty collection $\Sigma$ of sets $E$ satisfying the following two conditions is called a \dfntxt{$\sigma$-algebra}:
+\begin{enumerate}
+    \item[(i)] if $E \in \Sigma$, then $E^{c} \in \Sigma$;
+    \item[(ii)] $\cup_{i=1}^{\infty} E_i \in \Sigma$ if each $E_i$ is in $\Sigma$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}{}{}
+In a topological space, the elements of the smallest $\sigma$-algebra that contains all open sets are called \dfntxt{Borel sets}. The term ``smallest'' is taken in the sense of inclusion.
+\end{definition}
+\begin{proof}
+    We need to show that the ``smallest'' exists. 
+\end{proof}
+
+\begin{corollary}{}{}
+If $\varphi$ is an \dfntxt{outer measure} on an arbitrary set $X$, then the class of $\varphi$-measurable sets forms a \dfntxt{$\sigma$-algebra}.
+\end{corollary}
+\begin{proof}
+    Follows immediately from Theorem \ref{thm:7-24-1} and Theorem \ref{thm:7-24-2}. 
+\end{proof}
+
+\begin{corollary}{}{8-14-1}
+Suppose $\varphi$ is an outer measure on $X$ and $\{E_i\}$ a countable collection of $\varphi$-measurable sets.
+\begin{enumerate}
+    \item[(i)] If $E_1 \subset E_2$ with $\varphi(E_1) < \infty$, then
+    \[
+        \varphi(E_2 \setminus E_1) = \varphi(E_2) - \varphi(E_1).
+    \]
+    \item[(ii)] (Countable additivity) If $\{E_i\}$ is a disjoint sequence of sets, then
+    \[
+        \varphi(\bigcup_{i=1}^{\infty} E_i) = \sum_{i=1}^{\infty} \varphi(E_i).
+    \]
+    \item[(iii)] (Continuity from the left) If $\{E_i\}$ is an increasing sequence of sets, that is, if $E_i \subset E_{i+1}$ for each $i$, then
+    \[
+        \varphi(\bigcup_{i=1}^{\infty} E_i) = \varphi(\lim_{i \to \infty} E_i) = \lim_{i \to \infty} \varphi(E_i).
+    \]
+    \item[(iv)] (Continuity from the right) If $\{E_i\}$ is a decreasing sequence of sets, that is, if $E_i \supset E_{i+1}$ for each $i$, and if $\varphi(E_{i_0}) < \infty$ for some $i_0$, then
+    \[
+        \varphi(\bigcap_{i=1}^{\infty} E_i) = \varphi(\lim_{i \to \infty} E_i) = \lim_{i \to \infty} \varphi(E_i).
+    \]
+    \item[(v)] If $\{E_i\}$ is any sequence of $\varphi$-measurable sets, then
+    \[
+        \varphi(\liminf_{i \to \infty} E_i) \le \liminf_{i \to \infty} \varphi(E_i).
+    \]
+    \item[(vi)] If
+    \[
+        \varphi(\bigcup_{i=i_0}^{\infty} E_i) < \infty
+    \]
+    for some positive integer $i_0$, then
+    \[
+        \varphi(\limsup_{i \to \infty} E_i) \ge \limsup_{i \to \infty} \varphi(E_i).
+    \]
+    
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+    (v)  Let \(  A_{j}=  \bigcap_{k= j}^{\infty}E_{k}   \) , then \[
+    \liminf_{i\to \infty}E_{i}= \lim_{j\to \infty}A_{j}= \bigcup _{j = 1}^{\infty}A_{j}
+    \] It follows from (iv) that \[
+     \varphi \left( \liminf_{i\to \infty}E_{i} \right)= \lim_{j\to \infty} \varphi \left( A_{j} \right)  
+    \] Since \(  A_{j}\subseteq  E_{j}  \), we have \(   \varphi \left( A_{j} \right)\le  \varphi \left( E_{j} \right)    \), then \[
+    \lim_{j\to \infty} \varphi \left( A_{j} \right)\le \liminf_{i\to \infty} \varphi \left( E_{j} \right)  
+    \]   Thus \[
+     \varphi \left( \liminf_{i\to \infty}E_{i} \right)\le \liminf_{i\to \infty} \varphi \left( E_{i} \right)  
+    \]
+\end{proof}
+
+\begin{definition}{}{}
+    \begin{itemize}
+        \item An outer measure \(   \varphi   \) on a topological space \(  X  \) is called a \dfntxt{Borel outer measure} if all Borel sets are \(   \varphi   \)-measurable. 
+        \item A Borel outer measure is \dfntxt{finite} if \(   \varphi \left( X \right)    \) is finite.
+        \item An outer measure \(   \varphi   \) on a set \(  X  \) is called \dfntxt{regular} if for each \(  A\subseteq X  \) there exists a \(   \varphi   \)-measurable set \(  B\supseteq A  \) such that \(   \varphi \left( B \right)=  \varphi \left( A \right)    \). 
+        \item A \dfntxt{Borel rugular outer measure} is a Borel outer measure such that for each \(  A\subseteq X  \), there exists a Borel set \(  B  \) such that \(   \varphi \left( B \right)=  \varphi \left( A \right)    \).    
+        \item A \dfntxt{Radon outer measure} is a Borel regular outer measure that is finite on compact sets.             
+    \end{itemize}
+    
+\end{definition}
+\section*{Exercises for Outer Measure}
+
+\begin{exercise}{}{}
+     If \(  X  \) is a metric space, fix \(   \varepsilon > 0  \). Let \(   \varphi \left( A \right)   \) be the smallest number of balls of radius \(   \varepsilon   \) that cover \(  A  \).      
+
+Let \(   \varphi _{ \varepsilon }\left( A \right): =  \varphi \left( A \right)    \) denote the dependence on \(   \varepsilon   \), and define \[
+\psi \left( A \right) : = \lim_{ \varepsilon \to 0 }  \varphi _{ \varepsilon }\left( A \right)  
+\] What is \(  \psi \left( A \right)   \)  and what are the correspoding \(  \psi   \)-measurable sets. 
+\end{exercise}
+\begin{proof}
+    If there are only finite points in \(  A  \). Let \[
+    l : =  \min \left\{ d\left( x,y \right) :x,y \in A ,x \neq y\right\}
+    \] Then for any \(  x,y \in A  \), \(  x \neq y  \). If \(  B_1,B_2  \) are ball of radius \( \frac{l }{2 }   \) such that \(  x\in B_1, y \in B_2  \).     Then \(  B_1\cap B_2= \varnothing  \).  But each point in \(  A  \) must covered by one of such ball, which shows that \(  \psi \left( A \right)\ge  \left| A \right|    \).    Since it is obvious that \(  \psi \left( A \right)\le \left| A \right|    \),  then \(  \psi \left( A \right)= \left| A \right|    \). 
+    
+    Now suppose that \(  A  \) is a infinite set. If \(  \psi \left( A \right)< \infty   \), say \(  \psi \left( A \right)= n   \) . Then for any sufficiently small \(   \varepsilon   \), there are balls \(  B_1,\cdots ,B_{n}  \)  with radius \(   \varepsilon   \) cover \(  A  \). Take any \(  n+ 1  \) different points \(  p_1,\cdots ,p_{n+ 1}  \)  of \(  A  \). Let  \(   \varepsilon = \frac{1}{2} \min \left\{ d\left( p_{i},p_{j} \right): i\neq j  \right\}  \), then \(   B_1,\cdots,B_n   \) cannot cover these \(  n+ 1  \) points, thus cannot cover  \(  A  \), which is a contradiction. Thus we have \(  \psi \left( A \right)= \infty   \) . 
+
+    We find that \(  \psi   \) is just the counting measure on \(  X  \).Take any \(  E\subseteq X  \),and take any \(  A\subseteq X  \), if \(  A  \) is finite, then \(  A\cap E, A- E  \) are as well, and \(  \left| A \right|= \left| A\cap E \right|+ \left| A-E \right|     \)   , that is \(  \psi \left( A \right)= \psi \left( A\cap E \right)+ \psi \left( A-E \right)     \).  If \(  A  \) is infinite, then one of the \(  A\cap E  \)   and \(  A-E  \) is as well. Then \[
+    \psi \left( A \right)= \infty= \psi \left( A\cap E \right)+ \psi \left( A-E \right)   
+    \]The above shows that \(  E  \) is \(  \psi   \)-measurable. Thus all subset of \(  X  \) are \(  \psi   \)-measurable.        
+\end{proof}
+
+\begin{exercise}{}{}
+    It was shown that \(   \varphi \left( E_2\setminus E_1 \right)=  \varphi  \left( E_2 \right)- \varphi \left( E_1 \right)     \) if \(  E_1\subseteq E_2  \) are \(   \varphi   \)-measurable with \(   \varphi \left( E_1 \right)< \infty   \). Prove that this result remains true if \(  E_2  \) is not assumed to be \(   \varphi   \)-measurable.      
+\end{exercise}
+\begin{proof}
+   Since \(  E_1  \) is measurable,    \[
+      \varphi \left( E_2 \right)=  \varphi \left( E_2\cap E_1 \right)+  \varphi \left( E_2-E_1 \right)   
+     \] but \[
+      \varphi \left( E_2\cap E_1 \right)=  \varphi \left( E_1 \right)  
+     \]which completes the proof. 
+\end{proof}
+
+\section{Carath\'eodory Outer Measure}
+
+\begin{definition}{Carath\'eodory outer measure}{}
+    An outer measure \(   \varphi  \) defined on a metric space \(  \left( X,\rho  \right)   \) is called a \dfntxt{Carath\'eodory outer measure} if \[
+     \varphi \left( A\cup B \right)=  \varphi \left( A \right)+  \varphi \left( B \right)   
+    \] whenever \(  A,B  \) are arbitrary subsets of \(  X  \) with \(  d\left( A,B \right)> 0   \). Where \[
+    d\left( A,B \right): = \inf \left\{ \rho \left( a,b \right): a \in A, b\in B  \right\} 
+    \]     
+\end{definition}
+
+\begin{lemma}{}{}
+    Let \(   \varphi   \) is a  \dfntxt{Carath\'eodory outer measure} on a metric space \(  \left( X,\rho  \right)   \).  \(  G\neq X  \) is a open set, \(  E\subseteq G  \), \(   \varphi \left( E \right)< \infty   \) . Let \[
+    E_{k}= \left\{ x \in E : \rho \left( x,G^{c} \right)\ge \frac{1 }{k }   \right\},\quad k= 1,2,\cdots 
+    \]  Then \[
+    \lim_{k\to \infty} \varphi \left( E_{k} \right)=  \varphi \left( E \right)= \varphi \left( \lim_{k\to \infty}E_{k} \right)   
+    \]
+\end{lemma}
+\begin{proof}
+    We have \[
+    E_1\subseteq E_2\subseteq \cdots \subseteq E
+    \] \(   \varphi \left( E_{k} \right)\le  \varphi \left( E \right)    \) for each \(  k  \).   Define \[
+    T_{i}\coloneqq \left\{ x\in E: \frac{1 }{i+ 1 }< \rho \left( x,G^{c} \right)\le \frac{1 }{i }    \right\}
+    \]Then for each \(  \left| i-j \right|\ge 2   \), \(  \rho \left( T_{i},T_{j} \right)> 0   \). We can prove by induction that for each \(  n \in \mathbb{N}   \), \[
+    \sum _{k= 1}^{n} \varphi \left( T_{2k} \right)=   \varphi \left( \bigcup _{k= 1}^{n}T_{2k} \right) \le  \varphi \left( E \right) 
+    \]   Take \(  n\to \infty  \), we have \[
+    \sum _{k= 1}^{\infty} \varphi \left( T_{2k} \right)< \infty 
+    \]Similarly, \[
+    \sum _{k= 1}^{\infty} \varphi \left( T_{2k-1} \right)< \infty 
+    \]Thus \[
+    \sum _{k= 1}^{\infty} \varphi \left( T_{k} \right)< \infty \implies \lim_{j\to \infty}\sum _{k= j}^{\infty} \varphi \left( T_{k} \right)= 0 
+    \]Then it follows that  \[
+    \lim_{j\to \infty} \varphi \left( E\setminus E_{j} \right)\le \lim_{j\to \infty}\sum _{k = j}^{\infty} \varphi \left( T_{k} \right)= 0  
+    \]Since \[
+     \varphi \left( E \right)\le  \varphi \left( E\setminus E_{k} \right)+  \varphi \left( E_{k} \right)   
+    \]  By taking \(  k\to \infty  \), we have \[
+     \varphi \left( E \right)= \lim_{k\to \infty} \varphi \left( E_{k} \right)  
+    \] 
+\end{proof}
+
+\begin{theorem}{}{8-10-1}
+    If \(   \varphi   \) is a Carath\'eodory outer measure on a metric space \(  X  \), then all closed sets are \(   \varphi   \)-measurable.    
+\end{theorem}
+\begin{proofsketch}
+    用一列集合近似代替\(  C  \)是标准的想法. 证明的核心要素有: 1.\(  C  \)是闭集, 使得按距离向外逼近的行为是良好的. 2. 距离这个属性与Carath\'odory条件是相适应的.   此外, 将命题转化为极限 \[
+    \lim_{i \to \infty}  \varphi \left( A\setminus C_{i} \right)=  \varphi \left( A\setminus C \right)  
+    \]是标准的流程. 要证明该极限成立, 则需要一定的技巧. 
+
+    Carath\'eodory条件允许我们拆开正距离集. 问题在于分解一个集合出来的东西一定是``粘着的'', 办法就是当我们对常数不敏感时, 把集合拆开的部分每隔一块拿出来成一组. 这两个集合分别拿出来不同的一组, 就拼成了原本的集合. 我们让每一组中的成员分别两两具有正距离就可以了.
+
+    这里就是把集合拆成``主要部分''和``尾巴项'', 利用这种方法说明尾巴项对应的级数是收敛的, 从而证明了尾巴项是可以甩掉的.
+\end{proofsketch}
+\begin{proof}
+    Let \(  C \subseteq X  \) be any closed sets. Take \(  A \subseteq X  \), only need to show that \[
+     \varphi \left( A \right)\ge  \varphi \left( A\cap C \right) +  \varphi \left( A\setminus C \right)   
+    \]We assume that \(   \varphi \left( A \right)< \infty   \).  Define \[
+    C_{i}: = \left\{ x: d\left( x,C \right)\le \frac{1 }{i }   \right\}
+    \] Since \(  d\left( A\setminus C_{i}, A\cap C \right)   > 0\),  \[
+     \varphi \left( A \right)\ge   \varphi \left( \left( A\setminus C_{i} \right)\cup \left( A\cap C \right)   \right)=   \varphi \left( A\setminus C_{i} \right)+  \varphi \left( A\cap C \right)    
+    \] Only need to show that \[
+    \lim_{i \to \infty}  \varphi \left( A\setminus C_{i} \right)=  \varphi \left( A\setminus C \right)  
+    \] Define \[
+    T_{i}:=  \left\{ x \in A: \frac{1 }{i+ 1 }< d\left( x,C \right)\le \frac{1 }{i }    \right\}
+    \], then \[
+    A\setminus C\subseteq  \left( A\setminus C_{i} \right)\cup \bigcup _{j = i}^{\infty}T_{i} 
+    \] Thus \[
+     \varphi \left( A\setminus C \right)\le  \varphi \left( A\setminus C_{i} \right)+ \sum _{j = i}^{\infty} \varphi \left( T_{i} \right)   
+    \] Once we have \(  \sum _{j= 1}^{\infty} \varphi \left( T_{i} \right)< \infty   \), then \(  \lim_{i\to \infty}\sum _{j = i}^{\infty} \varphi \left( T_{i} \right)= 0   \),  the conclusion follows from it. To show this, note that \(  \,\mathrm{d} \left( T_{i},T_{j} \right)> 0   \) whenever \(  \left| i-j \right|\ge 2   \). Then it by induction follows from Carath\'odory condition that \[
+    \sum _{ j= 1}^{\infty} \varphi \left( T_{2i} \right) \le  \varphi \left( A \right) < \infty
+    \] \[
+    \sum _{j = 1}^{\infty} \varphi \left( T_{2j-1} \right)\le  \varphi \left( A \right) < \infty 
+    \]    Thus \(  \sum _{j = 1}^{\infty} \varphi \left( T_{i} \right)< \infty   \), which completes the proof.  
+\end{proof}
+
+\begin{theorem}{}{8-10-2}
+Suppose $\mathcal{F}$ is a family of subsets of a topological space X that contains all open and all closed subsets of X. Suppose also that $\mathcal{F}$ is closed under countable unions and countable intersections. Then $\mathcal{F}$ contains all Borel sets; that is, $\mathcal{B} \subset \mathcal{F}$.
+\end{theorem}
+\begin{note}
+    可以将包含\(  \mathcal{B}  \)描述成对以下三种集合的封闭性: 1.开集 2. 补集 3.可数并. 
+
+    如果我们事先没有对补集的封闭性, 可以通过加强1.3.的条件,使得当我们强制使得补集封闭后, 得到的新集族依旧满足1.3. 具体地, 我们希望原集族对于开集的补集,也就是闭集也封闭; 对于可数并的补集, 也就是可数交也封闭. 
+\end{note}
+\begin{proof}
+    Let \[
+    \mathcal{H}=  \mathcal{F}\cap \left\{ A:A^{c}\in \mathcal{F} \right\}
+    \] Obseve that \(  \mathcal{H}  \) contains all closed sets. Moreover, it is easily seen that \(  \mathcal{H}  \) is closed under complementation and countable unions. Thus \(  \mathcal{H}  \) is a \(   \sigma   \)-algebra that contains the open sets and therefore contains all Borel sets.    
+\end{proof}
+
+\begin{theorem}{}{}
+    If \(   \varphi   \) is a Carath\'eodory outer measure on a metric space \(  X  \), then the Borel sets of \(  X  \) are \(   \varphi   \)-measurable.    
+\end{theorem}
+\begin{proof}
+    Since the collection of \(   \varphi   \)-measurable sets is itself a \(   \sigma   \)-algebra , it is closed under complements and countable union and countable intersection. Theorem \ref{thm:8-10-1} gives that \(   \varphi   \)-measurable sets contains closed sets, thus contains open sets as well.  Then  the conclusion follows from Theorem \ref{thm:8-10-2} .
+\end{proof}
+
+\section*{Exercises for this section}
+
+\begin{exercise}{Smallest \(   \sigma   \)-algebra containing open sets }{}
+    Prove that in every topological space $X$, there exists a smallest $\sigma$-algebra that contains all open sets in $X$. That is, prove that there is a $\sigma$-algebra $\Sigma$ that contains all open sets and has the property that if $\Sigma_1$ is another $\sigma$-algebra containing all open sets, then $\Sigma \subset \Sigma_1$. In particular, for $X = \mathbb{R}^n$, note that there is a smallest $\sigma$-algebra that contains all the closed sets in $\mathbb{R}^n$.
+\end{exercise}
+
+\begin{proof}
+    Let \[
+     \Sigma : = \bigcap_{\mathcal{M}_{\alpha } \text{ is a } \sigma \text{ algebra containing }X }\mathcal{M}_{\alpha } 
+    \] Then it is obvious that \(   \Sigma   \) is closed under complement,  countable union, and contains all open sets. Thus \(   \Sigma   \) is a \(   \sigma   \)-algebra containing all open sets.   
+\end{proof}
+
+\begin{exercise}{}{}
+     In a topological space $X$ the family of Borel sets, $\mathcal{B}$, is by definition the $\sigma$-algebra generated by the closed sets. The method below is another way of describing the Borel sets using transfinite induction. You are to fill in the necessary steps:
+    \begin{enumerate}
+        \item For an arbitrary family $\mathcal{F}$ of sets, let
+        \[
+            \mathcal{F}^* = \left\{ \bigcup_{k=1}^{\infty} E_k : \text{ where either } E_i \in \mathcal{F} \text{ or } \tilde{E}_i \in \mathcal{F} \text{ for all } i \in \mathbb{N} \right\}.
+        \]
+        Let $\Omega$ denote the smallest uncountable ordinal. We will use transfinite induction to define a family $\mathcal{E}_\alpha$ for each $\alpha < \Omega$.
+        \item Let $\mathcal{E}_0 :=$ all closed sets $:= \mathcal{K}$. Now choose $\alpha < \Omega$ and assume that $\mathcal{E}_\beta$ has been defined for each $\beta$ such that $0 \le \beta < \alpha$. Define
+        \[
+            \mathcal{E}_\alpha := \left( \bigcup_{0 \le \beta < \alpha} \mathcal{E}_\beta \right)^*
+        \]
+        and define
+        \[
+            \mathcal{A} := \bigcup_{0 \le \alpha < \Omega} \mathcal{E}_\alpha.
+        \]
+        \item Show that each $\mathcal{E}_\alpha \subseteq \mathcal{B}$.
+        \item Show that $\mathcal{A} \subset \mathcal{B}$.
+        \item Now show that $\mathcal{A}$ is a $\sigma$-algebra to conclude that $\mathcal{A} = \mathcal{B}$.
+        \begin{enumerate}
+            \item Show that $\emptyset, X \in \mathcal{A}$.
+            \item Let $A \in \mathcal{A} \implies A \in \mathcal{E}_\alpha$ for some $\alpha < \Omega$. Show that this implies $\tilde{A} \in \mathcal{E}_\alpha^* \subset \mathcal{E}_\beta$ for every $\beta > \alpha$.
+            \item Conclude that $\tilde{A} \in \mathcal{A}$ and thus conclude that $\mathcal{A}$ is closed under complementation.
+            \item Now let $\{A_k\}$ be a sequence in $\mathcal{A}$. Show that $\bigcup_{k=1}^{\infty} A_k \in \mathcal{A}$.
+            (Hint: Each $A_k$ is in $\mathcal{A}_{\alpha_k}$ for some $\alpha_k < \Omega$. We know that there is $\beta < \Omega$ such that $\beta > \alpha_k$ for each $k \in \mathbb{N}$.)
+        \end{enumerate}
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    3. Since \(  \mathcal{E}_{0} \subseteq  \mathcal{B}  \) , only need to show that if \(  \mathcal{E}_{\beta } \subseteq \mathcal{B}  \) for all \(  0\le \beta < \alpha   \) , then \(  \mathcal{E}_{\alpha }\subseteq \mathcal{B}  \). Take any \(  E \in \mathcal{E}_{\alpha }  \) , then there are \(   E_1,\cdots,E_k ,\cdots   \), such that \(  E_{i} \in \bigcup _{0 \le \beta < \alpha }\mathcal{E}_{\beta }  \), or \(  E_{i}^{c}\in \bigcup _{0 \le \beta < \alpha } \mathcal{E}_{\beta }  \) , and \(  E=  \bigcup _{k= 1}^{\infty}E_{k}  \).  We suppose that \(  E_{i} \in \mathcal{E}_{\beta _{i}}  \) or \(  E_{i}^{c} \in \mathcal{E}_{\beta _{i}}  \). Since \(  \mathcal{E}_{\beta _{i}} \subseteq \mathcal{B}  \) for all \(  \beta _{i}  \), and since \(  \mathcal{B}  \) is closed under complement, then \(  E_{i} \in \mathcal{B}  \). Since \(  \mathcal{B}  \) is closed under countable union, \(  E= \bigcup _{k = 1}^{\infty}E_{k} \in \mathcal{B}  \). Thus \(  \mathcal{E}_{\alpha } \subseteq \mathcal{B}  \). 
+
+    4. We have shown that \(  \mathcal{E}_{\alpha } \subseteq \mathcal{B}  \) for all \(  \alpha <  \Omega   \),  then it is immediate that \(  A\subseteq \mathcal{B}  \).  
+
+    5. (a)  Since \(  \varnothing \in \mathcal{E}_{0}  \) and \(  X= \left( \varnothing \right)^{c}\in \mathcal{E}_{1}= \left( \mathcal{E}_{0} \right)^{*}   \)  , then \(  \varnothing,X \in \mathcal{A}  \).
+
+    (b)  Write \[
+    \mathcal{E}_{\alpha }^{*}= \left\{ \bigcup _{k= 1}^{\infty}E_{k}: \text{  where either }E_{i} \in \mathcal{E}_{\alpha } \text{ or } E_{i}^{c}\in \mathcal{E}_{\alpha }\text{ for all } i\in \mathbb{N}  \right\}
+    \]We take \(  E_1 = A^{c} \), then \(  E_1^{c}= A\in \mathcal{E}_{\alpha }  \), and take \(  E_{2}= \cdots = \varnothing  \).Then \(  A^{c}= \bigcup _{k = 1}^{\infty}E_{k} \in \mathcal{E}_{\alpha }^{*}  \). If \(  \beta  >  \alpha   \), then  \[
+   \mathcal{E}_{\alpha }\subseteq  \bigcup _{0 \le  \gamma < \beta }\mathcal{E}_{ \gamma  }
+    \]   Let \(  *  \) act on both side, then it follows from the definition of \(  *  \) that \[
+    \left( \mathcal{E}_{\alpha } \right)^{*}\subseteq \left( \bigcup _{0\le  \gamma < \beta }\mathcal{E}_{ \gamma } \right)^{*}= \mathcal{E}_{\beta }  
+    \]  Thus \(  A^{c} \in \mathcal{E}_{\alpha }^{*}\subseteq \mathcal{E}_{\beta }  \) for every \(  \beta > \alpha   \). 
+    
+    (c) It is immediate from (b) that \(  A^{c} \in \mathcal{E}_{\beta }\subseteq \mathcal{A}  \) .
+
+    (d) Suppose that \(  A_{k} \in \mathcal{E}_{\alpha _{k}}  \) for some \(  \alpha _{k}<  \Omega   \). Let \[
+     \gamma : = \bigcup _{k \in \mathbb{N} }\alpha _{k},\quad \beta : =  \gamma + 1
+    \] Then \(   \gamma ,\beta <  \Omega   \), and \(  \alpha _1 ,\cdots ,\alpha _{k}< \beta   \). Then \[
+    \bigcup _{k = 1}^{\infty}A_{k}\in \left( \bigcup _{k = 1}^{\infty} \mathcal{E}_{\alpha _{k}} \right)^{*}\subseteq \mathcal{E}_{\beta }\subseteq \mathcal{A} 
+    \]   
+    
+\end{proof}
+
+\begin{exercise}*{}{}
+      An outer measure \(   \varphi   \) on a space \(  X  \) is called \(   \sigma   \)-finite if there exists a countable number of sets \(  A_{i}  \) with \(   \varphi \left( A_{i} \right)< \infty   \) such that \(  X\subseteq \bigcup _{i= 1}^{\infty}A_{i}  \). Assuming that \(   \varphi   \) is a \(   \sigma   \)-finite Borel regular outer measure on a metric space \(  X  \), prove that \(  E\subseteq X  \) is \(   \varphi   \)-measurable if and only if there exists an \(  F_{ \sigma }   \) set \(  F\subseteq E  \) such that \(   \varphi \left( E\setminus F \right)= 0   \).       
+\end{exercise}
+\begin{proof}
+    Let \(  E_{i}: = E\cap A_{i}  \). Then \[
+    E=  \bigcup _{i = 1}^{\infty}E_{i},\quad  \varphi \left( E_{i} \right)\le  \varphi \left( A_{i} \right)< \infty  
+    \] Once we show that there is a closed set \(  F_{i}\subseteq E_{i}  \), such that \(   \varphi \left( E_{i}\setminus F_{i} \right)= 0   \) for all \(  i  \), then let \(  F= \bigcup _{i = 1}^{\infty}F_{i}\in F_{ \sigma }  \), it follows that  \[
+     \varphi \left( E\setminus F \right)\le  \varphi \left( \bigcup \left( E\setminus F_{i} \right)  \right)\le  \varphi \left( \bigcup \left( E_{i}\setminus F_{i} \right)  \right)\le \sum _{i} \varphi \left( E_{i}\setminus F_{i} \right)= 0    
+    \]   
+\end{proof}
+
+
+\begin{exercise}{}{}
+Let $\varphi$ be an outer measure on a space $X$. Suppose $A \subset X$ is an arbitrary set with $\varphi(A) < \infty$ such that there exists a $\varphi$-measurable set $E \supset A$ with $\varphi(E) = \varphi(A)$. Prove that $\varphi(A \cap B) = \varphi(E \cap B)$ for every $\varphi$-measurable set $B$.
+\end{exercise}
+\begin{proof}
+   \[
+      \varphi \left( A \right)=  \varphi \left( E \right)=  \varphi \left( E\cap B \right)+  \varphi \left( E\setminus B \right)   
+     \]  \[
+    \begin{aligned}
+      \varphi \left( A\cap B \right)\ge  \varphi \left( A \right)- \varphi \left( A\setminus B \right)&=  \varphi \left( E \right)- \varphi \left( A\setminus B \right)  \\ 
+       &=  \varphi \left( E\cap B \right)+  \varphi \left( E\setminus B \right)- \varphi \left( A\setminus B \right)\\ 
+        &\ge  \varphi \left( E\cap B \right)    
+    \end{aligned}    
+     \] Since \(  A\cap B\subseteq E\cap B  \), \(   \varphi \left( A\cap B \right)\le  \varphi \left( E\cap B \right)    \). Finally, we have \(   \varphi \left( A\cap B \right)=  \varphi \left( E\cap B \right)    \)   
+\end{proof}
+
+
+\begin{exercise}{}{}
+In $\mathbb{R}^2$, find two disjoint closed sets $A$ and $B$ such that $\mathbf{d}(A, B) = 0$. Show that this is not possible if one of the sets is compact.
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Let \(  A  \) be the graph of \(  y= \frac{1 }{x }   \). Let \(  B = \left\{ \left( x,y \right): y= 0  \right\}  \). Then \(  \left\{ \left( n,\frac{1 }{n }  \right): n\in \mathbb{N}   \right\}  \subseteq A\) , \(  \left\{ \left( n,0 \right): n \in \mathbb{N}   \right\}\subseteq B  \), then \[
+        \mathbf{d}\left( A,B \right)\le \inf \left\{ d\left( \left( n,\frac{1 }{n }  \right), \left( n,0 \right)   \right)  : n \in \mathbb{N} \right\} = \lim_{n\to \infty}\frac{1 }{n }= 0  
+        \]
+        \item If \(  A  \) is compact, \(  B  \) is closed. Since \(  \mathbf{d}\left( A,B \right)= 0   \), there are convergent sequences \(  \left\{ a_{n} \right\}\subseteq A  \) and \(  \left\{ b_{n} \right\}\subseteq B  \) such that \(  \lim_{n\to \infty}d\left( a_{n},b_{n} \right)= 0   \).   Since \(  A  \) is bounded and closed, there is a  cluster point \(   a \in A  \) of \(  \left\{ a_{n} \right\}  \). Suppose that \(  \lim_{k\to \infty}a_{n_{k}}= a  \), then \(  \lim_{k\to \infty}b_{n_{k}}= a\in B  \). \(  A\cap B\neq \varnothing  \), which is a contradiction.      
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+Let $\varphi$ be an outer Carathéodory measure on $\mathbb{R}$ and let $f(x) := \varphi(I_x)$, where $I_x$ is an open interval of fixed length centered at $x$. Prove that $f$ is lower semicontinuous. What can you say about $f$ if $I_x$ is taken as a closed interval? Prove the analogous result in $\mathbb{R}^n$; that is, let $f(x) := \varphi(B(x, a))$, where $B(x, a)$ is the open ball with fixed radius $a$ centered at $x$.
+\end{exercise}
+\begin{exercise}{}{}
+In a metric space $X$, prove that $\operatorname{dist}(A, B) = d(\bar{A}, \bar{B})$ for arbitrary sets $A, B \in X$.
+\end{exercise}
+\begin{exercise}{}{}
+Let $A$ be a non-Borel subset of $\mathbb{R}^n$ and define for each subset $E$,
+\[\begin{aligned}
+\varphi(E) = \begin{cases} 0 & \text{if } E \subset A, \\ \infty & \text{if } E \setminus A \neq \emptyset. \end{cases}
+\end{aligned}\]
+Prove that $\varphi$ is an outer measure that is not Borel regular.
+\end{exercise}
+\begin{exercise}{}{}
+Let $\mathcal{M}$ denote the class of $\varphi$-measurable sets of an outer measure $\varphi$ defined on a set $X$. If $\varphi(X) < \infty$, prove that the family
+\[
+\mathcal{F} := \{A \in \mathcal{M} : \varphi(A) > 0\}
+\]
+is at most countable.
+\end{exercise}
+
+
+\section{Lebesgue Measure}
+
+\begin{theorem}{}{}
+Suppose each edge $I_k = [a_k, b_k]$ of an $n$-dimensional interval $I$ is partitioned into $\alpha_k$ subintervals. The products of these intervals produce a partition of $I$ into $\beta := \alpha_1 \cdot \alpha_2 \cdots \alpha_n$ subintervals $I_i$ and
+\[
+v(I) = \sum_{i=1}^{\beta} v(I_i).
+\]
+\end{theorem}
+
+
+\begin{theorem}{}{}
+For each interval $I$ and each $\epsilon > 0$, there exists an interval $J$ whose interior contains $I$ and
+\[
+v(J) < v(I) + \epsilon.
+\]
+\end{theorem}
+
+
+\begin{definition}{Lebesgue outer measure}{}
+    The \dfntxt{Lebesgue outer measure} of an arbitrary set \(  E\subseteq \mathbb{R} ^{n}  \), denoted by \(   \lambda ^{*}\left( E \right)   \), is defined by \[
+     \lambda ^{*}\left( E \right): = \inf \left\{ \sum _{k= 1}^{\infty}v\left( I _{k} \right)  \right\}, 
+    \] where the infimum is taken over all countable collections of closed intervals \(  I _{k}  \) such that \[
+    E\subseteq \bigcup _{k = 1}^{\infty}I _{k}. 
+    \]  
+\end{definition}
+
+\begin{remark}
+   \begin{itemize}
+    \item  It may be necessary at times to emphasize the dimension of the Euclidean space in which Lebesgue outer measure if defined. When clarification is needed, we will write \(   \lambda _{n}^{*}\left( E \right)   \) in plce place of \(   \lambda ^{*}\left( E \right)   \).   
+    \item We have not prove that \(  \dfntxt{Lebesgue outer measure}  \) is actually a outer measure till now. 
+   \end{itemize}
+   
+\end{remark}
+
+
+\begin{theorem}{}{}
+    For a closed interval \(  I\subseteq \mathbb{R} ^{n}  \), \(   \lambda ^{*}\left( I \right)= v\left( I \right)    \).   
+\end{theorem}
+
+\begin{proof}
+    The inequality \(   \lambda ^{*}\left( I \right)\le v\left( I \right)    \) holds, since \(  I  \) itself givs a element of \(  \left\{ \sum _{k = 1}^{\infty}v\left( I _{k} \right)  \right\}  \)   in the definition of \(   \lambda ^{*}\left( I \right)   \). 
+
+    To prove the opposite inequality, choose \(   \varepsilon > 0  \), and a sequence of closed intervals \(  I_1,I_2,\cdots   \) such that \[
+    I\subseteq \bigcup _{k = 1}^{\infty}I _{k},\quad \sum _{ k= 1}^{\infty}v\left( I _{k} \right) \le  \lambda ^{*}\left( E \right)+  \varepsilon   
+    \]  We can choose closed intervals \(  J_{k}  \) such that \[
+    v\left( J_{k} \right)\le v\left( I _{k} \right)+ \frac{ \varepsilon  }{2^{k} },\quad  I _{k}\subseteq J_{k}^{\circ}   
+    \]Let \(  \mathcal{F}  : =  \left\{ J_{k}^{\circ}:k \in \mathbb{N}  \right\}\).    Then \(  \mathcal{F}  \) is an open cover of \(  I  \), since \(  I  \) is compact, it has a lebesgue number \(  \eta   \).    There is a finitely many partition \(   K_1,\cdots,K_m   \) of \(  I  \) such that each  with diameter less than \(  \eta   \). Then \(  K_{i}  \) is contained in some  element of \(  \mathcal{F}  \), we say \(  J_{k_{i}}  \)    althoung two \(  K_{i}  \) may be contained in a same \(  J_{k_{i}}  \).  Let \(  N_{m}  \) be the smallest number of \(  J_{k_{i}}  \) containing \(  K_{i}  \), then \[
+    v\left( I \right)= \sum _{i= 1}^{m}v\left( K_{i} \right)\le \sum _{i = 1}^{N_{m}}v\left( J_{k_{i}} \right)\le \sum _{ k = 1}^{\infty}v\left( J_{k} \right)    \le   \lambda ^{*}\left( E \right)+ 2 \varepsilon  
+    \]     Since \(   \varepsilon   \) is arbitrary, \(  v\left( I \right)\le  \lambda ^{*}\left( E \right)    \).   
+\end{proof}
+
+\begin{lemma}{}{}
+    Let \(  E\subseteq \mathbb{R} ^{n}  \), \(   \delta > 0  \). Define \[
+     \lambda _{ \delta }^{*}\left( E \right)= \inf \left\{ \sum _{k= 1}^{\infty}v\left( I_{k} \right):\bigcup _{k= 1}^{\infty}I_{k}\supseteq E, \text{with the side length of } I_{k} \text{ less than } \delta    \right\} 
+    \]  Then \[
+     \lambda _{ \delta }^{*}\left( E \right)=  \lambda ^{*}\left( E \right)  
+    \]
+\end{lemma}
+
+\begin{proof}
+    It follows from definition that \(   \lambda ^{*}\left( E \right)\le  \lambda _{ \delta }^{*}\left( E \right)    \).
+    To show the converse, we assume that \(   \lambda ^{*}\left( E \right)< \infty   \). For each \(   \varepsilon > 0  \), we take a countable collection of intervals \(  I_1,I_2,\cdots   \) such that \[
+    E\subseteq \bigcup _{k= 1}^{\infty}I_{k},\quad \sum _{k= 1}^{\infty}v\left(I_{k} \right)<  \lambda ^{*}\left( E \right)+  \varepsilon  
+    \]   Since \(  v\left( I_{k} \right)< \infty   \) for each \(  k  \), each side length of \(  I_{k}  \) is finite. Let $l_k$ be the largest side length of the intervals $I_k$. 
+    \begin{itemize}
+        \item If $l_k < \delta$, we do nothing. We keep $I_k$ as it is.
+        \item If $l_k \ge \delta$, we subdivide $I_k$. Choose an integer $M_k > \frac{l_k }{\delta}$. We can partition $I_k$ into $M_k^n$ smaller, congruent, and almost disjoint intervals $\{I_{k,m}\}_{m=1}^{M_k^n}$. Each small interval $I_{k,m}$ has side length $l_k/M_k$. Each length of each $I_{k,m}$ is $\frac{l_k}{M_k} < \delta$.
+    \end{itemize}
+   Thus , there are intervals \(  I_{k,1}, I_{k,2},\cdots ,I_{k,m_{k}}  \) with side length less than \(   \delta   \)  such that  \[
+    I_{k}= \bigcup _{m = 1}^{m_{k}}I_{k,m},\quad v\left( I_{k} \right)= \sum _{m= 1}^{m_{k}}v\left( I_{k,m} \right)  
+    \]   Then \(  \left\{ I_{k, j} \right\} \) is a contable collection of intervals covering \(  E  \). We have \[
+     \lambda _{ \delta }^{*}\left( E \right)\le \sum _{k= 1}^{\infty}\sum _{m= 1}^{m_{k}} v\left( I_{k,m} \right)= \sum _{k= 1}^{\infty}v\left( I_{k} \right)<  \lambda ^{*}\left( E \right)+  \varepsilon    
+    \]We have \(   \lambda _{ \delta }^{*}\left( E \right)\le  \lambda ^{*}\left( E \right)    \) by taking \(   \varepsilon \to 0  \).  
+\end{proof}
+
+\begin{theorem}{}{8-17-1}
+    Lebesgue outer measure, \(   \lambda ^{*}  \), defined on \(  \mathbb{R} ^{n}  \) is a Carath\'eorody outer measure.  
+\end{theorem}
+
+\begin{proof}
+    We first verify that \(   \lambda ^{*}  \) is an outer measure. We only show the subadditivity of \(   \lambda ^{*}  \), the other conditions are obvious. Let \( \left\{ A_{i} \right\}  \) be a countable collection of arbitrary subsets of \(  \mathbb{R} ^{n}  \). Denote \(  A: = \bigcup _{i = 1}^{\infty}A_{i}  \).       There is a countable family of closed intervals \(  \left\{ I _{j}^{\left( i \right) } \right\}_{j \in \mathbb{N} }  \) such that \[
+    A_{i}\subseteq \bigcup _{j = 1}^{\infty} I^{\left( i \right) }_{j},\quad   \sum _{j = 1}^{\infty}v\left( I _{j}^{\left( i \right) } \right)<  \lambda ^{*}\left( A_{i} \right)+ \frac{ \varepsilon  }{2^{i} }   
+    \] Collection of closed interval \(  \left\{ I _{j}^{\left( i \right) } \right\}_{i,j\in \mathbb{N} }  \)   can be aranged to a sequence of closed invervals, such that \[
+    A\subseteq  \bigcup _{i,j\in \mathbb{N} } I^{\left( i \right) }_{j}
+    \] Thus \[
+     \lambda ^{*}\left( A \right)\le \sum _{i,j}v\left( I _{j}^{\left( i \right) } \right)\le \sum _{i = 1}^{\infty} \lambda ^{*}\left( A_{i} \right)+  \varepsilon    
+    \] Since \(   \varepsilon > 0  \) is arbitrary, the countable subadditivity of \(   \lambda ^{*}  \) is established.      
+
+    To show that \(   \lambda ^{*}  \) is Carath\'eorody outer measure. We take any \(   \varepsilon > 0  \) , and take a countable conllection of closed intervals \(  I_1,I_2,\cdots   \)   such that \[
+    A\cup B\subseteq \bigcup _{ k= 1}^{\infty}I _{k},\quad  \sum _{k = 1}^{\infty}v\left( I _{k} \right)\subseteq  \lambda ^{*}\left( A\cup B \right).   
+    \] We can subdividing each \(  I _{k}  \) into smaller invervals if necessary, we may assume that each interval \(   I _{k}  \) which diameter less that \(  \mathbf{d}\left( A,B \right)   \). Then \(  \left\{  I _{k} \right\}  \) can be seperated into two subfamiles \(  \left\{ I _{k}^{\prime}  \right\}  \) and \(  \left\{ I _{k}^{\prime \prime}  \right\}  \). The members in the former have empty intersection with \(  B  \) , and that  in the later have empty intersection with \(  A  \). \(  \left\{ I _{k} \right\}= \left\{ I _{k}^{\prime}  \right\} \sqcup \left\{ I _{k}^{\prime \prime}  \right\}  \). Thus \[
+    A\subseteq \bigcup _{k = 1}^{\infty}\left\{ I _{k}^{\prime}  \right\},\quad B\subseteq \bigcup _{k= 1}^{\infty} \left\{ I _{k}^{\prime \prime}  \right\}
+    \]          We have \[
+    \begin{aligned}
+     \lambda ^{*}\left( A \right)+  \lambda ^{*}\left( B \right)&\le  \sum _{k= 1}^{\infty}v\left( I _{k}^{\prime}  \right)+ \sum _{k = 1}^{\infty}v\left( I _{k}^{\prime \prime}  \right)     \\ 
+      & = \sum _{ k= 1}^{\infty}v\left( I _{k} \right)\\ 
+       &<   \lambda ^{*}\left( A\cup B \right)+  \varepsilon   
+    \end{aligned}
+    \] Since \(   \varepsilon > 0  \) is arbitrary, we have \[
+     \lambda ^{*}\left( A \right)+  \lambda ^{*}\left( B \right)\le  \lambda ^{*}\left( A\cup B \right)   
+    \] 
+\end{proof}
+
+\begin{corollary}{}{}
+    All Borel sets in \(  \mathbb{R} ^{n}  \) are Lebesgue measurable. In particular, each open set and each closed set are Lebesgue measurable.  
+\end{corollary}
+
+\begin{definition}{Lebesgue Measure}{}
+    Donote by \(   \lambda   \)  the set function obtained by restricting \(   \lambda ^{*}  \) to the family of Lebesgue measurable sets. \(   \lambda   \) is called \dfntxt{Lebesgue measure}.   
+\end{definition}
+
+\begin{corollary}{}{}
+    Let \(  J  \) be an opoen interval in \(  \mathbb{R} ^{n}  \). Then \[
+     \lambda \left( J \right)= \mathrm{vol}\left( J \right)  
+    \]  
+\end{corollary}
+\begin{proof}
+    There is a sequence of closed intervals \(  I _{k}  \)  such taht \(  J= \bigcup _{ k= 1}^{\infty}I _{k}  \), then \[
+     \lambda \left( J \right)= \lim_{k\to \infty} \lambda \left( I _{k} \right)= \lim_{k\to \infty} \mathrm{vol}\left( I _{k} \right)= \mathrm{vol}\left( J \right)    
+    \] 
+\end{proof}
+
+\begin{theorem}{}{8-12-1}
+    The following five conditions are equivalent for Lebesgue outer measure, \(   \lambda ^{*}  \), on \(  \mathbb{R} ^{n}  \): 
+    \begin{enumerate}
+        \item \(  E\subseteq   \mathbb{R} ^{n}\) is \(   \lambda ^{*}  \)-measurable.
+        \item For each \(   \varepsilon > 0  \), there is an open set \(  U \supseteq E  \) such that \(   \lambda ^{*}\left( U\setminus E \right)<  \varepsilon    \). 
+        \item There is a \(  G_{ \delta }  \) set \(  U  \supseteq E\) such that \(   \lambda ^{*}\left( U\setminus E \right)= 0   \).   
+        \item For each \(   \varepsilon > 0  \), there is a closed set \(  F\subseteq E  \) such that \(   \lambda ^{*}\left( E\setminus F \right)<  \varepsilon    \). 
+        \item There is an \(  F_{ \sigma }  \) set \(  F\subseteq E  \) such that \(   \lambda ^{*}\left( E\setminus F \right)= 0   \).             
+    \end{enumerate}
+      
+\end{theorem}
+
+ \begin{proof}
+    1.\(  \implies   \) 2. : We first assmu that \(   \lambda ^{*}\left( E \right)< \infty   \).   Take closed intervals \(  I_1,I_2,\cdots   \) such that \[
+    E\subseteq \bigcup _{k= 1}^{\infty}I _{k},\quad \sum _{k = 1}^{\infty}v\left( I _{k} \right)<  \lambda ^{*}\left( E \right)+ \frac{ \varepsilon  }{2 }   
+    \] Let \(  I^{\prime} _{k}  \) be closed intervals whose interior contains \(  I _{k}  \) ,and \[
+    v\left( I^{\prime} _{k} \right)< v\left( I _{k} \right)+ \frac{ \varepsilon  }{2^{k+ 1} }   
+    \]   Let \[
+    U : =  \bigcup _{k = 1}^{\infty} \left( I _{k}^{\prime}  \right)^{\circ} 
+    \] is a open set.Since \(  U,E  \) is \(   \lambda   \)-measurable,   \[
+    \begin{aligned}
+     \lambda ^{*}\left( U\setminus E \right)=  \lambda \left( U\setminus E \right)  &=  \lambda \left( U \right)- \lambda \left( E \right)  \\ 
+      &=  \lambda \left( U \right)- \lambda ^{*}\left( E \right)\\ 
+       &<   \sum _{k = 1}^{\infty} v\left(  I _{k}^{\prime}  \right)- \left( \sum _{k = 1}^{\infty}v\left( I _{k} \right)- \frac{ \varepsilon  }{2 }   \right)\\ 
+        &\le  \varepsilon      
+    \end{aligned}
+    \]
+    Now, note that \(  \mathbb{R} ^{n}  \) is \(   \sigma   \)-finite, we suppose that \(  A_1,A_2,\cdots   \) are measruable sets such that \[
+    \mathbb{R} ^{n}= \bigcup _{ j = 1}^{\infty}A_{j},\quad  \lambda \left( A_{j} \right)< \infty,\forall j\in \mathbb{Z} _{> 0} 
+    \]   Then \(  E_{j}: = E\cap A_{j}  \) is a \(   \lambda ^{*}  \)-measurable set with \(   \lambda \left( E_{j} \right)< \infty   \) for each \(  j  \). For each \(   \varepsilon > 0  \), and each \(  j \in \mathbb{Z} _{> 0}  \), there is an open set \(  U_{j}\supseteq E  \) such that \[
+     \lambda ^{*}\left( U_{j}\setminus E_{j} \right)<  \frac{ \varepsilon  }{2^{j} } 
+    \] Let \(  U: = \bigcup _{j = 1}^{\infty}U_{j}  \)        ,then \[
+     \lambda ^{*}\left( U\setminus E \right)\le \sum _{j= 1}^{\infty} \lambda ^{*}\left( U_{j}\setminus E \right)\le \sum _{j = 1}^{\infty}   \lambda ^{*}\left( U_{j}\setminus E_{j} \right)\le  \varepsilon  
+    \] which completes the proof. 
+    
+    2. \(  \implies   \) 3. : For each \(  n \in \mathbb{Z} _{> 0}  \), there is a open set \(  U_{n}  \), such that \[
+     \lambda ^{*}\left( U_{n}\setminus E \right)< \frac{1 }{n }  
+    \]Let \[
+    U:= \bigcap_{n = 1}^{\infty} U_{n} 
+    \]   then \(  U  \) is a \(  G_{ \delta }  \) set, such that \[
+     \lambda ^{*}\left( U\setminus E \right)\le  \lambda ^{*}\left( U_{n}\setminus E \right)< \frac{1 }{n },\quad \forall n.   
+    \]That is \(   \lambda ^{*}\left( U\setminus E \right)= 0   \). 
+
+    3.\(  \implies   \) 1. : Since \(   \lambda ^{*}  \) is a Carathéorody measure, then all Borel sets is measurable. Specially, the \(  G_{ \delta }  \) set \(  U  \)  is measurable. And since \(   \lambda ^{*}  \)-zero set is measurable,  then \[
+  E =  U\setminus \left( U\setminus E \right)  
+    \]   is measurable.
+    
+    2. \(  \implies   \) 4. : There is an open set \(  U\supseteq  E^{c}  \)   such that \(   \lambda ^{*}\left( U\setminus E^{c} \right)<  \varepsilon    \) . Let \(  F = U^{c}  \), then \[
+    E\setminus F= E\cap F^{c}=  E\cap U=  U\setminus E^{c} 
+    \] Thus \[
+     \lambda ^{*}\left( E\setminus F \right)=  \lambda ^{*}\left( U\setminus E^{c} \right)<  \varepsilon   
+    \]
+
+    4.\(  \implies   \) 5. : For each \(  n \in \mathbb{Z} _{> 0}  \), there is a closed set \(  F_{n}\subseteq E  \) such taht \[
+     \lambda ^{*}\left( E\setminus F_{n} \right)< \frac{1 }{n }  
+    \] Let \[
+    F: = \bigcup _{n = 1}^{\infty}F_{n} , 
+    \] then \(  F  \) is a \(  F_{ \sigma }  \) set, such that \[
+     \lambda ^{*}\left( E\setminus F \right)\le  \lambda ^{*}\left( E\setminus F_{n} \right)< \frac{1 }{n },\quad \forall n .   
+    \] That is \(   \lambda ^{*}\left( E\setminus F \right)= 0   \).
+    
+    5. \(  \implies   \) 1. : Since \(  E\setminus F  \) and \(  F  \) is measurable, we have \[
+    E = \left( E\setminus F \right)\cup F 
+    \]    is measurable.
+ \end{proof}
+
+ \section*{Exercises for Lebesgue Measure}
+
+ \begin{exercise}{}{}
+    With $\lambda_t$ defined by
+\[\begin{aligned}
+\lambda_t(E) = \lambda(|t| E),
+\end{aligned}\]
+prove that $\lambda_t(N) = 0$ whenever $\lambda(N) = 0$.
+ \end{exercise}
+\begin{proof}
+    Since \(   \lambda \left( N \right)= 0   \), for each \(   \varepsilon   \), there is a sequence of closed intervals \(  I_1,\cdots   \) such that \[
+    E\subseteq  \bigcup _{k = 1}^{\infty}I _{k},\quad \sum _{k = 1}^{\infty}v\left( I _{k} \right)< \frac{ \varepsilon  }{\left| t \right|^{n}  }  
+    \] where \(  n  \) is the dimension of the Euclidean space we discuss.  Then \[
+    \left| t \right|E \subseteq  \bigcup _{k = 1}^{\infty} \left| t \right|I _{k},\quad \sum _{k = 1}^{\infty}v\left( \left| t \right| I _{k}  \right)=    \left| t \right|^{n} \sum _{k = 1}^{\infty} v\left( I _{k} \right)  <  \varepsilon 
+    \]   That is \[
+     \lambda ^{*}\left( \left| t \right|E  \right)<  \varepsilon ,\quad \forall  \varepsilon > 0 
+    \] Thus \(  \left| t \right|E   \) is measurable, and \[
+     \lambda \left( \left| t \right|E  \right)=  \lambda ^{*}\left( \left| t \right|E  \right)= 0  
+    \] 
+\end{proof}
+
+\begin{exercise}{}{}
+Let $I, I_1, I_2, \dots, I_k$ be intervals in $\mathbb{R}$ such that $I \subset \bigcup_{i=1}^k I_i$. Prove that
+\[
+v(I) \le \sum_{i=1}^k v(I_i),
+\]
+where $v(I)$ denotes the length of the interval $I$.
+\end{exercise}
+
+\begin{proof}
+   We may assume that \(  v\left( I \right)< \infty   \), that is \(  I  \) is bounded.     Since \(  v\left( I \right)= v\left( \overline{I} \right)    \), \(  v\left( I _{i} \right)=  v\left( \overline{I} _{i} \right)    \) , and \(  \bar{I}\subseteq \bigcup _{ i = 1}^{k} \bar{I}_{i}  \), we may assume that \(  I,I_1,\cdots , I _{k}  \) are closed intervals. For any \(   \varepsilon > 0  \), there are closed intervals \(  I^{\prime} _{i}  \) such that \[
+     I _{i}\subseteq \left( I^{\prime} _{i} \right)^{\circ},\quad  v\left( I _{i}^{\prime}  \right)\le v\left( I _{i} \right)+ \frac{ \varepsilon  }{2^{i} }   
+     \] Then \(  \left\{\left(  I _{i}^{\prime} \right) ^{\circ}    \right\}\) is a open cover of  \(  I  \).        Since \(  I  \) is compact, it has a Lebesgue number \(  \eta   \).   We can subdivide \(  I  \) into subintervals  \(  K_1,\cdots ,K_{m}  \) with diameter  less that \(  \eta   \). Then each \(K_j\) is contained in some \((I_{i_j}')^\circ\).
+
+We can formalize this by defining a map \(f: \{1, \dots, m\} \to \{1, \dots, k\}\) such that for each \(j\), \(K_j \subset (I_{f(j)}')^\circ\). Since the subintervals \(K_j\) have disjoint interiors and their union is \(I\), we can write the total length of \(I\) and group the sum according to the covering interval index:
+\[
+v(I) = \sum_{j=1}^m v(K_j) = \sum_{i=1}^k \left( \sum_{j: f(j)=i} v(K_j) \right).
+\]
+For any fixed \(i\), the intervals \(\{K_j\}_{j: f(j)=i}\) are a collection of disjoint intervals all contained within \((I_i')^\circ\). Therefore, the sum of their lengths cannot exceed the length of \((I_i')^\circ\):
+\[
+\sum_{j: f(j)=i} v(K_j) = v\left(\bigcup_{j: f(j)=i} K_j\right) \le v((I_i')^\circ) = v(I_i').
+\]
+Applying this inequality to our grouped sum, we obtain a single chain of inequalities:
+\[
+v(I) = \sum_{i=1}^k \left( \sum_{j: f(j)=i} v(K_j) \right) \le \sum_{i=1}^k v(I_i') \le \sum_{i=1}^k \left( v(I_i) + \frac{\epsilon}{2^i} \right) = \sum_{i=1}^k v(I_i) + \epsilon \sum_{i=1}^k \frac{1}{2^i}.
+\]
+Since \(\sum_{i=1}^k \frac{1}{2^i} < 1\), we have \(v(I) < \sum_{i=1}^k v(I_i) + \epsilon\). As \(\epsilon > 0\) was arbitrary, we conclude that
+\[
+v(I) \le \sum_{i=1}^k v(I_i).
+\]
+
+\end{proof}
+\begin{exercise}{}{}
+Let $E \subset \mathbb{R}$, and for each real number $t$, let $E + t = \{x + t : x \in E\}$.
+Prove that $\lambda^*(E) = \lambda^*(E + t)$. From this show that if $E$ is Lebesgue measurable, then so is $E + t$.
+\end{exercise}
+
+\begin{proof}
+    Once we show that \[
+     \lambda ^{*}\left( E+ t\right)\le  \lambda ^{*}\left( E\right),\quad \forall t  
+    \]. By replacing \(  t  \) by \(  -t  \), \(  E  \)   by \(  E + t \), we have \[
+     \lambda ^{*}\left( E \right) \le  \lambda ^{*}\left( E+ t \right),\forall t 
+    \]Then we get \(   \lambda ^{*}\left( E \right)=  \lambda ^{*}\left( E+ t \right)    \).  To show this, for each \(   \varepsilon > 0  \), we take closed intervals \(  I_1,\cdots   \) such that \[
+    E\subseteq \bigcup _{k = 1}^{\infty} I _{k},\quad  \sum _{k = 1}^{\infty} v\left(  I _{k} \right)<  \lambda \left( E \right)+  \varepsilon   
+    \] Then \[
+    E+ t\subseteq \bigcup _{ k= 1}^{\infty} \left( I _{k}+ t \right),\quad \sum _{k = 1}^{\infty} v\left( I _{k}+ t \right)= \sum _{k = 1}^{\infty} v\left( I _{k} \right)   <  \lambda \left( E \right)+  \varepsilon  . 
+    \]    Thus \[
+     \lambda \left( E+ t \right)\le  \lambda \left( E \right)+  \varepsilon   .
+    \] Since \(   \varepsilon > 0  \) is arbitrary, \(   \lambda \left( E+ t \right)\le  \lambda \left( E \right)    \). 
+    
+    To show that \(  E+ t  \) is Lebesgue measurable. There is a \(  G_{ \delta }  \) set \(  G  \), such that  \[
+    G\supseteq E,\quad  \lambda ^{*}\left( G\setminus E \right)= 0 . 
+    \] Since open sets is closed under translation  and since intersection is kept, then \(  G_{ \delta }+ t  \) is a \(  G_{ \delta }  \) set as well. We have \[
+    \left( G+ t \right)\supseteq \left( E+ t \right),\quad  \left( G+ t \right)\setminus \left( E+ t \right)= \left( G\setminus E \right)+ t      
+    \]   Thus \[
+     \lambda ^{*}\left( \left( G+ t \right)\setminus \left( E+ t \right)   \right)=  \lambda ^{*}\left( \left( G\setminus E \right)+ t  \right)=  \lambda ^{*}\left( G\setminus E \right)= 0   
+    \] Then it follows from Theorem \ref{thm:8-12-1} that \(  E+ t  \) is measurable.  
+\end{proof}
+
+\begin{exercise}*{}{}
+Prove that Lebesgue measure on $\mathbb{R}^n$ is independent of the choice of coordinate system. That is, prove that Lebesgue outer measure is invariant under rigid motions in $\mathbb{R}^n$.
+\end{exercise}
+\begin{remark}
+    或许需要积分的替换公式, 之后再来看. 
+\end{remark}
+
+\begin{proof}
+    Since we have shown that Lebesgue otuer measure is invariant under translation, we only need to show that is it also invariant under Orthogonal Transformation. 
+\end{proof}
+
+\begin{exercise}{}{}
+Let $P$ denote an arbitrary $(n-1)$-dimensional hyperplane in $\mathbb{R}^n$. Prove that $\lambda(P) = 0$.
+\end{exercise}
+
+\begin{proof}
+    Since Lebesgue measure is invariant under rigid motions. We may assume that  \(  P= \left\{ x_{n}= 0 \right\}  \). For each \(   \varepsilon > 0  \), let \[
+    I _{k}: = \left[ - \frac{k }{2 } , \frac{k }{2 }  \right]^{n-1}\times  \left[  \frac{- \varepsilon  }{2 k^{n-1} }\cdot  \frac{1 }{2^{k} } , \frac{ \varepsilon  }{2 k^{n-1} } \cdot \frac{1 }{2^{k} }   \right] 
+    \]   Then \[
+    P \subseteq  \bigcup _{k= 1}^{\infty}I _{k},\quad v\left( I _{k} \right)= \frac{ \varepsilon  }{2^{k} }  ,\quad \forall k 
+    \] Thus \[
+     \lambda \left( P \right)\le \sum _{k = 1}^{\infty} v\left( I _{k} \right)\le  \varepsilon   
+    \] Since \(   \varepsilon   \) is arbitrary, \(   \lambda \left( P \right)= 0   \).   
+\end{proof}
+
+\begin{exercise}{}{}
+    In this problem, we want to show that every Lebesgue measurable subset of $\mathbb{R}$ must be “densely populated” in some interval. Thus, let $E \subset \mathbb{R}$ be a Lebesgue measurable set, $\lambda(E) > 0$. For each $\varepsilon > 0$, show that there exists an interval $I$ such that
+\[ \frac{\lambda(E \cap I)}{\lambda(I)} > 1 - \varepsilon. \]
+\end{exercise}
+
+\begin{note}
+    我们发现构造这样一个 \(  I  \)是及其困难的. 转而使用反证法, 去论证 ``如果一个建筑的每一块砖都不合格, 那么整个建筑的质量必然有问题''.
+\end{note}
+
+\begin{proof}
+     Suppose conversely, there exists an \(   \varepsilon > 0  \) , such that for each interval \(  I  \), we have \[
+     \frac{ \lambda \left( E\cap I \right)  }{ \lambda \left( I \right)  }\le 1- \varepsilon .  
+     \]  Let \(  U   \) be a open set such that \[
+     U\supseteq E,\quad  \lambda \left( U\setminus E \right)<  \delta  .
+     \] Suppose \[
+     U=  \bigcup _{k = 1}^{\infty} I _{k}
+     \] where \(  I _{k}  \) are disjoint open intervals. Then \[
+      \lambda \left( E\cap U \right) = \sum _{k = 1}^{\infty}  \lambda \left( E\cap I _{k} \right) \le  \left( 1- \varepsilon  \right) \sum _{k = 1} ^{\infty}\lambda \left( I _{k} \right) = \left( 1- \varepsilon  \right) \lambda \left( U \right)    
+     \]  Since \[
+       \lambda \left( U \right)=  \lambda \left( E\cap U \right)+  \lambda \left( U\setminus E \right)   
+       \], we have \[
+      \lambda \left( E\cap U \right)+  \lambda \left( U\setminus E \right) \ge  \frac{1 }{1- \varepsilon  } \lambda \left( E\cap U \right)    
+     \] Thus \[
+      \delta \ge \left( 1-\frac{1 }{1- \varepsilon  }  \right) \lambda \left( E\cap U \right)  = \frac{ \varepsilon  }{1- \varepsilon  } \lambda \left( E \right)  
+     \] since \(  E\cap U= E  \).  Note that \(   \delta   \) can be choosed arbitrarily and indepent with \(   \varepsilon   \) and \(   \lambda \left( E \right)   \), then it leads to a contradiction, which completes the proof.  
+\end{proof}
+ \begin{exercise}{}{}
+    Prove that every set $A \subset \mathbb{R}^n$ is contained within a $G_{\delta}$-set $G$ with the property $\lambda(G) = \lambda^*(A)$.
+ \end{exercise}
+ \begin{proof}
+    For any \(  n > 0  \), there are closed intervals \(  I_1^{\left( n \right) },I_2^{\left( n \right) },\cdots   \) such that \[
+    A\subseteq \bigcup _{k = 1}^{\infty}I _{k}^{\left( n \right) },\quad \sum _{k = 1}^{\infty}v\left(  I _{k}^{\left( n \right) } \right)\le  \lambda ^{*}\left( A \right)+ \frac{ 1  }{2n }   
+    \] For each \(  k  \), there is a closed interval   \(  \left( I^{\left( n \right) }_{k} \right)^{\prime}  \) such that \[
+    I _{k}^{\left( n \right) }\subseteq \left(  \left( I^{\left( n \right) }_{k} \right)^{\prime} \right)^{\circ },\quad v\left(\left( I^{\left( n \right) }_{k} \right)^{\prime} \right)< v\left(I _{k}^{\left( n \right) }  \right)+ \frac{1  }{2^{k+ 1}n }    
+    \] Let  \[
+    G:= \bigcap_{n = 1}^{\infty} \bigcup _{k = 1}^{\infty} \left( \left( I^{\left( n \right) }_{k} \right)^{\prime}   \right)^{\circ}  
+    \] is a \(  G_{ \delta }  \) set. Then \[
+     \lambda \left( G \right)\le  \lambda \left( \bigcup _{k = 1}^{\infty} \left( I^{\left( n \right) }_{k} \right)^{\prime}   \right)  \le \sum _{k = 1}^{\infty}v\left( \left( I^{\left( n \right) }_{k} \right)^{\prime}   \right)<  \lambda ^{*}\left( A \right)+ \frac{1 }{n },\quad \forall n   
+    \] Thus \[
+     \lambda \left( G \right)\le  \lambda ^{*}\left( A \right)  
+    \] The other hand, since \(  G\supseteq A  \), it is immediate that \[
+     \lambda \left( G \right)=  \lambda ^{*}\left( G \right)\ge  \lambda ^{*}\left( A \right) .   
+    \] Finally, \[
+     \lambda \left( G \right)=  \lambda ^{*}\left( A \right)  
+    \] 
+ \end{proof}
+
+ 
+\begin{exercise}{}{}
+Let $\{E_k\}$ be a sequence of Lebesgue measurable sets contained in a compact set $K \subset \mathbb{R}^n$. Assume for some $\varepsilon > 0$ that $\lambda(E_k) > \varepsilon$ for all $k$. Prove that there is some point that belongs to infinitely many $E_k$'s.
+\end{exercise}
+
+\begin{note}
+    对于由一列成员组成的族类, 一个点属于无穷多个成员, 当且仅当它永远无法仅被有限多个成员``杀死'', 当且仅当它是``反复出现''的, 当且仅当它属于集合列的极限上集.  
+\end{note}
+
+\begin{proof}
+   A point belongs to infinitely many \(  E_{k}  \), if and only if it belongs to \[
+   \limsup_{k\to \infty}E_{k}: = \bigcap_{n = 1}^{\infty} \bigcup _{k = n}^{\infty}E_{k} 
+   \] Since  \(   \lambda \left( \bigcup _{k = 1}^{\infty}E_{k} \right)\le  \lambda \left( K \right)< \infty    \). It follows from Corollary \ref{col:8-14-1} that \[
+    \lambda \left( \lim_{k\to \infty}\sup E_{k} \right)\ge  \limsup_{k\to \infty} \lambda \left( E_{k} \right)  \ge  \varepsilon > 0
+   \] Thus \[
+   \lim_{k\to \infty}\sup E_{k}\neq \varnothing
+   \] which completes the proof. 
+\end{proof}
+
+\begin{exercise}{}{}
+    Let \(  T: \mathbb{R} ^{n}\to \mathbb{R} ^{n}  \) be a Lipschitz map. Prove that if \(   \lambda \left( E \right)= 0   \), then \(   \lambda \left( T\left( E \right)  \right)= 0   \).    
+\end{exercise}
+\begin{proof}
+    Suppose that \[
+    d\left( T\left( x_1 \right),T\left( x_2 \right)   \right)\le  L \cdot d\left( x_1,x_2 \right)  
+    \] Since \(   \lambda \left( E \right)= 0   \), for any \(   \varepsilon > 0  \), there are closed intervals \(  I_1,\cdots   \), such that \[
+     E\subseteq \bigcup_{k= 1}^{\infty}I _{k},\quad \sum _{k= 1}^{\infty}v\left( I_{k} \right)<  \varepsilon    
+    \]There are finitely many Cubes \(  Q_{k1},\cdots ,Q _{k m_{k}}  \) , such that  \[
+    I _{k}\subseteq \bigcup _{ i = 1}^{m_{k}}Q_{k i},\quad  \sum _{i = 1}^{m_{k}}v\left( Q_{k i} \right)< 2v\left( I_{k} \right)  
+    \]Thus we may assume that \(  I _{k}  \) are all cubes. Denote the diameter of \(  I_{k}  \) by \(  \sqrt{n}a_{k}  \) , and denote the centre of \(  I_{k}  \) by \(  c_{k}  \), then \[
+    d\left( T\left( x \right),T\left( c_{k} \right)   \right)\le L\cdot d\left( x,c_{k} \right)\le \sqrt{n}L\cdot a_{k}  
+    \]Thus \(  T\left( I_{k} \right)   \) is contained by the cube centering \(  T\left( c_{k} \right)   \) with diameter \( n L \cdot a_{k}  \), which we denote by \(  I^{\prime} _{k}  \), then \[
+    v\left( I^{\prime} _{k} \right)\le n^{n} L^{n}v\left( I_{k} \right)  
+    \]. We have \[
+    T\left( E \right)\subseteq \bigcup _{k = 1}^{\infty}I^{\prime} _{k},\quad  \sum _{k = 1}^{\infty}v\left( I^{\prime} _{k} \right)< n^{n}L^{n} \varepsilon   
+    \], which concludes that \(   \lambda \left( T\left( E \right)  \right)= 0   \).          
+\end{proof}
+
+\section{The Contor Set}
+
+\begin{definition}{Contor set}{8-15-1}
+    The Cantor set is a subset of the interval \(  \left[ 0,1 \right]   \). We will desccribe it by constructing its complement in \(  \left[ 0,1 \right]   \). 
+    \begin{enumerate}
+        \item At the fist step, let \(  I_{1,1}  \) denote the open interval \(  \left( \frac{1}{3},\frac{2}{3} \right)   \). Thus \(  I_{1,1}  \) is the open middle third of the interval \(  I= \left[ 0,1 \right]   \). 
+        \item The second step involves performing the first tep on each of the two remaining intervals of \(  I-I_{1,1}  \). That is, We produce two open intervals, \(  I_{2,1}  \) and \(  I_{2,2}  \), each being the open middle third of one of the two intervals that constitute \(  I-I_{1,1}  \).
+        \item At the \(  i  \)th step we produce \(  2^{i-1}  \) open intervals \(  I_{i,1},I_{i,2},\cdots ,I_{i,2^{i-1}}  \), each of length \(  \left( \frac{1 }{3 }  \right)^{i}   \). The \(  \left( i+ 1 \right)   \) th step consists in producing midddle thirds of each of the intervals of \[
+        I- \bigcup _{j= 1}^{i}\bigcup _{k = 1}^{2^{j-1}}I_{j,k}. 
+        \]         
+        \item With \(  C  \) denoting the Cantor set, we define its complement by \[
+        I\setminus C= \bigcup _{j = 1}^{\infty}\bigcup _{k = 1}^{2^{j-1}}I_{j,k}. 
+        \] 
+    \end{enumerate}
+      
+\end{definition}
+
+\begin{proposition}{}{}
+    Let \(  C  \) be the Contor set. Then the following holds: 
+    \begin{enumerate}
+        \item \(  C  \) is closed, that is \(  C = \bar{C}  \). 
+        \item Let \(   \lambda   \) be the Lebesgue measure, then \[
+         \lambda \left( \bar{C} \right)=  \lambda \left( C \right)= 0  
+        \]
+        \item \(  C  \) is nowhere dense.    
+        \item The cardinality of \(  C  \) is \[
+        \left| C \right|= 2^{\aleph_0} = \left| R \right|= c 
+        \] 
+    \end{enumerate}
+     
+\end{proposition}
+
+\begin{proof}
+    \begin{enumerate}
+        \item \(  I\setminus C  \) is open by definition. Thus \(  C  \) is closed.
+        \item  \[
+         \lambda \left( I\setminus C \right)=  \sum _{j = 1}^{\infty}\sum _{k = 1}^{2^{j-1}}  \lambda \left( I_{j,k} \right)= \sum _{j = 1}^{\infty}2^{j-1}\left( \frac{1 }{3 }  \right)^{j}= \frac{1 }{2 } \sum _{j = 1}^{\infty}\left( \frac{2 }{3 }  \right)^{j}= 1     
+        \]  Thus \[
+         \lambda \left( C \right)= 1- \lambda \left( I\setminus C \right)= 1-1= 0  
+        \]
+        \item 
+        
+
+        
+        \begin{note}
+            \(  \left[ 0,1 \right]   \)上的每一个值通过修饰存在唯一的二进制表示. 同样地也存在唯一的三进制表示. Contor集就是把每个三进制表示中, 字符含1的数都去掉.  
+        \end{note}Every number \(  x \in \left[ 0,1 \right]   \) has a ternary expansion of the form \[
+        x = \sum _{i = 1}^{\infty} \frac{x_{i} }{3^{i} } 
+        \]  where each \(  x_{i}  \) is \(  0,1  \), or \(  2  \) and we write \(  x = 0,x_1x_2\cdots   \) This expansion   unique except when \[
+        x = \frac{a }{3^{n} } 
+        \] (Since \(  \frac{1 }{3^{n} }   \) has another expresion \(  \sum _{i = n+ 1}^{\infty}\frac{2 }{3^{i} }   \)  )where \(  a  \) and \(  n  \) are  positive integers with \(  0< a< 3^{n}  \) and where \(  3  \) does not divide \(  a  \). In this case, \(  x  \) has the form \[
+        x = \sum _{i = 1}^{n} \frac{x_{i} }{3^{i} } 
+        \]where \(  x_{i}  \) is either \(  1  \) or \(  2  \). If \(  x_{n}= 2  \), we will use this expression to represent \(  x  \). However, if \(  x_{n}= 1  \), we will use the following representation for \(  x  \): \[
+        x = \frac{x_1 }{3 }+ \frac{x_2 }{3^{2} }+ \cdots +  \frac{x_{n-1} }{3^{n-1} }+ \frac{0 }{3^{n} }+ \sum _{i = n+ 1}^{\infty}\frac{2 }{3^{i} }     .
+        \] Thus , with this convention, each number \(  x \in \left[ 0,1 \right]   \) has a uniue ternary expansion.          
+        
+        Let \(  x \in I  \) and conssider its ternary expansion \(  x = 0.x_1x_2\cdots   \), bearing in mind the convention we have adopted above. Obseve that \(  x\not \in I_{1,1}  \) if and only if \(  x_1\neq 1  \). Also , if \(  x_1\neq 1  \), then \(  x\not \in  I_{2,1}\cup I_{2,2}  \) if and only if \(  x_2\neq 1  \).       Continuing in this way, we see that \(  x \in C  \) if and only if \(  x_{i}\neq 1  \) for each positive integer \(  i  \). Thus, there is a one-to-one correspondence between elements of  \(  C  \) and all sequences \(  \left\{ x_{i} \right\}   \) in which each \(  x_{i}   \) is either \(  0  \) or \(  2  \).        The cardinality of the latter is \(  2^{\aleph_0}  \), which is \(  \left| \mathbb{R}  \right|= c   \).   
+    \end{enumerate}
+    
+\end{proof}
+\section*{Exercises for Cantor set}
+\begin{exercise}{}{}
+    Prove that the Cantor-type set $C_\alpha$ (The method of construction is the same as \(  C  \),except that at the \(  i  \)th step, each of the intervals removed has length \(  \alpha 3 ^{-i}  \)   ) is nowhere dense, has cardinality $c$, and has Lebesgue measure $1 - \alpha$. 
+\end{exercise}
+\begin{proof}
+\begin{itemize}
+    \item     \(  \overline{C}_{\alpha }= C_{\alpha }  \). Only need to show that \[
+    \mathrm{int}\left( C_{\alpha } \right)= \varnothing 
+    \]  With \(  E_{k}  \) denoting the result of the \(  k  \)th step constructing the \(  C_{\alpha }  \), we define its complements by \[
+   I\setminus E_{k}:=  \bigcup _{j = 1}^{k} \bigcup _{m = 1}^{2^{j-1}}I_{m,j}
+   \]    Then  \(  E_1\supseteq E_2\supseteq \cdots   \) , and \(  C _{\alpha }= \bigcap_{k = 1}^{\infty}E_{k}   \).If there is a nonempty open inverval \(  (a,b)\subseteq C_{\alpha }  \). Then \[
+   \left( a,b \right)\subseteq E_{k},\quad \forall k 
+   \] Note that \(  E_{k}  \) is a disjoint union of closed intervals with length \(  l_{k}  \), which satisfies \[
+   l_{k}= \frac{1}{2}\left( l_{k-1}-\alpha _3 ^{-k} \right)< \frac{1 }{2 }l_{k-1}  \implies l_{k}< \frac{1 }{2^{k} } 
+   \] . There is a \(  k_0  \) such that \( l_{k_0}< b-a \). Since \[
+   \left( a,b \right)\subseteq E_{k_0} 
+   \]   is a connected set lying in \(  E_{k_0}  \), \(  E_{k_0}  \) has a component with length more than \(  b-a  \), which is a contradiction.  Thus there is no open interval contained in \(  C_{\alpha }  \), that is \(  C_{\alpha }= \bar{C}_{\alpha } \) is no where dense.  
+ 
+   \item We denote the two closed intervals of \(  I\setminus I_{1,1}  \) by \( J_1 , J_2 \). Denote the two closed intervals of \(  J_1-I_{2,1}  \) by  \(  J_{1,1}, J_{1,2}  \), and denote the two that of \(  J_{2}-I_{2,2}  \)  by \(  J_{2,1}, J_{2,2}  \) . Inductively, denote the two intervals of \(  J_{i_1,i_2,\cdots ,i_{j-1}}-I_{j,2^{j-1}i_1+ \cdots + 2^{0}i_{j-1}}  \)     by \(  J_{i_1,\cdots ,i_{j-1},1}, J_{i_1,\cdots ,i_{j-1},2}  \). Then \[
+   E_{k}= \bigcup _{i_1,\cdots ,i_{k}\in \left\{ 1,2 \right\}^{k}}J_{i_1,\cdots ,i_{k}}
+   \] Let \[
+    \Sigma : = \left\{ 1,2 \right\}^{\mathbb{N} }
+   \]Given a \(  \left( s_1,s_2,\cdots  \right)\in  \Sigma    \), we can get a sequence of nested closed intervals \[
+   J_{s_1}\supseteq J_{s_1,s_2}\supseteq \cdots 
+   \] From Nested Interval Theorem, there is a unique point \(  s \in \bigcap_{k= 1}^{\infty}J_{s_1,\cdots ,s_{k}}   \). We define a \(  f  \) by mapping \(  \left( s_1,s_2,\cdots  \right) \in  \Sigma   \) to \(  s \in C_{\alpha }  \).
+   To show that  \(  f   \) is injective, we take  \[
+   s= \left( s_1,s_2,\cdots  \right) , t = \left( t_1,t_2,\cdots  \right) \in  \Sigma , \quad s\neq t  
+   \]     Then there is a smallest \(  k \in \mathbb{Z} _{> 0}  \), such that \(  s_{k}\neq t_{k}  \). We may assume that \(  s_{k}= 1  \), \(  t_{k}= 2  \).     Then \[
+   f\left( s \right)\in J_{s_1,s_2,\cdots ,s_{k-1},1},\quad f\left( t \right)\in J_{t_1,t_2,\cdots ,t_{k-1},2}= J_{s_1,s_2,\cdots ,s_{k-1},2}  
+   \] Since \(  J_{s_1,s_2,\cdots ,s_{k-1},1}\cap J_{s_1,s_2,\cdots ,s_{k-1},2}= \varnothing  \), \(  f\left( s \right)\neq f\left( t \right)    \). Thus \(  f  \) is injective.   
+   To show that \(  f  \) is surjective. Take any \(  x \in C_{\alpha }  \). Since \[
+   C_{\alpha }= \bigcap_{k = 1}^{\infty}E_{k} 
+   \] , we have \[
+   x \in E_{k},\quad \forall k
+   \] And since \[
+  E_1= J_{1}\cup J_2
+   \] is a disjoint union. There exists a unique \(  i_1\in \left\{ 1,2 \right\}  \), such that \[
+   x \in J_{i_1}
+   \]  Then \[
+   x \in E_2\cap J_{i_1}=J_{i_1,1}\cup J_{i_1,2}
+   \]There exists a unique \(  i_2\in \left\{ 1,2 \right\}  \) such that \[
+   x \in J_{i_1,i_2}
+   \] Inductively, once we show that there exists a unique \( \left( i_1,\cdots ,i_{k} \right) \in \left\{ 1,2 \right\}^{k}  \) such that \[
+   x \in J_{i_1,i_2,\cdots ,i_{k}}
+   \]  From \[
+   x \in E_{k+ 1}\cap J_{i_1,\cdots ,i_{k}}= J_{i_1,\cdots ,i_{k},1}\cup J_{i_1,\cdots ,i_{k},2}
+   \] we know that there exists a unique \( \left(  i_1,\cdots ,i_{k+ 1}  \right) \in \left\{ 1,2 \right\}^{k+ 1}  \) , such that \[
+   x \in J_{i_1,\cdots ,i_{k+ 1}}
+   \] Thus we have determined a unique \(  \left( i_1, i_2,\cdots \right)\in  \Sigma    \) , such that \[
+   x \in \bigcap_{k = 1}^{\infty} J_{i_1,i_2,\cdots ,i_{k}} 
+   \] That is \[
+   f\left( i_1,i_2,\cdots  \right)= x 
+   \] Thus \(  f  \) is surjective. 
+   Finally, we have \[
+   c= 2^{\aleph_0}= \left|  \Sigma  \right|= \left| C_{\alpha } \right|  
+   \] 
+      \item  \[
+    \lambda \left( I\setminus C_{\alpha } \right)=  \lambda \left( \bigcup _{j = 1}^{\infty}\bigcup _{k = 1}^{2^{j-1}}I_{k,j} \right)= \sum _{j = 1}^{\infty} 2^{j-1} \alpha \left( \frac{1 }{3 }  \right)^{j}   = \alpha 
+   \]Thus \[
+    \lambda \left( C_{\alpha } \right)=  \lambda \left( I \right)- \lambda \left( I\setminus C_{\alpha } \right)= 1-\alpha    
+   \]  
+\end{itemize}
+\end{proof}
+\begin{exercise}{}{}
+Construct an open set $U \subset [0, 1]$ such that $U$ is dense in $[0, 1]$, $\lambda(U) < 1$, and $\lambda(U \cap (a, b)) > 0$ for every interval $(a, b) \subset [0, 1]$.
+\end{exercise}
+
+\begin{proof}
+   Define \[
+   U: = I\setminus C_{ \alpha },\quad  0<   \alpha < 1
+   \]Where \(  C_{\alpha }  \) is the Cantor type set with Lebesgue measure \(  1-\alpha   \) . Then \[
+    \lambda \left( U \right)=  \lambda \left( I \right)- \lambda \left( C_{\alpha } \right)= \alpha > 0   
+   \]  If \(  U  \) is not dense. Then there is a nonempty open subset \(  Y\subseteq \left[ 0,1 \right]   \) such that  \[
+   Y\subseteq U^{c}= C_{\alpha }
+   \] which is a contradicion to \(  C_{\alpha }  \) is no where dense.  Since \(  U  \) is dense, \[
+   U\cap \left( a,b \right)\neq \varnothing 
+   \] That is \(  U\cap \left( a,b \right)   \) is a nonempty open set, thus its Lebesgue measure is nonzero. 
+\end{proof}
+  
+\begin{exercise}{}{}
+    Prove that the family of Borel subsets of $\mathbb{R}$ has cardinality $c$. From this deduce the existence of a Lebesgue measurable set that is not a Borel set.
+
+\end{exercise}
+\begin{exercise}{}{}
+    Let $E$ be the set of numbers in $[0, 1]$ whose ternary expansions have only finitely many 1's. Prove that $\lambda(E) = 0$.
+
+\end{exercise}
+
+\begin{proof}
+    Let \(  E_{k}  \) be the set of numbers in \( I=  \left[ 0,1 \right)  \) whose ternary expansions have no \(  1's  \)   after the \(  k  \)th digit . Then \[
+    E= \bigcup _{k = 1}^{\infty}E_{k},\quad E_1\subseteq E_2\subseteq \cdots 
+    \] Let \(  I_{1},I_2,I_3  \) be the fomer, middle, latter third of the \( I= [0,1)  \) respectively, specially, we say \(  [0,\frac{1}{3}), [\frac{1}{3},\frac{2}{3}), [\frac{2}{3},1)  \) . Once we have defined \(  I_{i_1,i_2,\cdots ,i_{k}}  \), then we define \(  I_{i_1,i_2,\cdots ,i_{k},1}  \) by the first third of the interval \(  I_{i_1,i_2,\cdots ,i_{k}}  \) as before , the remainings are similar.   We have \[
+    E_{k}= I\setminus \bigcup _{j= k}^{\infty} \bigcup _{i_1,i_2,\cdots ,i_{k}\in \left\{ 1,2,3 \right\}^{k},i_{k+ 1},\cdots ,i_{j}\in \left\{ 1,3 \right\}^{j-k}}I_{i_1,i_2,\cdots ,i_{j},2}
+    \]Let \[
+    A_{k,m}: = \bigcup _{j= k}^{m}  \bigcup _{i_1,i_2,\cdots ,i_{k}\in \left\{ 1,2,3 \right\}^{k},i_{k+ 1},\cdots ,i_{j}\in \left\{ 1,3 \right\}^{j-k}}I_{i_1,i_2,\cdots ,i_{j},2}
+    \] Then \[
+    A_{k,k}\subseteq A_{k,k + 1}\subseteq \cdots 
+    \]Denote \(  \bigcup _{m = k}^{\infty}A_{k,m}  \) by \(  A_{k}  \), then \(  E_{k}= I\setminus A  _{k}\)  . We have \[
+     \lambda \left( A_{k} \right)= \lim_{m\to \infty} \lambda \left( A_{k,m} \right)= \sum _{j = k}^{\infty}3^{k} 2^{j-k}\left( \frac{1 }{3 }  \right)^{j + 1}=\frac{1 }{3 }  \left( \frac{3 }{2 }  \right)^{k}\sum _{j = k}^{\infty}  \left( \frac{2 }{3 }  \right)^{j} = 1
+    \]Thus \[
+     \lambda \left( E_{k} \right)= \lambda \left( I \right)-   \lambda \left( A_{k} \right)= 1-1= 0  
+    \] It follows from the continuity of \(   \lambda   \) from below that \[
+     \lambda \left( E \right)=  \lim_{k\to \infty} \lambda \left( E_{k} \right)= 0
+    \]  
+\end{proof}
+\begin{proof}
+    Another proof, use Cantor set. 
+    \begin{note}
+        \begin{itemize}
+            \item 标准Cantor集合描述了[0,1]内三进制表示不含1的那些数. 
+            \item 通过对Cantor集\(  \frac{1}{3^{k}}  \)倍的 缩放,可以实现所描述的三进制范围表示相对于小数点的滞后(\(  k  \)个字符 ).
+            \item 缩放后Cantor集的起点,决定了新Cantor集开始作用的之前的三进制字符都是哪些.
+            \item 一切的一切,源于Cantor集的自相似性,也就是说 \[
+            C= \left( \frac{1 }{3 }C  \right)+ \left( \frac{1 }{3 }C+ \frac{2 }{3 }   \right)  
+            \]
+        \end{itemize}
+    \end{note}
+    \(  E_{k}  \) is defined as above. Let \(  P_{k}: = \left\{ 0,1,2 \right\}^{k}  \). For \(  p= \left( d_1,\cdots ,d _{k} \right) \in P_{k}   \), define \[
+    C_{p}: = \frac{1}{3^{k}}C +  \sum _{j = 1}^{k}\frac{d _{j} }{3^{j} } 
+    \]   Then the similar process we describe \(  C  \) gives that  \[
+    C_{p}= \left\{ x \in \left[ 0,1 \right]:   x = \left( 0.m_1m_2 \cdots \right)_{ternary} ,  m_{i}= d _{i} \text{ for }1\le i\le k, m_{j}\neq 1 \text{ for } j> k \right\}
+    \] We have \[
+    E_{k} =  \bigcup _{ p \in P_{k}}C_{p}
+    \]  Since \[
+     \lambda \left( C_{p} \right)= \frac{1}{3^{k}} \lambda \left( C \right)  = 0
+    \] We have \[
+    E_{k}\le \sum _{ p \in P_{k}} \lambda \left( C_{p} \right) = 0
+    \]Then \[
+     \lambda \left( E \right)= \lim_{k\to \infty} \lambda \left( E_{k} \right)= 0  
+    \]
+\end{proof}
+
+\section{Existence of Nonmeasurable Sets}
+
+\begin{lemma}{}{8-16-1}
+If $S \subset \mathbb{R}$ is a Lebesgue measurable set of positive and finite measure, then the set of differences $D_S := \{x - y : x, y \in S\}$ contains an interval.
+\end{lemma}
+\begin{proofsketch}
+    Since \[
+    \begin{aligned}
+    x \in D_{S}&\iff  S\cap \left( S+ x \right)
+     \neq \varnothing\\ &\iff  \text{There exists } T\subseteq S\text{ such that }   T\cap \left(T+ x \right)\neq \varnothing    
+    \end{aligned}
+    \] Only need to find a such \(  T  \), and a interval \(  I  \), such that \(  T\cap \left( T+ x \right)\neq \varnothing   \) for \(  \forall x \in I  \).
+    
+    When \(  T\cap \left( T+ x \right)= \varnothing   \), we have \(   \lambda \left( T\cup \left( T+ x \right)  \right)= 2 \lambda \left( T \right)    \)  . Once we find a not too large (less than \(  2 \lambda \left( T \right)   \) ) set containing \(  T\cup \left( T+ x \right)   \) for all \(  x \in I  \).   From another perspective, we need to find an \(  T  \) occupise at least half of a set (relative to Lebesgue measure) and dose not escape it under a tiny transformation. 
+\end{proofsketch}
+\begin{proof}
+    For each \(   \varepsilon > 0  \), there exists an open set \(  U\supseteq S  \) with \(   \lambda \left( U \right)< \left( 1+  \varepsilon  \right) \lambda \left( S \right)     \). We write \(  U  \) as a countable disjoint union of open intervals: \[
+    U = \bigcup _{k = 1}^{\infty}I_{k}
+    \]Then \[
+     \lambda \left( S \right)=  \lambda \left( S\cap U \right)= \sum _{k = 1}^{\infty} \lambda \left( S\cap I_{k} \right)   
+    \] We have \[
+    \sum _{k = 1}^{\infty} \lambda \left( I_{k} \right) < \left( 1+  \varepsilon  \right) \sum _{k= 1}^{\infty} \lambda \left( S\cap I_{k} \right)   
+    \] Then there is some \(   k_0 \) such that \[
+     \lambda \left( I_{k} \right)< \left( 1+  \varepsilon  \right) \lambda \left( S\cap I_{k_0} \right)   
+    \]     We take \(   \varepsilon = \frac{1 }{3 }   \), then \[
+     \lambda \left( S\cap I_{k_0} \right)> \frac{3 }{4 }  \lambda \left( I_{k_0} \right)   
+    \] For any \(  \left| t \right|< \frac{1 }{2 }   \lambda \left( I_{k_0} \right)   \) , \(  S\cap I_{k_0}\cup \left( S\cap I_{k_0}+ t \right)   \) is contained in some open interval with Lebesgue measure \(  \frac{3}{2} \lambda \left( I_{k_0} \right)   \). Thus \[
+     \lambda \left( S\cap I_{k_0}\cup \left( S\cap I_{k_0}+ t \right)  \right)\le \frac{3 }{2 } \lambda \left( I_{k_0} \right)   
+    \]  Then it follows that it is impossible that \[
+    \left( S\cap I_{k_0} \right)\cap \left( S\cap I_{k_0}+ t \right)= \varnothing ,\quad \text{for some }  \left| t \right|< \frac{1 }{2 }  \lambda \left( I_{k_0} \right)  
+    \]since otherwise the Lebsgue measure of the union of the two is  greater than \(  2  \lambda \left( S\cap I_{k_0} \right)> \frac{3 }{2 } \lambda \left( I_{k_0} \right)     \), which is a contradiction. Now we have \[
+    \left( -\frac{1}{2}\lambda \left( I_{k_0} \right)  ,\frac{1}{2}\lambda \left( I_{k_0} \right)   \right)\subseteq  D_{S\cap I_{k_0}}\subseteq D_{S} 
+    \]
+\end{proof}
+
+
+\begin{exercise}{}{}
+    There exists a set \(  E\subseteq \mathbb{R}   \)  that is not Lebesgue measurable. 
+\end{exercise}
+
+\begin{proof}
+    We define a ralation on the real line by \[
+    x \sim y:\iff  x-y \in \mathbb{Q} 
+    \]Then it is easy to verify that \(  \sim   \) is a equivalent relation. Then \(  \mathbb{R}   \) can be seprated by the class of the relation. Note that every equivalent class is countable. But \(  \mathbb{R}   \) is uncountable, there are uncountably many equivalent class. Now we use the axiom of choice, to get a set \(  S  \) by selecting precisely one point from each equivalent class. Then \[
+    \mathbb{R} = S+ \mathbb{Q}: = \bigcup _{ r \in \mathbb{Q} }\left( S+ r \right)  
+    \] If \(  S  \) is Lebesgue measurable, then \(   \lambda \left( S \right)> 0   \) since \[
+    \infty=  \lambda \left( \mathbb{R}  \right)= \sum _{r \in \mathbb{Q} } \lambda \left( S+ r \right)= \sum _{r\in \mathbb{Q} } \lambda \left( S \right)   
+    \] Now, considering \[
+    D_{S}= \left\{ x-y: x,y \in S\right\}
+    \]If \(  x\neq y  \), since \(  x,y  \) belong to different class, \(  x-y\not \in \mathbb{Q}   \).   Then we have \[
+    D_{S}\subseteq 0\cup  \left( \mathbb{R} \setminus \mathbb{Q}  \right) 
+    \] which cannot contain any inverval. Then it follows from the lemma above that \(   \lambda \left( S \right)= \infty   \). But then there exists a closed inverval \(  I   \) such that  \[
+    0<  \lambda \left( S\cap I \right)< \infty 
+    \] and \(  S\cap I   \) is measurable, it follows fome the lemma again that there is a interval \[
+    J\subseteq D_{S\cap I}\subseteq D_{S}
+    \] , which is a contradiction.
+\end{proof}
+
+\section*{Exersices for Existence of Nonmeasurable Sets}
+
+\begin{exercise}{}{9-7-2}
+    Prove that there every subset of \(  \mathbb{R}   \)  with
+ positive outer Lebesgue measure contains a nonmeasurable subset.
+\end{exercise}
+\begin{proof}
+    Let \(  T\subseteq \mathbb{R}   \) be any subset of \(  \mathbb{R}    \) with  positive outer Lebesgue measure. The \(  \sim   \) defined as above is also a equivalent relation on \(  T  \). Let \(  S  \) be the same set we just defined in the above theorem.  \[
+    T= T\cap \mathbb{R} = T\cap \left( \bigcup _{r \in \mathbb{Q} }\left( S+ r \right)  \right)= \bigcup _{r \in \mathbb{Q} }\left( T\cap \left( S+ r \right)  \right)  
+    \] which is a disjoint union. We have \[
+   0<   \lambda ^{*}\left( T \right)\le \sum _{r \in \mathbb{Q} } \lambda ^{*}\left( T\cap \left( S+ r \right)  \right)  
+    \]There exists an \(  r_0 \in \mathbb{Q}  \) such that \[
+     \lambda ^{*}\left( T\cap \left(S+ r_0  \right)  \right)> 0 
+    \] We denote \(  T\cap \left( S+ r_0 \right)   \) by \(  S^{\prime}   \). If \(  S^{\prime}   \) is Lebesgue measurable.  Note that \(  D_{S^{\prime} }\subseteq \left( \mathbb{R} \setminus \mathbb{Q}  \right)\cup \left\{ 0 \right\}   \). If \(   \lambda \left( S^{\prime}  \right)< \infty   \), then it is a contradiction to Lemma \ref{lem:8-16-1}. If \(   \lambda \left( S^{\prime}  \right)= \infty   \). Then there exists a closed interval \(  I  \) such that \[
+    0<  \lambda \left( S^{\prime} \cap I \right)< \infty 
+    \]   then there is an interval \(  J  \) such that \[
+    J\subseteq D_{S^{\prime} \cap I}\subseteq D_{S^{\prime} }
+    \] which is a contradicion as well. 
+\end{proof}
+
+\begin{exercise}{}{}
+Let $\mathcal{N}$ denote the nonmeasurable set constructed in this section. Show that if $E$ is a measurable subset of $\mathcal{N}$, then $\lambda(E) = 0$.
+\end{exercise}
+\begin{proof}
+    We still use the notation \(  S  \) to represent that nonmeasurable set. If \[
+    E\subseteq S,\quad  \lambda \left( E \right)> 0 
+    \] If \(   \lambda \left( E \right)< \infty   \), then from Lemma \ref{lem:8-16-1} there is an interval \(  J  \) such that \[
+    J\subseteq D_{E}\subseteq D_{S}
+    \] which is a contradiction.  Again, if \(   \lambda \left( E \right)= \infty   \), then there exists a closed interval \(  I  \) such that \[
+    0<  \lambda \left( E\cap I \right)< \infty 
+    \]  Then again from Lemma \ref{lem:8-16-1} there exists an interval \(  J  \) such that \[
+    J\subseteq D_{E\cap I}\subseteq D_{E}\subseteq D_{S},
+    \] which is a contradicion.
+\end{proof}
+
+\section{Lebesgue-Stieljes Measure}
+
+\begin{definition}{}{}
+    If \(  f  \) is a nondecreasing function defined on \(  \mathbb{R}   \), then the ``length'' of a half-open interval \(  (a,b]  \), denoted by \(  \alpha _{f}\left( (a,b] \right)   \), can be defined by \[
+     \alpha _{f}\left( (a,b] \right)= f\left( b \right)-f\left( a \right)   
+    \]    
+\end{definition}
+
+\begin{definition}{Lebesgue-Stieltjes outer measure}{}
+    The Lebesgue-Stieltjes outer measure of an arbitrary set \(  E\subseteq \mathbb{R}   \) is defined by \[
+     \lambda _{f}^{*}\left( E \right): = \inf \left\{ \sum _{h_{k}\in \mathcal{F}}\alpha _{f}\left( h_{k} \right)  \right\} 
+    \] where the infimum is take over all countable collections \(  \mathcal{F}  \) of half-open intervals \(  h_{k}  \) of the form \(  (a_{k},b_{k}]  \) such that \[
+    E\subseteq \bigcup _{ h _{k}\in \mathcal{F}}h_{k}
+    \]   
+\end{definition}
+
+\begin{remark}
+    If \(  f  \) is right-continuous, then the (Lebesgue) length of each interval \(  (a_{k},b_{k}]  \) that appears above can be assumed to be arbitrarily small, beacause \[
+    \alpha _{f}((a,b])= f\left( b \right)-f\left( a \right)= \sum _{k = 1}^{N}\left[ f\left( a_{k} \right)-f\left( a_{k-1} \right)   \right]= \sum _{k = 1}^{N} \alpha _{f}\left( (a_{k-1},a_{k}] \right)    
+    \] whenever \(  a= a_0< a_1< \cdots < a_{N}= b  \).  
+\end{remark}
+
+\begin{theorem}{}{}
+    If \(  f:\mathbb{R} \to \mathbb{R}   \) is a nondecreasing function, then \(   \lambda _{f}^{*}  \) is a Carath\'eodory outer measure.  We denote the restriction of \(   \lambda _{f}^{*}  \) on measruable sets by \(   \lambda _{f}  \).  
+\end{theorem}
+\begin{proof}
+    To show that \(   \lambda _{f}^{*}  \) is a outer measure, we only need to show the it is monotone and countably subadditive. 
+
+    For the proof of monotonicity, let \(  A_1\subseteq A_2  \) be any subset of \(  \mathbb{R}   \). Take any \(   \varepsilon > 0  \). There is a countable collections \(  h_1,h_2,\cdots   \) of \(  \mathcal{F}  \), such that   \[
+    A_2\subseteq \bigcup _{k = 1}^{\infty}h_{k},\quad \sum _{k = 1}^{\infty}\alpha _{f}\left( h_{k} \right)<  \lambda ^{*}_{f}\left( A_2 \right)+  \varepsilon   
+    \] Then \[
+    A_1\subseteq \bigcup _{k = 1}^{\infty}h_{k},\quad \sum _{k = 1}^{\infty}\alpha _{f}\left( h_{k} \right)<  \lambda _{f}^{*}\left( A_2 \right)+  \varepsilon   
+    \]That is \[
+     \lambda _{f}^{*}\left( A_1 \right) \le  \lambda _{f}^{*}\left( A_2 \right)+  \varepsilon  
+    \]Since \(   \varepsilon > 0  \) is arbitrary, \(   \lambda _{f}^{*}\left( A_1 \right)\le  \lambda _{f}^{*}\left( A_2 \right)    \)  .
+
+    The proof of countable subadditivity is virtually identical to the proof the corresponding result of Lebesgue measure given in Theorem  \ref{thm:8-17-1}, since we didn't use any explicit expresion of the length of an interval there.
+
+    The same idea of proving Lebesgue outer measure to be Carathéodory is effective for that of the Lebesgue-Stieljes oute measure, since the only thing we should check to repeate that proof here is whether we can subdividing each \(  h_{k}  \) into smaller members of \(  \mathcal{F}  \) whose diameter less than \(  \mathbf{d}\left( A,B \right)   \). But that was shown in the remark of the definition.   
+\end{proof}
+
+
+\begin{theorem}{}{}
+    If \(  f:\mathbb{R} \to \mathbb{R}   \) is nondecreasing and right-continuous then \[
+     \lambda _{f}\left( (a,b] \right) =  f\left( b \right)-f\left( a \right)   
+    \] 
+\end{theorem}
+\begin{note}
+    回忆Lebesgue测度的情况, 我们将闭集构成的覆盖, 通过微小的几乎不影响测度的(向两边)扩张, 其内部形成一组开覆盖. 我们是利用这组开覆盖来覆盖身为紧集的闭区间, 以处理问题的.
+
+    这里, 我们由于选择了半开区间, 只需要对右侧进行微小的扩张, 作为代价, 我们研究的集合本身不再是紧集.  这里假设\(  f  \)是右连续, 就同时解决了两个问题: 
+    \begin{enumerate}
+        \item 向右微小扩张, 得益于右连续, 对测度的影响也变成是无限小的.
+        \item 得益于右连续, 用闭集 \(  [a^{\prime} ,b]  \),向左逼近 \(  (a,b], a^{\prime} \to a  ^{+ }\)的行为也是良好的. 
+    \end{enumerate}
+     
+\end{note}
+\begin{proof}
+    It suffices to show that \[
+     \lambda _{f}\left( (a,b] \right)\ge f\left( b \right)-f\left( a \right)   
+    \]For each \(   \varepsilon > 0  \), we take a sequence of half-invervals \(  h_1= (a_1,b_1],h_2= (a_2,b_2],\cdots   \) such that \[
+    (a,b] \subseteq \bigcup _{k = 1}^{\infty}h_{k},\quad \sum _{k = 1}^{\infty}\alpha _{f}\left( h_{k} \right)<  \lambda _{f}\left( (a,b] \right)+  \varepsilon   .
+    \]  Since \(  f  \) is right-continuous , we have \[
+    \lim_{t \to 0^{+ }} \alpha _{f}\left( (a_{k},b_{k}+ t] \right)= \alpha _{f}((a_{k},b_{k}])
+    \] Consequently, we may replace each \(  (a_{k},b_{k}]  \) with \(  (a_{k},b_{k}^{\prime} ]  \)  such that   \[
+    b_{k}< b_{k}^{\prime} ,\quad   \alpha _{f}((a_{k},b_{k}^{\prime} ])< \alpha _{f}((a_{k},b_{k}]) + \frac{ \varepsilon  }{2^{k} } 
+    \] 
+    
+    Let $a' \in (a, b)$. The compact set $[a', b]$ is covered by a finite family of open intervals, which we denote $\mathcal{C}_{fin} = \{ C_j \}_{j=1}^N$, where $C_j = (a_j, b'_j)$.
+$[a', b] \subseteq \bigcup_{j=1}^N C_j$
+. By the Lebesgue number lemma, there exists an $\eta > 0$ such that any subset of $[a', b]$ with diameter less than $\eta$ is contained in at least one $C_j$. We partition $[a', b]$ into subintervals $I_k = [t_{k-1}, t_k]$ for $k=1, \dots, m$, each with length less than $\eta$. Thus, for each $I_k$, we can choose an interval from $\mathcal{C}_{fin}$ that contains it.
+
+Let's formalize this choice. We define an assignment function $\phi: \{1, \dots, m\} \to \{1, \dots, N\}$ such that for each $k$, $I_k \subseteq C_{\phi(k)}$. 
+
+We can now write the total increase of $f$ over $[a', b]$ and group the terms according to our assignment:
+$$f(b) - f(a') = \sum_{k=1}^m (f(t_k) - f(t_{k-1})) = \sum_{j=1}^N \left( \sum_{k \text{ s.t. } \phi(k)=j} (f(t_k) - f(t_{k-1})) \right)$$
+The outer sum is over the indices of the open cover $\mathcal{C}_{fin}$, ensuring no open interval is counted more than once.
+
+Now, let's analyze the inner sum for a fixed \( j \). Let \( \mathcal{P}_j = \{ I_k \mid \phi(k)=j \} \) be the set of subintervals assigned to \( C_j \). These are a finite number of disjoint subintervals, all contained within \( C_j = (a_j, b'_j) \). Let \( t_{\min, j} \) be the minimum of all left endpoints of intervals in \( \mathcal{P}_j \), and \( t_{\max, j} \) be the maximum of all right endpoints. Then \( \bigcup_{I_k \in \mathcal{P}_j} I_k \subseteq [t_{\min, j}, t_{\max, j}] \).
+Since \( f \) is nondecreasing, the sum of increases over disjoint intervals is less than or equal to the increase over their convex hull:
+\[ \sum_{I_k \in \mathcal{P}_j} (f(t_k) - f(t_{k-1})) \le f(t_{\max, j}) - f(t_{\min, j}) \]
+Furthermore, since all these \( I_k \) are in \( C_j = (a_j, b'_j) \), we have \( a_j < t_{\min, j} \) and \( t_{\max, j} < b'_j \). The nondecreasing property of \( f \) implies:
+\[ f(t_{\max, j}) - f(t_{\min, j}) \le f(b'_j) - f(a_j) \]
+Combining these, for each \( j \), we have established:
+\[ \sum_{k \text{ s.t. } \phi(k)=j} (f(t_k) - f(t_{k-1})) \le f(b'_j) - f(a_j) \]
+Substituting this back into our grouped sum:
+\[ f(b) - f(a') \le \sum_{j=1}^N (f(b'_j) - f(a_j)) \]
+This sum is over a finite subset of the original infinite cover used to define the \( 2\varepsilon \) bound. Therefore:
+\[ \sum_{j=1}^N (f(b'_j) - f(a_j)) \le \sum_{i=1}^\infty (f(b'_i) - f(a_i)) < \lambda_f((a, b]) + 2\varepsilon \]
+So we have \( f(b) - f(a') < \lambda_f((a, b]) + 2\varepsilon \).
+ 
+
+Since \( \varepsilon \) is arbitrary, we have \( f(b) - f(a') \le \lambda_f((a, b]) \).
+Furthermore, the right continuity of \( f \) implies \( \lim_{a' \to a^+} f(a') = f(a) \), and hence
+\[ f(b) - f(a) \le \lambda_f((a, b]) \]
+as desired.
+\end{proof}
+
+
+\begin{theorem}{}{}
+Suppose $\mu$ is a finite Borel outer measure on $\mathbb{R}$ and let
+\[ f(x) = \mu((-\infty, x]). \]
+Then the Lebesgue-Stieltjes measure, $\lambda_f$, agrees with $\mu$ on all Borel sets.
+\end{theorem}
+
+\begin{proof}*
+  \(  f  \) is nondecreasing from definition.  Note that \[
+  (-\infty,x]= \bigcap_{n \in \mathbb{N} }(-\infty,x+ \frac{1 }{n } ]
+  \] Since \(  \mu   \) is finite, the continuity from below gives that  \[
+  \lim_{n\to \infty}\mu \left( (-\infty,x+ \frac{1 }{n } ] \right) = \mu\left(  (-\infty,x] \right) 
+  \]That is \[
+  \lim_{n\to \infty}f\left( x+ \frac{1 }{n }  \right)= f\left( x \right)  
+  \] Since \(  f  \) is nondecreasing , \[
+  \lim_{t \to 0^{+ }} f\left( x+ t \right)= f\left( x \right)  
+  \] 
+
+  Since \[
+  (-\infty,a]\cup (a,b]= (-\infty,b]
+  \] then \[
+  f\left( b \right)-f\left( a \right)= \mu ((-\infty,b])-\mu ((-\infty,a])= \mu ((a,b])
+  \] thus proving that \(  \mu   \) and \(   \lambda _{f}  \) agree on all half-open intervals.   Since very open set in \(  \mathbb{R}   \) is  a countable union of disjoint half-open intervals, it follows that \(  \mu   \) and \(   \lambda _{f}  \) agree on all open sets.   It will be shown later that \(  \mu , \lambda _{f}  \) agree on all Borel sets . 
+\end{proof}
+
+\section*{Exercises for Lebesgue-Stieltjes Measure}
+
+\begin{exercise}{}{}
+Let $f: \mathbb{R} \to \mathbb{R}$ be a nondecreasing function and let $\lambda_f$ be the Lebesgue-Stieltjes measure generated by $f$. Prove that $\lambda_f(\{x_0\}) = 0$ if and only if $f$ is left-continuous at $x_0$.
+\end{exercise}
+
+\begin{proof}
+     \[
+     \left\{ x_0 \right\}= \bigcap_{n\in \mathbb{N} } (x_0,x_0+ \frac{1 }{n } ]
+     \] It follows from the continuity from above that \[
+   \lim_{n\to \infty}\left(    f\left( x_0+ \frac{1 }{n }  \right)-f\left( x_0 \right) \right) =  \lambda _{f} \left( \left\{ x_0 \right\} \right)   
+     \] Since \(  f  \) is nondecreasing, \[
+     \lim_{t\to 0^{+ }}f\left( x_0+ t \right)= \lim_{n\to \infty}f\left( x_0+ \frac{1 }{n }  \right)  
+     \]  We have \[
+     \lim_{t\to 0^{+ }}f\left( x_0+ t \right)-f\left( x_0 \right) =  \lambda _{f} \left( \left\{ x_0 \right\} \right)  
+     \] The LHS\(  = 0  \) iff \(  f  \) is left-continuous, which completes the proof.  
+\end{proof}
+\begin{exercise}{}{}
+    Let $f$ be a nondecreasing function defined on $\mathbb{R}$. Define a Lebesgue-Stieltjes-type measure as follows: For $A \subset \mathbb{R}$ an arbitrary set,
+\[\begin{aligned}
+\Lambda_{f}^{*}(A) = \inf \left\{ \sum_{h_k \in \mathcal{F}} [f(b_k) - f(a_k)] \right\},
+\end{aligned}\]
+where the infimum is taken over all countable collections $\mathcal{F}$ of closed intervals of the form $h_k := [a_k, b_k]$ such that
+\[\begin{aligned}
+E \subset \bigcup_{h_k \in \mathcal{F}} h_k.
+\end{aligned}\]
+In other words, the definition of $\Lambda_f^*(A)$ is the same as $\lambda_f^*(A)$ except that closed intervals $[a_k, b_k]$ are used instead of half-open intervals $(a_k, b_k]$.
+As in the case of Lebesgue-Stieltjes measure it can be easily seen that $\Lambda_f^*$ is a Carathéodory measure. (You need not prove this.)
+\begin{enumerate}
+\item[(a)] Prove that $\Lambda_f^*(A) \le \lambda_f^*(A)$ for all sets $A \subset \mathbb{R}^n$.
+\item[(b)] Prove that $\Lambda_f^*(B) = \lambda_f^*(B)$ for all Borel sets $B$ if $f$ is left-continuous.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Let \(  (a_1,b_1],(a_2,b_2],\cdots   \) be a sequence of  half-open intervals , such  that \[
+        A\subseteq \bigcup _{k = 1}^{\infty}(a_{k},b_{k}],\quad \sum _{k = 1}^{\infty} (f\left( b_{k} \right)-f\left( a_{k} \right)  ) <  \lambda ^{*}_{f}\left( A \right)+  \varepsilon  
+        \]Then we have \[
+        A\subseteq \bigcup _{k = 1}^{\infty}\left[ a_{k},b_{k} \right],\quad \sum _{k = 1}^{\infty}\left( f\left( b_{k} \right)-f\left( a_{k} \right)   \right)<  \lambda _{f}^{*}\left( A \right)+  \varepsilon    
+        \]    Thus \[
+     \Lambda _{f}^{*}\left( A \right) \le  \lambda _{f}^{*}\left( A \right)+  \varepsilon   
+        \] Since \(   \varepsilon > 0  \) is arbitrary, we have \[
+         \Lambda _{f}^{*}\left( A \right) \le  \lambda _{f}^{*}\left( A \right) 
+        \]
+        \item   Let \( \left[ a_1,b_1 \right],\left[ a_2,b_2\right],\cdots      \) be a sequence of closed intervals , such that \[
+        B\subseteq \bigcup _{k = 1}^{\infty}\left[ a_{k},b_{k} \right],\quad \sum _{k = 1}^{\infty}\left( f\left( b_{k} \right)-f\left( a_{k} \right)   \right)<  \Lambda _{f}^{*}\left( B \right)+  \varepsilon    
+        \] If \(  f   \) is left-continuous, for each \(  k \in \mathbb{N}   \), there is \(  a_{k}^{\prime}   \), such that \[
+        f\left( a_{k} \right)-f\left( a_{k}^{\prime}  \right)< \frac{ \varepsilon  }{2^{k} }   
+        \] Then \[
+        B\subseteq \bigcup _{k = 1}^{\infty}(a_{k}^{\prime} ,b_{k}],\quad \sum _{k = 1}^{\infty}\left( f\left( b_{k} \right)-f\left( a_{k}^{\prime}  \right)   \right)<  \Lambda _{f}^{*}\left( B \right)+  2\varepsilon 
+        \]   That is \[
+         \lambda _{f}^{*}\left( B \right)\le  \Lambda _{f}^{*}\left( B \right)+ 2 \varepsilon   
+        \] Since \(   \varepsilon > 0  \) is arbitrary, we have \[
+         \lambda _{f}^{*}\left( B \right)\le  \Lambda _{f}^{*}\left( B \right)  
+        \] 
+    \end{enumerate}
+    
+\end{proof}
+
+\section{Hausdorff Measure}
+\begin{definition}{Hausdorff Outer Measure}{8-19-1}
+Hausdorff measure is defined in terms of an auxiliary set function that we introduce first. Let $0 \le s < \infty$, $0 < \varepsilon \le \infty$, and let $A \subset \mathbb{R}^n$. Define
+\[
+H_{\varepsilon}^{s}(A) = \inf \left\{ \sum_{i=1}^{\infty} \alpha(s) 2^{-s} (\operatorname{diam} E_i)^s : A \subset \bigcup_{i=1}^{\infty} E_i, \operatorname{diam} E_i < \varepsilon \right\},
+\]
+where $\alpha(s)$ is a normalization constant defined by
+\[
+\alpha(s) = \frac{\pi^{\frac{s}{2}}}{\Gamma(\frac{s}{2}+1)},
+\]
+with
+\[
+\Gamma(t) = \int_{0}^{\infty} e^{-x} x^{t-1} \,dx, \quad 0 < t < \infty.
+\]It follows from the definition that if $\varepsilon_1 < \varepsilon_2$, then $H_{\varepsilon_1}^s(E) \ge H_{\varepsilon_2}^s(E)$. This allows the following, which is the definition of \dfntxt{s-dimensional Hausdorff measure}:
+\[
+H^s(A) = \lim_{\varepsilon \to 0} H_{\varepsilon}^s(A) = \sup_{\varepsilon > 0} H_{\varepsilon}^s(A).
+\]
+
+\end{definition}
+
+\begin{remark}
+    \begin{itemize}
+        \item Hausdorff Measure can be defined in any metric space.
+        \item The sets \(  E_{i}  \) in the definition of \(  H_{ \varepsilon }^{s}\left( A \right)   \) are arbitrary subsets of \(  \mathbb{R} ^{n}  \). However, they could be taken to be closed sets, since \(  \operatorname{diam}E_{i}= \operatorname{diam} \overline{E_{i}}  \).     
+    \end{itemize}
+    
+\end{remark}
+
+
+\begin{theorem}{}{}
+    For each nonnegative number \(  s  \), \(  H^{s}  \) is a Carathéodory outer measure.  
+\end{theorem}
+
+\begin{proof}
+    First we show that \(  H^{s}  \)  is an outer measure. We only show that \(  H^{s}  \) is subadditive, the other properties are obvious. Let \(  A_1,A_2,\cdots   \) be a sequence of sets with \(  H^{s}  \)- outer measure finite. Let \(  A= \bigcup _{k = 1}^{\infty}A_{k}  \). For any \(   \varepsilon > 0  \), and for each \(  k  \), there are sets \(  E^{\left( k \right) }_{1},\cdots   \) such that \[
+    A_{k}\subseteq  \bigcup _{i = 1}^{\infty}E_{i}^{\left( k \right) },\quad  \sum _{i = 1}^{\infty}\alpha \left( s \right)2^{-s} \left( \operatorname{diam}E_{i}^{\left( k \right) } \right)^{s}< H_{ \varepsilon }^{s}\left( A_{k} \right)+ \frac{ \varepsilon  }{2^{k} } 
+    \]       We can arange \(  \left\{ E_{i}^{\left( k \right) } \right\}_{i,k \in \mathbb{Z} _{> 0}}  \) to be a sequence of sets such that  \[
+    A\subseteq \bigcup _{i,k \in \mathbb{Z} _{> 0}}E_{i}^{\left( k \right) },\quad  \sum _{i,k \in \mathbb{Z} _{> 0}} \alpha \left( s \right)2^{-s}\left( \operatorname{diam}E_{i}^{\left( k \right) } \right)^{s}< \sum _{k= 1}^{\infty}H_{ \varepsilon }^{s}\left( A_{k} \right)   +  \varepsilon 
+    \]  Thus \[
+    H_{ \varepsilon }^{s}\left( A \right)\le \sum _{k = 1}^{\infty} H_{ \varepsilon }^{s}\left( A_{k} \right)+  \varepsilon  
+    \] Since \(  H_{ \varepsilon }^{s}\left( A_{k} \right)\le  H^{s}\left( A_{k} \right)    \) for each \(  k  \), we have \[
+    H_{ \varepsilon }^{s}\left( A \right)\le  \sum _{k = 1}^{\infty}H^{s}\left( A_{k} \right)+  \varepsilon   
+    \]   Let \(   \varepsilon > 0  \), we have \[
+    H^{s}\left( A \right)\le \sum _{k = 1}^{\infty}H^{s}\left( A_{k} \right)  
+    \]
+    Now we show that \(  H^{s}  \) is a Carathéodory outer measure. Suppose that \(  A,B  \) be two sets with \(  \mathbf{d}\left( A,B \right)> 0   \), and suppose \(  0<  \varepsilon < \mathbf{d}\left( A,B \right)   \).    
+    Let \(  \left\{ E_{k} \right\}  \) be a covering of \(  A\cup B  \)   with \(  \operatorname{diam}\left( E_{i} \right)< \varepsilon    \) .Then each \(  E_{k}  \) cannot intersect with both \(  A  \) and \(  B  \). Let \(  \mathcal{A}  \) be the collection of  \(  E_{k}  \) intersecting with \(  A  \) , and Let \(  \mathcal{B}  \) be that of intersecting with \(  B  \). Then  \[
+   \begin{aligned}
+    \sum _{k = 1}^{\infty} \alpha \left( s \right)2^{-s}\left( \operatorname{diam}E_{i} \right)^{s}&  = \sum _{ E_{k}\in \mathcal{A}}\alpha \left( s \right)2^{-s} \left( \operatorname{diam}E_{k} \right)^{s} + \sum _{ E_{k}\in \mathcal{B}}\alpha \left( s \right)2^{-s}\left( \operatorname{diam}E_{k} \right)^{s}   \\ 
+     &\ge H_{ \varepsilon }^{s}\left( A \right)+ H_{ \varepsilon }^{s}\left( B \right)  
+   \end{aligned}
+    \]  We can take \(  \left\{ E_{i} \right\}  \) such that \[
+    \sum _{k = 1}^{\infty}\alpha \left( s \right)2^{-s}\left( \operatorname{diam}E_{i} \right)^{s}< H_{ \varepsilon }^{s}\left( A\cup B \right)   +  \varepsilon 
+    \]     Thus we have \[
+    H_{ \varepsilon }^{s}\left( A\cup B \right)\ge H_{ \varepsilon }^{s}\left( A \right)+ H_{ \varepsilon }^{s}\left( B \right)+  \varepsilon    
+    \]Since \(  0<  \varepsilon < \mathbf{d}\left( A,B \right)   \) is arbitrary, take \(   \varepsilon \to 0^{+ }  \), it follows that \[
+    H^{s}\left( A\cup B \right)\ge H^{s}\left( A \right)+ H^{s}\left( B \right)   
+    \], which shows that \(  H^{s}  \) is a Carathéodory outer measure.      
+\end{proof}
+
+\begin{theorem}{}{}
+For each $A \subset \mathbb{R}^n$, there exists a Borel set $B \supset A$ such that
+\[H^s(B) = H^s(A).\]
+\end{theorem}
+
+\begin{proof}
+    Let \(  \left\{  \varepsilon _{j} \right\}  \) be a decreasing suquence of positive numbers such that \(   \varepsilon _{j}\to 0   \) as \(  j\to \infty  \). For each \(  j  \), there is a suquence of closed set (Remark of Definition \ref{dfn:8-19-1}) \(  E_{i,j}  \) , such that \[
+    B\subseteq \bigcup _{i= 1}^{\infty}E_{i,j},\quad \sum _{i= 1}^{\infty}\alpha \left( s \right)2^{-s} \left( \operatorname{diam}\left( E_{i,j} \right)  \right)^{s}<  H_{ \varepsilon_{j} }^{s}\left( B \right)+  \varepsilon _{j}   
+    \] Let \(  A_{j}: = \bigcup _{i = 1}^{\infty}E_{i,j}  \), and let \(  A: = \bigcap_{j= 1}^{\infty}A_{j}   \). Then   \(  A  \) is a Borel set such that \(  B\subseteq A  \). Note that \[
+    H_{ \varepsilon _{j}}^{s}\left( B \right)+  \varepsilon _{j}>  \sum _{i = 1}^{\infty} \alpha \left( s \right)2^{-s}\left( \operatorname{diam}\left( E_{i,j} \right)  \right)^{s}\ge H_{ \varepsilon _{j}}^{s}\left( A_{j} \right)\ge  H_{ \varepsilon _{j}}^{s} \left( A \right) 
+    \]    Let \(  j\to \infty  \), we have \[
+    H^{s}\left( B \right)\ge H^{s}\left( A \right)  \implies H^{s}\left( B \right)= H^{s}\left( A \right)  
+    \] 
+\end{proof}
+
+\begin{theorem}{}{8-19-2}
+Suppose $A \subset \mathbb{R}^n$ and $0 \le s < t < \infty$. Then
+\begin{enumerate}
+\item[(i)] If $H^s(A) < \infty$ then $H^t(A) = 0$.
+\item[(ii)] If $H^t(A) > 0$ then $H^s(A) = \infty$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+    (ii) is just a restatement of (i). We now show that (i) holds.
+    Take any \(   \varepsilon > 0  \), there are \(  \left\{ E_{i} \right\}  \) with \(  \operatorname{diam}\left( E_{i} \right)\le  \varepsilon    \) such that \[
+    A\subseteq \bigcup _{i= 1}^{\infty}E_{i},\quad  \sum _{i = 1}^{\infty}\alpha \left( s \right) 2^{-s} \left( \operatorname{diam}\left( E_{i} \right)  \right)^{s}< H_{ \varepsilon }^{s}\left( A \right)+  \varepsilon  \le H^{s}\left( A \right)+  \varepsilon    
+    \]Then \[
+    \begin{aligned}
+    H_{ \varepsilon }^{t}\left( A \right)&\le \sum _{i = 1}^{\infty}\alpha \left( t \right)2^{-t}\left( \operatorname{diam}\left( E_{i} \right)  \right)^{t}\\ 
+     &= \frac{\alpha \left( t \right)  }{\alpha \left( s \right)  }2^{s-t}  \sum _{i = 1}^{\infty}\alpha \left( s \right)2^{-s}    \left( \operatorname{diam}\left( E_{i} \right)  \right)^{s} \left( \operatorname{diam}\left( E_{i} \right)  \right)^{t-s}\\ 
+      &\le \frac{ \alpha \left( s \right)  }{ \alpha \left( t \right)  } 2^{s-t}  \varepsilon ^{t-s}   \left( H^{s}\left( A \right)+  \varepsilon   \right) 
+    \end{aligned}
+    \]   Let \(   \varepsilon \to 0  \), we have \[
+    H^{t}\left( A \right)\le 0 \implies H^{t}\left( A \right)= 0  
+    \] 
+\end{proof}
+
+\section*{Exercises for Hausdorff Measure}
+
+\begin{exercise}{}{}
+    If $A \subset \mathbb{R}$ is an arbitrary set, show that $H^1(A) = \lambda^*(A)$.
+\end{exercise}
+
+\begin{remark}{}{}
+In this problem, you will see the importance of the constant that appears in the definition of Hausdorff measure. The constant $\alpha(s)$ that appears in the definition of $H^s$-measure is equal to 2 when $s = 1$. That is, $\alpha(1) = 2$, and therefore, the definition of $H^1(A)$ can be written as
+\[
+H^1(A) = \lim_{\varepsilon\to 0} H_{\varepsilon}^1(A),
+\]
+where
+\[
+H_{\varepsilon}^1(A) = \inf \left\{ \sum_{i=1}^{\infty} \operatorname{diam} E_i : A \subset \bigcup_{i=1}^{\infty} E_i \subset \mathbb{R}, \operatorname{diam} E_i < \varepsilon \right\}.
+\]
+This result is also true in $\mathbb{R}^n$ but is more difficult to prove. The isodiametric inequality $\lambda^*(A) \le \alpha(n) \left(\frac{\operatorname{diam} A}{2}\right)^n$ (whose proof is omitted in this book) can be used to prove that $H^n(A) = \lambda^*(A)$ for all $A \subset \mathbb{R}^n$.
+\end{remark}
+
+\begin{proof}
+    For any \(   \varepsilon > 0  \), there are closed intervals \(  I_1,\cdots   \) with \(  v\left( I_{i} \right)<  \varepsilon    \) such that \[
+    A\subseteq \bigcup _{i = 1}^{\infty}I_{i},\quad \sum _{i= 1}^{\infty}v\left( I_{i} \right)<  \lambda ^{*}\left( A \right)+  \varepsilon   
+    \]   Then \[
+    \sum _{i= 1}^{\infty} \alpha \left( 1 \right)2^{-1} \left( \operatorname{diam}I_{i}  \right)^{1}= \sum _{i= 1}^{\infty}v\left( I_{i} \right)<  \lambda ^{*}\left( A \right)+  \varepsilon    
+    \] Thus \[
+    H_{ \varepsilon }^{1}\left( A \right) <  \lambda ^{*}\left( A \right)+  \varepsilon   
+    \] Take \(   \varepsilon \to 0  \), we have \[
+    H^{1}\left( A \right)\le   \lambda ^{*}\left( A \right)  
+    \] 
+    The other hand, take \(   \varepsilon > 0  \),  there are closed set \(  E_{i}  \) with \(  \operatorname{diam}E_{i}<  \varepsilon   \) , such that \[
+    A\subseteq \bigcup _{i= 1}^{\infty}E_{i},\quad \sum _{i= 1}^{\infty} \operatorname{diam}E_{i}<  H^{1}_{ \varepsilon }\left( A \right) +  \varepsilon  
+    \]  Note that \[
+    \operatorname{diam}E_{i}=  \sup E_{i}-\inf E_{i}
+    \]Let \[
+    I_{i} : =  \left[\inf E_{i}-\frac{ \varepsilon  }{2^{i+ 1} }, \sup E_{i}+ \frac{ \varepsilon  }{2^{i+ 1} }   \right]
+    \] Then \[
+    E_{i}\subseteq I_{i},\quad  v\left( I_{i} \right)<  \operatorname{diam}E_{i}+ \frac{ \varepsilon  }{2^{i} } 
+    \] Thus \[
+    A\subseteq \bigcup _{i = 1}^{\infty}I_{i},\quad \sum _{i= 1}^{\infty}v\left( I_{i} \right) <  H^{1}_{ \varepsilon }\left( A \right)  + 2 \varepsilon < H^{1}\left( A \right)+ 2 \varepsilon  
+    \] Since \(   \varepsilon > 0  \) is arbitrary,  we have \[
+     \lambda ^{*}\left( A \right)\le  H^{1}\left( A \right)  
+    \] 
+\end{proof}
+\begin{exercise}{}{}
+For $A \subset \mathbb{R}^n$, use the isodiametric inequality introduced in Exercise 4.1 to show that
+\[
+\lambda^*(A) \le H^n(A) \le \alpha(n) \left(\frac{\sqrt{n}}{2}\right)^n \lambda^*(A).
+\]
+\end{exercise}
+\begin{proof}
+    For each \(   \varepsilon > 0  \), there are  sets \(  E_1,E_2,\cdots   \) with \(  \operatorname{diam}E_{i}<  \varepsilon   \) such that \[
+    A\subseteq \bigcup _{i= 1}^{\infty}E_{i},\quad \sum _{i= 1}^{\infty}\alpha \left( n \right) 2^{-n} \left( \mathrm{diam} \left( E_{i} \right)   \right)^{n}< H_{ \varepsilon }^{n}\left( A \right)+  \varepsilon   
+    \] Then\[
+     \lambda ^{*}\left( A \right)\le \sum _{i= 1}^{\infty} \lambda ^{*}\left( E_{i} \right)\le \sum _{i= 1}^{\infty}\alpha \left( n \right)2^{-n} \left( \operatorname{diam}\left( E_{i} \right)  \right)^{n}    < H_{ \varepsilon }^{n}\left( A \right)+  \varepsilon  
+    \]Take \(   \varepsilon \to 0  \), then \[
+     \lambda ^{*}\left( A \right)\le H^{n}\left( A \right)  
+    \] 
+
+    For each \(   \varepsilon > 0  \), there are closed intervals \(  I_1,I_2,\cdots   \) such that  \[
+    A\subseteq \bigcup _{i= 1}^{\infty}I_{i},\quad \sum _{i= 1}^{\infty}v\left( I_{i} \right)<  \lambda ^{*}\left( A \right)+  \varepsilon   
+    \] Since for each \(  I_{i}  \), there are finitely may squares \(  J_{i,j}  \) ,   such that    \[
+    I_{i}\subseteq \bigcup _{j= 1}^{\infty}J_{i,j},\quad    \sum _{j= 1}^{\infty}v\left( J_{i,j} \right)< v\left( I_{i} \right)+ \frac{ \varepsilon  }{2^{i} }   
+    \] We can arange \(  \left\{ J_{i,j} \right\}_{i,j\in \mathbb{Z} _{> 0}}  \) into a sequence of  squares \(  \left\{ K_{m} \right\}  \) such that \[
+    A\subseteq \bigcup _{m= 1}^{\infty}K_{m},\quad \sum _{i= 1}^{\infty}v\left( K_{m} \right)<  \lambda ^{*}\left( A \right)+ 2 \varepsilon   
+    \] Note that \[\left( 
+\frac{1}{\sqrt{n}}    \operatorname{diam}\left( K_{m} \right)  \right)^{n}= v\left( K_{m} \right)  
+    \] We have \[
+  \begin{aligned}
+    H_{ \varepsilon }^{n}\left( A \right)\le \sum _{i= 1}^{\infty} \alpha \left( n \right)2^{-n} \left( \operatorname{diam}\left( K_{m} \right)  \right)^{n}&= \alpha\left( n \right)\left( \frac{\sqrt{n} }{2 }  \right)^{n}   \sum _{i= 1}^{\infty}v\left( K_{m} \right)   \\ 
+     &\le \alpha \left( n \right)\left( \frac{\sqrt{n} }{2 }  \right)^{n}  \left(  \lambda ^{*}\left( A \right)+ 2 \varepsilon   \right) 
+  \end{aligned}
+    \] Take \(   \varepsilon \to 0  \), we have \[
+    H^{n}\left( A \right)\le \alpha \left( n \right)\left( \frac{\sqrt{n} }{2 }  \right)^{n} \lambda ^{*}\left( A \right)    
+    \] 
+\end{proof}
+\begin{exercise}{}{}
+    Show that \(  H^{s}\equiv 0  \) on \(  \mathbb{R} ^{n}  \) for all \(  s> n  \).   
+\end{exercise}
+
+\begin{proof}
+    Let \[
+    I_{k}:= [-k ,k]^{n}
+    \] For any \(  A\subseteq \mathbb{R} ^{n}  \), we have \[
+    A\subseteq \bigcup _{k= 1}^{\infty}I_{k}
+    \]Isodiametric inequality gives that \[
+     H^{n}\left( I_{k} \right)\le \alpha \left( n \right)\left( \frac{\sqrt{n} }{2 }  \right)^{n} \lambda   ^{*}\left( I_{k} \right)< \infty  
+    \]Then Theorem \ref{thm:8-19-2} gives that  \[
+    H^{s}\left( I_{k} \right)= 0 
+    \]Thus we have \[
+   H^{s}\left( A \right)\le  \sum _{k= 1}^{\infty} H^{s}\left( I_{k} \right)  = 0
+    \]   
+\end{proof}
+
+\begin{exercise}{}{}
+    Let $C \subset \mathbb{R}^2$ denote the circle of radius 1 and regard $C$ as a topological space with the topology induced from $\mathbb{R}^2$. Define an outer measure $\mathcal{H}$ on $C$ by
+\[\begin{aligned}
+\mathcal{H}(A) := \frac{1}{2\pi} H^1(A) \quad \text{for any set } A \subset C.
+\end{aligned}\]
+Later in the book, we will prove that $H^1(C) = 2\pi$. Thus, you may assume that. Show that
+\begin{enumerate}
+\item[(i)] $\mathcal{H}(C) = 1$.
+\item[(ii)] Prove that $\mathcal{H}$ is a Borel regular outer measure.
+\item[(iii)] Prove that $\mathcal{H}$ is rotationally invariant; that is, prove that for every set $A \subset C$, one has $\mathcal{H}(A) = \mathcal{H}(A')$, where $A'$ is obtained by rotating $A$ through an arbitrary angle.
+\item[(iv)] Prove that $\mathcal{H}$ is the only outer measure defined on $C$ that satisfies the previous three conditions.
+\end{enumerate}
+\end{exercise}
+
+\section{Hausdorff Dimension of Cantor Sets}
+
+\begin{definition}{General Cantor set}{}
+Let $0 < \gamma < 1/2$ and set $I_{0,1} = [0, 1]$. Let $I_{1,1}$ and $I_{1,2}$ denote the intervals $[0, \gamma]$ and $[1 - \gamma, 1]$ respectively. They result by deleting the open middle interval of length $1 - 2\gamma$. At the next stage, delete the open middle interval of length $\gamma(1 - 2\gamma)$ of each of the intervals $I_{1,1}$ and $I_{1,2}$. There remain $2^2$ closed intervals each of length $\gamma^2$. Continuing this process, at the $k$th stage there are $2^k$ closed intervals each of length $\gamma^k$. Denote these intervals by $I_{k,1}, \dots, I_{k,2^k}$. We define the generalized Cantor set as
+\[
+C(\gamma) = \bigcap_{k=0}^{\infty} \bigcup_{j=1}^{2^k} I_{k,j}.
+\]
+\end{definition}
+
+
+\begin{theorem}{Hausdorff Dimension of Cantor Sets}{}
+    The Hausdorff Diemension of \(  C\left(  \gamma  \right)   \), denoted by  \(  s\), is \[
+   s= \log 2/ \log\left( \frac{1 }{ \gamma  }  \right) 
+    \] that is the unique \(  s  \) such that   \[
+    2 \gamma ^{s}= 1
+    \] 
+\end{theorem}
+
+\begin{note}
+    通过选取特定的 \(  s  \), 使得 \(  C\left(  \gamma  \right)   \)构造过程中的每一个 ``丢弃''中间区间的过程都是恰好 完全不损失``\(  s  \)-长度的 ''.  这样, \(  C\left(  \gamma  \right)   \)中 \(  I_{k,j}  \)的 \(  s  \)-长度可以完全它内部更小的组件的 \(  s  \)-长度和来代替.    
+
+    由于\(  C\left(  \gamma  \right)   \)的自相似性, 每个区间 \(  I  \), 在盖住了最大的一个小组件 \(  I_{k,k_{1}}  \)时,  也会同时连同被跟它一样大的另外三个组件 \(  I_{k,k_2},I_{k,k_3},I_{k,k_4}  \)  所含住.这样就提供了上下两边包夹的不等式关系.
+\end{note}
+
+\begin{proof}
+    Since \(  C\left(  \gamma  \right)\subseteq \bigcup _{j= 1}^{2^{k}}I_{k,j}   \)  for each \(  k  \). We have  \[
+    H^{s}_{ \gamma ^{k}}\left( C\left(  \gamma  \right)  \right) \le \sum _{j= 1}^{2^{k}} \ell\left( I_{k,j} \right) ^{s}= 2^{k}\left(  \gamma ^{k} \right)^{s}=  \left( 2 \gamma ^{s} \right)^{k}  
+    \] We choose \(  s  \) such that \(  2 \gamma ^{s}= 1  \), then    \[
+    H^{s}_{ \gamma ^{k}}\left( C\left(  \gamma  \right)  \right)\le  1,\quad \forall k 
+    \] Since \(  \lim_{k\to \infty} \gamma ^{k}= 0  \), we have \[
+    H^{s}\left( C\left(  \gamma  \right)  \right)= \lim_{k\to \infty}H^{s}_{ \gamma ^{k}}\left( C\left(  \gamma  \right)  \right)\le 1  
+    \]  
+
+    It is important to observe that we choose our \(  s  \) such that \[
+    \sum _{j= 1}^{2^{k}}  \ell\left( I_{k,j} \right)^{s}= 1 
+    \] 
+
+    Next, we show that \(  H^{s}\left( C\left(  \gamma  \right)  \right)\ge \frac{1 }{4 }    \) , which along with above implies that the Hausdorff dimension of \(  C\left(  \gamma  \right)   \) equals \(  \log 2 / \log\left( \frac{1 }{ \gamma  }  \right)   \) . We will establish this by showing that if \[
+    C\left(  \gamma  \right)\subseteq \bigcup _{j= 1}^{\infty}J_{i} 
+    \] is an open covering \(  C\left(  \gamma  \right)   \) by intervals \(  J_{i}  \), then \[
+    \sum _{i= 1}^{\infty} \ell\left( J_{i} \right)^{s}\ge \frac{1 }{4 }  
+    \] Firstly, we will show that for any open interval \(  I  \) and fixed \(   l  \) that \[
+    \sum _{I_{i,l}\subseteq I} \ell\left( I_{l,i} \right)^{s}\le 4 \ell\left( I \right)^{s}  
+    \]    Let \(  k  \) be the smallest number    such that \(  I  \) contains some \(  I_{k,j}  \). Then there are at most for of \(  I_{k,j}  \)'s intersect with \(  I  \), otherwise there are some \(  I_{k-1,j}  \) contained in \(  I  \). We call them \(  I_{k,k_{m}},m = 1,2,3,4  \).  Then \[
+    4 \ell\left( I \right)^{s} \ge \sum _{m= 1}^{4} \ell\left( I_{k,k_{m}} \right)^{s}=  \sum _{m= 1}^{4}\sum _{I_{l,i}\subseteq I_{k,k_{m}}}  \ell\left( I_{l,i} \right)^{s} 
+    \]    Since \[
+     \ell\left( I_{k,k_{m}} \right)^{s}= \frac{1 }{2^{k} },\quad  \sum _{I_{l,i}\subseteq I_{k,k_{m}}}   \ell\left( I_{l,i} \right)^{s}= 2^{l-k}\frac{1 }{2^{l} }= \frac{1 }{2^{k} }   
+    \]  Thus \[
+    4 \ell\left( I \right)^{s}\ge \sum _{I_{l,i}\subseteq I} \ell\left( I_{l,i} \right)^{s}  
+    \] From this, we can get \[
+    \sum _{i= 1}^{\infty} \ell\left( J_{i} \right)^{s}\ge  \frac{1 }{4 }\sum _{i= 1}^{\infty}\sum _{I_{l,k}\subseteq J_{i}} \ell\left( I_{l,k} \right)^{s}  \ge \frac{1 }{4 }\sum _{k= 1}^{2^{l}} \ell\left( I_{l,k} \right)^{s}= \frac{1 }{4 }   
+    \] since the covering has an Lebesgue number , thus for sufficiently large \(  l  \), each \(  I_{l,k}  \) is contained in some \(  J_{i}  \).   
+\end{proof}
+
+\section{Measures on Abstract Spaces}
+
+\begin{definition}{}{}
+Let $X$ be a set and $\mathcal{M}$ a $\sigma$-algebra of subsets of $X$. A \dfntxt{measure} on $\mathcal{M}$ is a function $\mu: \mathcal{M} \to [0, \infty]$ satisfying the properties
+\begin{enumerate}
+\item[(i)] $\mu(\emptyset) = 0$;
+\item[(ii)] if $\{E_i\}$ is a sequence of disjoint sets in $\mathcal{M}$, then
+\[ \mu\left(\bigcup_{i=1}^{\infty} E_i\right) = \sum_{i=1}^{\infty} \mu(E_i). \]
+\end{enumerate}
+Thus, a measure is a countably additive set function defined on $\mathcal{M}$.
+
+\begin{itemize}
+    \item  Sometimes the notion of \dfntxt{finite additivity} is useful. It states that 
+    \item[(ii)\(  ^{\prime}   \) ] If \(   E_1,\cdots,E_k   \) is any finite family of disjoint sets in \(  \mathcal{M}  \), then \[
+    \mu \left( \bigcup _{i= 1}^{k}E_{i} \right)= \sum _{i= 1}^{k}\mu \left( E_{i} \right).   
+    \]  
+    \item If \(  \mu   \) satisfies (i) and (ii\(  ^{\prime}   \) ) but not necessarily (ii), then \(  \mu   \) is called a \dfntxt{finitely additive measure}. 
+    \item Then triple \( \left(  M,\mathcal{M},\mu  \right)   \)    is called a \dfntxt{measure space}, and sets should be referred to as \(  \mathcal{M}  \)-measurable, to indicate their dependence on \(  \mathcal{M}  \).  
+    \item If \(  M  \) consitutes the family of Borel sets in a meatric space \(  X  \), then \(  \mu   \) is called a \dfntxt{Borel measure}. 
+    \item A measure \(  \mu   \) is said to be \dfntxt{finite} if \(  \mu \left( X \right)< \infty   \), and \dfntxt{\(   \sigma   \)-finite } if \(  X  \) can be wriiten as \(  X= \bigcup _{i= 1}^{\infty}E_{i}  \), where \(  \mu \left( E_{i} \right)< \infty   \) for each \(  i  \).
+    \item A measure \(  \mu   \) with the property that all subsets of sets of \(  \mu   \)-measure zero are measurable is said to be \dfntxt{complete}, and \(  \left( X,\mathcal{M},\mu  \right)   \) is called a \dfntxt{complete measure space}. 
+    \item A Borel measure on a topological space \(  X  \) that is finite on compact sets is called a \dfntxt{Radon measure}.             
+\end{itemize}
+
+\end{definition}
+
+\begin{example}{EXAMPLES}{}
+Here are some examples of measures.
+\begin{enumerate}
+    \item $(\mathbb{R}^n, \mathcal{M}, \lambda)$, where $\lambda$ is Lebesgue measure and $\mathcal{M}$ is the family of Lebesgue measurable sets.
+    \item $(X, \mathcal{M}, \varphi)$, where $\varphi$ is an outer measure on an abstract set $X$ and $\mathcal{M}$ is the family of $\varphi$-measurable sets.
+    \item $(X, \mathcal{M}, \delta_{x_0})$, where $X$ is an arbitrary set and $\delta_{x_0}$ is an outer measure defined by
+    \[
+        \delta_{x_0}(E) = \begin{cases} 1 & \text{if } x_0 \in E, \\ 0 & \text{if } x_0 \notin E. \end{cases}
+    \]
+    The point $x_0 \in X$ is selected arbitrarily. It can easily be shown that all subsets of $X$ are $\delta_{x_0}$-measurable, and therefore $\mathcal{M}$ is taken as the family of all subsets of $X$.
+    \item $(\mathbb{R}, \mathcal{M}, \mu)$, where $\mathcal{M}$ is the family of all Lebesgue measurable sets, and $x_0 \in \mathbb{R}$ and $\mu$ is defined by
+    \[
+        \mu(E) = \lambda(E \setminus \{x_0\}) + \delta_{x_0}(E)
+    \]
+    whenever $E \in \mathcal{M}$.
+    \item $(X, \mathcal{M}, \mu)$, where $\mathcal{M}$ is the family of all subsets of an arbitrary space $X$ and where $\mu(E)$ is defined as the number (possibly infinite) of points in $E$.
+\end{enumerate}
+\end{example}
+
+\begin{theorem}{}{}
+Let $(X, \mathcal{M}, \mu)$ be a measure space and suppose $\{E_i\}$ is a sequence of sets in $\mathcal{M}$.
+\begin{enumerate}
+    \item (Monotonicity) If $E_1 \subset E_2$, then $\mu(E_1) \le \mu(E_2)$.
+    \item (Subtractivity) If $E_1 \subset E_2$ and $\mu(E_1) < \infty$, then $\mu(E_2 - E_1) = \mu(E_2) - \mu(E_1)$.
+    \item (Countable subadditivity)
+    \[
+        \mu(\bigcup_{i=1}^{\infty} E_i) \le \sum_{i=1}^{\infty} \mu(E_i).
+    \]
+    \item (Continuity from the left) If $\{E_i\}$ is an increasing sequence of sets, that is, if $E_i \subset E_{i+1}$ for each $i$, then
+    \[
+        \mu(\bigcup_{i=1}^{\infty} E_i) = \mu(\lim_{i \to \infty} E_i) = \lim_{i \to \infty} \mu(E_i).
+    \]
+    \item (Continuity from the right) If $\{E_i\}$ is a decreasing sequence of sets, that is, if $E_i \supset E_{i+1}$ for each $i$, and if $\mu(E_{i_0}) < \infty$ for some $i_0$, then
+    \[
+        \mu(\bigcap_{i=1}^{\infty} E_i) = \mu(\lim_{i \to \infty} E_i) = \lim_{i \to \infty} \mu(E_i).
+    \]
+    \item 
+    \[
+        \mu(\liminf_{i \to \infty} E_i) \le \liminf_{i \to \infty} \mu(E_i).
+    \]
+    \item If
+    \[
+        \mu(\bigcup_{i=i_0}^{\infty} E_i) < \infty
+    \]
+    for some positive integer $i_0$, then
+    \[
+        \mu(\limsup_{i \to \infty} E_i) \ge \limsup_{i \to \infty} \mu(E_i).
+    \]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Only 1. and 3. have not been established in Corollary \ref{col:8-14-1}. For 1. , note that \(  E_2\setminus E_1  \in \mathcal{M}\) and \[
+    \mu \left( E_2 \right)= \mu \left( E_2\setminus E_1 \right)+ \mu \left( E_1 \right)\ge  \mu \left( E_1 \right)    
+    \]  
+
+    To show 3., we start by defining \[
+    A_{i}:=  E_{i}\setminus \left( \bigcup _{k= 1}^{i-1} E_{k}\right),\quad i= 2,3,\cdots ,\quad A_1:= E_1 
+    \]Then \( A_1,A_2,\cdots    \) are disjoint sets in \(  \mathcal{M}  \) .  And \[
+    \bigcup _{i= 1}^{\infty}E_{i}= \bigcup _{i= 1}^{\infty}A_{i},\quad A_{i}\subseteq E_{i}
+    \]Thus \[
+    \mu \left( \bigcup _{i= 1}^{\infty}E_{i}\right)= \mu \left( \bigcup _{i= 1}^{\infty}A_{i} \right)= \sum _{i= 1}^{\infty}\mu \left( A_{i} \right)\le    \sum _{i= 1}^{\infty}\mu \left( E_{i} \right) 
+    \]
+\end{proof}
+
+
+\begin{theorem}{}{}
+Suppose $(X,\mathcal{M},\mu)$ is a measure space. Define $\overline{\mathcal{M}} = \{A \cup N : A \in \mathcal{M}, N \subset B \text{ for some } B \in \mathcal{M} \text{ such that } \mu(B) = 0\}$ and define $\bar{\mu}$ on $\overline{\mathcal{M}}$ by $\bar{\mu}(A \cup N) = \mu(A)$. Then $\overline{\mathcal{M}}$ is a $\sigma$-algebra, $\bar{\mu}$ is a complete measure on $\overline{\mathcal{M}}$, and $(X,\overline{\mathcal{M}},\bar{\mu})$ is a complete measure space. Moreover, $\bar{\mu}$ is the only complete measure on $\overline{\mathcal{M}}$ that is an extension of $\mu$.
+\end{theorem}
+
+\begin{proof}
+    It is easy to proof that \(  \overline{\mathcal{M}}  \) is closed under uncountable unions since  this is true for measure zero sets. To show that \(  \overline{\mathcal{M}}  \) is closed under complementation. We take \(  A\in \mathcal{M}, N\subseteq B  \) such that \(  \mu \left( B \right)= 0   \).  We may assume that \(  A\cap N= \varnothing  \) since \(  A\cup N=  A\cup \left( N\setminus A \right)   \), where \(  N\setminus A\subseteq B  \). Thus \[
+ A\cup N= \left( A\cup B \right)\cap \left( \left( B^{c}\cup N \right)\cup \left( A\cup B \right)   \right)  
+    \]Then \[
+    \left( A\cup N \right)^{c}=  \left( A\cup B \right)^{c}\cup \left( \left( B\cap N ^{c}\right)\cap \left( A\cup B\right)^{c}   \right)   
+    \]      Where \(  \left( A\cup B \right)^{c} \in \mathcal{M}   \), and \[
+    \left( B\cap N^{c} \right)\cap \left( A\cup B \right)^{c}\subseteq B  
+    \]
+    
+    To show that \(  \bar{\mu}  \) is not unambiguous, we assume that \(  A_1\cup N_1= A_2\cup N_2  \), where \(  A_1,A_2\in \mathcal{M}  \), \(  N_1\subseteq B_1,N_2\subseteq B_2  \), \(  \mu \left( B_1 \right)= \mu \left( B_2 \right)= 0    \). Since \(  A_1\subseteq A_2\cup N_2  \), we have \[
+    \mu \left( A_1\cup N_1 \right)= \mu \left( A_1 \right)\le \mu \left( A_2\cup N_2 \right)   
+    \] Similarly, \(  \mu \left( A_2\cup N_2 \right)\subseteq \mu \left( A_1\cup N_1 \right)    \). 
+ It is easily verified that \(  \bar{\mu}  \) is complete since \[
+\bar{\mu}\left( N \right)= \bar{\mu}\left( \varnothing\cup N \right)= \mu \left( \varnothing \right)= 0   
+ \] Suppose \(  \nu   \) is another complete measure on \(  \overline{\mathcal{M}}  \) that is an extension of \(  \mu   \) . Let \(  A\cup N\in  \overline{\mathcal{M}}  \) , \(  N\subseteq B,  \) \(  \mu \left( B \right)= 0   \). Then \[
+ \nu \left( A\cup N \right)\ge  \nu \left( A \right)= \mu \left( A \right)= \bar{\mu}\left( A\cup N \right)    
+ \]The other hand, \[
+ \nu \left( A\cup N \right)= \nu \left( A\cup \left( N\setminus A \right)  \right)= \nu \left( A \right)+ \nu \left( N\setminus A \right)    
+ \] since \(  N\setminus A\subseteq B  \) is \(  \nu   \)  - measurable for completeness. Then \[
+\begin{aligned}
+ \nu \left( A\cup N \right)= \nu \left( A \right)+ \nu \left( N\setminus A \right)= \mu \left( A \right)+ \nu \left( N\setminus A \right)&\le \mu \left( A \right)+\nu  \left(  B\right)   \\ 
+  &\le \mu \left( A \right)+ \mu \left( B \right)\\ 
+   &= \mu \left( A \right)\\ 
+    &= \bar{\mu}\left( A\cup N \right)      
+\end{aligned}   
+ \]We have \[
+ \nu \left( A\cup N \right)= \mu \left( A\cup N \right)   
+ \]for all \(  A\cup N \in   \overline{\mathcal{M}}  \)      
+\end{proof}
+\section*{Exercises for Abstract Measure Space}
+\begin{exercise}{}{}
+    Let $\{\mu_k\}$ be a sequence of measures on a measure space such that $\mu_{k+1}(E) \ge \mu_k(E)$ for each measurable set $E$. With $\mu$ defined as $\mu(E) = \lim_{k\to\infty} \mu_k(E)$, prove that $\mu$ is a measure.
+\end{exercise}
+\begin{proof}
+    It is obvious that \(  \mu \left( \varnothing \right)= 0   \) and \(  \mu   \) is nonnegative . If \(  \left\{ E_{i} \right\}  \) is a sequence of measurable sets. Then \[
+\begin{aligned}
+    \mu \left( \bigcup _{i= 1}^{\infty}E_{i} \right)&= \lim_{k\to \infty}\mu _{k} \left( \bigcup _{i= 1}^{\infty}E_{i} \right) \\ 
+     &= \lim_{k\to \infty} \sum _{i= 1}^{\infty}\mu _{k}\left( E_{i} \right)  \\ 
+      &= \sum _{i= 1}^{\infty}\mu \left( E_{i} \right) 
+\end{aligned}
+    \]  
+\end{proof}
+
+
+\section{Regular Outer Measure}
+
+
+\begin{theorem}{}{}
+If $\varphi$ is a \dfntxt{regular outer measure} on $X$, then
+\begin{enumerate}
+\item[(i)] If $A_1 \subset A_2 \subset \dots$ is an increasing sequence of arbitrary sets, then
+\[
+\varphi\left(\bigcup_{i=1}^{\infty} A_i\right) = \lim_{i\to\infty} \varphi(A_i).
+\]
+\item[(ii)] If $A \cup B$ is $\varphi$-measurable, $\varphi(A) < \infty$, $\varphi(B) < \infty$, and $\varphi(A \cup B) = \varphi(A) + \varphi(B)$, then both $A$ and $B$ are $\varphi$-measurable.
+\end{enumerate}
+\end{theorem}
+\begin{note}
+    \begin{enumerate}
+        \item 自下连续对于\dfntxt{正则的外测度}也成立.
+        \item 大可测集可以在外测度意义下被完全分为两个小集合, 则这两个小集合也可测.
+    \end{enumerate}
+    
+\end{note}
+\begin{proof}
+    (i) For each \(  k\in \mathbb{Z} _{> 0}  \), thers exists a \( \varphi  \)-measurable set \(  C_{k}  \), such that \(  C_{k}\supseteq A_{k}  \) and \(   \varphi \left( C_{k} \right)=  \varphi \left( A_{k} \right)    \). Then we define \[
+    B_{i}:= \bigcap _{j= i}^{\infty}C_{j}.
+    \]\(  \left\{ B_{k} \right\}  \) forms a increasing sequence of \(   \varphi   \)-measurable sets such that  \[
+    A_{k}\subseteq B_{k}\subseteq C_{k}
+    \]It follows that \[
+     \varphi \left( \bigcup _{i= 1}^{\infty}A_{i} \right)\le  \varphi \left( \bigcup _{i= 1}^{\infty}B_{i} \right)= \lim_{i\to \infty} \varphi \left( B_{i} \right)= \lim_{i\to \infty} \varphi \left( A_{i} \right)
+    \] Since \(   \varphi \left( A_{k} \right)\le  \varphi \left( B_{k} \right)\le  \varphi \left( C_{k} \right)=  \varphi \left( A_{k} \right)      \)          for each \(  k  \). 
+    
+    (ii) There exists \(   \varphi   \)-measurable set \(  C^{\prime} \supseteq A  \) such that \(   \varphi \left( C^{\prime}  \right)=  \varphi \left( A \right)    \). Let \[
+    C: =  C^{\prime} \cap \left( A\cup B \right) 
+    \] then \(  C  \) is \(   \varphi   \)-measurable. Note that \[
+    A\subseteq C\subseteq C^{\prime} 
+    \]We have  \(   \varphi \left( C \right)=  \varphi \left( A \right)    \), then \[
+    \begin{aligned}
+     \varphi \left( C \right)+  \varphi \left( B \right)&=  \varphi \left( A \right)+  \varphi \left( B \right)\\ 
+      &=  \varphi \left( A\cup B \right)\\ 
+       &=  \varphi \left( \left( A\cup B \right)\cap C  \right)+  \varphi \left( \left( A\cup B \right)\setminus C  \right)\\ 
+        &=  \varphi \left( C \right)+  \varphi \left( B\setminus C \right)\\ 
+         &=  \varphi \left( C \right)+  \varphi \left( B \right)- \varphi \left( B\cap C \right)         
+    \end{aligned}
+    \] where we use the measurability of \(  C  \) on the third and fifth equality. The above implies that \(   \varphi \left( B\cap C \right)= 0   \), \(  B\cap C  \) is \(   \varphi   \)-measurable. Since \(  C\setminus A\subseteq \left( A\cup B \right)\setminus A\subseteq B   \), we have \(  C\setminus A\subseteq B\cap C   \). Then it follows that  \(  C\setminus A  \) is \(   \varphi   \)-measruable, thus \(  A= C\setminus \left( C\setminus A \right)   \) is as well. The symmetry  gives that \(  B  \) is \(   \varphi   \)-measruable .   
+\end{proof}
+
+
+\begin{theorem}{}{8-30-1}
+    Suppose \(   \varphi   \) is an \dfntxt{Borel outer measure}  on a  metric space \(  X  \). Then for each Borel set \(  B\subseteq X  \) with \(   \varphi \left( B \right)< \infty   \) and each \(   \varepsilon > 0  \), there exists a closed set \(  F\subseteq B  \) such that \[
+     \varphi \left( B\setminus F \right)<  \varepsilon  
+    \]      Furthermore, suppose \[
+    B\subseteq \bigcup _{i= 1}^{\infty}V_{i}
+    \]where each \(  V_{i}  \) is an open set with \(   \varphi \left( V_{i} \right)< \infty   \). Then for each \(   \varepsilon > 0  \), there is an open set \(  W\supseteq B  \) such that \[
+     \varphi \left( W\setminus B \right)<  \varepsilon  
+    \]    
+\end{theorem}
+\begin{note}
+   Method of part I : 题目对于 \(  B  \)的条件给予了``额外''(脱离\(   \sigma   \)-代数体系 ) 的增强条件 \(   \varphi \left( B \right)< \infty   \). 通过定义新的测度 \(  \mu \left( A \right):=  \varphi \left( A\cap B \right)    \). 将增强条件``腾挪''到 变成测度的增强条件 \(  \mu \left( X \right)< \infty   \). 以增加命题的整体性, 使得证明不拘泥于某个特定集合的 \(   \varphi \left( B \right)< \infty   \) .
+
+   Trick of part II: 我们通过挖去闭集的方法``雕刻''向外逼近的开集. ``雕刻''的原材料就是题目给出的\(   \varphi   \)-有限开集  \( V_{i}  \). 由于要求得到 \(  W\supseteq B  \), 我们必须在没有 \(  B  \)的集合上``雕刻''. 自然想到在每个 \(  V_{i}  \)中没有\(  B  \)的地方, 也就是 \(  V_{i}\setminus B  \)      上, 利用Part I挖去一个很大的闭集 \(  C_{i}  \). 
+\end{note}
+\begin{proof}
+
+   Select a Borel set \(  B  \) with \(   \varphi \left( B \right)< \infty   \), and define \[
+   \mu \left( A \right): =   \varphi \left( A\cap B \right)  
+   \]It is easy to verify that \(  \mu   \) is an outer measure on \(  X  \), and also all Borel    set is \(  \mu   \)-measurable. Furthermore, \(  \mu \left( X \right)< \infty   \).   Once we show that the first part is true for \(  \mu   \) , then for each \(   \varepsilon > 0  \)  \[
+    \varphi \left( B\setminus F \right)=\mu \left( B\setminus F \right)<  \varepsilon  
+   \] is true for some closed set \(  F  \) and the specific Borel set \(  B  \) we have just selected. Since \(  B  \) is arbitray,  we may assume that \(   \varphi \left( X \right)< \infty   \) in the following proccess. 
+    Let \[
+    \mathcal{D}: = \left\{ A:   \forall  \varepsilon > 0, \exists \text{ closed set } F\subseteq A \text{ s.t. } \varphi \left( A\setminus F \right)<  \varepsilon   \right\}
+    \]  Only need to show that \(  \mathcal{D}  \) is a \(   \sigma   \)-algebra  containing all closed sets. That is to say from Theorem \ref{thm:8-10-2} that \(  \mathcal{D}  \) contains all closed and open sets and is closed under countable union and countable intersection. Take any open set \(  U\subseteq X  \)  . Let \[
+    F_{i}: = \left\{ x: d\left( x,U^{c}\right)\ge \frac{1 }{i }   \right\}
+    \]  be a closed set for each \(  i  \). Then \[
+    F_1\subseteq F_2\subseteq \cdots ,\quad  U = \bigcup _{i= 1}^{\infty}F_{i} 
+    \] Thus \[
+   \lim_{k\to \infty}  \varphi \left( U\setminus \bigcup _{i= 1}^{k}F_{i} \right) =  \varphi \left( U\setminus \bigcup _{i= 1}^{\infty}F_{i} \right)=  \varphi \left( \varnothing \right)= 0  
+    \] For each \(   \varepsilon > 0  \), there exists \(  k  \) such that \[
+     \varphi \left( U\setminus \bigcup _{i= 1}^{k}F_{i} \right)<  \varepsilon 
+    \], where  \(  \bigcup _{i= 1}^{k}F_{i}  \) is a closed set.  
+    
+    Now, we take a sequence of membser \(  A_1,A_2,\cdots   \)  in \(  \mathcal{D}  \). For each \(  i  \), there is a closed set \(  C_{i}\subseteq A_{i}  \), such that \[
+     \varphi \left( A_{i}\setminus C_{i} \right)< \frac{ \varepsilon  }{2^{i+ 1} }  
+    \]  Note that \[
+    \bigcup _{i= 1}^{\infty}A_{i}\setminus \bigcup _{i= 1}^{\infty}C_{i}\subseteq \bigcup _{i= 1}^{\infty}\left( A_{i}\setminus C_{i} \right),\quad \bigcap_{i= 1}^{\infty}A_{i}\setminus \bigcap_{i= 1}^{\infty}C_{i}\subseteq \bigcup _{i= 1}^{\infty}\left( A_{i}\setminus C_{i} \right)    
+    \]We have \[
+     \varphi \left( \bigcap_{i= 1}^{\infty}A_{i}\setminus \bigcap_{_{i= 1}}^{\infty}C_{i}   \right)\le \sum _{i= 1}^{\infty} \varphi \left( A_{i}\setminus C_{i} \right)<  \varepsilon   
+    \] \[
+    \lim_{k\to \infty} \varphi \left( \bigcup _{i= 1}^{\infty}A_{i}\setminus \bigcup _{i= 1}^{k}C_{i}  \right)=  \varphi \left( \bigcup _{i= 1}^{\infty}A_{i}\setminus \bigcup _{i= 1}^{\infty}C_{i} \right)\le \sum _{i= 1}^{\infty} \varphi \left( A_{i}\setminus C_{i} \right)< \frac{ \varepsilon  }{2 }    
+    \] Then there exists \(  k  \) such that \[
+     \varphi \left( \bigcup _{i= 1}^{\infty}A_{i}\setminus \bigcup _{i= 1}^{k}C_{i} \right)<  \varepsilon  
+    \] Thus \(  \bigcap_{i= 1}^{\infty}A_{i},\bigcup _{i= 1}^{\infty}A_{i} \in \mathcal{D}   \). 
+
+    It follows from the first part that for each \(  i  \), there exists a closed set \(  C_{i}  \subseteq V_{i}\setminus B\), such that \[
+     \varphi \left( \left( V_{i}\setminus C_{i} \right)\setminus B  \right)=  \varphi \left( \left( V_{i}\setminus B \right)\setminus C_{i}  \right)< \frac{ \varepsilon  }{2^{i} }   
+    \]  Let \[
+    W:=  \bigcup _{i= 1}^{\infty}\left( V_{i}\setminus C_{i} \right)
+    \], which is an open set. We have \[
+     \varphi \left( W\setminus B \right)=  \varphi \left( \bigcup _{i= 1}^{\infty}\left( V_{i}\setminus C_{i} \right)\setminus B  \right)  \le \sum _{i= 1}^{\infty} \varphi \left( \left( V_{i} \setminus C_{i}\right)\setminus B  \right) <  \varepsilon 
+    \]
+\end{proof}
+
+\begin{corollary}{}{}
+In the previous theorem, if $\varphi$ is assumed to be a \dfntxt{Borel regular outer measure}, then the conclusions remain valid if the phrase “for each Borel set B” is replaced by “for each $\varphi$-measurable set B.”
+\end{corollary}
+
+\begin{theorem}{}{8-30-2}
+Let $\varphi$ be a \dfntxt{Carathéodory outer measure}. For each set $A \subset X$, define
+\[
+\psi(A) = \inf\{\varphi(B) : B \supset A, B \text{ a Borel set}\}.
+\]
+Then $\psi$ is a \dfntxt{Borel regular outer measure} on $X$ that agrees with $\varphi$ on all \dfntxt{Borel sets}.
+\end{theorem}
+\begin{proof}
+    We first show that \(  \psi   \) is an outer measure on \(  X  \). The monotonicity and \(  \psi \left( \varnothing \right)= 0   \) is obvious. We only show that \(  \psi   \) is countably subadditive. Let \(  A_1,A_2,\cdots   \) be a sequence of subsets of \(  X  \). Take any \(   \varepsilon > 0  \).  By the definition of \(  \psi   \), for each \(  A_{i}  \), there is a Borel set \(  B_{i} \supseteq A_{i} \) such that \[
+    \psi \left( A_{i} \right) >  \varphi \left( B_{i} \right)-\frac{ \varepsilon  }{2^{i} }  
+    \]  Then \[
+    \sum _{i= 1}^{\infty}\psi \left( A_{i} \right)\ge \sum _{i= 1}^{\infty} \varphi \left( B_{i} \right)- \varepsilon \ge    \varphi \left( \bigcup _{i= 1}^{\infty}B_{i} \right)- \varepsilon  
+    \]Since \(  \bigcup _{i= 1}^{\infty}B_{i}  \) is a Borel set contaning \(  \bigcup _{i= 1}^{\infty}A_{i}  \), then  \[
+     \varphi \left( \bigcup _{i= 1}^{\infty}B_{i} \right)\ge \psi \left( \bigcup _{i= 1}^{\infty}A_{i} \right)  
+    \] from the definition of \(  \psi \left( \bigcup _{i= 1}^{\infty}A_{i} \right)   \). Thus \[
+    \sum _{i= 1}^{\infty}\psi \left( A_{i} \right)\ge \psi \left( \bigcup _{i= 1}^{\infty}A_{i} \right)- \varepsilon   
+    \]Since \(   \varepsilon   \) is arbitrary, the countably subadditive is true for \(  \psi   \).    
+    
+    To show that all Borel sets are \(  \psi   \)-measurable, we suppose \(  D\subseteq X  \) is a Borel set. Only need to show that \[
+    \psi \left( A \right)\ge \psi \left( A\cap D \right)+ \psi \left( A\setminus D \right)   
+    \] is true for all sets \(  A\subseteq X  \) with \(  \psi \left( A \right)< \infty   \). For each \(   \varepsilon > 0  \), there exsist a Borel set \(  B\supseteq A  \) such that \[
+    \psi \left( A \right)>  \varphi \left( B \right)- \varepsilon   
+    \]      Then \[
+    \begin{aligned}
+    \psi \left( A \right)&>  \varphi  \left( B \right)- \varepsilon \\ 
+     &\ge   \varphi \left( B\cap D \right)+  \varphi \left( B\setminus D \right)- \varepsilon \\ 
+      &\ge    \psi \left( A\cap D \right)+ \psi \left( A\setminus D \right)- \varepsilon    
+    \end{aligned}
+    \] \(  D  \) is \(  \psi   \)-measurable since \(   \varepsilon > 0  \) is arbitrary. To show that \(  \psi   \) agrees with \(   \varphi   \) on all Borel sets. Take any Borel set \( B\subseteq X  \). It is obvious that \[
+    \psi \left( B\right)\le  \varphi \left( B \right)  
+    \]   As for the opposite inequality, choose a suquence of Borel sets  \(  D_{i}\supseteq B\) such that \(  \lim_{i\to \infty} \varphi \left( D_{i} \right)= \psi \left( B \right)    \).  Then, with \(  D: = \liminf_{i\to \infty}D_{i}  \), we have by  Corollary \ref{col:8-14-1} (v) , \[
+     \varphi \left( B \right)\le   \varphi \left( D \right)\le \liminf_{i\to \infty} \varphi \left( D_{i} \right)= \psi \left( B \right)   
+    \]Then we have \[
+    \psi \left( A \right)= \inf \left\{ \psi \left( B \right):B\supseteq A, B\text{ a Borel set}  \right\} 
+    \]For each positive \(  i  \), there exists Borel set \(  B_{i}  \) such that \[
+    B_{i}\supseteq A,\quad \psi \left( A \right)> \psi \left( B _{i}\right)-\frac{1 }{i }   
+    \]  Let \(  B: = \bigcap_{i= 1}^{\infty}B_{i}   \) , which is a Borel set. We have \[
+    \psi \left( A \right)> \psi \left( B_{i} \right)-\frac{1 }{i }\ge \psi \left( B \right)-\frac{1 }{i },\quad \forall i     
+    \] That is \(  \psi \left( A \right)\ge \psi \left( B \right)    \), thus \(  \psi \left( A \right)= \psi \left( B \right)    \) from \(  B\supseteq A  \).   
+\end{proof}
+
+\section{Outer Measure Generated by Measure}
+
+\begin{definition}{Measure on Algebra}{}
+An \dfntxt{algebra} in a space $X$ is defined as a nonempty collection of subsets of $X$ that is closed under the operations of finite unions and complements. Thus, the only difference between an algebra and a $\sigma$-algebra is that the latter is closed under countable unions. By a \dfntxt{measure on an algebra}, $\mathcal{A}$, we mean a function $\mu: \mathcal{A} \to [0, \infty]$ satisfying the properties
+\begin{enumerate}
+    \item[(i)] $\mu(\emptyset) = 0$,
+    \item[(ii)] if $\{A_i\}$ is a disjoint sequence of sets in $\mathcal{A}$ whose union is also in $\mathcal{A}$, then
+\end{enumerate}
+\[\begin{aligned}
+\mu\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} \mu(A_i).
+\end{aligned}\]
+\end{definition}
+
+\begin{remark}
+    A measure on the algebra \(  \mathcal{A}  \) is a  real measure, if and only if  \(  \mathcal{A}  \) is a \(   \sigma   \)-algebra.  
+\end{remark}
+
+\begin{definition}{}{8-29-1}
+ A measure \(  \mu   \)  on an algebra $\mathcal{A}$ is called \dfntxt{$\sigma$-finite} if $X$ can be written
+\[\begin{aligned}
+X = \bigcup_{i=1}^{\infty} A_i
+\end{aligned}\]
+with $A_i \in \mathcal{A}$ and $\mu(A_i) < \infty$.
+\end{definition}
+
+\begin{theorem}{}{}
+Let $\mu$ be a measure on an algebra $\mathcal{A}$ and let $\mu^*$ be the corresponding set function generated by $\mu$. Then
+\begin{enumerate}
+\item[(i)] $\mu^*$ is an outer measure.
+\item[(ii)] $\mu^*$ is an extension of $\mu$; that is, $\mu^*(A) = \mu(A)$ whenever $A \in \mathcal{A}$.
+\item[(iii)] Each $A \in \mathcal{A}$ is $\mu^*$-measurable.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+    The proof of (i) is similar to the proof of \(   \lambda ^{*}  \) is an outer measure. 
+    
+    Now we prove (ii). Take \(  A\in \mathcal{A}  \). It follows from definition that \[
+    \mu ^{*}\left( A \right)\le \mu \left( A \right)  
+    \] For the opposite of the inequality, we take any sequence \(  A_1 ,A_2,\cdots  \in \mathcal{A}  \), such that \[
+    A\subseteq \bigcup _{i= 1}^{\infty}A_{i}
+    \]We define \[
+    B_{i}:= \left( A\cap A_{i} \right)\setminus \left( \bigcup _{j\neq i} A_{j} \right)  
+    \]Then \(  B_1,B_2,\cdots   \) are disjoint members of \(  \mathcal{A}  \) and \[
+    A= \bigcup _{i= 1}^{\infty}B_{i}
+    \] Since \(  \mu   \) is additive on \(  \mathcal{A}  \), we have     \[
+    \mu \left( A \right) = \sum _{i= 1}^{\infty}\mu \left( B_{i} \right)\le \sum _{i= 1}^{\infty}\mu \left( A_{i} \right)  
+    \]Since the RHS tends to \(  \mu ^{*}\left( A \right)   \), we have \(  \mu \left( A \right)\le \mu ^{*}\left( A \right)    \)  . 
+
+    For (iii), we need to show \[
+    \mu ^{*}\left( E \right)\ge \mu ^{*}\left( A\setminus E \right)+ \mu ^{*}\left( A\cap E \right)   
+    \] for each \(  E\subseteq X  \). We may assume that \(  \mu ^{*}\left( E \right)< \infty   \).  We take \(  A_1,A_2,\cdots \in \mathcal{A}  \) such that \[
+    E\subseteq \bigcup _{i= 1}^{\infty}A_{i},\quad \sum _{i= 1}^{\infty}\mu \left( A_{i} \right)< \mu ^{*}\left( E \right)+  \varepsilon   
+    \] Then \[
+    A\cap E\subseteq \bigcup _{i= 1}^{\infty} \left( A_{i}\cap A \right)\implies  \mu ^{*}\left( A\cap E \right)\le \sum _{i= 1}^{\infty}\mu \left( A_{i}\cap A \right)   
+    \]  Since \(  \mu   \) is additive on \(  \mathcal{A}  \)   \[
+    \mu \left( A_{i} \right)= \mu \left( A_{i}\cap A \right)+ \mu \left( A_{i}\setminus A \right)   
+    \] And since \(  \mu   \) agrees with \(  \mu ^{*}  \) on \(  \mathcal{A}  \)   \[
+    \begin{aligned}
+    \mu ^{*}\left( E \right)+  \varepsilon &> \sum _{i= 1}^{\infty}\mu \left( A_{i} \right)\\ 
+     &= \sum _{i= 1}^{\infty}\mu \left( A_{i}\cap A \right)+ \sum _{i= 1}^{\infty}\mu \left( A_{i}\setminus A \right)\\ 
+      &\ge \mu ^{*}\left( A\cap E \right)+ \mu ^{*}\left( \bigcup _{i= 1}^{\infty}A_{i}\setminus A \right)\\ 
+       &\ge \mu ^{*}\left( A\cap E \right)+ \mu ^{*}\left( E\setminus A \right)         
+    \end{aligned}
+    \] Let \(   \varepsilon \to 0  \), we get \[
+    \mu ^{*}\left( E \right)\ge \mu ^{*}\left( A\cap E \right)+ \mu ^{*}\left( E\setminus A \right)   
+    \] Thus \(  A   \) is \(  \mu ^{*}  \)-measurable.   
+\end{proof}
+
+\begin{example}{}{}
+Let us see how the previous result can be used to produce Lebesgue–Stieltjes measure. Let $\mathcal{A}$ be the algebra formed by including $\emptyset, \mathbb{R}$, all intervals of the form $(-\infty, a]$, $(b, +\infty)$, along with all possible finite disjoint unions of these and intervals of the form $(a, b]$. Suppose that $f$ is a nondecreasing right-continuous function and define $\mu$ on intervals $(a, b]$ in $\mathcal{A}$ by
+\[\begin{aligned}
+\mu((a, b]) = f(b) - f(a),
+\end{aligned}\]
+and then extend $\mu$ to all elements of $\mathcal{A}$ by additivity. Then we see that the outer measure $\mu^*$ generated by $\mu$  agrees with the definition of Lebesgue–Stieltjes measure . Our previous result states that $\mu^*(A) = \mu(A)$ for all $A \in \mathcal{A}$, which agrees with Theorem above.
+\end{example}
+
+\begin{remark}{}{}
+In the previous example, the right continuity of $f$ is needed to ensure that $\mu$ is in fact a measure on $\mathcal{A}$. For example, if
+\[ f(x) := \begin{cases} 0 & x \le 0, \\ 1 & x > 0, \end{cases} \]
+then $\mu((0, 1]) = 1$. But $(0, 1] = \bigcup_{k=1}^{\infty} (\frac{1}{k+1}, \frac{1}{k}]$ and
+\[\begin{aligned}
+\mu\left(\bigcup_{k=1}^{\infty} (\frac{1}{k+1}, \frac{1}{k}]\right) &= \sum_{k=1}^{\infty} \mu((\frac{1}{k+1}, \frac{1}{k}]) \\
+&= 0,
+\end{aligned}\]
+which shows that $\mu$ is not a measure.
+\end{remark}
+
+\begin{theorem}{Carathéodory–Hahn extension theorem}{}
+Let $\mu$ be a measure on an algebra $\mathcal{A}$, let $\mu^*$ be the outer measure generated by $\mu$, and let $\mathcal{A}^*$ be the $\sigma$-algebra of $\mu^*$-measurable sets.
+\begin{enumerate}
+\item[(i)] Then $\mathcal{A}^* \supset \mathcal{A}$ and $\mu^* = \mu$ on $\mathcal{A}$.
+\item[(ii)] Let $\mathcal{M}$ be a $\sigma$-algebra with $\mathcal{A} \subset \mathcal{M} \subset \mathcal{A}^*$ and suppose $\nu$ is a measure on $\mathcal{M}$ that agrees with $\mu$ on $\mathcal{A}$. Then $\nu = \mu^*$ on $\mathcal{M}$ if $\mu$ is $\sigma$-finite.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+    (i) is just a restatement of Theorem \ref{dfn:8-29-1}.
+    
+    (ii) Take any \(  E\in \mathcal{M}  \), if \(  A_1,A_2,\cdots  \in \mathcal{A} \) is a countable collection  covering \(  E  \), then \[
+    \nu \left( E \right)\le \sum _{i= 1}^{\infty}\nu \left( A_{i} \right)= \sum _{i= 1}^{\infty}\mu ^{*}\left( A_{i} \right)   
+    \]  Since \(  \left\{ \sum _{i= 1}^{\infty}\mu ^{*}\left( A_{i} \right)  \right\}  \) tends to \(  \mu ^{*}\left( E \right)   \). We have \(  \nu \le \mu ^{*}  \) on \(  \mathcal{M}  \). To show the equality. Since \(  \mu   \) is \(   \sigma   \)-finite, there are disjoint \(  X_1,X_2,\cdots \in \mathcal{A}  \) such that \[
+    X\subseteq \bigcup _{i= 1}^{\infty}X_{i},\quad \mu \left( X_{i} \right)< \infty,\quad \forall i 
+    \]   Take any \(  A\in \mathcal{A}  \), such that \(  \mu \left( A \right)< \infty   \),  since \(  A\setminus E\in \mathcal{M}  \), we have \[
+    \mu ^{*}\left( A\setminus E \right)\ge \nu \left( A\setminus E \right)  = \nu \left( A \right)-\nu \left( E\cap A \right)= \mu \left( A \right)-\nu \left( E\cap A \right)    
+    \] That is \[
+    \nu \left( E\cap A \right)\ge \mu \left( A \right)-\mu ^{*}\left( A\setminus E \right)   \ge \mu ^{*}\left( E\cap A \right) 
+    \]From \(  \mu   \) is \(   \sigma   \)-finite, we know that there are disjoint \(  X_1,X_2,\cdots \in \mathcal{A}  \) such that  \[
+    X\subseteq \bigcup _{i= 1}^{\infty}X_{i},\quad \mu \left( X_{i} \right)< \infty,\forall i 
+    \]  Thus \[
+    \begin{aligned}
+    \nu \left( E \right)&= \nu \left( E\cap \left( \bigcup _{i= 1}^{\infty}X_{i} \right)  \right)   \\ 
+     &=  \sum _{i= 1}^{\infty}\nu \left( E\cap X_{i} \right)\\ 
+      &\ge\sum _{i= 1}^{\infty} \mu  ^{*}\left( E\cap X_{i} \right)  \\ 
+       &\ge \mu ^{*}\left( E \right) 
+    \end{aligned}
+    \]
+\end{proof}
+
+\begin{theorem}{}{}
+Suppose $(X,\mathcal{M},\mu)$ is a measure space, where $X$ is a metric space and $\mu$ is a finite Borel measure (that is, $\mathcal{M}$ denotes the Borel sets of $X$ and $\mu(X) < \infty$). Then for each $\varepsilon > 0$ and each Borel set $B$, there exist an open set $U$ and a closed set $F$ such that $F \subset B \subset U$, $\mu(B \setminus F) < \varepsilon$, and $\mu(U \setminus B) < \varepsilon$.
+\end{theorem}
+
+\begin{proof}
+    It is a immediate corollary of Theorem \ref{thm:8-30-1} and the agreements between \(  \mu   \) and \(  \mu ^{*}  \) on \(  \mathcal{M}  \)   .
+\end{proof}
+
+\begin{definition}{}{}
+    If $\mu$ is a measure defined on a $\sigma$-algebra $\mathcal{M}$ rather than on an algebra $\mathcal{A}$, there is another method for generating an outer measure. In this situation, we define $\mu^{**}$ on an arbitrary set $E \subset X$ by
+\[
+\mu^{**}(E) = \inf\{\mu(B) : B \supset E, B \in \mathcal{M}\}.
+\]
+
+\end{definition}
+\begin{remark}
+   We know \(  \mu ^{*}\le \mu ^{**}  \) from  definition.   
+    For \(  A_1,A_2,\cdots  \in \mathcal{M}  \) covering \(  E  \) , let \(  B_{i}= A_{i}\setminus A_{i-1}  \), \(  B= \bigcup _{i= 1}^{\infty}B_{i}  \).   \[
+  E\subseteq   B= \bigcup _{i= 1}^{\infty}A_{i},\quad \mu \left( B \right)= \sum _{i= 1}^{\infty}\mu \left( B_{i} \right)\le \sum _{i= 1}^{\infty}\mu \left( A_{i} \right)   
+    \] Which shows that  \(  \mu ^{*}\left( E \right)\le \mu ^{**}\left( E \right)    \) 
+\end{remark}
+\begin{theorem}{}{}
+Consider a measure space $(X, \mathcal{M}, \mu)$. The set function $\mu^{**}$ defined above is an outer measure on $X$. Moreover, $\mu^{**}$ is a regular outer measure and $\mu(B) = \mu^{**}(B)$ for each $B \in \mathcal{M}$.
+\end{theorem}
+
+\begin{proof}
+     The proof proceeds exactly as in Theorem \ref{thm:8-30-2}. One need only
+ replace each reference to a Borel set in that proof with M-measurable set. Since there we don't use any relation between Borel sets and open/closed sets at all. All we need there is Borel sets is a \(   \sigma   \)-algebra .
+\end{proof}
+
+\begin{theorem}{}{}
+Suppose $(X,\mathcal{M},\mu)$ is a measure space and let $\mu^*$ and $\mu^{**}$ be the outer measures generated by $\mu$ as described above in diffenrent ways, respectively. Then for each $E \subset X$ with $\mu(E) < \infty$ there exists $B \in \mathcal{M}$ such that $B \supset E$,
+\[ \mu^*(B) = \mu^*(E) = \mu^{**}(E). \]
+\end{theorem}
+\begin{proof}
+    We shall show the part that \(  \mu \left( B \right)= \mu ^{*}\left( B \right)= \mu ^{*}\left( E \right)     \). Then the ramaining had been shown above. 
+
+    For each \(k \in \mathbb{Z} _{> 0}  \) and every set \(  E  \), there exists a sequence \(  \left\{ A_{i} \right\}\in \mathcal{M}  \) such that  \[
+    E\subseteq \bigcup _{i= 1}^{\infty}A_{i},\quad \sum _{i= 1}^{\infty}\mu \left( A_{i} \right) < \mu ^{*}\left( E \right)+  \frac{1 }{k }  
+    \]  Setting \(  B_{k} = \bigcup _{i= 1}^{\infty}A_{i}  \) for that.  Then \[
+    E\subseteq B_{k},\quad \mu \left( B _{k}\right)< \mu ^{*}\left( E \right)+ \frac{1 }{k }   
+    \] And setting \[
+    B: = \bigcap_{k= 1}^{\infty}B_{k} 
+    \], we get \[
+    E\subseteq B,\quad \mu \left( B \right)\le \mu ^{*}\left( E \right)  \implies \mu \left( B \right)= \mu ^{*}\left( E \right)  
+    \]
+\end{proof}
+\end{document}       

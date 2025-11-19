@@ -1,0 +1,81 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{2}
+}{}
+
+\chapter{ Ch3-3 }
+ 代靖涵 25120222201319
+\begin{exercise}{}{}
+设 $\{f_k(x)\}$ 在 $E$ 上依测度收敛于 $f(x)$，$\{g_k(x)\}$ 在 $E$ 上依测度收敛于 $g(x)$，试证明 $\{f_k(x)+g_k(x)\}$ 在 $E$ 上依测度收敛于 $f(x)+g(x)$。
+\end{exercise}
+
+\begin{proof}
+     任取 \(   \varepsilon > 0  \), 我们有 \[
+     \lim_{k\to \infty}m\left( \left\{ \left| f_{k}\left( x \right)-f\left( x \right)   \right|\ge  \frac{ \varepsilon  }{2 }   \right\} \right)= 0 
+     \]  \[
+     \lim_{k\to \infty}m\left( \left\{ \left| g_{k}\left( x \right)-g\left( x \right)   \right| \ge \frac{ \varepsilon  }{2 }  \right\} \right) = 0
+     \]注意到 \[
+     \begin{aligned}
+    & \left| \left( f_{k}\left( x \right)+ g_{k}\left( x \right)   \right)-\left( f\left( x \right)+ g\left( x \right)   \right)   \right|\ge  \varepsilon \\ 
+      &\implies   \left| f_{k}\left( x \right)-f\left( x \right)   \right|\ge \frac{ \varepsilon  }{2 },\text{or}, \; \left| g_{k}\left( x \right)-g\left( x \right)   \right|\ge \frac{ \varepsilon  }{2 }    
+     \end{aligned}
+     \]从而 \[
+     \left\{ \left| \left( f_{k}+ g_{k} \right)-\left( f+ g \right)  \right|\ge  \varepsilon    \right\}\subseteq \left\{ \left| f_{k}-f \right|\ge \frac{ \varepsilon  }{2 }   \right\}\cup \left\{ \left| g_{k}-g \right|\ge \frac{ \varepsilon  }{2 }   \right\}
+     \]我们得到 \[
+     \begin{aligned}
+    & \lim_{k\to \infty}m\left( \left\{ \left| \left( f_{k}+ g_{k} \right)-\left( f+ g \right)   \right|\ge  \varepsilon   \right\} \right)\\ 
+      &\le \lim  _{k\to \infty}\left( m\left( \left\{ \left| f_{k}-f \right|\ge \frac{ \varepsilon  }{2 }   \right\} \right)+ m\left( \left\{ \left| g_{k}-g \right|\ge \frac{ \varepsilon  }{2 }   \right\} \right)   \right)\\ 
+       &= 0 
+     \end{aligned}
+     \]由于 \(   \varepsilon > 0  \)是任意的, 这表明 \(  \left\{ f_{k}+ g_{k} \right\}  \)在 \(  E  \)上依测度收敛于 \(  f+ g  \).   
+\end{proof}
+\begin{exercise}{}{} 
+设 $f: \mathbf{R}^n \to \mathbf{R}$, 且对任意的 $\varepsilon > 0$, 存在开集 $G \subset \mathbf{R}^n$, $m(G) < \varepsilon$, 使得 $f \in C(\mathbf{R}^n \backslash G)$, 试证明 $f(x)$ 是 $\mathbf{R}^n$ 上的可测函数.
+\end{exercise}
+\begin{proof}
+    任取 \(  k\in \mathbb{Z} _{> }  \),存在开集 \(  G_{k}  \) , 使得 \(  m\left( G_{k} \right)< \frac{1 }{k }    \), \(  f\in C\left( \mathbf{R}^{n}\setminus G_{k} \right)   \).  令 \(  F_{k}= \mathbf{R}^{n}\setminus G_{k}  \), 则 \(  f \in C\left( F_{k} \right)   \). 任取闭集 \(  V\subseteq \mathbf{R}  \), 我们有 \(  f^{-1} \left( V \right)\cap F_{k}\) 是\(  F_{k}  \)上的一个闭集 ,  由于 \(  F_{k}  \)是闭的, 它在 \(  \mathbf{R}^{n}  \)上也是闭的.  令 \(  F= \bigcup _{k= 1}^{\infty}F_{k}  \), 则 \[
+   f^{-1} \left( V \right)\cap F=  f^{-1} \left( V \right)\cap \bigcup _{k= 1}^{\infty}F_{k}=   \bigcup _{k= 1}^{\infty}\left( f^{-1} \left( V \right)\cap F_{k}  \right) 
+    \]    是一个 \(  F_{ \sigma }  \)集. 并且 \[
+   F^{c}=  \mathbf{R}^{n}\setminus \bigcup _{k= 1}^{\infty}F_{k}= \bigcap _{k= 1}^{\infty}G_{k}
+    \] 其中 \[
+    m\left( \bigcap _{k= 1}^{\infty}G_{k} \right)< \frac{1 }{m },\forall m \in \mathbb{Z} _{> 0}\implies m\left( \bigcap _{k= 1}^{\infty}G_{k} \right)= 0   
+    \]故 \(F^{c} \)是一个零测集. 进而 \(  f^{-1} \left( V \right)\cap F^{c}   \)也是一个零测集. 因此 \[
+    f^{-1} \left( V \right)= \left( f^{-1} \left( V \right)\cap F  \right)\cup \left( f^{-1} \left( V \right)\cap F^{c}  \right)   
+    \] 是Lebesgue可测的.  这表明\(  \mathbf{R}  \)的任一闭集在 \(  f  \)下的原像均是Lebesgue可测的, 故 \(  f  \)是 \(  \mathbf{R}^{n}  \)    上的Lebesgue可测函数.
+\end{proof}
+
+\begin{exercise}{}{} 
+设 $\{f_k(x)\}$ 与 $\{g_k(x)\}$ 在 $E$ 上都依测度收敛于零, 试证明 $\{f_k(x) \cdot g_k(x)\}$ 在 $E$ 上依测度收敛于零.
+\end{exercise}
+
+\begin{proof}
+    对于任意的 \(   \varepsilon > 0  \), 我们有 \[
+    \left| f_{k}\left( x \right)  \right|< \sqrt{ \varepsilon }, \left| g_{k}\left( x \right) \right|< \sqrt{ \varepsilon } \implies \left| f_{k}\left( x \right)\cdot g_{k}\left( x \right)   \right|   <  \varepsilon 
+    \]于是 \[
+    \left\{ \left| f_{k}\cdot g_{k} \right|\ge  \varepsilon   \right\}\subseteq \left\{ \left| f_{k} \right|\ge \sqrt{ \varepsilon }  \right\}\cup \left\{ \left| g_{k} \right|\ge \sqrt{ \varepsilon }  \right\}
+    \]从而 \[
+    m\left( \left\{ \left| f_{k}\cdot g_{k} \right|\ge  \varepsilon   \right\} \right)\le m\left(\left\{  \left| f_{k} \right|\ge \sqrt{ \varepsilon }  \right\} \right)  + m\left(\left\{  \left| g_{k} \right|\ge \sqrt{ \varepsilon }  \right\} \right)  \tag{*}
+    \]由于 \(  \left\{ f_{k} \right\}  \)和 \(  \left\{ g_{k} \right\}  \)均依测度收敛于  \(  0  \), 我们有 \[
+    \lim_{k\to \infty}m\left( \left\{ \left| f_{k} \right|\ge \sqrt{ \varepsilon }  \right\} \right)= \lim_{k\to \infty}m\left( \left\{ \left| g_{k} \right|\ge \sqrt{ \varepsilon }  \right\} \right)= 0  
+    \] 对(*)式两端取 \(  k\to \infty  \)的极限, 我们得到 \[
+   \lim_{k\to \infty} m\left( \left\{ \left| f_{k}\cdot g_{k} \right|\ge  \varepsilon   \right\} \right)= 0 
+    \]由于 \(   \varepsilon > 0  \)是任意选取的, 这表明 \(  \left| f_{k}\cdot g_{k} \right|   \)依测度收敛于零.   
+\end{proof}
+\begin{exercise}{}{}
+    设\(\{f_n(x)\}\)是\([a,b]\)上的可测函数列，\(f(x)\)是\([a,b]\)上的实值函数。若对任给的\(\varepsilon>0\)，都有
+\[
+\lim_{n\to\infty}m^*(\{x\in[a,b]: |f_n(x)-f(x)|\geq\varepsilon\})=0,
+\]
+试问\(f(x)\)是\([a,b]\)上的可测函数吗？
+\end{exercise}
+
+\begin{proof}
+    由Riesz定理, 存在 \(  \left\{ f_{n} \right\}  \)的一个子列 \(  \left\{ f_{n_{k}} \right\}_{k}  \), 使得它几乎处处收敛于 \(  f  \). 由于 \(  \left\{ f_{n_{k}} \right\}_{k}  \)是一列可测函数, \(  f  \)作为它的a.e.逐点极限是可测的(具体地,  \(  \limsup_{k\to \infty}f_{n_{k}}  \)是一个可测函数, 它与 \(  f  \)几乎处处相等, 从而 \(  f  \)是可测的   ).  
+\end{proof}
+\end{document}

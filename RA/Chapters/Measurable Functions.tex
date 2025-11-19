@@ -1,0 +1,527 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+}{}
+
+\chapter{ Measurable Functions }
+
+\section{Elementray Properties of Measruable Functions}
+
+\begin{definition}{}{}
+    We endow $\overline{\mathbb{R}}$ with a topology called the order topology in the following manner. For each $a \in \mathbb{R}$ let
+\[
+L_a = \overline{\mathbb{R}} \cap \{x : x < a\} = [-\infty, a) \quad \text{and} \quad R_a = \overline{\mathbb{R}} \cap \{x : x > a\} = (a, \infty].
+\]
+The collection $\mathcal{S} = \{L_a : a \in \mathbb{R}\} \cup \{R_a : a \in \mathbb{R}\}$ is taken as a subbasis for this topology. A basis for the topology is given by
+\[
+\mathcal{S} \cup \{R_a \cap L_b : a, b \in \mathbb{R}, a < b\}.
+\]
+Observe that the topology on $\mathbb{R}$ induced by the order topology on $\overline{\mathbb{R}}$ is precisely the usual topology on $\mathbb{R}$.
+\end{definition}
+
+\begin{definition}{Measurable Functions}{}
+   \begin{itemize}
+    \item  Suppose $(X, \mathcal{M})$ and $(Y, \mathcal{N})$ are measure spaces. A mapping $f: X \to Y$ is called \dfntxt{measurable with respect to $\mathcal{M}$ and $\mathcal{N}$} if
+$f^{-1}(E) \in \mathcal{M} \text{ whenever } E \in \mathcal{N}.$
+If there is no danger of confusion, reference to $\mathcal{M}$ and $\mathcal{N}$ will be omitted, and we will simply use the term ``measurable mapping.''
+\item If $Y$ is a topological space, a restriction is placed on $\mathcal{N}$. In this case it is always assumed that $\mathcal{N}$ is the $\sigma$-algebra of Borel sets $\mathcal{B}$. Thus, in this situation, a mapping $(X,\mathcal{M}) \xrightarrow{f} (Y,\mathcal{B})$ is measurable if
+\[\begin{aligned}
+f^{-1}(E) \in \mathcal{M} \text{ whenever } E \in \mathcal{B}.
+\end{aligned}\]
+\item When $Y$ is taken as $\overline{\mathbb{R}}$ (endowed with the order topology) and $(X,\mathcal{M})$ is a topological space with $\mathcal{M}$ the collection of Borel sets. Then $f$ is called a \dfntxt{Borel measurable function}. 
+\item When $X = \mathbb{R}^n$, $\mathcal{M}$ is the class of Lebesgue measurable sets and $Y = \overline{\mathbb{R}}$. Here, the measurability of \(  f  \)  required that $f^{-1}(E)$ be Lebesgue measurable whenever $E \subset \overline{\mathbb{R}}$ is Borel, in which case $f$ is called a \dfntxt{Lebesgue measurable function}. The definitions imply that $E$ is a measurable set if and only if $\chi_E$ is a measurable function.
+
+   \end{itemize}
+   
+\end{definition}
+
+\begin{theorem}{}{}
+    If the mapping $(X, \mathcal{M}) \xrightarrow{f} (Y, \mathcal{B})$ is measurable, where $\mathcal{B}$ is the $\sigma$-algebra of Borel sets.  Define
+\[\begin{aligned}
+\Sigma = \{E : E \subset Y \text{ and } f^{-1}(E) \in \mathcal{M}\}.
+\end{aligned}\]Then \(   \Sigma   \) is a \(   \sigma   \)-algebra.  
+\end{theorem}
+\begin{proof}
+    Easy to verify.
+\end{proof}
+
+\begin{corollary}{}{}
+    A continuous mapping is a Borel measurable function.
+\end{corollary}
+\begin{proof}
+   If \(  f  \) is continuous, \(   \Sigma   \) contains all open open sets. Since \(   \Sigma   \) is a \(   \sigma   \)-algebra, \(   \Sigma   \) contains all Borel sets.   
+\end{proof}
+
+\begin{definition}{}{}
+    If \(  f: X\bar{\to}\mathbb{R}   \), we call the sets \[
+    \left\{ f> a \right\}:= \left\{ x\in X:f\left( x \right)> a  \right\}
+    \]the \dfntxt{superlevel sets of \(  f  \) }. 
+\end{definition}
+
+\begin{theorem}{}{}
+Let $f: X \to \overline{\mathbb{R}}$, where $(X,\mathcal{M})$ is a measure space. The following conditions are equivalent:
+\begin{enumerate}
+\item[(i)] $f$ is measurable.
+\item[(ii)] $\{f > a\} \in \mathcal{M}$ for each $a \in \mathbb{R}$.
+\item[(iii)] $\{f \ge a\} \in \mathcal{M}$ for each $a \in \mathbb{R}$.
+\item[(iv)] $\{f < a\} \in \mathcal{M}$ for each $a \in \mathbb{R}$.
+\item[(v)] $\{f \le a\} \in \mathcal{M}$ for each $a \in \mathbb{R}$.
+\end{enumerate}
+\end{theorem}
+
+
+\begin{theorem}{}{9-3-4}
+A function $f: X \to \overline{\mathbb{R}}$ is measurable if and only if
+\begin{enumerate}
+    \item[(i)] $f^{-1}\{-\infty\} \in \mathcal{M}$ and $f^{-1}\{\infty\} \in \mathcal{M}$ and
+    \item[(ii)] $f^{-1}(a,b) \in \mathcal{M}$ for all open intervals $(a,b) \subset \mathbb{R}$.
+\end{enumerate}
+\end{theorem}
+
+
+\begin{lemma}{}{}
+If $f$ and $g$ are measurable functions, then the following sets are measurable:
+\begin{enumerate}
+    \item[(i)] $X \cap \{x : f(x) > g(x)\}$,
+    \item[(ii)] $X \cap \{x : f(x) \ge g(x)\}$,
+    \item[(iii)] $X \cap \{x : f(x) = g(x)\}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    If \(  f\left( x \right)   > g\left( x \right) \), then there is a rational number \(  r  \) such that \(  f\left( x \right)> r> g\left( x \right)    \). Therefore, it follows that \[
+    \left\{ f> g \right\}= \bigcup _{r \in \mathbb{Q} }\left( \left\{ f> r \right\} \cap \left\{ g< r \right\}\right), 
+    \]which is a measurable set , and easily (i) holds. (ii) is just the complements of (i) with \(  f  \) and \(  g  \) interchanged. (iii) is just the intersection two of two measruable sets of type (ii), and so it too is measurable.     
+\end{proof}
+\begin{definition}{}{}
+    If $f$ and $g$ are real-valued measurable functions, then $f+g$ is undefined at points where it would be of the form $\infty - \infty$. This difficulty is overcome if we define
+
+\[(f+g)(x) := \begin{cases} f(x)+g(x), & x \in X - B, \\ \alpha, & x \in B, \end{cases}\]
+
+where $\alpha \in \overline{\mathbb{R} }$ is chosen arbitrarily and where
+
+\[B := (f^{-1}\{\infty\} \cap g^{-1}\{-\infty\}) \cup (f^{-1}\{-\infty\} \cap g^{-1}\{\infty\}).\]
+\end{definition}
+
+\begin{theorem}{}{}
+    If \(  f,g  :X\to   \overline{\mathbb{R} } \) are measurable functions, then \(  f+ g  \)  and \(  fg  \) are measurable.  
+\end{theorem}
+\begin{proof}
+We will treat the case that $f$ and $g$ have values in $\mathbb{R}$. The proof is similar in the general case and is left as an exercise (see Exercise 2, Section 5.1).
+
+To prove that the sum is measurable, define $F: X \to \mathbb{R} \times \mathbb{R}$ by
+\[
+F(x) = (f(x),g(x))
+\]
+and $G: \mathbb{R} \times \mathbb{R} \to \mathbb{R}$ by
+\[
+G(x,y) = x + y.
+\]
+Then $G \circ F(x) = f(x) + g(x)$, so it suffices to show that $G \circ F$ is measurable. Referring to Theorem \ref{thm:9-3-4}, we need only show that $(G \circ F)^{-1}(J) \in \mathcal{M}$ whenever $J \subset \mathbb{R}$ is an open interval. Now $U := G^{-1}(J)$ is an open set in $\mathbb{R}^2$, since $G$ is continuous. Furthermore, $U$ is the union of a countable family, $\mathcal{F}$, of 2-dimensional intervals $I$ of the form $I = I_1 \times I_2$, where $I_1$ and $I_2$ are open intervals in $\mathbb{R}$. Since
+\[
+F^{-1}(I) = f^{-1}(I_1) \cap g^{-1}(I_2),
+\]
+we have
+\[
+F^{-1}(U) = F^{-1}\left(\bigcup_{I \in \mathcal{F}} I\right) = \bigcup_{I \in \mathcal{F}} F^{-1}(I),
+\]
+which is a measurable set. Thus $G \circ F$ is measurable, since
+\[
+(G \circ F)^{-1}(J) = F^{-1}(U).
+\]
+The product is measurable by essentially the same proof.
+\end{proof}
+
+\begin{definition}{Cantor Function}{}
+    Recall that the Cantor set \(  C  \) can be expressed as \[
+    C= \bigcap _{j= 1}^{\infty}C_{j}
+    \] Where \(  C_{j}  \) is the union of the \(  2^{j}  \) closed intervals that remain after the \(  j  \)th step of the construction. The set \[
+    D_{j}= \left[ 0,1 \right]-C_{j} 
+    \]consists of the \(  2^{j-1}  \)    open intervals that are deleted at the \(  j  \)th step. Let there intervals be denoted by \(  I_{j,k}  \), \(  k= 1,2,\cdots ,2^{j-1}  \), and order them in the obvious way from left to right.   Now define a continuous function \(  f_{j}  \) on \(  \left[ 0,1 \right]   \) by \[
+    \begin{aligned}
+    f_{j}\left( 0 \right)&= 0,\\ 
+     f_{j}\left( 1 \right)&= 1,\\ 
+      f_{j}\left( x \right)&= \frac{k }{2^{j} },\quad  x \in I_{j,k}  
+    \end{aligned}
+    \]  and define \(  f_{j}   \) linearly on each interavl of \(  C_{j}  \). The function \(  f_{j}  \) is continuous and nondecreasing, and it satisfies \[
+    \left| f_{j}\left( x \right)-f_{j + 1}\left( x \right)   \right|< \frac{1 }{2^{j} },\quad x \in \left[ 0,1 \right]   
+    \]   Since \[
+    \left| f_{j}-f_{j + m} \right|< \sum _{i= j}^{j + m-1}\frac{1 }{2^{i} }< \frac{1 }{2^{j-1} }   
+    \] it follows that the sequence \(  \left\{ f_{j} \right\}  \) converges uniformly to a continuous function \(  f  \), called \dfntxt{Cantor-Lebesgue function}.   
+\end{definition}
+\begin{note}
+    \(  f_{j}  \)在 \(  I_{j,k}  \)上的设定是端点的平均值.  
+\end{note}
+
+\begin{corollary}{}{}
+The Cantor-Lebesgue function $f$ and its associate $h(x) := f(x) + x$ described above have the following properties:
+\begin{enumerate}
+    \item[(i)] $f(C) = [0,1]$; that is, $f$ maps a set of measure 0 onto a set of positive measure.
+    \item[(ii)] $h$ maps a Lebesgue measurable set onto a nonmeasurable set.
+    \item[(iii)] The composition of Lebesgue measurable functions need not be Lebesgue measurable.
+    \item[(iv)] Lebesgue measurable function dose not preserve Borel sets. 
+\end{enumerate}
+\end{corollary}
+\begin{proof}
+    \begin{enumerate}
+        \item \(  f:\left[ 0,1 \right]\to \left[ 0,1 \right]    \) is onto. It is easy to see that \(  f\left( C \right)= \left[ 0,1 \right]    \) , because \(  f\left( C \right)   \) is compact and \(  f\left( \left[ 0,1 \right]-C  \right)   \) is countable.   
+        \item 
+        \begin{proofsketch}
+            把 \(  C  \)看成是集合 \(  \left[ 0,1 \right]   \)测度为零的``骨''. \(  \left[ 0,1 \right]\setminus C   \) 是 \(  \left[ 0,1 \right]   \)的测度为1的``肉''. \(  f  \)的构造是对``骨''的展开: \(  f\left( C \right)= \left[ 0,1 \right]    \); 同时对``肉''的压缩: 令 \(  f  \)在 \(  I_{j,k}  \)上取常值. 通过令\(  h:\left[ 0,1 \right]\to \left[ 0,2 \right]    \).  \(  h\left( x \right)= f\left( x \right)+ x    \), 我们变换映射的尺度, 不再将``肉''压缩, 而是忠实地搬运, 将每个 \(  I_{j,k}  \)映到大小相同的一个区间.       从而间接的看到这两个操作对``骨''的影响区别不大(测度都是1).  
+            
+        \end{proofsketch}
+
+        \begin{note}
+            \(  h\left( C \right)    \)和 \(  f\left( C \right)   \)测度相同在直觉上也是存在依据的.  
+            
+            
+Cantor函数 \(f\) 是一列分段线性函数 \(f_n\) 的一致极限. 在构成Cantor集第 \(n\) 步近似 \(C_n\) 的那些区间上, \(f_n\) 的斜率为 \((3/2)^n\), 这是一个趋向于无穷大的值.
+
+函数 \(h(x) = f(x) + x\) 可以看作是 \(h_n(x) = f_n(x) + x\) 的极限. 在同样的区间上, \(h_n\) 的斜率变为 \((3/2)^n + 1\).
+
+为一个趋于无穷的量加上1, 并不会显著改变它的数量级. 两个斜率的比值为 \(\frac{(3/2)^n + 1}{(3/2)^n} = 1 + (2/3)^n \to 1\).
+
+这便解释了我们的直觉: "+x" 这个操作虽然修复了 \(f\) 对 \(C\) 补集测度的"压缩", 但对于 \(f\) 自身在 \(C\) 上的"测度生成"效应来说, 其*相对*影响是微不足道的. 因此, \(f\) 和 \(h\) 都将测度为零的集合 \(C\) "拉伸"成了一个测度为1的集合.
+        \end{note}
+        \(  h  \) is trictly increasing. Thus , h is a homeomorphism from \(  \left[ 0,1 \right]   \) onto \(  \left[ 0,2 \right]   \). Then \(  h  \) carries the open set \(  \left[ 0,1 \right]\setminus C   \) to an open set. And we have \[
+      \begin{aligned}
+        m\left( h\left( \left[ 0,1 \right]\setminus C  \right)  \right)&= m\left( h\left( \bigcup _{j,k}I_{j,k} \right)  \right)   \\ 
+         &= \sum _{j,k}m\left( h\left( I_{j,k} \right) \right)\\ 
+          &= \sum _{j,k}m\left( I_{j,k} \right) \\ 
+          &= 1 
+      \end{aligned}
+        \] Therefore, \(  h  \) maps the Cantor set  to a set \(  P  \) with measure \(  1  \).  From Exercise \ref{9-7-2} , there exists a non-measurable set \(  N\subseteq P  \). Set \(  A= h^{-1} \left( N \right)   \). Since \(  h^{-1} \left( N \right)\subseteq h^{-1} \left( P \right)= C    \), \(  A  \)  is a subset of measure-zero set \(  C  \).  Thus \(  A  \) is Lebesgue-measurable. But \(  h\left( A \right)= N   \)  is not measurable.
+        \item Note that \(  h^{-1}   \) is measurable, since it is continuous. Let \(  F: = h^{-1}   \).  Observe that \(  \chi _{A}  \) is measurable, but \[
+        \chi _{A}\circ F= \chi _{A}\circ h^{-1} = \chi _{N}
+        \]is not Lebesgue-measurable.
+        \item Observe that \(  A  \) is not a Borel set, for if it were, then \(  F^{-1} \left( A \right)   \) would be a Borel set. But \(  F^{-1} \left( A \right)= h\left( A \right)= N    \) and \(  N  \) is not a Borel set. Now \(  g\coloneqq \chi _{A}   \) is a Lebesgue measurable function such that \(  g^{-1} \left( \left\{ 1 \right\} \right)= A   \), where \(  \left\{ 1 \right\}  \) is a Borel sets but \(  A  \) is not.      
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{theorem}{}{}
+Suppose $f: X \to \overline{\mathbb{R}}$ is measurable and $g: \overline{\mathbb{R}} \to \overline{\mathbb{R}}$ is Borel measurable. Then $g \circ f$ is measurable. In particular, if $X = \mathbb{R}^n$ and $f$ is Lebesgue measurable, then $g \circ f$ is Lebesgue measurable.
+\end{theorem}
+
+\begin{corollary}{}{}
+Let $f: X \to \overline{\mathbb{R}}$ be a measurable function.
+\begin{enumerate}
+    \item[(i)] Let $\varphi(x) = |f(x)|^p$, $0 < p < \infty$, and let $\varphi$ assume arbitrary extended values on the sets $f^{-1}(\infty)$ and $f^{-1}(-\infty)$. Then $\varphi$ is measurable.
+    \item[(ii)] Let $\varphi(x) = \frac{1}{f(x)}$, and let $\varphi$ assume arbitrary extended values on the sets $f^{-1}(0), f^{-1}(\infty)$ and $f^{-1}(-\infty)$. Then $\varphi$ is measurable.
+\end{enumerate}
+In particular, if $X = \mathbb{R}^n$ and $f$ is Lebesgue measurable, then $\varphi$ is Lebesgue measurable in (i) and (ii).
+
+\end{corollary}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Define \(  g\left( t \right)= \left| t \right|^{p}    \)  for \(  t\in \mathbb{R}   \), and assign arbitrary caluse to \(  g\left( \infty \right)   \) and \(  g\left( -\infty \right)   \). Now apply the prvious theorem.   
+        \item Proceed in a similar way by defining \(  g\left( t \right)= \frac{1 }{t }    \)  when \(  t\neq 0  ,\infty,-\infty\) and assigning arebitrary values to \(  g\left( 0 \right)   \), \(  g\left( \infty \right)   \), and \(  g\left( -\infty \right)   \)    .
+    \end{enumerate}
+    
+\end{proof}
+\begin{theorem}{}{}
+Let $(X, \mathcal{M}, \mu)$ be a complete measure space and let $f, g$ be extended real-valued functions defined on $X$. If $f$ is measurable and $f=g$ almost everywhere, then $g$ is measurable.
+\end{theorem}
+\begin{remark}
+    In a complete measure space, we can consider a function \(  f  \)  that just define on almost everywhere on \(  X  \), by extending \(  f  \) into \(  \overline{f}  \) with arbitrary value taken on where \(  f  \) was not defined.   . 
+\end{remark}
+\begin{proof}
+Let $N = \{x : f(x) = g(x)\}$. Then $\mu(\widetilde{N}) = 0$, and thus $\widetilde{N}$ as well as all subsets of $\widetilde{N}$ are measurable. For $a \in \mathbb{R}$, we have
+\[\begin{aligned}
+\{g > a\} &= (\{g > a\} \cap N) \cup (\{g > a\} \cap \widetilde{N}) \\
+&= (\{f > a\} \cap N) \cup (\{g > a\} \cap \widetilde{N}) \in \mathcal{M}.
+\end{aligned}\]
+\end{proof}
+\begin{theorem}{}{}
+Suppose $\varphi$ is an outer measure on a space $X$. Then an extended real-valued function $f$ on $X$ is $\varphi$-measurable if and only if
+\[\begin{aligned}
+\varphi(A) \geq \varphi(A \cap \{f \leq a\}) + \varphi(A \cap \{f \geq b\})
+\end{aligned}\]
+whenever $A \subset X$ and $a < b$ are real numbers.
+\end{theorem}
+
+\begin{proof}
+    The ``only if'' is immediate from \[
+     \varphi \left( A \right)\ge  \varphi \left( A\cap \left\{ f\le a \right\} \right)+  \varphi \left( A\cap \left\{ f> a \right\} \right)\ge  \varphi \left( A\cap \left\{ f\le a \right\} \right)+  \varphi \left( A\cap \left\{ f\ge b \right\} \right)     
+    \]
+    To show the converse, we need to prove that for any \(  r \in \mathbb{R}   \), the set  \[
+    E\coloneqq  \left\{ f\le r \right\}
+    \] satisfies \[
+     \varphi \left( A \right)\ge  \varphi \left( A\cap E \right)+  \varphi \left( A-E \right)   
+    \] for each \(  A\subseteq X  \). We define \[
+    B_{j}\coloneqq A\cap \left\{ r+   \frac{1 }{j + 1 }\le f\le r+  \frac{1 }{j }   \right\}
+    \] We shall show \[
+    \infty>  \varphi \left( A \right)\ge  \varphi \left( \bigcup _{j= 1}^{\infty}B_{2j} \right)=   \sum _{j= 1}^{\infty} \varphi \left( B_{2j} \right)  
+    \]by induction. We fix \(  k  \) and assume \[
+     \varphi \left( \bigcup _{j= 1}^{k}B_{2j} \right)= \sum _{j= 1}^{k} \varphi \left( B_{2j} \right)  
+    \] We set \[
+    A_{k}\coloneqq \bigcup _{j= 1}^{k}B_{2j}
+    \] Then \[
+    \left( A_{k}\cup B_{2\left( k+ 1 \right) } \right)\cap \left\{ f\le r+ \frac{1 }{2\left( k+ 1 \right)  }  \right\} = B_{2\left( k+ 1 \right) }
+    \] \[
+    \left( A_{k}\cup B_{2\left( k+ 1 \right) } \right)\cap \left\{ f\ge r+ \frac{1 }{2k+ 1 }  \right\} = A_{k}
+    \]We have \[
+     \varphi \left( \bigcup _{j= 1}^{k+ 1}B_{2j} \right)=   \varphi \left( A_{k}\cup B_{2\left( k+ 1 \right) } \right) \ge  \varphi \left( B_{2\left( k+ 1 \right) } \right) +  \varphi \left( A_{k} \right)= \sum _{j= 1}^{k+ 1} \varphi \left( B_{2j} \right)  
+    \] Thus we inductively show that \[
+    \varphi \left( A \right)\ge    \varphi \left( \bigcup _{j= 1}^{\infty}B_{2j} \right)= \sum _{j= 1}^{\infty} \varphi \left( B_{2j} \right)  
+    \] Similarly, one can show that \[
+    \varphi \left( A \right)\ge    \varphi \left( \bigcup _{j= 1}^{\infty}B_{2j-1} \right)= \sum _{j= 1}^{\infty} \varphi \left( B_{2j-1} \right)  
+    \] Then the series \[
+    \sum _{j= 1}^{\infty} \varphi \left( B_{j} \right)\le  2 \varphi \left( A \right)< \infty  
+    \]convergents. The tail of the series can be arbitrarily small. For each \(   \varepsilon > 0  \), there exists \(  m \in \mathbb{N}   \) such that \[
+     \varepsilon > \sum _{j= m}^{\infty} \varphi \left( B_{j} \right)\ge  \varphi \left( \bigcup _{j= m}^{\infty}B_{j} \right)  
+    \]Where \[
+    \bigcup _{j = m}^{\infty}B_{j}=  A\cap \left\{ r< f\le r+ \frac{1 }{m }  \right\}
+    \] We define a measure \(  \psi   \) \[
+    \psi \left( F \right)\coloneqq  \varphi \left( A\cap F \right),\quad \forall F\subseteq X
+    \]  Then \[
+     \varepsilon > \psi \left( \left\{ r< f\le r+ \frac{1 }{m }  \right\} \right)
+    \] Thus \[
+    \begin{aligned}
+     \varphi \left( A\cap E \right)+  \varphi \left( A-E \right)&= \psi \left( E \right)+ \psi \left( E^{c} \right)\\ 
+      &= \psi \left( \left\{ f\le r \right\} \right)+ \psi \left( \left\{ f> r \right\} \right)       \\ 
+       &\le  \psi \left( \left\{ f\le r \right\} \right)+ \psi \left( \left\{ f>  r+ \frac{1 }{m } \right\} \right)+ \psi \left( \left\{ r< f\le r+ \frac{1 }{m }  \right\} \right)   \\ 
+        &\le \psi \left( \left\{ f\le r \right\} \right) + \psi \left( \left\{ f\ge r+ \frac{1 }{m }  \right\} \right) +  \varepsilon \\ 
+         &=  \varphi \left( A\cap \left\{ f\le r \right\} \right)+  \varphi \left( A\cap \left\{ f\ge r+ \frac{1 }{m }  \right\} \right)+  \varepsilon   \\ 
+          &\le  \varphi \left( A \right)+  \varepsilon  
+    \end{aligned}
+    \]Since \(   \varepsilon   \) is arbitrary, we have \[
+     \varphi \left( A\cap E \right)+  \varphi \left( A-E \right)\le  \varphi \left( A \right)   
+    \] Thus \(  E  \) is measurable. 
+\end{proof}
+
+\section*{Exercises}
+\begin{exercise}{}{}
+    Prove that a function defined on $\mathbb{R}^n$ that is continuous everywhere except for a set of Lebesgue measure zero is a Lebesgue measurable function. In particular, conclude that a nondecreasing function defined on $[0, 1]$ is Lebesgue measurable.
+\end{exercise}
+\begin{proof}
+
+    If \(  f  \) is such function. 
+    Let \(  N  \) be the measure-zero set where \(  f  \) is not continuous.  \(  f  \) is continuous on the topological subspace \(  \mathbb{R} ^{n}\setminus N  \), thus is measurable on \(  \left( \mathbb{R} ^{n}\setminus N, \mathcal{B}\left( \mathbb{R} ^{n}\setminus N \right)  \right)   \). Then for each open sets \(  U\subseteq \mathbb{R}  \), we have \[
+\begin{aligned}
+    f^{-1} \left( U \right)&= \left( f^{-1} \left( U \right)\cap \left( \mathbb{R} ^{n}\setminus N \right)   \right)\cup \left( f^{-1} \left( U \right)\cap N  \right)   \\ 
+     &= \left( f|_{\mathbb{R} ^{n}\setminus N}^{-1} \left( U \right)  \right)\cap \left( f^{-1} \left( U \right)\cup N  \right)   
+\end{aligned}    \]     Where \(  f|_{\mathbb{R} ^{n}\setminus N}^{-1} \left( U \right)\in \mathcal{B}\left( \mathbb{R} ^{n}\setminus N \right)\). Note that \[
+\mathcal{B}\left( \mathbb{R} ^{n}\setminus N \right)= \left\{ B\cap \left( \mathbb{R} ^{n}\setminus N \right): B\in \mathcal{B}\left( \mathbb{R} ^{n} \right)   \right\}\subseteq \mathcal{L}\left( n \right)  
+\]Since \(  f^{-1} \left( U \right)\cap N   \in \mathcal{L}\left( n \right) \), we have \(  f^{-1} \left( U \right)\in \mathcal{L}\left( n \right)    \). \(  f  \) is Lebesuge-measurable.    
+
+Since a nondecreasing function is continuous except for a countable set, which is Lebesgue-measura-zero. It is Lebesgue measurable from our argument above.
+\end{proof}
+
+\section{Limits of Measurable Functions}
+\begin{definition}{}{}
+Let $(X, \mathcal{M}, \mu)$ be a measure space, and let $\{f_i\}$ be a sequence of measurable functions defined on $X$. The \dfntxt{upper} and \dfntxt{lower envelopes} of $\{f_i\}$ are defined respectively as
+\[
+\sup_i f_i(x) = \sup\{f_i(x) : i = 1, 2, \dots\}
+\]
+and
+\[
+\inf_i f_i(x) = \inf\{f_i(x) : i = 1, 2, \dots\}.
+\]
+Also, the \dfntxt{upper} and \dfntxt{lower limits} of $\{f_i\}$ are defined as
+\[
+\limsup_{i \to \infty} f_i(x) = \inf_{j \ge 1} \left( \sup_{i \ge j} f_i(x) \right)
+\]
+and
+\[
+\liminf_{i \to \infty} f_i(x) = \sup_{j \ge 1} \left( \inf_{i \ge j} f_i(x) \right).
+\]
+\end{definition}
+\begin{theorem}{}{}
+Let $\{f_i\}$ be a sequence of measurable functions defined on the measure space $(X, \mathcal{M}, \mu)$. Then $\sup_i f_i$, $\inf_i f_i$, $\limsup_{i \to \infty} f_i$, and $\liminf_{i \to \infty} f_i$ are all measurable functions.
+\end{theorem}
+
+\begin{proof}
+For each $a \in \mathbb{R}$ the identity
+\[
+X \cap \{x : \sup_i f_i(x) > a\} = \bigcup_{i=1}^{\infty} (X \cap \{f_i(x) > a\})
+\]
+implies that $\sup_i f_i$ is measurable. The measurability of the lower envelope follows from
+\[
+\inf_i f_i(x) = -\sup_i (-f_i(x)).
+\]
+Now that it has been shown that the upper and lower envelopes are measurable, it is immediate that the upper and lower limits of $\{f_i\}$ are also measurable.
+\end{proof}
+\begin{theorem}{Egorov}{}
+Let $(X, \mathcal{M}, \mu)$ be a finite measure space and suppose $\{f_i\}$ and $f$ are measurable functions that are finite almost everywhere on $X$. Also, suppose that $\{f_i\}$ converges pointwise a.e. to $f$. Then for each $\varepsilon > 0$ there exists a set $A \in \mathcal{M}$ such that $\mu(A^{c}) < \varepsilon$ and $\{f_i\} \to f$ uniformly on $A$.
+\end{theorem}
+\begin{remark}
+    定义一个依赖于 \(  x \in X  \)和两个自然数索引 \(  n,k \in \mathbb{Z} _{+ }  \)的逻辑陈述 \(  P_{n,k}\left( x \right)   \), 它的值为 \(  1  \)或 \(  0  \), 代表真与假.  
+    \begin{itemize}
+        \item \(  k  \)表示精度,  \(  k  \)越大条件越严格.
+        \item \(  n  \)表示阶段或步骤   
+    \end{itemize}
+       我们可以定义
+       \begin{itemize}
+        \item 逐点条件: \[
+        \forall k \in \mathbb{Z} _{+ }, \forall x\in E, \exists N \in \mathbb{Z} _{+ }, \forall n\ge N, P_{n,k}\left( x \right)= 1 
+        \]即对于任意的精度\(  k  \) , 在每个点上可以最终保持的.
+
+        设 \(  E_{n,k}=  P_{n,k}^{-1} \left( 1 \right)   \),即 该精度在某一阶段成立的点. 那么逐点条件用集合, 就是 \[
+        E\subseteq   \bigcup _{N= 1}^{\infty}\bigcap _{n = N}^{\infty}E_{n,k}= \liminf _{n\to \infty}E_{n,k},\quad \forall k \in \mathbb{Z} _{+ }
+        \]
+        \item 一致条件: \[
+        \forall k \in \mathbb{Z} _{> 0}, \exists N_{k}\in \mathbb{Z} _{> 0},  \forall n\ge N_{k}, \forall x\in E, P_{n,k}\left( x \right)= 1 
+        \]即对于任意的精度 \(  k  \), 最终总是全局保持的. 
+       \end{itemize}
+       
+
+       Egorov定理就是说, 如果 \(  P_{n,k}\left( x \right)   \)在每个点总是最终精确的, 那么它差不多总是最终整体精确的. 
+\end{remark}
+\begin{proof}
+ Let \(  E  \) be the set on which the function \(  f_{i}  \), \(  i= 1,2,\cdots   \) are defined and finite.   Let \(  F  \) be the set  on which \(  f  \) convergent pointwise to \(  f  \). Let \(  A_0=   E\cap F \). We have by hypothesis \(  \mu \left( A_0^{c} \right)= 0   \). For each \(   \varepsilon > 0  \), define \[
+E_{i,k}= \left\{ x\in A_0: \left| f_{i}-f \right|<  \frac{1 }{k }   \right\}
+ \]    Define \[
+ A_{i,k}= \bigcap _{j = i}^{\infty}E_{j,k}= \left\{ x\in A_0: \left| f_{j}\left( x \right)-f\left( x \right)   \right|< \frac{1 }{k }, \forall j\ge i   \right\}
+ \]Then \(  A_{1,k}\subseteq A_{2,k}\subseteq \cdots   \), \(  A_0= \bigcup _{i= 1}^{\infty}A_{i,k}, \forall k  \).  \(A_0\setminus A_{1,k}\supseteq A_0\setminus A_{2,k},\cdots   \). \(  \bigcap _{i= 1}^{\infty}\left( A_0\setminus A_{i,k} \right) = \varnothing \). \[
+ 0= \mu \left( \varnothing \right)=  \lim_{i\to \infty}\mu \left(A_0\setminus A_{i,k} \right) 
+ \]  Then for each \(  k  \) , and for each \(   \varepsilon _{k}> 0  \),  there exists \( i_{k}\) such that     \[
+ \mu \left( A_0\setminus A_{i_{k},k} \right)<  \varepsilon _{k} 
+ \]  
+\begin{remark}
+    这里就是在说, 处处最终成立的条件, 是差不多最终一直成立的.
+
+    \[
+    E\subseteq \bigcup _{N= 1}^{\infty}\bigcap _{n = N}^{\infty}P_{n}\implies  E_{\text{大测度, 舍弃了不多于} \varepsilon }\subseteq \bigcap _{n = N_{ \varepsilon }}^{\infty}P_{n}
+    \]如果 \(  P_{n}  \)都是可测条件 
+\end{remark}
+ For each \(   \varepsilon > 0  \), we take \(   \varepsilon _{k}= \frac{ \varepsilon  }{2^{k} }   \), let \(  A= \bigcap _{k= 1}^{\infty}A_{i_{k},k}  \). Then \[
+ \mu \left( A_0\setminus A \right)= \mu \left( \bigcup _{k= 1}^{\infty}A_0\setminus A_{i_{k},k}  \right)\le  \sum _{k= 1}^{\infty}\mu \left( A_0\setminus A_{i_{k},k}  \right)<  \sum _{k= 1}^{\infty} \varepsilon _{k}=  \varepsilon 
+ \] \[
+ \mu \left( X\setminus A \right)\le \mu \left( X\setminus A_0 \right)+ \mu \left( A_0\setminus A \right)= 0+ \mu \left( A_0\setminus A \right)<  \varepsilon     
+ \]   And note that for each \(  k  \)   , since \(  A\subseteq A_{i_{k},k}  \) we have \[
+ \left| f_{j}\left( x \right)-f\left( x \right)   \right|< \frac{1 }{k },  \quad \forall x \in A,j\ge i_{k}
+ \]Then \[
+ \lim_{i\to \infty}\sup _{x\in A}\left| f_{i}-f \right|= 0 
+ \]That is \(  \left\{ f_{i} \right\}  \) convergents uniformly to \(  f  \) on \(  A  \).   
+\end{proof}
+
+\begin{corollary}{}{}
+    Let \(  \left\{ E_{n} \right\}  \) be a sequence of  measurable functions. If \[
+    E\subseteq \liminf_{n\to \infty}E_{n}
+    \] Then for each \(   \varepsilon > 0  \), there exists measurable set \(  E_{ \varepsilon }  \), and \(  N_{ \varepsilon }\in \mathbb{Z} _{> 0}  \), such that \(  \mu \left( E_{ \varepsilon }^{c} \right)<  \varepsilon    \) and \[
+    E_{ \varepsilon }\subseteq \bigcap _{n = N_{ \varepsilon }}E_{n}
+    \]   
+\end{corollary}
+
+\begin{remark}
+    也就是说, 如果一列可测的条件 \(  P_{n}  \) , 对于每个点 \(  x \in E  \)总是最终保持的. 相当于说每个 \(  x  \)总会在每一个阶段加入并保持在\(  P  \)中, 那么我们可以让还没有加入的那些成员任意地少, 然后把它们抛弃掉, 使得剩下的成员在一个共同的阶段后总是全都保持在里面的.   
+\end{remark}
+
+\begin{definition}{}{}
+A sequence of measurable functions $\{f_i\}$ defined relative to the measure space $(X, \mathcal{M}, \mu)$ is said to \dfntxt{converge in measure} to a measurable function $f$ if for every $\varepsilon > 0$, we have
+$$
+\lim_{i \to \infty} \mu(X \cap \{x : |f_i(x) - f(x)| \geq \varepsilon\}) = 0.
+$$
+\end{definition}
+\begin{theorem}{}{}
+Let $(X, \mathcal{M}, \mu)$ be a finite measure space, and suppose $\{f_i\}$ and $f$ are measurable functions that are finite a.e. on $X$. If $\{f_i\}$ converges to $f$ a.e. on $X$, then $\{f_i\}$ converges to $f$ in measure.
+\end{theorem}
+\begin{remark}
+    测度的有限性是为了保证Egorov的使用, 以及从一致逼近过渡到测度逼近的可行性.
+\end{remark}
+\begin{theorem}{}{}
+Let $(X, \mathcal{M}, \mu)$ be a measure space and let $\{f_i\}$ and $f$ be measurable functions such that $f_i \to f$ in measure. Then there exists a subsequence $\{f_{i_j}\}$ such that
+\[
+\lim_{j\to\infty} f_{i_j}(x) = f(x)
+\]
+for $\mu$-a.e. $x \in X$.
+\end{theorem}
+\begin{remark}
+    依测度收敛导致子列的a.e.收敛.
+\end{remark}
+\begin{proofsketch}
+    将收敛描述成某种``逃逸难度'', 依测度收敛就是在任意逃逸难度(函数值差大于 \(  \frac{1 }{k }   \) )下, 逃逸的可能性随着进程的推进最终会趋于``不可能逃逸''(逃逸出去的点最终是零测的). 于是我们选取某些进程 \(  i_{k}  \), 使得在这个进程之后, 即便逃逸难度很小, 逃逸可能性也会很微弱. 依测度收敛保证了几乎所有的点都被这些进程给捕获. 于是最终几乎所有点在任意简单的难度下都不能逃逸, 也就代表了几乎处处收敛.
+\end{proofsketch}
+\begin{proof}
+    Let \(  i_1  \) be an integer such that \[
+    \mu \left( \left\{ x\in X: \left| f_{i_1}\left( x \right) -f\left( x \right)  \right|\ge 1  \right\} \right) < \frac{1 }{2 } 
+    \] Assume that we take \(  i_1,\cdots ,i_{k}  \), then we take \(  i_{k+ 1} > i_{k}  \) such that \[
+    \mu \left( \left\{ x \in X: \left| f_{i_{k+ 1}}\left( x \right) -f\left( x \right)  \right|\ge \frac{1 }{k+ 1 }   \right\} \right) < \frac{1 }{2^{k+ 1} }  
+    \]  Let \[
+    A_{j}= \bigcup _{k= j}^{\infty} \left\{ x \in X: \left| f_{i_{k}}-f \right|\ge \frac{1 }{k }   \right\}
+    \]Then \[
+  A_1\supseteq A_2\supseteq \cdots 
+    \] \[
+    \mu \left( A_{j} \right)\le \sum _{k= j}^{\infty} \mu \left( \left\{ x \in X: \left| f_{i_{k}}-f \right| \ge \frac{1 }{k }  \right\} \right)  < \sum _{k= j}^{\infty}\frac{1 }{2^{k} }= \frac{1 }{2^{j - 1} }  
+    \] Specifically, \(  \mu \left( A_1 \right)< \infty   \), define \(  A= \bigcap _{j= 1}^{\infty}A_{j}  \) we have \[
+    \mu \left( A \right)= \lim_{j\to \infty}\mu \left( A_{j} \right)= 0  
+    \] For each \(  x \in A^{c}= \bigcup _{j= 1}^{\infty}A_{j}^{c}  \),  there exists \(  k_0  \) such that \(  x \in A_{k_0}^{c}  \), \[
+    A_{k_0}^{c}= \bigcap _{k= k_0}^{\infty}\left\{ x \in X: \left| f_{i_{k}}-f \right|< \frac{1 }{k }   \right\}
+    \]  Which mean that \[
+    \left| f_{i_{k}}\left( x \right)-f\left( x \right)   \right|< \frac{1 }{k }, \quad \forall k  \ge k_0
+    \]Thus \(  \lim_{k\to \infty}f_{i_{k}}\left( x \right)= f\left( x \right)    \). Since \(  x   \) is arbitrary, \(  \left\{ f_{i_{k}} \right\}_{k}  \) converges to \(  f  \) on \(  A^{c}  \).     
+\end{proof}
+
+\begin{theorem}{}{}
+   \begin{itemize}
+    \item  A sequence $\{f_i\}$ of a.e. finite-valued measurable functions on a measure space $(X, \mathcal{M}, \mu)$ is \dfntxt{fundamental in measure} if for every $\varepsilon > 0$,
+
+\[
+\mu(\{x : |f_i(x) - f_j(x)| \geq \varepsilon\}) \to 0
+\]
+\item 
+Prove that if $\{f_i\}$ is fundamental in measure, then there is a measurable function $f$ to which the sequence $\{f_i\}$ converges in measure.
+
+as $i$ and $j \to \infty$. 
+
+   \end{itemize}
+   
+\end{theorem}
+
+\begin{theorem}{}{}
+    Let $(X, \mathcal{M}, \mu)$ be a finite measure space. Suppose that $\{f_i\}_{i=1}^{\infty}$ and $f$ are measurable functions. Prove that $f_i \to f$ in measure if and only if each subsequence of $f_i$ has a subsequence that converges to $f$ $\mu$-a.e.
+\end{theorem}
+\section{Approximation of Measurable Functions}
+
+\begin{theorem}{}{}
+Let $f: X \to \overline{\mathbb{R}}$ be an arbitrary (possibly nonmeasurable) function. Then the following hold:
+\begin{enumerate}
+\item[(i)] There exists a sequence of simple functions, $\{f_i\}$, such that $f_i(x) \to f(x)$ for each $x \in X$.
+\item[(ii)] If $f$ is nonnegative, the sequence can be chosen such that $f_i \uparrow f$.
+\item[(iii)] If $f$ is bounded, the sequence can be chosen such that $f_i \to f$ uniformly on $X$.
+\item[(iv)] If $f$ is measurable, the $f_i$ can be chosen to be measurable.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+
+    Step1. All for \(  f\ge 0  \):
+    
+    
+    Assume that \(  f\ge 0  \). For \(  i \in \mathbb{Z} _{> 0}  \), partition \(  [0,i)  \)    in to \(  i\cdot 2^{i}  \) half-open intervals of the form \(  [\frac{k-1 }{2^{i} },\frac{k }{2^{i} }  ),k = 1,2,\cdots ,i\cdot 2^{i}  \). Label these intervals \(  H_{i,k}  \) and let \[
+    A_{i,k}= f^{-1} \left( H_{i,k} \right),\quad A_{i}= f^{-1} \left( \left[ i,\infty \right]  \right)  
+    \]   Define \(  f_{i}  \) on \(  X  \) as \[
+    f_{i}\left( x \right)= \begin{cases} \frac{k-1 }{2^{i} },&x\in A_{i,k}\\ 
+     i,&x\in A_{i}  \end{cases}  
+    \]
+    \begin{itemize}
+        \item If \(  f  \) is measurable, then the sets \(  A_{i,k}  \) and \(  A_{i}  \) are measurable, and thus so are the functions \(  f_{i}  \). 
+    \end{itemize}
+     
+    It is easy to verify that  \[
+    f_1\le f_2\le \cdots \le f
+    \]      If \(  f\left( x \right)< \infty   \) , then for every \(  i> f\left( x \right)   \), we have \[
+    \left| f_{i}\left( x \right)-f\left( x \right)   \right|< \frac{1 }{2^{i} }  
+    \]  and hence \(  f_{i}\left( x \right)\to f\left( x \right)    \). If \(  f\left( x \right)= \infty   \), then \(  f_{i}\left( x \right)= i\to f\left( x \right)    \). In any case, we obtains \[
+    \lim_{i\to \infty}f_{i}\left( x \right)= f\left( x \right),\quad x\in X  
+    \]   \begin{itemize}
+        \item If \(  f   \) is bounded by \(  M  \). Then \(  A_{i}= \varnothing  \)   for all \(  i> M  \), and therefore \(  \left| f_{i}\left( x \right)-f\left( x \right)   \right|< \frac{1 }{2^{i} }    \) for all \(  x \in X  \), thus showing that \(  f_{i}\to f  \) uniformly .    
+    \end{itemize}
+
+    Step 2. The general case:
+
+   Applying to \(  f^{+ }  \) and \(  f^{-}  \), (i), (iii), (iv)  holds . 
+    
+\end{proof}
+\begin{theorem}{Lusin's theorem}{}
+Suppose $(X, \mathcal{M}, \mu)$ is a measure space where $X$ is a metric space and $\mu$ is a finite Borel measure. Let $f: X \to \mathbb{R}$ be a measurable function that is finite almost everywhere. Then for every $\varepsilon > 0$ there is a closed set $F \subset X$ with $\mu(F) < \varepsilon$ such that $f$ is continuous on $F$ in the relative topology.
+\end{theorem}
+
+
+\end{document}

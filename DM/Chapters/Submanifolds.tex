@@ -1,0 +1,58 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Submanifolds }
+% 代靖涵 25120222201319
+\section{Embedded Submanifolds}
+
+
+\subsection{Slice Charts for Embedded Submanifolds}
+\begin{definition}{}{}
+     If $U$ is an open subset of $\mathbb{R}^n$ and $k \in \{0, \dots, n\}$, a \dfntxt{k-dimensional slice of U} (or simply a \dfntxt{k-slice}) is any subset of the form
+$$S = \{(x^1, \dots, x^k, x^{k+1}, \dots, x^n) \in U : x^{k+1} = c^{k+1}, \dots, x^n = c^n\}$$
+for some constants $c^{k+1}, \dots, c^n$. 
+\end{definition}
+
+\begin{definition}{local k-slice condition}{}
+    Let $M$ be a smooth $n$-manifold.  \begin{itemize}
+        \item Let $(U,\varphi)$ be a smooth chart on $M$. If $S$ is a subset of $U$ such that $\varphi(S)$ is a $k$-slice of $\varphi(U)$, then we say that $S$ is a \dfntxt{$k$-slice of $U$}.
+        \item  Given a subset $S \subseteq M$ and a nonnegative integer $k$, we say that $S$ satisfies the \dfntxt{local $k$-slice condition} if each point of $S$ is contained in the domain of a smooth chart $(U,\varphi)$ for $M$ such that $S \cap U$ is a single $k$-slice in $U$.
+        \item Any such chart is called a \dfntxt{slice chart for $S$ in $M$}, and the corresponding coordinates $(x^1,\dots,x^n)$ are called \dfntxt{slice coordinates}.
+    \end{itemize}
+     
+\end{definition}
+\subsection{Level Sets}
+
+\begin{definition}{}{}
+    If \(  \Phi :M\to N  \) is a mooth map.
+    \begin{itemize}
+        \item A point \(  p \in M  \) is said to be a \dfntxt{regular point of \(  V\phi   \)  } if \(  d\Phi _{p}:T_{p}M\to T_{\Phi \left( p \right) }N  \) is srjective; it is a \dfntxt{critical point of \(  \Phi   \) } otherwise.
+        \item A point \(  c \in N  \) is said to be a \dfntxt{regular value of \(  \Phi   \) } if every point of the level set \(  \Phi ^{-1} \left( c \right)   \) is a regular point, and a \dfntxt{critical value} otherwise.    
+    \end{itemize}
+     
+\end{definition}
+
+\begin{theorem}{Constant-Rank Level Set Theorem}{}
+    Let \(  M  \) and \(  N  \) be smooth manifolds, and let \(  \Phi :M\to N  \) be a smooth map with constant rank \(  r  \). Each level est of \(  \Phi   \) is a properly embedded submanifold of codimension \(  r  \) in \(  M  \).        
+\end{theorem}
+\begin{proof}
+    Write \(  m= \operatorname{dim}M  \), \(  n =  \operatorname{dim}N  \), and \(  k= m-r  \). Let \(  c \in M  \) be arbitrary, let \(  S  \) denote the level set \(  \Phi ^{-1} \left( c \right)\subseteq M   \). From the rank theorem, for each \(  p \in S  \), there are smooth charts \(  \left( U, \varphi  \right)   \) centered at \(  p  \) and \(  \left( V,\psi  \right)   \) centered at \(  c= \Phi \left( p \right)   \) in which \(  \Phi   \) has a coordinate representation of the form \[
+    \psi \circ \Phi \circ  \varphi ^{-1} \left( x^{1},\cdots ,x^{m} \right)= \left( x^{1},\cdots ,x^{r},0,\cdots ,0 \right)  
+    \] and therefore \(  S\cap U  \) , then \[
+  \begin{aligned}
+    q\in S\iff \Phi \left( q \right)= c&\iff \left( x^{1}\left( q \right),\cdots ,x^{r}\left( q \right),0,\cdots ,0   \right)=  \left( 0,\cdots ,0 \right)  
+     \\&\iff x^{1}\left( q \right)= \cdots = x^{r}\left( q \right)= 0  
+  \end{aligned}   
+    \] Thus \[
+    S\cap U= \left\{ \left( x^{1},\cdots ,x^{r},x^{r+ 1},\cdots ,x^{m} \right)\in U: x^{1}= \cdots = x^{r}= 0  \right\}
+    \] is the \(  k  \)-slice. So \(  S  \) satisfies the local \(  k  \)-slice condition, so it is an embedded submanifold of dimension \(  k  \).    
+\end{proof}
+\end{document}

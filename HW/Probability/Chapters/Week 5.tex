@@ -1,0 +1,397 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{4}
+}{}
+
+\chapter{ Week 5 }
+代靖涵 25120222201319
+
+\begin{exercise}{}{}
+三人独立地破译一个密码,他们能单独译出的概率分别为 $1/5,1/4,1/3$,求此密码被译出的概率.
+\end{exercise}
+
+\begin{proof}
+    由事件的独立性, 三个人均无法破译出密码的概率为 \[
+    \left( 1-\frac{1 }{5 }  \right)\times \left( 1-\frac{1 }{4 }  \right)\times \left( 1-\frac{1 }{3 }  \right)= \frac{4 }{5 }\times \frac{3 }{4 }\times \frac{2 }{3 }=    \frac{2 }{5 } 
+    \]因此密码被破译出的概率为 \[
+1-\frac{2 }{5 }= \frac{3 }{5 }      \]
+\end{proof}
+\begin{exercise}{}{}
+有甲乙两批种子,发芽率分别为 $0.8$ 和 $0.9$,在这两批种子中各任取一粒,求:
+\begin{enumerate}
+    \item 两粒种子都能发芽的概率;
+    \item 至少有一粒种子能发芽的概率;
+    \item 恰好有一粒种子能发芽的概率.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    设 甲乙种子发芽的事件分别为 \(  A,B  \). 则 \[
+    P\left( A \right)= 0.8,\quad P\left( B \right)= 0.9  
+    \]
+    \begin{enumerate}
+        \item 两粒种子均发芽的事件为 \(  AB  \), 由事件的独立性,  \[
+        P\left( AB \right)= P\left( A \right)P\left( B \right)= 0.72   
+        \]
+        \item 至少有一粒种子发芽的概率为 \(  A\cup B  \)  , 我们有 \[
+        \begin{aligned}
+        P\left( A\cup B \right)= P\left( \left( A^{c}B^{c} \right)^{c}  \right)= 1- P\left( A^{c} \right)P\left( B^{c} \right)= 1-\left( 1-0.8 \right)\left( 1-0.9 \right)= 0.98       
+        \end{aligned}
+        \]
+        \item 恰好有一粒种子能发芽的事件为 \(  \left( A\cup B \right)\setminus \left( A\cap B \right)    \) 由于 \(  A\cap B\subseteq A\cup B  \), 我们有 \[
+        P\left( \left( A\cup B \right)\setminus \left( A\cap B \right)   \right)= P\left( A\cup B \right)-P\left( A\cap B \right)= 0.98-0.72= 0.26   
+        \] 
+    \end{enumerate}
+     
+\end{proof}
+\begin{exercise}{}{}
+甲、乙两人独立地对同一目标射击一次,其命中率分别为 $0.8$ 和 $0.7$,现已知目标被击中,求它是甲射中的概率.
+\end{exercise}
+\begin{proof}
+    目标被射中的事件为 \(  B  \), 设甲, 乙射中目标的事件分别为 \(  A_1,A_2  \). 则已知目标被击中, 甲射中的事件为 \(  A_1|B  \). 我们有 \[
+    P\left( A_1|B \right)= \frac{P\left( A_1B \right)  }{P\left( B \right)  }  = \frac{P\left( A_1 \right)  }{P\left( B \right)  } 
+    \]其中 \[
+    P\left( B \right)= P\left( \left( A_1^{c}A_2^{c} \right)^{c}  \right)= 1-P\left( A_1^{c} \right)P\left( A_2^{c} \right)= 0.94    
+    \]因此 \[
+    P\left( A_1|B \right)= \frac{ 0.8}{0.94 }= \frac{40 }{47 }   
+    \]
+\end{proof}
+\begin{exercise}{}{}
+设电路由 $A,B,C$ 三个元件组成,若元件 $A,B,C$ 发生故障的概率分别是 $0.3,0.2,0.2$,且各元件独立工作,试在以下情况下,求此电路发生故障的概率:
+\begin{enumerate}
+    \item $A,B,C$ 三个元件串联;
+    \item $A,B,C$ 三个元件并联;
+    \item 元件 $A$ 与两个并联的元件 $B$ 及 $C$ 串联.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    记 \(  A,B,C  \)分别为三个原件发生故障的事件. 
+    \begin{enumerate}
+        \item 则 三个原件串联发生故障的事件为 \(  A\cup B\cup C= \left( A^{c}\cap B^{c}\cap C^{c} \right)^{c}   \), 概率为 \[
+        \begin{aligned}
+        P\left( A\cup B\cup C \right)&=  1-P\left( A^{c}\cap B^{c}\cap C^{c} \right)\\ 
+         &= 1-P\left( A^{c} \right)P\left( B^{c} \right)P\left( C^{c} \right)\\ 
+          &= 1- 0.7\times 0.8 \times 0.8\\ 
+           &= 0.552      
+        \end{aligned}
+        \] 
+        \item 电路发生故障的事件为 \(  A\cap B\cap C  \) , 有事件的独立性, 概率为 \[
+        \begin{aligned}
+        P\left( A\cap B\cap C \right)&= P\left( A \right)P\left( B \right)P\left( C \right)\\ 
+         &= 0.3\times 0.2\times 0.2\\ 
+          &= 0.012     
+        \end{aligned}
+        \]
+        \item 电路发生故障的事件为 \(  A\cup \left( B\cap C \right)   \) 由于事件相互独立, 我们有 \[
+        \begin{aligned}
+        P\left( A\cup \left( B\cap C \right)  \right)&= P\left( A \right)+ P\left( B\cap C \right)-P\left( A\cap B\cap C \right)   \\ 
+         &= P\left( A \right)+ P\left( B \right)P\left( C \right)-P\left( A \right)P\left( B \right)P\left( C \right)\\ 
+          &= 0.3+ 0.2\times  0.2 - 0.3 \times  0.2 \times  0.2\\ 
+           &= 0.3+ 0.04-0.012       \\ 
+            &=  0.328 
+        \end{aligned}
+        \]
+    \end{enumerate}
+      
+\end{proof}
+\begin{exercise}{}{}
+在一周内甲,乙,丙三台机床需维修的概率分别是 $0.9,0.8$ 和 $0.85$,求一周内
+\begin{enumerate}
+    \item 没有一台机床需要维修的概率;
+    \item 至少有一台机床不需要维修的概率;
+    \item 至多只有一台机床需要维修的概率.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    设甲乙丙需要维修的事件分别为 \(  A,B,C  \). 
+    \begin{enumerate}
+        \item 没有一台需要维修的事件为 \(  A^{c}\cap B^{c}\cap C^{c}  \) , 概率为 \[
+        \begin{aligned}
+        P\left( A^{c}\cap B^{c}\cap C^{c} \right)&= P\left( A^{c} \right)P\left( B^{c} \right)P\left( C^{c} \right)\\ 
+         &= 0.1 \times  0.2 \times  0.15\\ 
+          &= 0.003     
+        \end{aligned}
+        \]
+        \item 至少有一台不需要维修的事件为 \(  A^{c}\cup B^{c}\cup C^{c}= \left( A\cap B\cap C \right)^{c}  \), 概率为 \[
+        \begin{aligned}
+        P\left( A^{c}\cup B^{c}\cup C^{c} \right)&= P\left( A\cap B\cap C \right)^{c}\\ 
+         &= 1-P\left( A\cap B\cap C \right)\\ 
+          &= 1-P\left( A \right)P\left( B \right)P\left( C \right)\\ 
+           &= 1- 0.9 \times  0.8 \times  0.85\\ 
+            &= 0.388       
+        \end{aligned}
+        \] 
+        \item  \[
+        P\left( A^{c}\cap B^{c}\cap C^{c} \right)= 0.003 
+        \] \[
+        \begin{aligned}
+        P\left( A\cap B^{c}\cap C^{c} \right)= 0.9 \times  0.2 \times  0.15= 0.027  
+        \end{aligned}
+        \] \[
+        P\left( A^{c}\cap B\cap C^{c} \right)= 0.1 \times  0.8 \times  0.15= 0.012 
+        \] \[
+        P\left( A^{c}\cap B^{c}\cap C \right)= 0.1 \times  0.2 \times  0.85= 0.017 
+        \]因此题述事件的概率为以上四个事件的概率之和, 等于 \[
+        0.059
+        \]
+    \end{enumerate}
+     
+\end{proof}
+
+\begin{exercise}{}{}
+若事件 $A$ 与 $B$ 相互独立且互不相容, 试求 $\min\{P(A), P(B)\}$.
+\end{exercise}
+
+\begin{proof}
+    \[
+ 0=    P\left( A\cap B \right)= P\left( A \right)P\left( B \right)  
+    \]因此 \(  P\left( A \right)= 0   \)或 \(  P\left( B \right)   = 0\), 总有 \[
+    \min \left\{ P\left( A \right),P\left( B \right)   \right\}= 0
+    \]   
+\end{proof}
+\begin{exercise}{}{}
+假设 $P(A)=0.4, P(A \cup B)=0.9$, 在以下情况下求 $P(B)$:
+\begin{enumerate}
+    \item $A, B$ 不相容;
+    \item $A, B$ 独立;
+    \item $A \subset B$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item 此时 \[
+        P\left( A\cap B \right)= 0 
+        \]我们有 \[
+        P\left( B \right)= P\left( A\cap B \right)+ P\left( A\cup B \right)-P\left( A \right)= 0+ 0.9-0.4= 0.5    
+        \]
+        \item 此时 \[
+        P\left( A\cap B \right)= P\left( A \right)P\left( B \right)   
+        \]我们有 \[
+        \begin{aligned}
+        P\left( A \right)+ P\left( B \right)&= P\left( A\cup B \right)+ P\left( A\cap B \right)    \\ 
+         &= P\left( A\cup B \right)+ P\left( A \right)P\left( B \right)    
+        \end{aligned}
+        \]因此 \[
+        P\left( B \right)= \frac{P\left( A\cup B \right)-P\left( A \right)   }{1-P\left( A \right)  }  = \frac{0.9-0.4 }{1-0.4 }= \frac{5 }{6 }  
+        \]
+        \item 此时 \[
+        P\left( B \right)= P\left( A\cup B \right)= 0.9  
+        \]
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+设 $A, B, C$ 两两独立, 且 $ABC=\varnothing$.
+\begin{enumerate}
+    \item 如果 $P(A)=P(B)=P(C)=x$, 试求 $x$ 的最大值;
+    \item 如果 $P(A)=P(B)=P(C)<1/2$, 且 $P(A \cup B \cup C)=9/16$, 求 $P(A)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+  \begin{enumerate}
+    \item    \[
+    P\left( AB\cup AC \right)= P\left( AB \right)+ P\left( AC \right)-P\left( ABC \right)= 2x^{2}    
+    \] \[
+    P\left( A \right)\ge P\left( AB\cup AC \right)\implies  x\ge 2x^{2}\implies x\le \frac{1 }{2 }   
+    \]
+    具体地, 考虑古典概率测度空间 \(  \left(  \Omega , \mathcal{F},P \right)   \), 其中 \[
+     \Omega = \left\{  \omega _1 , \omega _2 , \omega _3 , \omega _4  \right\},\quad \mathcal{F}= \mathcal{P}\left(  \Omega  \right),\quad  P\left(  \omega _{i} \right)= \frac{1 }{4 }, \forall i= 1,2,3,4   
+    \] 令 \(  A= \left\{  \omega _1 , \omega _2  \right\}  \), \(  B= \left\{  \omega _1 , \omega _3  \right\}  \), \(  C= \left\{  \omega _2 , \omega _3  \right\}  \). 则 \[
+    P\left( AB \right)= P\left( BC \right)= P\left( AC \right)=  \frac{1 }{4 }= P\left( A \right)P\left( B \right)= P\left( B \right)P\left( C \right)= P\left( A \right)P\left( C \right)         
+    \]并且 \(  ABC= \varnothing  \). 这表明 \(  x  \)存在最大值 \(  \frac{1 }{2 }   \).
+    \item       记 \(  P\left( A \right)= P\left( B \right)= P\left( c \right)= x< \frac{1 }{2 }      \). \[
+    \begin{aligned}
+    P\left( A\cup B\cup C \right)= P\left( A \right)+ P\left( B \right)+ P\left( C \right)-P\left( AB \right)-P\left( AC \right)-P\left( BC \right)+ P\left( ABC \right)         
+    \end{aligned}
+    \]得到 \[
+    \frac{9 }{16 }= 3x-3x^{2} \
+    \] 解二次方程, 满足条件的解存在唯一, 等于 \(  \frac{1 }{4 }   \). 因此 \[
+    P\left( A \right)= \frac{1 }{4 }  
+    \] 
+  \end{enumerate}
+  
+\end{proof}
+\begin{exercise}{}{}
+事件 $A, B$ 独立, 两个事件仅 $A$ 发生的概率或仅 $B$ 发生的概率都是 $1/4$, 求 $P(A)$ 及 $P(B)$.
+\end{exercise}
+
+\begin{proof}
+    \[
+    P\left( A\cap B^{c} \right)= P\left( A^{c}\cap B \right)= \frac{1 }{4 }   
+    \]由于 \(  A,B  \) 独立, \(  A  \)与 \(  B^{c}  \), \(  A^{c}  \)与\(  B  \)也独立,     从而 \[
+    P\left( A \right)\left( 1-P\left( B \right)  \right)= \left( 1-P\left( A \right)  \right)P\left( B \right)    = \frac{1 }{4 } 
+    \] \[
+    P\left( A \right)-P\left( A \right)P\left( B \right)= P\left( B \right)-P\left( A \right)P\left( B \right)= \frac{1 }{4 }       
+    \]前两项相减, 得到 \(  P\left( A \right)= P\left( B \right)    \), 记作 \(  x  \), 则 \[
+    x-x^{2}= \frac{1 }{4 } 
+    \]  解得 \(  x= \frac{1 }{2 }   \), 因此 \[
+    P\left( A \right)= P\left( B \right)= \frac{1 }{2 }   
+    \] 
+\end{proof}
+\begin{exercise}{}{}
+ 一个人的血型为 A,B,AB,O 型的概率分别为 0.37,0.21,0.08,0.34.现任意挑选四个人,试求:
+\begin{enumerate}
+\item[(1)] 此四人的血型全不相同的概率;
+\item[(2)] 此四人的血型全部相同的概率.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 由于它们血型种类是相互独立的事件, 四人血型依次为 \(  A,B, AB, O  \)的概率为 \[
+        0.37\times 0.21\times 0.08\times 0.34= 0.00211344
+        \]  由于它们的血型排列有 \(  4!= 24  \)种,  每种排列对应事件发生的概率均等, 为上述数值, 因此四人血型全不相同的概率为 \[
+        24\times 0.00211344= 0.05072256
+        \]
+        \item 四人血型全都相同的概率为它们的血型分别全为A,B, AB,O的概率之和, 即 \[
+        \left( 0.37 \right)^{4}+ \left( 0.21 \right)^{4}+ \left( 0.08 \right)^{4}+ \left( 0.34 \right)^{4}=     0.03409074
+        \]
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+甲、乙两选手进行乒乓球单打比赛,已知在每局中甲胜的概率为 0.6, 乙胜的概率为 0.4.比赛可采用三局二胜制或五局三胜制,问哪一种比赛制度对甲更有利?
+\end{exercise}
+\begin{proof}
+   \begin{enumerate}
+    \item  对于三局两胜制, 甲连胜两把取胜的概率为 \[
+    0.6^{2}
+    \]甲前两把一赢一输, 最终取胜的概率为 \[
+    2\times  0.6\times 0.4\times 0.6=0.288
+    \]因此甲获胜的概率为上述的和, 为 \[
+    0.36+ 0.288= 0.648
+    \]
+    \item 对于五局三胜制, 一共进行三局对战, 甲连胜三把取胜的概率为 \[
+    0.6^{3}= 0.216
+    \]
+    一共进行四局对战, 甲赢三把输一把取胜的概率为 \[
+    3\times 0.6^{3}\times 0.4= 0.2592
+    \]一共进行五局对战, 甲赢三把输两把取胜的概率为 \[
+    C_{4}^{2}\times 0.6^{3}\times 0.4^{2}= 0.20736
+    \]甲获胜的概率为 以上三个概率的和, 为 \[
+    0.68256
+    \] \[
+    0.68256> 0.648
+    \]
+   \end{enumerate}
+   五局三胜制对于甲有利
+\end{proof}
+
+
+\begin{exercise}{}{}
+甲、乙、丙三人进行比赛,规定每局两个人比赛,胜者与第三人比赛,依次循环,直至有一人连胜两次为止,此人即为冠军.而每次比赛双方取胜的概率都是 1/2,现假定甲、乙两人先比,试求各人得冠军的概率.
+\end{exercise}
+
+\begin{solution}
+   
+   设此时甲获得冠军的事件为 \(  w_1  \). 设甲先胜乙的事件为 \(  B_1  \). 此时, 如果甲在胜一把, 则甲是冠军; 若不然, 如果最后甲是冠军, 接下来只能有: 乙负丙, 丙负甲, 回到甲先胜一把, 最后获得冠军的事件, 只不过对调乙和丙的地位. 因此 \[
+   P\left( w_1|B_1 \right)= \frac{1 }{2 }\cdot 1+ \frac{1 }{2 }\cdot \left(  \frac{1 }{2^{2} }P\left( w_1|B_1 \right)   \right)    
+   \] 得到 \[
+P\left( w_1|B_1 \right)= \frac{4 }{7 }  
+   \]设甲先负乙的事件为 \(  B_2  \), 此时, 如果甲最终夺冠, 接下来只能有: 乙负丙, 丙负甲,  回到甲先胜一把, 最后夺冠的事件. 因此 \[
+   P\left( w_1|B_2 \right)= \frac{1 }{2^{2} }  P\left( w_1|B_1 \right)= \frac{1 }{7 }  
+   \]因此 \[
+   \begin{aligned}
+   P\left( w_1 \right)&= P\left( w_1|B_1 \right)  P\left( B_1 \right)+ P\left( w_1|B_2 \right)P\left( B_2 \right)\\ 
+    &= \frac{4 }{7 }\cdot \frac{1 }{2 }+ \frac{1 }{7 }\cdot \frac{1 }{2 }\\ 
+     &=     \frac{5 }{14 }  
+   \end{aligned}   
+   \]设乙获得冠军的事件为 \(  w_2  \), 由于甲乙地位对称, 因此 \[
+   P\left( w_2 \right)= P\left( w_1 \right)= \frac{5 }{14 }   
+   \]最后设丙获得冠军的事件为 \(  w_3  \),  由于甲乙丙获得冠军的事件互不相容, 且事件的丙是整个样本空间, 因此 \[
+   P\left( w_3 \right)= 1-P\left( w_1 \right)-P\left( w_2 \right)= \frac{2 }{7 }    
+   \]或者, 如果丙夺冠, 无论一开始甲乙谁获胜, 胜者只能先负丙, 回到丙先胜一把, 最后夺冠的事件, 因此 \[
+   P\left( w_3 \right)= \frac{1 }{2 }\cdot P\left( w_1|B_1 \right)= \frac{2 }{7 }    
+   \]结果是相同的.
+\end{solution}
+
+\begin{exercise}{}{}
+甲、乙两个赌徒在每一局获胜的概率都是 1/2.两人约定谁先赢得一定的局数就获得全部赌本.但赌博在中途被打断了,请问在以下各种情况下,应如何合理分配赌本:
+\begin{enumerate}
+\item[(1)] 甲、乙两个赌徒都各需赢 k 局才能获胜;
+\item[(2)] 甲赌徒还需赢 2 局才能获胜,乙赌徒还需赢 3 局才能获胜;
+\item[(3)] 甲赌徒还需赢 n 局才能获胜,乙赌徒还需赢 m 局才能获胜.
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+    设甲还需要赢 \(  m  \)把, 乙需要赢 \(  k  \)把, 最终 甲取胜的事件为 \(  W_{m,k}  \)    . 则 \[
+        P\left( W_{m,k} \right)= \frac{1 }{2 }P\left( W_{m-1,k} \right)+ \frac{1 }{2 }P\left( W_{m,k-1} \right)     
+        \]由甲乙的对称性, 易见对于任意的 \(  m,k  \), \(  W_{m,k}=W_{k,m}^{c}\).从而 \[
+        P\left( W_{m,k} \right)+ P\left( W_{k,m} \right)= 1  
+        \] 特别地,  \[
+        P\left( W_{m,m} \right)= \frac{1 }{2 }P\left( W_{m-1,m} \right)+ \frac{1 }{2 }P\left( W_{m,m-1} \right)=   \frac{1 }{2 }    
+        \]  
+    \begin{enumerate}
+        \item[(1)] 此时 \(  P\left( W_{k,k} \right)= \frac{1 }{2 }    \), 因此需要平均分配赌本.
+        \item[(2)] 考虑到 \[
+        P\left( W_{2,3} \right)= \frac{1 }{2 }P\left( W_{1,3} \right)+ \frac{1 }{2 }P\left( W_{2,2} \right)     
+        \] 其中 \[
+        P\left( W_{1,3} \right)= \frac{1 }{2 }+ \frac{1 }{2 }P\left( W_{1,2} \right)= \frac{1 }{2 }+ \frac{1 }{2 }\left( \frac{1 }{2 }+ \frac{1 }{2 }P\left( W_{1,1} \right)    \right)=        \frac{7 }{8 } 
+        \]因此 \[
+        P\left( W_{2,3} \right)= \frac{1 }{2 }\cdot \frac{7 }{8 }+ \frac{1 }{2 }\cdot \frac{1 }{2 }= \frac{11 }{16 }      
+        \]赌本按照 \(  11:5  \)分配. 
+        \item[(3)] 比赛在 第\(  N\coloneqq n+ m-1  \) 局或之前一定会结束. 我们认为即便其中一方已经获胜, 甲乙双方也会完成 \(  n+ m-1  \)场对局. 此时甲在乙赢 \(  m  \)次之前先赢 \(  n  \)次, 当且仅当   在这 \(  n+ m-1  \) 次对局中, 甲获胜的次数不小于 \(  n  \). 后者的概率为 \[
+        \sum _{j= n}^{n+ m-1}\binom{n+ m-1  }{  j}\left( \frac{1 }{2 }  \right)^{j}\left( \frac{1 }{2 }  \right)^{n+ m-1-j}   
+        \]因此 \[
+        P\left( W_{n,m} \right)= \frac{1 }{2^{n+ m-1} }\sum _{j= n}^{n+ m-1}\binom{ n+ m-1 }{j  }   
+        \]由对称性可知 \[
+        P\left( W_{n,m}^{c} \right)= P\left( W_{m,n} \right)= \frac{1 }{2^{n+ m-1} }\sum _{j= m}^{n+ m-1}\binom{ n+ m-1 }{j  }    
+        \]因此赌本需要按以下比例分配 \[
+      \sum _{j= n}^{n+ m-1}\binom{ n+ m-1 }{j  }   : \sum _{j= m}^{n+ m-1}\binom{ n+ m-1 }{j  }    
+        \]
+    \end{enumerate}
+    
+\end{solution}
+
+\begin{exercise}{}{10-4-1}
+设 $0<P(B)<1$, 试证事件 $A$ 与 $B$ 独立的充要条件是 $P(A \mid B) = P(A \mid \overline{B})$.
+\end{exercise}
+
+\begin{proof}
+   如果条件成立, 则 \[
+    \begin{aligned}
+    P\left( A \right)&= P\left( A|B \right)P\left( B \right)+ P\left( A| \overline{B} \right)P\left(  \overline{B} \right)    \\ 
+     &= P\left( A|B \right) \left( P\left( B \right)+ P\left(  \overline{B} \right)   \right) \\ 
+      &= P\left( A|B \right)= \frac{P\left( AB \right)  }{P\left( B \right)  }  
+    \end{aligned}  
+    \]从而 \[
+    P\left( AB \right)= P\left( A \right)P\left( B \right)   
+    \] \(  A,B  \)独立. 反之, 如果 \(  A,B  \)也独立, 则 \(  A, \bar{B}  \)独立, 从而  \[
+    \begin{aligned}
+    P\left( A|B \right)&= \frac{P\left( AB \right)  }{P\left( B \right)  }\\ 
+     &= \frac{P\left( A \right)P\left( B \right)   }{P\left( B \right)  }    = P\left( A \right)\\ 
+      &= \frac{P\left( A \right) P\left( \bar{B} \right)  }{P\left( \bar{B} \right)  }  = \frac{P\left( A \bar{B} \right)  }{P\left( \bar{B} \right)  }\\ 
+       &= P\left( A|\bar{B} \right)  
+    \end{aligned}
+    \]  
+\end{proof}
+\begin{exercise}{}{}
+设 $0<P(A)<1, 0<P(B)<1, P(A \mid B) + P(\overline{A} \mid \overline{B}) = 1$, 试证 $A$ 与 $B$ 独立.
+\end{exercise}
+
+\begin{proof}
+    对 \[
+    \begin{aligned}
+   & P\left( A|B \right)+ P\left( \bar{A}|\bar{B} \right)= 1   \\ 
+    &\implies P\left( A|B \right)= 1-P\left(  \bar{A}|\bar{B} \right)\\ 
+     &\implies P\left( A|B \right)   = P\left(  A|\bar{B} \right) 
+    \end{aligned}
+    \]由Exercise \ref{ex:10-4-1}, \(  A,B  \)独立. 
+\end{proof}
+\begin{exercise}{}{}
+若 $P(A)>0, P(B)>0$, 如果 $A, B$ 相互独立, 试证 $A, B$ 相容.
+\end{exercise}
+\begin{proof}
+    若 \(  A,B  \) 不相容, 则 \(  P\left( AB \right)= 0   \), 但是 \[
+    P\left( AB \right)= P\left( A \right)P\left( B \right)> 0   
+    \]矛盾, 因此 \(  A,B  \)  相容.
+\end{proof}
+\end{document}

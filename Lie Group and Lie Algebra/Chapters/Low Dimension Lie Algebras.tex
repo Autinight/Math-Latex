@@ -1,0 +1,67 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Low Dimension Lie Algebras }
+% 代靖涵 25120222201319
+\section{Dimension 3}
+
+\subsection{Lie Algebras where \(  L^{\prime} = L  \) }
+
+\begin{theorem}{}{}
+    Suppose that \(  L  \) is a complex Lie algebra of dimension \(  3  \) such that \(  L= L^{\prime}   \). Then \(  L  \) is isomorphic to \(  \mathfrak{sl}\left( 2,\mathbb{C}  \right)   \).     
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item Let \(  x \in L  \) be non-zero. We claim that \(  \operatorname{ad}x  \)   has \(  \operatorname{rank}  \) 2. Extend \(  x  \) to a basis of \(  L  \) say \(  \left\{ x,y,z \right\}  \). Then \(  L^{\prime}   \) is spanned by \[
+        \left\{ \left[ x,y \right],\left[ x,z \right], \left[ y,z \right]    \right\}
+        \]     But \(  L^{\prime} = L  \), this set must be linearly independent, and hence the imaeg of \(  \operatorname{ad}x  \) has  a basis \(  \left\{ \left[ x,y \right],\left[ x,z \right]   \right\}   \) of size 2, as required.
+        \item We claim that there is some \(  h\in L  \) such that \(  \operatorname{ad}h  \) has an eigenvector with a non-zero eiganvalue. Choose any non-zero \(  x \in L  \). If \(  \operatorname{ad}x  \) has a non-zero eigenvalue, then we take \(  h= x  \). If \(  \operatorname{ad}x  \)          has no non-zero eigenvalues, then, as it has rank 2, its Jordan canonical form must be \[
+        \begin{pmatrix} 
+            0&1&0\\ 
+             0&0&1\\ 
+              0&0&0 
+        \end{pmatrix} 
+        \] THis martix indicates there is a basis of \(  L  \) extending \(  \left\{ x \right\}  \), say \(  \left\{ x,y,z \right\}  \) such that \(  \left[ x,y \right]= x   \) and \(  \left[ x,z \right]= y   \). So \(  \operatorname{ad}y  \)       has \(  x  \) as an eigenvector with eigenvalue \(  -1  \), and we may take \(  h= y  \).
+        
+        \item By the previous step, we may find \(  h,x \in L  \) such that \(  [h,x]= \alpha x\neq 0  \). Since \(  h \in L  \) and \(  L= L^{\prime}   \), we know \(  \operatorname{ad}h  \) has trace zero. It follows that \(  \operatorname{ad}h  \) must have three distinc eigenvalues \(  \alpha ,0,-\alpha   \). If \(  y  \) is an eigenvector for \(  \operatorname{ad}h  \) with eigenvalue \(  -\alpha   \), then \(  \left\{ h,x,y \right\}  \) is a basis of \(  L  \). In this basis, \(  \operatorname{ad}h  \) is represented by a diagonal matrix.
+        
+        \item To determine \(  \left[ x,y \right]   \). Note that \[
+        \left[ h,\left[ x,y \right]  \right]= \left[ \left[ h,x \right],y  \right]+ \left[ x,\left[ h,y \right]  \right]= \alpha [x,y]+ \left( -\alpha  \right)\left[ x,y \right]= 0     
+        \] 
+
+        \item We now make two applications of step 1. Firstly, \(  \operatorname{ker}\operatorname{ad}h= \operatorname{span}\left\{ h \right\}  \), so \(  \left[ x,y \right]=  \lambda h   \). Seconedly, \(   \lambda \neq 0  \) other wise \(  \operatorname{ker}\operatorname{ad}x  \) is \(  2  \)-dimensional. By replacing \(  x  \) with \(   \lambda ^{-1} x  \) we may assume that \(   \lambda = 1  \).        
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{proposition}{}{}
+Suppose that $\alpha, \beta \in \Phi$ and $\beta \neq \pm\alpha$.
+\begin{enumerate}
+    \item $\beta(h_{\alpha}) \in \mathbf{Z}$.
+    \item There are integers $r, q \geq 0$ such that $\beta + k\alpha \in \Phi$ if and only if $k \in \mathbf{Z}$ and $-r \leq k \leq q$. Moreover, $r - q = \beta(h_{\alpha})$.
+    \item If $\alpha + \beta \in \Phi$, then $[e_{\alpha}, e_{\beta}]$ is a non-zero scalar multiple of $e_{\alpha+\beta}$.
+    \item $\beta - \beta(h_{\alpha})\alpha \in \Phi$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    Let \(  M\coloneqq \oplus _{k}L_{\beta + k\alpha }  \) be the root string of \(  \alpha   \) through \(  \beta   \). 
+    \begin{enumerate}
+        \item \(  \beta \left( h_{\alpha } \right)   \) is the eigenvalue of \(  h_{\alpha }  \) acting on \(  L_{\beta }  \)   , so it lies in \(  \mathbb{Z}   \). 
+        \item \( \operatorname{dim}L_{\beta + k\alpha }= 1  \) whenever \(  \beta + k\alpha   \) is a root, so the eigenspaces of \(  \operatorname{ad}h_{\alpha }  \) on \(  M  \) are all \(  1  \)-dimensional and , since \(  \left( \beta + k\alpha  \right)h_{\alpha }= \beta \left( h_{\alpha } \right)+ 2k    \), the eigenvalues of \(  \operatorname{ad}h_{\alpha }  \) on \(  M  \) are either all even or all odd.        
+    \end{enumerate}
+       
+\end{proof}
+
+\section{Cartan Subalgebras as Inner-Product Spaces}
+
+
+\end{document}

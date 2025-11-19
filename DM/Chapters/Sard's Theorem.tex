@@ -1,0 +1,123 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+}{}
+
+\chapter{ Sard's Theorem }
+
+\section{Set of Measure Zero}
+
+\begin{lemma}{}{}
+    Suppose \(  A\subseteq \mathbb{R} ^{n}  \) is a compact subset whose intersection with \(  \left\{ c \right\} \times \mathbb{R} ^{n-1}  \) has \(  \left( n-1 \right)   \)- dimensional measure zero for every \(  c \in \mathbb{R}   \) .  Then \(  A  \) has a \(  n  \) - dimensional measure zero .       
+\end{lemma}
+
+\begin{proofsketch}
+    把 \(  A  \)的每一个``片'' \(  A_{c}: = \left\{ \left( c,x \right)\in \left\{ c \right\} \times \mathbb{R} ^{n-1}: \left( c,x \right) \in A   \right\}  \)  的开覆盖, 缩短成里面的一个开的``方片''.  这些``方片''构成 \(  A  \)的一个开覆盖, 取出一个有限子覆盖计算其Volume, 将``方片''的相交部分抹去, 使得总体积可控.  
+\end{proofsketch}
+
+\begin{proof}
+    Take \(  [a,b]\subseteq \mathbb{R}   \) such that \(  A\subseteq \left[ a,b \right]\times \mathbb{R} ^{n-1}   \) .
+    
+    Let \(  A_{c}: =  \left\{ \left( c,x \right) \in \left\{ c \right\}\times \mathbb{R} ^{n-1}: \left( c,x \right) \in A   \right\}  \). The projection from \(  A  \) to  \(  \left[ a,b \right]\times R^{n-1}   \) is continious map from a compact set to a Hausdorff space, thus is a proper map . It follows that \(  A_{c}  \) is a compact subspace of \(  A  \) for all  \(  c \in \left[ a,b \right]   \). 
+    
+    Take any \(   \delta > 0  \) .  There exists a finite open cover \(  C_1,\cdots ,C_{k}  \) of \(  A_{c}  \) , such that the total volumn is less than \(   \delta    \) . Denote the open subset \(  C_1\cup \cdots \cup C_{k}\subseteq A_{c}  \) by \(  U_{c}  \) .   We claim that  there is a open interval \(  J_{c}  \)  containing \(  c  \) and contained in \(  U_{c}  \) , such that   \(  A_{c}  \) is contained in the intersection of \(  A  \) with \(  J_{c}\times \mathbb{R} ^{n-1}  \) : otherwise, there is a suquence \(  \left\{ \left( c_{i},x_{i} \right)  \right\}  \) , such that \(  c_{i}\to c  \) , \(  x_{i}\not\in  U_{c}  \); but is passing to a subsequence \(  x_{i}\to A_{c}\setminus U_{c}  \) , which is a contradiction to \(  A_{c}\subseteq U_{c}  \) .   
+    
+    The intervals \(  \left\{ J_{c}: c \in \left[ a,b \right]  \right\}  \) forms a open cover of \(  \left[ a,b \right]   \) , so there is a finitely many \(  c_1< c_2< \cdots < c_{m}  \) such that \(  J_{c_1},\cdots ,J_{c_{m}}  \) forms a finite open cover of \(  A  \) . We may assume that the total length is less than \(  2\left| b-a \right|   \) by shrinking  the intersection of the members. Then \(  J_{c_1},\cdots ,J_{c_{m}}  \)      is a open cover of  \(  A  \) with total volumn less than \(  2 \delta \left| b-a \right|   \) , which can be arbitrally small . Hence \(  A   \) has a \(  n  \)- dimensional measure zero .   
+\end{proof}
+
+\begin{proposition}{}{}
+    Suppose \(  A  \) is an open or closed subset of \(  \mathbb{R} ^{n-1}  \) or \(  \mathbb{H}^{n-1}  \) , and \(  f: A\to \mathbb{R}   \) is a continuous function. Then the graph of \(  f  \) has measure zero in \(  \mathbb{R} ^{n}  \) .       
+\end{proposition}
+\begin{proofsketch}
+    对于\(  A  \)是紧集的情况, 令 \(  P^{n}= \left\{\text{Sets are n-dimensional measure zero}  \right\}  \) .  上面的引理给出了 \(  \forall c, P_{c}^{n-1} \implies  P^{n}  \)的结论.  因此降维操作是无损的, 从而归纳法有效. 
+\end{proofsketch}
+\begin{proof}
+    First assume that \(  A  \) is compact .  We prove the theorem in this case by induction on \(  n   \) . When \(  n = 1  \) , it is trivial because the graph of \(  f  \) is at most a point.  To prove the inductinve step, we appeal to lemma above. For each \(  c \in \mathbb{R}   \) , the intersection of the graph of \(  f  \) with \(  \left\{ c \right\}\times \mathbb{R} ^{n-1}  \) is just the graph of the restriction of \(  f  \) to \(  \left\{  x \in A:x^{1}= c \right\}  \),     which is in turn the graph of continuous functions of \(  \left( n-2 \right)   \) variables. It follows by induction that each such graph has \(  \left( n-1 \right)   \)-dimensional measure zero , and thus by lemma above , the graph of \(  f  \) itself has \(  n  \) -dimensional measure zero . 
+
+    If \(  A  \) is noncompact , it is a  countable union of compact subsets, so the graph of \(  f  \) is a countable union of sets of measure zero.  
+\end{proof}
+
+\begin{corollary}{}{}
+    Every proper affine subspace of \(  \mathbb{R} ^{n}  \) has measure zero in \(  \mathbb{R} ^{n}  \) .   
+\end{corollary}
+
+\begin{proposition}{Diffeomorphism-invariant of Measure Zero}{7-28-1}
+    Supposer \(  A\subseteq \mathbb{R} ^{n}  \) has measure zero and \(  F: A\to \mathbb{R} ^{n}  \) is a smooth map . Then \(  F\left( A \right)   \) has measure zero .    
+\end{proposition}
+
+\begin{definition}{}{}
+    If  \(  M  \) is a smooth \(  n  \)- manifold with or without boundary , we say that a subset \(  A\subseteq M  \) has \dfntxt{measure zero in \(  M  \) } if for every smooth chat \(  \left( U, \varphi  \right)   \) for \(  M  \) , the subset \(   \varphi \left( A\cap U \right)\subseteq \mathbb{R} ^{n}   \) has \(  n  \)- dimensional measure zero .        
+\end{definition}
+\begin{remark}
+    Equivalently, \(  \forall  \varepsilon > 0  \), there are countably many charts \(  \left( U_{i}, \varphi _{i} \right)   \), such that \[
+    A\subseteq \bigcup _{i= 1}^{\infty}U_{i},\quad \sum _{i= 1}\left[ \left(  \varphi _{i}^{-1}  \right)_{\sharp }\mu   \right](U_{i}) <  \varepsilon 
+    \]  
+\end{remark}
+\begin{lemma}{}{7-28-3}
+    Let \(  M  \) be a smooth \(  n  \)-manifold with or without boundary and \(  A\subseteq M  \) . Suppose that for some collection \(  \left\{ \left( U_{\alpha }, \varphi _{\alpha } \right)  \right\}  \) of smooth charts whose domains cover \(  A  \), \(   \varphi _{\alpha }\left( A\cap U_{\alpha } \right)   \) has measure zero in \(  \mathbb{R} ^{n}  \) for each \(  \alpha   \) . Then \(  A  \) has measure zero in \(  M  \) .           
+\end{lemma}
+\begin{proof}
+    Let \(  \left( V,\psi  \right)   \) be any smooth chat for \(  M  \) . We need to show that \(   \psi  \left( A\cap V \right)   \) has measure zero . There exists countably many \(  U_{\alpha }  \)'s covering \(  A\cap V  \) . We write \[
+    \psi \left( A\cap V \cap U_{\alpha }\right) = \left( \psi \circ  \varphi _{\alpha }^{-1}  \right)\circ  \varphi _{\alpha }\left( A\cap V\cap U_{\alpha } \right)  
+    \]  \(   \varphi _{\alpha }\left( A\cap V\cap U_{\alpha } \right)   \) is a subset of measure zero set \(   \varphi _{\alpha }\left( A\cap U_{\alpha } \right)   \) , thus has measure zero as well. It follows from Proposition \ref{pps:7-28-1} that \(  \psi \left( A\cap V\cap U_{\alpha } \right)   \) has measure zero . Then \(  \psi \left( A\cap V \right)   \) is a countable unions of measure zero sets , thus is measure zero as well.   
+\end{proof}
+
+
+\begin{exercise}{}{}
+    Let \(  M  \) be a smooth manifold with or without boundary. Show that a countable union of sets of measure zero in \(  M  \) has measure zero.   
+\end{exercise}
+
+\begin{proof}
+    Suppose \(  A_1,A_2,\cdots   \) are sets of measure zero in \(  M  \) . Let \(  A = \bigcup _{i= 1}^{\infty}A_{i}  \) . Take charts \(  \left( U_{ij}, \varphi _{ij} \right), j = 1,2,\cdots    \) such that  \(  A_{i}\subseteq  \bigcup _{j = 1}^{\infty}U_{ij}  \) .    Then \(  \left\{ U_{ij} \right\}_{i,j}^{\infty}  \) are countably many open sets that containing \(  A  \) , such that for each \(  i,j  \) ,  \[
+     \varphi _{ij}\left( A\cap U_{ij} \right)\subseteq \bigcup _{i = 1}^{\infty} \varphi _{ij}\left( A_{i}\cap U_{ij} \right)  
+    \]    is a countable union of measure zero sets, thus itself is measure zero. Then it follows from Lemma \ref{lem:7-28-3} that \(  A  \) is of measure zero.  
+\end{proof}
+
+\begin{proposition}{}{}
+    Suppoes \(  M  \) is a smooth manifold with or without boundary and \(  A\subseteq M  \) has measure zero in  \(  M  \). Then \(  M\setminus A  \) is dense in \(  M  \).      
+\end{proposition}
+\begin{proof}
+    If  \(  M\setminus A  \) is not dense. Then \(  A  \) contains a nonempty open subset of \(  M  \), which implies that there is a chat \(  \left( V,\psi  \right)   \) , such that  \(  \psi \left( A\cap V \right)   \) is a nonemtpy open subsets of \(  \mathbb{R} ^{n}  \) . It is imposible that  \(  \psi \left( A\cap V \right)   \) has measure zero at the same time that it is open.          
+\end{proof}
+
+\section{Sard's Theorem}
+
+\begin{theorem}{Sard's Theorem}{}
+Suppose $M$ and $N$ are smooth manifolds with or without boundary and $F : M \to N$ is a smooth map. Then the set of critical values of $F$ has measure zero in $N$.
+\end{theorem}
+
+\section{Tubular Neiborhoods }
+
+\section{Transversality}
+
+\begin{definition}{Intersect Transversely}{}
+   \begin{itemize}
+    \item  Two embedded submanifolds \(  S,S^{\prime} \subseteq M  \) are said to \dfntxt{intersect transversely} if for each \(  p \in S\cap S^{\prime}   \), then tangent spaces \(  T_{p}S  \) and \(  T_{p}S^{\prime}   \) togegher span \(  T_{p}M  \)   .
+    \item Let  \(  F:N\to M  \)  be a smooth map and \(  S\subseteq M  \) be an embedded submanifold. We say \(  F  \) is \dfntxt{transverse} to \(  S  \), if for every \(  x \in F^{-1} \left( S \right)   \), the spaces \(  T_{F\left( x \right) }S  \) and \(  d F_{x}\left( T_{x}N \right)   \) together span \(  T_{F\left( x \right) }M  \).      
+   \end{itemize}
+     
+\end{definition}
+
+\begin{remark}
+    \(  S,S^{\prime} \subseteq M  \) are intersect transversely, if and only if  the inclusion map \(  \iota : S\hookrightarrow  M  \) is transverse to \(  S^{\prime}   \). 
+\end{remark}
+\begin{theorem}{}{}
+Suppose $N$ and $M$ are smooth manifolds and $S \subseteq M$ is an embedded submanifold.
+
+\begin{enumerate}
+    \item[(a)] If $F: N \to M$ is a smooth map that is transverse to $S$, then $F^{-1}(S)$ is an embedded submanifold of $N$ whose codimension is equal to the codimension of $S$ in $M$.
+    \item[(b)] If $S' \subset M$ is an embedded submanifold that intersects $S$ transversely, then $S \cap S'$ is an embedded submanifold of $M$ whose codimension is equal to the sum of the codimensions of $S$ and $S'$.
+\end{enumerate}
+\end{theorem}
+\begin{corollary}{}{}
+Suppose $N$ and $M$ are smooth manifolds, $S \subseteq M$ is an embedded submanifold of codimension $k$, and $F: N \to M$ is a submersion. Then $F^{-1}(S)$ is an embedded codimension-$k$ submanifold of $N$.
+\end{corollary}
+\begin{proof}
+    If \(  F  \) is a submersion , it is automatically transverse to every embedded submanifold \(  S\subseteq M  \).  
+\end{proof}
+\end{document}

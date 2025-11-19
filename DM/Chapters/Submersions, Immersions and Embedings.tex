@@ -1,0 +1,25 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Submersions, Immersions and Embedings }
+\subsection{Local Diffeomorphism}
+\begin{definition}{}{}
+    If $M$ and $N$ are smooth manifolds with or without boundary, a map $F: M \to N$ is called a \dfntxt{local diffeomorphism} if every point $p \in M$ has a neighborhood $U$ such that $F(U)$ is open in $N$ and $F|_U : U \to F(U)$ is a diffeomorphism. 
+\end{definition}
+\begin{theorem}{Inverse Function Theorem for Manifolds}{}
+Suppose $M$ and $N$ are smooth manifolds, and $F: M \to N$ is a smooth map. If $p \in M$ is a point such that $dF_p$ is invertible, then there are connected neighborhoods $U_0$ of $p$ and $V_0$ of $F(p)$ such that $F|_{U_0}: U_0 \to V_0$ is a diffeomorphism.
+\end{theorem}
+
+\begin{note}
+    也就是说, 光滑映射在微分映射可逆的点附近是微分同胚.
+\end{note}
+
+\end{document}

@@ -1,0 +1,174 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Connectedness }
+% 代靖涵 25120222201319
+
+\section{Connectedness}
+
+\begin{definition}{}{}
+A topological space $X$ is \dfntxt{connected} if and only if one of the following equivalent conditions holds:
+\begin{enumerate}
+    \item[(i)] $X$ cannot be expressed as the union of two disjoint nonempty open sets.
+    \item[(ii)]  The subsets of \(  X  \) that are clopen in \(  X  \) are the empty set and \(  X  \) itself.   
+    \item[(iii)] Every continuous function $f: X \to \{0, 1\}$ is constant, where $\{0, 1\}$ is equipped with the discrete topology.
+\end{enumerate}
+\end{definition}
+
+\begin{proof}
+    If (i) holds then since \[
+    X= f^{-1} \left( 0 \right)\cup f^{-1} \left( 1 \right)  
+    \] one of the component must be  empty     . Thus \(  f  \) is constant. Then (ii) holds.
+    
+    If (ii) holds, then for each \(  U,V   \) such that \(  X= U\cap V  \), \(  U\cap V= \varnothing  \), define \[
+    f\coloneqq \begin{cases} 1,&x\in U\\ 
+     0,& x\in V \end{cases} 
+    \] then one of the \(  U  \) and \(  V  \) must be empty.     
+\end{proof}
+
+\begin{lemma}{}{}
+    If \(  Y  \) is a subspace of \(  X  \), a separation of \(  Y  \) is a pair of disjoint nonempty sets \(  A  \) and \(  B  \) whose union is \(  Y  \), neither of which contains a limit point of the other.
+    
+    The space \(  Y  \) is connected if there exists no separation of \(  Y  \).  
+\end{lemma}
+\begin{proof}
+    Suppose that \(  A  \) and \(  B  \) form a separation of \(  Y  \). Then \(  A  \) is clopen in \(  Y  \), \(  \bar{A}\cap Y= A  \), equivalently, \(  \bar{A}\cap B= \varnothing  \). It follows that \(  B  \) contains no limit point of \(  A  \).
+    
+    Conversely, supposet that \(  A  \) and \(  B  \) are disjoint nonempty sets whose union if \(  Y  \), neither of which contains a limit point of the other. Then \(  \bar{A}\cap B= \varnothing  \), \(  \bar{A}\cap Y= A  \)     , \(  A  \) is closed in \(  Y  \). Similarly, \(  B  \) is closed in \(  Y  \), then \(  A,B  \) are clopen in \(  Y  \) .     
+\end{proof}
+
+\begin{lemma}{}{}
+    If the sets \(  C  \) and \(  D  \) form a separation of \(  X  \), and if \(  Y  \) is a connected subspace of \(  X  \), then \(  Y  \) lies entirely within either \(  C  \) or \(  D  \)        
+\end{lemma}
+
+\begin{proof}
+    \(  X  \) is not connected, there is a continuous function \(  f :X\to \left\{ 0,1 \right\} \) with \(  f\left( C \right)= \left\{ 0 \right\}   \), \(  f\left( D \right)= \left\{ 1 \right\}   \).    Then \(  f|_{Y} :Y\to \left\{ 0,1 \right\} \) is a continuous function . Since \(  Y  \) is conneted, we have \(  f|_{Y}  \) is constant. Assume that \(  f|_{Y}\equiv 0  \), then \(  Y\subseteq f^{-1} \left( 0 \right)= C   \).    
+\end{proof}
+
+\begin{theorem}{}{}
+    Let \(  A  \) be a connected subspace of \(  X  \). If \(  A\subseteq B\subseteq  \overline{A}  \), then \(  B  \) is also connected    .
+\end{theorem}
+\begin{remark}
+    If \(  B  \) is formed by adjoining to the connected subspace \(  A  \) some or all of its limit points, then \(  B  \) is connected.   
+\end{remark}
+\begin{proof}
+    Let \(  f: B\to \left\{ 0,1 \right\}  \) be continuous. Then \(  f  \) is constant on \(  A  \) since \(  A  \) is connected, we assume that \(  f\left( A \right)= \left\{ 0 \right\}   \).    If \(  f\left( \bar{A} \right)\not = \left\{ 0 \right\}   \), then there exists \(  p \in \bar{A}   \) such that \(  f\left( p \right)= 1   \). Then \(  f^{-1} \left( 1 \right)   \) is an open set containing \(  p  \), thus \(  f^{-1} \left( 1 \right)\cap A= \varnothing   \), a contradicton.       
+\end{proof}
+
+\begin{definition}{}{}
+A topological space $X$ is said to be \dfntxt{path connected} if and only if for all $x, y \in X$ there is a \dfntxt{path} that connects $x$ and $y$.
+\end{definition}
+
+\begin{theorem}{}{}
+If $X$ is (path) connected and $f: X \to Y$, then $fX$ is (path) connected.
+\end{theorem}
+\begin{corollary}{}{}
+\dfntxt{Connected} and \dfntxt{path connected} are topological properties.
+\end{corollary}
+
+\begin{corollary}{}{}
+The quotient of a (path) connected space is (path) connected.
+\end{corollary}
+
+\begin{proof}
+    
+Since quotient maps are continuous surjections, we know quotients preserve (path) connectedness.
+\end{proof}
+
+\begin{theorem}{}{}
+Let $X$ be a space and $f: X \to Y$ be a surjective map. If $Y$ is connected in the quotient topology and if each fiber $f^{-1}y$ is connected, then $X$ is connected.
+\end{theorem}
+
+\begin{proof}
+Let $g: X \to \{0, 1\}$. Since the fibers of $f$ are connected, $g$ must be constant on each fiber of $f$. Therefore $g$ factors through $f: X \to Y$, and there is a map $\bar{g}: Y \to \{0, 1\}$ that fits into this diagram.\[\begin{tikzcd}
+	&& X \\
+	\\
+	&& Y \\
+	{\{0,1\}}
+	\arrow["f", from=1-3, to=3-3]
+	\arrow["g"', curve={height=12pt}, from=1-3, to=4-1]
+	\arrow["{\bar{g}}", dashed, from=3-3, to=4-1]
+\end{tikzcd}\]
+But $Y$ is connected and so $\bar{g}$ must be constant. Therefore $g = \bar{g}f$ is constant.
+\end{proof}
+
+\begin{theorem}{}{}
+Suppose $X = \bigcup_{\alpha \in A} X_{\alpha}$ and that for each $\alpha \in A$ the space $X_{\alpha}$ is (path) connected. If there is a point $x \in \bigcap_{\alpha \in A} X_{\alpha}$ then $X$ is (path) connected.
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item Connected: Let \(  g: X\to \left\{ 0,1 \right\}  \), since \(  X_{\alpha }   \) is connected, \(  g  \) is constant on \(  X_{\alpha }  \). Specially, \(  g|_{X_{\alpha }}\equiv g\left( x \right)   \) for each \(  \alpha \in A  \). Thus \(  g \equiv g\left( x \right)   \) is constant. Thus \(  X  \) is connected.
+        \item Take any \(  y_1,y_2\in X  \), suppose that \(  y_1\in X_{\alpha _1 }, y_2\in X_{\alpha _2 }  \). Since \(  x \in X_{\alpha _1 }\cap X_{\alpha _2 }  \), there exists path \(   \gamma _1   \) on \(  X_{\alpha _1 }   \) connecting \(  y_1  \) and \(  x  \), and path \(   \gamma _2   \) on \(  X_{\alpha _2 }  \) connecting \(  x  \) and \(  y_2  \). We define \(   \gamma  :\left[ 0,1 \right]\to X   \) to be \[
+         \gamma \left( t \right)= \begin{cases}  \gamma _1 \left( 2t \right),& t\in \left[ 0,\frac{1 }{2 }  \right]\\ 
+           \gamma _2 \left( 2t-1 \right) , & t \in \left[ \frac{1 }{2 },1  \right]     \end{cases}  
+        \]           Then it follows from the gluing lemma that \(   \gamma   \) is continuous, connecting \(  y_1  \) and \(  y_2  \).  Thus \(  X  \) is path-connected.              
+    \end{enumerate}
+    
+\end{proof}
+
+\section{Constructions and Connectedness}
+
+
+\begin{theorem}{}{}
+Let $\{X_\alpha\}_{\alpha\in A}$ be a collection of (path) connected topological spaces. Then $X := \prod_{\alpha\in A} X_\alpha$ is (path) connected.
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Conneted:  We only show that \(  X\times Y  \) is conncted if \(  X,Y  \) are. The infinite case is complicated. 
+        Fix a point \(  b \in Y  \), let \[
+        T_{x}=  \left( X\times \left\{ b \right\} \right)\cup \left( \left\{ x \right\}\times Y \right)  
+        \] is connected space since it is the intersection of two conneted space with common point \(  \left( x,b \right)   \). Then \[
+        X\times Y= \bigcup _{x \in X} T_{x}
+        \] is connected since it is the intersection of connected spaces with the common point \(  \left( a,b \right)   \). 
+        \item Path-connected: For each \(  a, b \in X  \), and each \(  \alpha  \in A  \). Since \(  X_{\alpha  }  \) is path connected, there exists a path \(  p_{\alpha } :\left[ 0,1 \right]\to X_{\alpha }  \) connecting \(  a_{\alpha }  \) and \(  b_{\alpha }  \). Then it follows from the universal property that there exists a unique continuous function \(  p:\left[ 0,1 \right]\to X   \) such that \(   \pi_{\alpha }\circ p= p_{\alpha }  \). Thus \(  p\left( 0 \right)= \left( a_{\alpha } \right)_{\alpha \in A}= a    \), \(  p\left( 1 \right)= \left( b_{\alpha } \right)_{\alpha \in A}= b    \)          .
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{example}{A cartesian product of connected spaces that is not connceted in the box topology}{}
+    Consider the \(  \mathbb{R} ^{ \omega }  \) in the box topology. We write the set \(  A  \) the set of all bounded suquences of real numbers, and \(  B  \) of all unbounded sequences. If \(  \mathbf{a}  \) is a point of \(  \mathbb{R} ^{ \omega }  \), then open set \[
+    U= \left( a_1-1,a_1+ 1 \right)\times \cdots  
+    \] consists entirely of \(  A  \) or \(  B  \).     
+\end{example}
+
+\section{Components and Local Connectedness }
+
+\begin{definition}{}{}
+Given $X$, define an equivalence relation on $X$ by setting $x \sim y$ if there is a connected subspace of $X$ containing both $x$ and $y$. The equivalence classes are called the \dfntxt{components} (or the ``connected components'') of $X$.
+\end{definition}
+\begin{theorem}{}{}
+The components of $X$ are \dfntxt{connected disjoint} subspaces of $X$ whose union is $X$, such that \dfntxt{each} nonempty connected subspace of $X$ intersects only one of them.
+\end{theorem}
+\begin{definition}{}{}
+We define another equivalence relation on the space $X$ by defining $x \sim y$ if there is a path in $X$ from $x$ to $y$. The equivalence classes are called the \dfntxt{path components} of $X$.
+\end{definition}
+\begin{definition}{}{}
+A space $X$ is said to be \dfntxt{locally connected at x} if for every neighborhood $U$ of $x$, there is a connected neighborhood $V$ of $x$ contained in $U$. If $X$ is locally connected at each of its points, it is said simply to be \dfntxt{locally connected}. Similarly, a space $X$ is said to be \dfntxt{locally path connected at x} if for every neighborhood $U$ of $x$, there is a path-connected neighborhood $V$ of $x$ contained in $U$. If $X$ is locally path connected at each of its points, then it is said to be \dfntxt{locally path connected}.
+\end{definition}
+
+
+\begin{theorem}{}{}
+A space $X$ is locally connected \dfntxt{if and only if} for every open set $U$ of $X$, \dfntxt{each component of $U$} is open in $X$.
+\end{theorem}
+\begin{proof}
+    Suppose \(  X  \) is locally connected. Take any open set \(  U  \) of \(  X  \), and any component \(  C  \) of \(  U  \). For each \(  x \in C  \), there exists a connected neighborhodd \(  V  \) of \(  x \) such that \(  V\subseteq U  \). Since \(  V\cap C\neq \varnothing  \),     we have      \(  V\subseteq C  \). \(  C  \) is open.
+    
+    If for every open set \(  U  \) of \(  X  \) and each componet \(  C  \) of \(  U  \), \(  C  \) is open. Then for each \(  x \in X  \) , and each neighborhood \(  V  \) of \(  x  \). The component \(  C  \) of \(  V  \) containing \(  x  \) is a open conneted neighborhood of \(  x  \) contained in \(  V  \). Thus \(  X  \) is connected.         
+\end{proof}
+\begin{theorem}{}{}
+A space $X$ is \dfntxt{locally path connected} \dfntxt{if and only if} for every open set $U$ of $X$, each path component of $U$ is open in $X$.
+\end{theorem}
+\begin{theorem}{}{}
+If $X$ is a topological space, each path component of $X$ lies in a component of $X$. If $X$ is locally path connected, then the components and the path components of $X$ are the same.
+\end{theorem}
+
+\end{document}

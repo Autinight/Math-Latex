@@ -1,0 +1,75 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{1}
+    \setcounter{section}{2}
+}{}
+
+\chapter{  }
+\section{}
+代靖涵 25120222201319
+
+\begin{exercise}{}{}
+设 $\{B_k\}$ 是 $\mathbf{R}^n$ 中递减可测集列, $m^*(A) < +\infty$. 令 $E_k = A \cap B_k (k=1,2,\cdots), E = \bigcap_{k=1}^{\infty} E_k$, 试证明
+\[ \lim_{k \to \infty} m^*(E_k) = m^*(E). \]
+\end{exercise}
+
+\begin{proof}
+存在 \(  G_{ \delta }  \)集 \(  G  \), 使得 \(  A\subseteq G  \), \(  m\left( G \right)= m^{*}\left( A \right)< \infty   \). 对于每个 \(  k  \), 令\(  F_{k}= G\cap B_{k}  \) , 则 \(  \left\{ F_{k} \right\}  \)是一列递减的可测集列, 使得 \(  m\left( F_1 \right)< \infty   \).     记 \(  B= \bigcap _{k= 1}^{\infty}B_{k}  \), 记 \(  F= G\cap B= \bigcap _{k= 1}^{\infty}F_{k}  \) , 则\(  F  \) 是一个可测集.   由于 \(    B\)  可测,    \[
+\begin{aligned}
+m^{*}\left( E_{k} \right)&= m^{*}\left( E_{k}\cap B \right)+ m^{*}\left( E_{k}\setminus B \right) \\ 
+ &= m^{*}\left( E \right)+ m^{*}\left( E_{k}\setminus E \right)  
+\end{aligned}   
+\] 由于 \[
+F_{k}\setminus F= G\cap \left( B_{k}\setminus B \right)\supseteq A\cap \left( B_{k}\setminus B \right)=  E_{k}\setminus E  
+\]我们有\[m^{*}\left( F_{k}\setminus F \right)\ge m^{*}\left( E_{k}\setminus E \right)  
+\]注意到 \(  \left\{ F_{k}\setminus F \right\}  \)是递减的可测集列, 使得 \(  m\left( F_1\setminus F \right)\le m\left( F_1 \right)< \infty    \),  因此由测度的自上连续性,  \[
+\lim_{k\to \infty}m\left( F_{k}\setminus F \right)= m\left( \bigcap _{k= 1}^{\infty}\left( F_{k}\setminus F \right)  \right)= m\left( \varnothing \right)= 0   
+\] 因此 \[\begin{aligned}
+\limsup_{k\to \infty}m^{*}\left( E_{k} \right)&=  m^{*}\left( E \right)+ \limsup_{k\to \infty}m^{*}\left( E_{k}\setminus E\right)\\ 
+ &   \le m^{*}\left( E \right)+ \lim_{k\to \infty}m\left( F_{k}\setminus F \right)  \\ 
+  &= m^{*}\left( E \right)  
+\end{aligned}
+\]另一方面, 由于对于任意的 \(  k  \), 我们有 \(  E_{k}\supseteq E  \), 因此 \(  m^{*}\left( E_{k} \right)\ge m^{*}\left( E \right), \forall k    \), 从而 \[
+\liminf_{k\to \infty}m^{*}\left( E_{k} \right)\ge m^{*}\left( E \right)  
+\]   因此 \[
+m^{*}\left( E \right)\le \liminf_{k\to \infty}m^{*}\left( E_{k} \right)\le \limsup_{k\to \infty}m^{*}\left( E_{k} \right)\le m^{*}\left( E \right)    
+\]即 \[
+\lim_{k\to \infty}m^{*}\left( E_{k} \right)= m^{*}\left( E \right)  
+\]
+\end{proof}
+\begin{exercise}{}{}
+设 $E \subset \mathbf{R}^n, H \supset E$ 且 $H$ 是可测集. 若 $H \setminus E$ 的任一可测子集皆为零测集, 试问: $H$ 是 $E$ 的等测包吗?
+\end{exercise}
+
+\begin{proof}
+    设 \(  G  \)是 \(  E  \)的一个等测包, 则 \(  m\left( G \right)= m^{*}\left( E \right)    \). \(  G\cap H  \)也是包含了 \(  E  \)的一个子集, 我们有 \[
+   m^{*}\left( E \right)=   m\left( G \right)\ge m\left( G\cap H \right)\ge  m^{*}\left( E \right)  \implies m^{*}\left( G\cap H \right)= m^{*}\left( E \right)   
+    \]   令 \(  G_1= G\cap H  \), 则 \(  G_1  \)是 \(  E  \)的一个等测包, 使得 \(  H\supseteq G_1\supseteq E  \). \(  H\setminus G_1  \)是 \(  H\setminus E  \)的一个可测子集, 由题设条件可知它是一个零测集. 从而 \[
+    m\left( H \right)= m\left( H\setminus G_1 \right)+ m\left( G_1 \right)= m\left( G_1 \right)= m^{*}\left( E \right)     
+    \]因此 \(  H  \)是 \(  E  \)的等测包.        
+\end{proof}
+\begin{exercise}{}{}
+试证明点集 $E$ 可测的充分必要条件是: 对任给 $\varepsilon > 0$, 存在开集 $G_1, G_2: G_1 \supset E, G_2 \supset E^c$, 使得 $m(G_1 \cap G_2) < \varepsilon$.
+\end{exercise}
+\begin{proof}
+    若 \(  E  \)可测, 则 \(  E^{c}  \)也可测. 任取 \(   \varepsilon > 0  \),  存在开集 \(  G_1\supseteq E  \)使得 \(  m\left( G_1\setminus E \right)< \frac{ \varepsilon  }{2 }    \), 存在闭集 \(  F_2\subseteq E  \)使得 \(  m\left( E\setminus F_2 \right)< \frac{ \varepsilon }{2 }    \) . 令 \(  G_2= F_2^{c}  \), 注意到   \[
+    \left( G_1\setminus E \right) \cup \left( E\setminus F_2 \right) = G_1\setminus F_2= G_1\cap G_2
+    \]  因此 \[
+    m\left( G_1\cap G_2 \right)\le m\left( G_1\setminus E \right)+ m\left( E\setminus F_2 \right)<  \varepsilon    
+    \]  
+
+    若条件成立,  任取 \(   \varepsilon > 0  \), 设 \(  G_1,G_2  \)是这样的开集, 则 由 \(  G_2\supseteq E^{c}  \), 可得 \[
+    E\supseteq G_2^{c}
+    \]  从而\[
+    G_1\setminus E\subseteq G_1\setminus \left( G_2^{c} \right)= G_1\cap G_2 
+    \]因此 \[
+    m\left( G_1\setminus E \right)\le m\left( G_1\cap G_2 \right)<  \varepsilon   
+    \]由于 \(   \varepsilon   \)是任取的, 这表明 \(  E  \)是Lebesgue可测的.  
+\end{proof}
+\end{document}

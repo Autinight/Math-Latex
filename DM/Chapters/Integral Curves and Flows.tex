@@ -1,0 +1,193 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+}{}
+
+\chapter{ Integral Curves and Flows }
+
+\section{Integral Curves}
+
+\begin{definition}{Integral Curve}{}
+    If $V$ is a vector field on $M$, an \dfntxt{integral curve of $V$} is a differentiable curve $\gamma: J \to M$ whose velocity at each point is equal to the value of $V$ at that point:
+$$\gamma'(t) = V_{\gamma(t)} \quad \text{for all } t \in J.$$
+If $0 \in J$, the point $\gamma(0)$ is called the \dfntxt{starting point of $\gamma$}. 
+\end{definition}
+
+Finding integral curves boils down to sloving a system of ordinary differential equations in a smooth chat. Suppose \(  V  \) is a smooth vector field on \(  M  \) and \(   \gamma :J\to M  \) is a smooth curve. On a smooth coordinate domain \(  U\subseteq M  \), we can write \(   \gamma   \) in local coordinates as  \[
+ \gamma \left( t \right)= \left(  \gamma ^{1}\left( t \right),\cdots , \gamma ^{n}\left( t \right)   \right)  
+\]     Then the condition \(   \gamma ^{\prime} \left( t \right)= V_{ \gamma \left( t \right) }   \) for \(   \gamma   \) to be an integral curve of \(  V  \) can be written \[
+ \dot{\gamma}^{i}\left( t \right) \left. \frac{\partial }{\partial x^{i}} \right|_{ \gamma \left( t \right) }=   V^{i}\left(  \gamma \left( t \right)  \right)\left. \frac{\partial }{\partial x^{i}} \right|_{ \gamma \left( t \right) } , 
+\]  which reduces to the following autonomous system of ordinary differential equatoins:  
+\[
+\begin{aligned}
+\dot{\gamma}^1(t) &= V^1(\gamma^1(t), \dots, \gamma^n(t)), \\
+&\vdots \\
+\dot{\gamma}^n(t) &= V^n(\gamma^1(t), \dots, \gamma^n(t)).
+\end{aligned}
+\]
+
+\begin{proposition}{}{}
+    Let \(  V  \) be a smooth vector field on a smooth manifold \(  M  \) . For each point \(  p \in M  \) , there exists \(   \varepsilon > 0  \) and a smooth curve \(   \gamma : \left( - \varepsilon , \varepsilon  \right)\to M   \) that is an integral curve of \(  V  \) starting at \(  p  \) .        
+\end{proposition}
+
+\begin{proof}
+    The ODE system corosponding to the condition \[
+      \gamma ^{\prime} \left( t \right)= V_{ \gamma \left( t \right) } 
+     \] is smooth. Thus it satisfies the local Lipschitz condition. Then the proposition follows from the Picard-Lindelöf Theorem. 
+\end{proof}
+
+\section{Flows}
+\begin{definition}{}{}
+     We define a \dfntxt{global flow} on $M$ (also called a \dfntxt{one-parameter group action}) to be a continuous left $\mathbb{R}$-action on $M$; that is, a continuous map $\theta: \mathbb{R} \times M \to M$ satisfying the following properties for all $s, t \in \mathbb{R}$ and $p \in M$:
+\begin{equation}\label{eq:11-5-1}
+\theta(t, \theta(s, p)) = \theta(t+s, p), \quad \theta(0, p) = p.
+\end{equation}
+Given a global flow $\theta$ on $M$, we define two collections of maps as follows:
+\begin{itemize}
+\item For each $t \in \mathbb{R}$, define a continuous map $\theta_t: M \to M$ by
+\[
+\theta_t(p) = \theta(t, p).
+\]
+The defining properties (\ref{eq:11-5-1}) are equivalent to the \dfntxt{group laws}
+\begin{equation}
+\theta_t \circ \theta_s = \theta_{t+s}, \quad \theta_0 = \operatorname{Id}_M.
+\end{equation}
+As is the case for any continuous group action, each map $\theta_t: M \to M$ is a homeomorphism, and if the flow is smooth, $\theta_t$ is a diffeomorphism.
+\item For each $p \in M$, define a curve $\theta^{(p)}: \mathbb{R} \to M$ by
+\[
+\theta^{(p)}(t) = \theta(t, p).
+\]
+\end{itemize}
+The image of this curve is the orbit of $p$ under the group action.
+\end{definition}
+
+\begin{proposition}{}{}
+
+
+If $\theta: \mathbb{R} \times M \to M$ is a smooth global flow, for each $p \in M$ we define a tangent vector $V_p \in T_p M$ by
+\[
+V_p = \theta^{(p)'}(0).
+\]
+The assignment $p \mapsto V_p$ is a (rough) vector field on $M$, which is called the \dfntxt{infinitesimal generator of $\theta$}.
+
+
+
+ The infinitesimal generator $V$ of $\theta$ is a smooth vector field on $M$, and each curve $\theta^{(p)}$ is an integral curve of $V$.
+\end{proposition}
+
+\subsection{Fundemental Theorem on Flows}
+
+\begin{definition}{}{}
+\begin{itemize}
+    \item If $M$ is a manifold, a \dfntxt{flow domain} for $M$ is an open subset $\mathcal{D} \subseteq \mathbb{R} \times M$ with the property that for each $p \in M$, the set $\mathcal{D}^{(p)} = \{t \in \mathbb{R} : (t, p) \in \mathcal{D}\}$ is an open interval containing 0 . 
+    \item A \dfntxt{flow} on $M$ is a continuous map $\theta: \mathcal{D} \to M$, where $\mathcal{D} \subseteq \mathbb{R} \times M$ is a flow domain, that satisfies the following group laws : 
+ \begin{itemize}
+        \item For all $p \in M$,
+\begin{equation}
+\theta(0, p) = p,
+\end{equation}
+\item 
+and for all $s \in \mathcal{D}^{(p)}$ and $t \in \mathcal{D}^{(\theta(s,p))}$ such that $s + t \in \mathcal{D}^{(p)}$,
+\begin{equation}
+\theta(t, \theta(s, p)) = \theta(t + s, p).
+\end{equation}
+    \end{itemize}
+    We sometimes call $\theta$ a \dfntxt{local flow} to distinguish it from a global flow as defined earlier. The unwieldy term \dfntxt{local one-parameter group action} is also used.
+\end{itemize}
+\end{definition}
+\begin{note}
+    \begin{itemize}
+        \item \dfntxt{flows domain} 要求每一个空间节点上, 时间的变化范围都是包含\(  0  \) 的开区间
+        \item 一个 \dfntxt{flow}就是 \(  M  \)上活动在 \(  \mathcal{D}  \)内关于时间变化的一个局部左\(  \mathbb{R}   \)-作用.   
+    \end{itemize}
+    
+\end{note}
+
+\begin{definition}{}{}
+    If $\theta$ is a flow, we define $\theta_t(p) = \theta^{(p)}(t) = \theta(t, p)$ whenever $(t, p) \in \mathcal{D}$, just as for a global flow. For each $t \in \mathbb{R}$, we also define
+\begin{equation}
+M_t = \{p \in M : (t, p) \in \mathcal{D}\},
+\end{equation}
+so that
+\[
+p \in M_t \Leftrightarrow t \in \mathcal{D}^{(p)} \Leftrightarrow (t, p) \in \mathcal{D}.
+\]
+If $\theta$ is smooth, the \dfntxt{infinitesimal generator of $\theta$} is defined by $V_p = \theta^{(p)\prime}(0)$.
+\end{definition}
+
+\begin{note}
+    \begin{itemize}
+        \item 当我们谈论 点在\(  t  \)时间后的行为时, 只能对 \(  M_{t}  \)上的点讨论.   
+        \item 无穷小生成元就是每一点处运动曲线的起始切向量.
+    \end{itemize}
+    
+\end{note}
+
+
+\begin{theorem}{Fundamental Theorem on Flows}{}
+Let $V$ be a smooth vector field on a smooth manifold $M$. There is a unique smooth maximal flow $\theta: \mathcal{D} \to M$ whose infinitesimal generator is $V$. This flow has the following properties:
+\begin{enumerate}
+    \item[(a)] For each $p \in M$, the curve $\theta^{(p)}: \mathcal{D}^{(p)} \to M$ is the unique maximal integral curve of $V$ starting at $p$.
+    \item[(b)] If $s \in \mathcal{D}^{(p)}$, then $\mathcal{D}^{(\theta(s,p))}$ is the interval $\mathcal{D}^{(p)} - s = \{t - s : t \in \mathcal{D}^{(p)}\}$.
+    \item[(c)] For each $t \in \mathbb{R}$, the set $M_t$ is open in $M$, and $\theta_t: M_t \to M_{-t}$ is a diffeomorphism with inverse $\theta_{-t}$.
+\end{enumerate}
+\end{theorem}
+\begin{note}
+    \begin{itemize}
+        \item 向量场$V$的最大流$\theta : \mathcal D \subset \mathbb R \times M \to M$将从$M$中各点出发的极大积分曲线统一表示为$\gamma_p(t) = \theta(t,p)$. 相对于单纯的一族积分曲线, 最大流$\theta$还同时编码了解对初值$p$的光滑依赖, 即$\theta$作为$(t,p)$的函数是光滑的
+        \item 直观上, [(c)]用平移来看. 划定一个区域, 将这些区域整体平移, 删去那些跑到区域外的点, 删去的点正好能补齐因为平移而产生的空缺, 这体现了平移关于时间的可逆性, 平移就是一种特殊的流.
+    \end{itemize}
+    
+\end{note}
+
+\subsection{Complete Vector Fields}
+
+
+\section{Lie Derivatives}
+
+\begin{definition}{}{}
+Suppose $M$ is a smooth manifold, $V$ is a smooth vector field on $M$, and $\theta$ is the flow of $V$. For any smooth vector field $W$ on $M$, define a rough vector field on $M$, denoted by $\mathcal{L}_V W$ and called the \dfntxt{Lie derivative of W with respect to V}, by
+\begin{equation}
+\begin{aligned}
+(\mathcal{L}_V W)_p &= \left. \frac{d}{dt} \right|_{t=0} d(\theta_{-t})_{\theta_t(p)}(W_{\theta_t(p)}) \\
+&= \lim_{t \to 0} \frac{d(\theta_{-t})_{\theta_t(p)}(W_{\theta_t(p)}) - W_p}{t},
+\end{aligned}
+\end{equation}
+provided the derivative exists. For small $t \neq 0$, at least the difference quotient makes sense: $\theta_t$ is defined in a neighborhood of $p$, and $\theta_{-t}$ is the inverse of $\theta_t$, so both $d(\theta_{-t})_{\theta_t(p)}(W_{\theta_t(p)})$ and $W_p$ are elements of $T_p M$ .
+\end{definition}
+
+\begin{theorem}{}{}
+If $M$ is a smooth manifold and $V, W \in \mathfrak{X}(M)$, then $\mathcal{L}_V W = [V, W]$.
+\end{theorem}
+
+\section{Commuting Vector Fields}
+
+
+\begin{definition}{}{}
+    If $\theta$ is a smooth flow, a vector field $W$ is said to be \dfntxt{invariant under $\theta$} if $W$ is $\theta_t$-related to itself for each $t$; more precisely, this means that $W|_{M_t}$ is $\theta_t$-related to $W|_{M_{-t}}$ for each $t$, or equivalently that $d(\theta_t)_p(W_p) = W_{\theta_t(p)}$ for all $(t, p)$ in the domain of $\theta$.
+\end{definition}
+
+\begin{theorem}{}{}
+For smooth vector fields V and W on a smooth manifold M, the following are equivalent:
+\begin{enumerate}
+\item[(a)] V and W commute.
+\item[(b)] W is \dfntxt{invariant under the flow} of V.
+\item[(c)] V is \dfntxt{invariant under the flow} of W.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}{Canonical Form for Commuting Vector Fields}{}
+Let $M$ be a smooth $n$-manifold, and let $(V_1, \dots, V_k)$ be a linearly independent $k$-tuple of smooth commuting vector fields on an open subset $W \subseteq M$. 
+\begin{itemize}
+    \item For each $p \in W$, there exists a smooth coordinate chart $(U, (s^i))$ centered at $p$ such that $V_i = \partial/\partial s^i$ for $i = 1, \dots, k$.
+    \item  If $S \subseteq W$ is an embedded codimension-$k$ submanifold and $p$ is a point of $S$ such that $T_p S$ is complementary to the $\operatorname{span}$ of $(V_1|_p, \dots, V_k|_p)$, then the coordinates can also be chosen such that $S \cap U$ is the slice defined by $s^1 = \dots = s^k = 0$.
+\end{itemize}
+
+\end{theorem}
+
+\end{document}
