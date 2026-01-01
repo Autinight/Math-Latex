@@ -22,4 +22,67 @@ Suppose $M$ and $N$ are smooth manifolds, and $F: M \to N$ is a smooth map. If $
     也就是说, 光滑映射在微分映射可逆的点附近是微分同胚.
 \end{note}
 
+\section{Submersions}
+
+\begin{definition}{}{}
+    \begin{itemize}
+        \item If $\pi : M \to N$ is any continuous map, a \dfntxt{section of $\pi$} is a continuous right inverse for $\pi$, i.e., a continuous map $\sigma : N \to M$ such that $\pi \circ \sigma = \operatorname{Id}_N$:
+\begin{center}
+\begin{tikzcd}
+M \arrow[d, "\pi"'] \\
+N \arrow[u, "\sigma"', bend right]
+\end{tikzcd}
+\end{center}
+\item A \dfntxt{local section of $\pi$} is a continuous map $\sigma : U \to M$ defined on some open subset $U \subseteq N$ and satisfying the analogous relation $\pi \circ \sigma = \operatorname{Id}_U$. 
+    \end{itemize}
+    
+\end{definition}
+
+\begin{theorem}{Local Section Theorem}{}
+Suppose $M$ and $N$ are smooth manifolds and $\pi : M \to N$ is a smooth map. Then $\pi$ is a smooth submersion if and only if every point of $M$ is in the image of a smooth local section of $\pi$.
+\end{theorem}
+
+\begin{proofsketch}
+    光滑淹没的标准坐标表示\(   \pi \left( x^{1},\cdots ,x^{n},x^{n+ 1},\cdots ,x^{m} \right)  = \left( x^{1},\cdots ,x^{n} \right)  \) 下, 将坐标邻域缩小成方块\(  C_{ \varepsilon } = \left\{ x: \left| x^{i} \right|<  \varepsilon ,i=  1,\cdots,m   \right\} \) , 那么坐标像也是方片\(  C_{ \varepsilon }^{\prime} = \left\{ y: \left| y^{i} \right|<  \varepsilon , i=  1,\cdots,n   \right\}  \) . 通过 \(  C_{ \varepsilon }^{\prime}   \)上的点末尾坐标补零\(   \sigma \left( x^{1},\cdots ,x^{n} \right)= \left( x^{1},\cdots ,x^{n},0,\cdots ,0 \right)    \), 可以方便地给出一个 截面 .
+
+    反过来, 若\(  p  \)点位于 某个截面像, 则 \(   \pi  \circ  \sigma = \operatorname{Id}_{U}  \)求导 \(  \,\mathrm{d}  \pi _{p}\circ \,\mathrm{d}  \sigma _{q}= \operatorname{Id}_{T_{q}N}  \)立即给出  \(   \pi   \)在 \(  p  \)点是淹没.  
+\end{proofsketch}
+
+\begin{proposition}{Properties of Smooth Submersions}{}
+Let $M$ and $N$ be smooth manifolds, and suppose $\pi : M \to N$ is a smooth submersion. Then $\pi$ is an open map, and if it is surjective it is a quotient map.
+\end{proposition}
+
+\begin{proofsketch}
+    截面性质 \(   \pi \circ  \sigma = \operatorname{Id}_{U}  \)给出 \(   \pi \circ  \sigma \left(  \sigma ^{-1} \left( W \right)  \right)\subseteq  \pi \left( W \right)    \). 截面的连续性给出 \(   \sigma ^{-1} \left( W \right)   \)是开集, 若 \(  W  \)是开集. 由此给出像点的开邻域, 说明淹没是开的.    
+
+    连续而开的映射是商映射.
+\end{proofsketch}
+
+\begin{theorem}{Characteristic Property of Surjective Smooth Submersions}{}
+Suppose $M$ and $N$ are smooth manifolds, and $\pi : M \to N$ is a surjective smooth submersion. For any smooth manifold $P$ with or without boundary, a map $F : N \to P$ is smooth if and only if $F \circ \pi$ is smooth:
+\begin{center}
+\begin{tikzcd}
+M \arrow[d, "\pi"'] \arrow[dr, "F \circ \pi"] & \\
+N \arrow[r, "F"'] & P.
+\end{tikzcd}
+\end{center}
+\end{theorem}
+
+\begin{proofsketch}
+    局部截面\(   \sigma   \)的存在性, 允许我们局部地将 \(  F  \)提升到 \(  M  \)上\(  F\circ  \pi   \), 使得 它可以被 \(   \sigma   \)还原  : \( F|_{U}= \left(  F\circ  \pi   \right)\circ  \sigma   \).    
+\end{proofsketch}
+
+\begin{theorem}{Passing Smoothly to the Quotient}{}
+Suppose $M$ and $N$ are smooth manifolds and $\pi : M \to N$ is a surjective smooth submersion. If $P$ is a smooth manifold with or without boundary and $F : M \to P$ is a smooth map that is constant on the fibers of $\pi$, then there exists a unique smooth map $\tilde{F} : N \to P$ such that $\tilde{F} \circ \pi = F$:
+\begin{center}
+\begin{tikzcd}
+M \arrow[d, "\pi"'] \arrow[dr, "F"] & \\
+N \arrow[r, dashed, "\tilde{F}"'] & P.
+\end{tikzcd}
+\end{center}
+\end{theorem}
+
+\begin{proofsketch}
+    满的光滑淹没是商映射, 商的泛性质刻画出唯一的满足交换图的连续映射\(  \tilde{F}  \), 再通过满的光滑淹没刻画其连续性. 
+\end{proofsketch}
 \end{document}

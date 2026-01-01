@@ -1,0 +1,47 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Characteristic Functions }
+% 代靖涵 25120222201319
+\section{Basic Definitions}
+\begin{definition}{}{}
+If $X$ is a random variable we define its \dfntxt{characteristic function (ch.f.)} by
+\[
+\varphi(t) = E e^{itX} = E \cos tX + i E \sin tX
+\]
+\end{definition}
+
+\begin{theorem}{}{}
+All characteristic functions have the following properties:
+\begin{enumerate}
+    \item[(a)] $\varphi(0)=1$,
+    \item[(b)] $\varphi(-t)=\overline{\varphi(t)}$,
+    \item[(c)] $|\varphi(t)|=|E e^{i t X}| \leq E|e^{i t X}|=1$
+    \item[(d)] $|\varphi(t+h)-\varphi(t)| \leq E|e^{i h X}-1|$, so $\varphi(t)$ is uniformly continuous on $(-\infty, \infty)$.
+    \item[(e)] $E e^{i t(a X+b)}=e^{i t b} \varphi(a t)$
+\end{enumerate}
+\end{theorem}
+
+
+\section{Moments and Derivatives}
+
+\begin{theorem}{}{}
+    If \(  E\left| X \right|^{n}< \infty   \), then its characteristic functino is \(  n  \) times differentiable at \(  0  \), and \(   \varphi ^{n}\left( 0 \right)= E\left( iX \right)^{n}    \) . Expanding \(   \varphi   \) in a Taylor series about \(  0  \) leads to \[
+     \varphi \left( t \right)= \sum _{m= 0}^{n}\frac{E\left( itX \right)^{m}  }{m! }+ o\left( t^{n} \right)   
+    \]      
+\end{theorem}
+
+\begin{theorem}{}{}
+    If \(  E\left| X \right|^{2}< \infty   \), then \[
+     \varphi \left( t \right)= 1+ itEX- \frac{1}{2}t^{2}E\left( X^{2} \right)  + o\left( t^{2} \right) 
+    \] 
+\end{theorem}
+\end{document}

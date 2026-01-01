@@ -1,0 +1,1014 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{11}
+}{}
+
+\chapter{ HW12 }
+代靖涵 25120222201319
+\begin{exercise}{}{}
+设二维随机变量 $(X,Y)$ 的联合分布列为
+$$\begin{array}{c|ccc}
+\multicolumn{1}{c}{} & \multicolumn{3}{c}{Y}\\
+\cline{2-4}
+X & -1 & 0 & 1\\
+\hline
+0 & 0.07 & 0.18 & 0.15\\
+1 & 0.08 & 0.32 & 0.20\\
+\hline
+\end{array}$$
+试求 $X^2$ 与 $Y^2$ 的协方差.
+\end{exercise}
+
+\begin{solution}
+   
+\(\text{Cov}(X^2, Y^2) = E[X^2 Y^2] - E[X^2]E[Y^2]\)
+
+\[
+\begin{aligned}
+E[X^2] &= 0^2 \cdot P(X=0) + 1^2 \cdot P(X=1) \\
+&= 0.08 + 0.32 + 0.20 = 0.60, \\[6pt]
+E[Y^2] &= (-1)^2 \cdot P(Y=-1) + 0^2 \cdot P(Y=0) + 1^2 \cdot P(Y=1) \\
+&= (0.07 + 0.08) + (0.15 + 0.20) = 0.50, \\[6pt]
+E[X^2 Y^2] &= \sum_{i,j} x_i^2 y_j^2 p_{ij} \\
+&= 1^2 \cdot (-1)^2 \cdot 0.08 + 1^2 \cdot 1^2 \cdot 0.20 = 0.28.
+\end{aligned}
+\]
+
+代入公式得:
+\[
+\text{Cov}(X^2, Y^2) = 0.28 - 0.60 \times 0.50 = -0.02.
+\]
+\end{solution}
+
+\begin{exercise}{}{}
+把一颗骰子独立地掷 \(n\) 次, 求 1 点出现次数与 6 点出现次数的协方差及相关系数.
+\end{exercise}
+\begin{proof}
+  设\(  Z_1,\cdots ,Z_{n}  \)分别代表\(  n  \)枚骰子的点数, 定义 \[
+  X_{i}= \begin{cases} 1,& Z_{i}= 1\\ 
+   0,& \text{其他} \end{cases} ,\quad Y_{i}= \begin{cases} 1,&Z_{i}= 6\\ 
+    0, & \text{其他} \end{cases} 
+  \]  设 \(  X,Y  \)分别为1, 6出现的次数 , 则 \[
+  X= \sum _{i= 1}^{n}X_{i}, \quad Y= \sum _{i= 1}^{n}Y_{i}
+  \]由\(  \operatorname{Cov}  \)的双线性,  \[
+  \begin{aligned}
+  \operatorname{Cov}\left( X,Y \right)&= \operatorname{Cov}\left( \sum _{i= 1}^{n}X_{i},\sum _{i= 1}^{n}Y_{i} \right)\\ 
+   &= \sum _{i = 1}^{n}\sum _{j= 1}^{n}\operatorname{Cov}\left( X_{i},Y_{j} \right)    
+  \end{aligned}
+  \]  \[
+  \begin{aligned}
+  \operatorname{Cov}\left( X_{i},Y_{j} \right)&= E\left( X_{i}Y_{j} \right)-E\left( X_{i} \right)E\left( Y_{j} \right)   \\ 
+   &= P\left( Z_{i}= 1, Z_{j}= 6 \right) -P\left( Z_{i}= 1 \right)P\left( Z_{j}= 6 \right)  \\ 
+    &= \begin{cases} 0,&i\neq j\\ 
+     -\frac{1}{36},& i= j \end{cases} 
+  \end{aligned}  
+  \]因此 \[
+  \operatorname{Cov}\left( X,Y \right) = \sum _{i = 1}^{n}\operatorname{Cov}\left( X_{i},Y_{i} \right)= -\frac{n }{36 }  
+  \]
+
+  \[
+ \begin{aligned}
+  \operatorname{Var}\left( X \right) = \operatorname{Var}\left( \sum _{i= 1}^{n}X_{i} \right)&= \operatorname{Cov}\left( \sum _{i= 1}^{n}X_{i},\sum _{i= 1}^{n}X_{i} \right)\\ 
+   &= \sum _{i= 1}^{n}\sum _{j= 1}^{n}\operatorname{Cov}\left( X_{i},X_{j} \right)   
+ \end{aligned} 
+  \]其中 \[
+  \operatorname{Cov}\left( X_{i},X_{j} \right)= E\left( X_{i}X_{j} \right)-E\left( X_{i} \right)E\left( X_{j} \right)= \begin{cases} \frac{5}{36},&i= j\\ 
+   0,& i \neq j \end{cases}     
+  \]因此 \[
+  \operatorname{Var}\left( X \right)= \sum _{i= 1}^{n}\frac{5 }{36 }= \frac{5n }{36 }   
+  \]由对称性, \[
+  \operatorname{Var}\left( Y \right)= \frac{5n }{36 }  
+  \]最终 \[
+  \operatorname{Corr}\left( X,Y \right)= \frac{\operatorname{Cov}\left( X,Y \right)  }{\sqrt{\operatorname{Var}\left( X \right) }\sqrt{\operatorname{Var}\left( Y \right) } }= \frac{-\frac{n }{36 }  }{\frac{5n }{36 }  }   = -\frac{1}{5}
+  \]
+\end{proof}
+\begin{exercise}{}{}
+掷一颗骰子两次, 求其点数之和与点数之差的协方差.
+\end{exercise}
+
+\begin{proof}
+    设 \(  X,Y  \)为两次骰子的点数, 则 \[
+  \begin{aligned}
+    \operatorname{Cov}\left( X+ Y,X-Y \right)&= \operatorname{Cov}\left( X,X \right)- \operatorname{Cov}\left( Y,Y \right)\\ 
+     &= \operatorname{Var}\left( X \right)- \operatorname{Var}\left( Y \right)     
+  \end{aligned} 
+    \] 由于 \(  X,Y  \)同分布 , \(  \operatorname{Var}\left( X \right)= \operatorname{Var}\left( Y \right)    \) , 因此 \[
+    \operatorname{Cov}\left( X+ Y,X-Y \right)= 0 
+    \]
+\end{proof}
+
+\begin{exercise}{}{}
+某箱装 100 件产品, 其中一、二和三等品分别为 80, 10 和 10 件. 现从中随机取一件, 定义两个随机变量 \(X_1,X_2\) 如下
+\[
+X_i=
+\begin{cases}
+1, & \text{若抽到}i\text{等品},\\
+0, & \text{其他},
+\end{cases}
+\quad i=1,2.
+\]
+试求随机变量 \(X_1\) 和 \(X_2\) 的相关系数 \(\operatorname{Corr}(X_1,X_2)\).
+\end{exercise}
+\begin{proof}
+    
+由题意知 \(X_1 \sim B(1, 0.8)\) 和 \(X_2 \sim B(1, 0.1)\). 它们的方差分别为
+\[
+\operatorname{Var}(X_1) = 0.8 \times (1-0.8) = 0.16, \quad \operatorname{Var}(X_2) = 0.1 \times (1-0.1) = 0.09.
+\]
+由于取一件产品不可能同时为一等品和二等品, 故 \(X_1 X_2 = 0\). 协方差为
+\[
+\operatorname{Cov}(X_1, X_2) = E[X_1 X_2] - E[X_1]E[X_2] = 0 - 0.8 \times 0.1 = -0.08.
+\]
+因此, 相关系数为
+\[
+\operatorname{Corr}(X_1, X_2) = \frac{\operatorname{Cov}(X_1, X_2)}{\sqrt{\operatorname{Var}(X_1)}\sqrt{\operatorname{Var}(X_2)}} = \frac{-0.08}{\sqrt{0.16} \times \sqrt{0.09}} = -\frac{2}{3}.
+\]
+\end{proof}
+\begin{exercise}{}{}
+将一枚硬币重复掷 \(n\) 次, 以 \(X\) 和 \(Y\) 分别表示正面向上和反面向上的次数, 试求 \(X\) 和 \(Y\) 的协方差及相关系数.
+\end{exercise}
+\begin{solution}
+    注意到 \[
+    X+ Y= n
+    \]因此 \[
+    \operatorname{Cov}\left( X,Y \right)= \operatorname{Cov}\left( X,n-X \right)=  - \operatorname{Cov}\left( X,X \right)= - \operatorname{Var}\left( X \right)    
+    \]
+    设 \(  Z_1,\cdots ,Z_{n}  \)为\(  n  \)次硬币出现的结果, 定义 \[
+    X_{i}= \begin{cases} 1,& Z_{i}\text{出现正面}\\ 
+     0,& Z_{i}\text{出现反面} \end{cases} 
+    \]  则 \[
+    X= \sum _{i= 1}^{n}X_{i}
+    \]\[
+    \operatorname{Var}\left( X \right)= \sum _{i= 1}^{n}\sum _{j= 1}^{n}\operatorname{Cov}\left( X_i, X_{j} \right)  
+    \]其中 \[
+    \operatorname{Cov}\left( X_{i},X_{j} \right)= \begin{cases} \frac{1}{4},&i= j\\ 
+     0,& i \neq j \end{cases}  
+    \]于是 \[
+    \operatorname{Var}\left( X \right) = \sum _{i= 1}^{n}\left( \frac{1}{4} \right)= \frac{n}{4} ,\quad \operatorname{Var}\left( Y \right)= \operatorname{Var}\left( n-X \right)= \left( -1 \right)^{2}\operatorname{Var}\left( X \right)= \frac{n}{4}    
+    \]因此 \[
+    \operatorname{Cov}\left( X,Y \right)= -\operatorname{Var}\left( X \right)= -\frac{n}{4}  
+    \] \[
+    \operatorname{Corr}\left( X,Y \right)= \frac{\operatorname{Cov}\left( X,Y \right)  }{\sqrt{\operatorname{Var}\left( X \right)\operatorname{Var}\left( Y \right)  } }= \frac{-\frac{n}{4} }{\sqrt{\frac{n}{4}}\sqrt{\frac{n}{4}} }= -1   
+    \] 
+\end{solution}
+
+\begin{exercise}{}{}
+在一个有\(n\)个人参加的晚会上,每个人带了一件礼物,且假定各人带的礼物都不相同。晚会期间各人从放在一起的\(n\)件礼物中随机抽取一件,试求抽中自己礼品的人数\(X\)的均值和方差。
+\end{exercise}
+
+\begin{proof}
+    设 \(  Z_1,\cdots ,Z_{n}  \) 分别 代表 \(  n  \)个人抽中的礼物, 其中若 \(  Z_{i}= k  \), 我们说第 \(  i  \)个人抽中了第 \(  k  \)个人的礼物. 定义 \[
+    X_{i}= \begin{cases} 1,& Z_{i}= i\\ 
+     0,& \text{其它} \end{cases} 
+    \]    则 \[
+    X= \sum _{i= 1}^{n}X_{i}
+    \]于是 \[
+    E\left( X \right)= \sum _{i= 1}^{n}E\left( X_{i} \right)= \sum _{i= 1}^{n}\left( 1\cdot \frac{1}{n} \right)= 1   
+    \] \[
+    \operatorname{Var}\left( X \right)= \sum _{i= 1}^{n}\sum _{j= 1}^{n}\operatorname{Cov}\left( X_{i},X_{j} \right)  
+    \]其中 \[
+    \operatorname{Cov}\left( X_{i},X_{j} \right)= \begin{cases} \frac{n-1}{n^{2}}, & i= j\\ 
+  \frac{1 }{n^{2}\left( n-1 \right)  } ,& i\neq j   \end{cases}  
+    \]因此 \[
+    \operatorname{Var}\left( X \right)= n \frac{n-1 }{n^{2} }+  \left( n^{2}-n \right)\frac{1 }{n^{2}\left( n-1 \right)  }= 1     
+    \]
+\end{proof}
+\begin{exercise}{}{}
+已知随机变量 $X$ 与 $Y$ 的相关系数为 $\rho$, 求 $X_{1}=aX+b$ 与 $Y_{1}=cY+d$ 的相关系数, 其中 $a,b,c,d$ 均为非零正常数.
+\end{exercise}
+
+\begin{proof}
+     \[
+    \begin{aligned}
+     \operatorname{Cov}\left( X_1,Y_1 \right)&= \operatorname{Cov}\left( aX+ b,cY+ d \right)\\ 
+      &= ac \operatorname{Cov}\left( X,Y \right)+ \operatorname{Cov}\left( b,cY \right)+  \operatorname{Cov}\left( aX,d \right)+  \operatorname{Cov}\left( b,d \right)      
+    \end{aligned} 
+     \]由于常数作为随机变量, 与任意其他随即变量是相独立的, 上述四项只有第一项非零, 因此 \[
+     \operatorname{Cov}\left( X_1,Y_1 \right) =  ac \operatorname{Cov}\left( X,Y \right) 
+     \]此外,  \[
+     \operatorname{Var}\left( X_1 \right)= \operatorname{Var}\left( aX+ b \right)= a^{2}\operatorname{Var}\left( X \right),\quad \operatorname{Var}\left( Y_1 \right)= \operatorname{Var}\left( cY+ d \right)= c^{2}\operatorname{Var}\left( Y \right)      
+     \]因此 \[
+    \begin{aligned}
+     \operatorname{Corr}\left( X_1,Y_1 \right)&= \operatorname{Cov}\left( X_1,Y_1 \right)\sqrt{\operatorname{Var}\left( X_1 \right) } \sqrt{\operatorname{Var}\left( Y_1 \right) } \\ 
+      &=  ac  ac \operatorname{Cov}\left( X,Y \right)\sqrt{ \operatorname{Var}\left( X \right) } \sqrt{\operatorname{Var}\left( Y \right) }\\ 
+       &= a^{2}c^{2} \operatorname{Corr}\left( X,Y \right)\\ 
+        &= a^{2}c^{2}\rho  
+    \end{aligned}  
+     \]
+\end{proof}
+\begin{exercise}{}{}
+设随机变量 $X_1$ 与 $X_2$ 独立同分布, 其共同分布为 $N(\mu,\sigma^2)$. 试求 $Y = aX_1 + bX_2$ 与 $Z = aX_1 - bX_2$ 的相关系数, 其中 $a$ 与 $b$ 为非零常数.
+\end{exercise}
+\begin{solution}
+    
+由独立性,  \[
+\operatorname{Cov}\left( X_1,X_2 \right)= 0 
+\]
+由\(  \operatorname{Cov}  \) 的双线性,  \[
+\begin{aligned}
+\operatorname{Cov}\left( Y,Z \right)&= \operatorname{Cov}\left( aX_1+ bX_2, aX_1-bX_2 \right)= \\ 
+ &=  a^{2}\operatorname{Cov}\left( X_1,X_1 \right)-b^{2}\operatorname{Cov}\left( X_2,X_2 \right)\\ 
+  &= a^{2}  \operatorname{Var}\left( X_1 \right)-b^{2}\operatorname{Var}\left( X_2 \right)\\ 
+   &= \left( a^{2}-b^{2} \right) \sigma ^{2} 
+\end{aligned}  
+\] \[
+\begin{aligned}
+\operatorname{Var}\left( Y \right)&= \operatorname{Cov}\left( Y,Y \right)   \\ 
+ &= \operatorname{Cov}\left( aX_1+ bX_2,aX_1+ bX_2 \right)\\ 
+  &= a^{2} \operatorname{Cov}\left( X_1,X_1 \right)+ b^{2}\operatorname{Cov}\left( X_2,X_2 \right)\\ 
+   &= \left( a^{2}+ b^{2} \right) \sigma ^{2}    
+\end{aligned}
+\] \[
+\begin{aligned}
+\operatorname{Var}\left( Z \right)&= \operatorname{Cov}\left( Z,Z \right)\\ 
+ &=  \operatorname{Cov}\left( aX_1-bX_2,aX_1-bX_2 \right)\\ 
+  &= a^{2}\operatorname{Cov}\left( X_1,X_1 \right) + b^{2}\operatorname{Cov}\left( X_2,X_2 \right)  \\ 
+   &= \left( a^{2}+ b^{2} \right) \sigma ^{2}     
+\end{aligned}
+\]因此 \[
+\operatorname{Corr}\left( Y,Z \right)= \frac{\operatorname{Cov}\left( Y,Z \right)  }{\sqrt{\operatorname{Var}\left( Y \right)\operatorname{Var}\left( Z \right)  } }= \frac{\left( a^{2}-b^{2} \right) \sigma ^{2}  }{\left( a^{2}+ b^{2} \right) \sigma ^{2}  }   = \frac{a^{2}-b^{2} }{a^{2}+ b^{2} } 
+\]
+\end{solution}
+
+
+\begin{exercise}{}{}
+设二维随机变量 $(X,Y)$ 服从二维正态分布 $N(0,0,1,1,\rho)$. 
+
+(1) 求 $E(\max\{X,Y\})$;
+
+(2) 求 $X-Y$ 与 $XY$ 的协方差及相关系数.
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}
+        \item   \[
+        \max \left\{ X,Y \right\}= \frac{X+ Y+ \left| X-Y \right|  }{ 2} 
+        \]令 \(  Z= X-Y  \), 则 \(  Z  \)服从正态分布,  \[
+        E\left( Z \right)= E\left( X-Y \right)= E\left( X \right)-E\left( Y \right)= 0    
+        \] \[
+        \operatorname{Var}\left( Z \right)= \operatorname{Cov}\left( X-Y,X-Y \right)= \operatorname{Var}\left( X \right)+ \operatorname{Var}\left( Y \right)- 2 \operatorname{Cov}\left( X,Y \right)= 2-2\rho    
+        \]  因此 \(  Z\sim N\left( 0,  2-2\rho  \right)   \) 从而 \[
+     \begin{aligned}
+        E\left( \left| Z \right|  \right)&= 2 \int_{0}^{\infty} x\frac{1 }{\sqrt{2 \pi \left( 2-2\rho  \right) } }e^{-\frac{x^{2} }{4-4\rho  } }  \,\mathrm{d} x\\ 
+         &= 2\sqrt{1-\rho }\int_{0}^{\infty}\frac{1 }{\sqrt{ \pi } }e^{-\left( \frac{x }{2\sqrt{1-\rho } }  \right)^{2} }\,\mathrm{d} \left( \frac{x }{2\sqrt{1-\rho } }   \right)^{2} \\ 
+         &= 2 \sqrt{\frac{1-\rho  }{ \pi  } }
+     \end{aligned}
+        \] 故 \[
+        E\left( \max \left\{ X,Y \right\} \right)= \frac{1 }{2 }\left( E\left( X \right)+ E\left( Y \right)+ E\left( \left| Z \right|  \right)    \right)= \sqrt{\frac{1-\rho  }{ \pi  } }   
+        \]
+
+        \item  令 \(  U= X-Y  \) , \(  V= XY  \), 则 \(  E\left( U \right)= E\left( X \right)-E\left( Y \right)= 0     \).  \[
+        \begin{aligned}
+        \operatorname{Cov}\left( U,V \right)&= E\left( UV \right)-E\left( U \right)E\left( V \right)= E\left( UV \right)\\ 
+         &= E\left( X^{2}Y \right)-E\left( XY^{2} \right)      
+        \end{aligned}
+        \]   由于 \(  \left( -X,-Y \right)   \)与 \(  \left( X,Y \right)   \)同分布,   \[
+     f_{X,Y}\left( x,y \right) =  f_{-X,-Y}\left( x,y \right)= f_{X,Y}\left( -x,-y \right)  
+     \] \[
+        \begin{aligned}
+        E\left( X^{2}Y \right)&= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}x^{2}y f_{X,Y}\left( x,y \right)\,\mathrm{d} x\,\mathrm{d} y\\ 
+          &= \int_{-\infty}^{0}\int_{-\infty}^{\infty}x^{2}y f_{X,Y}\left( x,y \right)\,\mathrm{d} x\,\mathrm{d} y+ \int_{0}^{\infty}\int_{-\infty}^{\infty}x^{2}y f_{X,Y}\left( x,y \right)  \,\mathrm{d} x\,\mathrm{d} y\\ 
+           &= -\int_{0}^{\infty}\int_{-\infty}^{\infty}x^{2}y f_{X,Y}\left( x,y \right)\,\mathrm{d} x\,\mathrm{d} y+  \int_{0}^{\infty}\int_{-\infty}^{\infty}x^{2}yf_{X,Y}\left( x,y \right)\,\mathrm{d} x\,\mathrm{d} y\\ 
+            &= 0 
+        \end{aligned}  
+        \]类似地,  \[
+        E\left( XY^{2} \right)= 0 
+        \] 因此 \[
+        \operatorname{Cov}\left( U,V \right)= 0,\quad \operatorname{Corr}\left( U,V \right)= 0  
+        \]\(  X-Y  \)与 \(  XY  \)的协方差和相关系数均为零.  
+    \end{enumerate}
+  
+\end{solution}
+
+\begin{exercise}{}{}
+设二维随机变量\(\dfntxt{X,Y}\)的联合密度函数为
+\[
+p(x,y)=
+\begin{cases}
+\dfrac{6}{7}\left(x^{2}+\dfrac{xy}{2}\right), & 0<x<1,\;0<y<2,\\[4pt]
+0, & \text{其他}.
+\end{cases}
+\]
+求\(\dfntxt{X}\)与\(\dfntxt{Y}\)的协方差及相关系数。
+\end{exercise}
+
+\begin{solution}
+   \[
+   \operatorname{Cov}\left( X,Y \right)= E\left( XY \right)-E\left( X \right)E\left( Y \right)    
+   \] 其中 \[
+  \begin{aligned}
+   E\left( X \right)= \int_{-\infty}^{\infty}xp_{X}\left( x \right)\,\mathrm{d} x&=  \int_{-\infty}^{\infty} x\int_{-\infty}^{\infty}p\left( x,y \right)\,\mathrm{d} y\,\mathrm{d} x   \\ 
+    &=  \int_{0}^{1}\int_{0}^{2}\frac{6}{7}\left( x^{3}+ \frac{1 }{2 }x^{2}y  \right)\,\mathrm{d} y\,\mathrm{d} x\\ 
+     &= \int_{0}^{1}\left( \frac{12 }{7 }x^{3}+ \frac{6 }{7 }x^{2}   \right)\,\mathrm{d} x\\ 
+      &= \frac{3 }{7 }+ \frac{2 }{7 }= \frac{5 }{7 }     
+  \end{aligned}
+   \] \[
+   \begin{aligned}
+   E\left( Y \right)= \int_{-\infty}^{\infty}yp_{Y}\left( y \right)\,\mathrm{d} y&= \int_{-\infty}^{\infty}y \int_{-\infty}^{\infty}p\left( x,y \right)\,\mathrm{d} x\,\mathrm{d} y\\ 
+    &= \int_{0}^{2}\int_{0}^{1}\frac{6}{7}\left( x^{2}y+ \frac{1 }{2 }xy^{2}  \right)\,\mathrm{d} x\,\mathrm{d} y\\ 
+     &= \int_{0}^{2}\left( \frac{2 }{7 }y+ \frac{3 }{14 }y^{2}   \right)\,\mathrm{d} y\\ 
+      &= \frac{4}{7}+ \frac{4}{7}= \frac{8 }{7 }       
+   \end{aligned}
+   \]\[
+  \begin{aligned}
+   E\left( XY \right)&=  \int_{-\infty}^{\infty}xyp\left( x,y \right)  \,\mathrm{d} x\,\mathrm{d} y \\ 
+    &= \int_{0}^{2}\int_{0}^{1}\frac{6}{7}\left( x^{3}y+ \frac{1 }{2 }x^{2}y^{2}  \right) \,\mathrm{d} x\,\mathrm{d} y\\ 
+     &= \int_{0}^{2}\left( \frac{3 }{14 }y+ \frac{1}{7}y^{2} \right) \,\mathrm{d} y \\ 
+      &= \frac{3}{7}+ \frac{8 }{21 }= \frac{17 }{21 }  
+  \end{aligned}
+   \] 因此 \[
+   \operatorname{Cov}\left( X,Y \right)= E\left( XY \right)-E\left( X \right)E\left( Y \right)= \frac{17}{21}- \frac{5}{7} \frac{8}{7}= -\frac{1}{147}    
+   \] \[
+   \begin{aligned}
+   E\left( X^{2} \right)&= \int_{-\infty}^{\infty}x^{2}\int_{-\infty}^{\infty}p\left( x,y \right)\,\mathrm{d} y\,\mathrm{d} x\\ 
+    &= \int_{0}^{1}\int_{0}^{2}\frac{6}{7}\left( x^{4}+ \frac{1 }{2 }x^{3}y  \right)\,\mathrm{d} y\,\mathrm{d} x\\ 
+     &= \int_{0}^{1}\frac{6}{7}\left( 2x^{4}+ x^{3} \right)\,\mathrm{d} x\\ 
+      &= \frac{12 }{35 }+ \frac{3}{14}= \frac{39}{70}      
+   \end{aligned}
+   \] \[
+   \operatorname{Var}\left( X \right)= E\left( X^{2} \right)-\left( E\left( X \right)  \right)^{2}= \frac{39}{70}- \frac{25}{49}= \frac{23 }{490 }    
+   \] \[
+   \begin{aligned}
+   E\left( Y^{2} \right)&= \int_{-\infty}^{\infty}y^{2}\int_{-\infty}^{\infty}p\left( x,y \right)\,\mathrm{d} x\,\mathrm{d} y\\ 
+    &= \int_{0}^{1}\int_{0}^{2}\frac{6}{7}\left( x^{2}y^{2}+ \frac{1}{2}xy^{3} \right)\,\mathrm{d} y\,\mathrm{d} x\\ 
+     &= \int_{0}^{1}\frac{6}{7}\left( \frac{8}{3}x^{2}+ 2x \right)\,\mathrm{d} x\\ 
+      &=\frac{34 }{21 } 
+   \end{aligned}
+   \]故 \[
+   \operatorname{Var}\left( Y \right)= E\left( Y^{2} \right)- \left( E\left( Y \right)  \right)^{2}= \frac{34 }{21 }- \frac{64}{49}= \frac{46 }{147 }     
+   \]因此 \[
+   \operatorname{Corr}\left( X,Y \right)= \frac{\operatorname{Cov}\left( X,Y \right)  }{\sqrt{\operatorname{Var}\left( X \right)\operatorname{Var}\left( Y \right)  } }  =- \frac{\sqrt{5}}{23  \sqrt{3}} = -\frac{\sqrt{15} }{69 } 
+   \]
+\end{solution}
+
+
+\begin{exercise}{}{}
+设二维随机变量\((\dfntxt{X,Y})\)在矩形
+\[
+G=\{(x,y)\mid 0\leq x\leq 2,\;0\leq y\leq 1\}
+\]
+上服从均匀分布,记
+\[
+U=
+\begin{cases}
+1, & X>Y,\\
+0, & X\leq Y,
+\end{cases}
+\qquad
+V=
+\begin{cases}
+1, & X>2Y,\\
+0, & X\leq 2Y.
+\end{cases}
+\]
+求\(\dfntxt{U}\)和\(\dfntxt{V}\)的相关系数。
+\end{exercise}
+
+\begin{solution}
+  注意到 \(  UV= V  \), 我们有 \[
+  \begin{aligned}
+  \operatorname{Cov}\left( U,V \right)= E\left( UV \right)-E\left( U \right)E\left( V \right)= E\left( V \right)\left( 1-E\left( U \right)  \right)       
+  \end{aligned}
+  \] 其中 \[
+  E\left( U \right)= \int \chi _{\left\{ X> Y \right\}} dP= \int_{0}^{1}\int_{y}^{2}\frac{1 }{2 }\,\mathrm{d} x\,\mathrm{d} y=  \int_{0}^{1}\frac{1}{2}\left( 2-y \right)dy= \frac{3}{4} 
+  \] \[
+  E\left( V \right)= \int \chi _{\left\{ X> 2Y \right\}}\,\mathrm{d} P= \int_{0}^{1}\int_{2y}^{2} \frac{1}{2}\,\mathrm{d} x\,\mathrm{d}y = \int_{0}^{1}\frac{1}{2}\left( 2-2y \right)\,\mathrm{d} y= \frac{1}{2} 
+  \]因此 \[
+  \operatorname{Cov}\left( U,V \right)= \frac{1}{2}\left( 1-\frac{3}{4} \right)= \frac{1}{8}  
+  \] \[
+  E\left( U^{2} \right)= \int \chi _{\left\{ X> Y \right\}}\,\mathrm{d} P= \frac{3}{4} 
+  \] \[
+  E\left( V^{2} \right)= \int \chi _{\left\{ X> 2Y \right\}}\,\mathrm{d} P= \frac{1}{2} 
+  \] \[
+  \operatorname{Var}\left( U\right)= E\left( U^{2} \right)-\left( E\left( U \right)  \right)^{2}= \frac{3}{16}   
+  \] \[
+  \operatorname{Var}\left(V \right)= E\left( V^{2} \right)-\left( E\left( V \right)  \right)^{2}= \frac{1}{4}   
+  \]于是 \[
+  \operatorname{Corr}\left( U,V \right)= \frac{\operatorname{Cov}\left( U,V \right)  }{\sqrt{\operatorname{Var}\left(U  \right) \operatorname{Var}\left( V \right) } } = \frac{1}{8}\sqrt{\frac{16}{3}4}= \frac{1}{\sqrt{3}} 
+  \]
+\end{solution}
+
+\begin{exercise}{}{}
+设a为区间(0,1)上的一个定点,随机变量X服从区间(0,1)上的均匀分布,以Y表示点X到a的距离,问a为何值时X与Y不相关.
+\end{exercise}
+
+\begin{solution}
+  \(  Y= \left| X-a \right|= \chi _{\left\{ X> a \right\}}\left( X-a \right)+ \chi _{\left\{ X\le a \right\}}\left( a-X \right)     \). \[
+  \begin{aligned}
+  E\left( XY \right)&= \int XY \,\mathrm{d} P\\ 
+   &= \int_{a}^{1}x \left( x-a \right) \,\mathrm{d} x+  \int_{0}^{a}x\left( a-x \right)\,\mathrm{d} x    \\ 
+   &= \frac{1}{3}\left( 1-a^{3} \right)- \frac{1}{2}a\left( 1-a^{2} \right)+  \frac{1}{2}a^{3}-\frac{1}{3}a^{3}\\ 
+    &= \frac{1}{3}a^{3}-\frac{1}{2}a+ \frac{1}{3}  
+  \end{aligned}
+  \] \[
+  E\left( X \right)= \int_{0}^{1}x\,\mathrm{d} x= \frac{1}{2} 
+  \] \[
+  \begin{aligned}
+  E\left( Y \right)&= \int_{a}^{1}\left( x-a \right)\,\mathrm{d} x+ \int_{0}^{a}\left( a-x \right)\,\mathrm{d} x \\ 
+   &= \frac{1}{2}\left( 1-a^{2} \right)- a\left( 1-a \right)+ a^{2}-\frac{1}{2}a^{2}\\ 
+    &= a^{2}-a+ \frac{1}{2}  
+  \end{aligned}   
+  \]  因此 \[
+  \begin{aligned}
+  \operatorname{Cov}\left( X,Y \right)= E\left( XY \right)-E\left( X \right)E\left( Y \right)&= \frac{1}{3}a^{3}-\frac{1}{2}a+ \frac{1}{3}-\frac{1}{2}\left( a^{2}-a+ \frac{1}{2} \right) \\ 
+   &= \frac{1}{3}a^{3}-\frac{1}{2}a^{2}+ \frac{1}{12}   
+  \end{aligned}  
+  \] \(  X,Y  \)不相关, 当且仅当 \(  \operatorname{Cov}\left( X,Y \right)= 0   \), 当且仅当 \[
+  \frac{1}{3}a^{3}-\frac{1}{2}a^{2}+ \frac{1}{12}= 0,\quad a\in \left( 0,1 \right) 
+  \]  解方程得  \(  4a^{3}-6a^{2}+ 1=\left( 2a-1 \right)\left( 2a^{2}-2a-1 \right)    \) \[
+  2a^{2}-2a-1= 0\iff a=  \frac{1\pm \sqrt{3} }{2 }  \not \in \left( 0,1 \right) 
+  \] 因此只有 \(  a= \frac{1}{2}  \). 
+\end{solution}
+
+
+\begin{exercise}{}{}
+设随机向量\((X_1,X_2,X_3)\)满足条件
+\[
+aX_1+bX_2+cX_3=0,
+\]
+\[
+E(X_1)=E(X_2)=E(X_3)=d,
+\]
+\[
+\operatorname{Var}(X_1)=\operatorname{Var}(X_2)=\operatorname{Var}(X_3)=\sigma^2.
+\]
+其中\(a,b,c,d,\sigma^2\)均为常数,求相关系数\(\rho_{12},\rho_{23},\rho_{13}\).
+\end{exercise}
+\begin{proof}
+  由 \[
+  -cX_3= aX_1+ bX_2
+  \]得到
+\[
+\begin{aligned}
+c^{2} \sigma ^{2}= \operatorname{Var}\left( cX_3 \right)&= \operatorname{Var}\left( aX_1+ bX_2 \right)\\ 
+ &= \operatorname{Cov}\left( aX_1+ bX_2,aX_1+ bX_2 \right)\\ 
+  &= a^{2}\operatorname{Var}\left( X_1 \right)+ b^{2}\operatorname{Var}\left( X_2 \right)+ 2ab \sqrt{\operatorname{Var}\left( X_1 \right)\operatorname{Var}\left( X_2 \right)  }\rho _{12}  \\ 
+   &= \left( a^{2}+ b^{2} \right) \sigma ^{2}+ 2ab  \sigma ^{2}\rho _{12} 
+\end{aligned}  
+\]从而\[
+\rho _{12}= \frac{ c^{2}-a^{2}-b^{2}   }{2ab } 
+\]由对称性, \[
+\rho _{23}= \frac{ a^{2}-b^{2}-c^{2}   }{2bc } 
+\] \[
+\rho _{13}= \frac{ b^{2}-c^{2}-a^{2} }{2ac } 
+\]
+\end{proof}
+\begin{exercise}{}{}
+设随机变量X服从区间\((-0.5,0.5)\)上的均匀分布, \(Y = \cos X\), 则X与Y有函数关系. 试求\(\operatorname{Cov}(X,Y)\).
+\end{exercise}
+
+\begin{solution}
+  \[
+  \begin{aligned}
+  E\left( XY \right)&= \int X\cos X\,\mathrm{d} P\\ 
+   &=  \int _{-\frac{1}{2}}^{\frac{1}{2}} x\cos x\,\mathrm{d} x\\ 
+    &= 0 
+  \end{aligned} 
+  \] \[
+  E\left( X \right)= \int X\,\mathrm{d} P= \int _{-\frac{1}{2}}^{\frac{1}{2}}x\,\mathrm{d} x= 0 
+  \] \[
+  \operatorname{Cov}\left( X,Y \right)= E\left( XY \right)-E\left( X \right)E\left( Y \right)= 0    
+  \]
+\end{solution}
+
+\begin{exercise}{}{}
+设二维随机变量(X,Y)服从单位圆内的均匀分布, 其联合密度函数为
+\[
+\rho(x,y)=
+\begin{cases}
+\dfrac{1}{\pi}, & x^{2}+y^{2}<1,\\[4pt]
+0, & x^{2}+y^{2}\ge1.
+\end{cases}
+\]
+试证X与Y不独立且X与Y不相关.
+\end{exercise}
+
+\begin{proof}
+  \[
+  \rho _{X}\left( x \right)= \int_{-\infty}^{\infty}\frac{1 }{ \pi  }\chi _{\left\{ x^{2}+ y^{2}< 1 \right\}}\,\mathrm{d} y= \chi _{\left\{ -1< x< 1 \right\}}\int_{-\sqrt{1-x^{2}}}^{\sqrt{1-x^{2}}}  \frac{1 }{ \pi  }\,\mathrm{d} y= \chi _{\left\{ -1< x< 1 \right\}}\frac{2\sqrt{1-x^{2}} }{ \pi  }  
+  \]由对称性 \[
+  \rho _{Y}\left( y \right)=  \chi _{\left\{ -1< y< 1 \right\}}\frac{2\sqrt{1-y^{2}} }{ \pi  }  
+  \]得到 \[
+  \rho _{X}\left( x \right)\rho _{Y}\left( y \right)= \chi _{\left\{ -1< x,y< 1 \right\}}  \frac{4\sqrt{\left( 1-x^{2} \right)\left( 1-y^{2} \right)  } }{ \pi ^{2} } 
+  \]由于函数有不同的支撑集, \(  \rho _{X}\left( x \right)\rho _{Y}\left( y \right)\neq \rho _{X,Y}\left( x,y \right)     \) , \(  X,Y  \)不独立.
+  
+  \[
+  \begin{aligned}
+  E\left( XY \right)&= \iint\chi _{\left\{ x^{2}+ y^{2}< 1 \right\}}\frac{1 }{ \pi  }xy\,\mathrm{d} x\,\mathrm{d} y   \\ 
+   &= \iint \chi _{\left\{ r< 1 \right\}}\frac{1 }{ \pi  } r^{2}\sin  \theta \cos  \theta r\,\mathrm{d} r\,\mathrm{d}  \theta \\ 
+    &= \int_{0}^{1}\int_{0}^{2 \pi }\frac{1 }{2 \pi  }  r^{3}\sin 2 \theta \,\mathrm{d} r\,\mathrm{d}  \theta \\ 
+     &= 0
+  \end{aligned}
+  \] \[
+  E\left( X \right) = \int_{-1}^{1}\frac{2\sqrt{1-x^{2}} }{ \pi  }x\,\mathrm{d} x= 0 
+  \]其中等号成立是因为被积函数是奇函数, 且积分区域关于 \(  0  \)对称. 因此 \[
+  \operatorname{Cov}\left( X,Y \right)= E\left( XY \right)-E\left( X \right)E\left( Y \right)= 0-0= 0    
+  \] 因此 \(  X,Y  \) 不相关.
+\end{proof}
+
+\begin{exercise}{}{}
+设随机向量\((X_1,X_2,X_3)\)的相关系数分别为\(\rho_{12},\rho_{23},\rho_{31}\), 且
+\[
+E(X_1)=E(X_2)=E(X_3)=0,\quad \operatorname{Var}(X_1)=\operatorname{Var}(X_2)=\operatorname{Var}(X_3)=\sigma^2,
+\]
+令
+\[
+Y_1=X_1+X_2,\quad Y_2=X_2+X_3,\quad Y_3=X_3+X_1.
+\]
+证明: \(Y_1,Y_2,Y_3\)两两不相关的充要条件为\(\rho_{12}+\rho_{23}+\rho_{31}=-1\).
+\end{exercise}
+
+\begin{proof}
+  只考虑 \(   \sigma > 0  \), 若不然 \(  X_1= X_2= X_3= 0  \), \(  P  \)-a.e.    
+
+  若 \(  \rho _{12}+ \rho _{23}+ \rho _{31}= -1  \) , 则
+  \[
+  \operatorname{Cov}\left( Y_1,Y_2 \right)= \operatorname{Cov}\left( X_1+ X_2,X_2+ X_3 \right)  =  \sigma ^{2}+  \sigma ^{2}\rho _{12}+  \sigma ^{2}\rho _{23}+  \sigma ^{2}\rho _{13}=  \sigma ^{2}- \sigma ^{2}= 0
+  \]由对称性 \[
+  \operatorname{Cov}\left( Y_2,Y_3 \right)= \operatorname{Cov}\left( Y_1,Y_3 \right)= 0  
+  \]
+
+  反之,若  \(  Y_1,Y_2,Y_3  \)两两不相关, 则特别地 \[
+ 0=  \operatorname{Cov}\left( Y_1,Y_2 \right)=  \sigma ^{2}\left(  \rho _{12}+ \rho _{23}+ \rho _{13}+ 1\right)  
+  \] 因此 \[
+  \rho _{12}+ \rho _{23}+ \rho _{13}= -1
+  \]
+\end{proof}
+
+\begin{exercise}{}{}
+设二维随机变量 $(X,Y)$ 的联合密度函数如下, 试求 $(X,Y)$ 的协方差矩阵:
+\begin{enumerate}
+\item \[
+p_1(x,y) = \begin{cases} 6xy^2, & 0 < x < 1, \quad 0 < y < 1, \\ 0, & \text{其他}. \end{cases}
+\]
+\item \[
+p_2(x,y) = \begin{cases} \frac{x+y}{8}, & 0 < x < 2, \quad 0 < y < 2, \\ 0, & \text{其他}. \end{cases}
+\]
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+  \begin{enumerate}
+    \item \[
+\begin{aligned}
+f_X(x)&=\int_0^1 6xy^2\,dy=6x\int_0^1 y^2\,dy=6x\cdot\frac13=2x,\quad 0<x<1,\\
+f_Y(y)&=\int_0^1 6xy^2\,dx=6y^2\int_0^1 x\,dx=6y^2\cdot\frac12=3y^2,\quad 0<y<1.
+\end{aligned}
+\]
+
+注意到
+\[
+f_X(x)f_Y(y)=2x\cdot 3y^2=6xy^2=p_1(x,y),
+\]
+所以 \(X,Y\) 相互独立, 因此 \(\operatorname{Cov}(X,Y)=0\).
+
+\[
+\begin{aligned}
+E[X]&=\int_0^1 x f_X(x)\,dx=\int_0^1 x\cdot 2x\,dx
+=2\int_0^1 x^2\,dx=2\cdot\frac13=\frac23,\\
+E[X^2]&=\int_0^1 x^2 f_X(x)\,dx=\int_0^1 x^2\cdot 2x\,dx
+=2\int_0^1 x^3\,dx=2\cdot\frac14=\frac12,\\
+\operatorname{Var}(X)&=E[X^2]-E[X]^2=\frac12-\left(\frac23\right)^2
+=\frac12-\frac49=\frac1{18}.
+\end{aligned}
+\]
+
+\[
+\begin{aligned}
+E[Y]&=\int_0^1 y f_Y(y)\,dy=\int_0^1 y\cdot 3y^2\,dy
+=3\int_0^1 y^3\,dy=3\cdot\frac14=\frac34,\\
+E[Y^2]&=\int_0^1 y^2 f_Y(y)\,dy=\int_0^1 y^2\cdot 3y^2\,dy
+=3\int_0^1 y^4\,dy=3\cdot\frac15=\frac35,\\
+\operatorname{Var}(Y)&=E[Y^2]-E[Y]^2=\frac35-\left(\frac34\right)^2
+=\frac35-\frac9{16}=\frac3{80}.
+\end{aligned}
+\]
+
+协方差矩阵为
+\[
+\Sigma_1=
+\begin{pmatrix}
+\frac1{18} & 0\\[4pt]
+0 & \frac3{80}
+\end{pmatrix}.
+\]
+\item \[
+\begin{aligned}
+f_X(x)
+&=\int_0^2 \frac{x+y}{8}\,dy
+=\frac18\left(\int_0^2 x\,dy+\int_0^2 y\,dy\right)\\
+&=\frac18\left(2x+\frac{2^2}{2}\right)
+=\frac18(2x+2)=\frac{x+1}{4},\quad 0<x<2,\\[4pt]
+f_Y(y)&=\frac{y+1}{4},\quad 0<y<2.
+\end{aligned}
+\]
+
+由对称性可知 \(E[X]=E[Y], \operatorname{Var}(X)=\operatorname{Var}(Y)\).
+
+\[
+\begin{aligned}
+E[X]
+&=\int_0^2 x f_X(x)\,dx
+=\int_0^2 x\cdot\frac{x+1}{4}\,dx
+=\frac14\int_0^2 (x^2+x)\,dx\\
+&=\frac14\left(\frac{2^3}{3}+\frac{2^2}{2}\right)
+=\frac14\left(\frac83+2\right)
+=\frac14\cdot\frac{14}{3}
+=\frac76,\\[4pt]
+E[X^2]
+&=\int_0^2 x^2 f_X(x)\,dx
+=\int_0^2 x^2\cdot\frac{x+1}{4}\,dx
+=\frac14\int_0^2 (x^3+x^2)\,dx\\
+&=\frac14\left(\frac{2^4}{4}+\frac{2^3}{3}\right)
+=\frac14\left(4+\frac83\right)
+=\frac14\cdot\frac{20}{3}
+=\frac53,\\[4pt]
+\operatorname{Var}(X)
+&=E[X^2]-E[X]^2
+=\frac53-\left(\frac76\right)^2
+=\frac53-\frac{49}{36}
+=\frac{60-49}{36}
+=\frac{11}{36}.
+\end{aligned}
+\]
+
+因此 \(\operatorname{Var}(Y)=\dfrac{11}{36}\).
+
+\[
+\begin{aligned}
+E[XY]
+&=\int_0^2\int_0^2 xy\frac{x+y}{8}\,dx\,dy\\
+&=\frac18\int_0^2\int_0^2 (x^2y+xy^2)\,dx\,dy.
+\end{aligned}
+\]
+
+两项对称, 先算 \(\int_0^2\int_0^2 x^2y\,dx\,dy\).
+
+\[
+\begin{aligned}
+\int_0^2\int_0^2 x^2y\,dx\,dy
+&=\int_0^2\left(y\int_0^2 x^2\,dx\right)dy
+=\int_0^2 y\cdot\frac{2^3}{3}\,dy
+=\frac83\int_0^2 y\,dy\\
+&=\frac83\cdot\frac{2^2}{2}
+=\frac83\cdot 2
+=\frac{16}{3}.
+\end{aligned}
+\]
+
+同理 \(\int_0^2\int_0^2 xy^2\,dx\,dy=\dfrac{16}{3}\).
+
+所以
+\[
+E[XY]
+=\frac18\left(\frac{16}{3}+\frac{16}{3}\right)
+=\frac18\cdot\frac{32}{3}
+=\frac43.
+\]
+
+于是
+\[
+\operatorname{Cov}(X,Y)
+=E[XY]-E[X]E[Y]
+=\frac43-\left(\frac76\right)^2
+=\frac43-\frac{49}{36}
+=\frac{48-49}{36}
+=-\frac1{36}.
+\]
+
+协方差矩阵为
+\[
+\Sigma_2=
+\begin{pmatrix}
+\frac{11}{36} & -\frac1{36}\\[4pt]
+-\frac1{36} & \frac{11}{36}
+\end{pmatrix}.
+\]
+
+
+  \end{enumerate}
+  
+\end{solution}
+
+
+\begin{exercise}{}{}
+设随机变量\(X\)与\(Y\)都只能取两个值, 试证: \(X\)与\(Y\)独立与不相关是等价的.
+\end{exercise}
+
+\begin{solution}
+  设\(  X  \)的取值为 \(  x_1,x_2  \), 设 \(  A= \left\{ X= x_1 \right\}  \), \(  B= \left\{ Y= y_1 \right\}  \)  , 则 \[
+  X= x_2+ \left( x_1-x_2 \right)\chi _{A}  ,\quad Y= y_2+ \left( y_1-y_2 \right)\chi _{B} 
+  \]则 \[
+  E\left( X \right)=x_2+ \left( x_1-x_2 \right)P\left( A \right)  
+  \] \[
+  E\left( Y \right)= y_2+ \left( y_1-y_2 \right)P\left( B \right)  
+  \] \[
+  XY= x_2y_2+ x_2\left( y_1-y_2 \right)\chi _{B}+ y_2\left( x_1-x_2 \right)\chi _{A}+ \left( x_1-x_2 \right)\left( y_1-y_2 \right)\chi _{A}\chi _{B}    
+  \] \[
+  E\left( XY \right)= x_2y_2+ x_2\left( y_1-y_2 \right)P\left( B \right)+ y_2\left( x_1-x_2 \right)P\left( A \right)+ \left( x_1-x_2 \right)\left( y_1-y_2 \right)P\left( A\cap B \right)        
+  \]因此 \[
+  E\left( XY \right)-E\left( X \right)E\left( Y \right)= \left( x_1-x_2 \right)\left( y_1-y_2 \right)\left(P\left( A\cap B \right)  - P\left( A \right)P\left( B \right)\right)      
+  \]若 \( x_1= x_2  \), 则 \(  X  \)是常值的, 此时总有 \(  X  \)与\(  Y  \)独立且不相关. 若 \(  y_1= y_2  \)也有类似的结论成立.
+  
+  若 \(  x_1\neq x_2  \)且 \(  y_1\neq y_2  \), 则 \[
+  X,Y\text{不相关}\iff \operatorname{Cov}\left( X,Y \right)= 0\iff P\left( A \right)P\left( B \right)= P\left( A\cap B \right)    \iff X,Y\text{独立}
+  \]   
+\end{solution}
+
+
+\begin{exercise}{}{}
+设随机向量 $(X_1, X_2, X_3)$ 的相关系数分别为 $\rho_{12}, \rho_{23}, \rho_{31}$, 证明
+\[
+\rho_{12}^2 + \rho_{23}^2 + \rho_{31}^2 \leqslant 1 + 2\rho_{12}\rho_{23}\rho_{31}.
+\]
+\end{exercise}
+
+\begin{proof}
+  先考虑 \(  E\left( X_1 \right)= E\left( x_2 \right)= E\left( x_3 \right)= 0     \), \(  \operatorname{Var}\left( X_1 \right)= \operatorname{Var}\left( X_2 \right)= \operatorname{Var}\left( X_3 \right)= 1     \)的情况.  则此时 \[
+  \operatorname{Cov}\left( aX_1+ bX_2+ cX_3 \right)= \left( a,b,c \right)\begin{pmatrix} 
+      1&\rho_{12}&\rho _{13}\\ 
+       \rho _{12}&1&\rho _{23}\\ 
+        \rho _{13}&\rho _{23}&1 
+  \end{pmatrix}\begin{pmatrix} 
+      a\\ 
+       b\\ 
+        c 
+  \end{pmatrix}    
+  \]由于对于任意的 \(  a,b,c  \), \(  \operatorname{Cov}\left( aX_1+ bX_2+ cX_3 \right)\ge 0   \), 我们有 右侧的矩阵是半正定的, 从而 \[
+  1-\rho _{12}^{2}+ \rho _{23}^{2}+ \rho _{31}^{2}-2\rho _{12}\rho _{23}\rho _{31}= \det \begin{pmatrix} 
+      1&\rho _{12}&\rho _{13}\\ 
+       \rho _{12}&1&\rho _{23}\\ 
+        \rho _{12}&\rho _{23}&1 
+  \end{pmatrix}\ge 0 
+  \]  
+
+  对于一般的情况, 令 \[
+  Y_{i}= \frac{X_{i}-E\left( X_{i} \right)  }{\sqrt{\operatorname{Var}\left( X_{i} \right) } } 
+  \]则 \(  E\left( Y_{i} \right)= 0, \operatorname{Var}\left( Y_{i} \right)= 1    ,i= 1,2,3\). 记 \(  \rho _{ij}^{\prime} = \operatorname{Cov}\left( Y_{i},Y_{j} \right)   \), 则 \[
+ \rho _{ij}^{\prime} = \frac{1 }{\sqrt{\operatorname{Var}\left( X_{i} \right)\operatorname{Var}\left( X_{j} \right)  } }\operatorname{Cov}\left( X_{i},X_{j} \right)= \rho _{ij}
+  \] 之前的讨论说明了所需不等式对 \(  \rho _{ij}^{\prime}   \) 成立, 从而 \(  \rho _{ij}  \)满足所需不等式. 
+\end{proof}
+
+\begin{exercise}{}{}
+设随机变量 $X\sim N(0,1)$, $Y$ 各以 $0.5$ 的概率取值 $\pm 1$, 且假定 $X$ 与 $Y$ 相互独立. 令 $Z=X\cdot Y$, 证明:
+\begin{enumerate}
+\item $Z\sim N(0,1)$;
+\item $X$ 与 $Z$ 不相关, 但不独立.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+  \begin{enumerate}
+    \item  \[
+   \begin{aligned}
+    P\left( Z\le k \right)&= P\left( X\cdot Y\le k \right) \\ 
+     &= P\left( X\le k, Y= 1 \right)+ P\left( X\ge -k,Y= -1 \right)\\ 
+      &= \frac{1}{2}P\left( X\le k \right)    + \frac{1}{2}P\left( X\ge -k \right) \\ 
+       &= \frac{1}{2}P\left( X\le k \right)+ \frac{1}{2}P\left( X\le k \right)\\ 
+        &= P\left( X\le k \right)   
+   \end{aligned}
+    \]因此 \(  Z  \)与\(  X  \)同分布,  \(  Z\sim N\left( 0,1 \right)   \).
+    
+    \item  \[
+    \begin{aligned}
+    P\left( X^{2}Y \le k\right)&= P\left( X^{2}\le k, Y= 1 \right)+ P\left( X^{2}\ge -k,Y= -1 \right)    \\ 
+     &= \frac{1}{2}P\left( X^{2}\le k \right) + \frac{1}{2}P\left( X^{2}\ge -k \right) 
+    \end{aligned}
+    \]  此外 \[
+    P\left( X^{2}Y\ge k \right)= \frac{1}{2}P\left( X^{2}\ge k \right) + \frac{1}{2}P\left( X^{2}\le -k \right)   
+    \]\[
+   \begin{aligned}
+ E\left( XZ \right)=     E\left( X^{2}Y \right)&= \int_{0}^{\infty}P\left( X^{2}Y\ge x \right)-P\left( X^{2}Y\le -x \right)\,\mathrm{d} x \\ 
+     &= \frac{1}{2}\int_{0}^{\infty}P\left( X^{2}\ge x \right)+ P\left( X^{2}\le -x \right)-P\left( X^{2}\le -x \right)-P\left( X^{2}\ge x \right)\,\mathrm{d} x\\ 
+      &=     0
+   \end{aligned}
+    \]  又\[
+    E\left( X \right)= E\left( Z \right)= 0  
+    \]因此 \[
+    \operatorname{Cov}\left( X,Z \right)= E\left( XZ \right)-E\left( X \right)E\left( Z \right)= 0    
+    \]故 \(  X,Z  \)不相关.
+    
+    对于 \(  k> 0  \), 我们有 \[
+    \begin{aligned}
+    &P\left( X\le -k,Z\le -k \right)\\ 
+     &= P\left( X\le -k, XY\le -k \right)\\ 
+     &= P\left( X\le -k,XY\le -k,Y= 1 \right)+ P\left( X\le -k,XY\le -k,Y= -1 \right)\\ 
+      &=    \frac{1}{2} P\left( X\le -k \right)+\frac{1}{2} P\left( k\le X\le -k \right)\\ 
+       &=\frac{1}{2} P\left( X\le -k \right)   
+    \end{aligned} 
+    \] 而 \(  P\left( X\le -k \right)\neq 0   \), \(  P\left( Z\le -k \right)< \frac{1}{2}   \), 因此 \[
+  \frac{1}{2}  P\left( X\le -k \right)\neq P\left( X\le -k \right)P\left( Z\le -k \right)   
+    \]  从而 \[
+    P\left( X\le -k,Z\le -k \right)\neq P\left( X\le -k \right)P\left( Z\le -k \right)   
+    \]因此 \(  X,Z  \)不独立. 
+  \end{enumerate}
+  
+\end{proof}
+
+
+\begin{exercise}{}{}
+设随机向量\((X,Y)\)满足
+\[
+\operatorname{E}(X)=\operatorname{E}(Y)=0,\quad \operatorname{Var}(X)=\operatorname{Var}(Y)=1,\quad \operatorname{Cov}(X,Y)=\rho.
+\]
+证明:
+\[
+\operatorname{E}\bigl(\max\{X^{2},Y^{2}\}\bigr)\le 1+\sqrt{1-\rho^{2}}.
+\]
+\end{exercise}
+
+\begin{proof}
+   \[
+   \max \left\{ X^{2},Y^{2} \right\}= \frac{X^{2}+ Y^{2}+ \left| X^{2}-Y^{2} \right|  }{2 } 
+   \] \[
+   E\left( X^{2} \right)= \operatorname{Var}\left( X \right)-\left( E\left( X \right)  \right)^{2}= 1   
+   \]因此 \[
+   E\left( \max \left\{ X^{2},Y^{2} \right\} \right)= E\left( \frac{X^{2}+ Y^{2}+ \left| X^{2}-Y^{2} \right|  }{2 }  \right)= 1+  \frac{1}{2}E\left( \left| X^{2}-Y^{2} \right|  \right)   
+   \] \[
+   E\left( \left| X^{2}-Y^{2}  \right| \right)= E\left( \left| X-Y \right|\left| X+ Y \right|   \right)  \le \sqrt{E\left( \left| X-Y \right|^{2}  \right)E\left( \left| X+ Y \right|^{2}  \right)  }
+   \]由于 \(  E\left( X-Y \right)= E\left( X \right)-E\left( Y \right)= 0     \) ,\(  E\left( X+ Y \right)= E\left( X \right)+ E\left( Y \right)= 0     \). \[
+   \begin{aligned}
+   E\left( \left( X-Y \right)^{2}  \right)&=\operatorname{Var}\left( \left( X-Y \right)  \right) \\ 
+    &= \operatorname{Var}\left( X \right)+ \operatorname{Var}\left( Y \right)- 2 \operatorname{Cov}\left( X,Y \right)\\ 
+     &=    2-2\rho 
+   \end{aligned}
+   \] \[
+   \begin{aligned}
+   E\left( \left( X+ Y \right)^{2}  \right)&= \operatorname{Var} \left( \left( X+ Y \right)  \right)  \\ 
+    &= \operatorname{Var}\left( X \right)+ \operatorname{Var}\left( Y \right)+ 2 \operatorname{Cov}\left( X,Y \right)\\ 
+     &= 2+ 2\rho    
+   \end{aligned}
+   \]因此 \[
+   E\left( \left| X^{2}-Y^{2} \right|  \right)\le \sqrt{\left( 2-2\rho  \right)\left( 2+ \rho  \right)  }= 2\sqrt{1-\rho ^{2}} 
+   \] \[
+   E\left( \max \left\{ X^{2},Y^{2} \right\} \right)\le 1+ \sqrt{1-\rho ^{2}} 
+   \]
+\end{proof}
+
+\begin{exercise}{}{}
+设随机变量 \(X_{1},X_{2},\ldots,X_{n}\) 中任意两个的相关系数都是 \(\rho\), 试证:
+\[
+\rho\ge -\frac{1}{n-1}.
+\]
+\end{exercise}
+
+\begin{proof}
+  令 \[
+  Y_{i}= \frac{X_{i}-E\left( X_{i} \right)  }{\sqrt{\operatorname{Var}\left( X_{i} \right) } } 
+  \]则对于 \(  i\neq j  \),  \[
+  \begin{aligned}
+  \operatorname{Cov}\left( Y_i,Y_{j} \right)&= \operatorname{Cov}\left( \frac{X_{i}-E\left( X_{i} \right)  }{\sqrt{\operatorname{Var}\left( X_{i} \right) } },\frac{X_{j}-E\left( X_{j} \right)  }{\sqrt{\operatorname{Var}\left( X_{j} \right)}  }   \right)  \\ 
+   &= \frac{1 }{\sqrt{\operatorname{Var}\left( X_{i} \right) }\sqrt{\operatorname{Var}\left( X_{j} \right) } } \operatorname{Cov}\left( X_{i},X_{j} \right)\\ 
+    &= \operatorname{Corr}\left( X_{i},X_{j} \right)= \rho   
+  \end{aligned}
+  \] 于是 \[
+  \begin{aligned}
+  0\le \operatorname{Cov}\left( Y_1+ \cdots + Y_{n},Y_1+ \cdots + Y_{n} \right)&= \sum _{1\le i,j\le n}\operatorname{Cov}\left( Y_{i},Y_{j} \right) \\ 
+   &= \sum _{i= j}\operatorname{Cov}\left( Y_{i},Y_{i} \right)+ \sum _{i\neq j}\operatorname{Cov}\left( Y_{i},Y_{j} \right)\\ 
+    &= n+ \left( n^{2}-n \right)\rho    
+  \end{aligned}
+  \]因此 \[
+  \rho \ge \frac{-n }{n^{2}-n }= -\frac{1 }{n-1 }  
+  \]
+\end{proof}
+
+\begin{exercise}{}{}
+已知\((X,Y)\)的联合分布列如下
+\[
+\operatorname{P}(X=1,Y=1)=\operatorname{P}(X=2,Y=1)=\frac18,
+\]
+\[
+\operatorname{P}(X=1,Y=2)=\frac14,\quad \operatorname{P}(X=2,Y=2)=\frac12.
+\]
+
+试求
+
+\begin{enumerate}
+  \item 已知\(Y=i\)的条件下, \(X\)的条件分布列, \(i=1,2\);
+  \item \(X\)与\(Y\)是否独立?
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+  \begin{enumerate}
+    \item \[
+    P\left( Y= 1 \right)= \frac{1}{8}+ \frac{1}{8}= \frac{1}{4} 
+    \] \[
+    P\left( Y= 2 \right)= \frac{1}{4}+ \frac{1}{2}= \frac{3}{4} 
+    \] \[
+    P\left( X= 1|Y= 1 \right)= \frac{P\left( X= 1,Y= 1 \right)  }{P\left( Y= 1 \right)  }=   \frac{1}{2}
+    \] \[
+    P\left( X= 2|Y= 1 \right)= \frac{P\left( X= 2,Y= 1 \right)  }{P\left( Y= 1 \right)  }= \frac{1}{2}  
+    \] \[
+    P\left( X= 1|Y= 2 \right)=\frac{P\left( X= 1,Y= 2 \right)  }{P\left( Y= 2 \right)  }=   \frac{1}{3} 
+    \] \[
+    P\left( X= 2|Y= 2 \right)= \frac{P\left( X= 2,Y= 2 \right)  }{P\left( Y= 2 \right)  }= \frac{2}{3}  
+    \]
+    \item  \[
+    P\left( X= 1 \right)= \frac{3}{8},\quad P\left( X= 2 \right)= \frac{5}{8}  
+    \]因此 \[
+    P\left( X= 1 \right)P\left( Y= 1 \right)= \frac{3}{32}\neq \frac{1}{8}= P \left( X= 1,Y= 1 \right)   
+    \]因此 \(  X,Y  \)不独立. 
+  \end{enumerate}
+  
+\end{proof}
+
+\begin{exercise}{}{}
+设随机变量\(X\)与\(Y\)独立同分布, 试在以下情况下求\(\operatorname{P}(X=k\mid X+Y=m)\):
+
+\begin{enumerate}
+  \item \(X\)与\(Y\)都服从参数为\(p\)的几何分布;
+  \item \(X\)与\(Y\)都服从参数为\((n,p)\)的二项分布.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+  \begin{enumerate}
+    \item \[
+    P\left( X= k| X+ Y= m \right)= \frac{P\left( X= k, X+ Y= m \right)  }{P\left( X+ Y= m \right)  }= \frac{P\left( X= k,Y= m-k \right)  }{P\left( X+ Y= m \right)  }   
+    \]其中\[
+   \begin{aligned}
+    P\left( X+ Y= m \right)&= \sum _{k= 1}^{m-1} P\left( X= k \right)P\left( Y= m-k \right)   \\ 
+     &= \sum _{k= 1}^{m-1} \left( 1-p \right)^{k-1}p \left( 1-p \right)^{m-k-1}p\\ 
+      &= \sum _{k= 1}^{m-1}\left( 1-p \right)^{m-2}p^{2}\\ 
+       &= \left( m-1 \right)\left( 1-p \right)^{m-2}p^{2}     
+   \end{aligned}
+    \] \[
+  \begin{aligned}
+    P\left( X= k,Y= m-k \right)&= P\left( X= k \right)P\left( Y= m-k \right)    \\ 
+     &= \left( 1-p \right)^{k-1}p \left( 1-p \right)^{m-k-1}p\\ 
+      &= \left( 1-p \right)^{m-2}p^{2}   
+  \end{aligned}
+    \]故 \[
+    P\left( X= k|X+ Y= m \right)= \frac{ \left( 1-p \right)^{m-2}p^{2} }{ \left( m-1 \right)\left( 1-p \right)^{m-2}p^{2}  }= \frac{1 }{m-1 }  
+    \]
+    \item  \[
+    P\left( X= k \right)= \binom{ n }{ k }p^{k}\left( 1-p \right)^{n-k}   
+    \] \[
+   \begin{aligned}
+    P\left( X+ Y= m \right)&= \sum _{k= 0}^{m}P\left( X= k \right)P\left( Y= m-k \right)   \\ 
+     &= \sum _{k= 0}^{m}\binom{ n }{ k }p^{k}\left( 1-p \right)^{n-k}\binom{ n }{m-k  }p^{m-k}\left( 1-p \right)^{n-m+ k}\\ 
+      &= \sum _{k= 0}^{m}\binom{ n }{ k }\binom{ n }{m-k  }p^{m}\left( 1-p \right)^{2n-m}       \\ 
+       &= \binom{ 2n }{m  }p^{m}\left( 1-p \right)^{2n-m}  
+   \end{aligned} 
+    \] 因此 \[
+   \begin{aligned}
+    P\left( X= k|X+ Y= m \right)&= \frac{P\left( X= k, Y= m-k \right)  }{P\left( X+ Y = m\right)  } \\ 
+     &= \frac{\binom{ n }{ k }p^{k}\left( 1-p \right)^{n-k} \binom{ n }{m-k  }p^{m-k}\left( 1-p \right)^{n-m+ k}     }{ \binom{ 2n }{m  }p^{m}\left( 1-p \right)^{2n-m}  }   \\ 
+      &= \frac{\binom{ n }{ k }\binom{ n }{ m-k }p^{m}\left( 1-p \right)^{2n-m}    }{\binom{ 2n }{m  }p^{m}\left( 1-p \right)^{2n-m}   }\\ 
+       &= \frac{\binom{ n }{ k }\binom{ n }{ m-k }   }{\binom{ 2n }{m  }  }
+   \end{aligned}
+    \]
+  \end{enumerate}
+  
+\end{proof}
+\begin{exercise}{}{}
+设二维连续随机变量\((X,Y)\)的联合密度函数为
+\[
+p(x,y)=
+\begin{cases}
+3x, & 0<x<1,\; 0<y<x,\\
+0,  & \text{其他}.
+\end{cases}
+\]
+
+试求条件密度函数\(p(y\mid x)\).
+\end{exercise}
+
+\begin{proof}
+   \[
+   p(y|x)= \frac{p\left( x,y \right)  }{p_{X}\left( x \right)  } 
+   \]其中 \[
+   p_{X}\left( x \right)=\chi _{\left\{ 0< x< 1 \right\}} \int_{0}^{x} 3x\,\mathrm{d} y= \chi _{\left\{ 0< x< 1 \right\}}3x^{2}
+   \]因此 \[
+   p\left( y|x \right) =\chi _{\left\{ 0<y<  x< 1 \right\}}\frac{1 }{x } 
+   \]
+\end{proof}
+\begin{exercise}{}{}
+设二维连续随机变量 $(X,Y)$ 的联合密度函数为
+\[
+p(x,y) = \begin{cases}
+\frac{21}{4}x^2y, & x^2 \leqslant y \leqslant 1, \\
+0, & \text{其他}.
+\end{cases}
+\]
+求条件概率 $P(Y \geqslant 0.75 \mid X = 0.5)$.
+\end{exercise}
+
+\begin{proof}
+  \[
+  p_{Y|X}\left( y|0.5 \right)=  \frac{p\left( x,y \right)  }{p_{X}\left( 0.5 \right)  } 
+  \]其中 \[
+  p_{X}\left( 0.5 \right)= \int_{\frac{1}{4}}^{1}\frac{21}{4}\frac{1}{4}y\,\mathrm{d} y= \frac{21}{16} \frac{1}{2}\left( 1- \frac{1}{16} \right)= \frac{21\times 15 }{32\times 16 }   
+  \]于是 \[
+  p_{Y|X}\left( y|0.5 \right)= \chi _{\left\{ \frac{1}{4}\le y\le 1 \right\}}\frac{32 }{15 }y  
+  \] \[
+  P\left( Y\ge 0.75| X= 0.5 \right)= \int_{\frac{3}{4}}^{1}  \frac{32 }{15 }y\,\mathrm{d} y= \frac{16}{15}\left( 1- \frac{9}{16} \right)= \frac{7}{15}   
+  \]
+\end{proof}
+\end{document}

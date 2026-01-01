@@ -4,7 +4,7 @@
 
 \ifSubfilesClassLoaded{
 
-    %\tableofcontents
+    \tableofcontents
     
     %\setcounter{chapter}{}
 }{}
@@ -54,5 +54,78 @@ for some constants $c^{k+1}, \dots, c^n$.
     \] Thus \[
     S\cap U= \left\{ \left( x^{1},\cdots ,x^{r},x^{r+ 1},\cdots ,x^{m} \right)\in U: x^{1}= \cdots = x^{r}= 0  \right\}
     \] is the \(  k  \)-slice. So \(  S  \) satisfies the local \(  k  \)-slice condition, so it is an embedded submanifold of dimension \(  k  \).    
+\end{proof}
+
+
+\section{Restricting Maps to Submanifolds}
+
+\begin{theorem}{Restricting the Domain of a Smooth Map}{}
+If $M$ and $N$ are smooth manifolds with or without boundary, $F \colon M \to N$ is a smooth map, and $S \subseteq M$ is an immersed or embedded submanifold , then $F|_S \colon S \to N$ is smooth.
+\end{theorem}
+\begin{theorem}{Restricting the Codomain of a Smooth Map}{}
+Suppose $M$ is a smooth manifold (without boundary), $S \subseteq M$ is an immersed submanifold, and $F: N \to M$ is a smooth map whose image is contained in $S$ . If $F$ is continuous as a map from $N$ to $S$, then $F: N \to S$ is smooth.
+\end{theorem}
+
+\section{The Tangent Space to a Submanifold}
+
+\begin{definition}{}{}
+    Let $M$ be a smooth manifold with or without boundary, and let $S \subseteq M$ be an \dfntxt{immersed} or embedded submanifold. Since the inclusion map $\iota : S \hookrightarrow M$ is a smooth immersion, at each point $p \in S$ we have an injective linear map $d\iota_{p} : T_{p}S \to T_{p}M$. In terms of derivations, this injection works in the following way: for any vector $v \in T_{p}S$, the image vector $\tilde{v} = d\iota_{p}(v) \in T_{p}M$ acts on smooth functions on $M$ by
+\[
+\tilde{v}f = d\iota_{p}(v)f = v(f \circ \iota) = v\bigl(f\vert_{S}\bigr).
+\]
+\end{definition}
+
+\begin{remark}
+We adopt the convention of \dfntxt{identifying} $T_{p}S$ with its image under this map, thereby thinking of $T_{p}S$ as a certain linear subspace of $T_{p}M$
+\end{remark}
+
+\begin{proposition}{}{}
+Suppose $M$ is a smooth manifold with or without boundary, $S \subseteq M$ is an immersed or embedded submanifold, and $p \in S$. A vector $v \in T_{p}M$ is in $T_{p}S$ if and only if there is a smooth curve $\gamma : J \to M$ whose image is contained in $S$, and which is also smooth as a map into $S$, such that $0 \in J$, $\gamma(0) = p$, and $\gamma'(0) = v$.
+\end{proposition}
+\begin{proof}
+   \(  \impliedby   \): If there is \(   \gamma :J\to M  \) satisfying 
+   \begin{enumerate}
+    \item \(  \operatorname{Im}\left(  \gamma  \right)\subseteq S   \) 
+     \item \(   \tilde{\gamma} :J\to S  \) is smooth, where \(  \iota \circ  \tilde{\gamma} =  \gamma   \) 
+     \item \(   \gamma \left( 0 \right)= p,  \gamma ^{\prime} \left( 0 \right)= v    \). 
+   \end{enumerate}
+     Then since \[
+     v=  \gamma ^{\prime} \left( 0 \right)= \left( \iota \circ  \tilde{\gamma}  \right)^{\prime} \left( 0 \right)=  d \iota _{p}\left(   \tilde{\gamma}  ^{\prime} \left( 0 \right)  \right)    
+     \]\(   \tilde{\gamma}   \) is a smooth curve on \(  S  \), \(   \tilde{\gamma} ^{\prime} \left( 0 \right)\in T_{p}S   \), thus  \(  v  \in T_{p}S\subseteq T_{p}M\). 
+     
+     \(  \implies   \) if \(  v\in T_{p}S\subseteq T_{p}M  \), then there exsits \(  u\in T_{p}S  \) such that \(  d \iota _{p}\left( u \right)= v   \).    There exists a smooth curve \(   \tilde{\gamma} :J\to S  \) such that \(   \tilde{\gamma} \left( 0 \right)= p   \), \(   \tilde{\gamma} ^{\prime} \left( 0 \right)= u   \). Let \(   \gamma = \iota \circ  \tilde{\gamma}   \), then  \[
+   \operatorname{Im} \gamma \subseteq S, \quad  \gamma \left( 0 \right)= \iota \left(  \tilde{\gamma} \left( 0 \right)  \right)= \iota \left( p \right)= p      ,\quad \gamma ^{\prime} \left( 0 \right)= \,\mathrm{d} \iota _{p}\left(  \tilde{\gamma} ^{\prime} \left( 0 \right)  \right)= d \iota _{p}\left( u \right)= v   
+     \]    
+\end{proof}
+
+\begin{proposition}{}
+Suppose $M$ is a smooth manifold, $S \subseteq M$ is an \dfntxt{embedded} submanifold, and $p \in S$. As a subspace of $T_{p}M$, the tangent space $T_{p}S$ is characterized by
+\[
+T_{p}S = \{ v \in T_{p}M : v f = 0 \text{ whenever } f \in C^{\infty}(M) \text{ and } f\big|_{S} = 0 \}.
+\]
+\end{proposition}
+
+\begin{proof}
+    First we assume that \(  v\in T_{p}S  \subseteq T_{p}M\) . This means, more precisely, there exists \(  w\in T_{p}S  \) such that \(  d \iota _{p}\left( w \right)= v   \).   Then for each \(  f\in C^{\infty}\left( M \right)   \) with \(  f|_{S}= 0  \), we have \[
+    vf= d \iota _{p}\left( w \right)f= w\left( f\circ \iota  \right) = 0 
+    \]   
+
+    Conversely, if \(  v\in T_{p}M  \) satisfies \(  vf= 0  \) whenever \(  f \in C^{\infty}\left( M \right)   \) and \(  f|_{S}= 0  \). Let \(  \left( x^{1},\cdots ,x^{n} \right)   \) be slice coordinates for \(  S  \) in some neighborhood \(  U  \) of \(  p  \) , so that \(  U\cap S  \) is the subset of \(  U  \) where \(  x^{k+ 1}= \cdots = x^{n}= 0  \), and  \(  \left( x^{1},\cdots ,x^{k} \right)   \)  are coordinates for \(  S  \cap U\). Then \(  \iota : S\cap U\hookrightarrow M \) is represented  \[
+    \iota \left( x^{1},\cdots ,x^{k} \right)= \left( x^{1},\cdots ,x^{k},0,\cdots ,0 \right)  
+    \] Write \[
+    v= \sum _{i= 1}^{n}v^{i}\left. \frac{\partial }{\partial x^{i}} \right|_{p}, 
+    \] Let \(   \varphi \in C^{\infty}\left( M \right)   \) be a bump   supported in \(  U  \) and is equal to 1 in a neighborhood of \(  p  \) . Take any \(  j> k  \), let extend \(  f=  \varphi \left( x \right)x^{j}   \) to be zero  on \(  M\setminus \operatorname{supp} \varphi   \). Then \(  f  \) is identically zero on \(  S  \), we have   \[
+    0= vf=  \varphi \left( p \right)v^{j} = v^{j}
+    \]
+\end{proof}
+
+\begin{proposition}{}{}
+    Suppose \(  M  \) is a smooth manifold and \(  S\subseteq M  \) is an embedded submanifold. If \(  \Phi :U\to N  \) is any local defining map for \(  S  \), then \(  T_{p}S  = \operatorname{ker} d\Phi _{p}:T_{p}M \to T_{\Phi \left( p \right) }N\) for each \(  p\in S\cap U  \).       
+\end{proposition}
+
+\begin{proof}
+    Let \(  \iota :S\hookrightarrow M  \), then \(  \Phi \circ \iota   \) is identically zero on \(  U\cap S  \). Then \(  d \Phi _{p} \circ d \iota _{p}= 0  \), thus \(  \operatorname{Im} d \iota _{p}\subseteq \operatorname{ker} d \Phi _{p} \). The other side, since \(  d \Phi _{p}  \) is surjective, we have \[
+    \operatorname{dim} \operatorname{ker} d \Phi _{p}=  \operatorname{dim} T_p{M}- \operatorname{dim}T_{\Phi \left( p \right) }N= \operatorname{dim}T_{p}S= \operatorname{dim} \operatorname{Im} d \iota _{p}
+    \]      Thus \(  \operatorname{Im} d \iota _{p}= \operatorname{ker} d \Phi _{p}  \). Since \(  \operatorname{Im}d \iota _{p}  \) is identified with \(  T_{p}S  \), we have \(  T_{p}S= \operatorname{ker}d \Phi _{p}  \).    
 \end{proof}
 \end{document}

@@ -1,0 +1,148 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{9}
+}{}
+
+\chapter{ HW10 }
+ 代靖涵 25120222201319
+
+\begin{exercise}{}{}
+设映射 $f\colon S^{1}\to S^{1}$ 规定为 $f(z)=-z$. 试描述同态 $f_{\pi}\colon \pi_{1}(S^{1},1)\to \pi_{1}(S^{1},-1)$.
+\end{exercise}
+
+\begin{proof}
+    令 \(  \alpha \left( t \right)= e^{2 \pi it}, t\in \left[ 0,1 \right]    \). 则 \(  [\alpha ]  \)生成了 \(   \pi _1 \left( S^{1},1 \right)\simeq \mathbb{Z}    \), \(  [\alpha ]  \)对应到 \(  1\in \mathbb{Z}   \).     
+
+    令\(  \beta = e^{2 \pi i\left( t+ \frac{1 }{2 }  \right) }= -e^{2 \pi it}, t\in \left[ 0,1 \right]   \). 则 \(  [\beta ]  \)生成了 \(   \pi _1 \left( S^{1},-1 \right)   \simeq \mathbb{Z} \), \(  [\beta ]  \)对应到 \(  1  \).     
+
+    由于 \[
+    \left( f\circ \alpha  \right)\left( t \right)= -\alpha \left( t \right)= -e^{2 \pi it}= \beta \left( t \right)    
+    \]我们有 \[
+    f_{ \pi }\left( [\alpha ] \right)= [\beta ] 
+    \]
+
+    因此, 如果按逆时针方向选取 \(   \pi _1 \left( S^{1},1 \right)   \)和 \(   \pi _1 \left( S^{1},-1 \right)   \)的生成元, \(  f_{ \pi }  \)将生成元映到生成元, \(  f_{ \pi }  \)等同于恒等态射 \[
+    \begin{aligned}
+    \mathbb{Z} &\to \mathbb{Z} \\ 
+     n&\mapsto n 
+    \end{aligned}
+    \]  
+\end{proof}
+
+\begin{exercise}{}{}
+设 \(f\colon S^{1}\to S^{1}\) 规定为 \(f(z)=z^{n}\), \(n\in \mathbb{Z}\). 试描述同态 \(f_{\pi}\colon \pi_{1}(S^{1},1)\to \pi_{1}(S^{1},1)\).
+\end{exercise}
+
+\begin{proof}
+    令 \(  \alpha \left( t \right)= e^{2 \pi it},t\in \left[ 0,1 \right]    \), 则 \(  [\alpha ]  \)生成了 \(   \pi _1 \left( S^{1},1 \right)   \).  \[
+    f\left( \alpha \left( t \right)  \right)= \left( e^{2 \pi it} \right)^{n}= e^{2  \pi int}
+    \]
+    \begin{itemize}
+        \item 当 \(  n> 0  \)时,  \[
+        \underbrace{\alpha * \alpha * \cdots * \alpha}_{n \text{ 次}}\simeq  e^{2 \pi int}
+        \] 
+        \item 当 \(  n = 0  \)时, \(  e^{2 \pi int}\equiv 1  \).
+        \item 当 \(  n< 0  \)时, \[
+        \underbrace{\bar{\alpha} * \bar{\alpha} * \cdots * \bar{\alpha}}_{-n \text{ 次}}\simeq  e^{2 \pi int}
+        \]   
+    \end{itemize}
+    
+    无论如何, 都有 \[
+    f_{ \pi }\left( [\alpha ] \right)= [\alpha ]^{n} 
+    \]因此 \(  f_{ \pi }  \)等于群同态  \[
+ \begin{aligned}
+    \mathbb{Z}&\to \mathbb{Z} \\ 
+     k&\mapsto nk 
+ \end{aligned}
+    \]
+\end{proof}
+\begin{exercise}{}{}
+设\(Y\)道路连通,且\(\pi_{1}(Y)\)是交换群. 如果\(f\simeq g:X\to Y\), 并且对\(x_{0}\in X\), \(f(x_{0})=g(x_{0})=y_{0}\). 则
+\[
+f_{\pi}=g_{\pi}:\pi_{1}(X,x_{0})\to\pi_{1}(Y,y_{0}).
+\]
+\end{exercise}
+
+\begin{proof}
+    设 \(   \omega = [ \alpha  ]\in  \pi _1 \left( X,x_0 \right)   \) , 则\(  \alpha : \mathbb{I}\to X  \), \(  \alpha \left( 0 \right)= \alpha \left( 1 \right)= x_0    \).   \[
+    f_{ \pi }\left(  \omega  \right) = [f\circ \alpha ],\quad g_{ \pi }\left(  \omega  \right)= [g\circ \alpha ] 
+    \] 设 \(  H  \)是 \(  f  \)到 \(  g  \)的同伦,    \(  H: X \times \mathbb{I}\to Y  \), \[
+    H\left( x,0 \right) = f\left( x \right),\quad H\left( x,1 \right)= g\left( x \right)   
+    \]  令 \(  G:\mathbb{I}\times \mathbb{I}\to Y  \), \(  G\left( s,t \right)= H\left( \alpha \left( s \right),t  \right)    \). 则 \[
+    G\left( s,0 \right)= H\left( \alpha \left( s \right),0  \right)= f\circ \alpha \left( s \right),\quad G\left( s,1 \right)= H\left( \alpha \left( s \right),1  \right)= g\circ \alpha \left( s \right)      
+    \] \(  G\left( 0,t \right)= H\left( x_0,t \right)= G\left( 1,t \right)     \) . 令 \(   \sigma \left( t \right)= G\left( 0,t \right)    \). 
+    
+    令 \(   \gamma\)是沿着\(   \partial \left( \mathbb{I}\times \mathbb{I} \right)   \)的逆时针的回路,从 $(0,0)$ 出发, 依次经过 $(1,0), (1,1), (0,1)$ 回到 $(0,0)$ . 
+ 考虑道路 \(  G\circ  \gamma   \), 则 它的道路类 为   \[
+    [G\circ  \gamma ]= [f\circ \alpha ] [ \sigma ][g\circ \alpha ]^{-1} [ \sigma ]^{-1} \in   \pi _1 \left( Y,y_0 \right) 
+    \] 由于 \(  \mathbb{I}\times \mathbb{I}  \)是可缩的,  \(   \gamma   \)是零伦, 因此 \(  [G\circ  \gamma ]= e  \), 我们有 \[
+    [f\circ \alpha ][ \sigma ][g\circ \alpha ]^{-1} [ \sigma ]^{-1} = e
+    \]   由于\(   \pi _1 \left( Y,y_0 \right)   \)交换, 我们有 \[
+    [f\circ \alpha ]= [g\circ \alpha ]
+    \] 这就说明了 \[
+    f_{ \pi }= g_{ \pi }
+    \]
+\end{proof}
+\begin{exercise}{}{}
+若 $B$ 是 $A$ 的形变收缩核, $A$ 是 $X$ 的形变收缩核, 则 $B$ 也是 $X$ 的形变收缩核.
+\end{exercise}
+\begin{proof}
+    若 \(  B  \)是\(  A  \)的形变收缩核, 则存在收缩映射 \(  r_1:A\to B \), 使得   \(  r_1\circ i_{B}= \operatorname{Id}_{B}  \) , \(i_{B}\circ r_1 \simeq \operatorname{Id}_{A}  \). 其中 \(  i_{B}:B\hookrightarrow A  \)是含入映射.  
+
+    \(  A  \)是 \(  X  \)的形变收缩核, 存在收缩映射 \(  r_2:X\to A  \), 使得 \(  r_2\circ i_{A}= \operatorname{Id}_{A}  \), \(  i_{A}\circ r_2\simeq  \operatorname{Id}_{X}  \).   其中 \(  i_{A}:A\hookrightarrow   X\)是含入映射. 那么考虑映射 \(  r= r_1\circ r_2: X\to B \), 以及 \(  i_{B}^{\prime} = i_{A}\circ i_{B}: B\hookrightarrow X  \). 我们有 \[
+    r\circ i_{B}^{\prime} = r_1\circ r_2\circ i_{A}\circ i_{B}= r_1\circ \operatorname{Id}_{A}\circ i_{B}= r_1\circ i_{B}= \operatorname{Id}_{B}
+    \]      \[
+    i_{B}^{\prime} \circ r\simeq i_{A}\circ i_{B}\circ r_1\circ r_2\simeq i_{A}\circ \operatorname{Id}_{A}\circ r_2\simeq i_{A}\circ r_2\simeq \operatorname{Id}_{X}
+    \]这表明 \(  B  \)是 \(  X  \)的一个形变收缩核.  
+\end{proof}
+\begin{exercise}{}{}
+若 $B \subset A \subset X$, $A$ 是 $X$ 的收缩核, $B$ 是 $X$ 的形变收缩核, 则 $B$ 也是 $A$ 的形变收缩核.
+\end{exercise}
+
+\begin{proof}
+    \(  A  \)是\(  X  \)的收缩核, 故存在收缩映射 \(  r_A:X\to A \), 使得 \(  r_A\circ i_{A}= \operatorname{Id}_{A}  \), 其中 \(  i_{A}:A\hookrightarrow X  \)是含入映射.     
+
+    \(  B  \)是 \(  X  \)的形变收缩核, 存在收缩映射 \(  r_B:X\to B  \), 使得   \(  r_B\circ i_{B}= \operatorname{Id}_{B}  \), \(  i_{B}\circ r_B\simeq \operatorname{Id}_{X}  \)  其中 \(  i_{B}:B\hookrightarrow X  \)是含入映射.  
+
+    令 \(  i_{B}^{\prime} : B\hookrightarrow A  \), 则 \(i_{A} \circ  i_{B}^{\prime} = i_{B}  \).  令 \(  r= r_B\circ i_{A} \), 则 \(  r\circ i_{B}^{\prime} = r_B\circ i_{A}\circ i_{B}^{\prime} = r_B\circ i_{B}= \operatorname{Id}_{B}  \).  \[
+    \begin{aligned}
+    i_{B}^{\prime} \circ r= \operatorname{Id}_{A}\circ i_{B}^{\prime} \circ r= r_{A}\circ i_{A}\circ i_{B}^{\prime} \circ r= r_{A}\circ i_{B}\circ r&= r_{A}\circ i_{B}\circ r_{B}\circ i_{A}\\ 
+     &\simeq r_{A}\circ \operatorname{Id}_{X}\circ i_{A}
+    \end{aligned}
+    \] 而 \[
+    r_{A}\circ \operatorname{Id}_{X}\circ i_{A}= r_{A}\circ i_{A}= \operatorname{Id}_{A}
+    \] 这表明 \(  B  \)是 \(  A  \)的形变收缩核.  
+\end{proof}
+\begin{exercise}{}{}
+设 $X$ 是 Möbius 带, $A$ 是它的边界, $x_0 \in A$. 证明包含映射 $i : A \to X$ 诱导的同态 $i_ \pi  : \pi_1(A, x_0) \to \pi_1(X, x_0)$ 不是同构.
+\end{exercise}
+\begin{proof}
+    \[
+    X= [0,1]^{2}/\left\{ \left( 1,y \right)\sim \left( 0,1-y \right)   \right\}
+    \]定义 \(  H: X\times \mathbb{I}\to X  \), \[
+    H\left( [\left( x,y \right) ],t \right)=\left[ \left( x,  \left( 1-t \right)y+ \frac{1 }{2 }t  \right) \right] 
+    \] 由于 \[
+    \left[ \left( 1, \left( 1-t \right)y+ \frac{1 }{2 }t   \right)  \right]= \left[ \left( 0, -\left( 1-t \right)y+ 1-\frac{1 }{2 }t  \right)  \right]  
+    \] \[
+    \left[ \left( 0,\left( 1-t \right)\left( 1-y \right)+ \frac{1 }{2 }t    \right)  \right]=  \left[ \left( 0, -\left( 1-t \right)y + 1-\frac{1 }{2 }t   \right)  \right] 
+    \]因此 \(  H  \)是良定义的. 此外,  \[
+    H\left( \left[ \left( x,y \right),0  \right]  \right)= \left[ \left( x,y \right)  \right],\quad H\left( \left[  \left( x,y \right),1 \right]  \right)= \left[ \left( x,\frac{1 }{2 }  \right)  \right]    
+    \]由于 \(  \left\{ \left[ \left( x,\frac{1 }{2 }  \right)  \right] : x\in \left[ 0,1 \right]  \right\}  \)与 \(  S^{1}  \)同胚, 将其等同于 \(  S^{1}  \), 令 \(  r:X\to S^{1}  \), \(  r\left( [\left( x,y \right) ] \right)=\left[ \left( x,\frac{1 }{2 }  \right) \right]  \).  记\(  i_{S}:S^{1}\hookrightarrow X  \), 我们有 \(  r\circ i_{S}= \operatorname{Id}_{S}  \), \(  i_{S}\circ r\simeq \operatorname{Id}_{X}  \).  \[
+    i= \operatorname{Id}_{X}\circ i\simeq i_{S}\circ r \circ i
+    \]若 \(  i_{ \pi }  \)是同构, 则 \(r_{ \pi }\circ i_{ \pi }: \pi _1 \left( A,x_0 \right)\to  \pi _1 \left( S,x_0 \right)    \)  是同构. 但是令 \(  a:\mathbb{I}\to A  \), \[
+    a\left( t \right)= \begin{cases} [\left(2 t,0 \right) ],& t\in \left[ 0,\frac{1 }{2 }  \right]\\ 
+     \left[ \left(2t-1,1  \right)  \right],& t\in \left[ \frac{1 }{2 },1  \right]    \end{cases}  
+    \] 则 \(   \pi _1 \left( A,x_0 \right)   \)由 \(  [a]  \)生成. 令\(  b: \mathbb{I}\to S^{1}  \),   \(  b\left( t \right)= \left[ \left( t,\frac{1 }{2 }  \right)  \right]    \), 则   \(  [b]  \)生成了 \(   \pi _1 \left( S,x_0 \right)   \). 此时, \[
+    r\circ i\circ a\left( t \right) = \begin{cases} [\left( 2t,\frac{1 }{2 }  \right) ],& t\in \left[ 0,\frac{1 }{2 }  \right]\\ 
+     \left[ \left( 2t-1,\frac{1 }{2 }  \right)  \right],& t\in \left[ \frac{1 }{2 },1  \right]    \end{cases}=  b*b  \left( t \right) 
+    \] 因此 \[
+    \left( r_{ \pi }\circ i_{ \pi } \right)\left( [a] \right)= 2[b]  
+    \]\(  \left( r_{ \pi }\circ i_{ \pi } \right)   \)不是满同态, 矛盾,  因此 \(  i_{ \pi }  \)不是同构.  
+\end{proof}
+\end{document}

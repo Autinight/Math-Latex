@@ -1,0 +1,115 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{5}
+}{}
+
+\chapter{ CH6-3 }
+ 代靖涵 25120222201319
+\begin{exercise}{}{}
+$\{\sin nx\}$ 是 $L^2([0, \pi])$ 中的完全正交系.
+\end{exercise}
+
+\begin{proof}
+    对于任意的 \(  n_1,n_2\in \mathbb{Z} _{\ge 1}  \), \(  n_1\neq n_2  \),  \[
+   \begin{aligned}
+    \int_{0}^{ \pi } \sin n_1x\sin n_2x\,\mathrm{d} x&=\int_{0}^{ \pi }\frac{1}{2}\left( \cos \left( n_1-n_2 \right)x-\cos \left( n_1+ n_2 \right)x   \right)\,\mathrm{d} x 
+     &=0 
+   \end{aligned}
+    \]  因此 \(  \left\{ \sin nx \right\}  \)中的元素两两正交.
+    
+    任取 \(  f\in L^{2}[\left( 0, \pi  \right) ]  \), 定义 \[
+    \tilde{f}= \begin{cases} f\left( x \right),&x\in [0, \pi ]\\ 
+     -f\left( -x \right),&x\in [- \pi ,0)   \end{cases} 
+    \] 则 对于任意的 \(  n\ge 0  \), \[
+    \int_{- \pi }^{ \pi }\cos nx \tilde{f}\left( x \right)\,\mathrm{d} x= 0 
+    \]特别地,  \[
+    \int_{- \pi }^{ \pi }\tilde{f}\left( x \right)\,\mathrm{d} x= 0 
+    \] 对于任意的 \(  n\ge 1  \),  \[
+    \frac{1 }{2 \pi  } \int_{- \pi }^{ \pi }\sin nx \tilde{f}\left( x \right)\,\mathrm{d} x= \frac{1 }{ \pi  } \int_{0}^{ \pi }\sin nxf\left( x \right)\,\mathrm{d} x  
+    \] 由于 \(  \left\{ \frac{1 }{\sqrt{2 \pi}  } ,\frac{1 }{\sqrt{ \pi } }  \sin x, \frac{1 }{\sqrt{ \pi } } \cos x,\frac{1 }{\sqrt{ \pi } } \sin 2x,\frac{1 }{\sqrt{ \pi } } \cos 2x,\cdots  \right\}  \)是 \(  L^{2}[- \pi , \pi ]  \)中的完全的标准正交系,  \[
+   \begin{aligned}
+   & \frac{1 }{\sqrt{2 \pi } }\int_{- \pi }^{ \pi }\tilde{f}\left( x \right)\,\mathrm{d} x+ \sum _{ n = 1}^{\infty}\left<\frac{1 }{\sqrt{ \pi } } \cos nx, \tilde{f}\left( x \right)  \right>_{[- \pi , \pi] }\cos nx+ \left<\frac{1 }{\sqrt{ \pi } } \sin nx, \tilde{f}\left( x \right)  \right>_{[- \pi , \pi ]}\sin nx   \\ 
+    &= \sum _{n = 1}^{\infty}\left<\sin nx, \tilde{f}\left( x \right)  \right>_{[- \pi , \pi ]}\sin  nx\\ 
+     &= \sum _{n = 1}^{\infty}\left( \frac{1 }{ \pi  }\int_{0}^{ \pi }\sin nxf\left( x \right)\,\mathrm{d} x  \right) \sin nx  
+   \end{aligned}
+    \]  在 \(  L^{2}[- \pi , \pi ]  \)上收敛于 \(  \tilde{f}  \). 在 \(  [0, \pi ]  \)上,  \(  \tilde{f}= f  \), 因此 \(  f  \)在 \(  L^{2}\left( [0, \pi ] \right)   \)上收敛于 \(  \sum _{n =1}^{\infty}\left( \frac{1 }{ \pi  }\int_{0}^{ \pi }\sin nxf\left( x \right)\,\mathrm{d} x   \right)\sin nx   \)      .这表明 \(  \left\{ \frac{1 }{\sqrt{ \pi } }\sin nx  \right\}  \)是\(  L^{2}\left( [0, \pi ] \right)   \)中的标准完全正交系. 因此 \(  \left\{ \sin nx \right\}  \)是完全正交系.   
+\end{proof}
+\begin{exercise}{}{}
+设 $\{\varphi_k\} \subset L^2(E)$ 是完全标准正交系, 试证明对 $f, g \in L^2(E)$, 有
+\[ \langle f, g \rangle = \sum_{k=1}^\infty \langle f, \varphi_k \rangle \langle g, \varphi_k \rangle. \]
+\end{exercise}
+
+\begin{proof}
+    \[
+    f= \sum _{k= 1}^{\infty}\left<f, \varphi _{k} \right> \varphi _{k},\quad g = \sum _{ k = 1}^{\infty}\left<g, \varphi _{k} \right> \varphi _{k}
+    \]定义 \[
+    f_{n}= \sum _{k= 1}^{n}\left<f, \varphi _{k} \right> \varphi _{k},\quad g_{n}= \sum _{k = 1}^{n}\left<g, \varphi _{k} \right> \varphi _{k}
+    \]则 \[
+    \lim_{n\to \infty}\left\| f-f_{n} \right\|_{2}= 0,\quad \lim_{n\to \infty }\left\| g-g_{n} \right\|_{2}= 0
+    \] \[
+    \begin{aligned}
+    \left<f_{n},g_{n} \right>&= \sum _{1\le i,j\le n}\left<\left<f, \varphi _{i} \right> \varphi _{i},\left<g, \varphi _{j} \right> \varphi _{j} \right> \\ 
+     &= \sum _{1\le i,j\le n}\left<f, \varphi _{i} \right>\left<g, \varphi _{j} \right>\left< \varphi _{i}, \varphi _{j} \right>\\ 
+      &= \sum _{k= 1}^{n}\left<f, \varphi _{k} \right>\left<g, \varphi _{k} \right>
+    \end{aligned}
+    \] \[
+    \begin{aligned}
+    \left| \left<f,g \right>-\sum _{k = 1}^{n}\left<f, \varphi _{k} \right>\left<g, \varphi _{k} \right> \right| &= \left| \left<f,g \right>-\left<f_{n},g_{n} \right> \right|  \\ 
+     &\le \left| \left<f-f_{n},g \right> \right|+ \left| \left<f_{n},g-g_{n} \right> \right|  \\ 
+      &\le \left\| f-f_{n} \right\|_{2}\left\| g \right\|_{2}+ \left\| f_{n} \right\|_{2}\left\| g-g_{n} \right\|_{2}
+    \end{aligned}
+    \]因此 \[
+    \begin{aligned}
+    \lim_{n\to \infty}\left| \left<f,g \right>-\sum _{k= 1}^{n}\left<f, \varphi _{k} \right>\left<g, \varphi _{k} \right> \right|\le \lim_{n\to \infty}  \left( \left\| f-f_{n} \right\|_{2}\left\| g \right\|_{2}+ \left\| f_{n} \right\|_{2}\left\| g-g_{n} \right\|_{2} \right)= 0 
+    \end{aligned}
+    \]因此 \[
+    \left<f,g \right>= \sum _{k= 1}^{\infty}\left<f, \varphi _{k} \right>\left<g, \varphi _{k} \right>
+    \]
+\end{proof}
+
+\begin{exercise}{}{}
+设 $\{\varphi_n\}$ 是 $L^2([a, b])$ 中的完全标准正交系. 若 $\{\psi_n\}$ 是 $L^2([a, b])$ 中满足 $\sum_{n=1}^\infty \int_a^b (\varphi_n(x) - \psi_n(x))^2 \mathrm{d}x < 1$ 的正交系, 试证明 $\{\psi_n\}$ 是 $L^2([a, b])$ 中的完全正交系.
+\end{exercise}
+
+\begin{proof}
+ 若 \(  f\in L^{2}\left( \left[ a,b \right]  \right)   \), 使得 \[
+ \left<f, \psi _{n} \right>= 0,\quad \forall n\in \mathbb{Z} _{> 0}
+ \] 那么 \[
+ \left<f, \varphi _{n} \right>= \left<f, \varphi _{n} \right>-\left<f,\psi _{n} \right>= \left<f, \varphi _{n}-\psi _{n} \right>
+ \]从而 \[
+ \begin{aligned}
+ f &= \sum _{n = 1}^{\infty}\left<f, \varphi _{n} \right> \varphi _{n} \\ 
+   &= \sum _{n = 1}^{\infty}\left<f,  \varphi _{n}-\psi _{n} \right> \varphi _{n}
+ \end{aligned}
+ \]由Parseval恒等式,  \[
+ \left\| f \right\|_{2}^{2}= \sum _{n = 1}^{\infty}\left<f, \varphi _{n}-\psi _{n} \right>^{2}\le \sum _{n = 1}^{\infty}\left\| f \right\|_{2}^{2}\left\|  \varphi _{n}-\psi _{n} \right\|_{2}^{2}= \left\| f \right\|_{2}^{2}\left( \sum _{n = 1}^{\infty}\left\|  \varphi _{n}-\psi _{n} \right\|_{2}^{2} \right) 
+ \]因此 \[
+ \left\| f \right\|_{2}^{2}\left( \sum _{n = 1}^{\infty}\left\|  \varphi _{n}-\psi _{n} \right\|_{2}^{2}-1 \right)\ge 0 
+ \]其中 \(  \sum _{n = 1}^{\infty}\left\|  \varphi _{n}-\psi _{n} \right\|_{2}^{2}-1 <  0  \), 故\(  \left\| f \right\|_{2}^{2}\le 0  \), 只能有 \(  \left\| f \right\|_{2}= 0  \).   这表明 \(  \left\{ \psi _{n} \right\}  \)在 \(  L^{2}\left( \left[ a,b \right]  \right)   \)中是完全的.  
+\end{proof}
+
+\begin{exercise}{}{}
+设 $\{\varphi_k\} \subset L^2(E)$ 是标准正交系, 且有 $\Phi \in L^2(E)$, 使得 $|\varphi_k(x)| \leqslant |\Phi(x)|$, a.e. $x \in E$. 若 $\sum_{k=1}^\infty a_k \varphi_k(x)$ 是几乎处处收敛的, 试证明 $a_k \to 0 \ (k \to \infty)$.
+\end{exercise}
+\begin{proof}
+  若不然, 则存在子列 \(  a_{k_{j}}  \) , 以及 \(   \delta > 0  \), 使得 \[
+  \left| a_{k_{j}} \right| \ge  \delta ,\quad \forall j\in \mathbb{Z} _{> 0}
+  \] 由于级数 \(  \sum _{k= 1}^{\infty}a_{k} \varphi _{k}\left( x \right)   \)几乎处处收敛,我们有 \[
+  \lim_{j\to \infty}a_{k_{j}} \varphi _{k_{j}}\left( x \right) = 0,\quad \text{a.e.} x\in E
+  \]从而 \[
+  \left|  \varphi _{k_{j}}\left( x \right)  \right|= \frac{\left| a_{k_{j}} \varphi _{k_{j}}\left( x \right)  \right|  }{ \left| a_{k_{j}} \right| }\le \frac{\left| a_{k_{j}} \varphi _{k_{j}}\left( x \right)  \right|  }{ \delta  }   ,\quad \text{a.e.} x\in E
+  \] \[
+  \lim _{j\to \infty}\left|  \varphi _{k_{j}}\left( x \right)  \right| = 0,\quad \text{a.e.}x\in E
+  \]由于\(  \Phi ^{2}\in L^{1}\left( E \right)   \), 由控制收敛定理,  \[
+\lim_{j\to \infty}\int_{E}\left|  \varphi _{k_{j}} \right|^{2}\,\mathrm{d} x = 0
+  \]但是 \[
+  1= \left\|  \varphi _{k_{j}} \right\|_{2}^{2}= \int_{E}\left|  \varphi _{k_{j}} \right|^{2}\,\mathrm{d} x ,\quad \forall j\in \mathbb{Z} _{> 0}
+  \]矛盾.
+\end{proof}
+\end{document}

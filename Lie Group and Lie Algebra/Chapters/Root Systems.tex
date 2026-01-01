@@ -1,0 +1,82 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Root Systems }
+% 代靖涵 25120222201319
+\section{Definition of Root Systems}
+
+\begin{definition}{\(  s_v  \) }{}
+    Let \(E\) be a finite-dimensional real vector space endowed with an inner product written \((-, -)\). Given a non-zero vector \(v \in E\), let \(s_v\) be the reflection in the hyperplane normal to \(v\). Thus \(s_v\) sends \(v\) to \(-v\) and fixes all elements \(y\) such that \((y, v) = 0\). 
+\end{definition}
+
+\begin{proposition}{}{}
+
+    \begin{itemize}
+        \item 
+\[
+s_{v}(x)=x-\frac{2(x,v)}{(v,v)}v\quad\text{for all }x\in E
+\]
+\item \(s_{v}\) preserves the inner product, that is,
+
+\[
+(s_{v}(x),s_{v}(y))=(x,y)\quad\text{for all }x,y\in E.
+\]
+\item  As a useful convention , we write\[
+\langle x,v\rangle:=\frac{2(x,v)}{(v,v)},
+\] then \[
+s_{v}= x-\left<x,v \right>v
+\]
+
+
+    \end{itemize}
+    
+
+\end{proposition}
+
+\begin{remark}
+    The symbol \(  \left<x,v \right>  \) is only linear with respect to the first variable, \(  x  \).  
+\end{remark}
+
+\begin{definition}{Root system}{}
+A subset $R$ of a real vector space $E$ is a \dfntxt{root system} if it satisfies the following axioms.
+\begin{itemize}
+  \item[(R1)] $R$ is finite, it spans $E$, and it does not contain $0$.
+  \item[(R2)] If $\alpha \in R$, then the only scalar multiples of $\alpha$ in $R$ are $\pm \alpha$.
+  \item[(R3)] If $\alpha \in R$, then the reflection $s_{\alpha}$ permutes the elements of $R$.
+  \item[(R4)] If $\alpha, \beta \in R$, then $\langle \beta, \alpha \rangle \in \mathbf{Z}$.
+\end{itemize}
+The elements of $R$ are called \dfntxt{roots}.
+\end{definition}
+
+\section{First Steps in the Classification}
+\begin{lemma}{Finiteness Lemma}{}
+Suppose that \(R\) is a root system in the real inner-product space \(E\). Let \(\alpha,\beta\in R\) with \(\beta\neq\pm\alpha\). Then
+\[
+\langle\alpha,\beta\rangle\langle\beta,\alpha\rangle\in\{0,1,2,3\}.
+\]
+\end{lemma}
+
+\begin{proofsketch}
+    将 \(  \left<\alpha ,\eta  \right>\left<\beta ,\alpha  \right>  \)展开写成内积, 
+\end{proofsketch}
+\section{Basis for Root Systems}
+
+\begin{definition}{}{}
+A subset \(B\) of \(R\) is a \dfntxt{base} for the root system \(R\) if
+\begin{enumerate}
+  \item[(B1)] \(B\) is a vector space basis for \(E\), and
+  \item[(B2)] every \(\beta \in R\) can be written as \(\beta = \sum_{\alpha \in B} k_{\alpha}\alpha\) with \(k_{\alpha} \in \mathbf{Z}\), where all the non-zero coefficients \(k_{\alpha}\) have the same sign.
+\end{enumerate}
+\end{definition}
+\begin{remark}
+    We say that a root \(\beta \in R\) is \dfntxt{positive with respect to \(B\)} if the coefficients given in (B2) are positive, and otherwise it is \dfntxt{negative with respect to \(B\)}.
+\end{remark}
+\end{document}

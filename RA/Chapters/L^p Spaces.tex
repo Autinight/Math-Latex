@@ -1,0 +1,166 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Lp Spaces }
+% 代靖涵 25120222201319
+
+\section{\(  \mathcal{L}^{p}  \) }
+
+\subsection*{H\"older's Inequality}
+
+\begin{definition}{\dfntxt{$\|f\|_p$}}{}
+Suppose that $(X,\mathcal{S},\mu)$ is a measure space, $0 < p < \infty$, and $f \colon X \to \mathbb{F}$ is $\mathcal{S}$-measurable. Then the \dfntxt{$p$-norm} of $f$ is denoted by $\|f\|_p$ and is defined by
+\[
+\|f\|_p = \left( \int |f|^p \, d\mu \right)^{1/p}.
+\]
+Also, $\|f\|_\infty$, which is called the \dfntxt{essential supremum} of $f$, is defined by
+\[
+\|f\|_\infty = \operatorname{inf}\{ t > 0 : \mu(\{ x \in X : |f(x)| > t \}) = 0 \}.
+\]
+\end{definition}
+\begin{definition}{$L^p(\mu)$}{}
+Suppose $(X,\mathcal{S},\mu)$ is a measure space and $0 < p \leq \infty$. The \dfntxt{Lebesgue space} $L^p(\mu)$, sometimes denoted $L^p(X,\mathcal{S},\mu)$, is defined to be the set of $\mathcal{S}$-measurable functions $f : X \to \mathbb{F}$ such that $\lVert f \rVert_p < \infty$.
+\end{definition}
+
+\begin{theorem}{$L^p(\mu)$ is a vector space}{}
+
+Suppose \((X,\mathcal{S},\mu)\) is a measure space and \(0<p<\infty\). Then
+
+(a)
+\[
+\|f+g\|_p^p \leq 2^p \bigl(\|f\|_p^p + \|g\|_p^p\bigr)
+\]
+
+and
+
+(b)
+\[
+\|\alpha f\|_p = |\alpha|\,\|f\|_p
+\]
+
+for all \(f,g \in L^p(\mu)\) and all \(\alpha \in \mathbb{F}\). Furthermore, with the usual operations of addition and scalar multiplication of functions, \(L^p(\mu)\) is a vector space.
+\end{theorem}
+
+\begin{definition}{dual exponent; $p'$}{}
+For $1 \le p \le \infty$, the \dfntxt{dual exponent} of $p$ is denoted by $p'$ and is the element of $[1,\infty]$ such that
+\[
+\frac{1}{p} + \frac{1}{p'} = 1.
+\]
+\end{definition}
+
+\begin{lemma}{Young's inequality}{}
+    Suppose \(1 < p < \infty\). Then
+\[
+ab \le \frac{a^p}{p} + \frac{b^{p'}}{p'}
+\]
+for all \(a \ge 0\) and \(b \ge 0\).
+\end{lemma}
+
+\begin{theorem}{H\"older's Inequality}{}
+Suppose \((X,\mathcal{S},\mu)\) is a measure space, \(1\leq p\leq \infty\), and \(f,h\colon X\to \mathbb{F}\) are \(\mathcal{S}\)-measurable. Then
+\[
+\lVert fh\rVert_{1}\leq \lVert f\rVert_{p}\,\lVert h\rVert_{p'}.
+\]
+\end{theorem}
+\begin{theorem}{$L^{q}(\mu)\subset L^{p}(\mu)$ if $p<q$ and $\mu(X)<\infty$}{}
+Suppose $(X,\mathcal{S},\mu)$ is a finite measure space and $0<p<q<\infty$. Then
+\[
+\lVert f\rVert_{p}\leq \mu(X)^{(q-p)/(pq)}\lVert f\rVert_{q}
+\]
+for all $f\in L^{q}(\mu)$. Furthermore, $L^{q}(\mu)\subset L^{p}(\mu)$.
+\end{theorem}
+
+\subsection*{Minkowski's Inequality}
+
+\begin{theorem}{\dfntxt{formula for} $\|f\|_p$}{}
+Suppose $(X,\mathcal{S},\mu)$ is a measure space, $1 \leq p < \infty$, and $f \in L^{p}(\mu)$. Then
+\[
+\|f\|_p
+= \operatorname{sup} \left\{ \left| \int f h \, d\mu \right| : h \in L^{p'}(\mu) \text{ and } \|h\|_{p'} \leq 1 \right\}.
+\]
+\end{theorem}
+
+\begin{theorem}{Minkowski's inequality}{}
+Suppose \((X,\mathcal{S},\mu)\) is a measure space, \(1 \le p \le \infty\), and \(f,g \in L^{p}(\mu)\). Then
+\[
+\lVert f + g \rVert_{p} \le \lVert f \rVert_{p} + \lVert g \rVert_{p}.
+\]
+\end{theorem}
+
+\section{\(  L^{p}  \) }
+
+\subsection*{Definition of \(  L^{p}  \left( \mu  \right) \) }
+
+\begin{definition}{\(  \mathcal{Z}(\mu);\tilde{f}  \) }{}
+Suppose \((X,\mathcal{S},\mu)\) is a measure space and \(0<p\leq\infty\).
+
+\begin{itemize}
+\item \(\mathcal{Z}(\mu)\) denotes the set of \(\mathcal{S}\)-measurable functions from \(X\) to \(\mathbf{F}\) that equal \(0\) almost everywhere.
+\item For \(f\in L^{p}(\mu)\), let \(\tilde{f}\) be the subset of \(L^{p}(\mu)\) defined by
+\[
+\tilde{f}=\{f+z:z\in\mathcal{Z}(\mu)\}.
+\]
+\end{itemize}
+\end{definition}
+
+\begin{definition}{\(L^{p}(\mu)\)}{}
+Suppose \(\mu\) is a measure and \(0<p\leq\infty\).
+
+\begin{itemize}
+\item Let \(L^{p}(\mu)\) denote the collection of subsets of \(L^{p}(\mu)\) defined by
+\[
+L^{p}(\mu)=\{\tilde{f}:f\in L^{p}(\mu)\}.
+\]
+
+\item For \(\tilde{f},\tilde{g}\in L^{p}(\mu)\) and \(\alpha\in\mathbf{F}\), define \(\tilde{f}+\tilde{g}\) and \(\alpha\tilde{f}\) by
+\[
+\tilde{f}+\tilde{g}=(f+g)^{\sim}\quad\text{and}\quad \alpha\tilde{f}=(\alpha f)^{\sim}.
+\]
+\end{itemize}
+\end{definition}
+
+\begin{definition}{\dfntxt{$\|\cdot\|_{p}$ on $L^{p}(\mu)$}}{}
+Suppose $\mu$ is a measure and $0<p\leq\infty$. Define $\|\cdot\|_{p}$ on $L^{p}(\mu)$ by
+\[
+\|\tilde{f}\|_{p}=\|f\|_{p}
+\]
+for $f\in L^{p}(\mu)$.
+\end{definition}
+
+\begin{theorem}{\dfntxt{$L^p(\mu)$ is a normed vector space}}{}
+Suppose $\mu$ is a measure and $1 \le p \le \infty$. Then $L^p(\mu)$ is a vector space and $\lVert \cdot \rVert_p$ is a norm on $L^p(\mu)$.
+\end{theorem}
+
+\subsection*{\(  L^{p}\left( \mu  \right)   \) is a Banach Space }
+
+\begin{theorem}{}{}
+    Suppose \((X,\mathcal{S},\mu)\) is a measure space and \(1 \le p \le \infty\). Suppose \(f_1,f_2,\ldots\) is a sequence of functions in \(L^p(\mu)\) such that for every \(\varepsilon>0\), there exists \(n\in\mathbb{Z}^+\) such that
+\[
+\lVert f_j-f_k\rVert_p<\varepsilon
+\]
+for all \(j\ge n\) and \(k\ge n\). Then there exists \(f\in L^p(\mu)\) such that
+\[
+\lim_{k\to\infty}\lVert f_k-f\rVert_p=0.
+\]
+\end{theorem}
+
+\begin{proofsketch}
+    对于 \(  1\le p< \infty  \):
+    
+    \begin{itemize}
+        \item 取\(  \sum _{k= 1}^{\infty}\left\| f_{k}-f_{k-1} \right\|_{p}< \infty  \)的子列.
+        \item 使用Minkowski说明 绝对\(  \sum _{k= 1}^{\infty}\left| f_{k}-f_{k-1} \right|   \)的几乎处处收敛.  原级数几乎处处收敛, 等于极限 \(  \lim_{m\to \infty}f_{m}\left( x \right)   \). 
+        \item 使用Fatou's Lemma, 把 \(  \left\| f_{k}-f \right\|_{p}  \)中的极限函数\(  f  \)拆解, 控制成 \( \liminf_{j\to \infty} \left\| f_{k}-f_{j} \right\|_{p}  \)   以带入Cauchy条件. 
+    \end{itemize}
+    
+\end{proofsketch}
+
+\end{document}

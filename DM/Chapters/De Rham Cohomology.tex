@@ -1,0 +1,33 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ De Rham Cohomology }
+% 代靖涵 25120222201319
+
+\section{The De Rham Cohomology Groups}
+\begin{definition}{}{}
+    Let $M$ be a smooth manifold with or without boundary, and let $p$ be a nonnegative integer. Because $d: \Omega^{p}(M) \rightarrow \Omega^{p+1}(M)$ is linear, its kernel and image are linear subspaces. We define
+\[
+\begin{aligned}
+\mathcal{Z}^{p}(M) &= \operatorname{Ker}\left(d: \Omega^{p}(M) \rightarrow \Omega^{p+1}(M)\right)=\{\text {closed } p \text {-forms on } M\}, \\
+\mathcal{B}^{p}(M) &= \operatorname{Im}\left(d: \Omega^{p-1}(M) \rightarrow \Omega^{p}(M)\right)=\{\text {exact } p \text {-forms on } M\} .
+\end{aligned}
+\]
+By convention, we consider $\Omega^{p}(M)$ to be the zero vector space when $p<0$ or $p>n=\operatorname{dim} M$, so that, for example, $\mathcal{B}^{0}(M)=0$ and $\mathcal{Z}^{n}(M)=\Omega^{n}(M)$.
+\end{definition}
+
+\begin{definition}{}{}
+    The fact that every exact form is closed implies that $\mathcal{B}^p(M) \subseteq \mathcal{Z}^p(M)$. Thus, it makes sense to define the \dfntxt{de Rham cohomology group in degree $p$} (or the \dfntxt{$p$th de Rham group}) \dfntxt{of $M$} to be the quotient vector space
+\[
+H_{\mathrm{dR}}^p(M) = \frac{\mathcal{Z}^p(M)}{\mathcal{B}^p(M)}.
+\]
+\end{definition}
+\end{document}

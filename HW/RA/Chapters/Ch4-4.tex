@@ -1,0 +1,138 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{3}
+}{}
+
+\chapter{ Ch4-4 }
+代靖涵 25120222201319
+
+\begin{definition}{}{}
+对于 \(  f \in L^{p}\left( E \right)   \) , 记 \[
+\left\| f \right\|_{p}= \left( \int_{E}\left| f \right|  ^{p}\,\mathrm{d} x\right)^{\frac{1}{p}} 
+\]则由Minkowski不等式 \[
+\left\| f+ g \right\|_{p}\le \left\| f \right\|_{p}+ \left\| g \right\|_{p}
+\]
+\end{definition}
+\begin{lemma}{}{}
+设 $f \in L^{p}(E)$ $(1 \le p < +\infty)$, 则对任意的 $\varepsilon > 0$, 有
+\begin{enumerate}
+\item 在 $\mathbb{R}^{n}$ 上具有紧支集的连续函数 $g(x)$, 使得
+\[
+\lVert f - g \rVert_{p} = \left( \int_{E} \lvert f(x) - g(x) \rvert^{p} \, dx \right)^{1/p} < \varepsilon ;
+\]
+\item 在 $\mathbb{R}^{n}$ 上具有紧支集的阶梯函数
+\[
+\varphi(x) = \sum_{i=1}^{k} c_{i} \chi_{I_{i}}(x) ,
+\]
+其中每个 $I_{i}$ 都是二进方体, 使得
+\[
+\lVert f - \varphi \rVert_{p} < \varepsilon .
+\]
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 
+        
+        任取 \(   \varepsilon > 0  \) .
+        
+        \dfntxt{紧支简单函数逼近}: 我们选取一列可测的简单函数 \(  \left\{  \varphi _{k} \right\}  \), 使得 \(  \lim_{k\to \infty} \varphi _{k}= f  \), a.e. \(  x \in E  \), \(  \left|  \varphi _{k} \right|\le \left| f \right|    \), 则\(  \left| f- \chi _{B_{k}}\varphi _{k} \right|\le 2\left| f \right|    \) . 根据控制收敛定理 \[
+        \lim_{k\to \infty} \int_{E} \left| f- \chi _{B_{k}} \varphi _{k} \right|^{p}\,\mathrm{d} x= 0 
+        \] 故存在紧支简单函数 \(   \varphi \in \left\{ \chi _{B_{k}} \varphi _{k} \right\}  \), 使得 \[
+        \lVert f - \varphi \rVert_{p} < \frac{ \varepsilon  }{2 } 
+        \] 
+        
+
+        \dfntxt{紧支连续函数逼近\(   \varphi   \) }: 设 \(  \left|  \varphi  \right|\le M   \). 由于 \(  \operatorname{supp} \varphi   \)有界,  由Lusin定理的一个推论, 存在 \(  g\in C_{c}\left( \mathbb{R} ^{n} \right)   \) , 使得 \(  \sup _{x\in \mathbb{R}^{n} }\left| g \right|\le M  \) , 满足 \[
+        m\left( \left\{ x \in E : \left| g- \varphi  \right|>  0 \right\} \right)< \frac{ (\varepsilon/2)^p }{ (2M)^{p} }  
+        \]于是 \[
+        \int_{E}\left| g- \varphi  \right|^{p}\,\mathrm{d} x= \int_{\left\{ \left| g- \varphi  \right|> 0  \right\}} \left| g- \varphi  \right|^{p}\,\mathrm{d} x\le m\left( \left\{ \left| g- \varphi  \right|> 0  \right\} \right)  \left( 2M \right)^{p}< \left( \frac{ \varepsilon  }{2 } \right)^p   
+        \]
+        即 \( \lVert g - \varphi \rVert_{p} < \frac{\varepsilon}{2} \).
+
+        从而由 Minkowski 不等式 (范数三角不等式),
+        \[
+        \lVert f - g \rVert_{p} \le \lVert f - \varphi \rVert_{p} + \lVert \varphi - g \rVert_{p} < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
+        \]
+
+        \item 设\(  g  \)是紧支的连续函数, 使得 \[
+        \lVert f - g \rVert_{p} < \frac{ \varepsilon  }{2 }  
+        \]  设 \(  g  \)包含于某个以原点为中心的边长为 \(  2^{k}  \)的二进制方体 \(  I  \)中, \(  k> 0  \) .    由于 \(  g  \)是紧支连续的, 它也是一致连续的. 存在\(   \delta > 0  \), 使得 \[
+       \left| g\left( x \right)-g\left( y \right)   \right|\le \frac{ \varepsilon  }{2 (m(I))^{1/p}  } ,\quad \forall x,y \text{ s.t. } \left| x-y \right|<  \delta     
+        \] 
+        选取 \(  m \in \mathbb{Z} _{> 0}  \)使得边长为 \(  2^{-m}\)的方体的对角线长度小于 \(   \delta   \) .  
+        将 \( I \)分解为 \(  2^{n(k+ m)}  \)个边长为 \(  2^{-m}  \)的二进制方体 \(  I_1,\cdots ,I_{2^{n(k+ m)}}  \). 在每个 \(  I_{i}  \)中选取点 \(   \xi _{i}  \), \(  i= 1,2,\cdots ,2^{n(k+ m)}  \). 则 \[
+        \left| g\left( x \right)-g\left(  \xi _{i} \right)   \right|\le \frac{ \varepsilon  }{2 (m(I))^{1/p}  }
+        \]   此时令 \(   \varphi \left( x \right)= \sum _{i= 1}^{2^{n(k+ m)}}g\left(  \xi _{i} \right)\chi _{I_{i}}\left( x \right)     \) 则 \(   \varphi   \)是一个阶梯函数. 使得\begin{equation}
+            \begin{aligned}
+                \int_{E}\left|  \varphi -g \right|^{p}\,\mathrm{d} x&= \sum _{i= 1}^{2^{n(k+ m)}}  \int_{I_i}\left| g\left( x \right)-g\left(  \xi _{i} \right)   \right|^{p}\,\mathrm{d} x\\ 
+                 &\le \sum _{i= 1}^{2^{n(k+ m)}}m\left( I_{i} \right)  \cdot  \frac{ \varepsilon^p  }{2^p m\left( I \right)  }= m(I) \cdot \frac{\varepsilon^p}{2^p m(I)} = \left( \frac{ \varepsilon  }{2 } \right)^p
+            \end{aligned}
+        \end{equation} 
+        即 \( \lVert \varphi - g \rVert_{p} \le \frac{\varepsilon}{2} \).
+ 最后 , 再一次由 Minkowski 不等式,  \[
+ \lVert f - \varphi \rVert_{p} \le \lVert f - g \rVert_{p} + \lVert g - \varphi \rVert_{p} < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
+ \]
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{theorem}{}{}
+若 $f \in L^{p}(\mathbf{R}^{n})(1 \leq p < +\infty)$, 则有
+\[
+\lim_{h \to 0} \int_{\mathbf{R}^{n}} \lvert f(x + h) - f(x) \rvert^{p} \, dx = 0.
+\]
+\end{theorem}
+
+\begin{proof}
+    任取 \(   \varepsilon > 0  \). 利用上面的引理, 存在紧支的连续函数 \( g \) (即引理中的 \( g \)), 使得
+    \[
+    \lVert f - g \rVert_{p} < \frac{\varepsilon}{3}.
+    \]
+    
+    由 Minkowski 不等式 (范数三角不等式), 我们有
+    \[
+    \begin{aligned}
+    \lVert f(\cdot+h) - f(\cdot) \rVert_{p} &\le \lVert f(\cdot+h) - g(\cdot+h) \rVert_{p} + \lVert g(\cdot+h) - g(\cdot) \rVert_{p} + \lVert g(\cdot) - f(\cdot) \rVert_{p} \\
+    &= 2 \lVert f - g \rVert_{p} + \lVert g(\cdot+h) - g(\cdot) \rVert_{p}
+    \end{aligned}
+    \]
+    其中第一项利用了勒贝格积分的平移不变性: \( \lVert f(\cdot+h) - g(\cdot+h) \rVert_{p} = \lVert f - g \rVert_{p} \).
+    
+    因为 \( g \) 是紧支的连续函数, 所以 \( g \) 在 \( \mathbb{R}^n \) 上一致连续. 设 \( \operatorname{supp} g \subseteq B(0, R) \). 
+    存在 \( \delta \in (0, 1) \), 使得当 \( |h| < \delta \) 时, 对任意 \( x \in \mathbb{R}^n \), 有
+    \[
+    |g(x+h) - g(x)| < \frac{\varepsilon}{3 (m(B(0, R+1)))^{1/p}}.
+    \]
+    注意 \( g(x+h) - g(x) \) 的支集包含在 \( B(0, R+1) \) 中 (当 \( |h|<1 \) 时). 于是
+    \[
+    \begin{aligned}
+    \lVert g(\cdot+h) - g(\cdot) \rVert_{p}^p &= \int_{\mathbb{R}^n} |g(x+h) - g(x)|^p \, dx \\
+    &= \int_{B(0, R+1)} |g(x+h) - g(x)|^p \, dx \\
+    &\le m(B(0, R+1)) \cdot \frac{\varepsilon^p}{3^p m(B(0, R+1))} = \left( \frac{\varepsilon}{3} \right)^p.
+    \end{aligned}
+    \]
+    即 \( \lVert g(\cdot+h) - g(\cdot) \rVert_{p} \le \frac{\varepsilon}{3} \).
+    
+    综合上述估计, 当 \( |h| < \delta \) 时,
+    \[
+    \lVert f(\cdot+h) - f(\cdot) \rVert_{p} < 2 \cdot \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon.
+    \]
+    
+    这就说明了
+    \[
+    \lim_{h\to 0} \lVert f(\cdot+h) - f(\cdot) \rVert_{p} = 0,
+    \]
+    即
+    \[
+    \lim_{h\to 0} \int_{\mathbb{R}^{n}}\left| f\left( x+ h \right)-f\left( x \right)   \right|^{p}\,\mathrm{d} x= 0.
+    \]
+\end{proof}
+\end{document}

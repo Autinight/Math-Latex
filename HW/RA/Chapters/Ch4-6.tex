@@ -1,0 +1,208 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{3}
+}{}
+
+\chapter{ Ch4-6 }
+ 代靖涵 25120222201319
+\begin{exercise}{}{}
+    令\(f(x,y)\)为\(D=[-1,1]\times[-1,1]\)上函数:
+\[
+f(x,y)=
+\begin{cases}
+\dfrac{xy}{(x^{2}+y^{2})^{2}}, & x^{2}+y^{2}>0;\\[4pt]
+0, & x^{2}+y^{2}=0.
+\end{cases}
+\]
+验证:\(f(x,y)\notin L(D)\), 但两个累次积分存在且相等.
+\end{exercise}
+
+\begin{proof}
+     当 \(  y= 0  \)时,  \[
+     \int_{[-1,1]}f\left( x,y \right)\,\mathrm{d}  \lambda \left( x \right)= \int_{[-1,1]}0\,\mathrm{d}  \lambda \left( x \right)= 0   
+     \] 当 \(  y\neq 0  \)时,  \(  f\left( \cdot ,y \right)   \)在 \(  \left[ -1,1 \right]   \)上是连续的, 从而是Riemann可积的, 也是\(  L^{1}  \)-可积的, 有 \[
+     \int_{[-1,1]}f\left( x,y \right)\,\mathrm{d}  \lambda \left( x \right)= \left( R \right)\int_{-1}^{1}\frac{xy }{\left( x^{2}+ y^{2} \right)^{2}  }\,\mathrm{d} x    = 0
+     \]    第二个等号是因为\(  f\left( \cdot ,y \right)   \)是奇函数. 因此\(y\mapsto \int_{[-1,1]}f\left( x,y \right)\,\mathrm{d}  \lambda \left( x \right)    \)是零函数, 我们有 \[
+     \int_{ [-1,1]}\int_{[-1,1]}f\left( x,y \right)\,\mathrm{d}  \lambda \left( x \right)\,\mathrm{d}  \lambda \left( y \right)= 0   
+     \]  该累次积分存在且为零. 由对称性, 我们有 累次积分 \[
+     \int_{[-1,1]}\int_{[-1,1]}f\left( x,y \right)\,\mathrm{d}  \lambda \left( y \right)\,\mathrm{d}  \lambda \left( x \right)= 0   
+     \]存在且为零. 故两个累次积分存在且相等.
+     
+为了说明 \( f \notin L(D) \), 只需要说明 \( |f| \notin L^1(D) \).
+ 考察\(  \left| f \right|   \) 在第一象限 \( D_{1} = [0,1]\times[0,1] \) 
+
+计算该累次积分:
+固定 \( x \in (0, 1] \),
+\[
+\begin{aligned}
+\int_{0}^{1} \frac{xy}{(x^2+y^2)^2} \,\mathrm{d}y &= \frac{x}{2} \int_{0}^{1} \frac{1}{(x^2+y^2)^2} \,\mathrm{d}(x^2+y^2) \\
+&= \frac{x}{2} \left[ -\frac{1}{x^2+y^2} \right]_{y=0}^{y=1} \\
+&= \frac{x}{2} \left( \frac{1}{x^2} - \frac{1}{x^2+1} \right) \\
+&= \frac{1}{2x} - \frac{x}{2(x^2+1)}.
+\end{aligned}
+\]接下来对 \( x \) 积分:
+\[
+\int_{0}^{1} \left( \frac{1}{2x} - \frac{x}{2(x^2+1)} \right) \,\mathrm{d}x
+\]
+由于 \( \lim_{\epsilon \to 0^+} \int_{\epsilon}^{1} \frac{1}{2x} \,\mathrm{d}x = \infty \), 而第二项 \( \int_{0}^{1} \frac{x}{2(x^2+1)} \,\mathrm{d}x = \frac{1}{4}\ln 2 \) 是有限的.
+故
+\[
+\int_{0}^{1}\int_{0}^{1}\frac{xy }{\left( x^{2}+ y^{2} \right)^{2}  }\,\mathrm{d} y\,\mathrm{d} x= \infty 
+\]由Tonelli定理,  \[
+\int_{D}\left| f \right|\,\mathrm{d}  \lambda ^{2}\ge  \int_{D_1}\left| f \right|\,\mathrm{d}  \lambda ^{2}=\int_{0}^{1}\int_{0}^{1}\frac{xy }{\left( x^{2}+ y^{2} \right)^{2}  }\,\mathrm{d} y\,\mathrm{d} x= \infty 
+\]
+这表明 \( |f| \notin L^1(D) \), 从而 \( f \notin L(D) \). 
+\end{proof}
+
+\begin{exercise}{}{}
+设$f(x,y)$在$[0,1]\times[0,1]$上可积,试证明
+\[
+\int_0^1\Bigl(\int_0^x f(x,y)\,dy\Bigr)\,dx
+=
+\int_0^1\Bigl(\int_y^1 f(x,y)\,dx\Bigr)\,dy.
+\]
+\end{exercise}
+
+\begin{proof}
+    \[
+    \int_{0}^{1}\left( \int_{0}^{x}f\left( x,y \right)\,\mathrm{d} y  \right)\,\mathrm{d} x=  \int_{0}^{1}\int_{0}^{1}\left( \chi _{\left\{ y\le x \right\}}f\left( x,y \right)\,\mathrm{d} y  \right)\,\mathrm{d} x  
+    \] \[
+    \int_{0}^{1}\left( \int_{y}^{1}f\left( x,y \right)\,\mathrm{d} x  \right)\,\mathrm{d} y= \int_{0}^{1}\int_{0}^{1}\left( \chi _{\left\{ y\le x \right\}}f\left( x,y \right)\,\mathrm{d} x  \right)\,\mathrm{d} y  
+    \]由Fubini定理, 上两式等号右侧的积分相等, 故
+\[
+\int_0^1\Bigl(\int_0^x f(x,y)\,dy\Bigr)\,dx
+=
+\int_0^1\Bigl(\int_y^1 f(x,y)\,dx\Bigr)\,dy.
+\]
+\end{proof}
+
+\begin{exercise}{}{}
+设$A,B$是$\mathbf{R}^n$中的可测集,试证明
+\[
+\int_{\mathbf{R}^n} m\bigl((A-x)\cap B\bigr)\,dx
+=
+m(A)\cdot m(B).
+\]
+\end{exercise}
+
+\begin{proof}
+   \[
+   m\left( \left( A-x \right)\cap B  \right)= \int_{\mathbb{R} ^{n}}\chi _{\left( A-x \right)\cap B }\left( y \right)\,\mathrm{d} y  
+   \] \[
+   y\in \left( A-x \right)\cap B\iff y\in B, x+ y\in A 
+   \]故 \[
+   \chi _{\left( A-x \right)\cap B }\left( y \right)= \chi _{A}\left( x+ y \right)\chi _{B}\left( y \right)  
+   \]于是  \[
+   \begin{aligned}
+   \int_{\mathbb{R} ^{n}}m\left( \left( A-x \right)\cap B  \right)\,\mathrm{d} x= \int_{\mathbb{R} ^{n}}\int_{\mathbb{R} ^{n}}\chi _{A}\left( x+ y \right)\chi _{B}\left( y \right)  \,\mathrm{d} y\,\mathrm{d} x 
+   \end{aligned}  
+   \]由Fubini定理 \[
+  \begin{aligned}
+   \int_{\mathbb{R} ^{n}}\int_{\mathbb{R} ^{n}}\chi _{A}\left( x+ y \right)\chi _{B}\left( y \right)  \,\mathrm{d} y\,\mathrm{d} x&= \int_{\mathbb{R} ^{n}}\int_{\mathbb{R} ^{n}}\chi _{A}\left( x+ y \right)\chi _{B}\left( y \right)  \,\mathrm{d} x\,\mathrm{d} y  
+  \end{aligned}  
+   \]注意到\[
+   \begin{aligned}
+   \int_{\mathbb{R} ^{n}}\chi _{A}\left( x+ y \right)\chi _{B}\left( y \right)  \,\mathrm{d} x&=  \chi _{B}\left( y \right)\int_{\mathbb{R} ^{n}}\chi _{A}\left( x+ y \right)\,\mathrm{d} x  \\ 
+    &= \chi _{B}\left( y \right)\int_{\mathbb{R} ^{n}}\chi _{A-y}\left( x \right)\,\mathrm{d} x\\ 
+     &= \chi _{B}\left( y \right)m\left( A-y \right)\\ 
+      &= \chi _{B}\left( y \right)m\left( A \right)          
+   \end{aligned}
+   \]故 \[
+  \begin{aligned}
+   \int_{\mathbb{R} ^{n}}\int_{\mathbb{R} ^{n}}\chi _{A}\left( x+ y \right)\chi _{B}\left( y \right)\,\mathrm{d} x\,\mathrm{d} y &= \int_{\mathbb{R} ^{n}}\chi _{B}\left( y \right)m\left( A \right)\,\mathrm{d} y= m\left( A \right)m\left( B \right)    
+  \end{aligned}
+   \] 因此 \[
+   \int_{\mathbb{R} ^{n}}m\left( \left( A-x \right)\cap B  \right)\,\mathrm{d} x= m\left( A \right)m\left( B \right)   
+   \]
+\end{proof}
+\begin{exercise}{}{}
+ 假设 \(f(x),g(x)\) 是 \(E\subset \mathbb{R}\) 上的可测函数并且 \(m(E)<+\infty\), 若 \(f(x)+g(y)\) 在 \(E\times E\) 上可积, 试证明 \(f(x),g(x)\) 都是 \(E\) 上的可积函数.
+\end{exercise}
+\begin{proof}
+    不妨设 \(  m\left( E \right)> 0   \).
+
+    由Fubini定理,  对于几乎所有的 \(  y\in E  \), 有 \[
+   \int_{E}\left| f\left( x \right)+ g\left( y \right)   \right|\,\mathrm{d} x< \infty 
+   \] 此时必然有 \(  \left| g\left( y \right)  \right|< \infty   \). 于是存在  \(  y_0\in E  \), 使得 \(  \left| g\left( y_0 \right)  \right|< \infty   \), 且 \[
+   \int_{E}\left| f\left( x \right)+ g\left( y_0 \right)   \right|\,\mathrm{d} x< \infty 
+   \]考虑到 \[
+    \left| f\left( x \right)  \right| \le \left| f\left( x \right)+ g\left( y_0 \right)   \right|+ \left| g\left( y_0 \right)  \right|  
+    \] 其中 \[
+    \int_{E}\left| g\left( y_0 \right)  \right|\,\mathrm{d} x \le m\left( E \right)\left| g\left( y_0 \right)  \right|< \infty   
+    \]因此 \[
+    \int_{E}\left| f\left( x \right)  \right|\,\mathrm{d} x< \int_{E}\left| f\left( x \right)+ g\left( y_0 \right)   \right|\,\mathrm{d} x+ \int_{E}\left| g\left( y_0 \right)  \right|\,\mathrm{d}  x < \infty   
+    \]这表明 \(  f  \)是 \(  E  \)上的可积函数. 由对称性, \(  g  \)也是 \(  E  \)上的可积函数.    
+\end{proof}
+\begin{exercise}{}{}
+ 计算下列积分:
+\[
+\text{(i)}\ \int_{x>0}\int_{y>0}\frac{dx\,dy}{(1+y)(1+x^{2}y)};\qquad
+\text{(ii)}\ \int_{0}^{+\infty}\frac{\ln x}{x^{2}-1}\,dx.
+\]
+\end{exercise}
+\begin{solution}
+    \begin{enumerate}
+        \item  任固定 \(  y> 0  \), 我们有 \[
+      \begin{aligned}
+        \int_{x> 0} \frac{1 }{1+ y }\frac{1 }{1+ x^{2}y }\,\mathrm{d} x&= \frac{1 }{1+ y }\frac{1 }{\sqrt{y} } \int_{x> 0}\frac{1 }{1+ \left( x\sqrt{y} \right)^{2}  }\,\mathrm{d} \left( x\sqrt{y} \right)      \\ 
+         &= \frac{1 }{\sqrt{y}\left( 1+ y \right)  } \frac{ \pi  }{2 } 
+      \end{aligned}
+        \] 做变量替换 \(  t= \sqrt{y}  \), 得到 \[
+        \int_{0}^{\infty}\frac{1 }{\sqrt{y}\left( 1+ y \right)  }\,\mathrm{d} y=  \int_{0}^{\infty}\frac{1 }{t\left( 1+ t^{2} \right)  }2t\,\mathrm{d} t = 2\int_{0}^{\infty}\frac{1 }{1+ t^{2} }\,\mathrm{d} t=  \pi  
+        \]于是由Tonelli定理 , \[
+      \begin{aligned}
+        \int_{x> 0}\int_{y> 0}\frac{\,\mathrm{d} x\,\mathrm{d} y }{\left( 1+ y \right)\left( 1+ x^{2}y \right)   }&=   \int_{y> 0}\,\mathrm{d} y\int_{x> 0}\frac{1 }{1+ y }\frac{1 }{1+ x^{2}y }\,\mathrm{d} x\\ 
+         &=  \int_{y> 0}\frac{1 }{\sqrt{y}\left( 1+ y \right)  }\frac{ \pi  }{2 }\,\mathrm{d} y\\ 
+          &= \frac{ \pi ^{2} }{2 }   
+      \end{aligned}   
+        \]
+
+        \item 对于 \(  x\neq 1  \),   \[
+      \begin{aligned}
+        \int_{y> 0}\frac{1 }{1+ y }\frac{1 }{1+ x^{2}y }\,\mathrm{d} y &= \int_{y> 0}\frac{1 }{\left(1-x^{2} \right)  } \left( \frac{1 }{1+ y }-\frac{x^{2} }{1+ x^{2}y }   \right)\,\mathrm{d} y \\ 
+         &= \frac{1 }{1-x^{2} }\left[ \ln  \frac{1+ y }{1+ x^{2}y }  \right]_{0}^{\infty}  = \frac{2\ln x}{x^{2}-1 } 
+      \end{aligned} 
+        \]于是由 Tonelli定理,  \[
+       \begin{aligned}
+        \int_{0}^{\infty}\frac{\ln x }{x^{2}-1 }\,\mathrm{d} x&= \frac{1 }{2 } \int_{0}^{\infty}\int_{y> 0}\frac{1 }{1+ y }\frac{1 }{1+ x^{2}y }\,\mathrm{d} y\,\mathrm{d} x     \\ 
+         &= \frac{1}{2}\int_{x> 0}\int_{y> 0}\frac{\,\mathrm{d} x\,\mathrm{d} y }{\left( 1+ y \right)\left( 1+ x^{2}y \right)   }= \frac{ \pi ^{2} }{4 }  
+       \end{aligned}
+        \]
+    \end{enumerate}
+    
+\end{solution}
+
+
+\begin{exercise}{}{}
+ 设 $f\in L((0,a))$, $g(x)=\int_{x}^{a}\dfrac{f(t)}{t}\,dt\,(a>x>0)$, 试证明 $g\in L((0,a))$, 且有
+\[
+\int_{0}^{a}g(x)\,dx=\int_{0}^{a}f(x)\,dx.
+\]
+\end{exercise}
+\begin{proof}
+    注意到 \[
+   \int_{0}^{a}\left| g\left( x \right)  \right|\,\mathrm{d} x\le    \int_{0}^{a}\int_{x}^{a}\left| \frac{f\left( t \right)  }{t }  \right|\,\mathrm{d} t\,\mathrm{d} x= \int_{0}^{a}\int_{0}^{a}\chi _{\left\{ t>  x \right\}}\frac{\left| f\left( t \right)  \right|  }{t }\,\mathrm{d} t\,\mathrm{d} x  
+    \]由Tonelli定理, \[
+    \begin{aligned}
+    \int_{0}^{a}\int_{0}^{a}\chi _{\left\{ t> x \right\}}\frac{\left| f\left( t \right)  \right|  }{t }\,\mathrm{d} t\,\mathrm{d} x&= \int_{0}^{a}\int_{0}^{a}\chi _{\left\{ t> x \right\}}\frac{\left| f\left( t \right)  \right|  }{t }\,\mathrm{d} x\,\mathrm{d} t   \\ 
+     &= \int_{0}^{a}\int_{0}^{t}\frac{\left| f\left( t \right)  \right|  }{t }\,\mathrm{d} x\,\mathrm{d} t\\ 
+      &= \int_{0}^{a}\left| f\left( t \right)  \right|\,\mathrm{d} t< \infty  
+    \end{aligned}
+    \]故 \(  \int_{0}^{a}\left| g\left( x \right)  \right|\,\mathrm{d} x< \infty   \), \(  g\in L\left( \left( 0,a \right)  \right)   \).  并且 \( F\left( x,t \right)= \chi _{\left\{ t> x \right\}}  \frac{f\left( t \right)  }{t }\in L^{1}\left( \left( 0,a \right)\times \left( 0,a \right)   \right)    \). 
+    进而由Fubini定理,   
+ \[
+ \begin{aligned}
+\int_{0}^{a}g\left( x \right)\,\mathrm{d} x=   \int_{0}^{a}\int_{x}^{a}\frac{f\left( t \right)  }{t }\,\mathrm{d} t \,\mathrm{d} x&= \int_{0}^{a}\int_{0}^{a}\chi _{\left\{ t> x \right\}}\frac{f\left( t \right)  }{t }\,\mathrm{d} t\,\mathrm{d} x \\ 
+  &=  \int_{0}^{a}\int_{0}^{a}\chi _{\left\{ t> x \right\}}\frac{f\left( t \right)  }{t }\,\mathrm{d} x\,\mathrm{d} t\\ 
+   &= \int_{0}^{a} \int_{0}^{t}\frac{f\left( t \right)  }{t }  \,\mathrm{d} x\,\mathrm{d} t\\ 
+    &= \int_{0}^{a}f\left( t \right)\,\mathrm{d} t 
+ \end{aligned} 
+ \]
+\end{proof}
+\end{document}

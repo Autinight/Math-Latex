@@ -4,7 +4,7 @@
 
 \ifSubfilesClassLoaded{
 
-    %\tableofcontents
+    \tableofcontents
     
     %\setcounter{chapter}{}
 }{}
@@ -200,4 +200,238 @@ for every $k \in \mathbb{Z}^+$ and almost every $x \in X$, then
     \int_{E}\left| f-g \right|\,\mathrm{d} \mu <  \varepsilon  
     \]   
 \end{theorem}
+
+\begin{remark}
+    \begin{itemize}
+        \item We can choose \(  g  \) such that \( \sup _{x\in \mathbb{R}^{n}} \left|  g\right|\le \sup _{ x \in E}\left| f \right|    \)  
+    \end{itemize}
+    
+\end{remark}
+
+\begin{proof}
+    Let \(  f \in L\left( E \right)   \), then for each \(   \varepsilon > 0  \),   there exists a simple function \(   \varphi   \) with compact support on \(  E  \)  such that    \[
+    \int_{E}\left| f- \varphi  \right|\,\mathrm{d} \mu < \frac{ \varepsilon  }{2}  
+    \] Let \(  F= \operatorname{supp} \varphi   \), then \(  F  \) is bounded . Set \(  \left|  \varphi \left( x \right) \right| \le M,\forall x\in F   \).   From corollary \ref{col:11-19-1}, there is a \(  g\in C_{c}\left( \mathbb{R}^{n} \right)   \) with such that \[
+    m\left( \left\{ x \in F: \left| g- \varphi  \right|> 0   \right\} \right)<  \frac{ \varepsilon  }{4M } ,\quad \sup _{x\in \mathbb{R}^{n}}\left| g \right|\le M 
+    \]  Then  \[
+    \int_{E}\left| g- \varphi  \right|\,\mathrm{d}\mu  = \int_{ \left\{ \left|  \varphi -g \right|  > 0\right\} }\left| g- \varphi  \right|\,\mathrm{d} \mu \le   2M m\left( \left\{ \left|  \varphi -g \right|  > 0\right\} \right) < \frac{ \varepsilon  }{2 } 
+    \] We have \[
+    \int_{E}\left| f-g \right|\,\mathrm{d} \mu \le \int_{E}\left| f- \varphi  \right|\,\mathrm{d} \mu + \int_{E}\left| g- \varphi  \right|\,\mathrm{d} \mu <  \varepsilon    
+    \]
+\end{proof}
+
+\begin{corollary}{}{}
+    Let \(  f \in L\left( E \right)   \), then there exists a sequence \(  \left\{ g_{k}\left( x \right)  \right\}  \)  consists of compactly supported continous functions on \(  \mathbb{R} ^{n}  \)   , such that   \begin{itemize}
+        \item \[
+        \lim_{k\to \infty}\int_{E}\left| f-g_{k} \right|\,\mathrm{d} \mu = 0 
+        \]
+        \item \[
+        \lim_{k\to \infty}g_{k}\left( x \right)= f\left( x \right),\quad a.e. x\in E  
+        \]
+    \end{itemize}
+\end{corollary}
+\begin{remark}
+    \begin{itemize}
+        \item \(  g_{k}  \) can choosen to satisfy \(  \sup _{x\in E}\left| g_{k} \right|\le \sup _{x\in E}\left| f \right|    \)  
+    \end{itemize}
+    
+\end{remark}
+\begin{proposition}{}{}
+    Let \(  f \in L^{1}\left( \mathbb{R}^{n} \right)   \). If for any \(   \varphi \in C_{c}\left( \mathbb{R} ^{n} \right)   \), there is \[
+    \int_{\mathbb{R}^{n}}f\cdot  \varphi \,\mathrm{d} \mu = 0
+    \]  Then \(  f= 0  \), a.e.\(   x\in \mathbb{R}^{n}  \).  
+\end{proposition}
+
+\begin{proof}
+    Let \(  E= \left\{ f> 0 \right\}  \). There is a sequence of compactly supported continous functions \(  \left\{  \varphi _{k} \right\}  \) such that \[
+    \int_{\mathbb{R}^{n}}\left| \chi _{E}- \varphi _{k} \right|\,\mathrm{d} \mu = 0 
+    \] \[
+    \lim_{k\to \infty} \varphi _{k}\left( x \right)= \chi _{E}\left( x \right),\quad a.e. x\in \mathbb{R}^{n}  , 
+    \] \[
+  \left|  \varphi _{k} \right|\le 1,\forall k
+    \]Since \(  \left|  \varphi _{k}f \right|\le \left| f \right|    \), we have from dominated convergence theorem that    \begin{equation}
+    \begin{aligned}
+        0< \int_{E}f\,\mathrm{d} \mu &= \int_{\mathbb{R}^{n}} \chi _{E}\cdot f\,\mathrm{d} \mu \\ 
+         &= \lim_{k\to \infty} \int_{\mathbb{R}^{n}} f\cdot  \varphi _{k}\,\mathrm{d} \mu 
+    \end{aligned}
+ \end{equation}
+ But \(  \lim_{\mathbb{R}^{n}}f\cdot  \varphi _{k}\,\mathrm{d} \mu = 0  \) for each \(  k  \), which is a contradiction.  
+\end{proof}
+
+\begin{proposition}{}{}
+    Let \(  f\in L^{1}\left( [a,b] \right)   \), if for each differentiable function \(   \varphi   \) with \(  \operatorname{supp} \varphi \subseteq \left( a,b \right)   \), there is \[
+    \int_{[a,b]} f\left( x \right) \varphi ^{\prime} \left( x \right)\,\mathrm{d} \mu = 0  
+    \]Then \(  f\left( x \right)=  c   \), a.e.\(  x\in \left[ a,b \right]   \).  
+\end{proposition}
+
+\begin{theorem}{}{}
+    If \(  f\in L^{1}\left( \mathbb{R}^{n} \right)   \), then \[
+    \lim_{h\to 0}\int_{\mathbb{R}^{n}}\left| f\left( x+ h \right)-f\left( x \right)   \right|\,\mathrm{d} x= 0 
+    \] 
+\end{theorem}
+
+\begin{proofsketch}
+    紧支连续函数是一致连续的, 因此 \(  f  \)和紧支的一致连续函数仅仅相差一个 积分很小的函数.  而紧支的一致连续函数的积分自动是关于平移连续的.
+\end{proofsketch}
+
+\begin{proof}
+     For each \(   \varepsilon > 0  \), we can decompose \(  f  \) into \(  f= f_1+ f_2  \), where \(  f_1\in C_{c}\left( \mathbb{R}^{n} \right)   \), and \[
+     \int_{\mathbb{R}^{n}}\left| f_2 \right|\,\mathrm{d} \mu < \frac{ \varepsilon  }{4 }  
+     \]    \(  f_1  \) is uniformly continuous , there exists \(   \delta > 0  \) such that  for each \(  h  \) with \(  \left| h \right|<  \varepsilon    \)  \[
+     \int_{\mathbb{R}^{n}}\left| f_1\left( x+ h \right)-f_1\left( x \right)   \right|\,\mathrm{d} \mu = \int_{\operatorname{supp}f_1}\left| f_1\left( x+ h \right)-f\left( x \right)   \right|\,\mathrm{d} \mu  < \frac{ \varepsilon  }{2 }  
+     \]  Then we have \begin{equation}
+        \begin{aligned}
+            \int_{\mathbb{R}^{n}}\left| f\left( x+ h \right)-f\left( x \right)   \right|\,\mathrm{d} \mu &\le  \int_{\mathbb{R}^{n}}\left| f_1\left( x+ h \right)-f_1\left( x \right)   \right|\,\mathrm{d} \mu + \int_{\mathbb{R}^{n}}\left| f_2\left( x+ h \right)-f_2\left( x \right)   \right|\,\mathrm{d} \mu \\ 
+             &\le \int_{\mathbb{R}^{n}}\left| f_1\left( x+ h \right)-f_1\left( x\right)   \right|\,\mathrm{d} \mu  + 2 \int_{\mathbb{R}^{n}}\left| f_2\left( x \right)  \right|\,\mathrm{d} \mu \\ 
+              &<  \varepsilon 
+        \end{aligned}
+     \end{equation}
+    Thus \[
+    \lim_{h\to \infty} \int_{\mathbb{R}^{n}}\left| f\left( x+ h \right)-f\left( x \right)   \right|\,\mathrm{d} x= 0 
+    \]
+\end{proof}
+
+\begin{proposition}{}{}
+     Let \(  E\subseteq \mathbb{R} ^{n}  \) be a measurable set. If \(  f \in L\left( E \right)   \), then there exists a sequence of measurable set functions with compact support , say \(  \left\{  \varphi _{k} \right\}  \) such that 
+    \begin{itemize}
+        \item \[
+        \lim_{k\to \infty} \varphi _{k}\left( x \right)= f\left( x \right),\quad a.e.x\in E  
+        \]
+        \item \[
+      \lim_{k\to \infty}\int_{E}\left| f- \varphi _{k} \right|\,\mathrm{d} \mu = 0 
+        \]
+    \end{itemize}
+\end{proposition}
+\begin{proof}
+    For each \(   \varepsilon > 0  \), there exists \(  g\in C_{c}\left( \mathbb{R}^{n} \right)   \) such that \[
+    \int_{E}\left| f-g \right|\,\mathrm{d} \mu < \frac{ \varepsilon  }{2 }  
+    \]  We suppose that \(  \operatorname{supp} \subseteq I  \) , where \(  I  \) is a closed cube. Since \(  g  \) is uniformly continuous, we can seperate \(  I  \) into \(  2^{m}  \) small cubes \(  I_{k}  \) such that \[
+  \left| g\left( x \right)-g\left(  \xi _{k} \right)   \right|< \frac{ \varepsilon  }{2\mu \left( I \right)  }  ,\quad k= 1,2,\cdots ,2^{m}
+    \]      where \(   \xi _{k}  \) is a point in \(  I_{k}  \). Define \(   \varphi \left( x \right)= \sum _{k= 1}^{2^{m}}g\left(  \xi _{k} \right)  \chi _{I_{k}}\left( x \right)   \), then note that \(  \sum _{k= 1}^{2^{m}}\mu \left( I_{k} \right)= \mu \left( I \right)    \), we have  \[
+    \int_{I}\left| g- \varphi  \right|\,\mathrm{d} x<    \sum _{k= 1}^{2^{m}}\mu \left( I_{k} \right)\frac{ \varepsilon  }{2\mu \left( I \right)  }  = \frac{ \varepsilon  }{2 } 
+    \]   Take \(   \varphi _{k}= \frac{1 }{k }   \), \(  k= 1,2,\cdots   \), we get a sequence  \(  \left\{  \varphi _{k} \right\}  \) such that \[
+    \lim_{k\to \infty} \int_{E}\left| f- \varphi _{k} \right|\,\mathrm{d} x= 0 
+    \] Then \(  \left\{  \varphi _{k} \right\}  \) convergent to \(  f  \) in measure, the proposition follows from Riesz Theorem.  
+\end{proof}
+ 
+\section{Riemann and Lebesgue Integration}
+
+\begin{definition}{}{}
+    By a \dfntxt{partition} \(  \mathcal{P}  \) of \(  \left[ a,b \right]   \), we mean a finite set of points \(  \left\{ x_{i} \right\}_{i= 0}^{m}  \) such that \(  a= x_0< x_1< \cdots < x_{m}= b  \).  Let \[
+    \left\| \mathcal{P} \right\|:=  \max \left\{ x_{i}=x_{i=1}:1\le i\le m \right\}
+    \]    For each \(  i\in \left\{  1,\cdots,m  \right\}  \) let \(  x_{i}^{*}  \) be an arbitrary point of the inteval \(  \left[ x_{i-1},x_{i} \right]   \). A bounded function \(  f:\left[ a,b \right]\to \mathbb{R}    \) is \dfntxt{Riemann integrable} if \[
+    \lim_{\left\| \mathcal{P} \right\|\to 0} \sum _{i = 1}^{m}f\left( x_{i}^{*} \right)\left( x_{i}-x_{i-1} \right)  
+    \]    exists, in which case the value is the Riemann integral of \(  f  \) over \(  \left[ a,b \right]   \), which we will denote by \[
+    \left( R \right)\int_{a}^{b}f\left( x \right)\,\mathrm{d} x  
+    \]  
+\end{definition}
+
+\begin{lemma}{}{}
+      Given a partition \(  \mathcal{P}= \left\{ x_{i} \right\}_{i= 0}^{m}  \) of \(  \left[ a,b \right]   \), set \[
+    U\left( \mathcal{P} \right)= \sum _{i= 1}^{m}\left[ \sup _{x\in \left[ x_{i-1},x_{i} \right] }f\left( x \right)  \right]\left( x_{i}-x_{i-1} \right)   
+    \] \[
+    L\left( \mathcal{P} \right) = \sum _{i= 1}^{m}\left[ \inf _{x\in \left[ x_{i-1},x_{i} \right] }f\left( x \right)  \right]\left( x_{i}=x_{i-1} \right)  
+    \]Then \[
+    L\left( \mathcal{P} \right)\le \sum _{i= 1}^{m}f\left( x_{i}^{*} \right)\left( x_{i}-x_{i-1} \right)\le U\left( \mathcal{P} \right)    
+    \]  for every choice of the \(  x_{i}^{*}  \). 
+
+    We see that a bounded function \(  f  \) is Riemann integrable if and only if \[
+    \lim_{\left\| \mathcal{P} \right\|\to 0}\left( U\left( \mathcal{P} \right)-L\left( \mathcal{P} \right)   \right)= 0 
+    \] in which case \[
+    \left( R \right) \int_{a}^{b}f\,\mathrm{d} x= \lim_{\left\| \mathcal{P} \right\|\to 0} U\left( \mathcal{P} \right)= \lim_{\left\| \mathcal{P} \right\|\to 0}L\left( \mathcal{P} \right)   
+    \]
+\end{lemma}
+
+\begin{lemma}{}{}
+    Soppose that \(  \mathcal{P}= \left\{ x_{i} \right\}_{i= 1}^{m}  \) is a partition of \(  \left[ a,b \right]   \), \(  z\in [a,b]\setminus \mathcal{P}  \) , and \(  \mathcal{Q}= \mathcal{P}\cup \left\{ z \right\}  \). Thus \(  \mathcal{P}\subseteq \mathcal{Q}  \), \(  \mathcal{Q}  \) is called a refinement of \(  \mathcal{P}  \). We have \[
+    L\left( \mathcal{P} \right)\le L\left( \mathcal{Q} \right)\le U\left( \mathcal{Q} \right)\le U\left( \mathcal{P} \right)    
+    \]       
+\end{lemma}
+
+\begin{theorem}{}{}
+    If \(  f:\left[ a,b \right]\to \mathbb{R}    \) is a bounded Riemann integrable function, then \(  f  \) is Lebesgue integrable and \[
+    \left( R \right)\int_{a}^{b}f\left( x \right)\,\mathrm{d} x= \int_{\left[ a,b \right] }f\,\mathrm{d}  \lambda   
+    \]  
+\end{theorem}
+\begin{proof}
+    Let \(  \left\{ \mathcal{P}_{k} \right\}_{k= 1}^{\infty}  \) be a sequence of partitions of \(  \left[ a,b \right]   \) such that \(  \mathcal{P}_{k}\subseteq \mathcal{P}_{k+ 1}  \) and \(  \left\| \mathcal{P}_{k} \right\|\to \infty  \) as \(  k\to \infty  \).     Write \(  \mathcal{P}_{k}= \left\{ x_{j}^{k} \right\}_{j= 0}^{m_{k}}  \) . For each \(  k  \), define \(  l_{k}, u_{k}  \) by    \[
+    l_{k}\left( x \right)= \sum _{j= 1}^{m_{k}}\chi _{\left[ x_{j-1},x_{j } \right) }\inf _{t\in \left[ x_{j-1},x_{j } \right] } f\left( t \right) 
+    \] \[
+    u_{k}\left( x \right)= \sum _{j= 1}^{m_{k}}\chi _{\left[ x_{j-1},x_{j} \right) } \sup _{t\in \left[ x_{j-1},x_{j} \right] }f\left( t \right)  
+    \] Then \[
+    \int_{[a,b]} l_{k}\,\mathrm{d}  \lambda = L\left( \mathcal{P}_{k} \right)\le  U\left( \mathcal{P}_{k} \right)  =  \int_{[a,b]} u_{k}\,\mathrm{d}  \lambda 
+    \]Since \(  l_{k}  \) is increasing, \(  u_{k}  \) is decresing , the limit \[
+    l\left( x \right):= \lim_{k\to \infty}l_{k}\left( x \right),\quad u\left( x \right):= \lim_{k\to \infty}u_{k}\left( x \right)    
+    \]exsists and are measurable and \(  l \le f \le u  \) . Since \(  f  \) is Riemann measurable, it follows from Dominated Convergence Theorem (\( \left(  u_1-l_1 \right)   \) as a dominating function  )that  \[
+    \int_{[a,b]}\left( u-l \right)\,\mathrm{d}  \lambda= \lim_{k\to \infty} \int_{[a,b]}\left( u_{k}-l_{k} \right)\,\mathrm{d}  \lambda = \lim_{k\to \infty}\left( U\left( \mathcal{P}_{k} \right)-L\left( \mathcal{P}_{k} \right)   \right)= 0   
+    \] Thus \(  u= f= l  \), a.e. \(  x\in \left[ a,b \right]   \).  Then \[
+    \int_{[a,b]}f\,\mathrm{d}  \lambda = \lim_{k\to \infty}\int_{[a,b]}u_{k} \,\mathrm{d}  \lambda = \lim_{k\to \infty}U\left( \mathcal{P}_{k} \right)= \left( R \right)\int_{a}^{b}f\left( x \right)\,\mathrm{d} x   
+    \]
+\end{proof}
+
+\begin{theorem}{}{}
+    A bounded function \(  f:\left[ a,b \right]\to \mathbb{R}    \) is Riemann integrable if and only if \(  f  \) is continuous \(   \lambda   \)-a.e. on \(  \left[ a,b \right]   \).    
+\end{theorem}
+
+\begin{proof}
+    Suppose \(  f   \) is Riemann integrable and let \(  \left\{ \mathcal{P}_{k} \right\}  \) be a sequence of partitions of \(  \left[ a,b \right]   \) such that \(  \mathcal{P}_{k}\subseteq \mathcal{P}_{k+ 1}  \) and \(  \lim_{k\to \infty}\left\| \mathcal{P}_{k} \right\|= 0  \).     Let \(  l_{k},u_{k}   \) as in the proof of the above theorem. If \(  x \in \left[ a,b \right]\setminus N   \), \(  l\left( x \right)= u\left( x \right)    \) and \(   \varepsilon > 0  \), then there is an integer \(  k  \) such that \[
+    u_{k}\left( x \right)-l_{k}\left( x \right)<  \varepsilon   
+    \]Let \(  \mathcal{P}_{k}= \left\{ x_{j}^{k} \right\}_{j= 0}^{m_{k}}  \). Then \(  x\in \left[ x_{j-1}^{k},x_{j}^{k} \right)   \) for some \(  j\in \left\{  1,\cdots,m _{k} \right\}  \). For every \(  y \in \left( x_{j-1}^{k},x_{j}^{k} \right)   \) \[
+    \left| f\left( y \right)-f\left( x \right)   \right|\le u_{k}\left( x \right)-l_{k}\left( x \right)<  \varepsilon    
+    \]Thus \(  f  \) is continuous at \(  x  \). Since \(  l\left( x \right)= u\left( x \right)    \) for \(   \lambda   \)-a.e. \(  x\in \left[ a,b \right]   \) and \(   \lambda \left( N \right)= 0   \), we see that \(  f  \) is continuous at \(   \lambda   \)-a.e. point of \(  \left[ a,b \right]   \).
+    
+    Now suppose \(  f  \) is bounded, \(  N\subseteq \left[ a,b \right]   \) with \(   \lambda \left( N \right)= 0   \), and \(  f  \) is continuous at each point of \(  \left[ a,b \right]-N   \). Let \(  \left\{ \mathcal{P}_{k} \right\}  \) be a sequence of partitions of \(  \left[ a,b \right]   \) such that \(  \lim_{k\to \infty}\left\| \mathcal{P}_{k} \right\|= 0  \). For each \(  k  \), define \(  l_{k},u_{k}  \) as above. If \(  x\in \left[ a,b \right]-N   \) and \(   \varepsilon > 0  \), then there exists a \(   \delta > 0  \) such that \[
+    \left| f\left( x \right)-f\left( y \right)   \right|< \frac{ \varepsilon  }{2 }  
+    \]whenever \(  \left| y-x \right|<  \delta    \). There is a \(  k_0  \) such that \(  \left\| \mathcal{P}_{k} \right\|< \frac{ \delta  }{2 }   \) whenever \(  k> k_0  \), thus \[
+    u_{k}\left( x \right)-l_{k}\left( x \right)\le 2\sup \left\{ \left| f\left( x \right)-f\left( y \right)   \right|:\left| y-x \right|<  \delta    \right\}  <  \varepsilon  
+    \] whenever \(  k> k_0  \). Thus \[
+    \lim_{k\to \infty}\left( u_{k}\left( x \right)-l_{k}\left( x \right)   \right)= 0 
+    \] for each \(  x\in \left[ a,b \right]\setminus N   \). By the dominated convergence theorem \[
+    \lim_{k\to \infty}\left( U\left( \mathcal{P}_{k} \right)-L\left( \mathcal{P}_{k} \right)   \right)= \lim_{k\to \infty} \int_{\left[ a,b \right] }\left( u_{k}-l_{k} \right)\,\mathrm{d}  \lambda = 0  
+    \]                   
+\end{proof}
+
+\section{Improper Integrals}
+
+\begin{definition}{}{}
+    Let \(a \in \mathbb{R}\) and let \(f:[a,\infty)\to \mathbb{R}\) be a function that is Riemann integrable on each subinterval of \([a,\infty)\). The improper integral of \(f\) is defined as
+\begin{equation}
+(I)\int_{a}^{\infty} f(x)\,dx := \lim_{b\to\infty}(R)\int_{a}^{b} f(x)\,dx.
+\end{equation}
+If the limit  is finite, we say that the improper integral of \(f\) exist. We have the following result.
+\end{definition}
+\begin{theorem}{}
+Let $f:[a,\infty) \to \mathbb{R}$ be a nonnegative function that is Riemann integrable on each subinterval of $[a,\infty]$. Then
+\begin{equation}
+\int_{[a,\infty)} f\,d\lambda = \lim_{b\to\infty}{(R)} \int_a^b f\,dx.
+\end{equation}
+
+Thus, $f$ is Lebesgue integrable on $[a,\infty)$ if and only if the improper integral $(I)\int_a^\infty f(x)\,dx$ exists. Moreover, in this case, $\int_{[a,\infty)} f(x)\,d\lambda = (I)\int_a^\infty f(x)\,dx$.
+\end{theorem}
+
+\begin{proof}
+    Let \(  b_{n},  n =  1,2,3,\cdots   \) be any sequence with \(  b_{n}\to \infty  \), \(  b_{n}> a  \). We define \(  f_{n}= f \chi _{\left[ a,b_{n} \right] }  \). The monotone Convergence theorem yields \[
+    \int_{[a,\infty)}f\,\mathrm{d}  \lambda = \lim_{n\to \infty}\int_{[a,\infty)}f_{n}\,\mathrm{d}  \lambda = \lim_{n\to \infty}\int_{[a,b_{n}]}f\,\mathrm{d}  \lambda 
+    \]   Since \(  f  \) is Riemann integrable on each interval \(  \left[ a,b_{n} \right]   \), we have \[
+    \int_{[a,b_{n}]}= \left( R \right)\int_{a}^{b_{n}}f\,\mathrm{d} x 
+    \] and we conclude that \[
+    \int_{[a,\infty)}f\,\mathrm{d}  \lambda = \lim_{n\to \infty}\left( R \right)\int_{a}^{b_{n}}f\,\mathrm{d} x = \lim_{b \to \infty} \left( R \right) \int_{a}^{b}f\,\mathrm{d} x
+    \]  The last equality follows from the nonnegativity of \(  f  \). 
+\end{proof}
+\begin{theorem}{}{}
+Let $f:[a,\infty)\to\mathbb{R}$ be Riemann integrable on every subinterval of $[a,\infty)$. Then $f$ is Lebesgue integrable if and only if the improper integral $(I)\int_{a}^{\infty}\lvert f(x)\rvert dx$ exists. Moreover, in this case,
+\begin{equation}
+\int_{[a,\infty)} f\,d\lambda=(I)\int_{a}^{\infty} f(x)\,dx.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+       Note that \(  f^{+ }=\frac{\left| f \right|+ f  }{2 }  \), \(  f^{-}= \frac{\left| f \right|-f  }{2 }   \) is Riemann integrable, if \(  f  \) is Riemann integrable.   
+       And we have \[
+    \left( R \right) \int_{a}^{b_{n}}\left| f \right|\,\mathrm{d} x= \left( R \right) \int_{a}^{b_{n}}f^{+ }\,\mathrm{d} x+\left( R \right)  \int_{a}^{b_{n}}f^{-}\,\mathrm{d} x 
+       \] The remaining is straightforward to check.
+\end{proof}
+
+
+
 \end{document}

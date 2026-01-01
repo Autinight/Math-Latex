@@ -1,0 +1,53 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{ Covering Space }
+
+\section{Basic Definitions}
+\begin{definition}{Covering Space}{}
+    Let \(  p:\overline{X}\to X  \) be a surjective map. 
+    \begin{itemize}
+        \item We say an open subset  \(  V  \) of \(  X  \) is \dfntxt{evenly coverd} by p, if \(  p ^{-1} \left( V \right)   \) is a disjoint union of open subsets of \(  \overline{X}  \):  \[
+    p ^{-1} \left( V \right)= \coprod _{i}U_{i} 
+    \] where, each \(  U_{i}  \) is maped homeomorphically onto \(  V  \) by p.
+    \item In this case, we shall refer to each \(  U_{i}  \) as a \dfntxt{sheet}  for \(  p  \) over V. 
+      \item If the space \(  X  \) can be covered by open subsets which are evenly covered by \(  p  \), then we say that \(  p  \) is a \dfntxt{covering projection}; the space \(  \overline{X}  \) is called a covering space of \(  X  \). 
+    \end{itemize}
+    
+    
+\end{definition}
+
+\begin{theorem}{}{}
+    Let \(  p: \overline{X}  \to X\) be a contininuous map, where \(  X  \) is locally path connected.  \begin{enumerate}
+        \item The map \(  p  \) is a covering space iff for each componet \(  \overline{C}  \) of \(  \overline{X}  \), the restriction map \(  p: p ^{-1} \left( C \right) \to C   \) is a covering projection.    
+        \item If \(  p  \) is a covering projection then for each component \(  \overline{C}  \) of \(  \overline{X}  \), the map \(  p: \overline{C} \to p\left(  \overline{C}\right)   \) is a covering projection and \(  p\left( \overline{C} \right)   \) is a component of \(  X  \).     
+    \end{enumerate}
+    
+\end{theorem}
+
+\begin{remark}
+    Thus, we always assume that \(  a   \) covering space is locally path connected and connetcted. For the following content, unless otherwise specified, we will all adopt this assumption.
+\end{remark}
+
+\section{Lifting Properties}
+
+\begin{theorem}{The uniqueness of map's lifting}{}
+Let $p : \overline{X} \to X$, be a covering projection, $Y$ be any connected space and $f : Y \to X$ be any map. Let $\tilde{f}_1, \tilde{f}_2 : Y \to \overline{X}$ be any two lifts of $f$, such that, for some point $y \in Y$, $\tilde{f}_{1}\left( y \right)=  \tilde{f}_2(y)$. Then $\tilde{f}_1 = \tilde{f}_2$.
+\end{theorem}
+
+\begin{theorem}{Path lifting property}{}
+Let $p : \overline{X} \to X$ be a covering projection. Then given a path $\omega : \mathbb{I} \to X$ and a point $\bar{x} \in \overline{X}$ such that, $p(\bar{x}) = \omega(0)$, there exists a path $\bar{\omega} : \mathbb{I} \to \overline{X}$ such that, $p \circ \bar{\omega} = \omega$ and $\bar{\omega}(0) = \bar{x}$.
+\end{theorem}
+
+\begin{theorem}{Homotopy Lifting Property (HLP)}{}
+    Every covering projection \(  p:\overline{X}\to X  \) is a fibration. That is for each space \(  Y  \) ,   map \(  \tilde{f}:Y\to   \overline{X}  \) , and for each homotopy \(  F: Y\times [0,1]\to X  \) such that \(  F\left( y,0 \right)= p\left( \tilde{f}\left( y \right)  \right)    \), there exists a lifting \(  \tilde{F}: Y\times \left[ 0,1 \right]\to  \overline{X}   \), satisfying
+    \begin{enumerate}
+        \item \(  \tilde{F}\left( y,0 \right)= \tilde{f}\left( y \right)    \)
+        \item \(  p\circ \tilde{F}= F  \)  .
+    \end{enumerate}
+        
+\end{theorem}
+
+\section{Relation with the Fundamenatal Group}
+\end{document}

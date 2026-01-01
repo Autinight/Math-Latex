@@ -1,0 +1,558 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{10}
+}{}
+
+\chapter{ HW11 }
+代靖涵 25120222201319
+\begin{exercise}{}{}
+设随机变量 $X$ 和 $Y$ 独立同分布, 且
+\[
+P(X = -1) = P(Y = -1) = P(X = 1) = P(Y = 1) = \frac{1}{2}.
+\]
+试求 $P(X=Y)$.
+\end{exercise}
+\begin{solution}
+    \[
+    \begin{aligned}
+    P\left( X= Y \right)&= P\left( X= Y= -1 \right)+ P\left( X= Y= 1 \right)\\ 
+     &=     P\left( X= -1 \right)P\left( Y= -1 \right)+ P\left( X= 1 \right)P\left( Y= 1 \right)\\ 
+      &= \frac{1 }{2 }  \cdot \frac{1}{2}+ \frac{1}{2}\cdot \frac{1}{2}\\ 
+       &= \frac{1}{2}   
+    \end{aligned}
+    \]
+\end{solution}
+
+
+\begin{exercise}{}{}
+甲、乙两人独立地各进行两次射击, 假设甲的命中率为 0.2, 乙的命中率为 0.5, 以 $X$ 和 $Y$ 分别表示甲和乙的命中次数, 试求 $P(X \le Y)$.
+\end{exercise}
+\begin{proof}
+    \[
+    P\left( X= 0 \right)= 0.64, \quad P\left( X= 1 \right)= 0.32, \quad P\left( X= 2 \right)= 0.04   
+    \]   \[
+    P\left( Y= 0 \right)= 0.25 , \quad P\left( Y= 1 \right) =  0.5,\quad  P\left( Y= 2 \right)= 0.25   
+    \]  \[
+    \begin{aligned}
+    P\left( X\le Y \right)&= P\left( X= 0 \right)P\left( Y\ge 0 \right)+ P\left( X= 1 \right)P\left( Y\ge 1 \right)+ P\left( X= 2 \right)P\left( Y= 2 \right)\\ 
+     &= 0.64 \times    1 +  0.32 \times    0.75+ 0.04\times 0.25\\ 
+      &= 0.89 
+    \end{aligned}
+    \]
+\end{proof}
+\begin{exercise}{}{}
+设随机变量 $X$ 与 $Y$ 相互独立, 其联合分布列为
+\[
+\begin{tabular}{c|ccc}
+\hline
+$X$ & \multicolumn{3}{c}{$Y$} \\
+\hline
+ & $y_1$ & $y_2$ & $y_3$ \\
+\hline
+$x_1$ & $a$ & $1/9$ & $c$ \\
+$x_2$ & $1/9$ & $b$ & $1/3$ \\
+\hline
+\end{tabular}
+\]
+试求联合分布列中的 $a,b,c$.
+\end{exercise}
+
+\begin{proof}
+   根据图表 \[
+     P\left( Y= y_3 \right)= c+ \frac{1}{3} 
+     \] \[
+     P\left( Y= y_2 \right)= \frac{1}{9}+ b 
+     \] \[
+     P\left( Y= y_1 \right)= a+ \frac{1}{9} 
+     \]由独立性 \[
+     P\left( X= x_1 \right)= \frac{P\left( X= x_1, Y= y_1 \right)  }{P\left( Y= y_1 \right)  }= \frac{a }{a+ \frac{1}{9}}  = \frac{9a }{9a+ 1 }  
+     \] \[
+     P\left( X= x_2 \right)= \frac{P\left( Y= y_1,X= x_2 \right) }{P\left( Y= y_1 \right)  }= \frac{\frac{1}{9} }{a+ \frac{1}{9} }= \frac{1 }{9a+ 1 }    
+     \] \[
+     c= P\left( X= x_1 \right)P\left( Y= y_3 \right)= \frac{9a }{9a+ 1 }\left( c+ \frac{1}{3} \right)\implies \frac{3c }{3c+ 1 }= \frac{9a }{9a+ 1 }      
+     \]从而 \[
+     \frac{1 }{3c+ 1 }= \frac{1 }{9a+ 1 }  
+     \]得到 \[
+     c= 3a
+     \] \[
+     b= P\left( X= x_2 \right)P\left( Y= y_2 \right)= \frac{1}{9a+ 1} \left( \frac{1}{9}+ b \right)\implies \frac{9b }{9b+ 1 }= \frac{1 }{9a+ 1 }     
+     \]得到 \[
+    b= \frac{1 }{81a } 
+     \]由 \[
+     a+ \frac{1}{9}+ c+ \frac{1}{9}+ b+ \frac{1}{3}= 1
+     \] 可得\[
+     a+ b+ c= \frac{4 }{9 } 
+     \]   从而 \[
+     a+ \frac{1}{81a}+ 3a= \frac{4}{9}\implies \left( 18a-1 \right)^{2}\implies a= \frac{1 }{18 }  
+     \]故 \[
+     a= \frac{1}{18},\quad b= \frac{2 }{9 },\quad c= \frac{1 }{6 }  
+     \]
+\end{proof}
+
+\begin{exercise}{}{}
+设 $X$ 与 $Y$ 是两个相互独立的随机变量, $X \sim U(0,1), Y \sim \operatorname{Exp}(1)$. 试求:
+\begin{enumerate}
+\item $X$ 与 $Y$ 的联合密度函数;
+\item $P(Y \le X)$;
+\item $P(X+Y \le 1)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+     \[
+     p_{X}\left( x \right)= \chi _{\left[ 0,1 \right] } \left( x \right)  
+     \] \[
+     p_{Y}\left( y \right)= \chi _{[0,\infty)}\left(y \right) e^{-y} 
+     \]
+     \begin{enumerate}
+        \item  由于 \(  X,Y  \)独立,  \[
+      \begin{aligned}
+        p_{\left( X,Y \right) }\left( x,y \right)&= p_{X}\left( x \right)p_{Y}\left( y \right)=   \begin{cases} e^{-y},&0\le x\le 1, y\ge 0\\ 
+         0,& \text{其它} \end{cases} 
+      \end{aligned}   
+        \]
+        \item \[
+        P\left( Y\le X \right)= \int_{-\infty}^{\infty}\int_{-\infty}^{s}p_{\left( X,Y \right) }\left( s,t \right) \,\mathrm{d} t\,\mathrm{d} s = \int_{0}^{1}\int_{0}^{s}e^{-t}\,\mathrm{d} t\,\mathrm{d} s= e^{-1}
+        \]
+        \item \[
+       \begin{aligned}
+        P\left( X+ Y\le 1 \right)= P\left( Y\le 1-X \right)&= \int_{-\infty}^{\infty} \int_{-\infty}^{1-s}p_{\left( X,Y \right) }\left( s,t \right)\,\mathrm{d} t\,\mathrm{d} s\\ 
+         &= \int_{0}^{1}\int_{0}^{1-s}e^{-t}\,\mathrm{d} t\,\mathrm{d} s\\ 
+          &= e^{-1}
+       \end{aligned}   
+        \]
+     \end{enumerate}
+     
+\end{proof}
+\begin{exercise}{}{}
+设随机变量$(X,Y)$的联合密度函数为
+\[
+p(x,y) = \begin{cases}
+1, & |x|<y, 0<y<1, \\
+0, & \text{其他}.
+\end{cases}
+\]
+试求:
+\begin{enumerate}
+    \item 边际密度函数$p_X(x)$和$p_Y(y)$;
+    \item $X$与$Y$是否独立?
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+    \item  \[
+    p_{X}\left( x \right)=\chi _{\left\{ x\in \left( -1,1 \right)  \right\}} \int_{-\infty}^{\infty}p\left( x,y \right)\,\mathrm{d} y=  \int_{\left| x \right| }^{1}1\,\mathrm{d} y= \left( 1-\left| x \right|   \right)\chi _{\left\{ x\in \left( -1,1 \right)  \right\}}  
+    \]\[
+    p_{Y}\left( y \right)=  \int_{-\infty}^{\infty}p\left( x,y \right)\,\mathrm{d} x= \chi _{\left[ 0,1 \right] }\left( y \right)  \int_{-y}^{y}  1\,\mathrm{d} x= \begin{cases} 2y,& y\in \left( 0,1 \right)\\ 
+     0,&  \text{其它} \end{cases} 
+    \]
+    \item  \[
+    p_{X}\left( x \right)p_{Y}\left( y \right)= \chi _{\left\{ x\in \left( -1,1 \right)  \right\}}\chi _{\left\{ y\in \left( 0,1 \right)  \right\}} \left( 1-\left| x \right|  \right)2y  
+    \] 因此 \[
+    p\left( x,y \right)\neq p_{X}\left( x \right)p_{Y}\left( y \right)   
+    \]故\(  X,Y  \)不独立. 
+   \end{enumerate}
+   
+\end{proof}
+\begin{exercise}{}{}
+设二维随机变量 $(X,Y)$ 的联合密度函数如下, 试问 $X$ 与 $Y$ 是否相互独立?
+\begin{enumerate}
+  \item 
+  \[
+  p(x,y) = 
+  \begin{cases}
+    24xy, & 0<x<1,\ 0<y<1,\ 0<x+y<1,\\
+    0, & \text{其他};
+  \end{cases}
+  \]
+  \item 
+  \[
+  p(x,y) = 
+  \begin{cases}
+    12xy(1-x), & 0<x<1,\ 0<y<1,\\
+    0, & \text{其他};
+  \end{cases}
+  \]
+  \item 
+  \[
+  p(x,y) = 
+  \begin{cases}
+    \dfrac{21}{4}x^{2}y, & x^{2}<y<1,\\
+    0, & \text{其他}.
+  \end{cases}
+  \]
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item  \[
+        p_{X}\left( x \right)= \chi _{\left\{ x\in \left( 0,1 \right) \right\} }\int_{0}^{1-x} 24xy\,\mathrm{d} y= \chi _{\left\{ x\in \left( 0,1 \right)  \right\}}12x \left( 1-x \right)^{2} 
+        \] \[
+        p_{Y}\left( y \right)= \chi _{\left\{ y\in \left( 0,1 \right)  \right\}}12y \left( 1-y \right)^{2}  
+        \]于是 \[
+        p_{X}\left( x \right)p_{Y}\left( y \right)= \chi _{\left\{ x\in \left( 0,1 \right),y\in \left( 0,1 \right)   \right\}}12 ^{2}xy\left( 1-x \right)^{2}\left( 1-y \right)^{2}    
+        \] \[
+        p_{X}\left( x \right)p_{Y}\left( y \right)\neq p\left( x,y \right)   
+        \]故 \(  X,Y  \)不独立. 
+        \item  \[
+        p\left( x,y \right)= 12 x \left( 1-x \right) \cdot y  
+        \]是可分离变量的, 故\(  X,Y  \)独立. 
+        \item \[
+        p_{X}\left( x \right)= \chi _{\left\{ x\in \left( -1,1 \right)  \right\}} \int_{x^{2}}^{1}\frac{21 }{4 }x^{2}y\,\mathrm{d} y= \chi _{\left\{ x\in \left( -1,1 \right)  \right\}}\frac{21 }{8 }x^{2}\left( 1-x^{4} \right)   
+        \]  \[
+        p_{Y}\left( y \right)= \chi _{\left\{ y\in \left( 0,1 \right)  \right\}} \int_{-\sqrt{y}}^{\sqrt{y}}\frac{21 }{4 }x^{2}y\,\mathrm{d} x = \frac{7 }{2}\chi _{\left\{ y\in \left( 0,1 \right)  \right\}}y^{2}\sqrt{y}  
+        \] 因此 \[
+        p_{X}\left( x \right)\cdot p_{Y}\left( y \right)= \frac{147 }{16 }\chi _{\left\{ x\in \left( -1,1 \right), y\in \left( 0,1 \right)   \right\}}x^{2}y^{2}\left( 1-x^{2} \right)\sqrt{y}    
+        \] \[
+        p_{X}\left( x \right)\cdot p_{Y}\left( y \right)\neq p\left( x,y \right)   
+        \]因此 \(  X,Y  \)不独立. 
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+在长为 $a$ 的线段的中点的两边随机地各选取一点, 求两点间的距离小于 $a/3$ 的概率.
+\end{exercise}
+\begin{proof}
+    以中点为原点 , 建立水平方向的坐标系, 令 \(  X,Y  \)分别为选取两点的坐标. 则 \(  X\sim U\left( \left( -\frac{a}{2},0 \right)  \right)   \), \(  Y\sim U\left( \left( 0,\frac{a}{2} \right)  \right)   \). \[
+    p_{X}\left( x \right) = \chi _{\left\{ x\in \left( -\frac{a}{2} ,0 \right)  \right\}}\frac{2}{a},\quad p_{Y}\left( y \right)= \chi _{\left\{ y\in \left( 0,\frac{a}{2}  \right)  \right\}}\frac{2}{a}
+    \]由于 \(  X,Y  \)独立,  \[
+    p_{\left( X,Y \right) }\left( x,y \right)=  \chi _{\left\{ x\in \left( -\frac{a}{2} ,0 \right), y\in \left( 0,\frac{a}{2}  \right)   \right\}}\frac{4}{a^{2}}
+    \]    两点距离小于\(  \frac{a}{3}  \)的概率为 \[
+   \int \int _{\left\{ Y-X\le \frac{a}{3} \right\}} p_{\left( X,Y \right) }\left( x,y \right)\,\mathrm{d} x\,\mathrm{d} y = \int_{-\frac{a}{3}}^{0}\int_{0}^{\frac{a}{3}+ x}\frac{4}{a^{2}}\,\mathrm{d} y\,\mathrm{d} x= \frac{2}{9}
+    \] 
+\end{proof}
+\begin{exercise}{}{}
+设二维随机变量\dfntxt{$(X,Y)$}的联合分布列为
+\[
+\begin{array}{c|ccc}
+X\backslash Y & 1 & 2 & 3\\ \hline
+0 & 0.05 & 0.15 & 0.20\\
+1 & 0.07 & 0.11 & 0.22\\
+2 & 0.04 & 0.07 & 0.09
+\end{array}
+\]
+试分别求\dfntxt{$U=\max\{X,Y\}$}和\dfntxt{$V=\min\{X,Y\}$}的分布列.
+\end{exercise}
+\begin{proof}
+    \textbf{解}
+
+\(U=\max\{X,Y\}\) 的可能取值为 \(1, 2, 3\).
+\[
+\begin{aligned}
+P(U=1) &= P(0,1) + P(1,1) = 0.05 + 0.07 = 0.12, \\
+P(U=2) &= P(0,2) + P(1,2) + P(2,1) + P(2,2) = 0.15 + 0.11 + 0.04 + 0.07 = 0.37, \\
+P(U=3) &= P(Y=3) = 0.20 + 0.22 + 0.09 = 0.51.
+\end{aligned}
+\]
+\(V=\min\{X,Y\}\) 的可能取值为 \(0, 1, 2\).
+\[
+\begin{aligned}
+P(V=0) &= P(X=0) = 0.40, \\
+P(V=1) &= P(1,1) + P(1,2) + P(1,3) + P(2,1) = 0.07 + 0.11 + 0.22 + 0.04 = 0.44, \\
+P(V=2) &= P(2,2) + P(2,3) = 0.07 + 0.09 = 0.16.
+\end{aligned}
+\]
+故 \(U\) 和 \(V\) 的分布列分别为
+\[
+\begin{array}{c|ccc}
+U & 1 & 2 & 3 \\ \hline
+P & 0.12 & 0.37 & 0.51
+\end{array}
+\qquad
+\begin{array}{c|ccc}
+V & 0 & 1 & 2 \\ \hline
+P & 0.40 & 0.44 & 0.16
+\end{array}
+\]
+\end{proof}
+\begin{exercise}{}{}
+设\dfntxt{$X$}和\dfntxt{$Y$}是相互独立的随机变量, 且\dfntxt{$X\sim\operatorname{Exp}(\lambda)$}, \dfntxt{$Y\sim\operatorname{Exp}(\mu)$}. 如果定义随机变量
+\[
+Z=
+\begin{cases}
+1, & X\le Y,\\
+0, & X>Y,
+\end{cases}
+\]
+求\dfntxt{$Z$}的分布列.
+\end{exercise}
+\begin{proof}
+     \[
+  \begin{aligned}
+     P\left( Z= 1 \right)= P\left( X\le Y \right)= \int_{0}^{\infty}\int_{0}^{y} \lambda e^{- \lambda x }\mu e^{-\mu y}\,\mathrm{d} x\,\mathrm{d} y&= \int_{0}^{\infty}  \mu e^{-\mu y}-\mu e^{-\left(  \lambda + \mu  \right)y }\,\mathrm{d} y\\ 
+      &=     1 -  \frac{\mu  }{ \lambda + \mu  } = \frac{ \lambda  }{ \lambda + \mu  } 
+  \end{aligned}
+     \] \[
+     P\left( Z= 0 \right)= 1-P\left( Z= 1 \right)= \frac{\mu  }{ \lambda + \mu  } 
+     \]
+\end{proof}
+\begin{exercise}{}{}
+设随机变量\dfntxt{$X$}和\dfntxt{$Y$}的分布列分别为
+\[
+\begin{array}{c|ccc}
+X & -1 & 0 & 1\\ \hline
+P & 1/4 & 1/2 & 1/4
+\end{array}
+\qquad
+\begin{array}{c|cc}
+Y & 0 & 1\\ \hline
+P & 1/2 & 1/2
+\end{array}
+\]
+已知\dfntxt{$P(XY=0)=1$}, 试求\dfntxt{$Z=\max\{X,Y\}$}的分布列.
+\end{exercise}
+\begin{solution}
+
+
+由条件 \(P(XY=0)=1\) 知 \(P(X\neq 0, Y\neq 0)=0\), 故
+\[
+P(X=-1, Y=1) = P(X=1, Y=1) = 0.
+\]
+结合边缘分布列, 可得联合分布中概率非零的项为
+\[
+\begin{aligned}
+P(X=-1, Y=0) &= P(X=-1) - P(X=-1, Y=1) = 1/4, \\
+P(X=1, Y=0) &= P(X=1) - P(X=1, Y=1) = 1/4, \\
+P(X=0, Y=1) &= P(Y=1) - P(X=-1, Y=1) - P(X=1, Y=1) = 1/2.
+\end{aligned}
+\]
+对于 \(Z=\max\{X,Y\}\), 其可能取值为 \(0, 1\).
+\[
+\begin{aligned}
+P(Z=0) &= P(X=-1, Y=0) = 1/4, \\
+P(Z=1) &= P(X=1, Y=0) + P(X=0, Y=1) = 1/4 + 1/2 = 3/4.
+\end{aligned}
+\]
+故 \(Z\) 的分布列为
+\[
+\begin{array}{c|cc}
+Z & 0 & 1\\ \hline
+P & 1/4 & 3/4
+\end{array}
+\]
+\end{solution}
+
+\begin{exercise}{}{}
+设随机变量\dfntxt{$X,Y$}独立同分布, 在以下情况下求随机变量\dfntxt{$Z=\max\{X,Y\}$}的分布列.
+\begin{enumerate}
+\item
+\dfntxt{$X$}服从\dfntxt{$p=0.5$}的\dfntxt{$0$}-\dfntxt{$1$}分布.
+
+\item
+\dfntxt{$X$}服从几何分布, 其中
+\[
+P(X=k)=(1-p)^{k-1}p,\quad k=1,2,\dots.
+\]
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item  \[
+        P\left( Z= 0 \right)= P\left( X= Y= 0 \right)= P\left( X= 0 \right)P\left( Y= 0 \right)= 0.5\times 0.5= 0.25    
+        \] \[
+        P\left( Z= 1 \right)= 1-P\left( Z= 0 \right)= 0.75  
+        \]
+        \item  \[
+        P\left( X\le k \right)= \sum _{i= 1}^{k}\left( 1-p \right)^{i-1}p= 1- \left( 1-p \right)^{k}   
+        \] 于是 \[
+        \begin{aligned}
+        P\left( Z\le k \right)= P\left( X\le k,Y\le k \right)= P\left( X\le k \right)P\left( Y\le k \right)&= P\left( X\le k \right)^{2}\\ 
+         &= \left( 1-\left( 1-p \right)^{k}  \right)^{2}       
+        \end{aligned}
+        \] \[
+      \begin{aligned}
+        P\left( Z= k \right)&= P\left( Z\le k \right)-P\left( Z\le k-1 \right)\\ 
+         &=    \left( 1-\left( 1-p \right)^{k}  \right)^{2}-\left( 1-\left( 1-p \right)^{k-1}  \right) ^{2}  \\ 
+          &= \left( \left( 1-p \right)^{k-1}-\left( 1-p \right)^{k}   \right)\left( 2- \left( 1-p \right)^{k}-\left( 1-p \right)^{k-1}   \right)\\ 
+           &= \left( 1-p \right)^{k-1}p \left( 2-\left( 1-p \right)^{k}-\left( 1-p \right)^{k-1}  \right)    ,\quad k= 1,2,\cdots 
+      \end{aligned}
+        \]
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+设\dfntxt{$X$}和\dfntxt{$Y$}为两个随机变量, 且
+\[
+P(X\ge0,\;Y\ge0)=\frac{3}{7},\qquad
+P(X\ge0)=P(Y\ge0)=\frac{4}{7}.
+\]
+试求\dfntxt{$P(\max\{X,Y\}\ge0)$}.
+\end{exercise}
+\begin{solution}
+记\(A=\{X\ge0\}\), \(B=\{Y\ge0\}\). 注意\(\{\max\{X,Y\}\ge0\}\)等于\(A\cup B\). 
+\[
+\begin{aligned}
+P(\max\{X,Y\}\ge0) &= P(A\cup B) \\
+&= P(A) + P(B) - P(AB) \\
+&= \frac{4}{7} + \frac{4}{7} - \frac{3}{7} \\
+&= \frac{5}{7}.
+\end{aligned}
+\]
+\end{solution}
+\begin{exercise}{}{}
+设\dfntxt{$X$}与\dfntxt{$Y$}的联合密度函数为
+\[
+p(x,y)=
+\begin{cases}
+\operatorname{e}^{-(x+y)}, & x>0,\;y>0,\\
+0, & \text{其他.}
+\end{cases}
+\]
+试求以下随机变量的密度函数:
+
+\begin{enumerate}
+\item
+\dfntxt{$Z=(X+Y)/2$}.
+
+\item
+\dfntxt{$Z=Y-X$}.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item 由于 \[
+        p\left( x,y \right)= \left( \chi _{\left\{ x> 0 \right\}} e^{-x}\right) \left( \chi _{\left\{ y> 0 \right\}}e^{-y} \right)   
+        \]是可分离变量的, 故 \(  X,Y  \)独立, 且有 \[
+        p_{X}\left( x \right)= \chi _{\left\{ x> 0 \right\}}e^{-x},\quad p_{Y}\left( y \right)= \chi _{\left\{ y> 0 \right\}} e^{-y} 
+        \]  令 \(  W= 2Z  \), 则 \[
+       \begin{aligned}
+        p_{W}\left( t\right)= p_{X}* p_{Y}\left( t \right)& = \int p_{X}\left( t-x\right)p_{Y}\left( x\right)\,\mathrm{d} x   \\ 
+         &=  \int \chi _{\left\{ x< t \right\}}e^{x-t}\chi _{\left\{ x> 0 \right\}}e^{-x}\,\mathrm{d} x\\ 
+          &= \chi _{\left\{ t> 0 \right\}} \int_{0}^{t}e^{-t}\,\mathrm{d} x\\ 
+           &= \chi _{\left\{ t> 0 \right\}}te^{-t}
+       \end{aligned}
+        \]  从而 \[
+        p_{Z}\left( z \right)= 2p_{W}\left( 2z \right) = 2\chi _{\left\{ z> 0 \right\}}2ze^{-2z} 
+        \]
+        \item   \[
+        p_{-X}\left( x \right)= p_{X}\left( -x \right)= \chi _{\left\{ x< 0 \right\}}e^{x}  
+        \]\[
+        \begin{aligned}
+        p_{Z}\left( z \right)= p_{Y}*p_{-X}\left( z \right)&= \int p_{Y}\left( z-x \right)p_{-X}\left( x \right)\,\mathrm{d} x    \\ 
+         &= \int \chi _{\left\{ x< z \right\}}e^{x-z} \left(  \chi _{\left\{ x< 0 \right\}}e^{x} \right)\,\mathrm{d} x\\ 
+          &=  \begin{cases} \int_{-\infty}^{0}e^{2x-z}\,\mathrm{d} x,&z\ge 0\\ 
+           \int_{-\infty}^{z}e^{2x-z}\,\mathrm{d} x,& z< 0 \end{cases}\\ 
+            &= \begin{cases} \frac{1}{2}e^{-z},&z\ge 0\\ 
+             \frac{1}{2}e^{z},&z< 0 \end{cases}\\ 
+              &= \frac{1}{2}e^{-\left| z \right| }  
+        \end{aligned}
+        \]
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+设随机变量 $X$ 与 $Y$ 相互独立, 试在以下情况下求 $Z = X + Y$ 的密度函数:
+\begin{enumerate}
+\item $X \sim U(0,1), Y \sim U(0,1)$
+\item $X \sim U(0,1), Y \sim \operatorname{Exp}(1)$
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item \[
+       \begin{aligned}
+        p_{Z}\left( z \right)= p_{X}*p_{Y}\left( z \right)&= \int p_{X}\left( z-x \right)p_{Y}\left( x \right)\,\mathrm{d} x \\ 
+         &= \int \chi _{\left\{ 0\le z-x\le 1 \right\}}\chi _{\left\{ 0\le x\le 1 \right\}}\,\mathrm{d} x\\ 
+          &=  \int  \chi _{\left\{ z-1\le x\le z \right\}}\chi _{\left\{ 0\le x\le 1 \right\}}\,\mathrm{d} x\\ 
+           &= \chi _{\left\{0\le  z\le 1 \right\}}z+ \chi _{\left\{ 1< z\le 2 \right\}}\left( 2-z \right) \\ 
+            &= \begin{cases} z,& z\le 1\\ 
+             \left( 2-z \right),& 1< z\le 2\\ 
+              0,& \text{其它} \end{cases} 
+       \end{aligned}    
+        \]
+        \item \[
+      \begin{aligned}
+        p_{Z}\left( z \right)= p_{X}*p_{Y}\left( z \right)&= \int {p_{X}}\left( z-x \right)p_{Y}\left( x \right)\,\mathrm{d} x\\ 
+         &=  \int \chi _{\left\{ 0\le z-x\le 1 \right\}}\chi _{\left\{ x\ge 0 \right\}}e^{-x}\,\mathrm{d} x\\ 
+          &= \int \chi _{\left\{ z-1\le x\le z \right\}}\chi _{\left\{ x\ge 0 \right\}}e^{-x}\,\mathrm{d} x\\ 
+           &= \chi _{\left\{ 0\le z< 1\right\}} \int_{0}^{z}e^{-x}\,\mathrm{d} x+ \chi _{\left\{ z\ge 1 \right\}}\int_{z-1}^{z}e^{-x}\,\mathrm{d} x\\ 
+            &= \begin{cases} 0,&z< 0\\ 
+             1-e^{-z},& 0\le z< 1\\ 
+            \left( e-1 \right)e^{-z} ,& z\ge 1 \end{cases} 
+      \end{aligned}    
+        \]
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+设某一设备装有3个同类的电器元件,元件工作相互独立,且工作时间都服从参数为\(\lambda\)的指数分布. 当3个元件都正常工作时,设备才正常工作. 试求设备正常工作时间\(T\)的密度函数.
+\end{exercise}
+
+\begin{proof}
+  记三个设备的工作时间分别为 \(  X,Y,Z  \).  则 \[
+  T= \min \left\{ X,Y,Z \right\}
+  \]  \[
+  \left\{ T\ge t \right\}= \left\{ X\ge t, Y\ge t,Z\ge t \right\}
+  \]由独立性 \[
+  P\left( T\ge t \right) = P\left( X\ge t \right)P\left( Y\ge t \right)P\left( Z\ge t \right)   
+  \]由于它们都服从参数为 \(   \lambda   \)的指数分布,  \[
+  P\left( X\ge t \right)= P\left( Y\ge t \right)= P\left( Z\ge t \right)= \int_{t}^{\infty} \lambda e^{- \lambda x}\,\mathrm{d} x=\chi _{\left\{ t\ge 0 \right\}} e^{- \lambda t}   
+  \] 故 \[
+  P\left( T\ge t \right) = \chi _{\left\{ t\ge 0 \right\}}e^{-3 \lambda t}
+  \]从而 \(  P\left( T\le t \right)= 1-P\left( T\ge t \right)= 1-e^{-3 \lambda t}    \), 进而 \[
+  p_{T}\left( t \right)= \frac{\mathrm{d}}{\mathrm{d}t}P\left( T\le t \right)= 3 \lambda \chi _{\left\{ t\ge 0 \right\}}e^{-3 \lambda t}  
+  \] 
+\end{proof}
+\begin{exercise}{}{}
+设随机变量\(X_1,X_2,\cdots,X_n\)相互独立,且\(X_i\sim Exp(\lambda_i)\),试证:
+\[
+P\bigl(X_i=\min\{X_1,X_2,\cdots,X_n\}\bigr)
+=\frac{\lambda_i}{\lambda_1+\lambda_2+\cdots+\lambda_n}.
+\]
+\end{exercise}
+\begin{proof}
+   由于\(  X_1,\cdots ,X_{n}  \)相互独立, \[
+   p_{\left( X_1,\cdots ,X_{n} \right) }\left( x_1,\cdots ,x_{n} \right)= p_{X_1}\left( x_1 \right)\cdots p_{X_{n}}\left( x_{n} \right)=   \lambda _1 e^{- \lambda _1 x_1}\cdots  \lambda _{n}e^{- \lambda _{n}x_{n}}
+   \]注意到\[
+   P\left( X_{i}= \min \left\{ X_1,X_2,\cdots ,X_{n} \right\} \right)= P\left( X_{i}\le X_1,X_{i}\le X_2,\cdots ,X_{i}\le X_{n} \right)  
+   \]其中 \[
+  \begin{aligned}
+  & P\left( X_i\le X_1,\cdots ,X_{i}\le X_{n} \right)\\ 
+   &= \int_{0}^{\infty}\int_{x_{i}}^{\infty}\cdots \int_{x_{i}}^{\infty} \lambda _1 e^{- \lambda _1 x_1}\cdots  \lambda _{n}e^{- \lambda _{n}x_{n}}\,\mathrm{d} x_1\cdots \,\mathrm{d} x_{i-1}\cdots \,\mathrm{d} x_{i+ 1}\cdots \,\mathrm{d} x_{n}\,\mathrm{d} x_{i}\\ 
+    &=  \int_{0}^{\infty}\int_{x_{i}}^{\infty}\cdots \int_{x_{i}}^{\infty}e^{- \lambda _1 x_{i}} \lambda _2 e^{- \lambda _2 x_2}\cdots  \lambda _{n}e^{- \lambda _{n}x_{n}}\,\mathrm{d} x_2\cdots \,\mathrm{d} x_{i-1}\cdots \,\mathrm{d} x_{i+ 1}\cdots \,\mathrm{d} x_{n}\,\mathrm{d} x_{i}\\ 
+     &\cdots \\ 
+      &=  \lambda _{i}\int_{0}^{\infty}\left( \prod _{j\neq i}e^{- \lambda _{j}x_{i}} \right) \lambda _{i}e^{- \lambda _{i}x_{i}} \,\mathrm{d} x_{i}\\
+       &=  \lambda _{i}\int_{0}^{\infty}e^{-\left(  \lambda _1 + \cdots +  \lambda _{n} \right)x_{i} }\,\mathrm{d} x_{i}\\ 
+        &= \frac{ \lambda _{i} }{ \lambda _1 + \cdots +  \lambda _{n} } 
+  \end{aligned}
+   \]因此 \[
+   P\left( X_{i}= \min \left\{ X_1,X_2,\cdots ,X_{n} \right\} \right)= \frac{ \lambda _{i} }{ \lambda _1 +  \lambda _2 + \cdots +  \lambda _{n} }  
+   \]
+\end{proof}
+\begin{exercise}{}{}
+设连续随机变量\(X_1,X_2,\cdots,X_n\)独立同分布,试证:
+\[
+P\bigl(X_n>\max\{X_1,X_2,\cdots,X_{n-1}\}\bigr)=\frac1n.
+\]
+\end{exercise}
+
+\begin{proof}
+ 由于\(  X_1,\cdots ,X_{n}  \)相互独立,  \[
+ p_{\left( X_1,\cdots ,X_{n} \right) }\left( x_1,\cdots ,x_{n} \right)= p_{X_1}\left( x_1 \right)\cdots p_{X_{n}}\left( x_{n} \right)   
+ \]由于 \(  X_1,X_2,\cdots ,X_{n}  \)同分布, 令 \(  p\left( x \right)= p_{X_{n}}\left( x \right)    \), 则  \(  p_{X_{i}}\left( x \right)= p\left( x \right), i=  1,\cdots,n     \). 于是 \[
+ p_{\left( X_1,\cdots ,X_{n} \right) }\left( x_1,\cdots ,x_{n} \right)= p\left( x_1 \right)\cdots p\left( x_{n} \right)   
+ \]    \[
+ \begin{aligned}
+ &P\left( X_{n}> \max \left\{ X_1,\cdots ,X_{n-1} \right\} \right)\\ 
+  &= P\left( X_{n}> X_1,\cdots ,X_{n}> X_{n-1} \right)\\ 
+   &= \int_{-\infty}^{\infty} \int_{-\infty}^{x_{n}}\cdots \int_{-\infty}^{x_{n}}p\left( x_1 \right)\cdots p\left( x_{n} \right)\,\mathrm{d} x_1\cdots \,\mathrm{d} x_{n-1}\,\mathrm{d} x_{n}     
+ \end{aligned}
+ \]记 \(  F\left( x \right)= \int_{-\infty}^{x}p\left( x \right)\,\mathrm{d} x    \), 则 \(  F^{\prime} \left( x \right)= p\left( x \right)    \), 且 \[
+\begin{aligned}
+ &\int_{-\infty}^{\infty}\int_{-\infty}^{x_{n}}\cdots \int_{-\infty}^{x_{n}}p\left( x_1 \right)\cdots p\left( x_{n} \right)\,\mathrm{d} x_1\cdots \,\mathrm{d} x_{n-1}\,\mathrm{d} x_{n}\\ 
+  &= \int_{-\infty}^{\infty} \left( F\left( x_{n} \right)  \right)^{n-1}p\left( x_{n} \right) \,\mathrm{d} x_{n} \\ 
+   &= \int_{-\infty}^{\infty}\left( F\left( x_{n} \right)  \right)^{n-1}\,\mathrm{d} F\left( x_{n} \right)  \\ 
+    &= [\frac{1 }{n } \left( F\left( x_{n} \right) \right)^{n}  ]_{-\infty}^{\infty}\\ 
+     &= \frac{1 }{n }\left( 1-0 \right)= \frac{1 }{n }   
+\end{aligned}
+ \]
+\end{proof}
+\end{document}

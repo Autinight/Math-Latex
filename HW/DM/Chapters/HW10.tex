@@ -1,0 +1,285 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{9}
+}{}
+
+\chapter{ HW10 }
+ 代靖涵 25120222201319
+\begin{exercise}{}{} 
+\(G\) 是李群, \(\mathfrak g\) 是它的李代数.
+
+\begin{enumerate}
+\item 定义 \(G\) 的中心为
+\[
+Z(G)=\{g\in G\mid gh=hg,\ \forall h\in G\}.
+\]
+求证 \(Z(G)\) 是 \(G\) 的李子群, 并求它的李子代数.
+
+\item \(\varphi:G\to G\) 是一个李群的自同态, 设
+\[
+H=\{g\in G\mid \varphi(g)=g\}.
+\]
+求证 \(H\) 是 \(G\) 的李子群, 并求其李子代数.
+
+\item \(O(n),SL(n,\mathbb R)\) 能否实现为 \(GL(n,\mathbb R)\) 自同构的不动点? 请证明.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+  \begin{enumerate}
+    \item \( \varphi _{h}:  g\mapsto  g^{-1} h^{-1} gh  \)是光滑的映射. \(  Z\left( G \right)   \)是 \(  G  \)的一个子群, 使得 \[
+   Z\left( G \right)= \left\{ g\in G: \varphi _{h}\left( g \right) = e,\forall h\in G  \right\} 
+   \] 故 \[
+  Z\left( G \right)=  \bigcap _{h\in G} \varphi _{h}^{-1}  \left( e\right) 
+  \]  是 \(  G  \)的一个闭子集. 由Cartan闭子群定理,  \(  Z\left( G \right)   \)是 \(  G  \)的嵌入李子群.   
+  李子代数为.
+  \[
+  \mathfrak{z}= \left\{ X \in \mathfrak{g}:  \exp \left( tX \right)\in Z\left( G \right) ,\forall t\in \mathbb{R}   \right\}
+  \] 设\(  \mathfrak{z}  \)是\(  Z\left( G \right)   \)的李代数,   若 \(  X \in \mathfrak{z}  \), 则对于任意的 \(  h\in G  \),  我们有 \[
+  h^{-1} \exp \left( tX \right)h= \exp \left( tX \right)  
+  \] 或者写成\[
+  C_{h}\left( \exp \left( tX \right)  \right)= \exp \left( tX \right)  
+  \]对两边在 \(  t= 0  \)处求切向量, 得到  \[
+  \operatorname{Ad}_{h}\left( X \right)= X ,\quad \forall h\in G
+  \]定义 \[
+  \mathfrak{z}^{\prime} := \left\{ X \in \mathfrak{g}: \operatorname{Ad}_{h}\left( X \right)= X,\quad \forall h\in G  \right\}
+  \]可以直接验证 \(  \mathfrak{z}^{\prime}   \)是一个李代数 , 上面的讨论表明了\(  \mathfrak{z}\subseteq \mathfrak{z}^{\prime}   \). 现在, 任取 \(  X \in \mathfrak{z}^{\prime}   \), 则 \[
+  \operatorname{Ad}_{h}\left(t X \right)=t X,\quad \forall h\in G 
+  \]   由指数映射的自然性,  \[
+ C_{h}\left( \exp \left( tX \right)  \right)= \exp \left( \operatorname{Ad}_{h}\left( tX \right)  \right)= \exp \left( tX \right)   
+  \]因此 \[
+  h^{-1} \exp \left( tX \right)h= \exp \left( tX \right),\forall h\in G  
+  \]即 \[
+  \exp \left( tX \right)\in Z\left( G \right),\quad \forall t\in \mathbb{R} ,X \in \mathfrak{z}^{\prime}   
+  \]故 \(  \mathfrak{z}^{\prime} \subseteq \mathfrak{z}  \). 因此 \[
+  \mathfrak{z}= \left\{ X \in \mathfrak{g}: \operatorname{Ad}_{h}\left( X \right)= X,\quad \forall h\in G  \right\}
+  \]  
+  \item 映射 \( f: g\mapsto g^{-1}  \varphi \left( g \right)   \)是一个光滑映射, 因此 \[
+  H= f^{-1} \left( e \right) 
+  \] 是 \(  G  \)的一个闭子集. 易见 \(  H  \)是 \(  G  \)的一个子群. 故由Cartan闭子群定理,  \(  H  \)是 \(  G  \)的一个李子群. 设 \(  \mathfrak{h}  \)是 \(  H  \)的李代数, 则 \[
+  \mathfrak{h}= \left\{ X \in \mathfrak{g}: \exp \left( tX \right)\in H  \right\}
+  \]       我们有 \[
+   \varphi \left( \exp \left( tX \right)  \right)= \exp \left( tX \right)  
+  \]由指数映射的自然性,  \[
+ \exp \left( tX \right)=    \varphi \left( \exp \left( tX \right)  \right)= \exp \left(  \varphi _{*}\left( tX \right)  \right) = \exp \left( t \varphi _{*}\left( X \right)  \right) 
+  \]两边求 \(  t= 0  \)处的切向量, 得到  \[
+  X=  \varphi _{*}\left( X \right) 
+  \]故 \[
+  \mathfrak{h}\subseteq \left\{ X \in \mathfrak{g}:  \varphi _{*}\left( X \right)= X  \right\}
+  \]记 \(  \mathfrak{h}^{\prime} = \left\{ X \in \mathfrak{g}: \varphi _{*}\left( X \right)= X  \right\}  \), 容易验证 \(  \mathfrak{h}  ^{\prime} \)是一个李代数.   任取 \(  X  \in \mathfrak{h}^{\prime}   \), 由 \(  \exp   \)的自然性     \[
+ \exp \left(t X \right)= \exp \left(  \varphi _{*}\left(tX \right)  \right)=   \varphi \left( \exp \left(tX \right)  \right)   
+  \] 这表明 \[
+  \exp \left( tX \right)\in  H,\quad \forall t\in \mathbb{R} , h\in \mathfrak{h}^{\prime}  
+  \]因此 \(  X \in \mathfrak{h}  \).  \(  \mathfrak{h}^{\prime} \subseteq \mathfrak{h}  \).  故 \[
+  \mathfrak{h}= \left\{ X \in \mathfrak{g}:  \varphi _{*}\left( X \right)= X  \right\}
+  \]  
+  \item 定义 \(   \varphi :\operatorname{GL} \left( n,\mathbb{R}  \right)\to \operatorname{GL} \left( n,\mathbb{R}  \right)    \), \[
+   \varphi \left( A \right)= \left( A^{\top} \right)^{-1}   
+  \] 则 \(   \varphi   \)是一个李群自同构, 使得 \[
+   \varphi \left( A \right)= A\iff  \left( A^{\top} \right)^{-1} = A\iff  A A^{\top}= I_{n}\iff A\in O\left( n \right)   
+  \] 因此 \(  O\left( n \right)   \)实现为 \(  \operatorname{GL} \left( n,\mathbb{R}  \right)   \)的自同构的不动点.  
+
+  \[
+  \operatorname{SL}\left( n,\mathbb{R}  \right)= \left\{ A\in \operatorname{GL} \left( n,\mathbb{R}  \right): \det A= 1  \right\} 
+  \]
+  
+   当 \(  n  \)为偶数时, 定义 \(   \varphi : \operatorname{GL} \left( n,\mathbb{R}  \right)\to \operatorname{GL} \left( n,\mathbb{R}  \right)    \), \[
+   \varphi \left( A \right)= \left( \det A \right)A  
+  \] 容易验证 \(   \varphi   \)是一个群同态. 此外,  \[
+   \varphi \left( A \right)= A\iff \left( \det A \right)A= A\iff \left( \det A-1 \right)A= 0 \iff \det A= 1
+  \]     \[
+   \varphi \left( A \right)= I_{n}\iff \left( \det A \right)A= I_{n} 
+  \]对 \( \left( \det A \right)A= I_{n}   \)两边取 \(  \det   \), 得到 \[
+  \left( \det A \right)^{n+ 1}= 1 
+  \]   可见 \(   \varphi   \)是一个单同态. 此外,  \[
+ \varphi  \left( \left( \det A \right)^{-\frac{1}{n+ 1}}  A\right)= \left( \det A \right)^{-\frac{n }{n+ 1 } }\left( \det A \right)  \left( \det A \right)^{-\frac{1}{n+ 1}}A= A    
+  \]   故 \(   \varphi   \)是一个满同态, 因此 \(   \varphi   \)是 \(  \operatorname{GL} \left( n,\mathbb{R}  \right)   \)的自同构, 使得 \(  \operatorname{SL}\left( n,\mathbb{R}  \right)   \)是 \(   \varphi   \)的不动点.
+  
+  若 \(  n  \)为奇数, 若存在这样的自同构 \(   \varphi   \), 则  \(   \varphi \left( -I_{n} \right)   \)是 \(  \operatorname{GL} \left( n,\mathbb{R}  \right)   \)中的二阶元, 且 \(   \varphi \left( Z\left( \operatorname{GL} \left( n,\mathbb{R}  \right)  \right)  \right)= Z\left( \operatorname{GL} \left( n,\mathbb{R}  \right)  \right)    \)  因此\[
+   \varphi \left( -I_{n} \right)= -I_{n} 
+  \]  故 \(  -I_{n}\in \operatorname{SL}\left( n,\mathbb{R}  \right)   \) , 但是 \[
+  \det \left( -I_{n} \right)= \left( -1 \right)^{n}= -1  
+  \]矛盾, 因此对于\(  n  \)为奇数的情况, \(  \operatorname{SL}\left( n,\mathbb{R}  \right)   \)不能实现为 \(  \operatorname{GL} \left( n,\mathbb{R}  \right)   \)的不动点.   
+  \end{enumerate}
+  
+\end{proof}
+\begin{exercise}{}{}
+ 令 \(H \subset GL(3,\mathbb{R})\) 为 3 维 Heisenberg 群
+\[
+H=\left\{\begin{pmatrix}
+1 & a & b\\
+0 & 1 & c\\
+0 & 0 & 1
+\end{pmatrix}\Bigg|\, a,b,c\in\mathbb{R}\right\}.
+\]
+
+\begin{enumerate}
+  \item 求 \(H\) 的李代数 \(\mathfrak{h}\), 并求 \(Z(H)\) 和 \(\mathfrak{z}(\mathfrak{h})\).
+  \item 求证 \(\operatorname{exp}:\mathfrak{h}\to H\) 是微分同胚.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+  \begin{enumerate}
+    \item  \[
+    \mathfrak{h}= T_{0}H= \left\{ A^{\prime} \left( 0 \right) \in T_0\operatorname{GL} \left( 3,\mathbb{R}  \right) : A\left( t \right) \text{是过} I_{n}\text{的}H\text{上的光滑曲线} \right\}
+    \]设 \[
+    A\left( t \right)= \begin{pmatrix} 
+        1&a\left( t \right)&b\left( t \right)\\ 
+         0&1&c\left( t \right)\\ 
+          0&0&1    
+    \end{pmatrix}  
+    \]则 \[
+    A^{\prime} \left( t \right)= \begin{pmatrix} 
+        0&a^{\prime} \left( t \right)&b^{\prime} \left( t \right)\\ 
+         0&0&c^{\prime} \left( t \right)\\ 
+          0&0&0    
+    \end{pmatrix}  
+    \]因此 \[
+    \mathfrak{h}= \operatorname{span}\left\{ E_{12} , E_{13}, E_{23}\right\}
+    \]它的李代数结构由以下 给出 \[
+    [E_{12},E_{23}]= E_{13},\quad [E_{12}, E_{13}]= 0,\quad [E_{23},E_{13}]= 0
+    \] \[
+    Z\left( H \right)= \left\{ A: AB= BA, \forall B\in H \right\} 
+    \] 设 \[
+    A= \begin{pmatrix} 
+        1&a&b\\ 
+         0&1&c\\ 
+          0&0&1 
+    \end{pmatrix} ,\quad B= \begin{pmatrix} 
+        1&d&e\\ 
+         0&1&f\\ 
+          0&0&1 
+    \end{pmatrix} 
+    \]则 \[
+    AB= \begin{pmatrix} 
+        1&a+ d&e+ af+ b\\ 
+         0&1&f+ c\\ 
+          0&0&1 
+    \end{pmatrix} 
+    \] \[
+    BA= \begin{pmatrix} 
+        1&a+ d&b+ cd+ e\\ 
+         0&1&f+ c\\ 
+          0&0&1 
+    \end{pmatrix} 
+    \]则 \[
+    AB= BA\iff af= cd
+    \]因此 \[
+    A\in Z\left( H \right)\iff af= cd,\forall B \in H\iff a= c= 0 
+    \]因此 \[
+    Z\left( H \right)= \left\{ \begin{pmatrix} 
+        1&0&b\\ 
+         0&1&0\\ 
+          0&0&1 
+    \end{pmatrix}: b\in \mathbb{R}   \right\} 
+    \] \[
+    \mathfrak{z}\left( \mathfrak{h} \right)= \left\{ X \in \mathfrak{h}: [X,Y]= 0,\forall Y \in \mathfrak{h} \right\} 
+    \]设 \[
+    X= uE_{12}+ vE_{23}+ wE_{13}, \quad Y= xE_{12}+ yE_{23}+ zE_{13}
+    \], 则 \[
+    [X,Y]= uyE_{13}-vxE_{13}= \left( uy-vx \right)E_{13} 
+    \]因此 \[
+    X \in \mathfrak{z}\left( \mathfrak{h} \right)\iff uy= vx,\forall Y\in  \mathfrak{z}\left( \mathfrak{h} \right)\iff u= v= 0  
+    \]因此 \[
+    \mathfrak{z}\left( \mathfrak{h} \right)= \operatorname{span}\left\{ E_{13} \right\} 
+    \]
+
+    \item  对于任意的 \(  X \in \mathfrak{h}  \), 我们有 \(  X^{k}= 0,\forall k\ge 3  \).   \(  \exp   \)表示为 \[
+    \exp \left( X \right)= \sum _{k= 0}^{\infty}\frac{X^{k} }{k! }= I_{n}+  X+ \frac{1 }{2 }X^{2}   
+    \]  设 \(  A= uE_{12}+ vE_{23}+ wE_{13}  \), 则 \[
+    \exp \left( A \right)= \begin{pmatrix} 
+        1& u&w+ \frac{1}{2}uv\\ 
+         0&1& v\\ 
+          0&0&1
+    \end{pmatrix}  
+    \]  因此 \(  \exp \left( A \right)\in  H   \).  设  \[
+    B= \begin{pmatrix} 
+        1&x&z\\ 
+         0&1&y\\ 
+          0&0&1 
+    \end{pmatrix} 
+    \]则若 \(  \exp \left( A \right)= B   \), 则 \[
+    \begin{cases} x= u\\ 
+     w+ \frac{1}{2}uv= z\\ 
+      y= v \end{cases} \implies A= \begin{pmatrix} 
+          0&x&z-\frac{1}{2}xy\\ 
+           0&0&y\\ 
+            0&0&0 
+      \end{pmatrix} \in \mathfrak{h}
+    \] 因此 \(  \exp   \)有逆映射, 记作\(\ln :  H\to \mathfrak{h}  \)   \[
+    \begin{pmatrix} 
+        1&x&z\\ 
+         0&1&y\\ 
+          0&0&1 
+    \end{pmatrix}\mapsto   \begin{pmatrix} 
+          0&x&z-\frac{1}{2}xy\\ 
+           0&0&y\\ 
+            0&0&0 
+      \end{pmatrix} 
+    \] 且 \(  \exp ,\ln   \)均光滑.  因此 \(  \exp :\mathfrak{h}\to H  \)是微分同胚. 
+  \end{enumerate}
+  
+\end{proof}
+
+\begin{exercise}{}{} 
+\textbf{1.} 求证 \(SO(3)\) 微分同胚于 \(\mathbb{RP}^{3}\). 
+
+% \textbf{2. 思考 (可不做):} 
+% 已知 \(SU(2)\) 微分同胚于 \(S^{3}\). 试证明 \(U(n)\) 微分同胚于 \(S^{1}\times SU(n)\). 
+% 其中 \(U(n)\) 是酉群, 定义为:
+% \[
+% U(n)=\{A\in GL(n,\mathbb{C})\mid A\bar{A}^{T}=\operatorname{Id}\}.
+% \]
+% (注意: 这里 \(\bar{A}^{T}\) 表示共轭转置, 物理中常记为 \(A^{\dagger}\)).
+\end{exercise}
+\begin{proof}
+令 \(  \mathbb{H}= \operatorname{span}\left\{ 1,i,j,k \right\}  \)是四元代数, 满足  \[
+i^{2}= j^{2}= k^{2}= ijk= -1
+\] 则 \[
+\mathbb{S}^{3}\simeq_{\text{diff}} \left\{ h\in \mathbb{H}: \left| h \right|= 1  \right\}
+\]将 \(  \mathbb{R} ^{3}  \)等同于 \(  \operatorname{span}\left\{ i,j,k \right\}  \)  .  \(  \mathbb{S}^{3}  \subseteq \mathbb{H}\)在四元数代数的乘法下构成一个李群. 对于 \(  q\in \mathbb{S}^{3}  \), 考虑共轭映射 \(  C_{q}: v\mapsto  q v q^{-1}  \).  考虑\(  T_{1}\mathbb{H}  \)作为向量空间与 \(  \mathbb{H}  \)的标准同构, 我们有   \[
+T_{1}\mathbb{S}^{3}= \operatorname{span}\left\{ i,j,k \right\}\simeq  \mathbb{R} ^{3}
+\]因此 \(  d C_{q}:  T_{1}\mathbb{S}^{3}\to T_1 \mathbb{S}^{3}  \)是形式与 \(  C_{q}  \)相同的线性映射 \(  d C_{q} \left( w \right)= qwq ^{-1} , w \in T_{1}\mathbb{S}^{3}  \). 此外,  \[
+\left|  d C_{q}\left( w \right)  \right|= \left| q \right|\left| w \right|\left| q ^{-1}  \right|= \left| w \right|     
+\]   因此 \(  d C_{q}  \)是等距的线性变换, 故 \(  dC_{q}\in O\left( 3 \right)   \)  . 由于伴随表示 \(  \operatorname{Ad} : q\mapsto  d C_{q}  \)是光滑的,  我们有 \(  \operatorname{Ad}\left( \mathbb{S}^{3} \right)   \)是 \(  O\left( 3 \right)   \)的连通子集, 又 \(  d C_{1}=  \operatorname{Id}_{T_1 \mathbb{S}^{3}}  \in SO\left( 3 \right) \). 因此 \(  \operatorname{Ad}\left( \mathbb{S}^{3} \right)\subseteq  SO\left( 3 \right)    \).     考虑 \(  \mathbb{RP}^{3}\simeq \mathbb{S}^{3}/\left\{ x\sim -x \right\}  \) .
+ \[
+ \operatorname{ker} \operatorname{Ad}|_{\mathbb{S}^{3}}= \left\{ q \in \mathbb{S}^{3}: q w q^{-1} = w,\forall w \in T_1 \mathbb{S}^{3} \right\}= \left\{ -1,1 \right\} 
+ \] 是零维流形, 故 \[
+ d \left( \operatorname{Ad}|_{\mathbb{S}^{3}} \right)_{1} :  \mathbb{R} ^{3}\simeq T_{1}\mathbb{S}^{3}\to  \mathfrak{so}\left( 3 \right)\simeq \mathbb{R} ^{3} 
+ \]是线性同构.   \(  \operatorname{Ad}|_{\mathbb{S}^{3}}  \)是局部微分同胚, 进而是开映射,  \(  \operatorname{Ad}\left( \mathbb{S}^{3} \right)   \)是开集. 又 \(  \mathbb{S}^{3}  \)是紧的,  \(  \operatorname{Ad}\left( \mathbb{S}^{3} \right)  \subseteq SO\left( 3 \right)  \)是紧的, 进而是闭的. 由 \(  SO\left( 3 \right)   \)的连通性,  \(  \operatorname{Ad}\left( \mathbb{S}^{3} \right)= SO\left( 3 \right)    \).      \(  \operatorname{ker} \operatorname{Ad}|_{\mathbb{S}^{3}}  \)是\(  \mathbb{S}^{3}  \)的闭的正规李子群,  从而由李群第一同构定理, \[
+ \mathbb{RP}^{3}= \mathbb{S}^{3}/\left\{ -1,1 \right\}\simeq _{\text{Lie isomorphism}} \operatorname{Ad}\left( \mathbb{S}^{3} \right)=  SO\left( 3 \right)  
+ \]
+\end{proof}
+
+% \begin{exercise}{ (可不做)}{} 
+% a). 求证: \(S^{1}\times S^{1}\) 的万有覆叠群由如下映射给出
+% \[
+% \pi:\mathbb{R}\times\mathbb{R}\to S^{1}\times S^{1},\quad (s,t)\mapsto(e^{2\pi is},e^{2\pi it}).
+% \]
+
+% b). 求证: \(S^{1}\times S^{1}\) 的自同构群同构于 \(SL(2,\mathbb{Z})\).
+% \end{exercise}
+
+% \begin{exercise}{(可不做)}{} 
+% a). \(G=\mathbb{C}\times \mathbb{C}\) 赋予群乘积
+% \[
+% (z,w)\cdot(z',w')=(z+z',w+e^{z}w').
+% \]
+% 求证: \(G\) 是单连通的李群, 并求它的中心.
+
+% b). 对每个 \(n\in\mathbb{N}\), 令 \(G_{n}=\mathbb{C}^{*}\times\mathbb{C}\) 赋予群乘积
+% \[
+% (z,w)\cdot(z',w')=(zz',w+z^{n}w').
+% \]
+% 求证: \(G_{n}\) 是一个李群, 并且 \(G\) 是 \(G_{n}\) 的万有覆叠群.
+
+% c). 求证: 只要 \(n\neq m\), \(G_{n}\) 不同构于 \(G_{m}\).
+% \end{exercise}
+\end{document}

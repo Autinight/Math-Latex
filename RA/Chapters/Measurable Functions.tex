@@ -348,6 +348,8 @@ implies that $\sup_i f_i$ is measurable. The measurability of the lower envelope
 \]
 Now that it has been shown that the upper and lower envelopes are measurable, it is immediate that the upper and lower limits of $\{f_i\}$ are also measurable.
 \end{proof}
+
+
 \begin{theorem}{Egorov}{}
 Let $(X, \mathcal{M}, \mu)$ be a finite measure space and suppose $\{f_i\}$ and $f$ are measurable functions that are finite almost everywhere on $X$. Also, suppose that $\{f_i\}$ converges pointwise a.e. to $f$. Then for each $\varepsilon > 0$ there exists a set $A \in \mathcal{M}$ such that $\mu(A^{c}) < \varepsilon$ and $\{f_i\} \to f$ uniformly on $A$.
 \end{theorem}
@@ -401,6 +403,13 @@ E_{i,k}= \left\{ x\in A_0: \left| f_{i}-f \right|<  \frac{1 }{k }   \right\}
  \lim_{i\to \infty}\sup _{x\in A}\left| f_{i}-f \right|= 0 
  \]That is \(  \left\{ f_{i} \right\}  \) convergents uniformly to \(  f  \) on \(  A  \).   
 \end{proof}
+
+
+\begin{corollary}{}{}
+     若存在收敛于零的正项数列 \(  \left\{ a_{k} \right\}  \)使得对于 \[
+  A_{k}= \left\{ x: \left| f_{k}\left( x \right)-f\left( x \right)   \right|\ge a_{k}  \right\}
+  \]有级数\(  \sum _{k= 1}^{\infty}m\left( A_{k} \right)   \)收敛.  则 \(  f_{k}  \)是近一致收敛于 \(  f  \)的.  
+\end{corollary}
 
 \begin{corollary}{}{}
     Let \(  \left\{ E_{n} \right\}  \) be a sequence of  measurable functions. If \[
@@ -520,8 +529,32 @@ Let $f: X \to \overline{\mathbb{R}}$ be an arbitrary (possibly nonmeasurable) fu
     
 \end{proof}
 \begin{theorem}{Lusin's theorem}{}
-Suppose $(X, \mathcal{M}, \mu)$ is a measure space where $X$ is a metric space and $\mu$ is a finite Borel measure. Let $f: X \to \mathbb{R}$ be a measurable function that is finite almost everywhere. Then for every $\varepsilon > 0$ there is a closed set $F \subset X$ with $\mu(F) < \varepsilon$ such that $f$ is continuous on $F$ in the relative topology.
+Suppose $(X, \mathcal{M}, \mu)$ is a measure space where $X$ is a metric space and $\mu$ is a finite Borel measure. Let $f: X \to \mathbb{R}$ be a measurable function that is finite almost everywhere. Then for every $\varepsilon > 0$ there is a closed set $F \subset X$ with $\mu(X\setminus F) < \varepsilon$ such that $f$ is continuous on $F$ in the relative topology.
 \end{theorem}
 
+\begin{corollary}{}{11-19-1}
+    Let \(  E\subseteq \mathbb{R} ^{n}   \) be a Lebesgue measurable set. \(  f  \) is a a.e. finite measurable function on \(  E  \). Then for any \(   \delta > 0  \), there exists a continuous  \(  g  \) on \(  \mathbb{R} ^{n}   \)   such that \[
+    m\left( \left\{ x\in E: f\left( x \right)\neq g\left( x \right)   \right\} \right)<  \delta  
+    \] If \(  E  \) is bounded, \(  g  \) can chosen to be compactly supported.   
+\end{corollary}
+
+\begin{remark}
+    \begin{itemize}
+        \item If \(  f  \) is bounded. Then from Tiesze Extension Theorem,  \(  g  \) can chosen to satisfy \(  \sup _{x\in \mathbb{R}^{n}}\left| g \right| \le \sup _{x\in F}\left| f \right|   \)  
+    \end{itemize}
+    
+\end{remark}
+
+\begin{proof}
+    From Lusin's Theorem, for each \(   \delta > 0  \), there exists a closed set \(  F  \) in \(  E  \), with \(  m\left( E\setminus  F \right)<  \delta     \) such that \(  f  \) is continuous on \(  F  \) with the relative topology. The function \(  f|_{F}  \) can be extended to a continuous functin    \(  g  \) on \(  \mathbb{R} ^{n}  \) such that \[
+    f\left( x \right)= g\left( x \right),\quad \forall x\in F  
+    \]  Then it follows that \[
+    m\left( \left\{ x\in E:f\left( x \right)\neq g\left( x \right)   \right\} \right)\le m\left( E\setminus F \right)<  \delta   
+    \]
+
+    If \(  E  \) is bounded, assume that \(  E\subseteq B\left( 0,k \right)   \). Then from Urysohn Lemma , there is a continuous function \(   \varphi   \) with \(  0\le  \varphi \le 1  \)   such that \[
+     \varphi \left(F  \right)= \left\{ 1 \right\},  \quad \varphi \left( \left(B\left( 0,k \right)  \right)^{c}  \right)= \left\{ 0 \right\}  
+    \] We substitute \(  g  \) by \(  g   \varphi   \), it is compactly supported.
+\end{proof}
 
 \end{document}

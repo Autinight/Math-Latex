@@ -1,0 +1,222 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{5}
+}{}
+
+\chapter{ Ch6-2 }
+ 代靖涵 25120222201319
+\begin{exercise}{}{}
+试证明在$L^{p}([0,1])$的各等价类中,
+\begin{enumerate}
+  \item 每个类中至多含有一个连续函数;
+  \item 存在不含有连续函数的类.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+  \begin{enumerate}
+    \item 设 \(  f,g \in C^0\left( \left[ 0,1 \right]  \right)  \)是不相等的连续函数, 令 \(  h= \left| f-g \right|^{p}   \), 则 \(  h  \)是不恒为零的非负连续函数,   则 \[
+    \left\| f-g \right\|_{p}= \left( \int_{[0,1]}h\,\mathrm{d}  \lambda  \right)^{\frac{1}{p}}> 0 
+    \] 因此 \[
+    d\left( \tilde{f},\tilde{g} \right)> 0 
+    \]其中 \(  \tilde{f},\tilde{g}  \)分别是 \(  f,g  \)在 \(  L^{p}\left( \left[ 0,1 \right]  \right)   \)中的等价类   . \(  \tilde{f}\neq \tilde{g}  \). 这表明任意两个不同的连续函数, 都位于不同的等价类.
+    \item 考虑 \(   \varphi \left( x \right)= \chi _{\left[ 0,\frac{1}{2} \right] }   \) , 若 \(  f  \)是一个连续函数.  
+    设 \(  f\left( \frac{1}{2} \right)= a   \)  ,
+    
+    对于任意给定的 \(   \delta > 0  \),   存在 \(   \varepsilon > 0  \), 使得对于任意的 \(  x\in \left( \frac{1}{2}- \varepsilon ,\frac{1}{2}+  \varepsilon  \right)   \), 都有   \(  a- \delta < f\left( x \right)< a+ \delta   \) 
+
+    \begin{itemize}
+      \item 若 \(  a> 1  \), 取 \(   \delta < a-1  \), 则 \(  f  \)在 \(  \left( \frac{1}{2}- \varepsilon , \frac{1}{2}+  \varepsilon  \right)   \)上均大于1, 从而在一个正测度集上,  \(  f  \)与 \(   \varphi   \)不相等.
+      \item 若  \(  a= 1  \), 取 \(   \delta = \frac{1}{2}  \), 则 \(  f  \)在正测度集\(  (\frac{1}{2},\frac{1}{2}+  \varepsilon ),  \)    上大于 \(  0  \), 与 \(   \varphi   \)不相等. 
+      \item 若 \(  a< 1  \), 取 \(   \delta < 1-a  \), 则 \(  f  \)在正测度集 \(  \left( \frac{1}{2}- \varepsilon , \frac{1}{2} \right)   \)上小于 \(  1  \), 与 \(   \varphi   \)不相等.      
+    \end{itemize}
+    因此总有 \(  f  \)和 \(   \varphi   \)在一个正测度上不相等, \(  f  \)和 \(   \varphi   \)不位于同一个等价类. 由于 \(  f  \)可以取任意连续函数, 因此 \(   \varphi   \)的等价类中没有任何连续函数.      
+    \end{enumerate}
+  
+\end{proof}
+
+\begin{exercise}{}{}
+设 \(f\in L^p(E), f_k\in L^p(E)\ (k=1,2,\cdots); g\in L^q(E), g_k\in L^q(E)(k=1,2,\cdots)\), 且有 \(p>1, 1/p+1/q=1\). 若有
+\[
+\lVert f_k-f\rVert_p\to 0,\quad \lVert g_k-g\rVert_q\to 0\ (k\to\infty),
+\]
+试证明
+\[
+\lim_{k\to\infty}\int_E\lvert f_k(x)g_k(x)-f(x)g(x)\rvert\,dx=0.
+\]
+\end{exercise}
+
+\begin{proof}
+  存在 \(  N  \), 使得对于任意的 \(  k\ge N  \), \(  \left\| g_{k}-g \right\|_{q}\le 1  \), 此时    \[
+  \left\| g_{k} \right\|_{q}\le \left\| g_{k}-g \right\|_{q}+ \left\| g \right\|_{q}\le \left\| g \right\|_{q}+ 1< \infty
+  \]
+  注意到
+  \[
+  \begin{aligned}
+  \left| f_{k}g_{k}-fg \right|= \left| f_{k}g_{k}-fg_{k}+ fg_{k}-fg \right|&= \left| g_{k}\left( f_{k}-f \right)+ f\left( g_{k}-g \right)   \right|  \\ 
+   &\le \left| g_{k} \right|\left| f_{k}-f \right|+ \left| f \right|\left| g_{k}-g \right|      
+  \end{aligned}
+  \]于是 \[
+  \left\| f_{k}g_{k}-fg \right\|_{1}\le \left\| g_{k}\left( f_{k}-f \right)  \right\|_{1}+ \left\| f\left( g_{k}-g \right)  \right\|_{1}
+  \] 其中对于任意的 \(  k\ge N  \) ,   \[
+  \left\| g_{k}\left( f_{k}-f \right)  \right\|_{1}\le \left\| g_{k} \right\|_{q}\left\| f_{k}-f \right\|_{p}< \left( \left\| g \right\|_{q}+ 1 \right) \left\| f_{k}-f \right\|_{p}
+  \]\[
+  \left\| f\left( g_{k} -g\right)  \right\|_{1}\le \left\| f \right\|_{p}\left\| g_{k}-g \right\|_{q}
+  \]于是 \[
+  \left\| f_{k}g_{k}-fg \right\|_{1}\le \left( \left\| g \right\|_{q}+ 1 \right)\left\| f_{k}-f \right\|_{p}+ \left\| f \right\|_{p}\left\| g_{k}-g \right\|_{q} 
+  \]不等号右侧在 \(  k\to \infty  \)时趋于零, 因此 \[
+  \lim_{k\to \infty}\left\| f_{k}g_{k}-fg \right\|_{1}= 0
+  \]  即命题成立.
+\end{proof}
+\begin{exercise}{}{}
+设 $1<p<+\infty$, $f_n\in L^p(\mathbb{R})$, $\lVert f_n\rVert_p\leq M$ $(n=1,2,\cdots)$, $f\in L^p(\mathbb{R})$, 且有
+\[
+\lim_{n\to\infty}\int_0^x f_n(t)\,dt=\int_0^x f(t)\,dt,\quad x\in\mathbb{R},
+\]
+则对任意的 $g\in L^q(\mathbb{R})$, $1/p+1/q=1$, 有
+\[
+\lim_{n\to\infty}\int_{\mathbb{R}} f_n(x)g(x)\,dx=\int_{\mathbb{R}} f(x)g(x)\,dx.
+\]
+
+\end{exercise}
+
+\begin{proof}
+ 令 \[
+    \mathcal{F}= \left\{ g \in L^{q}\left( \mathbb{R}  \right): \lim_{n\to \infty}\int_{\mathbb{R} }f_{n}\left( x \right)g\left( x \right)\,\mathrm{d} x= \int_{\mathbb{R} }f\left( x \right)g\left( x \right)\,\mathrm{d} x      \right\}
+    \]
+    由条件可知, 对于任意的区间 \(  \left( a,b \right)   \), \(  \chi _{\left( a,b \right) }\in \mathcal{F}  \). 注意到 \(  \mathcal{F}  \)对有限加法和数乘是封闭的, 记全体紧支阶梯函数为 \(  S  \), 则 \(  S\subseteq \mathcal{F}  \).
+    
+  由于 \(  S  \)在 \(  L^{q}\left( \mathbb{R}  \right)   \)中稠密,  任取 \(  g\in L^{q}\left( \mathbb{R}  \right)   \), 则对于任意的 \(  k\in \mathbb{Z} _{> 0}  \) 存在 \(   \varphi \in S  \), 使得   \[
+  \left\| g- \varphi  \right\|_{q}<  \frac{1 }{k } 
+  \]\[
+\begin{aligned}
+  \left| \int_{\mathbb{R} }\left( f_{n}g-fg \right)\,\mathrm{d} x \right|&\le \left| \int_{\mathbb{R} }f_{n}\left( g- \varphi  \right) \,\mathrm{d} x \right|+ \left| \int_{\mathbb{R} }  \varphi \left( f_{n}-f \right)\,\mathrm{d} x \right|+ \left| \int_{\mathbb{R} }f\left(  \varphi -g \right)\,\mathrm{d} x  \right|  \\ 
+   &\le \left\| f_{n}\left( g- \varphi  \right)  \right\|_{1}+ \left\| f\left(  \varphi -g \right)  \right\|_{1}+ \left| \int_{\mathbb{R} } \varphi \left( f_{n}-f \right)\,\mathrm{d} x  \right|  
+\end{aligned}   
+  \]由H\"older不等式, \[
+  \left\| f_{n}\left( g- \varphi  \right)  \right\|_{1}\le \left\| f_{n} \right\|_{p}\left\| g- \varphi  \right\|_{q}\le \frac{M }{k } 
+  \] \[
+  \left\| f\left(  \varphi -g \right)  \right\|_{1}\le \left\| f \right\|_{p}\left\|  \varphi -g \right\|_{q}\le \left\| f \right\|_{p}\frac{1 }{k } 
+  \]于是 \[
+  \left| \int_{\mathbb{R} }\left( f_{n}g-fg \right)\,\mathrm{d} x  \right|\le \frac{M+ \left\| f \right\|_{p} }{k }+ \left| \int_{\mathbb{R} } \varphi \left( f_{n}-f \right)\,\mathrm{d} x  \right|   
+  \]
+由于 \(   \varphi \in \mathcal{F}  \), 我们有 \[
+\lim_{n\to \infty}\int_{\mathbb{R} } \varphi \left( f_{n}-f \right)\,\mathrm{d} x= 0 
+  \]取 \(  n\to \infty  \)时的上极限, 得到 \[
+ \limsup_{n\to \infty}\left| \int_{\mathbb{R} }\left( f_{n}g-fg \right)\,\mathrm{d} x  \right|\le \frac{M+ \left\| f \right\|_{p} }{k }  
+  \] 由于 \(  k\in \mathbb{Z} _{> 0}  \)可以是任取的, 我们令 \(  k\to \infty  \), 得到 \[
+ \lim_{n\to \infty}\int_{\mathbb{R} }\left( f_{n}g-fg \right)\,\mathrm{d} x= 0 
+  \]  于是 \[
+  \lim_{n\to \infty}\int_{\mathbb{R} }f_{n}g\,\mathrm{d} x=  \int _{\mathbb{R} }fg\,\mathrm{d} x
+  \]
+\end{proof}
+
+\begin{exercise}{}{}
+ $L^\infty((0,1))$ 是不可分的. (考查函数族 $f_t(x)=\chi_{(0,t)}(x)$, $0<t<1$.)
+\end{exercise}
+
+\begin{proof}
+  
+ 若 \(  \mathcal{F}  \)是 \(  L^{\infty}\left( \left( 0,1 \right)  \right)   \)的一个可数稠密子集,  对于任意的\(  0< t< 1  \), 存在 \(   \varphi _{t}\in \mathcal{F}  \), 和零测集 \(  N_{t}  \),  使得    \[
+  \left| \chi _{\left( 0,t \right) }\left( x \right)- \varphi_{t} \left( x \right)   \right| <  \frac{1}{3} ,\forall x\in \left( 0,1 \right)\setminus N_{t} 
+  \] 若 \(  t_1\neq t_2  \),不妨设 \(  t_2> t_1  \), 则对于任意的 \(x\in   \left( t_1,t_2 \right)\setminus \left( N_{t_1}\cup N_{t_2} \right)    \)上,  \[
+  \begin{aligned}
+ \left|  \varphi _{t_2}\left( x \right) - \varphi _{t_1}\left( x \right)    \right| & \ge \left|  \varphi _{t_2}\left( x \right)-\chi _{\left( 0,t_1 \right) }\left( x \right)   \right|-\left|  \varphi _{t_1}\left( x \right)-\chi _{\left( 0,t_1 \right) }\left( x \right)   \right|  \\ 
+&  \ge  \left|  \varphi _{t_2}\left( x \right)\right| - \frac{1}{3}\\ 
+ &\ge \left| \chi _{\left( 0,t_2 \right) }\left( x \right)  \right|-\left|  \varphi _{t_2}\left( x \right)-\chi _{\left( 0,t_2 \right) }\left( x \right)   \right|-\frac{1}{3}\\ 
+  &\ge 1- \frac{1}{3}-\frac{1}{3}> 0  
+  \end{aligned}
+  \]  由于 \(  \left( t_1,t_2 \right)\setminus \left( N_{t_1}\cup N_{t_2} \right)    \)不是一个零测集, 因此 \(   \varphi _{t_1}\left( x \right)   \)和 \(   \varphi _{t_2}\left( x \right)   \)在一个正测度集上不相等, 从而它们不位于 \(  L^{\infty}\left( \left( 0,1 \right)  \right)   \)的同一个等价类中. 这表明 \(  \mathcal{F}  \)的基数大于等于 连续统的势\(  \mathfrak{c}  \), 与 \(  \mathcal{F}  \)可数矛盾.      
+\end{proof}
+\begin{exercise}{}{}
+设 $f_k\in L^p([a,b])$ $(1\le p\le +\infty)$, 且 
+\[
+\sum_{k=1}^{\infty}\lVert f_k\rVert_p<+\infty,
+\]
+试证明存在 $f\in L^p([a,b])$, 使得
+\begin{enumerate}
+    \item 
+    \[
+    \sum_{k=1}^{\infty}f_k(x)=f(x),\quad \text{a.e. }x\in[a,b];
+    \]
+    \item $\displaystyle\sum_{k=1}^{\infty}f_k(x)$ 依 $L^p([a,b])$ 意义收敛于 $f(x)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+  \begin{enumerate}
+    \item 当 \(  p< \infty  \)时, 由Minkowski不等式和单调收敛定理, \[
+   \left\|  \sum _{k= 1}^{\infty}\left| f_{k}  \right| \right\| _{p}\le \sum _{k= 1}^{\infty}\left\| f_{k} \right\|_{p}< \infty
+    \]于是 \(  \sum _{k= 1}^{\infty}\left| f_{k} \right|\in L^{p}\left( \left[ a,b \right]  \right)    \),  \(  \sum _{k= 1}^{\infty}\left| f_{k}\left( x \right)  \right|   \)对于几乎所有的 \(  x\in \left[ a,b \right]   \)是有限的. 从而 \(  \sum _{k= 1}^{\infty}f_{k}\left( x \right)   \)是几乎处处收敛的, 故存在 可测函数 \(  f  \)使得 \(  f= \sum _{k= 1}^{\infty}f_{k}\left( x \right)   \), \(  a.e.x\in \left[ a,b \right]   \). 又 \(  \left| f \right|\le  \sum _{k= 1}^{\infty}\left| f_{k} \right|   \), \(  f\in L^{p}\left( \left[ a,b \right]  \right)   \).
+
+    当 \(  p= \infty  \)时,  对于每个 \(  k  \), 存在零测集 \(  N_{k}  \), 使得 \[
+    \left| f_{k}\left( x \right)  \right|\le \left\| f_{k} \right\|_{\infty},\quad \forall x\in [a,b]\setminus N_{k} 
+    \]  令 \[
+    N= \bigcup _{k= 1}^{\infty}N_{k}
+    \]则 \(  N  \)也是一个零测集. 我们有 \[
+    \sum _{k= 1}^{\infty}\left| f_{k}\left( x \right)  \right| \le \sum _{k= 1}^{\infty}\left\| f_{k} \right\|_{\infty},\quad \forall x\in [a,b]\setminus N
+    \] 因此 \(  \sum _{k= 1}^{\infty}f_{k}\left( x \right)   \)是几乎处处收敛的 , 故存在可测函数 \(  f  \), 使得 \(  f= \sum _{k= 1}^{\infty}f_{k}\left( x \right)   \), a.e. \(  x\in \left[ a,b \right]   \). 又 \(  \left| f \right|\le \sum _{k= 1}^{\infty}\left| f_{k} \right|    \in L^{\infty}\left( [a,b] \right) \), \(  f\in L^{\infty}\left( \left[ a,b \right]  \right)   \).     
+    \item     当 \(  p< \infty  \)时.  由于 \(  \sum _{k= 1}^{\infty}\left\| f_{k} \right\|_{p}< \infty  \) 对于任意的 \(   \varepsilon > 0  \) , 存在 \(  N  \), 使得对于任意的 \(  m>  N  \),   \[
+    \left\| \sum _{k= N+ 1}^{m}f_{k}  \right\|_{p} \le \sum _{k= N+ 1}^{m}\left\| f_{k} \right\|_{p}<  \varepsilon 
+    \]  由Fatou's Lemma \[
+ \begin{aligned}
+   \left\| \sum _{k= 1}^{N}f_{k}\left( x \right)-f  \right\|_{p}&=\left(  \int \left| \sum _{k= 1}^{N}f_{k}\left( x \right)-f  \right|^{p}\,\mathrm{d} x \right)^{\frac{1}{p}}   \\ 
+    &\le \liminf_{m\to \infty}\left( \int \left| \sum _{k = 1}^{N}f_{k}\left( x \right)-\sum _{k = 1}^{m}f_{k}\left( x \right)  \right|^{p}\,\mathrm{d} x  \right)^{\frac{1}{p}}\\ 
+     &= \liminf_{m\to \infty}\left\| \sum _{k= N+ 1}^{m}f_{k}\left( x \right)  \right\|_{p}\\ 
+      &<  \varepsilon  
+ \end{aligned}
+    \]这就根据定义说明了 \[
+    \lim_{N\to \infty}\left\| \sum _{k= 1}^{N}f_{k}\left( x \right)-f  \right\|_{p}= 0
+    \] 
+
+    当 \(  p= \infty  \)时, 由于 \(  \sum _{k= 1}^{\infty}\left\| f_{k} \right\|_{\infty}  \)收敛. 任取 \(   \varepsilon > 0  \), 存在 \(  N\in Z_{> 0}  \), 使得   \[
+    \sum _{k = N+ 1}^{\infty}\left\| f_{k} \right\|_{\infty}<  \varepsilon 
+    \]    于是 \[
+    \left\| \sum _{k= 1}^{N}f_{k} -f \right\|_{\infty} = \left\| \sum _{k= N+ 1}^{\infty}f_{k}  \right\|_{\infty}\le \sum _{k= N+ 1}^{\infty}\left\| f_{k} \right\|_{\infty}<  \varepsilon 
+    \] 这就根据定义说明了 \[
+    \lim_{N\to \infty}\left\| \sum _{k= 1}^{N}f_{k}-f \right\|_{\infty}= 0
+    \]
+  \end{enumerate}
+  
+\end{proof}
+
+\begin{exercise}{}{}
+ 设 $f\in L^p(E)$, $f_k\in L^p(E)$ $(k=1,2,\dots)$. 若 
+\[
+\lVert f_k-f\rVert_p<4^{-k/p}\quad (k=1,2,\dots),
+\]
+试证明对任给 $\delta>0$, 存在 $E_{\delta}\subset E$, $m(E_{\delta})<\delta$, 使得 $f_k(x)$ 在 $E\setminus E_{\delta}$ 上一致收敛于 $f(x)$.
+\end{exercise}
+
+% \begin{note}
+%   \(  f_{k}  \)是近一致收敛于 \(  f  \)的, 若存在正数列 \(  \left\{ a_{k} \right\}  \)满足\(  \lim_{k\to \infty}a_{k}= 0  \) 使得对于 \[
+%   A_{k}= \left\{ x: \left| f_{k}\left( x \right)-f\left( x \right)   \right|\ge a_{k}  \right\}
+%   \]我们有级数 \[
+%   \sum _{k= 1}^{\infty}m\left( A_{k} \right)< \infty 
+%   \] 
+% \end{note}
+
+\begin{proof}
+    令 \[
+    A_{k}= \left\{ x: \left| f_{k}\left( x \right)-f\left( x \right)   \right|\ge 2^{-\frac{k}{p}} \right\}
+    \] \[
+    m\left( A_{k} \right)=   \frac{1 }{2^{-k} } \int_{A_{k}}2^{-k}\,\mathrm{d} x\le \frac{1 }{2^{-k} } \int_{A_{k}} \left| f_{k}\left( x \right)-f\left( x \right)   \right|^{p}\,\mathrm{d} x\le \frac{1 }{2^{-k} }\left\| f_{k}-f \right\|_{p}^{p}<2^{-k}
+    \]任取 \(   \delta > 0  \), 存在 \(  k_0  \), 使得 \[
+    \sum _{k = k_0}^{\infty}2^{-k}<  \delta 
+    \]  此时令 \[
+    E_{ \delta }= \bigcup _{k= k_0}^{\infty}A_{k}
+    \]则 \[
+    m\left( E_{ \delta } \right)\le \sum _{k= k_0}^{\infty}m\left( A_{k} \right)\le \sum _{k= k_0}^{\infty}2^{-k}  <  \delta 
+    \]并且在 \( E\setminus E_{ \delta } \)上, 对于任意的 \(  k\ge k_0  \), 都有 \(  x\in A_{k} ^{c} \), 即 \[
+    \left| f_{k}\left( x \right)-f\left( x \right)   \right| < 2^{-\frac{k}{p}}
+    \]   因此 \[
+    \lim_{k\to \infty}\sup _{x\in E\setminus E_{ \delta }}\left| f_{k}\left( x \right)-f\left( x \right)   \right|\le  \lim_{k\to \infty}2^{-\frac{k}{p}}= 0
+    \]因此 \(  f_{k}  \)在 \(  E\setminus E_{ \delta }  \)上一致收敛于 \(  f\left( x \right)   \).   
+\end{proof}
+\end{document}

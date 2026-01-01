@@ -4,7 +4,7 @@
 
 \ifSubfilesClassLoaded{
 
-    %\tableofcontents
+    \tableofcontents
     
     %\setcounter{chapter}{}
 }{}
@@ -12,7 +12,34 @@
 \chapter{ Lie Groups }
 % 代靖涵 25120222201319
 
+\section{Basic Definitions}
+\begin{definition}{}{}
+    A \dfntxt{Lie group} is a smooth manifold $G$ (without boundary) that is also a group in the algebraic sense, with the property that the multiplication map $m\colon G\times G\to G$ and inversion map $i\colon G\to G$, given by
+\[
+m(g,h)=gh,\qquad i(g)=g^{-1},
+\]
+are both smooth. 
+\end{definition}
+
+\begin{definition}{}{}
+    If \(G\) is a Lie group, any element \(g\in G\) defines maps \(L_{g},R_{g}:G\to G\), called \dfntxt{left translation} and \dfntxt{right translation}, respectively, by
+\[
+L_{g}(h)=gh,\qquad R_{g}(h)=hg.
+\]
+
+which are diffeomorphisms.
+\end{definition}
+
+\begin{proof}
+    
+Because \(L_{g}\) can be expressed as the composition of smooth maps
+\[
+G\xrightarrow{\ \iota_{g}\ }G\times G\xrightarrow{\ m\ }G,
+\]
+where \(\iota_{g}(h)=(g,h)\) and \(m\) is multiplication, it follows that \(L_{g}\) is smooth. It is actually a diffeomorphism of \(G\), because \(L_{g^{-1}}\) is a smooth inverse for it. Similarly, \(R_{g}:G\to G\) is a diffeomorphism.
+\end{proof}
 \section{Lie Subgroups}
+
 
 \begin{definition}{}{}
     Suppose $G$ is a Lie group. A \dfntxt{Lie subgroup of $G$} is a subgroup of $G$ endowed with a topology and smooth structure making it into a Lie group and an \dfntxt{immersed submanifold} of $G$. 
@@ -22,7 +49,381 @@
 \begin{itemize}
     \item A Lie subgroup of a compact Lie group need not be compact.
 \end{itemize}
-
-
 \end{remark}
+\begin{proposition}{}{}
+Suppose \(G\) is a Lie group, and \(W \subseteq G\) is any neighborhood of the identity.
+
+\begin{enumerate}
+\item \(W\) generates an open subgroup of \(G\).
+\item If \(W\) is connected, it generates a connected open subgroup of \(G\).
+\item If \(G\) is connected, then \(W\) generates \(G\).
+\end{enumerate}
+\end{proposition}
+
+\begin{note}
+    \(  S  \)生成子群的构造性表述, 就是 \(  S  \)及 \(  S^{-1}   \)的有限积的全体.   
+\end{note}
+
+\section{Group Actions and Equivariant Maps}
+
+\begin{definition}{}{}
+    \begin{itemize}
+        \item  If \(G\) is a group and \(M\) is a set, a \dfntxt{left action of \(G\) on \(M\)} is a map \(G \times M \to M\), often written as \((g,p) \mapsto g \cdot p\), that satisfies
+\[
+g_{1}\cdot (g_{2}\cdot p) = (g_{1}g_{2})\cdot p \quad \text{for all } g_{1}, g_{2}\in G \text{ and } p\in M ;
+\]
+\begin{equation}
+e\cdot p = p \quad \text{for all } p\in M .
+\end{equation}
+
+    \item 
+A \dfntxt{right action} is defined analogously as a map \(M \times G \to M\) with the appropriate composition law:
+\[
+(p\cdot g_{1})\cdot g_{2} = p\cdot (g_{1}g_{2}) \quad \text{for all } g_{1}, g_{2}\in G \text{ and } p\in M ;
+\]
+\[
+p\cdot e = p \quad \text{for all } p\in M .
+\]
+\item 
+
+If \(M\) is a topological space and \(G\) is a topological group, an action of \(G\) on \(M\) is said to be a \dfntxt{continuous action} if the defining map \(G \times M \to M\) or \(M \times G \to M\) is continuous.
+    In this case, \(M\) is said to be a \dfntxt{(left or right) \(G\)-space}.
+
+\item   If in addition \(M\) is a smooth manifold with or without boundary, \(G\) is a Lie group, and the defining map is smooth, then the action is said to be a \dfntxt{smooth action}. 
+
+    \end{itemize}
+   
+\end{definition}
+
+\begin{definition}{}{}
+    Sometimes it is useful to give a name to an action, such as \(\theta:G\times M\to M\), with the action of a group element \(g\) on a point \(p\) usually written as \(\theta_{g}(p)\). 
+    \begin{itemize}
+        \item In terms of this notation, the conditions for a left action read
+\begin{equation}
+\theta_{g_{1}}\circ\theta_{g_{2}}=\theta_{g_{1}g_{2}},\qquad
+\theta_{e}=\operatorname{Id}_{M},
+\end{equation}
+\item 
+while for a right action the first equation is replaced by
+\begin{equation}
+\theta_{g_{2}}\circ\theta_{g_{1}}=\theta_{g_{1}g_{2}}.
+\end{equation}
+\item 
+For a smooth action, each map \(\theta_{g}:M\to M\) is a diffeomorphism, because \(\theta_{g^{-1}}\) is a smooth inverse for it.
+    \end{itemize}
+    
+\end{definition}
+
+\begin{example}{}{}
+    Every Lie Group \(  G  \) acts smoothly on itself by translation.    
+\end{example}
+\begin{proof}
+    Given any two points \(  g_1,g_2\in G  \), there is a unique left translation of \(  G  \) taking \(  g_1  \) to \(  g_2  \), namely left translation by \(  g_2g_1^{-1}   \); thus the action is both free and transitive.  
+\end{proof}
+
+\begin{definition}{}{}
+   Suppose \(\theta: G \times M \to M\) is a left action of a group \(G\) on a set \(M\). 
+\begin{itemize}
+\item For each \(p \in M\), the \dfntxt{orbit of \(p\)}, denoted by \(G \cdot p\), is the set of all images of \(p\) under the action by elements of \(G\):
+\[
+G \cdot p = \{g \cdot p : g \in G\}.
+\]
+
+\item For each \(p \in M\), the \dfntxt{isotropy group} or \dfntxt{stabilizer of \(p\)}, denoted by \(G_p\), is the set of elements of \(G\) that fix \(p\):
+\[
+G_p = \{g \in G : g \cdot p = p\}.
+\]
+
+The definition of a group action guarantees that \(G_p\) is a subgroup of \(G\).
+
+\item The action is said to be \dfntxt{transitive} if for every pair of points \(p, q \in M\), there exists \(g \in G\) such that \(g \cdot p = q\), or equivalently if the only orbit is all of \(M\).
+
+\item The action is said to be \dfntxt{free} if the only element of \(G\) that fixes any element of \(M\) is the identity: \(g \cdot p = p\) for some \(p \in M\) implies \(g = e\), or equivalently if every isotropy group is trivial.
+\end{itemize}
+\end{definition}
+
+\section{Lie Bracket}
+
+\begin{definition}{Lie Bracket}{}
+    We define an operator \(  \left[ X,Y \right]: C^{\infty}\left( M \right)\to C^{\infty}\left( M \right)     \), called the \dfntxt{Lie bracket of \(  X  \) and \(  Y  \)  } , by \[
+    \left[ X,Y \right]f= XYf-YXf 
+    \]
+\end{definition}
+
+\begin{remark}
+    The Lie bracket of any pair of smooth vector fields is a smooth vector field.
+\end{remark}
+\begin{proposition}{Coordinate Formula for the Lie Bracket}{}
+Let $X,Y$ be smooth vector fields on a smooth manifold $M$ with or without boundary, and let $X=X^{i}\frac{\partial}{\partial x^{i}}$ and $Y=Y^{j}\frac{\partial}{\partial x^{j}}$ be the coordinate expressions for $X$ and $Y$ in terms of some smooth local coordinates $(x^{i})$ for $M$. Then $[X,Y]$ has the following coordinate expression:
+\begin{equation}
+[X,Y]=\left(X^{i}\frac{\partial Y^{j}}{\partial x^{i}}-Y^{i}\frac{\partial X^{j}}{\partial x^{i}}\right)\frac{\partial}{\partial x^{j}},
+\end{equation}
+or more concisely,
+\begin{equation}
+[X,Y]=\left(XY^{j}-YX^{j}\right)\frac{\partial}{\partial x^{j}}.
+\end{equation}
+\end{proposition}
+\begin{proposition}{Naturality of the Lie Bracket}{}
+Let $F:M\to N$ be a smooth map between manifolds with or without boundary, and let $X_1,X_2\in\mathfrak{X}(M)$ and $Y_1,Y_2\in\mathfrak{X}(N)$ be vector fields such that $X_i$ is $F$-related to $Y_i$ for $i=1,2$. Then $[X_1,X_2]$ is $F$-related to $[Y_1,Y_2]$.
+\end{proposition}
+
+\begin{proof}
+    
+\end{proof}
+\section{The Lie Algebra of a Lie Group}
+
+\begin{definition}{}{}
+    Suppose \(G\) is a Lie group. Recall that \(G\) acts smoothly and transitively on itself by left translation: \(L_{g}(h)=gh\). A vector field \(X\) on \(G\) is said to be \dfntxt{left-invariant} if it is invariant under all left translations, in the sense that it is \(L_{g}\)-related to itself for every \(g\in G\). More explicitly, this means
+\[
+d(L_{g})_{g'}(X_{g'})=X_{gg'},\quad\text{for all }g,g'\in G.
+\]
+Since \(L_{g}\) is a diffeomorphism, this can be abbreviated by writing \((L_{g})_{*}X=X\) for every \(g\in G\).
+\end{definition}
+
+\begin{remark}
+    \begin{itemize}
+        \item Because \(  \left( L_{g} \right)_{*}\left( aX+ bY \right)=  a\left( L_{g} \right)_{*}X+ b\left( L_{g} \right)_{*}Y      \), the set of all smooth left-invariant vector fields on \(  G  \) is a linear subspace of \(  \mathfrak{X}\left( G \right)   \).   
+    \end{itemize}
+    
+\end{remark}
+
+\begin{proposition}{}{}
+Let $G$ be a Lie group, and suppose $X$ and $Y$ are smooth left-invariant vector fields on $G$. Then $[X,Y]$ is also left-invariant.
+\end{proposition}
+
+\begin{proof}
+    Let \(  g \in G  \) be arbitrary. Since \(  X,Y  \) is \(  L_{g}  \)-related to itself.   We have from the naturality of the Lie bracket that  \(  \left[ X,Y \right]   \) is \(  L_{g}  \)-related to \(  \left[ \left( L_{g} \right)_{*}X, \left( L_{g} \right)_{*}Y   \right]= \left[ X,Y \right]    \) .  
+\end{proof}
+
+\begin{corollary}{}{}
+    The collection of all smooth left-invariant vector fields on a Lie group \(  G  \) is a Lie algebra under the Lie bracket, called the \dfntxt{Lie algebra of \(  G  \) }, and is denoted by \(  \operatorname{Lie}\left( G \right)   \).  
+\end{corollary}
+
+\begin{theorem}{}{}
+Let $G$ be a Lie group. The evaluation map $\varepsilon\colon \operatorname{Lie}(G)\to T_{e}G$, given by $\varepsilon(X)=X_{e}$, is a vector space isomorphism. Thus, $\operatorname{Lie}(G)$ is finite-dimensional, with dimension equal to $\dim G$.
+\end{theorem}
+
+\begin{proofsketch}
+    左不变向量场的全体是线性空间, \(   \varepsilon   \)是线性映射.
+    
+    按照左不变性将 \(  v\in T_{e}G  \)搬到全体 \(  G  \)上, 得到一个唯一的左不变向量场.  
+\end{proofsketch}
+
+\begin{proof}
+    It is clear from the definition that \(   \varepsilon   \) is linear over \(  \mathbb{R}   \). It is easy to prove that it is injective: if \(   \varepsilon \left( X \right)= X_{e}= 0   \) for some \(  X \in \operatorname{Lie}\left( G \right)   \), then the left-invariance of \(  X  \) implies that \(  X_{g}= \,\mathrm{d} \left( L_{g} \right)_{e}\left( X_{e} \right)= 0    \) for every \(  g \in G  \) , so \(  X= 0  \).
+    
+    To show that \(   \varepsilon   \) is surjective, let \(  v\in T_{e}G  \) be arbitrary, and define a (rough) vector field \(  v^{L}  \) on \(  G  \) by \[
+    \left. v^{L} \right|_{g}= d\left( L_{g} \right)_{e}\left( v \right)  
+    \]If  there is a left-invariant vector filed on \(  G  \) whose value at the identity is \(  v  \), clearly it has to be given this formula.
+    
+    First we need to check that \(  v^{L}  \) is smooth. It suffices to show that \(  v^{L}f  \) is smooth whenever \(  f\in C^{\infty}\left( G \right)   \). Choose a    
+\end{proof}
+
+\begin{proposition}{Lie Algebra of the General Linear Group}{}
+The composition of the natural maps
+\[
+\operatorname{Lie}\bigl(\operatorname{GL}(n,\mathbb{R})\bigr)\to T_{I_n}\operatorname{GL}(n,\mathbb{R})\to \mathfrak{gl}(n,\mathbb{R})
+\]
+gives a Lie algebra isomorphism between \(\operatorname{Lie}\bigl(\operatorname{GL}(n,\mathbb{R})\bigr)\) and the matrix algebra \(\mathfrak{gl}(n,\mathbb{R})\).
+\end{proposition}
+
+\begin{remark}
+    The vector spaces \(\operatorname{Lie}\bigl(\operatorname{GL}(n,\mathbb{R})\bigr)\) and \(\mathfrak{gl}(n,\mathbb{R})\) have independently defined Lie algebra structures\textemdash the first coming from Lie brackets of vector fields, and the second from commutator brackets of matrices. 
+\end{remark}
+
+\begin{proofsketch}
+    \( T_{I_{n}}\operatorname{GL} \left( n,\mathbb{R}  \right)   \)和 \(  \mathfrak{gl}\left( n,\mathbb{R}  \right)   \)有自然的同构, 前者有左不变向量场的李括号构成的李代数结构, 后者有矩阵的交换子构成的李代数结构.  
+
+    \(  \operatorname{Lie}\left( \operatorname{GL} \left( n,\mathbb{R}  \right)  \right)   \)有李括号构成的李代数结构, \(  \mathfrak{gl}\left( n,\mathbb{R}  \right)   \)有矩阵的交换子构成的李代数结构, 我们通过计算说明这两个结构是一致的.  
+
+    左平移是\(  \operatorname{GL} \left( n,\mathbb{R}  \right)   \)上 线性映射, 左不变向量场的微分是与其形式相同的线性映射.
+\end{proofsketch}
+
+\begin{proof}
+    Using the  maxtrix entires \(  X^{i}_{j} \) as the coordinates. There is a natural isomorphism   \[
+  \left.   A_{j}^{i} \frac{\partial }{\partial X_{j}^{i}} \right|_{I_{n}}\mapsto  \left( A_{j}^{i} \right) 
+    \] Then for each matrix \(  A= \left( A_{j}^{i} \right)\in \mathfrak{gl}\left( n,\mathbb{R}  \right)    \), \(  A  \) gives a left-invariant vector field \(  A^{L}\in \mathfrak{g}  \), by \[
+    A^{L}|_{X}= \left( d L_{X} \right)\left( A_{j}^{i}\frac{\partial }{\partial X_{j}^{i}} \right)  
+    \]   The differential of \(  L_{X}: A\mapsto  XA  \) is just the linear map of the same form , that is \[
+    A^{L}|_{X}=   X^{i}_{j}A^{j}_{k}\frac{\partial }{\partial X^{i}_{k}}
+    \] Then \[
+    \begin{aligned}
+   & [A^{L}|_{X}, B^{L}|_{X}]\\ 
+    &= \left( X^{i}_{j}A_{k}^{j} \frac{\partial }{\partial X^{i}_{k}}\right)\left( X^{p}_{q}B^{q}_{r}\frac{\partial }{\partial X^{q}_{r}} \right)   - \left( X^{p}_{q}B^{q}_{r}\frac{\partial }{\partial X^{q}_{r}} \right) \left( X^{i}_{j}A^{j}_{k}\frac{\partial }{\partial X^{i}_{k}} \right)\\ 
+     &= X^{i}_{j}A^{j}_{k}B^{k}_{r}\frac{\partial }{\partial X^{i}_{r}}- X^{p}_{q}B^{q}_{r} A^{r}_{k} \frac{\partial }{\partial X^{q}_{k}}\\ 
+      &=  X_{j}^{i}A_{k}^{j}B_{r}^{k}\frac{\partial }{\partial X^{i}_{r}}- X^{j}_{i}B^{i}_{k}A^{k}_{r}\frac{\partial }{\partial X^{i}_{r}}\\ 
+       &= \left( X^{i}_{j}A^{j}_{k}B_{r}^{k}- X_{i}^{j}B_{k}^{i}A_{r}^{k} \right)\frac{\partial }{\partial X_{r}^{i}} 
+    \end{aligned}
+    \] Evaluate at \(  I_{n}  \), we get \[
+    [A^{L}|_{X}, B^{L}|_{X}]_{I_{n}}= \left( A_{k}^{i}B_{r}^{k}- B_{k}^{i}A_{r}^{k} \right)\frac{\partial }{\partial X^{i}_{r}}= \left( AB-BA \right)_{r}^{i}\frac{\partial }{\partial X^{i}_{r}}  
+    \] 
+\end{proof}
+
+\subsection*{Induced Lie Algebra Homomorphisms}
+\begin{theorem}{Induced Lie Algebra Homomorphisms}{}
+Let $G$ and $H$ be Lie groups, and let $\mathfrak g$ and $\mathfrak h$ be their Lie algebras. Suppose $F\colon G \to H$ is a Lie group homomorphism. For every $X \in \mathfrak g$, there is a unique vector field in $\mathfrak h$ that is $F$-related to $X$. With this vector field denoted by $F_* X$, the map $F_* \colon \mathfrak g \to \mathfrak h$ so defined is a Lie algebra homomorphism, is called the \dfntxt{induced Lie algebra homomorphism}.
+\end{theorem}
+\begin{remark}
+     Note that the theorem implies that for any left-invariant vector field \(X\in\mathfrak{g}\), \(F_{*}X\) is a well-defined smooth vector field on \(H\), even though \(F\) may not be a diffeomorphism.
+\end{remark}
+\begin{proofsketch}
+ \begin{itemize}
+    \item    左不变性使得相关向量场的选取是唯一且确定的, 唯一需要验证的是相关性.
+    \item 
+    群同态保证了关于平移的自然性, \(  F\circ L_{g}= L_{F\left( g \right) }\circ F  \) . 它的微分形式 \(
+dF\circ d(L_{g})=d(L_{F(g)})\circ dF.
+\)既是左不变向量场之间的相关性.
+\item 
+\(  F_{*}  \)的 Lie 代数同态性, 来自于李括号的相关性 \(  F_{*}\left[ X,Y \right]= \left[ F_{*}X, F_{*}Y \right]    \). 
+
+
+ \end{itemize}
+ 
+\end{proofsketch}
+
+\subsection*{The Lie Algebra of the Lie Subgroup}
+
+
+
+\section{One-Parameter Subgroups and the Exponential Map}
+
+\subsection{ One-Parameter Subgroups}
+\begin{definition}{}{}
+    A \dfntxt{one-parameter subgroup of \(G\)} is defined to be a Lie group homomorphism \(\gamma \colon \mathbb{R} \to G\), with \(\mathbb{R}\) considered as a Lie group under addition.
+\end{definition}
+
+\begin{theorem}{Characterization of One-Parameter Subgroups}{}
+Let \(G\) be a Lie group. The one-parameter subgroups of \(G\) are precisely the maximal integral curves of left-invariant vector fields starting at the identity.
+\end{theorem}
+
+
+\begin{remark}
+    Given \(X\in\operatorname{Lie}(G)\), the one-parameter subgroup determined by \(X\) in this way is called the \dfntxt{one-parameter subgroup generated by \(X\)}. Because left-invariant vector fields are uniquely determined by their values at the identity, it follows that each one-parameter subgroup is uniquely determined by its initial velocity in \(T_eG\), and thus there are one-to-one correspondences
+
+\[
+\{\text{one-parameter subgroups of }G\}\longleftrightarrow\operatorname{Lie}(G)\longleftrightarrow T_eG.
+\]
+\end{remark}
+
+\begin{proofsketch}
+    \(  \impliedby    \): 给定积分曲线 \(   \gamma   \), 为了证明群律\(   \gamma \left( s+ t \right)=  \gamma \left( s \right) \gamma \left( t \right)     \)  , 以重参数化和左平移两种方式将积分曲线的起点搬到 \(   \gamma \left( s \right)   \), 其中后者依赖左不变向量场的平移不变形. 
+
+    \(  \implies   \): 群同态 \(   \gamma   \)给出李代数同态 \(   \gamma _{*}  \),  \(   \gamma _{*}\left( \frac{\mathrm{d}}{\mathrm{d}t} \right)   \)就是一个左不变向量场, 它恰好是 \(   \gamma   \)的切向量场.     
+\end{proofsketch}
+\begin{proof}
+    Supposet that \(   \gamma   \) is a maximal integral curve of a left-invariant vector field \(  X  \). Since \(  X  \) is complete, \(   \gamma   \) has the domain \(  \mathbb{R}   \). The left-invariance means that \(  X  \) is \(  L_{g}  \)-invariant for each \(  g\in G  \), then \(  L_{g}  \) take the integral curve  of \(  X  \) to the integral curve of \(  X  \).   \(  t\mapsto L_{ \gamma \left( s \right) }\circ  \gamma \left( t \right)   \) is the integral curve of \(  X  \) starting at \(   \gamma \left( s \right)   \). The rescaling lemma shows that  \(  t\mapsto  \gamma \left( s+ t  \right)   \)     is also the integral curve of \(  X  \) starting at \(   \gamma \left( s \right)   \), then it follows from the uniqueness of the integral curve that  \[
+     \gamma \left( s+ t \right)= L_{ \gamma \left( s \right) }\circ \gamma \left( t \right)=  \gamma \left( s \right) \gamma \left( t \right)    
+    \]  
+
+    Conversely , if \(   \gamma   \) is the one-parameter subgroup of of \(  G  \).Let  \(X=   \gamma _{*}\left( \frac{\mathrm{d}}{\mathrm{d}t} \right)  \in \operatorname{Lie}\left( G \right)  \), treating \(  \frac{\mathrm{d}}{\mathrm{d}t}  \) as a left-invariant vector filed on \(  \mathbb{R}   \). 
+\end{proof}
+\begin{proposition}{}{} 
+Suppose \(G\) is a Lie group and \(H \subseteq G\) is a Lie subgroup. The one-parameter subgroups of \(H\) are precisely those one-parameter subgroups of \(G\) whose initial velocities lie in \(T_eH\).
+\end{proposition}
+
+\begin{proofsketch}
+    单参数子群与原点的切空间是对应的.
+
+
+    单参数子群就是过原点的积分曲线, 只要初速度一样, 它们就是相同的积分曲线.
+\end{proofsketch}
+\subsection{The Exponential Map}
+
+\begin{definition}{Exponential map}{}
+    Given a Lie group \(G\) with Lie algebra \(\mathfrak g\), we define a map \(\operatorname{exp}\colon\mathfrak g\to G\), called the \dfntxt{exponential map of \(G\)}, as follows: for any \(X\in\mathfrak g\), we set
+\[
+\operatorname{exp}X=\gamma(1),
+\]
+where \(\gamma\) is the one-parameter subgroup generated by \(X\), or equivalently the integral curve of \(X\) starting at the identity . 
+\end{definition}
+
+\begin{proposition}{Properties of the Exponential Map}{}
+Let $G$ be a Lie group and let $\mathfrak{g}$ be its Lie algebra.
+\begin{enumerate}
+    \item[(a)] The exponential map is a smooth map from $\mathfrak{g}$ to $G$.
+    \item[(b)] For any $X \in \mathfrak{g}$ and $s, t \in \mathbb{R}$, $\exp(s+t)X = \exp sX \exp tX$.
+    \item[(c)] For any $X \in \mathfrak{g}$, $(\exp X)^{-1} = \exp(-X)$.
+    \item[(d)] For any $X \in \mathfrak{g}$ and $n \in \mathbb{Z}$, $(\exp X)^n = \exp(nX)$.
+    \item[(e)] The differential $(\operatorname{d}\exp)_0 \colon T_0\mathfrak{g} \to T_eG$ is the identity map, under the canonical identifications of both $T_0\mathfrak{g}$ and $T_eG$ with $\mathfrak{g}$ itself.
+    \item[(f)] The exponential map restricts to a diffeomorphism from some neighborhood of $0$ in $\mathfrak{g}$ to a neighborhood of $e$ in $G$.
+    \item[(g)] If $H$ is another Lie group, $\mathfrak{h}$ is its Lie algebra, and $\Phi \colon G \to H$ is a Lie group homomorphism, the following diagram commutes:
+    \begin{equation}
+    \begin{tikzcd}
+    \mathfrak{g} \arrow[r, "\Phi_*"] \arrow[d, "\exp"'] & \mathfrak{h} \arrow[d, "\exp"] \\
+    G \arrow[r, "\Phi"'] & H.
+    \end{tikzcd}
+    \end{equation}
+    \item[(h)] The flow $\theta$ of a left-invariant vector field $X$ is given by $\theta_t = R_{\exp tX}$ (right multiplication by $\exp tX$).
+\end{enumerate}
+\end{proposition}
+\begin{proposition}{ }{}
+Let \(G\) be a Lie group. For any \(X \in \operatorname{Lie}(G)\), \(\gamma(s) = \exp sX\) is the one-parameter subgroup of \(G\) generated by \(X\).
+\end{proposition}
+\begin{proof}
+    Let \(   \gamma :\mathbb{R} \to G  \) be the one-parameter subgroup generated by \(  X  \), which is the integral curve of \(  X  \) starting at \(  e  \). For any fixed \(  s \in \mathbb{R}   \), the rescaling lemma of integral curve gives that \(   \tilde{\gamma} \left( t \right)=  \gamma \left( st \right)    \) is the integral cruve of \(  sX  \) starting at \(  e  \), so \[
+    \exp sX=  \tilde{\gamma} \left( 1 \right)=  \gamma \left( s \right)  
+    \]        
+\end{proof}
+\begin{proposition}{}
+Let $G$ be a Lie group, and let $H \subseteq G$ be a Lie subgroup. With $\operatorname{Lie}(H)$ considered as a subalgebra of $\operatorname{Lie}(G)$ in the usual way, the exponential map of $H$ is the restriction to $\operatorname{Lie}(H)$ of the exponential map of $G$, and
+\[
+\operatorname{Lie}(H)=\{X\in\operatorname{Lie}(G):\exp tX\in H\text{ for all }t\in\mathbb{R}\}.
+\]
+\end{proposition}
+
+\section{The Closed Subgroup Theorem}
+
+\begin{theorem}{Closed Subgroup Theorem}{}
+Suppose \(G\) is a Lie group and \(H \subseteq G\) is a subgroup that is also a closed subset of \(G\). Then \(H\) is an embedded Lie subgroup.
+\end{theorem}
+
+\section{The Lie Correspondence}
+\begin{theorem}{ }{}
+Suppose $G$ and $H$ are Lie groups with $G$ simply connected, and let $\mathfrak{g}$ and $\mathfrak{h}$ be their Lie algebras. For any Lie algebra homomorphism $\varphi:\mathfrak{g}\to\mathfrak{h}$, there is a unique Lie group homomorphism $\Phi:G\to H$ such that $\Phi_{*}=\varphi$.
+\end{theorem}
+
+\begin{corollary}{}{}
+If \(G\) and \(H\) are simply connected Lie groups with isomorphic Lie algebras, then \(G\) and \(H\) are isomorphic.
+\end{corollary}
+
+\begin{theorem}{The Lie Correspondence}{}
+There is a one-to-one correspondence between isomorphism classes of finite-dimensional Lie algebras and isomorphism classes of simply connected Lie groups, given by associating each simply connected Lie group with its Lie algebra.
+\end{theorem}
+\section{Normal Subgroups}
+
+\begin{lemma}{}{}
+Let $G$ be a connected Lie group, and let $H \subseteq G$ be a connected Lie subgroup. Let $\mathfrak{g}$ and $\mathfrak{h}$ denote the Lie algebras of $G$ and $H$, respectively. Then $H$ is normal in $G$ if and only if
+\begin{equation}
+(\exp X)(\exp Y)(\exp(-X)) \in H \quad \text{for all } X \in \mathfrak{g} \text{ and } Y \in \mathfrak{h}.
+\end{equation}
+\end{lemma}
+
+\begin{proofsketch}
+    \(  \exp   \)是\(  0\in \mathfrak{h}  \)到 \(  e\in H  \)的  局部的微分同胚, 也是 \(  0\in \mathfrak{g}  \)到 \(  e\in G  \)的微分同胚.  于是 \(  e\in H  \)和 \(  e\in G  \)分别有一个以 \(  \exp   \)像构成的开邻域\(  U,U_0  \). 而连通李群的单位元的开邻域生成整个李群, 故\(  U  \)和 \(  U_0  \)分别生成了\(  H  \)和 \(  G  \).          
+
+    题设条件应用在这两个\(  \exp   \)像构成的开邻域上,  给出 \(  U  \)中元素在 \(  U_0  \)从元素的共轭下落在 \(  H  \)中.  利用生成的性质(\(  H  \)和 \(  G  \)中的元素分别写成 \(  U  \)和 \(  U_0  \)中的元素的有限积    ). 我们可以将 \(  ghg^{-1}   \)拆分成若干 \(  g_{i}h_{j}g_{i}^{-1}   \)的组合, 其中 \(   g_{i}\in U_0, h_{j}\in U \).     
+\end{proofsketch}
+
+\subsection{The Adjoint Representation}
+
+\begin{definition}{}{}
+    Let \(G\) be a Lie group and \(\mathfrak g\) be its Lie algebra. For any \(g\in G\), the conjugation map \(C_g\colon G\to G\) given by \(C_g(h)=ghg^{-1}\) is a Lie group homomorphism. We let \(\operatorname{Ad}(g)=(C_g)_*\colon \mathfrak g\to\mathfrak g\) denote its induced Lie algebra homomorphism.
+\end{definition}
+
+\begin{proposition}{The Adjoint Representation}{}
+If \(G\) is a Lie group with Lie algebra \(\mathfrak{g}\), the map \(\operatorname{Ad}\colon G \to \operatorname{GL}(\mathfrak{g})\) is a Lie group representation, called the \dfntxt{adjoint representation} of \(G\).
+\end{proposition}
+
+\begin{definition}{}{}
+    Given a finite dimensional Lie algebra $\mathfrak{g}$, for each $X \in \mathfrak{g}$, define a map $\operatorname{ad}(X):\mathfrak{g} \to \mathfrak{g}$ by $\operatorname{ad}(X)Y=[X,Y]$.
+\end{definition}
+\begin{proposition}{adjoint representation of $\mathfrak{g}$}{}
+For any Lie algebra $\mathfrak{g}$, the map $\operatorname{ad}:\mathfrak{g} \to \mathfrak{gl}(\mathfrak{g})$ is a Lie algebra representation, called the \dfntxt{adjoint representation of $\mathfrak{g}$}.
+\end{proposition}
+\begin{theorem}{}{}
+Let $G$ be a Lie group, let $\mathfrak{g}$ be its Lie algebra, and let $\operatorname{Ad}\colon G \to \operatorname{GL}(\mathfrak{g})$ be the adjoint representation of $G$. The induced Lie algebra representation $\operatorname{Ad}_{*}\colon \mathfrak{g} \to \mathfrak{gl}(\mathfrak{g})$ is given by $\operatorname{Ad}_{*} = \operatorname{ad}$.
+\end{theorem}
+
+
+
 \end{document}

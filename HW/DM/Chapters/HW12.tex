@@ -1,0 +1,239 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+   \setcounter{chapter}{11}
+}{}
+
+\chapter{ HW12 }
+ 代靖涵 25120222201319
+\begin{exercise}{}{}
+设 $M$ 是一个光滑的 $n$ 维流形, $A$ 是 $M$ 上的一个光滑的协变 $k$ 阶张量场. 如果 $(U, (x^i))$ 和 $(\tilde{U}, (\tilde{x}^j))$ 是 $M$ 上两个重叠的光滑坐标卡, 即 $A$ 可分别写成
+\[
+A = A_{i_1 \dots i_k} dx^{i_1} \otimes \dots \otimes dx^{i_k} = \tilde{A}_{j_1 \dots j_k} d\tilde{x}^{j_1} \otimes \dots \otimes d\tilde{x}^{j_k}.
+\]
+试用 $\tilde{A}_{j_1 \dots j_k}$ 表示分量函数 $A_{i_1 \dots i_k}$.
+\end{exercise}
+\begin{proof}
+由坐标切向量的替换公式
+    \[
+    \frac{\partial }{\partial x^{i}}= \sum _{p= 1}^{n}\frac{\partial \tilde{x}^{p}}{\partial x^{i}}\frac{\partial }{\partial \tilde{x}^{p}},\quad i=  1,\cdots,n 
+    \]
+    将 \( A \) 作用在 \( \frac{\partial }{\partial x^{i_1}},\cdots ,\frac{\partial }{\partial x^{i_{k}}} \) 上, 得到
+    \[
+    \begin{aligned}
+    A_{i_1 \dots i_{k}} &= A\left( \frac{\partial }{\partial x^{i_1}},\cdots ,\frac{\partial }{\partial x^{i_{k}}} \right)\\ 
+     &= \sum _{j_1,\cdots ,j_{k}}\tilde{A}_{j_1 \dots j_{k}} d \tilde{x}^{j_1}\otimes \cdots \otimes d \tilde{x}^{j_{k}}\left( \sum _{p_1= 1}^{n}\frac{\partial \tilde{x}^{p_1}}{\partial x^{i_1}}\frac{\partial }{\partial \tilde{x}^{p_1}},\cdots ,\sum _{p_k= 1}^{n} \frac{\partial \tilde{x}^{p_k}}{\partial x^{i_{k}}}\frac{\partial }{\partial \tilde{x}^{p_k}} \right)\\ 
+      &= \sum _{j_1,\cdots ,j_{k}}\frac{\partial \tilde{x}^{j_1}}{\partial x^{i_1}}\cdots \frac{\partial \tilde{x}^{j_{k}}}{\partial x^{i_{k}}}\tilde{A}_{j_1 \dots j_{k}}   
+    \end{aligned}
+    \]
+\end{proof}
+\begin{exercise}{偶数维欧氏空间上的典则辛形式}{}
+设 $(x^1, \dots, x^n, y^1, \dots, y^n)$ 为 $\mathbb{R}^{2n}$ 中的坐标函数, 令
+\[
+\omega = \sum_{i=1}^n dx^i \wedge dy^i.
+\]
+\begin{enumerate}
+\item 计算 $d\omega$.
+\item 计算 $\omega^n = \omega \wedge \dots \wedge \omega$.
+\item 计算 $\iota^*\omega$:
+\begin{enumerate}
+\item 设 $\iota: \mathbb{R}^{2n-2} \hookrightarrow \mathbb{R}^{2n}$ 为由 $x^n = y^n = 0$ 定义的嵌入.
+\item 设 $\iota: \mathbb{R}^n \hookrightarrow \mathbb{R}^{2n}$ 为由 $y^1 = \dots = y^n = 0$ 定义的嵌入.
+\item 设 $\iota: \mathbb{T}^n \hookrightarrow \mathbb{R}^{2n}$ 为由 $(x^i)^2 + (y^i)^2 = 1, 1 \leqslant i \leqslant n$ 定义的嵌入.
+\end{enumerate}
+\item 给定 $f \in C^\infty(\mathbb{R}^{2n})$, 构造 $X_f$ 使得 $\iota_{X_f}\omega = df$.
+\item 令 $X_f$ 如上定义. 求证: $\mathcal{L}_{X_f}f = 0$ 且 $\mathcal{L}_{X_f}\omega = 0$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+   \begin{enumerate}
+    \item   \[
+    d\left( dx^{i}\wedge dy^{i} \right)= \left( d\left( dx^{i} \right)  \right)\wedge dy^{i}- dx^{i}\wedge d\left( dy^{i} \right)= 0   
+    \] \[
+    \begin{aligned}
+    d \omega &= \sum _{i= 1}^{n}d\left( dx^{i}\wedge dy^{i} \right)  = 0
+    \end{aligned}
+    \]
+    \item 由于 \(  dx^{i}\wedge dy^{i}  \)是偶形式, 它们之间整体换序不改变符号 \[
+     \begin{aligned}
+     \omega ^{n}&=  \sum _{i_1,\cdots ,i_{n}} dx^{i_1}\wedge dy^{i_1}\wedge \cdots \wedge dx^{i_{n}}\wedge dy^{i_{n}} \\ 
+      &= \sum _{\left( i_1,\cdots ,i_{n} \right)\in S_{n} }d x^{i_1}\wedge  dy^{i_1}\wedge \cdots dx^{i_{n}}\wedge dy^{i_{n}}\\ 
+       &= n! dx^{1}\wedge dy^{1}\wedge \cdots \wedge dx^{n}\wedge dy^{n}\\ 
+        &= \left( -1 \right)^{\frac{n\left( n-1 \right)  }{ 2} }n!dx^{1}\wedge \cdots \wedge dx^{n}\wedge dy^{1}\wedge \cdots \wedge dy^{n} 
+     \end{aligned}
+    \]
+    \item \begin{enumerate}
+        \item  \[
+   \begin{aligned}
+    \iota ^{*} \omega &= \sum _{i= 1}^{n}d \left( x^{i}\circ \iota  \right)\wedge d\left( y^{i}\circ \iota  \right)   \\ 
+     &= \sum _{i= 1}^{n-1}dx^{i}\wedge dy^{i}+ d\left( 0 \right)\wedge d\left( 0 \right)\\ 
+      &= \sum _{i= 1}^{n-1}dx^{i}\wedge dy^{i}  
+   \end{aligned}
+    \]
+    \item \[
+\begin{aligned}
+    \iota ^{*} \omega &= \sum _{i= 1}^{n}d \left( x^{i}\circ  \iota  \right)\wedge d\left( y^{i}\circ \iota  \right)   \\ 
+     &= \sum _{i= 1}^{n}d\left( x^{i} \right)\wedge d\left( 0 \right)  \\ 
+      &= 0
+\end{aligned}    \]
+\item 设 \(  \mathbb{T}^{n}  \)的坐标为 \[
+\left(  \theta ^{1},\cdots , \theta ^{n} \right) 
+\] 则 \(  \iota   \)的坐标表示为 \[
+\left(  \theta ^{1},\cdots , \theta ^{n} \right)\mapsto \left( \cos  \theta ^{1},\sin  \theta ^{1},\cdots ,\cos  \theta ^{n},\sin  \theta ^{n} \right)  
+\] 此时 \[
+\begin{aligned}
+\iota ^{*} \omega &=   \sum _{i= 1}^{n}d\left( x^{i}\circ\iota  \right)\wedge d\left( y^{i}\circ \iota  \right)\\ 
+ &=    \sum _{i= 1}^{n} \left(\sum _{j_1} \frac{\partial \cos  \theta ^{i}}{\partial  \theta^{j_1}}d  \theta ^{j_1} \right) \wedge \left( \sum _{j_2}  \frac{\partial \sin  \theta ^{i}}{\partial  \theta ^{j_2}}d  \theta ^{j_2} \right) \\ 
+  &= \sum _{i= 1}^{n}\left( -\sin  \theta ^{i}d \theta ^{i} \right)\wedge \left( \cos  \theta ^{i}d  \theta ^{i} \right)= \sum _{i= 1}^{n}\left( -\sin  \theta ^{i}\cos  \theta ^{i} \right)d \theta ^{i}\wedge d \theta ^{i} \\ 
+   &= 0  
+\end{aligned}
+\]
+    \end{enumerate}
+
+    \item \[
+    df= \frac{\partial f}{\partial x^{i}}dx^{i}+ \frac{\partial f}{\partial y^{i}}dy^{i}
+    \] 设 \[
+    X_{f}= X^{i}\frac{\partial }{\partial x^{i}}+ Y^{i}\frac{\partial }{\partial y^{i}}
+    \]则 \[
+   \begin{aligned}
+  \frac{\partial f}{\partial x^{j}} =   \iota _{X_{f}} \omega \left( \frac{\partial }{\partial x^{j}} \right)&=  \omega \left( X^{i}\frac{\partial }{\partial x^{i}}+ Y^{i}\frac{\partial }{\partial y^{i}},\frac{\partial }{\partial x^{j}} \right)   \\ 
+     &= \sum _{k= 1}^{n}dx^{k}\wedge dy^{k}\left( X^{i}\frac{\partial }{\partial x^{i}}+ Y^{i}\frac{\partial }{\partial y^{i}},\frac{\partial }{\partial x^{j}} \right)\\ 
+      &=  -Y^{j}
+   \end{aligned}
+    \]因此\(  Y^{j}= -\frac{\partial f}{\partial x^{j}}  \) 
+    \[
+    \begin{aligned}
+    \frac{\partial f}{\partial y^{j}}= \iota _{X_{f}} \omega \left( \frac{\partial }{\partial y^{j}} \right)  &=  \omega \left( X^{i}\frac{\partial }{\partial x^{i}}+ Y^{j}\frac{\partial }{\partial y^{i}},\frac{\partial }{\partial y^{j}} \right)\\ 
+     &= \sum _{k= 1}^{n}d x^{k}\wedge dy^{k}\left( X^{i}\frac{\partial }{\partial x^{i}}+ Y^{i}\frac{\partial }{\partial y^{i}}, \frac{\partial }{\partial y^{j}} \right)\\ 
+      &=  X^{j} 
+    \end{aligned}
+    \]因此 \(  X^{j}= \frac{\partial f}{\partial y^{j}}  \), 故 \[
+    X_{f}= \sum _{i= 1}^{n}\frac{\partial f}{\partial y^{i}}\frac{\partial }{\partial x^{i}}-\sum _{i= 1}^{n}\frac{\partial f}{\partial x^{i}}\frac{\partial }{\partial y^{i}}
+    \] 
+    \item 由Cartan's Magic Formula和4. \[
+   \begin{aligned}
+    \mathcal{L}_{X_{f}}f &= \iota _{X_{f}}\left( df \right)+ d\left( \iota _{X_{f}}f \right)   \\ 
+     &= \iota _{X_{f}}\left( df \right)\\ 
+      &= \iota_{X_{f}}\left( \iota _{X_{f}} \omega  \right) =  \omega \left( X_{f},X_{f} \right)\\ 
+       &= 0  
+   \end{aligned}
+    \] 由Cartan's Magic Formula和1.4.\[
+    \begin{aligned}
+    \mathcal{L}_{X_{f}} \omega &=  \iota _{X_{f}}\left( d \omega  \right)+ d\left( \iota _{X_{f}} \omega  \right)\\ 
+     &= \iota _{X_{f}}\left( 0 \right)+  d\left( df \right)\\ 
+      &= 0     
+    \end{aligned}
+    \]
+   \end{enumerate}
+   
+\end{proof}
+
+\begin{exercise}{}{}
+在 $\mathbb{R}^3$ 上定义一个如下的 2-形式 $\omega$,
+\[
+\omega = x dy \wedge dz + y dz \wedge dx + z dx \wedge dy.
+\]
+\begin{enumerate}
+\item[a).] 在球面坐标 $(\rho, \varphi, \theta)$ 下计算 $\omega$, 其中
+\[
+(x, y, z) = (\rho \sin \varphi \cos \theta, \rho \sin \varphi \sin \theta, \rho \cos \varphi).
+\]
+\item[b).] 分别在直角坐标和球坐标下计算 $d\omega$, 并验证这两个表达式表示同一个 3-形式.
+\item[c).] 设 $\iota_{\mathbb{S}^2} : \mathbb{S}^2 \hookrightarrow \mathbb{R}^3$ 为自然嵌入, 在坐标 $(\varphi, \theta)$ 下计算拉回 $\iota_{\mathbb{S}^2}^*\omega$ (在坐标有定义的开集上).
+\item[d).] 求证 $\iota_{\mathbb{S}^2}^*\omega$ 在 $\mathbb{S}^2$ 上处处非零.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}\begin{enumerate}
+   
+\item 将 \(  \left( x,y,z \right)   \)和 \(  \left( \rho , \varphi , \theta  \right)   \)视为 \(  \mathbb{R} ^{3}  \)上的两组坐标, 则   令 \(   f :\mathbb{R} ^{3}\to \mathbb{R} ^{3}  \), \[
+ \left( x,y,z \right)\mapsto  \left( \rho \sin  \varphi \cos  \theta , \rho \sin  \varphi \sin  \theta ,\rho \cos  \varphi  \right)  
+\]则 \(   f   \)实际上是恒等映射, 上述是恒等变换的一个坐标表示. 那么 \[
+\begin{aligned}
+ \omega &= f ^{*} \omega\\ 
+   &= \left( x\circ f \right)d\left( y\circ f \right)\wedge d\left( z\circ f \right)+ \left( y\circ f \right) d\left( z\circ f \right)\wedge d\left( x\circ f \right)+ \left( z\circ f \right)      d\left( x\circ f \right)\wedge d\left( y\circ f \right)\\ 
+    &= \rho \sin  \varphi \cos  \theta d\left( \rho \sin  \varphi \sin  \theta  \right)\wedge d\left( \rho \cos  \varphi  \right)+ \rho \sin  \varphi \sin  \theta d\left( \rho \cos  \varphi  \right)\wedge d\left( \rho \sin  \varphi \cos  \theta  \right)\\ 
+     &+ \rho \cos  \varphi d\left( \rho \sin  \varphi \cos  \theta  \right)\wedge d\left( \rho \sin  \varphi \sin  \theta  \right)  
+\end{aligned}
+\] 其中 \[
+d\left( \rho \sin  \varphi \sin  \theta  \right)= \sin  \varphi \sin  \theta d\rho + \rho \sin  \theta \cos  \varphi d \varphi + \rho \sin  \varphi \cos  \theta d \theta  
+\]\[
+d\left( \rho \sin  \varphi \cos  \theta  \right)=  \sin  \varphi \cos  \theta d\rho + \rho \cos  \varphi \cos  \theta d \varphi -\rho \sin  \varphi \sin  \theta d \theta 
+\] \[
+d\left( \rho \cos  \varphi  \right)= \cos  \varphi d\rho -\rho \sin  \varphi d \varphi  
+\] \[
+\begin{aligned}
+&d\left( \rho \sin  \varphi \sin  \theta  \right)\wedge d\left( \rho \cos  \varphi  \right)\\ 
+ &= -\rho \sin  \theta d\rho \wedge d \varphi + \rho ^{2}\sin ^{2} \varphi \cos  \theta d \varphi \wedge d \theta    + \rho \sin  \varphi \cos  \varphi \cos  \theta d \theta \wedge d\rho 
+\end{aligned}
+\] \[
+\begin{aligned}
+&d\left( \rho \cos  \varphi  \right)\wedge d\left( \rho \sin  \varphi \cos  \theta  \right)\\ 
+ &= \rho \cos  \theta d\rho \wedge d \varphi + \rho ^{2}\sin ^{2} \varphi \sin  \theta d \varphi \wedge d \theta  + \rho \sin  \varphi \cos  \varphi \sin  \theta d \theta \wedge d\rho  
+\end{aligned}
+\] \[
+\begin{aligned}
+&d\left( \rho \sin  \varphi \cos  \theta  \right)\wedge d\left( \rho \sin  \varphi \sin  \theta  \right)\\ 
+ &= \rho ^{2}\sin  \varphi \cos  \varphi d \varphi \wedge d \theta  -\rho \sin ^{2}  \varphi d \theta \wedge d\rho 
+\end{aligned}
+\]全部带入, 得到 \[
+\begin{aligned}
+ \omega &= \left( -\rho ^{2}\sin  \varphi \sin  \theta \cos  \theta + \rho ^{2}\sin  \varphi \sin  \theta \cos  \theta  \right)d\rho \wedge d \varphi  \\ 
+  &+ \left( \rho ^{3}\sin ^{3} \varphi  \cos ^{2} \theta  + \rho ^{3}\sin^{3} \varphi \sin ^{2} \theta  + \rho ^{3}\sin  \varphi \cos ^{2} \varphi  \right) \,\mathrm{d}  \varphi \wedge \,\mathrm{d}  \theta \\ 
+   &+ \left( \rho ^{2}\sin ^{2} \varphi \cos  \varphi \cos ^{2} \theta + \rho ^{2}\sin ^{2} \varphi \cos  \varphi \sin ^{2} \theta -\rho^{2} \sin ^{2} \varphi \cos  \varphi  \right) \,\mathrm{d}  \theta \wedge \,\mathrm{d} \rho \\ 
+    &=\rho ^{3}\sin  \varphi d \varphi \wedge d \theta 
+\end{aligned} 
+\]因此 \[
+ \omega = \rho ^{3}\sin  \varphi d \varphi \wedge d \theta 
+\]
+\item \[
+\begin{aligned}
+d \omega& = d\left( xd y\wedge dz \right)+ d\left( y dz\wedge dx \right)+  z \left( dx\wedge dy \right)    \\ 
+ &= dx\wedge dy\wedge dz+ dy\wedge dz\wedge dx+ dz\wedge dx\wedge dy\\ 
+  &= 3dx\wedge dy\wedge dz
+\end{aligned}
+\] \[
+\begin{aligned}
+d \omega& = d\left( \rho ^{3}\sin  \varphi  \right)\wedge d \varphi \wedge d \theta   \\ 
+ &= \left( 3\rho ^{2}\sin  \varphi d\rho + \rho ^{3}\cos  \varphi d \varphi  \right)\wedge d \varphi \wedge d  \theta \\ 
+  &= 3\rho ^{2}\sin  \varphi d\rho \wedge d \varphi \wedge d \theta  
+\end{aligned}
+\] \[
+\begin{aligned}
+&3dx\wedge dy\wedge dz\\ 
+ &= f ^{*}\left( 3dx\wedge dy\wedge dz \right) \\ 
+ &=   3 d\left( \rho \sin  \varphi \cos  \theta  \right)\wedge d\left( \rho \sin  \varphi \sin  \theta  \right)\wedge d\left( \rho \cos  \varphi  \right)   \\ 
+  &= 3( \rho ^{2}\sin  ^{3}\varphi \sin ^{2} \theta + \rho ^{2}\sin ^{3} \varphi \cos ^{2} \theta\\ 
+   &+ \rho ^{2}\sin  \varphi \cos ^{2} \varphi \cos ^{2}  \theta + \rho ^{2}\sin  \varphi \cos ^{2} \varphi \sin ^{2} \theta  )d\rho \wedge d \varphi \wedge d \theta  \\ 
+   &= 3\rho ^{2}\sin  \varphi d\rho \wedge d\varphi \wedge d \theta 
+\end{aligned}
+\]
+\item \(  \iota _{\mathbb{S}^{2}}  \) 的坐标表示为 \[
+\iota _{\mathbb{S}^{2}}\left( \varphi , \theta   \right) =\left(  1,\varphi , \theta  \right) 
+\] \[
+\begin{aligned}
+\iota ^{*}_{\mathbb{S}^{2}} \omega &=  \left( \rho \circ \iota  \right)^{3}\sin  \left( \varphi \circ\iota \right)  d\left(  \varphi \circ \iota  \right)\wedge d\left(  \theta \circ \iota  \right)   \\ 
+ &= \sin  \varphi d \varphi \wedge d \theta 
+\end{aligned}
+\]
+\item 在坐标开集 \(  \left\{  \varphi \in \left( 0, \pi  \right)  \right\}  \) 上, 恒有\(  \sin  \varphi \neq 0  \), 因此 \(  \iota _{\mathbb{S}^{2}}^{*} \omega   \)在其上非退化.
+注意到 \(   \omega   \)是关于 \(  \left( x,y,z \right)   \)轮换对称的, 我们建立新坐标 \[
+\left( x^{\prime} , y^{\prime} ,z^{\prime}  \right)= \left( y,z,x \right)  
+\] 则 \[
+ \omega = x^{\prime} d y^{\prime} \wedge dz^{\prime} +  y^{\prime} dz^{\prime} \wedge dx^{\prime} + z^{\prime} dx^{\prime} \wedge dy^{\prime} 
+\]对 \(  \left( x^{\prime} ,y^{\prime}  ,z^{\prime} \right)   \)建立相应的球面坐标\(  \left( \rho ^{\prime} , \varphi ^{\prime} , \theta ^{\prime}  \right)   \)  \[
+\left( x^{\prime} ,y^{\prime} ,z^{\prime}  \right)= \left( \rho ^{\prime} \sin  \varphi ^{\prime} \cos  \theta  ^{\prime} ,\rho ^{\prime} \sin  \varphi ^{\prime} \sin  \theta ^{\prime} , \rho ^{\prime} \cos  \varphi ^{\prime}  \right)  
+\]  可以类似地得到\[
+\iota ^{*}_{\mathbb{S}^{2}} \omega = \sin  \varphi ^{\prime} d \varphi ^{\prime} \wedge d \theta ^{\prime} 
+\]则在坐标开集\(  \left\{  \varphi ^{\prime} \in \left( 0, \pi  \right)  \right\}  \)上, \(  \iota ^{*}_{\mathbb{S}^{2}} \omega   \)非退化. 注意到 \[
+\left\{  \varphi \in \left( 0, \pi  \right)  \right\}\cup \left\{  \varphi ^{\prime} \in \left( 0, \pi  \right)  \right\}= \mathbb{S}^{2}
+\]  因此 \(  \iota ^{*}_{\mathbb{S}^{2}} \omega   \)在 \(  \mathbb{S}^{2}  \)上非退化.  
+\end{enumerate}
+
+\end{proof}
+\end{document}

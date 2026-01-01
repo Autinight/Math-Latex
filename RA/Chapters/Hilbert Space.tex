@@ -1,0 +1,121 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Hilbert Space }
+% 代靖涵 25120222201319
+
+\section{Orthonormal Bases}
+\begin{definition}{orthonormal family}{}
+A family $\{e_k\}_{k\in\Gamma}$ in an inner product space is called an \dfntxt{orthonormal family} if
+\[
+\langle e_j, e_k\rangle = \begin{cases}
+0 & \text{if } j \neq k, \\
+1 & \text{if } j = k
+\end{cases}
+\]
+for all $j, k \in \Gamma$.
+\end{definition}
+
+\begin{proposition}{finite orthonormal families}{}
+Suppose \(\Omega\) is a finite set and \(\{e_j\}_{j\in\Omega}\) is an orthonormal family in an inner product space. Then
+\[
+\left\lVert \sum_{j\in\Omega} \alpha_j e_j \right\rVert^2 = \sum_{j\in\Omega} \lvert \alpha_j \rvert^2
+\]
+for every family \(\{\alpha_j\}_{j\in\Omega}\) in \(\mathbf{F}\).
+\end{proposition}
+
+\begin{definition}{unordered sum; \(\sum_{k\in\Gamma} f_k\)}{}
+Suppose \(\{f_k\}_{k\in\Gamma}\) is a family in a normed vector space \(V\). The \dfntxt{unordered sum} \(\sum_{k\in\Gamma} f_k\) is said to \dfntxt{converge} if there exists \(g\in V\) such that for every \(\varepsilon>0\), there exists a finite subset \(\Omega\) of \(\Gamma\) such that
+\[
+\left\lVert g-\sum_{j\in\Omega'}f_j\right\rVert<\varepsilon
+\]
+for all finite sets \(\Omega'\) with \(\Omega\subset\Omega'\subset\Gamma\). If this happens, we set \(\sum_{k\in\Gamma} f_k=g\). If there is no such \(g\in V\), then \(\sum_{k\in\Gamma} f_k\) is left undefined.
+\end{definition}
+
+\begin{theorem}{linear combinations of an orthonormal family}{}
+Suppose $\{e_k\}_{k \in \Gamma}$ is an orthonormal family in a Hilbert space $V$. Suppose $\{\alpha_k\}_{k \in \Gamma}$ is a family in $\mathbf{F}$. Then
+\begin{enumerate}
+    \item[(a)] the unordered sum $\displaystyle \sum_{k \in \Gamma} \alpha_k e_k$ converges $\iff \displaystyle \sum_{k \in \Gamma} |\alpha_k|^2 < \infty$.
+    \item[(b)] Furthermore, if $\sum_{k \in \Gamma} \alpha_k e_k$ converges, then\[\left\| \sum_{k \in \Gamma} \alpha_k e_k \right\|^2 = \sum_{k \in \Gamma} |\alpha_k|^2.\]
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}{}{}
+Suppose $\{e_k\}_{k\in\Gamma}$ is an orthonormal family in an inner product space $V$ and $f \in V$.
+Then
+\[
+\sum_{k\in\Gamma} |\langle f, e_k \rangle|^2 \leq \|f\|^2.
+\]
+\end{theorem}
+
+
+\begin{theorem}{closure of the span of an orthonormal family}{}
+Suppose $\{e_k\}_{k\in\Gamma}$ is an orthonormal family in a Hilbert space $V$. Then
+
+
+\begin{enumerate}
+
+\item[(a)] 
+\[ \overline{\operatorname{span}\{e_k\}_{k\in\Gamma}} = \left\{ \sum_{k\in\Gamma} \alpha_k e_k : \{\alpha_k\}_{k\in\Gamma} \text{ is a family in } \mathbf{F} \text{ and } \sum_{k\in\Gamma} |\alpha_k|^2 < \infty \right\}. \]
+
+\item[(b)] Furthermore,\[ f = \sum_{k\in\Gamma} \langle f, e_k\rangle e_k \]
+for every $f \in \overline{\operatorname{span}\{e_k\}_{k\in\Gamma}}$.
+\end{enumerate}
+
+\end{theorem}
+
+\section{Parseval's Identity}
+
+\begin{definition}{orthonormal basis}{}
+An orthonormal family $\{e_k\}_{k\in\Gamma}$ in a Hilbert space $V$ is called an \dfntxt{orthonormal basis} of $V$ if
+\[
+\overline{\operatorname{span}\{e_k\}_{k\in\Gamma}} = V.
+\]
+\end{definition}
+
+\begin{theorem}{Parseval's identity}{}
+Suppose $\{e_k\}_{k\in\Gamma}$ is an orthonormal basis of a Hilbert space $V$ and $f,g \in V$. Then
+\begin{enumerate}
+\item $\displaystyle f = \sum_{k\in\Gamma} \langle f,e_k\rangle e_k$;
+\item $\displaystyle \langle f,g\rangle = \sum_{k\in\Gamma} \langle f,e_k\rangle \overline{\langle g,e_k\rangle}$;
+\item $\displaystyle \|f\|^2 = \sum_{k\in\Gamma} |\langle f,e_k\rangle|^2$.
+\end{enumerate}
+\end{theorem}
+
+\begin{definition}{separable}{}
+A normed vector space is called \dfntxt{separable} if it has a countable subset whose closure equals the whole space.
+\end{definition}
+
+\begin{theorem}{existence of orthonormal bases for separable Hilbert spaces}{}
+Every separable Hilbert space has an orthonormal basis.
+\end{theorem}
+
+\begin{theorem}{orthonormal bases as maximal elements}{}
+Suppose $V$ is a Hilbert space, $\mathcal{A}$ is the collection of all orthonormal subsets of $V$, and $\Gamma$ is an orthonormal subset of $V$. Then $\Gamma$ is an orthonormal basis of $V$ if and only if $\Gamma$ is a maximal element of $\mathcal{A}$.
+\end{theorem}
+
+\begin{theorem}{existence of orthonormal bases for all Hilbert spaces}{}
+Every Hilbert space has an orthonormal basis.
+\end{theorem}
+
+\begin{theorem}{Riesz Representation Theorem}{}
+Suppose $\varphi$ is a bounded linear functional on a Hilbert space $V$ and $\{e_k\}_{k \in \Gamma}$ is an orthonormal basis of $V$. Let
+\[
+h = \sum_{k \in \Gamma} \overline{\varphi(e_k)} e_k.
+\]
+Then
+\[
+\varphi(f) = \langle f, h \rangle
+\]
+for all $f \in V$. Furthermore, $\|\varphi\| = \left(\sum_{k \in \Gamma}|\varphi(e_k)|^2\right)^{1/2}$.
+\end{theorem}
+
+\end{document}

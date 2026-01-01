@@ -133,16 +133,27 @@
         \]故 \[
         [T\left( L\cap U \right) ,T\left( L\cap U \right) ]\subseteq T\left( L\cap U \right) 
         \]由于 \(  p  \)是任取的, 且李括号是局部的算子, 故\(  [TL,TL]\subseteq TL  \). \(  TL  \)是对合的. 因此 \(  \mathcal{F}  \)的叶的切空间在 \(  M  \)上构成对合分布.
-        \item     若 \(  \mathcal{D}  \)是 \(  M  \)上一个 \(  k  \)维可积分布. 由Frobenius定理 ,  \(  D  \)是完全可积的. 即对于每个 \(  p \in M  \), 存在一个对 \(  D  \)的flat chart \(  \left( U, \varphi  \right)   \), 使得 \[
-        D_{q}= \operatorname{span}\left\{ \frac{\partial }{\partial x^{1}},\cdots ,\frac{\partial }{\partial x^{k}} \right\}_{q},\quad \forall q\in U
-        \]    根据常微分方程解的存在唯一性, 对于任意的 \(  q \in U  \), \(  U  \)中存在唯一的 \(  k  \)维积分子流形, 它是坐标形如 \[
-        \left\{ x^{k+ 1}= c^{k+ 1},\cdots ,x^{n}= c^{n} \right\}\cap  \varphi \left( U \right) 
-        \]   的集合的一个连通分支. 取遍 \(  D  \)的这样的极大连通积分子流形,  记作 \(  \mathcal{F}  \). 则 \(  \mathcal{F}  \)中的积分子流形两两不相交, 且并为 \(  M  \). 并且上述的\(  \left( U, \varphi  \right)   \)    也是 flat chart for \(  \mathcal{F}  \).  故 \(  \mathcal{F}  \)是 \(  M  \)上的一个叶状结构.
-        \item   由于 \(  F  \)是淹没, 对于每个 \(  q\in N  \), \(  F^{-1} \left( q \right)   \)都是 \(  M  \)的 \( k\coloneqq  m-n  \)维浸入子流形, 进而它们的连通分支也是. 任取 \(  p \in M  \), 存在 \(  M  \)上\(  p  \)附近 的坐标卡 \(  \left( U, \varphi  \right)   \), 和 \(   F\left( p \right)   \)附近的坐标卡 \(  \left( V,\psi  \right)   \), 使得 \(  F\left( U \right)\subseteq V   \), 且\(  F  \)有坐标表示 \[
-        \hat{F}\left( x^{1},\cdots ,x^{m} \right)\to \left( x^{k+ 1},\cdots ,x^{m}\right)  
-        \]        对于每个 \(  F^{-1} \left( q \right)   \)使得  \(  F^{-1} \left( q \right)\cap U\neq \varnothing   \), 有\(  q\in F\left( U \right)   \).   设 \(  \psi \left( q \right)=  q ^{1},\cdots , q^{n}   \). 则 \(  F^{-1} \left( q \right)   \)的坐标集为  \[
-        \left\{x^{k+ 1}=  q^1,\cdots ,x^{m}=  q^{n} \right\} \cap  \varphi \left( U \right) 
-        \]   \(  F^{-1} \left( q \right)   \)的每个连通分支 都是上述集合的一个连通分支. 将所有 非空的 \(  F^{-1} \left( q \right)   \)的连通分支的全体记作\(  \mathcal{F}  \), 则以上表明 \(  \left( U, \varphi  \right)   \)是 \(  \mathcal{F}  \)一个 flat chart. 至此, 我们说明了对于每个 \(  p\in M  \), 都存在 \(  p  \)附近的对 \(  \mathcal{F}  \)的flat chart, 故 \(  \mathcal{F}  \)是 \(  M  \)的一个叶状结构.         
+        \item   任取 \(  p \in M  \), 由Frobenius定理, 存在一个包含了 \(  p  \)的flat chart \(  \left( U, \left( x^{i} \right)  \right)   \), 使得
+        \[
+        \mathcal{D}|_{U}= \operatorname{span}\left\{ \frac{\partial }{\partial x^{1}},\cdots ,\frac{\partial }{\partial x^{k}} \right\}
+        \]对于每个 \(  p\in M  \), 我们定义 \(  L_{p}  \)为经过 \(  p  \)的\(  \mathcal{D}  \)的极大积分子流形, 那么显然 
+        \[
+       \mathcal{F}:=  \left\{ L_{p} :p\in M\right\}
+        \]构成 \(  M  \)的一个分划.       要证明 \(  \mathcal{F}  \)是一个Foliation, 只需要说明每个flat chart \(  \left( U, \varphi  \right)   \)也是 \(  \mathcal{F}  \)的flat chart.   考虑交集 \(  L_{p}\cap U  \), 视\(  L_{p}  \)为浸入子流形, 赋予使得含入映射 \(  \iota : L_{p}\hookrightarrow M  \)连续的拓扑,故 \(  L_{p}\cap U  \)是\(  L_{p}  \)的开子集.
+        将\(  L_{p}\cap U  \)分解为连通分量的无交并
+        \[
+        L_{p}\cap U= \coprod  _{\alpha \in  \Lambda }S_{\alpha }
+        \]      有 \( \mathcal{D}|_{U}  \)的局部结构和积分流形的唯一性, 每个 \(  S_{\alpha }  \)必为一个slice
+        \[
+        \left\{ x^{k+ 1}= c^{k+ 1},\cdots ,x^{n}= c^{n} \right\}
+        \]  由于 \(  L_{p}  \)满足第二可数公理, 这些互不相交的非空开集族至多可数, 故\(  L_{p}\cap U  \)为至多可数多个slices 的并. 因此 \(  \mathcal{F}  \)满足Foliation的定义.   
+        \item   由于 \(  F  \)是淹没, 任取 \(  q\in N  \), \(  F^{-1} \left( q \right)   \)是\(  M  \)的 \(  k= n-m  \)维浸入子流形. 由局部淹没定理, 任取 \(  p\in M  \), 令 \(  q= F\left( p \right)   \), 存在 \(  p  \)的坐标卡 \(  \left( U, \varphi  \right)   \)和 \(  q  \)的坐标卡 \(  \left( V,\psi  \right)   \), 使得
+        \[
+        \psi \circ F\circ  \varphi ^{-1} \left( x^{1},\cdots ,x^{n} \right)= \left(x^{k+ 1},\cdots ,x^{n}\right) 
+        \]      由此可知, 在 \(  U  \)中,  \(  F  \)的水平集 \(  F^{-1} \left( y \right)   \)由方程组
+        \[
+        x^{k+ 1}= c^{k+ 1},\cdots ,x^{n}= c^{n}
+        \]确定. 我们就定义\(  \mathcal{F}  \)为所有\(  F^{-1} \left( q \right)   \)的连通分支的并. 则每个 \(  L\in \mathcal{F}  \)就如上述而言是一些slices的并. 这表明 \(  \left( U, \varphi  \right)   \)就是 \(  \mathcal{F}  \)的flat chart. 因此 \(  \mathcal{F}  \)是一个Foliation.                
     \end{enumerate}
     
 \end{proof}
@@ -159,28 +170,27 @@ X = \frac{\partial}{\partial x} + yz\frac{\partial}{\partial z}, \quad Y = \frac
 \end{exercise}
 
 \begin{proof}
-    \begin{enumerate}
-        \item 若 \(  S  \)是\(  \mathcal{D}  \)的一个积分子流形, 则在 \(  S  \)上  
-         \[
-         [X|_{S},Y|_{S}] _{p}\in T_{p}S= \mathcal{D}_{p}= \operatorname{span}\left\{ X_{p},Y_{p} \right\},\quad \forall p\in S
-         \]另一方面, 在 \(  \mathbb{R} ^{3}  \)上计算 \[
-         [X,Y]= [ \partial _{x}+ yz \partial _{z}, \partial _{y}]= -z \partial _{z}
-         \] \(  X,Y  \)在 \(  S  \)上处处切向, 故   \[
-         [X,Y]|_{S}= [X|_{S},Y|_{S}]
-         \]\(  S  \)上每个点\(  \left( x,y,z \right)   \)处总存在 \(  a,b  \)  使得 \[
-       -z \partial _{z}= a\left(  \partial _{x}+ yz \partial _{z} \right)+ b \partial _{y} 
-         \] 此时只能有 \(  z= 0  \). 因此 \(  S\subseteq \left\{ z= 0 \right\}  \) . 
-        事实上, 如果令 \(  S= \left\{ z= 0 \right\}  \), 就有 \[
-        TS= \operatorname{span}\left\{  \partial _{x}, \partial _{y} \right\}
-        \] 而在 \(  S  \)上,  \(  X=  \partial _{x}+ y\cdot 0 \partial _{z}=  \partial _{x}  \), \(  Y=  \partial _{y}  \). \[
-        TS= \operatorname{span}\left\{ X,Y \right\}
-        \]这表明 \(  S= \left\{ z= 0 \right\}  \)就是 \(  \mathcal{D}  \)的经过原点的积分子流形.     
-        \item  \[
-      [X,Y]= [\partial _{x}+ yz \partial _{z} , \partial _{y}] = -z \partial _{z}
-        \]    在 \(  z\neq 0  \)上,  \(  [X,Y]\not \in \mathcal{D}  \). 故 \(  \mathcal{D}  \)不是对合的.     
-
-        上面的结果展示了,  \(  [X,Y]  \)在 \(  z\neq 0  \)时会产生一个 纯 \(   \partial _{z}  \)方向的向量场. 而 \(  X,Y  \)的任意线性组合都无法    产生这样一个方程的向量场.
-    \end{enumerate}
-    
+    \begin{itemize}
+        \item[a).] 若 \(  S  \)是 \(  \mathcal{D}  \)的一个积分子流形, 则在 \(  S  \)上, 我们有
+        
+    \[
+    \left[ \left. X \right|_{S}, \left. Y \right|_{S} \right]\in T_{p}S= \mathcal{D}_{p}= \operatorname{span}\left\{ X_{p},Y_{p} \right\},\forall p\in S 
+    \]
+    在 \(  \mathbb{R} ^{3}  \)上计算
+    \[
+   \begin{aligned}
+    \left[ X,Y \right]&= [ \partial _{x}+ yz \partial _{z}, \partial _{y}] \\&= [ \partial _{x}, \partial _{z}]+ \left[ yz \partial _{z}, \partial _{y} \right]\\&= 0+ \left( yz \partial _{z} \partial _{y}-  \partial _{y}\left( yz  \partial _{z} \right)  \right)\\&= yz \partial _{z} \partial _{y}- \left( \frac{\partial yz}{\partial y}  \partial _{z}+ yz  \partial _{y} \partial _{z} \right)\\&= -z \partial _{z}   
+   \end{aligned} 
+    \] 通过比较系数可知, 
+    \[
+    [X,Y]_{p}\in \operatorname{span}\left\{ X_{p},Y_{p} \right\}
+    \]当且仅当  \(  z= 0  \). 
+    事实上,  \(   \Sigma := \left\{ z= 0 \right\}  \)  正是 \(  \mathcal{D}  \)过原点的积分子流形, 我们注意到
+    \[
+    T_{p} \Sigma = \operatorname{span}\left\{  \left( \partial _{x} \right)_{p} , \left( \partial _{y}  \right)_{p} \right\}= \operatorname{span}\left\{ X_{p},Y_{p} \right\},\quad \forall p\in  \Sigma 
+    \] 
+    \item[b).] 不是对合的, 上面的结果表明了 \(  \left[ X,Y \right]   \) 会在\(  z\neq 0  \)的地方产生一个纯z方向的向量场, 但是\(  X,Y  \)的任何线性组合都无法抵消\(   \partial _{x}  \)和 \(   \partial _{y}  \), 得到这样一个纯\(   \partial _{z}  \)的方向.     
+    \end{itemize}
 \end{proof}
+
 \end{document}

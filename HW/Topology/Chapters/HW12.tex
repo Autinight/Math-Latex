@@ -1,0 +1,109 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{11}
+}{}
+
+\chapter{ HW12 }
+代靖涵 25120222201319
+\begin{exercise}{}{}
+设 $p: E \to B$ 是复叠映射, 证明纤维的势(基数) $\# p^{-1}(b)$ 与 $b \in B$ 的选择无关.
+\end{exercise}
+
+\begin{proof}
+    取 \(  b_0\in B  \), 令 \[
+    \mathcal{F}= \left\{ b\in B: \sharp p^{-1} \left( b \right)= \sharp p^{-1} \left( b_0 \right)   \right\}
+    \] 取定 \(  b_1\in \mathcal{F}  \), 存在\(  b_1  \)的被 \(  p  \)均匀覆盖的邻域 \(  V  \). 则 \[
+    p^{-1} \left( V \right)= \coprod _{i \in  \Lambda }U_{i} 
+    \] 其中 \(  U_{i}  \)是 \(  E  \)中两两无交且通过\(  p|_{U_{i}}  \) 同胚于 \(  V  \)的开集.   则对于任意的 \(  \tilde{b_1}\in p^{-1} \left( b_1 \right)   \) , 存在唯一的 \(  i_0\in  \Lambda   \), 使得 \(  \tilde{b}_{1}\in U_{i_0}  \).  因此 \(  \sharp p^{-1} \left( b_1 \right)= \sharp  \Lambda    \). 此外, 任取 \(  b_2\in V  \),   对于任意的 \(  \tilde{b}_{2}\in p^{-1} \left( b_2 \right)   \), 存在唯一的 \(  i_0\in  \Lambda   \), 使得 \(  \tilde{b}_{2}\in U_{i_0}  \), 因此 \(  \sharp p^{-1} \left( b_2 \right)= \sharp  \Lambda = \sharp p^{-1} \left( b_1 \right)    \)    . 故 \(  V\subseteq \mathcal{F}  \), \(  \mathcal{F}  \)是一个开集.  
+    
+    
+    另一方面, 若 \(  b_1^{\prime} \not \in \mathcal{F}  \), 则存在 \(  b_1^{\prime}   \)被\(  p  \)均匀覆盖的邻域 \(  V^{\prime}   \). 类似上面的过程可知 对于任意的 \(  b_2^{\prime} \in V^{\prime}   \), 都有 \(  \sharp p^{-1} \left( b_2^{\prime}  \right)= \sharp p^{-1} \left( b_1^{\prime}  \right)\neq \sharp p^{-1} \left( b_0\right)     \)     . 因此 \( V^{\prime} \subseteq   \mathcal{F} ^{c} \). 这表明 \(  \mathcal{F}  \)是一个闭集.
+    
+    又\(  B  \)是连通的,  \(  \mathcal{F}  \)是\(  B  \)的既开又闭的非空集合, 故 \(  \mathcal{F}= B  \). 因此纤维的势与 \(  b\in B  \)的选择无关.  
+\end{proof}
+
+\begin{exercise}{}{}
+设 $p_i : E_i \to B_i$ 是复叠映射, $i=1, 2$. 证明 $p_1 \times p_2 : E_1 \times E_2 \to B_1 \times B_2$ 也是复叠映射.
+\end{exercise}
+\begin{proof}
+    任取 \(  \left( b_1,b_2 \right)\in B_1\times B_2   \), 存在 \(  b_{i}  \)的开邻域 \(  V_{i}  \), \(  i= 1,2  \), 使得 \[
+    p_{i}^{-1} \left( V_{i} \right)= \coprod  _{j_{i}\in  \Lambda _{i}}U^{\left( i \right) }_{j_{i}} ,\quad i= 1,2
+    \] 其中 \(  U^{\left( i \right) }_{j_{i}}  \)是两两无交的通过 \(  p_{i}|_{U_{j_{i}}^{\left( i \right) }}  \)同胚于 \(  V_{i}  \) 的 \(  E_{i}  \)的开集, \(  i= 1,2  \). 则\(  V_1\times V_2  \)是 \(  \left( b_1,b_2 \right)   \)的开邻域, 使得   \[
+    \left( p_1\times p_2 \right)^{-1} \left( V_1\times V_2 \right)  = \coprod  _{\left( j_1,j_2 \right)\in  \Lambda _{1}\times  \Lambda _{2} } U_{j_1}^{\left( 1 \right) }\times U_{j_2}^{\left( 2 \right) }
+    \]  其中 \(  U_{j_1}^{\left( 1 \right) }\times U_{j_2}^{\left( 2 \right) }  \)通过 \(  \left( p_1\times p_2 \right)|_{U_{j_1}^{\left( 1 \right) }\times U_{j_2}^{\left( 2 \right) }}   \)同胚于 \(  V_1\times V_2  \).   这表明 \(  p_1\times p_2  \)是复叠映射. 
+\end{proof}
+\begin{exercise}{}{}
+设 $p: E \to B$ 是\dfntxt{复叠映射}, $U$ 是 $B$ 的道路连通子集, $V$ 是 $p^{-1}(U)$ 的一个道路分支. 证明 $p(V)=U$.
+\end{exercise}
+
+\begin{proof}
+    由于 \(  V\subseteq p^{-1} \left( U \right)   \), \(  p\left( V \right)\subseteq U   \).
+    
+    另一方面, 取定 \(  x_0\in V  \), 设\(  y_0= p\left( x_0 \right)   \). 任取 \(  y_1 \in U  \), 由于 \(  U  \)是道路连通的, 存在 道路 \(   \gamma :\mathbb{I}\to U  \), 使得 \(   \gamma \left( 0 \right)= y_0   \), \(   \gamma \left( 1 \right)= y_1   \). 由复叠映射的提升性质, 存在唯一的 \(   \gamma  \)的提升 \(   \tilde{\gamma}   \), 使得 \(   \tilde{\gamma} \left( 0 \right)= x_0   \), \(   \tilde{\gamma} \left( 1 \right)\in p^{-1} \left( y_1 \right)    \). 故 \(  y_1= p\left(  \tilde{\gamma} \left( 1 \right)  \right)   \)          . 由于 \(  V  \)是道路分支,  \(   \tilde{\gamma} \left( 1 \right)\in V   \), 故 \(  y_1\in p\left( V \right)   \). 因此 \(  U\subseteq p\left( V \right)   \). 
+    
+    综上,  \(  p\left( V \right)= U   \). 
+\end{proof}
+
+
+\begin{exercise}{}{}
+设 $E_1 \xrightarrow{\tilde{p}} E \xrightarrow{p} B$ 都是复叠映射, 并且 $p$ 是有限叶的, 证明 $p \circ \tilde{p}$ 也是复叠映射.
+\end{exercise}
+\begin{proof}
+    任取 \(  b\in B  \), 存在 \(  b  \)的开邻域 \(  V  \), 使得 \[
+    p^{-1} \left( V \right)= \coprod  _{i= 1}^{n}U_{i} 
+    \]
+   对于所有的 \(  i  \), 存在唯一的 \(  \tilde{b}_{i}\in U_{i} \), 使得 \(  p\left( \tilde{b}_{i} \right)= b   \)   .  设 \(  \tilde{V}_{i}^{\prime}   \)是 \(  \tilde{b}_{i}  \)的一个均匀复叠邻域, 令 \(  \tilde{V}_{i}= \tilde{V}_{i}^{\prime}\cap U_{i}   \), 则 \(  \tilde{V}_{i}  \)  也是\(  \tilde{b}_{i}  \)的一个均匀复叠邻域, 由于 \(  p  \)限制在\(  U_{i}  \)上是同胚映射,  \(  p\left( \tilde{V}_{i} \right)   \)是一个开集. 定义 \[
+   V^{\prime} =\bigcap _{i= 1}^{n}p\left( \tilde{V}_{i} \right) 
+   \]     则 \(  V^{\prime}   \)是 \(  V  \)的一个开子集, 从而也是 \(  b  \)的一个均匀复叠邻域, 使得 \[
+   p^{-1} \left( V^{\prime}  \right)= \coprod  _{i= 1}^{n}U_{i}^{\prime}  
+   \]其中 \(  U_{i}^{\prime} = U_{i}\cap p^{-1} \left( V^{\prime}  \right)   \).  由于 \(  p|_{U_{i}}  \) 是同胚映射, 使得 \(  p|_{U_{i}}\left( U_{i}^{\prime}  \right)\subseteq V^{\prime}\subseteq  p|_{U_{i}}\left( \tilde{V}_{i} \right)     \), 故 \(  U_{i}^{\prime} \subseteq \tilde{V}_{i}  \). 因此 \(  U_{i}^{\prime}   \)也是 \(  \tilde{b}_{i}  \)的一个均匀复叠邻域, 且 \(  U_1^{\prime} ,\cdots ,U_{n}^{\prime}   \)两两无交. 设 \[
+   \tilde{p}^{-1} \left( U_{i}^{\prime}  \right)= \coprod  _{j_{i}}V^{\left( i \right) }_{j_{i}} 
+   \]   则 \(  \tilde{p}^{-1} \left( U_{1}^{\prime}  \right),\cdots ,\tilde{p}^{-1} \left( U_{n}^{\prime}  \right)    \)之间两两无交, 且  \[
+   \left( p\circ \tilde{p} \right)^{-1} \left( V^{\prime}  \right)= \coprod _{i, j_{i}}V_{j_{i}}^{\left( i \right) }
+   \] \(  \tilde{p}  \)将 \(  V_{j_{i}}^{\left( i \right) }  \)同胚地映到 \(  \tilde{p}\left( V_{j_{i}}^{\left( i \right) } \right)=  U^{\prime} _{i}   \), \(  p  \)将 \(  U_{i}^{\prime}   \)同胚地映到 \(  p\left( U_{i}^{\prime}  \right)= V^{\prime}   \), 故 \(  p\circ \tilde{p}  \)将 \(  V_{j_{i}}^{\left( i \right) }  \)同胚地映到 \(  V^{\prime}   \). 这表明 \(  p\circ \tilde{p}  \)也是复叠映射.          
+\end{proof}
+
+\begin{exercise}{}{}
+设 $p: E \to B$ 是复叠映射, $b \in B, e \in p^{-1}(b)$. $a$ 和 $a'$ 都是 $B$ 中从 $b$ 到 $b_1$ 的道路, $\tilde{a}$ 和 $\tilde{a}'$ 分别是 $a$ 和 $a'$ 的以 $e$ 为起点的提升. 证明 $\tilde{a}(1)=\tilde{a}'(1) \iff \langle a \overline{a'} \rangle \in H_e$.
+\end{exercise}
+
+\begin{proof}
+     若 \(  \tilde{a}\left( 1 \right)= \tilde{a}^{\prime} \left( 1 \right)    \) ,  则 \( [ \tilde{a}][ {\tilde{a}^{\prime} }]^{-1} \in  \pi _1 \left( E,e \right)   \) , 而 \(  a= p\circ \tilde{a}  \), \(  a^{\prime} = p\circ \tilde{a}^{\prime}   \), 因此\(  [ a][ {a^{\prime} }]^{-1} = [p\circ \left( \tilde{a}  *\overline{\tilde{a}^{\prime} } \right) ]= p_{ \pi }\left(  [ \tilde{a}][ {\tilde{a}^{\prime} }]^{-1} \right)\in p_{ \pi }\left(  \pi _1 \left( E,e \right)  \right)= H_{e}    \).
+     
+     反之, 若 \(   [ a][a^{\prime} ]^{-1}\in H_{e}  \). 则存在 \(  [ \omega ]\in  \pi _1 \left( E,e \right)   \), 使得 \( [p\circ  \omega   ]= [a][a^{\prime} ]^{-1}    \)   则 \(  [p\circ  \omega ][a^{\prime} ]= [a]  \) . 又 \(  [a^{\prime} ]= [p\circ \tilde{a}^{\prime} ]  \),  我们有 \(  p\circ  \left(  \omega * \tilde{a}^{\prime}  \right)   \)与 \(  a  \)同伦. 设 \(  H  \)是同伦映射, 则存在唯一的同伦提升\(  \tilde{H}  \), 使得 \(  \tilde{H}\left( 0,- \right)=  \omega * \tilde{a}^{\prime}    \). 由道路提升的唯一性,  \(  \tilde{H}\left( 1,- \right)= \tilde{a}   \). 由于 \(  H\left( t,1 \right) =  b_1  \), 我们有 \(  \tilde{H}\left( t,1 \right)\in p ^{-1} \left( b_1 \right)    \),  但是 \(  p^{-1} \left( b_1 \right)   \)是离散的, 而 \(  \tilde{H}\left( \mathbb{I}\times \left\{ 1 \right\} \right)   \)是连通的, 只能有 \(  \tilde{H}\left( t,1 \right)\equiv \tilde{H}\left( 0,1 \right)= \tilde{a}^{\prime} \left( 1 \right)     \)           , 因此 \(  \tilde{a}\left( 1 \right)= \tilde{H}\left( 1,1 \right)= \tilde{a}^{\prime} \left( 1 \right)     \) .
+\end{proof}
+\begin{exercise}{}{}
+令 $p: E \to B$ 是复叠映射, $E$ 是道路连通的. 证明如果 $B$ 是单连通的, 那么 $p$ 一定是同胚映射.
+\end{exercise}
+\begin{proof}
+ 任取 \(  b\in B  \). 任取 \(  e_1,e_2\in p^{-1} \left( b \right)   \). 由于 \(  E  \)是道路连通的, 存在 \(   \tilde{\gamma} : \mathbb{I}\to E  \), 使得 \(   \tilde{\gamma} \left( 0 \right)= e_1   \), \(   \tilde{\gamma} \left( 1 \right)= e_2   \). 由于 \(  p\circ  \tilde{\gamma}   \left( 0 \right)= p\circ  \tilde{\gamma} \left( 1 \right)= b  \)        ,  \(  p\circ  \tilde{\gamma}   \)是 \(  B  \)中的一个loop. 但 \(  B  \)是单连通的, \(  p\circ  \tilde{\gamma}   \)同伦于常值道路. 设 \(  H  \)是保持基点的同伦映射,使得 \(  H\left( -,0 \right)= p\circ  \tilde{\gamma}    \), \(  H\left( -,1 \right)\equiv b   \). 则存在唯一的同伦提升 \(  \tilde{H}  \), 满足 \(  \tilde{H}\left( -,0 \right)=  \tilde{\gamma}    \).   \(  e_1= \tilde{H}\left( 0,0 \right)   \), \(  e_2= \tilde{H}\left( 1,0 \right)   \). 由于 \(  H\left( -,1 \right)\equiv b   \), \(  \tilde{H}\left( s,1 \right)\in  p^{-1} \left( b \right)    \), 而 \(  \tilde{H}\left( \mathbb{I}\times \left\{ 1 \right\} \right)   \)     是连通的, \(  p^{-1} \left( b \right)   \)是离散的, 因此 \(  \tilde{H}\left( 0,1 \right)= \tilde{H}\left( 1,1 \right)    \). 由于\(  H\left( 0,t \right)= b   \), 故 \(  \tilde{H}\left( 0,t \right)\in p ^{-1} \left( b \right)    \), 再一次地, \(  \tilde{H}\left( \left\{ 0 \right\}\times \mathbb{I} \right)   \)是连通的, \(  p^{-1} \left( b \right)   \)是离散的, 导出 \(  e_1= \tilde{H}\left( 0,0 \right)= \tilde{H}\left( 0,1 \right)   \). 类似地, 由 \(  H\left( 1,t \right)= b   \), 可得 \(  e_2= \tilde{H}\left( 1,0 \right)= \tilde{H}\left( 1,1 \right)    \). 因此 \(  e_1= e_2  \). 这表明 \(  p  \)是单射. 由于复叠映射是局部同胚, 特别地是开映射, 因此 \(  p  \)是连续而开的双射, \(  p  \)是同胚映射.          
+\end{proof}
+\begin{exercise}{}{}
+$T^2$ 是二维环面, 令 $p: \mathbb{R}^2 \to T^2$ 是 $T^2$ 上标准的复叠映射. 刻画关于复叠映射 $p$ 的提升对应.
+\end{exercise}
+
+\begin{proof}
+    设 \( x_0= p( 0,0 ) \) 是 \( T^{2} \) 的基点, 则纤维 \( p^{-1} ( x_0 )= \mathbb{Z} ^{2} \).
+    
+    对于任意以 \( x_0 \) 为起点的回路 \( \gamma \), 设 \( \tilde{\gamma} \) 是其以 \( ( 0,0 ) \) 为起点的唯一提升. 定义关于 \( p \) 的提升对应 \( \Phi \):
+    \[
+    \begin{aligned}
+    \Phi : \pi _1 ( T^{2},x_0 )&\to \mathbb{Z} ^{2}\\ 
+     [ \gamma ]&\mapsto  \tilde{\gamma} ( 1 )   
+    \end{aligned}
+    \]
+    由于同伦道路的提升的终点相同, \( \Phi \) 良定义. 
+    
+    对于任意 \( ( m,n )\in \mathbb{Z} ^{2} \), 取 \( ( 0,0 ) \) 到 \( ( m,n ) \) 的直线段 \( \tilde{\lambda} \), 令 \( \lambda = p\circ  \tilde{\lambda} \), 则 \( \Phi [ \lambda ]= ( m,n ) \), 故 \( \Phi \) 是满射. 
+    若 \( \tilde{\gamma} ( 1 )= ( 0,0 ) \), 则 \( \tilde{\gamma} \) 是 \( \mathbb{R}^2 \) 中的回路. 因 \( \mathbb{R}^2 \) 单连通, \( \tilde{\gamma} \) 同伦于常值道路, 故 \( [ \gamma ]= 0 \). 因此 \( \Phi \) 是单射.
+    
+    此外, \( \Phi \) 保持运算: \( \Phi([ \gamma ]\cdot [\eta ])= \Phi ( [ \gamma ] )+ \Phi ( [\eta] ) \). 
+    综上, 提升对应 \( \Phi \) 是一个群同构, 且 \( \pi _1 ( T^{2} )\simeq \mathbb{Z} ^{2} \).       
+\end{proof}
+\end{document}

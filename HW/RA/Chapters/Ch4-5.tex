@@ -1,0 +1,167 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{3}
+}{}
+
+\chapter{ Ch4-5 }
+ 代靖涵 25120222201319
+\begin{exercise}{}{}
+设 \(F \subset [0,1]\) 是闭集, 且 \(m(F)=0\), 则 \(\chi_{F} \in R([0,1])\).
+\end{exercise}
+\begin{proof}
+    任取 \(  x\in F^{c}  \), 则 \(  \chi _{F}\left( x \right)= 0   \). 存在开区间 \(  \left( a,b \right)   \)使得 \(  x\in \left( a,b \right)\subseteq F^{c}   \), 故 \(  \chi _{F}\left( \left( a,b \right)  \right)= 0= \chi _{F}\left( x \right)    \), 从而 \(  \chi _{F}  \)在 \(  x  \)处连续. 因此\(  \chi _{F}  \)在 \(  \left[ 0,1 \right]   \)上的不连续点集是\(  F  \)的一个子集, 从而是零测的. 因此 \[
+    \chi _{F}\in R\left( \left[ 0,1 \right]  \right) 
+    \]     
+\end{proof}
+\begin{exercise}{}{}
+    设 \(f(x),g(x)\) 都是 \([a,b]\) 上的 Riemann 可积函数, \(E \subset [a,b]\), 且 \(\overline{E} = [a,b]\). 若有
+\[
+f(x) = g(x),\quad x \in E,
+\]
+则
+\[
+\int_a^b f(x)\,dx = \int_a^b g(x)\,dx.
+\]
+\end{exercise}
+
+\begin{proof}
+    \(h=   f-g  \)是 \(  [a,b]  \)上的Riemann可积函数  , 且 \( h\left( x \right) = 0 , \forall x\in E \). \(  h  \)的不连续点集是一个零测集, 记作 \(  N  \). 
+    
+    任取 \(  x \in [a,b]\setminus N  \), 则对于任意的 \(   k\in \mathbb{Z} _{> 0} \), \(  \left( x-\frac{1 }{k }  ,x+  \frac{1 }{k }  \right)\cap E\neq \varnothing   \). 取 \(  x_{ k }\in \left( x- \frac{1 }{k }  ,x+ \frac{1 }{k }   \right) \cap E  \),  则 \(  h\left( x_{ k } \right)= 0   \),  \(  \lim_{k\to \infty}x_{k}= x  \).  由于 \(  h  \)在 \(  x  \)处连续, 我们有 \[
+    h\left( x \right)= \lim_{k\to \infty}h\left( x_{k} \right)= \lim_{k\to \infty}0= 0 
+    \]       因此 \(  h  \)的取值仅在一个零测集上可能非零 , 从而 \[
+   \left( R \right)\int_{a}^{b}h\,\mathrm{d} x=   \left( L \right)\int_{[a,b]}h\,\mathrm{d}  \lambda = 0 
+    \]因此 \[
+    \int_{a}^{b}f\left( x \right)\,\mathrm{d} x= \int_{a}^{b}g\left( x \right)\,\mathrm{d} x  
+    \]
+\end{proof}
+\begin{exercise}{}{}
+设 $f(x)$ 是 $[a,b]$ 上的有界函数, 其不连续点集记为 $D$. 若 $D$ 只有可列个极限点, 试证明 $f(x)$ 是 $[a,b]$ 上的 Riemann 可积函数.
+\end{exercise}
+
+\begin{proof}
+   令 \(  A= D\setminus D^{\prime}   \), 则 任取 \(  x \in A  \), 存在区间 \(  I_{x}  \), 使得 \(  x \in I_{x}  \), \(  I_{x}\cap D= \left\{ x \right\}  \). 取 \(  p_{x},q_{x}\in \mathbb{Q}   \), 使得 \(x\in   \left( p_{x},q_{x} \right)\subseteq  I_{x}   \).            则对于\(  x,y\in A  \) ,\(  x\neq y  \), 有\(  \left( p_{x},q_{x} \right)\neq \left( p_{y},q_{y} \right)    \), 否则 \(  y\in \left( p_{x},q_{x} \right)\cap D\subseteq I_{x}\cap D  \), 矛盾. 因此存在单射 \[
+   A\to  \mathcal{B}= \left\{ \left( p,q \right)\subseteq \mathbb{R} : p,q\in \mathbb{Q} ,p< q  \right\}
+   \]    其中 \(  \mathcal{B}  \)是一个可数集, 因此 \(  A  \)是至多可数的.  \[
+   D= A\cup D^{\prime} 
+   \]是可数的, \(  m\left( D \right)= 0   \). 因此 \(  f  \)是\(  \left[ a,b \right]   \)上Riemann可积的.     
+\end{proof}
+
+\begin{exercise}{}{}
+设 $f(x)$ 是 $\mathbb{R}$ 上的有界函数. 若对于每一点 $x\in\mathbb{R}$, 存在极限
+\[\lim_{h\to 0}f(x+h),\]
+试证明 $f(x)$ 在任一区间 $[a,b]$ 上是 Riemann 可积的.
+\end{exercise}
+\begin{proof}
+    令  \[
+    g\left( x \right)= \lim_{h\to 0}f\left( x+ h \right)  
+    \] 任取\(   \varepsilon > 0  \), 存在 \(   \delta > 0  \), 使得对于任意的 \(  y\in \left( x-2 \delta ,x+  2\delta  \right)  \setminus \left\{ x \right\} \), 都有 \[
+    \left| f\left( y \right)-g\left( x \right)   \right|<  \frac{ \varepsilon  }{2 }  
+    \] 任取 \( x^{\prime}  \in \left( x- \delta ,x+  \delta  \right) \setminus \left\{ x \right\}  \), 则存在 \(   \delta _2 <  \delta   \), 使得对于任意的 \( y^{\prime} \in \left( x^{\prime} - \delta _2 , x^{\prime} +  \delta _2  \right)    \setminus \left\{ x^{\prime}  \right\}\), 都有 \[
+    \left| f\left( y^{\prime}  \right)-g\left( x^{\prime}  \right)   \right|< \frac{ \varepsilon  }{2 }  
+    \]  选取 \(  y^{\prime} \in \left( x^{\prime} - \delta _2 ,x^{\prime} +  \delta _2  \right)\setminus \left\{ x^{\prime}  \right\}    \)且 \(  y^{\prime} \neq x  \) , 则 \(  y^{\prime} \in \left( x-2 \delta ,x+ 2 \delta  \right)\setminus \left\{ x \right\}   \)   于是 \[
+    \left| g\left( x^{\prime}  \right)-g\left( x \right)   \right|\le \left| g\left( x^{\prime}  \right)-f\left( y^{\prime}  \right)   \right|+ \left| g\left( x \right)-f\left( y^{\prime}  \right)   \right|   <  \varepsilon 
+    \]这表明 \(  g  \)是连续函数. 
+
+
+    令 \[
+    D_{k}= \left\{ x\in \left[ a,b \right] : \left| f\left( x \right)-g\left( x \right)   \right|\ge  \frac{1 }{k } \right\}
+    \]
+
+    若 \(  D_{k}  \)存在极限点 \( x_0  \) . 由于极限 \(  \lim_{h\to 0}f\left( x_0+ h \right)   \)  存在且等于 \(  g\left( x_0 \right)   \) , 存在 \(   \delta_1 > 0  \), 使得对于任意的 \(  y\in \left( x_0- \delta _1 ,x_0+  \delta _1  \right)   \), 都有 \[
+    \left| f\left( y \right)-g\left( x_0 \right)   \right|< \frac{1 }{3k }  
+    \]由于\(  g  \)连续, 存在 \(   \delta _2 > 0  \)使得 对于任意的 \(  y\in \left( x_0- \delta _2 ,x_0+  \delta_2  \right)   \), 都有 \[
+    \left| g\left( y \right)-g\left( x_0 \right)   \right|< \frac{1 }{3k }  
+    \]   . 取 \(   \delta = \min \left\{  \delta _1 , \delta _2  \right\}  \).  由于 \(  x_0  \)是 \(  D_{k}  \)的极限点, 存在 \(  x^{\prime} \in\left(  \left( x_0- \delta ,x_0+  \delta  \right)\setminus \left\{ x_0 \right\} \right) \cap D_{k}   \). 则 \[
+    \left| f\left( x^{\prime}  \right)-g\left( x^{\prime}  \right)   \right|\ge \frac{1 }{k }  
+    \] 但是\begin{equation}
+        \begin{aligned}
+            \left| f\left( x^{\prime}  \right)-g\left( x^{\prime}  \right)   \right|\le \left| f\left( x^{\prime}  \right)-g\left( x_0 \right)   \right|+   \left| g\left( x^{\prime}  \right)-g\left( x_0 \right)   \right|< \frac{1 }{3k }+   \frac{1 }{3k }< \frac{1 }{k }  
+        \end{aligned}
+    \end{equation}  矛盾. 因此 \(  D_{k}  \)中不存在极限点. 根据Bolzano-Weierstrass定理, 任意有界无限子集都存在极限点, 因此 \(  D_{k}  \)只能是有限集. 因此集合 \[
+    D:= \bigcup _{k= 1}^{\infty}D_{k}= \left\{ x\in \left[ a,b \right]: f\left( x \right)\neq  g\left( x \right)    \right\}
+    \]是至多可数的,从而是一个零测集. 这表明 \(  f  \)在 \(  \left[ a,b \right]   \)上几乎处处连续, 因此 \(  f  \)在 \(  \left[ a,b \right]   \)上Riemann可积.    
+\end{proof}
+\begin{exercise}{}{}
+设 $E\subset[0,1]$, 试证明 $\chi_{E}(x)$ 在 $[0,1]$ 上 Riemann 可积的充分必要条件是
+\[\operatorname{m}(\overline{E}\setminus\mathring{E})=0.\]
+\end{exercise}
+\begin{proof}
+    任取 \(  x\in E^{\circ }  \), 则存在 区间 \(  I_{x}  \)使得 \(  x\in I_{x}\subseteq E  \), 则 \(  \chi _{E}\left( \left( I_{x} \right)  \right)=   \left\{ 1 \right\}  \), \(  \chi _{E}  \)在 \(  x  \)处连续.     
+
+    任取 \(  x\in [0,1]\setminus \bar{E}  \), 由于\(  \bar{E}  \)是闭集,  存在开区间 \(  I_{x}  \)使得 \(  x\in \left( I_{x}\cap [0,1] \right)\subseteq   [0,1]\setminus \bar{E}\subseteq [0,1]\setminus E \).  从而 \(  \chi _{E}\left( I_{x}\cap [0,1] \right)= \left\{ 0 \right\}  \), 从而 \(  \chi _{E}  \)在 \(  x  \)处连续.    
+
+    设 \(  D  \)是\(  \chi _{E} \)在 \(  \left[ 0,1 \right]   \)上的 不连续点集, 则 \[
+    D\subseteq [0,1]\setminus E^{\circ},\quad D\subseteq \bar{E}
+    \]  进而 \[
+    D\subseteq \left( [0,1]\setminus E^{\circ} \right)\cap \bar{E}= \bar{E}\setminus E^{\circ} 
+    \]
+
+    另一方面 , 任取 \(  x\in \bar{E}\setminus E^{\circ}  \), 则 \(  x\in  \partial E  \). 任取\(  x  \)的开邻域 \(  U  \), 都有 \(  U\cap E^{c}\neq \varnothing  \), \(  U\cap E\neq \varnothing  \), 从而存在 \(  y_1\in U\cap E^{c}, y_2\in U\cap E  \), 使得 \(  \chi _{E}\left( y_1 \right)= 0, \chi _{E}\left( y_2 \right)= 1    \), 故 \(  \chi _{E}  \)在 \(  x  \)处不连续. 这表明 \[
+    \bar{E}\setminus E^{\circ}\subseteq D
+    \]     
+    
+    综上可知 \[
+    D= \bar{E}\setminus E^{\circ}
+    \]
+
+    因此, \(  \chi _{E}  \)在 \(  \left[ 0,1 \right]   \)上Riemann可积, 当且仅当 \(  m\left( D \right)= 0   \), 当且仅当 \(  m\left( \bar{E}\setminus E^{\circ} \right)= 0   \).    
+    
+    
+
+\end{proof}
+\begin{exercise}{}{}
+设
+\[
+f(x)=
+\begin{cases}
+1+e^{x^{2}}, & x\in[0,1]\cap C,\\
+x^{2}+\sqrt{x}, & x\in[0,1]\setminus C,
+\end{cases}
+\]
+其中C为Cantor三分集. 试证\(f\in L([0,1])\), 并求
+\[
+\int_{[0,1]} f(x)\,dx.
+\]
+\end{exercise}
+
+\begin{proof}
+    令 $g(x) = x^2 + \sqrt{x}$, 
+由于 $m(C)=0$, 故
+$$f(x) = g(x), \quad \text{a.e. } x \in [0,1].$$ \(  g  \)是 \(  \left[ 0,1 \right]   \)上的连续函数, \(  g\in L\left( \left[ 0,1 \right]  \right)   \), 故 \(  f\in L\left( \left[ 0,1 \right]  \right)   \), 且\[
+    \left( L \right)\int_{\left[ 0,1 \right] }f\,\mathrm{d} x= \left( L \right)\int_{[0,1]}\left( x^{2}+ \sqrt{x} \right)\,\mathrm{d} x   = \left( R \right)\int_{0}^{1}\left( x^{2}+ \sqrt{x} \right)\,\mathrm{d} x= 1  
+    \]   
+
+
+\end{proof}
+
+\begin{exercise}{}{}
+求
+\[
+\lim_{k\to\infty}\int_{0}^{1}\left(\frac{kx^{2}}{1+kx^{2}}\right)^{3}e^{x}\,dx.
+\]
+\end{exercise}
+
+\begin{proof}
+    注意到函数 \[
+    f_{k}\left( x \right):= \left( \frac{kx^{2} }{1+ kx^{2} }  \right)^{3}e^{x}  
+    \]在 \(  \left[ 0,1 \right]   \)上每一点处都是关于 \(  k  \)单调递增的. 又 \[
+    \lim_{k\to \infty}f_{k}\left( x \right)= \begin{cases} e^{x},& x\in \left( 0,1 \right]\\ 
+     0,& x= 0  \end{cases}  = e^{x}, \text{ a.e.} x\in \left[ 0,1 \right] 
+    \]由单调收敛定理 \[
+   \lim_{k\to \infty} \left( L \right)\int_{[0,1]}f_{k}\left( x \right)\,\mathrm{d} x  = \left( L \right)\int_{\left[ 0,1 \right] }\lim_{k\to \infty}f_{k}\left( x \right)\,\mathrm{d} x= \left( L \right)\int_{\left[ 0,1 \right] }e^{x}\,\mathrm{d} x   
+    \]  利用 \[
+ \left( R \right)\int_{0}^{1}e^{x}\,\mathrm{d} x= \left( L \right)\int_{\left[ 0,1 \right] }e^{x}\,\mathrm{d} x  
+    \]以及 \[
+    \left( R \right)\int_{0}^{1}f_{k}\left( x \right)\,\mathrm{d} x= \left( L \right)\int_{\left[ 0,1 \right] }f_{k}\left( x \right)\,\mathrm{d} x    
+    \]我们得到 \[
+    \lim_{k\to \infty}\int_{0}^{1}\left( \frac{kx^{2} }{1+ kx^{2} }  \right)^{3}e^{x}\,\mathrm{d} x= \left( R \right)\int_{0}^{1}e^{x}\,\mathrm{d} x= e-1  
+    \]
+\end{proof}
+\end{document}

@@ -1,0 +1,33 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Integration on Manifolds }
+% 代靖涵 25120222201319
+
+\section{Integration of Differential Forms}
+
+\begin{proposition}{}{}
+Suppose $D$ and $E$ are open domains of integration in $\mathbb{R}^n$ or $\mathbb{H}^n$, and $G \colon \bar{D} \to \bar{E}$ is a smooth map that restricts to an orientation-preserving or orientation-reversing diffeomorphism from $D$ to $E$. If $\omega$ is an $n$-form on $\bar{E}$, then
+\[
+\int_D G^*\omega = \begin{cases} \phantom{-}\displaystyle\int_E \omega & \text{if } G \text{ is orientation-preserving}, \\ -\displaystyle\int_E \omega & \text{if } G \text{ is orientation-reversing}. \end{cases}
+\]
+\end{proposition}
+
+\section{Stoke's Theorem}
+
+\begin{theorem}{Stokes's Theorem}{}
+Let $M$ be an oriented smooth $n$-manifold with boundary, and let $\omega$ be a compactly supported smooth $(n-1)$-form on $M$. Then
+\begin{equation}
+\int_M d\omega = \int_{\partial M} \omega. 
+\end{equation}
+\end{theorem}
+
+\end{document}

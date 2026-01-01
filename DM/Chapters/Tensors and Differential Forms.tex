@@ -1,0 +1,326 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Tensors and Differential Forms}
+% 代靖涵 25120222201319
+
+\section{Multilinear Algebra}
+
+\begin{definition}{}{}
+    Write \(L(V_{1},\ldots,V_{k};W)\) for the set of all multilinear maps from \(V_{1}\times\cdots\times V_{k}\) to \(W\). It is a vector space under the usual operations of pointwise addition and scalar multiplication:
+\[
+(F+F')(v_{1},\ldots,v_{k})=F(v_{1},\ldots,v_{k})+F'(v_{1},\ldots,v_{k}),
+\]
+\[
+(aF)(v_{1},\ldots,v_{k})=a\bigl(F(v_{1},\ldots,v_{k})\bigr).
+\]
+\end{definition}
+
+\begin{definition}{}{}
+   Let \(V_{1},\ldots,V_{k},W_{1},\ldots,W_{l}\) be real vector spaces, and suppose
+\(F\in L(V_{1},\ldots,V_{k};\mathbb{R})\) and \(G\in L(W_{1},\ldots,W_{l};\mathbb{R})\). Define a function
+
+\[
+F\otimes G:V_{1}\times\cdots\times V_{k}\times W_{1}\times\cdots\times W_{l}\to\mathbb{R}
+\]
+
+by
+
+\begin{equation}
+F\otimes G(v_{1},\ldots,v_{k},w_{1},\ldots,w_{l})
+=F(v_{1},\ldots,v_{k})G(w_{1},\ldots,w_{l}).
+\end{equation}
+
+\(F\otimes G\) is an element of
+\(L(V_{1},\ldots,V_{k},W_{1},\ldots,W_{l};\mathbb{R})\), called the \dfntxt{tensor product of \(F\) and \(G\)}.
+\end{definition}
+
+\begin{proposition}{A Basis for the Space of Multilinear Functions}{}
+Let $V_1,\dots,V_k$ be real vector spaces of dimensions $n_1,\dots,n_k$, respectively. For each $j\in\{1,\dots,k\}$, let $\left(E^{(j)}_1,\dots,E^{(j)}_{n_j}\right)$ be a basis for $V_j$, and let $\left(\varepsilon^{\,1}_{(j)},\dots,\varepsilon^{\,n_j}_{(j)}\right)$ be the corresponding dual basis for $V_j^*$. Then the set
+\[
+\mathcal{B}
+=\left\{
+\varepsilon^{\,i_1}_{(1)}\otimes\cdots\otimes\varepsilon^{\,i_k}_{(k)}
+: 1\le i_1\le n_1,\dots,1\le i_k\le n_k
+\right\}
+\]
+is a basis for $\operatorname{L}(V_1,\dots,V_k;\mathbb{R})$, which therefore has dimension equal to $n_1\cdots n_k$.
+\end{proposition}
+
+\begin{proof}
+    \begin{itemize}
+        \item \dfntxt{\(  \mathcal{B}  \) spans \(  \mathrm{L}\left(  V_1,\cdots,V_k ;\mathbb{R}  \right)   \)}: Suppose \(  F\in \mathrm{L}\left(  V_1,\cdots,V_k ;\mathbb{R}  \right)   \) is arbitrary. Define \(  F_{i_1\cdots i_{k}}= F\left( E_{i_1}^{\left( 1 \right) },\cdots ,E_{i_{k}}^{\left( k \right) } \right)   \).  Then for any \(  k  \)-tuples of vectors \(  \left(  v_1,\cdots,v_k  \right)\in V_1\times \cdots \times V_{k}   \), we write \(  v_{1}= v_{1}^{i_1}E_{i_1}^{\left( 1 \right) },\cdots , v_{k}= v_{k}^{i_{k}}E_{i_{k}}^{\left( k \right) }  \), then \[
+   \begin{aligned}
+    F\left( v_1,\cdots ,v_{k} \right)&= v_1^{i_1}\cdots v_{k}^{i_{k}}F\left( E_{i_1}^{\left( 1 \right) },\cdots ,E_{i_{k}}^{\left( k \right) } \right)\\ 
+     &= v_1^{i_1}\cdots v_{k}^{i_{k}}F_{i_1\cdots i_{k}}  \\ 
+      &= F_{i_1\cdots i_{k}} \varepsilon _{\left( 1 \right) }^{i_1}\otimes \cdots \otimes  \varepsilon _{\left( k \right) }^{i_{k}}\left( v_1,\cdots ,v_{k} \right) 
+   \end{aligned} 
+    \]Thus \[
+    F= F_{i_1\cdots i_{k}} \varepsilon ^{i_1}_{\left( 1 \right) }\otimes \cdots \otimes  \varepsilon ^{i_{k}}_{\left( k \right) }
+    \]  
+    \item \dfntxt{\(  \mathcal{B}  \) are linearly independent}:   If the linear combinition of \(  \mathcal{B}  \), say \(  F_{i_1\cdots i_{k}} \varepsilon ^{i_1}_{\left( 1 \right) }\otimes \cdots \otimes  \varepsilon ^{i_{k}}_{\left( k \right) }  \) is equal to zero, by applying it on \(  \left( E_{j_1}^{\left( 1 \right) },\cdots , E_{j_{k}}^{\left( k \right) }  \right) \)    , we get \(  F_{j_1}\cdots F_{j_{k}}= 0  \). 
+    \end{itemize}
+    
+\end{proof}
+
+\subsection*{Covariant and Contravariant Tensors on a Vector Space}
+
+\begin{definition}{}{}
+    Let \(V\) be a finite-dimensional real vector space. If \(k\) is a positive integer, a \dfntxt{covariant \(k\)-tensor on \(V\)} is an element of the \(k\)-fold tensor product \(V^{*} \otimes \cdots \otimes V^{*}\), which we typically think of as a real-valued multilinear function of \(k\) elements of \(V\):
+\[
+\alpha : \underbrace{V \times \cdots \times V}_{k\ \text{copies}} \to \mathbb{R}.
+\]
+\end{definition}
+
+
+\section{Symmetric and Alternating Tensors}
+
+\subsection*{Symmetric Tensors}
+
+\begin{definition}{Symmetric Tensors}{}
+    Let \(V\) be a finite-dimensional vector space. A covariant \(k\)-tensor \(\alpha\) on \(V\) is said to be \dfntxt{symmetric} if its value is unchanged by interchanging any pair of arguments:
+\[
+\alpha(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_k)
+=
+\alpha(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_k)
+\]
+whenever \(1 \le i < j \le k\).
+\end{definition}
+
+\begin{definition}{\(\Sigma^{k}(V^{*})\)}{}
+    The set of symmetric covariant \(k\)-tensors is a linear subspace of the space \(T^{k}(V^{*})\) of all covariant \(k\)-tensors on \(V\); we denote this subspace by \(\Sigma^{k}(V^{*})\).
+\end{definition}
+
+\begin{definition}{\(  {}^ \sigma  \alpha  \) }{}
+  Given a \(k\)-tensor \(\alpha\) and a permutation \(\sigma \in S_k\), we define a new \(k\)-tensor \({}^ \sigma  \alpha\) by
+\[
+{}^ \sigma  \alpha (v_1,\ldots,v_k)=\alpha\bigl(v_{\sigma(1)},\ldots,v_{\sigma(k)}\bigr).
+\]
+\end{definition}
+\begin{definition}{Symmetrization}{}
+ We define a projection
+\[
+\operatorname{Sym}\colon T^{k}(V^{*}) \to \Sigma^{k}(V^{*})
+\]
+called \dfntxt{symmetrization} by
+\[
+\operatorname{Sym}\alpha = \frac{1}{k!} \sum_{\sigma \in S_{k}} {}^ \sigma  \alpha .
+\]
+
+More explicitly, this means that
+\[
+(\operatorname{Sym}\alpha)(v_{1},\dots,v_{k})
+= \frac{1}{k!} \sum_{\sigma \in S_{k}} \alpha\bigl(v_{\sigma(1)},\dots,v_{\sigma(k)}\bigr) .
+\]
+\end{definition}
+
+\begin{definition}{symmetric product}{}
+     If \(\alpha \in \Sigma^{k}(V^{*})\) and \(\beta \in \Sigma^{l}(V^{*})\), we define their \dfntxt{symmetric product} to be the \((k+l)\)-tensor \(\alpha\beta\) (denoted by juxtaposition with no intervening product symbol) given by
+\[
+\alpha\beta = \operatorname{Sym}(\alpha \otimes \beta).
+\]
+
+More explicitly, the action of \(\alpha\beta\) on vectors \(v_{1},\ldots,v_{k+l}\) is given by
+\[
+\alpha\beta(v_{1},\ldots,v_{k+l})
+= \frac{1}{(k+l)!} \sum_{\sigma \in S_{k+l}}
+\alpha\bigl(v_{\sigma(1)},\ldots,v_{\sigma(k)}\bigr)\,
+\beta\bigl(v_{\sigma(k+1)},\ldots,v_{\sigma(k+l)}\bigr).
+\]
+\end{definition}
+
+\subsection*{Alternating Tensors}
+
+\begin{definition}{{\(k\)-covectors}}{}
+    We  assume that \(V\) is a finite-dimensional real vector space. A covariant \(k\)-tensor \(\alpha\) on \(V\) is said to be \dfntxt{alternating} (or \dfntxt{antisymmetric} or \dfntxt{skew-symmetric}) if it changes sign whenever two of its arguments are interchanged. This means that for all vectors \(v_{1},\ldots,v_{k}\in V\) and every pair of distinct indices \(i,j\) it satisfies
+\[
+\alpha(v_{1},\ldots,v_{i},\ldots,v_{j},\ldots,v_{k})
+=-\alpha(v_{1},\ldots,v_{j},\ldots,v_{i},\ldots,v_{k}).
+\]
+
+Alternating covariant \(k\)-tensors are also variously called \dfntxt{exterior forms}, \dfntxt{multi-vectors}, or \dfntxt{\(k\)-covectors}. The subspace of all alternating covariant \(k\)-tensors on \(V\) is denoted by \(\Lambda^{k}(V^{*})\subseteq T^{k}(V^{*})\).
+\end{definition}
+
+\begin{definition}{}{}
+     We define a  projection \(\operatorname{Alt}: T^k(V^*) \to \Lambda^k(V^*)\), called \dfntxt{alternation}, as follows:
+
+\[
+\operatorname{Alt}\alpha = \frac{1}{k!} \sum_{\sigma \in S_k} (\operatorname{sgn}\sigma)(\sigma\alpha),
+\]
+
+where \(S_k\) is the symmetric group on \(k\) elements. More explicitly, this means
+
+\[
+(\operatorname{Alt}\alpha)(v_1,\ldots,v_k) = \frac{1}{k!} \sum_{\sigma \in S_k} (\operatorname{sgn}\sigma)\alpha\bigl(v_{\sigma(1)},\ldots,v_{\sigma(k)}\bigr).
+\]
+\end{definition}
+\section{The Algebra of Alternating Tensors}
+\begin{definition}{}{}
+    We  assume on that \(V\) is a finite-dimensional real vector space. Given \(\omega \in \Lambda^{k}(V^{*})\) and \(\eta \in \Lambda^{l}(V^{*})\), we define their \dfntxt{wedge product} or \dfntxt{exterior product} to be the following \((k+l)\)-covector:
+
+\begin{equation}
+\omega \wedge \eta = \frac{(k+l)!}{k!l!} \operatorname{Alt}(\omega \otimes \eta).
+\end{equation}
+\end{definition}
+
+\begin{remark}
+    系数的产生, 可以通过对Alt的另一种看法来理解: 
+    \begin{itemize}
+        \item 先对所有 \((k+\ell)!\) 个排列求和.
+        \item 但因为 \(\alpha,\beta\) 已经交错, 同一个 \((k,\ell)\)-shuffle 等价类里的 \(k!\,\ell!\) 个排列产出的值完全一样.
+        \item 因此, Alt 本质上是
+  \[
+  \frac{k!\,\ell!}{(k+\ell)!}\times
+  \bigl(\text{对每个等价类选一个代表, 再对所有等价类求和}\bigr).
+  \]
+
+  \item 于是 wedge product 就等于
+  \[
+  \alpha\wedge\beta
+  = \frac{(k+\ell)!}{k!\,\ell!}\,\mathrm{Alt}(\alpha\otimes\beta)
+  = \sum_{\text{等价类代表}}\mathrm{sgn}(\text{代表})\cdot(\text{那一项}).
+  \]
+    \end{itemize}
+    
+\end{remark}
+\section{Tensors and Tensor Fields on Manifolds}
+
+\section{Differential Forms on Manifolds}
+\subsection{diffenrential k-form}
+\begin{definition}{diffenrential k-form}{}
+    Let \(  M  \) be a \(  n  \)-dimensional smooth manifold(with or without boundary).
+    
+    \begin{itemize}
+        \item The subset of \(  T^{k}T^{*}M  \) consisting of alternaint tensors is denoted by \(   \Lambda ^{k}T^{*}M  \):\[
+         \Lambda ^{k}T^{*}M= \coprod  _{p\in M} \Lambda ^{k}\left( T_{p}^{*}M \right) 
+        \]  
+        \item A section of \(   \Lambda ^{k}T^{*}M  \) is called a \dfntxt{diffenrential k-form}, or just a \dfntxt{k-form}. The integer \(  k   \) is called the \dfntxt{degree} of the form; this is a (continuous) tensor field whose value at each point is an alternating tensor.
+        \item We denote the vector space of smooth k- forms by \[
+         \Omega ^{k}\left( M \right)=  \Gamma \left(  \Lambda ^{k}T^{*}M \right)  
+        \] 
+        \item If we define \[
+         \Omega ^{*}\left( M \right)= \bigoplus _{k= 0}^{n} \Omega ^{k}\left( M \right)  
+        \] then the wedge product turns \(   \Omega ^{*}\left( M \right)   \) into an associative, anditcommutative graded algebra. 
+        \item In any smooth chart, a k-form \(   \omega   \) can be written locally as \[
+         \omega = \sum _{I}^{\prime}  \omega _{I}d x^{i_1}\wedge \cdots \wedge dx^{i_{k}}= \sum _{I}^{\prime}  \omega _{I}d X^{I}
+        \] where the coefficients \(   \omega _{I}  \) are continuous functions defined on the coordinate domain, and we use \(  d x^{I}   \) as an abbreviation for \(  dx^{i_1}\wedge \cdots \wedge dx^{i_{k}}  \)    
+    \end{itemize}
+    
+\end{definition}
+
+\begin{definition}{pullback of diffenrential forms}{}
+    If \(  F:M\to N  \) is a smooth map and \(   \omega   \) is a differential form on \(  N  \), then pullback \(  F^{*} \omega   \)     is a diffenrential form on \(  M  \), defined as for any covariant tensor field: \[
+    \left( F^{*} \omega  \right)_{p}\left(  v_1,\cdots,v_k  \right)=  \omega _{F\left( p \right) }\left( d F_{p}\left( v_1 \right),\cdots , d F_{p}\left( v_{k} \right)   \right)   
+    \] 
+\end{definition}
+
+\subsection{Exterior Derivatives}
+
+\begin{definition}{}{12-10}
+    Let \(  U\subseteq \mathbb{R} ^{n}  \) or \(  \mathbb{H}^{n}  \), \(  f  \) is a 0-form on \(  U  \), \(   \omega   \) is a \(  k  \)-form on \(  U  \).       We define
+    \begin{itemize}
+        \item \[
+        df= \sum _{i= 1}^{n}\frac{\partial f}{\partial x^{i}} dx^{i}
+        \]
+        \item \[
+        d\left( \sum _{J}^{\prime}  \omega _{J}d x^{J} \right)= \sum _{J}^{\prime} d  \omega _{J} \wedge dx^{J} 
+        \]In smoewhat more detail, this is \[
+        d\left( \sum _{J}^{\prime}  \omega _{J}d x^{j_1}\wedge \cdots \wedge dx^{j_{k}} \right)= \sum _{J}^{\prime} \sum _{i}\frac{\partial  \omega _{J}}{\partial x^{i}}d x^{i}\wedge dx^{j_1}\wedge \cdots \wedge dx^{j_{k}} 
+        \]
+    \end{itemize}
+     
+\end{definition}
+
+\begin{proposition}{Properties of the Exterior Derivative on \(  \mathbb{R}^n  \) }{}
+\begin{enumerate}
+\item $d$ is linear over $\mathbb{R}$.
+\item If $\omega$ is a smooth $k$-form and $\eta$ is a smooth $l$-form on an open subset $U \subseteq \mathbb{R}^n$ or $\mathbb{H}^n$, then
+\[
+d(\omega \wedge \eta) = d\omega \wedge \eta + (-1)^k \omega \wedge d\eta.
+\]
+\item $d \circ d \equiv 0$.
+\item $d$ commutes with pullbacks: if $U$ is an open subset of $\mathbb{R}^n$ or $\mathbb{H}^n$, $V$ is an open subset of $\mathbb{R}^m$ or $\mathbb{H}^m$, $F \colon U \to V$ is a smooth map, and $\omega \in \Omega^k(V)$, then
+\begin{equation}
+F^*(d\omega) = d\left(F^*\omega\right). 
+\end{equation}
+\end{enumerate}
+\end{proposition}
+
+\begin{theorem}{Existence and Uniqueness of Exterior Differentiation}{}
+Suppose $M$ is a smooth manifold with or without boundary. There are unique operators $d : \Omega^k(M) \to \Omega^{k+1}(M)$ for all $k$, called \dfntxt{exterior differentiation}, satisfying the following four properties:
+\begin{enumerate}
+\item[(i)] $d$ is linear over $\mathbb{R}$.
+\item[(ii)] If $\omega \in \Omega^k(M)$ and $\eta \in \Omega^l(M)$, then
+\[
+d(\omega \wedge \eta) = d\omega \wedge \eta + (-1)^k \omega \wedge d\eta.
+\]
+\item[(iii)] $d \circ d \equiv 0$.
+\item[(iv)] For $f \in \Omega^0(M) = C^\infty(M)$, $df$ is the differential of $f$, given by $df(X) = Xf$.
+\end{enumerate}
+In any smooth coordinate chart, $d$ is given by Theorem \ref{dfn:12-10}.
+\end{theorem}
+
+
+\begin{definition}{}{}
+    \begin{itemize}
+        \item If $A = \bigoplus_k A^k$ is a graded algebra, a linear map $T : A \to A$ is said to be a \dfntxt{map of degree m} if $T(A^k) \subseteq A^{k+m}$ for each $k$. 
+        \item   It is said to be an \dfntxt{antiderivation} if it satisfies $T(xy) = (Tx)y + (-1)^k x(Ty)$ whenever $x \in A^k$ and $y \in A^l$. 
+    \end{itemize}
+  
+\end{definition}
+
+\begin{remark}
+   Differential on functions extends uniquely to an antiderivation of \(   \Omega ^{*}\left( M \right)   \) of degree \(  + 1  \) whose square is zero.  
+\end{remark}
+
+\subsection{An Invariant Formula for the Exterior Derivative}
+
+\begin{proposition}{Exterior Derivative of a 1-Form}{}
+For any smooth 1-form $\omega$ and smooth vector fields $X$ and $Y$,
+\begin{equation}
+d\omega(X, Y) = X(\omega(Y)) - Y(\omega(X)) - \omega([X, Y]).
+\end{equation}
+\end{proposition}
+
+\begin{proposition}{Invariant Formula for the Exterior Derivative}{}
+Let $M$ be a smooth manifold with or without boundary, and $\omega \in \Omega^k(M)$. For any smooth vector fields $X_1, \dots, X_{k+1}$ on $M$,
+\begin{equation}
+\begin{aligned}
+&d\omega(X_1, \dots, X_{k+1})  \\
+= & \sum_{1 \le i \le k+1} (-1)^{i-1} X_i \left(\omega(X_1, \dots, \hat{X}_i, \dots, X_{k+1})\right) \\
+& + \sum_{1 \le i < j \le k+1} (-1)^{i+j} \omega \left([X_i, X_j], X_1, \dots, \hat{X}_i, \dots, \hat{X}_j, \dots, X_{k+1}\right),
+\end{aligned}
+\end{equation}
+where the hats indicate omitted arguments.
+\end{proposition}
+
+
+\subsection{Lie Derivatives of Differential Forms}
+\begin{proposition}{}{}
+Suppose $M$ is a smooth manifold, $V \in \mathfrak{X}(M)$, and $\omega, \eta \in \Omega^*(M)$. Then
+\[
+\mathscr{L}_V(\omega \wedge \eta) = (\mathscr{L}_V \omega) \wedge \eta + \omega \wedge (\mathscr{L}_V \eta).
+\]
+\end{proposition}
+\begin{theorem}{Cartan's Magic Formula}{}
+On a smooth manifold $M$, for any smooth vector field $V$ and any smooth differential form $\omega$,
+\begin{equation}
+\mathscr{L}_V \omega = V  \lrcorner (d\omega) + d(V  \lrcorner \omega).
+\end{equation}
+\end{theorem}
+\begin{corollary}{The Lie Derivative Commutes with $d$}{}
+If $V$ is a smooth vector field and $\omega$ is a smooth differential form, then
+\[
+\mathscr{L}_V(d\omega) = d(\mathscr{L}_V\omega).
+\]
+\end{corollary}
+
+\end{document}

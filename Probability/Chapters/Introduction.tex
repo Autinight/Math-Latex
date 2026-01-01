@@ -281,7 +281,7 @@ f(x) = (2\pi)^{-1/2} \exp(-x^2/2)
 \section{Random Variables}
 
 \begin{definition}{}{}
-    A function \(  X: \Omega \to S  \) is said to be a \dfntxt{measurable map} from \(  \left(  \Omega ,\mathcal{F} \right)\to \left( S,\mathcal{S} \right)    \) if \[
+    A function \(  X: \Omega \to S  \) is said to be a \dfntxt{measurable map} from \(  \left(\Omega ,\mathcal{F}\right)\to\left(S,\mathcal{S} \right)\) if \[
     X^{-1} \left( B \right)\equiv \left\{  \omega :X\left(  \omega  \right)\in B  \right\}\in \mathcal{F} \quad \text{for all } B\in \mathcal{S} 
     \]  If \(  \left( S,\mathcal{S} \right)= \left( \mathbb{R} ^{d},\mathcal{R}^{d} \right)    \) and \(  d> 1  \), then \(  X  \) is called a \dfntxt{random vector}. If \(  d= 1  \), \(  X  \) is called a \dfntxt{random variable}, ro r.v.for short.      
 \end{definition}
@@ -422,12 +422,8 @@ Let $X$ be a random element of $(S, \mathcal{S})$ with distribution $\mu$, that 
 
 \begin{proposition}{}{}
     \begin{itemize}
-        \item   \(
-    \mathrm{var}\left( X \right)\le EX^{2} 
-    \)
-    \item \(
-    \operatorname{var}\left( aX+ b \right)= a^{2}\mathrm{var}\left( X \right)  
-    \)
+        \item   \(  \mathrm{var}\left( X \right)\le EX^{2} \)
+    \item \(\operatorname{var}\left( aX+ b \right)= a^{2}\mathrm{var}\left( X \right) \)
     \end{itemize}
     
 \end{proposition}
@@ -440,12 +436,13 @@ Let $X$ be a random element of $(S, \mathcal{S})$ with distribution $\mu$, that 
 \begin{proof}
     \[
     EX^{k}= \int_{S}y^{k}\,\mathrm{d} \mu =  \int_{S}y^{k}\,\mathrm{d} F= \int_{\mathbb{R} }x^{k}f\left( x \right)\,\mathrm{d} x=  \int_{0}^{\infty}x^{k} e^{-x}\,\mathrm{d} x
-    \] \[
+    \]   \[
     \begin{aligned}
     \int_{0}^{\infty}x^{k}e^{-x}\,\mathrm{d} x=  -\int_{0}^{\infty}x^{k}\,\mathrm{d} e^{-x}&= -\left[ e^{-x}x^{k} \right] _{0}^{\infty}+  k \int_{0}^{\infty}x^{k-1}e^{-x}\,\mathrm{d} x \\ 
      &=  k \int_{0}^{\infty}x^{k-1}e^{-x}\,\mathrm{d} x
     \end{aligned}
     \] Then it follows from induction.
 \end{proof}
+
 
 \end{document}

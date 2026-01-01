@@ -294,7 +294,7 @@
 %\newamzbox{environment name}{title}{ref label}{color}[tcolorbox style]
 \newcounter{amzboxcounter}
 \NewDocumentCommand{\newamzbox}{m m m m O{}}{
-    \newtcbtheorem[use counter=amzboxcounter,number within=chapter,list inside={#3}]{tc#1}{#2}{
+    \newtcbtheorem[use counter=amzboxcounter,number within=section,list inside={#3}]{tc#1}{#2}{
         amzdefaultstyle,
         frame style={fill=#4!85!black},
         interior style={fill=#4!5!white},
@@ -417,6 +417,21 @@
 \ifamznotes@math
     \newcommand{\rel}[1]{\mathrel{\mathcal{#1}}}
 
+    % --- 在这里插入修复代码 ---
+    \RequirePackage{scalerel}
+    \RequirePackage{stackengine}
+    \stackMath
+    \renewcommand\widehat[1]{%
+    \savestack{\tmpbox}{\stretchto{%
+      \scaleto{%
+        \scalerel*[\widthof{\ensuremath{#1}}]{\kern-.6pt\bigwedge\kern-.6pt}%
+        {\rule[-\textheight/2]{1ex}{\textheight}}%
+      }{\textheight}%
+    }{0.5ex}}%
+    \stackon[1pt]{#1}{\tmpbox}%
+    }
+    % ------------------------
+
     \newcommand{\N}{\mathbb{N}}
     \newcommand{\Z}{\mathbb{Z}}
     \newcommand{\Q}{\mathbb{Q}}
@@ -448,4 +463,36 @@
         \vphantom{\big|}
         \right|_{#2}
     }}
+    
+% --- 修复 widehat 和 widetilde 显示错误的补丁 ---
+\RequirePackage{scalerel}
+\RequirePackage{stackengine}
+\stackMath
+
+\AtBeginDocument{
+    % 1. 修复 widehat
+    \let\widehat\relax
+    \DeclareRobustCommand\widehat[1]{%
+        \savestack{\tmpbox}{\stretchto{%
+            \scaleto{%
+                \scalerel*[\widthof{\ensuremath{#1}}]{\kern-.6pt\bigwedge\kern-.6pt}%
+                {\rule[-\textheight/2]{1ex}{\textheight}}%
+            }{\textheight}%
+        }{0.5ex}}%
+        \stackon[1pt]{#1}{\tmpbox}%
+    }
+
+    % 2. 修复 widetilde
+    \let\widetilde\relax
+    \DeclareRobustCommand\widetilde[1]{%
+        \savestack{\tmpbox}{\stretchto{%
+            \scaleto{%
+                \scalerel*[\widthof{\ensuremath{#1}}]{\kern-.6pt\sim\kern-.6pt}%
+                {\rule[-\textheight/2]{1ex}{\textheight}}%
+            }{\textheight}%
+        }{0.5ex}}%
+        \stackon[1pt]{#1}{\tmpbox}%
+    }
+}
+% ------------------------------------------------
 \fi %\ifamznotes@math

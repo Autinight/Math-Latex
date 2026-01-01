@@ -1,0 +1,191 @@
+\documentclass{beamer}
+\usepackage{amsfonts,amsmath,oldgerm}
+\usetheme{sintef}
+\usepackage{xeCJK}
+
+\newcommand{\testcolor}[1]{\colorbox{#1}{\textcolor{#1}{test}}~\texttt{#1}}
+
+\usefonttheme[onlymath]{serif}
+
+\titlebackground*{XMU-assets/XMU-logo-negative.png}
+
+\newcommand{\hrefcol}[2]{\textcolor{cyan}{\href{#1}{#2}}}
+
+\title{实变小组汇报}
+%\subtitle{报告副标题}
+% \course{Master's Degree in Computer Science}
+\author{第五小组}
+% \IDnumber{1234567}
+\date{2025年11月30日}
+
+\begin{document}
+\maketitle
+
+%\section{Introduction}
+
+
+\begin{frame}[fragile]{第一题}
+\begin{block}{Exercise}
+设$f\in L((0,\infty))$, $g(x)$在$(0,\infty)$上可测. 若存在$M>0$, 对一切$x\in(0,\infty)$, 均有$|g(x)/x|\leq M$, 试证明
+\[
+\lim_{x\to +\infty}\frac{1}{x}\int_{0}^{x}f(t)g(t)\operatorname{d}t=0.
+\]
+\end{block}
+Proof.    \[
+  \frac{1 }{x }\int_{0}^{x}f\left( t \right)g\left( t \right)\,\mathrm{d} t= \int_{0}^{\infty}\frac{1 }{x }\chi _{\left\{ 0< t< x\right\}}f\left( t \right)g\left( t \right)\,\mathrm{d} t      
+  \]由条件 \(  \left| g\left(t \right)  \right|\le Mt   \) , 故对于所有的 \(  x\in \left( 0,\infty \right)   \), \[
+  \left| \frac{1 }{x }\chi _{\left\{ 0<t< x  \right\}}  f\left( t \right)g\left( t \right)  \right|\le M\frac{t }{x }\left| f\left( t \right)  \right|   \chi _{\left\{ 0< t< x \right\}}\le M\left| f\left( t \right)  \right| 
+  \] 由于 \(  f\in L\left( 0,\infty \right)   \),  \(  M\left| f \right|   \)是 \(  t\mapsto \frac{1 }{x }\chi _{\left\{ 0< t< x \right\}}f\left( t \right)g\left( t \right)     \)的控制函数 . 
+    
+\end{frame}
+
+
+\begin{frame}[fragile]{第一题}
+由题设可知 \(  g  \)在每一点处都有限, 且由于 \(  f  \)可积,  \(  f  \)是几乎处处有限的, 故 \( \frac{1 }{x }\chi _{\left\{ 0< t< x \right\}}f\left( t \right)g\left( t \right)   \)当 \(  x\to \infty  \)时 几乎处处收敛到零.  因此   由控制收敛定理   \[
+  \lim_{x\to \infty}\int_{0}^{\infty}\frac{1 }{x }\chi _{\left\{ 0< t< x \right\}}f\left( t \right)g\left( t \right)\,\mathrm{d} t=0
+  \] 
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{第二题}
+\framesubtitle{}
+
+\begin{block}{Exercise}
+  设\(f(x)\)与\(g(x)\)是\([0,\infty)\)上的非负递增函数,\(\varphi(x)\)与\(\psi(x)\)是\([a,b]\)上的非负可测函数,试证明
+\[
+\begin{aligned}
+&\left(\int_a^b f[\varphi(t)]g[\varphi(t)]\psi(t)\operatorname{d}t\right)
+\left(\int_a^b \psi(t)\operatorname{d}t\right)\\ 
+ &
+\ge
+\left(\int_a^b f[\varphi(t)]\psi(t)\operatorname{d}t\right)
+\left(\int_a^b g[\varphi(t)]\psi(t)\operatorname{d}t\right). 
+\end{aligned}
+\]
+\end{block}
+Proof.    
+    记 \[
+  F\left( t \right)= f\left[  \varphi \left( t \right)  \right],\quad G\left( t \right)= g\left[  \varphi \left( t \right)  \right]    
+  \]则 \[
+  \left( F\left( t \right)-F\left( s \right)   \right)\left( G\left( t \right)-G\left( s \right)   \right)\ge 0  
+  \]对两边 在 \(  \left[ a,b \right]^{2}   \)上积分,得到  
+\end{frame}
+
+
+\begin{frame}[fragile]{第二题}
+
+\[
+  \int_{a}^{b}\int_{a}^{b}\left( F\left( t \right)-F\left( s \right)   \right)\left( G\left( t \right)-G\left( s \right)   \right)\psi \left( t \right)\psi \left( s \right) \,\mathrm{d} t\,\mathrm{d} s   \ge 0
+  \]展开得到 \[
+\begin{aligned}
+&  \int_{a}^{b}\int_{a}^{b}F\left( t \right)G\left( t \right)\psi \left( t \right)\psi \left( s \right)\,\mathrm{d} t\,\mathrm{d} s-\int_{a}^{b}\int_{a}^{b}F\left( t \right)G\left( s \right)\psi \left( t \right)\psi \left( s \right)\,\mathrm{d} t\,\mathrm{d} s   \\ 
+ &-\int_{a}^{b}\int_{a}^{b}F\left( s \right)G\left( t \right)\psi \left( t \right)\psi \left( s \right)\,\mathrm{d} t\,\mathrm{d} s+ \int_{a}^{b}\int_{a}^{b}F\left( s \right)G\left( s \right)\psi \left( t \right)\psi \left( s \right)\,\mathrm{d} t\,\mathrm{d} s         
+\end{aligned}       
+  \]对上述四个积分运用Tonelli定理, 将二重积分化为累次积分, 被积函数总是分离变量的, 我们得到 \[
+  2\left( \int_{a}^{b} F\left( t \right)G\left( t \right)\psi \left( t \right)\,\mathrm{d} t   \right)\left( \int_{a}^{b}\psi \left( t \right)\,\mathrm{d} t  \right)-2\left( \int_{a}^{b}F\left( t \right)\psi \left( t \right)\,\mathrm{d} t   \right)\left( \int_{a}^{b}G\left( t \right)\psi \left( t \right)\,\mathrm{d} t   \right)    \ge 0
+  \]故所需不等式成立.
+\end{frame}
+\begin{frame}[fragile]{第三题}
+\begin{block}{Exercise}
+
+设 \(E\subset[0,1]\times[0,1]\) 是可测集, 记
+\[
+E_x=\{y\in[0,1]:(x,y)\in E\},\quad
+E_y=\{x\in[0,1]:(x,y)\in E\}.
+\]
+若有 \(m(E_x)=0\), a.e. \(x\in[0,1]\), 试证明
+\[
+m(\{y:m(E_y)=1\})\le\frac12.
+\]
+\end{block}
+
+Proof. 
+ 令 \(  A= \left\{ y: m\left( E_{y} \right)= 1  \right\}  \), 则 \[
+ m\left( A \right)= \int_{A}1\,\mathrm{d} y=   \int_{A}m\left( E_{y} \right)\,\mathrm{d} y
+  \] 其中 
+\end{frame}
+
+
+\begin{frame}[fragile]{第三题}
+ \[
+  m\left( E_{y} \right)= \int_{0}^{1}\chi _{E_{y}}\left( x \right)\,\mathrm{d} x= \int_{0}^{1}\chi _{E}\left( x,y \right)\,\mathrm{d} x   
+  \]关于 \(  y  \)在 \(  A  \)上积分, 由Tonelli定理 \[
+  \begin{aligned}
+  \int_{A}m\left( E_{y} \right)\,\mathrm{d} y&= \int_{A}\int_{0}^{1}\chi _{E}\left( x,y \right)\,\mathrm{d} x\,\mathrm{d} y \\ 
+   & \le \int_{0}^{1}\int_{0}^{1}\chi _{E}\left( x,y \right)\,\mathrm{d} x\,\mathrm{d} y  \\ 
+    &= \int_{0}^{1}\,\mathrm{d} x\int_{0}^{1}\chi _{E}\left( x,y \right)\,\mathrm{d} y= \int_{0}^{1}\,\mathrm{d} x \int_{0}^{1}\chi _{E_{x}}\left( y \right)\,\mathrm{d} y\\ 
+     &= \int_{0}^{1}m\left( E_{x} \right)\,\mathrm{d} x= 0  
+  \end{aligned}
+  \]
+\end{frame}
+
+
+\begin{frame}[fragile]{第四题}
+
+\begin{block}{Exercise}
+
+设
+\[
+\int_0^1|f(x)|dx<\infty,\quad\int_1^\infty|f(x)|x^{-2}dx<\infty,
+\]
+试证明
+\[
+\int_0^\infty\sin ax\,dx\int_a^\infty f(y)e^{-xy}dy
+=a\int_a^\infty\frac{f(y)}{a^2+y^2}dy.
+\]
+\end{block}
+Proof.  
+当 \(  a= 0  \)时, 两边积分都为零, 故下设 \(  a> 0  \).  
+\[
+\begin{aligned}
+\int_{0}^{\infty}\left| \sin ax \right|e^{-xy}\,\mathrm{d} x&\le \int_{0}^{\infty}axe^{-xy}\,\mathrm{d} x= \frac{a }{y^{2} } 
+\end{aligned}   
+\]故 \[
+\int_{0}^{\infty}\int_{0}^{\infty}\chi _{\left\{ y> a \right\}}\left| \sin ax \right|\left| f\left( y \right)  \right|e^{-xy}\,\mathrm{d} x\,\mathrm{d} y\le \int_{0}^{\infty}\chi _{\left\{ y> a \right\}}  \left| f\left( y \right)  \right|\frac{a }{y^{2} }  \,\mathrm{d} y
+\]
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{第四题}
+
+   当 \(  y>  a  \)时, \(  \frac{1 }{y^{2} }< \frac{1 }{a^{2} }    \), 故  \[
+\begin{aligned}
+\int_{0}^{\infty}\chi _{\left\{ y> a \right\}}\left| f\left( y \right)  \right|\frac{a }{y^{2} }\,\mathrm{d} y&= \int_{0}^{1}\chi _{\left\{ y> a \right\}}\left| f\left( y \right)  \right|\frac{a }{y^{2} }\,\mathrm{d} y+ \int_{1}^{\infty}\chi _{\left\{ y> a \right\}}    \left| f\left( y \right)  \right|\frac{a }{y^{2} }\,\mathrm{d} y \\ 
+ &\le \frac{1 }{a }\int_{0}^{1}\left| f\left( y \right)  \right|\,\mathrm{d} y+  a\int_{1}^{\infty}\left| f\left( y \right)  \right|y^{-2}   \,\mathrm{d} y\\ 
+  &< \infty
+\end{aligned}  
+\]故由Tonelli定理,  \(  \left| \chi _{\left\{ y> a \right\}}\sin ax f\left( y \right)e^{-xy}  \right|\in L^{1}\left( [0,\infty)^{2} \right)    \) , 从而由Fubini定理, \[
+\int_{0}^{\infty}\sin ax \,\mathrm{d} x\int_{a}^{\infty}f\left( y \right)e^{-xy}\,\mathrm{d} y= \int_{a}^{\infty}f\left( y \right)\,\mathrm{d} y \int_{0}^{\infty}\sin ax e^{-xy}\,\mathrm{d} x 
+\]
+
+\end{frame}
+
+
+\begin{frame}[fragile]{第四题}
+  
+其中对于所有的 \(  y> 0  \),   \[
+  \begin{aligned}
+  \int_{0}^{\infty}\sin ax  \;e^{-xy}\,\mathrm{d} x&= [-\frac{1 }{y }  e^{-xy}\sin  ax ]_{0}^{\infty}+ \frac{1 }{y } \int_{0}^{\infty}a\cos ax \; e^{-xy}\,\mathrm{d} x  \\ 
+   &= \frac{a }{y }\int_{0}^{\infty}\cos axe^{-xy}\,\mathrm{d} x  \\ 
+    &=   \frac{a }{y }[-\frac{1 }{y } \cos  ax\; e^{-xy} ]_{0}^{\infty} - \frac{a }{y }\int_{0}^{\infty}\frac{1 }{y }a\sin ax e^{-xy}\,\mathrm{d} x  \\ 
+     &= \frac{a}{y^{2} }-\frac{a^{2} }{y^{2} } \int_{0}^{\infty}\sin ax\;e^{-xy}\,\mathrm{d} x  
+  \end{aligned}
+  \]故 \[
+\int_{0}^{\infty}\sin ax\;e^{-xy}\,\mathrm{d} x= \frac{a }{y^{2}+ a^{2} } 
+  \]
+\end{frame}
+
+
+\begin{frame}[fragile]{第四题}
+ 因此 \[
+  \int_{0}^{\infty}\sin ax \,\mathrm{d} x\int_{a}^{\infty}f\left( y \right)e^{-xy}\,\mathrm{d} y=a \int_{a}^{\infty}\frac{f\left( y \right)  }{a^{2}+ y^{2} }\,\mathrm{d} y  
+  \]
+\end{frame}
+
+
+\backmatter
+\end{document}

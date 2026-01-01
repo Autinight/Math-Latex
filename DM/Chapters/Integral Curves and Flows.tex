@@ -12,6 +12,7 @@
 
 \section{Integral Curves}
 
+
 \begin{definition}{Integral Curve}{}
     If $V$ is a vector field on $M$, an \dfntxt{integral curve of $V$} is a differentiable curve $\gamma: J \to M$ whose velocity at each point is equal to the value of $V$ at that point:
 $$\gamma'(t) = V_{\gamma(t)} \quad \text{for all } t \in J.$$
@@ -39,6 +40,20 @@ Finding integral curves boils down to sloving a system of ordinary differential 
     The ODE system corosponding to the condition \[
       \gamma ^{\prime} \left( t \right)= V_{ \gamma \left( t \right) } 
      \] is smooth. Thus it satisfies the local Lipschitz condition. Then the proposition follows from the Picard-Lindelöf Theorem. 
+\end{proof}
+
+\begin{proposition}{Naturality of Integral Curves}{}
+Suppose $M$ and $N$ are smooth manifolds and $F:M\to N$ is a smooth map. Then $X\in\mathfrak{X}(M)$ and $Y\in\mathfrak{X}(N)$ are $F$-related if and only if $F$ takes integral curves of $X$ to integral curves of $Y$, meaning that for each integral curve $\gamma$ of $X$, $F\circ\gamma$ is an integral curve of $Y$.
+\end{proposition}
+
+\begin{proof}
+    Suppose that  \(  X  \) and \(  Y  \) are \(  F  \)-related, and \(   \gamma :J\to M  \) is an integral curve of \(  X  \). If we define \(   \sigma: J\to  N  \) by \(   \sigma = F\circ  \gamma   \), then      \[
+     \sigma ^{\prime} \left( t \right)=  d F_{ \gamma \left( t \right) } \gamma ^{\prime} \left( t \right)= d F_{ \gamma \left( t \right) } X_{ \gamma \left( t \right) }= Y_{F\left(  \gamma \left( t \right)  \right) }= Y_{ \sigma \left( t \right) }  
+    \] so \(   \sigma   \) is an integral curve of \(  Y  \).  
+
+    Conversely, suppose \(  F  \) take integral curves of \(  X  \) to integral curves of \(  Y  \). Given \(  p \in M  \), let \(   \gamma :\left( - \varepsilon , \varepsilon  \right)\to M   \) be an integral curve of \(  X  \) starting at \(  p  \). Since \(  F\circ  \gamma   \) is an integral curve of \(  Y  \) starting at \(  F\left( p \right)   \), we have \[
+    Y_{F\left( p \right) }= \left( F\circ  \gamma  \right)^{\prime} \left( 0 \right)= \,\mathrm{d} F_{p}\left(  \gamma ^{\prime} \left( 0 \right)  \right)= d F_{p}\left( X_{p} \right)    
+    \]          which shows that \(  X  \) and \(  Y  \) are \(  F  \)-related.   
 \end{proof}
 
 \section{Flows}
@@ -147,6 +162,20 @@ Let $V$ be a smooth vector field on a smooth manifold $M$. There is a unique smo
 
 \subsection{Complete Vector Fields}
 
+\begin{definition}{}{}
+    We say that a smooth vector field is \dfntxt{complete} if it generates a global flow, or equivalently if each of its maximal integral curves is defined for all \(t \in \mathbb{R}\).
+\end{definition}
+
+\begin{lemma}{Uniform Time Lemma}{}
+ Let $V$ be a smooth vector field on a smooth manifold $M$, and let $\theta$ be its flow. Suppose there is a positive number $\varepsilon$ such that for every $p \in M$, the domain of $\theta^{(p)}$ contains $(-\varepsilon,\varepsilon)$. Then $V$ is complete.
+\end{lemma}
+
+\begin{proof}
+    Suppose for the sake of contradiction for some \(  p \in M  \), the domain \(  \mathcal{D}^{\left( p \right) }  \) of \(   \theta ^{\left( p \right) }  \) is bounded above. Let \(  b= \sup \mathcal{D}^{\left( p \right) }  \), let \(  t_0  \) be a positive number such that \(  b- \varepsilon < t_0< b  \), and let \(  q=  \theta ^{\left( p \right) }\left( t_0 \right)   \). The hypothesis implies that \(   \theta ^{\left( q \right) }\left( t \right)   \) is defined at least for \(  t\in \left( - \varepsilon , \varepsilon  \right)   \). Define curve \(   \gamma :\left( - \varepsilon ,t_0+  \varepsilon  \right)   \to M\) by \[
+     \gamma \left( t \right)= \begin{cases}  \theta ^{\left( p \right) }\left( t \right),& - \varepsilon < t< b\\ 
+       \theta ^{\left( q \right) }\left( t-t_0 \right),& t_0- \varepsilon < t< t_0+  \varepsilon    \end{cases}  
+    \]         These two definitions agree where they overlap,  because \(   \theta ^{\left( q \right) }\left( t-t_0 \right)=  \theta _{t-t_0}\left( q \right)=  \theta _{t-t_0} \theta _{t_0}\left( p \right)=  \theta _{t}\left( p \right)=  \theta ^{\left( p \right) }\left( t \right)        \) by the group law for \(   \theta   \).   \(   \gamma   \) is an integral curve starting at \(  p  \). Since \(  t_0je \varepsilon > b  \), this is a contradiction.   
+\end{proof}
 
 \section{Lie Derivatives}
 

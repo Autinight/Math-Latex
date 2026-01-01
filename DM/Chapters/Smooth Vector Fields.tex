@@ -62,11 +62,40 @@ Let $M$ be a smooth manifold with or without boundary, and let $X : M \to TM$ be
 \begin{proposition}{}{}
 Let $M$ be a smooth manifold with or without boundary. A map $D: C^{\infty}(M) \to C^{\infty}(M)$ is a derivation if and only if it is of the form $Df = Xf$ for some smooth vector field $X \in \mathfrak{X}(M)$.
 \end{proposition}
-\section{Lie Brackets}
 
-\begin{definition}{Lie Barckets}{}
-    The operator $[X, Y]: C^{\infty}(M) \to C^{\infty}(M)$, called the \dfntxt{Lie bracket} \dfntxt{of $X$ and $Y$}, defined by
-$$[X, Y]f = XYf - YXf.$$
-is a vector field.
+\begin{proposition}{}{}
+Suppose \(M\) and \(N\) are smooth manifolds with or without boundary, and \(F:M\to N\) is a diffeomorphism. For every \(X\in\mathfrak{X}(M)\), there is a unique smooth vector field on \(N\) that is \(F\)-related to \(X\).
+\end{proposition}
+
+\section{Vector Field and Smooth Maps}
+
+\begin{definition}{\(  F  \) -related vector fields}{}
+    Suppose $F:M\to N$ is smooth and $X$ is a vector field on $M$, and suppose there happens to be a vector field $Y$ on $N$ with the property that for each $p\in M$, $dF_{p}(X_{p})=Y_{F(p)}$. In this case, we say the vector fields $X$ and $Y$ are \dfntxt{$F$-related}.
 \end{definition}
+
+\begin{remark}
+    这是\(  F  \)-相关向量场的逐点定义. 
+\end{remark}
+
+\begin{proposition}{}{}
+    Suppose \(  F:M\to N  \) is a smooth map between manifolds with or without boundary, \(  X \in \mathfrak{X}\left( M \right)   \) and \(  Y\in \mathfrak{X}\left( N \right)   \). Then \(  X  \) and \(  Y  \) are \(  F  \)-related if and only if for every smooth real-vealued function \(  f  \) defined on an open subset of \(  N  \), \[
+    X\left( f\circ F \right)= \left( Yf \right)\circ F  
+    \]        
+\end{proposition}
+
+\begin{remark}
+    \begin{itemize}
+        \item 这是\(  F  \)-相关向量场的\(  C_{F\left( p \right) }^{\infty}\left( M \right)   \)-导子刻画.    
+        \item \(  F  \)参与了以下活动 : 将 函数芽\(  f \in C_{F\left( p \right) }^{\infty}\left( N \right)   \) 的定义域拉回到 \(  M  \)上以便于 \(  X  \)作用, 以及将 \(  \left( Yf \right)   \)的定义域(\(  Y  \)的取值) 拉回到 \(  M  \)上以便于比较.
+    \end{itemize}
+\end{remark}
+
+\begin{proof}
+    For any \(  p \in M  \) and any \(  f\in C^{\infty}_{F\left( p \right) }\left( M \right)   \)  , \[
+    X\left( f\circ F \right) \left( p \right) = X_{p}\left( f\circ F \right)= \,\mathrm{d} F_{p}\left( X_{p} \right)f  
+    \]while \[
+    \left( Yf \right)\circ F\left( p \right)= \left( Yf \right)\left( F\left( p \right)  \right)= Y_{F\left( p \right) }f    
+    \]
+\end{proof}
+
 \end{document}

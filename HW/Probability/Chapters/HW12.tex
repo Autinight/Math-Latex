@@ -1,0 +1,566 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{11}
+}{}
+
+\chapter{ HW12 }
+ 代靖涵 25120222201319
+\begin{exercise}{}{}
+某种商品一周的需要量是一个随机变量,其密度函数为
+\[
+p_1(t)=
+\begin{cases}
+te^{-t}, & t>0,\\
+0, & t\leq 0.
+\end{cases}
+\]
+设各周的需要量是相互独立的,试求:
+\begin{enumerate}
+\item 两周需要量的密度函数 \(p_2(x)\);
+\item 三周需要量的密度函数 \(p_3(x)\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    设 \(  X_1,X_2  ,X_3\)分别为第一,二和三周分别的需要量, 设 \(  Y_2,Y_3  \)为前两周和前三周的需要量. 则 \[
+    Y_2= X_1+ X_2,\quad Y_3= Y_2+ X_3
+    \] \[
+    p_{X_1}\left( t \right)= p_{X_2}\left( t \right)= p_{X_3}\left( t \right)= p_1\left( t \right)    ,\quad p_{Y_2}\left( t \right)= p_2\left( t \right),\quad p_{Y_3}\left( t \right)= p_3\left( t \right)    
+    \] 
+    \begin{enumerate}
+        \item  \[
+       \begin{aligned}
+        p_{Y_2}\left( t \right)&= p_{X_1}*p_{X_2}\left( t \right)  = p_{1}*p_1\left( t \right)\\ 
+         &=  \int_{\mathbb{R} } p_1\left( t-x \right)p_1\left( x \right)\,\mathrm{d} x   \\ 
+          &=  \int_{\mathbb{R} } \chi _{\left\{ t-x> 0 \right\}}\left( t-x \right)e^{x-t} \chi _{\left\{ x> 0 \right\}}xe^{-x}\,\mathrm{d} x\\ 
+           &=  \int_{\mathbb{R} }\chi _{\left\{ t> 0 \right\}} \chi _{\left\{ x< t \right\}}\chi _{\left\{ x> 0 \right\}}\left( t-x \right)xe^{x-t}e^{-x}  \,\mathrm{d} x\\ 
+            &= \chi _{\left\{ t> 0 \right\}} \int_{0}^{t}x\left( t-x \right)e^{-t}\,\mathrm{d} x\\ 
+             &=  \chi _{\left\{ t> 0 \right\}}\frac{1}{6}t^{3}e^{-t}
+       \end{aligned} 
+        \]故 \[
+        p_2\left( x \right)= \begin{cases} \frac{1}{6}x^{3}e^{-x},&x> 0\\ 
+         0,& x\le 0 \end{cases}  
+        \]
+        \item \[
+        \begin{aligned}
+        p_{Y_3}\left( t \right)&= p_{X_1}*p_{Y_2}\left( t \right)= p_1*p_2\left( t \right)\\ 
+         &=     \int_{\mathbb{R} }\chi _{\left\{ t-x> 0 \right\}}\left( t-x \right)e^{x-t} \chi _{\left\{ x> 0 \right\}}\frac{1}{6}x^{3}e^{-x}\,\mathrm{d} x\\ 
+          &= \int_{\mathbb{R} } \chi _{\left\{ x< t \right\}}\chi _{\left\{ x> 0 \right\}}\frac{1}{6}x^{3}\left( t-x \right)e^{-t}\,\mathrm{d} x\\ 
+           &= \chi _{\left\{ t> 0 \right\}}\int_{0}^{t}\frac{1}{6}x^{3}\left( t-x \right)e^{-t}\,\mathrm{d} x\\ 
+            &= \chi _{\left\{ t> 0 \right\}} \left( \frac{1}{24}t^{5}e^{-t} - \frac{1}{30}t^{5}e^{-t}\right)   \\ 
+             &=\chi _{\left\{ t> 0 \right\}} \frac{1}{120}t^{5}e^{-t} 
+        \end{aligned}
+        \]因此 \[
+        p_3\left( x \right)= \begin{cases} \frac{1}{120}x^{5}e^{-x},&x> 0\\ 
+         0,& x\le 0 \end{cases}  
+        \]
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+设\(X_1,X_2,X_3\)为相互独立的随机变量,且都服从\((0,1)\)上的均匀分布,求三者中最大者大于其他两者之和的概率.
+\end{exercise}
+
+\begin{proof}
+  由对称性, 所求概率等于 \[
+\begin{aligned}
+  3P\left( X_3> X_1+ X_2 \right)& = 3 \iint_{\left[ 0,1 \right]^{3} }\chi _{\left\{ x_3> x_1+ x_2 \right\}} \,\mathrm{d} x_1\,\mathrm{d} x_2\,\mathrm{d} x_3 \\ 
+   &=  3\int_{0}^{1}\,\mathrm{d} x_1\int_{0}^{1-x_1}\,\mathrm{d} x_2\int_{x_1+ x_2}^{1}\,\mathrm{d} x_3\\ 
+    &= 3\times \frac{1}{6}= \frac{1}{2}
+\end{aligned}
+  \]因此所需概率为\(  \frac{1}{2}  \) 
+\end{proof}
+
+\begin{exercise}{}{}
+设随机变量\(X_1\)与\(X_2\)相互独立同分布,其密度函数为
+\begin{equation}
+p(x)=
+\begin{cases}
+2x, & 0<x<1,\\
+0, & \text{其它}.
+\end{cases}
+\end{equation}
+试求\(Z=\operatorname{max}\{X_1,X_2\}-\operatorname{min}\{X_1,X_2\}\)的分布.
+\end{exercise}
+\begin{solution}
+易见 \(  Z  \)的取值非负 , 任取 \(  t\ge  0  \), 由对称性我们有  \[
+ \begin{aligned}
+ P\left( Z>  t \right)&= 2P\left(X_1-X_2>  t \right)   
+ \end{aligned}
+ \] 由独立性,  \[
+ p_{\left( X_1,X_2 \right) }\left( s,t \right)= p_{X_1}\left( s \right)p_{X_2}\left( t \right)= \chi _{\left\{ 0< s< 1 \right\}}\chi _{\left\{ 0< t< 1 \right\}}4st   
+ \]因此 \[
+ \begin{aligned}
+ P\left( X_1-X_2> t \right)&=  \iint_{\left( 0,1 \right)^{2} }\chi _{\left\{ x_1> x_2+ t \right\}}4x_1x_2\,\mathrm{d} x_1 \,\mathrm{d} x_2 \\ 
+  &= \chi _{\left\{ 0< t< 1 \right\}}\int_{0}^{1-t} \int_{x_2+ t}^{1}4x_1x_2\,\mathrm{d} x_1\,\mathrm{d} x_2 \\
+   &= \chi _{\left\{ 0< t< 1 \right\}}\int_{0}^{1-t} 2x_2\left( 1-\left( x_2+ t \right)^{2} \right)\,\mathrm{d} x_2\\ 
+    &= \chi _{\left\{ 0< t< 1 \right\}}\frac{1}{6}\left( 1-t \right)^{3}\left( 3+ t \right)  
+ \end{aligned} 
+ \]因此 \[
+ P\left( Z\le t \right)= 1-P\left( Z> t \right)= 1-\chi _{\left\{ 0< t< 1 \right\}}\frac{1}{3}\left( 1-t \right)^{3}\left( 3+ t \right)   
+ \] \[
+ p_{Z}\left( t \right)=\frac{4}{3}\left( 1-t \right)^{2}\left( 2+ t \right)    \chi _{\left\{ 0< t< 1 \right\}}
+ \]
+\end{solution}
+
+\begin{exercise}{}{}
+设二维随机变量\((X,Y)\)服从圆心在原点的单位圆内的均匀分布,求极坐标
+\[
+R=\sqrt{X^{2}+Y^{2}},\quad \Theta=\operatorname{arctan}(Y/X)
+\]
+的联合密度函数.
+\end{exercise}
+
+\begin{solution}
+     令 \[
+     D= \left\{\left( x,y \right)\in \mathbb{R} ^{2}:  x^{2}+ y^{2}< 1 \right\}
+     \] 做变量替换 \[
+     \varphi \left( r, \theta  \right)= \left( x\left( r, \theta  \right),y\left( r, \theta  \right)   \right)= \left( r\cos  \theta , r\sin  \theta  \right) 
+      \] 则 \[
+       \varphi ^{-1} \left( D \right)= \left\{ \left( r, \theta  \right)\in [0,1)\times [0,2 \pi )  \right\} 
+      \]由于\[
+      f_{\left( X,Y \right) }\left( x,y \right)=\chi _{D}\frac{1 }{ \pi  }  
+      \]则由变量替换公式,  \[
+      f_{\left( R, \Theta  \right) }\left( r, \theta  \right)=\chi _{ \varphi ^{-1} \left( D \right) } f_{X,Y}\left( x\left( r, \theta  \right),y\left( r, \theta  \right)   \right)  \cdot \left| J \right| 
+      \]其中 \[
+      J= \frac{\partial \left( x,y \right) }{\partial \left( r, \theta  \right) }= \det \begin{pmatrix} 
+          \cos  \theta &-r\sin  \theta \\ 
+           \sin  \theta &r\cos  \theta  
+      \end{pmatrix}= r 
+      \]因此 \[
+      f_{\left( R, \Theta  \right) }\left( r, \theta  \right)=\chi _{ \varphi ^{-1} \left( D \right) }\frac{\left| r \right|  }{ \pi  }= \chi _{\left\{ 0\le r< 1 \right\}}\chi _{\left\{ 0\le  \theta < 2 \pi  \right\}}\frac{r }{ \pi  }  
+      \]
+\end{solution}
+
+\begin{exercise}{}{}
+设随机变量 $X$ 与 $Y$ 独立同分布, 且都服从标准正态分布 $N(0,1)$, 试证: $U = X^2 + Y^2$ 与 $V = X/Y$ 相互独立.
+\end{exercise}
+\begin{proof}
+  令 \[
+  R =  \sqrt{X^{2}+ Y^{2}},\quad \Theta = \operatorname{arg}\left( X+ iY \right) 
+  \]做变量替换  \(   \varphi :\mathbb{R} _{\ge 0}\times [0,2 \pi ) \to  \mathbb{R} ^{2} \) \[
+   \varphi \left( r, \theta  \right)= \left( x\left( r, \theta  \right),y\left( r, \theta  \right)   \right)= \left( r\cos  \theta , r\sin  \theta  \right)   
+  \]令 \(  D=  \mathbb{R} _{\ge 0}\times [0,2 \pi )  \)  则 \[
+ \begin{aligned}
+  f_{R,\Theta }\left( r, \theta  \right)&=\chi _{D} f_{X,Y}\left( r\cos  \theta , r\sin  \theta  \right)\cdot \left| J \right|\\ 
+   &= \chi _{D}f_{X}\left( r\cos  \theta  \right) f_{Y}\left( r\sin  \theta  \right)r\\ 
+    &= \chi _{D}     \frac{1 }{2 \pi  }e^{-\frac{r^{2} }{2 } }r \\ 
+     &= \left( re^{-\frac{r^{2} }{2 } }\chi _{\left\{ r\ge 0 \right\}} \right)\cdot \left( \frac{1 }{2 \pi  }\chi _{\left\{  \theta \in [0,2 \pi ) \right\}}  \right)  
+ \end{aligned} 
+  \]因此\(  f_{R,\Theta }  \)是可分离变量的,  \(  R  \), \(  \Theta   \)相互独立.   注意到 \[
+  U= R^{2},\quad V= \cot \Theta  
+  \]由于独立随机变量的可测函数也是独立的, 得到 \(  U,V  \)独立. 
+\end{proof}
+
+\begin{exercise}{}{}
+设随机变量 $X$ 与 $Y$ 相互独立, 且 $X \sim Ga(\alpha_1,\lambda)$, $Y \sim Ga(\alpha_2,\lambda)$. 试证: $U = X + Y$ 与 $V = X/(X+Y)$ 相互独立, 且 $V \sim Be(\alpha_1,\alpha_2)$.
+\end{exercise}
+
+\begin{proof}
+  由Gamma分布的可加性, \[
+  U= X+ Y\sim Ga\left( \alpha _1 + \alpha _2 , \lambda  \right) 
+  \] 考虑变量替换 \(  u= x+ y  \), \(  v= \frac{x}{x+ y}  \), \(  \left( x,y \right)\in \left( 0,\infty \right)^{2}    \) 则   \[
+  x= uv,\quad y= u-uv,\quad 
+  \] \[
+   \left( u,v \right)\in D= \left\{ \left( u,v \right)\in \mathbb{R} ^{2}: 0< u< \infty, 0< v< 1  \right\} 
+  \]我们有\[
+  f_{U,V}\left( u,v \right)=\chi _{D} f_{X,Y}\left( x\left( u,v \right),y\left( u,v \right)   \right)\left| \frac{\partial \left( x,y \right) }{\partial \left( u,v \right) }   \right| 
+  \]其中 \[
+  \begin{aligned}
+  \frac{\partial \left( x,y \right) }{\partial \left( u,v \right) }= \det \begin{pmatrix} 
+      v&u\\ 
+       1-v&-u 
+  \end{pmatrix}  = -uv-\left( u-uv \right) = -u
+  \end{aligned}
+  \] \[
+  \begin{aligned}
+  f_{X,Y}\left( x,y \right)= f_{X}\left( x \right)f_{Y}\left( y \right)&= \frac{ \lambda ^{ \alpha _1 } }{ \Gamma \left(  \alpha _1  \right)  }x^{ \alpha _1  -1}e^{- \lambda x} \frac{ \lambda ^{\alpha _2 } }{ \Gamma \left(  \alpha _2  \right)  }y^{\alpha _2  -1}e^{- \lambda y}  \\ 
+   &= \frac{ \lambda ^{\alpha _1 + \alpha _2 } }{ \Gamma \left(  \alpha _1  \right) \Gamma \left(  \alpha _2  \right)   }x^{ \alpha _1  -1} y^{ \alpha _2   -1} e^{- \lambda \left( x+ y \right) } 
+  \end{aligned} 
+  \]故 \[
+  \begin{aligned}
+ & f_{U,V}\left( u,v \right)\\ 
+  &= \chi _{D} \frac{ \lambda ^{\alpha _1 + \alpha _2 } }{ \Gamma \left(  \alpha _1  \right) \Gamma \left( \alpha _2  \right)   }   u^{\alpha _1   -1}v^{ \alpha _1 -1}u^{\alpha _2 -1}\left( 1-v \right)^{ \alpha _2 -1} e^{- \lambda u}u\\ 
+   &= \left( \chi _{\left\{ 0< u< \infty \right\}}\frac{ \lambda ^{\alpha _1 + \alpha _2 } }{ \Gamma \left( \alpha _1 + \alpha _2  \right)  } u^{ \alpha _1 + \alpha _2 -1}e^{- \lambda u} \right) \left( \chi _{\left\{ 0< v< 1 \right\}} \frac{ \Gamma \left( \alpha _1 + \alpha _2  \right)   }{\Gamma \left(  \alpha _1  \right) \Gamma \left( \alpha _2  \right)   }v^{\alpha _1 -1}\left( 1-v \right)^{\alpha _2 -1} \right)  \\ 
+    &= f_{U}\left( u \right) \left( \chi _{\left\{ 0< v< 1 \right\}} \frac{ \Gamma \left( \alpha _1 + \alpha _2  \right)   }{\Gamma \left(  \alpha _1  \right) \Gamma \left( \alpha _2  \right)   }v^{\alpha _1 -1}\left( 1-v \right)^{\alpha _2 -1} \right)   
+  \end{aligned}
+  \]是关于 \(  u,v  \)分离变量的, 故 \(  U,V  \)独立, 那么 \[
+  f_{U,V}\left( u,v \right)= f_{U}\left( u \right)  f_{V}\left( v \right) 
+  \] 得到 \[
+  f_{V}\left( v \right)= \left( \chi _{\left\{ 0< v< 1 \right\}} \frac{ \Gamma \left( \alpha _1 + \alpha _2  \right)   }{\Gamma \left(  \alpha _1  \right) \Gamma \left( \alpha _2  \right)   }v^{\alpha _1 -1}\left( 1-v \right)^{\alpha _2 -1} \right)  
+  \]这就表明 \(  V  \)服从 \(  Be\left( \alpha _1 ,\alpha _2  \right)   \)  
+\end{proof}
+
+
+
+\begin{exercise}{}{}
+设随机变量 $U_1$ 与 $U_2$ 相互独立, 且都服从 $(0,1)$ 上的均匀分布, 试证明:
+\begin{equation}
+Z_1 = -2\ln U_1 \sim Exp(1/2),\quad Z_2 = 2\pi U_2 \sim U(0,2\pi);
+\end{equation}
+\begin{equation}
+X = \sqrt{Z_1}\cos Z_2 \text{ 和 } Y = \sqrt{Z_1}\sin Z_2 \text{ 是相互独立的标准正态随机变量.}
+\end{equation}
+\end{exercise}
+
+\begin{proof}
+  \[
+  f_{U_1}\left( u_1 \right)= \chi _{\left\{ 0< u_1< 1 \right\}},\quad f_{U_2}\left( u_2 \right)= \chi _{\left\{ 0< u_2< 1 \right\}}  
+  \] 考虑变量替换 \(  z_1= -2\ln u_1  \), 则 \(  u_1= \exp \left( -\frac{z_1 }{2 }  \right)   \)  \[
+  \begin{aligned}
+  f_{Z_1}\left( z_1 \right)=  f_{U_1}\left( u_1\left( z_1 \right)  \right) \left| \frac{\partial u_1  }{\partial z_1} \right|&= \chi _{\left\{ 0< \exp \left( -\frac{z_1 }{2 }  \right)< 1  \right\}} \frac{1 }{2 } \exp \left( -\frac{z_1 }{2 }  \right)  \\ 
+   &  =\chi _{\left\{ z_1> 0 \right\}}\frac{1 }{2 } \exp \left( -\frac{z_1 }{2 }  \right)    
+  \end{aligned}
+  \]这表明 \(  Z_1\sim Exp\left( \frac{1}{2} \right)   \). 
+  
+  考虑变量替换 \(  z_2= 2 \pi u_2  \), 则 \(  u_2= \frac{z_2 }{2 \pi  }   \)  , 我们有 \[\begin{aligned}
+  f_{Z_2}\left( z_2 \right)&= f_{U_2}\left( u_2\left( z_2 \right)  \right) \left| \frac{\partial u_2  }{\partial z_2} \right|   \\ 
+   &= \chi _{\left\{ 0< \frac{z_2 }{2 \pi  }< 1  \right\}} \frac{1 }{2 \pi  } = \chi _{\left\{ 0< z_2< 2 \pi  \right\}}\frac{1 }{2 \pi  } 
+  \end{aligned}
+  \]这表明 \(  Z_2\sim U\left( 0,2 \pi  \right)   \). 
+   考虑变量替换 \[
+   x= \sqrt{z_1}\cos z_2,\quad y= \sqrt{z_1}\sin z_2
+   \]则 \[
+   z_1= x^{2}+ y^{2}, \quad z_2= \operatorname{arg}\left( x+ iy \right) 
+   \]\[
+  \begin{aligned}
+   f_{X,Y}\left( x,y \right)&=\chi _{\left\{ z_1> 0 \right\}}\chi _{\left\{ 0< z_2< 2 \pi  \right\}} f_{Z_1,Z_2}\left( z_1\left( x,y \right),z_2\left( x,y \right)   \right)   \left| \frac{\partial \left( z_1,z_2 \right) }{\partial \left( x,y \right) } \right|  \\ 
+    &= f_{Z_1}\left( x^{2}+ y^{2} \right)f_{Z_2}\left(\operatorname{arg}\left( x+ iy \right)   \right) \left| \det \begin{pmatrix} 
+        2x&2y\\ 
+         - \frac{y}{x^{2}+ y^{2} } &\frac{x }{x^{2}+ y^{2} } 
+    \end{pmatrix}  \right|  \\ 
+     &= \frac{1 }{ 2} \exp \left( -\frac{x^{2}+ y^{2} }{2 }  \right)\frac{1 }{2 \pi  } 2 \\ 
+      &= \left( \frac{1 }{\sqrt{2 \pi } }\exp \left( -\frac{x^{2} }{2 }  \right)   \right)   \left( \frac{1 }{\sqrt{2 \pi } }\exp \left( -\frac{y^{2} }{2 }  \right)   \right) 
+  \end{aligned}
+   \]故 \(  X,Y  \)是相互独立的标准正态随机变量. 
+\end{proof}
+
+\begin{exercise}{}{}
+求掷n颗骰子出现点数之和的数学期望与方差。
+\end{exercise}
+
+\begin{proof}
+  设 \(  X_1,\cdots ,X_{n}  \)分别表示 \(  n  \)颗骰子的点数. 则由期望的线性性,  \[
+  E\left( X_1+ \cdots + X_{n} \right)= E\left( X_1 \right)+ \cdots + E\left( X_{n} \right)   
+  \]   \[
+  E\left( X_{i} \right)= \sum _{ k= 1}^{6}P\left( X_{i}= k \right)k=\frac{7 }{2 }    ,\quad i= 1,\cdots ,n
+  \]故 \[
+  E\left( X_1+ \cdots + X_{n} \right) = \frac{7n }{2 } 
+  \]由于 \(  X_1,\cdots ,X_{n}  \)之间相互独立, 我们有 \[
+  \operatorname{Var}\left( X_1+ \cdots + X_{n} \right)= \operatorname{Var}\left( X_1 \right)+ \cdots + \operatorname{Var}\left( X_{n} \right)   
+  \] 而 \[
+  \operatorname{Var}\left( X_{i} \right)= \sum _{k= 1}^{6}P\left( X_{i}= k \right)\left( k-\frac{7 }{2 }  \right)^{2}= \frac{35 }{12 }   
+  \]故 \[
+  \operatorname{Var}\left( X_1+ \cdots + X_{n} \right)= \frac{35n }{12 }  
+  \]
+\end{proof}
+\begin{exercise}{}{}
+从数字0,1,\(\cdots\),\(n\)中任取两个不同的数字,求这两个数字之差的绝对值的数学期望.
+\end{exercise}
+
+\begin{proof}
+设 $X$ 和 $Y$ 分别为任取的两个不同的数字. 样本空间的大小为 $A_{n+1}^{2}= n\left( n+ 1 \right)$.
+令 $Z= \left| X-Y \right|$, $Z$ 的可能取值为 $k= 1,2,\cdots,n$.
+对于固定的 $k$, 满足 $\left| X-Y \right|= k$ 的数对 $\left( X,Y \right)$ 有:
+$$\left( k,0 \right),\left( k+ 1,1 \right),\cdots,\left( n,n-k \right) \quad \text{以及} \quad \left( 0,k \right),\left( 1,k+ 1 \right),\cdots,\left( n-k,n \right)$$
+共 $2\left( n-k+ 1 \right)$ 种情况. 故 
+$$P\left( Z= k \right)= \frac{2\left( n-k+ 1 \right) }{n\left( n+ 1 \right) },\quad k= 1,2,\cdots,n$$
+
+$$\begin{aligned}
+E\left( Z \right) &= \sum _{k= 1}^{n}k \cdot P\left( Z= k \right) \\ 
+ &= \sum _{k= 1}^{n}k \frac{2\left( n-k+ 1 \right) }{n\left( n+ 1 \right) } \\ 
+ &= \frac{2 }{n\left( n+ 1 \right) }\sum _{k= 1}^{n}\left( \left( n+ 1 \right)k- k^{2} \right) \\ 
+ &= \frac{2 }{n\left( n+ 1 \right) }\left( \left( n+ 1 \right)\sum _{k= 1}^{n}k- \sum _{k= 1}^{n}k^{2} \right) 
+\end{aligned}$$
+代入求和公式 $\sum _{k= 1}^{n}k= \frac{n\left( n+ 1 \right) }{2 }$ 和 $\sum _{k= 1}^{n}k^{2}= \frac{n\left( n+ 1 \right)\left( 2n+ 1 \right) }{6 }$, 得到
+$$\begin{aligned}
+E\left( Z \right) &= \frac{2 }{n\left( n+ 1 \right) }\left( \left( n+ 1 \right)\frac{n\left( n+ 1 \right) }{2 }-\frac{n\left( n+ 1 \right)\left( 2n+ 1 \right) }{6 } \right) \\ 
+ &= \frac{2 }{n\left( n+ 1 \right) } \cdot \frac{n\left( n+ 1 \right) }{2 }\left( \left( n+ 1 \right)-\frac{2n+ 1 }{3 } \right) \\ 
+ &= \left( n+ 1 \right)-\frac{2n+ 1 }{3 } \\ 
+ &= \frac{3n+ 3- 2n- 1 }{3 } \\ 
+ &= \frac{n+ 2 }{3 }
+\end{aligned}$$
+\end{proof}
+
+\begin{exercise}{}{}
+设在区间\((0,1)\)上随机地取\(n\)个点,求相距最远的两点间的距离的数学期望.
+\end{exercise}
+
+\begin{proof}
+  设 \(   X_1,\cdots,X_n   \)是这 \(  n  \)个点, 定义 \[
+  X_{\left( 1 \right) }= \min \left\{ X_1,\cdots ,X_{n} \right\},\quad X_{\left( n \right) }= \max \left\{ X_1,\cdots ,X_{n} \right\}
+  \]  则相距最远的两点间的距离 \(  D  = X_{\left( n \right) }-X_{\left( 1 \right) }\).  我们有 \[
+  F\left( X_{\left( n \right) } \right)= F_{X_1}\left( x \right)\cdots F_{X_{n}}\left( x \right)  = \chi _{\left\{ 0< x< 1 \right\}}x^{n}
+  \]  \[
+ f_{X\left( n \right) }\left( x \right)= \chi _{\left\{ 0< x< 1 \right\}} nx^{n-1} 
+  \] \[
+  1-F\left( X_{\left( 1 \right) } \right)= \left( 1-F_{X_1}\left( x \right)   \right)\cdots \left( 1-F_{X_{n}}\left( x \right) \right) = \left( 1- F_{x_1}\left( x \right)   \right)^{n}   
+  \]我们有 \[
+  \begin{aligned}
+  f_{X_{\left( 1 \right) }}\left( x \right)= \frac{\mathrm{d}}{\mathrm{d}x}\left( 1- \left( 1-F_{X_1}\left( x\right)  \right)  \right)^{n} & = n\left( 1-F_{X_1}\left( x \right)  \right)^{n-1}f_{X_1}\left( x \right) \\ 
+   &= n\left( 1- \chi _{\left\{ 0< x< 1 \right\}} x+  \chi _{\left\{ x\ge 1 \right\}}1\right)^{n-1}\chi _{\left\{ 0< x< 1 \right\}}   \\ 
+    &= \chi _{\left\{ 0< x< 1 \right\}}n\left( 1-x \right)^{n-1} 
+  \end{aligned}
+  \]于是 \[
+  E\left( X_{\left( n \right) } \right)=  \int_{0}^{1}nx^{n}\,\mathrm{d} x= \frac{n }{n+ 1 } 
+  \] \[
+\begin{aligned}
+  E\left( X_{\left( 1 \right) } \right)&= \int_{0}^{1}nx\left( 1-x \right)^{n-1}\,\mathrm{d} x\\ 
+   &= \int_{0}^{1}n\left( 1-x \right)x^{n-1}\,\mathrm{d} x\\ 
+    &= \int_{0}^{1}nx^{n-1}\,\mathrm{d} x-\int_{0}^{1}nx^{n}\,\mathrm{d} x\\ 
+     &=  1-\frac{n }{n+ 1 } = \frac{1 }{n+ 1 } 
+\end{aligned}  
+  \]故 \[
+  E\left( D \right)= E\left( X_{\left( n \right) } \right)-E\left( X_{\left( 1 \right) } \right)= \frac{n-1 }{n+ 1 }    
+  \]
+\end{proof}
+
+\begin{exercise}{}{}
+盒中有\(n\)个不同的球,其上分别写有数字\(1,2,\cdots,n\),每次随机抽出一个,记下其号码,放回去再抽.直到抽到有两个不同的数字为止,求平均抽球次数.
+\end{exercise}
+
+\begin{solution}
+
+记 \(N\) 为停止时的总抽球次数. 设 \(  X  \)为第一次抽球的点数.    此后每次抽球都可以看作是一次独立的伯努利试验, "成功" (即抽到与 \(x\) 不同的球) 的概率为 \(p = \frac{n-1}{n}\).
+
+令 \(Y\) 表示第一次之后直到停止所需的额外抽球次数, 则 \(Y\) 服从参数为 \(p\) 的几何分布, 其期望为 \(E[Y] = \frac{1}{p}\).
+由期望的线性性质, 总次数的期望为:
+\[
+\begin{aligned}
+E[N] &= 1 + E[Y] \\
+&= 1 + \frac{1}{p} \\
+&= 1 + \frac{n}{n-1} \\
+&= \frac{2n-1}{n-1}
+\end{aligned}
+\]
+\end{solution}
+
+
+\begin{exercise}{}{}
+设随机变量\((X,Y)\)的联合分布列为
+
+\[
+\begin{array}{c|cc}
+ & Y=0 & Y=1 \\
+\hline
+X=0 & 0.1 & 0.15 \\
+X=1 & 0.25 & 0.2 \\
+X=2 & 0.15 & 0.15
+\end{array}
+\]
+
+试求\(Z=\sin\!\left(\dfrac{\pi}{2}(X+Y)\right)\)的数学期望.
+\end{exercise}
+\begin{proof}
+  
+$$\begin{aligned}
+E[Z] &= \sum_{x=0}^{2}\sum_{y=0}^{1} \sin\!\left(\dfrac{\pi}{2}(x+y)\right) P(X=x, Y=y) \\
+&= \sin(0)P(0,0) + \sin\left(\frac{\pi}{2}\right)[P(0,1)+P(1,0)] \\
+&\quad + \sin(\pi)[P(1,1)+P(2,0)] + \sin\left(\frac{3\pi}{2}\right)P(2,1) \\
+&= 0 + 1 \cdot (0.15 + 0.25) + 0 + (-1) \cdot 0.15 \\
+&= 0.4 - 0.15 \\
+&= 0.25.
+\end{aligned}$$
+\end{proof}
+\begin{exercise}{}{}
+随机变量\((X,Y)\)服从以点\((0,1),(1,0),(1,1)\)为顶点的三角形区域上的均匀分布,试求\(\operatorname{E}(X+Y)\)和\(\operatorname{Var}(X+Y)\).
+\end{exercise}
+
+\begin{proof}
+ 区域\(D\)的面积为\(1/2\), 故概率密度函数为\(f(x,y)=2\). 积分区域可表示为\(0 \le x \le 1\), \(1-x \le y \le 1\).
+
+\[
+\operatorname{E}(X+Y) = \int_{0}^{1} dx \int_{1-x}^{1} (x+y) \cdot 2 \, dy = \int_{0}^{1} \left[ (x+y)^2 \right]_{1-x}^{1} \, dx = \int_{0}^{1} ((x+1)^2 - 1) \, dx = \frac{4}{3}
+\]
+
+
+\[
+\operatorname{E}((X+Y)^2) = \int_{0}^{1} dx \int_{1-x}^{1} (x+y)^2 \cdot 2 \, dy = \frac{2}{3} \int_{0}^{1} ((x+1)^3 - 1) \, dx = \frac{11}{6}
+\]
+
+
+\[
+\operatorname{Var}(X+Y) = \operatorname{E}((X+Y)^2) - (\operatorname{E}(X+Y))^2 = \frac{11}{6} - \frac{16}{9} = \frac{1}{18}
+\]
+\end{proof}
+
+\begin{exercise}{}{}
+设\(X,Y\)为\((0,1)\)上独立的均匀随机变量,试证:
+\[
+\operatorname{E}\bigl(|X-Y|^{\alpha}\bigr)=\frac{2}{(\alpha+1)(\alpha+2)},\ \alpha>0.
+\]
+\end{exercise}
+
+\begin{proof}
+  \[
+ f_{X,Y}\left( x,y \right)= \chi_{\left\{ 0< x< 1 \right\}} \chi _{\left\{ 0< y< 1 \right\}}
+  \] \[\begin{aligned}
+  E\left( \left| X-Y \right|^{\alpha }  \right)&=  \int _{0}^{1}\int_{0}^{1}\left| x-y \right|^{\alpha }\,\mathrm{d} x\,\mathrm{d} y\\ 
+   &=\int_{0}^{1}\int_{y}^{1}\left( x-y \right)^{\alpha }\,\mathrm{d} x\,\mathrm{d} y+ \int_{0}^{1}\int_{0}^{y}\left( y-x \right)^{\alpha }\,\mathrm{d} x\,\mathrm{d} y   \\ 
+    &= \int_{0}^{1}\frac{1 }{\alpha + 1 }\left( 1-y \right)^{\alpha + 1}\,\mathrm{d} y+   \int_{0}^{1} \frac{1 }{\alpha + 1 }y^{\alpha + 1} \,\mathrm{d} y\\ 
+     &= \frac{1 }{\left( \alpha + 1 \right)\left(  \alpha + 2 \right)   }+ \frac{1 }{\left(  \alpha + 1 \right)\left(  \alpha + 2 \right)   }\\ 
+      &= \frac{2 }{\left(  \alpha + 1 \right)\left(  \alpha  + 2\right)   }   
+  \end{aligned} 
+  \]
+\end{proof}
+
+\begin{exercise}{}{}
+设随机变量 $X$ 与 $Y$ 独立同分布, 且 $E(X)=\mu, \operatorname{Var}(X)=\sigma^2$. 试求 $E(X-Y)^2$.
+\end{exercise}
+
+
+\begin{proof}
+ \[
+ E\left( \left( X-Y \right)^{2}  \right)= E\left( X^{2} \right)-2E\left( XY \right)+ E\left( Y^{2} \right)= 2 \left(  \sigma ^{2}+ \mu ^{2} \right) -2E\left( XY \right)     
+ \] \[
+ \begin{aligned}
+ E\left( XY \right)&= \iint xyf_{X}\left( x \right)f_{Y}\left( y \right)\,\mathrm{d} x\,\mathrm{d} y\\ 
+  &=     \left( \int xf_{X}\left( x \right)  \,\mathrm{d} x\right)\left( \int yf_{Y}\left( y \right)\,\mathrm{d} y  \right)\\ 
+   &= E\left( X \right)E\left( Y \right)    = \mu ^{2}
+ \end{aligned}
+ \]故 \[
+ E\left( \left( X-Y \right)^{2}  \right)= 2 \sigma ^{2}
+ \]
+\end{proof}
+\begin{exercise}{}{}
+设随机变量 $(X,Y)$ 的联合密度函数为
+\[
+p(x,y)=
+\begin{cases}
+\dfrac{x(1+3y^2)}{4}, & 0<x<2,\ 0<y<1,\\
+0, & \text{其他}.
+\end{cases}
+\]
+试求 $E(Y/X)$.
+\end{exercise}
+\begin{solution}
+  \[
+  \begin{aligned}
+  E\left( \frac{Y}{X} \right)&=  \int_{0}^{2}\int_{0}^{1} \frac{y }{x } p\left( x,y \right)\,\mathrm{d} y\,\mathrm{d} x\\ 
+   &=     \int_{0}^{2}\int_{0}^{1}\frac{1 }{4 }y\left( 1+ 3y^{2} \right)\,\mathrm{d} y\,\mathrm{d} x\\ 
+    &= \int_{0}^{2} \frac{1}{8}+ \frac{3}{16}\,\mathrm{d} x\\ 
+     &= \frac{5}{8}  
+  \end{aligned}
+  \]
+\end{solution}
+
+\begin{exercise}{}{}
+系统由$n$个部件组成. 记$X_i$为第$i$个部件能持续工作的时间, 如果$X_1,X_2,\dots,X_n$独立同分布, 且$X_i\sim \operatorname{Exp}(\lambda)$, 试在以下情况下求系统持续工作的平均时间:
+
+(1) 如果有一个部件停止工作, 系统就不工作了;
+
+(2) 如果至少有一个部件在工作, 系统就工作.
+\end{exercise}
+
+\begin{exercise}{}{}
+设$X,Y$独立同分布, 都服从标准正态分布$N(0,1)$, 求$E(\max\{X,Y\})$.
+\end{exercise}
+\begin{proof}
+  由于 $X,Y \sim N(0,1)$,
+  \[
+  f_{\max \left\{ X,Y \right\}}\left( t \right)= 2 \phi(t)\Phi(t) = \frac{1}{\pi} \int_{-\infty}^{t} e^{-\frac{x^2+t^2}{2}} dx
+  \]
+  \[
+ \begin{aligned}
+  E\left( \max \left\{ X,Y \right\} \right) &= \frac{1}{\pi} \int_{-\infty}^{\infty} \int_{-\infty}^{t} t e^{-\frac{x^{2}+ t^{2} }{2 } } \,\mathrm{d} x\,\mathrm{d} t \\ 
+   &= \frac{1}{\pi} \int_{-\infty}^{\infty} e^{-\frac{x^2}{2}} \left( \int_{x}^{\infty} t e^{-\frac{t^{2} }{2 } } \,\mathrm{d} t \right) \,\mathrm{d} x \\
+   &= \frac{1}{\pi} \int_{-\infty}^{\infty} e^{-\frac{x^2}{2}} \cdot e^{-\frac{x^2}{2}} \,\mathrm{d} x \\
+   &= \frac{1}{\pi} \int_{-\infty}^{\infty} e^{-x^2} \,\mathrm{d} x \\
+   &= \frac{1}{\pi} \cdot \sqrt{\pi} = \frac{1}{\sqrt{\pi}}
+ \end{aligned}
+  \]
+\end{proof}
+\begin{exercise}{}{}
+设随机变量$U$服从$(-2,2)$上的均匀分布, 定义$X$和$Y$如下:
+\[
+X=
+\begin{cases}
+-1, & \text{若 } U<-1,\\
+1, & \text{若 } U\ge -1,
+\end{cases}
+\qquad
+Y=
+\begin{cases}
+-1, & \text{若 } U<1,\\
+1, & \text{若 } U\ge 1.
+\end{cases}
+\]
+试求$\operatorname{Var}(X+Y)$.
+\end{exercise}
+
+\begin{proof}
+  \[
+  X=\chi _{\left\{ -1< U< 2 \right\}}- \chi _{\left\{ -2< U< -1 \right\}},\quad Y= \chi _{\left\{ 1< U< 2 \right\}}-\chi _{\left\{ -2< U< 1 \right\}}
+  \]   \[
+  E\left( X \right)=  P\left( -1< U< 2 \right)-P\left( -2< U< -1 \right)= \frac{3 }{4 }-\frac{1 }{4 }= \frac{1}{2}    
+  \] \[
+  E\left( Y \right)= P\left( 1< U< 2 \right)-P\left( -2< U< 1 \right)= \frac{1}{4}-\frac{3}{4}= -\frac{1}{2}   
+  \]\[
+  E\left( X+ Y \right)= E\left( X \right)+ E\left( Y \right)=    0
+  \]\[
+  X= \chi _{\left\{ -1< U< 1 \right\}}+ \chi _{\left\{ 1< U< 2 \right\}}-\chi _{\left\{ -2< U< -1 \right\}}, \quad a.e.
+  \] \[
+  Y= \chi _{\left\{ 1< U< 2 \right\}}-\chi_{\left\{ -2< U< -1 \right\}}- \chi _{\left\{ -1< U< 1 \right\}},\quad a.e.
+  \] 故 \[
+  X+ Y= 2\chi _{\left\{ 1< U< 2 \right\}}-2\chi _{\left\{ -2< U< -1 \right\}},\quad a.e.
+  \]\[
+  \begin{aligned}
+  \operatorname{Var}\left( X+ Y \right)&=  E\left( \left( X+ Y \right)^{2} \right)\\ 
+   &=   \int \left( X+ Y \right)^{2}\,\mathrm{d} P\\ 
+    &= \int  4\chi _{\left\{ 1< U< 2 \right\}}+ 4\chi _{\left\{ -2< U< -1 \right\}}\,\mathrm{d} P\\ 
+     &= 4P\left( \left\{ 1< U< 2 \right\} \right)+ 4P\left(\left\{  -2< U< -1 \right\} \right)  \\ 
+      &= 2
+  \end{aligned}
+  \]
+\end{proof}
+
+\begin{exercise}{}{}
+设随机变量$X$与$Y$独立, 都服从正态分布$N(a,\sigma^2)$, 试证:
+\[
+E(\max\{X,Y\}) = a + \frac{\sigma}{\sqrt{\pi}}.
+\]
+\end{exercise}
+\begin{proof}
+  利用恒等式 $\max\{X, Y\} = \frac{X + Y + |X - Y|}{2}$, 由期望的线性性质可得:
+  \[
+  E(\max\{X, Y\}) = \frac{1}{2}E(X) + \frac{1}{2}E(Y) + \frac{1}{2}E(|X - Y|).
+  \]
+  已知 $X, Y \sim N(a, \sigma^2)$, 故 $E(X) = E(Y) = a$. 
+  
+  令 $Z = X - Y$. 由于 $X$ 与 $Y$ 相互独立且服从正态分布, 其线性组合 $Z$ 仍服从正态分布.
+  \[
+  \begin{aligned}
+  E(Z) &= E(X) - E(Y) = a - a = 0, \\
+  \text{Var}(Z) &= \text{Var}(X) + \text{Var}(Y) = \sigma^2 + \sigma^2 = 2\sigma^2.
+  \end{aligned}
+  \]
+  即 $Z \sim N(0, 2\sigma^2)$. 其概率密度函数为 $f_Z(z) = \frac{1}{\sqrt{2\pi} \cdot \sqrt{2}\sigma} e^{-\frac{z^2}{4\sigma^2}} = \frac{1}{2\sqrt{\pi}\sigma} e^{-\frac{z^2}{4\sigma^2}}$.
+  
+  
+  \[
+  \begin{aligned}
+  E(|Z|) &= \int_{-\infty}^{\infty} |z| f_Z(z) \,\mathrm{d} z \\
+  &= 2 \int_{0}^{\infty} z \cdot \frac{1}{2\sqrt{\pi}\sigma} e^{-\frac{z^2}{4\sigma^2}} \,\mathrm{d} z  \\
+  &= \frac{1}{\sqrt{\pi}\sigma} \int_{0}^{\infty} z e^{-\frac{z^2}{4\sigma^2}} \,\mathrm{d} z.
+  \end{aligned}
+  \]
+  作变量代换, 令 $u = \frac{z^2}{4\sigma^2}$, 则 $\mathrm{d} u = \frac{z}{2\sigma^2} \mathrm{d} z$, 即 $z \mathrm{d} z = 2\sigma^2 \mathrm{d} u$. 积分变为:
+  \[
+  \int_{0}^{\infty} z e^{-\frac{z^2}{4\sigma^2}} \,\mathrm{d} z = \int_{0}^{\infty} e^{-u} \cdot 2\sigma^2 \,\mathrm{d} u = 2\sigma^2.
+  \]
+  代回 $E(|Z|)$ 的表达式:
+  \[
+  E(|X - Y|) = E(|Z|) = \frac{1}{\sqrt{\pi}\sigma} \cdot 2\sigma^2 = \frac{2\sigma}{\sqrt{\pi}}.
+  \]
+  故
+  \[
+  E(\max\{X, Y\}) = a + \frac{1}{2} E(|X - Y|) = a + \frac{1}{2} \cdot \frac{2\sigma}{\sqrt{\pi}} = a + \frac{\sigma}{\sqrt{\pi}}.
+  \]
+\end{proof}
+\end{document}

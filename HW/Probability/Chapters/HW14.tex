@@ -1,0 +1,602 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{13}
+}{}
+
+\chapter{ HW14 }
+代靖涵 25120222201319
+
+\begin{exercise}{}{}
+已知随机变量 $Y$ 的密度函数为
+\[
+p_Y(y) = \begin{cases} 5y^4, & 0 < y < 1, \\ 0, & \text{其他}. \end{cases}
+\]
+在给定 $Y=y$ 条件下, 随机变量 $X$ 的条件密度函数为
+\[
+p(x \mid y) = \begin{cases} \frac{3x^2}{y^3}, & 0 < x < y < 1, \\ 0, & \text{其他}. \end{cases}
+\]
+求概率 $P(X>0.5)$.
+\end{exercise}
+
+\begin{proof}
+     \[
+     p\left( x|y \right)= \frac{p\left( x,y \right)  }{p_{Y}\left( y \right)  }  
+     \]得到 \[
+     p\left( x,y \right)= \chi _{\left\{ 0< x< y< 1 \right\}}15x^{2}y 
+     \]
+     \[
+    \begin{aligned}
+     P\left( X> 0.5 \right)&= \int_{0.5}^{1} \int_{x}^{1} 15x^{2}y\,\mathrm{d} y\,\mathrm{d} x  \\ 
+      &= \int_{0.5}^{1} 15x^{2} \frac{1}{2}\left( 1-x^{2} \right)\,\mathrm{d} x\\ 
+       &= \frac{5 }{2 }\left( 1-\frac{1}{2^{3}} \right)- \frac{3}{2}\left( 1-\frac{1}{2^{5}} \right)\\ 
+        &= \frac{5 }{2 }\frac{7 }{8 }- \frac{3}{2}\frac{31 }{32 }\\ 
+         &= \frac{ 47 }{64 }      
+    \end{aligned}
+     \]
+\end{proof}
+
+\begin{exercise}{}{}
+设随机变量 $X$ 服从 $(1,2)$ 上的均匀分布, 在 $X=x$ 的条件下, 随机变量 $Y$ 的条件分布是参数为 $x$ 的指数分布, 证明: $XY$ 服从参数为 1 的指数分布.
+\end{exercise}
+
+\begin{proof}
+     \[
+     p_{X}\left( x \right)= \chi _{\left\{ 1< x< 2 \right\}} 
+     \] \[
+     p\left( y|x \right)= \chi _{\left\{ y> 0 \right\}}x e^{-xy} 
+     \] \[
+     p\left( x,y \right)= \chi _{\left\{ y> 0 \right\}}\chi _{\left\{ 1< x< 2 \right\}}xe^{-xy} 
+     \] \[
+    \begin{aligned}
+     P\left( XY\le t \right)&=  P\left( Y\le \frac{t }{X }  \right) \\ 
+      &= \chi _{\left\{ t> 0 \right\}}\int_{1}^{2}\int_{-\infty}^{\frac{t }{x } }xe^{-xy} \,\mathrm{d} y\,\mathrm{d} x\\ 
+       &= \chi _{\left\{ t> 0 \right\}} \int_{1}^{2}  1-e^{-t}\,\mathrm{d} x\\ 
+        &=- \chi _{\left\{ t> 0 \right\}} e^{-t}+\chi _{\left\{ t> 0 \right\}}
+    \end{aligned}
+     \]于是 \[
+     p_{XY}\left( t \right)= \frac{\mathrm{d}}{\mathrm{d}t}P\left( XY\le t \right)= \chi _{\left\{ t> 0 \right\}}e^{-t}+ 0= \chi _{\left\{ t> 0 \right\}}  e^{-t}
+     \]因此 \(  XY  \)服从参数为1的指数分布. 
+\end{proof}
+
+\begin{exercise}{}{}
+设二维离散随机变量 $(X,Y)$ 的联合分布列为
+\begin{center}
+\begin{tabular}{c|cccc}
+\hline
+ & \multicolumn{4}{c}{$Y$} \\
+\cline{2-5}
+$X$ & 0 & 1 & 2 & 3 \\
+\hline
+0 & 0 & 0.01 & 0.01 & 0.01 \\
+1 & 0.01 & 0.02 & 0.03 & 0.02 \\
+2 & 0.03 & 0.04 & 0.05 & 0.04 \\
+3 & 0.05 & 0.05 & 0.05 & 0.06 \\
+4 & 0.07 & 0.06 & 0.05 & 0.06 \\
+5 & 0.09 & 0.08 & 0.06 & 0.05 \\
+\hline
+\end{tabular}
+\end{center}
+试求 $E(X \mid Y=2)$ 和 $E(Y \mid X=0)$.
+\end{exercise}
+
+\begin{proof}
+   \[
+   P\left( Y= 2 \right)= 0.01+ 0.03+ 0.05+ 0.05+ 0.05+ 0.06= \frac{1}{4} 
+   \] \[
+  \begin{aligned}
+   E\left( X|Y= 2 \right)&= \frac{1 }{P\left( Y= 2 \right)  }\left( 1\cdot 0.03+ 2\cdot 0.05+ 3\cdot 0.05+ 4\cdot 0.05+ 5\cdot 0.06 \right)    \\ 
+    &= 4\left( 0.78 \right)\\ 
+     &= 3.12
+  \end{aligned}
+   \] \[
+   P\left( X= 0 \right)= 0.01+ 0.01+ 0.01= 0.03
+   \] \[
+   \begin{aligned}
+   E\left( Y|X= 0 \right)&=\frac{1 }{0.03 } \left( 1\cdot 0.01+ 2\cdot 0.01+ 3\cdot 0.01 \right)  = 2
+   \end{aligned}
+   \]
+\end{proof}
+
+
+\begin{exercise}{}{}
+设随机变量 $X$ 与 $Y$ 相互独立, 分别服从参数为 $\lambda_1$ 和 $\lambda_2$ 的泊松分布, 试求 $E(X \mid X+Y=n)$.
+\end{exercise}
+
+\begin{proof}
+  \[
+ \begin{aligned}
+  E\left( X|X+ Y= n \right)& = \sum _{k= 0}^{n}k\frac{P\left( X= k, X+ Y= n \right)  }{ P\left( X+ Y= n \right) }\\ 
+   &= \sum _{k= 0}^{n}k\frac{P\left( X= k \right)P\left( Y= n-k \right)   }{P\left( X+ Y= n \right)  }  
+ \end{aligned}  
+  \] 由泊松分布的可加性, \(  X+ Y\sim Poission\left(  \lambda _1 +  \lambda _2  \right)   \) , 于是\[
+\begin{aligned}
+  P\left( X|X+ Y= n \right)= \frac{P\left( X= k \right)P\left( Y= n-k \right)   }{P\left( X+ Y= n \right)  }&=   \frac{\frac{ \lambda _1 ^{k} }{k! }e^{- \lambda _1 }\frac{ \lambda _2 ^{n-k} }{\left( n-k \right)!  }e^{- \lambda _2 }   }{\frac{\left(  \lambda _1 +  \lambda _2  \right)^{n}  }{n! }e^{-\left(  \lambda _1 +  \lambda _2  \right) }  }  \\ 
+   &= \binom{ n }{k  } \left( \frac{ \lambda _1  }{ \lambda _1 +  \lambda _2  }  \right)^{k}\left( \frac{ \lambda _2  }{ \lambda _1 +  \lambda _2  }  \right)^{n-k}   
+\end{aligned}
+  \]这表明 \( \left(  X|X+ Y= n \right) \sim  B\left( n, \frac{ \lambda _1  }{ \lambda _1 +  \lambda _2  }  \right)  \) 因此 \[
+  E\left( X|X+ Y= n \right)= \frac{n \lambda _1  }{ \lambda _1 +  \lambda _2  }  
+  \]
+\end{proof}
+
+\begin{exercise}{}{}
+设二维连续随机变量 $(X,Y)$ 的联合密度函数为
+\[
+p(x,y) = \begin{cases} x+y, & 0 < x, y < 1, \\ 0, & \text{其他}. \end{cases}
+\]
+试求 $E(X \mid Y=0.5)$.
+\end{exercise}
+
+\begin{proof}
+     \[
+     p_{Y}\left( y \right)= \chi _{\left\{ 0< y< 1 \right\}}\int_{0}^{1}x+ y\,\mathrm{d} x= \chi _{\left\{ 0< y< 1 \right\}}\left( \frac{1}{2}+ y \right)  
+     \] \[
+     p\left( x|y= 0.5 \right)= \frac{p\left( x,y \right)  }{p_{Y}\left( 0.5 \right)  }= \chi _{\left\{ 0< x<  1 \right\}}\left( x+ \frac{1}{2} \right) 
+     \]因此 \[
+     \begin{aligned}
+     E\left( X|Y= 0.5 \right)&= \int_{0}^{1}x\left( x+ \frac{1}{2} \right)\,\mathrm{d} x= \frac{7}{12}
+     \end{aligned}
+     \]
+\end{proof}
+\begin{exercise}{}{}
+设二维连续随机变量 $(X, Y)$ 的联合密度函数为
+\[
+p(x, y) = \begin{cases} 24(1-x)y, & 0 < y < x < 1, \\ 0, & \text{其他}. \end{cases}
+\]
+试在 $0 < y < 1$ 时, 求 $E(X|Y=y)$.
+\end{exercise}
+\begin{proof}
+    在 \(  0< y< 1  \)时, 
+     \[
+     p_{Y}\left( y \right) = \int_{y}^{1}24\left( 1-x \right)y\,\mathrm{d} x= 12y \left( 1-y \right)^{2}  
+     \] \[
+     p\left( x|y \right)= \frac{p\left( x,y \right)  }{p_{Y}\left( y \right)  }= \chi _{\left\{ y< x< 1 \right\}}\frac{2\left( 1-x \right) }{\left( 1-y \right)^{2}  }   
+     \] \[
+    \begin{aligned}
+     E\left( X|Y= y \right)= \int_{y}^{1}x\frac{2\left( 1-x \right)  }{\left( 1-y \right)^{2}  }\,\mathrm{d} x&= \frac{2 }{\left( 1-y \right)^{2}  } \left( \frac{1}{2}\left( 1-y^{2} \right)-\frac{1}{3}\left( 1-y^{3} \right)   \right)  \\ 
+      &= \frac{ 3+ 3y -2\left( 1+ y+ y^{2} \right) }{3\left( 1-y \right)  }\\ 
+       &= \frac{1+ 2y }{3 }  
+    \end{aligned}
+     \]
+\end{proof}
+\begin{exercise}{}{}
+    设 $E(Y), E(h(Y))$ 存在, 试证 $E(h(Y)|Y) = h(Y)$.
+\end{exercise}
+
+\begin{proof}
+  
+
+  \[
+  E\left( h\left( Y \right)|Y= y  \right)= \lim_{ \delta \to 0^{+ }} \frac{\int_{y}^{y+  \delta }h\left( t \right)f_{Y}\left( t \right)\,\mathrm{d} t   }{ \int_{y}^{y+  \delta }f_{Y}\left( t \right)\,\mathrm{d} t }  
+  \]由积分中值定理, 存在 \(   \xi \left(  \delta \right) \in [y,y+  \delta ]  \), 使得 \[
+  \int_{y}^{y+  \delta }h\left( t \right)f_{Y}\left( t \right)\,\mathrm{d} t= h\left(  \xi \left(  \delta  \right)  \right) \int_{y}^{y+  \delta }   f_{Y}\left( t \right)\,\mathrm{d} t 
+  \] 因此 \[
+  E\left( h\left( Y \right)|Y = y \right)= \lim_{ \delta \to 0^{+ }} h\left(  \xi \left(  \delta  \right)  \right)= h\left( y \right)  
+  \]从而 \[
+  E\left( h\left( Y \right)|Y  \right)= h\left( Y \right)  
+  \]
+
+  \begin{remark}
+    从一般的测度论观点来看,  \(  E[h\left( Y \right)| Y ]= E[h\left( Y \right)| \sigma \left( Y \right)  ]  \)是满足以下两个条件的随机变量 \(  Z  \):
+     \begin{itemize}
+          \item \(  Z  \)是 \(   \sigma \left( Y \right)   \)-可测的, 
+          \item  对于任意的 \(  A\in  \sigma \left( Y \right)   \)   , \[
+          \int_{A}Z\,\mathrm{d} P= \int_{A}h\left( Y \right)\,\mathrm{d} P 
+          \]根据条件期望(Radon-Nikodym导数)的(a.s.)唯一性, 我们有 \[
+          E[h\left( Y \right)|Y ]= h\left( Y \right),\quad \text{a.s.} 
+          \]
+     \end{itemize}
+       
+  \end{remark}
+\end{proof}
+
+\begin{exercise}{}{}
+设以下所涉及的数学期望均存在, 试证:
+\begin{enumerate}
+\item $E(g(X)Y|X) = g(X)E(Y|X)$;
+\item $E(XY) = E(XE(Y|X))$;
+\item $\operatorname{Cov}(X, E(Y|X)) = \operatorname{Cov}(X, Y)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+     \begin{enumerate}
+          \item  \[
+         \begin{aligned}
+          E\left( g\left( X \right)Y|X = x \right)&= \lim_{ \delta \to 0^{+ }} \frac{\int_{x}^{x+  \delta }\int_{-\infty}^{\infty}g\left( t \right)yf_{X,Y}\left( t,y \right)\,\mathrm{d} y\,\mathrm{d} t   }{\int_{x}^{x+  \delta } f_{X}\left( t \right)\,\mathrm{d} t  }   \\ 
+           &= \lim_{ \delta \to 0^{+ }} \frac{\frac{\mathrm{d}}{\mathrm{d} \delta } \int_{x}^{x+  \delta }\int_{-\infty}^{\infty}g\left( t \right)yf_{X,Y}\left( t,y \right)\,\mathrm{d} y\,\mathrm{d} t   }{ \frac{\mathrm{d}}{\mathrm{d} \delta }\int_{x}^{x+  \delta }f_{X}\left( t \right)\,\mathrm{d} t }\\ 
+            &=   \lim_{ \delta \to 0^{+ }}\frac{\int_{-\infty}^{\infty}g\left( x+  \delta  \right)yf_{X,Y}\left( x+  \delta ,y \right)\,\mathrm{d} y   }{f_{X}\left( x+  \delta  \right)  }\\ 
+            &= \int_{-\infty}^{\infty}g\left( x \right)y f\left( y|x \right) \,\mathrm{d} y= g\left( x \right)\int_{-\infty}^{\infty}yf\left( y|x \right)\,\mathrm{d} y  \\ 
+             &=\left(  g\left( X \right) E\left( Y|X \right)    \right)|X= x   
+         \end{aligned}
+          \]因此 \[
+          E\left( g\left( X \right)Y|X  \right)= g\left( X \right)E\left( Y|X \right)   
+          \]
+          \begin{remark}
+               从一般的测度论观点来看, 由条件期望的定义, 只需要证明对于任意的 \(  A\in  \sigma \left( X \right)   \)  \[
+               \int_{A}E\left( g\left( X \right)Y|X  \right)\,\mathrm{d} P= \int_{A}g\left( X \right)E\left( Y|X \right)\,\mathrm{d} P   
+               \]其中左侧等于 \[
+               \int_{A}g\left( X \right)Y \,\mathrm{d} P 
+               \]因此只需要证明对于任意的 \(  A\in  \sigma \left( X \right)   \), 都有 \[
+               \int_{A}g\left( X \right)Y\,\mathrm{d} P= \int_{A}g\left( X \right)E\left( Y|X \right)\,\mathrm{d} P   
+               \] 事实上, 任取 \(  A\in  \sigma \left( X \right)   \), 由条件期望的定义, 我们有 \[
+               \int \chi _{A}Y\,\mathrm{d} P= \int \chi _{A}E\left( Y|X \right)\,\mathrm{d} P 
+               \] 进而对于任意的 \(   \sigma \left( X \right)   \)上的简单函数\(   \varphi   \), 都有 \[
+               \int_{A}  \varphi  Y\,\mathrm{d} P= \int _{A} \varphi E\left( Y|X \right)\,\mathrm{d} P 
+               \]  由于 \(  g\left( X \right)   \)是 \(   \sigma \left( X \right)   \)-可测的. 若 \(  g\left( X \right) ,Y  \)非负,  存在一列\(   \sigma \left( X \right)   \)上的简单函数 \(   \varphi _{1}, \varphi _{2},\cdots   \)    , 使得 \(  \lim_{k\to \infty} \varphi _{k}= g  \), 并且 \( 0\le   \varphi _1 \le  \varphi _2 \le \cdots   \)  由单调收敛定理 \[
+               \int_{A}g\left( X \right)Y\,\mathrm{d} P= \int _{A}g\left( X \right)E\left( Y|X \right)\,\mathrm{d} P   
+               \]  对于一般的情况, 利用 \(  g = g^{+ }- g^{-}  \)和 \(  Y= Y^{+ }-Y^{-}  \)  即可.
+          \end{remark}
+
+          \item 对于任意的 \(  A\in  \sigma \left( X \right)   \), 我们有 \[
+          \int_{A}E\left( XY|X \right)\,\mathrm{d} P=  \int_{A}XY\,\mathrm{d} P 
+          \] 特别地, 取 \(  A=  \Omega   \), 我们得到 \[
+          E\left( E\left( XY|X \right)  \right)= E\left( XY \right)  
+          \] 由1. \[
+          XE\left( Y|X \right)= E\left( XY|X \right)  
+          \]两边再取期望, 得到 \[
+          E\left( XE\left( Y|X \right)  \right)= E\left( E\left( XY|X \right)  \right)= E\left( XY \right)   
+          \]
+          \item \[
+        \begin{aligned}
+          \operatorname{Cov}\left( X,E\left( Y|X \right)  \right)&= E\left( XE\left( Y|X \right)  \right)-E\left( X \right)E\left( E\left( Y|X \right) \right)      \\ 
+           &= E\left( XY \right)-E\left( X \right)E\left( E\left( Y|X \right)    \right) \\ 
+            &= E\left( XY \right)-E\left( X \right)E\left( Y \right)   \\ 
+             &= \operatorname{Cov}\left( X,Y \right) 
+        \end{aligned}
+          \]其中第二个等号利用了2., 第三个等号使用了全期望公式.
+     \end{enumerate}
+     
+\end{proof}
+
+\begin{exercise}{}{}
+设随机变量 $X$ 与 $Y$ 独立同分布, 都服从参数为 $\lambda$ 的指数分布. 令
+\[
+Z = \begin{cases} 3X + 1, & X \geqslant Y, \\ 6Y, & X < Y. \end{cases}
+\]
+求 $E(Z)$.
+\end{exercise}
+
+\begin{proof}
+      \[
+      \begin{aligned}
+      E\left( Z \right)&=E\left( Z|X\ge Y \right)P\left( X\ge Y \right)+ E\left( Z| X< Y \right)P\left( X< Y \right)      
+      \end{aligned}
+      \]记 \(  M= \min \left\{ X,Y \right\}  \), 则 \(  M\sim \exp \left( 2 \lambda  \right)   \), 由指数分布的无记忆性, \(  P\left( X-Y\ge t| X\ge Y \right)= P\left( X\ge t \right)    \),  因此  \(  \left( X-Y \right)| \left( X\ge Y \right)    \sim \exp \left(  \lambda  \right) \).   \[
+      E\left( \left( X-Y \right)|X\ge Y  \right)= \frac{1 }{ \lambda  }  
+      \]  由于 \(  M  \)与事件 \(  X\ge Y  \)独立, 我们有 \[
+      E\left( M|X\ge Y \right)= E\left( M \right)= \frac{1 }{2 \lambda  }   
+      \] \[
+    \begin{aligned}
+      E\left( Z|X\ge Y \right)&= E\left( 3Y+ 3\left( X-Y \right)+ 1|X\ge Y  \right) \\ 
+       &= 3E\left( M|X\ge Y \right)+ 3 E\left( \left( X-Y \right)|X\ge Y  \right)+ E\left( 1|X\ge Y \right)  \\ 
+        &= \frac{3 }{2 \lambda  }+ \frac{3 }{ \lambda  }+ 1\\ 
+         &= \frac{9 }{2 \lambda  }+ 1   
+    \end{aligned}    
+      \]类似地,  \[
+      \begin{aligned}
+      E\left( Z|X< Y \right)&= E\left( 6X+ 6\left( Y-X \right)|X< Y  \right)\\ 
+       &= 6E\left( M \right)+ 6E\left( \left( Y-X \right)|X< Y  \right) \\ 
+        &= \frac{3 }{ \lambda  }+ \frac{6 }{ \lambda  }\\ 
+         &= \frac{9 }{ \lambda  }        
+      \end{aligned}
+      \]由对称性,  \[
+      P\left( X\ge Y \right)= P\left( X< Y \right)= \frac{1}{2}  
+      \]因此 \[
+      E\left( Z \right)= \frac{1}{2}\left( \frac{9 }{2 \lambda  }+ 1  \right)+ \frac{1}{2}\left( \frac{9 }{ \lambda  }  \right)= \frac{27 }{4 \lambda  }+ \frac{1}{2}   
+      \]
+\end{proof}
+
+\begin{exercise}{}{}
+设随机变量 $X \sim N(\mu, 1), Y \sim N(0, 1)$, 且 $X$ 与 $Y$ 相互独立, 令
+\[
+I = \begin{cases} 1, & Y < X, \\ 0, & X \leqslant Y. \end{cases}
+\]
+试证明:
+\begin{enumerate}
+\item $E(I|X=x) = \Phi(x)$;
+\item $E(\Phi(X)) = P(Y < X)$;
+\item $E(\Phi(X)) = \Phi(\mu/\sqrt{2})$.
+\end{enumerate}
+(提示: $X-Y$ 的分布是什么?)
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+     \item  由于 \(  X,Y  \)独立, 事件 \(  \left\{ Y< x \right\}  \)和事件 \(  \left\{ X= x \right\}  \)独立, 因此   \[
+     E\left( I|X= x \right)= E\left( \chi _{\left\{ Y< x \right\}} |X= x\right)  =P\left( Y< x \right) = \Phi \left( x \right) 
+     \]
+     \item 上面的式子给出 \[
+     E\left( I|X \right)= \Phi \left( X \right)  
+     \] 两边取期望, 利用全期望公式, 得到 \[
+     E\left( I \right)= E\left( E\left( I|X \right)  \right)= E\left( \Phi \left( X \right)  \right)   
+     \]而 \[
+     E\left( I \right)= P\left( Y< X \right)  
+     \]因此 \[
+     E\left( \Phi \left( X \right)  \right)= P\left( Y< X \right)  
+     \] \[
+     P\left( Y< X \right)= P\left( Y-X< 0\right)  
+     \]由于 \(  Y-X\sim N\left( -\mu  , 2 \right)   \) , 令 \(  Z= \frac{Y-X+ \mu  }{\sqrt{2} }   \), 则\(  Z\sim N\left( 0,1 \right)   \), 从而 \[
+     P\left( X-Y> 0 \right)= P\left(Z< \frac{\mu  }{\sqrt{2} }   \right)= \Phi \left( \frac{\mu  }{\sqrt{2} }  \right)   
+     \]  
+    \end{enumerate}
+    
+\end{proof}
+
+\begin{exercise}{}{}
+设 $X_1, X_2, \cdots$ 为独立同分布的随机变量序列, 且方差存在. 随机变量 $N$ 只取正整数值, $\operatorname{Var}(N)$ 存在, 且 $N$ 与 $\{X_n\}$ 独立. 证明
+\[
+\operatorname{Var}\left(\sum_{i=1}^N X_i\right) = \operatorname{Var}(N)[E(X_1)]^2 + E(N)\operatorname{Var}(X_1).
+\]
+\end{exercise}
+
+\begin{proof}
+    由全方差公式, \[
+    \operatorname{Var}\left( \sum _{i= 1}^{N}X_{i} \right)= E\left( \operatorname{Var}\left( \sum _{i= 1}^{N}X_{i}|N \right)  \right)+ \operatorname{Var}\left( E\left[ \sum _{i= 1}^{N}X_{i}|N \right]  \right)   
+    \]其中 \[
+    \operatorname{Var}\left( \sum _{i= 1}^{N}X_{i}|N= n \right)= \operatorname{Var}\left( \sum _{i= 1}^{n}X_{i} \right)= \sum _{i= 1}^{n}\operatorname{Var}\left( X_{i} \right)   = n \operatorname{Var}\left( X_1 \right) 
+    \]因此  \[
+    \operatorname{Var}\left( \sum _{i= 1}^{N}X_{i}|N \right)= N \operatorname{Var}\left( X_1 \right) 
+    \]\[
+    E\left( \operatorname{Var}\left( \sum _{i= 1}^{N}X_{i}|N \right)  \right)=  E\left( N \operatorname{Var}\left( X_1 \right)  \right)=E\left( N \right)  \operatorname{Var}\left( X_1 \right)  
+    \]由独立性 \[
+    E\left[ \sum _{i= 1}^{N}X_{i}|N= n \right]= E\left[ \sum _{i= 1}^{n}X_{i} \right]=   nE[X_{1}]
+    \]因此 \[
+    E[\sum _{i= 1}^{N}X_{i}|N]= NE[X_{1}]
+    \]故 \[
+    \operatorname{Var}\left( E\left[ \sum _{i= 1}^{N}X_{i}|N \right]  \right)= \operatorname{Var}\left( NE[X_{1}] \right)  = \operatorname{Var}\left( N \right) \left( E[X_{1}] \right)^{2}  
+    \]故 \[
+    \operatorname{Var}\left( \sum _{i= 1}^{N}X_{i} \right)= \operatorname{Var}\left( N \right)\left( \left[ E\left[ X_{1} \right]  \right]  \right)^{2}+ E\left( N \right)\operatorname{Var}\left( X_1 \right)     
+    \]
+\end{proof}
+
+\begin{exercise}{}{}
+如果 $X_n \xrightarrow{P} X$, 且 $X_n \xrightarrow{P} Y$. 试证: $P(X=Y)=1$.
+\end{exercise}
+
+\begin{proof}
+    对于任意的 \(   \varepsilon > 0  \), 我们有   \[
+      \lim_{n\to \infty}P\left( \left| X_{n}-X \right|\ge  \varepsilon    \right)= 0 ,\quad \lim_{n\to \infty}P\left( \left| X_{n}-Y \right|\ge  \varepsilon   \right)= 0 
+      \] 由于 \[
+      \left| X-Y \right|\le \left| X_{n}-X \right|+ \left| X_{n}-Y \right|   
+      \]因此\[
+      P\left( \left| X-Y \right|\ge  \varepsilon   \right) \le P\left( \left| X_{n}-X \right|\ge \frac{ \varepsilon  }{2 }   \right)+ P\left( \left| X_{n}-Y \right|\ge \frac{ \varepsilon  }{2 }   \right)  
+      \]两边令 \(  n\to \infty  \), 得到 \[
+      P\left( \left| X-Y \right|\ge  \varepsilon   \right)= 0 
+      \]由于 \(   \varepsilon   \)是任意的,由测度的自下连续性 \[
+      P\left( \left| X-Y \right|>  0 \right) = \lim_{k\to \infty}P\left( \left| X-Y \right|\ge \frac{1 }{k }   \right)= 0 
+      \] 我们得到 \[
+      P\left( \left| X-Y \right|> 0  \right)= 0 
+      \]因此 \[
+      P\left( X= Y \right)= P\left( \left| X-Y \right|= 0  \right)= 1-P\left( \left| X-Y \right|> 0  \right)= 1   
+      \]
+\end{proof}
+
+
+\begin{exercise}{}{}
+如果 $X_n \xrightarrow{P} X, Y_n \xrightarrow{P} Y$. 试证
+\begin{enumerate}
+\item $X_n + Y_n \xrightarrow{P} X + Y$;
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+      \[
+      \left| X_{n}+ Y_{n}-\left( X+ Y \right)  \right|\le \left| X_{n}-X \right|+ \left| Y_{n}-Y \right|   
+      \]因此对于任意的 \(   \varepsilon > 0  \), \[
+      P\left( \left| X_{n}+ Y_{n}-\left( X+ Y \right)  \right|\ge  \varepsilon   \right)\le P\left( \left| X_{n}-X \right|\ge  \frac{ \varepsilon  }{2 }   \right)+ P\left( \left| Y_{n}-Y \right|\ge \frac{ \varepsilon  }{2 }   \right)   
+      \] 两边令 \(  n\to \infty  \), 得到  \[
+    \lim_{n\to \infty} P\left( \left| X_{n}+ Y_{n}-\left( X+ Y \right)  \right|\ge  \varepsilon   \right)= 0 
+      \]由于 \(   \varepsilon > 0  \)是任意的, 这就根据定义说明了 \[
+     X_n + Y_n \xrightarrow{P} X + Y
+      \] 
+\end{proof}
+\begin{exercise}{}{12-14-1}
+如果 $X_n \xrightarrow{P} X$, $g(x)$ 是直线上的连续函数, 试证: $g(X_n) \xrightarrow{P} g(X)$.
+\end{exercise}
+
+\begin{proof}
+     任取 \(   \varepsilon > 0  \)和 \(  \eta > 0  \). 由测度的自下连续性 , \[
+     \lim_{M\to \infty}P\left( \left| X \right|\le  M  \right)= 1 
+     \]  因此 \[
+     \lim_{M\to \infty}P\left( \left| X \right|>  M  \right)= 0 
+     \]故存在 \(  M_0  \), 使得 \[
+   P\left( \left| X \right|> M_0  \right)\le    P\left( \left| X \right|>   M_0-1  \right)< \frac{\eta  }{2 }  
+     \] 由于 \[
+     \left| X_{n} \right|\le \left| X_{n}-X \right|+ \left| X \right|   
+     \]存在 \(  N  \), 使得对于任意的 \(  n\ge N  \), 都有 \(  P\left( \left| X_{n}-X \right|> 1  \right)   < \frac{\eta  }{2 } \)此时  \[
+     P\left( \left| X_{n} \right|> M_0  \right)\le P\left( \left| X \right|> M_0 -1 \right)+ P\left( \left| X_{n}-X \right|>  1   \right)   < \eta 
+     \]   \(  g  \)是 \(  [-M_0,M_0]  \)上的一致连续函数, 存在 \(   \delta > 0  \), 使得 只要 \(  \left| X_{n} \right|, \left| X \right|\le M_0    \) , 且\(  \left| X_{n}-X \right|<  \delta    \), 就有 \[
+     \left| g\left( X \right)-g\left( X_n \right)   \right|\le  \varepsilon  
+     \]   因此 \[
+     P\left( \left| g\left( X \right)-g\left( X_n \right)   \right|\ge  \varepsilon  ,\left| X_{n} \right|< M_0, \left| X \right|< M_0   \right)\le P\left( \left| X_{n}-X \right|\ge   \delta  \right)  
+     \]而 \[
+   \begin{aligned}
+     &P\left( \left| g\left( X \right)-g\left( X_{n} \right)   \right|\ge  \varepsilon   \right)\\ 
+      &\le P\left( \left| g\left( X \right)-g\left( X_{n} \right)   \right|\ge  \varepsilon , \left| X_{n} \right|< M_0, \left| X \right|< M_0    \right)  + P\left( \left| X_{n} \right|> M_0  \right)+ P\left( \left| X \right|> M_0  \right)   \\ 
+       &\le P\left( \left| g\left( X \right)-g\left( X_{n} \right)   \right|\ge  \varepsilon , \left| X_{n} \right|< M_0, \left| X \right|< M_0    \right)+ 2\eta  
+   \end{aligned}
+     \]因此 \[
+     P\left( \left| g\left( X \right)-g\left( X_{n} \right)   \right|\ge   \varepsilon   \right)\le  P\left( \left| X_{n}-X \right|\ge    \delta   \right)+2 \eta   
+     \]两边令 \(  n\to \infty  \), 得到 \[
+     \lim_{n\to \infty}P\left( \left| g\left( X \right)-g\left( X_{n} \right)   \right|\ge  \varepsilon   \right)\le 2 \eta  
+     \] 令 \(  \eta \to 0^{+ }  \), 得到 \[
+     \lim_{n\to \infty}P\left( \left| g\left( X \right)-g\left( X_{n} \right)   \right|\ge  \varepsilon   \right)= 0 
+     \] 这就根据定义说明了$g(X_n) \xrightarrow{P} g(X)$.
+\end{proof}
+
+\begin{exercise}{}{}
+试证 $X_n \xrightarrow{P} X$ 的充要条件为: 当 $n \to \infty$ 时, 有
+\[
+E\left(\frac{|X_n - X|}{1 + |X_n - X|}\right) \to 0.
+\]
+\end{exercise}
+
+\begin{proof}
+     记 \(  Y_{n}= \left| X_{n}-X \right|   \), 令 \(  g\left( t \right)= \frac{t }{1+ t }    \)  , 则 \(  g  \)在\(  [0,\infty)  \)上严格单增, 且 \(  0\le g\left( t \right)< 1   \)   
+
+
+     \(  \impliedby  :  \),  由 \(  g  \)的单调性和Markov不等式  \[
+     P\left( Y_{n}\ge  \varepsilon  \right)= P\left( g\left( Y_{n} \right)\ge g\left(  \varepsilon  \right)   \right) \le \frac{E[g\left( Y_{n} \right) ] }{g\left(  \varepsilon  \right)  } 
+     \]令 \(  n\to \infty  \), 得到 \[
+   \lim_{n\to \infty}  P\left( Y_{n}\ge  \varepsilon  \right)= 0 
+     \]这就根据定义说明了 \[
+    X_n \xrightarrow{P} X
+     \] 
+
+     \(  \implies :  \), 由于 \(  g  \)非负 严格单增且有上界1, 且 \(  \lim_{ \varepsilon \to 0^{+ }}g\left(  \varepsilon  \right) = 0  \),    \[
+  \begin{aligned}
+     E\left( g\left( Y_{n} \right)  \right)&= E\left( g\left( Y_{n} \right)\chi _{\left\{ Y_{n}\ge  \varepsilon  \right\}}  \right)+ E\left( g\left( Y_{n} \right)\chi _{\left\{ Y_{n}<  \varepsilon  \right\}}  \right)    \\ 
+      &\le E\left( \chi _{\left\{ Y_{n}\ge  \varepsilon  \right\}} \right)+ E\left( g\left(  \varepsilon  \right)1 \right)\\ 
+       &= P\left( Y_{n}\ge  \varepsilon  \right)   + g\left(  \varepsilon  \right) 
+  \end{aligned}
+     \]令 \(  n\to \infty  \), \[
+     \limsup_{n\to \infty}E\left( g\left( Y_{n} \right)  \right)\le  g\left(  \varepsilon  \right)  
+     \] 令 \(   \varepsilon \to 0^{+ }  \), 得到 \[
+     \lim_{n\to \infty}E\left( g\left( Y_{n} \right)  \right)= 0 
+     \] 
+\end{proof}
+\begin{exercise}{}{}
+设 $D(x)$ 为退化分布:
+\[
+D(x) = \begin{cases} 0, & x < 0, \\ 1, & x \ge 0. \end{cases}
+\]
+试问下列分布函数列的极限函数是否仍是分布函数? (其中 $n=1, 2, \cdots$)
+\begin{enumerate}
+\item $\{D(x+n)\}$;
+\item $\{D(x+1/n)\}$;
+\item $\{D(x-1/n)\}$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+  
+\begin{enumerate}
+\item \textbf{不是分布函数.}
+对于任意固定的 \(x \in \mathbb{R}\), 当 \(n\) 充分大时 (\(n \ge -x\)), 有 \(x+n \ge 0\), 故 \(D(x+n)=1\).
+\[
+F(x) = \lim_{n \to \infty} D(x+n) \equiv 1, \quad \forall x \in \mathbb{R}.
+\]
+该函数不满足 \(\lim_{x \to -\infty} F(x) = 0\).
+
+\item \textbf{是分布函数.}
+
+\[
+\lim_{n \to \infty} D(x+1/n) = 
+\begin{cases} 
+0, & x < 0 \quad (\text{当 } n > -1/x \text{ 时 } x+1/n < 0), \\
+1, & x = 0 \quad (0+1/n > 0), \\
+1, & x > 0.
+\end{cases}
+\]
+即 \(F(x) = D(x)\). 这是一个标准的退化分布函数.
+
+\item \textbf{不是分布函数.}
+
+\[
+\lim_{n \to \infty} D(x-1/n) = 
+\begin{cases} 
+0, & x < 0, \\
+0, & x = 0 \quad (0-1/n < 0 \implies D(-1/n)=0), \\
+1, & x > 0 \quad (\text{当 } n > 1/x \text{ 时 } x-1/n > 0).
+\end{cases}
+\]
+即极限函数为:
+\[
+F(x) = \begin{cases} 0, & x \le 0, \\ 1, & x > 0. \end{cases}
+\]
+该函数在 \(x=0\) 处不满足右连续性:
+\[
+F(0) = 0 \neq 1 = \lim_{x \to 0^+} F(x).
+\]
+\end{enumerate}
+\end{proof}
+\begin{exercise}{}{}
+如果 $X_n \xrightarrow{L} X$, 且数列 $a_n \to a, b_n \to b$. 试证: $a_n X_n + b_n \xrightarrow{L} aX + b$.
+\end{exercise}
+
+\begin{proof}
+  由Skorokhod 表示定理, 由于 \(X_n \xrightarrow{L} X\), 则存在概率空间 \((\Omega, \mathcal{F}, P)\) 以及其上的随机变量序列 \(Y_n\) 和随机变量 \(Y\), 满足:
+\[
+Y_n \stackrel{d}{=} X_n, \quad Y \stackrel{d}{=} X, \quad \text{且} \quad Y_n \xrightarrow{a.s.} Y.
+\]
+其中 \(\stackrel{d}{=}\) 表示同分布.
+
+由于 \(a_n \to a\) 且 \(b_n \to b\), 对于使得 \(Y_n(\omega) \to Y(\omega)\) 的样本点 \(\omega\), 根据实数数列极限的运算法则, 我们有:
+\[
+a_n Y_n(\omega) + b_n \to a Y(\omega) + b.
+\]
+因为 \(Y_n \to Y\) 是几乎处处收敛的, 故:
+\[
+a_n Y_n + b_n \xrightarrow{a.s.} a Y + b.
+\]
+又因为几乎处处收敛蕴含依分布收敛, 所以:
+\[
+a_n Y_n + b_n \xrightarrow{L} a Y + b.
+\]
+最后, 由同分布性质可知 \(a_n X_n + b_n\) 与 \(a_n Y_n + b_n\) 同分布, \(aX+b\) 与 \(aY+b\) 同分布, 故
+\[
+a_n X_n + b_n \xrightarrow{L} aX + b.
+\]
+
+\end{proof}
+\begin{exercise}{}{}
+设随机变量 $X_n$ 服从柯西分布, 其密度函数为
+\[ p_n(x) = \frac{n}{\pi(1+n^2x^2)}, \quad -\infty < x < \infty. \]
+试证: $X_n \xrightarrow{P} 0.$
+\end{exercise}
+
+\begin{proof}
+  对任意给定的 \(\epsilon > 0\), 利用密度函数的偶性及变量代换 \(t=nx\), 我们有
+\[
+\begin{aligned}
+P(|X_n| \ge \epsilon) &= 2 \int_{\epsilon}^{+\infty} \frac{n}{\pi(1+n^2x^2)} \, dx \\
+&= \frac{2}{\pi} \int_{n\epsilon}^{+\infty} \frac{1}{1+t^2} \, dt \\
+&= \frac{2}{\pi} \left( \frac{\pi}{2} - \arctan(n\epsilon) \right).
+\end{aligned}
+\]
+令 \(n \to \infty\), 则 \(\arctan(n\epsilon) \to \frac{\pi}{2}\), 故
+\[ \lim_{n \to \infty} P(|X_n| \ge \epsilon) = 0. \]
+即 \(X_n \xrightarrow{P} 0\).
+\end{proof}
+
+\begin{exercise}{}{}
+设随机变量序列 $\{X_n\}$ 独立同分布, 其密度函数为
+\[ p(x) = \begin{cases} 1/\beta, & 0 < x < \beta, \\ 0, & \text{其他}. \end{cases} \]
+其中常数 $\beta > 0$, $Y_n = \operatorname{max}\{X_1, X_2, \cdots, X_n\}$, 试证: $Y_n \xrightarrow{P} \beta.$
+\end{exercise}
+
+\begin{proof}
+  注意到 \(X_i \sim U(0, \beta)\), 且 \(Y_n \le \beta\) 几乎处处成立. 对任意 \(\varepsilon \in (0, \beta)\), 有
+\[
+\begin{aligned}
+\lim_{n \to \infty} P(|Y_n - \beta| \ge \varepsilon) &= \lim_{n \to \infty} P(Y_n \le \beta - \varepsilon) \\
+&= \lim_{n \to \infty} \prod_{i=1}^n P(X_i \le \beta - \varepsilon) \\
+&= \lim_{n \to \infty} \left( \frac{\beta - \varepsilon}{\beta} \right)^n = 0.
+\end{aligned}
+\]
+故 \(Y_n \xrightarrow{P} \beta\).
+\end{proof}
+
+\begin{exercise}{}{}
+设随机变量序列 $\{X_n\}$ 独立同分布, 其密度函数为
+\[ p(x) = \begin{cases} e^{-(x-\alpha)}, & x \ge \alpha, \\ 0, & x < \alpha. \end{cases} \]
+令 $Y_n = \operatorname{min}\{X_1, X_2, \cdots, X_n\}$, 试证: $Y_n \xrightarrow{P} \alpha.$
+\end{exercise}
+\begin{proof}
+  对于任意给定的 \(\epsilon > 0\), 注意到 \(X_i \ge \alpha\) 蕴含 \(Y_n \ge \alpha\), 故 \(|Y_n - \alpha| = Y_n - \alpha\). 利用独立同分布性质, 我们有
+\[
+\begin{aligned}
+P(|Y_n - \alpha| \ge \epsilon) &= P(Y_n \ge \alpha + \epsilon) \\
+&= P(X_1 \ge \alpha + \epsilon, \cdots, X_n \ge \alpha + \epsilon) \\
+&= \left[ P(X_1 \ge \alpha + \epsilon) \right]^n \\
+&= \left( e^{-\epsilon} \right)^n \\
+&= e^{-n\epsilon}.
+\end{aligned}
+\]
+令 \(n \to \infty\), 显然 \(e^{-n\epsilon} \to 0\). 故 \(Y_n \xrightarrow{P} \alpha\). 
+\end{proof}
+\end{document}

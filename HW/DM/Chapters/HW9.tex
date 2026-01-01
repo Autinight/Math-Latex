@@ -1,0 +1,197 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ HW9 }
+% 代靖涵 25120222201319
+\begin{exercise}{}{}
+证明李群\(G\)上的左不变向量场是完备的.
+\end{exercise}
+
+\begin{proof}
+    设 \(  X  \)是 \(  G  \)上的左不变向量场. 设 \(   \theta : \mathcal{D}\to G  \)是 \(  X  \)的流. 令 \(  e\in G  \)是单位元, 则存在 \(   \varepsilon > 0  \), 使得积分曲线 \(   \theta ^{\left( e \right) }  \)在 \(  \left( - \varepsilon , \varepsilon  \right)   \)上有定义.    任取 \(  g\in G  \), 由于 \(  X  \)是 \(  L_{g}  \)-自相关的, 我们有 \(  L_{g}\circ  \theta ^{\left( e \right) }  \)是 \(  X  \)的以 \(  g  \)为起点的积分曲线, 从而 \[
+    L_{g}\circ \theta ^{\left( e \right) }=  \theta ^{\left( g \right) }
+    \] 
+    
+    若 \(  X  \)不是完备的, 则存在 \(  h\in G  \), 使得 \(   \theta ^{\left( h \right) }  \)的定义域 \(  \mathcal{D}^{\left( h \right) }  \)    是有界的, 不妨设它是有上界的, 则令 \(  b= \sup _{t\in \mathcal{D}^{\left( h \right) }}\mathcal{D}^{\left( h \right) }  \) . 取 \(  t_0  > 0\)使得 \(b- \varepsilon < t_0< b  \), 令 \(  q=  \theta ^{\left( p \right) }\left( t_0 \right)   \). 则 \(   \theta ^{\left( q \right) }  \)至少在 \(  \left( - \varepsilon , \varepsilon  \right)   \)上有定义. 考虑曲线 \(   \gamma :\left( - \varepsilon ,t_0+  \varepsilon  \right)   \to G\) \[
+     \gamma \left( t \right)= \begin{cases}  \theta ^{\left( p \right) }\left( t \right),& - \varepsilon < t<  \varepsilon \\ 
+       \theta ^{\left( q \right) }\left( t-t_0 \right),& - \varepsilon + t_0< t<  \varepsilon + t_0   \end{cases}  
+    \]    则 \(   \gamma   \)是良定义的: \[
+     \theta ^{\left( q \right) }\left( t-t_0 \right)=  \theta _{t-t_0}\left( q \right)=  \theta _{t-t_0} \theta _{t_0}\left( p \right)=  \theta _{t}\left( p \right)=  \theta ^{\left( p \right) }\left( t \right)     
+    \] 从而 \(   \gamma   \)是以 \(  p  \)为起点的 \(  V  \)的积分曲线, 但是 \(  t_0+  \varepsilon > b  \)矛盾.  因此 \(  X  \)是完备的.     
+\end{proof}
+
+\begin{exercise}{}{}
+\begin{enumerate}
+\item 课上用四元数给出了\(\mathbb{S}^{3}\)上的李群结构, 计算\(\mathbb{S}^{3}\)的李代数;
+\item 证明\(\mathbb{S}^{3}\)同构于
+\[
+SU(2)=\left\{\begin{pmatrix} z & w \\ -\overline{w} & \overline{z} \end{pmatrix}\,\middle|\,|z|^{2}+|w|^{2}=1,\ z,w\in\mathbb{C}\right\}.
+\]
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 设 \(  \mathbb{H}\simeq \mathbb{R} ^{4}  \)为四元数代数, 基底为 \(  1,i,j,k  \).   则 \[
+        \mathbb{S}^{3}= \left\{ q\in \mathbb{H}: \left| q \right|= 1  \right\}
+        \]  令 \[
+       \begin{aligned}
+        F: \mathbb{H}&\to \mathbb{R} \\ 
+         x^{1}+ x^{2}i+ x^{3}j + x^{4}k&\mapsto \left( x^{1} \right)^{2}+ \left( x^{2} \right)^{2}+ \left( x^{3} \right)^{2}+ \left( x^{4} \right)^{2}    
+       \end{aligned}
+        \]  则 \[
+        \mathbb{S}^{3}= F^{-1} \left( 1 \right) 
+        \]\[
+        T_{1}\left( \mathbb{S}^{3} \right)= \operatorname{ker} d F _{1}
+        \] \[
+        JF= \begin{pmatrix} 
+              2x^{1}&2x^{2}&2x^{3}&2x^{4}
+        \end{pmatrix} 
+        \] \[
+        JF|_{1}= \begin{pmatrix} 
+            2&0&0&0 
+        \end{pmatrix} 
+        \] 故 \[
+        \operatorname{ker} d F_{1}= \operatorname{span}_{\mathbb{R} }\left\{ i,j,k \right\}
+        \]故 \[
+        \operatorname{Lie}\left( \mathbb{S}^{3} \right)\simeq T_{1}\left( \mathbb{S}^{3} \right)\simeq \operatorname{span}_{\mathbb{R} }\left\{ i,j,k \right\}  
+        \]其上的李括号结构由四元数的换位子给出: \[
+        [i,j]= 2k,\quad [j,k]= 2i,\quad [k,i]= 2j
+        \]
+        \item 定义 \(  \Phi : \mathbb{H}\to M\left( 2,\mathbb{C}  \right)   \) \[
+        \Phi \left( a+ bi+ cj +  dk \right)= \begin{pmatrix} 
+            a+ bi& c+  di\\ 
+             -c+  di & a-b i 
+        \end{pmatrix}  
+        \] 易见 \(  \Phi   \)是 \(  \mathbb{R}   \)- 线性同构, 从而 \(  \Phi   \)和 \(  \Phi ^{-1}   \)均光滑.  此外  \(  \Phi \left( \mathbb{S}^{3} \right)=  SU\left( 2 \right)    \). 因此 \(  \Phi |_{\mathbb{S}^{3}}  \)是一个微分同胚.  并且 \[
+        \Phi \left( i \right)\Phi \left( j \right)= \begin{pmatrix} 
+            i&0\\ 
+             0&-i 
+        \end{pmatrix}   \begin{pmatrix} 
+            0&1\\ 
+             -1&0 
+        \end{pmatrix} = \begin{pmatrix} 
+            0&i\\ 
+             i&0 
+        \end{pmatrix}= \Phi \left( k \right)  
+        \]类似地, \[
+        \Phi \left(ki \right)= \Phi \left( j \right),\quad \Phi \left( jk \right)= \Phi \left( i \right)    
+        \]因此 \(  \Phi   \)是一个李群同态. 综上可知 \(  \Phi|_{\mathbb{S}^{3}}:\mathbb{S}^{3}\to SU\left( 2 \right)    \)是一个李群同构. 
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+\begin{enumerate}
+\item 求证\(M(n,\mathbb{R})\)上的指数映射
+\[
+\exp(A)=I+A+\frac{A^{2}}{2!}+\cdots+\frac{A^{k}}{k!}+\cdots .
+\]
+在\(\|A\|^{2}=\sum _{1\le i,j\le n}a_{ij}^{2}\)下收敛.
+\item 证明\(\exp\colon \mathfrak{so}(2)\to SO(2)\)是满射, 由此\(SO(2)\)是连通的; \(\exp\colon \mathfrak{sl}(2)\to SL\left( 2,\mathbb{R}  \right) \)不满, 但\(SL(2,\mathbb{R})\)连通.
+\item 证明作为流形, \(SL(2,\mathbb{R})\)微分同胚于\(S^{1}\times\mathbb{R}^{2}\).
+\item 证明作为李群, \(SL(2,\mathbb{R})\)不同构于\(S^{1}\times\mathbb{R}^{2}\)(乘积李群结构).
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+    \begin{enumerate}
+        \item 任取 \(  A,B\in M\left( n,\mathbb{R}  \right)   \), 设 \(  C= AB  \), 则 \(  c_{ij}= \sum _{k= 1}^{n}a_{ik}b_{kj}  \), 则由Cauchy-Schwarz不等式 \[
+        c_{ij}^{2}= \left( \sum _{k= 1}^{n}a_{ik}b_{kj} \right)^{2}\le \left( \sum _{k= 1}^{n}a_{ik}^{2} \right)\left( \sum _{k= 1}^{n}b_{kj}^{2} \right)   
+        \]   对于所有 \(  i,j  \)求和, 得到 \[
+      \begin{aligned}
+        \left\| AB \right\|^{2}&\le \sum _{i,j}\left[ \left( \sum _{k}a_{ik}^{2} \right)  \left( \sum _{l} b_{lj}^{2}\right) \right]\\ 
+         &= \left( \sum _{i,k}a_{ik}^{2} \right)\left( \sum _{j,l}b_{lj}^{2} \right)\\ 
+          &= \left\| A \right\|^{2}\left\| B^{2} \right\|  
+      \end{aligned} 
+        \]因此 \[
+        \left\| AB \right\|\le \left\| A \right\|\left\| B \right\|
+        \] 于是 \[
+        \left\| A^{k} \right\|\le \left\| A \right\|^{k}
+        \]从而 \[
+        \exp \left( \left\| A \right\| \right) = \sum _{k= 1}^{\infty}\frac{\left\| A^{k} \right\| }{k! } \le \sum _{k= 1}^{\infty}\frac{\left\| A \right\|^{k} }{k! } 
+        \]由于级数 \(  \sum _{k= 1}^{\infty}\frac{\left\| A \right\|^{k} }{k! }   \)收敛, 故 \(\exp \left( A \right)     \)在 \(  \left\|  \right\|  \)下绝对收敛, 从而 \(  \exp \left( A \right)   \)收敛.
+        \item  \(  \mathfrak{so}\left( 2 \right)   \)的一个基为  \(  J= \begin{pmatrix} 
+            0&-1\\ 
+             1&0 
+        \end{pmatrix}   \). 任取 \(  X \in \mathfrak{so}\left( 2 \right)   \), 设 \(  X=  \theta J  \), 由 \(  J^{2}= -I  \), 以及指数映射的定义, 得到 \[
+        \exp \left(  \theta J \right)= \sum _{k= 0}^{\infty}\frac{\left(  \theta J \right)^{k}  }{k! }= \cos  \theta I+ \sin  \theta J=  \begin{pmatrix} 
+            \cos  \theta &-\sin  \theta \\ 
+             \sin  \theta &\cos  \theta  
+        \end{pmatrix}   
+        \]     由于 \(  SO\left( 2 \right)   \)中的每个元素都能写作右侧的形式, 故 \(  \exp   \)是满射. 由于 \(  \mathfrak{so}\left( 2 \right)\simeq \mathbb{R}    \)是连通的, 故 \(  SO\left( 2 \right)= \exp \left( \mathfrak{so}\left( 2 \right)  \right)    \)连通.    对于 \(  X \in \mathfrak{sl}\left( 2,\mathbb{R}  \right)   \), 设其特征值为 \(   \lambda ,- \lambda   \). 
+        \begin{itemize}
+            \item 若 \(   \lambda \in \mathbb{R}   \), 则 \[
+            \operatorname{tr}\left( \exp X \right)= e^{ \lambda }+ e^{- \lambda }\ge 2 
+            \]
+            \item 若 \(   \lambda \in i\mathbb{R}   \), 则 \(  \operatorname{tr}\left( \exp X \right)= 2\cos  \theta \in \left[ -2,2 \right]    \).     
+        \end{itemize}
+          故 \[
+            \operatorname{tr}\left( \exp \left( \mathfrak{sl}\left( 2,\mathbb{R}  \right)  \right)  \right)\subseteq [-2,\infty] 
+            \]取 \(  A= \operatorname{diag} \left( -2,-\frac{1}{2} \right)\in SL\left( 2,\mathbb{R}  \right)     \), 则 \(  \operatorname{tr}A= -2.5< -2  \), 故 \(  A  \)不在 \(  \exp   \)的像中.  
+            任取 \(  A\in SL\left( 2,\mathbb{R}  \right)   \), 存在唯一的 \(  U\in SO\left( 2 \right)   \), 和对称正定矩阵\(  P  \)满足 \(  \det P= 1  \)     ,使得 \(  A= UP  \). 令 \(  \mathcal{P}= \left\{ P \in SL\left( 2,\mathbb{R}  \right):P= P^{\top},P> 0  \right\}  \)  . 则 \(  \exp : \operatorname{Sym}_{0}\left( 2 \right)\to \mathcal{P}   \)是微分同胚. 其中 \(  \operatorname{Sym}_{0}\left( 2 \right)   \)为迹为零的对称矩阵空间, 因此 \[
+            SL\left( 2,\mathbb{R}  \right)\simeq SO\left( 2 \right)\times \mathbb{R} ^{2}\simeq S^{1}\times \mathbb{R} ^{2}  
+            \]  
+            \item 2.中已经说明了
+            \item 由于 \(  \exp :i\mathbb{R} \to S^{1}  \)是满射, \(  \exp :\mathbb{R} ^{2}\to \mathbb{R} ^{2}  \)是恒等映射, 故 \[
+            \exp : \operatorname{Lie}\left( S^{1}\times \mathbb{R} ^{2} \right)\to S^{1}\times \mathbb{R} ^{2} 
+            \]是满射. 
+            但是 \(  \exp :\mathfrak{sl}\left( 2 \right)\to SL\left( 2,\mathbb{R}  \right)    \)非满, 故 \(  SL\left( 2,\mathbb{R}  \right)   \)与 \(  S^{1}\times \mathbb{R}^{2}  \)不是同构.     
+    \end{enumerate}
+    
+\end{proof}
+\begin{exercise}{}{}
+
+设 \(  G  \)是一个连通李群, 则 
+\[
+G\text{ 是 \dfntxt{abelian}的}\iff \mathfrak{g}\text{是abelian的}([X,Y]=0).
+\]
+\end{exercise}
+ 
+\begin{proof}
+    由于\(  G  \)是\dfntxt{abelian}的 , 对于任意的 \(  g\in G  \), 共轭作用 \[
+    C_{g}\left( h \right)= g^{-1} hg = h 
+    \]是单位映射,  \(  C_{g}= \operatorname{Id}_{G}  \). 于是伴随作用 \(  \operatorname{Ad} \left( g \right)=  \left( C_{g} \right) _{*}  : \mathfrak{g}\to \mathfrak{g} \), \(  \left( C_{g} \right)_{*}= \operatorname{Id}_{\mathfrak{g}}   \). 于是伴随表示 \(  \operatorname{Ad}: G\to  \operatorname{GL}\left( \mathfrak{g} \right)    \)取常值 \(  \operatorname{Id}_{\mathfrak{g}}  \), 从而 \(  d \operatorname{Ad}_{e}= 0  \) .      
+   任取 \(  X,Y\in \mathfrak{g}  \), 则 \[
+   [X,Y]= \operatorname{ad}\left( X \right)Y=\left( \operatorname{Ad}_{*}X \right)Y  = d \operatorname{Ad}_{e}\left( X \right)\left( Y \right)  = 0
+   \] 即 \(  \mathfrak{g}  \)是abelian的.
+   
+   若 \(  \mathfrak{g}  \)是abelian. 任取 \(  X \in \mathfrak{g}  \), 由于 \(  \mathfrak{g}  \)是abelian的, 有 \[
+   \operatorname{ad}_{X}\left( Y \right)= [X,Y]= 0,\quad \forall Y\in \mathfrak{g} 
+   \]这意味着 \(  \operatorname{ad}_{X}  \)是零算子.   
+   由 \(  \operatorname{Ad}_{*}= \operatorname{ad}  \)和 \(  \exp   \)的自然性, 可得 \[
+   \operatorname{Ad}_{\exp X}= \exp _{\operatorname{GL} \left( \mathfrak{g} \right) }\left( \operatorname{ad}\left( X \right)  \right) = \exp _{\operatorname{GL} \left( \mathfrak{g} \right) }\left( 0 \right)= \operatorname{Id}_{\mathfrak{g}} 
+   \]  进而 则 \[
+  \exp \left( Y \right)=  \exp \left( \operatorname{Ad}_{\exp X} Y\right)= \exp \left( X \right)\exp \left( Y \right)\exp \left( X ^{-1}  \right)    
+   \] 从而 \[
+   \exp \left( Y \right)\exp \left( X \right)= \exp \left( X \right)\exp \left( Y \right)    
+   \]则由于 \(  G  \)是连通李群, \(  G  \)中任何元素写作有限个指数映射像的乘积, 进而\(  G  \) 中任意两个元素交换, \(  G  \)是abelian的.    
+\end{proof}
+
+\begin{exercise}{}{}
+求证
+\[
+\mu:G\times G\to G,\qquad (g,h)\mapsto gh
+\]
+是淹没.
+\end{exercise}
+
+\begin{proof}
+    由积流形切空间的性质, \[
+    T_{\left( g,h \right) }\left( G\times G \right)\simeq T_{g}G\oplus T_{h}G 
+    \]考虑右平移 \(  R_{h}  \)和左平移 \(  L_{g}  \)  ,我们有 \[
+  \begin{aligned}
+    d \mu _{\left( g,h \right) }\left( v,w \right)&= d \mu _{\left( g,h \right) }\left( v,0 \right)+ d \mu _{\left( g,h \right) }\left( 0,w \right)   \\ 
+     &= d\left( R_{h} \right)_{g}\left( v \right)+ d \left( L_{g} \right)_{h}\left( w \right)    
+  \end{aligned}
+    \]由于 \(  R_{h}  \)和 \(  L_{g}  \)均是微分同胚,   特别地, \(  d \left( R_{h} \right)_{g}   \)是满射, 任取 \(  z\in T_{gh}G  \), 令 \(  v= \left( d\left( R_{h} \right)_{g}  \right)^{-1}    \left( z \right) \), \(  w= 0  \), 则 \[
+    d \mu _{\left( g,h \right) }\left( v,0 \right)= z+ 0= z 
+    \]    这表明 \(   d \mu _{\left( g,h \right) }  \)是满射. 因此 \(  \mu   \)是一个淹没.  
+\end{proof}
+\end{document}

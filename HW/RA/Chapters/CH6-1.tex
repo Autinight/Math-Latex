@@ -1,0 +1,195 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    %\tableofcontents
+    
+    \setcounter{chapter}{5}
+}{}
+
+\chapter{ CH6-1 }
+代靖涵 25120222201319
+\begin{exercise}{}{}
+设 \(f\in L^{\infty}(E)\), \(w(x)>0\), 且 \(\int_{E} w(x)\operatorname{d}x = 1\), 试证明
+\[
+\lim_{p\to\infty}\left(\int_{E} \lvert f(x)\rvert^{p} w(x)\operatorname{d}x\right)^{1/p} = \lVert f\rVert_{\infty}.
+\]
+\end{exercise}
+
+\begin{proof}
+    由于 \[
+    \left| f\left( x \right)  \right|\le \left\| f \right\|_{\infty},\quad \text{a.e.} x\in E 
+    \]对于任意的 \(  p > 0  \), 我们有 
+    \[
+    \begin{aligned}
+    \left( \int_{E}\left| f\left( x \right)  \right|^{p} \omega \left( x \right)\,\mathrm{d} x   \right)^{\frac{1}{p}}\le \left(   \int_{E}\left\| f \right\|_{\infty}^{p} \omega \left( x \right)\,\mathrm{d} x   \right) ^{\frac{1}{p}}= \left\| f \right\|_{\infty}\left( \int_{E} \omega \left( x \right)\,\mathrm{d} x  \right)^{\frac{1}{p}}= \left\| f \right\|_{\infty} 
+    \end{aligned}
+    \]于是 \[
+    \limsup_{p\to \infty} \left( \int_{E}\left| f\left( x \right)  \right|^{p} \omega \left( x \right)\,\mathrm{d} x   \right)^{\frac{1}{p}}\le \left\| f \right\|_{\infty} 
+    \]另一方面, 对于任意的 \(   \varepsilon   \)使得 \(  0<  \varepsilon < \left\| f \right\|_{\infty}  \),   记 \[
+    E_{ \varepsilon }:= \left\{ x: \left| f\left( x \right)  \right|\ge \left\| f \right\|_{\infty}- \varepsilon   \right\}
+    \]  则根据 \(  \left\| f \right\|_{\infty}  \)的定义 , \(  m\left( E_{ \varepsilon } \right)> 0   \), 从而\[
+    \begin{aligned}
+    \left( \int_{E}\left| f\left( x \right)  \right|^{p} \omega \left( x \right)\,\mathrm{d} x   \right)^{\frac{1}{p}}&\ge \left( \int_{E_{ \varepsilon }}\left| f\left( x \right)  \right|^{p} \omega \left( x \right)\,\mathrm{d} x   \right)^{\frac{1}{p}}\\ 
+     &\ge   \left(  \int_{E_{ \varepsilon }}\left( \left\| f \right\|_{\infty}- \varepsilon  \right)^{p} \omega \left( x \right)\,\mathrm{d} x \right)^{\frac{1}{p}}\\ 
+      &=  \left( \left\| f \right\|_{\infty}- \varepsilon  \right)\left( \int_{E_{ \varepsilon }} \omega \left( x \right)\,\mathrm{d} x  \right)^{\frac{1}{p}}
+    \end{aligned}
+    \]  其中 \[
+    \int_{E_{ \varepsilon }} \omega \left( x \right)\,\mathrm{d} x\le 1 
+    \]此外,  \(  \int_{E_{ \varepsilon }} \omega \left( x \right)\,\mathrm{d} x> 0   \), 若不然,  \(   \omega \left( x \right)= 0   \), a.e. \(  x\in E_{ \varepsilon }  \), 但是 \(   \omega \left( x \right)> 0  , \forall x\in E \)且 \(  m\left( E_{ \varepsilon } \right)> 0   \), 矛盾.     于是 \[
+    \liminf_{p\to \infty}\left( \int_{E}\left| f\left( x \right)  \right|^{p} \omega \left( x \right)   \,\mathrm{d} x\right)^{\frac{1}{p}}\ge \left( \left\| f \right\|_{\infty}- \varepsilon  \right)\lim_{p\to \infty}\left( \int_{E_{ \varepsilon }} \omega \left( x \right)\,\mathrm{d} x  \right)^{\frac{1}{p}} = \left\| f \right\|_{\infty}- \varepsilon   
+    \]由\(   \varepsilon   \)的任意性,  \[
+    \liminf_{p\to \infty}\left( \int_{E}\left| f\left( x \right)  \right|^{p} \omega \left( x \right)\,\mathrm{d} x   \right)^{\frac{1}{p}}\ge \left\| f \right\|_{\infty} 
+    \] 因此 \[
+    \lim_{p\to \infty}\left( \int_{E}\left| f\left( x \right)  \right|^{p} \omega \left( x \right)\,\mathrm{d} x   \right)^{\frac{1}{p}}= \left\| f \right\|_{\infty} 
+    \]
+\end{proof}
+
+\begin{exercise}{}{}
+设 \(g(x)\) 是 \(E\subset\mathbb{R}^{n}\) 上的可测函数. 若对任意的 \(f\in L^{2}(E)\), 有
+\[
+\lVert gf\rVert_{2} \leq M \lVert f\rVert_{2},
+\]
+试证明 \(\lvert g(x)\rvert \leq M\), \(\operatorname{a.e.}\ x\in E\).
+\end{exercise}
+
+\begin{proof}
+令 \(  A= \left\{ x: \left| g\left( x \right)  \right|> M  \right\}  \). 若结论不成立, 则\(  m\left( A \right)> 0   \). 进而 \[
+\lim_{n\to \infty}m\left( \left\{ x: \left| g\left( x \right)  \right|\ge  M+ \frac{1 }{n }   \right\} \right) = m\left(A  \right) > 0
+\]  于是存在 \(  M_1> M\), 使得对于集合 \( B:=  \left\{ x: \left| g\left( x \right)  \right|>M_1  \right\}  \), 有 \(  m\left( B \right)> 0   \), 不妨设 \(  m\left( B \right)< \infty   \), 若不然则取 \(  B  \)的一个有限测度子集 .   
+    取 \(  f= \chi _{B}  \), 则  \[
+    \left\| f \right\|_{2}= \left( \int_{E} \left| \chi _{B} \right|^{2} \right) ^{\frac{1}{2}}= \left( m\left( B \right)  \right)^{\frac{1}{2}}< \infty 
+    \]因此 \(  f\in L^{2}\left( E \right)   \). 但是 \[
+ \begin{aligned}
+ \left\| gf \right\|_{2}=  \left(   \int_{E} \left| g\left( x \right)  \right|^{2}\left| f\left( x \right)  \right|^{2}\,\mathrm{d} x \right)   ^{\frac{1}{2}}&= \left( \int_{B}\left| g\left( x \right)  \right|^{2}\,\mathrm{d} x  \right)^{\frac{1}{2}}\\ 
+   &\ge \left( m\left( B \right)M_1 ^{2} \right)^{\frac{1}{2}}\\ 
+    &=    M_1 \left( \int_{B}\left( \chi _{B} \right)^{2} \,\mathrm{d} x  \right)^{\frac{1}{2}}\\ 
+     &= M_1\left\| f \right\|_{2} > M\left\| f \right\|_{2}
+ \end{aligned}
+    \] 矛盾. 故 \(  \left| g\left( x \right)  \right|\le M   \), a.e.\(  x\in E  \).  
+\end{proof}
+\begin{exercise}{}{}
+设 \(f\in L^2([0,1])\), 令
+\[
+g(x)=\int_{0}^{1}\frac{f(t)}{\lvert x-t\rvert^{1/2}}\,\operatorname{d}t,\quad 0<x<1,
+\]
+试证明
+\[
+\left(\int_{0}^{1}g^2(x)\,\operatorname{d}x\right)^{1/2}
+\le 2\sqrt{2}\left(\int_{0}^{1}f^2(x)\,\operatorname{d}x\right)^{1/2}.
+\]
+\end{exercise}
+
+\begin{proof}
+     一旦我们证明了不等式对于 \(  \left| f \right|   \)成立, 由 \(  g\left( x \right)\le \int_{0}^{1}\frac{\left| f \right|\left( t \right)   }{ \left| x-t \right|^{\frac{1}{2}} }\,\mathrm{d} x    \)可知不等式对于 \(  f  \)也成立, 因此不妨设 \(  f= \left| f \right|   \).       
+    \[
+   \begin{aligned}
+    \int_{0}^{1}\frac{1 }{\left| x-t \right|^{\frac{1}{2}}  }\,\mathrm{d} x&= \int_{0}^{t}\left( t-x \right)^{-\frac{1}{2}}\,\mathrm{d} x+ \int_{t}^{1}\left( x-t \right)^{-\frac{1}{2}}\,\mathrm{d} x\\ 
+     &=2t^{\frac{1}{2}}+  2\left( 1-t \right)^{\frac{1}{2}}
+   \end{aligned}   
+    \]  由H\"older不等式,  \[
+   \begin{aligned}
+    g\left( x \right)^{2}&\le \left\| f\left| x-t \right|^{-\frac{1}{4}}  \right\|_{2}^{2}\left\| \left| x-t \right|^{-\frac{1}{4}}  \right\|_{2}^{2}  \\ 
+     &= \int_{0}^{1} \frac{f^{2}\left( t \right)  }{\left| x-t \right|^{\frac{1}{2}}  }\,\mathrm{d} t \int_{0}^{1}\frac{1 }{\left| x-t \right|^{\frac{1}{2}}  }\,\mathrm{d} t  \\ 
+      &= \int_{0}^{1}\frac{2f^{2}\left( t \right)  }{\left| x-t \right|^{\frac{1}{2}}  }\left( x^{\frac{1}{2}}+ \left( 1-x \right)^{\frac{1}{2}}  \right)\,\mathrm{d} t  \\ 
+       &\le \int_{0}^{1}\frac{2\sqrt{2}f^{2}\left( t \right)  }{\left| x-t \right|^{\frac{1}{2}}  } 
+   \end{aligned}
+    \]其中最后一个不等号是考虑到\[
+  \frac{\mathrm{d}}{\mathrm{d}t}\left( t^{\frac{1}{2}}+ \left( 1-t \right)  ^{\frac{1}{2}}\right)  = \frac{1}{2}t^{-\frac{1}{2}}-\frac{1}{2}\left( 1-t \right)^{-\frac{1}{2}} \begin{cases} <  0,&\frac{1}{2}< t< 1\\ 
+   >  0,& 0< t< \frac{1}{2}  \end{cases} 
+    \]因此 \(  \left( t^{\frac{1}{2}}+ \left( 1-t \right)^{\frac{1}{2}}  \right)   \)在 \(  \left( 0,1 \right)   \)上, 于 \(  \frac{1}{2}  \)处取最大值 \(  \sqrt{2}  \)    . 由Tonelli定理,  \[
+    \begin{aligned}
+    \int_{0}^{1}g^{2}\left( x \right)\,\mathrm{d} x&\le  \int_{0}^{1}\int_{0}^{1}\frac{2\sqrt{2}f^{2}\left( t \right)  }{\left| x-t \right|^{\frac{1}{2}}  }\,\mathrm{d} t\,\mathrm{d} x\\ 
+     &\le    \int_{0}^{1}2\sqrt{2}f^{2}\left( t \right) \int_{0}^{1}\frac{1 }{\left| x-t \right|^{\frac{1}{2}}  }\,\mathrm{d} x\\ 
+      &=4\sqrt{2} \int_{0}^{1}f^{2}\left( t \right)\left( t^{\frac{1}{2}}+ \left( 1-t \right)^{\frac{1}{2}}  \right)\,\mathrm{d} t     \\ 
+       &\le 8\int_{0}^{1}f^{2}\left( t \right)\,\mathrm{d} t 
+    \end{aligned} 
+    \]因此 \[
+    \left( \int_{0}^{1}g^{2}\left( x \right)\,\mathrm{d} x  \right)^{\frac{1}{2}} \le 2\sqrt{2} \left( \int_{0}^{1}f^{2}\left( x \right)\,\mathrm{d} x  \right)^{\frac{1}{2}} 
+    \]
+\end{proof}
+\begin{exercise}{}{}
+设 $\operatorname{m}(E_k)>0(k=1,2,\cdots)$, 且 $\operatorname{m}(E_k)\to0(k\to\infty)$, 又
+\[
+g_k(x)=\frac{\chi_{E_k}(x)}{\operatorname{m}(E_k)^{1/q}},\quad \frac1p+\frac1q=1,\ p>1,
+\]
+试证明对 $f\in L^p(\mathbb{R}^n)$, 有
+\[
+\lim_{k\to\infty}\int_{\mathbb{R}^n}g_k(x)f(x)\,dx=0.
+\]
+\end{exercise}
+\begin{proof}
+     \[
+     \left\| g_{k} \right\|_{q}=\left(  \int_{E_{k}}\frac{1 }{m\left( E_{k} \right)  }\,\mathrm{d} x \right)^{\frac{1}{q}}= 1  
+     \]由H\"older不等式,  \[
+    \left|  \int_{\mathbb{R} ^{n}}g_{k}\left( x \right)f\left( x \right)\,\mathrm{d} x \right| \le \left\| g_{k}\left(  \chi _{E_{k}}f  \right) \right\|_{1}\le \left\| g_{k} \right\|_{q}\left\| \chi _{E_{k}}f \right\|_{p}  = \left\| \chi _{E_{k}}f \right\|_{p}
+     \]由于 \(  f\in L^{p}\left( \mathbb{R} ^{n} \right)   \),由积分的绝对连续性,  \[
+  \lim_{k\to \infty}\left\| \chi _{E_{k}}f \right\|_{p}^{p}=    \lim_{k\to \infty}\int_{E_{k}}\left| f \right|^{p}\,\mathrm{d} x= 0 
+     \]因此 \[
+     \lim_{k\to \infty}\left\| \chi _{E_{k}}f \right\|_{p}= 0
+     \]进而 \[
+     \lim_{k\to \infty}\int_{\mathbb{R} ^{n}}g_{k}\left( x \right)f\left( x \right)\,\mathrm{d} x= 0  
+     \]
+\end{proof}
+\begin{exercise}{}{}
+设\(f_1(y,z),f_2(x,z),f_3(x,y)\)是\(\mathbb R^2\)上的非负可测函数,记
+\[
+I_1=\int_{\mathbb R^2}f_1^2(y,z)\,dy\,dz,\quad
+I_2=\int_{\mathbb R^2}f_2^2(x,z)\,dx\,dz,
+\]
+\[
+I_3=\int_{\mathbb R^2}f_3^2(x,y)\,dx\,dy,
+\]
+令
+\[
+F(x,y,z)=f_1(y,z)f_2(x,z)f_3(x,y),
+\]
+试证明
+\[
+\int_{\mathbb R^3}F(x,y,z)\,dx\,dy\,dz\le (I_1I_2I_3)^{1/2}.
+\]
+\end{exercise} 
+
+\begin{proof}
+不妨设 \(  I_1,I_2,I_3> 0  \), 否则所需不等式两侧均为零.
+
+令 \[
+g_{i}= \frac{f_{i} }{I_{i}^{\frac{1}{2}} },\quad i= 1,2,3 
+\]
+以及 \[
+G\left( x,y,z \right)= g_1\left( y,z \right)g_2\left( x,z \right)g_3\left( x,y \right)    
+\]则 \[
+G\left( x,y,z \right)= \frac{1 }{\left( I_1I_2I_3 \right)^{\frac{1}{2}}  }F\left( x,y,z \right)   
+\]
+由H\"older不等式,
+\[
+\int_{\mathbb{R}}g_2\left( x,z \right)g_3\left( x,y \right)\,\mathrm{d} x\le  \left( \int_{\mathbb{R} }g_2\left( x,z \right)^{2}\,\mathrm{d} x  \int_{\mathbb{R} }g_3\left( x,y \right)  ^{2}\,\mathrm{d} x \right)^{\frac{1}{2}}
+\]记 \[
+A\left( z \right)=  \left( \int_{\mathbb{R} }g_2\left( x,z \right)^{2}  \,\mathrm{d} x\right)^{\frac{1}{2}},\quad B\left( y \right)= \left( \int_{\mathbb{R} }g_3\left( x,y \right)^{2}\,\mathrm{d} x  \right)^{\frac{1}{2}}    
+\]则 \[
+\int_{\mathbb{R} }A\left( z \right)^{2}\,\mathrm{d} z =  \int_{\mathbb{R} }B\left( y \right)^{2}\,\mathrm{d} y= 1  
+\]由Tonelli定理,  \[
+\begin{aligned}
+\int_{\mathbb{R} ^{3}}G\left( x,y,z \right)\,\mathrm{d} x\,\mathrm{d} y\,\mathrm{d} z&= \int_{\mathbb{R} ^{2}}g_1\left( y,z \right)\,\mathrm{d} y\,\mathrm{d} z \int_{\mathbb{R}}g_2\left( x,z \right)g_3\left( x,y \right)\,\mathrm{d} x \\ 
+ &\le \int_{\mathbb{R} ^{2}}g_1\left( y,z \right)A\left( z \right)B\left( y \right)  \,\mathrm{d}y\,\mathrm{d} z  
+\end{aligned}    
+\]此外,  \[
+\begin{aligned}
+\int_{\mathbb{R} ^{2}}g_1\left( y,z \right)A\left( z \right)B\left( y \right)\,\mathrm{d} y&\le \left( \int_{\mathbb{R} }g_1\left( y,z \right)^{2}\,\mathrm{d} y  \right)^{\frac{1}{2}} \left( \int_{\mathbb{R} }A^{2}\left( z \right)B^{2}\left( y \right)\,\mathrm{d} y    \right)^{\frac{1}{2}} \\ 
+ &= A\left( z \right)  \left( \int_{\mathbb{R} }g_1\left( y,z \right)^{2}\,\mathrm{d} y  \right)^{\frac{1}{2}} \left( \int_{\mathbb{R} }B^{2}\left( y \right)\,\mathrm{d} y  \right)^{\frac{1}{2}}\\ 
+  &= A\left( z \right)\left( \int_{\mathbb{R} }g_1\left( y,z \right)^{2}\,\mathrm{d} y  \right)^{\frac{1}{2}}   
+\end{aligned}
+\]令 \[
+C\left( z \right)=  \left( \int_{\mathbb{R} }g_1\left( y,z \right)^{2}\,\mathrm{d} y   \right)^{\frac{1}{2}} 
+\]
+    则 \[
+    \int_{\mathbb{R} }C\left( z \right)^{2}\,\mathrm{d} z=  1
+    \]最终 \[
+    \int_{\mathbb{R} ^{3}}G\left( x,y,z \right)\,\mathrm{d} x\,\mathrm{d} y\,\mathrm{d} z\le  \int_{\mathbb{R} }A\left( z \right)C\left( z \right)\,\mathrm{d} z\le  \left( \int_{\mathbb{R} }A\left( z \right)^{2}\,\mathrm{d} z  \right)^{\frac{1}{2}}\left( \int_{\mathbb{R} }C\left( z \right)^{2}\,\mathrm{d} z  \right)^{\frac{1}{2}}= 1     
+    \]因此 \[
+    \frac{1 }{\left( I_1I_2I_3 \right)^{\frac{1}{2}}  }\int_{\mathbb{R}^{3} }F\left( x,y,z \right)\,\mathrm{d} x\,\mathrm{d} y\,\mathrm{d} z\le 1  
+    \]命题成立.
+\end{proof}
+\end{document}

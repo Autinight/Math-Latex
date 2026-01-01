@@ -1,0 +1,244 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{
+
+    \tableofcontents
+    
+    %\setcounter{chapter}{}
+}{}
+
+\chapter{ Iterated Integrals }
+% 代靖涵 25120222201319
+
+\section{Products of Measure Spaces}
+\begin{definition}{product of two $\sigma$-algebras; $S \otimes \mathcal{T}$}{}
+Suppose $(X,\mathcal{S})$ and $(Y,\mathcal{T})$ are measurable spaces. Then
+\begin{itemize}
+  \item the \dfntxt{product} $\mathcal{S} \otimes \mathcal{T}$ is defined to be the smallest $\sigma$-algebra on $X \times Y$ that contains
+  \[
+  \{A \times B : A \in \mathcal{S}, B \in \mathcal{T}\};
+  \]
+  \item a \dfntxt{measurable rectangle} in $\mathcal{S} \otimes \mathcal{T}$ is a set of the form $A \times B$, where $A \in \mathcal{S}$ and $B \in \mathcal{T}$.
+\end{itemize}
+\end{definition}
+\begin{definition}{cross sections of sets; \([E]_a\) and \([E]^b\)}{}
+Suppose \(X\) and \(Y\) are sets and \(E \subset X \times Y\). Then for \(a \in X\) and \(b \in Y\), the cross sections \([E]_a\) and \([E]^b\) are defined by
+\[
+[E]_a = \{y \in Y : (a,y) \in E\} \quad \text{and} \quad [E]^b = \{x \in X : (x,b) \in E\}.
+\]
+\end{definition}
+
+\begin{proposition}{cross sections of measurable sets are measurable}{}
+Suppose \(\mathcal{S}\) is a \(\sigma\)-algebra on \(X\) and \(\mathcal{T}\) is a \(\sigma\)-algebra on \(Y\). If \(E \in \mathcal{S} \otimes \mathcal{T}\), then 
+\[
+[E]_a \in \mathcal{T} \text{ for every } a \in X \quad \text{and} \quad [E]^b \in \mathcal{S} \text{ for every } b \in Y.
+\]
+\end{proposition}
+
+\begin{proofsketch}
+  将截面可测的集合的全体记作 \(  \mathcal{E}  \) . 则 \(  \mathcal{E}  \)是一个 \(   \sigma   \)-algebra.    可测方块的截面都是可测的, 故 \(  \mathcal{E}  \)包含了 \(  \mathcal{S}\otimes \mathcal{T}  \).  
+\end{proofsketch}
+
+\begin{definition}{cross sections of functions; $[f]_a$ and $[f]^b$}{}
+Suppose $X$ and $Y$ are sets and $f:X\times Y\to\mathbf{R}$ is a function. Then for $a\in X$ and $b\in Y$, the cross section functions $[f]_a:Y\to\mathbf{R}$ and $[f]^b:X\to\mathbf{R}$ are defined by
+\[
+[f]_a(y)=f(a,y)\text{ for }y\in Y\quad\text{and}\quad [f]^b(x)=f(x,b)\text{ for }x\in X.
+\]
+\end{definition}
+\begin{proposition}{}{}
+Suppose \(\mathcal{S}\) is a \(\sigma\)-algebra on \(X\) and \(\mathcal{T}\) is a \(\sigma\)-algebra on \(Y\). Suppose \(f:X\times Y\to\mathbb{R}\) is an \(\mathcal{S}\otimes\mathcal{T}\)-measurable function. Then
+
+\[[f]_a\text{ is a }\mathcal{T}\text{-measurable function on }Y\text{ for every }a\in X\]
+
+and
+
+\[[f]^b\text{ is an }\mathcal{S}\text{-measurable function on }X\text{ for every }b\in Y.\]
+\end{proposition}
+
+\begin{proofsketch}
+  截面函数的原像集等于原像集的截面: \[
+  \left( [f]_{a} \right)^{-1} \left( D \right)= [f^{-1} \left( D \right) ]_{a}  
+  \] 
+\end{proofsketch}
+
+\section{Monotone Class Theorem}
+\begin{definition}{algebra}{}
+Suppose \(W\) is a set and \(\mathcal{A}\) is a set of subsets of \(W\). Then \(\mathcal{A}\) is called an \dfntxt{algebra} on \(W\) if the following three conditions are satisfied:
+
+\begin{itemize}
+  \item \(\varnothing \in \mathcal{A}\);
+  \item if \(E \in \mathcal{A}\), then \(W \setminus E \in \mathcal{A}\);
+  \item if \(E\) and \(F\) are elements of \(\mathcal{A}\), then \(E \cup F \in \mathcal{A}\).
+\end{itemize}
+\end{definition}
+\begin{proposition}{the set of finite unions of measurable rectangles is an algebra}{}
+Suppose \((X,\mathcal{S})\) and \((Y,\mathcal{T})\) are measurable spaces. Then
+
+(a) the set of finite unions of measurable rectangles in \(\mathcal{S}\otimes\mathcal{T}\) is an algebra on \(X\times Y\);
+
+(b) every finite union of measurable rectangles in \(\mathcal{S}\otimes\mathcal{T}\) can be written as a finite union of disjoint measurable rectangles in \(\mathcal{S}\otimes\mathcal{T}\).
+\end{proposition}
+
+\begin{definition}{monotone class}{}
+Suppose $W$ is a set and $\mathcal{M}$ is a set of subsets of $W$. Then $\mathcal{M}$ is called a \dfntxt{monotone class} on $W$ if the following two conditions are satisfied:
+
+\begin{itemize}
+  \item If $E_1 \subset E_2 \subset \cdots$ is an increasing sequence of sets in $\mathcal{M}$, then
+  \[
+    \bigcup_{k=1}^{\infty} E_k \in \mathcal{M};
+  \]
+  \item If $E_1 \supset E_2 \supset \cdots$ is a decreasing sequence of sets in $\mathcal{M}$, then
+  \[
+    \bigcap_{k=1}^{\infty} E_k \in \mathcal{M}.
+  \]
+\end{itemize}
+\end{definition}
+
+\begin{theorem}{Monotone Class Theorem}{}
+Suppose \(\mathcal{A}\) is an algebra on a set \(W\). Then the smallest \(\sigma\)-algebra containing \(\mathcal{A}\) is the smallest monotone class containing \(\mathcal{A}\).
+\end{theorem}
+
+\begin{proofsketch}
+  \begin{itemize}
+    \item 设 \(  \mathcal{M}  \)是包含了 \(  \mathcal{A}  \)的最小的单调类, \(  \mathcal{M}  \)包含于 \(   \sigma \left( \mathcal{A} \right)   \)是容易的. 主要说明另一边.
+    \item 取 \(  A\in \mathcal{A}  \),  令 \(  \mathcal{E}  \)是\(  \mathcal{M}  \)中 在``并\(  A  \) '' 操作下封闭的集合的全体. 则 \(  \mathcal{E}  \)可以继承 \(  \mathcal{M}  \)的单调类属性. 从而 \(  \mathcal{M}\subseteq \mathcal{E}  \), \(  A\cup E\in \mathcal{M}  \)对于所有的 \(  E  \)成立 .  
+    \item 令 \(  \mathcal{D}  \)是\(  \mathcal{M}  \)中在 ``与\(  \mathcal{M}  \)中任意元素做并 ''操作下封闭的集合全体, 则 \(  \mathcal{D}  \)可以继承 \(  \mathcal{M}  \)的单调类属性.   则上面的结果 就是在说 \(  A\in \mathcal{D}  \), 从而\(  \mathcal{A}\subseteq \mathcal{D}  \).  得到 \(  \mathcal{M}\subseteq \mathcal{D}  \).  这就是说 \(  \mathcal{M}  \)在有限并下封闭. 
+    \item 有限并加上对递增列封闭, 就是对可数并封闭.
+    \item 令 \(  \mathcal{M}^{\prime}   \)是 \(  \mathcal{M}  \)中在``补集''操作下封闭的全体, 则 \(  \mathcal{A}\subseteq \mathcal{M}^{\prime}   \). \(  \mathcal{M}^{\prime}   \)可以继承 \(  \mathcal{M}  \)的单调类属性(可以认为单调类的定义是关于补集对偶的). 故 \(  \mathcal{M}\subseteq \mathcal{M}^{\prime}   \), \(  \mathcal{M}  \)在补集下封闭.       
+  \end{itemize}
+  
+\end{proofsketch}
+
+\section{Products of Measures}
+\begin{theorem}{measure of cross section is a measurable function}{11-26-1}
+Suppose \((X,\mathcal{S},\mu)\) and \((Y,\mathcal{T},\nu)\) are \dfntxt{\(\sigma\)-finite} measure spaces. If \(E\in\mathcal{S}\otimes\mathcal{T}\), then
+
+\begin{enumerate}
+  \item \(x\mapsto \nu\bigl([E]_x\bigr)\) is an \(\mathcal{S}\)-measurable function on \(X\);
+  \item \(y\mapsto \mu\bigl([E]^y\bigr)\) is a \(\mathcal{T}\)-measurable function on \(Y\).
+\end{enumerate}
+\end{theorem}
+
+\begin{proofsketch}
+  考虑(a)
+
+  先考虑有限测度的情况下.
+  \begin{itemize}
+    \item 令 \(  \mathcal{M}  \)是具有性质(a)的\(  E  \)的全体.
+    \item 所有可测方块具有性质(a).
+    \item 令 \(  \mathcal{A}  \)表示可测方块生成的algebra. \(  [\cdot ]_{x}  \)是保持集合运算的, 可以由此将\(  [E]_{x}  \)按无交并的可测方块的并分解 \(  [E_1]_{x}\cup [E_2]_{x}\cup \cdots \cup [E_{n}]_{x}  \).     
+    \item 由此, \(  E\in \mathcal{A}  \)的函数 \(  x\mapsto \nu \left( [E]_{x} \right)   \)是  \(  x\mapsto \nu \left( [E_{i}]_{x} \right)   \)的和, 是可测的. 故 \(  \mathcal{A}\subseteq \mathcal{M}  \).    
+    \item \(  \nu   \)的自上自下连续性, 可测函数对逐点极限的封闭性(需要测度是有限的), 给出\(  \mathcal{M}  \)是单调类.  
+    \item 由单调类定理, \(  \mathcal{M}  \) 包含 \(  \mathcal{S}\otimes \mathcal{T}  \). 
+  \end{itemize}
+
+  推广到 \(   \sigma   \)-有限的情况, 只需要取出\(  Y  \)的一列递增的有限测度分解\(  Y_1\subseteq Y_2\subseteq \cdots   \) ,\(  \bigcup _{k= 1}^{\infty}Y_{k}= Y  \)  . 做逼近 \(  \nu \left( [E]_{x} \right)= \lim_{k\to \infty}\nu \left( [E\cap \left( X\times Y_{k} \right) ]_{x} \right)    \)即可. 
+  
+\end{proofsketch}
+\begin{definition}{product of two measures; \(\mu \times \nu\)}{}
+Suppose \((X,\mathcal{S},\mu)\) and \((Y,\mathcal{T},\nu)\) are \(\sigma\)-finite measure spaces. For \(E \in \mathcal{S} \otimes \mathcal{T}\), define \((\mu \times \nu)(E)\) by
+\[
+(\mu \times \nu)(E) = \int_X \int_Y \chi_E(x,y)\, d\nu(y)\, d\mu(x).
+\]
+\end{definition}
+
+\begin{theorem}{product of two measures is a measure}{}
+Suppose \((X,\mathcal{S},\mu)\) and \((Y,\mathcal{T},\nu)\) are \(\sigma\)-finite measure spaces. Then \(\mu\times\nu\) is a measure on \((X\times Y,\mathcal{S}\otimes\mathcal{T})\).
+\end{theorem}
+
+\begin{proofsketch}
+  利用单调收敛定理即可说明可数可加性.
+\end{proofsketch}
+\section{Iterated Integrals}
+
+\begin{theorem}{Tonelli's Theorem}{}
+Suppose \((X,\mathcal{S},\mu)\) and \((Y,\mathcal{T},\nu)\) are \dfntxt{\(\sigma\)-finite} measure spaces. Suppose \(f:X\times Y\to[0,\infty]\) is \(\mathcal{S}\otimes\mathcal{T}\)-measurable. Then
+
+(a)\quad \(x\mapsto\displaystyle\int_Y f(x,y)\,d\nu(y)\) is an \(\mathcal{S}\)-measurable function on \(X\),
+
+(b)\quad \(y\mapsto\displaystyle\int_X f(x,y)\,d\mu(x)\) is a \(\mathcal{T}\)-measurable function on \(Y\),
+
+and
+\[
+\int_{X\times Y} f\,d(\mu\times\nu)
+=\int_X\int_Y f(x,y)\,d\nu(y)\,d\mu(x)
+=\int_Y\int_X f(x,y)\,d\mu(x)\,d\nu(y).
+\]
+\end{theorem}
+
+\begin{proofsketch}
+  先说明 \(  f= \chi _{E}  \)的情况.
+  
+  \begin{itemize}
+    \item  这个情况下(a) (b)就是Theorem \ref{thm:11-26-1}. 令 \(  \mathcal{M}  \)是使得 \(  \chi _{E}  \)满足积分交换性的集合.
+    \item 可测方块是属于 \(  \mathcal{M}  \)的, 进而可测方块生成的代数 \(  \mathcal{A}  \)含于\(  \mathcal{M}  \).   
+    \item 先考虑测度 \(  \mu ,\nu   \)有限的情况. 由单调收敛定理, \(  \mathcal{M}  \)对递增集合列封闭. 当\(  \mu ,\nu   \)测度有限时, 由控制收敛定理 \(  \mathcal{M}  \)对递减列封闭.   故此时 \(  \mathcal{M}  \)是单调类.
+    \item 由单调类定理, 当 \(  \mu ,\nu   \)有限时   , \(  \mathcal{M}  \)包含 \(  \mathcal{S}\otimes \mathcal{T}  \).
+    \item 推广到 \(   \sigma   \)-有限的情况, 做分解 \(  X_1\subseteq X_2\cdots \subseteq X  \), \(  Y_1\subseteq Y_2\cdots \subseteq Y  \). 则对于 \(  E\in \mathcal{S}\otimes \mathcal{T}  \), \(\left(   E\cap  \left( X_{j}\times Y_{k} \right)  \right)\in \mathcal{M}   \). 单调收敛定理可以给出 \(  E\cap \left( X\times Y_{k} \right)\in \mathcal{M}   \), 再用一次单调收敛定理给出 \(  E= E\cap \left( X\times Y \right)\in \mathcal{M}   \).         
+  \end{itemize}
+  对于 \(  f  \)是一般的非负可测函数的情况, 找一列趋于 \(  f  \)的递增的简单函数 \(  \left\{ f_{k} \right\}  \). 题述性质对 \(  f_{k}  \)是成立的.  单调收敛定理给出(a)和(b). 再用单调收敛定理穿过两层积分 \(  \int _{X} \int_{Y}  \)给出积分的交换性. 
+\end{proofsketch}
+
+\begin{theorem}{Fubini's Theorem}{}
+Suppose \((X,\mathcal{S},\mu)\) and \((Y,\mathcal{T},\nu)\) are \(\sigma\)-finite measure spaces. Suppose 
+\[
+f:X\times Y\to[-\infty,\infty]
+\]
+is \(\mathcal{S}\otimes\mathcal{T}\)-measurable and 
+\[
+\int_{X\times Y}\lvert f\rvert\,d(\mu\times\nu)<\infty.
+\]
+Then
+\[
+\int_Y\lvert f(x,y)\rvert\,d\nu(y)<\infty\ \text{for almost every }x\in X
+\]
+and
+\[
+\int_X\lvert f(x,y)\rvert\,d\mu(x)<\infty\ \text{for almost every }y\in Y.
+\]
+
+Furthermore,
+
+(a)\quad \(x\mapsto\displaystyle\int_Y f(x,y)\,d\nu(y)\) is an \(\mathcal{S}\)-measurable function on \(X\),
+
+(b)\quad \(y\mapsto\displaystyle\int_X f(x,y)\,d\mu(x)\) is a \(\mathcal{T}\)-measurable function on \(Y\),
+
+and
+\[
+\int_{X\times Y}f\,d(\mu\times\nu)
+=\int_X\int_Y f(x,y)\,d\nu(y)\,d\mu(x)
+=\int_Y\int_X f(x,y)\,d\mu(x)\,d\nu(y).
+\]
+\end{theorem}
+
+\begin{proofsketch}
+  \begin{itemize}
+    \item 对 \(  \left| f \right|   \)使用Tonelli定理中的积分等式, 得到累次绝对积分的可积性, 同时得到单边绝对积分的几乎处处有限.
+    \item 对 \(  f^{+ }, f^{-}  \)使用Tonelli定理中的积分函数的可测性结论, 并由可积性可知未定义的部分是零测集,  得到\(  x\mapsto  \int_{Y}f\left( x,y \right)\,\mathrm{d} \nu \left( y \right)    \) 的可测性.
+    \item 将\(  f  \)做正负部分解, 对正负部积分分别使用Tonelli定理得到积分等式.
+  \end{itemize}
+  
+\end{proofsketch}
+
+\section{Area Under the Graph}
+
+\begin{definition}{region under the graph}{}
+Suppose \(X\) is a set and \(f:X\to[0,\infty]\) is a function. Then the \dfntxt{region under the graph} of \(f\), denoted \(U_f\), is defined by
+\[
+U_f=\{(x,t)\in X\times(0,\infty):0<t<f(x)\}.
+\]
+\end{definition}
+
+\begin{proposition}{area under the graph of a function equals the integral}{}
+Suppose \((X,\mathcal{S},\mu)\) is a \(\sigma\)-finite measure space and \(f:X\to[0,\infty]\) is an \(\mathcal{S}\)-measurable function. Let \(\mathcal{B}\) denote the \(\sigma\)-algebra of Borel subsets of \((0,\infty)\), and let \(\lambda\) denote Lebesgue measure on \(((0,\infty),\mathcal{B})\). Then \(U_f\in\mathcal{S}\otimes\mathcal{B}\) and
+\[
+(\mu\times\lambda)(U_f)=\int_X f\,d\mu=\int_{(0,\infty)}\mu(\{x\in X:t<f(x)\})\,d\lambda(t).
+\]
+\end{proposition}
+
+\begin{proofsketch}
+  令 \(  F\left( x,t \right)= f\left( x \right)-t    \), 则 \(  U_{f}  \)是 \(  F^{-1} \left( \left( 0,\infty \right)  \right)   \)是可测的. 积分等式由Tonelli定理得到.   
+\end{proofsketch}
+\end{document}
